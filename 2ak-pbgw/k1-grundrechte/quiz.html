@@ -124,7 +124,7 @@ main { max-width: 680px; margin: 0 auto; padding-inline: 16px; padding-block: 18
 </div>
 
 <main>
-  <div class="progress"><span id="count">Frage 1 von 15</span><div class="bar"><span id="barfill"></span></div><span id="pts">0 Punkte</span></div>
+  <div class="progress"><span id="count">Frage 1 von 17</span><div class="bar"><span id="barfill"></span></div><span id="pts">0 Punkte</span></div>
   <section class="card" id="stage" aria-live="polite"></section>
 </main>
 
@@ -145,6 +145,8 @@ const Q = [
   { t: "AEMR", q: "Was wurde am 10. Dezember 1948 in Paris verkündet?", a: ["die Allgemeine Erklärung der Menschenrechte", "die EMRK", "das Staatsgrundgesetz", "die EU-Grundrechtecharta"], e: "Die UNO-Generalversammlung verkündete die AEMR – Eleanor Roosevelt leitete die Kommission.", p: "Buch S. 47 · AB M2" },
   { t: "AEMR", q: "Warum ist die AEMR rechtlich nicht verbindlich?", a: ["Sie ist eine Erklärung, kein Vertrag.", "Österreich hat dagegen gestimmt.", "Sie gilt nur in Europa.", "Sie wurde 1966 aufgehoben."], e: "Verbindlich wurden die Inhalte erst durch Verträge: EMRK (1950) und UN-Pakte (1966). Österreich war 1948 noch nicht bei der UNO.", p: "Buch S. 47 · AB M2" },
   { t: "Durchsetzen", q: "Was ist mit »weicher Macht« gemeint?", a: ["Verstöße öffentlich machen und so Druck erzeugen", "Soldaten in ein Land schicken", "Verbrecher vor ein Weltgericht stellen", "Gesetze für andere Länder beschließen"], e: "NGOs, Medien und Staaten stellen Verstöße an den Pranger. Kein Staat will als Rechtsbrecher dastehen.", p: "Buch S. 51 · AB M3" },
+  { t: "AEMR", q: "Welches Dokument in der Zeitleiste M1 ist das älteste?", a: ["der Kyros-Zylinder", "die Magna Charta", "die Bill of Rights", "die Französische Erklärung"], e: "Der Kyros-Zylinder stammt aus dem Jahr 539 v. Chr. (Persien) – die Magna Charta aus 1215.", p: "AB M1" },
+  { t: "AEMR", q: "Wer leitete die Kommission, die die AEMR ausgearbeitet hat?", a: ["Eleanor Roosevelt", "Winston Churchill", "Navi Pillay", "Henry Dunant"], e: "Eleanor Roosevelt verkündete die Erklärung am 10.12.1948 um drei Uhr nachts in Paris.", p: "AB M2" },
   { t: "Quellen", q: "Der Text »Stolz und Schande« (M4) von 2018 ist …", a: ["ein Kommentar – der Autor sagt seine Meinung", "eine Nachricht – nur Fakten", "ein Gesetzestext", "eine Statistik"], e: "Wertende Wörter wie »Schande« zeigen: Meinung. Und er ist von 2018 – Zahlen für 2026 extra prüfen.", p: "AB M4" }
 ];
 const KEYS = ["A", "B", "C", "D"];
@@ -188,8 +190,8 @@ function pick(orig, btn) {
 }
 function message(p) {
   if (p === Q.length) return "Alles richtig – ausgezeichnet!";
-  if (p >= 12) return "Sehr gut – fast alles sitzt.";
-  if (p >= 9) return "Gut – schau dir die markierten Fragen noch einmal an.";
+  if (p >= 14) return "Sehr gut – fast alles sitzt.";
+  if (p >= 10) return "Gut – schau dir die markierten Fragen noch einmal an.";
   return "Noch üben – lies die Buchseiten unten nach und probier es noch einmal.";
 }
 function result() {

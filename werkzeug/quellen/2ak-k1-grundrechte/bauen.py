@@ -27,14 +27,12 @@ def qr_b64(url):
     b = io.BytesIO(); q.make_image(fill_color="#2C3424", back_color="white").save(b, format="PNG"); return base64.b64encode(b.getvalue()).decode()
 
 
-FAHRPLAN_ROWS = [["Stunde 1", "Teil 1 · Grund- und Menschenrechte", "1–3", "Aufgabe 2 zu zweit ohne Handy", "–"],
-                 ["Stunde 2", "Teil 2 · Verstöße", "4–5 · Quiz", "Pro und Contra ohne Handy", "–"],
-                 ["Stunde 3", "Arbeitsblatt M1–M4 (Papier) · Teil 3", "6–11", "lesen ohne Handy, dann am Handy", "PDF in LMS"],
-                 ["Stunde 4", "Teil 4 · Stolz und Schande 2026", "12 · eure Fragen", "ohne Handy: Vier Ecken, Aufstellen, Diskussion", "–"],
-                 ["Für Schnelle", "Für Schnelle und Neugierige", "13–16", "am Handy", "freiwillig"]]
+FAHRPLAN_ROWS = [["Stunde 1", "Teil 1 · Theorie, dann Arbeitsblatt M1–M4 (Papier)", "1–6", "Arbeitsblatt ohne Handy lesen, dann am Handy", "PDF in LMS"],
+                 ["Stunde 2", "Teil 2 · Stolz und Schande 2026", "7 · Quiz · eure Fragen", "ohne Handy: Vier Ecken, Aufstellen, Diskussion", "–"],
+                 ["Für Schnelle", "Für Schnelle und Neugierige", "8–11", "am Handy", "freiwillig"]]
 FAHRPLAN = ('<section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2>'
             '<p>Lies die <strong>Lernseite</strong> Teil für Teil, mach die passenden <strong>Aufgaben</strong> im Arbeitsblatt, teste dich mit dem <strong>Quiz</strong> '
-            'und gib nach Stunde 3 das <strong>PDF</strong> ab.</p><div class="tablewrap"><table><thead><tr><th>Stunde</th><th>Lesen</th><th>Aufgaben</th><th>Methode</th><th>Abgabe</th></tr></thead><tbody>'
+            'und gib nach Stunde 1 das <strong>PDF</strong> ab.</p><div class="tablewrap"><table><thead><tr><th>Stunde</th><th>Lesen</th><th>Aufgaben</th><th>Methode</th><th>Abgabe</th></tr></thead><tbody>'
             + "".join("<tr>" + "".join(f"<td>{esc(c)}</td>" for c in r) + "</tr>" for r in FAHRPLAN_ROWS) + "</tbody></table></div></section>")
 
 # ================================================================ Arbeitsblatt
@@ -56,9 +54,9 @@ rep('<option value="">–</option><option>4AK</option><option>4BK</option>', '<o
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
       <li>Lies zuerst den passenden Teil der <a href="theorie.html">Lernseite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
-      <li><b>Stunde 1</b>: 1–3 · <b>Stunde 2</b>: 4–5 · <b>Stunde 3</b>: 6–11 (Arbeitsblatt M1–M4 auf Papier) · <b>Stunde 4</b>: 12 · <b>Für Schnelle</b>: 13–16.</li>
+      <li><b>Stunde 1</b>: 1–6 (Arbeitsblatt M1–M4 auf Papier) · <b>Stunde 2</b>: 7 · <b>Für Schnelle</b>: 8–11.</li>
       <li>Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt – die Lösung wird dabei nicht verraten.</li>
-      <li>Nach Stunde 3 ganz unten <b>PDF erstellen</b> und in LMS hochladen. Deine Frage aus Aufgabe 11 besprechen wir in Stunde 4.</li>
+      <li>Nach Stunde 1 ganz unten <b>PDF erstellen</b> und in LMS hochladen. Deine Frage aus Aufgabe 6 besprechen wir in Stunde 2.</li>
     </ol>""" + s[j:]
 i = s.index('<section class="fahrplan">'); j = s.index("</section>", i) + 10
 s = s[:i] + FAHRPLAN + s[j:]
@@ -77,12 +75,12 @@ function mixed(opts) {
 function fieldsFor(t) {""")
 rep("f[2] ? selectField(t.id, f[0], f[2], f[1]) : textField(t.id, f[0], f[1], true, 3)",
     "f[2] ? selectField(t.id, f[0], f[3] === false ? f[2] : mixed(f[2]), f[1]) : textField(t.id, f[0], f[1], !(t.chk && t.chk[f[0]] && t.chk[f[0]].num !== undefined), 3)")
-rep('else if (t.tag !== "Zusatz") open.push(t.nr);', 'else if (t.h >= 1 && t.h <= 3) open.push(t.nr);')
+rep('else if (t.tag !== "Zusatz") open.push(t.nr);', 'else if (t.h === 1) open.push(t.nr);')
 rep('KAP + " Elektromagnet und Elektromotor – Aufgaben"', 'KAP + " Grund- und Menschenrechte – Aufgaben"')
 rep('clean("NAWI · 4AB · K1.5a Elektromagnet und Elektromotor · Schulbuch S. 29–33, 38")', 'clean("PBGW · 2AK · K1 Grund- und Menschenrechte · Schulbuch S. 46–58")')
 rep('d.text("Elektromagnet-Aufgaben", M + 15, y + 11.5)', 'd.text("' + TITLE + '", M + 15, y + 11.5)')
-rep('"Noch offen (Teil 1 und 2): Aufgabe "', '"Noch offen (Stunde 1–3): Aufgabe "')
-rep('"Alle Pflicht-Aufgaben 1–9 bearbeitet."', '"Alle Aufgaben aus Stunde 1–3 bearbeitet."')
+rep('"Noch offen (Teil 1 und 2): Aufgabe "', '"Noch offen (Stunde 1): Aufgabe "')
+rep('"Alle Pflicht-Aufgaben 1–9 bearbeitet."', '"Alle Aufgaben aus Stunde 1 bearbeitet."')
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
 s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, ensure_ascii=False) + ";" + s[j:]
 _plain = re.sub(r"[A-Za-z0-9+/=]{200,}", "", s)
@@ -139,12 +137,12 @@ jetzt = lambda txt, href: f'<a class="jetzt" href="{href}">{esc(txt)} →</a>'
 
 PARTS = [
  ("einstieg", "Einstieg", "Worum geht es?", [
-   slide("Was meinst du?", tiles([("Mythos oder Fakt?", "»Wer zum Bundesheer einrückt, gibt seine Grundrechte am Kasernentor ab.« – Auflösung in Teil 1"),
-                                  ("Alltag", "Mit 16 wählen, einen Verein gründen, den Beruf frei wählen – wer garantiert dir das eigentlich?"),
-                                  ("Star Trek", "Captain Picard wird gefoltert und soll fünf Lichter sehen, wo vier sind. Was bringt Folter wirklich?"),
-                                  ("Paris, 1948", "10. Dezember, 3 Uhr nachts: Eleanor Roosevelt verkündet die Allgemeine Erklärung der Menschenrechte.")])),
+   slide("Paris 1948: Was meinst du?", tiles([("Mythos oder Fakt?", "»Die AEMR ist ein Gesetz – wer sie bricht, kommt vor Gericht.« – Auflösung in Aufgabe 2"),
+                                             ("Paris, 1948", "48 Staaten dafür, keiner dagegen. Österreich stimmt nicht mit – warum?"),
+                                             ("Captain America: Civil War", "117 Staaten wollen die Avengers per Vertrag kontrollieren. Und wer kontrolliert die Staaten?"),
+                                             ("9. Oktober 2026", "Friedensnobelpreis für Navi Pillay, eine Juristin aus Südafrika. Wofür?")])),
    slide("Das kannst du nach dieser Einheit", ol(I.LERNZIELE))]),
- ("teil1", "Teil 1 · Stunde 1 · Buch S. 46–50", "Grund- und Menschenrechte", [
+ ("teil1", "Teil 1 · Stunde 1 · Buch S. 46–51", "Grund- und Menschenrechte", [
    slide("Grundrecht oder Menschenrecht?", tiles([("Wahlrecht", "**Grundrecht** – nur für österreichische Staatsbürger"),
                                                   ("Folterverbot", "**Menschenrecht** – gilt für jeden, auch für Kriegsgefangene")])
          + merke("**Merksatz:** Menschenrechte hat man, weil man Mensch ist – angeboren, unveräußerlich, nicht verdienbar. Viele Grundrechte sind zugleich Menschenrechte."), "Buch S. 46–47"),
@@ -161,14 +159,24 @@ PARTS = [
          + merke("**Aktuell:** 2022 erkennt die UNO das Recht auf eine saubere, gesunde Umwelt an. 2024 gibt der EGMR den Schweizer »KlimaSeniorinnen« recht: Zu wenig Klimaschutz verletzt die EMRK."), "Buch S. 47–48", "generationen"),
    slide("Ein langer Weg – auch in Österreich", table([["Jahr", "Was geschah?"], ["1867", "Staatsgrundgesetz (Dezemberverfassung)"], ["1945", "Grundrechte von 1867 wieder in Kraft"],
                                                        ["1948", "AEMR der UNO – nicht verbindlich"], ["1964", "EMRK im Verfassungsrang"], ["1968", "Todesstrafe in Österreich ganz abgeschafft"]]), "Buch S. 50"),
-   slide("Grundrechte und Bundesheer – aktuell", tiles([("Wehrpflicht", "Jeder männliche Staatsbürger ist wehrpflichtig (Art. 9a B-VG)."),
-                                                        ("Gewissensfreiheit", "Wer aus Gewissensgründen keine Waffe tragen will, leistet Zivildienst."),
-                                                        ("Reform 2027 (Entwurf)", "Vorgestellt am 7.10.2026: Grundwehrdienst 6 Monate + 3 Monate Übungen, Zivildienst 9 Monate.")])
-         + merke("**Auflösung Mythos:** Soldaten behalten ihre Grundrechte. Einschränkungen – etwa durch Befehle oder Dienstzeiten – braucht es per Gesetz, und sie müssen verhältnismäßig sein."), "Buch S. 46–47", "bundesheer"),
+   slide("Wer setzt Menschenrechte durch?", tiles([("Kein Weltpolizist", "Völkerrecht hat oft keine Strafen."),
+                                                   ("»Weiche Macht«", "NGOs wie Amnesty und Reporter ohne Grenzen stellen Verstöße öffentlich an den Pranger."),
+                                                   ("Druck durch Staaten", "Sanktionen, z. B. der EU"), ("Gerichte", "EGMR in Straßburg, Internationaler Strafgerichtshof in Den Haag")]), "Buch S. 51"),
    slide("Stopp – kannst du das?", reveal("Gilt das Folterverbot auch für einen Asylwerber ohne österreichischen Pass?", "Ja – das Folterverbot ist ein Menschenrecht und gilt für jeden Menschen (Art. 3 EMRK).")
-         + reveal("Wohin wendest du dich, wenn der Staat deine Grundrechte verletzt?", "An den Verfassungsgerichtshof in Wien – danach an den EGMR in Straßburg."), "Teil 1"),
-   jetzt("Jetzt: Aufgaben 1–3", "aufgaben.html#card_a1")]),
- ("teil2", "Teil 2 · Stunde 2 · Buch S. 51–58", "Verstöße gegen Menschenrechte – aktuell", [
+         + reveal("Wohin wendest du dich, wenn der Staat deine Grundrechte verletzt?", "An den Verfassungsgerichtshof in Wien – danach an den EGMR in Straßburg."), "Teil 1")]),
+ ("arbeitsblatt", "Stunde 1 · Arbeitsblatt M1–M4", "70 Jahre AEMR", [
+   slide("Dein Material", tiles([("Arbeitsblatt auf Papier oder in LMS", "»70 Jahre Allgemeine Erklärung der Menschenrechte« (Schroedel aktuell, 2018)"),
+                                 ("Was steht wo?", ["**M1** Zeitleiste: ein langer Weg", "**M2** Die AEMR – ein Meilenstein", "**M3** Die weiche Macht", "**M4** Kommentar: Stolz und Schande"])])
+         + hint("Lies M1–M4 zuerst **ohne Handy** und markiere Wichtiges. Zu jedem M gibt es eine Aufgabe: M1 → 1, M2 → 2, M3 → 3, M4 → 4."), "Buch S. 47–52"),
+   slide("Die AEMR in Kürze", ul(["verkündet am **10. Dezember 1948** in Paris von der UNO-Generalversammlung – 30 Artikel",
+                                  "Art. 1: »Alle Menschen sind frei und gleich an Würde und Rechten geboren.«",
+                                  "eine **Erklärung, kein Vertrag** – verbindlich wurden erst die EMRK (1950) und die UN-Pakte (1966)",
+                                  "Österreich war 1948 noch besetzt und ist erst seit **1955** bei der UNO."]), "Buch S. 47"),
+   jetzt("Jetzt: Aufgaben 1–6", "aufgaben.html#card_a1")]),
+ ("teil2", "Teil 2 · Stunde 2 · Buch S. 51–58", "Stolz und Schande – 2026", [
+   slide("Stolz oder Schande – 2026?", tiles([("Stolz", ["Friedensnobelpreis 2026 für die Juristin Navi Pillay (9.10.2026)", "113 Staaten ohne Todesstrafe", "Pressefreiheit: Österreich Platz 19 (vorher 22)"]),
+                                              ("Schande", ["2.707 Hinrichtungen 2025 – Höchstwert seit 1981", "Iran: mindestens 2.159", "Pressefreiheit: USA fallen auf Platz 64"])])
+         + hint("M4 ist von 2018. Was hat sich geändert – und was überwiegt für dich? Quellen: Amnesty 5/2026, Reporter ohne Grenzen 4/2026"), "Aufgabe 7"),
    slide("Todesstrafe 2025: ein Rekordjahr", stat("2.707", "Hinrichtungen 2025 – höchster Wert seit 1981") + stat("2.159+", "im Iran – mehr als doppelt so viele wie 2024")
          + stat("356+", "in Saudi-Arabien – Gastgeber der Fußball-WM 2034") + hint("China: vermutlich Tausende – die Zahlen sind Staatsgeheimnis. Quelle: Amnesty International, Mai 2026"), "Buch S. 57", "todesstrafe"),
    slide("Todesstrafe weltweit", ul(["Österreich: seit **1968** ganz abgeschafft", "**113 Staaten** haben sie für alle Verbrechen abgeschafft", "46 % der Hinrichtungen 2025 wegen Drogendelikten",
@@ -187,28 +195,13 @@ PARTS = [
                                                    "2023: Der Internationale Strafgerichtshof erlässt Haftbefehle gegen Putin und Lwowa-Belowa.",
                                                    "Mai 2026: EU-Sanktionen gegen 16 Personen und 7 Organisationen"])
          + merke("**Kriegsvölkerrecht:** Die Genfer Abkommen verbieten, Zivilisten zu deportieren."), "Buch S. 56", "kinder"),
-   slide("Wer setzt Menschenrechte durch?", tiles([("Kein Weltpolizist", "Völkerrecht hat oft keine Strafen."),
-                                                   ("»Weiche Macht«", "NGOs wie Amnesty und Reporter ohne Grenzen stellen Verstöße öffentlich an den Pranger."),
-                                                   ("Druck durch Staaten", "Sanktionen, z. B. der EU"), ("Gerichte", "EGMR in Straßburg, Internationaler Strafgerichtshof in Den Haag")]), "Buch S. 51"),
-   slide("Stopp – kannst du das?", reveal("Warum sind Zahlen zu Hinrichtungen immer Mindestwerte?", "Viele Staaten veröffentlichen keine Zahlen (China: Staatsgeheimnis) – NGOs zählen nur, was bekannt wird.")
-         + reveal("Nenne zwei Wege, wie Menschenrechte durchgesetzt werden.", "Gerichte (EGMR, Strafgerichtshof), Sanktionen von Staaten, öffentlicher Druck durch NGOs und Medien."), "Teil 2"),
-   jetzt("Jetzt: Aufgaben 4–5 und das Quiz", "aufgaben.html#card_a4")]),
- ("teil3", "Teil 3 · Stunde 3 · Arbeitsblatt M1–M4", "70 Jahre AEMR", [
-   slide("Dein Material", tiles([("Arbeitsblatt auf Papier oder in LMS", "»70 Jahre Allgemeine Erklärung der Menschenrechte« (Schroedel aktuell, 2018)"),
-                                 ("Was steht wo?", ["**M1** Zeitleiste: ein langer Weg", "**M2** Die AEMR – ein Meilenstein", "**M3** Die weiche Macht", "**M4** Kommentar: Stolz und Schande"])])
-         + hint("Lies M1–M4 zuerst **ohne Handy** und markiere Wichtiges. Zu jedem M gibt es eine Aufgabe: M1 → 6, M2 → 7, M3 → 8, M4 → 9."), "Buch S. 47–52"),
-   slide("Die AEMR in Kürze", ul(["verkündet am **10. Dezember 1948** in Paris von der UNO-Generalversammlung – 30 Artikel",
-                                  "Art. 1: »Alle Menschen sind frei und gleich an Würde und Rechten geboren.«",
-                                  "eine **Erklärung, kein Vertrag** – verbindlich wurden erst die EMRK (1950) und die UN-Pakte (1966)",
-                                  "Österreich war 1948 noch besetzt und ist erst seit **1955** bei der UNO."]), "Buch S. 47"),
-   jetzt("Jetzt: Aufgaben 6–11", "aufgaben.html#card_a6")]),
- ("teil4", "Teil 4 · Stunde 4", "Stolz und Schande – 2026", [
-   slide("Stolz oder Schande – 2026?", tiles([("Stolz", ["Friedensnobelpreis 2026 für die Juristin Navi Pillay (9.10.2026)", "113 Staaten ohne Todesstrafe", "Pressefreiheit: Österreich Platz 19 (vorher 22)"]),
-                                              ("Schande", ["2.707 Hinrichtungen 2025 – Höchstwert seit 1981", "Iran: mindestens 2.159", "Pressefreiheit: USA fallen auf Platz 64"])])
-         + hint("M4 ist von 2018. Was hat sich geändert – und was überwiegt für dich? Quellen: Amnesty 5/2026, Reporter ohne Grenzen 4/2026"), "Aufgabe 12"),
    slide("Preise für Menschenrechte", tiles([("Friedensnobelpreis", "Navi Pillay (Südafrika): Richterin am Ruanda-Tribunal und am Internationalen Strafgerichtshof, UN-Hochkommissarin für Menschenrechte – Verleihung am 10.12. in Oslo"),
                                              ("Sacharow-Preis", "Preis des EU-Parlaments – Entscheidung am 22.10., Verleihung am 16.12. in Straßburg"),
                                              ("10. Dezember", "Tag der Menschenrechte – die AEMR wird 78.")])),
+   slide("Grundrechte und Bundesheer – aktuell", tiles([("Wehrpflicht", "Jeder männliche Staatsbürger ist wehrpflichtig (Art. 9a B-VG)."),
+                                                        ("Gewissensfreiheit", "Wer aus Gewissensgründen keine Waffe tragen will, leistet Zivildienst."),
+                                                        ("Reform 2027 (Entwurf)", "Vorgestellt am 7.10.2026: Grundwehrdienst 6 Monate + 3 Monate Übungen, Zivildienst 9 Monate.")])
+         + merke("**Merke:** Soldaten behalten ihre Grundrechte. Einschränkungen – etwa durch Befehle oder Dienstzeiten – braucht es per Gesetz, und sie müssen verhältnismäßig sein."), "Buch S. 46–47", "bundesheer"),
    slide("Menschenrechte im Einsatz", tiles([("Wehrpflicht", "ist keine Zwangsarbeit – Art. 4 EMRK nimmt Militär- und Zivildienst ausdrücklich aus."),
                                              ("Befehl und Gewissen", "Befehle, die gegen Strafgesetze verstoßen, dürfen nicht befolgt werden."),
                                              ("Genfer Abkommen", "schützen im Krieg Zivilisten, Verwundete und Gefangene."),
@@ -216,7 +209,7 @@ PARTS = [
    slide("Häufige Fragen – kurz beantwortet", reveal("Ist Asyl ein Menschenrecht?", "Ja – das Recht, Asyl zu **suchen** (Art. 14 AEMR). Ob man es bekommt, prüft der Staat nach der Genfer Flüchtlingskonvention.")
          + reveal("Gilt das Folterverbot auch für Terroristen?", "Ja – für jeden Menschen, ohne Ausnahme, auch im Krieg (Art. 5 AEMR, Art. 3 EMRK).")
          + reveal("Ist das Internet ein Menschenrecht?", "Kein eigenes Recht – aber die UNO sagt: Rechte, die offline gelten, gelten auch online (z. B. Meinungsfreiheit).")),
-   jetzt("Jetzt: Aufgabe 12", "aufgaben.html#card_a12")]),
+   jetzt("Jetzt: Aufgabe 7 und das Quiz", "aufgaben.html#card_a7")]),
  ("begriffe", "Zum Nachschlagen", "Fachbegriffe", [slide("Fachbegriffe", table(I.FACHBEGRIFFE))]),
 ]
 CHECK = "".join(f'<div class="ziel"><p>{md(z)}</p><div class="chips" role="group" aria-label="Selbstcheck">' + "".join(f'<button type="button" class="chip" data-z="{k}" data-v="{v}" aria-pressed="false">{v}</button>' for v in ("sicher", "fast", "noch nicht")) + "</div></div>" for k, z in enumerate(I.LERNZIELE))
@@ -224,12 +217,12 @@ PARTS.append(("kurz", "Zum Schluss", "Kurz & knapp", [slide("Das Wichtigste in 5
                                                        slide("Kann ich das?", hint("Tippe ehrlich an – bei »noch nicht« den passenden Teil noch einmal lesen.") + CHECK)]))
 PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [
    slide("Wo beginnen Menschenrechte?", merke("»An den kleinen Plätzen, nahe dem eigenen Heim … Solange diese Rechte dort keine Geltung haben, sind sie auch woanders nicht von Bedeutung.« – Eleanor Roosevelt")
-         + hint("Aufgabe 13: Welche »kleinen Plätze« gibt es in deinem Leben?"), "OPTIONAL"),
+         + hint("Aufgabe 8: Welche »kleinen Plätze« gibt es in deinem Leben?"), "OPTIONAL"),
    slide("Die Genfer Abkommen", ul(["1949 beschlossen, fast alle Staaten der Welt sind dabei", "schützen Verwundete, Kranke, Schiffbrüchige, Kriegsgefangene und Zivilisten",
-                                    "das Rote Kreuz darf helfen und Gefangene besuchen"]) + hint("Aufgabe 15: Recherche – roteskreuz.at"), "OPTIONAL"),
-   jetzt("Jetzt: Aufgaben 13–16", "aufgaben.html#card_a13")]))
+                                    "das Rote Kreuz darf helfen und Gefangene besuchen"]) + hint("Aufgabe 10: Recherche – roteskreuz.at"), "OPTIONAL"),
+   jetzt("Jetzt: Aufgaben 8–11", "aufgaben.html#card_a8")]))
 
-TOCLAB = {"einstieg": "Einstieg", "teil1": "Teil 1", "teil2": "Teil 2", "teil3": "Teil 3", "teil4": "Teil 4", "begriffe": "Begriffe", "kurz": "Kurz & knapp", "schnelle": "Für Schnelle"}
+TOCLAB = {"einstieg": "Einstieg", "teil1": "Teil 1", "arbeitsblatt": "Arbeitsblatt", "teil2": "Teil 2", "begriffe": "Begriffe", "kurz": "Kurz & knapp", "schnelle": "Für Schnelle"}
 toc = "".join(f'<a href="#{p[0]}">{TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="#weiter">Aufgaben</a>'
 body = "".join(f'<section class="part" id="{p[0]}"><div class="band"><div class="eyebrow">{esc(p[1])}</div><h2>{esc(p[2])}</h2></div>{"".join(p[3])}</section>' for p in PARTS)
 bt = open(os.path.join(WZ, "vorlagen", "build_theorie.py"), encoding="utf-8").read()
@@ -289,7 +282,7 @@ page = f"""<!doctype html>
   <div class="eyebrow">Weiter geht's</div>
   <h2>Jetzt bist du dran</h2>
   <div class="btns"><a class="btn" href="aufgaben.html">2 · Arbeitsblatt A1–A{len(I.T)}</a><a class="btn alt" href="quiz.html">3 · Menschenrechte-Check (Quiz)</a></div>
-  <p class="hint">Theorie zum Nachlesen im Schulbuch PBGW 2 (Trauner) S. 46–58. Material Stunde 3: Arbeitsblatt »70 Jahre AEMR« (Schroedel aktuell, 2018) auf Papier oder in LMS. Zahlen: Amnesty International (Mai 2026), Reporter ohne Grenzen (April 2026).</p>
+  <p class="hint">Theorie zum Nachlesen im Schulbuch PBGW 2 (Trauner) S. 46–58. Material Stunde 1: Arbeitsblatt »70 Jahre AEMR« (Schroedel aktuell, 2018) auf Papier oder in LMS. Zahlen: Amnesty International (Mai 2026), Reporter ohne Grenzen (April 2026).</p>
   <p class="hint">Stand {STAND} · {I.V}</p>
 </section>
 </main>
