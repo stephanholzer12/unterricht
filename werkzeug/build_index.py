@@ -12,6 +12,8 @@ Daten:
   jahresplan (z. B. "E3"), seiten. Optional: "aktuell": true (sonst ist die zuletzt eingetragene Einheit
   »Gerade dran«), "versteckt": true (Einheit ist schon online, erscheint aber noch nicht in der Übersicht).
   Test-Trainings: kapitel = "<Nr>. Test · <Datum>" (ohne block).
+  Optional "dateien": {"stand": "18.10.2026", "zip": "…-v3.zip", "liste": ["…-TH-Lehrer-v2.pptx", …]} – die aktuell
+  gültigen PPP-/Word-Dateien der Einheit; erscheinen nur auf der Lehrer-Seite.
 - bloecke.json: Reihenfolge der Themenblöcke laut Jahresplan (aus bloecke_aus_jahresplan.py).
 - Lernseiten (theorie.html): Buchseiten, Teile, Lernziele, »Das Wichtigste«, Fachbegriffe (lernseite_lesen.py).
 
@@ -432,6 +434,29 @@ def qr_svg(url):
     return re.sub(r"<\?xml[^>]*>", "", svg).replace("<svg ", '<svg role="img" aria-label="QR-Code" ', 1)
 
 
+ART = [(r"-TH-Lehrer", "PPP Lehrer"), (r"-TH-Kadetten", "PPP Kadetten"), (r"-VS-Lehrer", "PPP Versuche Lehrer"), (r"-VS-Kadetten", "PPP Versuche Kadetten"),
+       (r"-UE-Lehrer", "PPP Übung Lehrer"), (r"-UE-Kadetten", "PPP Übung Kadetten"), (r"-AB", "Word Arbeitsblatt"), (r"-Loesung", "Word Lösung"),
+       (r"-Fachwissen", "Word Fachwissen"), (r"-Teststoff", "Word Teststoff"), (r"-Kahoot", "Kahoot-Tabelle")]
+
+
+def art(name):
+    for muster, text in ART:
+        if re.search(muster, name):
+            return text
+    return name.rsplit(".", 1)[-1].upper()
+
+
+def dateien_html(e):
+    """Aktuell gültige Dateien einer Einheit (Feld »dateien« in einheiten.json) – nur für die Lehrer-Seite."""
+    d = e.get("dateien")
+    if not d:
+        return '<div class="files leer">Aktuelle PPP-/Word-Dateien: noch nicht vermerkt</div>'
+    zeilen = "".join(f'<li><span class="art">{esc(art(f))}</span> <code>{esc(f)}</code></li>' for f in d.get("liste", []))
+    zip_ = f'<div><span class="art">Paket</span> <code>{esc(d["zip"])}</code></div>' if d.get("zip") else ""
+    stand = f' · Stand {esc(d["stand"])}' if d.get("stand") else ""
+    return f'<details class="files"><summary>Aktuelle Dateien{stand}</summary>{zip_}<ul>{zeilen}</ul></details>'
+
+
 LEHRER_CSS = """
 .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
 @media (min-width: 900px) { main.wide { max-width: 1180px; } .grid { grid-template-columns: 1fr 1fr; } .top-inner, nav.toc div, footer { max-width: 1180px; } }
@@ -448,6 +473,14 @@ LEHRER_CSS = """
 .ulist { display: grid; gap: 0; }
 .ulist > div { padding: 8px 0; border-top: 1px dashed var(--line); display: grid; gap: 4px; }
 .ulist > div:first-child { border-top: 0; }
+.files { font-size: 14px; }
+.files.leer { color: var(--muted); font-style: italic; }
+.files summary { cursor: pointer; font-weight: 700; color: var(--teal); }
+.files ul { margin: 4px 0 0; padding-left: 0; list-style: none; display: grid; gap: 2px; }
+.files code { font-family: Consolas, "Courier New", monospace; font-size: 13px; word-break: break-all; }
+.files .art { display: inline-block; min-width: 9.5em; color: var(--muted); font-weight: 700; }
+.files li, .files > div { padding: 2px 0; }
+@media (max-width: 600px) { .files .art { display: block; min-width: 0; font-size: 12px; } }
 .tag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 8px; background: var(--line); color: var(--olive); vertical-align: 2px; }
 .url { font-size: 13px; color: var(--muted); word-break: break-all; }
 #tests a { color: var(--teal); font-weight: 700; }
@@ -493,19 +526,19 @@ def seite_lehrer(klassen):
              f'<a class="btn light" href="{esc(o)}/wiederholen.html">Wiederholen ({k["n_z"]})</a></div>']
         if jetzt:
             e2 = dict(jetzt, unter=jetzt["ordner"])
-            h.append(f'<div class="sub"><div class="eyebrow">GERADE DRAN · {esc(jetzt["kapitel"])}</div><strong>{esc(jetzt["titel"])}</strong><div class="links small">{knoepfe(e2)}</div></div>')
+            h.append(f'<div class="sub"><div class="eyebrow">GERADE DRAN · {esc(jetzt["kapitel"])}</div><strong>{esc(jetzt["titel"])}</strong><div class="links small">{knoepfe(e2)}</div>{dateien_html(jetzt)}</div>')
         rows = []
         for b in k["bloecke"]:
             for u in b["units"]:
                 e2 = dict(u, unter=u["ordner"])
                 warn = f'<div class="warn">Fehlt auf der Lernseite: {esc(", ".join(u["fehlt"]))}</div>' if u.get("fehlt") else ""
-                rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{warn}</div>')
+                rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(u)}{warn}</div>')
         for t in k["tests"]:
             e2 = dict(t, unter=t["ordner"])
-            rows.append(f'<div><div><span class="tag" style="background:var(--orange);color:#fff">Test</span> <strong>{esc(t["kapitel"])}</strong> {esc(t["titel"])}</div><div class="links small">{knoepfe(e2)}</div></div>')
+            rows.append(f'<div><div><span class="tag" style="background:var(--orange);color:#fff">Test</span> <strong>{esc(t["kapitel"])}</strong> {esc(t["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(t)}</div>')
         for v in k["versteckt"]:
             e2 = dict(v, unter=v["ordner"])
-            rows.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}</div></div>')
+            rows.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(v)}</div>')
         n = len(rows)
         h.append(f'<details class="mehr"><summary>Alle Einheiten ({n})</summary><div class="ulist">{"".join(rows)}</div></details></section>')
         out.append("".join(h))

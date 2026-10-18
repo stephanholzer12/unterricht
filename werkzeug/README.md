@@ -18,6 +18,7 @@ Zusätzlich die **Lehrer-Seite** `lehrer-0f6eec.html` (Adresse in `build_index.p
 
 Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsichtbar. Felder pro Einheit:
 - `block`: Block laut Jahresplan, genau wie in `bloecke.json` (z. B. `"A Atombau & Bindung"`); `jahresplan`: Einheit(en) im Jahresplan (z. B. `"E3–E5"`, nur zur Nachverfolgung)
+- optional `"dateien"`: die aktuell gültigen PPP-/Word-Dateien der Einheit, z. B. `{"stand": "18.10.2026", "zip": "26-27-4AB-K1.5a-E-Magnet-v3.zip", "liste": ["26-27-4AB-K1.5a-E-Magnet-TH-Lehrer-v2.pptx", …]}` – bei jeder Lieferung aktualisieren; erscheint nur auf der Lehrer-Seite (»Aktuelle Dateien«)
 - optional `"aktuell": true` (sonst ist die zuletzt eingetragene Einheit »Gerade dran«), `"versteckt": true` (schon online, aber noch nicht in der Übersicht)
 - Test-Trainings ohne `block`, `kapitel` = »<Nr>. Test · <Datum>« → eigener Kasten mit Countdown
 - `bloecke.json` (Reihenfolge der Blöcke) kommt aus dem Jahresplan: `python3 werkzeug/bloecke_aus_jahresplan.py <Jahresplan.xlsx>` (Blatt »Stunden«, Spalte »Block«; Zuordnung Klassenseite → Jahresplan-Klasse oben im Skript)
