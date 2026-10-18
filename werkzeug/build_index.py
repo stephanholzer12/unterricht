@@ -110,7 +110,7 @@ details.mehr { border: 1.5px solid var(--line); border-radius: 10px; background:
 details.mehr > summary { cursor: pointer; padding: 7px 12px; font-weight: 700; color: var(--olive); font-size: 16px; }
 details.mehr > div { padding: 0 12px 10px; }
 details.mehr ol, details.mehr ul { margin: 0; padding-left: 22px; display: grid; gap: 4px; font-size: 16px; }
-details.mehr a { color: var(--teal); font-weight: 700; text-decoration: none; }
+details.mehr a:not(.btn) { color: var(--teal); font-weight: 700; text-decoration: none; }
 details.mehr .s { color: var(--muted); font-size: 14px; white-space: nowrap; }
 p.note { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
 footer { max-width: 720px; margin: 0 auto; padding: 0 16px 32px; color: var(--muted); font-size: 14px; }
@@ -481,7 +481,7 @@ LEHRER_CSS = """
 .files .art { display: inline-block; min-width: 9.5em; color: var(--muted); font-weight: 700; }
 .files li, .files > div { padding: 2px 0; }
 @media (max-width: 600px) { .files .art { display: block; min-width: 0; font-size: 12px; } }
-.tag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 8px; background: var(--line); color: var(--olive); vertical-align: 2px; }
+.tag { display: inline-block; font-size: 14px; font-weight: 700; border-radius: 999px; padding: 2px 10px; background: var(--olive); color: #fff; vertical-align: 1px; }
 .url { font-size: 13px; color: var(--muted); word-break: break-all; }
 #tests a { color: var(--teal); font-weight: 700; }
 #beamer { position: fixed; inset: 0; z-index: 50; background: #fff; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px; text-align: center; }
