@@ -33,6 +33,9 @@ SCHULJAHR = (2026, 2027)
 HEUTE = datetime.date.today()
 STAND = HEUTE.strftime("%d.%m.%Y")
 esc = html.escape
+BASIS = "https://stephanholzer12.github.io/unterricht/"
+# Lehrer-Seite: feste, schwer zu erratende Adresse, wird nirgends verlinkt (nur für Stephan)
+LEHRER = "lehrer-0f6eec.html"
 
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Lernseite → Arbeitsblatt → Quiz
 NAMEN = {"theorie.html": ("Lernseite", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
@@ -228,10 +231,11 @@ def knoepfe(e, nur=None):
 
 def daten_klasse(ordner, es):
     """Einheiten einer Klasse mit den Daten aus den Lernseiten anreichern und nach Blöcken ordnen."""
-    tests, units = [], []
+    tests, units, versteckt = [], [], []
     for e in es:
         e = dict(e, unter=e["ordner"].split("/", 1)[1])
         if e.get("versteckt"):
+            versteckt.append(e)
             continue
         if re.match(r"\d+\.\s*Test", e["kapitel"]):
             tests.append(e)
@@ -251,7 +255,7 @@ def daten_klasse(ordner, es):
     for b in reihe:
         nr = plan.index(b) + 1 if b in plan else None
         bloecke.append({"name": blockname(b) if b else "Weitere Themen", "nr": nr, "units": sorted(bl[b], key=lambda u: kap_key(u["kapitel"]))})
-    return tests, units, bloecke, len(plan)
+    return tests, units, bloecke, len(plan), versteckt
 
 
 def unit_html(u, mit_mehr=True):
@@ -420,14 +424,120 @@ zeige();
     return "".join(out), n
 
 
+def qr_svg(url):
+    import qrcode, qrcode.image.svg
+    img = qrcode.make(url, image_factory=qrcode.image.svg.SvgPathImage, border=2, box_size=10,
+                      error_correction=qrcode.constants.ERROR_CORRECT_M)
+    svg = img.to_string(encoding="unicode")
+    return re.sub(r"<\?xml[^>]*>", "", svg).replace("<svg ", '<svg role="img" aria-label="QR-Code" ', 1)
+
+
+LEHRER_CSS = """
+.grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 900px) { main.wide { max-width: 1180px; } .grid { grid-template-columns: 1fr 1fr; } .top-inner, nav.toc div, footer { max-width: 1180px; } }
+.kl { display: grid; gap: 10px; }
+.kl-head { display: flex; align-items: flex-start; gap: 12px; }
+.kl-head .t { flex: 1; min-width: 0; }
+.kl-head h3 { font-size: 26px; }
+.qrbtn { flex: 0 0 auto; border: 1.5px solid var(--line); background: var(--soft); border-radius: 10px; padding: 4px; cursor: pointer; width: 76px; height: 76px; }
+.qrbtn svg { width: 100%; height: 100%; display: block; }
+.sub { background: var(--soft); border-radius: 10px; padding: 10px 12px; display: grid; gap: 6px; }
+.sub .eyebrow { font-size: 13px; }
+.warn { color: var(--rust); font-size: 14px; }
+.small a.btn { font-size: 15px; padding: 6px 12px; }
+.ulist { display: grid; gap: 0; }
+.ulist > div { padding: 8px 0; border-top: 1px dashed var(--line); display: grid; gap: 4px; }
+.ulist > div:first-child { border-top: 0; }
+.tag { display: inline-block; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 1px 8px; background: var(--line); color: var(--olive); vertical-align: 2px; }
+.url { font-size: 13px; color: var(--muted); word-break: break-all; }
+#tests a { color: var(--teal); font-weight: 700; }
+#beamer { position: fixed; inset: 0; z-index: 50; background: #fff; display: none; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 24px; text-align: center; }
+#beamer.on { display: flex; }
+#beamer .q { width: min(70vh, 86vw); }
+#beamer .q svg { width: 100%; height: auto; display: block; }
+#beamer h2 { font-size: 40px; margin: 0; }
+#beamer .url { font-size: 22px; color: var(--ink); }
+#beamer button { font: inherit; font-weight: 700; font-size: 18px; border: 0; border-radius: 10px; padding: 10px 22px; background: var(--olive); color: #fff; cursor: pointer; }
+"""
+
+
+def seite_lehrer(klassen):
+    klassen = sorted(klassen, key=lambda k: k["k"]["klasse"])  # 1AB, 2AB, 2AK, 3AB, 3BK, 4AB, 5AB, 5AK
+    n_u = sum(len(k["units"]) for k in klassen)
+    tests = sorted(((test_datum(t["kapitel"]), t, k) for k in klassen for t in k["tests"]), key=lambda x: (x[0] is None, x[0] or HEUTE))
+    out = [kopf("Alle Klassen", "NUR FÜR DICH · Link nicht an Kadetten weitergeben", "", "Lehrer-Übersicht – alle Klassen")]
+    out[0] = out[0].replace("</style>", LEHRER_CSS + "</style>").replace("<main>", '<main class="wide">')
+    out[0] = re.sub(r'<nav class="toc".*?</nav>', '<nav class="toc" aria-label="Klassen"><div>' + "".join(
+        f'<a href="#{esc(k["ordner"])}">{esc(k["k"]["fach"])} {esc(k["k"]["klasse"])}</a>' for k in klassen) + "</div></nav>", out[0], flags=re.S)
+    nxt = next(((d, t, k) for d, t, k in tests if d and d >= HEUTE), None)
+    nxt_txt = f'{esc(nxt[2]["k"]["klasse"])} · {nxt[0].strftime("%d.%m.")}' if nxt else "–"
+    out.append(f'<div class="tiles"><a href="#klassen"><b>{len(klassen)}</b><span>Klassen</span></a><a href="#klassen"><b>{n_u}</b><span>Einheiten online</span></a>'
+               f'<a href="#tests"><b>{nxt_txt}</b><span>nächster Test</span></a></div>')
+    if tests:
+        li = "".join(f'<li><strong>{esc(k["k"]["fach"])} {esc(k["k"]["klasse"])}</strong> · {esc(t["kapitel"])}'
+                     + (f' · <span data-datum="{d.isoformat()}"></span>' if d else "")
+                     + f' · <a href="{esc(t["ordner"])}/quiz.html">Test-Training</a></li>' for d, t, k in tests)
+        out.append(f'<section class="card" id="tests"><div class="eyebrow">TESTS</div><ul style="margin:0;padding-left:20px;display:grid;gap:4px">{li}</ul></section>')
+    out.append('<div class="grid" id="klassen">')
+    for k in klassen:
+        o, kk = k["ordner"], k["k"]
+        url = BASIS + o + "/"
+        qr = qr_svg(url)
+        jetzt = next((u for u in k["units"] if u["jetzt"]), None)
+        blk = next((b for b in k["bloecke"] if jetzt in b["units"]), None) if jetzt else None
+        stand = f'Themenblock {blk["nr"]} von {k["n_plan"]} · {esc(blk["name"])}' if blk and blk["nr"] else "noch keine Einheit"
+        h = [f'<section class="card kl" id="{esc(o)}"><div class="kl-head"><div class="t"><div class="eyebrow">{stand}</div><h3>{esc(kk["fach"])} {esc(kk["klasse"])}</h3>'
+             f'<div class="url">{esc(url)}</div></div>'
+             f'<button type="button" class="qrbtn" data-titel="{esc(kk["fach"])} {esc(kk["klasse"])}" data-url="{esc(url)}" aria-label="QR-Code {esc(kk["klasse"])} groß zeigen">{qr}</button></div>'
+             f'<div class="links small"><a class="btn" href="{esc(o)}/">Klassenseite</a><a class="btn light" href="{esc(o)}/begriffe.html">Begriffe ({k["n_b"]})</a>'
+             f'<a class="btn light" href="{esc(o)}/wiederholen.html">Wiederholen ({k["n_z"]})</a></div>']
+        if jetzt:
+            e2 = dict(jetzt, unter=jetzt["ordner"])
+            h.append(f'<div class="sub"><div class="eyebrow">GERADE DRAN · {esc(jetzt["kapitel"])}</div><strong>{esc(jetzt["titel"])}</strong><div class="links small">{knoepfe(e2)}</div></div>')
+        rows = []
+        for b in k["bloecke"]:
+            for u in b["units"]:
+                e2 = dict(u, unter=u["ordner"])
+                warn = f'<div class="warn">Fehlt auf der Lernseite: {esc(", ".join(u["fehlt"]))}</div>' if u.get("fehlt") else ""
+                rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{warn}</div>')
+        for t in k["tests"]:
+            e2 = dict(t, unter=t["ordner"])
+            rows.append(f'<div><div><span class="tag" style="background:var(--orange);color:#fff">Test</span> <strong>{esc(t["kapitel"])}</strong> {esc(t["titel"])}</div><div class="links small">{knoepfe(e2)}</div></div>')
+        for v in k["versteckt"]:
+            e2 = dict(v, unter=v["ordner"])
+            rows.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}</div></div>')
+        n = len(rows)
+        h.append(f'<details class="mehr"><summary>Alle Einheiten ({n})</summary><div class="ulist">{"".join(rows)}</div></details></section>')
+        out.append("".join(h))
+    out.append("</div>")
+    out.append('<div id="beamer" role="dialog" aria-modal="true" aria-label="QR-Code für die Klasse"><h2 id="bt"></h2><div class="q" id="bq"></div><div class="url" id="bu"></div><button type="button" id="bx">Schließen</button></div>')
+    js = JS_COUNTDOWN + """
+var bm = document.getElementById('beamer');
+document.querySelectorAll('.qrbtn').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.getElementById('bt').textContent = b.dataset.titel;
+    document.getElementById('bu').textContent = b.dataset.url;
+    document.getElementById('bq').innerHTML = b.innerHTML;
+    bm.classList.add('on'); document.getElementById('bx').focus();
+  });
+});
+function zu() { bm.classList.remove('on'); }
+document.getElementById('bx').onclick = zu;
+bm.addEventListener('click', function (e) { if (e.target === bm) zu(); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu(); });
+"""
+    out.append(fuss(js, text="Lehrer-Übersicht · wird bei jedem Bauen der Klassenseiten automatisch aktualisiert · Tipp: QR-Code antippen = groß für den Beamer"))
+    return "".join(out)
+
+
 def main():
     gruppen = {}
     for e in E:
         gruppen.setdefault(e["ordner"].split("/")[0], []).append(e)
-    luecken = []
+    luecken, klassen = [], []
     for ordner, es in gruppen.items():
         k = es[0]
-        tests, units, bloecke, n_plan = daten_klasse(ordner, es)
+        tests, units, bloecke, n_plan, versteckt = daten_klasse(ordner, es)
         html_b, n_b = seite_begriffe(k, units)
         html_w, n_z = seite_wiederholen(ordner, k, units, bloecke, n_plan)
         html_i = seite_index(ordner, k, tests, units, bloecke, n_plan, n_b, n_z)
@@ -450,11 +560,16 @@ def main():
                 fehlt.append("Block in einheiten.json")
             if fehlt:
                 luecken.append(f'  {u["ordner"]}: fehlt {", ".join(fehlt)}')
+                u["fehlt"] = fehlt
+        klassen.append({"ordner": ordner, "k": k, "tests": tests, "units": units, "bloecke": bloecke, "n_plan": n_plan,
+                        "versteckt": versteckt, "n_b": n_b, "n_z": n_z})
     start = '<section class="card"><h3>Hallo!</h3><p style="margin:0">Scanne den QR-Code deiner Klasse oder öffne den Link aus LMS, um zu deinen Seiten zu kommen.</p></section>'
     seite = kopf("Unterricht am Handy", "BHAK für Führung und Sicherheit", "", "Unterricht am Handy")
     seite = re.sub(r'<nav class="toc".*?</nav>\n', "", seite, flags=re.S)
     open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(seite + start + fuss(text="BHAK für Führung und Sicherheit"))
     print("index.html: Startseite ohne Klassenliste")
+    open(os.path.join(ROOT, LEHRER), "w", encoding="utf-8").write(seite_lehrer(klassen))
+    print(LEHRER + ": Lehrer-Seite mit allen Klassen (nicht verlinkt) →", BASIS + LEHRER)
     if luecken:
         print("Lücken in den Einheiten (für die Übersicht hilfreich zu ergänzen):")
         print("\n".join(luecken))

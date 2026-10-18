@@ -14,6 +14,8 @@ Bauvorlagen für Lernseite (Theorie), Arbeitsblatt (Aufgaben) und Quiz – Stil 
 - `<klasse>-<fach>/begriffe.html` – Fachbegriffe A–Z aus allen bisherigen Lernseiten, mit Suche
 - `<klasse>-<fach>/wiederholen.html` – alle Lernziele zum Abhaken (sicher / fast / noch nicht); teilt den Speicher mit »Kann ich das?« der Lernseite
 
+Zusätzlich die **Lehrer-Seite** `lehrer-0f6eec.html` (Adresse in `build_index.py`, Konstante `LEHRER`): alle Klassen mit »Gerade dran«, allen Einheiten (auch versteckten), Tests mit Countdown, Lücken der Lernseiten und QR-Code pro Klasse (antippen = groß für den Beamer). Sie wird nirgends verlinkt – Link nicht an Kadetten weitergeben.
+
 Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsichtbar. Felder pro Einheit:
 - `block`: Block laut Jahresplan, genau wie in `bloecke.json` (z. B. `"A Atombau & Bindung"`); `jahresplan`: Einheit(en) im Jahresplan (z. B. `"E3–E5"`, nur zur Nachverfolgung)
 - optional `"aktuell": true` (sonst ist die zuletzt eingetragene Einheit »Gerade dran«), `"versteckt": true` (schon online, aber noch nicht in der Übersicht)
