@@ -1,145 +1,162 @@
 [
- {
-  "klasse": "1AB",
-  "fach": "NAWI",
-  "ordner": "1ab-nawi/k1-1-2-nobel2026",
-  "kapitel": "K1.1.2",
-  "titel": "Nobelpreise 2026",
-  "block": "A Wissenschaft verstehen",
-  "jahresplan": "E1",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "1AB",
-  "fach": "NAWI",
-  "ordner": "1ab-nawi/k1-2-2-koerper",
-  "kapitel": "K1.2.2",
-  "titel": "Messen wie die Profis – Schätzen, Körpergröße, Reaktionszeit",
-  "block": "B Messen & Untersuchen",
-  "jahresplan": "E4–E5",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "2AB",
-  "fach": "NAWI",
-  "ordner": "2ab-nawi/k1-2-bindungen",
-  "kapitel": "K1.2",
-  "titel": "Die Bindungsarten",
-  "block": "A Atombau & Bindung",
-  "jahresplan": "E3–E5",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "5AB",
-  "fach": "TÖW",
-  "ordner": "5ab-toew/k1-3-nachhaltig",
-  "kapitel": "K1.3",
-  "titel": "Prinzipien der Nachhaltigkeit",
-  "block": "A Ökologisches Wirtschaften",
-  "jahresplan": "E2",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "projekt.html",
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "4AB",
-  "fach": "NAWI",
-  "ordner": "4ab-nawi/test1-training",
-  "kapitel": "1. Test · 11.11.",
-  "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
-  "seiten": [
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "4AB",
-  "fach": "NAWI",
-  "ordner": "4ab-nawi/k1-5a-elektromagnet",
-  "kapitel": "K1.5a",
-  "titel": "Elektromagnet und Elektromotor",
-  "block": "A Elektrizität & Magnetismus",
-  "jahresplan": "E4",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "5AK",
-  "fach": "IWK",
-  "ordner": "5ak-iwk/k1-2-kulturen",
-  "kapitel": "K1.2",
-  "titel": "Die Welt einteilen · Kulturen erleben",
-  "block": "A Räume & Konzepte",
-  "jahresplan": "E1",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "uebung.html",
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "3AB",
-  "fach": "NAWI",
-  "ordner": "3ab-nawi/k2-3b-trendcheck",
-  "kapitel": "K2.3b",
-  "titel": "Trend-Check: Hype oder Hilfe?",
-  "block": "B Landwirtschaft & Ernährung",
-  "jahresplan": "E7",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "gruppe.html",
-   "quiz.html",
-   "kurz.html"
-  ]
- },
- {
-  "klasse": "2AK",
-  "fach": "PBGW",
-  "ordner": "2ak-pbgw/k1-grundrechte",
-  "kapitel": "K1",
-  "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
-  "block": "A Demokratie & Grundrechte",
-  "jahresplan": "E2",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ]
- },
- {
-  "klasse": "3BK",
-  "fach": "PBGW",
-  "ordner": "3bk-pbgw/k1-3-epochen",
-  "kapitel": "K1.3–1.4",
-  "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
-  "block": "A Geschichte & Quellen",
-  "jahresplan": "E2",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ]
- }
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
+    "ordner": "1ab-nawi/k1-1-2-nobel2026",
+    "kapitel": "K1.1.2",
+    "titel": "Nobelpreise 2026",
+    "block": "A Wissenschaft verstehen",
+    "jahresplan": "E1",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ]
+  },
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
+    "ordner": "1ab-nawi/k1-2-2-koerper",
+    "kapitel": "K1.2.2",
+    "titel": "Messen wie die Profis – Schätzen, Körpergröße, Reaktionszeit",
+    "block": "B Messen & Untersuchen",
+    "jahresplan": "E4–E5",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ]
+  },
+  {
+    "klasse": "2AB",
+    "fach": "NAWI",
+    "ordner": "2ab-nawi/k1-2-bindungen",
+    "kapitel": "K1.2",
+    "titel": "Die Bindungsarten",
+    "block": "A Atombau & Bindung",
+    "jahresplan": "E3–E5",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ]
+  },
+  {
+    "klasse": "5AB",
+    "fach": "TÖW",
+    "ordner": "5ab-toew/k1-3-nachhaltig",
+    "kapitel": "K1.3",
+    "titel": "Prinzipien der Nachhaltigkeit",
+    "block": "A Ökologisches Wirtschaften",
+    "jahresplan": "E2",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "projekt.html",
+      "quiz.html"
+    ]
+  },
+  {
+    "klasse": "4AB",
+    "fach": "NAWI",
+    "ordner": "4ab-nawi/test1-training",
+    "kapitel": "1. Test · 11.11.",
+    "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
+    "seiten": [
+      "quiz.html"
+    ]
+  },
+  {
+    "klasse": "4AB",
+    "fach": "NAWI",
+    "ordner": "4ab-nawi/k1-5a-elektromagnet",
+    "kapitel": "K1.5a",
+    "titel": "Elektromagnet und Elektromotor",
+    "block": "A Elektrizität & Magnetismus",
+    "jahresplan": "E4",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ],
+    "dateien": {
+      "stand": "18.10.2026",
+      "zip": "26-27-4AB-K1.5a-E-Magnet-v1.zip",
+      "liste": [
+        "26-27-4AB-K1.5a-E-Magnet-TH-Lehrer-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-Kadetten-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-AB-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-Loesung-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-Fachwissen-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Lehrer-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Kadetten-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-AB-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Loesung-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Fachwissen-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-Kahoot-v1.xlsx"
+      ]
+    }
+  },
+  {
+    "klasse": "5AK",
+    "fach": "IWK",
+    "ordner": "5ak-iwk/k1-2-kulturen",
+    "kapitel": "K1.2",
+    "titel": "Die Welt einteilen · Kulturen erleben",
+    "block": "A Räume & Konzepte",
+    "jahresplan": "E1",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "uebung.html",
+      "quiz.html"
+    ]
+  },
+  {
+    "klasse": "3AB",
+    "fach": "NAWI",
+    "ordner": "3ab-nawi/k2-3b-trendcheck",
+    "kapitel": "K2.3b",
+    "titel": "Trend-Check: Hype oder Hilfe?",
+    "block": "B Landwirtschaft & Ernährung",
+    "jahresplan": "E7",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "gruppe.html",
+      "quiz.html",
+      "kurz.html"
+    ]
+  },
+  {
+    "klasse": "2AK",
+    "fach": "PBGW",
+    "ordner": "2ak-pbgw/k1-grundrechte",
+    "kapitel": "K1",
+    "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
+    "block": "A Demokratie & Grundrechte",
+    "jahresplan": "E2",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ]
+  },
+  {
+    "klasse": "3BK",
+    "fach": "PBGW",
+    "ordner": "3bk-pbgw/k1-3-epochen",
+    "kapitel": "K1.3–1.4",
+    "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
+    "block": "A Geschichte & Quellen",
+    "jahresplan": "E2",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ]
+  }
 ]
