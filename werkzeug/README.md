@@ -41,4 +41,5 @@ Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsi
 
 ## Regeln
 - Nur Unterrichtsmaterial: keine Noten, keine Schülernamen, keine Testlösungen, keine eingescannten Buchseiten
+- Keine Buchinhalte (die Seiten sind öffentlich): Buch-Aufgaben, Lückensätze, Rätsel-Hinweise und Thesen immer in eigenen Worten, Buchabbildungen nur als Verweis (»Karte im Buch S. 19«), alle Grafiken selbst gezeichnet; Seitenzahlen und Kapitelangaben sind erlaubt
 - Antworten der Kadetten bleiben im Browser; Abgabe als PDF in LMS
