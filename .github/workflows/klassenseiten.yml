@@ -1,0 +1,46 @@
+# Baut nach jeder Änderung im Repository die Klassenseiten (index.html, begriffe.html, wiederholen.html)
+# und die Lehrer-Seite neu – damit sie immer zu den aktuellen Lernseiten passen, auch wenn ein Chat
+# vergessen hat, werkzeug/build_index.py auszuführen.
+name: Klassenseiten aktualisieren
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: klassenseiten
+  cancel-in-progress: false
+
+jobs:
+  bauen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Werkzeuge installieren
+        run: pip install beautifulsoup4 lxml "qrcode[pil]"
+
+      - name: Klassenseiten bauen
+        env:
+          TZ: Europe/Vienna
+        run: python3 werkzeug/build_index.py
+
+      - name: Änderungen speichern
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Klassenseiten waren schon aktuell."
+            exit 0
+          fi
+          git config user.name "Klassenseiten-Automatik"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Klassenseiten automatisch aktualisiert ($(date +%d.%m.%Y))"
+          git push
