@@ -461,10 +461,10 @@ def stunden_html(e, ordner):
     if not jp:
         return f'<div class="std">⏱ Fahrplan: {n} Std. · Jahresplan: keine Stunden gefunden</div>'
     ist, brutto = jp
-    extra = f" (ursprünglich {brutto}, Entfall abgezogen)" if brutto != ist else ""
+    # Maßgeblich ist der Fahrplan (so viele Stunden braucht die Klasse wirklich); der Jahresplan hinkt oft hinterher
     if n == ist:
-        return f'<div class="std">⏱ {n} Std. · passt zum Jahresplan{extra}</div>'
-    return f'<div class="warn">⏱ Fahrplan {n} Std., Jahresplan {ist} Std.{extra} – bitte abgleichen</div>'
+        return f'<div class="std">⏱ {n} Std. · wie im Jahresplan</div>'
+    return f'<div class="std">⏱ {n} Std. laut Fahrplan <span class="s">(Jahresplan: {ist})</span></div>'
 
 
 def dateien_html(e):
