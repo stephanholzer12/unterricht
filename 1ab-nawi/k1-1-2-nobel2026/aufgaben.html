@@ -191,7 +191,23 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
     </ol>
     <p class="hint">Theorie zum Nachlesen: <a href="theorie.html">Lernseite</a> · Schulbuch (Trauner) S. 11–14</p>
   </section>
-  <div class="progress"><span id="count">0 von 8 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
+  <!--FAHRPLAN--><style>
+.fahrplan { background: #fff; border: 2px solid #7FA83A; border-radius: 16px; padding: 14px 16px; margin: 14px 0; min-width: 0; max-width: 100%; }
+.fahrplan .eyebrow { font-size: 14px; font-weight: 700; color: #2E7D8C; }
+.fahrplan h2 { font-family: Cambria, "Source Serif 4", Georgia, serif; color: #3B4A2F; margin: 2px 0 6px; font-size: 24px; }
+.fahrplan p { margin: 0 0 8px; } .fahrplan .std { font-weight: 700; color: #3B4A2F; }
+.fahrplan .tablewrap { overflow-x: auto; max-width: 100%; }
+.fahrplan table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.fahrplan th, .fahrplan td { border-bottom: 1px solid #D3DCC2; padding: 6px 6px; text-align: left; vertical-align: top; }
+.fahrplan th { background: #DFE5D0; color: #3B4A2F; }
+@media (max-width: 600px) {
+  .fahrplan thead { display: none; }
+  .fahrplan tr { display: block; border-bottom: 2px solid #D3DCC2; padding: 6px 0; }
+  .fahrplan td { display: block; border: 0; padding: 1px 0; }
+  .fahrplan td:first-child { font-weight: 700; color: #3B4A2F; font-size: 16px; }
+  .fahrplan td[data-l]:not(:first-child)::before { content: attr(data-l) ": "; color: #5E6652; font-weight: 700; }
+}
+</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür sind 2 Stunden eingeplant.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Das machen wir</th><th>Aufgaben</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Das machen wir">Einstieg + Teil 1 · Der Nobelpreis + Teil 2 · Physik</td><td data-l="Aufgaben">1–4</td><td data-l="Wie">–</td><td data-l="Abgabe">–</td></tr><tr><td data-l="Wann">Stunde 2</td><td data-l="Das machen wir">Teil 3 · Chemie + Teil 4 · Medizin + Teil 5 · Die anderen Preise</td><td data-l="Aufgaben">5–8 · Quiz</td><td data-l="Wie">–</td><td data-l="Abgabe">PDF in LMS</td></tr><tr><td data-l="Wann">Versuche</td><td data-l="Das machen wir">Versuchsseite (im NAWI-Saal)</td><td data-l="Aufgaben">Protokoll</td><td data-l="Wie">zu zweit</td><td data-l="Abgabe">PDF in LMS</td></tr></tbody></table></div></section><!--/FAHRPLAN--><div class="progress"><span id="count">0 von 8 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 
   <section class="card" id="abgabe">

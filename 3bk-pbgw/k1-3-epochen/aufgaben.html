@@ -182,7 +182,23 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <li>Nach Stunde 2 ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
     </ol>
   </section>
-  <section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p>Lies die <strong>Lernseite</strong> Teil für Teil, mach die passenden <strong>Aufgaben</strong> im Arbeitsblatt, teste dich mit dem <strong>Quiz</strong> und gib nach Stunde 2 das <strong>PDF</strong> ab.</p><div class="tablewrap"><table><thead><tr><th>Stunde</th><th>Lesen</th><th>Aufgaben</th><th>Methode</th><th>Abgabe</th></tr></thead><tbody><tr><td>Stunde 1</td><td>Einstieg + Teil 1 · Wie zählen wir Zeit?</td><td>1–5</td><td>ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy</td><td>–</td></tr><tr><td>Stunde 2</td><td>Teil 2 · Die Epochen</td><td>6–10 · Quiz</td><td>ohne Handy: lebender Zeitstrahl, dann am Handy</td><td>PDF in LMS</td></tr><tr><td>Für Schnelle</td><td>Für Schnelle und Neugierige</td><td>11–15</td><td>am Handy</td><td>freiwillig</td></tr></tbody></table></div></section>
+  <!--FAHRPLAN--><style>
+.fahrplan { background: #fff; border: 2px solid #7FA83A; border-radius: 16px; padding: 14px 16px; margin: 14px 0; min-width: 0; max-width: 100%; }
+.fahrplan .eyebrow { font-size: 14px; font-weight: 700; color: #2E7D8C; }
+.fahrplan h2 { font-family: Cambria, "Source Serif 4", Georgia, serif; color: #3B4A2F; margin: 2px 0 6px; font-size: 24px; }
+.fahrplan p { margin: 0 0 8px; } .fahrplan .std { font-weight: 700; color: #3B4A2F; }
+.fahrplan .tablewrap { overflow-x: auto; max-width: 100%; }
+.fahrplan table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.fahrplan th, .fahrplan td { border-bottom: 1px solid #D3DCC2; padding: 6px 6px; text-align: left; vertical-align: top; }
+.fahrplan th { background: #DFE5D0; color: #3B4A2F; }
+@media (max-width: 600px) {
+  .fahrplan thead { display: none; }
+  .fahrplan tr { display: block; border-bottom: 2px solid #D3DCC2; padding: 6px 0; }
+  .fahrplan td { display: block; border: 0; padding: 1px 0; }
+  .fahrplan td:first-child { font-weight: 700; color: #3B4A2F; font-size: 16px; }
+  .fahrplan td[data-l]:not(:first-child)::before { content: attr(data-l) ": "; color: #5E6652; font-weight: 700; }
+}
+</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür sind 2 Stunden eingeplant.</p><p>Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Das machen wir</th><th>Aufgaben</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Das machen wir">Einstieg + Teil 1 · Wie zählen wir Zeit?</td><td data-l="Aufgaben">1–5</td><td data-l="Wie">ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy</td><td data-l="Abgabe">–</td></tr><tr><td data-l="Wann">Stunde 2</td><td data-l="Das machen wir">Teil 2 · Die Epochen</td><td data-l="Aufgaben">6–10 · Quiz</td><td data-l="Wie">ohne Handy: lebender Zeitstrahl, dann am Handy</td><td data-l="Abgabe">PDF in LMS</td></tr><tr><td data-l="Wann">Für Schnelle</td><td data-l="Das machen wir">Für Schnelle und Neugierige</td><td data-l="Aufgaben">11–15</td><td data-l="Wie">am Handy</td><td data-l="Abgabe">freiwillig</td></tr></tbody></table></div></section><!--/FAHRPLAN-->
   <div class="progress"><span id="count">0 von 15 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 

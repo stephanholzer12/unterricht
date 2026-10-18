@@ -25,6 +25,7 @@ import base64, datetime, html, json, os, re, sys, unicodedata
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "werkzeug"))
 from lernseite_lesen import lesen  # noqa: E402
+import fahrplan as fp  # noqa: E402
 
 W = lambda *p: os.path.join(ROOT, "werkzeug", *p)
 E = json.load(open(W("einheiten.json"), encoding="utf-8"))
@@ -270,6 +271,11 @@ def unit_html(u, mit_mehr=True):
         mehr += f'<details class="mehr"><summary>Was drankommt ({len(L["teile"])} Teile)</summary><div><ol>{li}</ol></div></details>'
     if mit_mehr and L.get("kurz"):
         mehr += f'<details class="mehr"><summary>Das Wichtigste in {len(L["kurz"])} Sätzen</summary><div><ol>{"".join(f"<li>{k}</li>" for k in L["kurz"])}</ol></div></details>'
+    z = (u.get("fahrplan") or {}).get("zeilen")
+    if mit_mehr and z:
+        n = fp.stunden(u["fahrplan"])
+        li = "".join(f'<li><strong>{esc(r["wann"])}</strong> · {esc(r["lesen"])}' + (f' <span class="s">Aufgaben {esc(r["aufgaben"])}</span>' if r.get("aufgaben") and r["aufgaben"] != "–" else "") + "</li>" for r in z)
+        mehr = f'<details class="mehr"><summary>Fahrplan ({n} {"Stunde" if n == 1 else "Stunden"})</summary><div><ul class="fpl">{li}</ul></div></details>' + mehr
     return f'<div class="unit{" now" if u["jetzt"] else ""}" id="{esc(u["unter"])}"><div class="eyebrow">{esc(meta)}</div><h3>{esc(u["titel"])}{badge}</h3><div class="links">{knoepfe(u)}</div>{mehr}</div>'
 
 
@@ -446,6 +452,21 @@ def art(name):
     return name.rsplit(".", 1)[-1].upper()
 
 
+def stunden_html(e, ordner):
+    """Geplante Stunden laut Jahresplan im Vergleich zum Fahrplan der Einheit – nur für die Lehrer-Seite."""
+    jp = fp.jahresplan(BLOECKE, ordner, e.get("jahresplan"))
+    n = fp.stunden(e.get("fahrplan"))
+    if not n:
+        return '<div class="warn">Fahrplan fehlt (Stunde 1, Stunde 2 …)</div>'
+    if not jp:
+        return f'<div class="std">⏱ Fahrplan: {n} Std. · Jahresplan: keine Stunden gefunden</div>'
+    ist, brutto = jp
+    extra = f" (ursprünglich {brutto}, Entfall abgezogen)" if brutto != ist else ""
+    if n == ist:
+        return f'<div class="std">⏱ {n} Std. · passt zum Jahresplan{extra}</div>'
+    return f'<div class="warn">⏱ Fahrplan {n} Std., Jahresplan {ist} Std.{extra} – bitte abgleichen</div>'
+
+
 def dateien_html(e):
     """Aktuell gültige Dateien einer Einheit (Feld »dateien« in einheiten.json) – nur für die Lehrer-Seite."""
     d = e.get("dateien")
@@ -469,6 +490,7 @@ LEHRER_CSS = """
 .sub { background: var(--soft); border-radius: 10px; padding: 10px 12px; display: grid; gap: 6px; }
 .sub .eyebrow { font-size: 13px; }
 .warn { color: var(--rust); font-size: 14px; }
+.std { color: var(--olive); font-size: 14px; font-weight: 700; }
 .small a.btn { font-size: 15px; padding: 6px 12px; }
 .ulist { display: grid; gap: 0; }
 .ulist > div { padding: 8px 0; border-top: 1px dashed var(--line); display: grid; gap: 4px; }
@@ -526,13 +548,13 @@ def seite_lehrer(klassen):
              f'<a class="btn light" href="{esc(o)}/wiederholen.html">Wiederholen ({k["n_z"]})</a></div>']
         if jetzt:
             e2 = dict(jetzt, unter=jetzt["ordner"])
-            h.append(f'<div class="sub"><div class="eyebrow">GERADE DRAN · {esc(jetzt["kapitel"])}</div><strong>{esc(jetzt["titel"])}</strong><div class="links small">{knoepfe(e2)}</div>{dateien_html(jetzt)}</div>')
+            h.append(f'<div class="sub"><div class="eyebrow">GERADE DRAN · {esc(jetzt["kapitel"])}</div><strong>{esc(jetzt["titel"])}</strong><div class="links small">{knoepfe(e2)}</div>{stunden_html(jetzt, o)}{dateien_html(jetzt)}</div>')
         rows = []
         for b in k["bloecke"]:
             for u in b["units"]:
                 e2 = dict(u, unter=u["ordner"])
                 warn = f'<div class="warn">Fehlt auf der Lernseite: {esc(", ".join(u["fehlt"]))}</div>' if u.get("fehlt") else ""
-                rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(u)}{warn}</div>')
+                rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{stunden_html(u, o)}{dateien_html(u)}{warn}</div>')
         for t in k["tests"]:
             e2 = dict(t, unter=t["ordner"])
             rows.append(f'<div><div><span class="tag" style="background:var(--orange);color:#fff">Test</span> <strong>{esc(t["kapitel"])}</strong> {esc(t["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(t)}</div>')
@@ -570,6 +592,11 @@ def main():
     luecken, klassen = [], []
     for ordner, es in gruppen.items():
         k = es[0]
+        for e in es:
+            if not e.get("versteckt") and not re.match(r"\d+\.\s*Test", e["kapitel"]):
+                ge = fp.einbauen(e, ROOT)
+                if ge:
+                    print(f'{e["ordner"]}: Fahrplan aktualisiert in {", ".join(ge)}')
         tests, units, bloecke, n_plan, versteckt = daten_klasse(ordner, es)
         html_b, n_b = seite_begriffe(k, units)
         html_w, n_z = seite_wiederholen(ordner, k, units, bloecke, n_plan)
@@ -591,6 +618,8 @@ def main():
                     fehlt.append("»Kann ich das?«-Selbstcheck")
             if not u.get("block"):
                 fehlt.append("Block in einheiten.json")
+            if not fp.stunden(u.get("fahrplan")):
+                fehlt.append("Fahrplan (Stunde 1, Stunde 2 …)")
             if fehlt:
                 luecken.append(f'  {u["ordner"]}: fehlt {", ".join(fehlt)}')
                 u["fehlt"] = fehlt

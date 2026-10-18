@@ -12,7 +12,30 @@
       "aufgaben.html",
       "versuche.html",
       "quiz.html"
-    ]
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Der Nobelpreis + Teil 2 · Physik",
+          "aufgaben": "1–4",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 3 · Chemie + Teil 4 · Medizin + Teil 5 · Die anderen Preise",
+          "aufgaben": "5–8 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Versuche",
+          "lesen": "Versuchsseite (im NAWI-Saal)",
+          "aufgaben": "Protokoll",
+          "wie": "zu zweit",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
   },
   {
     "klasse": "1AB",
@@ -26,7 +49,29 @@
       "theorie.html",
       "aufgaben.html",
       "quiz.html"
-    ]
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Die Länge messen",
+          "aufgaben": "1–5",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Messfehler und Reaktionszeit",
+          "aufgaben": "6–10 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Faktencheck und Kampfanzüge bestellen",
+          "aufgaben": "11–12",
+          "abgabe": "freiwillig"
+        }
+      ]
+    }
   },
   {
     "klasse": "2AB",
@@ -41,7 +86,36 @@
       "aufgaben.html",
       "versuche.html",
       "quiz.html"
-    ]
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung",
+          "aufgaben": "1–2",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 3 · Atombindung + Teil 4 · Metallbindung",
+          "aufgaben": "3–6",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 3",
+          "lesen": "Teil 5 · Zwischenmolekulare Kräfte + Überblick",
+          "aufgaben": "7–10 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Stunde 4",
+          "lesen": "Versuchsseite (im NAWI-Saal)",
+          "aufgaben": "Protokoll",
+          "wie": "zu zweit",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
   },
   {
     "klasse": "5AB",
@@ -56,7 +130,30 @@
       "aufgaben.html",
       "projekt.html",
       "quiz.html"
-    ]
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Was heißt nachhaltig? + Teil 2 · Nachhaltigkeit im Unternehmen",
+          "aufgaben": "1–6",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Hausübung",
+          "lesen": "Teil 3 · Agenda 2030 und die SDGs",
+          "aufgaben": "7 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Projekt",
+          "lesen": "Projektseite · Nachhaltigkeitsberichte",
+          "aufgaben": "Projekt 1–7",
+          "wie": "in Gruppen",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
   },
   {
     "klasse": "4AB",
@@ -98,6 +195,39 @@
         "26-27-4AB-K1.5a-E-Magnet-VS-Fachwissen-v1.docx",
         "26-27-4AB-K1.5a-E-Magnet-Kahoot-v1.xlsx"
       ]
+    },
+    "fahrplan": {
+      "text": "Lies Teil 1 und mach die Aufgaben 1–4, dann Teil 2 mit dem Rätsel, die Aufgaben 5–9 und das Quiz – dann PDF abgeben. *Die Versuche zeigt dir dein Lehrer, in der 4BK in einer eigenen Stunde.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Teil 1 · Elektromagnet",
+          "aufgaben": "1–4",
+          "wie": "Versuch K1.5-V1 (Demo)*",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Motor + Rätsel",
+          "aufgaben": "5–9 · Quiz",
+          "wie": "Versuch K1.5-V3 (Demo)*",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Stunde 3",
+          "lesen": "Versuchsseite",
+          "aufgaben": "Protokoll",
+          "wie": "V1, V3 · V5 zu zweit*",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Zusatz · Halbleiter",
+          "aufgaben": "10–20",
+          "wie": "V2, V4 (Station)",
+          "abgabe": "freiwillig"
+        }
+      ]
     }
   },
   {
@@ -113,7 +243,35 @@
       "aufgaben.html",
       "uebung.html",
       "quiz.html"
-    ]
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Abschnitt 1 · Was ist Kultur? + Abschnitt 2 · Kulturerdteile nach Kolb",
+          "aufgaben": "1–5",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Abschnitt 3 · Huntington + Abschnitt 4 · Cultural Map",
+          "aufgaben": "6–12",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 3",
+          "lesen": "Abschnitt 5 · Fünf Welten + Abschnitt 6 · Weltsystem",
+          "aufgaben": "13–17",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Abschluss",
+          "lesen": "Übung · Kulturen erleben",
+          "aufgaben": "18–22 · Übung · Quiz",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
   },
   {
     "klasse": "3AB",
@@ -129,7 +287,29 @@
       "gruppe.html",
       "quiz.html",
       "kurz.html"
-    ]
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Der Maßstab + Teil 2 · Belegt oder behauptet?",
+          "aufgaben": "1–2",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 3 · Wer verdient daran? + Teil 4 · Trend-Check in 5 Fragen, dann Gruppen-Steckbrief",
+          "aufgaben": "3–5 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Wenig Zeit?",
+          "lesen": "Kompakt-Seite (alles in einer Stunde)",
+          "aufgaben": "1–6",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
   },
   {
     "klasse": "2AK",
@@ -143,7 +323,33 @@
       "theorie.html",
       "aufgaben.html",
       "quiz.html"
-    ]
+    ],
+    "fahrplan": {
+      "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 1 das PDF ab.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Teil 1 · Theorie, dann Arbeitsblatt M1–M4 (Papier)",
+          "aufgaben": "1–6",
+          "wie": "Arbeitsblatt ohne Handy lesen, dann am Handy",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Stolz und Schande 2026",
+          "aufgaben": "7 · Quiz · eure Fragen",
+          "wie": "ohne Handy: Vier Ecken, Aufstellen, Diskussion",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige",
+          "aufgaben": "8–11",
+          "wie": "am Handy",
+          "abgabe": "freiwillig"
+        }
+      ]
+    }
   },
   {
     "klasse": "3BK",
@@ -157,6 +363,32 @@
       "theorie.html",
       "aufgaben.html",
       "quiz.html"
-    ]
+    ],
+    "fahrplan": {
+      "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Wie zählen wir Zeit?",
+          "aufgaben": "1–5",
+          "wie": "ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Die Epochen",
+          "aufgaben": "6–10 · Quiz",
+          "wie": "ohne Handy: lebender Zeitstrahl, dann am Handy",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige",
+          "aufgaben": "11–15",
+          "wie": "am Handy",
+          "abgabe": "freiwillig"
+        }
+      ]
+    }
   }
 ]
