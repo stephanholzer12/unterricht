@@ -99,5 +99,15 @@
    "quiz.html",
    "kurz.html"
   ]
+ },
+ {
+  "klasse": "2AK",
+  "fach": "PBGW",
+  "ordner": "2ak-pbgw/k1-aemr",
+  "kapitel": "K1",
+  "titel": "Menschenrechte – 70 Jahre AEMR (Stolz und Schande)",
+  "seiten": [
+   "aufgaben.html"
+  ]
  }
 ]
