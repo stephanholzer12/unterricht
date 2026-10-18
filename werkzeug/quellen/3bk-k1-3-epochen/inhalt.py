@@ -36,7 +36,7 @@ BEZUG = ["Erschaffung der Welt (3761 v. Chr.)", "Hidschra – Auswanderung Moham
 T = [
  # ======================================================= Stunde 1 · Zeit-Einteilung
  {"id": "a1", "nr": 1, "title": "Welches Jahr haben wir heute?", "src": "Buch-Aufgabe S. 13", "own": False, "tag": "Stunde 1", "h": 1, "hl": False,
-  "q": "Stellen Sie fest, welches Jahr heuer im jüdischen und im islamischen (muslimischen) Kalender steht. "
+  "q": "Welches Jahr zeigen der jüdische und der islamische (muslimische) Kalender gerade an? "
        "Zusatz: Rechne zuerst mit den Faustformeln von der Lernseite und kontrolliere dann im Internet. Erkläre in 1–2 Sätzen, warum die Faustformeln nur ungefähr stimmen.",
   "hint": "Info: Lernseite Teil 1 »Andere Kalender« · Kontrolle: Recherche im Internet, Suchtipp »jüdischer Kalender heute« bzw. »islamischer Kalender heute«",
   "type": "multi",
@@ -51,7 +51,7 @@ T = [
   "tip": ["Mondjahr und Sonnenjahr (Faustformeln)", "theorie.html#mond"]},
 
  {"id": "a2", "nr": 2, "title": "Schaltjahr oder nicht?", "src": "Buch-Aufgabe S. 13", "own": False, "tag": "Stunde 1", "h": 1, "hl": False,
-  "q": "Berechnen Sie, ob die folgenden Jahre Schaltjahre waren. Zusatz: Ist 2100 ein Schaltjahr?",
+  "q": "Prüfe mit der Schaltjahr-Regel des gregorianischen Kalenders: Schaltjahr oder nicht? Zusatz: Wie ist es mit dem Jahr 2100?",
   "type": "multi",
   "fields": [["j1804", "1804", JN, False], ["j2000", "2000", JN, False], ["j1700", "1700", JN, False], ["j1902", "1902", JN, False],
              ["j1600", "1600", JN, False], ["j1730", "1730", JN, False], ["j2100", "Zusatz: 2100", JN, False]],
