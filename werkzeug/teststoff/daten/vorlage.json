@@ -1,0 +1,95 @@
+{
+ "datei": "26-27-Vorlage-Teststoff-v2.docx",
+ "kopf": "TESTSTOFF · [[FACH]] · [[X]]. JAHRGANG",
+ "titel": "[[Nr]]. Test – [[Thema des Tests]]",
+ "fuss": "[[Klasse]] · [[Nr]]. Test [[Fach]] · Teststoff · Stand [[Datum]] · v[[1]]",
+ "termin": "[[Wochentag, Datum]]",
+ "stoff": "Schulbuch ([[Verlag]]) S. [[…]] und alle Unterlagen aus dem Unterricht",
+ "durchgenommen": [
+  [
+   "1",
+   "[[Thema]]",
+   "S. [[…]]",
+   "PPP [[…]] · Arbeitsblatt [[…]] · Lernseite am Handy",
+   "Aufgaben [[…]] · Buch-Aufgaben S. [[…]]"
+  ],
+  [
+   "2",
+   "[[Thema]]",
+   "S. [[…]]",
+   "PPP [[…]] · Arbeitsblatt [[…]] · Lernseite am Handy",
+   "Aufgaben [[…]] · Buch-Aufgaben S. [[…]]"
+  ],
+  [
+   "3",
+   "[[Thema]]",
+   "S. [[…]]",
+   "PPP [[…]] · Arbeitsblatt [[…]] · Lernseite am Handy",
+   "Aufgaben [[…]] · Buch-Aufgaben S. [[…]]"
+  ],
+  [
+   "4",
+   "[[Thema]]",
+   "S. [[…]]",
+   "PPP [[…]] · Arbeitsblatt [[…]] · Lernseite am Handy",
+   "Aufgaben [[…]] · Buch-Aufgaben S. [[…]]"
+  ]
+ ],
+ "koennen": [
+  [
+   "1",
+   "**[[Thema]]:** [[Lernziel]] · [[Lernziel]] · [[Lernziel]]",
+   "[[Fachbegriffe]]"
+  ],
+  [
+   "2",
+   "**[[Thema]]:** [[Lernziel]] · [[Lernziel]] · [[Lernziel]]",
+   "[[Fachbegriffe]]"
+  ],
+  [
+   "3",
+   "**[[Thema]]:** [[Lernziel]] · [[Lernziel]] · [[Lernziel]]",
+   "[[Fachbegriffe]]"
+  ],
+  [
+   "4",
+   "**[[Thema]]:** [[Lernziel]] · [[Lernziel]] · [[Lernziel]]",
+   "[[Fachbegriffe]]"
+  ]
+ ],
+ "formeln": [
+  [
+   "[[Formel]]",
+   "[[Einheit]]"
+  ],
+  [
+   "[[Formel]]",
+   "[[Einheit]]"
+  ],
+  [
+   "[[Formel]]",
+   "[[Einheit]]"
+  ],
+  [
+   "[[Formel]]",
+   "[[Einheit]]"
+  ]
+ ],
+ "tipp": "[[Umrechnungs-Tipp – Zeile und Formeln löschen, wenn es keine Formeln gibt]]",
+ "kein_teststoff": [
+  "alles, was als **OPTIONAL** oder **»Für Schnelle und Neugierige«** markiert ist (außer gemeinsam besprochen)",
+  "[[nicht durchgenommene Kapitel]]"
+ ],
+ "qr": [
+  {
+   "titel": "Test-Training",
+   "text": "Quiz zum ganzen Teststoff",
+   "url": "[[https://stephanholzer12.github.io/unterricht/<klasse>-<fach>/test<nr>-training/quiz.html]]"
+  },
+  {
+   "titel": "Klassenseite",
+   "text": "alle Lernseiten",
+   "url": "[[https://stephanholzer12.github.io/unterricht/<klasse>-<fach>/]]"
+  }
+ ]
+}

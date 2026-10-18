@@ -1,0 +1,111 @@
+{
+ "datei": "26-27-4AB-Test1-Teststoff-v2.docx",
+ "kopf": "TESTSTOFF · NAWI · 4. JAHRGANG",
+ "titel": "1. Test – Elektrizität und Magnetismus",
+ "fuss": "4AB · 1. Test NAWI · Teststoff · Stand 18.10.2026 · v2",
+ "termin": "Mittwoch, 11. November 2026",
+ "stoff": "Schulbuch (Trauner) S. 10–17 und 25–33 und alle Unterlagen aus dem Unterricht",
+ "durchgenommen": [
+  [
+   "1",
+   "Elektrische Ladungen und Elektrostatik",
+   "S. 10–11",
+   "PPP [[Elektrische Ladungen]]",
+   "[[Buch-Aufgaben S. 11]]"
+  ],
+  [
+   "2",
+   "Das elektrische Feld und der Kondensator",
+   "S. 12–17",
+   "PPP Elektrisches Feld und Kondensator · PPP Hochspannung und Oberleitung",
+   "Fragen 1, 2 und 6 [[Arbeitsauftrag]] · [[Buch-Aufgaben S. 17]]"
+  ],
+  [
+   "3",
+   "Was ist ein Feld? (Äther)",
+   "–",
+   "PPP [[Felder]]",
+   "[[Aufgaben]]"
+  ],
+  [
+   "4",
+   "Magnetismus",
+   "S. 25–28",
+   "Arbeitsblatt Magnetismus · PPP Elektronen und Magnetismus",
+   "Arbeitsblatt Aufgaben 1–8 · Buch-Aufgaben S. 26–28"
+  ],
+  [
+   "5",
+   "Elektromagnet und Elektromotor",
+   "S. 29–33",
+   "PPP Elektromagnetismus · Lernseite, Arbeitsblatt und Quiz am Handy",
+   "Arbeitsblatt am Handy Aufgaben 1–9 (mit Magnetauto-Rätsel)"
+  ]
+ ],
+ "koennen": [
+  [
+   "1",
+   "**Ladungen:** Ladungsarten und ihre Träger (Elektron, Proton) nennen · Anziehung und Abstoßung erklären · Ladungstrennung durch Reibung und Influenz erklären · Leiter und Isolatoren unterscheiden · Funke, Gewitter und Blitzableiter (Spitzenwirkung) erklären",
+   "Ladung, Influenz, Leiter, Isolator, Spitzenwirkung"
+  ],
+  [
+   "2",
+   "**Feld und Kondensator:** das elektrische Feld erklären und Feldlinien zeichnen (eine Ladung, zwei Ladungen, Plattenkondensator) · E und C berechnen · Aufbau, Laden und Entladen eines Kondensators beschreiben [[Schaltungen S. 16]] · Defibrillator und Supercaps · Abstand zu Oberleitungen begründen",
+   "Feldlinie, Feldstärke, homogenes Feld, Kapazität, Farad, Dielektrikum, Durchschlagsfestigkeit"
+  ],
+  [
+   "3",
+   "**Feldbegriff:** erklären, was ein Feld ist · wozu man den Äther angenommen hat und warum man ihn nicht mehr braucht (Michelson-Morley) [[· Photon als Überträger der Kraft]]",
+   "Feld, Fernwirkung, Äther[[, Photon]]"
+  ],
+  [
+   "4",
+   "**Magnetismus:** ferromagnetische Stoffe nennen · Pole und zerbrochener Magnet · Elementarmagnete: magnetisieren, entmagnetisieren (Curie-Temperatur) · Feldlinien eines Stabmagneten zeichnen · Erdmagnetfeld, Kompass, Polarlichter · MRT, Recycling",
+   "ferromagnetisch, Elementarmagnet, Curie-Temperatur, Magnetosphäre"
+  ],
+  [
+   "5",
+   "**Elektromagnetismus:** Ørsted: Strom erzeugt ein Magnetfeld · Rechte-Hand-Regel (Draht, Spule) · Stärke eines Elektromagneten (Strom, Windungen, Eisenkern) · Θ, H und B berechnen · Motorprinzip mit Lorentzkraft und Linke-Hand-Regel · Aufbau des Motors (Rotor, Stator, Kommutator) · Rätsel: warum ein Magnet am eigenen Bügel das Auto nicht antreibt",
+   "Spule, Durchflutung, Flussdichte, Tesla, Lorentzkraft, Rotor, Stator, Kommutator"
+  ]
+ ],
+ "formeln": [
+  [
+   "E = F / q",
+   "N/C"
+  ],
+  [
+   "C = Q / U",
+   "F (Farad)"
+  ],
+  [
+   "Θ = I · N",
+   "A"
+  ],
+  [
+   "H = Θ / l",
+   "A/m"
+  ],
+  [
+   "B = Φ / A",
+   "T (Tesla)"
+  ]
+ ],
+ "tipp": "Vorher in Grundeinheiten umrechnen: 12 cm = 0,12 m · 4 cm² = 0,0004 m² · 1 µF = 0,000 001 F · 1 mT = 0,001 T",
+ "kein_teststoff": [
+  "alles, was als **OPTIONAL** oder **»Für Schnelle und Neugierige«** markiert ist (außer gemeinsam besprochen) – z. B. Halbleiter (S. 39–46)",
+  "Gleich- und Wechselstrom (S. 18–24) sowie Induktion und Transformator (S. 34–38)"
+ ],
+ "qr": [
+  {
+   "titel": "Test-Training",
+   "text": "Quiz zum ganzen Teststoff",
+   "url": "https://stephanholzer12.github.io/unterricht/4ab-nawi/test1-training/quiz.html"
+  },
+  {
+   "titel": "Klassenseite 4AB",
+   "text": "alle Lernseiten",
+   "url": "https://stephanholzer12.github.io/unterricht/4ab-nawi/"
+  }
+ ]
+}

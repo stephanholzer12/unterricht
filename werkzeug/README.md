@@ -37,6 +37,7 @@ Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsi
 - `icons/`: Standard-Icons für Geräte und Chemikalien (aus den Bindungsarten-Versuchen) – in allen VS-Word-Dateien und Versuchsseiten verwenden, Liste in `icons/README.md`
 
 - `pdf_hilfe.js` + `pdf_hilfe_einbauen.py`: Ersatzwege, wenn ein Handy die PDF nicht herunterlädt (App-Browser wie Instagram/Teams, manche iPhones): nach »PDF erstellen« erscheint ein Feld mit »Teilen / Speichern« und »PDF öffnen«, in App-Browsern zusätzlich der Hinweis »Im Browser öffnen«. Nach jeder neuen Seite mit PDF-Abgabe `python3 werkzeug/pdf_hilfe_einbauen.py` ausführen (setzt das Skript inline in alle Seiten mit jsPDF).
+- `teststoff/teststoff.js`: **Teststoff** (eine A4-Seite, Regelwerk 16) für alle Klassen – Daten in `teststoff/daten/<schuljahr>-<klasse>-test<nr>.json`, Anleitung in `teststoff/README.md`.
 - `quellen/4ab-test1-training/bauen.py`: Test-Training (Quiz zum Teststoff, mehrere Kapitel) – Vorlage für weitere Test-Trainings: Ordner kopieren, Fragen tauschen, in `einheiten.json` mit `kapitel` = »1. Test · Datum« eintragen.
 
 ## Regeln

@@ -163,7 +163,16 @@
     "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
     "seiten": [
       "quiz.html"
-    ]
+    ],
+    "dateien": {
+      "stand": "18.10.2026",
+      "liste": [
+        "26-27-4AB-Test1-Teststoff-v2.docx",
+        "26-27-4AB-Test1-Kahoot.xlsx",
+        "26-27-4AB-Test1-Blooket.csv"
+      ]
+    },
+    "teststoff": "werkzeug/teststoff/daten/26-27-4ab-test1.json"
   },
   {
     "klasse": "4AB",
