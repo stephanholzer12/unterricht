@@ -103,11 +103,13 @@
  {
   "klasse": "2AK",
   "fach": "PBGW",
-  "ordner": "2ak-pbgw/k1-aemr",
+  "ordner": "2ak-pbgw/k1-grundrechte",
   "kapitel": "K1",
-  "titel": "Menschenrechte – 70 Jahre AEMR (Stolz und Schande)",
+  "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
   "seiten": [
-   "aufgaben.html"
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
   ]
  }
 ]
