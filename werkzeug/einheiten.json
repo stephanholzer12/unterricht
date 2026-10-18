@@ -111,5 +111,17 @@
    "aufgaben.html",
    "quiz.html"
   ]
+ },
+ {
+  "klasse": "3BK",
+  "fach": "PBGW",
+  "ordner": "3bk-pbgw/k1-3-epochen",
+  "kapitel": "K1.3–1.4",
+  "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ]
  }
 ]
