@@ -1,0 +1,461 @@
+{
+ "1ab-nawi": [
+  {
+   "block": "A Wissenschaft verstehen",
+   "einheiten": [
+    "E0",
+    "E1",
+    "E2",
+    "E3"
+   ]
+  },
+  {
+   "block": "B Messen & Untersuchen",
+   "einheiten": [
+    "E4",
+    "E5"
+   ]
+  },
+  {
+   "block": "E Physik",
+   "einheiten": [
+    "E15",
+    "E16",
+    "E17",
+    "E18",
+    "E19"
+   ]
+  },
+  {
+   "block": "D Fake News & Medien",
+   "einheiten": [
+    "E12",
+    "E13"
+   ]
+  },
+  {
+   "block": "F Chemie",
+   "einheiten": [
+    "E20",
+    "E21",
+    "E22",
+    "E23",
+    "E24",
+    "E25",
+    "E26"
+   ]
+  },
+  {
+   "block": "G Biologie",
+   "einheiten": [
+    "E27",
+    "E28",
+    "E29",
+    "E30",
+    "E31",
+    "E32",
+    "E33",
+    "E34",
+    "E35"
+   ]
+  },
+  {
+   "block": "C Ökologie",
+   "einheiten": [
+    "E6",
+    "E7",
+    "E8",
+    "E9",
+    "E10"
+   ]
+  }
+ ],
+ "2ab-nawi": [
+  {
+   "block": "A Atombau & Bindung",
+   "einheiten": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5"
+   ]
+  },
+  {
+   "block": "B Chemische Reaktionen",
+   "einheiten": [
+    "E6",
+    "E7",
+    "E8"
+   ]
+  },
+  {
+   "block": "C Elektrochemie",
+   "einheiten": [
+    "E9",
+    "E10"
+   ]
+  },
+  {
+   "block": "D Anorganische Rohstoffe",
+   "einheiten": [
+    "E11",
+    "E12",
+    "E13",
+    "E14",
+    "E15"
+   ]
+  },
+  {
+   "block": "E Grundlagen organische Chemie",
+   "einheiten": [
+    "E16",
+    "E17",
+    "E18"
+   ]
+  },
+  {
+   "block": "F Derivate & Anwendung",
+   "einheiten": [
+    "E19",
+    "E20",
+    "E21"
+   ]
+  },
+  {
+   "block": "G Organische Rohstoffe",
+   "einheiten": [
+    "E22",
+    "E23",
+    "E24"
+   ]
+  }
+ ],
+ "3ab-nawi": [
+  {
+   "block": "A Biochemie",
+   "einheiten": [
+    "E1",
+    "E2",
+    "E3"
+   ]
+  },
+  {
+   "block": "B Landwirtschaft & Ernährung",
+   "einheiten": [
+    "E4",
+    "E5",
+    "E6",
+    "E7"
+   ]
+  },
+  {
+   "block": "C Organsysteme des Menschen",
+   "einheiten": [
+    "E8",
+    "E9",
+    "E10",
+    "E11"
+   ]
+  },
+  {
+   "block": "D Humanökologie",
+   "einheiten": [
+    "E12",
+    "E13",
+    "E14",
+    "E15"
+   ]
+  },
+  {
+   "block": "E Methoden & Größen",
+   "einheiten": [
+    "E16",
+    "E17"
+   ]
+  },
+  {
+   "block": "F Mechanik",
+   "einheiten": [
+    "E18",
+    "E19",
+    "E20",
+    "E21"
+   ]
+  },
+  {
+   "block": "G Energie & Energiewirtschaft",
+   "einheiten": [
+    "E22",
+    "E23",
+    "E24"
+   ]
+  },
+  {
+   "block": "H Mikro- & Makrokosmos",
+   "einheiten": [
+    "E25",
+    "E26"
+   ]
+  }
+ ],
+ "4ab-nawi": [
+  {
+   "block": "A Elektrizität & Magnetismus",
+   "einheiten": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5"
+   ]
+  },
+  {
+   "block": "B Schwingungen & Wellen",
+   "einheiten": [
+    "E6",
+    "E7",
+    "E8"
+   ]
+  },
+  {
+   "block": "C Akustik, Optik & Sinne",
+   "einheiten": [
+    "E9",
+    "E10",
+    "E11",
+    "E12"
+   ]
+  },
+  {
+   "block": "D Nervensystem & Biophysik",
+   "einheiten": [
+    "E13",
+    "E14"
+   ]
+  },
+  {
+   "block": "E Genetik",
+   "einheiten": [
+    "E15",
+    "E16",
+    "E17",
+    "E18"
+   ]
+  },
+  {
+   "block": "F Gentechnik",
+   "einheiten": [
+    "E19",
+    "E20"
+   ]
+  },
+  {
+   "block": "G Evolution",
+   "einheiten": [
+    "E21",
+    "E22"
+   ]
+  },
+  {
+   "block": "H Fortpflanzung & Sexualität",
+   "einheiten": [
+    "E23",
+    "E24",
+    "E25",
+    "E26"
+   ]
+  },
+  {
+   "block": "I Ökosysteme & Waren",
+   "einheiten": [
+    "E27",
+    "E28",
+    "E29",
+    "E30"
+   ]
+  }
+ ],
+ "5ab-toew": [
+  {
+   "block": "A Ökologisches Wirtschaften",
+   "einheiten": [
+    "E1",
+    "E2",
+    "E3",
+    "E4",
+    "E5",
+    "E6"
+   ]
+  },
+  {
+   "block": "B Angewandte Ökologie",
+   "einheiten": [
+    "E7",
+    "E8"
+   ]
+  },
+  {
+   "block": "C Angewandte Technologie",
+   "einheiten": [
+    "E9",
+    "E10"
+   ]
+  },
+  {
+   "block": "D Angewandte Warenlehre",
+   "einheiten": [
+    "E11",
+    "E12",
+    "E13",
+    "E14"
+   ]
+  },
+  {
+   "block": "E Themenfelder zur Wahl",
+   "einheiten": [
+    "E15",
+    "E16"
+   ]
+  }
+ ],
+ "2ak-pbgw": [
+  {
+   "block": "A Demokratie & Grundrechte",
+   "einheiten": [
+    "E1",
+    "E2",
+    "E3"
+   ]
+  },
+  {
+   "block": "B Parteien & Ideologien",
+   "einheiten": [
+    "E4",
+    "E5",
+    "E6"
+   ]
+  },
+  {
+   "block": "C Werte & Meinungsbildung",
+   "einheiten": [
+    "E7",
+    "E8",
+    "E9",
+    "E10"
+   ]
+  },
+  {
+   "block": "D Politisches System Österreichs",
+   "einheiten": [
+    "E11",
+    "E12",
+    "E13",
+    "E14"
+   ]
+  },
+  {
+   "block": "E Medien & Populismus",
+   "einheiten": [
+    "E15",
+    "E16"
+   ]
+  },
+  {
+   "block": "F Österreich in Europa",
+   "einheiten": [
+    "E17"
+   ]
+  }
+ ],
+ "3bk-pbgw": [
+  {
+   "block": "A Geschichte & Quellen",
+   "einheiten": [
+    "E1",
+    "E2"
+   ]
+  },
+  {
+   "block": "B Meilensteine",
+   "einheiten": [
+    "E3",
+    "E4",
+    "E5"
+   ]
+  },
+  {
+   "block": "C Zeitenwende",
+   "einheiten": [
+    "E6",
+    "E7"
+   ]
+  },
+  {
+   "block": "D Revolutionen der Technik",
+   "einheiten": [
+    "E8",
+    "E9",
+    "E10"
+   ]
+  },
+  {
+   "block": "E Industrialisierung & Soziale Frage",
+   "einheiten": [
+    "E11",
+    "E12",
+    "E13"
+   ]
+  },
+  {
+   "block": "F Nation & Ausgrenzung",
+   "einheiten": [
+    "E14",
+    "E15",
+    "E16",
+    "E17"
+   ]
+  }
+ ],
+ "5ak-iwk": [
+  {
+   "block": "A Räume & Konzepte",
+   "einheiten": [
+    "E1",
+    "E2"
+   ]
+  },
+  {
+   "block": "B Globalisierung",
+   "einheiten": [
+    "E3",
+    "E4"
+   ]
+  },
+  {
+   "block": "C Akteure",
+   "einheiten": [
+    "E5",
+    "E6"
+   ]
+  },
+  {
+   "block": "D Fallstudien Weltregionen",
+   "einheiten": [
+    "E7",
+    "E8",
+    "E9",
+    "E10"
+   ]
+  },
+  {
+   "block": "E Konfliktfelder & Zusammenleben",
+   "einheiten": [
+    "E11",
+    "E12",
+    "E13",
+    "E14"
+   ]
+  }
+ ]
+}

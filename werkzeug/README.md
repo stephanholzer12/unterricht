@@ -6,7 +6,20 @@ Bauvorlagen für Lernseite (Theorie), Arbeitsblatt (Aufgaben) und Quiz – Stil 
 - Pro Einheit ein Ordner: `<klasse>-<fach>/k<kapitel>-<thema>/` (z. B. `2ab-nawi/k1-2-bindungen/`, `3bk-pbgw/k2-1-wahlen/`)
 - Darin: `theorie.html`, `aufgaben.html`, `quiz.html`, Bilder in `img/`
 - Link: `https://stephanholzer12.github.io/unterricht/<ordner>/<seite>.html`
-- Neue Einheit in `einheiten.json` eintragen, dann `python3 werkzeug/build_index.py` → Übersicht pro Klasse (`<klasse>-<fach>/index.html`); die Startseite listet bewusst keine Klassen
+- Neue Einheit in `einheiten.json` eintragen (mit `block` und `jahresplan`, siehe unten), dann `python3 werkzeug/build_index.py` → Klassenseiten; die Startseite listet bewusst keine Klassen
+
+## Klassenseiten (Stoff-Übersicht pro Klasse)
+`build_index.py` baut pro Klasse drei Seiten mit festen Namen:
+- `<klasse>-<fach>/index.html` – »Gerade dran«, Tests mit Countdown, Fortschritt »Themenblock x von y«, alle bisherigen Einheiten nach den Themenblöcken des Jahresplans; pro Einheit Knöpfe (Lernseite · Arbeitsblatt · Versuche · Quiz …), »Was drankommt« (Teile der Lernseite mit Buchseiten) und »Das Wichtigste in 5 Sätzen«
+- `<klasse>-<fach>/begriffe.html` – Fachbegriffe A–Z aus allen bisherigen Lernseiten, mit Suche
+- `<klasse>-<fach>/wiederholen.html` – alle Lernziele zum Abhaken (sicher / fast / noch nicht); teilt den Speicher mit »Kann ich das?« der Lernseite
+
+Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsichtbar. Felder pro Einheit:
+- `block`: Block laut Jahresplan, genau wie in `bloecke.json` (z. B. `"A Atombau & Bindung"`); `jahresplan`: Einheit(en) im Jahresplan (z. B. `"E3–E5"`, nur zur Nachverfolgung)
+- optional `"aktuell": true` (sonst ist die zuletzt eingetragene Einheit »Gerade dran«), `"versteckt": true` (schon online, aber noch nicht in der Übersicht)
+- Test-Trainings ohne `block`, `kapitel` = »<Nr>. Test · <Datum>« → eigener Kasten mit Countdown
+- `bloecke.json` (Reihenfolge der Blöcke) kommt aus dem Jahresplan: `python3 werkzeug/bloecke_aus_jahresplan.py <Jahresplan.xlsx>` (Blatt »Stunden«, Spalte »Block«; Zuordnung Klassenseite → Jahresplan-Klasse oben im Skript)
+- `lernseite_lesen.py` holt Buchseiten, Teile, Lernziele, »Das Wichtigste« und Fachbegriffe aus `theorie.html`. Damit alles erscheint, braucht die Lernseite: Abschnitt `id="begriffe"` mit Tabelle (Begriff | Bedeutung), Folie »Das Wichtigste in 5 Sätzen«, Folie »Kann ich das?« mit `.ziel`-Kästchen und `var KEY = "…"`. Fehlt etwas, listet `build_index.py` die Lücken am Ende auf.
 - QR-Code für die Klasse: `https://stephanholzer12.github.io/unterricht/<klasse>-<fach>/`
 
 ## Bausteine

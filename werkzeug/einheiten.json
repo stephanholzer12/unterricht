@@ -5,6 +5,8 @@
   "ordner": "1ab-nawi/k1-1-2-nobel2026",
   "kapitel": "K1.1.2",
   "titel": "Nobelpreise 2026",
+  "block": "A Wissenschaft verstehen",
+  "jahresplan": "E1",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -18,6 +20,8 @@
   "ordner": "1ab-nawi/k1-2-2-koerper",
   "kapitel": "K1.2.2",
   "titel": "Messen wie die Profis – Schätzen, Körpergröße, Reaktionszeit",
+  "block": "B Messen & Untersuchen",
+  "jahresplan": "E4–E5",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -30,6 +34,8 @@
   "ordner": "2ab-nawi/k1-2-bindungen",
   "kapitel": "K1.2",
   "titel": "Die Bindungsarten",
+  "block": "A Atombau & Bindung",
+  "jahresplan": "E3–E5",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -43,6 +49,8 @@
   "ordner": "5ab-toew/k1-3-nachhaltig",
   "kapitel": "K1.3",
   "titel": "Prinzipien der Nachhaltigkeit",
+  "block": "A Ökologisches Wirtschaften",
+  "jahresplan": "E2",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -66,6 +74,8 @@
   "ordner": "4ab-nawi/k1-5a-elektromagnet",
   "kapitel": "K1.5a",
   "titel": "Elektromagnet und Elektromotor",
+  "block": "A Elektrizität & Magnetismus",
+  "jahresplan": "E4",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -79,6 +89,8 @@
   "ordner": "5ak-iwk/k1-2-kulturen",
   "kapitel": "K1.2",
   "titel": "Die Welt einteilen · Kulturen erleben",
+  "block": "A Räume & Konzepte",
+  "jahresplan": "E1",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -92,6 +104,8 @@
   "ordner": "3ab-nawi/k2-3b-trendcheck",
   "kapitel": "K2.3b",
   "titel": "Trend-Check: Hype oder Hilfe?",
+  "block": "B Landwirtschaft & Ernährung",
+  "jahresplan": "E7",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -106,6 +120,8 @@
   "ordner": "2ak-pbgw/k1-grundrechte",
   "kapitel": "K1",
   "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
+  "block": "A Demokratie & Grundrechte",
+  "jahresplan": "E2",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
@@ -118,6 +134,8 @@
   "ordner": "3bk-pbgw/k1-3-epochen",
   "kapitel": "K1.3–1.4",
   "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
+  "block": "A Geschichte & Quellen",
+  "jahresplan": "E2",
   "seiten": [
    "theorie.html",
    "aufgaben.html",
