@@ -172,7 +172,7 @@ PARTS = [
                                   "Art. 1: »Alle Menschen sind frei und gleich an Würde und Rechten geboren.«",
                                   "eine **Erklärung, kein Vertrag** – verbindlich wurden erst die EMRK (1950) und die UN-Pakte (1966)",
                                   "Österreich war 1948 noch besetzt und ist erst seit **1955** bei der UNO."]), "Buch S. 47"),
-   jetzt("Jetzt: Aufgaben 1–6", "aufgaben.html#card_a1")]),
+   jetzt("Jetzt: Aufgaben 1–6", "aufgaben.html")]),
  ("teil2", "Teil 2 · Stunde 2 · Buch S. 51–58", "Stolz und Schande – 2026", [
    slide("Stolz oder Schande – 2026?", tiles([("Stolz", ["Friedensnobelpreis 2026 für die Juristin Navi Pillay (9.10.2026)", "113 Staaten ohne Todesstrafe", "Pressefreiheit: Österreich Platz 19 (vorher 22)"]),
                                               ("Schande", ["2.707 Hinrichtungen 2025 – Höchstwert seit 1981", "Iran: mindestens 2.159", "Pressefreiheit: USA fallen auf Platz 64"])])
@@ -209,7 +209,7 @@ PARTS = [
    slide("Häufige Fragen – kurz beantwortet", reveal("Ist Asyl ein Menschenrecht?", "Ja – das Recht, Asyl zu **suchen** (Art. 14 AEMR). Ob man es bekommt, prüft der Staat nach der Genfer Flüchtlingskonvention.")
          + reveal("Gilt das Folterverbot auch für Terroristen?", "Ja – für jeden Menschen, ohne Ausnahme, auch im Krieg (Art. 5 AEMR, Art. 3 EMRK).")
          + reveal("Ist das Internet ein Menschenrecht?", "Kein eigenes Recht – aber die UNO sagt: Rechte, die offline gelten, gelten auch online (z. B. Meinungsfreiheit).")),
-   jetzt("Jetzt: Aufgabe 7 und das Quiz", "aufgaben.html#card_a7")]),
+   jetzt("Jetzt: Aufgabe 7 und das Quiz", "aufgaben.html")]),
  ("begriffe", "Zum Nachschlagen", "Fachbegriffe", [slide("Fachbegriffe", table(I.FACHBEGRIFFE))]),
 ]
 CHECK = "".join(f'<div class="ziel"><p>{md(z)}</p><div class="chips" role="group" aria-label="Selbstcheck">' + "".join(f'<button type="button" class="chip" data-z="{k}" data-v="{v}" aria-pressed="false">{v}</button>' for v in ("sicher", "fast", "noch nicht")) + "</div></div>" for k, z in enumerate(I.LERNZIELE))
@@ -220,7 +220,7 @@ PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [
          + hint("Aufgabe 8: Welche »kleinen Plätze« gibt es in deinem Leben?"), "OPTIONAL"),
    slide("Die Genfer Abkommen", ul(["1949 beschlossen, fast alle Staaten der Welt sind dabei", "schützen Verwundete, Kranke, Schiffbrüchige, Kriegsgefangene und Zivilisten",
                                     "das Rote Kreuz darf helfen und Gefangene besuchen"]) + hint("Aufgabe 10: Recherche – roteskreuz.at"), "OPTIONAL"),
-   jetzt("Jetzt: Aufgaben 8–11", "aufgaben.html#card_a8")]))
+   jetzt("Jetzt: Aufgaben 8–11", "aufgaben.html")]))
 
 TOCLAB = {"einstieg": "Einstieg", "teil1": "Teil 1", "arbeitsblatt": "Arbeitsblatt", "teil2": "Teil 2", "begriffe": "Begriffe", "kurz": "Kurz & knapp", "schnelle": "Für Schnelle"}
 toc = "".join(f'<a href="#{p[0]}">{TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="#weiter">Aufgaben</a>'

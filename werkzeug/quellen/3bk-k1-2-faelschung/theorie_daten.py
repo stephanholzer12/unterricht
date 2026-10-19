@@ -55,7 +55,7 @@ PARTS = [
    S("Stopp – kannst du das?", [("reveal", [
        ("Ordne zu: Weißmacher im Papier – äußere oder innere Kritik?", "äußere Kritik (Material, Anachronismus)."),
        ("Warum war das erste Schrift-Gutachten wertlos?", "Die Vergleichsproben stammten auch vom Fälscher.")])], "Teil 2"),
-   ("jetzt", "Jetzt: Aufgaben 1–3", "aufgaben.html#card_a1")]),
+   ("jetzt", "Jetzt: Aufgaben 1–3", "aufgaben.html")]),
 ]
 
 SCHNELLE = [
@@ -65,11 +65,11 @@ SCHNELLE = [
        "**Primärquelle** suchen (z. B. bundesarchiv.de), nicht nur die KI fragen.",
        "**Urteil** bilden: belegt, teilweise belegt oder nicht belegt."]),
      ("hint", "KI klingt sicher, irrt aber oft bei Zahlen und Quellenangaben. Das ist **Desinformation aus Versehen** – im Lagebild wie im Alltag gefährlich."),
-     ("jetzt", "Aufgabe 4: KI-Antwort prüfen", "aufgaben.html#card_a4")], "OPTIONAL", "ki"),
+     ("jetzt", "Aufgabe 4: KI-Antwort prüfen", "aufgaben.html")], "OPTIONAL", "ki"),
    S("Für Schnelle: Aufgaben 4–6", [("ul", [
        "**A4** KI-Antwort prüfen (Recherche im Bundesarchiv).",
        "**A5** Geheimes Dokument im Klassenchat – drei Prüffragen.",
        "**A6** Soll ein Archiv Fälschungen aufbewahren? Argumente und Urteil."]),
      ("hint", "Beim Bundesheer entscheidet die Quellenbewertung im Lagebild über Handlungen – auch dort gilt: zwei unabhängige Quellen.")], "OPTIONAL", "schnelle"),
-   ("jetzt", "Jetzt: Aufgaben 4–6", "aufgaben.html#card_a4"),
+   ("jetzt", "Jetzt: Aufgaben 4–6", "aufgaben.html"),
 ]

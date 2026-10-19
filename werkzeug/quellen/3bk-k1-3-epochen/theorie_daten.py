@@ -72,7 +72,7 @@ PARTS = [
    S("Stopp – kannst du das?", [("reveal", [
        ("Wie viele Jahre liegen zwischen 10 v. Chr. und 10 n. Chr.?", "19 Jahre: 10 + 10 − 1 – ein Jahr 0 gibt es nicht."),
        ("Du tippst »10. Oktober 1582, Rom« in die Zeitmaschine. Wo landest du?", "Nirgends – diesen Tag gab es in Rom nicht: Auf den 4. folgte der 15. Oktober. In Wien gab es ihn – dort galt bis 1584 noch der julianische Kalender.")])], "Teil 1"),
-   ("jetzt", "Jetzt: Aufgaben 1–5", "aufgaben.html#card_a1")]),
+   ("jetzt", "Jetzt: Aufgaben 1–5", "aufgaben.html")]),
 
  ("teil2", "Teil 2 · Stunde 2 · Buch S. 14", "Die Epochen", [
    S("Was ist eine Epoche?", [("ul", [
@@ -139,7 +139,7 @@ PARTS = [
    S("Stopp – kannst du das?", [("reveal", [
        ("Warum gehört Hallstatt um 600 v. Chr. noch zur Urgeschichte, Athen aber zur Antike?", "In Athen gab es Schrift, in Hallstatt nicht. Ohne eigene schriftliche Quellen zählt eine Zeit zur Ur- und Frühgeschichte."),
        ("Nenne drei Ereignisse, die für den Beginn der Neuzeit stehen.", "Buchdruck (um 1450), Entdeckung Amerikas (1492), Reformation (1517) – auch der Fall Konstantinopels (1453).")])], "Teil 2"),
-   ("jetzt", "Jetzt: Aufgaben 6–10 und das Quiz", "aufgaben.html#card_a6")]),
+   ("jetzt", "Jetzt: Aufgaben 6–10 und das Quiz", "aufgaben.html")]),
 ]
 
 SCHNELLE = [
@@ -152,5 +152,5 @@ SCHNELLE = [
        ("Industrie 1.0 · ab ca. 1780", "Dampfmaschine, Fabrik, Eisenbahn"), ("Industrie 2.0 · ab ca. 1870", "Strom, Fließband, Massenproduktion"),
        ("Industrie 3.0 · ab ca. 1970", "Computer und Roboter"), ("Industrie 4.0 · heute", "Vernetzung, Daten, künstliche Intelligenz")]),
      ("hint", "Mehr dazu im Kapitel »Industrielle Revolution(en)«, Buch S. 46.")], "OPTIONAL"),
-   ("jetzt", "Jetzt: Aufgaben 11–15", "aufgaben.html#card_a11"),
+   ("jetzt", "Jetzt: Aufgaben 11–15", "aufgaben.html"),
 ]
