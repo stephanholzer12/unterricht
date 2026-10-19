@@ -479,6 +479,9 @@ def dateien_html(e):
 
 
 LEHRER_CSS = """
+.sichtbtn{font:inherit;font-weight:700;min-height:40px;padding:6px 12px;border-radius:10px;border:2px solid #C8102E;background:#fff;color:#C8102E;cursor:pointer}.sichtbtn.ein{border-color:#3B4A2F;color:#3B4A2F}.sichtbtn[disabled]{opacity:.5}
+#sichtmsg{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;padding:12px 14px;border-radius:12px;background:#1F2A1C;color:#fff;display:none}#sichtmsg.on{display:block}
+
 .grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
 @media (min-width: 900px) { main.wide { max-width: 1180px; } .grid { grid-template-columns: 1fr 1fr; } .top-inner, nav.toc div, footer { max-width: 1180px; } }
 .kl { display: grid; gap: 10px; }
@@ -514,6 +517,12 @@ LEHRER_CSS = """
 #beamer .url { font-size: 22px; color: var(--ink); }
 #beamer button { font: inherit; font-weight: 700; font-size: 18px; border: 0; border-radius: 10px; padding: 10px 22px; background: var(--olive); color: #fff; cursor: pointer; }
 """
+
+
+def sicht_knopf(e, ausblenden):
+    """Knopf auf der Lehrer-Seite: Einheit für diese Klasse aus- bzw. einblenden (startet die GitHub-Action)."""
+    akt = "ausblenden" if ausblenden else "einblenden"
+    return f'<button type="button" class="sichtbtn {"aus" if ausblenden else "ein"}" data-ordner="{esc(e["ordner"])}" data-aktion="{akt}">{"👁 Ausblenden" if ausblenden else "👁 Wieder einblenden"}</button>'
 
 
 def seite_lehrer(klassen):
@@ -554,13 +563,13 @@ def seite_lehrer(klassen):
             for u in b["units"]:
                 e2 = dict(u, unter=u["ordner"])
                 warn = f'<div class="warn">Fehlt auf der Lernseite: {esc(", ".join(u["fehlt"]))}</div>' if u.get("fehlt") else ""
-                rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{stunden_html(u, o)}{dateien_html(u)}{warn}</div>')
+                rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}{sicht_knopf(u, True)}</div>{stunden_html(u, o)}{dateien_html(u)}{warn}</div>')
         for t in k["tests"]:
             e2 = dict(t, unter=t["ordner"])
             rows.append(f'<div><div><span class="tag" style="background:var(--orange);color:#fff">Test</span> <strong>{esc(t["kapitel"])}</strong> {esc(t["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(t)}</div>')
         for v in k["versteckt"]:
             e2 = dict(v, unter=v["ordner"])
-            rows.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(v)}</div>')
+            rows.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}{sicht_knopf(v, False)}</div>{dateien_html(v)}</div>')
         n = len(rows)
         h.append(f'<details class="mehr"><summary>Alle Einheiten ({n})</summary><div class="ulist">{"".join(rows)}</div></details></section>')
         out.append("".join(h))
@@ -577,6 +586,27 @@ document.querySelectorAll('.qrbtn').forEach(function (b) {
   });
 });
 function zu() { bm.classList.remove('on'); }
+var SMSG = document.createElement('div'); SMSG.id = 'sichtmsg'; document.body.appendChild(SMSG);
+function sagen(t) { SMSG.textContent = t; SMSG.classList.add('on'); setTimeout(function () { SMSG.classList.remove('on'); }, 9000); }
+document.querySelectorAll('.sichtbtn').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var tok = ''; try { tok = localStorage.getItem('gh_token') || ''; } catch (e) {}
+    if (!tok) {
+      tok = prompt('Einmalig: GitHub-Token einfügen (nur Recht »Actions: Read and write« für dieses Repository). Er bleibt nur auf diesem Gerät gespeichert.') || '';
+      if (!tok) return; try { localStorage.setItem('gh_token', tok.trim()); } catch (e) {}
+    }
+    var aus = b.dataset.aktion === 'ausblenden';
+    if (!confirm((aus ? 'Einheit ausblenden?\\n' : 'Einheit wieder einblenden?\\n') + b.dataset.ordner + '\\n\\nNur diese Klasse. Der Direktlink bleibt aktiv.')) return;
+    b.disabled = true;
+    fetch('https://api.github.com/repos/stephanholzer12/unterricht/actions/workflows/einheit-sichtbar.yml/dispatches', {
+      method: 'POST', headers: { 'Authorization': 'Bearer ' + localStorage.getItem('gh_token'), 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
+      body: JSON.stringify({ ref: 'main', inputs: { ordner: b.dataset.ordner, aktion: b.dataset.aktion } })
+    }).then(function (r) {
+      if (r.status === 204) sagen('Gesendet. In etwa 1–2 Minuten ist es erledigt – dann diese Seite neu laden.');
+      else { b.disabled = false; if (r.status === 401 || r.status === 403 || r.status === 404) { try { localStorage.removeItem('gh_token'); } catch (e) {} } sagen('Hat nicht geklappt (Fehler ' + r.status + '). Token prüfen und noch einmal tippen.'); }
+    }).catch(function () { b.disabled = false; sagen('Keine Verbindung.'); });
+  });
+});
 document.getElementById('bx').onclick = zu;
 bm.addEventListener('click', function (e) { if (e.target === bm) zu(); });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu(); });
