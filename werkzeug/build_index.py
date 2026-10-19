@@ -615,6 +615,24 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu()
     return "".join(out)
 
 
+def anker_entfernen(e):
+    """Regel: Links auf aufgaben/versuche/uebung/projekt.html springen immer an den ANFANG (Name und Klasse zuerst),
+    nie auf einen Anker wie #card_a4. Wird bei jedem Lauf für alle Seiten jeder Einheit erzwungen."""
+    n = 0
+    d = os.path.join(ROOT, e["ordner"])
+    if not os.path.isdir(d):
+        return 0
+    for f in os.listdir(d):
+        if not f.endswith(".html") or f in ("index.html", "begriffe.html", "wiederholen.html"):
+            continue
+        pfad = os.path.join(d, f)
+        t = open(pfad, encoding="utf-8").read()
+        neu = re.sub(r'((?:aufgaben|versuche|uebung|projekt)\.html)#[A-Za-z0-9_\-]+', r'\1', t)
+        if neu != t:
+            open(pfad, "w", encoding="utf-8").write(neu); n += 1
+    return n
+
+
 def main():
     gruppen = {}
     for e in E:
@@ -622,6 +640,9 @@ def main():
     luecken, klassen = [], []
     for ordner, es in gruppen.items():
         k = es[0]
+        for e in es:
+            if anker_entfernen(e):
+                print(f'{e["ordner"]}: Anker-Links auf das Arbeitsblatt entfernt (Sprung immer nach oben)')
         for e in es:
             if not e.get("versteckt") and not re.match(r"\d+\.\s*Test", e["kapitel"]):
                 ge = fp.einbauen(e, ROOT)
