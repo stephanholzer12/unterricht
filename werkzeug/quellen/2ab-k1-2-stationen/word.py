@@ -15,7 +15,7 @@ import daten as D
 
 OUT = sys.argv[1]
 PRE = "26-27-2AB-K1.2b-Station"
-VER = "v1"
+VER = "v2"
 OLIVE, TEAL, RED, MUTED, RUST, INK = RGBColor(0x3B, 0x4A, 0x2F), RGBColor(0x2E, 0x7D, 0x8C), RGBColor(0xC0, 0x00, 0x00), RGBColor(0x5E, 0x66, 0x52), RGBColor(0x8C, 0x3B, 0x2E), RGBColor(0x1F, 0x2A, 0x1C)
 LOGO = os.path.join(D.ROOT, "werkzeug/logo.png")
 IMG = D.UNIT + "vs-img/"
@@ -66,6 +66,13 @@ def label(p, lab, text, size=10.5, color=INK, labcol=OLIVE):
 
 
 def widths(table, cms):
+    """Spaltenbreiten fest setzen – auch im Tabellenraster (sonst verteilen Word/LibreOffice gleichmäßig)."""
+    table.autofit = False
+    tblPr = table._tbl.tblPr
+    lay = tblPr.find(qn("w:tblLayout"))
+    if lay is None: lay = OxmlElement("w:tblLayout"); tblPr.append(lay)
+    lay.set(qn("w:type"), "fixed")
+    for gc, w in zip(table._tbl.tblGrid.findall(qn("w:gridCol")), cms): gc.set(qn("w:w"), str(int(Cm(w).twips)))
     for row in table.rows:
         for c, w in zip(row.cells, cms): c.width = Cm(w)
 
@@ -263,23 +270,28 @@ f_lo = f"{PRE}-VS-Loesung-{VER}.docx"; doc.save(os.path.join(OUT, f_lo))
 # ---------------------------------------------------------------- VS-Fachwissen
 doc = new_doc("NUR FÜR DICH · NAWI · 2. JAHRGANG · K1.2", "Stationen Bindungsarten – Fachwissen & Herrichten", fuss + " · Fachwissen")
 para(doc, "Herrichte-Liste (1 Satz pro Station, 8 Gruppen wandern durch; Mengen gelten für beide Stunden)", 11, True, OLIVE, after=2)
+para(doc, D.FUNDORT_LEGENDE, 8, False, MUTED, italic=True, after=2)
 rows = []
+def _gesamt(r):
+    n = [x for x in r[3:8] if isinstance(x, int)]
+    return str(sum(n)) if n and len(n) == len([x for x in r[3:8] if x not in ("", None)]) else ""
 for r in D.HERRICHTEN:
-    ic, name, inv, a, b, c, d, demo, bestand, hint = r
-    rows.append([("", ), name, inv, str(a), str(b), str(c), str(d), str(demo), bestand, (hint, False, RED if "fehlt" in hint else INK)])
-t = table(doc, ["", "Gerät / Chemikalie", "Inventar / Ort", "A", "B", "C", "D", "Demo", "Bestand", "Hinweis"], rows,
-          [0.9, 3.6, 2.9, 0.75, 0.75, 1.05, 0.75, 1.1, 1.6, 4.0], 7.5)
+    ic, name, ort, a, b, c, d, demo, bestand, hint = r
+    rows.append([("", ), name, (ort, True, TEAL if "schrank" in ort else INK), str(a), str(b), str(c), str(d), str(demo), _gesamt(r), bestand,
+                 (hint, False, RED if ("fehlt" in hint or "kein Ersatz" in hint) else INK)])
+t = table(doc, ["", "Gerät / Chemikalie", "Wo finde ich es?", "A", "B", "C", "D", "Demo", "ges.", "Bestand", "Hinweis"], rows,
+          [0.95, 2.9, 3.55, 0.65, 0.55, 0.95, 0.55, 1.0, 0.75, 1.5, 3.85], 7.5)
 for i, r in enumerate(D.HERRICHTEN):
     f = IMG + f"i_{r[0]}.png"
     if os.path.exists(f):
         p = t.rows[i + 1].cells[0].paragraphs[0]; p.add_run().add_picture(f, height=Cm(0.42))
 for row in t.rows: row.height = Cm(0.45)
-para(doc, "Fehlmenge: Büroklammern (nicht im Inventar) – 2 Stück aus dem Büro. Münzen bringen die Kadetten mit. Alles andere ist laut Inventar vorhanden.", 9, True, RED, before=3)
+para(doc, "Fehlmenge: Büroklammern (nicht im Inventar) – 2 Stück aus dem Büro. Münzen bringen die Kadetten mit. Knapp: alle 3 Bechergläser 100 mL und beide Doppelspatel sind im Einsatz. Alles andere ist laut Inventar vorhanden.", 9, True, RED, before=3)
 para(doc, "Checkliste »Vor der Stunde« (ca. 15 Minuten, alles wiederverwendbar)", 11, True, OLIVE, after=1, before=4)
 for x in ["Vier Aufbewahrungswannen beschriften (A–D) und das Material laut Liste einräumen – nach der Stunde Deckel drauf, für das nächste Jahr aufheben.",
           "Station A und B möglichst nahe am Waschbecken; Station C mit Sammelbehälter »organische Reste« und Sammelbecher für Reagenzgläser.",
-          "Parafilm-Streifen schneiden, Waschmittel in eine Tropfflasche, blaues Wasser (400-mL-Becherglas) ansetzen.",
-          "Multimeter testen (Batterie, Bereich 200 kΩ), drei Bechergläser für die Demo mit dest. Wasser, Salz- und Zuckerlösung.",
+          "Parafilm-Streifen schneiden, Waschmittel in zwei Tropfflaschen (A und C), blaues Wasser im 400-mL-Becherglas, Glycerin ins 50-mL-Becherglas.",
+          "Multimeter testen (Batterie, Bereich 200 kΩ); für die Demo zwei Bechergläser 100 mL mit dest. Wasser – Salz bzw. Zucker erst in der Demo einrühren.",
           "QR-Codes Versuchsseite und Vertiefung am Beamer (Folie »Dein Lernpfad«); Teststoff-Datei bereitlegen (LMS)."]:
     p = para(doc, "", after=1); run(p, "☐  ", 10, True, OLIVE); run(p, x, 9.5)
 
@@ -306,7 +318,7 @@ table(doc, ["Station", "Kernaussage", "Material (Wanne)"], [
     ["B · K1.2-V7", "Wasser ist ein Dipol – geladener Ballon zieht den Strahl an", "Ballon, Reibetuch, Waschbecken"],
     ["C · K1.2-V8", "Ähnliches löst sich in Ähnlichem; Ionen nur in polarem Wasser", "Reagenzgläser, Glycerin, Olivenöl, Salz, Waschmittel"],
     ["D · K1.2-V2/V3", "Ionengitter: Würfelform und spröde; Metall: verformbar (Elektronengas)", "Lupe/Mikroskop, Salze, Mörser, Zinn, Kupfer"],
-    ["Demo · K1.2-V4", "Strom braucht frei bewegliche Ladungen (Elektronen oder Ionen)", "Multimeter, 3 Bechergläser"]], [3.0, 8.6, 5.8], 9)
+    ["Demo · K1.2-V4", "Strom braucht frei bewegliche Ladungen (Elektronen oder Ionen)", "Multimeter, 2 Bechergläser"]], [3.0, 8.6, 5.8], 9)
 
 page_break(doc)
 para(doc, "Was hinter den Versuchen steckt", 13, True, OLIVE, after=2)

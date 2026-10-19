@@ -38,11 +38,11 @@ V["haut"].update(station="A", kern=True, skizze="c10b",
 # ---- Station B: K1.2-V7 Der scheue Wasserstrahl (Reiben an Haaren oder Pullover)
 V["wasserstrahl"].update(station="B", kern=True,
     sicher="Kein Strom im Spiel. Spritzwasser am Boden gleich aufwischen.",
-    mat=[["Luftballon (aufgeblasen)", "ballon"], ["Wasserhahn", "hahn"], ["Reibetuch (Wolle) oder Pullover", "tuch"], ["Becherglas 100 mL", "becher"]],
+    mat=[["Luftballon (aufgeblasen)", "ballon"], ["Wasserhahn", "hahn"], ["Reibetuch (Wolle) oder Pullover", "tuch"]],
     schritte=["Dreh den Wasserhahn so weit auf, dass ein dünner, gleichmäßiger Strahl fließt (so dünn wie eine Bleistiftmine).",
               "Halte den Luftballon nah an den Strahl, ohne ihn zu berühren.",
               "Reib den Ballon kräftig am Reibetuch, an einem Pullover oder an trockenen Haaren (etwa 20-mal).",
-              "Nähere den geriebenen Ballon langsam dem Wasserstrahl. Probier auch: Fang Wasser im Becherglas auf und gieß es in dünnem Strahl aus – geht es auch so?"],
+              "Nähere den geriebenen Ballon langsam dem Wasserstrahl."],
     entsorgung="Nichts zu entsorgen. Wasserhahn zudrehen, Ballon für die nächste Gruppe liegen lassen.")
 
 # ---- Station C: K1.2-V8 Wer mischt sich mit wem? (ohne Brennspiritus und Paraffinöl)

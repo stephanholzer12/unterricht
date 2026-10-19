@@ -17,7 +17,7 @@ import daten as D
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 PRE = "26-27-2AB-K1.2b-Station"
-VER = "v2"
+VER = "v3"
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("C0001E")
@@ -300,18 +300,18 @@ def build(lehrer):
 
         for nr, (tit, items) in enumerate([
             ("Herrichten 1/2", [
-                ("A · Wasser mit Haut (je Station eine Wanne)", "Petrischale (+1 Ersatz) · Tropfpipette · Becherglas 100 mL · 2 Büroklammern (Büro!) · Filterpapier · Waschmittel in Tropfflasche · Münzen: Kadetten bringen 10 Cent mit"),
-                ("B · Wasserstrahl", "2 Luftballone aufgeblasen · Reibetuch Nr. 41 · Becherglas 100 mL – Station ans Waschbecken"),
-                ("C · Mischen", "32 Reagenzgläser + Gestell · Parafilm-Streifen vorschneiden · Pipette · Spatel · blaues Wasser 400 mL · Glycerin · Olivenöl · Salz · Waschmittel · Sammelbehälter Öl")]),
+                ("A · Wasser mit Haut (je Station eine Wanne)", "Petrischale (+1 Ersatz) · Tropfpipette · Becherglas 100 mL · 2 Büroklammern (Büro!) · Filterpapier · Waschmittel in Tropfflasche · Münzen bringen die Kadetten"),
+                ("B · Wasserstrahl", "2 Luftballone aufgeblasen · Reibetuch #41 – Station ans Waschbecken"),
+                ("C · Mischen", "1 Gestell + 32 Reagenzgläser · Parafilm-Streifen · Pipette · Spatel · blaues Wasser (400 mL) · Glycerin (50-mL-Becherglas) · Olivenöl · Salz · Waschmittel · Sammelbehälter Öl")]),
             ("Herrichten 2/2", [
                 ("D · Salz und Metall", "Mörser + Pistill · Alu-Unterlegplatte · 2 Lupen (+ 1 Mikroskop) · 6 Objektträger · Spatel · Salz · Zucker · Alaun (grob) · Zinn gekörnt · Kupferstreifen · Schutzbrillen"),
-                ("Demo K1.2-V4", "Multimeter (Batterie prüfen, 200 kΩ) · 3 Bechergläser 100 mL · dest. Wasser · Kupferblech · Salz · Zucker"),
+                ("Demo K1.2-V4", "Multimeter (Batterie prüfen, 200 kΩ) · 2 Bechergläser 100 mL · dest. Wasser · Kupferblech · Salz · Zucker"),
                 ("Vor der Stunde", "Wannen bestücken (ca. 15 min) · QR-Codes am Beamer · Teststoff in LMS stellen · Gruppen 1–8 einteilen")])]):
             s = d.slide("Nur Titel", "Lehrer-Info · " + tit, hidden=True)
             for i, (h, t) in enumerate(items):
                 c = box(s, 0.5, 1.1 + i * 1.3, 9.0, 1.18, fill=CARD)
                 text(c, [[(h, {"bold": True, "color": OLIVE, "size": 17})], t], size=15, after=2)
-            tb(s, 0.5, 5.0, 8, 0.3, ["Vollständige Herrichte-Liste mit Inventar-Nr. und Mengen: VS-Fachwissen S. 1"], size=11, color=MUTED, after=0)
+            tb(s, 0.5, 5.0, 8, 0.3, ["Mit Fundort (Schrank, Lehrmittel-Nr.) und Bestand: VS-Fachwissen S. 1"], size=11, color=MUTED, after=0)
 
     # ================= Stunde 3
     d.section("Stunde 3")
