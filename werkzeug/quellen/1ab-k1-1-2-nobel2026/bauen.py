@@ -1,7 +1,7 @@
 """Handy-Seiten für NAWI 1AB · K1.1.2 »Nobelpreise 2026« bauen.
 Aufruf im Repository-Ordner:  python3 werkzeug/quellen/1ab-k1-1-2-nobel2026/bauen.py <inhalt-ordner> <jspdf.umd.min.js>
 <inhalt-ordner> enthält inhalt.py und img/ (Grafiken, GIFs) – liegt mit den Lösungen im Lehrer-Paket, bewusst nicht im öffentlichen Repository. Schreibt 1ab-nawi/k1-1-2-nobel2026/{theorie,aufgaben,quiz}.html und img/.
-Das Arbeitsblatt baut auf quellen/1ab-k1-2-2-koerper/aufgaben_src.html auf (gleiche Speicher-, PDF- und Kopierfunktion)."""
+Das Arbeitsblatt baut auf der eigenen Kopie aufgaben_basis.html (Stand 13.10.2026 der Körper-Vorlage) auf (gleiche Speicher-, PDF- und Kopierfunktion)."""
 import base64, html, io, json, os, re, shutil, sys
 import qrcode
 from PIL import Image
@@ -202,7 +202,7 @@ def cut(src, start, end, new):
     return src[:a] + new + src[b:]
 
 
-src = open(os.path.join(WZ, "quellen", "1ab-k1-2-2-koerper", "aufgaben_src.html"), encoding="utf-8").read()
+src = open(os.path.join(HERE, "aufgaben_basis.html"), encoding="utf-8").read()   # eigene Kopie der Basis (die Körper-Vorlage wird in anderen Chats weiterentwickelt)
 src = src.replace("<title>Wie groß bist du wirklich? – Arbeitsblatt</title>", f"<title>{I.TITEL} – Arbeitsblatt</title>")
 src = src.replace("NAWI · 1AB · K1.2.2 Messen und Messfehler", EYEBROW)
 src = src.replace("<h1>Wie groß bist du wirklich?</h1>", f"<h1>{I.TITEL}</h1>")
@@ -218,9 +218,12 @@ PDF_JS = (open(os.path.join(HERE, "pdf_pruefung.js"), encoding="utf-8").read()
           .replace("__KAPTITEL__", json.dumps(I.KAP + " " + I.TITEL, ensure_ascii=False)))
 src = cut(src, "// ---------- Säulendiagramm zum Antippen ----------", "// ---------- Fortschritt ----------", RENDER_JS + "\n" + PRUEF_JS + "\n")
 src = cut(src, "function buildPdf() {", "function savePdf() {", PDF_JS)
-src = src.replace('let S = { name: "", klasse: "", a: {} };', 'let S = { name: "", klasse: "", a: {}, chk: {} };')
+src = src.replace('let S = { name: "", klasse: "", a: {} };', 'let S = { name: "", klasse: "", a: {}, chk: {}, pdfDone: false, solSeen: false, snap: {} };')
+src = src.replace('say("ok", "Gespeichert: " + filename + " – jetzt in LMS hochladen.");', 'say("ok", "Gespeichert: " + filename + " – jetzt in LMS hochladen."); afterPdf();')
+src = src.replace('<p class="status" id="pdfstatus" hidden></p>', '<p class="status" id="pdfstatus" hidden></p>\n    <button class="btn secondary" type="button" id="solbtn" hidden>Musterlösungen ansehen</button>\n    <p class="hint" id="solnote" hidden>Die Musterlösungen stehen jetzt bei den Aufgaben. Wenn du danach noch einmal eine PDF erstellst, steht darauf »nach Lösungseinsicht erstellt«.</p>', 1)
+src = src.replace('$("#pdfbtn").addEventListener("click", savePdf);', '$("#pdfbtn").addEventListener("click", savePdf);\n$("#solbtn").addEventListener("click", () => { S.solSeen = true; save(); showSolutionsAll(); });', 1)
 src = src.replace('if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}', 'if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}\nS.chk = S.chk || {};', 1)
-src = src.replace('$("#copyArea").value = asText();\n}', '$("#copyArea").value = asText();\n  T.forEach(paintTask);\n}', 1)
+src = src.replace('$("#copyArea").value = asText();\n}', '$("#copyArea").value = asText();\n  showSolutionsAll();\n}', 1)
 src = src.replace('"Alle Aufgaben bearbeitet.");', '"Alle Aufgaben bearbeitet.") + unchecked();', 1)
 src = src.replace("Nach jeder Aufgabe kontrollieren wir gemeinsam.", "Drück bei jeder Aufgabe auf <b>Prüfen</b>: Du siehst sofort, was richtig ist. Nach 2 Versuchen kannst du die Lösung ansehen.")
 src = src.replace("Ganz unten <b>PDF erstellen</b> und die PDF in LMS hochladen.", "Ganz unten <b>PDF erstellen</b> und in LMS hochladen. Im PDF stehen dein Ergebnis und deine Versuche.")

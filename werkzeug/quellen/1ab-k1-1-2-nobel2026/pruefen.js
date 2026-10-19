@@ -60,18 +60,42 @@ function taskState(t) {
   const items = evalItems(t), c = S.chk[t.id] || { items: {}, shown: false }, auto = countable(items);
   let right = 0, att = 0, first = 0, answered = 0;
   auto.forEach(it => { const rec = c.items[it.k]; if (it.has) { answered++; if (it.ok) right++; } if (rec) { att = Math.max(att, rec.n); if (rec.first) first++; } });
-  return { items, auto, c, right, att, first, answered, total: auto.length, shown: !!c.shown, checked: Object.keys(c.items).length > 0 };
+  return { items, auto, c, right, att, first, answered, total: auto.length, shown: !!c.shown, fails: c.fails || 0, checked: Object.keys(c.items).length > 0 };
 }
 
 function runCheck(t) {
-  const c = (S.chk[t.id] = S.chk[t.id] || { items: {}, shown: false });
-  evalItems(t).forEach(it => {
+  const c = (S.chk[t.id] = S.chk[t.id] || { items: {}, shown: false, fails: 0 });
+  const items = evalItems(t); let any = false;
+  items.forEach(it => {
     if (it.kind === "manual" || !it.has) return;
+    any = true;
     const rec = c.items[it.k];
     if (!rec) c.items[it.k] = { n: 1, first: it.ok, val: it.val };
     else if (rec.val !== it.val) { rec.n++; rec.val = it.val; }
   });
+  const auto = countable(items), all = auto.length > 0 && auto.every(it => it.has && it.ok);
+  if (any && !all && !c.shown) c.fails = (c.fails || 0) + 1;   // gezählt wird jeder Klick auf »Prüfen« mit mindestens einem Fehler
   save(); paintTask(t);
+}
+const wortFehl = (n) => n + " Fehlversuch" + (n === 1 ? "" : "e");
+const datFehl = (n) => n + " Fehlversuch" + (n === 1 ? "" : "en");
+function weg(s) {   // Status für die PDF (wie bei allen Arbeitsblättern)
+  if (s.shown) return "Lösung angesehen (nach " + datFehl(s.fails) + ") – Antwort bitte selbst bewerten";
+  if (!s.checked) return "nicht geprüft";
+  if (s.right === s.total) return s.fails ? "gelöst nach " + datFehl(s.fails) + (s.fails >= 2 ? " (mit Tipp)" : "") : "selbst gelöst (1. Versuch)";
+  return "noch nicht gelöst (" + wortFehl(s.fails) + ")";
+}
+function snapOf(id) { return JSON.stringify(S.a[id] || {}); }
+function afterPdf() {
+  S.pdfDone = true;
+  if (!S.solSeen) { S.snap = {}; T.forEach(t => { S.snap[t.id] = snapOf(t.id); }); }
+  save(); showSolutionsAll();
+}
+function showSolutionsAll() {
+  const b = $("#solbtn"), n = $("#solnote");
+  if (b) b.hidden = !S.pdfDone || !!S.solSeen;
+  if (n) n.hidden = !S.solSeen;
+  T.forEach(paintTask);
 }
 
 function nodeFor(card, it) {
@@ -90,23 +114,28 @@ function paintTask(t) {
   });
   const manualOnly = st.total === 0;
   if (pb) pb.disabled = manualOnly ? !st.items.some(i => i.has) : st.answered === 0;
+  fb.textContent = "";
+  const say = (cls, ...kids) => { fb.className = "fb " + cls; kids.forEach(k => fb.append(k)); };
   if (manualOnly) {
-    fb.className = "fb info"; fb.textContent = st.shown ? "Beispiel angezeigt. Deine Lehrkraft liest deine Antwort." : (st.items.some(i => i.has) ? "Deine Lehrkraft liest deine Antwort. Du kannst jetzt ein Beispiel ansehen." : "Schreib deine Antwort – deine Lehrkraft liest sie.");
+    say("info", st.shown ? "Beispiel angezeigt. Deine Lehrkraft liest deine Antwort." : (st.items.some(i => i.has) ? "Deine Lehrkraft liest deine Antwort. Du kannst jetzt ein Beispiel ansehen." : "Schreib deine Antwort – deine Lehrkraft liest sie."));
   } else if (!shown) {
-    fb.className = "fb info"; fb.textContent = st.answered ? "Drück auf Prüfen." : "";
+    say("info", st.answered ? "Drück auf Prüfen." : "");
   } else {
     const all = right === st.total, rest = st.total - shown;
-    fb.className = "fb " + (all ? "ok" : "bad");
-    fb.textContent = (all ? "Richtig! " : right + " von " + st.total + " richtig. ") + "Versuch " + st.att + (rest > 0 && !all ? " · " + rest + " noch ungeprüft" : "") + (st.shown ? " · Lösung angezeigt" : "");
-    if (!all && st.att < 2) fb.textContent += " – verbessere die roten Felder und prüfe nochmal.";
+    if (all) say("ok", (st.fails ? "Richtig – nach " + datFehl(st.fails) + "." : "Richtig! Gleich beim 1. Versuch.") + (st.shown ? " (Lösung angesehen)" : ""));
+    else {
+      say("bad", right + " von " + st.total + " richtig." + (rest > 0 ? " " + rest + " noch ungeprüft." : "") + (st.fails < 2 ? " Verbessere die roten Felder und prüfe nochmal." : " Tipp: Lies nochmal "));
+      if (st.fails >= 2) { fb.append(el("a", { href: "theorie.html", text: "die Lernseite (" + t.src + ")" }), "."); }
+    }
   }
-  const showSolBtn = manualOnly ? (!st.shown && st.items.some(i => i.has)) : (!st.shown && st.att >= 2 && shown && right < st.total);
-  if (sb) sb.hidden = !showSolBtn;
+  const showSolBtn = manualOnly ? (!st.shown && st.items.some(i => i.has)) : (!st.shown && st.fails >= 3 && shown && right < st.total);
+  if (sb) { sb.hidden = !showSolBtn; sb.textContent = manualOnly ? "Beispiel ansehen" : "Ich komme nicht weiter – Lösung zeigen"; }
   if (box) {
-    box.hidden = !st.shown;
-    if (st.shown && !box.childElementCount) {
+    const vis = st.shown || !!S.solSeen;
+    box.hidden = !vis;
+    if (vis && !box.childElementCount) {
       box.append(el("strong", { text: "Lösung" }));
-      st.items.forEach(it => { if (it.solLine && (manualOnly || it.kind === "manual" || !it.ok || true)) box.append(el("div", { text: it.solLine })); });
+      st.items.forEach(it => { if (it.solLine) box.append(el("div", { text: it.solLine })); });
     }
   }
 }
@@ -118,7 +147,7 @@ function addCheck(card, t) {
   const sb = el("button", { class: "btn secondary small solbtn", type: "button", text: manualOnly ? "Beispiel ansehen" : "Lösung anzeigen", hidden: "" });
   const fb = el("span", { class: "fb info", role: "status", "aria-live": "polite" });
   pb.addEventListener("click", () => runCheck(t));
-  sb.addEventListener("click", () => { const c = (S.chk[t.id] = S.chk[t.id] || { items: {}, shown: false }); c.shown = true; save(); paintTask(t); });
+  sb.addEventListener("click", () => { const c = (S.chk[t.id] = S.chk[t.id] || { items: {}, shown: false, fails: 0 }); c.shown = true; save(); paintTask(t); });
   card.append(el("div", { class: "chk" }, pb, fb, sb), el("div", { class: "solbox", hidden: "" }));
 }
 function unchecked() {

@@ -44,7 +44,7 @@ function buildPdf() {
   d.setFont("C", "bold"); d.setFontSize(17); d.setTextColor(...col); d.text(clean(st.right + " von " + st.tot + " Antworten richtig (" + pct + " %)"), M + 4, y + 8.5);
   d.setFont("C", "normal"); d.setFontSize(10.5); d.setTextColor(...ink);
   d.text(clean("Gleich beim 1. Versuch richtig: " + st.first + " von " + st.tot), M + 4, y + 15);
-  d.text(clean("Lösung angezeigt bei: " + (st.shown.length ? "Aufgabe " + st.shown.join(", ") : "keiner Aufgabe")), M + 4, y + 20);
+  d.text(clean("Lösung angesehen bei: " + (st.shown.length ? "Aufgabe " + st.shown.join(", ") : "keiner Aufgabe") + (S.solSeen ? " · PDF nach Lösungseinsicht erstellt" : "")), M + 4, y + 20);
   const warn = [];
   if (st.unchecked.length) warn.push("nicht geprüft: Aufgabe " + st.unchecked.join(", "));
   if (st.open.length) warn.push("nicht bearbeitet: Aufgabe " + st.open.join(", "));
@@ -55,7 +55,7 @@ function buildPdf() {
   const cx = { nr: M + 2, title: M + 11, ric: M + 106, v1: M + 126, att: M + 146 }, RH = 6.2;
   d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...muted);
   d.text("Nr.", cx.nr, y + 4); d.text("Aufgabe", cx.title, y + 4);
-  d.text("richtig", cx.ric, y + 4, { align: "center" }); d.text("1. Versuch", cx.v1, y + 4, { align: "center" }); d.text("Versuche", cx.att, y + 4, { align: "center" }); d.text("Lösung", W - M - 1, y + 4, { align: "right" });
+  d.text("richtig", cx.ric, y + 4, { align: "center" }); d.text("1. Versuch", cx.v1, y + 4, { align: "center" }); d.text("Fehlversuche", cx.att, y + 4, { align: "center" }); d.text("Lösung", W - M - 1, y + 4, { align: "right" });
   y += 6; d.setDrawColor(...olive); d.setLineWidth(0.4); d.line(M, y, W - M, y);
   st.rows.forEach((r, i) => {
     const { t, s } = r, base = y + 4.3;
@@ -67,7 +67,7 @@ function buildPdf() {
       d.setFont("C", "bold"); d.setTextColor(...c2); d.text(s.right + " / " + s.total, cx.ric, base, { align: "center" });
       d.setFont("C", "normal"); d.setTextColor(...ink);
       d.text(s.checked ? s.first + " / " + s.total : "–", cx.v1, base, { align: "center" });
-      d.text(s.checked ? String(s.att) : "nicht geprüft", cx.att, base, { align: "center" });
+      d.text(s.checked ? String(s.fails) : "nicht geprüft", cx.att, base, { align: "center" });
       d.setTextColor(...(s.shown ? rust : ink)); d.text(s.shown ? "angezeigt" : "nein", W - M - 1, base, { align: "right" });
     } else {
       d.setFont("C", "normal"); d.setTextColor(...muted); d.text("Freitext – Lehrkraft liest", cx.ric, base); d.setTextColor(...(s.shown ? rust : ink)); d.text(s.shown ? "Beispiel gesehen" : "–", W - M - 1, base, { align: "right" });
@@ -76,7 +76,7 @@ function buildPdf() {
   });
   d.setDrawColor(...olive); d.setLineWidth(0.4); d.line(M, y + 0.3, W - M, y + 0.3); y += 2.5;
   d.setFont("C", "normal"); d.setFontSize(8.5); d.setTextColor(...muted);
-  const note = d.splitTextToSize(clean("Freitext wird nur auf Stichwörter geprüft (Aufgabe 2 und 4); Begründungen in Aufgabe 7 und die Antwort in Aufgabe 8 beurteilt die Lehrkraft. »1. Versuch« = beim ersten Prüfen richtig. »Versuche« = häufigstes Prüfen einer Antwort in dieser Aufgabe."), CW);
+  const note = d.splitTextToSize(clean("Freitext wird nur auf Stichwörter geprüft (Aufgabe 2 und 4); Begründungen in Aufgabe 7 und die Antwort in Aufgabe 8 beurteilt die Lehrkraft. »1. Versuch« = beim ersten Prüfen richtig. »Fehlversuche« = Klicks auf »Prüfen« mit mindestens einem Fehler."), CW);
   note.forEach(l => { d.text(l, M, y + 3); y += 3.6; });
   y += 3;
 
@@ -99,7 +99,8 @@ function buildPdf() {
     txt(t.q, 9.5, "normal", muted);
     if (s.total > 0) {
       const c2 = s.right === s.total ? green : s.right === 0 ? red : amber;
-      txt(s.right + " von " + s.total + " richtig" + (s.checked ? " · " + s.att + (s.att === 1 ? " Versuch" : " Versuche") : " · nicht geprüft") + (s.shown ? " · Lösung angezeigt" : ""), 10.5, "bold", c2);
+      txt(s.right + " von " + s.total + " richtig" + " · " + weg(s), 10.5, "bold", s.shown ? rust : c2);
+      if (S.solSeen && S.snap && S.snap[t.id] !== undefined && S.snap[t.id] !== snapOf(t.id)) txt("nach Lösungseinsicht geändert", 9.5, "bold", rust);
     }
     y += 1.2;
     for (const it of s.items) {
