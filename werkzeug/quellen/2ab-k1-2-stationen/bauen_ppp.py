@@ -17,7 +17,7 @@ import daten as D
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 PRE = "26-27-2AB-K1.2b-Station"
-VER = "v1"
+VER = "v2"
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("C0001E")
@@ -69,6 +69,8 @@ class Deck:
         if ext_lst is None:
             ext_lst = etree.SubElement(prs, qn("p:extLst"))
         P14 = "http://schemas.microsoft.com/office/powerpoint/2010/main"
+        for old in ext_lst.findall(qn("p:ext")):
+            if old.get("uri") == "{521415D9-36F7-43E2-AB2F-B90AF26B5E84}": ext_lst.remove(old)
         ext = etree.SubElement(ext_lst, qn("p:ext")); ext.set("uri", "{521415D9-36F7-43E2-AB2F-B90AF26B5E84}")
         sl = etree.SubElement(ext, "{%s}sectionLst" % P14, nsmap={"p14": P14})
         for name, ids in self.sections:
@@ -89,7 +91,7 @@ def add_clicks(slide, groups):
         inner = ""
         for k, sh in enumerate(grp):
             spid = sh.shape_id
-            inner += (f'<p:par><p:cTn id="{cid()}" presetID="10" presetClass="entr" presetSubtype="0" fill="hold" nodeType="{"clickEffect" if k == 0 else "withEffect"}">'
+            inner += (f'<p:par><p:cTn id="{cid()}" presetID="10" presetClass="entr" presetSubtype="0" fill="hold" grpId="0" nodeType="{"clickEffect" if k == 0 else "withEffect"}">'
                       f'<p:stCondLst><p:cond delay="0"/></p:stCondLst><p:childTnLst>'
                       f'<p:set><p:cBhvr><p:cTn id="{cid()}" dur="1" fill="hold"><p:stCondLst><p:cond delay="0"/></p:stCondLst></p:cTn>'
                       f'<p:tgtEl><p:spTgt spid="{spid}"/></p:tgtEl><p:attrNameLst><p:attrName>style.visibility</p:attrName></p:attrNameLst></p:cBhvr>'
@@ -103,7 +105,8 @@ def add_clicks(slide, groups):
            f'<p:seq concurrent="1" nextAc="seek"><p:cTn id="2" dur="indefinite" nodeType="mainSeq"><p:childTnLst>{clicks}</p:childTnLst></p:cTn>'
            f'<p:prevCondLst><p:cond evt="onPrev" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:prevCondLst>'
            f'<p:nextCondLst><p:cond evt="onNext" delay="0"><p:tgtEl><p:sldTgt/></p:tgtEl></p:cond></p:nextCondLst></p:seq>'
-           f'</p:childTnLst></p:cTn></p:par></p:tnLst></p:timing>')
+           f'</p:childTnLst></p:cTn></p:par></p:tnLst>'
+           f'<p:bldLst>{"".join(f'<p:bldP spid="{sh.shape_id}" grpId="0" animBg="1"/>' for grp in groups for sh in grp)}</p:bldLst></p:timing>')
     el = etree.fromstring(xml)
     sld = slide._element
     ext = sld.find(qn("p:extLst"))
@@ -150,6 +153,8 @@ def tb(s, x, y, w, h, parts, **kw):
 
 def pill(s, label, x=3.55, y=5.18, w=1.9, kind="theory"):
     el = copy.deepcopy(d.pill_proto)
+    ids = [int(x) for x in s.shapes._spTree.xpath("//p:cNvPr/@id")]
+    el.xpath(".//p:cNvPr")[0].set("id", str(max(ids + [1]) + 1))
     s.shapes._spTree.append(el)
     shp = s.shapes[-1]
     shp.left, shp.top, shp.width = Inches(x), Inches(y), Inches(w)
