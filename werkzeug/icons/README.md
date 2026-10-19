@@ -66,3 +66,5 @@ Herkunft: Versuche »Die Bindungsarten« (2AB K1.2). Diese Icons gelten in **all
 - `zucker`
 
 Ergänzt am 15.10.2026 (Elektromagnetismus 4AB): batterie, bleistift, cutter, draht, klebeband, kompass, lineal, magnet, nagel, stativ.
+
+Ergänzt am 19.10.2026 (Stationen 2AB K1.2): muenze, wanne.

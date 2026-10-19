@@ -42,9 +42,9 @@ LEHRER = "lehrer-0f6eec.html"
 
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Lernseite → Arbeitsblatt → Quiz
 NAMEN = {"theorie.html": ("Lernseite", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
-         "versuche.html": ("Versuche", "rust"), "uebung.html": ("Übung", ""), "projekt.html": ("Projekt", ""),
+         "versuche.html": ("Versuche", "rust"), "vertiefung.html": ("Vertiefung", ""), "uebung.html": ("Übung", ""), "projekt.html": ("Projekt", ""),
          "gruppe.html": ("Gruppe", ""), "kurz.html": ("Gruppe kompakt", "")}
-REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html"]
+REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html"]
 
 CSS = """
 :root { --bg: #EEF3E4; --card: #FFFFFF; --ink: #1F2A1C; --olive: #3B4A2F; --teal: #2E7D8C; --green: #7FA83A;
@@ -616,7 +616,7 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu()
 
 
 def anker_entfernen(e):
-    """Regel: Links auf aufgaben/versuche/uebung/projekt.html springen immer an den ANFANG (Name und Klasse zuerst),
+    """Regel: Links auf aufgaben/versuche/vertiefung/uebung/projekt.html springen immer an den ANFANG (Name und Klasse zuerst),
     nie auf einen Anker wie #card_a4. Wird bei jedem Lauf für alle Seiten jeder Einheit erzwungen."""
     n = 0
     d = os.path.join(ROOT, e["ordner"])
@@ -627,7 +627,7 @@ def anker_entfernen(e):
             continue
         pfad = os.path.join(d, f)
         t = open(pfad, encoding="utf-8").read()
-        neu = re.sub(r'((?:aufgaben|versuche|uebung|projekt)\.html)#[A-Za-z0-9_\-]+', r'\1', t)
+        neu = re.sub(r'((?:aufgaben|versuche|vertiefung|uebung|projekt)\.html)#[A-Za-z0-9_\-]+', r'\1', t)
         if neu != t:
             open(pfad, "w", encoding="utf-8").write(neu); n += 1
     return n

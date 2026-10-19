@@ -96,6 +96,25 @@
  {
   "klasse": "2AB",
   "fach": "NAWI",
+  "ordner": "2ab-nawi/test1-training",
+  "kapitel": "1. Test · 05.11.",
+  "titel": "Test-Training: Atombau, Atommodelle, Bindungsarten",
+  "seiten": [
+   "quiz.html"
+  ],
+  "dateien": {
+   "stand": "19.10.2026",
+   "zip": "26-27-2AB-K1.2b-Station-v1.zip",
+   "liste": [
+    "26-27-2AB-Test1-Teststoff-v1.docx",
+    "26-27-2AB-Test1-Kahoot-v1.xlsx"
+   ]
+  },
+  "teststoff": "werkzeug/teststoff/daten/26-27-2ab-test1.json"
+ },
+ {
+  "klasse": "2AB",
+  "fach": "NAWI",
   "ordner": "2ab-nawi/k1-2-bindungen",
   "kapitel": "K1.2",
   "titel": "Die Bindungsarten",
@@ -105,37 +124,59 @@
    "theorie.html",
    "aufgaben.html",
    "versuche.html",
+   "vertiefung.html",
    "quiz.html"
   ],
   "fahrplan": {
+   "text": "Stunde 1–2: Lernseite und Arbeitsblatt (Aufgaben 1–10). Stunde 3–4: Stationen A–D und Vertiefung (Aufgaben 11–16), Demo, Besprechung, Teststoff.",
    "zeilen": [
     {
      "wann": "Stunde 1",
-     "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung",
-     "aufgaben": "1–2",
+     "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung + Teil 3 · Atombindung",
+     "aufgaben": "1–4 · 6",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 2",
-     "lesen": "Teil 3 · Atombindung + Teil 4 · Metallbindung",
-     "aufgaben": "3–6",
-     "abgabe": "–"
+     "lesen": "Teil 4 · Metallbindung + Teil 5 · Zwischenmolekulare Kräfte + Überblick",
+     "aufgaben": "5 · 7–10 · Quiz",
+     "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {
      "wann": "Stunde 3",
-     "lesen": "Teil 5 · Zwischenmolekulare Kräfte + Überblick",
-     "aufgaben": "7–10 · Quiz",
-     "abgabe": "PDF in LMS"
+     "lesen": "Versuchsseite: Gruppe 1–4 an den Stationen A–D · Gruppe 5–8 Vertiefung",
+     "aufgaben": "Protokoll A–D · Vertiefung 11–16",
+     "wie": "ohne Handy: Versuche an den Stationen (Handy nur zum Protokollieren)",
+     "abgabe": "–"
     },
     {
      "wann": "Stunde 4",
-     "lesen": "Versuchsseite (im NAWI-Saal)",
-     "aufgaben": "Protokoll",
-     "wie": "zu zweit",
-     "abgabe": "PDF in LMS"
+     "lesen": "Demo K1.2-V4 (alle) · Wechsel: Gruppe 5–8 Stationen A–D · Gruppe 1–4 Vertiefung · Besprechung · Teststoff für 05.11.",
+     "aufgaben": "Protokoll A–D + V4 · Vertiefung 11–16",
+     "wie": "ohne Handy: Demo mit Vorhersage, Besprechung im Plenum",
+     "abgabe": "Versuchs-PDF (Gruppe) + Vertiefungs-PDF (jeder) in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Vertiefung Aufgabe 17 · Test-Training-Quiz",
+     "aufgaben": "17",
+     "abgabe": "–"
     }
    ]
-  }
+  },
+  "dateien": {
+   "stand": "19.10.2026",
+   "zip": "26-27-2AB-K1.2b-Station-v1.zip",
+   "liste": [
+    "26-27-2AB-K1.2b-Station-VS-Lehrer-v1.pptx",
+    "26-27-2AB-K1.2b-Station-VS-Kadetten-v1.pptx",
+    "26-27-2AB-K1.2b-Station-VS-AB-v1.docx",
+    "26-27-2AB-K1.2b-Station-VS-Loesung-v1.docx",
+    "26-27-2AB-K1.2b-Station-VS-Fachwissen-v1.docx",
+    "TH-PPP, TH-AB/Loesung, TH-Fachwissen K1.2 (Stunde 1–2): Fassung aus dem Chat vom 11.10."
+   ]
+  },
+  "aktuell": true
  },
  {
   "klasse": "5AB",
