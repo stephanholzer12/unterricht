@@ -1,0 +1,111 @@
+{
+ "datei": "26-27-1AB-Test1-Teststoff-v1.docx",
+ "kopf": "TESTSTOFF · NAWI · 1. JAHRGANG",
+ "titel": "1. Test – Wissenschaft, Messen und physikalische Grundgrößen",
+ "fuss": "1AB · 1. Test NAWI · Teststoff · Stand 19.10.2026 · v1",
+ "termin": "[[Wochentag, Datum]]",
+ "stoff": "Schulbuch (Trauner) S. 10–23 und alle Unterlagen aus dem Unterricht",
+ "durchgenommen": [
+  [
+   "1",
+   "Was ist Wissenschaft? Bedeutung und Definition der Naturwissenschaften",
+   "S. 10–14[[ · 28–29]]",
+   "PPP [[Was ist Wissenschaft]] · [[Apolin-Videos]]",
+   "[[Buch-Aufgaben S. 14]] · [[Arbeitszettel]]"
+  ],
+  [
+   "2",
+   "SI-Einheiten: Basisgrößen, Basiseinheiten und Vorsätze",
+   "S. 16–17 · 23",
+   "PPP [[SI-Einheiten]] · Arbeitszettel [[Umrechnen]]",
+   "[[Buch-Aufgaben S. 17, 23]] · Arbeitszettel"
+  ],
+  [
+   "3",
+   "Skalare und vektorielle Größen",
+   "S. [[18]]",
+   "PPP [[Skalar und Vektor]]",
+   "[[Buch-Aufgaben S. …]]"
+  ],
+  [
+   "4",
+   "[[Messen: Länge, Messfehler, Reaktionszeit]]",
+   "S. 17–19",
+   "Lernseite, Arbeitsblatt, Quiz am Handy",
+   "Arbeitsblatt am Handy Aufgaben 1–10"
+  ],
+  [
+   "5",
+   "Zeit, Masse und Gewicht",
+   "S. 18–20",
+   "PPP [[Grundgrößen]] · Arbeitszettel",
+   "[[Buch-Aufgaben S. 18–20]]"
+  ],
+  [
+   "6",
+   "Dichte und Dichteanomalie des Wassers",
+   "S. 21–22[[ · 205–206]]",
+   "PPP [[Dichte]] · Arbeitszettel",
+   "[[Buch-Aufgaben S. 22]] · Buch-Aufgabe S. 206 Nr. 1 (Frostaufbrüche)"
+  ]
+ ],
+ "koennen": [
+  [
+   "1",
+   "**Wissenschaft:** erklären, was Wissenschaft ist · Naturwissenschaften definieren, Physik, Chemie, Biologie zuordnen · Bedeutung für Alltag, Wirtschaft, Gesundheit, Umwelt und Bundesheer[[ · Hypothese → Experiment → Theorie, Falsifikation]]",
+   "Wissenschaft, Naturwissenschaft[[, Hypothese, Theorie]]"
+  ],
+  [
+   "2",
+   "**SI-Einheiten:** 7 Basisgrößen mit Formelzeichen und Basiseinheit (m, kg, s, A, K, mol, cd) · Basis- und abgeleitete Einheiten · Vorsätze n, µ, m, c, d, k, M, G mit Zehnerpotenz · Einheiten umrechnen",
+   "Basiseinheit, abgeleitete Einheit, Vorsatz, Zehnerpotenz"
+  ],
+  [
+   "3",
+   "**Skalar und Vektor:** skalare (Zahl + Einheit) und vektorielle Größen (+ Richtung) unterscheiden und Beispiele nennen · Vektor als Pfeil zeichnen",
+   "Skalar, Vektor, Betrag, Richtung"
+  ],
+  [
+   "4",
+   "**Messen:** Messgerät wählen · Mittelwert und Messunsicherheit berechnen · zufällige und systematische Fehler · Reaktionszeit bestimmen",
+   "Mittelwert, Messunsicherheit, Scheingenauigkeit"
+  ],
+  [
+   "5",
+   "**Zeit, Masse, Gewicht:** Zeit umrechnen · Masse (kg, überall gleich) und Gewichtskraft (N, ortsabhängig – Erde, Mond) unterscheiden[[ · F = m · g berechnen]]",
+   "Masse, Gewichtskraft, Newton"
+  ],
+  [
+   "6",
+   "**Dichte:** ρ = m / V erklären, berechnen und umformen · Volumen mit dem Messzylinder · Stoffe mit der Dichtetabelle erkennen, Schwimmen/Sinken vorhersagen · **Dichteanomalie:** größte Dichte bei 4 °C – Eis schwimmt, Seen frieren von oben zu, Frost sprengt",
+   "Dichte, Volumen, Dichteanomalie"
+  ]
+ ],
+ "formeln": [
+  [
+   "ρ = m / V",
+   "g/cm³ oder kg/m³"
+  ],
+  [
+   "[[F = m · g]]",
+   "N (Newton)"
+  ]
+ ],
+ "tipp": "1 cm³ = 1 ml · 1 dm³ = 1 l · 1 g/cm³ = 1 000 kg/m³ · 1 kg = 1 000 g · 1 h = 3 600 s",
+ "kein_teststoff": [
+  "Nobelpreise 2026 und alles, was **OPTIONAL** oder **»Für Schnelle«** ist (z. B. Faktencheck und Kampfanzüge, K1.2.2)",
+  "Geschwindigkeit (S. 46), Mikroskopieren (S. 24–27), Sicherheit im Labor (S. 33–39)"
+ ],
+ "qr": [
+  {
+   "titel": "Test-Training",
+   "text": "Quiz zum ganzen Teststoff",
+   "url": "https://stephanholzer12.github.io/unterricht/1ab-nawi/test1-training/quiz.html"
+  },
+  {
+   "titel": "Klassenseite 1AB",
+   "text": "alle Lernseiten",
+   "url": "https://stephanholzer12.github.io/unterricht/1ab-nawi/"
+  }
+ ]
+}

@@ -2,6 +2,25 @@
   {
     "klasse": "1AB",
     "fach": "NAWI",
+    "ordner": "1ab-nawi/test1-training",
+    "kapitel": "1. Test · Termin folgt",
+    "titel": "Test-Training: Wissenschaft, SI-Einheiten, Grundgrößen, Dichte",
+    "seiten": [
+      "quiz.html"
+    ],
+    "dateien": {
+      "stand": "19.10.2026",
+      "liste": [
+        "26-27-1AB-Test1-Teststoff-v1.docx",
+        "26-27-1AB-Test1-Kahoot-v1.xlsx",
+        "26-27-1AB-Test1-Blooket-v1.csv"
+      ]
+    },
+    "teststoff": "werkzeug/teststoff/daten/26-27-1ab-test1.json"
+  },
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
     "ordner": "1ab-nawi/k1-1-2-nobel2026",
     "kapitel": "K1.1.2",
     "titel": "Nobelpreise 2026",
