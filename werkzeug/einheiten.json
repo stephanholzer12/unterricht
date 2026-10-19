@@ -1,423 +1,458 @@
 [
-  {
-    "klasse": "1AB",
-    "fach": "NAWI",
-    "ordner": "1ab-nawi/test1-training",
-    "kapitel": "1. Test · Termin folgt",
-    "titel": "Test-Training: Wissenschaft, SI-Einheiten, Grundgrößen, Dichte",
-    "seiten": [
-      "quiz.html"
-    ],
-    "dateien": {
-      "stand": "19.10.2026",
-      "liste": [
-        "26-27-1AB-Test1-Teststoff-v1.docx",
-        "26-27-1AB-Test1-Kahoot-v1.xlsx",
-        "26-27-1AB-Test1-Blooket-v1.csv"
-      ],
-      "zip": "26-27-1AB-Test1-v1.zip"
+ {
+  "klasse": "1AB",
+  "fach": "NAWI",
+  "ordner": "1ab-nawi/test1-training",
+  "kapitel": "1. Test · Termin folgt",
+  "titel": "Test-Training: Wissenschaft, SI-Einheiten, Grundgrößen, Dichte",
+  "seiten": [
+   "quiz.html"
+  ],
+  "dateien": {
+   "stand": "19.10.2026",
+   "liste": [
+    "26-27-1AB-Test1-Teststoff-v1.docx",
+    "26-27-1AB-Test1-Kahoot-v1.xlsx",
+    "26-27-1AB-Test1-Blooket-v1.csv"
+   ],
+   "zip": "26-27-1AB-Test1-v1.zip"
+  },
+  "teststoff": "werkzeug/teststoff/daten/26-27-1ab-test1.json"
+ },
+ {
+  "klasse": "1AB",
+  "fach": "NAWI",
+  "ordner": "1ab-nawi/k1-1-2-nobel2026",
+  "kapitel": "K1.1.2",
+  "titel": "Nobelpreise 2026",
+  "block": "A Wissenschaft verstehen",
+  "jahresplan": "E1",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "versuche.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg + Teil 1 · Der Nobelpreis + Teil 2 · Physik",
+     "aufgaben": "1–4",
+     "abgabe": "–"
     },
-    "teststoff": "werkzeug/teststoff/daten/26-27-1ab-test1.json"
-  },
-  {
-    "klasse": "1AB",
-    "fach": "NAWI",
-    "ordner": "1ab-nawi/k1-1-2-nobel2026",
-    "kapitel": "K1.1.2",
-    "titel": "Nobelpreise 2026",
-    "block": "A Wissenschaft verstehen",
-    "jahresplan": "E1",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "versuche.html",
-      "quiz.html"
-    ],
-    "fahrplan": {
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Einstieg + Teil 1 · Der Nobelpreis + Teil 2 · Physik",
-          "aufgaben": "1–4",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Teil 3 · Chemie + Teil 4 · Medizin + Teil 5 · Die anderen Preise",
-          "aufgaben": "5–8 · Quiz",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Versuche",
-          "lesen": "Versuchsseite (im NAWI-Saal)",
-          "aufgaben": "Protokoll",
-          "wie": "zu zweit",
-          "abgabe": "PDF in LMS"
-        }
-      ]
-    }
-  },
-  {
-    "klasse": "1AB",
-    "fach": "NAWI",
-    "ordner": "1ab-nawi/k1-2-2-koerper",
-    "kapitel": "K1.2.2",
-    "titel": "Messen wie die Profis – Schätzen, Körpergröße, Reaktionszeit",
-    "block": "B Messen & Untersuchen",
-    "jahresplan": "E4–E5",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "quiz.html"
-    ],
-    "fahrplan": {
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Einstieg + Teil 1 · Die Länge messen",
-          "aufgaben": "1–5",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Teil 2 · Messfehler und Reaktionszeit",
-          "aufgaben": "6–10 · Quiz",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Für Schnelle",
-          "lesen": "Faktencheck und Kampfanzüge bestellen",
-          "aufgaben": "11–12",
-          "abgabe": "freiwillig"
-        }
-      ]
-    }
-  },
-  {
-    "klasse": "2AB",
-    "fach": "NAWI",
-    "ordner": "2ab-nawi/k1-2-bindungen",
-    "kapitel": "K1.2",
-    "titel": "Die Bindungsarten",
-    "block": "A Atombau & Bindung",
-    "jahresplan": "E3–E5",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "versuche.html",
-      "quiz.html"
-    ],
-    "fahrplan": {
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung",
-          "aufgaben": "1–2",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Teil 3 · Atombindung + Teil 4 · Metallbindung",
-          "aufgaben": "3–6",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 3",
-          "lesen": "Teil 5 · Zwischenmolekulare Kräfte + Überblick",
-          "aufgaben": "7–10 · Quiz",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Stunde 4",
-          "lesen": "Versuchsseite (im NAWI-Saal)",
-          "aufgaben": "Protokoll",
-          "wie": "zu zweit",
-          "abgabe": "PDF in LMS"
-        }
-      ]
-    }
-  },
-  {
-    "klasse": "5AB",
-    "fach": "TÖW",
-    "ordner": "5ab-toew/k1-3-nachhaltig",
-    "kapitel": "K1.3",
-    "titel": "Prinzipien der Nachhaltigkeit",
-    "block": "A Ökologisches Wirtschaften",
-    "jahresplan": "E2",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "projekt.html",
-      "quiz.html"
-    ],
-    "fahrplan": {
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Einstieg + Teil 1 · Was heißt nachhaltig? + Teil 2 · Nachhaltigkeit im Unternehmen",
-          "aufgaben": "1–6",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Hausübung",
-          "lesen": "Teil 3 · Agenda 2030 und die SDGs",
-          "aufgaben": "7 · Quiz",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Projekt",
-          "lesen": "Projektseite · Nachhaltigkeitsberichte",
-          "aufgaben": "Projekt 1–7",
-          "wie": "in Gruppen",
-          "abgabe": "PDF in LMS"
-        }
-      ]
-    }
-  },
-  {
-    "klasse": "4AB",
-    "fach": "NAWI",
-    "ordner": "4ab-nawi/test1-training",
-    "kapitel": "1. Test · 11.11.",
-    "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
-    "seiten": [
-      "quiz.html"
-    ],
-    "dateien": {
-      "stand": "18.10.2026",
-      "liste": [
-        "26-27-4AB-Test1-Teststoff-v2.docx",
-        "26-27-4AB-Test1-Kahoot.xlsx",
-        "26-27-4AB-Test1-Blooket.csv"
-      ]
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 3 · Chemie + Teil 4 · Medizin + Teil 5 · Die anderen Preise",
+     "aufgaben": "5–8 · Quiz",
+     "abgabe": "PDF in LMS"
     },
-    "teststoff": "werkzeug/teststoff/daten/26-27-4ab-test1.json"
-  },
-  {
-    "klasse": "4AB",
-    "fach": "NAWI",
-    "ordner": "4ab-nawi/k1-5a-elektromagnet",
-    "kapitel": "K1.5a",
-    "titel": "Elektromagnet und Elektromotor",
-    "block": "A Elektrizität & Magnetismus",
-    "jahresplan": "E4",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "versuche.html",
-      "quiz.html"
-    ],
-    "dateien": {
-      "stand": "18.10.2026",
-      "zip": "26-27-4AB-K1.5a-E-Magnet-v1.zip",
-      "liste": [
-        "26-27-4AB-K1.5a-E-Magnet-TH-Lehrer-v1.pptx",
-        "26-27-4AB-K1.5a-E-Magnet-TH-Kadetten-v1.pptx",
-        "26-27-4AB-K1.5a-E-Magnet-TH-AB-v1.docx",
-        "26-27-4AB-K1.5a-E-Magnet-TH-Loesung-v1.docx",
-        "26-27-4AB-K1.5a-E-Magnet-TH-Fachwissen-v1.docx",
-        "26-27-4AB-K1.5a-E-Magnet-VS-Lehrer-v1.pptx",
-        "26-27-4AB-K1.5a-E-Magnet-VS-Kadetten-v1.pptx",
-        "26-27-4AB-K1.5a-E-Magnet-VS-AB-v1.docx",
-        "26-27-4AB-K1.5a-E-Magnet-VS-Loesung-v1.docx",
-        "26-27-4AB-K1.5a-E-Magnet-VS-Fachwissen-v1.docx",
-        "26-27-4AB-K1.5a-E-Magnet-Kahoot-v1.xlsx"
-      ]
-    },
-    "fahrplan": {
-      "text": "Lies Teil 1 und mach die Aufgaben 1–4, dann Teil 2 mit dem Rätsel, die Aufgaben 5–9 und das Quiz – dann PDF abgeben. *Die Versuche zeigt dir dein Lehrer, in der 4BK in einer eigenen Stunde.",
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Teil 1 · Elektromagnet",
-          "aufgaben": "1–4",
-          "wie": "Versuch K1.5-V1 (Demo)*",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Teil 2 · Motor + Rätsel",
-          "aufgaben": "5–9 · Quiz",
-          "wie": "Versuch K1.5-V3 (Demo)*",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Stunde 3",
-          "lesen": "Versuchsseite",
-          "aufgaben": "Protokoll",
-          "wie": "V1, V3 · V5 zu zweit*",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Für Schnelle",
-          "lesen": "Zusatz · Halbleiter",
-          "aufgaben": "10–20",
-          "wie": "V2, V4 (Station)",
-          "abgabe": "freiwillig"
-        }
-      ]
+    {
+     "wann": "Versuche",
+     "lesen": "Versuchsseite (im NAWI-Saal)",
+     "aufgaben": "Protokoll",
+     "wie": "zu zweit",
+     "abgabe": "PDF in LMS"
     }
-  },
-  {
-    "klasse": "5AK",
-    "fach": "IWK",
-    "ordner": "5ak-iwk/k1-2-kulturen",
-    "kapitel": "K1.2",
-    "titel": "Die Welt einteilen · Kulturen erleben",
-    "block": "A Räume & Konzepte",
-    "jahresplan": "E1",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "uebung.html",
-      "quiz.html"
-    ],
-    "fahrplan": {
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Einstieg + Abschnitt 1 · Was ist Kultur? + Abschnitt 2 · Kulturerdteile nach Kolb",
-          "aufgaben": "1–5",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Abschnitt 3 · Huntington + Abschnitt 4 · Cultural Map",
-          "aufgaben": "6–12",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 3",
-          "lesen": "Abschnitt 5 · Fünf Welten + Abschnitt 6 · Weltsystem",
-          "aufgaben": "13–17",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Abschluss",
-          "lesen": "Übung · Kulturen erleben",
-          "aufgaben": "18–22 · Übung · Quiz",
-          "abgabe": "PDF in LMS"
-        }
-      ]
-    }
-  },
-  {
-    "klasse": "3AB",
-    "fach": "NAWI",
-    "ordner": "3ab-nawi/k2-3b-trendcheck",
-    "kapitel": "K2.3b",
-    "titel": "Trend-Check: Hype oder Hilfe?",
-    "block": "B Landwirtschaft & Ernährung",
-    "jahresplan": "E7",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "gruppe.html",
-      "quiz.html",
-      "kurz.html"
-    ],
-    "fahrplan": {
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Einstieg + Teil 1 · Der Maßstab + Teil 2 · Belegt oder behauptet?",
-          "aufgaben": "1–2",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Teil 3 · Wer verdient daran? + Teil 4 · Trend-Check in 5 Fragen, dann Gruppen-Steckbrief",
-          "aufgaben": "3–5 · Quiz",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Wenig Zeit?",
-          "lesen": "Kompakt-Seite (alles in einer Stunde)",
-          "aufgaben": "1–6",
-          "abgabe": "PDF in LMS"
-        }
-      ]
-    }
-  },
-  {
-    "klasse": "2AK",
-    "fach": "PBGW",
-    "ordner": "2ak-pbgw/k1-grundrechte",
-    "kapitel": "K1",
-    "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
-    "block": "A Demokratie & Grundrechte",
-    "jahresplan": "E2",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "quiz.html"
-    ],
-    "fahrplan": {
-      "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 1 das PDF ab.",
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Teil 1 · Theorie, dann Arbeitsblatt M1–M4 (Papier)",
-          "aufgaben": "1–6",
-          "wie": "Arbeitsblatt ohne Handy lesen, dann am Handy",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Teil 2 · Stolz und Schande 2026",
-          "aufgaben": "7 · Quiz · eure Fragen",
-          "wie": "ohne Handy: Vier Ecken, Aufstellen, Diskussion",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Für Schnelle",
-          "lesen": "Für Schnelle und Neugierige",
-          "aufgaben": "8–11",
-          "wie": "am Handy",
-          "abgabe": "freiwillig"
-        }
-      ]
-    }
-  },
-  {
-    "klasse": "3BK",
-    "fach": "PBGW",
-    "ordner": "3bk-pbgw/k1-3-epochen",
-    "kapitel": "K1.3–1.4",
-    "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
-    "block": "A Geschichte & Quellen",
-    "jahresplan": "E2",
-    "seiten": [
-      "theorie.html",
-      "aufgaben.html",
-      "quiz.html"
-    ],
-    "fahrplan": {
-      "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
-      "zeilen": [
-        {
-          "wann": "Stunde 1",
-          "lesen": "Einstieg + Teil 1 · Wie zählen wir Zeit?",
-          "aufgaben": "1–5",
-          "wie": "ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy",
-          "abgabe": "–"
-        },
-        {
-          "wann": "Stunde 2",
-          "lesen": "Teil 2 · Die Epochen",
-          "aufgaben": "6–10 · Quiz",
-          "wie": "ohne Handy: lebender Zeitstrahl, dann am Handy",
-          "abgabe": "PDF in LMS"
-        },
-        {
-          "wann": "Für Schnelle",
-          "lesen": "Für Schnelle und Neugierige",
-          "aufgaben": "11–15",
-          "wie": "am Handy",
-          "abgabe": "freiwillig"
-        }
-      ]
-    }
+   ]
   }
+ },
+ {
+  "klasse": "1AB",
+  "fach": "NAWI",
+  "ordner": "1ab-nawi/k1-2-2-koerper",
+  "kapitel": "K1.2.2",
+  "titel": "Messen wie die Profis – Schätzen, Körpergröße, Reaktionszeit",
+  "block": "B Messen & Untersuchen",
+  "jahresplan": "E4–E5",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg + Teil 1 · Die Länge messen",
+     "aufgaben": "1–5",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 2 · Messfehler und Reaktionszeit",
+     "aufgaben": "6–10 · Quiz",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Faktencheck und Kampfanzüge bestellen",
+     "aufgaben": "11–12",
+     "abgabe": "freiwillig"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "2AB",
+  "fach": "NAWI",
+  "ordner": "2ab-nawi/k1-2-bindungen",
+  "kapitel": "K1.2",
+  "titel": "Die Bindungsarten",
+  "block": "A Atombau & Bindung",
+  "jahresplan": "E3–E5",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "versuche.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung",
+     "aufgaben": "1–2",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 3 · Atombindung + Teil 4 · Metallbindung",
+     "aufgaben": "3–6",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 3",
+     "lesen": "Teil 5 · Zwischenmolekulare Kräfte + Überblick",
+     "aufgaben": "7–10 · Quiz",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Stunde 4",
+     "lesen": "Versuchsseite (im NAWI-Saal)",
+     "aufgaben": "Protokoll",
+     "wie": "zu zweit",
+     "abgabe": "PDF in LMS"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "5AB",
+  "fach": "TÖW",
+  "ordner": "5ab-toew/k1-3-nachhaltig",
+  "kapitel": "K1.3",
+  "titel": "Prinzipien der Nachhaltigkeit",
+  "block": "A Ökologisches Wirtschaften",
+  "jahresplan": "E2",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "projekt.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg + Teil 1 · Was heißt nachhaltig? + Teil 2 · Nachhaltigkeit im Unternehmen",
+     "aufgaben": "1–6",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Hausübung",
+     "lesen": "Teil 3 · Agenda 2030 und die SDGs",
+     "aufgaben": "7 · Quiz",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Projekt",
+     "lesen": "Projektseite · Nachhaltigkeitsberichte",
+     "aufgaben": "Projekt 1–7",
+     "wie": "in Gruppen",
+     "abgabe": "PDF in LMS"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "4AB",
+  "fach": "NAWI",
+  "ordner": "4ab-nawi/test1-training",
+  "kapitel": "1. Test · 11.11.",
+  "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
+  "seiten": [
+   "quiz.html"
+  ],
+  "dateien": {
+   "stand": "18.10.2026",
+   "liste": [
+    "26-27-4AB-Test1-Teststoff-v2.docx",
+    "26-27-4AB-Test1-Kahoot.xlsx",
+    "26-27-4AB-Test1-Blooket.csv"
+   ]
+  },
+  "teststoff": "werkzeug/teststoff/daten/26-27-4ab-test1.json"
+ },
+ {
+  "klasse": "4AB",
+  "fach": "NAWI",
+  "ordner": "4ab-nawi/k1-5a-elektromagnet",
+  "kapitel": "K1.5a",
+  "titel": "Elektromagnet und Elektromotor",
+  "block": "A Elektrizität & Magnetismus",
+  "jahresplan": "E4",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "versuche.html",
+   "quiz.html"
+  ],
+  "dateien": {
+   "stand": "18.10.2026",
+   "zip": "26-27-4AB-K1.5a-E-Magnet-v1.zip",
+   "liste": [
+    "26-27-4AB-K1.5a-E-Magnet-TH-Lehrer-v1.pptx",
+    "26-27-4AB-K1.5a-E-Magnet-TH-Kadetten-v1.pptx",
+    "26-27-4AB-K1.5a-E-Magnet-TH-AB-v1.docx",
+    "26-27-4AB-K1.5a-E-Magnet-TH-Loesung-v1.docx",
+    "26-27-4AB-K1.5a-E-Magnet-TH-Fachwissen-v1.docx",
+    "26-27-4AB-K1.5a-E-Magnet-VS-Lehrer-v1.pptx",
+    "26-27-4AB-K1.5a-E-Magnet-VS-Kadetten-v1.pptx",
+    "26-27-4AB-K1.5a-E-Magnet-VS-AB-v1.docx",
+    "26-27-4AB-K1.5a-E-Magnet-VS-Loesung-v1.docx",
+    "26-27-4AB-K1.5a-E-Magnet-VS-Fachwissen-v1.docx",
+    "26-27-4AB-K1.5a-E-Magnet-Kahoot-v1.xlsx"
+   ]
+  },
+  "fahrplan": {
+   "text": "Lies Teil 1 und mach die Aufgaben 1–4, dann Teil 2 mit dem Rätsel, die Aufgaben 5–9 und das Quiz – dann PDF abgeben. *Die Versuche zeigt dir dein Lehrer, in der 4BK in einer eigenen Stunde.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Teil 1 · Elektromagnet",
+     "aufgaben": "1–4",
+     "wie": "Versuch K1.5-V1 (Demo)*",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 2 · Motor + Rätsel",
+     "aufgaben": "5–9 · Quiz",
+     "wie": "Versuch K1.5-V3 (Demo)*",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Stunde 3",
+     "lesen": "Versuchsseite",
+     "aufgaben": "Protokoll",
+     "wie": "V1, V3 · V5 zu zweit*",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Zusatz · Halbleiter",
+     "aufgaben": "10–20",
+     "wie": "V2, V4 (Station)",
+     "abgabe": "freiwillig"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "5AK",
+  "fach": "IWK",
+  "ordner": "5ak-iwk/k1-2-kulturen",
+  "kapitel": "K1.2",
+  "titel": "Die Welt einteilen · Kulturen erleben",
+  "block": "A Räume & Konzepte",
+  "jahresplan": "E1",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "uebung.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg + Abschnitt 1 · Was ist Kultur? + Abschnitt 2 · Kulturerdteile nach Kolb",
+     "aufgaben": "1–5",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Abschnitt 3 · Huntington + Abschnitt 4 · Cultural Map",
+     "aufgaben": "6–12",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 3",
+     "lesen": "Abschnitt 5 · Fünf Welten + Abschnitt 6 · Weltsystem",
+     "aufgaben": "13–17",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Abschluss",
+     "lesen": "Übung · Kulturen erleben",
+     "aufgaben": "18–22 · Übung · Quiz",
+     "abgabe": "PDF in LMS"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "3AB",
+  "fach": "NAWI",
+  "ordner": "3ab-nawi/k2-3b-trendcheck",
+  "kapitel": "K2.3b",
+  "titel": "Trend-Check: Hype oder Hilfe?",
+  "block": "B Landwirtschaft & Ernährung",
+  "jahresplan": "E7",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "gruppe.html",
+   "quiz.html",
+   "kurz.html"
+  ],
+  "fahrplan": {
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg + Teil 1 · Der Maßstab + Teil 2 · Belegt oder behauptet?",
+     "aufgaben": "1–2",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 3 · Wer verdient daran? + Teil 4 · Trend-Check in 5 Fragen, dann Gruppen-Steckbrief",
+     "aufgaben": "3–5 · Quiz",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Wenig Zeit?",
+     "lesen": "Kompakt-Seite (alles in einer Stunde)",
+     "aufgaben": "1–6",
+     "abgabe": "PDF in LMS"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "2AK",
+  "fach": "PBGW",
+  "ordner": "2ak-pbgw/k1-grundrechte",
+  "kapitel": "K1",
+  "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
+  "block": "A Demokratie & Grundrechte",
+  "jahresplan": "E2",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 1 das PDF ab.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Teil 1 · Theorie, dann Arbeitsblatt M1–M4 (Papier)",
+     "aufgaben": "1–6",
+     "wie": "Arbeitsblatt ohne Handy lesen, dann am Handy",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 2 · Stolz und Schande 2026",
+     "aufgaben": "7 · Quiz · eure Fragen",
+     "wie": "ohne Handy: Vier Ecken, Aufstellen, Diskussion",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige",
+     "aufgaben": "8–11",
+     "wie": "am Handy",
+     "abgabe": "freiwillig"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "3BK",
+  "fach": "PBGW",
+  "ordner": "3bk-pbgw/k1-2-faelschung",
+  "kapitel": "K1.2",
+  "titel": "Gefälscht! Der Fall der Hitler-Tagebücher – Quellenkritik",
+  "block": "A Geschichte & Quellen",
+  "jahresplan": "E1",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ],
+  "aktuell": true,
+  "fahrplan": {
+   "text": "Lies die Lernseite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg, Teil 1 · Der Fall, Teil 2 · Wie flog die Fälschung auf?",
+     "aufgaben": "1–3",
+     "wie": "Lernseite am Handy; ohne Handy: Partnergespräch (2 Min.); Rest der Stunde: Nachbesprechung im Plenum",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige",
+     "aufgaben": "4–6",
+     "wie": "am Handy",
+     "abgabe": "freiwillig"
+    }
+   ]
+  }
+ },
+ {
+  "klasse": "3BK",
+  "fach": "PBGW",
+  "ordner": "3bk-pbgw/k1-3-epochen",
+  "kapitel": "K1.3–1.4",
+  "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
+  "block": "A Geschichte & Quellen",
+  "jahresplan": "E2",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Einstieg + Teil 1 · Wie zählen wir Zeit?",
+     "aufgaben": "1–5",
+     "wie": "ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 2 · Die Epochen",
+     "aufgaben": "6–10 · Quiz",
+     "wie": "ohne Handy: lebender Zeitstrahl, dann am Handy",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige",
+     "aufgaben": "11–15",
+     "wie": "am Handy",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "versteckt": true
+ }
 ]
