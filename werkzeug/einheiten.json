@@ -412,6 +412,18 @@
      "abgabe": "freiwillig"
     }
    ]
+  },
+  "dateien": {
+   "stand": "19.10.2026",
+   "zip": "26-27-3BK-K1.2-Faelschung-v2.zip",
+   "liste": [
+    "26-27-3BK-K1.2-Faelschung-TH-Lehrer-v2.pptx",
+    "26-27-3BK-K1.2-Faelschung-TH-Kadetten-v2.pptx",
+    "26-27-3BK-K1.2-Faelschung-TH-AB-v2.docx",
+    "26-27-3BK-K1.2-Faelschung-TH-Loesung-v2.docx",
+    "26-27-3BK-K1.2-Faelschung-TH-Fachwissen-v2.docx",
+    "26-27-3BK-K1.2-Faelschung-Kahoot-v2.xlsx"
+   ]
   }
  },
  {
