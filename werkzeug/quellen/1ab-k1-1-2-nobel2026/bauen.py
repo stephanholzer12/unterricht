@@ -52,6 +52,41 @@ for n in ["neutrino.gif", "autokatalyse.gif", "optogenetik.gif"]:
     frames[0].save(DST + "img/" + n, save_all=True, append_images=frames[1:], duration=durs, loop=0, optimize=True, disposal=2); SZ[n] = frames[0].size
 
 # ---------------------------------------------------------------- Arbeitsblatt
+# Zusätzlich erlaubte Schreibweisen / Stichwörter für die automatische Prüfung (Freitext wird nur auf Stichwörter geprüft)
+ALT_GAPS = {1: {3: ["5", "fünf"], 4: ["10.12", "10.12.", "10. Dezember"]}}
+KW_A2 = [[["halzen"], ["neutrino", "icecube", "südpol", "eiswürfel", "teilchen aus dem all"]],
+         [["kagan", "soai"], ["autokatal", "spiegelbild", "katalys", "händig", "chiral"]],
+         [["deisseroth", "hegemann", "nagel"], ["kanalrhodopsin", "optogenet", "licht", "nervenzell", "alge"]]]
+KW_A4B = ["ladung", "masse", "durch", "treff", "wechselwirk", "atom", "kern", "leicht", "winzig", "klein", "energie"]
+ACC_A3_EXTRA = {4: ["Physik"]}
+
+
+def schluessel(A):
+    nr, typ = A["nr"], A["typ"]
+    if typ == "gaps":
+        acc = []
+        for g, l in enumerate(A["loesung"]):
+            base = [l] + ([re.sub(r"\s*\(.*?\)", "", l), re.search(r"\((.*?)\)", l).group(1)] if "(" in l else [])
+            acc.append(base + ALT_GAPS.get(nr, {}).get(g, []))
+        return {"acc": acc, "sol": A["loesung"]}
+    if typ == "assign":
+        return {"kw": KW_A2, "sol": A["loesung"]}
+    if typ == "choose":
+        acc = [list(x) + ACC_A3_EXTRA.get(i, []) for i, x in enumerate(A["loesung"])]
+        sol = [" oder ".join(x) + (" (auch Physik)" if i in ACC_A3_EXTRA else "") for i, x in enumerate(A["loesung"])]
+        return {"acc": acc, "sol": sol}
+    if typ == "choose1":
+        return {"sol": A["loesung"]}
+    if typ == "order":
+        return {"sol": A["loesung"]}
+    if typ == "myth":
+        return {"sol": [x[0] for x in A["loesung"]], "why": [x[1] for x in A["loesung"]]}
+    if typ == "calc":
+        return {"kw": {"b": KW_A4B}, "sol": A["loesung"]}
+    if typ == "text":
+        return {"sol": " ".join(A["loesung"])}
+
+
 def js_tasks():
     T = []
     for A in I.AUFGABEN:
@@ -72,6 +107,7 @@ def js_tasks():
             t.update(type="myth", items=A["items"], opts=["Mythos", "Fakt"])
         elif A["typ"] == "text":
             t.update(type="multi", parts=[["t", "Deine Bewertung (3 Sätze)"]])
+        t["key"] = schluessel(A)
         T.append(t)
     return json.dumps(T, ensure_ascii=False, indent=1)
 
@@ -128,6 +164,7 @@ function renderTask(t) {
     card.append(box);
   }
   if (t.type === "multi") t.parts.forEach(([k, lab]) => card.append(labeled(t.id, k, lab, { multi: true })));
+  addCheck(card, t);
   return card;
 }
 """
@@ -175,7 +212,29 @@ src = src.replace('<span id="count">0 von 10 bearbeitet</span>', f'<span id="cou
 src = src.replace('const KEY = "26-27-1AB-K1.2.2-Koerper-UE-Handy-v1";', f'const KEY = "{I.PRE}-TH-Handy-v1";')
 src = src.replace('const TITLE = "K1.2.2 Wie groß bist du wirklich?";', f'const TITLE = "{I.KAP} {I.TITEL}";')
 src = cut(src, "const GERAETE", "// ---------- Zustand", "const T = " + js_tasks() + ";\n\n")
-src = cut(src, "// ---------- Säulendiagramm zum Antippen ----------", "// ---------- Fortschritt ----------", RENDER_JS + "\n")
+PRUEF_JS = open(os.path.join(HERE, "pruefen.js"), encoding="utf-8").read()
+PDF_JS = (open(os.path.join(HERE, "pdf_pruefung.js"), encoding="utf-8").read()
+          .replace("__EYEBROW__", json.dumps(EYEBROW, ensure_ascii=False)).replace("__TITEL__", json.dumps(I.TITEL, ensure_ascii=False))
+          .replace("__KAPTITEL__", json.dumps(I.KAP + " " + I.TITEL, ensure_ascii=False)))
+src = cut(src, "// ---------- Säulendiagramm zum Antippen ----------", "// ---------- Fortschritt ----------", RENDER_JS + "\n" + PRUEF_JS + "\n")
+src = cut(src, "function buildPdf() {", "function savePdf() {", PDF_JS)
+src = src.replace('let S = { name: "", klasse: "", a: {} };', 'let S = { name: "", klasse: "", a: {}, chk: {} };')
+src = src.replace('if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}', 'if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}\nS.chk = S.chk || {};', 1)
+src = src.replace('$("#copyArea").value = asText();\n}', '$("#copyArea").value = asText();\n  T.forEach(paintTask);\n}', 1)
+src = src.replace('"Alle Aufgaben bearbeitet.");', '"Alle Aufgaben bearbeitet.") + unchecked();', 1)
+src = src.replace("Nach jeder Aufgabe kontrollieren wir gemeinsam.", "Drück bei jeder Aufgabe auf <b>Prüfen</b>: Du siehst sofort, was richtig ist. Nach 2 Versuchen kannst du die Lösung ansehen.")
+src = src.replace("Ganz unten <b>PDF erstellen</b> und die PDF in LMS hochladen.", "Ganz unten <b>PDF erstellen</b> und in LMS hochladen. Im PDF stehen dein Ergebnis und deine Versuche.")
+CSS = """.r-ok { border-color: #2E7D3A !important; background-color: #E3F1DA !important; }
+.r-bad { border-color: #B33A2C !important; background-color: #FBE3DE !important; border-style: dashed !important; }
+.chk { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+.chk .fb { font-weight: 700; flex: 1 1 12em; font-size: 16px; }
+.fb.ok { color: #2E7D3A; } .fb.bad { color: #B33A2C; } .fb.info { color: var(--muted); font-weight: 400; }
+.solbox { background: #E8F3F5; border-left: 4px solid var(--teal); border-radius: 10px; padding: 10px 12px; display: grid; gap: 4px; font-size: 16px; }
+.solbox strong { color: var(--teal); }
+.solbox[hidden], .chk [hidden] { display: none !important; }
+.sent2 { border"""
+src = src.replace(".sent2 { border", CSS, 1)
+
 src = cut(src, "function isDone(t) {", "function update() {", DONE_JS.lstrip("\n").replace("function isDone", "function isDone", 1) + "")
 src = cut(src, "function answerLines(t) {", "function asText() {", LINES_JS.lstrip("\n"))
 src = src.replace('clean("NAWI · 1AB · K1.2.2 Messen und Messfehler · Schulbuch S. 17–19")', f'clean("{EYEBROW} · Schulbuch S. 11–14")')

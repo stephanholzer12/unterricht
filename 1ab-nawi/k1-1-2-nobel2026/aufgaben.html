@@ -150,6 +150,14 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
 .chartbox .col { cursor: pointer; }
 .chartbox .col:focus-visible rect.hit { stroke: var(--teal); stroke-width: 3; }
 .gap { display: inline-block; width: 11em; max-width: 100%; margin: 2px 2px; padding: 4px 8px; font-size: 17px; }
+.r-ok { border-color: #2E7D3A !important; background-color: #E3F1DA !important; }
+.r-bad { border-color: #B33A2C !important; background-color: #FBE3DE !important; border-style: dashed !important; }
+.chk { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
+.chk .fb { font-weight: 700; flex: 1 1 12em; font-size: 16px; }
+.fb.ok { color: #2E7D3A; } .fb.bad { color: #B33A2C; } .fb.info { color: var(--muted); font-weight: 400; }
+.solbox { background: #E8F3F5; border-left: 4px solid var(--teal); border-radius: 10px; padding: 10px 12px; display: grid; gap: 4px; font-size: 16px; }
+.solbox strong { color: var(--teal); }
+.solbox[hidden], .chk [hidden] { display: none !important; }
 .sent2 { border: 1px solid var(--line); border-radius: 12px; padding: 12px; line-height: 2.1; }
 .row .choose { margin-top: 4px; }
 </style>
@@ -186,8 +194,8 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
     </div>
     <ol class="steps hint">
       <li>Aufgaben in die <b>gelben Felder</b> eintragen – alles wird am Handy automatisch gespeichert.</li>
-      <li>Stunde 1: Aufgaben 1–4 · Stunde 2: Aufgaben 5–8. Nach jeder Aufgabe kontrollieren wir gemeinsam.</li>
-      <li>Ganz unten <b>PDF erstellen</b> und die PDF in LMS hochladen.</li>
+      <li>Stunde 1: Aufgaben 1–4 · Stunde 2: Aufgaben 5–8. Drück bei jeder Aufgabe auf <b>Prüfen</b>: Du siehst sofort, was richtig ist. Nach 2 Versuchen kannst du die Lösung ansehen.</li>
+      <li>Ganz unten <b>PDF erstellen</b> und in LMS hochladen. Im PDF stehen dein Ergebnis und deine Versuche.</li>
     </ol>
     <p class="hint">Theorie zum Nachlesen: <a href="theorie.html">Lernseite</a> · Schulbuch (Trauner) S. 11–14</p>
   </section>
@@ -674,7 +682,40 @@ const T = [
     4,
     "."
    ]
-  ]
+  ],
+  "key": {
+   "acc": [
+    [
+     "Stockholm"
+    ],
+    [
+     "Dynamit"
+    ],
+    [
+     "Bofors"
+    ],
+    [
+     "fünf (5)",
+     "fünf",
+     "5",
+     "5",
+     "fünf"
+    ],
+    [
+     "10. Dezember",
+     "10.12",
+     "10.12.",
+     "10. Dezember"
+    ]
+   ],
+   "sol": [
+    "Stockholm",
+    "Dynamit",
+    "Bofors",
+    "fünf (5)",
+    "10. Dezember"
+   ]
+  }
  },
  {
   "id": "a2",
@@ -692,7 +733,64 @@ const T = [
   "cols": [
    "Preisträger",
    "Was wurde entdeckt?"
-  ]
+  ],
+  "key": {
+   "kw": [
+    [
+     [
+      "halzen"
+     ],
+     [
+      "neutrino",
+      "icecube",
+      "südpol",
+      "eiswürfel",
+      "teilchen aus dem all"
+     ]
+    ],
+    [
+     [
+      "kagan",
+      "soai"
+     ],
+     [
+      "autokatal",
+      "spiegelbild",
+      "katalys",
+      "händig",
+      "chiral"
+     ]
+    ],
+    [
+     [
+      "deisseroth",
+      "hegemann",
+      "nagel"
+     ],
+     [
+      "kanalrhodopsin",
+      "optogenet",
+      "licht",
+      "nervenzell",
+      "alge"
+     ]
+    ]
+   ],
+   "sol": [
+    [
+     "Francis Halzen",
+     "IceCube am Südpol: Neutrinos aus dem All"
+    ],
+    [
+     "Henri Kagan, Kenso Soai",
+     "aus einem kleinen Vorsprung einer Spiegelbild-Form wird fast nur diese Form (Autokatalyse)"
+    ],
+    [
+     "Karl Deisseroth, Peter Hegemann, Georg Nagel",
+     "Kanalrhodopsin aus der Alge: Nervenzellen mit Licht schalten"
+    ]
+   ]
+  }
  },
  {
   "id": "a3",
@@ -714,7 +812,40 @@ const T = [
    "Ein schnelles Teilchen erzeugt im Eis einen Lichtblitz.",
    "Ionen strömen durch einen Kanal in die Nervenzelle.",
    "Ein Medikament wirkt nur in einer Spiegelbild-Form."
-  ]
+  ],
+  "key": {
+   "acc": [
+    [
+     "Physik"
+    ],
+    [
+     "Chemie"
+    ],
+    [
+     "Biologie"
+    ],
+    [
+     "Physik"
+    ],
+    [
+     "Biologie",
+     "Chemie",
+     "Physik"
+    ],
+    [
+     "Chemie",
+     "Biologie"
+    ]
+   ],
+   "sol": [
+    "Physik",
+    "Chemie",
+    "Biologie",
+    "Physik",
+    "Biologie oder Chemie (auch Physik)",
+    "Chemie oder Biologie"
+   ]
+  }
  },
  {
   "id": "a4",
@@ -733,7 +864,28 @@ const T = [
     "b",
     "b) Warum spürst du davon nichts?"
    ]
-  ]
+  ],
+  "key": {
+   "kw": {
+    "b": [
+     "ladung",
+     "masse",
+     "durch",
+     "treff",
+     "wechselwirk",
+     "atom",
+     "kern",
+     "leicht",
+     "winzig",
+     "klein",
+     "energie"
+    ]
+   },
+   "sol": [
+    "50 min = 50 · 60 s = 3000 s · 60 000 000 000 · 3000 = 180 000 000 000 000 = 1,8 · 10¹⁴ (180 Billionen)",
+    "Neutrinos haben keine Ladung und fast keine Masse. Fast alle fliegen durch, ohne einen Atomkern zu treffen – sie geben keine Energie ab."
+   ]
+  }
  },
  {
   "id": "a5",
@@ -756,7 +908,19 @@ const T = [
    "Trinkflasche ohne Aufdruck",
    "Wendeltreppe",
    "Löffel"
-  ]
+  ],
+  "key": {
+   "sol": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    0,
+    1
+   ]
+  }
  },
  {
   "id": "a6",
@@ -772,7 +936,16 @@ const T = [
    "Das Gen für Kanalrhodopsin kommt in bestimmte Nervenzellen.",
    "Die Nervenzelle sendet ein Signal.",
    "Blaues Licht fällt über eine Glasfaser auf die Zellen."
-  ]
+  ],
+  "key": {
+   "sol": [
+    5,
+    3,
+    1,
+    4,
+    2
+   ]
+  }
  },
  {
   "id": "a7",
@@ -793,7 +966,25 @@ const T = [
   "opts": [
    "Mythos",
    "Fakt"
-  ]
+  ],
+  "key": {
+   "sol": [
+    "Mythos",
+    "Mythos",
+    "Fakt",
+    "Fakt",
+    "Mythos",
+    "Mythos"
+   ],
+   "why": [
+    "Schwarzpulver gibt es seit über 1000 Jahren (China). Nobel erfand das Dynamit.",
+    "Mathematik steht nicht im Testament. Dafür gibt es z. B. die Fields-Medaille.",
+    "12 Mio. Kronen ≈ 1,06 Mio. € pro Preis – bei mehreren Preisträgern wird geteilt.",
+    "Von der Sonne kommen pro Sekunde rund 60 Milliarden pro cm² – fast alle fliegen durch.",
+    "Beispiele Carvon (Kümmel/Minze) und Contergan: Der Körper unterscheidet die Formen.",
+    "Geforscht wird vor allem an Tieren; beim Menschen gibt es erste Studien an der Netzhaut."
+   ]
+  }
  },
  {
   "id": "a8",
@@ -808,13 +999,17 @@ const T = [
     "t",
     "Deine Bewertung (3 Sätze)"
    ]
-  ]
+  ],
+  "key": {
+   "sol": "Beispiel Optogenetik: Sie hilft zu verstehen, welche Nervenzellen Angst oder Bewegung steuern – Grundlage für neue Therapien. Blinde könnten wieder etwas sehen. Grenze: Bisher vor allem Tierversuche, und Gentechnik am Menschen braucht strenge Regeln. Je 1 Punkt: Entdeckung · Nutzen · Grenze."
+  }
  }
 ];
 
 // ---------- Zustand (nur in diesem Browser gespeichert) ----------
-let S = { name: "", klasse: "", a: {} };
+let S = { name: "", klasse: "", a: {}, chk: {} };
 try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
+S.chk = S.chk || {};
 function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
 const A = (id) => (S.a[id] = S.a[id] || {});
 const $ = (s) => document.querySelector(s);
@@ -906,7 +1101,136 @@ function renderTask(t) {
     card.append(box);
   }
   if (t.type === "multi") t.parts.forEach(([k, lab]) => card.append(labeled(t.id, k, lab, { multi: true })));
+  addCheck(card, t);
   return card;
+}
+
+// ---------- Prüfen: Auswertung pro Aufgabe, Versuche zählen ----------
+const norm = (s) => String(s == null ? "" : s).toLowerCase().replace(/dezember/g, "12").replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss").replace(/[^a-z0-9]/g, "");
+function lev(a, b) {
+  let p = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) { const c = [i]; for (let j = 1; j <= b.length; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); p = c; }
+  return p[b.length];
+}
+function sameWord(x, target) { const a = norm(x), b = norm(target); if (!a) return false; if (a === b) return true; return b.length >= 6 && lev(a, b) <= 1; }
+function hasKw(x, kws) {
+  const n = norm(x); if (!n) return false;
+  const words = String(x).toLowerCase().split(/[^a-zäöüß0-9]+/).map(norm).filter(Boolean);
+  return kws.some(k => { const nk = norm(k); return n.includes(nk) || (nk.length >= 5 && words.some(w => w.length >= 4 && lev(w, nk) <= (nk.length >= 8 ? 2 : 1))); });
+}
+function calcA(x) { const s = String(x).toLowerCase().replace(/[\s. ]/g, ""); return /180000000000000/.test(s) || /1,8(\*|x|·|⋅|×)?10\^?(14|¹⁴)/.test(s) || /180billionen/.test(s); }
+
+// Alle Antworten einer Aufgabe als Liste prüfbarer Einträge
+function evalItems(t) {
+  const a = S.a[t.id] || {}, K = t.key || {}, out = [];
+  const ans = (x) => filled(x) ? String(x).trim() : "";
+  if (t.type === "gaps") t.sents.forEach((parts, si) => parts.forEach(p => {
+    if (typeof p === "string") return;
+    const x = ans(a["g" + p]);
+    out.push({ k: "g" + p, kind: "auto", has: !!x, val: x, ok: !!x && K.acc[p].some(z => sameWord(x, z)), sel: "#" + t.id + "_g" + p,
+      text: (si + 1) + ". " + parts.map(q => typeof q === "string" ? q : "[" + v(a["g" + q]) + "]").join(""), solLine: (si + 1) + ". " + K.sol[p], sol: K.sol[p] });
+  }));
+  if (t.type === "assign") t.rows.forEach((r, i) => t.cols.forEach((c, j) => {
+    const k = "r" + i + "c" + j, x = ans(a[k]);
+    out.push({ k, kind: "kw", has: !!x, val: x, ok: !!x && hasKw(x, K.kw[i][j]), sel: "#" + t.id + "_" + k, text: r + " – " + c + ": " + (x || "?"), solLine: r + " – " + c + ": " + K.sol[i][j], sol: K.sol[i][j] });
+  }));
+  if (t.type === "multichoose") t.items.forEach((it, i) => {
+    const k = "c" + i, sel = a[k] || [], names = sel.map(o => t.opts[o]);
+    out.push({ k, kind: "auto", has: sel.length > 0, val: names.join("|"), ok: sel.length > 0 && names.every(n => K.acc[i].includes(n)), row: i, text: it + " → " + (names.join(", ") || "?"), solLine: it + " → " + K.sol[i], sol: K.sol[i] });
+  });
+  if (t.type === "choose") t.items.forEach((it, i) => {
+    const k = "c" + i, x = a[k];
+    out.push({ k, kind: "auto", has: x != null, val: String(x), ok: x === K.sol[i], row: i, text: it + ": " + (x != null ? t.opts[x] : "?"), solLine: it + " → " + t.opts[K.sol[i]], sol: t.opts[K.sol[i]] });
+  });
+  if (t.type === "order") t.items.forEach((it, i) => {
+    const k = "o" + i, x = ans(a[k]);
+    out.push({ k, kind: "auto", has: !!x, val: x, ok: !!x && Number(x) === K.sol[i], sel: "#" + t.id + "_" + k, text: (x || "?") + " – " + it, solLine: it + " → Nr. " + K.sol[i], sol: "Nr. " + K.sol[i] });
+  });
+  if (t.type === "myth") t.items.forEach((it, i) => {
+    const k = "c" + i, x = a[k], r = ans(a["r" + i]);
+    out.push({ k, kind: "auto", has: x != null, val: String(x), ok: x != null && t.opts[x] === K.sol[i], row: i, text: "»" + it + "«: " + (x != null ? t.opts[x] : "?"), solLine: "»" + it + "« → " + K.sol[i] + " – " + K.why[i], sol: K.sol[i] + " – " + K.why[i] });
+    out.push({ k: "r" + i, kind: "manual", has: !!r, val: r, ok: null, text: "Begründung: " + (r || "?"), solLine: "" });
+  });
+  if (t.type === "multi" && t.id !== "a8") t.parts.forEach(([k, lab], idx) => {
+    const x = ans(a[k]);
+    out.push({ k, kind: "kw", has: !!x, val: x, ok: !!x && (k === "a" ? calcA(x) : hasKw(x, K.kw[k])), sel: "#" + t.id + "_" + k, text: lab + "\n" + (x || "?"), solLine: lab + " → " + K.sol[idx], sol: K.sol[idx] });
+  });
+  if (t.type === "multi" && t.id === "a8") {
+    const x = ans(a.t);
+    out.push({ k: "t", kind: "manual", has: !!x, val: x, ok: null, text: x || "?", solLine: "Beispiel: " + K.sol });
+  }
+  return out;
+}
+
+const countable = (items) => items.filter(it => it.kind !== "manual");
+function taskState(t) {
+  const items = evalItems(t), c = S.chk[t.id] || { items: {}, shown: false }, auto = countable(items);
+  let right = 0, att = 0, first = 0, answered = 0;
+  auto.forEach(it => { const rec = c.items[it.k]; if (it.has) { answered++; if (it.ok) right++; } if (rec) { att = Math.max(att, rec.n); if (rec.first) first++; } });
+  return { items, auto, c, right, att, first, answered, total: auto.length, shown: !!c.shown, checked: Object.keys(c.items).length > 0 };
+}
+
+function runCheck(t) {
+  const c = (S.chk[t.id] = S.chk[t.id] || { items: {}, shown: false });
+  evalItems(t).forEach(it => {
+    if (it.kind === "manual" || !it.has) return;
+    const rec = c.items[it.k];
+    if (!rec) c.items[it.k] = { n: 1, first: it.ok, val: it.val };
+    else if (rec.val !== it.val) { rec.n++; rec.val = it.val; }
+  });
+  save(); paintTask(t);
+}
+
+function nodeFor(card, it) {
+  if (it.sel) return card.querySelector(it.sel);
+  return card.querySelectorAll(".rows > .row")[it.row] || null;
+}
+
+function paintTask(t) {
+  const card = $("#card_" + t.id); if (!card) return;
+  const st = taskState(t), fb = card.querySelector(".fb"), sb = card.querySelector(".solbtn"), box = card.querySelector(".solbox"), pb = card.querySelector(".pruefbtn");
+  card.querySelectorAll(".r-ok,.r-bad").forEach(n => n.classList.remove("r-ok", "r-bad"));
+  let right = 0, shown = 0;
+  st.auto.forEach(it => {
+    const rec = st.c.items[it.k];
+    if (rec && it.has && rec.val === it.val) { shown++; if (it.ok) right++; const nd = nodeFor(card, it); if (nd) nd.classList.add(it.ok ? "r-ok" : "r-bad"); }
+  });
+  const manualOnly = st.total === 0;
+  if (pb) pb.disabled = manualOnly ? !st.items.some(i => i.has) : st.answered === 0;
+  if (manualOnly) {
+    fb.className = "fb info"; fb.textContent = st.shown ? "Beispiel angezeigt. Deine Lehrkraft liest deine Antwort." : (st.items.some(i => i.has) ? "Deine Lehrkraft liest deine Antwort. Du kannst jetzt ein Beispiel ansehen." : "Schreib deine Antwort – deine Lehrkraft liest sie.");
+  } else if (!shown) {
+    fb.className = "fb info"; fb.textContent = st.answered ? "Drück auf Prüfen." : "";
+  } else {
+    const all = right === st.total, rest = st.total - shown;
+    fb.className = "fb " + (all ? "ok" : "bad");
+    fb.textContent = (all ? "Richtig! " : right + " von " + st.total + " richtig. ") + "Versuch " + st.att + (rest > 0 && !all ? " · " + rest + " noch ungeprüft" : "") + (st.shown ? " · Lösung angezeigt" : "");
+    if (!all && st.att < 2) fb.textContent += " – verbessere die roten Felder und prüfe nochmal.";
+  }
+  const showSolBtn = manualOnly ? (!st.shown && st.items.some(i => i.has)) : (!st.shown && st.att >= 2 && shown && right < st.total);
+  if (sb) sb.hidden = !showSolBtn;
+  if (box) {
+    box.hidden = !st.shown;
+    if (st.shown && !box.childElementCount) {
+      box.append(el("strong", { text: "Lösung" }));
+      st.items.forEach(it => { if (it.solLine && (manualOnly || it.kind === "manual" || !it.ok || true)) box.append(el("div", { text: it.solLine })); });
+    }
+  }
+}
+
+function addCheck(card, t) {
+  const probe = evalItems(t), manualOnly = countable(probe).length === 0;
+  const pb = el("button", { class: "btn small pruefbtn", type: "button", text: manualOnly ? "Speichern" : "Prüfen" });
+  pb.hidden = manualOnly;
+  const sb = el("button", { class: "btn secondary small solbtn", type: "button", text: manualOnly ? "Beispiel ansehen" : "Lösung anzeigen", hidden: "" });
+  const fb = el("span", { class: "fb info", role: "status", "aria-live": "polite" });
+  pb.addEventListener("click", () => runCheck(t));
+  sb.addEventListener("click", () => { const c = (S.chk[t.id] = S.chk[t.id] || { items: {}, shown: false }); c.shown = true; save(); paintTask(t); });
+  card.append(el("div", { class: "chk" }, pb, fb, sb), el("div", { class: "solbox", hidden: "" }));
+}
+function unchecked() {
+  const l = T.filter(t => { const s = taskState(t); return s.total > 0 && s.answered > 0 && !s.checked; }).map(t => t.nr);
+  return l.length ? " Noch nicht geprüft: Aufgabe " + l.join(", ") + "." : "";
 }
 
 // ---------- Fortschritt ----------
@@ -928,8 +1252,9 @@ function update() {
   document.querySelectorAll("[data-from]").forEach(nm => { const v = (S.a[nm.dataset.from] || {})["name" + nm.dataset.p]; nm.textContent = filled(v) ? v : "Person " + (+nm.dataset.p + 1); });
   const who = [];
   if (!S.name.trim()) who.push("Name"); if (!S.klasse) who.push("Klasse");
-  $("#missing").textContent = (who.length ? "Noch eintragen: " + who.join(" und ") + ". " : "") + (open.length ? "Noch offen: Aufgabe " + open.join(", ") + " (du kannst trotzdem abgeben)." : "Alle Aufgaben bearbeitet.");
+  $("#missing").textContent = (who.length ? "Noch eintragen: " + who.join(" und ") + ". " : "") + (open.length ? "Noch offen: Aufgabe " + open.join(", ") + " (du kannst trotzdem abgeben)." : "Alle Aufgaben bearbeitet.") + unchecked();
   $("#copyArea").value = asText();
+  T.forEach(paintTask);
 }
 
 // ---------- Text-Fassung (für Kopieren und PDF) ----------
@@ -964,6 +1289,17 @@ function slug(s) {
   return (last || "ohne-Namen").replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/Ä/g, "Ae").replace(/Ö/g, "Oe").replace(/Ü/g, "Ue").replace(/ß/g, "ss")
     .replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "") || "ohne-Namen";
 }
+function pdfStats() {
+  let tot = 0, right = 0, first = 0, answered = 0;
+  const rows = T.map(t => {
+    const s = taskState(t); tot += s.total; right += s.right; first += s.first; answered += s.answered;
+    return { t, s };
+  });
+  return { tot, right, first, answered, rows,
+    shown: rows.filter(r => r.s.shown && r.s.total > 0).map(r => r.t.nr),
+    unchecked: rows.filter(r => r.s.total > 0 && r.s.answered > 0 && !r.s.checked).map(r => r.t.nr),
+    open: rows.filter(r => r.s.total > 0 && r.s.answered === 0).map(r => r.t.nr) };
+}
 function buildPdf() {
   const { jsPDF } = window.jspdf;
   const d = new jsPDF({ unit: "mm", format: "a4" });
@@ -971,42 +1307,111 @@ function buildPdf() {
   d.addFileToVFS("C-B.ttf", FONT_B); d.addFont("C-B.ttf", "C", "bold");
   const W = 210, M = 18, CW = W - 2 * M, BOT = 282; let y = 14;
   const olive = [59, 74, 47], teal = [46, 125, 140], muted = [94, 102, 82], ink = [31, 42, 28], rust = [140, 59, 46], theory = [110, 127, 78];
+  const green = [40, 120, 52], red = [178, 48, 36], grey = [140, 146, 128], amber = [176, 118, 20];
+  const newPage = () => { d.addPage(); y = 18; };
   const txt = (s, size, style, color, x = M, w = CW, lh = 1.32) => {
     d.setFont("C", style); d.setFontSize(size); d.setTextColor(...color);
     const lines = d.splitTextToSize(clean(s), w), h = size * 0.3528 * lh;
-    lines.forEach(l => { if (y + h > BOT) { d.addPage(); y = 18; } d.text(l, x, y + h * 0.78); y += h; });
+    lines.forEach(l => { if (y + h > BOT) newPage(); d.text(l, x, y + h * 0.78); y += h; });
   };
+  const tick = (x, yy, c) => { d.setDrawColor(...c); d.setLineWidth(0.7); d.line(x, yy, x + 1.3, yy + 1.4); d.line(x + 1.3, yy + 1.4, x + 3.6, yy - 1.8); };
+  const cross = (x, yy, c) => { d.setDrawColor(...c); d.setLineWidth(0.7); d.line(x, yy - 1.6, x + 3, yy + 1.6); d.line(x, yy + 1.6, x + 3, yy - 1.6); };
+  const dash = (x, yy, c) => { d.setDrawColor(...c); d.setLineWidth(0.7); d.line(x + 0.2, yy, x + 3, yy); };
+  const now = new Date(), when = now.toLocaleDateString("de-AT") + ", " + now.toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }) + " Uhr";
+
+  // Kopf
   d.addImage(LOGO, "PNG", M, y, 11, 12.6);
-  d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean("NAWI · 1AB · K1.1.2 Nobelpreise 2026 · Schulbuch S. 17–19"), M + 15, y + 4);
+  d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean("NAWI · 1AB · K1.1.2 Nobelpreise 2026" + " · Schulbuch S. 11–14"), M + 15, y + 4);
   d.setFontSize(18); d.setTextColor(...olive); d.text(clean("Nobelpreise 2026"), M + 15, y + 11.5);
   y += 17;
   d.setFont("C", "normal"); d.setFontSize(11); d.setTextColor(...ink);
-  d.text(clean("Name: " + (S.name || "—")), M, y); d.text(clean("Klasse: " + (S.klasse || "—")), M + 105, y); d.text("Datum: " + new Date().toLocaleDateString("de-AT"), M + 140, y);
-  y += 3; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 5;
-  for (const t of T) {
-    if (y > BOT - 25) { d.addPage(); y = 18; }
+  d.text(clean("Name: " + (S.name || "—")), M, y); d.text(clean("Klasse: " + (S.klasse || "—")), M + 80, y); d.text(clean("Abgabe: " + when), W - M, y, { align: "right" });
+  y += 3; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 6;
+
+  // Ergebnis-Übersicht
+  const st = pdfStats(), pct = st.tot ? Math.round(st.right / st.tot * 100) : 0;
+  const col = pct >= 75 ? green : pct >= 50 ? amber : red;
+  d.setFillColor(238, 243, 228); d.setDrawColor(211, 220, 194); d.setLineWidth(0.3); d.roundedRect(M, y, CW, 27, 2, 2, "FD");
+  d.setFont("C", "bold"); d.setFontSize(17); d.setTextColor(...col); d.text(clean(st.right + " von " + st.tot + " Antworten richtig (" + pct + " %)"), M + 4, y + 8.5);
+  d.setFont("C", "normal"); d.setFontSize(10.5); d.setTextColor(...ink);
+  d.text(clean("Gleich beim 1. Versuch richtig: " + st.first + " von " + st.tot), M + 4, y + 15);
+  d.text(clean("Lösung angezeigt bei: " + (st.shown.length ? "Aufgabe " + st.shown.join(", ") : "keiner Aufgabe")), M + 4, y + 20);
+  const warn = [];
+  if (st.unchecked.length) warn.push("nicht geprüft: Aufgabe " + st.unchecked.join(", "));
+  if (st.open.length) warn.push("nicht bearbeitet: Aufgabe " + st.open.join(", "));
+  d.setTextColor(...(warn.length ? rust : muted)); d.text(clean(warn.length ? warn.join(" · ") : "Alle Aufgaben bearbeitet und geprüft."), M + 4, y + 25);
+  y += 32;
+
+  // Tabelle
+  const cx = { nr: M + 2, title: M + 11, ric: M + 106, v1: M + 126, att: M + 146 }, RH = 6.2;
+  d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...muted);
+  d.text("Nr.", cx.nr, y + 4); d.text("Aufgabe", cx.title, y + 4);
+  d.text("richtig", cx.ric, y + 4, { align: "center" }); d.text("1. Versuch", cx.v1, y + 4, { align: "center" }); d.text("Versuche", cx.att, y + 4, { align: "center" }); d.text("Lösung", W - M - 1, y + 4, { align: "right" });
+  y += 6; d.setDrawColor(...olive); d.setLineWidth(0.4); d.line(M, y, W - M, y);
+  st.rows.forEach((r, i) => {
+    const { t, s } = r, base = y + 4.3;
+    if (i % 2 === 0) { d.setFillColor(246, 249, 240); d.rect(M, y + 0.3, CW, RH, "F"); }
+    d.setFont("C", "bold"); d.setFontSize(10.5); d.setTextColor(...olive); d.text(String(t.nr), cx.nr, base);
+    d.setFont("C", "normal"); d.setTextColor(...ink); d.text(d.splitTextToSize(clean(t.title), 88)[0], cx.title, base);
+    if (s.total > 0) {
+      const c2 = s.right === s.total ? green : s.right === 0 ? red : amber;
+      d.setFont("C", "bold"); d.setTextColor(...c2); d.text(s.right + " / " + s.total, cx.ric, base, { align: "center" });
+      d.setFont("C", "normal"); d.setTextColor(...ink);
+      d.text(s.checked ? s.first + " / " + s.total : "–", cx.v1, base, { align: "center" });
+      d.text(s.checked ? String(s.att) : "nicht geprüft", cx.att, base, { align: "center" });
+      d.setTextColor(...(s.shown ? rust : ink)); d.text(s.shown ? "angezeigt" : "nein", W - M - 1, base, { align: "right" });
+    } else {
+      d.setFont("C", "normal"); d.setTextColor(...muted); d.text("Freitext – Lehrkraft liest", cx.ric, base); d.setTextColor(...(s.shown ? rust : ink)); d.text(s.shown ? "Beispiel gesehen" : "–", W - M - 1, base, { align: "right" });
+    }
+    y += RH;
+  });
+  d.setDrawColor(...olive); d.setLineWidth(0.4); d.line(M, y + 0.3, W - M, y + 0.3); y += 2.5;
+  d.setFont("C", "normal"); d.setFontSize(8.5); d.setTextColor(...muted);
+  const note = d.splitTextToSize(clean("Freitext wird nur auf Stichwörter geprüft (Aufgabe 2 und 4); Begründungen in Aufgabe 7 und die Antwort in Aufgabe 8 beurteilt die Lehrkraft. »1. Versuch« = beim ersten Prüfen richtig. »Versuche« = häufigstes Prüfen einer Antwort in dieser Aufgabe."), CW);
+  note.forEach(l => { d.text(l, M, y + 3); y += 3.6; });
+  y += 3;
+
+  // Einzelauswertung
+  const rowOf = (it, rec) => {
+    let info, c;
+    if (it.kind === "manual") { info = it.has ? "Lehrkraft liest" : "keine Antwort"; c = it.has ? grey : rust; }
+    else if (!it.has) { info = "keine Antwort"; c = rust; }
+    else if (!rec) { info = "nicht geprüft"; c = grey; }
+    else if (it.ok) { info = rec.n === 1 ? "richtig im 1. Versuch" : "richtig im " + rec.n + ". Versuch"; c = green; }
+    else { info = rec.n + (rec.n === 1 ? " Versuch" : " Versuche") + ", falsch"; c = red; }
+    return { info, c };
+  };
+  for (const r of st.rows) {
+    const { t, s } = r;
+    if (y > BOT - 40) newPage();
     y += 2;
     d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...theory); d.text(clean(t.src + (t.tag ? " · " + t.tag : "")), W - M, y + 4, { align: "right" });
     txt("Aufgabe " + t.nr + ": " + t.title, 13, "bold", olive, M, CW - 40);
-    txt((t.ad ? "Werbung: " + t.ad + " " : "") + t.q, 10, "normal", muted);
-    y += 1.2;
-    for (const l of answerLines(t)) txt(l, 11.5, l.includes("keine Antwort") ? "bold" : "normal", l.includes("keine Antwort") ? rust : ink, M + 4, CW - 4, 1.3);
-    if (t.type === "chart") {
-      const a = S.a[t.id] || {}, cw = 12, chh = 4, x0 = M + 12, h0 = 10 * chh;
-      if (y + h0 + 14 > BOT) { d.addPage(); y = 18; }
-      y += 3; const base = y + h0;
-      d.setDrawColor(201, 211, 176); d.setLineWidth(0.2);
-      for (let k = 0; k <= 10; k++) { d.line(x0, base - k * chh, x0 + 10 * cw, base - k * chh); d.setFontSize(7); d.setTextColor(...olive); d.text(String(k), x0 - 2, base - k * chh + 1, { align: "right" }); }
-      for (let j = 0; j < 10; j++) { const n = a["b" + j] || 0; if (n) { d.setFillColor(127, 168, 58); d.rect(x0 + j * cw + 1, base - n * chh, cw - 2, n * chh, "F"); } }
-      for (let j = 0; j <= 10; j++) { d.setFontSize(7); d.text(String(145 + 5 * j), x0 + j * cw, base + 4, { align: "center" }); }
-      d.setDrawColor(...olive); d.setLineWidth(0.5); d.line(x0, base, x0 + 10 * cw, base); d.line(x0, base, x0, base - h0);
-      d.setFontSize(8); d.text(clean("Körpergröße in cm"), x0 + 5 * cw, base + 8, { align: "center" });
-      y = base + 10;
+    txt(t.q, 9.5, "normal", muted);
+    if (s.total > 0) {
+      const c2 = s.right === s.total ? green : s.right === 0 ? red : amber;
+      txt(s.right + " von " + s.total + " richtig" + (s.checked ? " · " + s.att + (s.att === 1 ? " Versuch" : " Versuche") : " · nicht geprüft") + (s.shown ? " · Lösung angezeigt" : ""), 10.5, "bold", c2);
     }
-    y += 3; d.setDrawColor(211, 220, 194); d.setLineWidth(0.3); d.line(M, y, W - M, y); y += 2;
+    y += 1.2;
+    for (const it of s.items) {
+      const rec = s.c.items[it.k], { info, c } = rowOf(it, rec), noAns = !it.has;
+      const w = CW - 8 - 34; d.setFont("C", "normal"); d.setFontSize(11.5);
+      const lines = d.splitTextToSize(clean(noAns && it.kind === "manual" ? it.text.replace(/\?\s*$/, "— keine Antwort —") : it.text), w), h = 11.5 * 0.3528 * 1.3;
+      const wrong = it.kind !== "manual" && it.has && !it.ok && it.sol;
+      const solLines = wrong ? (d.setFontSize(9.5), d.splitTextToSize(clean("Richtig: " + it.sol), CW - 8)) : [];
+      const need = lines.length * h + solLines.length * 4.2;
+      if (y + need > BOT) newPage();
+      const my = y + h * 0.55;
+      if (it.kind === "manual") dash(M + 2, my, grey); else if (!it.has) dash(M + 2, my, rust); else if (it.ok) tick(M + 1.6, my, green); else cross(M + 2, my, red);
+      d.setFont("C", noAns ? "bold" : "normal"); d.setFontSize(11.5); d.setTextColor(...(noAns ? rust : ink));
+      lines.forEach(l => { d.text(l, M + 8, y + h * 0.78); y += h; });
+      d.setFont("C", "bold"); d.setFontSize(8.5); d.setTextColor(...c); d.text(clean(info), W - M, y - lines.length * h + h * 0.78, { align: "right" });
+      if (solLines.length) { d.setFont("C", "normal"); d.setFontSize(9.5); d.setTextColor(...teal); solLines.forEach(l => { d.text(l, M + 8, y + 3); y += 4.2; }); }
+    }
+    y += 2.5; d.setDrawColor(211, 220, 194); d.setLineWidth(0.3); d.line(M, y, W - M, y); y += 2;
   }
   const n = d.getNumberOfPages();
-  for (let p = 1; p <= n; p++) { d.setPage(p); d.setFont("C", "normal"); d.setFontSize(8); d.setTextColor(...muted); d.text(clean("K1.1.2 Nobelpreise 2026 · " + (S.name || "") + " · Seite " + p + " von " + n), W - M, 292, { align: "right" }); }
+  for (let p = 1; p <= n; p++) { d.setPage(p); d.setFont("C", "normal"); d.setFontSize(8); d.setTextColor(...muted); d.text(clean("K1.1.2 Nobelpreise 2026" + " · " + (S.name || "") + " · Seite " + p + " von " + n), W - M, 292, { align: "right" }); }
   return d.output("blob");
 }
 function savePdf() {
