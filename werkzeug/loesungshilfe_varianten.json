@@ -1,0 +1,13 @@
+{
+  "4ab-nawi/k1-5a-elektromagnet": [
+    {"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000, "step": 50}, {"n": "I", "min": 0.2, "max": 1.0, "step": 0.1}, {"n": "lcm", "min": 8, "max": 30, "step": 2}],
+     "text": "Eine Spule hat {N} Windungen und ist {lcm} cm lang. Es fließen {I} A. Berechne die Durchflutung Θ und die Feldstärke H.",
+     "felder": [{"label": "Durchflutung Θ (mit Einheit)", "expr": "N*I", "einheit": "A"}, {"label": "Feldstärke H (mit Einheit)", "expr": "N*I/(lcm/100)", "einheit": "A/m"}]},
+    {"id": "a12", "vars": [{"n": "Acm", "min": 2, "max": 10, "step": 1}, {"n": "phi", "min": 0.0002, "max": 0.0012, "step": 0.0001}],
+     "text": "Durch eine Fläche von {Acm} cm² geht ein magnetischer Fluss von {phi} Wb. Gib die Fläche in m² an und berechne die Flussdichte B.",
+     "felder": [{"label": "Fläche A in m²", "expr": "Acm/10000", "einheit": "m²"}, {"label": "Flussdichte B (mit Einheit)", "expr": "phi/(Acm/10000)", "einheit": "T"}]},
+    {"id": "a18", "vars": [{"n": "theta", "min": 100, "max": 500, "step": 50}, {"n": "I", "min": 0.25, "max": 1.0, "step": 0.25}, {"n": "lcm", "min": 4, "max": 10, "step": 1}],
+     "text": "Ein Türöffner braucht eine Durchflutung von Θ = {theta} A, dein Netzgerät liefert {I} A. a) Wie viele Windungen brauchst du? b) Die Spule ist {lcm} cm lang – wie groß ist H?",
+     "felder": [{"label": "a) Windungszahl N", "expr": "theta/I", "einheit": ""}, {"label": "b) Feldstärke H (mit Einheit)", "expr": "theta/(lcm/100)", "einheit": "A/m"}]}
+  ]
+}

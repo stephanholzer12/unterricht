@@ -44,3 +44,9 @@ Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsi
 - Nur Unterrichtsmaterial: keine Noten, keine Schülernamen, keine Testlösungen, keine eingescannten Buchseiten
 - Keine Buchinhalte (die Seiten sind öffentlich): Buch-Aufgaben, Lückensätze, Rätsel-Hinweise und Thesen immer in eigenen Worten, Buchabbildungen nur als Verweis (»Karte im Buch S. 19«), alle Grafiken selbst gezeichnet; Seitenzahlen und Kapitelangaben sind erlaubt
 - Antworten der Kadetten bleiben im Browser; Abgabe als PDF in LMS
+
+## Lösungshilfe (Handy-Arbeitsblätter)
+`python3 werkzeug/loesungshilfe_einbauen.py` baut `loesungshilfe.js` in jede `*/*/aufgaben.html` mit »Prüfen« ein (idempotent; nach jedem neuen Arbeitsblatt ausführen).
+- Fehlversuch 1: nur Hinweis. Ab Fehlversuch 2: Tipp mit Link. Ab Fehlversuch 3: Knopf »Lösung zeigen« bei dieser Aufgabe.
+- PDF zeigt je Aufgabe: selbst gelöst (1. Versuch) / gelöst nach n Fehlversuchen (mit Tipp) / Lösung angesehen (selbst bewerten).
+- Rechenaufgaben: Übungsvariante mit Zufallszahlen, definiert in `loesungshilfe_varianten.json` (zählt nicht für die Abgabe).
