@@ -1,4 +1,4 @@
-"""Test-Training NAWI 4AB · 1. Test (11.11.2026) – Quiz aus werkzeug/vorlagen/quiz_vorlage.html.
+"""Test-Training NAWI 4AB · 1. Test (4AK 09.11.2026 · 4BK 11.11.2026) – Quiz aus werkzeug/vorlagen/quiz_vorlage.html.
 Aufruf im Repository-Ordner:  python3 werkzeug/quellen/4ab-test1-training/bauen.py
 Schreibt 4ab-nawi/test1-training/quiz.html. Fragen in eigenen Worten; Seiten nach Trauner NAWI 4.
 Für eine andere Klasse: Ordner kopieren, ORDNER/EYEBROW/TITEL/QUIZ anpassen."""
@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 WZ = os.path.join(ROOT, "werkzeug")
 BASE = "https://stephanholzer12.github.io/unterricht/"
 ORDNER = "4ab-nawi/test1-training"
-EYEBROW = "NAWI · 4AB · Training für den 1. Test (11.11.)"
+EYEBROW = "NAWI · 4AB · Training für den 1. Test (4AK 09.11. · 4BK 11.11.)"
 TITEL = "Test-Training"
 
 # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Seite)

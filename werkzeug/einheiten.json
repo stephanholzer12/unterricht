@@ -220,15 +220,15 @@
   "klasse": "4AB",
   "fach": "NAWI",
   "ordner": "4ab-nawi/test1-training",
-  "kapitel": "1. Test · 11.11.",
+  "kapitel": "1. Test · 4AK 09.11. · 4BK 11.11.",
   "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
   "seiten": [
    "quiz.html"
   ],
   "dateien": {
-   "stand": "18.10.2026",
+   "stand": "20.10.2026",
    "liste": [
-    "26-27-4AB-Test1-Teststoff-v2.docx",
+    "26-27-4AB-Test1-Teststoff-v3.docx",
     "26-27-4AB-Test1-Kahoot.xlsx",
     "26-27-4AB-Test1-Blooket.csv"
    ]
