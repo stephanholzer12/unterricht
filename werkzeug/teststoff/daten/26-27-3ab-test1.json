@@ -1,0 +1,31 @@
+{
+ "datei": "26-27-3AB-Test1-Teststoff-v1.docx",
+ "kopf": "TESTSTOFF · NAWI · 3. JAHRGANG",
+ "titel": "1. Test – Biomoleküle und Ernährung",
+ "fuss": "3AB · 1. Test NAWI · Teststoff · Stand 20.10.2026 · v1",
+ "termin": "Montag, 9. November 2026",
+ "stoff": "Schulbuch (Trauner) S. 10–23, 68–74 und alle Unterlagen aus dem Unterricht",
+ "durchgenommen": [
+  ["1", "Biomoleküle: Kohlenhydrate (Mono-, Di-, Polysaccharide), Fette und Transfette, Proteine", "S. 10–23", "[[PPP Biomoleküle · Arbeitsblatt Biomoleküle]]", "[[Aufgaben …]] · Buch-Aufgaben S. [[…]]"],
+  ["2", "Ernährung: Nährstoffdichte, Wertstufen der Vollwerternährung, Ernährungsweisen (Vegetarismus, Vollwerternährung), Trend-Check: Hype oder Hilfe?", "S. 68–74", "Lernseite · Arbeitsblatt am Handy (Trend-Check: Hype oder Hilfe?)", "Aufgaben 1–5 · Quiz"]
+ ],
+ "koennen": [
+  ["1", "**Biomoleküle:** Ich kann Kohlenhydrate (Mono-, Di-, Polysaccharide), Fette und Transfette sowie Proteine nach Bau und Eigenschaften unterscheiden · Ich kann die Energiedichte der Makronährstoffe vergleichen und für Sport und Dienst einordnen · [[weitere Lernziele aus dem Arbeitsblatt ergänzen]]", "Kohlenhydrat, Monosaccharid, Disaccharid, Polysaccharid, Fett, Transfett, Protein, Energiedichte"],
+  ["2", "**Ernährung:** Ich kann einen Ernährungstrend mit den Buch-Empfehlungen vergleichen (Wertstufe, Nährstoffdichte, Bedarf) · Ich kann einschätzen, wie gut eine Aussage belegt ist (Meinung, Einzelfall, Studie) · Ich erkenne, wer an einem Trend verdient, und beurteile ihn mit der Trend-Ampel", "Nährstoffdichte, Wertstufe, Vegetarismus, Vollwerternährung, Beleg/Evidenz, Trend-Ampel"]
+ ],
+ "formeln": [
+  ["Energiedichte = Energiegehalt ÷ Masse", "kcal/g"],
+  ["Nährstoffdichte = Nährstoffmenge ÷ Energiegehalt", "z. B. g Ballaststoffe/kcal"]
+ ],
+ "tipp": "Zum Vergleich: Kohlenhydrate und Eiweiß liefern ca. 4 kcal/g, Fett ca. 9 kcal/g – hohe Energiedichte bei Fett, hohe Nährstoffdichte bei Gemüse und Vollkornprodukten.",
+ "kein_teststoff": [
+  "alles, was als **OPTIONAL** oder **»Für Schnelle und Neugierige«** markiert ist",
+  "Die Zelle als biochemisches System und Zellstoffwechsel – Membranproteine, Diffusion, Osmose, Fotosynthese, Zellatmung, Enzyme (S. 24–36)",
+  "Landwirtschaft und Nahrungs- und Genussmittel – Formen der Landwirtschaft, Haltbarmachung, Molkereiprodukte, Obst/Gemüse/Getreide/Fette/Kaffee (S. 38–67)",
+  "Versuche und Versuchsprotokolle selbst (derzeit nicht testrelevant)"
+ ],
+ "qr": [
+  {"titel": "Test-Training", "text": "Quiz zum ganzen Teststoff", "url": "https://stephanholzer12.github.io/unterricht/3ab-nawi/test1-training/quiz.html"},
+  {"titel": "Klassenseite 3AB", "text": "alle Lernseiten", "url": "https://stephanholzer12.github.io/unterricht/3ab-nawi/"}
+ ]
+}
