@@ -346,6 +346,48 @@
  {
   "klasse": "3AB",
   "fach": "NAWI",
+  "ordner": "3ab-nawi/k2-3a-ernaehrung",
+  "kapitel": "K2.3a",
+  "titel": "Ernährungsweisen: Personengruppen, Vegetarismus & Vollwerternährung",
+  "block": "B Landwirtschaft & Ernährung",
+  "jahresplan": "E7 (Teil 1)",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "lesen": "Teil 1 · Personengruppen + Teil 2 · Alternative Ernährungsformen",
+     "aufgaben": "1–2",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "lesen": "Teil 2.1 · Vegetarismus + Teil 2.2 · Vollwerternährung, dann Quiz",
+     "aufgaben": "3–6 · Quiz",
+     "abgabe": "PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige",
+     "aufgaben": "7",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "20.10.2026",
+   "liste": [
+    "26-27-3AB-K2.1a-Ernaehrungsweisen-Lehrer.pptx"
+   ]
+  }
+ },
+ {
+  "klasse": "3AB",
+  "fach": "NAWI",
   "ordner": "3ab-nawi/k2-3b-trendcheck",
   "kapitel": "K2.3b",
   "titel": "Trend-Check: Hype oder Hilfe?",
