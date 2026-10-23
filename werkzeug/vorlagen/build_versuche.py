@@ -41,7 +41,7 @@ rep = {"__CAMO__": rd("/home/claude/w2/camo.b64"), "__LOGO__": rd("/home/claude/
        "__RANGES__": open("ranges.json").read(), "__DATA__": json.dumps(data, ensure_ascii=False)}
 for k in ["__CAMO__", "__LOGO__", "__SMILEY__", "__QR__", "__FONTR__", "__FONTB__", "__RANGES__", "__DATA__", "__JSPDF__"]:
     body = body.replace(k, rep[k])
-head = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,700&display=swap">\n'
+head = '<link rel="stylesheet" href="../../schriften/schriften.css">\n'
 page = ('<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<meta name="robots" content="noindex">\n<title>Bindungs-Versuche</title>\n'
         + head + css + "\n" + extra + "\n</head>\n<body>\n" + body + "\n</body>\n</html>\n")
 open(SITE + "versuche.html", "w").write(page)

@@ -291,8 +291,8 @@ for k, v_ in {"__CAMO__": CAMO, "__LOGO__": LOGO, "__SMILEY__": SMILEY, "__QR__"
               "__RANGES__": open(WZ + "/schriften/ranges.json").read().strip(), "__DATA__": json.dumps(VDATA, ensure_ascii=False)}.items():
     vbody = vbody.replace(k, v_)
 assert not re.search(r"__[A-Z]+__", vbody)
-vhead = ('<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,700&display=swap">\n')
+vhead = (''
+         '<link rel="stylesheet" href="../../schriften/schriften.css">\n')
 open(DST + "versuche.html", "w", encoding="utf-8").write(
     '<!doctype html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n<meta name="robots" content="noindex">\n'
     f'<title>{I.TITEL} – Versuche</title>\n' + vhead + rep_css_base + "\n" + vextra + "\n</head>\n<body>\n" + vbody + "\n</body>\n</html>\n")
@@ -424,9 +424,7 @@ page = f"""<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>{esc(I.TITEL)} – Lernseite</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,700&display=swap">
+<link rel="stylesheet" href="../../schriften/schriften.css">
 {tcss}
 </head>
 <body>
