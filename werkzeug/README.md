@@ -75,3 +75,5 @@ Oben auf Seite 1 jeder Abgabe-PDF mit automatischer Prüfung steht ein gelber Ka
 - Punkte: 1 je richtige Auswahl-/Zahlen-Antwort, Stichwort-Antworten anteilig, Aufgaben mit angesehener Lösung = 0 (stehen im Kasten), Aufgaben ohne automatische Prüfung (Freitext/Skizze) stehen als »selbst bewerten«; Zusatzaufgaben zählen nur, wenn bearbeitet.
 - Schlüssel: ab 88 % = 1, 75 % = 2, 62 % = 3, 50 % = 4, sonst 5 (`SCHLUESSEL` in `werkzeug/notenvorschlag.js`).
 - Einbau: `python3 werkzeug/notenvorschlag_einbauen.py` (steht in `nach_dem_bauen.py`; `pruefen.py` verlangt den Block). Versuchs- und Projektseiten haben keinen Kasten (Lehrkraft bewertet).
+
+Unter dem PDF-Knopf steht (aus `pdf_erinnerung.js`) der Ersatzweg-Hinweis: »Geht LMS gerade nicht? Dann schick die PDF per E-Mail an die Lehrkraft.« Ohne E-Mail-Adresse, damit sie nicht auf der öffentlichen Seite steht.

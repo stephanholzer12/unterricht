@@ -737,10 +737,14 @@ update();
   var memSnap = null;
 
   var css = "#pe-hinweis{margin:10px 0;padding:10px 12px;border-radius:10px;font-weight:600;font-size:16px;line-height:1.4;border-left:5px solid #B07A00;background:#FFF4D6;color:#4A3400}" +
-    "#pe-hinweis.pe-ok{border-left-color:#3F6B14;background:#EEF4E4;color:#2C3D16}#pe-hinweis[hidden]{display:none}@media print{#pe-hinweis{display:none}}";
+    "#pe-hinweis.pe-ok{border-left-color:#3F6B14;background:#EEF4E4;color:#2C3D16}#pe-hinweis[hidden]{display:none}.pe-mail{margin:8px 0 0;font-size:14px;line-height:1.4;color:#5E6652}@media print{#pe-hinweis,.pe-mail{display:none}}";
   var stl = document.createElement("style"); stl.id = "pe-css"; stl.textContent = css; document.head.appendChild(stl);
   var box = document.createElement("p"); box.id = "pe-hinweis"; box.hidden = true; box.setAttribute("aria-live", "polite");
   btn.parentNode.insertBefore(box, btn);
+  /* Ersatzweg: Geht LMS nicht, darf die PDF per E-Mail kommen (Datum und Uhrzeit stehen in der PDF) */
+  var mail = document.createElement("p"); mail.id = "pe-mail"; mail.className = "pe-mail";
+  mail.textContent = "Geht LMS gerade nicht? Dann schick die PDF per E-Mail an die Lehrkraft. Datum und Uhrzeit stehen in der PDF.";
+  btn.parentNode.insertBefore(mail, btn.nextSibling);
 
   function get(k) { try { return ls ? ls.getItem(k) : null; } catch (e) { return null; } }
   function hash(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36) + "-" + s.length; }
