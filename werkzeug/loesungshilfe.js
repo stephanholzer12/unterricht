@@ -106,6 +106,10 @@
           var soll = auswerten(f.expr, vals), p = parseNum(inputs[k].value);
           var gut = p && !isNaN(p.v) && Math.abs(p.v - soll) <= Math.abs(soll) * 0.02;
           var unitOk = !f.einheit || (p && normU(p.u) === normU(f.einheit));
+          if (window.numPruefen) {   // großzügige Prüfung (werkzeug/pruefung_nachsicht.js): Einheiten umrechnen, Rundung, Zahl ohne Einheit
+            var np = window.numPruefen(inputs[k].value, soll, f.einheit);
+            gut = np.ok || /Einheit/.test(np.msg || ""); unitOk = np.ok;
+          }
           if (!gut) { alleOk = false; msgs.push(f.label + ": stimmt noch nicht."); }
           else if (!unitOk) { alleOk = false; msgs.push(f.label + ": Zahl stimmt – Einheit prüfen."); }
         });

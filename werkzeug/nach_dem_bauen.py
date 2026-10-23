@@ -6,13 +6,14 @@ Führt der Reihe nach aus (alle wiederholbar, ändern keinen Speicherschlüssel)
   4. schriften_einbauen.py        – Schriften lokal statt Google Fonts
   4b. abgabezeit_einbauen.py      – Datum UND Uhrzeit im PDF-Kopf und im Kopier-Text
   4c. versuche_pruefen_einbauen.py – Knopf »Eingaben prüfen« (Hinweise/Tipps in Stufen) unter jedem Versuch; Regeln: werkzeug/versuche_pruefung.json
+  4d. pruefung_nachsicht_einbauen.py – großzügigere »Prüfen«-Auswertung der Arbeitsblätter (Einheiten, Rundung, Schreibweise); Korrekturen: werkzeug/pruefregeln_korrekturen.json
   5. build_index.py               – Klassenseiten, Fahrplan, Lehrer-Seite
   6. pruefen.py                   – Kontrolle (dieselbe wie bei jedem Push)
 Danach: git status ansehen, nur die eigene Einheit committen, git pull --rebase, git push."""
 import os, subprocess, sys
 W = os.path.dirname(os.path.abspath(__file__))
 for s in ("speicherstatus_einbauen.py", "pdf_erinnerung_einbauen.py", "pdf_programm_auslagern.py",
-          "schriften_einbauen.py", "abgabezeit_einbauen.py", "versuche_pruefen_einbauen.py", "build_index.py", "pruefen.py"):
+          "schriften_einbauen.py", "abgabezeit_einbauen.py", "versuche_pruefen_einbauen.py", "pruefung_nachsicht_einbauen.py", "build_index.py", "pruefen.py"):
     print(f"\n=== {s} ===", flush=True)
     r = subprocess.run([sys.executable, os.path.join(W, s)], cwd=os.path.dirname(W))
     if r.returncode:

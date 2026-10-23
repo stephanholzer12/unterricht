@@ -60,3 +60,11 @@ Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsi
 
 ## Automatische Kontrolle
 `python3 werkzeug/pruefen.py` (läuft auch bei jedem Push als »Seiten pruefen« unter GitHub → Actions): meldet Fremdserver-Links, Tokens, Skript-Syntaxfehler, PDF-Seiten ohne Speicherstatus und **verschwundene/umbenannte Speicherschlüssel** (außer `[schluessel-ok]` steht in der Commit-Nachricht). Pakete für die Automatik sind in `werkzeug/requirements.txt` festgelegt.
+
+
+## Großzügige Prüfung der Arbeitsblätter (pruefung_nachsicht)
+Der Knopf »Prüfen« in `aufgaben.html` (Standard-Prüfung mit `checkField`) bewertet richtige Antworten großzügig:
+- **Zahlen:** irgendeine Zahl der Antwort darf stimmen; Tausenderpunkt/-leerzeichen, Komma oder Punkt, `m2`/`m^2`/`m²`, `4*10^-4`; gleichwertige Einheiten (kA/m = 1000 A/m, mT, cm², Vs/m² = T); fehlende Einheit = richtig mit Hinweis; Rundung auf die angeschriebene Stelle (83 statt 82,8); sonst 2 % Spielraum. Falsche Einheit (z. B. V statt A) bleibt falsch.
+- **Texte:** ä/ae, ö/oe, ü/ue, ß/ss, Bindestriche, Tippfehler bei einfachen Stichwörtern (ab 6 Buchstaben).
+- **Regeln je Einheit korrigieren:** `werkzeug/pruefregeln_korrekturen.json` (Ordner → Aufgabe → Feld). `need` = wie viele Stichwortgruppen genügen, `kw` = neue Stichwörter, 3. Eintrag einer Gruppe = wie viele verschiedene Treffer nötig (»Nenne zwei Gründe« = 2).
+- Einbau: `python3 werkzeug/pruefung_nachsicht_einbauen.py` (steht in `nach_dem_bauen.py`; `pruefen.py` verlangt den Block). Neue Aufgaben: Regeln großzügig schreiben (viele Wortstämme, nur so viele Gruppen verlangen wie die Aufgabe fordert).

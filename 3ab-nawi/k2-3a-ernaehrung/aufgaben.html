@@ -1538,6 +1538,10 @@ window.LH_VARIANTEN = [];
           var soll = auswerten(f.expr, vals), p = parseNum(inputs[k].value);
           var gut = p && !isNaN(p.v) && Math.abs(p.v - soll) <= Math.abs(soll) * 0.02;
           var unitOk = !f.einheit || (p && normU(p.u) === normU(f.einheit));
+          if (window.numPruefen) {   // großzügige Prüfung (werkzeug/pruefung_nachsicht.js): Einheiten umrechnen, Rundung, Zahl ohne Einheit
+            var np = window.numPruefen(inputs[k].value, soll, f.einheit);
+            gut = np.ok || /Einheit/.test(np.msg || ""); unitOk = np.ok;
+          }
           if (!gut) { alleOk = false; msgs.push(f.label + ": stimmt noch nicht."); }
           else if (!unitOk) { alleOk = false; msgs.push(f.label + ": Zahl stimmt – Einheit prüfen."); }
         });
@@ -1757,5 +1761,170 @@ window.LH_VARIANTEN = [];
 })();
 </script>
 <!-- pdferinnerung:end -->
+<!-- nachsicht:start -->
+<script>window.__CHK_KORREKTUR = {"a1":{"lisa":{"need":1},"markus":{"need":1},"opa":{"need":1},"tim":{"need":1}},"a3":{"spaetzle":{"kw":[["ovolakto und Pescetarier","ovo.?lakto|lakto.?ovo|ovolakto|pesc"]]},"gummi":{"kw":[["keine Form","kein|niemand|nein|gelatine|tierisch"]]}}};
+/* Großzügigere Prüfung der Arbeitsblätter (»Prüfen«-Knopf): Richtige Antworten sollen nicht wegen Schreibweise, Format oder Einheit als falsch gelten.
+   Wird NACH der Seiten-Prüfung eingesetzt und ersetzt nur checkField/parseNum/normU/showCheck (die Seite selbst bleibt unverändert).
+   Ändert keinen Speicherschlüssel und keine gespeicherte Antwort.
+
+   ZAHLEN (Rechenaufgaben):
+     - Irgendeine Zahl in der Antwort darf die richtige sein (nicht nur die letzte): »0,4 A bei 600 Windungen = 240 A« wird erkannt.
+     - Tausendertrennung (2.069 / 2 069 / 2'069), Komma oder Punkt, »m2«, »m^2«, »m²«, »qm«, µ und μ werden verstanden.
+     - Gleichwertige Einheiten gelten: 2 kA/m = 2000 A/m, 1500 mT = 1,5 T, 4 cm² = 0,0004 m², Vs/m² = T, Tesla = T.
+     - Fehlt die Einheit, gilt die Zahl trotzdem als richtig – mit Hinweis »Einheit nicht vergessen«. Eine FALSCHE Einheit bleibt falsch.
+     - Gerundete Antworten gelten: 3 statt 3,1 und 83 statt 82,8 (Rundung auf die angeschriebene Stelle), sonst 2 % Spielraum wie bisher.
+   TEXTE (Stichwörter):
+     - ä/ae, ö/oe, ü/ue, ß/ss, Bindestriche (»ovo-lakto«), Tausenderpunkte werden gleichgesetzt.
+     - Ein Tippfehler in einem Stichwort (ab 6 Buchstaben) wird verziehen.
+     - Pro Aufgabe kann festgelegt werden, wie viele Stichwortgruppen vorkommen müssen (need) und wie viele verschiedene Wörter einer Gruppe (3. Eintrag),
+       z. B. »Nenne zwei Gründe«. Korrekturen je Einheit: werkzeug/pruefregeln_korrekturen.json.
+   Einbau: python3 werkzeug/pruefung_nachsicht_einbauen.py */
+(function () {
+  if (window.__nachsicht) return; window.__nachsicht = true;
+  if (typeof checkField !== "function" || typeof S === "undefined") return;
+
+  /* ---------- Einheiten ---------- */
+  var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
+  var BASE = { A: [0, 0, 0, 1, 1], T: [1, 0, -2, -1, 1], V: [1, 2, -3, -1, 1], Wb: [1, 2, -2, -1, 1], N: [1, 1, -2, 0, 1], W: [1, 2, -3, 0, 1], J: [1, 2, -2, 0, 1],
+    "Ω": [1, 2, -3, -2, 1], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
+  var WORT = [[/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
+  function einheitDim(u) {
+    u = String(u || "").replace(/[μ]/g, "µ").replace(/ω/g, "Ω").replace(/²/g, "2").replace(/³/g, "3").replace(/\^/g, "").replace(/\s+/g, "");
+    WORT.forEach(function (w) { u = u.replace(w[0], w[1]); });
+    if (!u) return null;
+    var teile = u.split("/"), dim = [0, 0, 0, 0], f = 1;
+    for (var i = 0; i < teile.length; i++) {
+      var sign = i === 0 ? 1 : -1, terme = teile[i].split(/[·*.]/).filter(Boolean);
+      if (!terme.length) return null;
+      for (var j = 0; j < terme.length; j++) {
+        var mt = /^([A-Za-zµΩ]+?)(-?\d)?$/.exec(terme[j]); if (!mt) return null;
+        var name = mt[1], ex = mt[2] ? parseInt(mt[2], 10) : 1, pre = 1, b = BASE[name];
+        if (!b) { var p = name.charAt(0), rest = name.slice(1); if (PRE[p] && BASE[rest]) { pre = PRE[p]; b = BASE[rest]; } else return null; }
+        for (var k = 0; k < 4; k++) dim[k] += sign * ex * b[k];
+        f *= Math.pow(pre * b[4], sign * ex);
+      }
+    }
+    return { dim: dim, f: f };
+  }
+  /* Faktor, mit dem eine Zahl in Einheit u in die Einheit soll umgerechnet wird; null = andere Größe (falsche Einheit) */
+  function faktor(u, soll) {
+    var a = einheitDim(u), b = einheitDim(soll);
+    if (!a || !b) return String(u).replace(/\s/g, "").toLowerCase() === String(soll).replace(/\s/g, "").toLowerCase() ? 1 : null;
+    for (var i = 0; i < 4; i++) if (a.dim[i] !== b.dim[i]) return null;
+    return a.f / b.f;
+  }
+  function parseZahlen(str) {
+    var s0 = String(str || "").replace(/(\d)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
+    var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)?)?)/g, out = [], m;
+    while ((m = re.exec(s0))) {
+      var n = m[1];
+      n = /^\d{1,3}(\.\d{3})+$/.test(n) ? n.replace(/\./g, "") : n.replace(",", ".");
+      var dec = (n.split(".")[1] || "").length;
+      out.push({ v: parseFloat(n), u: m[2] || "", dec: dec });
+    }
+    return out;
+  }
+  var parseNum0 = parseNum;
+  parseNum = function (str) { var l = parseZahlen(str); return l.length ? l[l.length - 1] : null; };
+  var normU0 = normU;
+  normU = function (u) { var d = String(u || "").replace(/[μ]/g, "µ"); return normU0(d.replace(/\^2/g, "²")); };
+
+  /* Prüft eine Zahlen-Antwort. Gibt {ok, msg, note} zurück. */
+  function numPruefen(text, soll, einheit) {
+    var L = parseZahlen(text);
+    if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
+    var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
+    for (var i = 0; i < L.length; i++) {
+      var x = L[i], v = x.v, u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
+      if (einheit && hatEinheit) { f = faktor(u, einheit); }
+      var wert = f === null ? v : v * f;
+      var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
+      var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= 0.5 * Math.pow(10, -x.dec) + 1e-9;
+      if (rel || rund) {
+        if (f === null) { einheitFalsch = true; zahlOk = true; }
+        else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
+        else { return { ok: true }; }
+      }
+    }
+    if (zahlOk && einheitFalsch && !einheitFehlt) return { ok: false, msg: "Zahl stimmt – Einheit prüfen." };
+    if (zahlOk && einheitFehlt) return { ok: true, note: "Die Zahl stimmt. Denk daran, immer die Einheit (" + einheit + ") dazuzuschreiben." };
+    if (zahlOk) return { ok: false, msg: "Zahl stimmt – Einheit prüfen." };
+    return { ok: false, msg: "Das Ergebnis stimmt noch nicht." };
+  }
+  window.numPruefen = numPruefen;
+
+  /* ---------- Text ---------- */
+  function lev(a, b) {
+    var m = a.length, n = b.length, i, j, d = [];
+    for (i = 0; i <= m; i++) d[i] = [i]; for (j = 1; j <= n; j++) d[0][j] = j;
+    for (i = 1; i <= m; i++) for (j = 1; j <= n; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return d[m][n];
+  }
+  function varianten(txt) {
+    var t = String(txt || "").toLowerCase().replace(/(\d)[.\s'](?=\d{3}(?!\d))/g, "$1");
+    var V = [t];
+    V.push(t.replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss"));
+    V.push(t.replace(/ae/g, "ä").replace(/oe/g, "ö").replace(/ue/g, "ü").replace(/ss/g, "ß"));
+    V.push(t.replace(/ä/g, "a").replace(/ö/g, "o").replace(/ü/g, "u").replace(/ß/g, "ss"));
+    var o = V.slice(); V.forEach(function (v) { var h = v.replace(/-/g, ""); if (h !== v) o.push(h); });
+    return o;
+  }
+  function einfach(a) { return /^[a-zäöüß ]{6,}$/.test(a); }
+  function splitAlt(rx) {   // nur Striche außerhalb von Klammern trennen
+    var out = [], d = 0, cur = "";
+    for (var i = 0; i < rx.length; i++) { var ch = rx[i];
+      if (ch === "\\") { cur += ch + (rx[i + 1] || ""); i++; continue; }
+      if (ch === "(" || ch === "[") d++; if (ch === ")" || ch === "]") d--;
+      if (ch === "|" && d === 0) { out.push(cur); cur = ""; } else cur += ch; }
+    out.push(cur); return out;
+  }
+  function treffer(rx, V, W) {
+    var re; try { re = new RegExp(rx, "i"); } catch (e) { return 0; }
+    var alts = splitAlt(rx), n = 0;
+    alts.forEach(function (a) {
+      var gefunden = false;
+      try { var ra = new RegExp(a, "i"); gefunden = V.some(function (v) { return ra.test(v); }); } catch (e) {}
+      if (!gefunden && einfach(a)) gefunden = W.some(function (w) { return w.length >= a.length - 1 && lev(w.slice(0, a.length), a) <= 1; });
+      if (gefunden) n++;
+    });
+    return n;   // Anzahl verschiedener passender Alternativen
+  }
+
+  var checkField0 = checkField;
+  checkField = function (t, key, c) {
+    var a = S.a[t.id] || {};
+    if (c.num !== undefined) {
+      var r = numPruefen(a[key], c.num, c.unit);
+      return { ok: r.ok, kind: "num", msg: r.msg, note: r.note, filled: filled(a[key]) };
+    }
+    if (c.kw) {
+      var V = varianten(a[key]), W = []; V.forEach(function (v) { v.split(/[^a-zäöüß0-9]+/).forEach(function (w) { if (w) W.push(w); }); });
+      var hits = c.kw.map(function (g) { var n = treffer(g[1], V, W); return [g[0], n >= (g[2] || 1)]; });
+      var need = c.need || hits.length, n = hits.filter(function (h) { return h[1]; }).length;
+      return { ok: n >= need, kind: "kw", hits: hits, filled: filled(a[key]) };
+    }
+    return checkField0(t, key, c);
+  };
+
+  /* Hinweis bei richtiger Zahl ohne Einheit */
+  var showCheck0 = showCheck;
+  showCheck = function (t) {
+    showCheck0(t);
+    try {
+      var r = evalTask(t), fb = document.getElementById("fb_" + t.id);
+      if (r && r.ok && fb) r.parts.forEach(function (p) { if (p.note) { var d = document.createElement("div"); d.textContent = "Hinweis: " + p.note; fb.appendChild(d); } });
+    } catch (e) {}
+  };
+
+  /* ---------- Korrekturen einzelner Regeln (je Einheit) ---------- */
+  var K = window.__CHK_KORREKTUR || {};
+  Object.keys(K).forEach(function (id) {
+    var t = T.filter(function (x) { return x.id === id; })[0]; if (!t || !t.chk) return;
+    Object.keys(K[id]).forEach(function (key) { t.chk[key] = Object.assign({}, t.chk[key] || {}, K[id][key]); });
+  });
+})();
+</script>
+<!-- nachsicht:end -->
 </body>
 </html>

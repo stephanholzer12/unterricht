@@ -1,0 +1,233 @@
+{
+ "_hinweis": "Korrekturen einzelner Prüfregeln der Arbeitsblätter (Einheit-Ordner -> Aufgabe -> Feld -> Änderung). need = wie viele Stichwortgruppen genügen; kw = neue Stichwörter (3. Eintrag einer Gruppe = wie viele verschiedene Treffer nötig). Wird durch werkzeug/pruefung_nachsicht_einbauen.py in die Seite geschrieben.",
+ "einheiten": {
+  "3bk-pbgw/k1-2-faelschung": {
+   "a2": {
+    "besser": {
+     "need": 1
+    }
+   },
+   "a3": {
+    "gruende": {
+     "kw": [
+      [
+       "Zwei Gründe (Geld/Auflage/Exklusivität, Konkurrenz/Zeitdruck/Geheimhaltung)",
+       "geld|auflage|verkauf|gewinn|umsatz|exklusiv|sensation|millionen|konkurren|zeitdruck|geheim|schnell|zuerst|nur heidemann|einzige|druck|scoop|gier|profit|vertrau",
+       2
+      ]
+     ]
+    }
+   },
+   "a4": {
+    "stelle": {
+     "need": 1
+    }
+   },
+   "a5": {
+    "fragen": {
+     "need": 2
+    },
+    "tun": {
+     "need": 1
+    }
+   }
+  },
+  "3bk-pbgw/k1-3-epochen": {
+   "a5": {
+    "warum": {
+     "need": 1
+    }
+   },
+   "a8": {
+    "warum": {
+     "need": 1
+    }
+   },
+   "a10": {
+    "euro": {
+     "need": 1
+    },
+    "oe1": {
+     "kw": [
+      [
+       "Ereignis mit Jahr",
+       "1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"
+      ]
+     ]
+    },
+    "oe2": {
+     "kw": [
+      [
+       "Ereignis mit Jahr",
+       "1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"
+      ]
+     ]
+    }
+   },
+   "a11": {
+    "zeit": {
+     "kw": [
+      [
+       "Uhrzeit",
+       "0?6[:.]?\\s?30|6\\s*(uhr|h)\\s*30"
+      ]
+     ]
+    },
+    "dzg": {
+     "kw": [
+      [
+       "Tag + Uhrzeit",
+       "18\\s*2145"
+      ],
+      [
+       "Zone B",
+       "2145\\s*b"
+      ],
+      [
+       "Monat + Jahr",
+       "okt(ober)?\\s*(20)?26"
+      ]
+     ]
+    }
+   },
+   "a14": {
+    "warum": {
+     "need": 1
+    }
+   }
+  },
+  "2ak-pbgw/k1-grundrechte": {
+   "a2": {
+    "neu": {
+     "need": 1
+    }
+   },
+   "a3": {
+    "drei": {
+     "kw": [
+      [
+       "Weltregierung",
+       "regierung"
+      ],
+      [
+       "Weltpolizei",
+       "polizei|exekutive"
+      ],
+      [
+       "Weltgericht",
+       "gericht|richter"
+      ]
+     ]
+    },
+    "weich": {
+     "need": 1
+    }
+   },
+   "a4": {
+    "erkl": {
+     "need": 1
+    }
+   },
+   "a7": {
+    "amnesty": {
+     "need": 1
+    }
+   },
+   "a10": {
+    "wen": {
+     "need": 1
+    }
+   }
+  },
+  "3ab-nawi/k2-3a-ernaehrung": {
+   "a1": {
+    "lisa": {
+     "need": 1
+    },
+    "markus": {
+     "need": 1
+    },
+    "opa": {
+     "need": 1
+    },
+    "tim": {
+     "need": 1
+    }
+   },
+   "a3": {
+    "spaetzle": {
+     "kw": [
+      [
+       "ovolakto und Pescetarier",
+       "ovo.?lakto|lakto.?ovo|ovolakto|pesc"
+      ]
+     ]
+    },
+    "gummi": {
+     "kw": [
+      [
+       "keine Form",
+       "kein|niemand|nein|gelatine|tierisch"
+      ]
+     ]
+    }
+   }
+  },
+  "4ab-nawi/k1-5a-elektromagnet": {
+   "a5": {
+    "t": {
+     "need": 2
+    }
+   },
+   "a6": {
+    "begr": {
+     "need": 2
+    }
+   },
+   "a7": {
+    "t": {
+     "need": 1
+    }
+   },
+   "a9": {
+    "begr": {
+     "need": 2
+    },
+    "video": {
+     "need": 1
+    }
+   },
+   "a14": {
+    "schutz": {
+     "need": 1
+    }
+   },
+   "a15": {
+    "t": {
+     "need": 1
+    }
+   },
+   "a16": {
+    "risiken": {
+     "kw": [
+      [
+       "Zwei Risiken (Lieferung/Preis/Abhängigkeit/…)",
+       "liefer|export|preis|abhängig|engpass|knapp|erpress|politisch|zoll|kosten|produktion|monopol",
+       2
+      ]
+     ]
+    }
+   },
+   "a20": {
+    "c": {
+     "kw": [
+      [
+       "Fabrik/Werk",
+       "dresden|villach|infineon|fabrik|werk|chips act|gesetz|bosch|globalfoundries|ams|intel|europa"
+      ]
+     ]
+    }
+   }
+  }
+ }
+}
