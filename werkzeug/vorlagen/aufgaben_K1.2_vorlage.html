@@ -161,7 +161,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
     <h2>Fertig? Dann PDF erstellen</h2>
     <p class="hint" id="missing"></p>
     <button class="btn" type="button" id="pdfbtn">PDF erstellen</button>
-    <p class="status" id="pdfstatus" hidden></p>
+    <p class="status" id="pdfstatus" hidden aria-live="polite"></p>
     <p class="hint">Danach in LMS die Aufgabe öffnen → <b>Datei hochladen</b> → die PDF aus <i>Downloads</i> (Android) bzw. <i>Dateien</i> (iPhone) wählen.</p>
     <details>
       <summary class="hint" style="cursor:pointer">Klappt das PDF nicht? Antworten als Text kopieren</summary>
@@ -487,7 +487,7 @@ async function savePdf() {
       const url = URL.createObjectURL(blob);
       const a = el("a", { href: url, download: filename }); document.body.append(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 30000);
-      say("ok", "Gespeichert: " + filename + " – jetzt in LMS hochladen.");
+      say("ok", "PDF wurde erstellt: " + filename + " – schau in deinen Downloads nach, ob sie da ist, und lade sie dann in LMS hoch.");
     }
   } catch (e) { say("err", "Beim Erstellen der PDF ist ein Fehler passiert. Kopiere die Antworten als Text (unten)."); }
   finally { btn.disabled = false; }
