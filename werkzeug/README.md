@@ -68,3 +68,10 @@ Der Knopf »Prüfen« in `aufgaben.html` (Standard-Prüfung mit `checkField`) be
 - **Texte:** ä/ae, ö/oe, ü/ue, ß/ss, Bindestriche, Tippfehler bei einfachen Stichwörtern (ab 6 Buchstaben).
 - **Regeln je Einheit korrigieren:** `werkzeug/pruefregeln_korrekturen.json` (Ordner → Aufgabe → Feld). `need` = wie viele Stichwortgruppen genügen, `kw` = neue Stichwörter, 3. Eintrag einer Gruppe = wie viele verschiedene Treffer nötig (»Nenne zwei Gründe« = 2).
 - Einbau: `python3 werkzeug/pruefung_nachsicht_einbauen.py` (steht in `nach_dem_bauen.py`; `pruefen.py` verlangt den Block). Neue Aufgaben: Regeln großzügig schreiben (viele Wortstämme, nur so viele Gruppen verlangen wie die Aufgabe fordert).
+
+
+## Punkte und Notenvorschlag im PDF (notenvorschlag)
+Oben auf Seite 1 jeder Abgabe-PDF mit automatischer Prüfung steht ein gelber Kasten: »Für LMS: 31 von 38 Punkten (82 %) · Notenvorschlag 2 – vorläufig«. Am Bildschirm der Schüler erscheint nichts.
+- Punkte: 1 je richtige Auswahl-/Zahlen-Antwort, Stichwort-Antworten anteilig, Aufgaben mit angesehener Lösung = 0 (stehen im Kasten), Aufgaben ohne automatische Prüfung (Freitext/Skizze) stehen als »selbst bewerten«; Zusatzaufgaben zählen nur, wenn bearbeitet.
+- Schlüssel: ab 88 % = 1, 75 % = 2, 62 % = 3, 50 % = 4, sonst 5 (`SCHLUESSEL` in `werkzeug/notenvorschlag.js`).
+- Einbau: `python3 werkzeug/notenvorschlag_einbauen.py` (steht in `nach_dem_bauen.py`; `pruefen.py` verlangt den Block). Versuchs- und Projektseiten haben keinen Kasten (Lehrkraft bewertet).

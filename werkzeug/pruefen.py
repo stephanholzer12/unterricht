@@ -30,6 +30,8 @@ for f in seiten:
         fehler.append(f"{rel(f)}: Versuchsseite ohne Prüf-Knopf (Regeln in werkzeug/versuche_pruefung.json ergänzen, dann python3 werkzeug/versuche_pruefen_einbauen.py)")
     if "function checkField" in s and "nachsicht:start" not in s:
         fehler.append(f"{rel(f)}: Arbeitsblatt ohne großzügige Prüfung (python3 werkzeug/pruefung_nachsicht_einbauen.py ausführen)")
+    if ("function checkField" in s or "function pdfStats" in s) and "buildPdf" in s and "notenvorschlag:start" not in s:
+        fehler.append(f"{rel(f)}: Arbeitsblatt ohne Punkte-Kasten im PDF (python3 werkzeug/notenvorschlag_einbauen.py ausführen)")
     if "jsPDF" in s and "pdferinnerung:start" not in s:
         fehler.append(f"{rel(f)}: PDF-Seite ohne PDF-Erinnerung (python3 werkzeug/pdf_erinnerung_einbauen.py ausführen)")
     for i, m in enumerate(re.finditer(r"<script(?![^>]*\bsrc=)(?![^>]*type=\"(?:application/json|text/template))[^>]*>(.*?)</script>", s, re.S)):
