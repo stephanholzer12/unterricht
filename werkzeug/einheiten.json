@@ -221,6 +221,10 @@
   "fach": "NAWI",
   "ordner": "4ab-nawi/test1-training",
   "kapitel": "1. Test · 4AK 09.11. · 4BK 11.11.",
+  "termine": {
+   "4AK": "2026-11-09",
+   "4BK": "2026-11-11"
+  },
   "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
   "seiten": [
    "quiz.html"
@@ -378,6 +382,7 @@
     }
    ]
   },
+  "alt_nummer": "K2.1a",
   "dateien": {
    "stand": "20.10.2026",
    "liste": [

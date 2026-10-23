@@ -225,6 +225,31 @@ def test_datum(kapitel):
         return None
 
 
+def test_termine(e):
+    """Termine eines Tests als [(Klasse oder "", Datum), …].
+    Bevorzugt das Feld "termine" in einheiten.json ({"4AK": "2026-11-09", …}) – nur so bekommen
+    parallel geführte Klassen mit verschiedenen Terminen jeweils den richtigen Countdown.
+    Ohne dieses Feld wie bisher das erste Datum aus dem Kapiteltext (reicht bei einem Termin)."""
+    tm = e.get("termine")
+    if isinstance(tm, dict) and tm:
+        paare = []
+        for kl, iso in tm.items():
+            try:
+                paare.append((kl, datetime.date.fromisoformat(iso)))
+            except (TypeError, ValueError):
+                pass
+        if paare:
+            return sorted(paare, key=lambda x: x[1])
+    d = test_datum(e["kapitel"])
+    return [("", d)] if d else []
+
+
+def erster_termin(e):
+    """Frühestes Datum eines Tests – für Sortierung und die Kachel »nächster Test«."""
+    tm = test_termine(e)
+    return tm[0][1] if tm else None
+
+
 def knoepfe(e, nur=None):
     seiten = sorted(e["seiten"], key=lambda s: REIHE.index(s) if s in REIHE else 99)
     if nur:
@@ -290,9 +315,15 @@ def seite_index(ordner, k, tests, units, bloecke, n_plan, n_begriffe, n_ziele):
                    f'<h3 id="jetzt">{esc(u["titel"])}</h3><div class="meta">{esc(" · ".join(x for x in [u["kapitel"], L.get("buch", "")] if x))}</div>'
                    f'<div class="links">{knoepfe(u)}</div></section>')
     for t in tests:
-        d = test_datum(t["kapitel"])
-        cd = f' · <span data-datum="{d.isoformat()}"></span>' if d else ""
-        out.append(f'<section class="card" style="border-left:6px solid var(--orange)"><div class="eyebrow" style="color:var(--orange)">{esc(t["kapitel"])}{cd}</div>'
+        tm = test_termine(t)
+        if len(tm) > 1:
+            # Eigene Termine je Klasse: Datum einmal aus dem Feld »termine«, nicht zusätzlich aus dem Kapiteltext.
+            titel_tx = esc(t["kapitel"].split("·")[0].strip())
+            cd = "".join(f' · {esc(kl)} {d.strftime("%d.%m.")} (<span data-datum="{d.isoformat()}"></span>)' for kl, d in tm)
+        else:
+            titel_tx = esc(t["kapitel"])
+            cd = f' · <span data-datum="{tm[0][1].isoformat()}"></span>' if tm else ""
+        out.append(f'<section class="card" style="border-left:6px solid var(--orange)"><div class="eyebrow" style="color:var(--orange)">{titel_tx}{cd}</div>'
                    f'<h3>{esc(t["titel"])} <span class="badge test">Test</span></h3><div class="links">{knoepfe(t)}</div></section>')
     n_bl = len([b for b in bloecke if b["nr"]])
     out.append(f'<div class="tiles"><a href="#themen"><b>{len(units)}</b><span>{"Einheit" if len(units) == 1 else "Einheiten"} bisher</span></a>'
@@ -470,12 +501,16 @@ def stunden_html(e, ordner):
 def dateien_html(e):
     """Aktuell gültige Dateien einer Einheit (Feld »dateien« in einheiten.json) – nur für die Lehrer-Seite."""
     d = e.get("dateien")
+    # Alte Materialnummer (Feld »alt_nummer«): Dateien behalten ihren Namen, die Zuordnung bleibt nachvollziehbar.
+    alt = e.get("alt_nummer")
+    hinweis = (f'<div class="alt-nr">Alte Materialnummer: <strong>{esc(alt)}</strong> – '
+               f'PPP-/Word-Dateien heißen weiter so, aktuelle Unterrichtseinheit ist {esc(e.get("kapitel", ""))}.</div>') if alt else ""
     if not d:
-        return '<div class="files leer">Aktuelle PPP-/Word-Dateien: noch nicht vermerkt</div>'
+        return hinweis + '<div class="files leer">Aktuelle PPP-/Word-Dateien: noch nicht vermerkt</div>'
     zeilen = "".join(f'<li><span class="art">{esc(art(f))}</span> <code>{esc(f)}</code></li>' for f in d.get("liste", []))
     zip_ = f'<div><span class="art">Paket</span> <code>{esc(d["zip"])}</code></div>' if d.get("zip") else ""
     stand = f' · Stand {esc(d["stand"])}' if d.get("stand") else ""
-    return f'<details class="files"><summary>Aktuelle Dateien{stand}</summary>{zip_}<ul>{zeilen}</ul></details>'
+    return f'{hinweis}<details class="files"><summary>Aktuelle Dateien{stand}</summary>{zip_}<ul>{zeilen}</ul></details>'
 
 
 LEHRER_CSS = """
@@ -500,6 +535,7 @@ LEHRER_CSS = """
 .ulist > div:first-child { border-top: 0; }
 .files { font-size: 14px; }
 .files.leer { color: var(--muted); font-style: italic; }
+.alt-nr { font-size: 14px; color: var(--muted); background: var(--soft); border-left: 4px solid var(--teal); border-radius: 6px; padding: 6px 10px; margin: 6px 0; }
 .files summary { cursor: pointer; font-weight: 700; color: var(--teal); }
 .files ul { margin: 4px 0 0; padding-left: 0; list-style: none; display: grid; gap: 2px; }
 .files code { font-family: Consolas, "Courier New", monospace; font-size: 13px; word-break: break-all; }
@@ -528,19 +564,28 @@ def sicht_knopf(e, ausblenden):
 def seite_lehrer(klassen):
     klassen = sorted(klassen, key=lambda k: k["k"]["klasse"])  # 1AB, 2AB, 2AK, 3AB, 3BK, 4AB, 5AB, 5AK
     n_u = sum(len(k["units"]) for k in klassen)
-    tests = sorted(((test_datum(t["kapitel"]), t, k) for k in klassen for t in k["tests"]), key=lambda x: (x[0] is None, x[0] or HEUTE))
-    out = [kopf("Alle Klassen", "NUR FÜR DICH · Link nicht an Kadetten weitergeben", "", "Lehrer-Übersicht – alle Klassen")]
+    # Eine Zeile je echter Klasse: 4AB liefert zwei Zeilen (4AK 09.11., 4BK 11.11.), kein gemeinsames Datum mehr.
+    tests = []
+    for k in klassen:
+        for t in k["tests"]:
+            tm = test_termine(t)
+            if tm:
+                tests.extend((d, kl or k["k"]["klasse"], t, k) for kl, d in tm)
+            else:
+                tests.append((None, k["k"]["klasse"], t, k))
+    tests.sort(key=lambda x: (x[0] is None, x[0] or HEUTE))
+    out = [kopf("Alle Fachübersichten", "NUR FÜR DICH · Link nicht an Kadetten weitergeben", "", "Lehrer-Übersicht – alle Fachübersichten")]
     out[0] = out[0].replace("</style>", LEHRER_CSS + "</style>").replace("<main>", '<main class="wide">')
-    out[0] = re.sub(r'<nav class="toc".*?</nav>', '<nav class="toc" aria-label="Klassen"><div>' + "".join(
+    out[0] = re.sub(r'<nav class="toc".*?</nav>', '<nav class="toc" aria-label="Fachübersichten"><div>' + "".join(
         f'<a href="#{esc(k["ordner"])}">{esc(k["k"]["fach"])} {esc(k["k"]["klasse"])}</a>' for k in klassen) + "</div></nav>", out[0], flags=re.S)
-    nxt = next(((d, t, k) for d, t, k in tests if d and d >= HEUTE), None)
-    nxt_txt = f'{esc(nxt[2]["k"]["klasse"])} · {nxt[0].strftime("%d.%m.")}' if nxt else "–"
-    out.append(f'<div class="tiles"><a href="#klassen"><b>{len(klassen)}</b><span>Klassen</span></a><a href="#klassen"><b>{n_u}</b><span>Einheiten online</span></a>'
+    nxt = next(((d, kl, t, k) for d, kl, t, k in tests if d and d >= HEUTE), None)
+    nxt_txt = f'{esc(nxt[1])} · {nxt[0].strftime("%d.%m.")}' if nxt else "–"
+    out.append(f'<div class="tiles"><a href="#klassen"><b>{len(klassen)}</b><span>Fachübersichten</span></a><a href="#klassen"><b>{n_u}</b><span>Einheiten online</span></a>'
                f'<a href="#tests"><b>{nxt_txt}</b><span>nächster Test</span></a></div>')
     if tests:
-        li = "".join(f'<li><strong>{esc(k["k"]["fach"])} {esc(k["k"]["klasse"])}</strong> · {esc(t["kapitel"])}'
-                     + (f' · <span data-datum="{d.isoformat()}"></span>' if d else "")
-                     + f' · <a href="{esc(t["ordner"])}/quiz.html">Test-Training</a></li>' for d, t, k in tests)
+        li = "".join(f'<li><strong>{esc(k["k"]["fach"])} {esc(kl)}</strong> · {esc(t["kapitel"].split("·")[0].strip())}'
+                     + (f' · {d.strftime("%d.%m.")} (<span data-datum="{d.isoformat()}"></span>)' if d else " · Termin folgt")
+                     + f' · <a href="{esc(t["ordner"])}/quiz.html">Test-Training</a></li>' for d, kl, t, k in tests)
         out.append(f'<section class="card" id="tests"><div class="eyebrow">TESTS</div><ul style="margin:0;padding-left:20px;display:grid;gap:4px">{li}</ul></section>')
     out.append('<div class="grid" id="klassen">')
     for k in klassen:
@@ -553,7 +598,7 @@ def seite_lehrer(klassen):
         h = [f'<section class="card kl" id="{esc(o)}"><div class="kl-head"><div class="t"><div class="eyebrow">{stand}</div><h3>{esc(kk["fach"])} {esc(kk["klasse"])}</h3>'
              f'<div class="url">{esc(url)}</div></div>'
              f'<button type="button" class="qrbtn" data-titel="{esc(kk["fach"])} {esc(kk["klasse"])}" data-url="{esc(url)}" aria-label="QR-Code {esc(kk["klasse"])} groß zeigen">{qr}</button></div>'
-             f'<div class="links small"><a class="btn" href="{esc(o)}/">Klassenseite</a><a class="btn light" href="{esc(o)}/begriffe.html">Begriffe ({k["n_b"]})</a>'
+             f'<div class="links small"><a class="btn" href="{esc(o)}/">Klassenseite</a><a class="btn light" href="{esc(o)}/begriffe.html">Begriffe ({k["n_b"] if k["n_b"] else "noch keine hinterlegt"})</a>'
              f'<a class="btn light" href="{esc(o)}/wiederholen.html">Wiederholen ({k["n_z"]})</a></div>']
         if jetzt:
             e2 = dict(jetzt, unter=jetzt["ordner"])
@@ -588,23 +633,20 @@ document.querySelectorAll('.qrbtn').forEach(function (b) {
 function zu() { bm.classList.remove('on'); }
 var SMSG = document.createElement('div'); SMSG.id = 'sichtmsg'; document.body.appendChild(SMSG);
 function sagen(t) { SMSG.textContent = t; SMSG.classList.add('on'); setTimeout(function () { SMSG.classList.remove('on'); }, 9000); }
+/* Ein-/Ausblenden ohne GitHub-Token: Diese Seite liegt öffentlich auf GitHub Pages – ein Token im
+   Browser-Speicher wäre für jedes Skript derselben Adresse lesbar. Stattdessen: Ordnername in die
+   Zwischenablage, GitHub-Action öffnen, dort eingeloggt »Run workflow«. Kein Token auf der Webseite. */
+try { localStorage.removeItem('gh_token'); } catch (e) {}   /* alten Token aufräumen, falls je einer getippt wurde */
+var ACTION_URL = 'https://github.com/stephanholzer12/unterricht/actions/workflows/einheit-sichtbar.yml';
 document.querySelectorAll('.sichtbtn').forEach(function (b) {
   b.addEventListener('click', function () {
-    var tok = ''; try { tok = localStorage.getItem('gh_token') || ''; } catch (e) {}
-    if (!tok) {
-      tok = prompt('Einmalig: GitHub-Token einfügen (nur Recht »Actions: Read and write« für dieses Repository). Er bleibt nur auf diesem Gerät gespeichert.') || '';
-      if (!tok) return; try { localStorage.setItem('gh_token', tok.trim()); } catch (e) {}
-    }
-    var aus = b.dataset.aktion === 'ausblenden';
-    if (!confirm((aus ? 'Einheit ausblenden?\\n' : 'Einheit wieder einblenden?\\n') + b.dataset.ordner + '\\n\\nNur diese Klasse. Der Direktlink bleibt aktiv.')) return;
-    b.disabled = true;
-    fetch('https://api.github.com/repos/stephanholzer12/unterricht/actions/workflows/einheit-sichtbar.yml/dispatches', {
-      method: 'POST', headers: { 'Authorization': 'Bearer ' + localStorage.getItem('gh_token'), 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
-      body: JSON.stringify({ ref: 'main', inputs: { ordner: b.dataset.ordner, aktion: b.dataset.aktion } })
-    }).then(function (r) {
-      if (r.status === 204) sagen('Gesendet. In etwa 1–2 Minuten ist es erledigt – dann diese Seite neu laden.');
-      else { b.disabled = false; if (r.status === 401 || r.status === 403 || r.status === 404) { try { localStorage.removeItem('gh_token'); } catch (e) {} } sagen('Hat nicht geklappt (Fehler ' + r.status + '). Token prüfen und noch einmal tippen.'); }
-    }).catch(function () { b.disabled = false; sagen('Keine Verbindung.'); });
+    var ordner = b.dataset.ordner, aus = b.dataset.aktion === 'ausblenden';
+    if (!confirm((aus ? 'Einheit ausblenden?\\n' : 'Einheit wieder einblenden?\\n') + ordner +
+                 '\\n\\nNur diese Klasse. Der Direktlink bleibt aktiv.\\n\\nGitHub öffnet sich: dort »Run workflow«, Ordner einfügen, »' +
+                 b.dataset.aktion + '« wählen.')) return;
+    try { if (navigator.clipboard) navigator.clipboard.writeText(ordner); } catch (e) {}
+    sagen('Ordner kopiert: ' + ordner + ' — in GitHub bei »Run workflow« einfügen, »' + b.dataset.aktion + '« wählen. Danach 1–2 Minuten warten und diese Seite neu laden.');
+    window.open(ACTION_URL, '_blank', 'noopener');
   });
 });
 document.getElementById('bx').onclick = zu;
