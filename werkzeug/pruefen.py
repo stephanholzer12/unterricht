@@ -26,6 +26,8 @@ for f in seiten:
         fehler.append(f"{rel(f)}: PDF-Seite ohne Speicherstatus (python3 werkzeug/speicherstatus_einbauen.py ausführen)")
     if "/* jsPDF 2.5.1 (MIT) */" in s:
         fehler.append(f"{rel(f)}: PDF-Programm steckt noch in der Seite (python3 werkzeug/nach_dem_bauen.py ausführen)")
+    if "jsPDF" in s and "Namen der Gruppe" in s and "vspruefen:start" not in s:
+        fehler.append(f"{rel(f)}: Versuchsseite ohne Prüf-Knopf (Regeln in werkzeug/versuche_pruefung.json ergänzen, dann python3 werkzeug/versuche_pruefen_einbauen.py)")
     if "jsPDF" in s and "pdferinnerung:start" not in s:
         fehler.append(f"{rel(f)}: PDF-Seite ohne PDF-Erinnerung (python3 werkzeug/pdf_erinnerung_einbauen.py ausführen)")
     for i, m in enumerate(re.finditer(r"<script(?![^>]*\bsrc=)(?![^>]*type=\"(?:application/json|text/template))[^>]*>(.*?)</script>", s, re.S)):
