@@ -62,7 +62,7 @@ __BASECSS__
       <li>Stunde 1: Aufgaben 1–4 · Stunde 2: Aufgaben 5–10. Nach jeder Aufgabe kontrollieren wir gemeinsam.</li>
       <li>Ganz unten <b>PDF erstellen</b> und die PDF in LMS hochladen.</li>
     </ol>
-    <p class="hint">Theorie zum Nachlesen: <a href="theorie.html">Lernseite</a> · Schulbuch (Trauner) S. 17–19</p>
+    <p class="hint">Theorie zum Nachlesen: <a href="theorie.html">Theorie-Seite</a> · Schulbuch (Trauner) S. 17–19</p>
   </section>
   <div class="progress"><span id="count">0 von 10 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
@@ -101,37 +101,37 @@ const TITLE = "K1.2.2 Wie groß bist du wirklich?";
 const GERAETE = ["Maßband", "Messschieber", "Bügelmessschraube", "Mikroskop-Maßstab", "Laser-Entfernungsmesser"];
 const BINS = ["145–149,9", "150–154,9", "155–159,9", "160–164,9", "165–169,9", "170–174,9", "175–179,9", "180–184,9", "185–189,9", "190–194,9"];
 const T = [
-  { id: "a1", nr: 1, title: "Welches Messgerät passt?", src: "Theorie S. 19", type: "selects", h: 1,
+  { id: "a1", nr: 1, title: "Welches Messgerät passt?", src: "Buch S. 19", type: "selects", h: 1,
     q: "Wähle für jede Messung das passende Messgerät. Wird direkt oder indirekt gemessen?",
     rows: ["Körpergröße eines Kadetten", "Durchmesser einer Patrone (5,56 mm)", "Dicke eines Blatts Papier (0,1 mm)", "Größe einer Zelle (0,03 mm)", "Entfernung zu einem Ziel (800 m)"],
     cols: [["g", "Messgerät", GERAETE], ["d", "direkt oder indirekt?", ["direkt", "indirekt"]]] },
-  { id: "a2", nr: 2, title: "Schätzen", src: "Theorie S. 17", type: "fields", h: 1,
+  { id: "a2", nr: 2, title: "Schätzen", src: "Buch S. 17", type: "fields", h: 1,
     q: "Schätze, ohne nachzusehen. Gleich wird dein Lehrer vorne gemessen – wer liegt am nächsten?",
     fields: [["me", "Meine Körpergröße in cm"], ["lehrer", "Größe meines Lehrers in cm"]] },
-  { id: "a3", nr: 3, title: "Körpergröße messen", src: "Theorie S. 17", type: "persons", h: 1,
+  { id: "a3", nr: 3, title: "Körpergröße messen", src: "Buch S. 17", type: "persons", h: 1,
     q: "3er-Gruppen: Schuhe aus, Buch waagrecht auf den Kopf, Post-it an die Unterkante, vom Boden bis zur Oberkante des Post-its messen. Jeder wird 3-mal gemessen.",
     hint: "Alle Werte in cm, auf 1 mm genau (z. B. 174,3). Liegen die drei Werte mehr als 1 cm auseinander? Noch einmal messen!",
     cells: [["name", "Name", "text"], ["s", "Schätzung", "num"], ["m1", "1. Messung", "num"], ["m2", "2. Messung", "num"], ["m3", "3. Messung", "num"]] },
-  { id: "a4", nr: 4, title: "Mittelwert, Messunsicherheit, Schätzfehler", src: "Theorie S. 17", type: "persons", h: 1,
+  { id: "a4", nr: 4, title: "Mittelwert, Messunsicherheit, Schätzfehler", src: "Buch S. 17", type: "persons", h: 1,
     q: "Rechne für alle drei aus deiner Gruppe. Runde auf 1 mm (eine Kommastelle bei cm).",
     hint: "Beispiel Lukas: Mittelwert (174,2 + 174,6 + 174,3) : 3 = 174,37 ≈ 174,4 cm · Unsicherheit (174,6 − 174,2) : 2 = 0,2 cm · Ergebnis 174,4 cm ± 0,2 cm · Schätzfehler 174,4 − 172 = +2,4 cm",
     cells: [["mw", "Mittelwert", "num"], ["u", "Unsicherheit ±", "num"], ["sf", "Schätzfehler", "num"]], from: "a3" },
-  { id: "a5", nr: 5, title: "Fehlerbetrachtung", src: "Theorie S. 17", type: "choose", h: 2,
+  { id: "a5", nr: 5, title: "Fehlerbetrachtung", src: "Buch S. 17", type: "choose", h: 2,
     q: "Zufällig oder systematisch? Tippe die richtige Antwort an.", opts: ["zufällig", "systematisch"],
     items: ["Einmal schräg von oben abgelesen", "Alle haben mit Schuhen gemessen", "Das Buch liegt einmal leicht schief", "Das Maßband beginnt erst 1 cm über dem Boden", "Eine Person steht einmal leicht krumm", "Alle am Abend gemessen, die Stellung misst am Morgen"] },
-  { id: "a6", nr: 6, title: "Faktencheck", src: "Theorie S. 17", type: "multi", h: 2,
+  { id: "a6", nr: 6, title: "Faktencheck", src: "Buch S. 17", type: "multi", h: 2,
     ad: "„Mit Power-Einlagen wächst du in 2 Wochen 2 cm! Max: 1. März abends 176,0 cm – 15. März morgens 178,0 cm.“",
     q: "Prüfe die Werbung.", parts: [["a", "a) Welcher Fehler steckt im Vergleich?"], ["b", "b) Wie müsste man richtig messen?"]] },
-  { id: "a7", nr: 7, title: "Die Klasse auswerten", src: "Theorie S. 17", type: "class", h: 2,
+  { id: "a7", nr: 7, title: "Die Klasse auswerten", src: "Buch S. 17", type: "class", h: 2,
     q: "Klebe deinen Mittelwert ohne Namen als Post-it an die Tafel. Zähle dann, wie viele Post-its in jedem Bereich kleben, und trag die Anzahl ein.",
     hint: "Grenzfall: 169,9 cm gehört zu 165–169,9 · 170,0 cm schon zu 170–174,9.",
     fields: [["mw", "Klassen-Mittelwert (Summe : Anzahl)"], ["max", "Größte Person"], ["min", "Kleinste Person"], ["sp", "Spannweite (Größte − Kleinste)"]] },
-  { id: "a8", nr: 8, title: "Säulendiagramm", src: "Theorie S. 17", type: "chart", h: 2,
+  { id: "a8", nr: 8, title: "Säulendiagramm", src: "Buch S. 17", type: "chart", h: 2,
     q: "Zeichne das Säulendiagramm deiner Klasse: Tippe über jedem Bereich auf die Höhe der Anzahl. Nochmal auf die oberste Stelle tippen macht die Säule um 1 kleiner." },
-  { id: "a9", nr: 9, title: "Kampfanzüge bestellen", src: "Theorie S. 17", type: "multi", h: 2, tag: "OPTIONAL",
+  { id: "a9", nr: 9, title: "Kampfanzüge bestellen", src: "Buch S. 17", type: "multi", h: 2, tag: "OPTIONAL",
     q: "Für 240 Rekruten werden Kampfanzüge bestellt. Nimm an, die Größen sind so verteilt wie in eurer Klasse.",
     parts: [["a", "a) Wie viele Anzüge für 170–174,9 cm? Rechne: Anzahl : Klassengröße · 240"], ["b", "b) Ist eure Klasse eine gute Grundlage für die Bestellung? Begründe."]] },
-  { id: "a10", nr: 10, title: "Merksatz", src: "Theorie S. 17", type: "gaps", h: 2, q: "Fülle die Lücken.",
+  { id: "a10", nr: 10, title: "Merksatz", src: "Buch S. 17", type: "gaps", h: 2, q: "Fülle die Lücken.",
     sents: [["Der Mittelwert ist genauer als eine Einzelmessung, weil sich ", 0, " Fehler ausgleichen."],
             ["Gegen ", 1, " Fehler hilft der Mittelwert nicht – man muss die Ursache beheben."],
             ["Ein Ergebnis gibt man nur so genau an, wie das ", 2, " messen kann."]] },

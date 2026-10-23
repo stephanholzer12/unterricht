@@ -174,7 +174,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>3BK</option></select></div>
     </div>
     <ol class="steps hint">
-      <li>Lies zuerst den passenden Teil der <a href="theorie.html">Lernseite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
+      <li>Lies zuerst den passenden Teil der <a href="theorie.html">Theorie-Seite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
       <li><b>Pflicht</b>: Aufgaben 1–3 · <b>Für Schnelle</b>: 4–6.</li>
       <li>Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt – die Lösung wird dabei nicht verraten.</li>
       <li>Am Ende ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
@@ -196,7 +196,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
   .fahrplan td:first-child { font-weight: 700; color: #3B4A2F; font-size: 16px; }
   .fahrplan td[data-l]:not(:first-child)::before { content: attr(data-l) ": "; color: #5E6652; font-weight: 700; }
 }
-</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür ist 1 Stunde eingeplant.</p><p>Lies die Lernseite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Das machen wir</th><th>Aufgaben</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Das machen wir">Einstieg, Teil 1 · Der Fall, Teil 2 · Wie flog die Fälschung auf?</td><td data-l="Aufgaben">1–3</td><td data-l="Wie">Lernseite am Handy; ohne Handy: Partnergespräch (2 Min.); Rest der Stunde: Nachbesprechung im Plenum</td><td data-l="Abgabe">PDF in LMS</td></tr><tr><td data-l="Wann">Für Schnelle</td><td data-l="Das machen wir">Für Schnelle und Neugierige</td><td data-l="Aufgaben">4–6</td><td data-l="Wie">am Handy</td><td data-l="Abgabe">freiwillig</td></tr></tbody></table></div></section><!--/FAHRPLAN-->
+</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür ist 1 Stunde eingeplant.</p><p>Lies die Theorie-Seite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Das machen wir</th><th>Aufgaben</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Das machen wir">Einstieg, Teil 1 · Der Fall, Teil 2 · Wie flog die Fälschung auf?</td><td data-l="Aufgaben">1–3</td><td data-l="Wie">Theorie-Seite am Handy; ohne Handy: Partnergespräch (2 Min.); Rest der Stunde: Nachbesprechung im Plenum</td><td data-l="Abgabe">PDF in LMS</td></tr><tr><td data-l="Wann">Für Schnelle</td><td data-l="Das machen wir">Für Schnelle und Neugierige</td><td data-l="Aufgaben">4–6</td><td data-l="Wie">am Handy</td><td data-l="Abgabe">freiwillig</td></tr></tbody></table></div></section><!--/FAHRPLAN-->
   <div class="progress"><span id="count">0 von 6 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 
@@ -221,7 +221,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
     <div id="resetwrap">
       <button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button>
     </div>
-    <p class="hint"><a href="theorie.html">Zur Lernseite</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
+    <p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
     <p class="hint">Stand 19.10.2026 · v1</p>
   </section>
 </main>
@@ -239,13 +239,13 @@ const T = [
   "id": "a1",
   "nr": 1,
   "title": "Äußere oder innere Kritik?",
-  "src": "Theorie S. 10–12",
+  "src": "Buch S. 10–12",
   "own": true,
   "tag": "Stunde 1",
   "h": 1,
   "hl": false,
   "q": "Ordne jeden Befund zu: Gehört er zur äußeren Quellenkritik (Material, Echtheit, Herkunft) oder zur inneren Quellenkritik (Inhalt)?",
-  "hint": "Info: Lernseite Teil 2 »Äußere Kritik« und »Innere Kritik«",
+  "hint": "Info: Theorie-Seite Teil 2 »Äußere Kritik« und »Innere Kritik«",
   "type": "multi",
   "fields": [
    [
@@ -328,13 +328,13 @@ const T = [
   "id": "a2",
   "nr": 2,
   "title": "Der Handschrift-Trick",
-  "src": "Theorie S. 10–12",
+  "src": "Buch S. 10–12",
   "own": true,
   "tag": "Stunde 1",
   "h": 1,
   "hl": false,
   "q": "Bei der ersten Prüfung bestätigten Schriftgutachter: Tagebuch und Hitler-Schriftproben stammen von derselben Hand. Trotzdem war das Gutachten wertlos. a) Erkläre in 1–2 Sätzen, warum. b) Nenne zwei Dinge, die man hätte besser machen müssen.",
-  "hint": "Info: Lernseite Teil 2 »Der Handschrift-Trick«",
+  "hint": "Info: Theorie-Seite Teil 2 »Der Handschrift-Trick«",
   "type": "multi",
   "fields": [
    [
@@ -386,13 +386,13 @@ const T = [
   "id": "a3",
   "nr": 3,
   "title": "9,3 Millionen D-Mark",
-  "src": "Theorie S. 10–12",
+  "src": "Buch S. 10–12",
   "own": true,
   "tag": "Stunde 1",
   "h": 1,
   "hl": false,
   "q": "Der »Stern« zahlte über 9 Millionen D-Mark und prüfte die Bände vorher nicht unabhängig. a) Nenne zwei Gründe, warum man so handelt (wirtschaftlich oder aus Zeitdruck). b) Nenne eine Regel, die den Schaden verhindert hätte.",
-  "hint": "Info: Lernseite Teil 1 »Warum glaubte man daran?« und Teil 2 »Wem nützt die Fälschung?«",
+  "hint": "Info: Theorie-Seite Teil 1 »Warum glaubte man daran?« und Teil 2 »Wem nützt die Fälschung?«",
   "type": "multi",
   "fields": [
    [
@@ -450,7 +450,7 @@ const T = [
   "h": 0,
   "hl": false,
   "q": "Eine KI behauptet: »Das Papier der Tagebücher enthielt optische Aufheller, die es erst ab 1955 gab. Quelle: Bundesarchiv.« Prüfe die Behauptung: Öffne bundesarchiv.de, Suche »Hitler-Tagebücher Chronologie« (PDF der Geschichtsgalerie). a) Wie lautet dein Urteil? b) Welche Stelle in der Quelle hast du gefunden? (1–2 Sätze)",
-  "hint": "Recherche im Internet: bundesarchiv.de – Geschichtsgalerie »Pressekonferenz des Bundesarchivs zu Hitler-Tagebüchern« · Info: Lernseite »So prüfst du eine KI-Antwort«",
+  "hint": "Recherche im Internet: bundesarchiv.de – Geschichtsgalerie »Pressekonferenz des Bundesarchivs zu Hitler-Tagebüchern« · Info: Theorie-Seite »So prüfst du eine KI-Antwort«",
   "type": "multi",
   "fields": [
    [
@@ -504,13 +504,13 @@ const T = [
   "id": "a5",
   "nr": 5,
   "title": "Geheimes Dokument im Chat",
-  "src": "Theorie S. 10–12",
+  "src": "Buch S. 10–12",
   "own": true,
   "tag": "Zusatz",
   "h": 0,
   "hl": false,
   "q": "Im Klassenchat taucht ein »geheimes Dokument« auf: Angeblich wird eine Kaserne in Niederösterreich geschlossen. a) Nenne drei Prüffragen, bevor du es weiterleitest. b) Was tust du, bis du Gewissheit hast?",
-  "hint": "Info: Lernseite Teil 2 »Werkzeugkasten Quellenkritik« und »So prüfst du eine KI-Antwort«",
+  "hint": "Info: Theorie-Seite Teil 2 »Werkzeugkasten Quellenkritik« und »So prüfst du eine KI-Antwort«",
   "type": "multi",
   "fields": [
    [
@@ -570,7 +570,7 @@ const T = [
   "id": "a6",
   "nr": 6,
   "title": "Fälschung im Archiv?",
-  "src": "Theorie S. 10–12",
+  "src": "Buch S. 10–12",
   "own": true,
   "tag": "Zusatz",
   "h": 0,
@@ -1065,7 +1065,7 @@ update();
 window.LH_VARIANTEN = [];
 /* Lösungshilfe für die Handy-Arbeitsblätter (aufgaben.html mit »Prüfen«).
    Ziel: Kadetten bleiben beim Üben nicht frustriert stecken – und die Lösung bleibt trotzdem sichtbar im PDF.
-   1) Fehlversuch 1: nur »Noch nicht ganz« + Hinweis, was fehlt.  Fehlversuch 2: zusätzlich der Tipp mit Link zur Lernseite.
+   1) Fehlversuch 1: nur »Noch nicht ganz« + Hinweis, was fehlt.  Fehlversuch 2: zusätzlich der Tipp mit Link zur Theorie-Seite.
       Ab Fehlversuch 3: Knopf »Lösung zeigen« bei GENAU dieser Aufgabe.
    2) Wer die Lösung zeigen lässt, bekommt im PDF den Status »Lösung angesehen« – auch wenn danach die richtige Antwort drinsteht.
    3) Rechenaufgaben: Nach Lösung oder richtiger Antwort gibt es eine Übungsvariante mit neuen Zahlen (LH_VARIANTEN).
@@ -1301,6 +1301,103 @@ window.LH_VARIANTEN = [];
 })();
 </script>
 <!-- speicherstatus:end -->
+<!-- pdferinnerung:start -->
+<script>window.__PE_KEY = "26-27-3BK-K1.2-Faelschung-TH-Handy-v1";
+/* Erinnerung beim Knopf »PDF erstellen«: Ist die Arbeit schon als PDF abgegeben – und passt die PDF noch zu den Antworten?
+   Zeigt direkt über dem PDF-Knopf einen von drei Hinweisen:
+     - Antworten da, aber noch keine PDF       -> »Du hast noch keine PDF erstellt …« (gelb)
+     - nach der letzten PDF etwas geändert     -> »Du hast seit deiner PDF von 10:42 etwas geändert …« (gelb)
+     - PDF passt zum aktuellen Stand           -> »✓ Deine PDF von 10:42 passt zu deinen Antworten …« (grün)
+   Wie: Nach einer erfolgreichen PDF (Meldung »PDF wurde erstellt« bzw. »Gespeichert:« in #pdfstatus) merkt sich die Seite einen
+   Fingerabdruck von Name, Klasse und Antworten (S.name, S.ich, S.klasse, S.a) und der Fotos. Der Fingerabdruck liegt unter einem
+   EIGENEN Schlüssel »pdfstand|<Seitenschlüssel>«. Der Speicherstand der Seite (const KEY) wird nur gelesen, nie geschrieben.
+   Prüf-Zähler, »Lösung angesehen« usw. zählen nicht als Änderung.
+   Einbau: python3 werkzeug/pdf_erinnerung_einbauen.py (setzt den Seitenschlüssel als window.__PE_KEY davor). */
+(function () {
+  if (window.__pdferinnerung) return; window.__pdferinnerung = true;
+  var KEY = window.__PE_KEY; if (!KEY) return;
+  var SNAP = "pdfstand|" + KEY;
+  var btn = document.getElementById("pdfbtn"), st = document.getElementById("pdfstatus");
+  if (!btn || !btn.parentNode) return;
+  var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
+  var memSnap = null;
+
+  var css = "#pe-hinweis{margin:10px 0;padding:10px 12px;border-radius:10px;font-weight:600;font-size:16px;line-height:1.4;border-left:5px solid #B07A00;background:#FFF4D6;color:#4A3400}" +
+    "#pe-hinweis.pe-ok{border-left-color:#3F6B14;background:#EEF4E4;color:#2C3D16}#pe-hinweis[hidden]{display:none}.pe-mail{margin:8px 0 0;font-size:14px;line-height:1.4;color:#5E6652}@media print{#pe-hinweis,.pe-mail{display:none}}";
+  var stl = document.createElement("style"); stl.id = "pe-css"; stl.textContent = css; document.head.appendChild(stl);
+  var box = document.createElement("p"); box.id = "pe-hinweis"; box.hidden = true; box.setAttribute("aria-live", "polite");
+  btn.parentNode.insertBefore(box, btn);
+  /* Ersatzweg: Geht LMS nicht, darf die PDF per E-Mail kommen (Datum und Uhrzeit stehen in der PDF) */
+  var mail = document.createElement("p"); mail.id = "pe-mail"; mail.className = "pe-mail";
+  mail.textContent = "Geht LMS gerade nicht? Dann schick die PDF per E-Mail an die Lehrkraft. Datum und Uhrzeit stehen in der PDF.";
+  btn.parentNode.insertBefore(mail, btn.nextSibling);
+
+  function get(k) { try { return ls ? ls.getItem(k) : null; } catch (e) { return null; } }
+  function hash(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36) + "-" + s.length; }
+
+  /* Fingerabdruck des aktuellen Stands; inhalt = ob überhaupt schon etwas eingetragen ist */
+  function stand() {
+    var raw = get(KEY), o = {};
+    try { o = raw ? JSON.parse(raw) : {}; } catch (e) { o = {}; }
+    var a = o && o.a ? o.a : {}, fotos = [];
+    try {
+      for (var i = 0; ls && i < ls.length; i++) {
+        var k = ls.key(i);
+        if (k && k.indexOf(KEY + "-foto") === 0) { var v = get(k); if (v) fotos.push(k + ":" + hash(v)); }
+      }
+    } catch (e) {}
+    fotos.sort();
+    var aTxt = JSON.stringify(a), inhalt = false;
+    for (var key in a) { var v2 = a[key]; if (v2 !== "" && v2 !== null && v2 !== false && !(v2 && typeof v2 === "object" && !Object.keys(v2).length)) { inhalt = true; break; } }
+    if (fotos.length) inhalt = true;
+    return { h: hash([o.name || "", o.ich || "", o.klasse || "", aTxt, fotos.join("|")].join("\u0001")), inhalt: inhalt };
+  }
+  function snap() {
+    if (memSnap) return memSnap;
+    try { var s = JSON.parse(get(SNAP) || "null"); if (s && s.h) return s; } catch (e) {}
+    return null;
+  }
+  function zeit(t) {
+    var d = new Date(t), h = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; };
+    var uhr = z(d.getHours()) + ":" + z(d.getMinutes());
+    return d.toDateString() === h.toDateString() ? "von " + uhr : "vom " + d.getDate() + "." + (d.getMonth() + 1) + ". um " + uhr;
+  }
+  function zeige() {
+    var jetzt = stand(), s = snap();
+    if (!s) {
+      if (!jetzt.inhalt) { box.hidden = true; return; }
+      box.className = ""; box.textContent = "Du hast noch keine PDF erstellt. Abgegeben ist deine Arbeit erst, wenn die PDF in LMS hochgeladen ist.";
+    } else if (s.h !== jetzt.h) {
+      box.className = ""; box.textContent = "Du hast seit deiner PDF " + zeit(s.t) + " etwas geändert. Erstelle die PDF neu und lade die neue Datei in LMS hoch.";
+    } else {
+      box.className = "pe-ok"; box.textContent = "✓ Deine PDF " + zeit(s.t) + " passt zu deinen Antworten. Hast du sie schon in LMS hochgeladen?";
+    }
+    box.hidden = false;
+  }
+  var t1 = null, t2 = null;
+  function spaeter() { clearTimeout(t1); clearTimeout(t2); t1 = setTimeout(zeige, 700); t2 = setTimeout(zeige, 2500); }
+  ["input", "change", "click"].forEach(function (ev) { document.addEventListener(ev, spaeter, true); });
+
+  /* Erfolgreiche PDF erkennen */
+  var zuletzt = "";
+  function pruefeStatus() {
+    if (!st || st.hidden) return;
+    var txt = (st.textContent || "").trim();
+    if (txt === zuletzt) return; zuletzt = txt;
+    if (/^(PDF wurde erstellt|Gespeichert:)/.test(txt)) {
+      setTimeout(function () {
+        memSnap = { h: stand().h, t: Date.now() };
+        try { if (ls) ls.setItem(SNAP, JSON.stringify(memSnap)); } catch (e) {}
+        zeige();
+      }, 300);
+    }
+  }
+  btn.addEventListener("click", function () { zuletzt = ""; }, true);   // gleiche Meldung bei der nächsten PDF trotzdem erkennen
+  if (st && window.MutationObserver) new MutationObserver(pruefeStatus).observe(st, { childList: true, characterData: true, subtree: true, attributes: true });
+  if (document.readyState === "complete") zeige(); else window.addEventListener("load", zeige);
+})();
+</script>
+<!-- pdferinnerung:end -->
 <!-- nachsicht:start -->
 <script>window.__CHK_KORREKTUR = {"a2":{"besser":{"need":1}},"a3":{"gruende":{"kw":[["Zwei Gründe (Geld/Auflage/Exklusivität, Konkurrenz/Zeitdruck/Geheimhaltung)","geld|auflage|verkauf|gewinn|umsatz|exklusiv|sensation|millionen|konkurren|zeitdruck|geheim|schnell|zuerst|nur heidemann|einzige|druck|scoop|gier|profit|vertrau",2]]}},"a4":{"stelle":{"need":1}},"a5":{"fragen":{"need":2},"tun":{"need":1}}};
 /* Großzügigere Prüfung der Arbeitsblätter (»Prüfen«-Knopf): Richtige Antworten sollen nicht wegen Schreibweise, Format oder Einheit als falsch gelten.
@@ -1553,102 +1650,5 @@ window.LH_VARIANTEN = [];
 })();
 </script>
 <!-- notenvorschlag:end -->
-<!-- pdferinnerung:start -->
-<script>window.__PE_KEY = "26-27-3BK-K1.2-Faelschung-TH-Handy-v1";
-/* Erinnerung beim Knopf »PDF erstellen«: Ist die Arbeit schon als PDF abgegeben – und passt die PDF noch zu den Antworten?
-   Zeigt direkt über dem PDF-Knopf einen von drei Hinweisen:
-     - Antworten da, aber noch keine PDF       -> »Du hast noch keine PDF erstellt …« (gelb)
-     - nach der letzten PDF etwas geändert     -> »Du hast seit deiner PDF von 10:42 etwas geändert …« (gelb)
-     - PDF passt zum aktuellen Stand           -> »✓ Deine PDF von 10:42 passt zu deinen Antworten …« (grün)
-   Wie: Nach einer erfolgreichen PDF (Meldung »PDF wurde erstellt« bzw. »Gespeichert:« in #pdfstatus) merkt sich die Seite einen
-   Fingerabdruck von Name, Klasse und Antworten (S.name, S.ich, S.klasse, S.a) und der Fotos. Der Fingerabdruck liegt unter einem
-   EIGENEN Schlüssel »pdfstand|<Seitenschlüssel>«. Der Speicherstand der Seite (const KEY) wird nur gelesen, nie geschrieben.
-   Prüf-Zähler, »Lösung angesehen« usw. zählen nicht als Änderung.
-   Einbau: python3 werkzeug/pdf_erinnerung_einbauen.py (setzt den Seitenschlüssel als window.__PE_KEY davor). */
-(function () {
-  if (window.__pdferinnerung) return; window.__pdferinnerung = true;
-  var KEY = window.__PE_KEY; if (!KEY) return;
-  var SNAP = "pdfstand|" + KEY;
-  var btn = document.getElementById("pdfbtn"), st = document.getElementById("pdfstatus");
-  if (!btn || !btn.parentNode) return;
-  var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
-  var memSnap = null;
-
-  var css = "#pe-hinweis{margin:10px 0;padding:10px 12px;border-radius:10px;font-weight:600;font-size:16px;line-height:1.4;border-left:5px solid #B07A00;background:#FFF4D6;color:#4A3400}" +
-    "#pe-hinweis.pe-ok{border-left-color:#3F6B14;background:#EEF4E4;color:#2C3D16}#pe-hinweis[hidden]{display:none}.pe-mail{margin:8px 0 0;font-size:14px;line-height:1.4;color:#5E6652}@media print{#pe-hinweis,.pe-mail{display:none}}";
-  var stl = document.createElement("style"); stl.id = "pe-css"; stl.textContent = css; document.head.appendChild(stl);
-  var box = document.createElement("p"); box.id = "pe-hinweis"; box.hidden = true; box.setAttribute("aria-live", "polite");
-  btn.parentNode.insertBefore(box, btn);
-  /* Ersatzweg: Geht LMS nicht, darf die PDF per E-Mail kommen (Datum und Uhrzeit stehen in der PDF) */
-  var mail = document.createElement("p"); mail.id = "pe-mail"; mail.className = "pe-mail";
-  mail.textContent = "Geht LMS gerade nicht? Dann schick die PDF per E-Mail an die Lehrkraft. Datum und Uhrzeit stehen in der PDF.";
-  btn.parentNode.insertBefore(mail, btn.nextSibling);
-
-  function get(k) { try { return ls ? ls.getItem(k) : null; } catch (e) { return null; } }
-  function hash(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36) + "-" + s.length; }
-
-  /* Fingerabdruck des aktuellen Stands; inhalt = ob überhaupt schon etwas eingetragen ist */
-  function stand() {
-    var raw = get(KEY), o = {};
-    try { o = raw ? JSON.parse(raw) : {}; } catch (e) { o = {}; }
-    var a = o && o.a ? o.a : {}, fotos = [];
-    try {
-      for (var i = 0; ls && i < ls.length; i++) {
-        var k = ls.key(i);
-        if (k && k.indexOf(KEY + "-foto") === 0) { var v = get(k); if (v) fotos.push(k + ":" + hash(v)); }
-      }
-    } catch (e) {}
-    fotos.sort();
-    var aTxt = JSON.stringify(a), inhalt = false;
-    for (var key in a) { var v2 = a[key]; if (v2 !== "" && v2 !== null && v2 !== false && !(v2 && typeof v2 === "object" && !Object.keys(v2).length)) { inhalt = true; break; } }
-    if (fotos.length) inhalt = true;
-    return { h: hash([o.name || "", o.ich || "", o.klasse || "", aTxt, fotos.join("|")].join("\u0001")), inhalt: inhalt };
-  }
-  function snap() {
-    if (memSnap) return memSnap;
-    try { var s = JSON.parse(get(SNAP) || "null"); if (s && s.h) return s; } catch (e) {}
-    return null;
-  }
-  function zeit(t) {
-    var d = new Date(t), h = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; };
-    var uhr = z(d.getHours()) + ":" + z(d.getMinutes());
-    return d.toDateString() === h.toDateString() ? "von " + uhr : "vom " + d.getDate() + "." + (d.getMonth() + 1) + ". um " + uhr;
-  }
-  function zeige() {
-    var jetzt = stand(), s = snap();
-    if (!s) {
-      if (!jetzt.inhalt) { box.hidden = true; return; }
-      box.className = ""; box.textContent = "Du hast noch keine PDF erstellt. Abgegeben ist deine Arbeit erst, wenn die PDF in LMS hochgeladen ist.";
-    } else if (s.h !== jetzt.h) {
-      box.className = ""; box.textContent = "Du hast seit deiner PDF " + zeit(s.t) + " etwas geändert. Erstelle die PDF neu und lade die neue Datei in LMS hoch.";
-    } else {
-      box.className = "pe-ok"; box.textContent = "✓ Deine PDF " + zeit(s.t) + " passt zu deinen Antworten. Hast du sie schon in LMS hochgeladen?";
-    }
-    box.hidden = false;
-  }
-  var t1 = null, t2 = null;
-  function spaeter() { clearTimeout(t1); clearTimeout(t2); t1 = setTimeout(zeige, 700); t2 = setTimeout(zeige, 2500); }
-  ["input", "change", "click"].forEach(function (ev) { document.addEventListener(ev, spaeter, true); });
-
-  /* Erfolgreiche PDF erkennen */
-  var zuletzt = "";
-  function pruefeStatus() {
-    if (!st || st.hidden) return;
-    var txt = (st.textContent || "").trim();
-    if (txt === zuletzt) return; zuletzt = txt;
-    if (/^(PDF wurde erstellt|Gespeichert:)/.test(txt)) {
-      setTimeout(function () {
-        memSnap = { h: stand().h, t: Date.now() };
-        try { if (ls) ls.setItem(SNAP, JSON.stringify(memSnap)); } catch (e) {}
-        zeige();
-      }, 300);
-    }
-  }
-  btn.addEventListener("click", function () { zuletzt = ""; }, true);   // gleiche Meldung bei der nächsten PDF trotzdem erkennen
-  if (st && window.MutationObserver) new MutationObserver(pruefeStatus).observe(st, { childList: true, characterData: true, subtree: true, attributes: true });
-  if (document.readyState === "complete") zeige(); else window.addEventListener("load", zeige);
-})();
-</script>
-<!-- pdferinnerung:end -->
 </body>
 </html>

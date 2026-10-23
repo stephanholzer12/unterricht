@@ -1,4 +1,4 @@
-"""Liest aus einer Lernseite (theorie.html) die Bausteine für die Klassenübersicht:
+"""Liest aus einer Theorie-Seite (theorie.html) die Bausteine für die Klassenübersicht:
 Buchseiten, Lernziele (»Kann ich das?«), »Das Wichtigste in 5 Sätzen«, Fachbegriffe
 und den Speicher-Schlüssel des Selbstchecks. Wird von build_index.py verwendet.
 """
@@ -51,7 +51,7 @@ def lesen(pfad):
         if m:
             out["buch"] = m.group(0).replace("S.", "S.").strip()
 
-    # Teile der Lernseite (für das Inhaltsverzeichnis in der Übersicht)
+    # Teile der Theorie-Seite (für das Inhaltsverzeichnis in der Übersicht)
     out["teile"] = []
     for sec in soup.select("section.part[id]"):
         eb = sec.select_one(".band .eyebrow")
@@ -61,7 +61,7 @@ def lesen(pfad):
             seiten = re.search(r"Buch S\. ?[\d–\-, ]+\d", ebt)
             out["teile"].append({"id": sec["id"], "titel": text(h2), "buch": seiten.group(0) if seiten else ""})
 
-    # Lernziele: bevorzugt aus »Kann ich das?« (dann passt die Nummer zum Selbstcheck der Lernseite)
+    # Lernziele: bevorzugt aus »Kann ich das?« (dann passt die Nummer zum Selbstcheck der Theorie-Seite)
     k = folie(soup, "Kann ich das")
     if k and k.select(".ziel p"):
         out["ziele"] = [sauber(p) for p in k.select(".ziel p")]

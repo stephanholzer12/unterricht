@@ -1,4 +1,4 @@
-"""Theorie PBGW 3BK · K1.2 Fälschung der Hitler-Tagebücher – eine Quelle für Lernseite (theorie.html) und PPP.
+"""Theorie PBGW 3BK · K1.2 Fälschung der Hitler-Tagebücher – eine Quelle für Theorie-Seite (theorie.html) und PPP.
 Bausteine: ("tiles", [(Überschrift, Text), …]) · ("ul", [...]) · ("ol", [...]) · ("merke", Text) · ("hint", Text) · ("table", [[Kopf…], …], [Breiten]) · ("reveal", [(Frage, Antwort), …]) · ("jetzt", Text, Link)"""
 from inhalt import LERNZIELE
 

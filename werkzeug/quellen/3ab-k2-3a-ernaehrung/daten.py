@@ -25,7 +25,7 @@ T = [
           ["Markus, Heeressportler", ["Mehrere kleine Mahlzeiten statt Riesenportionen", "Auf Nährstoffdichte achten", "Wasser, verdünnte Säfte oder Tees statt Energydrinks"]],
           ["Opa Franz, 84", ["„Trinken ohne Durst“ üben", "Braucht weniger Energie – Fett einsparen, Schweinsbraten nur selten"]],
           ["Tim, 15", ["Energie auf mehrere Mahlzeiten verteilen – Frühstück nicht auslassen", "Wasser statt Cola, wenig Fett und Süßes, täglich Obst, Gemüse und Vollkorn"]]],
-  "tip": ["Lernseite Teil 1 · Personengruppen", "theorie.html#teil1"]},
+  "tip": ["Theorie-Seite Teil 1 · Personengruppen", "theorie.html#teil1"]},
 
  {"id": "a2", "nr": 2, "title": "Wer bin ich?", "src": "Buch S. 70–71", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Ordne jede Ich-Aussage der passenden Ernährungsform zu.",
@@ -43,7 +43,7 @@ T = [
                       "lakto – + Milch und Milchprodukte", "Flexitarier – selten Fleisch, viel Gemüse, Obst, Fisch",
                       "ovo – + Eier", "Vollwert – möglichst natürlich, frisch, wenig verarbeitet",
                       "ovolakto – + Milch und Eier (größte Gruppe der Vegetarier, als Dauerkost geeignet)"]]],
-  "tip": ["Lernseite Teil 2 · Alternative Ernährungsformen", "theorie.html#teil2"]},
+  "tip": ["Theorie-Seite Teil 2 · Alternative Ernährungsformen", "theorie.html#teil2"]},
 
  {"id": "a3", "nr": 3, "title": "Speiseplan-Check", "src": "Buch S. 70–71", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Welche Ernährungsform(en) dürfen das Gericht essen – vegan, lakto, ovo, ovolakto, Pescetarier? Nenne alle passenden. Achtung bei Honig und Gelatine!",
@@ -62,7 +62,7 @@ T = [
           ["Gummibärchen", ["für keine Form – Gelatine wird aus Knochen und Häuten von Schwein oder Rind gewonnen; "
                              "Produkte mit V-Label sind ohne Gelatine, Knochen und Schlachtfette (Buch S. 71)"]],
           ["Diskussion", ["Käse kann mit tierischem Lab hergestellt sein – streng genommen dann nicht vegetarisch."]]],
-  "tip": ["Lernseite Teil 2.1 · Vegetarismus", "theorie.html#teil21"]},
+  "tip": ["Theorie-Seite Teil 2.1 · Vegetarismus", "theorie.html#teil21"]},
 
  {"id": "a4", "nr": 4, "title": "Fleischlos-Ranking", "src": "Buch S. 70", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "Bring die Gründe für Vegetarismus in eine Rangliste (1 = für dich wichtigster Grund). Einigt euch danach zu viert auf eine Top 3. "
@@ -74,7 +74,7 @@ T = [
           "Hintergrund: Innerhalb von zehn Jahren hat sich die Zahl der vegetarisch bzw. vegan lebenden Menschen in Österreich verdreifacht; "
           "16 % der 15- bis 29-Jährigen essen fleischlos.",
           "Wirtschaftsbezug: Welche Gründe sprechen eine Zielgruppe (15–29-Jährige) in der Werbung besonders an?"]]],
-  "tip": ["Lernseite Teil 2.1 · Vegetarismus", "theorie.html#teil21"]},
+  "tip": ["Theorie-Seite Teil 2.1 · Vegetarismus", "theorie.html#teil21"]},
 
  {"id": "a5", "nr": 5, "title": "Faktencheck", "src": "Buch S. 71", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "Stimmt, teilweise oder falsch? Begründe kurz mit dem, was du über die Bewertung des Vegetarismus weißt.",
@@ -90,7 +90,7 @@ T = [
           ["f3", ["teilweise – nicht bei Puddingvegetarismus (vor allem Süßes und Mehlspeisen statt Fleisch)"]],
           ["f4", ["falsch – Mangel an Eiweiß, Eisen, Kalzium, Jod möglich; für Säuglinge, Kleinkinder und besondere Gruppen wird abgeraten"]],
           ["Hintergrund", ["Vegetarier haben im Schnitt normale Blutzuckerwerte, geringere Cholesterinwerte und seltener Übergewicht (Buch S. 71)."]]],
-  "tip": ["Lernseite Teil 2.1 · Vegetarismus", "theorie.html#teil21"]},
+  "tip": ["Theorie-Seite Teil 2.1 · Vegetarismus", "theorie.html#teil21"]},
 
  {"id": "a6", "nr": 6, "title": "Wertstufen-Check", "src": "Buch S. 72", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "Ordne jedes Lebensmittel seiner Wertstufe zu.",
@@ -107,7 +107,7 @@ T = [
           ["Stufe 3 (weniger empfehlenswert)", ["H-Milch, Extrawurst, Dosenmais – nur selten"]],
           ["Stufe 4 (nicht empfehlenswert)", ["Pommes frites, Fertigpizza, Vitamintabletten – übertrieben verarbeitet, nicht essen"]],
           ["Kritik laut Buch", ["Die Einteilung ist nicht ganz unproblematisch – H-Milch etwa ist trotz Stufe 3 eine gute Kalziumquelle."]]],
-  "tip": ["Lernseite Teil 2.2 · Vollwerternährung", "theorie.html#teil22"]},
+  "tip": ["Theorie-Seite Teil 2.2 · Vollwerternährung", "theorie.html#teil22"]},
 
  {"id": "a7", "nr": 7, "title": "Bundesheer-Verpflegung im Feld", "src": "Recherche im Internet", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Das Bundesheer verpflegt Soldaten im Feld mit der Einmannpackung (EPA). a) Recherchiere: Wie viele kcal hat eine EPA ungefähr, und für wie viele Tage "

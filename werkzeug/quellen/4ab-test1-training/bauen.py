@@ -79,7 +79,7 @@ QUIZ = [
  ("Elektromagnetismus", "Wozu braucht ein Gleichstrom-Elektromotor den Kommutator?", ["Er polt den Strom jede halbe Umdrehung um, damit der Rotor weiterdreht.", "Er kühlt den Motor.", "Er misst die Drehzahl.", "Er speichert Energie wie ein Kondensator."],
   "Ohne Umpolen bliebe der Rotor stehen. Der Kommutator dreht die Stromrichtung im richtigen Moment um.", "Buch S. 33"),
  ("Elektromagnetismus", "Ein Magnet hängt an einem Bügel, der fest am Auto montiert ist, und zieht das Auto an. Was passiert?", ["Das Auto bleibt stehen – die Kräfte heben sich auf.", "Das Auto fährt immer weiter.", "Das Auto fährt, bis der Magnet leer ist.", "Das Auto fährt rückwärts."],
-  "Der Auto-Magnet zieht den Bügel genauso stark zurück. Beide Kräfte wirken auf dasselbe Auto: Summe 0 (actio = reactio).", "Lernseite K1.5a Teil 2"),
+  "Der Auto-Magnet zieht den Bügel genauso stark zurück. Beide Kräfte wirken auf dasselbe Auto: Summe 0 (actio = reactio).", "Theorie-Seite K1.5a Teil 2"),
 ]
 
 b64 = lambda p: base64.b64encode(open(p, "rb").read()).decode()

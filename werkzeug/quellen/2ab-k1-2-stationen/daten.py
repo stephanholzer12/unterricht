@@ -21,7 +21,7 @@ KERN_IDS = ["haut", "wasserstrahl", "mischen", "kristall", "sproede", "multimete
 
 # Fahrplan Stunde 1–4 (gleich in einheiten.json, PPP und Word)
 FAHRPLAN = {
- "text": "Stunde 1–2: Lernseite und Arbeitsblatt (Aufgaben 1–10). Stunde 3–4: Stationen A–D und Vertiefung (Aufgaben 11–16), Demo, Besprechung, Teststoff.",
+ "text": "Stunde 1–2: Theorie-Seite und Arbeitsblatt (Aufgaben 1–10). Stunde 3–4: Stationen A–D und Vertiefung (Aufgaben 11–16), Demo, Besprechung, Teststoff.",
  "zeilen": [
   {"wann": "Stunde 1", "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung + Teil 3 · Atombindung", "aufgaben": "1–4 · 6", "abgabe": "–"},
   {"wann": "Stunde 2", "lesen": "Teil 4 · Metallbindung + Teil 5 · Zwischenmolekulare Kräfte + Überblick", "aufgaben": "5 · 7–10 · Quiz", "abgabe": "Arbeitsblatt-PDF in LMS"},

@@ -7,7 +7,7 @@
  "stoff": "Schulbuch (Trauner) S. 10–23, 68–74 und alle Unterlagen aus dem Unterricht",
  "durchgenommen": [
   ["1", "Biomoleküle: Kohlenhydrate (Mono-, Di-, Polysaccharide), Fette und Transfette, Proteine", "S. 10–23", "[[PPP Biomoleküle · Arbeitsblatt Biomoleküle]]", "[[Aufgaben …]] · Buch-Aufgaben S. [[…]]"],
-  ["2", "Ernährung: Nährstoffdichte, Wertstufen der Vollwerternährung, Ernährungsweisen (Vegetarismus, Vollwerternährung), Trend-Check: Hype oder Hilfe?", "S. 68–74", "Lernseite · Arbeitsblatt am Handy (Trend-Check: Hype oder Hilfe?)", "Aufgaben 1–5 · Quiz"]
+  ["2", "Ernährung: Nährstoffdichte, Wertstufen der Vollwerternährung, Ernährungsweisen (Vegetarismus, Vollwerternährung), Trend-Check: Hype oder Hilfe?", "S. 68–74", "Theorie-Seite · Arbeitsblatt am Handy (Trend-Check: Hype oder Hilfe?)", "Aufgaben 1–5 · Quiz"]
  ],
  "koennen": [
   ["1", "**Biomoleküle:** Ich kann Kohlenhydrate (Mono-, Di-, Polysaccharide), Fette und Transfette sowie Proteine nach Bau und Eigenschaften unterscheiden · Ich kann die Energiedichte der Makronährstoffe vergleichen und für Sport und Dienst einordnen · [[weitere Lernziele aus dem Arbeitsblatt ergänzen]]", "Kohlenhydrat, Monosaccharid, Disaccharid, Polysaccharid, Fett, Transfett, Protein, Energiedichte"],
@@ -26,6 +26,6 @@
  ],
  "qr": [
   {"titel": "Test-Training", "text": "Quiz zum ganzen Teststoff", "url": "https://stephanholzer12.github.io/unterricht/3ab-nawi/test1-training/quiz.html"},
-  {"titel": "Klassenseite 3AB", "text": "alle Lernseiten", "url": "https://stephanholzer12.github.io/unterricht/3ab-nawi/"}
+  {"titel": "Klassenseite 3AB", "text": "alle Theorie-Seiten", "url": "https://stephanholzer12.github.io/unterricht/3ab-nawi/"}
  ]
 }

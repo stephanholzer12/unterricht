@@ -22,9 +22,9 @@ AE = ["äußere Kritik", "innere Kritik"]
 
 T = [
  # ======================================================= Stunde 1 · Pflicht
- {"id": "a1", "nr": 1, "title": "Äußere oder innere Kritik?", "src": "Theorie S. 10–12", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a1", "nr": 1, "title": "Äußere oder innere Kritik?", "src": "Buch S. 10–12", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Ordne jeden Befund zu: Gehört er zur äußeren Quellenkritik (Material, Echtheit, Herkunft) oder zur inneren Quellenkritik (Inhalt)?",
-  "hint": "Info: Lernseite Teil 2 »Äußere Kritik« und »Innere Kritik«",
+  "hint": "Info: Theorie-Seite Teil 2 »Äußere Kritik« und »Innere Kritik«",
   "type": "multi",
   "fields": [["a", "a) Gutachter untersuchen Papier, Aufkleber und Einband der Bände auf ihr Alter.", AE, False],
              ["b", "b) Fehler aus einem Buch von Max Domarus tauchen im »Tagebuch« wieder auf.", AE, False],
@@ -37,10 +37,10 @@ T = [
                       "e) äußere (Herkunft)"]]],
   "tip": ["Äußere Kritik prüft das Material und die Herkunft, innere Kritik den Inhalt", "theorie.html#aeussere"]},
 
- {"id": "a2", "nr": 2, "title": "Der Handschrift-Trick", "src": "Theorie S. 10–12", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a2", "nr": 2, "title": "Der Handschrift-Trick", "src": "Buch S. 10–12", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Bei der ersten Prüfung bestätigten Schriftgutachter: Tagebuch und Hitler-Schriftproben stammen von derselben Hand. Trotzdem war das Gutachten wertlos. "
        "a) Erkläre in 1–2 Sätzen, warum. b) Nenne zwei Dinge, die man hätte besser machen müssen.",
-  "hint": "Info: Lernseite Teil 2 »Der Handschrift-Trick«",
+  "hint": "Info: Theorie-Seite Teil 2 »Der Handschrift-Trick«",
   "type": "multi",
   "fields": [["warum", "a) Warum war das Gutachten wertlos? (1–2 Sätze)"], ["besser", "b) Zwei Dinge, die man besser machen musste"]],
   "chk": {"warum": {"kw": [["Vergleichsproben stammten vom Fälscher", "fälsch|kujau|selbe quelle|gleiche quelle|selben quelle|ebenfalls|auch von"]]},
@@ -49,10 +49,10 @@ T = [
                       "b) z. B.: nur gesicherte Originale (aus einem Archiv) als Vergleich · unabhängige Gutachter · zusätzlich Material und Inhalt prüfen."]]],
   "tip": ["Gleiche Hand heißt noch nicht: von Hitler", "theorie.html#handschrift"]},
 
- {"id": "a3", "nr": 3, "title": "9,3 Millionen D-Mark", "src": "Theorie S. 10–12", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a3", "nr": 3, "title": "9,3 Millionen D-Mark", "src": "Buch S. 10–12", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Der »Stern« zahlte über 9 Millionen D-Mark und prüfte die Bände vorher nicht unabhängig. a) Nenne zwei Gründe, warum man so handelt (wirtschaftlich oder aus Zeitdruck). "
        "b) Nenne eine Regel, die den Schaden verhindert hätte.",
-  "hint": "Info: Lernseite Teil 1 »Warum glaubte man daran?« und Teil 2 »Wem nützt die Fälschung?«",
+  "hint": "Info: Theorie-Seite Teil 1 »Warum glaubte man daran?« und Teil 2 »Wem nützt die Fälschung?«",
   "type": "multi",
   "fields": [["gruende", "a) Zwei Gründe, warum nicht genauer geprüft wurde"], ["regel", "b) Eine Regel, die den Schaden verhindert hätte"]],
   "chk": {"gruende": {"kw": [["Geld / Auflage / Exklusivität", "geld|auflage|verkauf|gewinn|umsatz|exklusiv|sensation|millionen"],
@@ -66,7 +66,7 @@ T = [
  {"id": "a4", "nr": 4, "title": "KI-Antwort prüfen", "src": "Recherche im Internet", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Eine KI behauptet: »Das Papier der Tagebücher enthielt optische Aufheller, die es erst ab 1955 gab. Quelle: Bundesarchiv.« "
        "Prüfe die Behauptung: Öffne bundesarchiv.de, Suche »Hitler-Tagebücher Chronologie« (PDF der Geschichtsgalerie). a) Wie lautet dein Urteil? b) Welche Stelle in der Quelle hast du gefunden? (1–2 Sätze)",
-  "hint": "Recherche im Internet: bundesarchiv.de – Geschichtsgalerie »Pressekonferenz des Bundesarchivs zu Hitler-Tagebüchern« · Info: Lernseite »So prüfst du eine KI-Antwort«",
+  "hint": "Recherche im Internet: bundesarchiv.de – Geschichtsgalerie »Pressekonferenz des Bundesarchivs zu Hitler-Tagebüchern« · Info: Theorie-Seite »So prüfst du eine KI-Antwort«",
   "type": "multi",
   "fields": [["urteil", "a) Dein Urteil", ["teilweise belegt – Weißmacher aus der Nachkriegszeit ja, aber nicht genau »erst ab 1955«", "voll belegt – genau so steht es dort",
                                            "frei erfunden – die Quelle sagt nichts zu Weißmachern", "nicht prüfbar – es gibt keine Quelle"]],
@@ -78,10 +78,10 @@ T = [
                       "Merke: Eine KI trifft oft den Kern, wird aber bei Zahlen ungenau – immer die Primärquelle lesen."]]],
   "tip": ["Behauptung – Beleg öffnen – Primärquelle – Urteil", "theorie.html#ki"]},
 
- {"id": "a5", "nr": 5, "title": "Geheimes Dokument im Chat", "src": "Theorie S. 10–12", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
+ {"id": "a5", "nr": 5, "title": "Geheimes Dokument im Chat", "src": "Buch S. 10–12", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Im Klassenchat taucht ein »geheimes Dokument« auf: Angeblich wird eine Kaserne in Niederösterreich geschlossen. a) Nenne drei Prüffragen, bevor du es weiterleitest. "
        "b) Was tust du, bis du Gewissheit hast?",
-  "hint": "Info: Lernseite Teil 2 »Werkzeugkasten Quellenkritik« und »So prüfst du eine KI-Antwort«",
+  "hint": "Info: Theorie-Seite Teil 2 »Werkzeugkasten Quellenkritik« und »So prüfst du eine KI-Antwort«",
   "type": "multi",
   "fields": [["fragen", "a) Drei Prüffragen"], ["tun", "b) Was tust du bis dahin?"]],
   "chk": {"fragen": {"kw": [["Wer / Herkunft", "wer|woher|absender|herkunft|verfasser|erstellt"], ["Inhalt / Echtheit", "stimmt|echt|fehler|inhalt|passt|stempel|form"], ["Wem nützt es?", "nützt|nutzen|wozu|absicht|zweck"]]},
@@ -90,7 +90,7 @@ T = [
                       "b) Nicht weiterleiten, eine zweite unabhängige Quelle suchen (z. B. Presseaussendung des Bundesheeres), bei Verdacht Vorgesetzte oder Lehrer informieren."]]],
   "tip": ["Wer? Woher? Was? Wozu? – der Werkzeugkasten", "theorie.html#werkzeug"]},
 
- {"id": "a6", "nr": 6, "title": "Fälschung im Archiv?", "src": "Theorie S. 10–12", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
+ {"id": "a6", "nr": 6, "title": "Fälschung im Archiv?", "src": "Buch S. 10–12", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Angenommen, ein Archiv bekommt die gefälschten Kladden geschenkt. Soll es Fälschungen aufbewahren? Nenne je ein Argument dafür und dagegen und gib dein Urteil.",
   "type": "multi",
   "fields": [["dafuer", "Ein Argument dafür"], ["dagegen", "Ein Argument dagegen"], ["urteil", "Mein Urteil und eine Begründung (1–2 Sätze)"]],
@@ -128,23 +128,23 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
 
 QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchseite)
  ("Der Fall", "Wer hat die »Hitler-Tagebücher« gefälscht?", ["Konrad Kujau", "Gerd Heidemann", "Max Domarus", "Henri Nannen"],
-  "Kujau fälschte die Bände; Reporter Heidemann vermittelte sie an den »Stern«.", "Lernseite · Teil 1"),
+  "Kujau fälschte die Bände; Reporter Heidemann vermittelte sie an den »Stern«.", "Theorie-Seite · Teil 1"),
  ("Der Fall", "Wie viel zahlte der »Stern« für die Tagebücher?", ["über 9 Millionen D-Mark", "etwa 90 000 D-Mark", "genau 1 Million D-Mark", "gar nichts – sie waren geschenkt"],
-  "Der Verlag zahlte rund 9,3 Millionen D-Mark – ohne unabhängige Prüfung vorab.", "Lernseite · Teil 1"),
+  "Der Verlag zahlte rund 9,3 Millionen D-Mark – ohne unabhängige Prüfung vorab.", "Theorie-Seite · Teil 1"),
  ("Der Fall", "Warum zahlte der »Stern« ohne genaue Prüfung?", ["Sensation, Konkurrenzdruck und Geheimhaltung", "Das Gesetz verlangte es.", "Hitlers Familie bestätigte die Echtheit.", "Das Bundesarchiv hatte sie schon geprüft."],
-  "Hohe Auflage, Angst vor der Konkurrenz, nur ein Reporter kannte die »Quelle«.", "Lernseite · Teil 1"),
+  "Hohe Auflage, Angst vor der Konkurrenz, nur ein Reporter kannte die »Quelle«.", "Theorie-Seite · Teil 1"),
  ("Quellenkritik", "Was prüft die äußere Quellenkritik?", ["Material, Echtheit und Herkunft", "ob der Inhalt gefällt", "wie viele Seiten die Quelle hat", "den Preis der Quelle"],
   "Äußere Kritik: Ist die Quelle echt – Papier, Tinte, Schrift, Herkunft?", "Buch S. 10–12"),
  ("Quellenkritik", "Die Prüfer fanden im Papier Stoffe, die erst nach dem Krieg hergestellt wurden. Das ist …", ["äußere Kritik (Anachronismus)", "innere Kritik", "keine Quellenkritik", "ein Beweis für Echtheit"],
-  "Material, das es damals noch nicht gab, zeigt: Die Quelle kann nicht aus dieser Zeit stammen.", "Lernseite · Teil 2"),
+  "Material, das es damals noch nicht gab, zeigt: Die Quelle kann nicht aus dieser Zeit stammen.", "Theorie-Seite · Teil 2"),
  ("Quellenkritik", "Fehler aus einem Buch von Max Domarus tauchen im »Tagebuch« auf. Was heißt das?", ["Die Texte wurden abgeschrieben, nicht erlebt.", "Domarus war der Verfasser.", "Die Tagebücher sind echt.", "Domarus hat sie gefälscht."],
-  "Wo Domarus irrt, irrt auch das »Tagebuch« – ein klarer Beleg für Abschreiben (innere Kritik).", "Lernseite · Teil 2"),
+  "Wo Domarus irrt, irrt auch das »Tagebuch« – ein klarer Beleg für Abschreiben (innere Kritik).", "Theorie-Seite · Teil 2"),
  ("Quellenkritik", "Warum war das erste Handschrift-Gutachten wertlos?", ["Die Vergleichsproben stammten auch vom Fälscher.", "Die Gutachter konnten nicht lesen.", "Hitler schrieb nie von Hand.", "Die Schrift war zu schlecht."],
-  "Fälschung wurde mit Fälschung verglichen – gleiche Hand beweist nichts über Hitler.", "Lernseite · Teil 2"),
+  "Fälschung wurde mit Fälschung verglichen – gleiche Hand beweist nichts über Hitler.", "Theorie-Seite · Teil 2"),
  ("Quellenkritik", "Was ist eine Primärquelle?", ["eine Quelle aus der Zeit selbst", "ein später geschriebenes Schulbuch", "eine Zusammenfassung im Internet", "jede KI-Antwort"],
   "Primärquellen stammen aus der Zeit, über die wir etwas wissen wollen.", "Buch S. 10–12"),
  ("Quellenkritik", "Welche Frage gehört in JEDE Quellenkritik?", ["Wem nützt die Quelle?", "Ist sie schön gestaltet?", "Wie lang ist sie?", "Hat sie viele Bilder?"],
   "Absicht und Nutzen helfen, Fälschungen und Propaganda zu erkennen.", "Buch S. 10–12"),
  ("Heute", "Eine KI nennt eine Zahl und eine Quelle. Was tust du?", ["Den Beleg öffnen und in der Primärquelle prüfen.", "Es glauben – KI irrt nie.", "Die Zahl weitergeben.", "Nichts – Quellen sind egal."],
-  "Eine KI klingt überzeugend, ist aber kein Beweis; Zahlen und Quellenangaben immer prüfen.", "Lernseite · Für Schnelle"),
+  "Eine KI klingt überzeugend, ist aber kein Beweis; Zahlen und Quellenangaben immer prüfen.", "Theorie-Seite · Für Schnelle"),
 ]

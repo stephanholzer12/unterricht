@@ -314,7 +314,7 @@ assert not re.search(r"__[A-Z]+__", qv) and "Bindung" not in qv
 open(DST + "quiz.html", "w", encoding="utf-8").write(wrap(qv))
 QUIZ_STANDALONE = wrap(qv)
 
-# ---------------------------------------------------------------- Lernseite
+# ---------------------------------------------------------------- Theorie-Seite
 def fig(name, alt, anim=False, cap=None):
     w, h = SZ[name]
     c = f'<figcaption>{esc(cap)}</figcaption>' if cap else ('<figcaption>Animation</figcaption>' if anim else "")
@@ -423,7 +423,7 @@ page = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>{esc(I.TITEL)} – Lernseite</title>
+<title>{esc(I.TITEL)} – Theorie-Seite</title>
 <link rel="stylesheet" href="../../schriften/schriften.css">
 {tcss}
 </head>

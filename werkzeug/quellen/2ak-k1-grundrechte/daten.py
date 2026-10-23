@@ -14,7 +14,7 @@ def fx(opts, correct):
 
 
 T = [
- {"id": "a1", "nr": 1, "title": "Ein langer Weg", "src": "Arbeitsblatt M1 · Theorie S. 50", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a1", "nr": 1, "title": "Ein langer Weg", "src": "Arbeitsblatt M1 · Buch S. 50", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Schau dir die Zeitleiste M1 an. Achtung: Die Kästchen stehen nicht immer in der richtigen Reihenfolge – achte auf die Jahreszahlen! "
        "a) Welches Dokument ist das älteste? b) Wie viele Jahre liegen zwischen der Magna Charta und der AEMR? "
        "c) Für wen galten die Rechte? Ordne zu. d) Beschreibe in 2–3 Sätzen mit eigenen Worten, wie sich die Idee der Menschenrechte verändert hat.",
@@ -37,7 +37,7 @@ T = [
                          "danach wurden sie in Verträgen verbindlich gemacht (EMRK 1950, UN-Pakte 1966)."]]],
   "tip": ["M1 – auf die Jahreszahlen achten", "#material"]},
 
- {"id": "a2", "nr": 2, "title": "Was ist an der AEMR neu?", "src": "Arbeitsblatt M2 · Theorie S. 47", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a2", "nr": 2, "title": "Was ist an der AEMR neu?", "src": "Arbeitsblatt M2 · Buch S. 47", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Lies M2. a) Stimmt das? Entscheide bei jedem Satz. b) Erkläre in 2–3 Sätzen, was die AEMR von den älteren Dokumenten aus M1 unterscheidet.",
   "type": "multi",
   "fields": [["s1", "Die AEMR haben Männer und Frauen aus acht verschiedenen Ländern ausgearbeitet.", SJ, False],
@@ -57,7 +57,7 @@ T = [
                          "gemeinsam ausgearbeitet und hängt an keiner Religion. Sie war aber zuerst nur ein Versprechen, kein Vertrag."]]],
   "tip": ["M2, Zeile 1–33", "#material"]},
 
- {"id": "a3", "nr": 3, "title": "Warum ist Durchsetzen so schwer?", "src": "Arbeitsblatt M3 · Theorie S. 47, 50", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a3", "nr": 3, "title": "Warum ist Durchsetzen so schwer?", "src": "Arbeitsblatt M3 · Buch S. 47, 50", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Lies M3. a) Nenne die drei Dinge, die es auf der Welt – anders als in einem Staat – nicht gibt. "
        "b) Was ist mit »weichen« Sanktionen gemeint? Beschreibe in 1–2 Sätzen mit einem Beispiel. "
        "c) Vergleich mit Österreich: Wer prüft bei uns, ob der Staat Grundrechte verletzt?",
@@ -74,7 +74,7 @@ T = [
           ["c)", ["der Verfassungsgerichtshof in Wien; danach kann man sich an den Europäischen Gerichtshof für Menschenrechte in Straßburg wenden (Buch S. 47, 50)."]]],
   "tip": ["M3 · Buch S. 47 und 50", "#material"]},
 
- {"id": "a4", "nr": 4, "title": "Stolz und Schande", "src": "Arbeitsblatt M4 · Theorie S. 51–52", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a4", "nr": 4, "title": "Stolz und Schande", "src": "Arbeitsblatt M4 · Buch S. 51–52", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Lies M4. a) Ordne zu: Ist das für den Verfasser ein Grund für Stolz oder für Schande? "
        "b) Erkläre in 2–3 Sätzen, warum er den Jahrestag einen »Tag für Stolz und Schande« nennt. "
        "c) Quellencheck: Was für ein Text ist M4 – und aus welchem Jahr stammt er?",

@@ -8,7 +8,7 @@ Klassenseite die Blöcke in der Reihenfolge, in der sie im Schuljahr drankommen,
 Einheiten-Nummern (E1, E2 …) des Jahresplans. build_index.py ordnet damit die Blöcke und
 zeigt »Themenblock x von y«. Welche Einheit zu welchem Block gehört, steht in einheiten.json
 (Feld »block«, z. B. "A Atombau & Bindung", und »jahresplan«, z. B. "E3"). Zusätzlich wird pro Einheit die
-Zahl der geplanten Unterrichtsstunden gespeichert (»stunden«) – sie erscheint im Fahrplan jeder Lernseite.
+Zahl der geplanten Unterrichtsstunden gespeichert (»stunden«) – sie erscheint im Fahrplan jeder Theorie-Seite.
 """
 import json, os, re, sys
 import openpyxl

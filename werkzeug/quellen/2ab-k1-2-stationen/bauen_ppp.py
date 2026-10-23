@@ -215,13 +215,13 @@ def ppt_qr(s, url, x, y, size, step, label, color=OLIVE, arrow=False):
 # ---------------------------------------------------------------- Inhalte
 STATIONEN = [
  ("A", "haut", "Wasser mit Haut", ["Wasser auf die Münze tropfen – Tropfen zählen", "dasselbe mit Seifenwasser", "Büroklammer auf Filterpapier aufs Wasser legen", "1 Tropfen Waschmittel dazu"],
-  ("Theorie S. 26", "theory"), "Spülen! Seifenreste verderben den Versuch."),
+  ("Buch S. 26", "theory"), "Spülen! Seifenreste verderben den Versuch."),
  ("B", "wasserstrahl", "Der scheue Wasserstrahl", ["dünnen Wasserstrahl aufdrehen", "Ballon ungerieben hinhalten", "Ballon 20-mal reiben", "langsam dem Strahl nähern"],
   ("Versuch im Buch S. 27", "versuch"), "Ballon trocken halten – nass ist er entladen."),
  ("C", "mischen", "Wer mischt sich mit wem?", ["1 Wasser + Glycerin · 2 Wasser + Öl", "4 Öl + Spatelspitze Salz", "verschließen, 10 s schütteln, 1 min warten", "Glas 2 + 3 Tropfen Waschmittel = Nr. 3"],
-  ("Theorie S. 22–23, 27", "theory"), "Öl in den Sammelbehälter – nicht in den Ausguss!"),
+  ("Buch S. 22–23, 27", "theory"), "Öl in den Sammelbehälter – nicht in den Ausguss!"),
  ("D", "kristall", "Salzkörner und Metall unter Druck", ["Salz, Zucker, Alaun unter der Lupe (K1.2-V2)", "Alaun im Mörser drücken (K1.2-V3)", "Zinnkorn platt drücken", "Kupferstreifen biegen"],
-  ("Theorie S. 21, 25", "theory"), "Schutzbrille! Drücken, nicht schlagen."),
+  ("Buch S. 21, 25", "theory"), "Schutzbrille! Drücken, nicht schlagen."),
 ]
 
 
@@ -243,14 +243,14 @@ def build(lehrer):
 
     s = d.slide("Nur Titel", "Dein Lernpfad für Stunde 3–4")
     for i, (url, step, lab, col) in enumerate([(D.URL["versuche"], "V", "Versuche · Protokoll", RUST), (D.URL["vertiefung"], "1", "Vertiefung 11–17", OLIVE),
-                                               (D.URL["training"], "2", "Test-Training", OLIVE), (D.URL["lernseite"], "?", "Lernseite", TEAL)]):
+                                               (D.URL["training"], "2", "Test-Training", OLIVE), (D.URL["lernseite"], "?", "Theorie-Seite", TEAL)]):
         ppt_qr(s, url, 0.75 + i * 2.25, 1.45, 1.75, step, lab, col)
     tb(s, 0.5, 4.75, 9, 0.4, ["Ein Protokoll-Handy pro Gruppe scannt »Versuche«. Die Vertiefung macht jeder am eigenen Handy."], size=16, color=MUTED, after=0)
 
     s = d.slide("Nur Titel", "Dein Fahrplan")
     tb(s, 0.5, 1.0, 9, 0.4, [[("Dafür sind 4 Stunden eingeplant. ", {"bold": True, "color": OLIVE}), ("Stunde 1–2 hast du schon geschafft.", {})]], size=18, after=0)
     rows = [["Wann", "Das machen wir", "Aufgaben", "Abgabe"]]
-    kurz = {"Stunde 1": "Lernseite Teil 1–3", "Stunde 2": "Lernseite Teil 4–5 + Überblick"}
+    kurz = {"Stunde 1": "Theorie-Seite Teil 1–3", "Stunde 2": "Theorie-Seite Teil 4–5 + Überblick"}
     for z in D.FAHRPLAN["zeilen"]:
         ab = z["abgabe"].replace("Arbeitsblatt-PDF in LMS", "PDF in LMS").replace("Versuchs-PDF (Gruppe) + Vertiefungs-PDF (jeder) in LMS", "2 PDFs in LMS")
         rows.append([z["wann"], kurz.get(z["wann"], z["lesen"].replace("Versuchsseite: ", "")), z["aufgaben"], ab])
@@ -287,7 +287,7 @@ def build(lehrer):
         s = d.slide("Nur Titel", "Lehrer-Info · Stundenvorschlag", hidden=True)
         tb(s, 0.5, 0.98, 9, 0.35, ["AUSGEBLENDET · Kern in 4 Stunden · Stunde 1–2 erledigt · Rest optional"], size=13, bold=True, color=RUST, after=0)
         rows = [["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Methode"],
-                ["1–2", "Teil 1–5 Lernseite", "–", "1–10 · Quiz", "Handy + Erklären"],
+                ["1–2", "Teil 1–5 Theorie-Seite", "–", "1–10 · Quiz", "Handy + Erklären"],
                 ["3", "Sicherheit, Stationsplan", "Gr. 1–4: A–D", "Gr. 5–8: 11–16", "ohne Handy: Stationen"],
                 ["4", "Demo, Besprechung, Teststoff", "K1.2-V4 Demo · Gr. 5–8: A–D", "Gr. 1–4: 11–16", "ohne Handy: Demo + Plenum"],
                 ["Zusatz", "Für Schnelle", "V1, V5, V6, V10, V11 (heute nicht)", "17 · Test-Training", "Handy"]]
@@ -376,7 +376,7 @@ def build(lehrer):
     cells = grid(s, 0.5, 1.45, [2.2, 1.2, 1.85, 3.75], rows, [0.4] + [0.52] * 6, size=16)
     if L:
         for r in cells[1:]: s._anim.append([r[2], r[3]])
-    pill(s, "Theorie S. 21, 25", x=0.5, w=2.2)
+    pill(s, "Buch S. 21, 25", x=0.5, w=2.2)
 
     for half in (D.BESPRECHUNG[:2], D.BESPRECHUNG[2:]):
         s = d.slide("Nur Titel", "Was habt ihr herausgefunden?")
@@ -386,7 +386,7 @@ def build(lehrer):
             tb(s, x, 1.35, 4.4, 1.1, [KURZFRAGE.get(st, q)], size=20, bold=True, color=INK, after=0)
             short = a if len(a) < 230 else a[:a.rfind(".", 0, 230) + 1]
             answer(s, x, 2.55, 4.4, 2.45, "Lösung", short, L)
-        pill(s, "Theorie S. 21–27", x=0.5, w=2.2)
+        pill(s, "Buch S. 21–27", x=0.5, w=2.2)
 
     s = d.slide("Nur Titel", "1. Test · Donnerstag, 5. November")
     tb(s, 0.5, 1.0, 6.2, 4.0, [

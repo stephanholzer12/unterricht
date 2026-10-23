@@ -1,6 +1,6 @@
 """PBGW 2AK · K1 Grund- und Menschenrechte (Buch S. 45–58) – 2 Stunden (v3).
 Stunde 1: Theorie kompakt + Arbeitsblatt »70 Jahre AEMR« (Schroedel 2018) · Stunde 2: Besprechung, Verstöße 2025/26, Stolz und Schande 2026.
-Quelle für Handy-Seiten (Lernseite, Arbeitsblatt, Quiz), Word und PPP. Auswahl: richtige Antwort steht an 1. Stelle (Anzeige gemischt),
+Quelle für Handy-Seiten (Theorie-Seite, Arbeitsblatt, Quiz), Word und PPP. Auswahl: richtige Antwort steht an 1. Stelle (Anzeige gemischt),
 außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 import copy
 from daten import T as T_AEMR, STAND
@@ -39,8 +39,8 @@ for t in T_AEMR:
     T_AB.append(x)
 T_AB[4]["src"] = "Arbeitsblatt Aufgabe 5 · Buch S. 51"
 
-T_Q = {"id": "a7", "nr": 7, "title": "Quellencheck", "src": "Theorie S. 52 · Arbeitsblatt M4", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
-       "q": "Vergleiche drei Quellen: den Buchtext S. 52 (ORF, 2022), das Arbeitsblatt M4 (Kommentar, 2018) und die Amnesty-Zahlen (Lernseite Teil 2). "
+T_Q = {"id": "a7", "nr": 7, "title": "Quellencheck", "src": "Buch S. 52 · Arbeitsblatt M4", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
+       "q": "Vergleiche drei Quellen: den Buchtext S. 52 (ORF, 2022), das Arbeitsblatt M4 (Kommentar, 2018) und die Amnesty-Zahlen (Theorie-Seite Teil 2). "
             "Was ist Nachricht, was Meinung? Wie aktuell? Wer steckt dahinter?",
        "type": "multi",
        "fields": [["orf", "ORF 2022 ist …", ["eine Nachricht mit Quelle", "ein Kommentar", "Werbung", "ein Gesetzestext"]],

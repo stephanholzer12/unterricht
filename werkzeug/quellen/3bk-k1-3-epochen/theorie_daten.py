@@ -1,4 +1,4 @@
-"""Theorie PBGW 3BK · K1.3–1.4 Epochen – eine Quelle für Lernseite (theorie.html) und PPP (Lehrer/Kadetten).
+"""Theorie PBGW 3BK · K1.3–1.4 Epochen – eine Quelle für Theorie-Seite (theorie.html) und PPP (Lehrer/Kadetten).
 Bausteine: ("zeitstrahl",) · ("tiles", [(Überschrift, Text), …]) · ("ul", [...]) · ("ol", [...]) · ("merke", Text) · ("hint", Text)
            ("table", [[Kopf…], [Zeile…], …], [Spaltenbreiten-Anteile]) · ("video", key) · ("reveal", [(Frage, Antwort), …]) · ("jetzt", Text, Link)
 **fett** wird in HTML und PPP fett gesetzt."""

@@ -1,6 +1,6 @@
 /* Lösungshilfe für die Handy-Arbeitsblätter (aufgaben.html mit »Prüfen«).
    Ziel: Kadetten bleiben beim Üben nicht frustriert stecken – und die Lösung bleibt trotzdem sichtbar im PDF.
-   1) Fehlversuch 1: nur »Noch nicht ganz« + Hinweis, was fehlt.  Fehlversuch 2: zusätzlich der Tipp mit Link zur Lernseite.
+   1) Fehlversuch 1: nur »Noch nicht ganz« + Hinweis, was fehlt.  Fehlversuch 2: zusätzlich der Tipp mit Link zur Theorie-Seite.
       Ab Fehlversuch 3: Knopf »Lösung zeigen« bei GENAU dieser Aufgabe.
    2) Wer die Lösung zeigen lässt, bekommt im PDF den Status »Lösung angesehen« – auch wenn danach die richtige Antwort drinsteht.
    3) Rechenaufgaben: Nach Lösung oder richtiger Antwort gibt es eine Übungsvariante mit neuen Zahlen (LH_VARIANTEN).

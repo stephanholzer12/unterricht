@@ -1,4 +1,4 @@
-"""Lernseite (Theorie am Handy) aus der TH-Kadetten-PPP – für GitHub Pages."""
+"""Theorie-Seite (Theorie am Handy) aus der TH-Kadetten-PPP – für GitHub Pages."""
 import json, html, os, shutil
 from PIL import Image
 

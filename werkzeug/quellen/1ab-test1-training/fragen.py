@@ -41,9 +41,9 @@ QUIZ = [
   "Länge = Betrag, Pfeilspitze = Richtung, Anfang = Angriffspunkt.", "Buch S. 18–22"),
  # 4 Messen (K1.2.2)
  ("Messen", "Drei Messungen: 174,2 cm, 174,6 cm, 174,3 cm. Wie groß ist der Mittelwert (auf 1 mm gerundet)?", ["174,4 cm", "174,3 cm", "174,6 cm", "523,1 cm"],
-  "(174,2 + 174,6 + 174,3) : 3 = 174,37 → gerundet 174,4 cm.", "Lernseite K1.2.2 · Buch S. 17"),
+  "(174,2 + 174,6 + 174,3) : 3 = 174,37 → gerundet 174,4 cm.", "Theorie-Seite K1.2.2 · Buch S. 17"),
  ("Messen", "Alle wurden mit Schuhen gemessen. Welcher Fehler ist das?", ["ein systematischer Fehler", "ein zufälliger Fehler", "gar kein Fehler", "ein Rundungsfehler"],
-  "Alle Werte sind in dieselbe Richtung verschoben – da hilft auch der Mittelwert nicht.", "Lernseite K1.2.2 · Buch S. 17"),
+  "Alle Werte sind in dieselbe Richtung verschoben – da hilft auch der Mittelwert nicht.", "Theorie-Seite K1.2.2 · Buch S. 17"),
  # 5 Zeit, Masse, Gewicht
  ("Masse und Gewicht", "Ein Rucksack hat auf der Erde 20 kg. Welche Masse hat er auf dem Mond?", ["20 kg", "etwa 3,3 kg", "0 kg", "120 kg"],
   "Die Masse bleibt überall gleich. Auf dem Mond ist nur die Gewichtskraft kleiner (etwa ein Sechstel).", "Buch S. 18–22"),

@@ -128,7 +128,7 @@
    "quiz.html"
   ],
   "fahrplan": {
-   "text": "Stunde 1–2: Lernseite und Arbeitsblatt (Aufgaben 1–10). Stunde 3–4: Stationen A–D und Vertiefung (Aufgaben 11–16), Demo, Besprechung, Teststoff.",
+   "text": "Stunde 1–2: Theorie-Seite und Arbeitsblatt (Aufgaben 1–10). Stunde 3–4: Stationen A–D und Vertiefung (Aufgaben 11–16), Demo, Besprechung, Teststoff.",
    "zeilen": [
     {
      "wann": "Stunde 1",
@@ -442,7 +442,7 @@
    "quiz.html"
   ],
   "fahrplan": {
-   "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 1 das PDF ab.",
+   "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 1 das PDF ab.",
    "zeilen": [
     {
      "wann": "Stunde 1",
@@ -483,13 +483,13 @@
   ],
   "aktuell": true,
   "fahrplan": {
-   "text": "Lies die Lernseite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.",
+   "text": "Lies die Theorie-Seite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.",
    "zeilen": [
     {
      "wann": "Stunde 1",
      "lesen": "Einstieg, Teil 1 · Der Fall, Teil 2 · Wie flog die Fälschung auf?",
      "aufgaben": "1–3",
-     "wie": "Lernseite am Handy; ohne Handy: Partnergespräch (2 Min.); Rest der Stunde: Nachbesprechung im Plenum",
+     "wie": "Theorie-Seite am Handy; ohne Handy: Partnergespräch (2 Min.); Rest der Stunde: Nachbesprechung im Plenum",
      "abgabe": "PDF in LMS"
     },
     {
@@ -528,7 +528,7 @@
    "quiz.html"
   ],
   "fahrplan": {
-   "text": "Lies die Lernseite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
+   "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
    "zeilen": [
     {
      "wann": "Stunde 1",

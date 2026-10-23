@@ -2,7 +2,7 @@
    Unter jedem Versuch steht ein Knopf. Er prüft, ob alles ausgefüllt ist und ob die Texte zur Frage passen, und gibt Hilfe in Stufen
    – bei jedem weiteren Klick etwas mehr (Lösung wird nie verraten, die Lehrkraft liest und bewertet endgültig):
      1. Klick: Hinweis      (»Erkenntnis ist noch leer«, »passt noch nicht ganz zur Frage – lies die Frage noch einmal«)
-     2. Klick: Tipp         (Schulbuchseite, Link zur Lernseite, »die Frage hat mehrere Teile«)
+     2. Klick: Tipp         (Schulbuchseite, Link zur Theorie-Seite, »die Frage hat mehrere Teile«)
      3. Klick: ein fehlender Begriff / Gedanke wird genannt
      4. Klick und weiter: alle noch fehlenden Begriffe
    Gezählt werden nur Klicks, bei denen etwas nicht gepasst hat. Die Zahl steht in S.chk (eigener Platz im Speicherstand der Seite,
@@ -109,7 +109,7 @@
     /* inhalt */
     var f = p.fehlt || [];
     if (stufe <= 1) return p.f.art === "beob" ? "passt noch nicht ganz zu dem, was beim Versuch zu sehen ist. Schau dir die Durchführung noch einmal an." : "passt noch nicht ganz zur Frage. Lies die Frage noch einmal und beantworte jeden Teil davon.";
-    if (stufe === 2) return "Tipp: " + (s ? "Lies im Schulbuch " + s + " nach oder " : "") + "schau auf der Lernseite nach. Die Frage hat oft mehr als einen Teil – hast du jeden beantwortet?";
+    if (stufe === 2) return "Tipp: " + (s ? "Lies im Schulbuch " + s + " nach oder " : "") + "schau auf der Theorie-Seite nach. Die Frage hat oft mehr als einen Teil – hast du jeden beantwortet?";
     if (stufe === 3) return f.length ? "es fehlt noch ein Gedanke, zum Beispiel zu: »" + f[0] + "«." : "es fehlt noch etwas Wichtiges.";
     return f.length ? "es fehlen noch diese Begriffe bzw. Gedanken: " + f.map(function (x) { return "»" + x + "«"; }).join(", ") + "." : "es fehlt noch etwas Wichtiges.";
   }
@@ -136,7 +136,7 @@
         ul.appendChild(li);
       });
       box.appendChild(ul);
-      if (c.k >= 2) { var a = document.createElement("a"); a.href = "theorie.html"; a.textContent = "Zur Lernseite"; var d = document.createElement("div"); d.className = "vp-stufe"; d.appendChild(a); d.appendChild(document.createTextNode(" – dort steht die Theorie zu diesem Versuch.")); box.appendChild(d); }
+      if (c.k >= 2) { var a = document.createElement("a"); a.href = "theorie.html"; a.textContent = "Zur Theorie"; var d = document.createElement("div"); d.className = "vp-stufe"; d.appendChild(a); d.appendChild(document.createTextNode(" – dort steht die Theorie zu diesem Versuch.")); box.appendChild(d); }
       var u = document.createElement("div"); u.className = "vp-stufe";
       u.textContent = c.k < 3 ? "Ändere etwas und tippe noch einmal auf »Eingaben prüfen« – du bekommst dann mehr Hilfe." : "Tippe nach dem Ändern wieder auf »Eingaben prüfen«. Kommst du nicht weiter, frag deine Gruppe oder deine Lehrkraft.";
       box.appendChild(u);

@@ -1,7 +1,7 @@
 """PBGW 3BK · K1.3–K1.4 Zeit-Einteilung und Epochengliederung (Buch S. 13–14) – 2 Stunden (v1).
 Jahresplan: Einheit 2 »Epochen und ihre Merkmale« (2 Std., K03, N01, P4).
 Stunde 1: Wie zählen wir Zeit? (Kalender, Zeitrechnungen) · Stunde 2: Die Epochen (Merkmale, Grenzen, Eurozentrismus).
-Eine Quelle für Handy-Seiten (Lernseite, Arbeitsblatt, Quiz), Word, PPP und Kahoot.
+Eine Quelle für Handy-Seiten (Theorie-Seite, Arbeitsblatt, Quiz), Word, PPP und Kahoot.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
 STAND = "18.10.2026"
@@ -37,8 +37,8 @@ T = [
  # ======================================================= Stunde 1 · Zeit-Einteilung
  {"id": "a1", "nr": 1, "title": "Welches Jahr haben wir heute?", "src": "Buch-Aufgabe S. 13", "own": False, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Welches Jahr zeigen der jüdische und der islamische (muslimische) Kalender gerade an? "
-       "Zusatz: Rechne zuerst mit den Faustformeln von der Lernseite und kontrolliere dann im Internet. Erkläre in 1–2 Sätzen, warum die Faustformeln nur ungefähr stimmen.",
-  "hint": "Info: Lernseite Teil 1 »Andere Kalender« · Kontrolle: Recherche im Internet, Suchtipp »jüdischer Kalender heute« bzw. »islamischer Kalender heute«",
+       "Zusatz: Rechne zuerst mit den Faustformeln von der Theorie-Seite und kontrolliere dann im Internet. Erkläre in 1–2 Sätzen, warum die Faustformeln nur ungefähr stimmen.",
+  "hint": "Info: Theorie-Seite Teil 1 »Andere Kalender« · Kontrolle: Recherche im Internet, Suchtipp »jüdischer Kalender heute« bzw. »islamischer Kalender heute«",
   "type": "multi",
   "fields": [["jued", "Jüdisches Jahr (Oktober 2026)"], ["islam", "Islamisches Jahr (Oktober 2026)"],
              ["warum", "Warum stimmen die Faustformeln nur ungefähr? (1–2 Sätze)"]],
@@ -61,7 +61,7 @@ T = [
                       "1600 ja (durch 400) · 1730 nein (nicht durch 4) · Zusatz: 2100 nein (durch 100, nicht durch 400)"]]],
   "tip": ["Die Schaltjahr-Regel: 4 – 100 – 400", "theorie.html#schalt"]},
 
- {"id": "a3", "nr": 3, "title": "Rechnen über die Zeitenwende", "src": "Theorie S. 13", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a3", "nr": 3, "title": "Rechnen über die Zeitenwende", "src": "Buch S. 13", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Achtung: Ein Jahr 0 gibt es nicht! a) Caesar wurde 44 v. Chr. ermordet. Wie viele Jahre ist das 2026 her? "
        "b) Ötzi starb um 3300 v. Chr. Vor wie vielen Jahren war das (Stand 2026)? Schreib jeweils die Rechnung dazu. "
        "c) Wiener Neustadt wurde 1194 gegründet. In welchem Jahrhundert? d) An welchem Tag begann das 21. Jahrhundert?",
@@ -77,7 +77,7 @@ T = [
                       "d) am 1. Jänner 2001 – das 1. Jahrhundert umfasst die Jahre 1 bis 100, also endet das 20. mit dem Jahr 2000."]]],
   "tip": ["Christi Geburt – und kein Jahr 0 · Jahrhunderte richtig zählen", "theorie.html#jahr0"]},
 
- {"id": "a4", "nr": 4, "title": "Wer zählt ab wann?", "src": "Theorie S. 13", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a4", "nr": 4, "title": "Wer zählt ab wann?", "src": "Buch S. 13", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "Jede Zeitrechnung braucht einen Bezugspunkt – ein »Jahr 1«. Ordne jeder Zeitrechnung ihren Bezugspunkt zu.",
   "type": "multi",
   "fields": [["jued", "jüdischer Kalender", first(BEZUG, BEZUG[0])],
@@ -93,7 +93,7 @@ T = [
                       "Japan → Kaiser-Ära: seit 2019 Ära Reiwa, 2026 = Reiwa 8"]]],
   "tip": ["Zeitrechnungen nach Ereignissen", "theorie.html#ereignisse"]},
 
- {"id": "a5", "nr": 5, "title": "Papst Gregor und die verschwundenen Tage", "src": "Theorie S. 13", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
+ {"id": "a5", "nr": 5, "title": "Papst Gregor und die verschwundenen Tage", "src": "Buch S. 13", "own": True, "tag": "Stunde 1", "h": 1, "hl": False,
   "q": "a) Welcher Tag folgte in Rom auf Donnerstag, den 4. Oktober 1582? b) Erkläre in 2 Sätzen, warum die Kalenderreform nötig war. "
        "c) Die »Oktoberrevolution« in Russland fand nach unserem Kalender am 7. November 1917 statt. Erkläre, wie das sein kann.",
   "type": "multi",
@@ -110,7 +110,7 @@ T = [
   "tip": ["Julianisch → gregorianisch", "theorie.html#gregor"]},
 
  # ======================================================= Stunde 2 · Epochen
- {"id": "a6", "nr": 6, "title": "Die Epochen auf dem Zeitstrahl", "src": "Theorie S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
+ {"id": "a6", "nr": 6, "title": "Die Epochen auf dem Zeitstrahl", "src": "Buch S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "a) Ordne jeder Epoche ihren ungefähren Zeitraum zu (Europa, Vorderasien, Nordafrika). "
        "b) Mit welchem Ereignis lässt man das Mittelalter oft beginnen – und mit welchen Ereignissen die Neuzeit?",
   "type": "multi",
@@ -130,7 +130,7 @@ T = [
           ["b)", ["Mittelalter: Ende des Weströmischen Reichs 476 · Neuzeit: Buchdruck (um 1450), Entdeckung Amerikas 1492, Reformation 1517"]]],
   "tip": ["Die Epochen im Überblick", "theorie.html#ueberblick"]},
 
- {"id": "a7", "nr": 7, "title": "Welche Epoche ist das?", "src": "Theorie S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
+ {"id": "a7", "nr": 7, "title": "Welche Epoche ist das?", "src": "Buch S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "Ordne jedes Ereignis der richtigen Epoche zu.",
   "type": "multi",
   "fields": [["oetzi", "Ötzi stirbt am Tisenjoch (um 3300 v. Chr.)", EP, False],
@@ -149,7 +149,7 @@ T = [
                       "Belagerung Wiens und Militärakademie → Neuzeit · Staatsvertrag und Smartphone → Zeitgeschichte"]]],
   "tip": ["Die Epochen im Überblick", "theorie.html#ueberblick"]},
 
- {"id": "a8", "nr": 8, "title": "Waffen und Werkzeuge erzählen Geschichte", "src": "Theorie S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
+ {"id": "a8", "nr": 8, "title": "Waffen und Werkzeuge erzählen Geschichte", "src": "Buch S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "a) Ordne zu: In welcher Epoche waren diese Waffen typisch? "
        "b) Die Urgeschichte wird nach Werkstoffen eingeteilt (Stein-, Kupfer-, Bronze-, Eisenzeit). Erkläre in 1–2 Sätzen, warum man sie nicht – wie später – nach Herrschern oder Ereignissen benennt.",
   "type": "multi",
@@ -164,7 +164,7 @@ T = [
                   "Erhalten sind nur Gegenstände (Sachkultur) – deshalb ordnet man nach dem Material, aus dem Werkzeuge und Waffen gemacht wurden."]]],
   "tip": ["Waffen erzählen Geschichte · Urgeschichte: nach Werkstoffen benannt", "theorie.html#waffen"]},
 
- {"id": "a9", "nr": 9, "title": "Lange und kurze Jahrhunderte", "src": "Theorie S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
+ {"id": "a9", "nr": 9, "title": "Lange und kurze Jahrhunderte", "src": "Buch S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "Manche Historiker lassen Jahrhunderte »lang« oder »kurz« dauern. a) Ordne zu. "
        "b) Begründe in 1–2 Sätzen, warum das »kurze 20. Jahrhundert« genau 1914 beginnt und 1989 endet.",
   "type": "multi",
@@ -179,7 +179,7 @@ T = [
                   "Für die Einteilung zählen die prägenden Ereignisse, nicht die runden Jahreszahlen."]]],
   "tip": ["Lange und kurze Jahrhunderte", "theorie.html#jahrhunderte"]},
 
- {"id": "a10", "nr": 10, "title": "Wessen Geschichte?", "src": "Theorie S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
+ {"id": "a10", "nr": 10, "title": "Wessen Geschichte?", "src": "Buch S. 14", "own": True, "tag": "Stunde 2", "h": 2, "hl": False,
   "q": "a) Erkläre den Begriff Eurozentrismus in 1–2 Sätzen mit einem Beispiel. "
        "b) Um 600 v. Chr. gehört Athen schon zur Antike, Hallstatt im Salzkammergut aber noch zur Urgeschichte. Warum? "
        "c) Eine Zeittafel aus Deutschland hat eine Spalte »Deutsche Geschichte«. Nenne zwei Ereignisse der österreichischen Zeitgeschichte, die in einer österreichischen Zeittafel stehen müssten.",
@@ -197,7 +197,7 @@ T = [
   "tip": ["Wessen Geschichte? Eurozentrismus · Zeitgeschichte in Österreich", "theorie.html#euro"]},
 
  # ======================================================= Für Schnelle und Neugierige
- {"id": "a11", "nr": 11, "title": "Die militärische Datum-Zeit-Gruppe", "src": "Theorie S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
+ {"id": "a11", "nr": 11, "title": "Die militärische Datum-Zeit-Gruppe", "src": "Buch S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Im Einsatz steht über jeder Meldung eine Datum-Zeit-Gruppe. Entschlüssle »070630AJAN27«: a) Tag b) Uhrzeit c) Zeitzone d) Monat und Jahr. "
        "e) Schreibe die Datum-Zeit-Gruppe für: Abmarsch am 18. Oktober 2026 (Sommerzeit) um 21:45 Uhr.",
   "type": "multi",
@@ -211,14 +211,14 @@ T = [
   "sol": [["Lösung", ["a) 7. · b) 06:30 Uhr · c) A = MEZ (Winterzeit, Weltzeit + 1 Stunde) · d) Jänner 2027", "e) 182145BOKT26"]]],
   "tip": ["Zeit im Einsatz", "theorie.html#dzg"]},
 
- {"id": "a12", "nr": 12, "title": "Knobelaufgabe: Geburtstag am 29. Februar", "src": "Theorie S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
+ {"id": "a12", "nr": 12, "title": "Knobelaufgabe: Geburtstag am 29. Februar", "src": "Buch S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Ein Kind wird am 29. Februar 2028 geboren. Wie oft kann es bis einschließlich 2100 an seinem »echten« Geburtstag feiern (den Tag der Geburt nicht mitgezählt)? Schreib deinen Rechenweg dazu.",
   "type": "multi", "fields": [["anz", "Anzahl echter Geburtstage (mit Rechenweg)"]],
   "chk": {"anz": {"kw": [["richtige Anzahl", r"\b17\b"]]}},
   "sol": [["Lösung", ["Schaltjahre nach 2028: 2032, 2036, … 2096 → (2096 − 2032) : 4 + 1 = 17. 2100 ist kein Schaltjahr (durch 100, nicht durch 400). Also 17-mal."]]],
   "tip": ["Die Schaltjahr-Regel: 4 – 100 – 400", "theorie.html#schalt"]},
 
- {"id": "a13", "nr": 13, "title": "Sport: Marathon und die Olympiaden", "src": "Theorie S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
+ {"id": "a13", "nr": 13, "title": "Sport: Marathon und die Olympiaden", "src": "Buch S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Die Griechen zählten in Olympiaden: Die 1. Olympiade umfasst die Jahre 776 bis 773 v. Chr., jede Olympiade dauert 4 Jahre. "
        "Die Schlacht bei Marathon (Ursprung des Marathonlaufs) war 490 v. Chr. In welcher Olympiade? Schreib deinen Rechenweg dazu.",
   "type": "multi", "fields": [["olymp", "Nummer der Olympiade (mit Rechenweg)"]],
@@ -227,7 +227,7 @@ T = [
                       "Die Griechen schrieben: »im 3. Jahr der 72. Olympiade«."]]],
   "tip": ["Zeitrechnungen nach Ereignissen", "theorie.html#ereignisse"]},
 
- {"id": "a14", "nr": 14, "title": "Wirtschaft: Ein Kalender spart Geld", "src": "Theorie S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
+ {"id": "a14", "nr": 14, "title": "Wirtschaft: Ein Kalender spart Geld", "src": "Buch S. 13", "own": True, "tag": "Zusatz", "h": 0, "hl": False,
   "q": "Saudi-Arabien zahlt seit Oktober 2016 die Gehälter im Staatsdienst nach dem gregorianischen statt nach dem islamischen Kalender – 12 Monatsgehälter pro Jahr wie bisher. "
        "a) Wie viele Tage ist ein islamisches Mondjahr ungefähr kürzer als unser Sonnenjahr? b) Um wie viel Prozent arbeiten die Beamten nun für dasselbe Jahresgehalt mehr? (365 statt 354 Tage, auf eine Kommastelle) "
        "c) Erkläre in 1–2 Sätzen, warum der Staat damit spart.",

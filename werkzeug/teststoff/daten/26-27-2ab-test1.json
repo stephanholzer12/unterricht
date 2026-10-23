@@ -9,8 +9,8 @@
   ["1", "[[Wiederholung: Atombau, Periodensystem, chemische Schreibweise]]", "S. 10[[–18]]", "[[PPP Wiederholung 1. Jahrgang]]", "[[…]]"],
   ["2", "Atommodelle im Wandel der Zeit: Dalton, Thomson, Rutherford, Bohr", "S. 11–14", "[[PPP Atommodelle]]", "[[Buch-Aufgaben S. …]]"],
   ["3", "Das heute gültige Atommodell: Orbitale, Besetzung, Elektronenkonfiguration", "S. 14–18", "[[PPP Atommodelle]]", "[[Buch-Aufgaben S. 18]]"],
-  ["4", "Die Bindungsarten: Ionen-, Atom- und Metallbindung", "S. 19–25", "PPP Bindungsarten · Lernseite · Arbeitsblatt am Handy", "Arbeitsblatt Aufgaben 1–7 · Buch-Aufgaben S. 20, 22, 28"],
-  ["5", "Zwischenmolekulare Kräfte: Wasserstoffbrücken, Van-der-Waals-Kräfte", "S. 26–28", "Lernseite · Versuche (Stationen) · Vertiefung am Handy", "Arbeitsblatt Aufgaben 9–10 · Vertiefung Aufgaben 11–16"]
+  ["4", "Die Bindungsarten: Ionen-, Atom- und Metallbindung", "S. 19–25", "PPP Bindungsarten · Theorie-Seite · Arbeitsblatt am Handy", "Arbeitsblatt Aufgaben 1–7 · Buch-Aufgaben S. 20, 22, 28"],
+  ["5", "Zwischenmolekulare Kräfte: Wasserstoffbrücken, Van-der-Waals-Kräfte", "S. 26–28", "Theorie-Seite · Versuche (Stationen) · Vertiefung am Handy", "Arbeitsblatt Aufgaben 9–10 · Vertiefung Aufgaben 11–16"]
  ],
  "koennen": [
   ["1", "**Atombau:** Proton, Neutron, Elektron mit Ladung und Ort · Ordnungszahl, Massenzahl, Isotope · Außenelektronen aus dem PSE ablesen", "Proton, Neutron, Elektron, Ordnungszahl, Isotop"],
@@ -27,6 +27,6 @@
  ],
  "qr": [
   {"titel": "Test-Training", "text": "Quiz zum ganzen Teststoff", "url": "https://stephanholzer12.github.io/unterricht/2ab-nawi/test1-training/quiz.html"},
-  {"titel": "Klassenseite 2AB", "text": "alle Lernseiten", "url": "https://stephanholzer12.github.io/unterricht/2ab-nawi/"}
+  {"titel": "Klassenseite 2AB", "text": "alle Theorie-Seiten", "url": "https://stephanholzer12.github.io/unterricht/2ab-nawi/"}
  ]
 }

@@ -125,7 +125,7 @@ function paintTask(t) {
     if (all) say("ok", (st.fails ? "Richtig – nach " + datFehl(st.fails) + "." : "Richtig! Gleich beim 1. Versuch.") + (st.shown ? " (Lösung angesehen)" : ""));
     else {
       say("bad", right + " von " + st.total + " richtig." + (rest > 0 ? " " + rest + " noch ungeprüft." : "") + (st.fails < 2 ? " Verbessere die roten Felder und prüfe nochmal." : " Tipp: Lies nochmal "));
-      if (st.fails >= 2) { fb.append(el("a", { href: "theorie.html", text: "die Lernseite (" + t.src + ")" }), "."); }
+      if (st.fails >= 2) { fb.append(el("a", { href: "theorie.html", text: "die Theorie-Seite (" + t.src + ")" }), "."); }
     }
   }
   const showSolBtn = manualOnly ? (!st.shown && st.items.some(i => i.has)) : (!st.shown && st.fails >= 3 && shown && right < st.total);

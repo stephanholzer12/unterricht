@@ -1,4 +1,4 @@
-"""Handy-Seiten PBGW 3BK · K1.3–1.4 Epochen bauen (Lernseite, Arbeitsblatt, Quiz).
+"""Handy-Seiten PBGW 3BK · K1.3–1.4 Epochen bauen (Theorie-Seite, Arbeitsblatt, Quiz).
 Aufruf im Repository-Ordner:  python3 werkzeug/quellen/3bk-k1-3-epochen/bauen.py
 Arbeitsblatt-Grundlage: 4ab-nawi/k1-5a-elektromagnet/aufgaben.html (Sofort-Feedback, Lösungen nach Abgabe, PDF).
 Danach: python3 werkzeug/pdf_hilfe_einbauen.py und python3 werkzeug/build_index.py"""
@@ -32,7 +32,7 @@ FAHRPLAN_ROWS = [["Stunde 1", "Einstieg + Teil 1 · Wie zählen wir Zeit?", "1�
                  ["Stunde 2", "Teil 2 · Die Epochen", "6–10 · Quiz", "ohne Handy: lebender Zeitstrahl, dann am Handy", "PDF in LMS"],
                  ["Für Schnelle", "Für Schnelle und Neugierige", "11–15", "am Handy", "freiwillig"]]
 FAHRPLAN = ('<section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2>'
-            '<p>Lies die <strong>Lernseite</strong> Teil für Teil, mach die passenden <strong>Aufgaben</strong> im Arbeitsblatt, teste dich mit dem <strong>Quiz</strong> '
+            '<p>Lies die <strong>Theorie-Seite</strong> Teil für Teil, mach die passenden <strong>Aufgaben</strong> im Arbeitsblatt, teste dich mit dem <strong>Quiz</strong> '
             'und gib nach Stunde 2 das <strong>PDF</strong> ab.</p><div class="tablewrap"><table><thead><tr><th>Stunde</th><th>Lesen</th><th>Aufgaben</th><th>Methode</th><th>Abgabe</th></tr></thead><tbody>'
             + "".join("<tr>" + "".join(f"<td>{esc(c)}</td>" for c in r) + "</tr>" for r in FAHRPLAN_ROWS) + "</tbody></table></div></section>")
 
@@ -54,7 +54,7 @@ s = re.sub(r'(alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,)[A-Za-z
 rep('<option value="">–</option><option>4AK</option><option>4BK</option>', '<option value="">–</option><option>3BK</option>')
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
-      <li>Lies zuerst den passenden Teil der <a href="theorie.html">Lernseite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
+      <li>Lies zuerst den passenden Teil der <a href="theorie.html">Theorie-Seite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
       <li><b>Stunde 1</b>: 1–5 · <b>Stunde 2</b>: 6–10 · <b>Für Schnelle</b>: 11–15.</li>
       <li>Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt – die Lösung wird dabei nicht verraten.</li>
       <li>Nach Stunde 2 ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
@@ -62,8 +62,8 @@ s = s[:i] + """<ol class="steps hint">
 i = s.index('<section class="fahrplan">'); j = s.index("</section>", i) + 10
 s = s[:i] + FAHRPLAN + s[j:]
 rep("0 von 20 bearbeitet", "0 von %d bearbeitet" % len(I.T))
-rep('<p class="hint"><a href="theorie.html">Zurück zur Lernseite</a> · <a href="quiz.html">Zum Quiz</a></p>',
-    '<p class="hint"><a href="theorie.html">Zur Lernseite</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>')
+rep('<p class="hint"><a href="theorie.html">Zurück zur Theorie-Seite</a> · <a href="quiz.html">Zum Quiz</a></p>',
+    '<p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>')
 rep("Stand 15.10.2026", "Stand " + STAND + " · " + I.V)
 i = s.index("const KEY = "); j = s.index("\n];", i) + 3
 s = s[:i] + 'const KEY = "%s";\nconst KAP = "K1.3", THEMA = "Epochen";\nconst T = ' % I.KEY + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
@@ -111,7 +111,7 @@ def wrap(src):
 
 open(DST + "quiz.html", "w", encoding="utf-8").write(wrap(qv) if not qv.lstrip().startswith("<!doctype") else qv)
 
-# ================================================================ Lernseite
+# ================================================================ Theorie-Seite
 def slide(title, body, pill=None, sid=None):
     head = f'<div class="slidehead"><h3>{esc(title)}</h3>' + (f'<span class="pill">{esc(pill)}</span>' if pill else "") + "</div>"
     return f'<article class="slide"{" id=" + chr(34) + sid + chr(34) if sid else ""}>{head}{body}</article>'
@@ -219,7 +219,7 @@ page = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Epochen – Lernseite</title>
+<title>Epochen – Theorie-Seite</title>
 <link rel="stylesheet" href="../../schriften/schriften.css">
 {tcss}
 </head>

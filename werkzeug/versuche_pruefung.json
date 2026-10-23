@@ -1,5 +1,5 @@
 {
- "_info": "Prüfungsregeln für die Versuchsseiten (werkzeug/versuche_pruefen.js). Je Einheit-Ordner -> Versuch-ID -> beob/erk/interp/schluss. kw = Stichwortgruppen »Anzeige=stamm1,stamm2« (Stämme ohne Umlaute: ae/oe/ue/ss), need = wie viele Gruppen mindestens vorkommen müssen, zahl = Zahl erwartet, order/orderAny = Reihenfolge der Stämme im Text. Lernseite-Link und Schulbuchseite kommen aus der Seite selbst. strich = ein einzelner Strich »–« zählt als Eintrag (z. B. wenn nichts gemessen werden kann).",
+ "_info": "Prüfungsregeln für die Versuchsseiten (werkzeug/versuche_pruefen.js). Je Einheit-Ordner -> Versuch-ID -> beob/erk/interp/schluss. kw = Stichwortgruppen »Anzeige=stamm1,stamm2« (Stämme ohne Umlaute: ae/oe/ue/ss), need = wie viele Gruppen mindestens vorkommen müssen, zahl = Zahl erwartet, order/orderAny = Reihenfolge der Stämme im Text. Theorie-Seite-Link und Schulbuchseite kommen aus der Seite selbst. strich = ein einzelner Strich »–« zählt als Eintrag (z. B. wenn nichts gemessen werden kann).",
  "einheiten": {
   "2ab-nawi/k1-2-bindungen": {
    "haut": {

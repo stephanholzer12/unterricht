@@ -195,7 +195,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
       <li>Stunde 3–4, während deine Gruppe nicht an einer Station ist (oder auf die nächste Station wartet): Aufgaben 11–16, Aufgabe 17 für Schnelle. Jeder arbeitet am eigenen Handy. Drück bei jeder Aufgabe auf <b>Prüfen</b>: Du siehst sofort, was stimmt. Ab dem 2. Fehlversuch gibt es einen Tipp, ab dem 3. kannst du die Lösung ansehen.</li>
       <li>Ganz unten <b>PDF erstellen</b> und in LMS hochladen. Im PDF stehen dein Ergebnis und deine Versuche.</li>
     </ol>
-    <p class="hint">Theorie zum Nachlesen: <a href="theorie.html">Lernseite</a> · Schulbuch (Trauner) S. 19–28 · <a href="versuche.html">Versuchsseite</a> · Aufgaben 1–10: <a href="aufgaben.html">Arbeitsblatt</a></p>
+    <p class="hint">Theorie zum Nachlesen: <a href="theorie.html">Theorie-Seite</a> · Schulbuch (Trauner) S. 19–28 · <a href="versuche.html">Versuchsseite</a> · Aufgaben 1–10: <a href="aufgaben.html">Arbeitsblatt</a></p>
   </section>
   <div class="progress"><span id="count">0 von 7 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
@@ -238,7 +238,7 @@ const T = [
   "id": "a11",
   "nr": 11,
   "title": "Bindungs-Detektiv",
-  "src": "Theorie S. 20–25",
+  "src": "Buch S. 20–25",
   "h": "3–4",
   "type": "choose",
   "opts": [
@@ -272,7 +272,7 @@ const T = [
   "id": "a12",
   "nr": 12,
   "title": "Vorhersage zur Demo K1.2-V4",
-  "src": "Theorie S. 21, 25",
+  "src": "Buch S. 21, 25",
   "h": "3–4",
   "type": "choose",
   "opts": [
@@ -303,7 +303,7 @@ const T = [
   "id": "a13",
   "nr": 13,
   "title": "Mythos oder Fakt?",
-  "src": "Theorie S. 21–27",
+  "src": "Buch S. 21–27",
   "h": "3–4",
   "type": "myth",
   "opts": [
@@ -339,7 +339,7 @@ const T = [
   "id": "a14",
   "nr": 14,
   "title": "Wasser – ein besonderes Molekül",
-  "src": "Theorie S. 23, 26",
+  "src": "Buch S. 23, 26",
   "h": "3–4",
   "type": "gaps",
   "q": "Ergänze die Lücken mit den passenden Fachbegriffen.",
@@ -411,7 +411,7 @@ const T = [
   "id": "a15",
   "nr": 15,
   "title": "So entsteht Kochsalz",
-  "src": "Theorie S. 20–21",
+  "src": "Buch S. 20–21",
   "h": "3–4",
   "type": "order",
   "q": "Bring die Schritte der Ionenbindung von Natrium und Chlor in die richtige Reihenfolge. Wähle bei jedem Schritt die Nummer 1–5.",
@@ -436,7 +436,7 @@ const T = [
   "id": "a16",
   "nr": 16,
   "title": "Elektrolytgetränk nach dem Marsch",
-  "src": "Theorie S. 21 · Salze im Körper",
+  "src": "Buch S. 21 · Salze im Körper",
   "h": "3–4",
   "type": "multi",
   "q": "Nach einem 25-km-Marsch im Sommer bekommt die Kompanie ein Elektrolytgetränk mit Natrium- und Kaliumsalzen.",
@@ -469,7 +469,7 @@ const T = [
   "id": "a17",
   "nr": 17,
   "title": "Für Schnelle: Science oder Fiction?",
-  "src": "Theorie S. 26",
+  "src": "Buch S. 26",
   "h": "3–4",
   "tag": "OPTIONAL",
   "type": "multi",
@@ -711,7 +711,7 @@ function paintTask(t) {
     if (all) say("ok", (st.fails ? "Richtig – nach " + datFehl(st.fails) + "." : "Richtig! Gleich beim 1. Versuch.") + (st.shown ? " (Lösung angesehen)" : ""));
     else {
       say("bad", right + " von " + st.total + " richtig." + (rest > 0 ? " " + rest + " noch ungeprüft." : "") + (st.fails < 2 ? " Verbessere die roten Felder und prüfe nochmal." : " Tipp: Lies nochmal "));
-      if (st.fails >= 2) { fb.append(el("a", { href: "theorie.html", text: "die Lernseite (" + t.src + ")" }), "."); }
+      if (st.fails >= 2) { fb.append(el("a", { href: "theorie.html", text: "die Theorie-Seite (" + t.src + ")" }), "."); }
     }
   }
   const showSolBtn = manualOnly ? (!st.shown && st.items.some(i => i.has)) : (!st.shown && st.fails >= 3 && shown && right < st.total);
@@ -1139,93 +1139,6 @@ update();
 })();
 </script>
 <!-- speicherstatus:end -->
-<!-- notenvorschlag:start -->
-<script>/* Punkte und Notenvorschlag nur im PDF (für die Lehrkraft, zum Eintragen in LMS) – auf dem Bildschirm der Schüler erscheint nichts.
-   Wie: Beim Erstellen der PDF wird der Kasten »Punkte für LMS« ganz oben auf Seite 1 (Rand, über dem Kopf) ergänzt.
-   Wertung (automatisch, nur was die Seite selbst prüfen kann):
-     - jede Auswahl-/Zahlen-Antwort = 1 Punkt; Stichwort-Antworten anteilig (gefundene Stichwortgruppen / verlangte); »durchstreichen«-Aufgaben anteilig
-     - Aufgaben mit angesehener Lösung = 0 Punkte (Lehrkraft bewertet selbst); Zusatzaufgaben zählen nur, wenn bearbeitet
-     - Aufgaben ohne automatische Prüfung (Freitext, Skizze, Foto) stehen als »selbst bewerten« im Kasten und zählen nicht mit
-   Notenschlüssel (Vorschlag): ab 88 % = 1, ab 75 % = 2, ab 62 % = 3, ab 50 % = 4, darunter 5. Ändern: SCHLUESSEL unten.
-   Seiten mit eigenem Ergebnis-Kasten (Nobel, Vertiefung) nehmen »x von y Antworten richtig« aus pdfStats().
-   Einbau: python3 werkzeug/notenvorschlag_einbauen.py */
-(function () {
-  if (window.__notenvorschlag) return; window.__notenvorschlag = true;
-  var SCHLUESSEL = [[88, 1], [75, 2], [62, 3], [50, 4]];
-  function note(p) { for (var i = 0; i < SCHLUESSEL.length; i++) if (p >= SCHLUESSEL[i][0]) return SCHLUESSEL[i][1]; return 5; }
-  function zahl(x) { x = Math.round(x * 10) / 10; return String(x).replace(".", ","); }
-  function liste(a) { return a.length ? a.join(", ") : ""; }
-
-  function standStandard() {
-    var pkt = 0, max = 0, selbst = [], gesehen = [];
-    T.forEach(function (t) {
-      var a = S.a[t.id] || {}, beantwortet = Object.keys(a).some(function (k) { return k !== "foto" && a[k] !== "" && a[k] != null; }) || !!a.foto;
-      if ((t.tag === "Zusatz" || t.hl) && !beantwortet) return;
-      var ev = null; try { ev = t.chk ? evalTask(t) : null; } catch (e) {}
-      if (!ev) { selbst.push(t.nr); return; }
-      var viewed = typeof LH_viewed === "function" && LH_viewed(t), teile = 0, erreicht = 0;
-      ev.parts.forEach(function (p) {
-        if (p.kind === "strike") { teile += 1; erreicht += p.of ? p.n / p.of : 0; return; }
-        teile += 1;
-        if (p.kind === "kw") {
-          var c = t.chk[p.key] || {}, need = c.need || p.hits.length, h = p.hits.filter(function (x) { return x[1]; }).length;
-          erreicht += Math.min(1, h / need);
-        } else if (p.ok) erreicht += 1;
-      });
-      max += teile;
-      if (viewed) { gesehen.push(t.nr); return; }
-      pkt += erreicht;
-    });
-    return { pkt: pkt, max: max, selbst: selbst, gesehen: gesehen };
-  }
-  function standSeite() {
-    var st = pdfStats();
-    return { pkt: st.right, max: st.tot, selbst: (st.unchecked || []).concat(st.open || []), gesehen: st.shown || [], wort: "nicht geprüft oder nicht bearbeitet" };
-  }
-  function stand() {
-    if (typeof T !== "undefined" && typeof evalTask === "function") return standStandard();
-    if (typeof pdfStats === "function") return standSeite();
-    return null;
-  }
-
-  function kasten(d) {
-    var s = stand(); if (!s || !s.max) return;
-    var W = 210, M = 15, pct = Math.round(s.pkt / s.max * 100), n = note(pct);
-    d.setPage(1);
-    d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 9.5, 1.5, 1.5, "FD");
-    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
-    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + pct + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
-    d.setFont("C", "normal"); d.setFontSize(7.2);
-    var rest = [];
-    if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
-    if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
-    var z2 = rest.length ? rest.join(" · ") : "alle Aufgaben automatisch gewertet";
-    z2 = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4)[0];
-    d.text(z2, M + 2, 9.6);
-  }
-
-  function umhuellen(name) {
-    var orig = window[name]; if (typeof orig !== "function") return;
-    window[name] = function () {
-      var J = window.jspdf && window.jspdf.jsPDF, args = arguments, self = this;
-      if (!J) return orig.apply(self, args);
-      var neu = function () {
-        var d = new (Function.prototype.bind.apply(J, [null].concat([].slice.call(arguments))))();
-        var o = d.output; d.output = function () { try { kasten(d); } catch (e) {} d.output = o; return o.apply(d, arguments); };
-        return d;
-      };
-      neu.prototype = J.prototype;
-      window.jspdf.jsPDF = neu;
-      var zurueck = function () { window.jspdf.jsPDF = J; };
-      var r; try { r = orig.apply(self, args); } catch (e) { zurueck(); throw e; }
-      if (r && typeof r.then === "function") return r.then(function (v) { zurueck(); return v; }, function (e) { zurueck(); throw e; });
-      zurueck(); return r;
-    };
-  }
-  umhuellen("buildPdf");
-})();
-</script>
-<!-- notenvorschlag:end -->
 <!-- pdferinnerung:start -->
 <script>window.__PE_KEY = "26-27-2AB-K1.2-Bindungen-Vertiefung-Handy-v1";
 /* Erinnerung beim Knopf »PDF erstellen«: Ist die Arbeit schon als PDF abgegeben – und passt die PDF noch zu den Antworten?
@@ -1323,5 +1236,92 @@ update();
 })();
 </script>
 <!-- pdferinnerung:end -->
+<!-- notenvorschlag:start -->
+<script>/* Punkte und Notenvorschlag nur im PDF (für die Lehrkraft, zum Eintragen in LMS) – auf dem Bildschirm der Schüler erscheint nichts.
+   Wie: Beim Erstellen der PDF wird der Kasten »Punkte für LMS« ganz oben auf Seite 1 (Rand, über dem Kopf) ergänzt.
+   Wertung (automatisch, nur was die Seite selbst prüfen kann):
+     - jede Auswahl-/Zahlen-Antwort = 1 Punkt; Stichwort-Antworten anteilig (gefundene Stichwortgruppen / verlangte); »durchstreichen«-Aufgaben anteilig
+     - Aufgaben mit angesehener Lösung = 0 Punkte (Lehrkraft bewertet selbst); Zusatzaufgaben zählen nur, wenn bearbeitet
+     - Aufgaben ohne automatische Prüfung (Freitext, Skizze, Foto) stehen als »selbst bewerten« im Kasten und zählen nicht mit
+   Notenschlüssel (Vorschlag): ab 88 % = 1, ab 75 % = 2, ab 62 % = 3, ab 50 % = 4, darunter 5. Ändern: SCHLUESSEL unten.
+   Seiten mit eigenem Ergebnis-Kasten (Nobel, Vertiefung) nehmen »x von y Antworten richtig« aus pdfStats().
+   Einbau: python3 werkzeug/notenvorschlag_einbauen.py */
+(function () {
+  if (window.__notenvorschlag) return; window.__notenvorschlag = true;
+  var SCHLUESSEL = [[88, 1], [75, 2], [62, 3], [50, 4]];
+  function note(p) { for (var i = 0; i < SCHLUESSEL.length; i++) if (p >= SCHLUESSEL[i][0]) return SCHLUESSEL[i][1]; return 5; }
+  function zahl(x) { x = Math.round(x * 10) / 10; return String(x).replace(".", ","); }
+  function liste(a) { return a.length ? a.join(", ") : ""; }
+
+  function standStandard() {
+    var pkt = 0, max = 0, selbst = [], gesehen = [];
+    T.forEach(function (t) {
+      var a = S.a[t.id] || {}, beantwortet = Object.keys(a).some(function (k) { return k !== "foto" && a[k] !== "" && a[k] != null; }) || !!a.foto;
+      if ((t.tag === "Zusatz" || t.hl) && !beantwortet) return;
+      var ev = null; try { ev = t.chk ? evalTask(t) : null; } catch (e) {}
+      if (!ev) { selbst.push(t.nr); return; }
+      var viewed = typeof LH_viewed === "function" && LH_viewed(t), teile = 0, erreicht = 0;
+      ev.parts.forEach(function (p) {
+        if (p.kind === "strike") { teile += 1; erreicht += p.of ? p.n / p.of : 0; return; }
+        teile += 1;
+        if (p.kind === "kw") {
+          var c = t.chk[p.key] || {}, need = c.need || p.hits.length, h = p.hits.filter(function (x) { return x[1]; }).length;
+          erreicht += Math.min(1, h / need);
+        } else if (p.ok) erreicht += 1;
+      });
+      max += teile;
+      if (viewed) { gesehen.push(t.nr); return; }
+      pkt += erreicht;
+    });
+    return { pkt: pkt, max: max, selbst: selbst, gesehen: gesehen };
+  }
+  function standSeite() {
+    var st = pdfStats();
+    return { pkt: st.right, max: st.tot, selbst: (st.unchecked || []).concat(st.open || []), gesehen: st.shown || [], wort: "nicht geprüft oder nicht bearbeitet" };
+  }
+  function stand() {
+    if (typeof T !== "undefined" && typeof evalTask === "function") return standStandard();
+    if (typeof pdfStats === "function") return standSeite();
+    return null;
+  }
+
+  function kasten(d) {
+    var s = stand(); if (!s || !s.max) return;
+    var W = 210, M = 15, pct = Math.round(s.pkt / s.max * 100), n = note(pct);
+    d.setPage(1);
+    d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 9.5, 1.5, 1.5, "FD");
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
+    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + pct + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
+    d.setFont("C", "normal"); d.setFontSize(7.2);
+    var rest = [];
+    if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
+    if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
+    var z2 = rest.length ? rest.join(" · ") : "alle Aufgaben automatisch gewertet";
+    z2 = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4)[0];
+    d.text(z2, M + 2, 9.6);
+  }
+
+  function umhuellen(name) {
+    var orig = window[name]; if (typeof orig !== "function") return;
+    window[name] = function () {
+      var J = window.jspdf && window.jspdf.jsPDF, args = arguments, self = this;
+      if (!J) return orig.apply(self, args);
+      var neu = function () {
+        var d = new (Function.prototype.bind.apply(J, [null].concat([].slice.call(arguments))))();
+        var o = d.output; d.output = function () { try { kasten(d); } catch (e) {} d.output = o; return o.apply(d, arguments); };
+        return d;
+      };
+      neu.prototype = J.prototype;
+      window.jspdf.jsPDF = neu;
+      var zurueck = function () { window.jspdf.jsPDF = J; };
+      var r; try { r = orig.apply(self, args); } catch (e) { zurueck(); throw e; }
+      if (r && typeof r.then === "function") return r.then(function (v) { zurueck(); return v; }, function (e) { zurueck(); throw e; });
+      zurueck(); return r;
+    };
+  }
+  umhuellen("buildPdf");
+})();
+</script>
+<!-- notenvorschlag:end -->
 </body>
 </html>

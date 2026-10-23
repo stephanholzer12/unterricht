@@ -13,7 +13,7 @@ node werkzeug/teststoff/teststoff.js werkzeug/teststoff/daten/<schuljahr>-<klass
 ## Neue Teststoff-Seite
 
 1. `daten/vorlage.json` kopieren → `daten/<schuljahr>-<klasse>-test<nr>.json` (z. B. `26-27-2ab-test1.json`).
-2. Ausfüllen – Lernziele aus »Kann ich das?« der Lernseiten, Fachbegriffe aus den Begriff-Tabellen, Aufgabennummern aus den Fahrplänen in `einheiten.json`.
+2. Ausfüllen – Lernziele aus »Kann ich das?« der Theorie-Seiten, Fachbegriffe aus den Begriff-Tabellen, Aufgabennummern aus den Fahrplänen in `einheiten.json`.
 3. Auszeichnung: `**fett**` · `[[gelb = Stephan ergänzt]]` (was Claude nicht sicher weiß).
 4. Ohne Formeln: `"formeln": []` und `"tipp"` weglassen.
 5. Bauen, PNG ansehen, im Test-Training-Eintrag von `einheiten.json` bei `dateien.liste` die neue Version eintragen.

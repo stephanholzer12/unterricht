@@ -2,10 +2,10 @@
 
 Pro Klasse (z. B. 2ab-nawi/) entstehen drei Seiten mit festen Namen (Links und QR-Codes bleiben gleich):
 - index.html       Stoff-Übersicht: »Gerade dran«, Tests, alle bisherigen Einheiten nach Themenblöcken des
-                   Jahresplans (mit Inhalt der Lernseite und »Das Wichtigste in 5 Sätzen«)
-- begriffe.html    Fachbegriffe A–Z aus allen bisherigen Lernseiten, mit Suche
+                   Jahresplans (mit Inhalt der Theorie-Seite und »Das Wichtigste in 5 Sätzen«)
+- begriffe.html    Fachbegriffe A–Z aus allen bisherigen Theorie-Seiten, mit Suche
 - wiederholen.html Lernziele aller Einheiten zum Abhaken (sicher / fast / noch nicht) – teilt den Speicher
-                   mit dem Selbstcheck »Kann ich das?« der Lernseiten
+                   mit dem Selbstcheck »Kann ich das?« der Theorie-Seiten
 
 Daten:
 - einheiten.json: pro Einheit klasse, fach, ordner, kapitel, titel, block (z. B. "A Atombau & Bindung"),
@@ -15,7 +15,7 @@ Daten:
   Optional "dateien": {"stand": "18.10.2026", "zip": "…-v3.zip", "liste": ["…-TH-Lehrer-v2.pptx", …]} – die aktuell
   gültigen PPP-/Word-Dateien der Einheit; erscheinen nur auf der Lehrer-Seite.
 - bloecke.json: Reihenfolge der Themenblöcke laut Jahresplan (aus bloecke_aus_jahresplan.py).
-- Lernseiten (theorie.html): Buchseiten, Teile, Lernziele, »Das Wichtigste«, Fachbegriffe (lernseite_lesen.py).
+- Theorie-Seiten (theorie.html): Buchseiten, Teile, Lernziele, »Das Wichtigste«, Fachbegriffe (lernseite_lesen.py).
 
 Es erscheinen nur Einheiten, die in einheiten.json stehen – kommende Themen bleiben unsichtbar.
 Die Startseite index.html verlinkt KEINE Klassen (damit keine Klasse die Seiten der anderen sieht).
@@ -40,8 +40,8 @@ BASIS = "https://stephanholzer12.github.io/unterricht/"
 # Lehrer-Seite: feste, schwer zu erratende Adresse, wird nirgends verlinkt (nur für Stephan)
 LEHRER = "lehrer-0f6eec.html"
 
-# Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Lernseite → Arbeitsblatt → Quiz
-NAMEN = {"theorie.html": ("Lernseite", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
+# Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Theorie-Seite → Arbeitsblatt → Quiz
+NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
          "versuche.html": ("Versuche", "rust"), "vertiefung.html": ("Vertiefung", ""), "uebung.html": ("Übung", ""), "projekt.html": ("Projekt", ""),
          "gruppe.html": ("Gruppe", ""), "kurz.html": ("Gruppe kompakt", "")}
 REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html"]
@@ -258,7 +258,7 @@ def knoepfe(e, nur=None):
 
 
 def daten_klasse(ordner, es):
-    """Einheiten einer Klasse mit den Daten aus den Lernseiten anreichern und nach Blöcken ordnen."""
+    """Einheiten einer Klasse mit den Daten aus den Theorie-Seiten anreichern und nach Blöcken ordnen."""
     tests, units, versteckt = [], [], []
     for e in es:
         e = dict(e, unter=e["ordner"].split("/", 1)[1])
@@ -360,7 +360,7 @@ def seite_begriffe(k, units):
             alle.append((b, d, u))
     alle.sort(key=lambda x: (sortkey_begriff(x[0]), kap_key(x[2]["kapitel"])))
     if not alle:
-        out.append('<p class="empty">Noch keine Fachbegriffe – sie erscheinen hier, sobald die ersten Lernseiten online sind.</p>')
+        out.append('<p class="empty">Noch keine Fachbegriffe – sie erscheinen hier, sobald die ersten Theorie-Seiten online sind.</p>')
         out.append(fuss())
         return "".join(out), 0
     beispiel = ", ".join(list(dict.fromkeys(b for b, _, _ in alle[:: max(1, len(alle) // 3)]))[:3])  # drei Begriffe der Klasse
@@ -400,12 +400,12 @@ def seite_wiederholen(ordner, k, units, bloecke, n_plan):
     out = [kopf("Wiederholen", f'{k["fach"]} {k["klasse"]} · alle Lernziele bisher', "wiederholen.html", f'{k["fach"]} {k["klasse"]} – Wiederholen')]
     n = sum(len((u["lern"] or {}).get("ziele", [])) for u in units)
     out.append('<section class="card"><div class="eyebrow">KANN ICH DAS?</div><p style="margin:0">Tippe bei jedem Lernziel ehrlich an, wie sicher du bist. '
-               'Bei »noch nicht« steht gleich der Link zur Lernseite. Deine Markierungen bleiben nur auf deinem Handy – und erscheinen auch auf den Lernseiten.</p>'
+               'Bei »noch nicht« steht gleich der Link zur Theorie-Seite. Deine Markierungen bleiben nur auf deinem Handy – und erscheinen auch auf den Theorie-Seiten.</p>'
                '<div class="bar" id="bar" aria-hidden="true"><i data-v="sicher" style="background:var(--green)"></i><i data-v="fast" style="background:var(--orange)"></i><i data-v="noch nicht" style="background:var(--rust)"></i></div>'
                '<div class="legend" id="leg" aria-live="polite"></div>'
                '<div class="filter noprint" role="group" aria-label="Anzeige"><button type="button" id="f-alle" aria-pressed="true">Alle Lernziele</button><button type="button" id="f-offen" aria-pressed="false">Nur noch nicht sichere</button></div></section>')
     if not n:
-        out.append('<p class="empty">Noch keine Lernziele – sie erscheinen hier, sobald die ersten Lernseiten online sind.</p>')
+        out.append('<p class="empty">Noch keine Lernziele – sie erscheinen hier, sobald die ersten Theorie-Seiten online sind.</p>')
     for b in bloecke:
         teile = []
         for u in b["units"]:
@@ -417,7 +417,7 @@ def seite_wiederholen(ordner, k, units, bloecke, n_plan):
             ziele = "".join(
                 f'<div class="ziel" data-key="{esc(key)}" data-z="{i}"><p>{z}</p><div class="chips" role="group" aria-label="Selbstcheck">'
                 + "".join(f'<button type="button" class="chip" data-v="{v}" aria-pressed="false">{v}</button>' for v in ("sicher", "fast", "noch nicht"))
-                + f'</div><div class="hin">→ Noch einmal lesen: <a href="{esc(u["unter"])}/theorie.html">Lernseite {esc(u["kapitel"])}</a>'
+                + f'</div><div class="hin">→ Noch einmal lesen: <a href="{esc(u["unter"])}/theorie.html">Theorie-Seite {esc(u["kapitel"])}</a>'
                 + (f' · danach das <a href="{esc(u["unter"])}/quiz.html">Quiz</a>' if "quiz.html" in u["seiten"] else "") + '</div></div>'
                 for i, z in enumerate(L.get("ziele", [])))
             meta = " · ".join(x for x in [u["kapitel"], L.get("buch", "")] if x)
@@ -607,7 +607,7 @@ def seite_lehrer(klassen):
         for b in k["bloecke"]:
             for u in b["units"]:
                 e2 = dict(u, unter=u["ordner"])
-                warn = f'<div class="warn">Fehlt auf der Lernseite: {esc(", ".join(u["fehlt"]))}</div>' if u.get("fehlt") else ""
+                warn = f'<div class="warn">Fehlt auf der Theorie-Seite: {esc(", ".join(u["fehlt"]))}</div>' if u.get("fehlt") else ""
                 rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}{sicht_knopf(u, True)}</div>{stunden_html(u, o)}{dateien_html(u)}{warn}</div>')
         for t in k["tests"]:
             e2 = dict(t, unter=t["ordner"])

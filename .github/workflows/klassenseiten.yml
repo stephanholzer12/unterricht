@@ -1,5 +1,5 @@
 # Baut nach jeder Änderung im Repository die Klassenseiten (index.html, begriffe.html, wiederholen.html)
-# und die Lehrer-Seite neu – damit sie immer zu den aktuellen Lernseiten passen, auch wenn ein Chat
+# und die Lehrer-Seite neu – damit sie immer zu den aktuellen Theorie-Seiten passen, auch wenn ein Chat
 # vergessen hat, werkzeug/build_index.py auszuführen.
 name: Klassenseiten aktualisieren
 

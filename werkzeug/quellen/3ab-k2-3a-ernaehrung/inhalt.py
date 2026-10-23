@@ -1,6 +1,6 @@
 """NAWI 3AB · K2.3a Ernährungsweisen (Buch S. 68–72) – 2 Stunden (v1).
 Stunde 1: Personengruppen + Alternative Ernährungsformen · Stunde 2: Vegetarismus + Vollwerternährung, dann Quiz.
-Quelle für Handy-Seiten (Lernseite, Arbeitsblatt, Quiz). Aus PPP 26-27-3AB-K2.1a-Ernaehrungsweisen-Lehrer.pptx."""
+Quelle für Handy-Seiten (Theorie-Seite, Arbeitsblatt, Quiz). Aus PPP 26-27-3AB-K2.1a-Ernaehrungsweisen-Lehrer.pptx."""
 from daten import T, STAND
 
 ORDNER = "3ab-nawi/k2-3a-ernaehrung"
