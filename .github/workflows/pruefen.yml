@@ -1,0 +1,24 @@
+# Kontrolle nach jedem Push: Fremdserver, Token, Skriptfehler, fehlender Speicherstatus, umbenannte Speicherschlüssel.
+# Rot = bitte nachsehen (die Seiten sind trotzdem online). Anleitung: werkzeug/pruefen.py
+name: Seiten pruefen
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pruefen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: python3 werkzeug/pruefen.py

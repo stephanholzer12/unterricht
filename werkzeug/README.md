@@ -26,9 +26,9 @@ Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsi
 - QR-Code für die Klasse: `https://stephanholzer12.github.io/unterricht/<klasse>-<fach>/`
 
 ## Bausteine
-- `vorlagen/extract.py` + `vorlagen/build_theorie.py`: Theorie aus der TH-Kadetten-PPP (Texte, Bilder, GIFs) → `theorie.html`
+- `archiv/extract.py` (Einmal-Skript, nur zur Ansicht, enthält feste Pfade des alten Chats) + `vorlagen/build_theorie.py`: Theorie aus der TH-Kadetten-PPP (Texte, Bilder, GIFs) → `theorie.html`
 - `vorlagen/aufgaben_K1.2_vorlage.html`: Arbeitsblatt (Beispiel K1.2) mit Aufgabentypen text, table, sketch (Foto), strike (Durchstreichen), assign (Zuordnen), puzzle (Rätsel); Speichern im Browser (localStorage), PDF-Abgabe mit jsPDF 2.5.1 (eingebettet) und Schrift Carlito (Teilmenge in `schriften/`, Zeichenbereiche in `ranges.json`)
-- `vorlagen/assemble.py` + `vorlagen/site.py`: setzen Wappen, Tarnmuster, Smiley, Schrift, QR-Code ein und schreiben die fertigen Seiten
+- `archiv/assemble.py` + `archiv/site.py` (Einmal-Skripte der ersten 2AB-Seiten, nur zur Ansicht – nicht mehr verwenden): setzen Wappen, Tarnmuster, Smiley, Schrift, QR-Code ein und schreiben die fertigen Seiten
 - `vorlagen/pdf_auswertung.js`: neue PDF-Abgabe »Auswertung für die Lehrkraft« (ersetzt `buildPdf()` im Arbeitsblatt): Übersicht auf Seite 1 (bearbeitet / automatisch geprüft / Punkte, Summe, Note oder Bewertungsraster), danach jede Aufgabe als Block; Auswahl-, Zahlen- und Ampel-Antworten werden grün/rot markiert, bei Fehlern steht die richtige Lösung daneben, freie Texte »selbst bewerten«. Prüfregeln pro Aufgabe: `pts`, `key` (assign), `check`/`checks` (`all`, `ampel`, `trendAmpel`, `reason`), Präfix `pre`; global optional `RASTER`. Beispiel: `3ab-nawi/k2-3b-trendcheck/`
 - `vorlagen/quiz_vorlage.html`: Quiz (Sofort-Feedback, Buchseite pro Frage, QR-Code für die Klasse)
 
@@ -52,3 +52,6 @@ Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsi
 - Fehlversuch 1: nur Hinweis. Ab Fehlversuch 2: Tipp mit Link. Ab Fehlversuch 3: Knopf »Lösung zeigen« bei dieser Aufgabe.
 - PDF zeigt je Aufgabe: selbst gelöst (1. Versuch) / gelöst nach n Fehlversuchen (mit Tipp) / Lösung angesehen (selbst bewerten).
 - Rechenaufgaben: Übungsvariante mit Zufallszahlen, definiert in `loesungshilfe_varianten.json` (zählt nicht für die Abgabe).
+
+## Automatische Kontrolle
+`python3 werkzeug/pruefen.py` (läuft auch bei jedem Push als »Seiten pruefen« unter GitHub → Actions): meldet Fremdserver-Links, Tokens, Skript-Syntaxfehler, PDF-Seiten ohne Speicherstatus und **verschwundene/umbenannte Speicherschlüssel** (außer `[schluessel-ok]` steht in der Commit-Nachricht). Pakete für die Automatik sind in `werkzeug/requirements.txt` festgelegt.

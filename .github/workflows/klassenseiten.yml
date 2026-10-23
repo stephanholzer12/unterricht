@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
 
       - name: Werkzeuge installieren
-        run: pip install beautifulsoup4 lxml "qrcode[pil]"
+        run: pip install -r werkzeug/requirements.txt
 
       - name: Klassenseiten bauen
         env:
@@ -43,4 +43,5 @@ jobs:
           git config user.name "Klassenseiten-Automatik"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Klassenseiten automatisch aktualisiert ($(date +%d.%m.%Y))"
+          git pull --rebase
           git push
