@@ -185,7 +185,7 @@ ol.steps, ul.steps { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
   <section class="card">
     <div class="who">
       <div><label class="lbl" for="name">Namen der Gruppe</label><input type="text" id="name" autocomplete="off" placeholder="z. B. Huber, Maier, Novak"></div>
-      <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>4AK</option><option>4BK</option></select></div>
+      <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>4AK</option><option>4BK</option></select></div><div style="grid-column:1/-1"><label class="lbl" for="ich">Ich gebe diese PDF ab als (dein Nachname)</label><input type="text" id="ich" autocomplete="family-name" placeholder="z. B. Maier"><div style="font-size:14px;color:var(--muted);margin-top:4px">Jeder aus der Gruppe gibt seine eigene PDF in LMS ab – so hat jeder die Mitschrift.</div></div>
     </div>
     <p class="hint"><b>So wertest du jeden Versuch aus:</b> <b>Erkenntnis</b> – Was habt ihr herausgefunden? · <b>Interpretation</b> – Warum ist das so? Erklärt mit Magnetfeld und Kräften. · <b>Schlussfolgerung</b> – Was bedeutet das für Alltag, Sport oder Bundesheer?</p>
     <p class="hint">Antippen öffnet einen Versuch. Alles wird am Handy gespeichert. Ganz unten: <b>PDF erstellen</b> und in LMS hochladen – in die PDF kommen nur die Versuche, die ihr bearbeitet habt.</p>
@@ -620,7 +620,7 @@ const RANGES = [[32, 126], [160, 172], [174, 383], [884, 885], [890, 894], [900,
 const V = [{"id": "v1", "nr": "K1.5-V1", "titel": "Magnetfeld um einen Draht", "bindung": "Lehrerdemo · 4AK in Stunde 1, 4BK in der Versuchsstunde · ca. 5 min", "intro": "Ørsteds Versuch von 1820: Lässt ein Draht mit Strom eine Kompassnadel ausschlagen?", "sicher": "Nur Flachbatterie 4,5 V. Draht nur wenige Sekunden anschließen – Kurzschluss, Draht und Batterie werden heiß.", "mat": [["Flachbatterie 4,5 V", "batterie"], ["Messleitungen mit Krokodilklemmen", "kabel"], ["Kupferdraht, ca. 30 cm", "draht"], ["Marschkompass", "kompass"]], "entsorgung": "Nichts zu entsorgen. Batterie abklemmen, Draht aufwickeln, Kompass zurück in die Tasche.", "schritte": ["Leg den Kompass flach hin und warte, bis die Nadel nach Norden zeigt.", "Spann den Draht in Nord-Süd-Richtung knapp über die Nadel.", "Schließ den Draht kurz an die Batterie an und beobachte die Nadel.", "Pol die Batterie um und wiederhole Schritt 3.", "Halte den Draht 10 cm höher und wiederhole Schritt 3."], "skizze": "v_orsted", "beob": {"titel": "Beobachtung", "kopf": ["Situation", "Was macht die Nadel?"], "zeilen": [["kein Strom"], ["Strom an"], ["umgepolt"], ["Draht 10 cm höher"]]}, "erk": "Was beweist der Versuch?", "interp": "Warum dreht sich die Nadel beim Umpolen in die Gegenrichtung? Verwende die Rechte-Hand-Regel (Schulbuch S. 30).", "schluss": "Warum solltest du beim Kartenlesen mit dem Marschkompass Abstand zu Stromkabeln, Funkgeräten und Fahrzeugbatterien halten?", "kern": true, "buch": {"versuch": true, "s": "S. 30"}}, {"id": "v2", "nr": "K1.5-V2", "titel": "Elektromagnet bauen", "bindung": "Station (nur 1 Batterie) oder Lehrerdemo · ca. 15 min", "intro": "Wie viele Büroklammern hebt dein Elektromagnet – und wie machst du ihn stärker?", "sicher": "Nur kurz einschalten – blanker Draht wird schnell heiß. Windungen dürfen sich nicht berühren. Drahtenden nicht ins Auge stechen.", "mat": [["blanker Kupferdraht, ca. 1 m", "draht"], ["großer Eisennagel", "nagel"], ["Papierstreifen oder Papierstrohhalm", "bleistift"], ["Flachbatterie 4,5 V", "batterie"], ["Messleitungen", "kabel"], ["Büroklammern", "klammer"]], "entsorgung": "Draht abwickeln und aufrollen, Büroklammern einsammeln, Batterie abklemmen.", "schritte": ["Wickle Papier um den Nagel (oder steck ihn in einen Papierstrohhalm).", "Wickle 10 Windungen mit Abstand darüber – die Windungen dürfen sich nicht berühren.", "Schließ kurz an und zähle die Büroklammern, die hängen bleiben.", "Wickle eine Lage Papier darüber und 10 weitere Windungen – zähle wieder.", "Schalte den Strom ab – was passiert mit den Klammern?"], "skizze": "v_nagel", "beob": {"titel": "Beobachtung", "kopf": ["Aufbau", "Anzahl Büroklammern"], "zeilen": [["Nagel, 10 Windungen"], ["Nagel, 20 Windungen (2 Lagen)"], ["Strom aus"]]}, "erk": "Wovon hängt die Stärke deines Elektromagneten ab?", "interp": "Erkläre die Rolle des Eisennagels mit den Elementarmagneten (Schulbuch S. 27 und 31).", "schluss": "Ein Kran soll Schrott heben und gezielt ablegen. Wie baust du seinen Magneten?", "kern": false, "buch": {"versuch": true, "s": "S. 30"}}, {"id": "v3", "nr": "K1.5-V3", "titel": "Die Leiterschaukel", "bindung": "Lehrerdemo · 4AK in Stunde 2, 4BK in der Versuchsstunde · ca. 10 min", "intro": "Ein Draht hängt über einem Magneten. Was passiert, wenn Strom fließt?", "sicher": "Kurzschluss über den Draht: nur 2–3 Sekunden einschalten. Draht und Klemmen nicht anfassen, solange Strom fließt.", "mat": [["Stativmaterial", "stativ"], ["Kupferdraht für die Schaukel", "draht"], ["Stabmagnet AlNiCo", "magnet"], ["Flachbatterie 4,5 V", "batterie"], ["Messleitungen", "kabel"]], "entsorgung": "Nichts zu entsorgen. Aufbau abbauen, Magnet von Handys und Karten fernhalten.", "schritte": ["Häng den Draht als Schaukel an das Stativ, das untere Stück waagrecht.", "Stell den Stabmagneten mit dem Nordpol nach oben knapp unter die Schaukel.", "Schalte den Strom kurz ein und beobachte die Schaukel.", "Pol die Batterie um, dann dreh den Magneten um – jeweils wieder kurz einschalten."], "skizze": "v_schaukel", "beob": {"titel": "Beobachtung", "kopf": ["Situation", "Bewegung der Schaukel"], "zeilen": [["Strom an"], ["Batterie umgepolt"], ["Magnet umgedreht"], ["beides umgedreht"]]}, "erk": "Wovon hängt die Richtung der Bewegung ab?", "interp": "Erkläre die Bewegung mit der Lorentzkraft und der Linke-Hand-Regel (Schulbuch S. 32).", "schluss": "Welche Maschine nutzt genau dieses Prinzip – im Modellbau, in der Drohne und im E-Auto?", "kern": true, "buch": {"versuch": true, "s": "S. 32"}}, {"id": "v4", "nr": "K1.5-V4", "titel": "Der Büroklammer-Motor", "bindung": "Station für Schnelle – nur mit Kupferlackdraht (nicht im Inventar), sonst entfällt · ca. 20 min", "intro": "Der einfachste Elektromotor der Welt: eine Spule, zwei Büroklammern, ein Magnet.", "sicher": "Nicht in die drehende Spule greifen. Batterie zwischen den Versuchen abklemmen.", "mat": [["Kupferlackdraht, ca. 1 m", "draht"], ["2 Büroklammern", "klammer"], ["Flachbatterie 4,5 V", "batterie"], ["Stabmagnet AlNiCo", "magnet"], ["Schleifpapier oder Messer", "cutter"], ["Klebeband", "klebeband"]], "entsorgung": "Drahtreste in den Restmüll, Lackspäne vom Tisch wischen. Batterie abklemmen.", "schritte": ["Wickle den Draht um einen Stift zu einer Spule (ca. 10 Windungen), die Enden zeigen gerade nach außen.", "Kratz an einem Ende den Lack ganz ab, am anderen nur auf einer Seite (oben).", "Bieg die Büroklammern zu Lagern und befestige sie an den Polen der Batterie.", "Leg die Spule ein, halte den Magneten darunter und gib einen kleinen Schubs."], "skizze": "v_motor", "beob": {"titel": "Beobachtung", "kopf": ["Situation", "Was macht die Spule?"], "zeilen": [["ohne Magnet"], ["mit Magnet, Schubs"], ["Magnet umgedreht"], ["Lack an beiden Enden ganz ab"]]}, "erk": "Was braucht dein Motor, damit er sich dreht?", "interp": "Warum muss der Lack an einem Ende nur halb entfernt sein? Vergleiche mit dem Kommutator (Schulbuch S. 32).", "schluss": "Warum sind Elektromotoren in Drohnen und E-Autos viel stärker als dein Büroklammer-Motor?", "kern": false, "buch": {"versuch": false, "s": "S. 32–33"}}, {"id": "v5", "nr": "K1.5-V5", "titel": "Flussdichte mit dem Handy", "bindung": "Partnerarbeit mit eigenem Handy, Spule am Lehrertisch · 4BK Versuchsstunde, 4AK falls Zeit · ca. 10 min", "intro": "Dein Handy hat einen Magnetfeldsensor. Wie stark ist dein Elektromagnet – in Mikrotesla?", "sicher": "Mindestens 10 cm Abstand zwischen Spule und Handy – starke Felder können den Sensor stören. Nur kurz einschalten.", "mat": [["Smartphone mit App phyphox", "handy"], ["Spule mit Eisennagel (Lehrertisch, blanker Draht auf Papier)", "nagel"], ["Flachbatterie 4,5 V (Lehrertisch)", "batterie"], ["Lineal", "lineal"]], "entsorgung": "Nichts zu entsorgen. App schließen, Batterie abklemmen.", "schritte": ["Starte in phyphox das Magnetometer, leg das Handy flach hin und notiere den Wert ohne Spule.", "Leg die Spule ohne Nagel 10 cm vom Handy entfernt hin, schalte kurz ein und miss.", "Steck den Eisennagel in die Spule und miss erneut.", "Verkürze den Abstand auf 5 cm und miss noch einmal."], "skizze": "v_handy", "beob": {"titel": "Beobachtung", "kopf": ["Messung", "Flussdichte in µT"], "zeilen": [["ohne Spule (Erdfeld)"], ["Spule ohne Nagel, 10 cm"], ["Spule mit Nagel, 10 cm"], ["Spule mit Nagel, 5 cm"]]}, "erk": "Wie ändern Eisenkern und Abstand die Flussdichte?", "interp": "Warum steigt die Flussdichte mit dem Eisenkern so stark? (Schulbuch S. 31)", "schluss": "Rechne um: Wie viele Mikrotesla hat ein MRT mit 3 T? Warum darf das Handy nicht mit in den MRT-Raum?", "kern": true, "buch": {"versuch": true, "s": "S. 31"}}];
 const KEY = "26-27-4AB-K1.5a-E-Magnet-VS-Handy-v1";
 
-let S = { name: "", klasse: "", a: {} }, storageOk = true;
+let S = { name: "", ich: "", klasse: "", a: {} }, storageOk = true;
 try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
 V.forEach(v => { try { const f = localStorage.getItem(KEY + "-foto-" + v.id); if (f) { S.a[v.id] = S.a[v.id] || {}; S.a[v.id].foto = f; } } catch (e) {} });
 function save() {
@@ -720,7 +720,7 @@ function update() {
   let n = 0;
   V.forEach(v => { const d = isDone(v); if (touched(v)) n++; $("#card_" + v.id).classList.toggle("done", d); });
   $("#count").textContent = n + (n === 1 ? " Versuch" : " Versuche") + " bearbeitet";
-  const who = []; if (!S.name.trim()) who.push("Namen der Gruppe"); if (!S.klasse) who.push("Klasse");
+  const who = []; if (!S.name.trim()) who.push("Namen der Gruppe"); if (!(S.ich || "").trim()) who.push("Ich gebe ab als"); if (!S.klasse) who.push("Klasse");
   $("#missing").textContent = (who.length ? "Noch eintragen: " + who.join(" und ") + ". " : "") + (n ? "In die PDF kommen " + n + (n === 1 ? " Versuch." : " Versuche.") : "Noch kein Versuch bearbeitet.");
   $("#copyArea").value = asText();
 }
@@ -737,7 +737,7 @@ function lines(v) {
   return L;
 }
 function asText() {
-  const out = ["K1.5a Elektromagnet und Elektromotor – Versuchsprotokoll", "Gruppe: " + (S.name || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT"), ""];
+  const out = ["K1.5a Elektromagnet und Elektromotor – Versuchsprotokoll", "Gruppe: " + (S.name || "") + " · Abgabe durch: " + (S.ich || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT"), ""];
   V.filter(touched).forEach(v => { out.push(v.nr + " " + v.titel); lines(v).forEach(([l]) => out.push(l)); out.push(""); });
   return out.join("\n");
 }
@@ -770,6 +770,7 @@ async function buildPdf() {
   txt("Gruppe: " + (S.name || "—"), 11, "normal", ink, M, 120);
   y -= 11 * 0.3528 * 1.32;
   d.setFont("C", "normal"); d.setFontSize(11); d.text(clean("Klasse: " + (S.klasse || "—")), M + 108, y + 4); d.text("Datum: " + new Date().toLocaleDateString("de-AT"), W - M, y + 4, { align: "right" });
+  y += 5; d.setFont("C", "normal"); d.setFontSize(11); d.setTextColor(...ink); d.text(clean("Abgabe durch: " + (S.ich || "—")), M, y + 4);
   y += 6; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 5;
   for (const v of V.filter(touched)) {
     if (y > BOT - 30) { d.addPage(); y = 18; }
@@ -790,10 +791,10 @@ async function buildPdf() {
 async function savePdf() {
   const st = $("#pdfstatus"), btn = $("#pdfbtn");
   const say = (cls, m) => { st.hidden = false; st.className = "status " + cls; st.textContent = m; };
-  if (!S.name.trim()) { say("err", "Bitte zuerst oben die Namen der Gruppe eintragen."); $("#name").focus(); return; }
+  if (!S.name.trim()) { say("err", "Bitte zuerst oben die Namen der Gruppe eintragen."); $("#name").focus(); return; } if (!(S.ich || "").trim()) { say("err", "Bitte oben eintragen, wer von euch diese PDF abgibt (dein Nachname). Jeder aus der Gruppe gibt seine eigene PDF in LMS ab."); $("#ich").focus(); return; }
   if (!V.some(touched)) { say("err", "Ihr habt noch keinen Versuch bearbeitet."); return; }
   btn.disabled = true; say("info", "PDF wird erstellt …");
-  const filename = "K1.5a-Versuche-" + slug(S.name) + ".pdf";
+  const filename = "K1.5a-Versuche-" + slug(S.ich) + ".pdf";
   try {
     const blob = await buildPdf();
     const url = URL.createObjectURL(blob);
@@ -812,6 +813,8 @@ zus.forEach(v => $("#vs").append(versuch(v)));
 const nameI = $("#name"), klI = $("#klasse");
 nameI.value = S.name; klI.value = S.klasse; mark(nameI); mark(klI);
 nameI.addEventListener("input", () => { S.name = nameI.value; mark(nameI); update(); save(); });
+const ichI = $("#ich"); ichI.value = S.ich || ""; mark(ichI);
+ichI.addEventListener("input", () => { S.ich = ichI.value; mark(ichI); update(); save(); });
 klI.addEventListener("change", () => { S.klasse = klI.value; mark(klI); update(); save(); });
 $("#pdfbtn").addEventListener("click", savePdf);
 $("#copybtn").addEventListener("click", () => {
@@ -915,7 +918,7 @@ update();
    (Speicher voll, privater Modus, Browser blockiert es), merkte der Kadett bisher nichts davon – und verlor beim
    Schließen der Seite alles.
    Diese Datei legt sich von außen um localStorage.setItem und zeigt
-     - bei Erfolg unten links:  »Gespeichert um 10:42 auf diesem Gerät«
+     - bei Erfolg unten links (5 Sekunden lang, danach weg – es soll keinen Text verdecken):  »Gespeichert um 10:42 auf diesem Gerät«
      - bei einem Fehler oben, nicht zu übersehen:  Warnung + Knopf »Zur PDF«.
    Sie ändert NIE einen Speicherschlüssel und NIE einen gespeicherten Wert: Jeder Aufruf wird unverändert an den
    Browser weitergereicht, ein Fehler wird nach der Anzeige unverändert weitergeworfen (die Seite behandelt ihn wie bisher).
@@ -928,7 +931,7 @@ update();
   var PREFIX = "26-27-";            // alle Speicherschlüssel der Seiten beginnen so
   var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
   var failed = {};                  // Schlüssel -> true, solange der letzte Schreibversuch scheiterte
-  var okTime = null, timer = null;
+  var okTime = null, timer = null, hideTimer = null;
 
   var css = "#ss-status[hidden],#ss-warn[hidden]{display:none}" +
     "#ss-status{position:fixed;left:12px;bottom:12px;z-index:9990;max-width:calc(100% - 24px);padding:6px 12px;border-radius:999px;" +
@@ -973,6 +976,8 @@ update();
     if (okTime) {
       pillTxt.textContent = "Gespeichert um " + zwei(okTime.getHours()) + ":" + zwei(okTime.getMinutes()) + " auf diesem Gerät";
       pill.hidden = false;
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { if (!Object.keys(failed).length) pill.hidden = true; }, 5000);  // deckt sonst Text ab
     }
   }
   function zeigeSpaeter() { if (timer) clearTimeout(timer); timer = setTimeout(zeige, 800); }

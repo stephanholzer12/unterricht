@@ -1016,7 +1016,7 @@ update();
    (Speicher voll, privater Modus, Browser blockiert es), merkte der Kadett bisher nichts davon – und verlor beim
    Schließen der Seite alles.
    Diese Datei legt sich von außen um localStorage.setItem und zeigt
-     - bei Erfolg unten links:  »Gespeichert um 10:42 auf diesem Gerät«
+     - bei Erfolg unten links (5 Sekunden lang, danach weg – es soll keinen Text verdecken):  »Gespeichert um 10:42 auf diesem Gerät«
      - bei einem Fehler oben, nicht zu übersehen:  Warnung + Knopf »Zur PDF«.
    Sie ändert NIE einen Speicherschlüssel und NIE einen gespeicherten Wert: Jeder Aufruf wird unverändert an den
    Browser weitergereicht, ein Fehler wird nach der Anzeige unverändert weitergeworfen (die Seite behandelt ihn wie bisher).
@@ -1029,7 +1029,7 @@ update();
   var PREFIX = "26-27-";            // alle Speicherschlüssel der Seiten beginnen so
   var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
   var failed = {};                  // Schlüssel -> true, solange der letzte Schreibversuch scheiterte
-  var okTime = null, timer = null;
+  var okTime = null, timer = null, hideTimer = null;
 
   var css = "#ss-status[hidden],#ss-warn[hidden]{display:none}" +
     "#ss-status{position:fixed;left:12px;bottom:12px;z-index:9990;max-width:calc(100% - 24px);padding:6px 12px;border-radius:999px;" +
@@ -1074,6 +1074,8 @@ update();
     if (okTime) {
       pillTxt.textContent = "Gespeichert um " + zwei(okTime.getHours()) + ":" + zwei(okTime.getMinutes()) + " auf diesem Gerät";
       pill.hidden = false;
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { if (!Object.keys(failed).length) pill.hidden = true; }, 5000);  // deckt sonst Text ab
     }
   }
   function zeigeSpaeter() { if (timer) clearTimeout(timer); timer = setTimeout(zeige, 800); }

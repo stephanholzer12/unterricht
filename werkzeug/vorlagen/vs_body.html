@@ -33,7 +33,7 @@
   <section class="card">
     <div class="who">
       <div><label class="lbl" for="name">Namen der Gruppe</label><input type="text" id="name" autocomplete="off" placeholder="z. B. Huber, Maier, Novak"></div>
-      <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>2A</option><option>2B</option></select></div>
+      <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>2A</option><option>2B</option></select></div><div style="grid-column:1/-1"><label class="lbl" for="ich">Ich gebe diese PDF ab als (dein Nachname)</label><input type="text" id="ich" autocomplete="family-name" placeholder="z. B. Maier"><div style="font-size:14px;color:var(--muted);margin-top:4px">Jeder aus der Gruppe gibt seine eigene PDF in LMS ab – so hat jeder die Mitschrift.</div></div>
     </div>
     <p class="hint"><b>So wertest du jeden Versuch aus:</b> <b>Erkenntnis</b> – Was habt ihr herausgefunden? · <b>Interpretation</b> – Warum ist das so? Erklärt mit den Teilchen. · <b>Schlussfolgerung</b> – Was bedeutet das für Alltag, Sport oder Bundesheer?</p>
     <p class="hint">Antippen öffnet einen Versuch. Alles wird am Handy gespeichert. Ganz unten: <b>PDF erstellen</b> und in LMS hochladen – in die PDF kommen nur die Versuche, die ihr bearbeitet habt.</p>
@@ -67,7 +67,7 @@ const RANGES = __RANGES__;
 const V = __DATA__;
 const KEY = "26-27-2AB-K1.2-Bindungen-VS-Handy-v1";
 
-let S = { name: "", klasse: "", a: {} }, storageOk = true;
+let S = { name: "", ich: "", klasse: "", a: {} }, storageOk = true;
 try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
 V.forEach(v => { try { const f = localStorage.getItem(KEY + "-foto-" + v.id); if (f) { S.a[v.id] = S.a[v.id] || {}; S.a[v.id].foto = f; } } catch (e) {} });
 function save() {
@@ -167,7 +167,7 @@ function update() {
   let n = 0;
   V.forEach(v => { const d = isDone(v); if (touched(v)) n++; $("#card_" + v.id).classList.toggle("done", d); });
   $("#count").textContent = n + (n === 1 ? " Versuch" : " Versuche") + " bearbeitet";
-  const who = []; if (!S.name.trim()) who.push("Namen der Gruppe"); if (!S.klasse) who.push("Klasse");
+  const who = []; if (!S.name.trim()) who.push("Namen der Gruppe"); if (!(S.ich || "").trim()) who.push("Ich gebe ab als"); if (!S.klasse) who.push("Klasse");
   $("#missing").textContent = (who.length ? "Noch eintragen: " + who.join(" und ") + ". " : "") + (n ? "In die PDF kommen " + n + (n === 1 ? " Versuch." : " Versuche.") : "Noch kein Versuch bearbeitet.");
   $("#copyArea").value = asText();
 }
@@ -184,7 +184,7 @@ function lines(v) {
   return L;
 }
 function asText() {
-  const out = ["K1.2 Die Bindungsarten – Versuchsprotokoll", "Gruppe: " + (S.name || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT"), ""];
+  const out = ["K1.2 Die Bindungsarten – Versuchsprotokoll", "Gruppe: " + (S.name || "") + " · Abgabe durch: " + (S.ich || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT"), ""];
   V.filter(touched).forEach(v => { out.push(v.nr + " " + v.titel); lines(v).forEach(([l]) => out.push(l)); out.push(""); });
   return out.join("\n");
 }
@@ -217,6 +217,7 @@ async function buildPdf() {
   txt("Gruppe: " + (S.name || "—"), 11, "normal", ink, M, 120);
   y -= 11 * 0.3528 * 1.32;
   d.setFont("C", "normal"); d.setFontSize(11); d.text(clean("Klasse: " + (S.klasse || "—")), M + 108, y + 4); d.text("Datum: " + new Date().toLocaleDateString("de-AT"), W - M, y + 4, { align: "right" });
+  y += 5; d.setFont("C", "normal"); d.setFontSize(11); d.setTextColor(...ink); d.text(clean("Abgabe durch: " + (S.ich || "—")), M, y + 4);
   y += 6; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 5;
   for (const v of V.filter(touched)) {
     if (y > BOT - 30) { d.addPage(); y = 18; }
@@ -237,10 +238,10 @@ async function buildPdf() {
 async function savePdf() {
   const st = $("#pdfstatus"), btn = $("#pdfbtn");
   const say = (cls, m) => { st.hidden = false; st.className = "status " + cls; st.textContent = m; };
-  if (!S.name.trim()) { say("err", "Bitte zuerst oben die Namen der Gruppe eintragen."); $("#name").focus(); return; }
+  if (!S.name.trim()) { say("err", "Bitte zuerst oben die Namen der Gruppe eintragen."); $("#name").focus(); return; } if (!(S.ich || "").trim()) { say("err", "Bitte oben eintragen, wer von euch diese PDF abgibt (dein Nachname). Jeder aus der Gruppe gibt seine eigene PDF in LMS ab."); $("#ich").focus(); return; }
   if (!V.some(touched)) { say("err", "Ihr habt noch keinen Versuch bearbeitet."); return; }
   btn.disabled = true; say("info", "PDF wird erstellt …");
-  const filename = "K1.2-Versuche-" + slug(S.name) + ".pdf";
+  const filename = "K1.2-Versuche-" + slug(S.ich) + ".pdf";
   try {
     const blob = await buildPdf();
     const url = URL.createObjectURL(blob);
@@ -259,6 +260,8 @@ zus.forEach(v => $("#vs").append(versuch(v)));
 const nameI = $("#name"), klI = $("#klasse");
 nameI.value = S.name; klI.value = S.klasse; mark(nameI); mark(klI);
 nameI.addEventListener("input", () => { S.name = nameI.value; mark(nameI); update(); save(); });
+const ichI = $("#ich"); ichI.value = S.ich || ""; mark(ichI);
+ichI.addEventListener("input", () => { S.ich = ichI.value; mark(ichI); update(); save(); });
 klI.addEventListener("change", () => { S.klasse = klI.value; mark(klI); update(); save(); });
 $("#pdfbtn").addEventListener("click", savePdf);
 $("#copybtn").addEventListener("click", () => {
