@@ -4,7 +4,7 @@
      - jede Auswahl-/Zahlen-Antwort = 1 Punkt; Stichwort-Antworten anteilig (gefundene Stichwortgruppen / verlangte); »durchstreichen«-Aufgaben anteilig
      - Aufgaben mit angesehener Lösung = 0 Punkte (Lehrkraft bewertet selbst); Zusatzaufgaben zählen nur, wenn bearbeitet
      - Aufgaben ohne automatische Prüfung (Freitext, Skizze, Foto) stehen als »selbst bewerten« im Kasten und zählen nicht mit
-   Notenschlüssel (Vorschlag): ab 88 % = 1, ab 75 % = 2, ab 62 % = 3, ab 50 % = 4, darunter 5. Ändern: SCHLUESSEL unten.
+   Notenschlüssel (Vorschlag): ab 88 % = 1, ab 75 % = 2, ab 62 % = 3, ab 50 % = 4, darunter 5 (genau, ohne vorheriges Runden). Ändern: SCHLUESSEL unten.
    Seiten mit eigenem Ergebnis-Kasten (Nobel, Vertiefung) nehmen »x von y Antworten richtig« aus pdfStats().
    Einbau: python3 werkzeug/notenvorschlag_einbauen.py */
 (function () {
@@ -21,7 +21,7 @@
       if ((t.tag === "Zusatz" || t.hl) && !beantwortet) return;
       var ev = null; try { ev = t.chk ? evalTask(t) : null; } catch (e) {}
       if (!ev) { selbst.push(t.nr); return; }
-      var viewed = typeof LH_viewed === "function" && LH_viewed(t), teile = 0, erreicht = 0;
+      var viewed = (typeof LH_viewed === "function" && LH_viewed(t)) || !!S.solSeen, teile = 0, erreicht = 0;
       ev.parts.forEach(function (p) {
         if (p.kind === "strike") { teile += 1; erreicht += p.of ? p.n / p.of : 0; return; }
         teile += 1;
@@ -48,14 +48,15 @@
 
   function kasten(d) {
     var s = stand(); if (!s || !s.max) return;
-    var W = 210, M = 15, pct = Math.round(s.pkt / s.max * 100), n = note(pct);
+    var W = 210, M = 15, roh = s.pkt / s.max * 100, pct = Math.round(roh), n = note(roh + 1e-9);  /* Note aus dem genauen Wert, nicht aus dem gerundeten */
     d.setPage(1);
     d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 9.5, 1.5, 1.5, "FD");
     d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
     d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + pct + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
     d.setFont("C", "normal"); d.setFontSize(7.2);
     var rest = [];
-    if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
+    if (typeof S !== "undefined" && S.solSeen && s.gesehen.length) rest.push("PDF nach Lösungseinsicht erstellt: 0 Punkte – bitte die erste PDF bewerten");
+    else if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
     if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
     var z2 = rest.length ? rest.join(" · ") : "alle Aufgaben automatisch gewertet";
     z2 = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4)[0];

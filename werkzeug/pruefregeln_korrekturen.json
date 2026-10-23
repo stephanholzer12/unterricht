@@ -9,11 +9,23 @@
    },
    "a3": {
     "gruende": {
+     "need": 2,
      "kw": [
       [
-       "Zwei Gründe (Geld/Auflage/Exklusivität, Konkurrenz/Zeitdruck/Geheimhaltung)",
-       "geld|auflage|verkauf|gewinn|umsatz|exklusiv|sensation|millionen|konkurren|zeitdruck|geheim|schnell|zuerst|nur heidemann|einzige|druck|scoop|gier|profit|vertrau",
-       2
+       "Geld / Gewinn",
+       "geld|verkauf|gewinn|umsatz|millionen|gier|profit"
+      ],
+      [
+       "Exklusivität / Auflage / Sensation",
+       "auflage|exklusiv|sensation|scoop|nur heidemann|einzige"
+      ],
+      [
+       "Zeitdruck / Konkurrenz",
+       "zeitdruck|druck|konkurren|schnell|zuerst"
+      ],
+      [
+       "Geheimhaltung / Vertrauen / fehlende Kontrolle",
+       "geheim|vertrau|nicht geprüft|ungeprüft|kontroll|naiv|blind"
       ]
      ]
     }
@@ -48,18 +60,28 @@
      "need": 1
     },
     "oe1": {
+     "need": 2,
      "kw": [
       [
-       "Ereignis mit Jahr",
+       "Jahr",
        "1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"
+      ],
+      [
+       "Ereignis (Wort dazu)",
+       "[a-zäöüß]{5,}"
       ]
      ]
     },
     "oe2": {
+     "need": 2,
      "kw": [
       [
-       "Ereignis mit Jahr",
+       "Jahr",
        "1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"
+      ],
+      [
+       "Ereignis (Wort dazu)",
+       "[a-zäöüß]{5,}"
       ]
      ]
     }
@@ -176,7 +198,8 @@
   "4ab-nawi/k1-5a-elektromagnet": {
    "a5": {
     "t": {
-     "need": 2
+     "need": 2,
+     "neg": true
     }
    },
    "a6": {
@@ -186,7 +209,18 @@
    },
    "a7": {
     "t": {
-     "need": 1
+     "need": 1,
+     "neg": true,
+     "kw": [
+      [
+       "bleibt stehen",
+       "steh|stopp|pendel"
+      ],
+      [
+       "Umpolen fehlt",
+       "umpol|kommutator|stromrichtung"
+      ]
+     ]
     }
    },
    "a9": {

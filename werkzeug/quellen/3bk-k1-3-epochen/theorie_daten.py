@@ -147,7 +147,7 @@ SCHNELLE = [
        "Auch Geologen teilen ein – in Erd-Epochen. Seit ca. 11 700 Jahren (Ende der letzten Eiszeit) leben wir im **Holozän**.",
        "Vorschlag: **Anthropozän** – das Zeitalter des Menschen, Beginn um 1950 (Atombombentests, Plastik, Beton).",
        "März 2024: Die Fachkommission der Geologen lehnt ab – offiziell bleibt es beim Holozän. Der Streit geht weiter."]),
-     ("hint", "Aufgabe 15: Welche Spuren hinterlassen wir?")], "OPTIONAL", "schnelle"),
+     ("hint", "Aufgabe 15: Welche Spuren hinterlassen wir?")], "OPTIONAL", "schnelle-aufgaben"),
    S("Auch die Wirtschaft hat Epochen", [("tiles", [
        ("Industrie 1.0 · ab ca. 1780", "Dampfmaschine, Fabrik, Eisenbahn"), ("Industrie 2.0 · ab ca. 1870", "Strom, Fließband, Massenproduktion"),
        ("Industrie 3.0 · ab ca. 1970", "Computer und Roboter"), ("Industrie 4.0 · heute", "Vernetzung, Daten, künstliche Intelligenz")]),

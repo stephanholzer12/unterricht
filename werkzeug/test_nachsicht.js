@@ -1,5 +1,5 @@
 const {chromium}=require('playwright');
-const R='file:///home/claude/unterricht/';
+const R=process.env.BASIS||'file://'+require('path').resolve(__dirname,'..')+'/';
 const cases={
 '4ab-nawi/k1-5a-elektromagnet/aufgaben.html':[
  ['a3','theta','240 A',1],['a3','theta','240',1],['a3','theta','Θ = 600 · 0,4 A = 240 A',1],['a3','theta','0,24 kA',1],['a3','theta','240 Ampere',1],['a3','theta','240 V',0],['a3','theta','250',0],['a3','theta','24 A',0],
@@ -50,6 +50,14 @@ const cases={
  ['a10','wen','Zivilisten',1],['a10','wen','Zivilbevölkerung und Gefangene',1],['a10','wen','Soldaten',0],['a11','nobel','Navi Pillay',1],['a11','nobel','Pilay',1],
  ],
 };
+
+/* Gegenbeispiele aus dem Prüfbericht (23.10.2026): diese Antworten dürfen NICHT als richtig gelten (0) bzw. müssen gelten (1) */
+const E4='4ab-nawi/k1-5a-elektromagnet/aufgaben.html',F3='3bk-pbgw/k1-2-faelschung/aufgaben.html',EP='3bk-pbgw/k1-3-epochen/aufgaben.html';
+cases[E4].push(['a12','b','1000 mT',0],['a12','b','1500 mT',1],['a12','b','1.5e3 mT',1],['a3','theta','240 A ist falsch, richtig sind 24 A',0],['a3','theta','nicht 240 A, sondern 24 A',0],['a3','theta','2,4*10^2 A',1],
+ ['a5','t','Es gibt keine Lorentzkraft und der Draht wird nicht abgelenkt.',0],['a5','t','Der Draht wird abgelenkt, die Lorentzkraft wirkt, weil sich die Felder überlagern.',1],
+ ['a7','t','Der Motor bleibt nicht stehen, sondern dreht immer weiter.',0],['a7','t','Ohne Kommutator bleibt der Motor stehen, weil der Strom nicht umgepolt wird.',1]);
+cases[F3].push(['a3','gruende','Zeitdruck',0],['a3','gruende','Verkaufsgewinn',0],['a3','gruende','Zeitdruck und Verkaufsgewinn',1]);
+cases[EP].push(['a10','oe1','1955',0],['a10','oe1','Staatsvertrag 1955',1]);
 (async()=>{const b=await chromium.launch();let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);
@@ -57,6 +65,6 @@ for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{
   const r=await p.evaluate(([id,key,txt])=>{const t=T.find(x=>x.id===id);S.a[id]=S.a[id]||{};S.a[id][key]=txt;const c=t.chk[key];return checkField(t,key,c).ok;},[id,key,txt]);
   tot++; if(!!r!==!!exp){bad++;console.log('FALSCH',f.split('/')[0],id,key,JSON.stringify(txt),'erwartet',exp,'bekam',r);}
  }
- if(errs.length)console.log('JS-Fehler',f,errs);
+ if(errs.length){console.log('JS-Fehler',f,errs);bad++;}
  await p.close();}
-console.log(tot,'Fälle,',bad,'abweichend');await b.close();})();
+console.log(tot,'Fälle,',bad,'abweichend');await b.close();process.exit(bad?1:0);})();

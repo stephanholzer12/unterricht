@@ -24,7 +24,7 @@ WICHTIGSTE = ["Personengruppen haben unterschiedlichen Bedarf: Schwangere brauch
               "**ovolakto** ist die größte Gruppe unter den Vegetariern.",
               "Bei Honig und Gelatine ist Vorsicht geboten: Honig zählt für vegane Kost nicht, Gelatine (aus Knochen und Häuten) für keine vegetarische Form.",
               "Vegetarische Ernährung ist als Dauerkost geeignet, wenn sie abwechslungsreich ist – bei veganer Kost drohen Engpässe bei Eiweiß, Eisen, "
-              "Kalzium und Jod, bei **Puddingvegetarismus** wird nur das Fleisch gestrichen, nicht aber Süßes.",
+              "Kalzium, Jod und Vitamin B12, bei **Puddingvegetarismus** wird nur das Fleisch gestrichen, nicht aber Süßes.",
               "Die **Wertstufen 1–4** ordnen Lebensmittel nach dem Grad der Verarbeitung – Stufe 1+2 sollte die Hälfte der täglichen Nahrung ausmachen, "
               "Stufe 4 möglichst gar nicht."]
 

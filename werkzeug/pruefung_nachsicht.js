@@ -9,6 +9,8 @@
      - Fehlt die Einheit, gilt die Zahl trotzdem als richtig – mit Hinweis »Einheit nicht vergessen«. Eine FALSCHE Einheit bleibt falsch.
      - Gerundete Antworten gelten: 3 statt 3,1 und 83 statt 82,8 (Rundung auf die angeschriebene Stelle), sonst 2 % Spielraum wie bisher.
    TEXTE (Stichwörter):
+     - Verneinung (nur wenn im chk-Feld »neg: true« steht): »keine Lorentzkraft«, »nicht abgelenkt« zählt nicht als Treffer. Nur für Aufgaben,
+       deren richtige Antwort bejahend ist – bei Aufgaben wie »Kein Alkohol« bleibt die Verneinung aus.
      - ä/ae, ö/oe, ü/ue, ß/ss, Bindestriche (»ovo-lakto«), Tausenderpunkte werden gleichgesetzt.
      - Ein Tippfehler in einem Stichwort (ab 6 Buchstaben) wird verziehen.
      - Pro Aufgabe kann festgelegt werden, wie viele Stichwortgruppen vorkommen müssen (need) und wie viele verschiedene Wörter einer Gruppe (3. Eintrag),
@@ -49,14 +51,19 @@
     return a.f / b.f;
   }
   function parseZahlen(str) {
-    var s0 = String(str || "").replace(/(\d)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+    var s0 = String(str || "").replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
     var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)?)?)/g, out = [], m;
     while ((m = re.exec(s0))) {
       var n = m[1];
       n = /^\d{1,3}(\.\d{3})+$/.test(n) ? n.replace(/\./g, "") : n.replace(",", ".");
       var dec = (n.split(".")[1] || "").length;
-      out.push({ v: parseFloat(n), u: m[2] || "", dec: dec });
+      /* Zahl wird ausdrücklich verworfen? (»240 A ist falsch«, »nicht 240 A«, »statt 240 A«) */
+      var vor = s0.slice(Math.max(0, m.index - 14), m.index).split(/[,;.!?]/).pop(), rest = s0.slice(m.index + m[0].length), nx = rest.search(/\d/);
+      var nach = (nx < 0 ? rest : rest.slice(0, nx)).slice(0, 28).split(/[,;.!?]/)[0];
+      var neg = /\b(nicht|kein\w*|statt|anstatt|falsch:?)\s*$/i.test(vor) || /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach);
+      out.push({ v: parseFloat(n), u: m[2] || "", dec: dec, neg: neg });
     }
     return out;
   }
@@ -71,11 +78,12 @@
     if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
     var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
     for (var i = 0; i < L.length; i++) {
-      var x = L[i], v = x.v, u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
+      var x = L[i]; if (x.neg) continue; var v = x.v, u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
       if (einheit && hatEinheit) { f = faktor(u, einheit); }
       var wert = f === null ? v : v * f;
       var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
-      var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= 0.5 * Math.pow(10, -x.dec) + 1e-9;
+      /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T) */
+      var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
       if (rel || rund) {
         if (f === null) { einheitFalsch = true; zahlOk = true; }
         else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
@@ -114,13 +122,25 @@
       if (ch === "|" && d === 0) { out.push(cur); cur = ""; } else cur += ch; }
     out.push(cur); return out;
   }
-  function treffer(rx, V, W) {
+  /* Treffer zählt nur, wenn das Stichwort nicht verneint ist (»keine Lorentzkraft«, »nicht abgelenkt«, »bleibt nicht stehen«) */
+  function positiv(ra, v, neg) {   // 1 = Treffer, -1 = nur verneinte Treffer, 0 = kein Treffer
+    var m, verneint = false; ra.lastIndex = 0;
+    while ((m = ra.exec(v))) {
+      if (m[0] === "") { ra.lastIndex++; continue; }
+      var vor = v.slice(Math.max(0, m.index - 24), m.index).split(/[,;.!?:]/).pop();
+      var nein = /\b(nicht|kein\w*|nie|niemals)\s+(\S+\s+)?\S*$/.test(vor) && !/\bnicht\s+nur\s+\S*$/.test(vor);
+      if (!nein || !neg) return 1; verneint = true;
+    }
+    return verneint ? -1 : 0;
+  }
+  function treffer(rx, V, W, neg) {
     var re; try { re = new RegExp(rx, "i"); } catch (e) { return 0; }
     var alts = splitAlt(rx), n = 0;
     alts.forEach(function (a) {
       var gefunden = false;
-      try { var ra = new RegExp(a, "i"); gefunden = V.some(function (v) { return ra.test(v); }); } catch (e) {}
-      if (!gefunden && einfach(a)) gefunden = W.some(function (w) { return w.length >= a.length - 1 && lev(w.slice(0, a.length), a) <= 1; });
+      var vern = false;
+      try { var ra = new RegExp(a, "gi"); V.forEach(function (v) { var r = positiv(ra, v, neg); if (r === 1) gefunden = true; else if (r === -1) vern = true; }); } catch (e) {}
+      if (!gefunden && !vern && einfach(a)) gefunden = W.some(function (w) { return w.length >= a.length - 1 && lev(w.slice(0, a.length), a) <= 1; });
       if (gefunden) n++;
     });
     return n;   // Anzahl verschiedener passender Alternativen
@@ -135,7 +155,7 @@
     }
     if (c.kw) {
       var V = varianten(a[key]), W = []; V.forEach(function (v) { v.split(/[^a-zäöüß0-9]+/).forEach(function (w) { if (w) W.push(w); }); });
-      var hits = c.kw.map(function (g) { var n = treffer(g[1], V, W); return [g[0], n >= (g[2] || 1)]; });
+      var hits = c.kw.map(function (g) { var n = treffer(g[1], V, W, c.neg); return [g[0], n >= (g[2] || 1)]; });
       var need = c.need || hits.length, n = hits.filter(function (h) { return h[1]; }).length;
       return { ok: n >= need, kind: "kw", hits: hits, filled: filled(a[key]) };
     }

@@ -70,6 +70,6 @@ SCHNELLE = [
        "**A4** KI-Antwort prüfen (Recherche im Bundesarchiv).",
        "**A5** Geheimes Dokument im Klassenchat – drei Prüffragen.",
        "**A6** Soll ein Archiv Fälschungen aufbewahren? Argumente und Urteil."]),
-     ("hint", "Beim Bundesheer entscheidet die Quellenbewertung im Lagebild über Handlungen – auch dort gilt: zwei unabhängige Quellen.")], "OPTIONAL", "schnelle"),
+     ("hint", "Beim Bundesheer entscheidet die Quellenbewertung im Lagebild über Handlungen – auch dort gilt: zwei unabhängige Quellen.")], "OPTIONAL", "schnelle-aufgaben"),
    ("jetzt", "Jetzt: Aufgaben 4–6", "aufgaben.html"),
 ]

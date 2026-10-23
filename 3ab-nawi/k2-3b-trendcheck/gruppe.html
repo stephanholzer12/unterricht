@@ -1030,7 +1030,7 @@ update();
    Wie: Nach einer erfolgreichen PDF (Meldung »PDF wurde erstellt« bzw. »Gespeichert:« in #pdfstatus) merkt sich die Seite einen
    Fingerabdruck von Name, Klasse und Antworten (S.name, S.ich, S.klasse, S.a) und der Fotos. Der Fingerabdruck liegt unter einem
    EIGENEN Schlüssel »pdfstand|<Seitenschlüssel>«. Der Speicherstand der Seite (const KEY) wird nur gelesen, nie geschrieben.
-   Prüf-Zähler, »Lösung angesehen« usw. zählen nicht als Änderung.
+   Fehlversuche und einzeln angesehene Lösungen zählen als Änderung (sie stehen im PDF); das globale »Lösungen ansehen« nach der PDF nicht.
    Einbau: python3 werkzeug/pdf_erinnerung_einbauen.py (setzt den Seitenschlüssel als window.__PE_KEY davor). */
 (function () {
   if (window.__pdferinnerung) return; window.__pdferinnerung = true;
@@ -1069,7 +1069,9 @@ update();
     var aTxt = JSON.stringify(a), inhalt = false;
     for (var key in a) { var v2 = a[key]; if (v2 !== "" && v2 !== null && v2 !== false && !(v2 && typeof v2 === "object" && !Object.keys(v2).length)) { inhalt = true; break; } }
     if (fotos.length) inhalt = true;
-    return { h: hash([o.name || "", o.ich || "", o.klasse || "", aTxt, fotos.join("|")].join("\u0001")), inhalt: inhalt };
+    /* Fehlversuche und einzeln angesehene Lösungen stehen im PDF (Status, Punkte) – darum zählen sie mit; das globale »Lösungen ansehen« nach der PDF nicht */
+    var weg = JSON.stringify([o.tries || null, o.solTask || null, o.chk || null]);
+    return { h: hash([o.name || "", o.ich || "", o.klasse || "", aTxt, fotos.join("|")].join("\u0001")), w: hash(weg), inhalt: inhalt };
   }
   function snap() {
     if (memSnap) return memSnap;
@@ -1086,7 +1088,7 @@ update();
     if (!s) {
       if (!jetzt.inhalt) { box.hidden = true; return; }
       box.className = ""; box.textContent = "Du hast noch keine PDF erstellt. Abgegeben ist deine Arbeit erst, wenn die PDF in LMS hochgeladen ist.";
-    } else if (s.h !== jetzt.h) {
+    } else if (s.h !== jetzt.h || (s.w !== undefined && s.w !== jetzt.w)) {   /* alte Merkstände ohne w: nur Antworten vergleichen */
       box.className = ""; box.textContent = "Du hast seit deiner PDF " + zeit(s.t) + " etwas geändert. Erstelle die PDF neu und lade die neue Datei in LMS hoch.";
     } else {
       box.className = "pe-ok"; box.textContent = "✓ Deine PDF " + zeit(s.t) + " passt zu deinen Antworten. Hast du sie schon in LMS hochgeladen?";
@@ -1105,7 +1107,7 @@ update();
     if (txt === zuletzt) return; zuletzt = txt;
     if (/^(PDF wurde erstellt|Gespeichert:)/.test(txt)) {
       setTimeout(function () {
-        memSnap = { h: stand().h, t: Date.now() };
+        var st0 = stand(); memSnap = { h: st0.h, w: st0.w, t: Date.now() };
         try { if (ls) ls.setItem(SNAP, JSON.stringify(memSnap)); } catch (e) {}
         zeige();
       }, 300);

@@ -124,7 +124,7 @@ PLAN = f'''<!--PLAN--><section class="card" id="plan">
       <li><b>Wartet ihr oder seid ihr früher fertig?</b> Jeder macht am eigenen Handy die <a href="vertiefung.html">Vertiefung (Aufgaben 11–17)</a>.</li>
       <li>Zu Beginn von Stunde 4 zeigt die Lehrkraft <b>K1.2-V4 Multimeter-Check</b> – erst tippen, dann zuschauen und die Ergebnisse auch hier eintragen.</li>
     </ul>
-    <p class="hint"><b>Abgabe:</b> eine Versuchs-PDF pro Gruppe (Stationen A–D + Demo) und jeder eine Vertiefungs-PDF – beides in LMS bis zur nächsten NAWI-Stunde.</p>
+    <p class="hint"><b>Abgabe:</b> jeder gibt seine eigene Versuchs-PDF ab (Namen der Gruppe + dein Nachname; Stationen A–D + Demo) und jeder eine Vertiefungs-PDF – beides in LMS bis zur nächsten NAWI-Stunde.</p>
   </section><!--/PLAN-->'''
 if "<!--PLAN-->" in s: s = re.sub(r"<!--PLAN-->.*?<!--/PLAN-->", lambda m: PLAN, s, flags=re.S)
 else:
