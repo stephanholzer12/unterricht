@@ -51,19 +51,32 @@
     return a.f / b.f;
   }
   function parseZahlen(str) {
-    var s0 = String(str || "").replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+    var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
+    var s0 = String(str || "").replace(/10(⁻?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+      .replace(/([A-Za-zµμΩ])⁻¹/g, "$1^-1")
+      /* Einheiten mit Leerzeichen: »A m^-1« → »A·m^-1«, »V s / m²« → »V·s/m²«, »A / m« → »A/m« */
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2}\s*\^\s*-?\d)/g, "$1·$2")
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1·$2/")
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,3}[²³]?)\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1/")
+      .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
     var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)?)?)/g, out = [], m;
     while ((m = re.exec(s0))) {
       var n = m[1];
-      n = /^\d{1,3}(\.\d{3})+$/.test(n) ? n.replace(/\./g, "") : n.replace(",", ".");
-      var dec = (n.split(".")[1] || "").length;
+      /* 2.069 = Tausenderpunkt; 0.240 und 1.500 sind aber Dezimalzahlen (führende Null) bzw. mehrdeutig → beide Lesarten prüfen */
+      var tausend = /^[1-9]\d{0,2}(\.\d{3})+$/.test(n), v2 = null;
+      if (tausend) { v2 = parseFloat(n); n = n.replace(/\./g, ""); } else n = n.replace(",", ".");
+      var dec = (n.split(".")[1] || "").length, sig = n.replace(".", "").replace(/^0+/, "").replace(dec ? /$^/ : /0+$/, "").length;
       /* Zahl wird ausdrücklich verworfen? (»240 A ist falsch«, »nicht 240 A«, »statt 240 A«) */
       var vor = s0.slice(Math.max(0, m.index - 14), m.index).split(/[,;.!?]/).pop(), rest = s0.slice(m.index + m[0].length), nx = rest.search(/\d/);
       var nach = (nx < 0 ? rest : rest.slice(0, nx)).slice(0, 28).split(/[,;.!?]/)[0];
       var neg = /\b(nicht|kein\w*|statt|anstatt|falsch:?)\s*$/i.test(vor) || /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach);
-      out.push({ v: parseFloat(n), u: m[2] || "", dec: dec, neg: neg });
+      if (/\bnicht\s+(falsch|unrichtig|inkorrekt)\b/i.test(nach)) neg = false;   // »240 A sind nicht falsch« bestätigt die Zahl
+      /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
+      var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);
+      var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test(davor) && !/\d/.test(davor);
+      out.push({ v: parseFloat(n), v2: v2, u: m[2] || "", dec: dec, sig: sig, neg: neg, alt: alt, ende: m.index + m[0].length });
     }
     return out;
   }
@@ -77,17 +90,29 @@
     var L = parseZahlen(text);
     if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
     var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
+    /* »240 A oder 24 A«: verschiedene Ergebnisse zur Auswahl = keine eindeutige Antwort */
+    var gl = function (x) { var u = (x.u || "").replace(/^%$/, ""), f = einheit && u ? faktor(u, einheit) : 1; return f === null ? null : x.v * f; };
+    for (var k = 1; k < L.length; k++) if (L[k].alt && !L[k].neg && !L[k - 1].neg) {
+      var w1 = gl(L[k - 1]), w2 = gl(L[k]);
+      if (w1 === null || w2 === null || Math.abs(w1 - w2) > Math.max(Math.abs(w1), Math.abs(w2)) * 0.005) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
+    }
     for (var i = 0; i < L.length; i++) {
-      var x = L[i]; if (x.neg) continue; var v = x.v, u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
+      var x = L[i]; if (x.neg) continue;
+      var u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
       if (einheit && hatEinheit) { f = faktor(u, einheit); }
-      var wert = f === null ? v : v * f;
-      var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
-      /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T) */
-      var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
-      if (rel || rund) {
-        if (f === null) { einheitFalsch = true; zahlOk = true; }
-        else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
-        else { return { ok: true }; }
+      var lesarten = x.v2 != null && !isNaN(x.v2) ? [x.v, x.v2] : [x.v];   // 1.500 kann 1500 oder 1,5 heißen
+      for (var q = 0; q < lesarten.length; q++) {
+        var wert = f === null ? lesarten[q] : lesarten[q] * f;
+        var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
+        /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T).
+           Zusätzlich höchstens 5 % Abweichung: »3« für 3,1 ist gerundet, »1 T« oder »2 T« für 1,5 T nicht. */
+        var halb = (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
+        var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= halb && Math.abs(wert - soll) <= Math.abs(soll) * 0.05;
+        if (rel || rund) {
+          if (f === null) { einheitFalsch = true; zahlOk = true; }
+          else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
+          else { return { ok: true }; }
+        }
       }
     }
     if (zahlOk && einheitFalsch && !einheitFehlt) return { ok: false, msg: "Zahl stimmt – Einheit prüfen." };

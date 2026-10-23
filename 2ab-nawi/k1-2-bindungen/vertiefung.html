@@ -1278,8 +1278,16 @@ update();
     return { pkt: pkt, max: max, selbst: selbst, gesehen: gesehen };
   }
   function standSeite() {
-    var st = pdfStats();
-    return { pkt: st.right, max: st.tot, selbst: (st.unchecked || []).concat(st.open || []), gesehen: st.shown || [], wort: "nicht geprüft oder nicht bearbeitet" };
+    var st = pdfStats(), pkt = 0, gesehen = st.shown || [], glob = (typeof S !== "undefined") && !!S.solSeen;
+    if (st.rows) {
+      /* Aufgaben mit angesehener Lösung zählen 0 Punkte (einzeln oder über »Lösungen ansehen« für alle) – wie bei den Standard-Seiten */
+      gesehen = [];
+      st.rows.forEach(function (r) {
+        if (!(r.s && r.s.total > 0)) return;
+        if (glob || r.s.shown) gesehen.push(r.t.nr); else pkt += r.s.right;
+      });
+    } else pkt = glob ? 0 : st.right;
+    return { pkt: pkt, max: st.tot, selbst: (st.unchecked || []).concat(st.open || []), gesehen: gesehen, wort: "nicht geprüft oder nicht bearbeitet" };
   }
   function stand() {
     if (typeof T !== "undefined" && typeof evalTask === "function") return standStandard();
@@ -1293,13 +1301,14 @@ update();
     d.setPage(1);
     d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 9.5, 1.5, 1.5, "FD");
     d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
-    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + pct + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
+    var pz = Math.round(roh * 10) / 10;   /* eine Dezimalstelle, damit »50 % · Note 5« bei 49,5 % nicht wie ein Fehler wirkt */
+    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + zahl(pz) + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
     d.setFont("C", "normal"); d.setFontSize(7.2);
     var rest = [];
     if (typeof S !== "undefined" && S.solSeen && s.gesehen.length) rest.push("PDF nach Lösungseinsicht erstellt: 0 Punkte – bitte die erste PDF bewerten");
     else if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
     if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
-    var z2 = rest.length ? rest.join(" · ") : "alle Aufgaben automatisch gewertet";
+    var z2 = rest.length ? rest.join(" · ") : "automatische Vorbewertung – freie Texte bitte fachlich lesen";
     z2 = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4)[0];
     d.text(z2, M + 2, 9.6);
   }

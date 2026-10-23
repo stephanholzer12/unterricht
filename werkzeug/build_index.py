@@ -468,7 +468,8 @@ def qr_svg(url):
     img = qrcode.make(url, image_factory=qrcode.image.svg.SvgPathImage, border=2, box_size=10,
                       error_correction=qrcode.constants.ERROR_CORRECT_M)
     svg = img.to_string(encoding="unicode")
-    return re.sub(r"<\?xml[^>]*>", "", svg).replace("<svg ", '<svg role="img" aria-label="QR-Code" ', 1)
+    svg = re.sub(r"<\?xml[^>]*>", "", svg).replace(' id="qr-path"', "")   # sonst steht die ID mehrfach auf der Seite
+    return svg.replace("<svg ", '<svg role="img" aria-label="QR-Code" ', 1)
 
 
 ART = [(r"-TH-Lehrer", "PPP Lehrer"), (r"-TH-Kadetten", "PPP Kadetten"), (r"-VS-Lehrer", "PPP Versuche Lehrer"), (r"-VS-Kadetten", "PPP Versuche Kadetten"),

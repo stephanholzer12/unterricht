@@ -2128,7 +2128,7 @@ window.LH_VARIANTEN = [{"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000,
 </script>
 <!-- pdferinnerung:end -->
 <!-- nachsicht:start -->
-<script>window.__CHK_KORREKTUR = {"a5":{"t":{"need":2,"neg":true}},"a6":{"begr":{"need":2}},"a7":{"t":{"need":1,"neg":true,"kw":[["bleibt stehen","steh|stopp|pendel"],["Umpolen fehlt","umpol|kommutator|stromrichtung"]]}},"a9":{"begr":{"need":2},"video":{"need":1}},"a14":{"schutz":{"need":1}},"a15":{"t":{"need":1}},"a16":{"risiken":{"kw":[["Zwei Risiken (Lieferung/Preis/Abhängigkeit/…)","liefer|export|preis|abhängig|engpass|knapp|erpress|politisch|zoll|kosten|produktion|monopol",2]]}},"a20":{"c":{"kw":[["Fabrik/Werk","dresden|villach|infineon|fabrik|werk|chips act|gesetz|bosch|globalfoundries|ams|intel|europa"]]}}};
+<script>window.__CHK_KORREKTUR = {"a5":{"t":{"need":2,"neg":true}},"a6":{"begr":{"need":2}},"a7":{"t":{"need":1,"neg":true,"kw":[["bleibt stehen / dreht nicht weiter","\\bsteh|\\bstopp|stillstand|pendel|nicht\\s+weiter|nicht\\s+mehr\\s+(weiter\\s*)?(dreh|lauf)|nicht\\s+dauer|nicht\\s+durchgehend|keine\\s+(dauer|durchgehende|ständige|vollständige)\\w*\\s+(dreh|bewegung|rotation|umdrehung)|hört\\w*\\s+(auf|bald\\s+auf)|blockier"],["Umpolen fehlt","umpol|umgepol|nicht\\s+(um)?gepolt|polt\\w*\\s+(den\\s+)?strom|stromrichtung\\s+(\\w+\\s+)?(wird\\s+|ändert\\s+sich\\s+|wechselt\\s+)?nicht|strom\\s+(wird\\s+)?nicht\\s+(um)?(gepolt|gewechselt|gedreht)|ohne\\s+umpol"]]}},"a9":{"begr":{"need":2},"video":{"need":1}},"a14":{"schutz":{"need":1}},"a15":{"t":{"need":1}},"a16":{"risiken":{"kw":[["Zwei Risiken (Lieferung/Preis/Abhängigkeit/…)","liefer|export|preis|abhängig|engpass|knapp|erpress|politisch|zoll|kosten|produktion|monopol",2]]}},"a20":{"c":{"kw":[["Fabrik/Werk","dresden|villach|infineon|fabrik|werk|chips act|gesetz|bosch|globalfoundries|ams|intel|europa"]]}}};
 /* Großzügigere Prüfung der Arbeitsblätter (»Prüfen«-Knopf): Richtige Antworten sollen nicht wegen Schreibweise, Format oder Einheit als falsch gelten.
    Wird NACH der Seiten-Prüfung eingesetzt und ersetzt nur checkField/parseNum/normU/showCheck (die Seite selbst bleibt unverändert).
    Ändert keinen Speicherschlüssel und keine gespeicherte Antwort.
@@ -2182,19 +2182,32 @@ window.LH_VARIANTEN = [{"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000,
     return a.f / b.f;
   }
   function parseZahlen(str) {
-    var s0 = String(str || "").replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+    var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
+    var s0 = String(str || "").replace(/10(⁻?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+      .replace(/([A-Za-zµμΩ])⁻¹/g, "$1^-1")
+      /* Einheiten mit Leerzeichen: »A m^-1« → »A·m^-1«, »V s / m²« → »V·s/m²«, »A / m« → »A/m« */
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2}\s*\^\s*-?\d)/g, "$1·$2")
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1·$2/")
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,3}[²³]?)\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1/")
+      .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
     var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)?)?)/g, out = [], m;
     while ((m = re.exec(s0))) {
       var n = m[1];
-      n = /^\d{1,3}(\.\d{3})+$/.test(n) ? n.replace(/\./g, "") : n.replace(",", ".");
-      var dec = (n.split(".")[1] || "").length;
+      /* 2.069 = Tausenderpunkt; 0.240 und 1.500 sind aber Dezimalzahlen (führende Null) bzw. mehrdeutig → beide Lesarten prüfen */
+      var tausend = /^[1-9]\d{0,2}(\.\d{3})+$/.test(n), v2 = null;
+      if (tausend) { v2 = parseFloat(n); n = n.replace(/\./g, ""); } else n = n.replace(",", ".");
+      var dec = (n.split(".")[1] || "").length, sig = n.replace(".", "").replace(/^0+/, "").replace(dec ? /$^/ : /0+$/, "").length;
       /* Zahl wird ausdrücklich verworfen? (»240 A ist falsch«, »nicht 240 A«, »statt 240 A«) */
       var vor = s0.slice(Math.max(0, m.index - 14), m.index).split(/[,;.!?]/).pop(), rest = s0.slice(m.index + m[0].length), nx = rest.search(/\d/);
       var nach = (nx < 0 ? rest : rest.slice(0, nx)).slice(0, 28).split(/[,;.!?]/)[0];
       var neg = /\b(nicht|kein\w*|statt|anstatt|falsch:?)\s*$/i.test(vor) || /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach);
-      out.push({ v: parseFloat(n), u: m[2] || "", dec: dec, neg: neg });
+      if (/\bnicht\s+(falsch|unrichtig|inkorrekt)\b/i.test(nach)) neg = false;   // »240 A sind nicht falsch« bestätigt die Zahl
+      /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
+      var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);
+      var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test(davor) && !/\d/.test(davor);
+      out.push({ v: parseFloat(n), v2: v2, u: m[2] || "", dec: dec, sig: sig, neg: neg, alt: alt, ende: m.index + m[0].length });
     }
     return out;
   }
@@ -2208,17 +2221,29 @@ window.LH_VARIANTEN = [{"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000,
     var L = parseZahlen(text);
     if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
     var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
+    /* »240 A oder 24 A«: verschiedene Ergebnisse zur Auswahl = keine eindeutige Antwort */
+    var gl = function (x) { var u = (x.u || "").replace(/^%$/, ""), f = einheit && u ? faktor(u, einheit) : 1; return f === null ? null : x.v * f; };
+    for (var k = 1; k < L.length; k++) if (L[k].alt && !L[k].neg && !L[k - 1].neg) {
+      var w1 = gl(L[k - 1]), w2 = gl(L[k]);
+      if (w1 === null || w2 === null || Math.abs(w1 - w2) > Math.max(Math.abs(w1), Math.abs(w2)) * 0.005) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
+    }
     for (var i = 0; i < L.length; i++) {
-      var x = L[i]; if (x.neg) continue; var v = x.v, u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
+      var x = L[i]; if (x.neg) continue;
+      var u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
       if (einheit && hatEinheit) { f = faktor(u, einheit); }
-      var wert = f === null ? v : v * f;
-      var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
-      /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T) */
-      var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
-      if (rel || rund) {
-        if (f === null) { einheitFalsch = true; zahlOk = true; }
-        else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
-        else { return { ok: true }; }
+      var lesarten = x.v2 != null && !isNaN(x.v2) ? [x.v, x.v2] : [x.v];   // 1.500 kann 1500 oder 1,5 heißen
+      for (var q = 0; q < lesarten.length; q++) {
+        var wert = f === null ? lesarten[q] : lesarten[q] * f;
+        var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
+        /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T).
+           Zusätzlich höchstens 5 % Abweichung: »3« für 3,1 ist gerundet, »1 T« oder »2 T« für 1,5 T nicht. */
+        var halb = (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
+        var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= halb && Math.abs(wert - soll) <= Math.abs(soll) * 0.05;
+        if (rel || rund) {
+          if (f === null) { einheitFalsch = true; zahlOk = true; }
+          else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
+          else { return { ok: true }; }
+        }
       }
     }
     if (zahlOk && einheitFalsch && !einheitFehlt) return { ok: false, msg: "Zahl stimmt – Einheit prüfen." };
@@ -2352,8 +2377,16 @@ window.LH_VARIANTEN = [{"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000,
     return { pkt: pkt, max: max, selbst: selbst, gesehen: gesehen };
   }
   function standSeite() {
-    var st = pdfStats();
-    return { pkt: st.right, max: st.tot, selbst: (st.unchecked || []).concat(st.open || []), gesehen: st.shown || [], wort: "nicht geprüft oder nicht bearbeitet" };
+    var st = pdfStats(), pkt = 0, gesehen = st.shown || [], glob = (typeof S !== "undefined") && !!S.solSeen;
+    if (st.rows) {
+      /* Aufgaben mit angesehener Lösung zählen 0 Punkte (einzeln oder über »Lösungen ansehen« für alle) – wie bei den Standard-Seiten */
+      gesehen = [];
+      st.rows.forEach(function (r) {
+        if (!(r.s && r.s.total > 0)) return;
+        if (glob || r.s.shown) gesehen.push(r.t.nr); else pkt += r.s.right;
+      });
+    } else pkt = glob ? 0 : st.right;
+    return { pkt: pkt, max: st.tot, selbst: (st.unchecked || []).concat(st.open || []), gesehen: gesehen, wort: "nicht geprüft oder nicht bearbeitet" };
   }
   function stand() {
     if (typeof T !== "undefined" && typeof evalTask === "function") return standStandard();
@@ -2367,13 +2400,14 @@ window.LH_VARIANTEN = [{"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000,
     d.setPage(1);
     d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 9.5, 1.5, 1.5, "FD");
     d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
-    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + pct + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
+    var pz = Math.round(roh * 10) / 10;   /* eine Dezimalstelle, damit »50 % · Note 5« bei 49,5 % nicht wie ein Fehler wirkt */
+    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + zahl(pz) + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
     d.setFont("C", "normal"); d.setFontSize(7.2);
     var rest = [];
     if (typeof S !== "undefined" && S.solSeen && s.gesehen.length) rest.push("PDF nach Lösungseinsicht erstellt: 0 Punkte – bitte die erste PDF bewerten");
     else if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
     if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
-    var z2 = rest.length ? rest.join(" · ") : "alle Aufgaben automatisch gewertet";
+    var z2 = rest.length ? rest.join(" · ") : "automatische Vorbewertung – freie Texte bitte fachlich lesen";
     z2 = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4)[0];
     d.text(z2, M + 2, 9.6);
   }

@@ -13,15 +13,19 @@
      "kw": [
       [
        "Geld / Gewinn",
-       "geld|verkauf|gewinn|umsatz|millionen|gier|profit"
+       "geld|verkauf|gewinn|umsatz|millionen|gier|profit|auflage|einnahmen|verdien"
       ],
       [
-       "Exklusivität / Auflage / Sensation",
-       "auflage|exklusiv|sensation|scoop|nur heidemann|einzige"
+       "Exklusivität / Sensation",
+       "exklusiv|sensation|scoop|nur heidemann|einzige|schlagzeile"
       ],
       [
-       "Zeitdruck / Konkurrenz",
-       "zeitdruck|druck|konkurren|schnell|zuerst"
+       "Zeitdruck",
+       "zeit|schnell|zuerst|termin|eile"
+      ],
+      [
+       "Konkurrenz",
+       "konkurren|wettbewerb|mitbewerb|andere\\s+(zeitung|medien|magazin|blätter)"
       ],
       [
        "Geheimhaltung / Vertrauen / fehlende Kontrolle",
@@ -67,8 +71,8 @@
        "1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"
       ],
       [
-       "Ereignis (Wort dazu)",
-       "[a-zäöüß]{5,}"
+       "Ein Ereignis dazu (Inhalt liest die Lehrkraft)",
+       "\\b(?!ereignis|jahr)[a-zäöüß]{5,}"
       ]
      ]
     },
@@ -80,8 +84,8 @@
        "1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"
       ],
       [
-       "Ereignis (Wort dazu)",
-       "[a-zäöüß]{5,}"
+       "Ein Ereignis dazu (Inhalt liest die Lehrkraft)",
+       "\\b(?!ereignis|jahr)[a-zäöüß]{5,}"
       ]
      ]
     }
@@ -213,12 +217,12 @@
      "neg": true,
      "kw": [
       [
-       "bleibt stehen",
-       "steh|stopp|pendel"
+       "bleibt stehen / dreht nicht weiter",
+       "\\bsteh|\\bstopp|stillstand|pendel|nicht\\s+weiter|nicht\\s+mehr\\s+(weiter\\s*)?(dreh|lauf)|nicht\\s+dauer|nicht\\s+durchgehend|keine\\s+(dauer|durchgehende|ständige|vollständige)\\w*\\s+(dreh|bewegung|rotation|umdrehung)|hört\\w*\\s+(auf|bald\\s+auf)|blockier"
       ],
       [
        "Umpolen fehlt",
-       "umpol|kommutator|stromrichtung"
+       "umpol|umgepol|nicht\\s+(um)?gepolt|polt\\w*\\s+(den\\s+)?strom|stromrichtung\\s+(\\w+\\s+)?(wird\\s+|ändert\\s+sich\\s+|wechselt\\s+)?nicht|strom\\s+(wird\\s+)?nicht\\s+(um)?(gepolt|gewechselt|gedreht)|ohne\\s+umpol"
       ]
      ]
     }

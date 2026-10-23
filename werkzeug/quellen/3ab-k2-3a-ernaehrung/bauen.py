@@ -157,7 +157,7 @@ PARTS = [
                                    "Umwelt: Massentierhaltung", "Gesundheit: weniger Krankheiten"])
          + stat("16 %", "der 15- bis 29-Jährigen in Österreich essen fleischlos – die Zahl hat sich in zehn Jahren verdreifacht."), "Buch S. 70"),
    slide("Bewertung des Vegetarismus", tiles([("Gesundheit", "Vegetarier haben im Schnitt normale Blutzuckerwerte, geringere Cholesterinwerte und seltener Übergewicht."),
-                                              ("Vorsicht bei vegan", "Eiweiß, Eisen, Kalzium, Jod und besonders Vitamin B12 können knapp werden. B12 steckt fast nur in tierischen Lebensmitteln – wer vegan lebt, muss es gezielt zuführen (Arzt oder Ärztin fragen). Für Säuglinge und Kleinkinder wird ohne ärztliche Betreuung abgeraten."),
+                                              ("Vorsicht bei vegan", "Eiweiß, Eisen, Kalzium, Jod und besonders Vitamin B12 können knapp werden. B12 steckt fast nur in tierischen Lebensmitteln – bei veganer Ernährung muss die B12-Versorgung gezielt gesichert werden (Präparat, ärztlich abklären). Für Säuglinge und Kleinkinder wird ohne ärztliche Betreuung abgeraten."),
                                               ("Puddingvegetarismus", "Nur das Fleisch weglassen, aber vor allem Süßes und Mehlspeisen essen – minderwertiger als herkömmliche Kost.")]), "Buch S. 71"),
    slide("Stopp – kannst du das?", reveal("Darf ein Ovolakto-Vegetarier Gummibärchen essen?", "Nein – sie enthalten Gelatine aus Knochen und Häuten.")
          + reveal("Was ist Puddingvegetarismus?", "Fleisch weglassen, aber vor allem Süßes und Mehlspeisen essen – gilt als minderwertiger als herkömmliche Kost."), "Teil 2.1"),

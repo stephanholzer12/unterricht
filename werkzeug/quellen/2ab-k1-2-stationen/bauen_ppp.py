@@ -252,7 +252,7 @@ def build(lehrer):
     rows = [["Wann", "Das machen wir", "Aufgaben", "Abgabe"]]
     kurz = {"Stunde 1": "Theorie-Seite Teil 1–3", "Stunde 2": "Theorie-Seite Teil 4–5 + Überblick"}
     for z in D.FAHRPLAN["zeilen"]:
-        ab = z["abgabe"].replace("Arbeitsblatt-PDF in LMS", "PDF in LMS").replace("Versuchs-PDF (Gruppe) + Vertiefungs-PDF (jeder) in LMS", "2 PDFs in LMS")
+        ab = z["abgabe"].replace("Arbeitsblatt-PDF in LMS", "PDF in LMS").replace("Versuchs-PDF (jeder seine eigene) + Vertiefungs-PDF (jeder) in LMS", "2 PDFs in LMS")
         rows.append([z["wann"], kurz.get(z["wann"], z["lesen"].replace("Versuchsseite: ", "")), z["aufgaben"], ab])
     GREY = RGBColor.from_string("DCDFD6")
     grid(s, 0.5, 1.42, [1.45, 4.45, 1.85, 1.25], rows, [0.38, 0.42, 0.42, 0.66, 0.92, 0.42], size=16, fills=[OLIVE, GREY, GREY, WHITE, CARD, WHITE])

@@ -58,7 +58,16 @@ cases[E4].push(['a12','b','1000 mT',0],['a12','b','1500 mT',1],['a12','b','1.5e3
  ['a7','t','Der Motor bleibt nicht stehen, sondern dreht immer weiter.',0],['a7','t','Ohne Kommutator bleibt der Motor stehen, weil der Strom nicht umgepolt wird.',1]);
 cases[F3].push(['a3','gruende','Zeitdruck',0],['a3','gruende','Verkaufsgewinn',0],['a3','gruende','Zeitdruck und Verkaufsgewinn',1]);
 cases[EP].push(['a10','oe1','1955',0],['a10','oe1','Staatsvertrag 1955',1]);
-(async()=>{const b=await chromium.launch();let bad=0,tot=0;
+/* Prüfbericht v4 (23.10.2026) */
+cases[E4].push(
+ ['a7','t','Die Spule dreht sich nicht weiter.',1],['a7','t','Er kann sich nicht weiterdrehen, weil nicht umgepolt wird.',1],['a7','t','Die Stromrichtung ist egal; der Motor läuft immer weiter.',0],
+ ['a7','t','Ohne Kommutator läuft der Motor ohne Kommutator.',0],['a7','t','Die Stromrichtung ändert sich nicht, deshalb bleibt er nach einer halben Umdrehung stehen.',1],['a7','t','Der Strom wird nicht umgepolt.',1],
+ ['a12','b','1 T',0],['a12','b','2 T',0],['a12','b','0,002 kT',0],['a12','b','1,5 V s / m²',1],['a12','b','1,50 T',1],
+ ['a3','theta','240 A oder 24 A oder 999 A',0],['a3','theta','240 A (oder 0,24 kA)',1],['a3','theta','0.240 kA',1],['a3','theta','2,4 × 10² A',1],['a3','theta','240 A sind nicht falsch',1],['a3','h','2000 A m^-1',1],['a3','h','2000 A / m',1],['a3','h','2.000 A/m',1],
+ ['a3','theta','Θ = I · N = 0,4 A · 600 = 240 A',1]);
+cases[F3].push(['a3','gruende','Zeitdruck und Konkurrenzdruck',1],['a3','gruende','Gewinn durch höhere Auflage',0],['a3','gruende','Gewinn und Zeitdruck',1]);
+cases[EP].push(['a10','oe1','Ereignis 1955',0]);
+(async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);
  for(const [id,key,txt,exp] of list){
