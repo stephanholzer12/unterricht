@@ -3,7 +3,7 @@ Prüft für alle veröffentlichten Seiten (*/*/*.html, ohne werkzeug/):
  1. Kein Fremdserver für Schriften/Skripte/Bilder (link, script, img mit http-Adresse).
  2. Kein Zugangs-Token im Text (ghp_…, github_pat_…).
  3. Alle Skripte in der Seite sind syntaktisch in Ordnung (node --check).
- 4. Jede Seite mit PDF-Abgabe (jsPDF) hat den Speicherstatus-Baustein.
+ 4. Jede Seite mit PDF-Abgabe (jsPDF) hat den Speicherstatus- und den PDF-Erinnerungs-Baustein.
  5. Speicherschlüssel (const KEY = "…"): ein Schlüssel, der gegenüber dem vorigen Stand verschwunden ist, wäre eine Umbenennung –
     dann verlieren Kadetten ihre Antworten. Wird gemeldet (Fehler), außer die Commit-Nachricht enthält [schluessel-ok].
 Exit-Code 1 bei Fehlern."""
@@ -24,6 +24,8 @@ for f in seiten:
         fehler.append(f"{rel(f)}: enthält etwas, das wie ein GitHub-Token aussieht")
     if "jsPDF" in s and "speicherstatus:start" not in s:
         fehler.append(f"{rel(f)}: PDF-Seite ohne Speicherstatus (python3 werkzeug/speicherstatus_einbauen.py ausführen)")
+    if "jsPDF" in s and "pdferinnerung:start" not in s:
+        fehler.append(f"{rel(f)}: PDF-Seite ohne PDF-Erinnerung (python3 werkzeug/pdf_erinnerung_einbauen.py ausführen)")
     for i, m in enumerate(re.finditer(r"<script(?![^>]*\bsrc=)(?![^>]*type=\"(?:application/json|text/template))[^>]*>(.*?)</script>", s, re.S)):
         with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as t:
             t.write(m.group(1)); p = t.name
