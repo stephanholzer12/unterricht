@@ -336,7 +336,7 @@ function lines(v) {
   return L;
 }
 function asText() {
-  const out = ["K1.5a Elektromagnet und Elektromotor – Versuchsprotokoll", "Gruppe: " + (S.name || "") + " · Abgabe durch: " + (S.ich || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT"), ""];
+  const out = ["K1.5a Elektromagnet und Elektromotor – Versuchsprotokoll", "Gruppe: " + (S.name || "") + " · Abgabe durch: " + (S.ich || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), ""];
   V.filter(touched).forEach(v => { out.push(v.nr + " " + v.titel); lines(v).forEach(([l]) => out.push(l)); out.push(""); });
   return out.join("\n");
 }
@@ -368,7 +368,7 @@ async function buildPdf() {
   y += 17;
   txt("Gruppe: " + (S.name || "—"), 11, "normal", ink, M, 120);
   y -= 11 * 0.3528 * 1.32;
-  d.setFont("C", "normal"); d.setFontSize(11); d.text(clean("Klasse: " + (S.klasse || "—")), M + 108, y + 4); d.text("Datum: " + new Date().toLocaleDateString("de-AT"), W - M, y + 4, { align: "right" });
+  d.setFont("C", "normal"); d.setFontSize(11); d.text(clean("Klasse: " + (S.klasse || "—")), M + 108, y + 4); d.text("Datum: " + new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), W - M, y + 4, { align: "right" });
   y += 5; d.setFont("C", "normal"); d.setFontSize(11); d.setTextColor(...ink); d.text(clean("Abgabe durch: " + (S.ich || "—")), M, y + 4);
   y += 6; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 5;
   for (const v of V.filter(touched)) {

@@ -902,7 +902,7 @@ function answerLines(t) {
   return L;
 }
 function asText() {
-  const out = [TITLE + " – Arbeitsblatt", "Name: " + (S.name || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT"), ""];
+  const out = [TITLE + " – Arbeitsblatt", "Name: " + (S.name || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), ""];
   T.forEach(t => { out.push("Aufgabe " + t.nr + ": " + t.title); answerLines(t).forEach(l => out.push("  " + l)); out.push(""); });
   return out.join("\n");
 }

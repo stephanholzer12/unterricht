@@ -99,9 +99,9 @@ async function buildPdf() {
   font(8.5, "bold", C.muted); d.text("ABGABE", W - M, y + 4, { align: "right" });
   y += 15;
   d.setFillColor(...C.tint); d.roundedRect(M, y, CW, 9, 1.5, 1.5, "F");
-  font(8, "normal", C.muted); d.text("NAME", M + 3, y + 3.6); d.text("KLASSE", M + 112, y + 3.6); d.text("DATUM", M + 140, y + 3.6);
+  font(8, "normal", C.muted); d.text("NAME", M + 3, y + 3.6); d.text("KLASSE", M + 100, y + 3.6); d.text("DATUM, UHRZEIT", M + 122, y + 3.6);
   font(12, "bold", C.ink); d.text(clean(S.name || "—"), M + 3, y + 7.6);
-  d.text(clean(S.klasse || "—"), M + 112, y + 7.6); d.text(new Date().toLocaleDateString("de-AT"), M + 140, y + 7.6);
+  d.text(clean(S.klasse || "—"), M + 100, y + 7.6); d.text(new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), M + 122, y + 7.6);
   y += 13;
 
   // ---------- Übersicht ----------

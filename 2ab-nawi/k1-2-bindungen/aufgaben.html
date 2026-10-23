@@ -426,7 +426,7 @@ function answerLines(t) {
   return L;
 }
 function asText() {
-  const out = ["K1.2 Die Bindungsarten – Aufgaben", "Name: " + (S.name || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT"), ""];
+  const out = ["K1.2 Die Bindungsarten – Aufgaben", "Name: " + (S.name || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), ""];
   T.forEach(t => { out.push("Aufgabe " + t.nr + ": " + t.title); answerLines(t).forEach(l => out.push("  " + l)); out.push(""); });
   return out.join("\n");
 }
@@ -462,7 +462,7 @@ async function buildPdf() {
   d.setFontSize(18); d.setTextColor(...olive); d.text("Bindungs-Aufgaben", M + 15, y + 11.5);
   y += 17;
   d.setFont("C", "normal"); d.setFontSize(11); d.setTextColor(...ink);
-  d.text(clean("Name: " + (S.name || "—")), M, y); d.text(clean("Klasse: " + (S.klasse || "—")), M + 105, y); d.text("Datum: " + new Date().toLocaleDateString("de-AT"), M + 140, y);
+  d.text(clean("Name: " + (S.name || "—")), M, y); d.text(clean("Klasse: " + (S.klasse || "—")), M + 105, y); d.text("Datum: " + new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), W - M, y, { align: "right" });
   y += 3; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 5;
   for (const t of T) {
     if (y > BOT - 25) { d.addPage(); y = 18; }
