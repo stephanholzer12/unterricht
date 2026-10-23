@@ -248,7 +248,7 @@ async function savePdf() {
     const a = el("a", { href: url, download: filename }); document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 30000);
     say("ok", "PDF wurde erstellt: " + filename + " – schau in deinen Downloads nach, ob sie da ist, und lade sie dann in LMS hoch.");
-  } catch (e) { say("err", "Beim Erstellen der PDF ist ein Fehler passiert. Kopiert das Protokoll als Text (unten)."); }
+  } catch (e) { say("err", window.jspdf ? "Beim Erstellen der PDF ist ein Fehler passiert. Kopiert das Protokoll als Text (unten)." : "Das PDF-Programm wurde nicht geladen. Prüft die Internetverbindung und ladet die Seite neu – oder kopiert das Protokoll als Text (unten)."); }
   finally { btn.disabled = false; }
 }
 
