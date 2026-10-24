@@ -24,6 +24,10 @@ jobs:
       - run: python3 werkzeug/pruefen.py
       - name: Lehrer- und Kadettennavigation getrennt
         run: python3 werkzeug/test_lehrer_navigation.py
+      - name: Kadettenansicht und Materialwege
+        run: |
+          python3 werkzeug/test_kadetten_layout.py
+          node --check gemeinsam/kadetten-navigation-v1.js
       # Antwort-Tests der großzügigen Prüfung (richtige Antworten gelten, falsche nicht) – rot bei jeder Abweichung
       - name: Antwort-Tests
         run: |

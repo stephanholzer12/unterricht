@@ -27,6 +27,7 @@ sys.path.insert(0, os.path.join(ROOT, "werkzeug"))
 from lernseite_lesen import lesen  # noqa: E402
 import fahrplan as fp  # noqa: E402
 import lehrer_layout as ll  # noqa: E402
+import kadetten_layout as ks  # noqa: E402
 
 W = lambda *p: os.path.join(ROOT, "werkzeug", *p)
 E = json.load(open(W("einheiten.json"), encoding="utf-8"))
@@ -187,6 +188,10 @@ def kopf(titel, eyebrow, aktiv, k_titel):
 FUSS = "Die Übersicht wächst mit: Jede neue Einheit erscheint hier, sobald wir dort sind. Antworten bleiben nur auf deinem Handy gespeichert, Abgabe als PDF in LMS."
 
 
+def klassen_kopf(titel, eyebrow, aktiv, k_titel):
+    return ks.kopf(kopf(titel, eyebrow, aktiv, k_titel))
+
+
 def fuss(js="", text=FUSS):
     return f"""</main>
 <footer>Stand {STAND} · {text}</footer>
@@ -303,19 +308,20 @@ def unit_html(u, mit_mehr=True):
         n = fp.stunden(u["fahrplan"])
         li = "".join(f'<li><strong>{esc(r["wann"])}</strong> · {esc(r["lesen"])}' + (f' <span class="s">Aufgaben {esc(r["aufgaben"])}</span>' if r.get("aufgaben") and r["aufgaben"] != "–" else "") + "</li>" for r in z)
         mehr = f'<details class="mehr"><summary>Fahrplan ({n} {"Stunde" if n == 1 else "Stunden"})</summary><div><ul class="fpl">{li}</ul></div></details>' + mehr
-    return f'<div class="unit{" now" if u["jetzt"] else ""}" id="{esc(u["unter"])}"><div class="eyebrow">{esc(meta)}</div><h3>{esc(u["titel"])}{badge}</h3><div class="links">{knoepfe(u)}</div>{mehr}</div>'
+    such = esc(" ".join([u["titel"], u["kapitel"], u.get("block", "")]), quote=True)
+    return f'<div class="unit{" now" if u["jetzt"] else ""}" id="{esc(u["unter"])}" data-ks-thema="{such}"><div class="eyebrow">{esc(meta)}</div><h3>{esc(u["titel"])}{badge}</h3><div class="links">{knoepfe(u)}</div>{mehr}</div>'
 
 
 def seite_index(ordner, k, tests, units, bloecke, n_plan, n_begriffe, n_ziele):
-    out = [kopf(f'{k["fach"]} {k["klasse"]}', "BHAK für Führung und Sicherheit · Unterricht am Handy", "index.html", f'{k["fach"]} {k["klasse"]} – Übersicht')]
+    out = [klassen_kopf(f'{k["fach"]} {k["klasse"]}', "BHAK für Führung und Sicherheit · Deine Klassenseite", "index.html", f'{k["fach"]} {k["klasse"]} – Übersicht')]
+    if tests:
+        out.append('<a class="ks-testlink" href="#ks-tests">Test vorbereiten → Teststoff und Training</a>')
     jetzt = [u for u in units if u["jetzt"]]
     for u in jetzt:
         L = u["lern"] or {}
-        blk = next((b for b in bloecke if u in b["units"]), None)
-        bl = f'Themenblock {blk["nr"]} · {blk["name"]}' if blk and blk["nr"] else (blk["name"] if blk else "")
-        out.append(f'<section class="card hero" aria-labelledby="jetzt"><div class="eyebrow">GERADE DRAN{(" · " + esc(bl)) if bl else ""}</div>'
-                   f'<h3 id="jetzt">{esc(u["titel"])}</h3><div class="meta">{esc(" · ".join(x for x in [u["kapitel"], L.get("buch", "")] if x))}</div>'
-                   f'<div class="links">{knoepfe(u)}</div></section>')
+        out.append(ks.start(u, L.get("buch", "")))
+    if tests:
+        out.append('<section id="ks-tests" aria-label="Tests vorbereiten"><h2>Tests vorbereiten</h2>')
     for t in tests:
         tm = test_termine(t)
         if len(tm) > 1:
@@ -327,25 +333,22 @@ def seite_index(ordner, k, tests, units, bloecke, n_plan, n_begriffe, n_ziele):
             cd = f' · <span data-datum="{tm[0][1].isoformat()}"></span>' if tm else ""
         out.append(f'<section class="card" style="border-left:6px solid var(--orange)"><div class="eyebrow" style="color:var(--orange)">{titel_tx}{cd}</div>'
                    f'<h3>{esc(t["titel"])} <span class="badge test">Test</span></h3><div class="links">{knoepfe(t)}</div></section>')
-    n_bl = len([b for b in bloecke if b["nr"]])
-    out.append(f'<div class="tiles"><a href="#themen"><b>{len(units)}</b><span>{"Einheit" if len(units) == 1 else "Einheiten"} bisher</span></a>'
-               f'<a href="begriffe.html"><b>{n_begriffe}</b><span>Fachbegriffe A–Z</span></a>'
-               f'<a href="wiederholen.html"><b>{n_ziele}</b><span>Lernziele zum Abhaken</span></a></div>')
-    if n_plan:
-        akt_nr = max((b["nr"] for b in bloecke if b["nr"] and any(u["jetzt"] for u in b["units"])), default=n_bl)
-        pct = round(100 * akt_nr / n_plan)
-        out.append(f'<div class="card"><div class="eyebrow">WIE WEIT SIND WIR?</div><div>Themenblock <strong>{akt_nr} von {n_plan}</strong> im Jahresplan</div>'
-                   f'<div class="bar" role="img" aria-label="Themenblock {akt_nr} von {n_plan}"><i style="width:{pct}%;background:var(--green)"></i></div></div>')
-    out.append('<h2 id="themen">Alle Themen bisher</h2>')
+    if tests:
+        out.append('</section>')
+    out.append('<div class="ks-hilfen"><a href="begriffe.html">Begriff nachschlagen<span>Fachbegriffe A–Z mit Suche</span></a>'
+               '<a href="wiederholen.html">Für den Unterricht üben<span>Lernziele und Links zum Nachlesen</span></a></div>')
+    out.append('<h2 id="themen">Alle Themen</h2><div class="ks-themen-suche"><label for="ks-themen-suche">Thema finden</label>'
+               '<input class="search" id="ks-themen-suche" type="search" placeholder="Titel oder Kapitel eingeben …" aria-controls="ks-themenliste">'
+               '<p class="meta" id="ks-themen-treffer" role="status"></p></div><div id="ks-themenliste">')
     if not units:
         out.append('<p class="empty">Hier erscheinen die Einheiten, sobald wir damit anfangen.</p>')
     for b in bloecke:
         nr = b["nr"] or "·"
         klein = f'THEMENBLOCK {b["nr"]} VON {n_plan}' if b["nr"] else "THEMENBLOCK"
         n = len(b["units"])
-        out.append(f'<details class="block" open><summary><span class="nr">{nr}</span><span class="t"><small>{klein} · {n} {"Einheit" if n == 1 else "Einheiten"}</small><strong>{esc(b["name"])}</strong></span></summary>'
+        out.append(f'<details class="block ks-themenblock"><summary><span class="nr">{nr}</span><span class="t"><small>{klein} · {n} {"Einheit" if n == 1 else "Einheiten"}</small><strong>{esc(b["name"])}</strong></span></summary>'
                    f'<div class="units">{"".join(unit_html(u) for u in b["units"])}</div></details>')
-    out.append('<p class="note">Tipp: Speichere diese Seite auf deinem Startbildschirm – dann hast du den ganzen Stoff des Jahres mit einem Tippen.</p>')
+    out.append('</div><p class="note">Tipp: Speichere diese Klassenseite als Favorit. Beginne oben beim aktuellen Thema. Weitere Themen findest du über die Suche.</p>')
     out.append(fuss(JS_COUNTDOWN))
     return "".join(out)
 
@@ -355,7 +358,7 @@ def abc_link(c):
 
 
 def seite_begriffe(k, units):
-    out = [kopf("Fachbegriffe A–Z", f'{k["fach"]} {k["klasse"]} · alle Begriffe bisher', "begriffe.html", f'{k["fach"]} {k["klasse"]} – Fachbegriffe')]
+    out = [klassen_kopf("Fachbegriffe A–Z", f'{k["fach"]} {k["klasse"]} · alle Begriffe bisher', "begriffe.html", f'{k["fach"]} {k["klasse"]} – Fachbegriffe')]
     alle = []
     for u in units:
         for b, d in (u["lern"] or {}).get("begriffe", []):
@@ -399,7 +402,7 @@ inp.addEventListener('input', filt);
 
 
 def seite_wiederholen(ordner, k, units, bloecke, n_plan):
-    out = [kopf("Wiederholen", f'{k["fach"]} {k["klasse"]} · alle Lernziele bisher', "wiederholen.html", f'{k["fach"]} {k["klasse"]} – Wiederholen')]
+    out = [klassen_kopf("Wiederholen", f'{k["fach"]} {k["klasse"]} · alle Lernziele bisher', "wiederholen.html", f'{k["fach"]} {k["klasse"]} – Wiederholen')]
     n = sum(len((u["lern"] or {}).get("ziele", [])) for u in units)
     out.append('<section class="card"><div class="eyebrow">KANN ICH DAS?</div><p style="margin:0">Tippe bei jedem Lernziel ehrlich an, wie sicher du bist. '
                'Bei »noch nicht« steht gleich der Link zur Theorie-Seite. Deine Markierungen bleiben nur auf deinem Handy – und erscheinen auch auf den Theorie-Seiten.</p>'
@@ -731,6 +734,7 @@ def main():
     print("index.html: Startseite ohne Klassenliste")
     open(os.path.join(ROOT, LEHRER), "w", encoding="utf-8").write(seite_lehrer(klassen))
     print(LEHRER + ": Lehrer-Seite mit allen Klassen (nicht verlinkt) →", BASIS + LEHRER)
+    ks.einbauen(E, ROOT)
     if luecken:
         print("Lücken in den Einheiten (für die Übersicht hilfreich zu ergänzen):")
         print("\n".join(luecken))
