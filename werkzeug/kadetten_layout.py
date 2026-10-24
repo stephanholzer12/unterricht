@@ -1,4 +1,4 @@
-"""Kadettenansicht v1: klare Materialwege innerhalb der eigenen Klasse.
+"""Kadettenansicht v2: sichtbare Stundenübersicht und klare Materialwege.
 
 Arbeitsaufträge kommen ausschließlich aus dem vorhandenen Fahrplan. Keine
 Bewertungsregeln, Eingaben, Versuchs-IDs oder Speicherschlüssel ändern.
@@ -8,8 +8,8 @@ import os
 import re
 
 esc = html.escape
-CSS_DATEI = "kadetten-layout-v1.css"
-JS_DATEI = "kadetten-navigation-v1.js"
+CSS_DATEI = "kadetten-layout-v2.css"
+JS_DATEI = "kadetten-navigation-v2.js"
 NAMEN = {"theorie.html": "Theorie", "aufgaben.html": "Arbeitsblatt", "versuche.html": "Versuche",
          "quiz.html": "Quiz", "vertiefung.html": "Vertiefung", "uebung.html": "Übung",
          "projekt.html": "Projekt", "gruppe.html": "Gruppenarbeit", "kurz.html": "Gruppe kompakt",
@@ -31,8 +31,7 @@ def ressourcen(u, klasse="ks-ressourcen"):
             weitere.append(f'<a href="{esc(u["unter"])}/{s}">{text}</a>')
             continue
         sub = beschreibung.get(s, "Nach Arbeitsauftrag bearbeiten")
-        stil = " ks-hauptaktion" if s == "aufgaben.html" else ""
-        out.append(f'<a class="ks-material{stil}" href="{esc(u["unter"])}/{s}"><strong>{text}</strong><span>{sub}</span></a>')
+        out.append(f'<a class="ks-material" href="{esc(u["unter"])}/{s}"><strong>{text}</strong><span>{sub}</span></a>')
     return f'<div class="{klasse}">{"".join(out)}</div>' + (f'<div class="ks-weitere" aria-label="Weitere Materialien">{"".join(weitere)}</div>' if weitere else "")
 
 
@@ -42,25 +41,21 @@ def arbeitsauftrag(u):
         return '<p class="note">Beachte den Arbeitsauftrag deines Lehrers auf dem Arbeitsblatt.</p>'
     extra = lambda r: bool(re.search(r"für schnelle|zusatz|optional", r.get("wann", ""), re.I))
     pflicht, zusatz = [r for r in zeilen if not extra(r)], [r for r in zeilen if extra(r)]
-    ident = "ks-phase-" + u["unter"]
     out = ['<section class="ks-auftrag" aria-label="Arbeitsauftrag"><h3>Was soll ich machen?</h3>'
-           '<p class="meta">Wähle die Arbeitsphase, die gerade dran ist. Die Reihenfolge folgt dem Fahrplan.</p>']
+           '<p class="meta">Alle Stunden und Arbeitsphasen auf einen Blick. Beginne bei der Phase, die gerade dran ist.</p>']
     if pflicht:
-        out.append(f'<label class="ks-phase-wahl" for="{esc(ident)}">Arbeitsphase</label>'
-                   f'<select class="ks-phase-select" id="{esc(ident)}" aria-controls="{esc(ident)}-inhalt">' +
-                   "".join(f'<option value="{i}">{esc(r["wann"])}</option>' for i, r in enumerate(pflicht)) + '</select>'
-                   f'<div class="ks-phasen" id="{esc(ident)}-inhalt" aria-live="polite">')
-        for i, r in enumerate(pflicht):
-            out.append(f'<div class="ks-phase" data-phase="{i}"><h4>{esc(r["wann"])}</h4><dl>'
-                       f'<div><dt>Lesen / machen</dt><dd>{esc(r["lesen"])}</dd></div>')
-            if r.get("aufgaben") and r["aufgaben"] != "–":
-                out.append(f'<div><dt>Aufgaben</dt><dd>{esc(r["aufgaben"])}</dd></div>')
+        out.append('<table class="ks-stundenplan"><caption class="ks-visuell-versteckt">Stundenübersicht: Arbeitsauftrag, Aufgaben und Abgabe</caption>'
+                   '<thead><tr><th scope="col">Phase</th><th scope="col">Lesen und bearbeiten</th>'
+                   '<th scope="col">Aufgaben</th><th scope="col">Abgabe</th></tr></thead><tbody>')
+        for r in pflicht:
+            out.append(f'<tr><th scope="row">{esc(r["wann"])}</th><td data-label="Lesen und bearbeiten">{esc(r["lesen"])}')
             if r.get("wie"):
-                out.append(f'<div><dt>Arbeitsweise</dt><dd>{esc(r["wie"])}</dd></div>')
+                out.append(f'<p class="ks-arbeitsweise"><strong>Arbeitsweise:</strong> {esc(r["wie"])}</p>')
             abgabe = r.get("abgabe", "–")
-            abgabe = "Für diese Phase ist keine Abgabe im Fahrplan angegeben." if abgabe == "–" else abgabe
-            out.append(f'<div class="ks-abgabeinfo"><dt>Abgabe</dt><dd>{esc(abgabe)}</dd></div></dl></div>')
-        out.append('</div>')
+            abgabe = "Keine Abgabe in dieser Phase angegeben" if abgabe == "–" else abgabe
+            aufgaben = r.get("aufgaben", "–")
+            out.append(f'</td><td data-label="Aufgaben">{esc(aufgaben)}</td><td data-label="Abgabe">{esc(abgabe)}</td></tr>')
+        out.append('</tbody></table>')
     if zusatz:
         out.append('<details class="mehr ks-zusatzauftrag"><summary>Zusatz · nur nach Auftrag oder wenn Zeit bleibt</summary><div><ul>')
         for r in zusatz:
