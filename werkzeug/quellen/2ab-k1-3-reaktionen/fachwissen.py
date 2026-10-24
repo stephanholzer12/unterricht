@@ -64,7 +64,7 @@ STUNDENKARTEN = [
 AUF_EINEN_BLICK = [
     ["1 · 03.11.", "Oxidation = Elektronenabgabe, Reduktion = Elektronenaufnahme – immer gleichzeitig. Eisenwolle wird beim Verbrennen schwerer.", "Waage, Eisenwolle, Batterie · Rost-Ansätze"],
     ["2 · 05.11.", "Rost braucht Wasser + Sauerstoff, Salz beschleunigt. Schutz: Schicht, Zink, Edelstahl, waschen, trocknen.", "Kupferblech, Brenner"],
-    ["3 · 10.11.", "Exotherm gibt Energie ab, endotherm nimmt sie auf. Jede Reaktion braucht Aktivierungsenergie. Masse und Energie bleiben erhalten.", "Stationen V4–V6"],
+    ["3 · 10.11.", "Exotherm gibt Energie ab, endotherm nimmt sie auf. Fast jede Reaktion braucht Aktivierungsenergie. Masse und Energie bleiben erhalten.", "Stationen V4–V6"],
     ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Braunstein, Enzyme, Autokatalysator.", "H₂O₂, Braunstein, Kartoffel"],
     ["5 · 17.11.", "Tempo: Oberfläche, Temperatur (+10 °C ≈ doppelt), Konzentration, Katalysator.", "Brausetabletten, Petrischalen"],
 ]

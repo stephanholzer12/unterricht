@@ -5,7 +5,7 @@ Eine Quelle für Handy-Seiten (Theorie-Seite, Arbeitsblatt, Quiz), Word, PPP, Ka
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
 STAND = "24.10.2026"
-V = "v1"
+V = "v2"
 ORDNER = "2ab-nawi/k1-3-reaktionen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -302,7 +302,7 @@ T = [
   "tip": ["Vier Stellschrauben für das Tempo", "theorie.html#tempo"]},
 
  {"id": "a17", "nr": 17, "title": "Brausetablette im Test (Versuch K1.3-V8)", "src": "Buch S. 36", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 5,
-  "q": "Trag eure Messwerte aus dem Versuch K1.3-V8 ein (Zeit, bis es nicht mehr sprudelt). Dann: Welcher Ansatz war am schnellsten? "
+  "q": "Trag eure Messwerte aus dem Versuch K1.3-V8 ein (Zeit, bis es nicht mehr sprudelt). Dann: Welcher Ansatz war am langsamsten? "
        "e) Rechne mit der Faustregel: Eine Tablette braucht in Wasser von 20 °C 80 s. Wie lange braucht sie ungefähr bei 40 °C?",
   "type": "multi",
   "fields": [["t1", "a) ganze halbe Tablette, kaltes Wasser – Zeit in s"], ["t2", "b) zerriebene halbe Tablette, kaltes Wasser – Zeit in s"],
@@ -353,7 +353,7 @@ T = [
                       "Thermit: Aluminium wird oxidiert (0 → +III), Eisen reduziert (+III → 0)."]]],
   "tip": ["Für Schnelle: Oxidationszahlen", "theorie.html#oz"]},
 
- {"id": "a21", "nr": 21, "title": "Forschung: Katalysatoren ohne seltene Metalle", "src": "Recherche im Internet", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 8,
+ {"id": "a21", "nr": 21, "title": "Forschung: Ein Ersatz für Iridium", "src": "Recherche im Internet", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 8,
   "q": "Für grünen Wasserstoff wird Wasser mit Strom gespalten. Die besten Katalysatoren dafür enthalten bisher Iridium – eines der seltensten Metalle der Erde. "
        "Ein Forschungsteam der Northwestern University (USA) stellte im August 2025 gemeinsam mit dem Toyota Research Institute einen Ersatz vor. "
        "a) Welche Metalle verwendeten die Forschenden statt Iridium? b) Wie lange lief der neue Katalysator im Test stabil? "
@@ -364,7 +364,7 @@ T = [
   "chk": {"metalle": {"kw": [["Ruthenium, Kobalt, Mangan oder Chrom", "ruthen|kobalt|cobalt|mangan|chrom"]]},
           "dauer": {"kw": [["über 1000 Stunden", r"1\.?000|tausend"]]},
           "warum": {"kw": [["selten, teuer, abhängig", "abhängig|abhaengig|selten|teuer|knapp|rohstoff|import|preis|kosten|versorg|china|südafrika"]]}},
-  "sol": [["Lösung", ["a) Ruthenium, Kobalt, Mangan und Chrom (häufigere Metalle)", "b) über 1000 Stunden, laut Studie bei rund einem Sechzehntel der Kosten",
+  "sol": [["Lösung", ["a) Ruthenium, Kobalt, Mangan und Chrom (Ruthenium ist auch selten, aber viel billiger als Iridium; Kobalt, Mangan und Chrom sind häufig)", "b) über 1000 Stunden, laut Studie bei rund einem Sechzehntel der Kosten",
                       "c) Iridium ist sehr selten und teuer und fällt fast nur beim Platinabbau in wenigen Ländern an. Wer Katalysatoren aus häufigeren Metallen bauen kann, "
                       "macht Europa unabhängiger von Importen und die Energiewende billiger."]]],
   "tip": ["Für Schnelle: Was weiß die Forschung noch nicht?", "theorie.html#forschung"]},

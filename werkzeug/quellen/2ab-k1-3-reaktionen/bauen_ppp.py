@@ -24,7 +24,7 @@ import herrichten as H
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
-VER = "v1"
+VER = "v2"
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("A33A2B")

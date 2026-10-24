@@ -189,7 +189,7 @@ VS = [
   "erwartet": [["Lösung allein", "farblos, ca. 20 °C"], ["mit Natron", "starkes Sprudeln (Kohlenstoffdioxid) · Temperatur sinkt deutlich, um ca. 5–15 °C"]],
   "erk_l": "Es sprudelt stark (Gas entsteht) und die Temperatur sinkt deutlich.",
   "interp_l": "Die Reaktion ist endotherm: Sie nimmt Wärme aus der Umgebung auf – aus der Lösung, dem Glas und dem Thermometer.",
-  "schluss_l": "Brausepulver enthält Säure und Natron – auf der feuchten Zunge reagieren sie endotherm. Kältekompressen kühlen Prellungen und Zerrungen sofort, ohne Kühlschrank (Erste Hilfe im Sport und Gelände).",
+  "schluss_l": "Brausepulver enthält Säure und Natron – auf der feuchten Zunge reagieren sie endotherm. In der Kältekompresse löst sich ein Salz (z. B. Ammoniumnitrat oder Harnstoff) beim Knicken im Wasser – auch das nimmt Wärme auf. Kältekompressen kühlen Prellungen und Zerrungen sofort, ohne Kühlschrank (Erste Hilfe im Sport und Gelände).",
   "lehrer": ["Lösung vorab: 40 g Zitronensäure in 60 ml Wasser lösen (≈ 40 %), reicht für 6 Durchgänge à 15 ml.",
              "Natron ist #224 (Gefahrstoffschrank L-O). Zitronensäure: laut Fotoabgleich 03.09 vorhanden, Gefäß-Nr. vor der Stunde suchen; sonst Zitronensäure aus dem Supermarkt (Entkalker-Pulver).",
              "Schäumt stark – deshalb das 100-ml-Becherglas, nicht kleiner."],
