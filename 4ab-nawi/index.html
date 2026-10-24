@@ -126,6 +126,26 @@ document.querySelectorAll('[data-datum]').forEach(function (el) {
   el.textContent = t > 1 ? 'in ' + t + ' Tagen' : t === 1 ? 'morgen' : t === 0 ? 'heute' : 'vorbei';
   if (t < 0) el.classList.add('vorbei');
 });
+
+/* Fortschrittsbalken je Einheit: liest »fortschritt|<Ordner>«, das das Arbeitsblatt im Browser des Kadetten ablegt (nur Anzeige) */
+(function () {
+  var st = document.createElement('style');
+  st.textContent = '.fortschritt{display:grid;gap:4px;margin:2px 0}.fortschritt span{font-size:15px;color:var(--muted,#5E6652)}.fortschritt div{height:8px;border-radius:99px;background:#D3DCC2;overflow:hidden}.fortschritt i{display:block;height:100%;background:#7FA83A}';
+  document.head.appendChild(st);
+  var gesetzt = {};
+  document.querySelectorAll('a[href$="/aufgaben.html"]').forEach(function (a) {
+    try {
+      var dir = a.pathname.replace(/[^\/]*$/, ''), raw = localStorage.getItem('fortschritt|' + dir);
+      if (!raw) return;
+      var f = JSON.parse(raw); if (!f || !f.n) return;
+      var box = a.closest('section,.unit'), key = (box ? box.id : '') + dir; if (gesetzt[key]) return; gesetzt[key] = 1;
+      var d = document.createElement('div'), pr = Math.round(f.np / f.n * 100);
+      d.className = 'fortschritt'; d.setAttribute('role', 'progressbar'); d.setAttribute('aria-valuemin', '0'); d.setAttribute('aria-valuemax', f.n); d.setAttribute('aria-valuenow', f.np);
+      d.innerHTML = '<span>Arbeitsblatt: ' + f.np + ' von ' + f.n + ' Pflichtaufgaben ausgefüllt</span><div><i style="width:' + pr + '%"></i></div>';
+      var ziel = a.parentNode; ziel.parentNode.insertBefore(d, ziel.nextSibling);
+    } catch (e) {}
+  });
+})();
 </script>
 </body>
 </html>

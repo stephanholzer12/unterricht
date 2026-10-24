@@ -148,6 +148,28 @@ body.nur-offen .ziel.ok { display: none; }
 @media print { nav.toc, .chips, .filter, .links, .search, .abc, .noprint { display: none !important; } .card, details.block { box-shadow: none; border: 1px solid #ccc; } body { background: #fff; } details.block > summary { color: #000; background: #eee; } }
 """
 
+JS_FORTSCHRITT = """
+/* Fortschrittsbalken je Einheit: liest »fortschritt|<Ordner>«, das das Arbeitsblatt im Browser des Kadetten ablegt (nur Anzeige) */
+(function () {
+  var st = document.createElement('style');
+  st.textContent = '.fortschritt{display:grid;gap:4px;margin:2px 0}.fortschritt span{font-size:15px;color:var(--muted,#5E6652)}.fortschritt div{height:8px;border-radius:99px;background:#D3DCC2;overflow:hidden}.fortschritt i{display:block;height:100%;background:#7FA83A}';
+  document.head.appendChild(st);
+  var gesetzt = {};
+  document.querySelectorAll('a[href$="/aufgaben.html"]').forEach(function (a) {
+    try {
+      var dir = a.pathname.replace(/[^\/]*$/, ''), raw = localStorage.getItem('fortschritt|' + dir);
+      if (!raw) return;
+      var f = JSON.parse(raw); if (!f || !f.n) return;
+      var box = a.closest('section,.unit'), key = (box ? box.id : '') + dir; if (gesetzt[key]) return; gesetzt[key] = 1;
+      var d = document.createElement('div'), pr = Math.round(f.np / f.n * 100);
+      d.className = 'fortschritt'; d.setAttribute('role', 'progressbar'); d.setAttribute('aria-valuemin', '0'); d.setAttribute('aria-valuemax', f.n); d.setAttribute('aria-valuenow', f.np);
+      d.innerHTML = '<span>Arbeitsblatt: ' + f.np + ' von ' + f.n + ' Pflichtaufgaben ausgefüllt</span><div><i style="width:' + pr + '%"></i></div>';
+      var ziel = a.parentNode; ziel.parentNode.insertBefore(d, ziel.nextSibling);
+    } catch (e) {}
+  });
+})();
+"""
+
 JS_COUNTDOWN = """
 document.querySelectorAll('[data-datum]').forEach(function (el) {
   var d = new Date(el.dataset.datum + 'T00:00:00'), h = new Date(); h.setHours(0, 0, 0, 0);
@@ -350,7 +372,7 @@ def seite_index(ordner, k, tests, units, bloecke, n_plan, n_begriffe, n_ziele):
         out.append(f'<details class="block ks-themenblock"><summary><span class="nr">{nr}</span><span class="t"><small>{klein} · {n} {"Einheit" if n == 1 else "Einheiten"}</small><strong>{esc(b["name"])}</strong></span></summary>'
                    f'<div class="units">{"".join(unit_html(u) for u in b["units"])}</div></details>')
     out.append('</div><p class="note">Tipp: Speichere diese Klassenseite als Favorit. Beginne oben beim aktuellen Thema. Weitere Themen findest du über die Suche.</p>')
-    out.append(fuss(JS_COUNTDOWN))
+    out.append(fuss(JS_COUNTDOWN + JS_FORTSCHRITT))
     return "".join(out)
 
 
@@ -508,16 +530,18 @@ def stunden_html(e, ordner):
 def dateien_html(e):
     """Aktuell gültige Dateien einer Einheit (Feld »dateien« in einheiten.json) – nur für die Lehrer-Seite."""
     d = e.get("dateien")
+    ls = e.get("lehrerseite")   # Link auf die private Lehrer-Seite (Claude-Seite, nur für Stephan geöffnet); nur hier, nie auf Kadettenseiten
+    ls_html = f'<div class="links small"><a class="btn teal" href="{esc(ls)}" target="_blank" rel="noopener">Lehrer-Seite (privat)</a></div>' if ls else ""
     # Alte Materialnummer (Feld »alt_nummer«): Dateien behalten ihren Namen, die Zuordnung bleibt nachvollziehbar.
     alt = e.get("alt_nummer")
     hinweis = (f'<div class="alt-nr">Alte Materialnummer: <strong>{esc(alt)}</strong> – '
                f'PPP-/Word-Dateien heißen weiter so, aktuelle Unterrichtseinheit ist {esc(e.get("kapitel", ""))}.</div>') if alt else ""
     if not d:
-        return hinweis + '<div class="files leer">Aktuelle PPP-/Word-Dateien: noch nicht vermerkt</div>'
+        return ls_html + hinweis + '<div class="files leer">Aktuelle PPP-/Word-Dateien: noch nicht vermerkt</div>'
     zeilen = "".join(f'<li><span class="art">{esc(art(f))}</span> <code>{esc(f)}</code></li>' for f in d.get("liste", []))
     zip_ = f'<div><span class="art">Paket</span> <code>{esc(d["zip"])}</code></div>' if d.get("zip") else ""
     stand = f' · Stand {esc(d["stand"])}' if d.get("stand") else ""
-    return f'{hinweis}<details class="files"><summary>Aktuelle Dateien{stand}</summary>{zip_}<ul>{zeilen}</ul></details>'
+    return f'{ls_html}{hinweis}<details class="files"><summary>Aktuelle Dateien{stand}</summary>{zip_}<ul>{zeilen}</ul></details>'
 
 
 LEHRER_CSS = """

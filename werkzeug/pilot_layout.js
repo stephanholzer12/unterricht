@@ -2,7 +2,8 @@
    Ändert keinen Speicherschlüssel und keine Antwort; verschiebt nur Elemente und ändert Anzeigetexte.
      1. Gesamter Fahrplan ist zugeklappt (»Fahrplan öffnen«), damit die Aufgaben schneller erreichbar sind.
      2. Fortschritt getrennt: »Pflicht: x von y ausgefüllt · Zusatz: a von b« (nur Aufgaben ohne Tag »Zusatz« zählen für den Balken).
-     3. Knopf »Weiter bei Aufgabe N« (erste offene Pflichtaufgabe) (springt nur, ändert nichts).
+     3. Knopf »Weiter bei Aufgabe N«: merkt sich die zuletzt bearbeitete Aufgabe (eigener Schlüssel »weiter|<Ordner>«, nicht der Antwort-Speicher) und springt zur nächsten offenen Pflichtaufgabe ab dort (sonst zur ersten offenen). Springt nur, ändert nichts.
+   5. Schreibt den Fortschritt (Pflicht x von y) unter »fortschritt|<Ordner>« für den Balken auf der Klassenseite.
      4. Zusatzaufgaben (Tag »Zusatz«, »optional«, »Für Schnelle«) stehen in einem zugeklappten Bereich; er öffnet sich von selbst, wenn dort schon etwas eingetragen ist oder ein Link dorthin zeigt.
    Einbau: python3 werkzeug/pilot_layout_einbauen.py */
 (function () {
@@ -48,7 +49,22 @@
   var steps = document.querySelector("ol.steps"), knopf = document.createElement("button");
   knopf.type = "button"; knopf.className = "btn secondary small pl-weiter";
   if (steps) steps.parentNode.insertBefore(knopf, steps.nextSibling);
-  function erste() { for (var i = 0; i < pflicht.length; i++) if (!isDone(pflicht[i])) return pflicht[i]; return null; }
+  var dir = location.pathname.replace(/[^\/]*$/, "");
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function erste() {
+    var z = lsGet("weiter|" + dir), ab = -1;
+    for (var j = 0; j < pflicht.length; j++) if (pflicht[j].id === z) ab = j;
+    if (ab >= 0 && !isDone(pflicht[ab])) return pflicht[ab];
+    for (var k = 1; k <= pflicht.length; k++) { var t = pflicht[(ab + k + pflicht.length) % pflicht.length]; if (t && !isDone(t)) return t; }
+    return null;
+  }
+  if (tasks) ["input", "change", "click"].forEach(function (ev) {
+    tasks.addEventListener(ev, function (e) {
+      var c = e.target && e.target.closest ? e.target.closest("[id^=card_]") : null;
+      if (c) { var id = c.id.slice(5); if (pflicht.some(function (t) { return t.id === id; })) lsSet("weiter|" + dir, id); }
+    }, true);
+  });
   knopf.addEventListener("click", function () {
     var t = erste(), z = t ? document.getElementById("card_" + t.id) : document.getElementById("abgabe");
     if (z) z.scrollIntoView({ behavior: ruhig ? "auto" : "smooth", block: "start" });
@@ -63,6 +79,7 @@
       if (c) c.textContent = zus.length ? "Pflicht: " + np + " von " + pflicht.length + " ausgefüllt · Zusatz: " + nz + " von " + zus.length : np + " von " + pflicht.length + " ausgefüllt";
       if (bar && pflicht.length) bar.style.width = (np / pflicht.length * 100) + "%";
       var t = erste();
+      lsSet("fortschritt|" + dir, JSON.stringify({ np: np, n: pflicht.length }));
       knopf.textContent = t ? "Weiter bei Aufgabe " + t.nr : "Alle Pflichtaufgaben ausgefüllt – weiter zur Abgabe"; knopf.title = "Springt zur ersten offenen Pflichtaufgabe";
     } catch (e) {}
   };
