@@ -103,6 +103,11 @@ cases[E4].push(
 /* zusätzliche Gegenproben */
 ["a12","b","1,5 (T)",1],["a3","theta","240 (A)",1],["a3","theta","240 A (oder 0,24 kA)",1],["a3","theta","240 × 10^x A",0],
 ["a3","theta","Das ist falsch 240 A",0],["a3","theta","Richtig ist 240 A, falsch ist 24 A.",1],["a3","theta","240 A falsch 24 A richtig",1],["a5","t","Der Draht wird abgelenkt durch die Lorentzkraft nicht durch Reibung",1],["a7","t","Kein Stillstand, er dreht sich immer weiter.",0],["a7","t","Der Motor hat keinen Stillstand.",0],["a3","h","2 kA / m",1],["a3","h","5 (Windungen) 2000 A/m",1]);
+/* Entscheidung Stephan 24.10.2026: Gleichungen mit ungleichen Seiten sind falsch; Motor: falsche Begründung ist falsch, »Stromrichtung muss gewechselt werden« allein genügt */
+cases[E4].push(
+ ["a3","theta","240 A = 24 A",0],["a3","theta","24 A = 240 A",0],["a3","theta","Θ = 240 A = 24 A",0],["a3","theta","240 A = 0,240 kA",1],["a3","theta","Θ = 0,4 A · 600 = 240 A",1],["a3","theta","0,4 A · 600 Windungen = 240 A",1],["a3","theta","Θ = I · N = 0,4 A · 600 = 240 A",1],
+ ["a12","b","1,5 T = 15 mT",0],["a12","b","1,5 T = 1500 mT",1],["a12","b","B = 0,0006 Wb / 0,0004 m² = 1,5 T",1],["a12","b","B = 1,5 T = 1,5 Vs/m²",1],["a12","a","4 cm² = 0,0004 m²",1],["a3","h","1000 A/m + 1000 A/m = 2000 A/m",1],["a3","h","2 kA/m = 2000 A/m",1],["a3","h","2 kA/m = 200 A/m",0],
+ ["a7","t","Der Motor bleibt stehen, obwohl die Stromrichtung ständig umgepolt wird.",0],["a7","t","Der Motor bleibt stehen, weil der Strom zu schwach ist.",0],["a7","t","Die Stromrichtung muss gewechselt werden, egal wie stark der Strom ist.",1],["a7","t","Der Motor bleibt stehen, weil der Strom nicht umgepolt wird.",1],["a7","t","Ohne Kommutator bleibt der Motor stehen, weil keine Umpolung erfolgt.",1]);
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

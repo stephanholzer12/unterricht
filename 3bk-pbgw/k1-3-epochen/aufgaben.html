@@ -2478,7 +2478,10 @@ window.LH_VARIANTEN = [];
       /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
       var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);
       var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test(davor) && !/\d/.test(davor);
-      out.push({ v: parseFloat(n), v2: v2, u: m[2] || "", dec: dec, sig: sig, neg: neg, alt: alt, ende: m.index + m[0].length });
+      /* Gleichheitszeichen direkt zwischen zwei Zahlen (»240 A = 24 A«): Gleichung, die nur stimmt, wenn beide Seiten gleich sind. Nicht gewertet, wenn eine Seite in einer Rechnung steht (+ − · × / davor oder danach) */
+      var zw = out.length ? s0.slice(out[out.length - 1].ende, m.index) : "";
+      var eq = !!out.length && /^\s*=\s*$/.test(zw) && !/[+\-−·×*\/x]\s*$/i.test(s0.slice(0, out.length === 1 ? out[0].start : out[out.length - 1].start)) && !/^\s*[+\-−·×*\/^]/.test(s0.slice(m.index + m[0].length));
+      out.push({ v: parseFloat(n), v2: v2, u: m[2] || "", dec: dec, sig: sig, neg: neg, alt: alt, eq: eq, start: m.index, ende: m.index + m[0].length });
     }
     return out;
   }
@@ -2497,6 +2500,11 @@ window.LH_VARIANTEN = [];
     for (var k = 1; k < L.length; k++) if (L[k].alt && !L[k].neg && !L[k - 1].neg) {
       var w1 = gl(L[k - 1]), w2 = gl(L[k]), gleich = !!(w1 && w2) && w1.some(function (a) { return w2.some(function (b) { return Math.abs(a - b) <= Math.max(Math.abs(a), Math.abs(b)) * 0.005; }); });
       if (!gleich) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
+    }
+    /* Widerspruch in einer Gleichung: »240 A = 24 A«, »1,5 T = 15 mT« (beide Seiten haben vergleichbare Einheiten, aber verschiedene Werte, Abweichung über 5 %) */
+    for (var e = 1; e < L.length; e++) if (L[e].eq && !L[e].neg && !L[e - 1].neg && L[e].u && L[e - 1].u) {
+      var fq = faktor(L[e - 1].u, L[e].u);
+      if (fq !== null) { var lw = L[e - 1].v * fq, rw = L[e].v; if (Math.abs(lw - rw) > Math.max(Math.abs(lw), Math.abs(rw)) * 0.05 + 1e-12) return { ok: false, msg: "Die beiden Seiten der Gleichung sind nicht gleich." }; }
     }
     for (var i = 0; i < L.length; i++) {
       var x = L[i]; if (x.neg) continue;

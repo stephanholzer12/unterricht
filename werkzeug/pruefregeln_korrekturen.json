@@ -222,13 +222,14 @@
       ],
       [
        "Umpolen fehlt",
-       "umpol|umgepol|nicht\\s+(um)?gepolt|polt\\w*\\s+(den\\s+)?strom|stromrichtung\\s+(\\w+\\s+)?(wird\\s+|ändert\\s+sich\\s+|wechselt\\s+)?nicht|strom\\s+(wird\\s+)?nicht\\s+(um)?(gepolt|gewechselt|gedreht)|ohne\\s+umpol|kehrt\\s+sich\\s+nicht\\s+um|dreht\\s+sich\\s+nicht\\s+um|wechselt\\s+(\\w+\\s+)?nicht|stromrichtung\\s+(\\w+\\s+){0,4}nicht\\s+(um|geändert|gewechselt|gedreht)"
+       "umpol|umgepol|nicht\\s+(um)?gepolt|polt\\w*\\s+(den\\s+)?strom|stromrichtung\\s+(\\w+\\s+)?(wird\\s+|ändert\\s+sich\\s+|wechselt\\s+)?nicht|strom\\s+(wird\\s+)?nicht\\s+(um)?(gepolt|gewechselt|gedreht)|ohne\\s+umpol|kehrt\\s+sich\\s+nicht\\s+um|dreht\\s+sich\\s+nicht\\s+um|wechselt\\s+(\\w+\\s+)?nicht|stromrichtung\\s+(\\w+\\s+){0,4}nicht\\s+(um|geändert|gewechselt|gedreht)|(stromrichtung|polung|strom)\\s+(\\w+\\s+){0,3}(muss|müss\\w*|soll\\w*)\\s+(\\w+\\s+){0,3}(gewechselt|umgekehrt|gewendet|geändert|gedreht|gepolt)|wechsel\\w*\\s+(\\w+\\s+){0,2}(der\\s+)?(stromrichtung|polung)"
       ]
      ],
      "contra": [
       "(immer|ständig|dauernd|dauerhaft|ewig|unendlich)\\s+weiter",
       "(?<!zunächst\\s)(?<!zuerst\\s)(?<!anfangs\\s)(?<!noch\\s)(?<!kurz\\s)läuft\\s+(\\w+\\s+)?weiter(?!\\s*(,\\s*)?(und\\s+)?(\\w+\\s+){0,3}(dann|bleibt|steht|hört|stoppt|nur|bis|kurz|aber|schließlich|irgendwann|später|danach|bald|erst|kommt|zum\\s+stillstand|stillstand))",
-      "muss\\s+nicht\\s+(um)?gepolt|nicht\\s+(um)?gepolt\\s+werden\\s+muss|(stromrichtung|polung|umpolen|richtung)\\s+(\\w+\\s+){0,3}egal|(?<!(steh|stopp|stillstand)[^.]{0,40})egal\\s*,?\\s*(in\\s+welche\\w*\\s+)?(welche\\w*\\s+)?(stromrichtung|richtung|polung)"
+      "muss\\s+nicht\\s+(um)?gepolt|nicht\\s+(um)?gepolt\\s+werden\\s+muss|(stromrichtung|polung|umpolen|richtung)\\s+(\\w+\\s+){0,3}egal|(?<!(steh|stopp|stillstand)[^.]{0,40})egal\\s*,?\\s*(in\\s+welche\\w*\\s+)?(welche\\w*\\s+)?(stromrichtung|richtung|polung)",
+      "(obwohl|trotz|obgleich)\\s+(\\w+\\s+){0,6}(um)?gepolt|weil\\s+(\\w+\\s+){0,3}(zu\\s+(schwach|wenig|groß|stark|klein)|(kein|fehlt)\\w*\\s+(strom|magnet|batterie|spannung))"
      ]
     }
    },
