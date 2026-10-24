@@ -43,7 +43,7 @@ LEHRER = "lehrer-0f6eec.html"
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Theorie-Seite → Arbeitsblatt → Quiz
 NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
          "versuche.html": ("Versuche", "rust"), "vertiefung.html": ("Vertiefung", ""), "uebung.html": ("Übung", ""), "projekt.html": ("Projekt", ""),
-         "gruppe.html": ("Gruppe", ""), "kurz.html": ("Gruppe kompakt", "")}
+         "gruppe.html": ("Gruppe", ""), "teststoff.html": ("Teststoff", "rust"), "kurz.html": ("Gruppe kompakt", "")}
 REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html"]
 
 CSS = """
