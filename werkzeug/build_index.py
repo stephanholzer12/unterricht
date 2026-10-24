@@ -315,7 +315,8 @@ def unit_html(u, mit_mehr=True):
 def seite_index(ordner, k, tests, units, bloecke, n_plan, n_begriffe, n_ziele):
     out = [klassen_kopf(f'{k["fach"]} {k["klasse"]}', "BHAK für Führung und Sicherheit · Deine Klassenseite", "index.html", f'{k["fach"]} {k["klasse"]} – Übersicht')]
     if tests:
-        out.append('<a class="ks-testlink" href="#ks-tests">Test vorbereiten → Teststoff und Training</a>')
+        test_hilfe = "Teststoff und Training" if any("teststoff.html" in t["seiten"] for t in tests) else "Training und Termine"
+        out.append(f'<a class="ks-testlink" href="#ks-tests">Test vorbereiten → {test_hilfe}</a>')
     jetzt = [u for u in units if u["jetzt"]]
     for u in jetzt:
         L = u["lern"] or {}
