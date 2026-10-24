@@ -1,0 +1,64 @@
+/* Kadettenansicht v1. Gemeinsame Navigation und Klassenübersicht. */
+.ks-klassenseite [hidden], .ks-materialseite [hidden] { display: none !important; }
+.ks-klassenseite main > *, .ks-materialseite main > * { min-width: 0; }
+.ks-klassenseite a:focus-visible, .ks-materialseite .ks-topnav a:focus-visible,
+.ks-materialseite .ks-materialnav a:focus-visible { outline: 3px solid #286977; outline-offset: 3px; }
+.ks-klassenseite .top-text h1, .ks-materialseite .top-text h1 { overflow-wrap: anywhere; }
+.ks-materialseite .top-inner { max-width: 1020px; }
+.ks-klassenseite nav.toc a { min-height: 44px; display: inline-flex; align-items: center; }
+.ks-klassenseite .ks-aktuell { gap: 12px; border-top: 5px solid #286977; }
+.ks-klassenseite .ks-aktuell h2 { margin: 0; font-size: 28px; }
+.ks-klassenseite .ks-aktuell > .meta { margin: 0; }
+.ks-ressourcen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ks-material { display: grid; align-content: start; gap: 3px; border: 1.5px solid #c6d2bb; border-radius: 10px; padding: 12px; color: #263322; background: #f5f8ef; text-decoration: none; min-height: 64px; overflow-wrap: anywhere; }
+.ks-material strong { font-size: 18px; color: #286977; }
+.ks-material span { font-size: 14px; }
+.ks-material.ks-hauptaktion { background: #3b4a2f; color: #fff; border-color: #3b4a2f; }
+.ks-material.ks-hauptaktion strong { color: #fff; }
+.ks-weitere { display: flex; flex-wrap: wrap; gap: 8px; }
+.ks-weitere a, .ks-testlink { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; color: #286977; border: 1px solid #c6d2bb; border-radius: 9px; background: #fff; text-decoration: none; font-weight: 700; }
+.ks-testlink { justify-self: start; }
+#ks-tests { display: grid; gap: 12px; scroll-margin-top: 76px; }
+.ks-auftrag { border-top: 1px solid #d3dcc2; padding-top: 12px; }
+.ks-auftrag h3 { margin: 0; }
+.ks-auftrag > .meta { margin: 5px 0 10px; }
+.ks-phase-wahl { display: block; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.ks-phase-select { width: 100%; font: inherit; min-height: 44px; padding: 8px 12px; border: 2px solid #b7c5a8; border-radius: 9px; color: #263322; background: #fffde8; }
+.ks-phase h4 { font-size: 18px; margin: 12px 0 5px; color: #3b4a2f; }
+.ks-phase dl { margin: 0; display: grid; gap: 8px; }
+.ks-phase dl > div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 8px; }
+.ks-phase dt { font-weight: 700; font-size: 15px; color: #52634b; }
+.ks-phase dd { margin: 0; }
+.ks-abgabeinfo { border-top: 1px solid #d3dcc2; padding-top: 8px; }
+.ks-auftrag details { margin-top: 12px; }
+.ks-hilfen { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ks-hilfen a { display: grid; gap: 3px; background: #fff; padding: 12px 14px; border: 1px solid #d3dcc2; border-radius: 10px; color: #286977; font-weight: 700; text-decoration: none; min-height: 44px; }
+.ks-hilfen span { font-size: 14px; font-weight: 400; color: #52634b; }
+.ks-themen-suche { display: grid; gap: 6px; }
+.ks-themen-suche label { font-weight: 700; }
+.ks-klassenseite .ks-themen-suche .meta { margin: 0; }
+.ks-klassenseite .unit { scroll-margin-top: 90px; }
+.ks-klassenseite details.block > summary { min-height: 54px; }
+.ks-klassenseite details.block .links a.btn { min-height: 44px; display: inline-flex; align-items: center; }
+.ks-klassenseite details.block .unit h3 { font-size: 22px; }
+.ks-topnav { position: sticky; top: 0; z-index: 12; display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 6px max(14px, calc((100% - 1020px) / 2)); background: #3b4a2f; color: #fff; font: 16px/1.3 Calibri, 'Segoe UI', sans-serif; min-height: 44px; }
+.ks-topnav a { color: #fff; font-weight: 700; text-decoration: none; min-height: 32px; display: inline-flex; align-items: center; }
+.ks-topnav span { font-size: 14px; }
+.ks-materialnav { display: flex; gap: 6px; padding: 8px max(14px, calc((100% - 1020px) / 2)); background: #fff; border-bottom: 1px solid #d3dcc2; overflow-x: auto; font: 16px/1.3 Calibri, 'Segoe UI', sans-serif; }
+.ks-materialnav a { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; padding: 6px 12px; border: 1px solid #c6d2bb; border-radius: 8px; color: #3b4a2f; text-decoration: none; font-weight: 700; }
+.ks-materialnav a[aria-current='page'] { background: #3b4a2f; color: #fff; border-color: #3b4a2f; }
+.ks-materialnav .ks-zur-abgabe { background: #eef3e4; }
+.ks-materialseite nav.toc { top: var(--ks-topnav-hoehe, 44px); }
+.ks-materialseite { scroll-padding-top: 110px; }
+html:has(body.ks-materialseite) { scroll-padding-top: calc(var(--ks-topnav-hoehe, 44px) + 68px); }
+.ks-ende { max-width: 1020px; margin: 16px auto 0; padding: 16px; font: 17px Calibri, 'Segoe UI', sans-serif; }
+.ks-ende a { display: inline-flex; align-items: center; min-height: 44px; color: #286977; font-weight: 700; }
+@media (max-width: 560px) {
+  .ks-ressourcen { grid-template-columns: 1fr 1fr; }
+  .ks-ressourcen > .ks-material:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .ks-phase dl > div { grid-template-columns: 1fr; gap: 2px; }
+  .ks-klassenseite .ks-aktuell h2 { font-size: 25px; }
+  .ks-hilfen { grid-template-columns: 1fr; }
+  .ks-topnav { padding-left: 12px; padding-right: 12px; }
+}
+@media print { .ks-topnav, .ks-materialnav, .ks-ende, .ks-themen-suche { display: none !important; } }
