@@ -424,7 +424,7 @@ def v5():
     station(d, 120, 230, (225, 236, 240), therm_fill=0.42)
     ctext(d, 220, 470, "vorher: Temperatur messen", f(FR, 24), INK)
     d.line(P(380, 200, 470, 280), fill=GREY, width=6 * S); d.ellipse(P(455, 270, 495, 300), fill=(250, 250, 250), outline=GREY, width=3 * S)
-    ctext(d, 420, 160, "3 Spatel Natron", f(FB, 24), INK)
+    ctext(d, 420, 160, "6 g Natron", f(FB, 24), INK)
     beaker(d, 520, 230, 200, 220, (225, 236, 240), 0.62)
     bubbles(d, 535, 705, 320, 440, 26, seed=5, col=(140, 160, 170))
     thermometer(d, 660, 150, 260, fill=0.30)
@@ -436,7 +436,7 @@ def v5():
 
 def v6():
     im, d = canvas()
-    ctext(d, 450, 20, "Station 3 · Kältemischung aus Eis und Salz", f(FB, 32), INK)
+    ctext(d, 450, 20, "Lehrer-Demo · Kältemischung aus Eis und Salz", f(FB, 32), INK)
     for (x, txt, salt) in [(110, "0 °C", False), (520, "? °C", True)]:
         beaker(d, x, 200, 230, 250, None)
         for k in range(14):
@@ -478,7 +478,7 @@ def v7():
 def v8():
     im, d = canvas()
     ctext(d, 450, 20, "Brausetablette im Test", f(FB, 34), INK)
-    for k, (x, lab, warm, crushed) in enumerate([(160, "A · ganz, kalt", False, False), (450, "B · zerdrückt, kalt", False, True), (740, "C · ganz, warm", True, False)]):
+    for k, (x, lab, warm, crushed) in enumerate([(160, "A · unzerkleinert, kalt", False, False), (450, "B · zerdrückt, kalt", False, True), (740, "C · unzerkleinert, warm", True, False)]):
         d.ellipse(P(x - 120, 200, x + 120, 330), fill=(255, 230, 220) if warm else (215, 232, 248), outline=GREY, width=5 * S)
         d.ellipse(P(x - 120, 190, x + 120, 310), outline=GREY, width=3 * S)
         if crushed:
@@ -505,7 +505,7 @@ def v9():
     ctext(d, 650, 170, "Halter", f(FR, 24), INK)
     ctext(d, 660, 300, "vorher: schwarz", f(FB, 26), INK)
     ctext(d, 660, 340, "nachher: rötliche Körnchen?", f(FB, 26), CU)
-    ctext(d, 450, 570, "Öffnung von Personen weg · Fenster auf · vollständig abkühlen lassen", f(FR, 24), INK)
+    ctext(d, 450, 570, "nur unter dem Abzug · Öffnung von Personen weg · abkühlen lassen", f(FR, 24), INK)
     save(im, VSI + "d_v9.png")
 
 
@@ -574,6 +574,13 @@ def new_icons():
     icon("brausetablette", brause)
     icon("kupferoxid", lambda d: jar(d, (35, 35, 35), (10, 10, 10)))
     icon("holzkohle", lambda d: jar(d, (50, 50, 50), (90, 90, 90)))
+    def abzug(d):
+        d.rectangle(P(40, 14, 140, 98), fill=(225, 228, 232), outline=OUT, width=2 * S)
+        d.rectangle(P(50, 34, 130, 80), fill=(205, 230, 240), outline=OUT, width=2 * S)
+        d.line(P(50, 52, 130, 52), fill=OUT, width=2 * S)
+        d.rectangle(P(80, 2, 100, 14), fill=(200, 205, 210), outline=OUT, width=2 * S)
+        for x in (62, 90, 118): d.line(P(x, 28, x, 20), fill=(46, 125, 140), width=3 * S)
+    icon("abzug", abzug)
 
 
 def icons_kopieren():

@@ -59,6 +59,10 @@ s = s[:i] + "<!--FAHRPLAN--><!--/FAHRPLAN-->" + s[j:]  # wird von build_index.py
 rep("0 von 15 bearbeitet", "0 von %d bearbeitet" % len(I.T))
 s = re.sub(r'<p class="hint">Stand [0-9.]+ · v\d+</p>', '<p class="hint">Stand ' + STAND + " · " + I.V + "</p>", s, count=1)
 i = s.index("const KEY = "); j = s.index("\n];", i) + 3
+s = s.replace('if (t.type === "multi") return t.fields.every(f => filled(a[f[0]]));', 'if (t.type === "multi") return t.fields.every(f => (t.opt || []).includes(f[0]) || filled(a[f[0]]));')
+s = s.replace('if (t.type === "sketch") return !!a.foto && t.fields.every(f => filled(a[f[0]]));', 'if (t.type === "sketch") return !!a.foto && t.fields.every(f => (t.opt || []).includes(f[0]) || filled(a[f[0]]));')
+s = s.replace('const parts = Object.entries(t.chk).map(([k, c]) =>', '/* freiwillige Felder (t.opt) zählen nur, wenn ausgefüllt */\n  const parts = Object.entries(t.chk).filter(([k]) => !((t.opt || []).includes(k) && !(a[k] != null && String(a[k]).trim() !== ""))).map(([k, c]) =>')
+assert "(t.opt || [])" in s
 s = s[:i] + 'const KEY = "%s";\nconst KAP = "K1.3", THEMA = "Stoffumwandlung";\nconst T = ' % I.KEY + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
 rep('KAP + " Zeit-Einteilung und Epochen – Aufgaben"', 'KAP + " Stoffumwandlung – Aufgaben"')
 rep('clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14")', 'clean("NAWI · 2AB · K1.3 Stoffumwandlung · Schulbuch S. 29–37, 98")')
@@ -287,7 +291,8 @@ i = s.index("/*STATIONEN*/"); j = s.index("/*/STATIONEN*/")
 s = s[:i] + """/*STATIONEN*/
 [["Stunde 1 · Di 03.11. · Demo und Klassen-Ansatz – mittippen und eintragen", v => v.id === "eisenwolle" || v.id === "rost"],
  ["Stunde 2 · Do 05.11. · Demo nach dem Test", v => v.id === "kupferbrief"],
- ["Stunde 3–4 · Stationen 1–3 – Gruppe 1 startet bei Station 1, Gruppe 2 bei 2, Gruppe 3 bei 3 (Stunde 4: Gruppe 4–6), alle 6 Minuten weiter", v => !!v.station],
+ ["Stunde 3 · Di 10.11. · Demo vor den Stationen – mittippen und eintragen", v => v.id === "kaelte"],
+ ["Stunde 3–4 · Stationen 1 und 2 – drei Runden à 11 Minuten (Stunde 3: Gruppe 1–3, Stunde 4: Gruppe 4–6). An der Station nur messen und beobachten, Deutung als Hausübung", v => !!v.station],
  ["Stunde 4 · Do 12.11. · Demo Katalysator – mittippen und eintragen", v => v.id === "katalysator"],
  ["Stunde 5 · Di 17.11. · Gruppenversuch", v => v.id === "brause"],
  ["Zusatz – Lehrer-Demo, nur wenn Zeit bleibt", v => !v.kern]].forEach(([t, fn]) => {
@@ -308,9 +313,10 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
     <h2>So laufen die Versuche</h2>
     <ul class="steps">
       <li><b>Stunde 1 und 2:</b> Demos K1.3-V1 und V3 – erst tippen, dann zuschauen und hier eintragen. Rost-Ansatz K1.3-V2 heute ansetzen, Auswertung am Di 10.11.</li>
-      <li><b>Stunde 3–4: 6 Gruppen zu viert.</b> Stunde 3: Gruppe 1–3 an den Stationen, Gruppe 4–6 macht die Aufgaben 9–12. Stunde 4: umgekehrt.</li>
-      <li><b>Start:</b> Gruppe 1 (bzw. 4) bei Station 1 · Gruppe 2 (bzw. 5) bei Station 2 · Gruppe 3 (bzw. 6) bei Station 3. <b>Pro Station 6 Minuten</b>, dann auf das Zeichen weiter: 1 → 2 → 3 → 1.</li>
-      <li>Vor dem Wechsel: Station aufräumen, wie ihr sie vorgefunden habt.</li>
+      <li><b>Stunde 3:</b> Zuerst Demo K1.3-V6 (Kältemischung) – erst tippen, dann zuschauen.</li>
+      <li><b>Stunde 3–4: 6 Gruppen zu viert, 2 Stationen.</b> Stunde 3: Gruppe 1–3 an den Stationen, Gruppe 4–6 macht die Aufgaben 9–12. Stunde 4: umgekehrt.</li>
+      <li><b>Drei Runden à 11 Minuten:</b> Runde 1 – Gruppe 1 (bzw. 4) an Station 1, Gruppe 2 (bzw. 5) an Station 2, Gruppe 3 (bzw. 6) macht Aufgaben. Danach rückt jede Gruppe weiter: Station 1 → Station 2 → Aufgaben → Station 1.</li>
+      <li><b>An der Station nur messen, beobachten und Fotos machen</b>, dann aufräumen, wie ihr sie vorgefunden habt. Erkenntnis, Deutung und Schlussfolgerung schreibt ihr bis Stunde 5 (Hausübung).</li>
       <li><b>Stunde 4:</b> Demo K1.3-V7 (Katalysator) · <b>Stunde 5:</b> Gruppenversuch K1.3-V8 (Brausetablette).</li>
     </ul>
     <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF ab (Namen der Gruppe + dein Nachname) – in LMS nach Stunde 5 (Di 17.11.).</p>

@@ -24,7 +24,7 @@ import herrichten as H
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
-VER = "v2"
+VER = "v3"
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("A33A2B")
@@ -393,11 +393,11 @@ def theorie_folien(item, L):
         if item.get("pill"): pill(s, item["pill"], kind="versuch" if item["pill"].startswith("Versuch im Buch") else "theory")
         out.append(s)
     if karten:
-        for part in (karten[1][:5], karten[1][5:]):
-            s = d.slide("Nur Titel", item["title"] + (" (2)" if part is not karten[1][:5] else ""))
+        for ki, part in enumerate((karten[1][:4], karten[1][4:])):
+            s = d.slide("Nur Titel", item["title"] + (" (2)" if ki else ""))
             rows = [["Frage", "Lösung (für den Fragenden)"]] + [[q, a if L else ""] for q, a in part]
             y0 = Y0
-            if khint and part is karten[1][:5]:
+            if khint and ki == 0:
                 hh = th(khint, 18, 9); tb(s, X0, Y0, 9, hh, [khint], size=18, color=MUTED); y0 += hh
             cells, _ = auto_grid(s, X0, y0, [4.6, 4.4], rows, size=16)
             if L:
@@ -540,7 +540,7 @@ def versuch_folien(nr, L, kurz=False):
     pill(s, pl, kind=pk, w=2.4)
     # 2 Durchführung
     s = d.slide("Nur Titel", f"{nr} · Durchführung")
-    tag(s, f"ca. {v['zeit']} min · {v['form'][:28]}", OLIVE if v["kern"] else MUTED, x=5.9, w=3.6)
+    tag(s, f"ca. {v['zeit']} min · {v['form'].split(' (')[0][:24]}", OLIVE if v["kern"] else MUTED, x=5.9, w=3.6)
     y = Y0 + 0.3
     if sich_spaeter:
         hs = th("Sicherheit: " + v["sicher"], 18, 9, pad=0.12)
@@ -628,7 +628,7 @@ def herrichten_folien():
             if row[4] not in ("", "–"):
                 for p_ in r[4].text_frame.paragraphs:
                     for rn in p_.runs: rn.font.color.rgb = RUST; rn.font.bold = True
-        tb(s, X0, min(Y0 + 0.2 + h, 4.8), 9, 0.3, ["6 Gruppen zu viert · gesamt = höchster gleichzeitiger Bedarf (Stationen 1–3 laufen gleichzeitig) · Details pro Versuch: VS-Fachwissen S. 1"], size=11, color=MUTED)
+        tb(s, X0, min(Y0 + 0.2 + h, 4.8), 9, 0.3, ["6 Gruppen zu viert · gesamt = höchster gleichzeitiger Bedarf (Stationen 1 und 2 laufen gleichzeitig) · Details pro Versuch: VS-Fachwissen S. 1"], size=11, color=MUTED)
 
 
 # ================================================================ Start-Folien
@@ -644,7 +644,7 @@ def fahrplan_folien():
     u = [x for x in json.load(open(os.path.join(ROOT, "werkzeug/einheiten.json"))) if x["ordner"] == I.ORDNER][0]
     z = u["fahrplan"]["zeilen"]
     n = sum(1 for r in z if r["wann"].startswith("Stunde"))
-    cw = [1.25, 3.3, 1.55, 1.9, 1.0]
+    cw = [1.15, 3.25, 1.6, 1.7, 1.3]
     mk = lambda r: [r["wann"] + ("\n" + r["datum"] if r.get("datum") else ""), r["lesen"], r.get("aufgaben", "–") + ("\n" + r["zeit"] if r.get("zeit") else ""),
                     (r.get("wie") or "–").replace("ohne Handy: ", ""), r.get("abgabe", "–")]
     schnell = [r for r in z if not r["wann"].startswith("Stunde")]
@@ -657,7 +657,7 @@ def fahrplan_folien():
     gruppen.append(cur)
     for part, rr in enumerate(gruppen, 1):
         s = d.slide("Nur Titel", f"Dein Fahrplan ({part}/{len(gruppen)})")
-        tb(s, X0, 1.0, 9, 0.4, [[(f"Dafür sind {n} Stunden eingeplant. ", {"bold": True, "color": OLIVE}), ("Lies die Theorie, mach die Aufgaben, protokolliere die Versuche, gib nach Stunde 5 beide PDFs ab.", {})]], size=16, after=0)
+        tb(s, X0, 1.0, 9, 0.4, [[(f"Dafür sind {n} Stunden eingeplant. ", {"bold": True, "color": OLIVE}), ("Nach Stunde 5 gibst du beide PDFs in LMS ab.", {})]], size=16, after=0)
         rows = [["Wann", "Das machen wir", "Aufgaben", "Wie (ohne Handy)", "Abgabe"]] + [mk(r) for r in rr]
         cells, h = auto_grid(s, X0, 1.45, cw, rows, size=16, minh=0.34)
         if part == len(gruppen) and schnell:
@@ -685,7 +685,7 @@ def lehrer_infos():
     tag(s, "AUSGEBLENDET", RUST, x=7.6, w=1.9)
     tb(s, X0, 1.25, 9, 3.8, [
         [("Jahresplan E6 + E7 ", {"bold": True, "color": OLIVE}), ("(je 3 Std. = 6) · Buch S. 29–37, 98 · hier 5 Std. in Buch-Reihenfolge (Stunde 2 = Teststunde)", {})],
-        [("K04 ", {"bold": True}), ("Masse und Energie bei Reaktionen → A1, A9–A12, V1, V4–V6, V8", {})],
+        [("K04 ", {"bold": True}), ("Masse und Energie bei Reaktionen → A1, A9–A12, V1, V4–V6, V8 · K05 Gleichungen: A3, A4, V4 (Teilgleichungen selbst ergänzen)", {})],
         [("K05 ", {"bold": True}), ("Redox als Elektronenabgabe/-aufnahme, Gleichungen → A2–A8, A15, V1–V4, V9", {})],
         [("N01, N02 · P3 · SDG 7 ", {"bold": True}), ("Fachsprache/Diagramme · Wirtschaft (Katalysator, Korrosion) · Umwelt (Autokat, Streusalz) · Energie", {})],
         [("Schulprofil: ", {"bold": True}), ("Handwärmer im Biwak, Kältekompresse im Sport, Rostschutz an Gerät und Fahrzeug", {})],
@@ -693,13 +693,13 @@ def lehrer_infos():
     s = d.slide("Nur Titel", "Lehrer-Info · Stundenvorschlag", hidden=True)
     tb(s, X0, 0.98, 9, 0.3, ["AUSGEBLENDET · Kern in 5 Stunden (Jahresplan: 6) · Rest optional"], size=12, bold=True, color=RUST, after=0)
     rows = [["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Zeit", "Methode"],
-            ["1 · 03.11.", "Einstieg, Teil 1 Redox", "V1 Demo, V2 Ansatz", "1–4", "~18 min", "Demo mit Vorhersage"],
-            ["2 · 05.11.", "Test 20 min · Teil 2 Rost", "V3 Demo", "5–8", "~15 min", "Handschrift, Mini-Whiteboard"],
-            ["3 · 10.11.", "V2 auswerten, Teil 3 Energie", "Gr. 1–3: V4–V6", "Gr. 4–6: 9–12", "18 / 21 min", "Stationenbetrieb"],
-            ["4 · 12.11.", "Teil 4 Katalysator", "V7 Demo · Gr. 4–6: V4–V6", "13–14 · Gr. 1–3: 9–12", "~28 min", "Demo mit Vorhersage"],
-            ["5 · 17.11.", "Teil 5 Tempo", "V8 Gruppen", "15–18, Quiz", "~22 min", "Gruppenversuch, Partnercheck"],
-            ["Zusatz", "Für Schnelle", "V9 (Lehrer)", "19–23 · Kahoot", "–", "–"],
-            ["Besprechung", "jede Stunde 5–8 min", "", "BESPRECHEN: 3, 8, 11, 13, 15", "", "Plenum"]]
+            ["1 · 03.11.", "Einstieg, Teil 1 Redox", "V1 Demo 12 min, V2 Ansatz parallel", "1–3 · HÜ 4", "13 min + 5 Reserve", "Demo mit Vorhersage"],
+            ["2 · 05.11.", "Test 20 min · Teil 2 Rost", "V3 Demo 8 min", "5–7 · HÜ 8", "10 min + 3 Reserve", "Demo, HÜ in Handschrift"],
+            ["3 · 10.11.", "V2 auswerten, Teil 3 Energie", "V6 Demo 8 min · Gr. 1–3: V4 + V5", "Gr. 4–6: 9–12", "Stationen 3 × 11 min", "Demo, Stationenbetrieb"],
+            ["4 · 12.11.", "Teil 4 Katalysator", "V7 Demo 10 min · Gr. 4–6: V4 + V5", "13–14 · Gr. 1–3: 9–12", "Stationen 3 × 11 min", "Demo mit Vorhersage"],
+            ["5 · 17.11.", "Partnercheck, Teil 5 Tempo", "V8 Gruppen 18 min", "18, 16–17 · HÜ 15, Quiz", "9 min + 4 Reserve", "Partnercheck, Gruppenversuch"],
+            ["Zusatz", "Für Schnelle", "V9 (Lehrer, Abzug)", "19–23 · Kahoot", "–", "–"],
+            ["Besprechung", "Stunde 1, 2, 5 je 5–7 min", "", "BESPRECHEN: 3, 8, 11, 13, 15", "", "Plenum"]]
     auto_grid(s, X0, 1.32, [1.0, 2.0, 1.75, 1.75, 0.8, 1.7], rows, size=13, minh=0.3)
     s = d.slide("Nur Titel", "Lehrer-Info · Die 5 größten Stolpersteine", hidden=True)
     rows = [["Stolperstein", "Richtig ist …"]] + [[a, plain(b)] for a, b in I.STOLPERSTEINE]
@@ -758,7 +758,7 @@ def build_th(L):
     pill(s, "Buch S. 98")
     theorie_folien(item("teil3", "exoendo"), L); theorie_folien(item("teil3", "stationen"), L)
     sicherheit()
-    for nr in ("K1.3-V4", "K1.3-V5", "K1.3-V6"): versuch_folien(nr, L)
+    for nr in ("K1.3-V6", "K1.3-V4", "K1.3-V5"): versuch_folien(nr, L)
     for iid in ("diagramm", "aktivierung", "erhalt"): theorie_folien(item("teil3", iid), L)
     stopp(3, L); ueberblick([9, 10, 11, 12], "Stunde 3–4 (Gruppen ohne Station)")
     for t in I.T[8:12]: aufgabe(t, L)
@@ -797,7 +797,7 @@ def build_th(L):
     for it in TD.SCHNELLE:
         if isinstance(it, dict):
             sl = theorie_folien(it, L)
-            for x in sl: tag(x, "OPTIONAL", MUTED, x=7.6, w=1.9)
+            for x in sl: tag(x, "OPTIONAL", MUTED, x=6.6, y=4.78, w=1.7)
     ueberblick([19, 20, 21, 22, 23], "Für Schnelle (OPTIONAL)")
     for t in I.T[18:]: aufgabe(t, L)
 

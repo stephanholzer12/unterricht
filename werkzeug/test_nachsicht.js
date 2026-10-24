@@ -108,6 +108,22 @@ cases[E4].push(
  ["a3","theta","240 A = 24 A",0],["a3","theta","24 A = 240 A",0],["a3","theta","Θ = 240 A = 24 A",0],["a3","theta","240 A = 0,240 kA",1],["a3","theta","Θ = 0,4 A · 600 = 240 A",1],["a3","theta","0,4 A · 600 Windungen = 240 A",1],["a3","theta","Θ = I · N = 0,4 A · 600 = 240 A",1],
  ["a12","b","1,5 T = 15 mT",0],["a12","b","1,5 T = 1500 mT",1],["a12","b","B = 0,0006 Wb / 0,0004 m² = 1,5 T",1],["a12","b","B = 1,5 T = 1,5 Vs/m²",1],["a12","a","4 cm² = 0,0004 m²",1],["a3","h","1000 A/m + 1000 A/m = 2000 A/m",1],["a3","h","2 kA/m = 2000 A/m",1],["a3","h","2 kA/m = 200 A/m",0],
  ["a7","t","Der Motor bleibt stehen, obwohl die Stromrichtung ständig umgepolt wird.",0],["a7","t","Der Motor bleibt stehen, weil der Strom zu schwach ist.",0],["a7","t","Die Stromrichtung muss gewechselt werden, egal wie stark der Strom ist.",1],["a7","t","Der Motor bleibt stehen, weil der Strom nicht umgepolt wird.",1],["a7","t","Ohne Kommutator bleibt der Motor stehen, weil keine Umpolung erfolgt.",1]);
+/* 2AB K1.3 Stoffumwandlung – Prüfbericht ChatGPT v4 (24.10.2026), Punkt 09: halbe, falsche und verneinte Antworten gelten nicht */
+const K13='2ab-nawi/k1-3-reaktionen/aufgaben.html';
+cases[K13]=[
+ ['a4','prod','Cu',1],['a4','prod','2 Cu',1],['a4','prod','Kupfer',1],['a4','prod','Cu (Kupfer)',1],['a4','prod','Kupferoxid',0],['a4','prod','CuO',0],['a4','prod','Kupfer(II)-oxid',0],['a4','prod','Kupfer oxid',0],
+ ['a5','warum','Außen oxidiert das Kupfer; innen fehlt weitgehend der Luftsauerstoff',1],['a5','warum','Sauerstoff',0],['a5','warum','Innen kommt keine Luft hin, weil der Brief gefaltet ist.',1],
+ ['a5','warum','Außen kommt Sauerstoff hin, innen nicht.',1],['a5','warum','Weil es außen heißer ist.',0],
+ ['a13','warum','Enzym',0],['a13','warum','Das Enzym ist nicht zerstört.',0],['a13','warum','Beim Kochen verliert die Katalase durch die Hitze ihre Funktion',1],
+ ['a13','warum','Das Enzym Katalase wurde durch das Kochen zerstört.',1],['a13','warum','Weil sie gekocht ist.',0],['a13','warum','Die Hitze hat den Biokatalysator unwirksam gemacht.',1],
+ ['a1','warum','Sauerstoff wird nicht eingebaut.',0],['a1','warum','Sauerstoff aus der Luft verbindet sich mit dem Eisen.',1],['a1','warum','Das Eisen nimmt Sauerstoff aus der Luft auf.',1],['a1','warum','Sauerstoff',0],
+ ['a11','erkl','Aktivierungsenergie wird nicht benötigt; es wird keine Wärme frei.',0],['a11','erkl','Man braucht Aktivierungsenergie zum Start, danach reicht die frei werdende Wärme für die nächsten Holzteilchen.',1],
+ ['a11','erkl','Zum Anzünden braucht man Energie, dann brennt es von selbst weiter, weil Wärme frei wird.',1],
+ ['a21','metalle','Chrom',0],['a21','metalle','Ruthenium, Cobalt, Mangan und Chrom',1],['a21','metalle','Chrom, Mangan, Kobalt, Ruthenium',1],['a21','metalle','Ruthenium, Kobalt, Mangan',0],
+ ['a22','metalle','Platin',0],['a22','metalle','Platin, Palladium, Rhodium',1],['a22','metalle','Rhodium Palladium Platin',1],
+ ['a22','duenn','Oberfläche',0],['a22','duenn','Die Metallteilchen werden nicht verbraucht und sitzen fein verteilt auf einer riesigen Oberfläche.',1],
+ ['a12','o2','0,32 g',1],['a12','o2','0.32 g',1],['a12','o2','320 mg',1],['a12','o2','0,32 kg',0],['a12','proz','26,7',1],['a12','proz','26,7 %',1],['a17','rgt','20 s',1],['a17','rgt','40 s',0],
+ ['a3','ea','2',1],['a3','ea','4',0]];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

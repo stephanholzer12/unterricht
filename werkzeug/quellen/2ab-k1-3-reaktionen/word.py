@@ -19,7 +19,7 @@ import herrichten as H
 import fachwissen as F
 
 OUT = sys.argv[1]
-VER = "v2"
+VER = "v3"
 PRE = I.PRAEFIX
 OLIVE, TEAL, RED, MUTED, RUST, INK = RGBColor(0x3B, 0x4A, 0x2F), RGBColor(0x2E, 0x7D, 0x8C), RGBColor(0xC0, 0x00, 0x00), RGBColor(0x5E, 0x66, 0x52), RGBColor(0x8C, 0x3B, 0x2E), RGBColor(0x1F, 0x2A, 0x1C)
 THEORY, BOOKRED = RGBColor(0x6E, 0x7F, 0x4E), RGBColor(0xA3, 0x3A, 0x2B)
@@ -302,8 +302,7 @@ def versuch_seite(doc, v, loesung=False):
     label(p, "Versuch im Schulbuch: " if v["buch"]["versuch"] else "Theorie im Schulbuch: ", v["buch"]["kap"], 9, INK, BOOKRED if v["buch"]["versuch"] else TEAL)
     p = para(doc, "", after=2); label(p, "Zeit: ", f"ca. {v['zeit']} min · {v['form']}", 9, INK, MUTED)
     mat_table(doc, v)
-    if not loesung:
-        p = para(doc, "", after=1, before=2); label(p, "Entsorgung und Reinigung: ", v["entsorgung"], 8.5)
+    p = para(doc, "", after=1, before=2); label(p, "Entsorgung und Reinigung: ", v["entsorgung"], 8.5)
     para(doc, "Durchführung", 10.5, True, OLIVE, after=1, keep=True)
     t = doc.add_table(rows=1, cols=2); noborders(t); widths(t, [10.8, 6.6])
     c = t.cell(0, 0); first = True
@@ -332,7 +331,7 @@ def ablauf(doc):
     rows = [[v["nr"], v["titel"], f"Stunde {v['stunde']}" if v["stunde"] else "Zusatz", v["form"], "KERN" if v["kern"] else "ZUSATZ"] for v in VD.VS]
     table(doc, ["ID", "Versuch", "Wann", "Form", "Einsatz"], rows, [1.9, 5.6, 1.6, 6.5, 1.8], 8.5)
     p = para(doc, "", after=2, before=3)
-    run(p, "6 Gruppen zu viert. ", 9.5, True); run(p, "Stationen 1–3 in Stunde 3 (Gruppe 1–3) und Stunde 4 (Gruppe 4–6); Start: Gruppe 1 bzw. 4 bei Station 1, Gruppe 2 bzw. 5 bei Station 2, Gruppe 3 bzw. 6 bei Station 3; alle 6 Minuten weiter. Protokoll am Handy: ", 9.5)
+    run(p, "6 Gruppen zu viert. ", 9.5, True); run(p, "Stunde 3 beginnt mit der Demo K1.3-V6. Danach Stationen 1 und 2 in Stunde 3 (Gruppe 1–3) und Stunde 4 (Gruppe 4–6): drei Runden à 11 Minuten – Runde 1: Gruppe 1 bzw. 4 an Station 1, Gruppe 2 bzw. 5 an Station 2, Gruppe 3 bzw. 6 macht Aufgaben; dann Station 1 → Station 2 → Aufgaben → Station 1. An der Station nur messen und beobachten, Deutung als Hausübung. Protokoll am Handy: ", 9.5)
     run(p, I.URL + "versuche.html", 9, False, TEAL)
     p = para(doc, "", after=2); run(p, "So wertest du jeden Versuch aus: ", 9.5, True, OLIVE); run(p, "Erkenntnis – Was habt ihr herausgefunden? · Interpretation – Warum ist das so? Erklärt mit den Teilchen und Elektronen. · Schlussfolgerung – Was bedeutet das für Alltag, Sport oder Bundesheer?", 9.5)
     p = para(doc, "", after=2); run(p, "Sicherheit: ", 9.5, True, RUST); run(p, " · ".join(a + " – " + b for a, b in VD.SICHERHEIT), 9)
@@ -365,7 +364,7 @@ def vs_fachwissen():
                     (r["fehlt"], True, RED if r["fehlt"] not in ("–", "") else INK)])
     t = table(doc, head, body, [3.3, 4.6] + [0.62] * 9 + [0.8, 0.8, 1.32], 7)
     for row in t.rows: row.height = Cm(0.4)
-    para(doc, "ges. = höchster gleichzeitiger Bedarf (Stationen 1–3 laufen gleichzeitig). Verbrauchsmaterial in Mengen:", 8, False, MUTED, italic=True, before=2)
+    para(doc, "ges. = höchster gleichzeitiger Bedarf (Stationen 1 und 2 laufen gleichzeitig). Verbrauchsmaterial in Mengen:", 8, False, MUTED, italic=True, before=2)
     for k, x in H.MENGEN.items():
         p = para(doc, "", after=0); run(p, "·  " + k + ": ", 8.5, True, OLIVE); run(p, x, 8.5)
     para(doc, "Checkliste »Vor der Stunde«", 10.5, True, OLIVE, after=1, before=4)

@@ -1,8 +1,8 @@
 """Herrichte-Liste K1.3: alle Lehrmittel der Versuche, Stück je Versuch, höchster gleichzeitiger Bedarf, Bestand laut Inventar, Fehlmenge."""
 import versuche_daten as VD
 
-# Versuche, die gleichzeitig laufen (Stationen 1–3); alle anderen einzeln
-SLOTS = [["K1.3-V1", "K1.3-V2"], ["K1.3-V3"], ["K1.3-V4", "K1.3-V5", "K1.3-V6"], ["K1.3-V7"], ["K1.3-V8"], ["K1.3-V9"]]
+# Versuche, die gleichzeitig laufen (Stationen 1 und 2); V6 läuft als Demo davor
+SLOTS = [["K1.3-V1", "K1.3-V2"], ["K1.3-V3"], ["K1.3-V6"], ["K1.3-V4", "K1.3-V5"], ["K1.3-V7"], ["K1.3-V8"], ["K1.3-V9"]]
 
 
 def ansaetze(v):
@@ -33,13 +33,13 @@ def tabelle():
 
 
 MENGEN = {  # Verbrauchsmaterial: was insgesamt anzusetzen ist (pro Klasse)
-    "Kupfersulfatlösung ca. 10 %": "ca. 15 g CuSO₄ · 5 H₂O in 100 ml Wasser (reicht für 5 Durchgänge à 20 ml)",
-    "Zitronensäurelösung ca. 40 %": "40 g Zitronensäure in 60 ml Wasser (6 Durchgänge à 15 ml)",
-    "Natron": "6 × 3 gehäufte Spatel ≈ 40 g",
-    "Kochsalz": "6 Portionen à 30 g für die Kältemischung + 1 Spatel für Rost-Ansatz 4",
-    "Eis": "6 × ca. 150 g zerstoßen (Kühlbox)",
+    "Kupfersulfatlösung": "15,0 g CuSO₄ · 5 H₂O auf 150 ml Lösung auffüllen (= 10 g pro 100 ml) → 6 Durchgänge à 20 ml + Reserve",
+    "Zitronensäurelösung (w = 40 %)": "60 g Zitronensäure + 90 g Wasser = 150 g (ca. 125 ml) → 6 Durchgänge à 15 ml + Reserve",
+    "Natron": "6 Portionen à 6,0 g (abgewogen)",
+    "Kochsalz": "30 g für die Demo-Kältemischung + 1 Spatel für Rost-Ansatz 4",
+    "Eis": "ca. 150 g, angetaut und zerstoßen (Kühlbox) – nur für die Demo am 10.11.",
     "Eisenwolle": "V1: 1–1,2 g · V2: 4 kleine Bäusche · V4: 6 × 1 g → ca. 10 g",
-    "Wasserstoffperoxid 3 %": "10 ml H₂O₂ 30 % + 90 ml Wasser (Handschuhe, Brille)",
-    "Brausetabletten": "9 Stück (6 Gruppen × 3 Hälften)",
+    "Wasserstoffperoxid 3 %": "10,0 g H₂O₂-Lösung 30 % (#127) + 90,0 g Wasser (Waage, Handschuhe, Brille)",
+    "Brausetabletten": "9 Stück, gleiche Sorte (6 Gruppen × 3 Hälften) · 18 Einweg-Petrischalen",
     "Kartoffel": "1 rohe + 1 gekochte (10 min)",
 }

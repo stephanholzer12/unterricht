@@ -274,14 +274,13 @@
    }
   },
   "2ab-nawi/k1-3-reaktionen": {
-   "a5": {
-    "warum": {
-     "need": 1
-    }
-   },
    "a13": {
     "warum": {
-     "need": 1
+     "contra": [
+      "(enzym|katalase)\\w*\\s+(ist|wird|wurde|bleibt)\\s+nicht\\s+(zerstört|zerstoert|kaputt|beschädigt|beschaedigt|denaturiert|unwirksam)",
+      "(enzym|katalase)\\w*\\s+(funktioniert|wirkt|arbeitet)\\s+(noch|weiter|trotzdem)",
+      "kein\\w*\\s+(enzym|katalase)\\s+(drin|enthalten|vorhanden)\\s+(war|ist)\\b(?!.*koch)"
+     ]
     }
    },
    "a19": {
@@ -289,9 +288,26 @@
      "need": 1
     }
    },
-   "a22": {
-    "duenn": {
-     "need": 1
+   "a1": {
+    "warum": {
+     "neg": true,
+     "contra": [
+      "(sauerstoff|o2|luft)\\w*\\s+(wird|wurde)\\s+(nicht|kein)\\w*\\s+(eingebaut|aufgenommen|gebunden)",
+      "verliert\\s+(an\\s+)?(masse|gewicht)"
+     ]
+    }
+   },
+   "a11": {
+    "erkl": {
+     "neg": true,
+     "contra": [
+      "aktivierungsenergie\\w*\\s+(wird|ist)\\s+nicht\\s+(nötig|noetig|notwendig|benötigt|benoetigt|gebraucht|erforderlich)",
+      "(braucht|benötigt|benoetigt)\\s+(keine|nicht)\\w*\\s+aktivier",
+      "keine\\s+(wärme|waerme|energie|hitze)\\s+(wird\\s+)?(frei|abgegeben)",
+      "(wärme|waerme|energie)\\s+wird\\s+nicht\\s+(frei|abgegeben)",
+      "brennt\\s+nicht\\s+(von\\s+selbst\\s+)?weiter",
+      "ist\\s+endotherm"
+     ]
     }
    }
   }

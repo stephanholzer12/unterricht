@@ -5,7 +5,7 @@ Eine Quelle für Handy-Seiten (Theorie-Seite, Arbeitsblatt, Quiz), Word, PPP, Ka
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
 STAND = "24.10.2026"
-V = "v2"
+V = "v3"
 ORDNER = "2ab-nawi/k1-3-reaktionen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -49,13 +49,13 @@ T = [
  {"id": "a1", "nr": 1, "title": "Leichter oder schwerer? (Demo K1.3-V1)", "src": "Buch S. 30", "own": True, "tag": "Stunde 1", "h": 1, "hl": False, "zeit": 3,
   "q": "Eisenwolle liegt auf der Waage und wird mit einer Batterie angezündet. a) Tippe VOR der Demo: Was zeigt die Waage danach? (Der Tipp zählt nicht für die Bewertung.) "
        "b) Was zeigte die Waage wirklich? c) Erkläre in 1–2 Sätzen, woher die zusätzliche Masse kommt.",
-  "hint": "Erst tippen, dann zuschauen. Info: Theorie-Seite Teil 1 »Lavoisier und die Waage«",
+  "hint": "Erst tippen, dann zuschauen (fällt die Demo aus, nennt die Lehrkraft Beispielwerte). Info: Theorie-Seite Teil 1 »Lavoisier und die Waage«",
   "type": "multi",
   "fields": [["tipp", "a) Mein Tipp vor der Demo", ["leichter", "schwerer", "gleich schwer"], False],
              ["erg", "b) Ergebnis: Die Eisenwolle ist danach …", ["schwerer", "leichter", "gleich schwer"]],
              ["warum", "c) Woher kommt die zusätzliche Masse? (1–2 Sätze)"]],
   "chk": {"erg": {"sel": "schwerer"},
-          "warum": {"kw": [["Sauerstoff aus der Luft", "sauerstoff|o2|o₂|luft"], ["wird eingebaut / verbindet sich", "verbind|eingebaut|bindet|gebunden|aufgenommen|aufnimm|reagier|oxid|dazu|hinzu|kommt"]]}},
+          "warum": {"kw": [["Sauerstoff aus der Luft", "sauerstoff|o2|o₂|luft"], ["wird eingebaut / verbindet sich", "verbind|eingebaut|einbau|bindet|gebunden|aufgenommen|aufnimm|nimmt|aufnahme|reagier|oxid|dazu|hinzu|kommt"]]}},
   "sol": [["Lösung", ["a) Die meisten tippen »leichter« – wie beim Holz, das zu Asche zerfällt.",
                       "b) schwerer (z. B. 1,20 g → ca. 1,5 g)",
                       "c) Das Eisen verbindet sich mit Sauerstoff aus der Luft zu Eisenoxid. Die Masse des eingebauten Sauerstoffs kommt dazu. "
@@ -95,17 +95,17 @@ T = [
                       "e) Oxidationsmittel = Sauerstoff (nimmt Elektronen auf) · f) Reduktionsmittel = Magnesium (gibt Elektronen ab)"]]],
   "tip": ["Elektronen wandern: Magnesium verbrennt", "theorie.html#elektronen"]},
 
- {"id": "a4", "nr": 4, "title": "Kupfer aus schwarzem Pulver", "src": "Buch-Aufgabe S. 31", "own": False, "tag": "Stunde 1", "h": 1, "hl": False, "zeit": 5,
+ {"id": "a4", "nr": 4, "title": "Kupfer aus schwarzem Pulver", "src": "Buch-Aufgabe S. 31", "own": False, "tag": "Hausübung", "h": 1, "hl": False, "zeit": 5, "opt": ["rm"],
   "q": "Schwarzes Kupferoxid und Holzkohle werden im Reagenzglas erhitzt – danach liegt rötliches Kupfer im Glas (Versuch und Video im Buch S. 31). "
        "a) Ergänze die Gleichung: C + 2 CuO → CO₂ + 2 ___ b) Wohin ist der Sauerstoff gewandert? c) Welcher Stoff wird reduziert? "
        "Zusatz: d) Bei CuO + Fe → Cu + FeO – welcher Stoff ist das Reduktionsmittel?",
-  "hint": "Info: Theorie-Seite Teil 1 »Oxidationsmittel und Reduktionsmittel« · Video: Filmtipp aus dem Buch S. 31",
+  "hint": "Hausübung bis Stunde 2. Info: Theorie-Seite Teil 1 »Oxidationsmittel und Reduktionsmittel« · Video: Filmtipp aus dem Buch S. 31 · d) ist freiwillig",
   "type": "multi",
   "fields": [["prod", "a) Es entsteht 2 … (Formel oder Name)"],
              ["wohin", "b) Der Sauerstoff wandert …", ["vom Kupfer zum Kohlenstoff", "vom Kohlenstoff zum Kupfer", "in die Luft", "er verschwindet"]],
              ["red", "c) Reduziert wird …", ["Kupferoxid (CuO)", "Kohlenstoff (C)", "Kohlenstoffdioxid (CO₂)"]],
-             ["rm", "d) Zusatz: Das Reduktionsmittel ist …", ["Eisen (Fe)", "Kupferoxid (CuO)", "Kupfer (Cu)"]]],
-  "chk": {"prod": {"kw": [["Cu / Kupfer", r"\bcu\b|kupfer"]]}, "wohin": {"sel": "vom Kupfer zum Kohlenstoff"},
+             ["rm", "d) Zusatz (freiwillig): Das Reduktionsmittel ist …", ["Eisen (Fe)", "Kupferoxid (CuO)", "Kupfer (Cu)"]]],
+  "chk": {"prod": {"kw": [["Cu / Kupfer (nicht Kupferoxid)", r"\bcu\b(?!\s*-?\s*o)|kupfer(?!\s*\(?\s*i*\s*\)?\s*-?\s*oxid)"]]}, "wohin": {"sel": "vom Kupfer zum Kohlenstoff"},
           "red": {"sel": "Kupferoxid (CuO)"}, "rm": {"sel": "Eisen (Fe)"}},
   "sol": [["Lösung", ["a) C + 2 CuO → CO₂ + 2 Cu (Kupfer)",
                       "b) Der Sauerstoff wandert vom Kupfer zum Kohlenstoff – Kohlenstoff wird oxidiert, Kupferoxid reduziert.",
@@ -115,6 +115,7 @@ T = [
 
  # ======================================================= Stunde 2 · Redox im Alltag (nach dem Test)
  {"id": "a5", "nr": 5, "title": "Der Kupferbrief (Demo K1.3-V3)", "src": "Buch S. 30", "own": True, "tag": "Stunde 2", "h": 2, "hl": False, "zeit": 3,
+  "hint": "Beobachtung in der Demo K1.3-V3 (fällt sie aus, zeigt die Lehrkraft ein Foto). Info: Theorie-Seite Teil 2.",
   "q": "Ein gefaltetes Kupferblech (»Brief«) wird in der Brennerflamme erhitzt und nach dem Abkühlen aufgeklappt. a) Tippe vorher: Wie sieht es innen aus? "
        "b) und c) Was siehst du wirklich? d) Erkläre den Unterschied in 1–2 Sätzen.",
   "type": "multi",
@@ -123,10 +124,10 @@ T = [
              ["innen", "c) Innen ist das Blech …", ["glänzend kupferrot", "schwarz", "grün"]],
              ["warum", "d) Darum ist es innen anders (1–2 Sätze)"]],
   "chk": {"aussen": {"sel": "schwarz"}, "innen": {"sel": "glänzend kupferrot"},
-          "warum": {"kw": [["Sauerstoff / Luft", "sauerstoff|luft|o2|o₂"], ["kommt innen nicht hin", "innen|kein|nicht|abgeschlossen|gefaltet|dicht|ohne|geschützt|zu"]]}},
+          "warum": {"kw": [["Sauerstoff / Luft", "sauerstoff|luft|o2|o₂"], ["innen fehlt die Luft (gefaltet, dicht)", r"innen.{0,60}(kein|kaum|wenig|nicht|ohne|fehl)|(kein|kaum|wenig|nicht|ohne).{0,60}(innen|hinein|rein\b|dazwischen|zwischen)|gefaltet|zugeklappt|zusammengeklappt|abgeschlossen|abgedichtet|luftdicht|\bdicht|verschlossen|geschützt|abgeschirmt|fehlt"]]}},
   "sol": [["Lösung", ["b) außen schwarz (Kupferoxid) · c) innen glänzend kupferrot",
                       "d) Außen kommt Sauerstoff aus der Luft an das heiße Kupfer – es wird zu schwarzem Kupferoxid oxidiert. "
-                      "Innen ist der Brief zugefaltet, dort kommt kaum Luft hin: ohne Sauerstoff keine Oxidation."]]],
+                      "Innen ist der Brief zugefaltet, dort kommt kaum Luft hin: ohne Luftsauerstoff entsteht dort kein Kupferoxid."]]],
   "tip": ["Redox im Alltag – der Kupferbrief", "theorie.html#alltag"]},
 
  {"id": "a6", "nr": 6, "title": "Redox-Detektiv", "src": "Buch S. 30", "own": True, "tag": "Stunde 2", "h": 2, "hl": False, "zeit": 3,
@@ -159,10 +160,10 @@ T = [
                       "Waschen nach der Winterfahrt: Streusalz beschleunigt das Rosten · Trocknen: ohne Wasser kein Rost"]]],
   "tip": ["Rostschutz an Gerät und Fahrzeug", "theorie.html#schutz"]},
 
- {"id": "a8", "besprechen": True, "nr": 8, "title": "Dein Pflegebefehl für den Winter", "src": "Buch S. 98", "own": True, "tag": "Stunde 2", "h": 2, "hl": False, "zeit": 5,
+ {"id": "a8", "besprechen": True, "nr": 8, "title": "Dein Pflegebefehl für den Winter", "src": "Buch S. 98", "own": True, "tag": "Hausübung", "h": 2, "hl": False, "zeit": 5,
   "q": "Kreativ und mit der Hand: Schreib ins Heft oder aufs Mini-Whiteboard einen kurzen »Pflegebefehl« mit 3 Punkten für ein Fahrzeug, eine Waffe oder deine Ausrüstung im Winter. "
        "Jeder Punkt braucht eine chemische Begründung (»…, weil …«). Fotografiere ihn und füge das Foto ein. Pflicht: Tippe deinen wichtigsten Punkt mit Begründung ab.",
-  "hint": "Handschrift statt Tippen: zuerst schreiben, dann Foto einfügen.",
+  "hint": "Hausübung bis Stunde 3. Handschrift statt Tippen: zuerst schreiben, dann Foto einfügen.",
   "type": "sketch",
   "fields": [["punkt", "Mein wichtigster Punkt mit Begründung (Pflicht)"]],
   "chk": {"punkt": {"kw": [["Begründung (weil, damit, sonst …)", r"weil|damit|denn|sonst|da |dadurch|wegen"],
@@ -179,7 +180,7 @@ T = [
        "Zusatz zu den Buch-Aufgaben: Auch bei Vorgängen ohne neuen Stoff (Gefrieren, Verdunsten) spricht man von exotherm und endotherm.",
   "type": "multi",
   "fields": [["feuer", "Holz brennt im Lagerfeuer.", EE, False],
-             ["rg", "Holz wird im geschlossenen Reagenzglas über der Flamme zersetzt – ohne Flamme hört es sofort auf.", EE, False],
+             ["rg", "Holz wird unter Luftabschluss erhitzt (die entstehenden Gase können abziehen) – ohne Flamme hört die Zersetzung auf.", EE, False],
              ["foto", "Ein Blatt betreibt Fotosynthese.", EE, False],
              ["hw", "Der Handwärmer wird warm.", EE, False],
              ["kp", "Die Sofort-Kältekompresse wird kalt.", EE, False],
@@ -188,7 +189,7 @@ T = [
   "chk": {"feuer": {"sel": "exotherm"}, "rg": {"sel": "endotherm"}, "foto": {"sel": "endotherm"}, "hw": {"sel": "exotherm"},
           "kp": {"sel": "endotherm"}, "gefr": {"sel": "exotherm"}, "schweiss": {"sel": "endotherm"}},
   "sol": [["Lösung", ["exotherm: Lagerfeuer, Handwärmer, Gefrieren (Wasser gibt beim Erstarren Wärme ab)",
-                      "endotherm: Holz im Reagenzglas zersetzen (braucht ständig Energie von außen), Fotosynthese (Lichtenergie), Kältekompresse, Verdunsten von Schweiß (kühlt die Haut)"]]],
+                      "endotherm: Holz unter Luftabschluss zersetzen (braucht ständig Wärme von außen – nie ein dicht verschlossenes Gefäß erhitzen!), Fotosynthese (Lichtenergie), Kältekompresse, Verdunsten von Schweiß (kühlt die Haut)"]]],
   "tip": ["Exotherm und endotherm", "theorie.html#exoendo"]},
 
  {"id": "a10", "nr": 10, "title": "Energiediagramme lesen", "src": "Buch S. 33–34", "own": True, "tag": "Stunde 3–4", "h": 3, "hl": False, "zeit": 5,
@@ -234,54 +235,54 @@ T = [
  # ======================================================= Stunde 4 · Katalysatoren (alle)
  {"id": "a13", "besprechen": True, "nr": 13, "title": "Was beschleunigt den Zerfall? (Demo K1.3-V7)", "src": "Versuch im Buch S. 36", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
   "q": "Wasserstoffperoxid (3 %) zerfällt nur sehr langsam in Wasser und Sauerstoff. Vier Reagenzgläser bekommen gleich viel davon. a) Tippe: In welchem schäumt es am stärksten? "
-       "b) Trag für jedes Glas ein, was du siehst. c) Ein glimmender Holzspan flammt im Schaum auf – welches Gas ist das? d) Warum schäumt die gekochte Kartoffel kaum? (1 Satz)",
+       "b) Trag für jedes Glas ein, was du siehst. c) Ein glimmender Holzspan, in das Gas über Glas 2 gehalten, flammt auf – welches Gas ist das? d) Warum schäumt die gekochte Kartoffel kaum? (1 Satz)",
   "type": "multi",
   "fields": [["tipp", "a) Mein Tipp", ["Glas 1 · ohne Zusatz", "Glas 2 · Braunstein", "Glas 3 · rohe Kartoffel", "Glas 4 · gekochte Kartoffel"], False],
              ["g1", "Glas 1 · ohne Zusatz", SCH, False], ["g2", "Glas 2 · eine Spatelspitze Braunstein", SCH, False],
-             ["g3", "Glas 3 · Scheibe rohe Kartoffel", SCH, False], ["g4", "Glas 4 · Scheibe gekochte Kartoffel", SCH, False],
+             ["g3", "Glas 3 · Würfel rohe Kartoffel", SCH, False], ["g4", "Glas 4 · gleich großer Würfel gekochte Kartoffel", SCH, False],
              ["gas", "c) Das Gas ist …", ["Sauerstoff", "Wasserstoff", "Kohlenstoffdioxid", "Stickstoff"]],
              ["warum", "d) Darum schäumt die gekochte Kartoffel kaum (1 Satz)"]],
   "chk": {"g1": {"sel": SCH[1]}, "g2": {"sel": SCH[0]}, "g3": {"sel": SCH[0]}, "g4": {"sel": SCH[1]}, "gas": {"sel": "Sauerstoff"},
           "warum": {"kw": [["Enzym / Biokatalysator", "enzym|katalase|katalysator|biokatalys|eiweiß|eiweiss|protein"],
-                           ["durch Hitze zerstört", "hitze|koch|zerstör|kaputt|denatur|heiß|heiss|zerfall|unwirksam|funktioniert nicht"]]}},
+                           ["durch Hitze unwirksam", "hitze|koch|gekocht|zerstör|kaputt|denatur|heiß|heiss|unwirksam|funktion|wirkt nicht|arbeitet nicht|verändert"]]}},
   "sol": [["Lösung", ["Glas 1 kaum · Glas 2 (Braunstein) schäumt deutlich · Glas 3 (rohe Kartoffel) schäumt deutlich · Glas 4 (gekochte Kartoffel) kaum",
                       "c) Sauerstoff (Glimmspanprobe): 2 H₂O₂ → 2 H₂O + O₂",
-                      "d) In der rohen Kartoffel steckt das Enzym Katalase – ein Biokatalysator. Beim Kochen wird das Enzym durch die Hitze zerstört."]]],
+                      "d) In der rohen Kartoffel steckt das Enzym Katalase – ein Biokatalysator. Beim Kochen verliert das Enzym durch die Hitze seine Form und damit seine Wirkung."]]],
   "tip": ["Katalysator-Demo und Enzyme", "theorie.html#enzyme"]},
 
  {"id": "a14", "nr": 14, "title": "Katalysator – stimmt das?", "src": "Buch-Aufgabe S. 37", "own": False, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 3,
   "q": "Entscheide bei jeder Aussage: stimmt oder stimmt nicht?",
   "type": "multi",
-  "fields": [["s1", "Ein positiver Katalysator senkt die Aktivierungsenergie.", SN, False],
+  "fields": [["s1", "Ein Katalysator senkt die Aktivierungsenergie.", SN, False],
              ["s2", "Ein Katalysator wird bei der Reaktion verbraucht und muss ständig nachgefüllt werden.", SN, False],
-             ["s3", "Ein negativer Katalysator senkt die Aktivierungsenergie.", SN, False],
+             ["s3", "Ein Hemmstoff (im Buch: »negativer Katalysator«) macht eine Reaktion langsamer.", SN, False],
              ["s4", "Enzyme wirken in unserem Körper als Katalysatoren.", SN, False],
              ["s5", "Der Autokatalysator ist schuld, dass ein Auto mehr Schadstoffe ausstößt.", SN, False],
              ["s6", "Ein Katalysator macht aus einer endothermen eine exotherme Reaktion.", SN, False]],
-  "chk": {"s1": {"sel": "stimmt"}, "s2": {"sel": "stimmt nicht"}, "s3": {"sel": "stimmt nicht"}, "s4": {"sel": "stimmt"},
+  "chk": {"s1": {"sel": "stimmt"}, "s2": {"sel": "stimmt nicht"}, "s3": {"sel": "stimmt"}, "s4": {"sel": "stimmt"},
           "s5": {"sel": "stimmt nicht"}, "s6": {"sel": "stimmt nicht"}},
-  "sol": [["Lösung", ["stimmt: 1 und 4",
-                      "stimmt nicht: 2 (ein Katalysator wird nicht verbraucht), 3 (ein negativer Katalysator erhöht die Aktivierungsenergie), "
+  "sol": [["Lösung", ["stimmt: 1, 3 und 4 (Hemmstoffe bremsen Reaktionen – zum Beispiel, indem sie einen Katalysator blockieren)",
+                      "stimmt nicht: 2 (ein Katalysator wird nicht verbraucht), "
                       "5 (der Autokatalysator verringert den Schadstoffausstoß), 6 (er ändert nur den Weg und das Tempo, nicht die Energie von Anfang und Ende)"]]],
   "tip": ["Was ist ein Katalysator?", "theorie.html#kat"]},
 
  # ======================================================= Stunde 5 · Reaktionsgeschwindigkeit + Abschluss
- {"id": "a15", "besprechen": True, "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 7,
+ {"id": "a15", "besprechen": True, "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Hausübung", "h": 5, "hl": False, "zeit": 10, "opt": ["zusatz"],
   "q": "Ein Kadett hat eine KI gefragt: »Wie funktioniert ein Autokatalysator?« Die Antwort: »Der Autokatalysator ist ein feiner Filter, der die giftigen Abgase zurückhält. "
-       "Er besteht aus Keramik, die mit Edelmetallen wie Platin, Palladium und Rhodium beschichtet ist. Der Katalysator wird dabei langsam verbraucht und muss bei jedem Service "
+       "Er besteht aus einer Keramikwabe mit einer Schicht, in der Edelmetalle wie Platin, Palladium und Rhodium fein verteilt sind. Der Katalysator wird dabei langsam verbraucht und muss bei jedem Service "
        "nachgefüllt werden. Er arbeitet am besten, wenn er kalt ist – deshalb stößt ein Auto direkt nach dem Start die wenigsten Schadstoffe aus. Aus giftigem "
        "Kohlenstoffmonoxid macht er Kohlenstoffdioxid.« Die Antwort klingt gut, enthält aber drei Fehler. Finde sie und schreib zu jedem den richtigen Satz. "
        "Zusatz: Stell die Frage selbst einer KI und prüfe die Antwort genauso.",
-  "hint": "Lies im Buch S. 35 oder auf der Theorie-Seite Teil 4 »Der Autokatalysator« nach. KI-Antworten immer mit einer zweiten Quelle prüfen!",
+  "hint": "Hausübung bis Stunde 5. Lies im Buch S. 35 oder auf der Theorie-Seite Teil 4 »Der Autokatalysator« nach. KI-Antworten immer mit einer zweiten Quelle prüfen! Das Zusatzfeld ist freiwillig.",
   "type": "multi",
-  "fields": [["fehler", "Die drei Fehler – und was richtig ist"], ["zusatz", "Zusatz: Was hat deine KI geantwortet – stimmt es?"]],
+  "fields": [["fehler", "Die drei Fehler – und was richtig ist"], ["zusatz", "Zusatz (freiwillig): Was hat deine KI geantwortet – stimmt es?"]],
   "chk": {"fehler": {"kw": [["kein Filter – er wandelt um", r"kein filter|nicht.{0,20}filter|umwand|wandelt|verwandelt|umgewandelt|reagier"],
                              ["wird nicht verbraucht", r"nicht verbraucht|unverändert|unveraendert|bleibt|nicht nachgef|kein.{0,10}nachf|wird nicht"],
                              ["muss heiß sein – Kaltstart ist schlecht", r"heiß|heiss|warm|temperatur|kaltstart|nach dem start|300"]]}},
   "sol": [["Lösung", ["1. Kein Filter: Der Katalysator hält nichts zurück, er wandelt die Schadstoffe in harmlosere Stoffe um (CO → CO₂, Stickoxide → Stickstoff, Kohlenwasserstoffe → CO₂ + Wasser).",
                       "2. Ein Katalysator wird nicht verbraucht – er liegt nach der Reaktion unverändert vor.",
                       "3. Er arbeitet erst, wenn er heiß ist (ab etwa 300 °C). Direkt nach dem Kaltstart gelangen die meisten Schadstoffe ins Freie.",
-                      "Richtig sind: Keramik mit Platin, Palladium und Rhodium · CO wird zu CO₂."]]],
+                      "Richtig sind: Keramikwabe mit fein verteilten Edelmetallen (Platin, Palladium, Rhodium) · CO wird zu CO₂."]]],
   "tip": ["Der Autokatalysator", "theorie.html#autokat"]},
 
  {"id": "a16", "nr": 16, "title": "Vier Stellschrauben für das Tempo", "src": "Buch-Aufgabe S. 37", "own": False, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 4,
@@ -289,7 +290,7 @@ T = [
   "type": "multi",
   "fields": [["span", "Für das Lagerfeuer wird das Holz in dünne Späne gespalten.", ST, False],
              ["kuehl", "Die Feldverpflegung kommt im Sommer in die Kühlbox.", ST, False],
-             ["blas", "Mit dem Blasrohr wird Luft in die Glut geblasen.", ST, False],
+             ["blas", "Ein glimmender Holzspan flammt in reinem Sauerstoff hell auf – in Luft glimmt er nur.", ST, False],
              ["auspuff", "Im Auspuff wandeln Platin und Rhodium die Abgase rasch um.", ST, False],
              ["mehl", "In einer Mühle explodiert feiner Mehlstaub.", ST, False],
              ["fieber", "Bei Fieber laufen Vorgänge im Körper schneller ab.", ST, False],
@@ -297,26 +298,27 @@ T = [
              ["schnell", "Eine Reaktion läuft am schnellsten bei …", ["hoher Temperatur und großer Oberfläche", "niedriger Temperatur und kleiner Oberfläche"], False]],
   "chk": {"span": {"sel": ST[0]}, "kuehl": {"sel": ST[1]}, "blas": {"sel": ST[2]}, "auspuff": {"sel": ST[3]}, "mehl": {"sel": ST[0]},
           "fieber": {"sel": ST[1]}, "speichel": {"sel": ST[3]}, "schnell": {"sel": "hoher Temperatur und großer Oberfläche"}},
-  "sol": [["Lösung", ["Oberfläche: Späne, Mehlstaub · Temperatur: Kühlbox, Fieber · Konzentration: Luft (mehr Sauerstoff) in die Glut · Katalysator: Auspuff, Amylase",
+  "sol": [["Lösung", ["Oberfläche: Späne, Mehlstaub · Temperatur: Kühlbox, Fieber · Konzentration: reiner Sauerstoff statt Luft (Luft hat nur rund 21 % Sauerstoff) · Katalysator: Auspuff, Amylase",
                       "Am schnellsten bei hoher Temperatur und großer Oberfläche."]]],
   "tip": ["Vier Stellschrauben für das Tempo", "theorie.html#tempo"]},
 
  {"id": "a17", "nr": 17, "title": "Brausetablette im Test (Versuch K1.3-V8)", "src": "Buch S. 36", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 5,
-  "q": "Trag eure Messwerte aus dem Versuch K1.3-V8 ein (Zeit, bis es nicht mehr sprudelt). Dann: Welcher Ansatz war am langsamsten? "
-       "e) Rechne mit der Faustregel: Eine Tablette braucht in Wasser von 20 °C 80 s. Wie lange braucht sie ungefähr bei 40 °C?",
+  "hint": "Messwerte aus dem Versuch K1.3-V8 (fällt er aus, nennt die Lehrkraft Beispielwerte). Eure Zeiten dürfen von den Beispielen abweichen.",
+  "q": "Trag eure Messwerte aus dem Versuch K1.3-V8 ein (Zeit, bis es nicht mehr sprudelt). d) Welcher Ansatz sollte laut Theorie am langsamsten sein? "
+       "e) Modellrechnung mit der Faustregel (nicht eure Messung): Eine Tablette braucht in Wasser von 20 °C 80 s. Wie lange bräuchte sie ungefähr bei 40 °C?",
   "type": "multi",
-  "fields": [["t1", "a) ganze halbe Tablette, kaltes Wasser – Zeit in s"], ["t2", "b) zerriebene halbe Tablette, kaltes Wasser – Zeit in s"],
-             ["t3", "c) ganze halbe Tablette, warmes Wasser – Zeit in s"],
-             ["schnell", "d) Am langsamsten war …", ["die ganze Tablette im kalten Wasser", "die zerriebene Tablette im kalten Wasser", "die ganze Tablette im warmen Wasser"]],
+  "fields": [["t1", "a) A · unzerkleinerte halbe Tablette, kaltes Wasser – Zeit in s"], ["t2", "b) B · zerdrückte halbe Tablette, kaltes Wasser – Zeit in s"],
+             ["t3", "c) C · unzerkleinerte halbe Tablette, warmes Wasser – Zeit in s"],
+             ["schnell", "d) Laut Theorie am langsamsten ist …", ["A · unzerkleinert im kalten Wasser", "B · zerdrückt im kalten Wasser", "C · unzerkleinert im warmen Wasser"]],
              ["rgt", "e) Zeit bei 40 °C (mit Einheit)"]],
-  "chk": {"schnell": {"sel": "die ganze Tablette im kalten Wasser"}, "rgt": {"num": 20, "unit": "s"}},
-  "sol": [["Lösung", ["a)–c) Messwerte der Gruppe. Typisch: ganz, kalt am langsamsten (ca. 60–120 s); zerrieben und warm deutlich schneller.",
-                      "d) Die ganze Tablette im kalten Wasser – kleine Oberfläche und niedrige Temperatur.",
-                      "e) Faustregel: +10 °C → etwa doppelt so schnell. 20 °C → 30 °C: 40 s · 30 °C → 40 °C: 20 s. Also ca. 20 s."]]],
+  "chk": {"schnell": {"sel": "A · unzerkleinert im kalten Wasser"}, "rgt": {"num": 20, "unit": "s"}},
+  "sol": [["Lösung", ["a)–c) Messwerte der Gruppe. Beispiel: A unzerkleinert, kalt ca. 60–120 s; B und C deutlich schneller (oft 20–50 s) – welcher von beiden schneller ist, kann wechseln. Eure Werte dürfen abweichen.",
+                      "d) A – die unzerkleinerte halbe Tablette im kalten Wasser: kleinste Oberfläche und niedrigste Temperatur.",
+                      "e) Modellrechnung mit der Faustregel: +10 °C → etwa doppelt so schnell. 20 °C → 30 °C: 40 s · 30 °C → 40 °C: 20 s. Also ca. 20 s. Die echte Brausezeit umfasst auch das Auflösen und folgt der Regel nur ungefähr."]]],
   "tip": ["Temperatur – die Faustregel", "theorie.html#rgt"]},
 
  {"id": "a18", "nr": 18, "title": "Partnercheck – fragt euch gegenseitig ab", "src": "Buch S. 30–36", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 6,
-  "q": "Arbeitet zu zweit, Handy von B bleibt weg. A öffnet auf der Theorie-Seite die »Partnercheck-Karten« (Teil 5) und stellt B drei Fragen. B antwortet mündlich, "
+  "q": "Gleich zu Beginn von Stunde 5 (statt »Weißt du noch?«): Arbeitet zu zweit, Handy von B bleibt weg. A öffnet auf der Theorie-Seite die »Partnercheck-Karten« (Teil 5) und stellt B drei Fragen. B antwortet mündlich, "
        "A vergleicht mit der Lösung und hakt ab. Dann tauscht ihr. Trag ein, mit wem du geübt hast, wie viele deiner Antworten richtig waren und was du nochmal lernen musst.",
   "type": "multi",
   "fields": [["partner", "Partnercheck mit (Name)"], ["richtig", "Meine Antworten: richtig waren …", ["3 von 3", "2 von 3", "1 von 3", "0 von 3"], False],
@@ -326,8 +328,8 @@ T = [
 
  # ======================================================= Für Schnelle und Neugierige
  {"id": "a19", "nr": 19, "title": "Science oder Fiction? Wasser aus Raketentreibstoff", "src": "Buch S. 34–35", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 6,
-  "q": "Im Film »Der Marsianer« (2015) braucht ein gestrandeter Astronaut Wasser. Er leitet Raketentreibstoff (Hydrazin, N₂H₄) über einen Katalysator, der ihn in Stickstoff "
-       "und Wasserstoff zerlegt, und verbrennt den Wasserstoff dann mit Sauerstoff. a) Science oder Fiction? b) Welche Aufgabe hat der Katalysator? "
+  "q": "Im Film »Der Marsianer« (2015) braucht ein gestrandeter Astronaut Wasser. Er leitet Raketentreibstoff (Hydrazin, N₂H₄) über einen Katalysator, der ihn zu einem heißen Gasgemisch "
+       "zerlegt – darin ist unter anderem Wasserstoff –, und verbrennt den Wasserstoff dann mit Sauerstoff. a) Science oder Fiction? b) Welche Aufgabe hat der Katalysator? "
        "c) Warum ist das Verbrennen des Wasserstoffs gefährlich? (Tipp: Knallgas, Buch S. 35)",
   "type": "multi",
   "fields": [["sf", "a) Das ist …", ["Science – das Prinzip funktioniert wirklich", "Fiction – Wasser kann man nicht herstellen"]],
@@ -335,7 +337,7 @@ T = [
   "chk": {"sf": {"sel": "Science – das Prinzip funktioniert wirklich"},
           "kat": {"kw": [["zerlegt / beschleunigt / senkt Aktivierungsenergie", "zerleg|zerfall|spalt|beschleun|aktivier|schneller|startet"]]},
           "gef": {"kw": [["Knallgas / Explosion", "knall|explo|heftig|brand|zünd|feuer|knallt"]]}},
-  "sol": [["Lösung", ["a) Science: Satelliten-Steuerdüsen zerlegen Hydrazin wirklich an einem Katalysator (meist Iridium). Wasserstoff + Sauerstoff → Wasser (2 H₂ + O₂ → 2 H₂O).",
+  "sol": [["Lösung", ["a) Science: Satelliten-Steuerdüsen zerlegen Hydrazin wirklich an einem Katalysator (meist Iridium) – es entsteht ein heißes Gemisch aus Stickstoff, Wasserstoff und Ammoniak. Wasserstoff + Sauerstoff → Wasser (2 H₂ + O₂ → 2 H₂O).",
                       "b) Er sorgt dafür, dass das Hydrazin schnell zerfällt – er senkt die Aktivierungsenergie und wird selbst nicht verbraucht.",
                       "c) Wasserstoff und Sauerstoff bilden Knallgas: Die Reaktion ist stark exotherm und kann explodieren – auch im Film geht etwas schief."]]],
   "tip": ["Für Schnelle: Science oder Fiction?", "theorie.html#schnelle"]},
@@ -354,53 +356,57 @@ T = [
   "tip": ["Für Schnelle: Oxidationszahlen", "theorie.html#oz"]},
 
  {"id": "a21", "nr": 21, "title": "Forschung: Ein Ersatz für Iridium", "src": "Recherche im Internet", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 8,
-  "q": "Für grünen Wasserstoff wird Wasser mit Strom gespalten. Die besten Katalysatoren dafür enthalten bisher Iridium – eines der seltensten Metalle der Erde. "
+  "q": "Für grünen Wasserstoff wird Wasser mit Strom gespalten. Bei einem wichtigen Verfahren (in saurer Umgebung) enthalten die besten Katalysatoren für den Sauerstoff-Teil bisher Iridium – eines der seltensten Metalle der Erde. "
        "Ein Forschungsteam der Northwestern University (USA) stellte im August 2025 gemeinsam mit dem Toyota Research Institute einen Ersatz vor. "
-       "a) Welche Metalle verwendeten die Forschenden statt Iridium? b) Wie lange lief der neue Katalysator im Test stabil? "
+       "a) Welche vier Metalle verwendeten die Forschenden statt Iridium? b) Wie lange lief der neue Katalysator im Test stabil? "
        "c) Warum ist das auch eine Frage der Wirtschaft und Sicherheit für Europa? (1–2 Sätze)",
-  "hint": "Recherche im Internet – Suchtipp: »Iridium Ersatz Katalysator Northwestern 2025« (z. B. ingenieur.de)",
+  "hint": "Recherche im Internet: https://news.northwestern.edu/stories/2025/08/clean-hydrogens-iridium-problem-solved-in-an-afternoon (Englisch) oder auf Deutsch: https://www.ingenieur.de/technik/fachbereiche/chemie/wasserstoffproduktion-neue-katalysatoren-loesen-iridium-engpass/",
   "type": "multi",
-  "fields": [["metalle", "a) Metalle statt Iridium"], ["dauer", "b) Dauer im Test"], ["warum", "c) Wirtschaft und Sicherheit (1–2 Sätze)"]],
-  "chk": {"metalle": {"kw": [["Ruthenium, Kobalt, Mangan oder Chrom", "ruthen|kobalt|cobalt|mangan|chrom"]]},
+  "fields": [["metalle", "a) Die vier Metalle statt Iridium"], ["dauer", "b) Dauer im Test"], ["warum", "c) Wirtschaft und Sicherheit (1–2 Sätze)"]],
+  "chk": {"metalle": {"kw": [["Ruthenium", "ruthen"], ["Kobalt", "kobalt|cobalt"], ["Mangan", "mangan"], ["Chrom", "chrom"]]},
           "dauer": {"kw": [["über 1000 Stunden", r"1\.?000|tausend"]]},
           "warum": {"kw": [["selten, teuer, abhängig", "abhängig|abhaengig|selten|teuer|knapp|rohstoff|import|preis|kosten|versorg|china|südafrika"]]}},
-  "sol": [["Lösung", ["a) Ruthenium, Kobalt, Mangan und Chrom (Ruthenium ist auch selten, aber viel billiger als Iridium; Kobalt, Mangan und Chrom sind häufig)", "b) über 1000 Stunden, laut Studie bei rund einem Sechzehntel der Kosten",
+  "sol": [["Lösung", ["a) Ruthenium, Kobalt, Mangan und Chrom (Ruthenium ist auch selten, aber viel billiger als Iridium; Kobalt, Mangan und Chrom sind häufig)", "b) über 1000 Stunden, laut Studie bei rund einem Sechzehntel der Kosten – ein Laborergebnis; bis zum Einsatz im Großbetrieb ist laut den Forschenden noch viel zu tun",
                       "c) Iridium ist sehr selten und teuer und fällt fast nur beim Platinabbau in wenigen Ländern an. Wer Katalysatoren aus häufigeren Metallen bauen kann, "
                       "macht Europa unabhängiger von Importen und die Energiewende billiger."]]],
   "tip": ["Für Schnelle: Was weiß die Forschung noch nicht?", "theorie.html#forschung"]},
 
  {"id": "a22", "nr": 22, "title": "Wirtschaft: Warum werden Katalysatoren gestohlen?", "src": "Recherche im Internet", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 5,
   "q": "Im März 2026 erwischte die Polizei in Wien-Simmering drei Männer, die an parkenden Autos mit dem Winkelschleifer die Katalysatoren abschnitten (Bericht auf wien.orf.at). "
-       "a) Welche Edelmetalle machen einen Katalysator so wertvoll? b) Warum genügt im Katalysator eine hauchdünne Schicht davon – und warum ist die Oberfläche trotzdem riesig? (2 Sätze)",
+       "a) Nenne die drei Edelmetalle, die einen Katalysator so wertvoll machen. b) Warum genügt im Katalysator wenig Edelmetall – und warum ist die wirksame Oberfläche trotzdem riesig? (2 Sätze)",
+  "hint": "Bericht: https://wien.orf.at/stories/3346365/ · Info: Theorie-Seite Teil 4 »Der Autokatalysator«",
   "type": "multi",
-  "fields": [["metalle", "a) Edelmetalle im Katalysator"], ["duenn", "b) Dünne Schicht, große Oberfläche (2 Sätze)"]],
-  "chk": {"metalle": {"kw": [["Platin, Palladium oder Rhodium", "platin|pallad|rhod"]]},
-          "duenn": {"kw": [["wird nicht verbraucht", "nicht verbraucht|bleibt|unverändert|unveraendert|wieder"],
-                           ["große Oberfläche = mehr Kontakt", "oberfläche|oberflaeche|kontakt|berühr|schneller|kanäle|kanaele|wabe|viele"]]}},
-  "sol": [["Lösung", ["a) Platin, Palladium und Rhodium – Rhodium ist laut ORF mehr als doppelt so viel wert wie gleich schweres 750er-Gold.",
-                      "b) Ein Katalysator wird nicht verbraucht, deshalb reicht wenig. Die Reaktion läuft aber nur dort, wo das Abgas das Metall berührt – "
-                      "darum ist es auf eine Keramikwabe mit tausenden feinen Kanälen aufgedampft (riesige Oberfläche)."]]],
+  "fields": [["metalle", "a) Die drei Edelmetalle"], ["duenn", "b) Wenig Metall, große Oberfläche (2 Sätze)"]],
+  "chk": {"metalle": {"kw": [["Platin", "platin"], ["Palladium", "pallad"], ["Rhodium", "rhod"]]},
+          "duenn": {"kw": [["wird nicht verbraucht / wirkt immer wieder", "nicht verbraucht|bleibt|unverändert|unveraendert|immer wieder|wiederholt|mehrmals|nochmal"],
+                           ["fein verteilt, große Oberfläche", "oberfläche|oberflaeche|fein verteilt|kontakt|berühr|kanäle|kanaele|wabe|poren|porös|poroes|teilchen"]]}},
+  "sol": [["Lösung", ["a) Platin, Palladium und Rhodium – Rhodium war laut ORF (März 2026) mehr als doppelt so viel wert wie gleich schweres 750er-Gold (Preise schwanken).",
+                      "b) Jedes Metallteilchen kann immer wieder an Reaktionen mitwirken – es wird nicht verbraucht, deshalb reicht wenig. Die Reaktion läuft nur dort, wo das Abgas das Metall berührt: "
+                      "Darum sitzen die Edelmetalle fein verteilt in einer porösen Schicht auf einer Keramikwabe mit tausenden feinen Kanälen (riesige Oberfläche)."]]],
   "tip": ["Der Autokatalysator", "theorie.html#autokat"]},
 
- {"id": "a23", "nr": 23, "title": "Kreativ-Challenge: Comic oder Werbespot", "src": "Buch S. 34", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 10,
-  "q": "Wähle: A) Zeichne einen Comic mit 3–4 Bildern: Eine Reaktion muss über einen Berg (Aktivierungsenergie) – allein schafft sie es kaum, mit einem Katalysator findet sie einen niedrigeren Pass. "
-       "B) Erfinde einen Werbespot (höchstens 30 Sekunden) für den Katalysator und nimm ihn als Sprachnachricht oder Video auf (Abgabe in LMS). "
-       "Füge ein Foto deines Comics bzw. ein Standbild ein und beschreibe in 1 Satz, was er zeigt.",
+ {"id": "a23", "nr": 23, "title": "Kreativ-Challenge: Video, Podcast oder Plakat", "src": "Buch S. 34", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 25,
+  "q": "Erkläre neuen Rekruten, was ein Katalysator macht – allein oder zu zweit, als Hausübung (ca. 25 min). Wähle eine Form: "
+       "A) Plakat (A3, mit der Hand gezeichnet) · B) Erklärvideo (höchstens 2 Minuten) · C) Podcast (höchstens 2 Minuten). "
+       "Pflichtinhalte: Aktivierungsenergie als »Berg«, der Katalysator öffnet einen niedrigeren Weg, er wird nicht verbraucht, ein Beispiel (Autokatalysator oder Enzym). "
+       "Regeln: Andere Personen nur mit deren Zustimmung zeigen oder aufnehmen · keine fremde Musik und keine fremden Bilder · KI-Hilfe angeben. "
+       "Abgabe: Plakat als Foto hier einfügen; Video oder Podcast in LMS hochladen (Teams nur, wenn die Datei zu groß ist) und hier ein Standbild bzw. einen Screenshot der Abgabe einfügen.",
   "type": "sketch",
-  "fields": [["titel", "Titel und 1 Satz, was dein Comic oder Spot zeigt"]],
+  "fields": [["titel", "Form, Titel und 1–2 Sätze zum Inhalt (bei Video/Podcast: »in LMS hochgeladen am …«)"]],
   "chk": {"titel": {"kw": [["Aktivierungsenergie / Berg", "aktivier|berg|hügel|huegel|barriere|hürde|huerde|pass"],
                             ["Katalysator", "katalys|enzym|abkürz|abkuerz|tunnel|pass|schneller"]]}},
-  "sol": [["Bewertung", ["Selbst bewerten: Berg = Aktivierungsenergie, Katalysator = niedrigerer Weg, Reaktion kommt schneller ans Ziel, Katalysator bleibt übrig."]]],
+  "sol": [["Bewertung", ["Raster (10 Punkte): fachlich richtig 4 · Pflichtinhalte vorhanden (Berg = Aktivierungsenergie, niedrigerer Weg, nicht verbraucht, Beispiel) 2 · verständlich und gegliedert 2 · kreativ 1 · Länge und Abgabe eingehalten 1.",
+                         "Musterinhalt: Ohne Katalysator müssen die Teilchen über einen hohen Berg – das schaffen nur wenige. Der Katalysator öffnet einen niedrigeren Pass, viel mehr Teilchen kommen ans Ziel, er selbst bleibt übrig (Autokatalysator: CO → CO₂; Enzym Katalase: H₂O₂ → Wasser + Sauerstoff)."]]],
   "tip": ["Aktivierungsenergie – der Berg vor jeder Reaktion", "theorie.html#aktivierung"]},
 ]
 assert [t["nr"] for t in T] == list(range(1, 24))
 PFLICHT = [t["nr"] for t in T if t["h"]]
 
-GRP = {1: "Stunde 1 · Di 03.11. · Redoxreaktionen (Buch S. 30–31)",
-       2: "Stunde 2 · Do 05.11. · nach dem Test: Redox im Alltag, Rost (Buch S. 30–31, 98)",
+GRP = {1: "Stunde 1 · Di 03.11. · Redoxreaktionen (Buch S. 30–31) · Aufgabe 4 als Hausübung",
+       2: "Stunde 2 · Do 05.11. · nach dem Test: Redox im Alltag, Rost (Buch S. 30–31, 98) · Aufgabe 8 als Hausübung",
        3: "Stunde 3–4 · Di 10.11. / Do 12.11. · Energie – während die anderen Gruppen an den Stationen sind (Buch S. 32–34)",
        4: "Stunde 4 · Do 12.11. · Katalysatoren (Buch S. 34–36)",
-       5: "Stunde 5 · Di 17.11. · Reaktionsgeschwindigkeit und Abschluss (Buch S. 35–36)",
+       5: "Stunde 5 · Di 17.11. · Reaktionsgeschwindigkeit und Abschluss (Buch S. 35–36) · Aufgabe 15 als Hausübung",
        0: "Für Schnelle und Neugierige · optional"}
 
 LERNZIELE = ["**Oxidation** als Abgabe und **Reduktion** als Aufnahme von Elektronen erklären und bei einer Redoxreaktion sagen, wer Elektronen abgibt und wer sie aufnimmt",
@@ -425,7 +431,8 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["endotherm", "Reaktion nimmt Energie (meist Wärme) aus der Umgebung auf"],
                 ["Energiediagramm", "zeigt die Energie der Ausgangsstoffe und Endstoffe im Verlauf einer Reaktion"],
                 ["Aktivierungsenergie", "Energie, die man zuführen muss, damit eine Reaktion startet"],
-                ["Katalysator", "Stoff, der die Aktivierungsenergie senkt (positiver K.) oder erhöht (negativer K.) und dabei nicht verbraucht wird"],
+                ["Katalysator", "Stoff, der eine Reaktion beschleunigt, weil er einen Weg mit niedrigerer Aktivierungsenergie öffnet – er wird dabei nicht verbraucht"],
+                ["Hemmstoff (Inhibitor)", "Stoff, der eine Reaktion verlangsamt – im Buch »negativer Katalysator«"],
                 ["Enzym", "Biokatalysator in Lebewesen, z. B. Amylase im Speichel, Katalase in der Kartoffel"],
                 ["Reaktionsgeschwindigkeit", "wie schnell Ausgangsstoffe zu Endstoffen werden – hängt von Oberfläche, Temperatur, Konzentration und Katalysator ab"],
                 ["Faustregel (RGT-Regel)", "10 °C wärmer → viele Reaktionen laufen etwa doppelt so schnell"]]
@@ -471,7 +478,7 @@ PARTNERKARTEN = [("Was ist eine Oxidation – heute?", "Abgabe von Elektronen"),
 STOLPERSTEINE = [("Oxidation = Sauerstoff", "Heute heißt Oxidation **Elektronenabgabe** – Sauerstoff muss nicht dabei sein (Eisen in Kupfersulfat). Kadetten bleiben oft beim alten Begriff."),
                  ("Mittel verwechselt", "Das **Oxidationsmittel wird reduziert**, das **Reduktionsmittel wird oxidiert** – es »bewirkt« beim Partner das Gegenteil. Merksatz: Das Mittel macht es beim anderen."),
                  ("»Verbrennen macht leichter«", "Bei Eisenwolle steigt die Masse (Sauerstoff wird eingebaut); bei Holz scheint sie zu sinken, weil Gase entweichen. Die **Gesamtmasse bleibt erhalten**."),
-                 ("Aktivierungsenergie = endotherm", "Auch exotherme Reaktionen brauchen einen Start (Streichholz). Endotherm heißt: Es muss **ständig** Energie zugeführt werden."),
+                 ("Aktivierungsenergie = endotherm", "Auch exotherme Reaktionen brauchen einen Start (Streichholz). Endotherm heißt: Der Vorgang **nimmt insgesamt Wärme auf** – aus der Mischung und der Umgebung (es wird kalt) oder durch ständiges Heizen."),
                  ("Katalysator als Filter oder Verbrauchsstoff", "Der Katalysator **wandelt um** und wird **nicht verbraucht**; er ändert nur den Weg (Aktivierungsenergie), nicht die Energie von Anfang und Ende.")]
 
 QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchseite)
@@ -503,10 +510,10 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
   "Die Energiedifferenz wurde an die Umgebung abgegeben.", "Buch S. 33"),
  ("Energie", "Was ist die Aktivierungsenergie?", ["die Energie zum Start einer Reaktion", "die Energie, die am Ende übrig bleibt", "die Energie im Katalysator", "die Energie des Lichts"],
   "Wie ein Berg, über den die Teilchen zuerst müssen – z. B. das Streichholz beim Lagerfeuer.", "Buch S. 34"),
- ("Katalysator", "Was macht ein positiver Katalysator?", ["Er senkt die Aktivierungsenergie.", "Er erhöht die Aktivierungsenergie.", "Er wird verbraucht.", "Er filtert Stoffe heraus."],
+ ("Katalysator", "Was macht ein Katalysator mit der Aktivierungsenergie?", ["Er senkt sie.", "Er erhöht sie.", "Er verbraucht sie vollständig.", "Er filtert sie heraus."],
   "Mit niedrigerem »Berg« schaffen viel mehr Teilchen den Start – die Reaktion läuft schneller.", "Buch S. 34"),
  ("Katalysator", "Welche Metalle stecken im Autokatalysator?", ["Platin, Palladium, Rhodium", "Eisen, Kupfer, Zink", "Gold, Silber, Blei", "Aluminium und Magnesium"],
-  "Die Edelmetalle sind hauchdünn auf einen Keramikträger aufgedampft.", "Buch S. 35"),
+  "Die Edelmetalle sitzen fein verteilt in einer porösen Schicht auf einer Keramikwabe.", "Buch S. 35"),
  ("Katalysator", "Wie nennt man Katalysatoren in Lebewesen?", ["Enzyme", "Ionen", "Hormone", "Oxide"],
   "Enzyme wie die Amylase im Speichel sind Biokatalysatoren.", "Buch S. 35"),
  ("Katalysator", "Wasserstoffperoxid mit Braunstein schäumt stark. Welches Gas entsteht?", ["Sauerstoff", "Wasserstoff", "Kohlenstoffdioxid", "Chlor"],

@@ -6,7 +6,7 @@ from openpyxl.styles import Font, PatternFill, Alignment
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import inhalt as I
 
-OUT = sys.argv[1]; VER = "v1"
+OUT = sys.argv[1]; VER = "v2"
 wb = Workbook()
 a = wb.active; a.title = "Anleitung"
 for r in [["Klassenspiel K1.3 Stoffumwandlung – " + str(len(I.QUIZ)) + " Fragen (dieselben wie im Handy-Quiz)"],
