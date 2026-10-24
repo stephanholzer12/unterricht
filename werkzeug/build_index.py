@@ -406,7 +406,8 @@ def seite_begriffe(k, units):
     for b, _, _ in alle:
         if buchstabe(b) not in buchst:
             buchst.append(buchstabe(b))
-    out.append(f'<div class="card noprint"><label for="such" class="eyebrow">BEGRIFF SUCHEN · {len(alle)} BEGRIFFE AUS {len({id(u) for _, _, u in alle})} EINHEITEN</label>'
+    n_einheiten = len({id(u) for _, _, u in alle})
+    out.append(f'<div class="card noprint"><label for="such" class="eyebrow">BEGRIFF SUCHEN · {len(alle)} BEGRIFFE AUS {n_einheiten} {"EINHEIT" if n_einheiten == 1 else "EINHEITEN"}</label>'
                f'<input id="such" class="search" type="search" placeholder="z. B. {esc(beispiel)} …" autocomplete="off">'
                f'<div class="abc">{"".join(abc_link(c) for c in buchst)}</div><p id="treffer" class="meta" style="margin:0" aria-live="polite"></p></div>')
     cur = None
@@ -646,7 +647,7 @@ def seite_lehrer(klassen):
         if jetzt:
             e2 = dict(jetzt, unter=jetzt["ordner"])
             h.append(f'<div class="sub"><div class="eyebrow">GERADE DRAN · {esc(jetzt["kapitel"])}</div><strong>{esc(jetzt["titel"])}</strong><div class="links small">{knoepfe(e2)}</div>{stunden_html(jetzt, o)}{dateien_html(jetzt)}</div>')
-        rows = []
+        rows, test_rows = [], []
         for b in k["bloecke"]:
             for u in b["units"]:
                 e2 = dict(u, unter=u["ordner"])
@@ -654,12 +655,17 @@ def seite_lehrer(klassen):
                 rows.append(f'<div><div><span class="tag">{esc(b["name"])}</span> <strong>{esc(u["kapitel"])}</strong> {esc(u["titel"])}</div><div class="links small">{knoepfe(e2)}{sicht_knopf(u, True)}</div>{stunden_html(u, o)}{dateien_html(u)}{warn}</div>')
         for t in k["tests"]:
             e2 = dict(t, unter=t["ordner"])
-            rows.append(f'<div><div><span class="tag" style="background:var(--orange);color:#fff">Test</span> <strong>{esc(t["kapitel"])}</strong> {esc(t["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(t)}</div>')
+            test_rows.append(f'<div><div><span class="tag" style="background:var(--orange);color:#fff">Test</span> <strong>{esc(t["kapitel"])}</strong> {esc(t["titel"])}</div><div class="links small">{knoepfe(e2)}</div>{dateien_html(t)}</div>')
         for v in k["versteckt"]:
             e2 = dict(v, unter=v["ordner"])
-            rows.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}{sicht_knopf(v, False)}</div>{dateien_html(v)}</div>')
+            # Auch ausgeblendete Test-Trainings sind keine Unterrichtseinheiten.
+            ziel = test_rows if re.match(r"\d+\.\s*Test", v["kapitel"]) else rows
+            ziel.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}{sicht_knopf(v, False)}</div>{dateien_html(v)}</div>')
         n = len(rows)
-        h.append(f'<details class="mehr"><summary>Alle Einheiten ({n})</summary><div class="ulist">{"".join(rows)}</div></details></div></details>')
+        h.append(f'<details class="mehr"><summary>Alle Einheiten ({n})</summary><div class="ulist">{"".join(rows)}</div></details>')
+        if test_rows:
+            h.append(f'<details class="mehr"><summary>Test-Training ({len(test_rows)})</summary><div class="ulist">{"".join(test_rows)}</div></details>')
+        h.append('</div></details>')
         out.append("".join(h))
     out.append("</div>")
     out.append('<div id="beamer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="QR-Code für die Klasse"><h2 id="bt"></h2><div class="q" id="bq"></div><div class="url" id="bu"></div><button type="button" id="bx">Schließen</button></div>')
