@@ -26,7 +26,7 @@
     "Ω": [1, 2, -3, -2, 1], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
   var WORT = [[/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
   function einheitDim(u) {
-    u = String(u || "").replace(/[μ]/g, "µ").replace(/ω/g, "Ω").replace(/²/g, "2").replace(/³/g, "3").replace(/\^/g, "").replace(/\s+/g, "");
+    u = String(u || "").replace(/\^\(\s*([-−]?\d)\s*\)/g, "$1").replace(/[−–]/g, "-").replace(/\/\(([^()]*)\)/g, function (_, x) { return "/" + x.split(/[·*.\s]+/).filter(Boolean).join("/"); }).replace(/[μ]/g, "µ").replace(/ω/g, "Ω").replace(/²/g, "2").replace(/³/g, "3").replace(/\^/g, "").replace(/\s+/g, "");
     WORT.forEach(function (w) { u = u.replace(w[0], w[1]); });
     if (!u) return null;
     var teile = u.split("/"), dim = [0, 0, 0, 0], f = 1;
@@ -54,14 +54,20 @@
     var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
     var s0 = String(str || "").replace(/10(⁻?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       .replace(/([A-Za-zµμΩ²³])⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, u, z) { return u + "^-" + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+      /* Minuszeichen U+2212, Exponent in Klammern, Nenner in Klammern: »m−2« → »m^-2«, »m^(-2)« → »m^-2«, »N/(A·m)« → »N/A/m« */
+      .replace(/([A-Za-zµμΩ²³])[−–](\d)/g, "$1^-$2").replace(/\^\(\s*[-−–]?\s*(\d)\s*\)/g, function (m, z) { return /-|−|–/.test(m) ? "^-" + z : "^" + z; })
+      .replace(/([A-Za-zµμΩ²³])\s*\/\s*\(/g, "$1/(")
+      .replace(/\/\(([A-Za-zµμΩ²³0-9^\-·*. ]+)\)/g, function (_, x) { return "/" + x.trim().split(/[·*.\s]+/).filter(Boolean).join("/"); })
+      /* Einheitenkette mit Leerzeichen: »V s m^-2« → »V·s·m^-2« (nur wenn alle Teile bekannte Einheiten sind) */
+      .replace(/(\d\s*)((?:[A-Za-zµμΩ]{1,2}(?:\^-?\d)?)(?:\s+[A-Za-zµμΩ]{1,2}(?:\^-?\d)?){1,3})(?![A-Za-zäöüµμΩ])/g, function (m, a, ch) { var j = ch.split(/\s+/).join("·"); return einheitDim(j) ? a + j : m; })
       /* Einheiten mit Leerzeichen: »A m^-1« → »A·m^-1«, »V s / m²« → »V·s/m²«, »A / m« → »A/m« */
       .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2}\s*\^\s*-?\d)/g, "$1·$2")
       .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1·$2/")
-      .replace(/(\d\s*[A-Za-zµμΩ]{1,3}[²³]?)\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1/")
-      .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?(-?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      .replace(/(\d\s*[A-Za-zµμΩ][A-Za-zµμΩ·²³^\-0-9]{0,12})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1/")
+      .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?([+-]?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
-    var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)?)?)/g, out = [], m;
+    var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*)?)/g, out = [], m;
     while ((m = re.exec(s0))) {
       var n = m[1];
       /* 2.069 = Tausenderpunkt; 0.240 und 1.500 sind aber Dezimalzahlen (führende Null) bzw. mehrdeutig → beide Lesarten prüfen */
@@ -71,7 +77,8 @@
       /* Zahl wird ausdrücklich verworfen? (»240 A ist falsch«, »nicht 240 A«, »statt 240 A«) */
       var vor = s0.slice(Math.max(0, m.index - 14), m.index).split(/[,;.!?]/).pop(), rest = s0.slice(m.index + m[0].length), nx = rest.search(/\d/);
       var nach = (nx < 0 ? rest : rest.slice(0, nx)).slice(0, 28).split(/[,;.!?]/)[0];
-      var neg = /\b(nicht|kein\w*|statt|anstatt|falsch:?)\s*$/i.test(vor) || /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach);
+      var vor40 = s0.slice(Math.max(0, m.index - 40), m.index).split(/[,;.!?]/).pop();
+      var neg = /\b(nicht|kein\w*|statt|anstatt|falsch:?)\s*$/i.test(vor) || /(?<!nicht\s)\b(falsch\w*|unrichtig\w*|inkorrekt\w*)\s+(\w+\s+){0,3}(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(vor40) || /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach);
       if (/\bnicht\s+(falsch|unrichtig|inkorrekt)\b/i.test(nach)) neg = false;   // »240 A sind nicht falsch« bestätigt die Zahl
       /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
       var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);

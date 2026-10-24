@@ -149,24 +149,34 @@ body.nur-offen .ziel.ok { display: none; }
 """
 
 JS_FORTSCHRITT = """
-/* Fortschrittsbalken je Einheit: liest »fortschritt|<Ordner>«, das das Arbeitsblatt im Browser des Kadetten ablegt (nur Anzeige) */
+/* Fortschrittsbalken je Einheit: liest »fortschritt|<Ordner>«, das das Arbeitsblatt im Browser des Kadetten ablegt (nur Anzeige).
+   Wird bei Rückkehr (Browser-Zurück, pageshow), Sichtbarwerden, Fokus und Änderung in anderen Tabs neu aufgebaut; vorhandene Balken werden aktualisiert, nie doppelt angehängt. */
 (function () {
   var st = document.createElement('style');
   st.textContent = '.fortschritt{display:grid;gap:4px;margin:2px 0}.fortschritt span{font-size:15px;color:var(--muted,#5E6652)}.fortschritt div{height:8px;border-radius:99px;background:#D3DCC2;overflow:hidden}.fortschritt i{display:block;height:100%;background:#7FA83A}';
   document.head.appendChild(st);
-  var gesetzt = {};
-  document.querySelectorAll('a[href$="/aufgaben.html"]').forEach(function (a) {
-    try {
-      var dir = a.pathname.replace(/[^\/]*$/, ''), raw = localStorage.getItem('fortschritt|' + dir);
-      if (!raw) return;
-      var f = JSON.parse(raw); if (!f || !f.n) return;
-      var box = a.closest('section,.unit'), key = (box ? box.id : '') + dir; if (gesetzt[key]) return; gesetzt[key] = 1;
-      var d = document.createElement('div'), pr = Math.round(f.np / f.n * 100);
-      d.className = 'fortschritt'; d.setAttribute('role', 'progressbar'); d.setAttribute('aria-valuemin', '0'); d.setAttribute('aria-valuemax', f.n); d.setAttribute('aria-valuenow', f.np);
-      d.innerHTML = '<span>Arbeitsblatt: ' + f.np + ' von ' + f.n + ' Pflichtaufgaben ausgefüllt</span><div><i style="width:' + pr + '%"></i></div>';
-      var ziel = a.parentNode; ziel.parentNode.insertBefore(d, ziel.nextSibling);
-    } catch (e) {}
-  });
+  function zeige() {
+    var gesehen = {};
+    document.querySelectorAll('a[href$="/aufgaben.html"]').forEach(function (a) {
+      var box = a.closest('section,.unit'), dir = a.pathname.replace(/[^\\/]*$/, ''), key = (box ? box.id : '') + '|' + dir;
+      if (gesehen[key]) return; gesehen[key] = 1;
+      var f = null; try { var raw = localStorage.getItem('fortschritt|' + dir); f = raw ? JSON.parse(raw) : null; } catch (e) {}
+      var ziel = a.parentNode, alt = ziel.nextElementSibling;
+      if (!(alt && alt.classList && alt.classList.contains('fortschritt'))) alt = null;
+      if (!f || !f.n) { if (alt) alt.remove(); return; }
+      var pr = Math.round(f.np / f.n * 100), text = 'Arbeitsblatt: ' + f.np + ' von ' + f.n + ' Pflichtaufgaben ausgefüllt';
+      var d = alt || document.createElement('div');
+      d.className = 'fortschritt'; d.setAttribute('role', 'progressbar'); d.setAttribute('aria-label', text);
+      d.setAttribute('aria-valuemin', '0'); d.setAttribute('aria-valuemax', f.n); d.setAttribute('aria-valuenow', f.np); d.setAttribute('aria-valuetext', text);
+      d.innerHTML = '<span>' + text + '</span><div><i style="width:' + pr + '%"></i></div>';
+      if (!alt) ziel.parentNode.insertBefore(d, ziel.nextSibling);
+    });
+  }
+  zeige();
+  window.addEventListener('pageshow', zeige);
+  window.addEventListener('focus', zeige);
+  window.addEventListener('storage', zeige);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) zeige(); });
 })();
 """
 

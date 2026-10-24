@@ -854,10 +854,16 @@ update();
     for (var k = 1; k <= pflicht.length; k++) { var t = pflicht[(ab + k + pflicht.length) % pflicht.length]; if (t && !isDone(t)) return t; }
     return null;
   }
-  if (tasks) ["input", "change", "click"].forEach(function (ev) {
+  /* Beschriftung und Sprungziel kommen aus derselben Funktion (erste) und werden nach jeder Änderung neu gesetzt */
+  function knopfText() {
+    var t = erste();
+    knopf.textContent = t ? "Weiter bei Aufgabe " + t.nr : "Alle Pflichtaufgaben ausgefüllt – weiter zur Abgabe";
+    knopf.title = "Springt zu der Aufgabe, an der du zuletzt gearbeitet hast (sonst zur ersten offenen Pflichtaufgabe)";
+  }
+  if (tasks) ["input", "change", "click", "focusin"].forEach(function (ev) {
     tasks.addEventListener(ev, function (e) {
       var c = e.target && e.target.closest ? e.target.closest("[id^=card_]") : null;
-      if (c) { var id = c.id.slice(5); if (pflicht.some(function (t) { return t.id === id; })) lsSet("weiter|" + dir, id); }
+      if (c) { var id = c.id.slice(5); if (pflicht.some(function (t) { return t.id === id; })) { lsSet("weiter|" + dir, id); knopfText(); } }
     }, true);
   });
   knopf.addEventListener("click", function () {
@@ -873,9 +879,8 @@ update();
       var np = pflicht.filter(isDone).length, nz = zus.filter(isDone).length, c = document.getElementById("count"), bar = document.getElementById("barfill");
       if (c) c.textContent = zus.length ? "Pflicht: " + np + " von " + pflicht.length + " ausgefüllt · Zusatz: " + nz + " von " + zus.length : np + " von " + pflicht.length + " ausgefüllt";
       if (bar && pflicht.length) bar.style.width = (np / pflicht.length * 100) + "%";
-      var t = erste();
       lsSet("fortschritt|" + dir, JSON.stringify({ np: np, n: pflicht.length }));
-      knopf.textContent = t ? "Weiter bei Aufgabe " + t.nr : "Alle Pflichtaufgaben ausgefüllt – weiter zur Abgabe"; knopf.title = "Springt zur ersten offenen Pflichtaufgabe";
+      knopfText();
     } catch (e) {}
   };
   update();

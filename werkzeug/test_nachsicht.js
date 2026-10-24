@@ -73,6 +73,23 @@ cases[E4].push(
  ['a7','t','Der Motor dreht sich ohne Kommutator immer weiter, weil die Stromrichtung nicht umgepolt werden muss.',0],
  ['a12','b','1.500 T oder 1,5 T',1],['a12','b','1.500 T oder 1500 mT',1],['a12','b','1,5 V·s·m⁻²',1],['a12','b','1,5 V·s·m^-2',1],
  ['a7','t','Er bleibt stehen, weil der Strom nicht umgepolt werden kann.',1],['a7','t','Die Spule bleibt stehen, statt immer weiter zu laufen.',1],['a7','t','Der Motor läuft einfach immer weiter.',0]);
+/* Prüfbericht v7 (24.10.2026): N1 Motor-contra, N2 verworfene Zahl, N3 Einheiten */
+cases[E4].push(
+ ['a7','t','Der Motor bleibt stehen, egal wie groß die Stromstärke ist.',1],
+ ['a7','t','Zunächst läuft er weiter und bleibt dann stehen, weil der Strom nicht umgepolt wird.',1],
+ ['a3','theta','Das falsche Ergebnis wäre 240 A. Richtig ist 24 A.',0],
+ ['a12','b','1,5 N/(A·m)',1],['a12','b','1,5 kg/(A·s²)',1],['a12','b','1,5 V s m⁻²',1],['a12','b','1,5 V·s·m^(-2)',1],['a12','b','1,5 V·s·m−2',1],
+ ['a3','theta','2,4 × 10^+2 A',1],
+ /* Gegenproben: ausdrücklich falsche Erklärungen und falsche Dimensionen bleiben falsch */
+ ['a7','t','Die Stromrichtung ist egal, der Motor dreht sich einfach weiter.',0],
+ ['a7','t','Der Motor läuft einfach weiter, die Polung ist egal.',0],
+ ['a7','t','Der Motor läuft immer weiter.',0],
+ ['a7','t','Er läuft kurz weiter, dann bleibt er stehen, weil nicht umgepolt wird.',1],
+ ['a3','theta','Falsch wäre 24 A. Richtig sind 240 A.',1],
+ ['a3','theta','Ein falsches Ergebnis ist 24 A, richtig ist 240 A.',1],
+ ['a3','theta','0,4 A bei 600 Windungen = 240 A',1],
+ ['a12','b','1,5 N/(A·s)',0],['a12','b','1,5 V·s·m^-1',0],['a12','b','1,5 kg/(A·s)',0],['a12','b','1,5 N / (A · m)',1],['a12','b','1,5 V s m−2',1],
+ ['a3','theta','2,4 × 10^-2 A',0],['a3','theta','2,4 x 10² A',1]);
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

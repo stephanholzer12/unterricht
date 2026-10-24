@@ -227,8 +227,8 @@
      ],
      "contra": [
       "(immer|ständig|dauernd|dauerhaft|ewig|unendlich)\\s+weiter",
-      "läuft\\s+(\\w+\\s+)?weiter",
-      "muss\\s+nicht\\s+(um)?gepolt|nicht\\s+(um)?gepolt\\s+werden\\s+muss|\\begal\\b"
+      "(?<!zunächst\\s)(?<!zuerst\\s)(?<!anfangs\\s)(?<!noch\\s)(?<!kurz\\s)läuft\\s+(\\w+\\s+)?weiter(?!\\s*(,\\s*)?(und\\s+)?(\\w+\\s+){0,3}(dann|bleibt|steht|hört|stoppt|nur|bis|kurz|aber))",
+      "muss\\s+nicht\\s+(um)?gepolt|nicht\\s+(um)?gepolt\\s+werden\\s+muss|(stromrichtung|polung|umpolen|richtung)\\s+(\\w+\\s+){0,3}egal|egal\\s*,?\\s*(in\\s+welche\\w*\\s+)?(welche\\w*\\s+)?(stromrichtung|richtung|polung)"
      ]
     }
    },
