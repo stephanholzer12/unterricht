@@ -13,7 +13,13 @@ esc = html.escape
 
 
 def offene(d):
-    return re.findall(r"\[\[(.*?)\]\]", json.dumps(d, ensure_ascii=False))
+    """Alle [[gelben Stellen]] in den Textwerten (nicht die JSON-Klammern verschachtelter Listen)."""
+    out = []
+    def lauf(x):
+        if isinstance(x, str): out.extend(re.findall(r"\[\[(.*?)\]\]", x))
+        elif isinstance(x, list): [lauf(i) for i in x]
+        elif isinstance(x, dict): [lauf(i) for i in x.values()]
+    lauf(d); return out
 
 
 def md(s, entwurf=False):
