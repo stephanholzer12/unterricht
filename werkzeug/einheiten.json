@@ -187,6 +187,7 @@
   "titel": "Stoffumwandlung: Redox, Energie, Katalysatoren",
   "block": "B Chemische Reaktionen",
   "jahresplan": "E6–E7",
+  "lehrerseite": "https://claude.ai/artifact/KbMWfk58Rrb9PXw5QnhTxk",
   "versteckt": true,
   "seiten": [
    "theorie.html",
@@ -253,7 +254,24 @@
   "dateien": {
    "stand": "24.10.2026",
    "zip": "26-27-2AB-K1.3-Reaktionen-v1.zip",
-   "liste": []
+   "liste": [
+    "26-27-2AB-K1.3-Reaktionen-TH-Lehrer-v1.pptx",
+    "26-27-2AB-K1.3-Reaktionen-TH-Kadetten-v1.pptx",
+    "26-27-2AB-K1.3-Reaktionen-VS-Lehrer-v1.pptx",
+    "26-27-2AB-K1.3-Reaktionen-VS-Kadetten-v1.pptx",
+    "26-27-2AB-K1.3-Reaktionen-TH-AB-v1.docx",
+    "26-27-2AB-K1.3-Reaktionen-VS-AB-v1.docx",
+    "26-27-2AB-K1.3-Reaktionen-TH-Loesung-v1.docx",
+    "26-27-2AB-K1.3-Reaktionen-VS-Loesung-v1.docx",
+    "26-27-2AB-K1.3-Reaktionen-TH-Fachwissen-v1.docx",
+    "26-27-2AB-K1.3-Reaktionen-VS-Fachwissen-v1.docx",
+    "26-27-2AB-K1.3-Reaktionen-Kahoot-v1.xlsx",
+    "26-27-2AB-K1.3-Reaktionen-QR-Theorie-v1.png",
+    "26-27-2AB-K1.3-Reaktionen-QR-Arbeitsblatt-v1.png",
+    "26-27-2AB-K1.3-Reaktionen-QR-Versuche-v1.png",
+    "26-27-2AB-K1.3-Reaktionen-QR-Quiz-v1.png",
+    "26-27-2AB-K1.3-Reaktionen-QR-Klassenseite-v1.png"
+   ]
   }
  },
  {

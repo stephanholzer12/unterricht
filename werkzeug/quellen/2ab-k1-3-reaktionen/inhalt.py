@@ -78,7 +78,7 @@ T = [
                       "e) Die Elektronen, die ein Stoff abgibt, nimmt ein anderer auf – Oxidation und Reduktion laufen immer gleichzeitig ab (REDuktion + OXidation)."]]],
   "tip": ["Was ist eine Redoxreaktion?", "theorie.html#redox"]},
 
- {"id": "a3", "nr": 3, "title": "Magnesium verbrennt – wer gibt, wer nimmt?", "src": "Buch S. 30", "own": True, "tag": "Stunde 1", "h": 1, "hl": False, "zeit": 6,
+ {"id": "a3", "besprechen": True, "nr": 3, "title": "Magnesium verbrennt – wer gibt, wer nimmt?", "src": "Buch S. 30", "own": True, "tag": "Stunde 1", "h": 1, "hl": False, "zeit": 6,
   "q": "Magnesium verbrennt mit grellem Licht zu weißem Magnesiumoxid: 2 Mg + O₂ → 2 MgO. "
        "a) Wie viele Elektronen gibt ein Magnesium-Atom ab? (Tipp: Magnesium steht in der 2. Hauptgruppe.) b) Wie viele Elektronen nimmt ein Sauerstoff-Atom auf? c)–f) Wähle aus.",
   "type": "multi",
@@ -159,7 +159,7 @@ T = [
                       "Waschen nach der Winterfahrt: Streusalz beschleunigt das Rosten · Trocknen: ohne Wasser kein Rost"]]],
   "tip": ["Rostschutz an Gerät und Fahrzeug", "theorie.html#schutz"]},
 
- {"id": "a8", "nr": 8, "title": "Dein Pflegebefehl für den Winter", "src": "Buch S. 98", "own": True, "tag": "Stunde 2", "h": 2, "hl": False, "zeit": 5,
+ {"id": "a8", "besprechen": True, "nr": 8, "title": "Dein Pflegebefehl für den Winter", "src": "Buch S. 98", "own": True, "tag": "Stunde 2", "h": 2, "hl": False, "zeit": 5,
   "q": "Kreativ und mit der Hand: Schreib ins Heft oder aufs Mini-Whiteboard einen kurzen »Pflegebefehl« mit 3 Punkten für ein Fahrzeug, eine Waffe oder deine Ausrüstung im Winter. "
        "Jeder Punkt braucht eine chemische Begründung (»…, weil …«). Fotografiere ihn und füge das Foto ein. Pflicht: Tippe deinen wichtigsten Punkt mit Begründung ab.",
   "hint": "Handschrift statt Tippen: zuerst schreiben, dann Foto einfügen.",
@@ -204,7 +204,7 @@ T = [
                       "In B haben die Endstoffe mehr Energie – die Energie wurde aus der Umgebung aufgenommen und steckt jetzt in den Endstoffen."]]],
   "tip": ["Das Energiediagramm", "theorie.html#diagramm"]},
 
- {"id": "a11", "nr": 11, "title": "Das Lagerfeuer im Energiediagramm", "src": "Buch S. 33–34", "own": True, "tag": "Stunde 3–4", "h": 3, "hl": False, "zeit": 6,
+ {"id": "a11", "besprechen": True, "nr": 11, "title": "Das Lagerfeuer im Energiediagramm", "src": "Buch S. 33–34", "own": True, "tag": "Stunde 3–4", "h": 3, "hl": False, "zeit": 6,
   "q": "Zeichne mit der Hand ins Heft das Energiediagramm für die Verbrennung von Holz im Lagerfeuer. Beschrifte: Ausgangsstoffe (Holz + Sauerstoff), "
        "Endstoffe (Kohlenstoffdioxid + Wasser), Aktivierungsenergie, frei werdende Energie. Füge ein Foto ein. "
        "Pflicht: Erkläre in 1–2 Sätzen, warum man das Feuer anzünden muss, es danach aber von selbst weiterbrennt.",
@@ -232,7 +232,7 @@ T = [
   "tip": ["Masse und Energie bleiben erhalten", "theorie.html#erhalt"]},
 
  # ======================================================= Stunde 4 · Katalysatoren (alle)
- {"id": "a13", "nr": 13, "title": "Was beschleunigt den Zerfall? (Demo K1.3-V7)", "src": "Versuch im Buch S. 36", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
+ {"id": "a13", "besprechen": True, "nr": 13, "title": "Was beschleunigt den Zerfall? (Demo K1.3-V7)", "src": "Versuch im Buch S. 36", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
   "q": "Wasserstoffperoxid (3 %) zerfällt nur sehr langsam in Wasser und Sauerstoff. Vier Reagenzgläser bekommen gleich viel davon. a) Tippe: In welchem schäumt es am stärksten? "
        "b) Trag für jedes Glas ein, was du siehst. c) Ein glimmender Holzspan flammt im Schaum auf – welches Gas ist das? d) Warum schäumt die gekochte Kartoffel kaum? (1 Satz)",
   "type": "multi",
@@ -266,7 +266,7 @@ T = [
   "tip": ["Was ist ein Katalysator?", "theorie.html#kat"]},
 
  # ======================================================= Stunde 5 · Reaktionsgeschwindigkeit + Abschluss
- {"id": "a15", "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 7,
+ {"id": "a15", "besprechen": True, "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 7,
   "q": "Ein Kadett hat eine KI gefragt: »Wie funktioniert ein Autokatalysator?« Die Antwort: »Der Autokatalysator ist ein feiner Filter, der die giftigen Abgase zurückhält. "
        "Er besteht aus Keramik, die mit Edelmetallen wie Platin, Palladium und Rhodium beschichtet ist. Der Katalysator wird dabei langsam verbraucht und muss bei jedem Service "
        "nachgefüllt werden. Er arbeitet am besten, wenn er kalt ist – deshalb stößt ein Auto direkt nach dem Start die wenigsten Schadstoffe aus. Aus giftigem "
