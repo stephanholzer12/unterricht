@@ -8,7 +8,7 @@ Führt der Reihe nach aus (alle wiederholbar, ändern keinen Speicherschlüssel)
   4c. versuche_pruefen_einbauen.py – Knopf »Eingaben prüfen« (Hinweise/Tipps in Stufen) unter jedem Versuch; Regeln: werkzeug/versuche_pruefung.json
   4d. pruefung_nachsicht_einbauen.py – großzügigere »Prüfen«-Auswertung der Arbeitsblätter (Einheiten, Rundung, Schreibweise); Korrekturen: werkzeug/pruefregeln_korrekturen.json
   4g. teststoff/handyseite.py     – Teststoff als Handy-Seite (nur wenn im JSON keine [[gelben Stellen]] mehr offen sind)
-  4f. pilot_layout_einbauen.py    – PILOT (nur 4AB Elektromagnet): Fahrplan/Zusatz zugeklappt, Pflicht-Fortschritt
+  4f. pilot_layout_einbauen.py    – Fahrplan/Zusatz zugeklappt, Pflicht-Fortschritt
   4e. notenvorschlag_einbauen.py  – Kasten »Für LMS: x von y Punkten · Notenvorschlag« oben auf Seite 1 der PDF (nur im PDF)
   5. build_index.py               – Klassenseiten, Fahrplan, Lehrer-Seite
   6. pruefen.py                   – Kontrolle (dieselbe wie bei jedem Push)

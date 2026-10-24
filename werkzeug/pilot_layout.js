@@ -1,14 +1,15 @@
-/* PILOT Arbeitsblatt-Layout (nur Seiten aus werkzeug/pilot_layout_einbauen.py, derzeit 4AB Elektromagnet).
+/* PILOT Arbeitsblatt-Layout (alle Arbeitsblätter mit dem Standard-Aufbau, siehe werkzeug/pilot_layout_einbauen.py).
    Ändert keinen Speicherschlüssel und keine Antwort; verschiebt nur Elemente und ändert Anzeigetexte.
      1. Gesamter Fahrplan ist zugeklappt (»Fahrplan öffnen«), damit die Aufgaben schneller erreichbar sind.
      2. Fortschritt getrennt: »Pflicht: x von y ausgefüllt · Zusatz: a von b« (nur Aufgaben ohne Tag »Zusatz« zählen für den Balken).
      3. Knopf »Weiter bei Aufgabe N« (erste offene Pflichtaufgabe) (springt nur, ändert nichts).
-     4. Zusatzaufgaben stehen in einem zugeklappten Bereich; er öffnet sich von selbst, wenn dort schon etwas eingetragen ist oder ein Link dorthin zeigt.
+     4. Zusatzaufgaben (Tag »Zusatz«, »optional«, »Für Schnelle«) stehen in einem zugeklappten Bereich; er öffnet sich von selbst, wenn dort schon etwas eingetragen ist oder ein Link dorthin zeigt.
    Einbau: python3 werkzeug/pilot_layout_einbauen.py */
 (function () {
   if (window.__pilotLayout) return; window.__pilotLayout = true;
   if (typeof T === "undefined" || typeof update !== "function" || typeof isDone !== "function") return;
-  var pflicht = T.filter(function (t) { return t.tag !== "Zusatz"; }), zus = T.filter(function (t) { return t.tag === "Zusatz"; });
+  var istZus = function (t) { return /^(zusatz|optional|für schnelle)$/i.test(String(t.tag || "").trim()); };
+  var pflicht = T.filter(function (t) { return !istZus(t); }), zus = T.filter(istZus);
   var ruhig = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* 1 Fahrplan zuklappen */
@@ -23,7 +24,10 @@
   var zusDet = null, tasks = document.getElementById("tasks");
   if (tasks && zus.length) {
     var kart = zus.map(function (t) { return document.getElementById("card_" + t.id); }).filter(Boolean);
-    if (kart.length) {
+    /* nur zuklappen, wenn ab der ersten Zusatzkarte nur noch Zusatzkarten (und Zwischenüberschriften) folgen */
+    var kidsA = Array.prototype.slice.call(tasks.children), a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
+    var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });
+    if (kart.length && sauber) {
       zusDet = document.createElement("details"); zusDet.className = "pl-zusatz";
       var s2 = document.createElement("summary"); s2.textContent = "Zusatzaufgaben " + zus[0].nr + "–" + zus[zus.length - 1].nr + " · nur wenn Zeit bleibt";
       var inh = document.createElement("div"); inh.className = "pl-zusatz-inhalt";
@@ -56,7 +60,7 @@
     u0();
     try {
       var np = pflicht.filter(isDone).length, nz = zus.filter(isDone).length, c = document.getElementById("count"), bar = document.getElementById("barfill");
-      if (c) c.textContent = "Pflicht: " + np + " von " + pflicht.length + " ausgefüllt" + (zus.length ? " · Zusatz: " + nz + " von " + zus.length : "");
+      if (c) c.textContent = zus.length ? "Pflicht: " + np + " von " + pflicht.length + " ausgefüllt · Zusatz: " + nz + " von " + zus.length : np + " von " + pflicht.length + " ausgefüllt";
       if (bar && pflicht.length) bar.style.width = (np / pflicht.length * 100) + "%";
       var t = erste();
       knopf.textContent = t ? "Weiter bei Aufgabe " + t.nr : "Alle Pflichtaufgaben ausgefüllt – weiter zur Abgabe"; knopf.title = "Springt zur ersten offenen Pflichtaufgabe";
