@@ -223,7 +223,7 @@ SCHNELLE = [
                         ["Metalle immer positiv (1. Hauptgruppe +I, 2. Hauptgruppe +II)", "NaCl: Na +I · CaCl₂: Ca +II"],
                         ["Halogene in Salzen meist −I", "NaCl, CaCl₂: Cl −I"]]),
              ("hint", "Thermitverfahren (Gleisbau, Buch S. 88): Fe₂O₃ + 2 Al → 2 Fe + Al₂O₃ – Aluminium wird oxidiert, Eisen reduziert. Aufgabe 20.")]},
- {"id": "schnelle", "title": "Was weiß die Forschung noch nicht?", "pill": "Recherche",
+ {"id": "forschung", "title": "Was weiß die Forschung noch nicht?", "pill": "Recherche",
   "blocks": [("ul", ["Für **grünen Wasserstoff** spaltet man Wasser mit Strom. Die besten Katalysatoren dafür brauchen bisher **Iridium** und **Platin** – sehr selten und teuer.",
                      "Weltweit suchen Forschende Katalysatoren aus häufigen Metallen, die genauso gut arbeiten und lange halten. 2025 stellte ein Team aus den USA einen vielversprechenden Ersatz vor (Aufgabe 21).",
                      "Offene Frage: Gelingt es, Wasser so billig zu spalten wie eine Pflanze bei der Fotosynthese – mit Sonnenlicht und ohne seltene Metalle?"]),

@@ -367,7 +367,7 @@ T = [
   "sol": [["Lösung", ["a) Ruthenium, Kobalt, Mangan und Chrom (häufigere Metalle)", "b) über 1000 Stunden, laut Studie bei rund einem Sechzehntel der Kosten",
                       "c) Iridium ist sehr selten und teuer und fällt fast nur beim Platinabbau in wenigen Ländern an. Wer Katalysatoren aus häufigeren Metallen bauen kann, "
                       "macht Europa unabhängiger von Importen und die Energiewende billiger."]]],
-  "tip": ["Für Schnelle: Was weiß die Forschung noch nicht?", "theorie.html#schnelle"]},
+  "tip": ["Für Schnelle: Was weiß die Forschung noch nicht?", "theorie.html#forschung"]},
 
  {"id": "a22", "nr": 22, "title": "Wirtschaft: Warum werden Katalysatoren gestohlen?", "src": "Recherche im Internet", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 5,
   "q": "Im März 2026 erwischte die Polizei in Wien-Simmering drei Männer, die an parkenden Autos mit dem Winkelschleifer die Katalysatoren abschnitten (Bericht auf wien.orf.at). "
