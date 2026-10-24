@@ -40,9 +40,17 @@ class NavigationTest(unittest.TestCase):
                 self.assertNotIn("lehrer-suche", [e["id"] for e in soup.mit(attr="id")])
                 for link in soup.mit(tag="a", attr="href"):
                     href = urlsplit(link["href"])
-                    if href.scheme or href.netloc or not href.path:
+                    if not href.path or (href.scheme and href.scheme not in ("http", "https")):
                         continue
-                    ziel = (seite.parent / unquote(href.path)).resolve()
+                    if href.netloc and href.hostname != "stephanholzer12.github.io":
+                        continue
+                    pfad = unquote(href.path)
+                    if pfad.startswith("/"):
+                        if not pfad.startswith("/unterricht/"):
+                            continue
+                        ziel = (ROOT / pfad[len("/unterricht/"):]).resolve()
+                    else:
+                        ziel = (seite.parent / pfad).resolve()
                     try:
                         rel = ziel.relative_to(ROOT)
                     except ValueError:
