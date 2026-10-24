@@ -1943,7 +1943,7 @@ window.LH_VARIANTEN = [];
   function parseZahlen(str) {
     var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
     var s0 = String(str || "").replace(/10(⁻?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
-      .replace(/([A-Za-zµμΩ])⁻¹/g, "$1^-1")
+      .replace(/([A-Za-zµμΩ²³])⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, u, z) { return u + "^-" + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       /* Einheiten mit Leerzeichen: »A m^-1« → »A·m^-1«, »V s / m²« → »V·s/m²«, »A / m« → »A/m« */
       .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2}\s*\^\s*-?\d)/g, "$1·$2")
       .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1·$2/")
@@ -1981,10 +1981,10 @@ window.LH_VARIANTEN = [];
     if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
     var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
     /* »240 A oder 24 A«: verschiedene Ergebnisse zur Auswahl = keine eindeutige Antwort */
-    var gl = function (x) { var u = (x.u || "").replace(/^%$/, ""), f = einheit && u ? faktor(u, einheit) : 1; return f === null ? null : x.v * f; };
+    var gl = function (x) { var u = (x.u || "").replace(/^%$/, ""), f = einheit && u ? faktor(u, einheit) : 1; if (f === null) return null; var o = [x.v * f]; if (x.v2 != null && !isNaN(x.v2)) o.push(x.v2 * f); return o; };   // mehrere Lesarten (1.500 = 1500 oder 1,5)
     for (var k = 1; k < L.length; k++) if (L[k].alt && !L[k].neg && !L[k - 1].neg) {
-      var w1 = gl(L[k - 1]), w2 = gl(L[k]);
-      if (w1 === null || w2 === null || Math.abs(w1 - w2) > Math.max(Math.abs(w1), Math.abs(w2)) * 0.005) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
+      var w1 = gl(L[k - 1]), w2 = gl(L[k]), gleich = !!(w1 && w2) && w1.some(function (a) { return w2.some(function (b) { return Math.abs(a - b) <= Math.max(Math.abs(a), Math.abs(b)) * 0.005; }); });
+      if (!gleich) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
     }
     for (var i = 0; i < L.length; i++) {
       var x = L[i]; if (x.neg) continue;
@@ -2048,6 +2048,15 @@ window.LH_VARIANTEN = [];
     }
     return verneint ? -1 : 0;
   }
+  function contraTreffer(ra, v) {   // Treffer zählt nicht, wenn davor »nicht/kein/statt/anstatt« steht
+    var m; ra.lastIndex = 0;
+    while ((m = ra.exec(v))) {
+      if (m[0] === "") { ra.lastIndex++; continue; }
+      var vor = v.slice(Math.max(0, m.index - 26), m.index).split(/[,;.!?:]/).pop();
+      if (!/\b(nicht|kein\w*|nie|niemals|statt|anstatt|ohne)\s+(\S+\s+)?(\S+\s+)?$/.test(vor)) return true;
+    }
+    return false;
+  }
   function treffer(rx, V, W, neg) {
     var re; try { re = new RegExp(rx, "i"); } catch (e) { return 0; }
     var alts = splitAlt(rx), n = 0;
@@ -2071,6 +2080,8 @@ window.LH_VARIANTEN = [];
     if (c.kw) {
       var V = varianten(a[key]), W = []; V.forEach(function (v) { v.split(/[^a-zäöüß0-9]+/).forEach(function (w) { if (w) W.push(w); }); });
       var hits = c.kw.map(function (g) { var n = treffer(g[1], V, W, c.neg); return [g[0], n >= (g[2] || 1)]; });
+      /* »contra«: Muster für ausdrücklich FALSCHE Aussagen (nicht verneint, z. B. »läuft immer weiter«) – dann zählt kein Stichwort */
+      if (c.contra && c.contra.some(function (rx) { try { return V.some(function (v) { return contraTreffer(new RegExp(rx, "gi"), v); }); } catch (e) { return false; } })) hits = hits.map(function (h) { return [h[0], false]; });
       var need = c.need || hits.length, n = hits.filter(function (h) { return h[1]; }).length;
       return { ok: n >= need, kind: "kw", hits: hits, filled: filled(a[key]) };
     }
@@ -2225,7 +2236,7 @@ window.LH_VARIANTEN = [];
     var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });
     if (kart.length && sauber) {
       zusDet = document.createElement("details"); zusDet.className = "pl-zusatz";
-      var s2 = document.createElement("summary"); s2.textContent = "Zusatzaufgaben " + zus[0].nr + "–" + zus[zus.length - 1].nr + " · nur wenn Zeit bleibt";
+      var s2 = document.createElement("summary"); s2.textContent = (zus.length === 1 ? "Zusatzaufgabe " + zus[0].nr : "Zusatzaufgaben " + zus[0].nr + "–" + zus[zus.length - 1].nr) + " · nur wenn Zeit bleibt";
       var inh = document.createElement("div"); inh.className = "pl-zusatz-inhalt";
       var kids = Array.prototype.slice.call(tasks.children), ab = kids.indexOf(kart[0]), rest = kids.slice(ab);
       tasks.insertBefore(zusDet, kart[0]); zusDet.appendChild(s2); zusDet.appendChild(inh);

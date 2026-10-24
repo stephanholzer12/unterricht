@@ -1,6 +1,6 @@
 """Test-Training NAWI 2AB · 1. Test (05.11.2026) – Quiz aus werkzeug/vorlagen/quiz_vorlage.html + Kahoot-/Blooket-Tabelle.
 Aufruf im Repository-Ordner:  python3 werkzeug/quellen/2ab-test1-training/bauen.py [<Zielordner für Kahoot-xlsx>]
-Schreibt 2ab-nawi/test1-training/quiz.html (und 26-27-2AB-Test1-Kahoot-v1.xlsx in den Zielordner). Fragen in eigenen Worten; Seiten nach Trauner Chemie 2.
+Schreibt 2ab-nawi/test1-training/quiz.html (und 26-27-2AB-Test1-Kahoot-v2.xlsx in den Zielordner). Fragen in eigenen Worten; Seiten nach Trauner Chemie 2.
 Aufgebaut nach quellen/4ab-test1-training/bauen.py."""
 import base64, io, json, os, re, sys
 import qrcode
@@ -15,10 +15,6 @@ TITEL = "Test-Training"
 
 # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Seite) – richtige Antwort zuerst, die Anzeige mischt
 QUIZ = [
- ("Atombau", "Welches Teilchen bestimmt, um welches Element es sich handelt?", ["die Zahl der Protonen", "die Zahl der Neutronen", "die Zahl der Elektronen in der Außenschale", "die Masse des Atoms"],
-  "Die Ordnungszahl im PSE ist die Protonenzahl. Ändert sich die Neutronenzahl, bleibt es dasselbe Element (Isotop).", "Buch S. 10"),
- ("Atombau", "Isotope eines Elements unterscheiden sich in der Zahl der …", ["Neutronen", "Protonen", "Elektronen", "Außenelektronen"],
-  "Isotope haben gleich viele Protonen, aber unterschiedlich viele Neutronen – z. B. C-12 und C-14.", "Buch S. 10"),
  ("Atommodelle", "Dalton stellte sich Atome vor als …", ["kleine, unteilbare Kugeln", "Kugel mit Elektronen wie Rosinen", "winzigen Kern mit fast leerer Hülle", "Kern mit Elektronen auf festen Bahnen"],
   "Bei Dalton sind Atome massive, unteilbare Kugeln; die Atome eines Elements sind gleich.", "Buch S. 12"),
  ("Atommodelle", "Welches Modell heißt auch »Rosinenkuchenmodell«?", ["das Modell von Thomson", "das Modell von Dalton", "das Modell von Rutherford", "das Modell von Bohr"],
@@ -136,4 +132,4 @@ if len(sys.argv) > 1:
         for col, w in zip("ABCDEFGHIJ", [5, 60, 32, 32, 32, 32, 9, 9, 18, 12]): ws.column_dimensions[col].width = w
         for row in ws.iter_rows(min_row=2):
             for c in row: c.alignment = Alignment(wrap_text=True, vertical="top")
-    out = os.path.join(sys.argv[1], "26-27-2AB-Test1-Kahoot-v1.xlsx"); wb.save(out); print("Kahoot:", out)
+    out = os.path.join(sys.argv[1], "26-27-2AB-Test1-Kahoot-v2.xlsx"); wb.save(out); print("Kahoot:", out)

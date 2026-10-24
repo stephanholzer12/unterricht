@@ -218,12 +218,17 @@
      "kw": [
       [
        "bleibt stehen / dreht nicht weiter",
-       "\\bsteh|\\bstopp|stillstand|pendel|nicht\\s+weiter|nicht\\s+mehr\\s+(weiter\\s*)?(dreh|lauf)|nicht\\s+dauer|nicht\\s+durchgehend|keine\\s+(dauer|durchgehende|ständige|vollständige)\\w*\\s+(dreh|bewegung|rotation|umdrehung)|hört\\w*\\s+(auf|bald\\s+auf)|blockier"
+       "\\bsteh|\\bstopp|stillstand|pendel|nicht\\s+weiter|nicht\\s+mehr\\s+(weiter\\s*)?(dreh|lauf)|nicht\\s+dauer|nicht\\s+durchgehend|keine\\s+(dauer|durchgehende|ständige|vollständige)\\w*\\s+(dreh|bewegung|rotation|umdrehung)|hört\\w*\\s+(auf|bald\\s+auf)|blockier|nicht\\s+(\\w+\\s+)?(kontinuierlich|ständig|dauerhaft|permanent|fortlaufend)"
       ],
       [
        "Umpolen fehlt",
-       "umpol|umgepol|nicht\\s+(um)?gepolt|polt\\w*\\s+(den\\s+)?strom|stromrichtung\\s+(\\w+\\s+)?(wird\\s+|ändert\\s+sich\\s+|wechselt\\s+)?nicht|strom\\s+(wird\\s+)?nicht\\s+(um)?(gepolt|gewechselt|gedreht)|ohne\\s+umpol"
+       "umpol|umgepol|nicht\\s+(um)?gepolt|polt\\w*\\s+(den\\s+)?strom|stromrichtung\\s+(\\w+\\s+)?(wird\\s+|ändert\\s+sich\\s+|wechselt\\s+)?nicht|strom\\s+(wird\\s+)?nicht\\s+(um)?(gepolt|gewechselt|gedreht)|ohne\\s+umpol|kehrt\\s+sich\\s+nicht\\s+um|dreht\\s+sich\\s+nicht\\s+um|wechselt\\s+(\\w+\\s+)?nicht|stromrichtung\\s+(\\w+\\s+){0,4}nicht\\s+(um|geändert|gewechselt|gedreht)"
       ]
+     ],
+     "contra": [
+      "(immer|ständig|dauernd|dauerhaft|ewig|unendlich)\\s+weiter",
+      "läuft\\s+(\\w+\\s+)?weiter",
+      "muss\\s+nicht\\s+(um)?gepolt|nicht\\s+(um)?gepolt\\s+werden\\s+muss|\\begal\\b"
      ]
     }
    },

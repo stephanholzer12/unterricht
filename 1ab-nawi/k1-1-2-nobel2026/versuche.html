@@ -269,7 +269,7 @@ function versuch(v) {
   const sum = el("summary", {},
     el("div", { class: "head" },
       el("span", { class: "nr" }, el("span", { class: "check", "aria-hidden": "true", text: "✓" }), v.nr, el("span", { class: "tag " + (v.kern ? "kern" : "zusatz"), text: v.kern ? "KERN" : "ZUSATZ" })),
-      el("span", { class: "pill" + (v.buch.versuch ? " book" : " theory"), text: (v.buch.versuch ? "Versuch im Buch " : "Theorie ") + v.buch.s })),
+      el("span", { class: "pill" + (v.buch.versuch ? " book" : " theory"), text: (v.buch.versuch ? "Versuch im Buch " : "Buch ") + v.buch.s })),
     el("h2", { text: v.titel }), el("p", { class: "hint", text: v.bindung }));
   d.append(sum);
   const body = el("div", { class: "vbody" });
@@ -376,7 +376,7 @@ async function buildPdf() {
   for (const v of V.filter(touched)) {
     if (y > BOT - 30) { d.addPage(); y = 18; }
     y += 2;
-    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean((v.kern ? "KERN · " : "ZUSATZ · ") + (v.buch.versuch ? "Versuch im Buch " : "Theorie ") + v.buch.s), W - M, y + 4, { align: "right" });
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean((v.kern ? "KERN · " : "ZUSATZ · ") + (v.buch.versuch ? "Versuch im Buch " : "Buch ") + v.buch.s), W - M, y + 4, { align: "right" });
     txt(v.nr + "  " + v.titel, 13, "bold", olive, M, CW - 55);
     txt(v.bindung, 10, "normal", muted);
     y += 1;

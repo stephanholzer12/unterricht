@@ -98,7 +98,7 @@
   "fach": "NAWI",
   "ordner": "2ab-nawi/test1-training",
   "kapitel": "1. Test · 05.11.",
-  "titel": "Test-Training: Atombau, Atommodelle, Bindungsarten",
+  "titel": "Test-Training: Atommodelle, Orbitale, Bindungsarten",
   "seiten": [
    "quiz.html",
    "teststoff.html"
@@ -108,7 +108,7 @@
    "zip": "26-27-2AB-K1.2b-Station-v3.zip",
    "liste": [
     "26-27-2AB-Test1-Teststoff-v2.docx",
-    "26-27-2AB-Test1-Kahoot-v1.xlsx"
+    "26-27-2AB-Test1-Kahoot-v2.xlsx"
    ]
   },
   "teststoff": "werkzeug/teststoff/daten/26-27-2ab-test1.json"

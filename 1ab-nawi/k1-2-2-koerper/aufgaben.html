@@ -918,7 +918,7 @@ update();
     var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });
     if (kart.length && sauber) {
       zusDet = document.createElement("details"); zusDet.className = "pl-zusatz";
-      var s2 = document.createElement("summary"); s2.textContent = "Zusatzaufgaben " + zus[0].nr + "–" + zus[zus.length - 1].nr + " · nur wenn Zeit bleibt";
+      var s2 = document.createElement("summary"); s2.textContent = (zus.length === 1 ? "Zusatzaufgabe " + zus[0].nr : "Zusatzaufgaben " + zus[0].nr + "–" + zus[zus.length - 1].nr) + " · nur wenn Zeit bleibt";
       var inh = document.createElement("div"); inh.className = "pl-zusatz-inhalt";
       var kids = Array.prototype.slice.call(tasks.children), ab = kids.indexOf(kart[0]), rest = kids.slice(ab);
       tasks.insertBefore(zusDet, kart[0]); zusDet.appendChild(s2); zusDet.appendChild(inh);
