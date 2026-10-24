@@ -10,6 +10,7 @@ from PIL import ImageFont
 from pptx import Presentation
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
+from pptx.enum.dml import MSO_LINE_DASH_STYLE
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.oxml.ns import qn
 from pptx.util import Inches, Pt
@@ -24,7 +25,7 @@ import herrichten as H
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
-VER = "v4"
+VER = "v5"
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("A33A2B")
@@ -380,13 +381,14 @@ def theorie_folien(item, L):
         if art == "bild":
             path = UNIT + im[1].replace(".gif", ".gif")
             if bl:
-                pic, hh = picture(s, path, X0, Y0, 4.4, 3.4)
-                tb(s, X0, Y0 + hh + 0.05, 4.4, 0.5, [im[3]], size=14, color=MUTED, align=PP_ALIGN.CENTER, after=0)
+                pic, hh = picture(s, path, X0, Y0, 4.4, 3.15)
+                tb(s, X0, Y0 + hh + 0.05, 4.4, min(0.7, 4.98 - Y0 - hh), [im[3]], size=14, color=MUTED, align=PP_ALIGN.CENTER, after=0)
                 y = Y0
                 for b in bl: y += draw_blk(s, b, 5.15, y, 4.35, L) + 0.1
             else:
-                pic, hh = picture(s, path, X0 + 0.6, Y0, 7.8, 3.5)
-                tb(s, X0, Y0 + hh + 0.05, 9.0, 0.5, [im[3]], size=18, color=MUTED, align=PP_ALIGN.CENTER, after=0)
+                cap_h = th(im[3], 18, 9.0, pad=0.05)
+                pic, hh = picture(s, path, X0 + 0.6, Y0, 7.8, min(3.5, Y1 - Y0 - cap_h - 0.05))
+                tb(s, X0, Y0 + hh + 0.05, 9.0, cap_h, [im[3]], size=18, color=MUTED, align=PP_ALIGN.CENTER, after=0)
         else:
             y = Y0
             for b in bl: y += draw_blk(s, b, X0, y, X1 - X0, L) + 0.1
@@ -423,63 +425,155 @@ def sol_lines(t):
     return out
 
 
+def teile_der_frage(q):
+    """Frage in Einleitung und Teilfragen a), b) … zerlegen (für die Folien kurz und gegliedert)."""
+    m = re.search(r"(?:(?<=\s)|^)a\)\s", q)
+    if not m: return q.strip(), {}
+    stem, rest = q[:m.start()].strip(), q[m.start():]
+    parts = {}
+    for mm in re.finditer(r"(?:(?<=\s)|^)([a-h])\)\s(.*?)(?=(?:\s(?:Zusatz:\s)?[a-h]\)\s)|$)", rest, re.S):
+        parts[mm.group(1)] = re.sub(r"\s*(Zusatz|Zusatz \(freiwillig\)):?\s*$", "", mm.group(2).strip())
+    zus = re.search(r"Zusatz:\s*([a-h])\)", rest)
+    if zus and zus.group(1) in parts: parts[zus.group(1)] = "(freiwillig) " + parts[zus.group(1)]
+    return stem, parts
+
+
+def loesung_je_feld(t):
+    """Lösung je Feld: Auswahl → richtige Option, sonst die Lösungszeile mit demselben Buchstaben. Rest = übrige Lösungszeilen."""
+    sol = sol_lines(t); used = set(); out = {}
+    chk = t.get("chk") or {}
+    for f in t.get("fields", []):
+        k, lab = f[0], f[1]
+        c = chk.get(k, {})
+        if k not in chk and "tipp" in k:
+            out[k] = ("Vorhersage – zählt nicht", "tipp"); continue
+        mm = re.match(r"\s*\(?([a-h])\)", lab)
+        line = None
+        if mm:
+            for n, x in enumerate(sol):
+                if n not in used and re.match(r"\s*" + mm.group(1) + r"\)", x):
+                    line = re.sub(r"^\s*[a-h]\)(?:\s*[–-]\s*[a-h]\))?\s*", "", x); used.add(n); break
+        if "sel" in c and c["sel"] is not None: out[k] = (c["sel"], "sel")
+        elif line: out[k] = (line, "text")
+        elif "num" in c: out[k] = (str(c["num"]).replace(".", ",") + (" " + c["unit"] if c.get("unit") else ""), "num")
+        else: out[k] = (None, "text")
+    rest = [x for n, x in enumerate(sol) if n not in used]
+    return out, rest
+
+
+def quelle_badge(s, src, x, y):
+    kind = kind_of(src)
+    col = {"theory": RGBColor.from_string("6E7F4E"), "book": TEAL, "versuch": RED}[kind]
+    a, _, b = src.rpartition(" S. ")
+    c = box(s, x, y, 1.25, 0.72, fill=col)
+    text(c, [[(a or src, {"size": 12, "bold": True, "color": WHITE})], [("S. " + b if a else "", {"size": 16, "bold": True, "color": WHITE})]],
+         align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
+
+
 def aufgabe(t, L):
-    tit = f"Aufgabe {t['nr']} · {t['title']}"
-    q = t["q"]
-    allsel = t["type"] == "multi" and all(len(f) > 2 for f in t["fields"]) and t.get("chk")
-    s = d.slide("Nur Titel", tit)
-    tag(s, f"{t['tag'].upper()} · ca. {t['zeit']} min", OLIVE if t["h"] else MUTED, x=6.9, w=2.6)
-    kind = kind_of(t["src"]); pill(s, t["src"], kind=kind, w=2.4)
-    y = Y0 + 0.28
+    """Aufgaben-Folie im Stil der 1AB-Messen-PPP: Layout »Aufgabe« (hellgrün), Auftragskarte mit Nummer und Quelle,
+    darunter jede Teilfrage als eigene Zeile mit Antwortkasten (Lehrer: Lösung per Klick, Kadetten: leer)."""
+    tit = f"Aufgabe {t['nr']}: " + re.sub(r"\s*\((Demo|Versuch|Zusatz)[^)]*\)\s*$", "", t["title"])
+    stem, parts = teile_der_frage(t["q"])
+    sols, rest = loesung_je_feld(t)
+    fields = [f for f in t.get("fields", [])]
+    chk = t.get("chk") or {}
+    seite = [0]
+
+    def neue_folie():
+        seite[0] += 1
+        sl = d.slide("Aufgabe", tit + (f" ({seite[0]})" if seite[0] > 1 else ""))
+        for ph in sl.placeholders:
+            if ph.placeholder_format.type == 1:
+                n_ = len(ph.text_frame.text)
+                if n_ > 34:
+                    for r_ in ph.text_frame.paragraphs[0].runs: r_.font.size = Pt(24 if n_ <= 42 else 21)
+        lab = ("ZUSATZ" if t["tag"] == "Zusatz" or not t["h"] else t["tag"].upper()) + f" · ca. {t['zeit']} min"
+        mz = re.search(r"\(((?:Demo|Versuch) [^)]*)\)", t["title"])
+        if mz: lab += " · " + mz.group(1)
+        if L and t.get("besprechen"): lab += " · BESPRECHEN"
+        lab = lab.replace("ca. ", "")
+        pill(sl, lab, x=2.75 if len(lab) > 30 else 3.35, w=4.6 if len(lab) > 30 else 3.1, kind="theory" if t["h"] and t["tag"] != "Zusatz" else "book")
+        return sl
+
+    s = neue_folie()
+    # gemeinsame Auswahl (alle Felder mit denselben Optionen) in die Karte
+    opts = [tuple(f[2]) for f in fields if len(f) > 2 and isinstance(f[2], (list, tuple))]
+    gemeinsam = opts[0] if opts and len({frozenset(o) for o in opts}) == 1 and len(opts) == len(fields) else None
+    zuletzt = [None]
+    kt = stem if (stem and (parts or fields)) else t["q"]
+    if t["type"] == "sketch": kt += " (mit der Hand, Foto ins Arbeitsblatt)" if "Foto" not in kt else ""
+    lang = th(kt, 20, 6.45) > 2.0
+    size = 20 if (lang or th(kt, 20, 6.45) <= 1.45) else 18
+    zus = []
+    if gemeinsam: zus = [[("Wähle: ", {"bold": True, "color": TEAL, "size": 18}), (" · ".join(gemeinsam), {"size": 18})]]
+    ch = max(0.9, th(kt, size, 6.45, pad=0.16) + (th("Wähle: " + " · ".join(gemeinsam), 18, 6.45, pad=0.02) if gemeinsam else 0))
+    if lang:
+        size = 20
+        while size > 16 and th(kt, size, 6.45, pad=0.16) > Y1 - Y0 - 0.05: size -= 1
+        ch = Y1 - Y0 + 0.02
     has_img = bool(t.get("img"))
-    qw = X1 - X0 if not has_img else 5.0
-    hq = th(q, 20, qw, pad=0.1)
-    if hq > 2.3:
-        # langer Text: Frage allein, Antworten auf eigener Folie
-        tb(s, X0, y, qw, Y1 - y, [q], size=20 if hq < 3.7 else 18)
-        if has_img: picture(s, UNIT + t["img"], 5.6, y, 3.9, 3.4)
-        s = d.slide("Nur Titel", tit + " – Antwort"); pill(s, t["src"], kind=kind, w=2.4); y = Y0 + 0.1
-    else:
-        tb(s, X0, y, qw, hq, [q], size=20)
-        if has_img:
-            picture(s, UNIT + t["img"], 5.6, y, 3.9, 2.6)
-            y += max(hq, 2.7)
-        else:
-            y += hq
-    if allsel:
-        rows = [["Aussage bzw. Feld", "Antwort"]] + [[a, (b or "") if L else ""] for a, b in fields_rows(t)]
-        opts = sorted({o for f in t["fields"] for o in f[2]}, key=len)
-        if len({tuple(f[2]) for f in t["fields"]}) == 1 and len(opts) <= 6:
-            tb(s, X0, y, 9, 0.35, [[("Auswahl: ", {"bold": True, "color": TEAL, "size": 16}), (" · ".join(t["fields"][0][2]), {"size": 16})]], size=16); y += 0.36
-        cw = [5.6, 3.4]
-        rest, nr_ = rows[1:], 1
-        while rest:
-            k = len(rest)
-            while k > 1 and table_h(cw, [rows[0]] + rest[:k]) > Y1 - y: k -= 1
-            cells, _ = auto_grid(s, X0, y, cw, [rows[0]] + rest[:k], size=16)
-            if L:
-                for r in cells[1:]: s._anim.append([r[1]])
-            rest = rest[k:]
-            if rest:
-                nr_ += 1; s = d.slide("Nur Titel", tit + f" ({nr_})"); pill(s, t["src"], kind=kind, w=2.4); y = Y0 + 0.1
-        return
-    if t.get("fields") and t["type"] != "text":
-        lab = " · ".join(f[1] for f in t["fields"])
-        if len(lab) < 220 and th(lab, 16, 9) < 0.9 and y + th(lab, 16, 9) < Y1 - 1.2:
-            hl = th(lab, 16, 9); tb(s, X0, y, 9, hl, [[("Felder: ", {"bold": True, "color": TEAL}), (lab, {})]], size=16); y += hl
-    sol = sol_lines(t)
-    ha = Y1 - y - 0.05
-    need20 = sum(th(x, 20, 8.8, pad=0.04) for x in sol) + 0.5
-    need = sum(th(x, 18, 8.8, pad=0.04) for x in sol) + 0.5
-    if L and need > ha:
-        answer(s, X0, y + 0.05, 9, ha, "", "", False, hint="Deine Antwort – am Arbeitsblatt eintragen")
-        s = d.slide("Nur Titel", tit + " – Lösung"); pill(s, t["src"], kind=kind, w=2.4)
-        y = Y0 + 0.1; ha = Y1 - y
-    if L:
-        answer(s, X0, y + 0.05, 9, ha, "Lösung" + (" · BESPRECHEN" if t.get("besprechen") else ""), sol, True, size=20 if need20 <= ha else 18)
-    else:
-        answer(s, X0, y + 0.05, 9, ha, "", "", False,
-               hint="Foto deiner Heftskizze und Antwort – im Arbeitsblatt eintragen" if t["type"] == "sketch" else "Deine Antwort – am Arbeitsblatt eintragen")
+    card = box(s, X0, Y0 - 0.02, 9.0, ch, fill=WHITE, line=RGBColor.from_string("C9D3B6"), lw=1)
+    ov = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(X0 + 0.14), Inches(Y0 - 0.02 + ch / 2 - 0.3), Inches(0.6), Inches(0.6))
+    ov.fill.solid(); ov.fill.fore_color.rgb = GREEN; ov.line.fill.background(); ov.shadow.inherit = False
+    ov.text_frame.margin_left = ov.text_frame.margin_right = ov.text_frame.margin_top = ov.text_frame.margin_bottom = 0; ov.text_frame.word_wrap = False
+    text(ov, [str(t["nr"])], size=20 if t["nr"] < 10 else 17, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
+    tb(s, X0 + 0.88, Y0 + 0.03, 6.45, ch - 0.1, [kt] + zus, size=size, anchor=MSO_ANCHOR.MIDDLE, after=2)
+    quelle_badge(s, t["src"], X0 + 9.0 - 1.37, Y0 - 0.02 + ch / 2 - 0.36)
+    y = Y0 + ch + 0.14
+    xr, wr = X0, 9.0
+    if lang: y = Y1 + 1  # langer Auftrag: Karte füllt die Folie, Antworten auf der nächsten
+    if has_img:
+        pic, hh = picture(s, UNIT + t["img"], X0, y, 4.1, Y1 - y)
+        xr, wr = X0 + 4.3, 4.7
+
+    def zeile(label, ans, art, opt_txt):
+        nonlocal s, y, xr, wr
+        stacked = has_img or art == "text"
+        lw_ = wr if stacked else wr * 0.58
+        aw = wr if stacked else wr - lw_ - 0.12
+        lh = th(label, 18, lw_ - 0.1, pad=0.06) + (th(opt_txt, 16, lw_ - 0.1, pad=0.02) if opt_txt else 0)
+        atxt = ans if (L and ans) else ""
+        ah = max(0.42, th(atxt or "x", 18, aw - 0.2, bold=True, pad=0.14)) if art != "text" else max(0.5, th(atxt or "x", 18, aw - 0.2, pad=0.16))
+        rh = (lh + ah + 0.04) if stacked else max(lh, ah)
+        if y + rh > Y1 + 0.02:
+            s = neue_folie(); y = Y0; xr, wr = X0, 9.0
+            if has_img: pass
+        parts_ = [[(label, {"size": 18, "bold": True, "color": INK})]]
+        if opt_txt: parts_.append([(opt_txt, {"size": 16, "color": MUTED})])
+        tb(s, xr, y, lw_, lh, parts_, size=18, after=1)
+        ax, ay = (xr, y + lh + 0.02) if stacked else (xr + lw_ + 0.12, y)
+        frame = box(s, ax, ay, aw, ah, fill=WHITE, line=TEAL if not L else ORANGE, lw=1.5)
+        frame.line.dash_style = MSO_LINE_DASH_STYLE.DASH  # gestrichelt wie in der 1AB-PPP
+        if L and ans:
+            col = MUTED if art == "tipp" else RED
+            a_ = tb(s, ax + 0.05, ay + 0.02, aw - 0.1, ah - 0.04, [ans], size=18, bold=art != "text", color=col, anchor=MSO_ANCHOR.MIDDLE, after=0)
+            if art != "tipp": s._anim.append([a_])
+        y += rh + 0.1
+
+    for f in fields:
+        k = f[0]
+        mm = re.match(r"\s*\(?([a-h])\)", f[1])
+        lab = f[1]
+        if mm and mm.group(1) in parts and len(parts[mm.group(1)]) <= 170:
+            lab = mm.group(1) + ") " + parts[mm.group(1)]
+        ans, art = sols.get(k, (None, "text"))
+        if art == "text" and "kw" in chk.get(k, {}) and not chk[k].get("man") and ans and len(ans) < 60: art = "num"
+        o_txt = None
+        if len(f) > 2 and isinstance(f[2], (list, tuple)) and not gemeinsam and frozenset(f[2]) != zuletzt[0]:
+            o_txt = "Wähle: " + " · ".join(f[2]); zuletzt[0] = frozenset(f[2])
+        zeile(lab, ans, art, o_txt)
+    if not fields:
+        zeile("Eure Antwort", " ".join(rest) if rest else "", "text", None); rest = []
+    if L and rest:
+        txt = rest
+        h = sum(th(x, 18, 8.7, pad=0.04) for x in txt) + 0.45
+        if y + h > Y1 + 0.02:
+            if all(len(f) > 2 for f in fields) and h > 1.6: return
+            s = neue_folie(); y = Y0
+        b = box(s, X0, y, 9.0, min(h, Y1 - y + 0.02), fill=WHITE, line=ORANGE, lw=2)
+        text(b, [[("Lösung" + (" · BESPRECHEN" if t.get("besprechen") else ""), {"bold": True, "color": ORANGE, "size": 16})]] + txt, size=18, after=2)
+        s._anim.append([b])
 
 
 def ueberblick(nrs, titel):
