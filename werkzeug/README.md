@@ -14,7 +14,9 @@ Bauvorlagen für Theorie-Seite (Theorie), Arbeitsblatt (Aufgaben) und Quiz – S
 - `<klasse>-<fach>/begriffe.html` – Fachbegriffe A–Z aus allen bisherigen Theorie-Seiten, mit Suche
 - `<klasse>-<fach>/wiederholen.html` – alle Lernziele zum Abhaken (sicher / fast / noch nicht); teilt den Speicher mit »Kann ich das?« der Theorie-Seite
 
-Zusätzlich die **Lehrer-Seite** `lehrer-0f6eec.html` (Adresse in `build_index.py`, Konstante `LEHRER`): alle Klassen mit »Gerade dran«, allen Einheiten (auch versteckten), Tests mit Countdown, Lücken der Theorie-Seiten und QR-Code pro Klasse (antippen = groß für den Beamer). Sie wird nirgends verlinkt – Link nicht an Kadetten weitergeben.
+Zusätzlich die **Lehrer-Seite** `lehrer-0f6eec.html` (Adresse in `build_index.py`, Konstante `LEHRER`): vier große Fachkarten, Suche nach Klasse/Thema/Dateiname und kompakter Schnellzugriff auf das aktuelle Material jeder Fach-/Klassengruppe. Fachauswahl und Suche filtern auch die aufklappbaren Materialbereiche; vorhandene direkte Klassenanker bleiben nutzbar. Alle bisherigen Einheiten (auch versteckte), Tests, Dateivermerke und QR-Codes sind weiterhin erreichbar. `lehrer_layout.py` enthält diese Lehreransicht (v1); sie liest oder verändert keine gespeicherten Kadetten-Antworten.
+
+Die Lehrerzentrale wird auf keiner Kadetten-Seite verlinkt. Die Startseite enthält weiterhin keine Fach-/Klassenliste, die Kadetten öffnen den direkten Klassenlink aus LMS bzw. dem QR-Code. Das trennt die Navigation, ist aber **keine Zugriffssperre**: Alle veröffentlichten GitHub-Pages-Adressen bleiben öffentlich erreichbar. Keine vertraulichen Daten auf die Lehrer-Seite stellen.
 
 Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsichtbar. Felder pro Einheit:
 - `block`: Block laut Jahresplan, genau wie in `bloecke.json` (z. B. `"A Atombau & Bindung"`); `jahresplan`: Einheit(en) im Jahresplan (z. B. `"E3–E5"`, nur zur Nachverfolgung)
@@ -60,6 +62,8 @@ Es erscheint nur, was in `einheiten.json` steht – kommende Themen bleiben unsi
 
 ## Automatische Kontrolle
 `python3 werkzeug/pruefen.py` (läuft auch bei jedem Push als »Seiten pruefen« unter GitHub → Actions): meldet Fremdserver-Links, Tokens, Skript-Syntaxfehler, PDF-Seiten ohne Speicherstatus und **verschwundene/umbenannte Speicherschlüssel** (außer `[schluessel-ok]` steht in der Commit-Nachricht). Pakete für die Automatik sind in `werkzeug/requirements.txt` festgelegt.
+
+`python3 werkzeug/test_lehrer_navigation.py` prüft zusätzlich die Trennung der Kadetten-Navigation, alle Lehrerlinks, Klassenanker und QR-Ziele. Der Test läuft ebenfalls in der GitHub-Kontrolle und braucht keine Zusatzpakete.
 
 
 ## Großzügige Prüfung der Arbeitsblätter (pruefung_nachsicht)
