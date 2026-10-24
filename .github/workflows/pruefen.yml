@@ -22,6 +22,8 @@ jobs:
         with:
           node-version: "22"
       - run: python3 werkzeug/pruefen.py
+      - name: Lehrer- und Kadettennavigation getrennt
+        run: python3 werkzeug/test_lehrer_navigation.py
       # Antwort-Tests der großzügigen Prüfung (richtige Antworten gelten, falsche nicht) – rot bei jeder Abweichung
       - name: Antwort-Tests
         run: |

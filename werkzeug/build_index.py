@@ -26,6 +26,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "werkzeug"))
 from lernseite_lesen import lesen  # noqa: E402
 import fahrplan as fp  # noqa: E402
+import lehrer_layout as ll  # noqa: E402
 
 W = lambda *p: os.path.join(ROOT, "werkzeug", *p)
 E = json.load(open(W("einheiten.json"), encoding="utf-8"))
@@ -37,7 +38,8 @@ HEUTE = datetime.date.today()
 STAND = HEUTE.strftime("%d.%m.%Y")
 esc = html.escape
 BASIS = "https://stephanholzer12.github.io/unterricht/"
-# Lehrer-Seite: feste, schwer zu erratende Adresse, wird nirgends verlinkt (nur für Stephan)
+# Lehrer-Seite: fester Arbeitslink für Stephan, nirgends auf Kadetten-Seiten verlinkt.
+# Die öffentliche Adresse ist keine Zugriffssperre.
 LEHRER = "lehrer-0f6eec.html"
 
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Theorie-Seite → Arbeitsblatt → Quiz
@@ -564,7 +566,6 @@ def sicht_knopf(e, ausblenden):
 
 def seite_lehrer(klassen):
     klassen = sorted(klassen, key=lambda k: k["k"]["klasse"])  # 1AB, 2AB, 2AK, 3AB, 3BK, 4AB, 5AB, 5AK
-    n_u = sum(len(k["units"]) for k in klassen)
     # Eine Zeile je echter Klasse: 4AB liefert zwei Zeilen (4AK 09.11., 4BK 11.11.), kein gemeinsames Datum mehr.
     tests = []
     for k in klassen:
@@ -575,20 +576,21 @@ def seite_lehrer(klassen):
             else:
                 tests.append((None, k["k"]["klasse"], t, k))
     tests.sort(key=lambda x: (x[0] is None, x[0] or HEUTE))
-    out = [kopf("Alle Fachübersichten", "NUR FÜR DICH · Link nicht an Kadetten weitergeben", "", "Lehrer-Übersicht – alle Fachübersichten")]
-    out[0] = out[0].replace("</style>", LEHRER_CSS + "</style>").replace("<main>", '<main class="wide">')
-    out[0] = re.sub(r'<nav class="toc".*?</nav>', '<nav class="toc" aria-label="Fachübersichten"><div>' + "".join(
-        f'<a href="#{esc(k["ordner"])}">{esc(k["k"]["fach"])} {esc(k["k"]["klasse"])}</a>' for k in klassen) + "</div></nav>", out[0], flags=re.S)
-    nxt = next(((d, kl, t, k) for d, kl, t, k in tests if d and d >= HEUTE), None)
-    nxt_txt = f'{esc(nxt[1])} · {nxt[0].strftime("%d.%m.")}' if nxt else "–"
-    out.append(f'<div class="tiles"><a href="#klassen"><b>{len(klassen)}</b><span>Fachübersichten</span></a><a href="#klassen"><b>{n_u}</b><span>Einheiten online</span></a>'
-               f'<a href="#tests"><b>{nxt_txt}</b><span>nächster Test</span></a></div>')
+    out = [kopf("Lehrerzentrale", "BHAK FÜR FÜHRUNG UND SICHERHEIT · LEHRERANSICHT", "", "Lehrerzentrale – Fächer und Klassen")]
+    out[0] = out[0].replace("</style>", LEHRER_CSS + ll.CSS + "</style>").replace("<main>", '<main class="wide">')
+    out[0] = re.sub(r'<nav class="toc".*?</nav>', '<nav class="toc" aria-label="Lehrerzentrale"><div>'
+        '<a href="#faecher">Fächer</a><a href="#schnellzugriff">Schnellzugriff</a>'
+        '<a href="#tests">Tests</a><a href="#klassen-titel">Alle Materialien</a></div></nav>', out[0], flags=re.S)
+    out.append(ll.uebersicht(klassen, knoepfe))
     if tests:
-        li = "".join(f'<li><strong>{esc(k["k"]["fach"])} {esc(kl)}</strong> · {esc(t["kapitel"].split("·")[0].strip())}'
+        li = "".join(f'<li class="lehrer-test" data-fach="{esc(k["k"]["fach"])}"><strong>{esc(k["k"]["fach"])} {esc(kl)}</strong> · {esc(t["kapitel"].split("·")[0].strip())}'
                      + (f' · {d.strftime("%d.%m.")} (<span data-datum="{d.isoformat()}"></span>)' if d else " · Termin folgt")
                      + f' · <a href="{esc(t["ordner"])}/quiz.html">Test-Training</a></li>' for d, kl, t, k in tests)
-        out.append(f'<section class="card" id="tests"><div class="eyebrow">TESTS</div><ul style="margin:0;padding-left:20px;display:grid;gap:4px">{li}</ul></section>')
-    out.append('<div class="grid" id="klassen">')
+        out.append(f'<section class="card" id="tests"><h2>Tests</h2><ul style="margin:0;padding-left:20px;display:grid;gap:4px">{li}</ul>'
+                   '<p class="meta" id="lehrer-tests-leer" hidden>Für dieses Fach sind noch keine Tests hinterlegt.</p></section>')
+    else:
+        out.append('<section class="card" id="tests"><h2>Tests</h2><p class="meta">Noch keine Tests hinterlegt.</p></section>')
+    out.append('<h2 id="klassen-titel">Alle Materialien</h2><div class="grid" id="klassen">')
     for k in klassen:
         o, kk = k["ordner"], k["k"]
         url = BASIS + o + "/"
@@ -596,7 +598,9 @@ def seite_lehrer(klassen):
         jetzt = next((u for u in k["units"] if u["jetzt"]), None)
         blk = next((b for b in k["bloecke"] if jetzt in b["units"]), None) if jetzt else None
         stand = f'Themenblock {blk["nr"]} von {k["n_plan"]} · {esc(blk["name"])}' if blk and blk["nr"] else "noch keine Einheit"
-        h = [f'<section class="card kl" id="{esc(o)}"><div class="kl-head"><div class="t"><div class="eyebrow">{stand}</div><h3>{esc(kk["fach"])} {esc(kk["klasse"])}</h3>'
+        aktuell_titel = jetzt["titel"] if jetzt else "Noch kein aktuelles Thema"
+        h = [f'<details class="card kl lehrer-gruppe" id="{esc(o)}" {ll.attribute(k)}><summary>{esc(kk["fach"])} {esc(kk["klasse"])}'
+             f'<span class="meta">{esc(aktuell_titel)}</span></summary><div class="kl-inhalt"><div class="kl-head"><div class="t"><div class="eyebrow">{stand}</div><h3>{esc(kk["fach"])} {esc(kk["klasse"])}</h3>'
              f'<div class="url">{esc(url)}</div></div>'
              f'<button type="button" class="qrbtn" data-titel="{esc(kk["fach"])} {esc(kk["klasse"])}" data-url="{esc(url)}" aria-label="QR-Code {esc(kk["klasse"])} groß zeigen">{qr}</button></div>'
              f'<div class="links small"><a class="btn" href="{esc(o)}/">Klassenseite</a><a class="btn light" href="{esc(o)}/begriffe.html">Begriffe ({k["n_b"] if k["n_b"] else "noch keine hinterlegt"})</a>'
@@ -617,21 +621,22 @@ def seite_lehrer(klassen):
             e2 = dict(v, unter=v["ordner"])
             rows.append(f'<div><div><span class="tag">versteckt</span> <strong>{esc(v["kapitel"])}</strong> {esc(v["titel"])}</div><div class="links small">{knoepfe(e2)}{sicht_knopf(v, False)}</div>{dateien_html(v)}</div>')
         n = len(rows)
-        h.append(f'<details class="mehr"><summary>Alle Einheiten ({n})</summary><div class="ulist">{"".join(rows)}</div></details></section>')
+        h.append(f'<details class="mehr"><summary>Alle Einheiten ({n})</summary><div class="ulist">{"".join(rows)}</div></details></div></details>')
         out.append("".join(h))
     out.append("</div>")
-    out.append('<div id="beamer" role="dialog" aria-modal="true" aria-label="QR-Code für die Klasse"><h2 id="bt"></h2><div class="q" id="bq"></div><div class="url" id="bu"></div><button type="button" id="bx">Schließen</button></div>')
+    out.append('<div id="beamer" role="dialog" aria-modal="true" aria-hidden="true" aria-label="QR-Code für die Klasse"><h2 id="bt"></h2><div class="q" id="bq"></div><div class="url" id="bu"></div><button type="button" id="bx">Schließen</button></div>')
     js = JS_COUNTDOWN + """
-var bm = document.getElementById('beamer');
+var bm = document.getElementById('beamer'), fokusVorBeamer = null;
 document.querySelectorAll('.qrbtn').forEach(function (b) {
   b.addEventListener('click', function () {
+    fokusVorBeamer = document.activeElement;
     document.getElementById('bt').textContent = b.dataset.titel;
     document.getElementById('bu').textContent = b.dataset.url;
     document.getElementById('bq').innerHTML = b.innerHTML;
-    bm.classList.add('on'); document.getElementById('bx').focus();
+    bm.classList.add('on'); bm.setAttribute('aria-hidden', 'false'); document.getElementById('bx').focus();
   });
 });
-function zu() { bm.classList.remove('on'); }
+function zu() { if (!bm.classList.contains('on')) return; bm.classList.remove('on'); bm.setAttribute('aria-hidden', 'true'); if (fokusVorBeamer) fokusVorBeamer.focus(); }
 var SMSG = document.createElement('div'); SMSG.id = 'sichtmsg'; document.body.appendChild(SMSG);
 function sagen(t) { SMSG.textContent = t; SMSG.classList.add('on'); setTimeout(function () { SMSG.classList.remove('on'); }, 9000); }
 /* Ein-/Ausblenden ohne GitHub-Token: Diese Seite liegt öffentlich auf GitHub Pages – ein Token im
@@ -652,9 +657,9 @@ document.querySelectorAll('.sichtbtn').forEach(function (b) {
 });
 document.getElementById('bx').onclick = zu;
 bm.addEventListener('click', function (e) { if (e.target === bm) zu(); });
-document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu(); });
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu(); if (e.key === 'Tab' && bm.classList.contains('on')) { e.preventDefault(); document.getElementById('bx').focus(); } });
 """
-    out.append(fuss(js, text="Lehrer-Übersicht · wird bei jedem Bauen der Klassenseiten automatisch aktualisiert · Tipp: QR-Code antippen = groß für den Beamer"))
+    out.append(fuss(js + ll.JS, text="Lehrerzentrale v1 · wird automatisch aktualisiert · QR-Code antippen = groß für den Beamer · Öffentliche Seite, keine Zugriffssperre"))
     return "".join(out)
 
 
