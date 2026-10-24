@@ -2,8 +2,9 @@
 
 Quelle ist das Feld »fahrplan« einer Einheit in einheiten.json:
   "fahrplan": {"text": "kurzer Satz (optional)",
-               "zeilen": [{"wann": "Stunde 1", "lesen": "Einstieg + Teil 1 · …", "aufgaben": "1–4",
-                           "wie": "ohne Handy: … (optional)", "abgabe": "–"}, …]}
+               "zeilen": [{"wann": "Stunde 1", "datum": "Di 3.11. (optional)", "lesen": "Einstieg + Teil 1 · …", "aufgaben": "1–4",
+                           "zeit": "Aufgaben ca. 18 min (optional)", "wie": "ohne Handy: … (optional)", "abgabe": "–"}, …]}
+Die Spalten »Datum« und »Zeit« erscheinen nur, wenn mindestens eine Zeile sie hat.
 Zeilen, deren »wann« mit »Stunde« beginnt, zählen als Unterrichtsstunden. Andere Zeilen (»Für Schnelle«,
 »Hausübung«) sind Zusatz.
 
@@ -62,7 +63,7 @@ def html_fahrplan(u):
     if not fp or not fp.get("zeilen"):
         return None
     z = fp["zeilen"]
-    spalten = [("wann", "Wann"), ("lesen", "Das machen wir"), ("aufgaben", "Aufgaben"), ("wie", "Wie"), ("abgabe", "Abgabe")]
+    spalten = [("wann", "Wann"), ("datum", "Datum"), ("lesen", "Das machen wir"), ("aufgaben", "Aufgaben"), ("zeit", "Zeit"), ("wie", "Wie"), ("abgabe", "Abgabe")]
     spalten = [(k, t) for k, t in spalten if k in ("wann", "lesen") or any(r.get(k) for r in z)]
     n = stunden(fp)
     kopf = '<div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2>'

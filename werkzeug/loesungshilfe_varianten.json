@@ -1,4 +1,12 @@
 {
+  "2ab-nawi/k1-3-reaktionen": [
+    {"id": "a12", "vars": [{"n": "m1", "min": 0.8, "max": 2.0, "step": 0.05}, {"n": "dm", "min": 0.15, "max": 0.5, "step": 0.01}],
+     "text": "Auf der Waage liegen {m1} g Eisenwolle. Nach dem Verbrennen ist die Masse um {dm} g gestiegen. a) Wie viel wiegt der Rückstand jetzt? b) Um wie viel Prozent ist die Masse gestiegen?",
+     "felder": [{"label": "a) Masse nachher (mit Einheit)", "expr": "m1+dm", "einheit": "g"}, {"label": "b) Zunahme in Prozent", "expr": "dm/m1*100", "einheit": ""}]},
+    {"id": "a17", "vars": [{"n": "t20", "min": 40, "max": 160, "step": 8}, {"n": "dT", "min": 10, "max": 20, "step": 10}],
+     "text": "Eine Brausetablette braucht in Wasser von 20 °C {t20} s. Faustregel: 10 °C wärmer → etwa doppelt so schnell. Wie lange braucht sie ungefähr, wenn das Wasser um {dT} °C wärmer ist?",
+     "felder": [{"label": "Zeit (mit Einheit)", "expr": "t20/Math.pow(2,dT/10)", "einheit": "s"}]}
+  ],
   "4ab-nawi/k1-5a-elektromagnet": [
     {"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000, "step": 50}, {"n": "I", "min": 0.2, "max": 1.0, "step": 0.1}, {"n": "lcm", "min": 8, "max": 30, "step": 2}],
      "text": "Eine Spule hat {N} Windungen und ist {lcm} cm lang. Es fließen {I} A. Berechne die Durchflutung Θ und die Feldstärke H.",

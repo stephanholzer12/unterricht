@@ -48,7 +48,7 @@ def arbeitsauftrag(u):
                    '<thead><tr><th scope="col">Phase</th><th scope="col">Lesen und bearbeiten</th>'
                    '<th scope="col">Aufgaben</th><th scope="col">Abgabe</th></tr></thead><tbody>')
         for r in pflicht:
-            out.append(f'<tr><th scope="row">{esc(r["wann"])}</th><td data-label="Lesen und bearbeiten">{esc(r["lesen"])}')
+            out.append(f'<tr><th scope="row">{esc(r["wann"] + (" · " + r["datum"] if r.get("datum") else ""))}</th><td data-label="Lesen und bearbeiten">{esc(r["lesen"])}')
             if r.get("wie"):
                 out.append(f'<p class="ks-arbeitsweise"><strong>Arbeitsweise:</strong> {esc(r["wie"])}</p>')
             abgabe = r.get("abgabe", "–")
@@ -59,7 +59,7 @@ def arbeitsauftrag(u):
     if zusatz:
         out.append('<details class="mehr ks-zusatzauftrag"><summary>Zusatz · nur nach Auftrag oder wenn Zeit bleibt</summary><div><ul>')
         for r in zusatz:
-            out.append(f'<li><strong>{esc(r["wann"])}</strong>: {esc(r["lesen"])}'
+            out.append(f'<li><strong>{esc(r["wann"] + (" · " + r["datum"] if r.get("datum") else ""))}</strong>: {esc(r["lesen"])}'
                        + (f' · Aufgaben {esc(r["aufgaben"])}' if r.get("aufgaben") else "") + '</li>')
         out.append('</ul></div></details>')
     if (u.get("fahrplan") or {}).get("text"):

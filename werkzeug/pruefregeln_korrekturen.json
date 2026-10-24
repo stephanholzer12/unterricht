@@ -272,6 +272,28 @@
      ]
     }
    }
+  },
+  "2ab-nawi/k1-3-reaktionen": {
+   "a5": {
+    "warum": {
+     "need": 1
+    }
+   },
+   "a13": {
+    "warum": {
+     "need": 1
+    }
+   },
+   "a19": {
+    "kat": {
+     "need": 1
+    }
+   },
+   "a22": {
+    "duenn": {
+     "need": 1
+    }
+   }
   }
  }
 }

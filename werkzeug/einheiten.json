@@ -180,6 +180,83 @@
   "aktuell": true
  },
  {
+  "klasse": "2AB",
+  "fach": "NAWI",
+  "ordner": "2ab-nawi/k1-3-reaktionen",
+  "kapitel": "K1.3",
+  "titel": "Stoffumwandlung: Redox, Energie, Katalysatoren",
+  "block": "B Chemische Reaktionen",
+  "jahresplan": "E6–E7",
+  "versteckt": true,
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "versuche.html",
+   "quiz.html"
+  ],
+  "fahrplan": {
+   "text": "Lies die Theorie-Seite Teil für Teil, mach die Aufgaben 1–18 im Arbeitsblatt, protokolliere die Versuche in der Gruppe und gib nach Stunde 5 beide PDFs in LMS ab.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "datum": "Di 03.11.",
+     "lesen": "Einstieg + Teil 1 · Redoxreaktionen · Demo K1.3-V1 Eisenwolle · Ansatz K1.3-V2 Rost",
+     "aufgaben": "1–4",
+     "zeit": "Aufgaben ca. 18 min",
+     "wie": "ohne Handy: Demo mit Vorhersage (Hand heben)",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "datum": "Do 05.11.",
+     "lesen": "1. Test (20 min) · Demo K1.3-V3 Kupferbrief · Teil 2 · Rost und Rostschutz",
+     "aufgaben": "5–8",
+     "zeit": "Aufgaben ca. 15 min",
+     "wie": "ohne Handy: Test, Pflegebefehl mit der Hand (Heft oder Mini-Whiteboard)",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 3",
+     "datum": "Di 10.11.",
+     "lesen": "Rost-Ansätze auswerten · Teil 3 · Energie · Gruppe 1–3: Stationen K1.3-V4 bis V6 · Gruppe 4–6: Aufgaben",
+     "aufgaben": "9–12 (Gruppe 4–6)",
+     "zeit": "Stationen 18 min · Aufgaben ca. 21 min",
+     "wie": "ohne Handy: Stationenbetrieb (Handy nur fürs Protokoll), Energiediagramm mit der Hand",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 4",
+     "datum": "Do 12.11.",
+     "lesen": "Teil 4 · Katalysatoren · Demo K1.3-V7 · Gruppe 4–6: Stationen · Gruppe 1–3: Aufgaben 9–12",
+     "aufgaben": "13–14 · 9–12 (Gruppe 1–3)",
+     "zeit": "Aufgaben ca. 7 min + 21 min",
+     "wie": "ohne Handy: Demo mit Vorhersage, Stationen",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 5",
+     "datum": "Di 17.11.",
+     "lesen": "Teil 5 · Tempo · Gruppenversuch K1.3-V8 Brausetablette · Partnercheck · Quiz",
+     "aufgaben": "15–18 · Quiz",
+     "zeit": "Aufgaben ca. 22 min",
+     "wie": "ohne Handy: Gruppenversuch (Handy = Stoppuhr), Partnercheck mündlich",
+     "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige",
+     "aufgaben": "19–23",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "24.10.2026",
+   "zip": "26-27-2AB-K1.3-Reaktionen-v1.zip",
+   "liste": []
+  }
+ },
+ {
   "klasse": "5AB",
   "fach": "TÖW",
   "ordner": "5ab-toew/k1-3-nachhaltig",
