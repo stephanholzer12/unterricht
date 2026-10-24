@@ -2437,12 +2437,17 @@ window.LH_VARIANTEN = [];
   }
   function parseZahlen(str) {
     var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
-    var s0 = String(str || "").replace(/10(⁻?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+    var s0 = String(str || "").replace(/[⋅∙•‧]/g, "·").replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       .replace(/([A-Za-zµμΩ²³])⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, u, z) { return u + "^-" + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       /* Minuszeichen U+2212, Exponent in Klammern, Nenner in Klammern: »m−2« → »m^-2«, »m^(-2)« → »m^-2«, »N/(A·m)« → »N/A/m« */
       .replace(/([A-Za-zµμΩ²³])[−–](\d)/g, "$1^-$2").replace(/\^\(\s*[-−–]?\s*(\d)\s*\)/g, function (m, z) { return /-|−|–/.test(m) ? "^-" + z : "^" + z; })
       .replace(/([A-Za-zµμΩ²³])\s*\/\s*\(/g, "$1/(")
       .replace(/\/\(([A-Za-zµμΩ²³0-9^\-·*. ]+)\)/g, function (_, x) { return "/" + x.trim().split(/[·*.\s]+/).filter(Boolean).join("/"); })
+      /* Einheit in Klammern direkt nach der Zahl: »1500 (mT)« → »1500 mT« (nur wenn der Klammerinhalt eine bekannte Einheit ist; »240 A (oder 0,24 kA)« bleibt unberührt) */
+      .replace(/(\d)\s*\(\s*([A-Za-zµμΩ][A-Za-zµμΩ·²³^\-0-9\/ ]{0,16}?)\s*\)/g, function (m, d, u) { return einheitDim(u.replace(/\s+/g, "")) ? d + " " + u.replace(/\s+/g, "") : m; })
+      /* Malpunkt und Schrägstrich mit Leerzeichen innerhalb einer Einheit: »A · m^-1« → »A·m^-1«, »kg / A / s²« → »kg/A/s²« */
+      .replace(/([A-Za-zµμΩ²³]|\^-?\d)\s*[·*]\s*(?=[A-Za-zµμΩ])/g, "$1·")
+      .replace(/([A-Za-zµμΩ²³]|\^-?\d)\s+\/\s+(?=[A-Za-zµμΩ])/g, "$1/")
       /* Einheitenkette mit Leerzeichen: »V s m^-2« → »V·s·m^-2« (nur wenn alle Teile bekannte Einheiten sind) */
       .replace(/(\d\s*)((?:[A-Za-zµμΩ]{1,2}(?:\^-?\d)?)(?:\s+[A-Za-zµμΩ]{1,2}(?:\^-?\d)?){1,3})(?![A-Za-zäöüµμΩ])/g, function (m, a, ch) { var j = ch.split(/\s+/).join("·"); return einheitDim(j) ? a + j : m; })
       /* Einheiten mit Leerzeichen: »A m^-1« → »A·m^-1«, »V s / m²« → »V·s/m²«, »A / m« → »A/m« */
@@ -2462,8 +2467,13 @@ window.LH_VARIANTEN = [];
       /* Zahl wird ausdrücklich verworfen? (»240 A ist falsch«, »nicht 240 A«, »statt 240 A«) */
       var vor = s0.slice(Math.max(0, m.index - 14), m.index).split(/[,;.!?]/).pop(), rest = s0.slice(m.index + m[0].length), nx = rest.search(/\d/);
       var nach = (nx < 0 ? rest : rest.slice(0, nx)).slice(0, 28).split(/[,;.!?]/)[0];
-      var vor40 = s0.slice(Math.max(0, m.index - 40), m.index).split(/[,;.!?]/).pop();
-      var neg = /\b(nicht|kein\w*|statt|anstatt|falsch:?)\s*$/i.test(vor) || /(?<!nicht\s)\b(falsch\w*|unrichtig\w*|inkorrekt\w*)\s+(\w+\s+){0,3}(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(vor40) || /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach);
+      /* Verwerfung vor der Zahl: Bezug nur auf den Textteil seit der vorigen Zahl (»24 A sind falsch 240 A sind richtig«: 240 ist NICHT verworfen) */
+      var segV = (out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index)).split(/[,;.!?]/).pop();
+      var neg = /\b(nicht|kein\w*|statt|anstatt)\s*$/i.test(vor) || /(?<!nicht\s)\bfalsch(e|er|es|en|em)\s+(\w+\s+){0,3}(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(segV) || /^\s*falsch:?\s*(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(segV) ||
+        (/\bfalsch:?\s*$/i.test(segV) && !(out.length && /^\s*(ist|sind|war|wäre|wurde)\s+falsch/i.test(segV))) /* »Das ist falsch 240 A« */ ||
+        /^\s*[×x*·]\s*10\b/i.test(rest) /* Potenzausdruck nicht vollständig erkannt: Mantisse allein nie werten (»240 × 10^x A«) */ ||
+        (!(nx >= 0 && /^\s*falsch:?\s*(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(nach)) /* »240 A falsch sind 24 A«: »falsch« gehört zur NÄCHSTEN Zahl */ &&
+          /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach));
       if (/\bnicht\s+(falsch|unrichtig|inkorrekt)\b/i.test(nach)) neg = false;   // »240 A sind nicht falsch« bestätigt die Zahl
       /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
       var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);
@@ -2544,8 +2554,10 @@ window.LH_VARIANTEN = [];
     var m, verneint = false; ra.lastIndex = 0;
     while ((m = ra.exec(v))) {
       if (m[0] === "") { ra.lastIndex++; continue; }
-      var vor = v.slice(Math.max(0, m.index - 24), m.index).split(/[,;.!?:]/).pop();
-      var nein = /\b(nicht|kein\w*|nie|niemals)\s+(\S+\s+)?\S*$/.test(vor) && !/\bnicht\s+nur\s+\S*$/.test(vor);
+      var vor = v.slice(Math.max(0, m.index - 34), m.index).split(/[,;.!?:]/).pop();
+      var nein = /\b(nicht|kein\w*|nie|niemals)\s+(\S+\s+){0,2}\S*$/.test(vor) && !/\bnicht\s+nur\s+\S*$/.test(vor);
+      /* nachgestellte Verneinung am Satzende: »stoppt nicht.«, »stoppt nie.« (nur bei Feldern mit neg: true; »Lorentzkraft nicht durch Reibung« bleibt gültig) */
+      if (!nein && neg && /^\w*\s+(nicht|nie|niemals)\s*([.,;!?]|$)/.test(v.slice(m.index + m[0].length, m.index + m[0].length + 18))) nein = true;
       if (!nein || !neg) return 1; verneint = true;
     }
     return verneint ? -1 : 0;

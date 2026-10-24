@@ -218,7 +218,7 @@
      "kw": [
       [
        "bleibt stehen / dreht nicht weiter",
-       "\\bsteh|\\bstopp|stillstand|pendel|nicht\\s+weiter|nicht\\s+mehr\\s+(weiter\\s*)?(dreh|lauf)|nicht\\s+dauer|nicht\\s+durchgehend|keine\\s+(dauer|durchgehende|ständige|vollständige)\\w*\\s+(dreh|bewegung|rotation|umdrehung)|hört\\w*\\s+(auf|bald\\s+auf)|blockier|nicht\\s+(\\w+\\s+)?(kontinuierlich|ständig|dauerhaft|permanent|fortlaufend)"
+       "\\bsteh|\\bstopp|stillstand|pendel|nicht\\s+weiter|nicht\\s+mehr\\s+(weiter\\s*)?(dreh|lauf)|nicht\\s+dauer|nicht\\s+durchgehend|keine\\s+(dauer|durchgehende|ständige|vollständige)\\w*\\s+(dreh|bewegung|rotation|umdrehung)|hört\\w*\\s+(auf|bald\\s+auf)|blockier|nicht\\s+(\\w+\\s+)?(kontinuierlich|ständig|dauerhaft|permanent|fortlaufend)|keine\\s+(endlose|unendliche|dauerhafte|kontinuierliche|ständige|fortlaufende)\\w*\\s+(rotation|drehung|bewegung)|nicht\\s+(unendlich|endlos|ewig)(\\s+\\w+)?|stillstand"
       ],
       [
        "Umpolen fehlt",
@@ -227,8 +227,8 @@
      ],
      "contra": [
       "(immer|ständig|dauernd|dauerhaft|ewig|unendlich)\\s+weiter",
-      "(?<!zunächst\\s)(?<!zuerst\\s)(?<!anfangs\\s)(?<!noch\\s)(?<!kurz\\s)läuft\\s+(\\w+\\s+)?weiter(?!\\s*(,\\s*)?(und\\s+)?(\\w+\\s+){0,3}(dann|bleibt|steht|hört|stoppt|nur|bis|kurz|aber))",
-      "muss\\s+nicht\\s+(um)?gepolt|nicht\\s+(um)?gepolt\\s+werden\\s+muss|(stromrichtung|polung|umpolen|richtung)\\s+(\\w+\\s+){0,3}egal|egal\\s*,?\\s*(in\\s+welche\\w*\\s+)?(welche\\w*\\s+)?(stromrichtung|richtung|polung)"
+      "(?<!zunächst\\s)(?<!zuerst\\s)(?<!anfangs\\s)(?<!noch\\s)(?<!kurz\\s)läuft\\s+(\\w+\\s+)?weiter(?!\\s*(,\\s*)?(und\\s+)?(\\w+\\s+){0,3}(dann|bleibt|steht|hört|stoppt|nur|bis|kurz|aber|schließlich|irgendwann|später|danach|bald|erst|kommt|zum\\s+stillstand|stillstand))",
+      "muss\\s+nicht\\s+(um)?gepolt|nicht\\s+(um)?gepolt\\s+werden\\s+muss|(stromrichtung|polung|umpolen|richtung)\\s+(\\w+\\s+){0,3}egal|(?<!(steh|stopp|stillstand)[^.]{0,40})egal\\s*,?\\s*(in\\s+welche\\w*\\s+)?(welche\\w*\\s+)?(stromrichtung|richtung|polung)"
      ]
     }
    },

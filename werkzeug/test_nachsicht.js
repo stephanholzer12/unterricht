@@ -90,6 +90,19 @@ cases[E4].push(
  ['a3','theta','0,4 A bei 600 Windungen = 240 A',1],
  ['a12','b','1,5 N/(A·s)',0],['a12','b','1,5 V·s·m^-1',0],['a12','b','1,5 kg/(A·s)',0],['a12','b','1,5 N / (A · m)',1],['a12','b','1,5 V s m−2',1],
  ['a3','theta','2,4 × 10^-2 A',0],['a3','theta','2,4 x 10² A',1]);
+/* Prüfbericht v8 (24.10.2026): V8-01 Einheit in Klammern, V8-02 Leerzeichen/Malpunkt, V8-03 hochgestelltes Plus, V8-04 richtig/falsch ohne Satzzeichen, V8-05 Motor, V8-06 nachgestellte Verneinung */
+cases[E4].push(
+["a12","b","1500 (mT)",1],["a12","b","1,5 (A)",0],["a3","h","2 (kA/m)",1],["a3","h","2000 (V/m)",0],["a12","b","1500 mT",1],["a12","b","1,5 N/(A·s)",0],
+["a3","h","2000 A · m^-1",1],["a3","h","2000 A⋅m⁻¹",1],["a12","b","1,5 kg · s^-2 · A^-1",1],["a12","b","1,5 kg / A / s²",1],["a3","h","2000 A·m^-1",1],["a12","b","1,5 kg/A/s²",1],["a3","h","2000 A · m",0],["a12","b","1,5 kg · s^-1 · A^-1",0],
+["a3","theta","2,4 × 10⁺² A",1],["a3","theta","240 × 10⁺¹ A",0],["a3","theta","2,4 × 10² A",1],["a3","theta","240 × 10¹ A",0],["a3","theta","2,4 × 10⁺¹ A",0],
+["a3","theta","Richtig sind 240 A falsch sind 24 A",1],["a3","theta","24 A sind falsch 240 A sind richtig",1],["a3","theta","24 A sind falsch. 240 A sind richtig.",1],["a3","theta","240 A sind falsch. 24 A sind richtig.",0],["a3","theta","Richtig sind 24 A falsch sind 240 A",0],["a3","theta","0,4 A bei 600 Windungen = 240 A",1],
+["a7","t","Der Motor läuft weiter und kommt schließlich zum Stillstand.",1],["a7","t","Der Motor bleibt stehen, egal in welche Richtung der Strom vorher geflossen ist.",1],["a7","t","Ohne Kommutator ist keine endlose Rotation möglich.",1],["a7","t","Der Motor dreht sich nicht unendlich weiter.",1],
+["a7","t","Zunächst läuft er weiter und bleibt dann stehen, weil der Strom nicht umgepolt wird.",1],["a7","t","Die Spule bleibt stehen, egal wie groß die Stromstärke ist.",1],["a7","t","Der Motor läuft immer weiter.",0],["a7","t","Die Stromrichtung ist egal, der Motor dreht sich einfach weiter.",0],
+["a7","t","Der Motor stoppt nicht.",0],["a7","t","Der Motor stoppt nie.",0],["a7","t","Der Motor stoppt.",1],["a7","t","Der Motor kommt nicht zum Stillstand.",0],
+["a5","t","Der Draht wird abgelenkt, aber nicht durch die Lorentzkraft.",0],["a5","t","Der Draht wird abgelenkt, die Lorentzkraft wirkt, weil sich die Felder überlagern.",1],["a5","t","Es gibt keine Lorentzkraft und der Draht wird nicht abgelenkt.",0],
+/* zusätzliche Gegenproben */
+["a12","b","1,5 (T)",1],["a3","theta","240 (A)",1],["a3","theta","240 A (oder 0,24 kA)",1],["a3","theta","240 × 10^x A",0],
+["a3","theta","Das ist falsch 240 A",0],["a3","theta","Richtig ist 240 A, falsch ist 24 A.",1],["a3","theta","240 A falsch 24 A richtig",1],["a5","t","Der Draht wird abgelenkt durch die Lorentzkraft nicht durch Reibung",1],["a7","t","Kein Stillstand, er dreht sich immer weiter.",0],["a7","t","Der Motor hat keinen Stillstand.",0],["a3","h","2 kA / m",1],["a3","h","5 (Windungen) 2000 A/m",1]);
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);
