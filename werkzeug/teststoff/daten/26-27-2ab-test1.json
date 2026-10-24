@@ -1,32 +1,79 @@
 {
- "datei": "26-27-2AB-Test1-Teststoff-v1.docx",
+ "datei": "26-27-2AB-Test1-Teststoff-v2.docx",
  "kopf": "TESTSTOFF · NAWI · 2. JAHRGANG",
  "titel": "1. Test – Atommodelle und chemische Bindungen",
- "fuss": "2AB · 1. Test NAWI · Teststoff · Stand 19.10.2026 · v1",
+ "fuss": "2AB · 1. Test NAWI · Teststoff · Stand 24.10.2026 · v2",
  "termin": "Donnerstag, 5. November 2026",
- "stoff": "Schulbuch (Trauner) S. 10–28 und alle Unterlagen aus dem Unterricht",
+ "stoff": "Schulbuch (Trauner) S. 11–28 und alle Unterlagen aus dem Unterricht",
  "durchgenommen": [
-  ["1", "[[Wiederholung: Atombau, Periodensystem, chemische Schreibweise]]", "S. 10[[–18]]", "[[PPP Wiederholung 1. Jahrgang]]", "[[…]]"],
-  ["2", "Atommodelle im Wandel der Zeit: Dalton, Thomson, Rutherford, Bohr", "S. 11–14", "[[PPP Atommodelle]]", "[[Buch-Aufgaben S. …]]"],
-  ["3", "Das heute gültige Atommodell: Orbitale, Besetzung, Elektronenkonfiguration", "S. 14–18", "[[PPP Atommodelle]]", "[[Buch-Aufgaben S. 18]]"],
-  ["4", "Die Bindungsarten: Ionen-, Atom- und Metallbindung", "S. 19–25", "PPP Bindungsarten · Theorie-Seite · Arbeitsblatt am Handy", "Arbeitsblatt Aufgaben 1–7 · Buch-Aufgaben S. 20, 22, 28"],
-  ["5", "Zwischenmolekulare Kräfte: Wasserstoffbrücken, Van-der-Waals-Kräfte", "S. 26–28", "Theorie-Seite · Versuche (Stationen) · Vertiefung am Handy", "Arbeitsblatt Aufgaben 9–10 · Vertiefung Aufgaben 11–16"]
+  [
+   "1",
+   "Atommodelle im Wandel der Zeit: Dalton, Thomson, Rutherford, Bohr",
+   "S. 11–14",
+   "PPP Atommodelle (per E-Mail)",
+   "[[Buch-Aufgaben S. …]]"
+  ],
+  [
+   "2",
+   "Das heute gültige Atommodell: Orbitale, Besetzung, Elektronenkonfiguration",
+   "S. 14–18",
+   "PPP Atommodelle (per E-Mail)",
+   "[[Buch-Aufgaben S. 18]]"
+  ],
+  [
+   "3",
+   "Die Bindungsarten: Ionen-, Atom- und Metallbindung",
+   "S. 19–25",
+   "PPP Bindungsarten · Theorie-Seite · Arbeitsblatt am Handy",
+   "Arbeitsblatt Aufgaben 1–7 · Buch-Aufgaben S. 20, 22, 28"
+  ],
+  [
+   "4",
+   "Zwischenmolekulare Kräfte: Wasserstoffbrücken, Van-der-Waals-Kräfte",
+   "S. 26–28",
+   "Theorie-Seite · Versuche (Stationen) · Vertiefung am Handy",
+   "Arbeitsblatt Aufgaben 9–10 · Vertiefung Aufgaben 11–16"
+  ]
  ],
  "koennen": [
-  ["1", "**Atombau:** Proton, Neutron, Elektron mit Ladung und Ort · Ordnungszahl, Massenzahl, Isotope · Außenelektronen aus dem PSE ablesen", "Proton, Neutron, Elektron, Ordnungszahl, Isotop"],
-  ["2", "**Atommodelle:** Grundidee, Skizze, Stärke und Schwäche der Modelle von Dalton, Thomson, Rutherford und Bohr · erklären, warum jedes Modell etwas erklärt und an etwas anderem scheitert", "Atommodell, Atomkern, Atomhülle, Schale"],
-  ["3", "**Orbitalmodell:** Orbital als Aufenthaltsraum · s, p, d, f mit Elektronenzahl · Auffüllreihenfolge · Elektronenkonfiguration in Kurzschreibweise mit Edelgasrumpf", "Orbital, Elektronenkonfiguration, Edelgasrumpf"],
-  ["4", "**Bindungsarten:** erklären, warum sich Atome verbinden (Edelgaszustand) · mit dem PSE bestimmen, welche Bindung vorliegt (Metall/Nichtmetall, ΔEN) · Ionenbindung im Schalenmodell zeichnen (NaCl) · Eigenschaften von Salzen und Metallen mit Ionengitter und Elektronengas erklären · polar/unpolar, Dipol", "Ion, Kation, Anion, Ionengitter, Elektronegativität, Atombindung, Dipol, Elektronengas"],
-  ["5", "**Zwischenmolekulare Kräfte:** Wasserstoffbrücken und Van-der-Waals-Kräfte unterscheiden · damit Eis schwimmt, Oberflächenspannung, Löslichkeit (»Ähnliches löst sich in Ähnlichem«) und Siedetemperaturen erklären", "Wasserstoffbrücke, Van-der-Waals-Kraft, Oberflächenspannung, polar, unpolar"]
+  [
+   "1",
+   "**Atommodelle:** Grundidee, Skizze, Stärke und Schwäche der Modelle von Dalton, Thomson, Rutherford und Bohr · erklären, warum jedes Modell etwas erklärt und an etwas anderem scheitert",
+   "Atommodell, Atomkern, Atomhülle, Schale"
+  ],
+  [
+   "2",
+   "**Orbitalmodell:** Orbital als Aufenthaltsraum · s, p, d, f mit Elektronenzahl · Auffüllreihenfolge · Elektronenkonfiguration in Kurzschreibweise mit Edelgasrumpf",
+   "Orbital, Elektronenkonfiguration, Edelgasrumpf"
+  ],
+  [
+   "3",
+   "**Bindungsarten:** erklären, warum sich Atome verbinden (Edelgaszustand) · mit dem PSE bestimmen, welche Bindung vorliegt (Metall/Nichtmetall, ΔEN) · Ionenbindung im Schalenmodell zeichnen (NaCl) · Eigenschaften von Salzen und Metallen mit Ionengitter und Elektronengas erklären · polar/unpolar, Dipol",
+   "Ion, Kation, Anion, Ionengitter, Elektronegativität, Atombindung, Dipol, Elektronengas"
+  ],
+  [
+   "4",
+   "**Zwischenmolekulare Kräfte:** Wasserstoffbrücken und Van-der-Waals-Kräfte unterscheiden · damit Eis schwimmt, Oberflächenspannung, Löslichkeit (»Ähnliches löst sich in Ähnlichem«) und Siedetemperaturen erklären",
+   "Wasserstoffbrücke, Van-der-Waals-Kraft, Oberflächenspannung, polar, unpolar"
+  ]
  ],
  "formeln": [],
  "kein_teststoff": [
+  "Wiederholung Atombau (Proton, Neutron, Elektron, Periodensystem) – wird nicht abgefragt",
   "Alles, was **OPTIONAL** oder **»Für Schnelle«** ist (z. B. Aufgabe 17 der Vertiefung) und die Zusatz-Versuche",
   "Versuchsprotokolle selbst (die Erklärungen dahinter sind Teststoff) · Quantenzahlen im Detail und die Ausnahmen Chrom/Kupfer",
-  "[[Exkurs σ- und π-Bindungen (S. 23–24)]]"
+  "Exkurs σ- und π-Bindungen (S. 23–24)"
  ],
  "qr": [
-  {"titel": "Test-Training", "text": "Quiz zum ganzen Teststoff", "url": "https://stephanholzer12.github.io/unterricht/2ab-nawi/test1-training/quiz.html"},
-  {"titel": "Klassenseite 2AB", "text": "alle Theorie-Seiten", "url": "https://stephanholzer12.github.io/unterricht/2ab-nawi/"}
+  {
+   "titel": "Test-Training",
+   "text": "Quiz zum ganzen Teststoff",
+   "url": "https://stephanholzer12.github.io/unterricht/2ab-nawi/test1-training/quiz.html"
+  },
+  {
+   "titel": "Klassenseite 2AB",
+   "text": "alle Theorie-Seiten",
+   "url": "https://stephanholzer12.github.io/unterricht/2ab-nawi/"
+  }
  ]
 }
