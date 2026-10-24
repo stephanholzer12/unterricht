@@ -693,8 +693,8 @@ def lehrer_infos():
     s = d.slide("Nur Titel", "Lehrer-Info · Stundenvorschlag", hidden=True)
     tb(s, X0, 0.98, 9, 0.3, ["AUSGEBLENDET · Kern in 5 Stunden (Jahresplan: 6) · Rest optional"], size=12, bold=True, color=RUST, after=0)
     rows = [["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Zeit", "Methode"],
-            ["1 · 03.11.", "Einstieg, Teil 1 Redox", "V1 Demo 12 min, V2 Ansatz parallel", "1–3 · HÜ 4", "13 min + 5 Reserve", "Demo mit Vorhersage"],
-            ["2 · 05.11.", "Test 20 min · Teil 2 Rost", "V3 Demo 8 min", "5–7 · HÜ 8", "10 min + 3 Reserve", "Demo, HÜ in Handschrift"],
+            ["1 · 03.11.", "Einstieg, Teil 1 Redox", "V1 Demo 12 min, V2 Ansatz parallel", "1–3 · HÜ 4", "13 min + 8 Reserve", "Demo mit Vorhersage"],
+            ["2 · 05.11.", "Test 20 min · Teil 2 Rost", "V3 Demo 8 min", "5–7 · HÜ 8", "10 min + 7 Reserve", "Demo, HÜ in Handschrift"],
             ["3 · 10.11.", "V2 auswerten, Teil 3 Energie", "V6 Demo 8 min · Gr. 1–3: V4 + V5", "Gr. 4–6: 9–12", "Stationen 3 × 11 min", "Demo, Stationenbetrieb"],
             ["4 · 12.11.", "Teil 4 Katalysator", "V7 Demo 10 min · Gr. 4–6: V4 + V5", "13–14 · Gr. 1–3: 9–12", "Stationen 3 × 11 min", "Demo mit Vorhersage"],
             ["5 · 17.11.", "Partnercheck, Teil 5 Tempo", "V8 Gruppen 18 min", "18, 16–17 · HÜ 15, Quiz", "9 min + 4 Reserve", "Partnercheck, Gruppenversuch"],
