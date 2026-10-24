@@ -14,6 +14,24 @@ E = json.loads((ROOT / "werkzeug/einheiten.json").read_text(encoding="utf-8"))
 
 
 class KadettenLayoutTest(unittest.TestCase):
+    def test_alle_stunden_ohne_auswahl_sichtbar(self):
+        import kadetten_layout as ks
+        for e in E:
+            if not e.get('fahrplan'):
+                continue
+            u = dict(e, unter=e['ordner'].split('/', 1)[1])
+            s = ks.arbeitsauftrag(u)
+            erwartet = [r['wann'] for r in e['fahrplan']['zeilen']
+                        if not re.search(r'für schnelle|zusatz|optional', r['wann'], re.I)]
+            self.assertNotIn('<select', s)
+            self.assertNotIn(' hidden', s)
+            self.assertEqual([html.unescape(x) for x in re.findall(r'<th scope="row">(.*?)</th>', s)], erwartet)
+
+    def test_materialknopfe_sind_gleichwertig(self):
+        import kadetten_layout as ks
+        s = ks.ressourcen({'unter': 'thema', 'seiten': ['theorie.html', 'aufgaben.html', 'quiz.html']})
+        self.assertEqual(re.findall(r'<a class="([^"]+)"', s), ['ks-material'] * 3)
+
     def test_navigationseinbau_ist_wiederholbar(self):
         import kadetten_layout as ks
         with tempfile.TemporaryDirectory() as d:
