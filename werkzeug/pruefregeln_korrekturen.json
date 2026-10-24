@@ -309,6 +309,22 @@
       "ist\\s+endotherm"
      ]
     }
+   },
+   "a21": {
+    "metalle": {
+     "contra": [
+      "\\b(sind|ist|waren|war)\\s+(nicht\\s+(die|richtig|gemeint|verwendet|genannt)|falsch|keine)\\b",
+      "\\bfalsch\\s*(sind|ist)\\b"
+     ]
+    }
+   },
+   "a22": {
+    "metalle": {
+     "contra": [
+      "\\b(sind|ist|waren|war)\\s+(nicht\\s+(die|richtig|gemeint|verwendet|genannt)|falsch|keine)\\b",
+      "\\bfalsch\\s*(sind|ist)\\b"
+     ]
+    }
    }
   }
  }

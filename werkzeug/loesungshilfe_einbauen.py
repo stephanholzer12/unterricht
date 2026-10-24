@@ -19,7 +19,7 @@ for f in sorted(glob.glob(os.path.join(ROOT, "*", "*", "aufgaben.html"))):
     if "function showCheck" not in s: continue
     ordner = os.path.relpath(os.path.dirname(f), ROOT).replace(os.sep, "/")
     if ALT in s: s = s.replace(ALT, NEU)
-    elif NEU not in s: print("ACHTUNG: PDF-Zeile nicht gefunden in", ordner)
+    elif NEU not in s and NEU.replace("(ev && ev.ok ?", "(ev && ev.ok && !ev.man ?") not in s: print("ACHTUNG: PDF-Zeile nicht gefunden in", ordner)   # K1.3: offene Erklärungen nicht grün
     s = re.sub(r"<!-- loesungshilfe:start -->.*?<!-- loesungshilfe:end -->\n?", "", s, flags=re.S)
     block = ("<!-- loesungshilfe:start -->\n<script>\nwindow.LH_VARIANTEN = " + json.dumps(VAR.get(ordner, []), ensure_ascii=False) +
              ";\n" + JS + "</script>\n<!-- loesungshilfe:end -->\n")

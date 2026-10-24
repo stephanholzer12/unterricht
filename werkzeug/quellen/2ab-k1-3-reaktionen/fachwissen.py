@@ -1,11 +1,11 @@
 """Fachwissen für die Lehrkraft (nur für Stephan): TH-Fachwissen, VS-Fachwissen und private Lehrer-Seite K1.3 Stoffumwandlung."""
 
 STUNDENVORSCHLAG = [
-    ["1 · Di 03.11.", "Einstieg (Handwärmer, Mythos), Teil 1 Redox: Lavoisier, Elektronenübergang, Oxidations-/Reduktionsmittel", "K1.3-V1 Demo (12 min) · K1.3-V2 Ansatz (parallel)", "1–3 · HÜ 4", "Aufgaben ~13 min · Reserve 8 min", "Demo mit Vorhersage: Hand heben »leichter/schwerer/gleich«"],
-    ["2 · Do 05.11.", "Test K1.2 (20 min) · Teil 2: Redox im Alltag, Rost, Rostschutz, Eisen + Kupfersulfat", "K1.3-V3 Demo (8 min)", "5–7 · HÜ 8", "Aufgaben ~10 min · Reserve 7 min", "Test; Pflegebefehl mit der Hand als HÜ"],
-    ["3 · Di 10.11.", "V2 auswerten · Teil 3: exo/endo, Energiediagramm, Aktivierungsenergie, Erhaltung", "V6 Demo (8 min) · Gr. 1–3: Stationen V4 + V5 (3 Runden à 11 min)", "Gr. 4–6: 9–12", "Stationen 33 min · Reserve 2 min", "Demo mit Vorhersage; Stationenbetrieb (Handy nur Protokoll)"],
-    ["4 · Do 12.11.", "Teil 4: Katalysator, Enzyme, Autokatalysator, Industrie", "V7 Demo (10 min) · Gr. 4–6: Stationen V4 + V5", "13–14 · Gr. 1–3: 9–12", "Stationen 33 min · Reserve 4 min", "Demo mit Vorhersage; Stationen"],
-    ["5 · Di 17.11.", "Partnercheck · Teil 5: vier Stellschrauben, Faustregel, Staubexplosion · Abschluss", "V8 Gruppenversuch (18 min)", "18 · 16–17 · HÜ 15, Quiz", "Aufgaben ~9 min · Reserve 4 min", "Partnercheck mündlich, Gruppenversuch (Handy = Stoppuhr)"],
+    ["1 · Di 03.11.", "Einstieg (Handwärmer, Mythos), Teil 1 Redox: Lavoisier, Elektronenübergang, Oxidations-/Reduktionsmittel", "K1.3-V1 Demo (12 min) · K1.3-V2 Ansatz (parallel)", "1–3 · Zusatz 4", "Aufgaben ~13 min · Reserve 8 min", "Demo mit Vorhersage: Hand heben »leichter/schwerer/gleich«"],
+    ["2 · Do 05.11.", "Test K1.2 (20 min) · Teil 2: Redox im Alltag, Rost, Rostschutz, Eisen + Kupfersulfat", "K1.3-V3 Demo (8 min)", "5–7 · Zusatz 8", "Aufgaben ~10 min · Reserve 7 min", "Test; Demo mit Vorhersage; Zusatz 8 in Handschrift"],
+    ["3 · Di 10.11.", "V2 auswerten · Teil 3: exo/endo, Energiediagramm, Aktivierungsenergie, Erhaltung", "V6 Demo (8 min) · Gr. 1–3: Stationen V4 + V5 (3 Runden à 11 min)", "Gr. 4–6: 9–11 · Zusatz 12", "Stationen 33 min · Reserve 2 min", "Demo mit Vorhersage; Stationenbetrieb (Handy nur Protokoll)"],
+    ["4 · Do 12.11.", "Teil 4: Katalysator, Enzyme, Autokatalysator, Industrie", "V7 Demo (10 min) · Gr. 4–6: Stationen V4 + V5", "13–14 · Gr. 1–3: 9–11, Deutung V4/V5", "Stationen 33 min · Reserve 4 min", "Demo mit Vorhersage; Stationen"],
+    ["5 · Di 17.11.", "Partnercheck · Teil 5: vier Stellschrauben, Faustregel, Staubexplosion · Abschluss", "V8 Gruppenversuch (18 min) · Protokolle fertig (7 min)", "18 · 16–17 · Zusatz 15", "Aufgaben ~9 min · Reserve 5 min", "Partnercheck mündlich, Gruppenversuch (Handy = Stoppuhr)"],
     ["Zusatz", "Für Schnelle: Oxidationszahlen, Forschung, Science oder Fiction", "V9 Lehrer-Demo", "19–23", "–", "–"],
 ]
 
@@ -27,37 +27,37 @@ STUNDENKARTEN = [
         "Demo K1.3-V1 (12 min, ohne Handy): Eisenwolle wiegen – Vorhersage per Hand heben, auf der Unterlegplatte zünden. Während die Schale abkühlt (ca. 5 min): Theorie Teil 1 erklären (Elektronen wandern, Animation). Dann nachwiegen, Aufgabe 1 eintragen.",
         "Theorie Teil 1 selbst lesen (10 min): Lernpfad scannen.",
         "Aufgaben 2–3 am Handy (10 min) – währenddessen setzt die Lehrkraft mit zwei Kadetten die Rost-Ansätze K1.3-V2 an.",
-        "Besprechung Aufgabe 3 (5 min) · Hausübung: Aufgabe 4 · Reserve ca. 8 min."],
+        "Besprechung Aufgabe 3 (5 min) · Reserve ca. 8 min – wer früher fertig ist: Zusatz-Aufgabe 4. Keine Hausübung."],
      "Waage 0,01 g, Abdampfschale, Eisenwolle, Batterie 4,5 V, Unterlegplatte · 4 Reagenzgläser, Gestell, Öl, Salz, Parafilm, abgekochtes Wasser",
      "Demo mit Vorhersage (Hand heben); Rost-Ansatz"),
     ("Stunde 2 · Do 05.11. · Test + Rost", [
         "Test K1.2 (20 min, inkl. Austeilen und Einsammeln).",
         "Demo K1.3-V3 Kupferbrief (8 min): Vorhersage »innen schwarz oder glänzend?«, 1 min erhitzen, 2 min abkühlen, aufklappen; Aufgabe 5 gleich dabei.",
         "Theorie Teil 2 lesen (8 min), Aufgaben 6–7 am Handy (7 min) · Reserve ca. 7 min.",
-        "Hausübung: Aufgabe 8 Pflegebefehl mit der Hand (Heft), Foto ins Arbeitsblatt."],
+        "Wer früher fertig ist: Zusatz-Aufgabe 8 (Pflegebefehl mit der Hand, Foto ins Arbeitsblatt). Keine Hausübung."],
      "Kupferblech 4 × 4 cm, Bunsenbrenner, Halter, Unterlegplatte, Mini-Whiteboards",
      "Test; Pflegebefehl in Handschrift"),
     ("Stunde 3 · Di 10.11. · Energie + Stationen (Gruppe 1–3)", [
         "Weißt du noch? (3 min, Mini-Whiteboard).",
         "Rost-Ansätze auswerten (4 min): Gläser zeigen, Fotos, Vergleich mit der Vorhersage.",
         "Demo K1.3-V6 Kältemischung mit Vorhersage (8 min) – dabei exotherm/endotherm kurz erklären; Sicherheitsfolie.",
-        "Gruppe 1–3: drei Runden à 11 min an Station 1 (V4) und 2 (V5) – nur messen, beobachten, aufräumen; die jeweils freie Gruppe liest Teil 3 und macht Aufgaben. Gruppe 4–6: Teil 3 lesen, Aufgaben 9–12 (33 min).",
-        "Reserve 2 min · Hausübung: Erkenntnis/Deutung der Versuche im Protokoll."],
+        "Gruppe 1–3: drei Runden à 11 min an Station 1 (V4) und 2 (V5) – messen, beobachten, aufräumen, Erkenntnis eintragen; die jeweils freie Gruppe liest Teil 3 und macht Aufgaben (wer beide Stationen hinter sich hat: Deutung V4/V5 im Protokoll). Gruppe 4–6: Teil 3 lesen, Aufgaben 9–11 (ca. 23 min, Rest = Puffer, Zusatz 12).",
+        "Reserve 2 min · keine Hausübung."],
      "Demo V6 (Eis, Salz, Digitalthermometer) · Stationen 1–2 (siehe Herrichte-Liste), Sammelbehälter",
      "Demo mit Vorhersage; Stationenbetrieb – Handy nur fürs Protokoll"),
     ("Stunde 4 · Do 12.11. · Katalysatoren + Stationen (Gruppe 4–6)", [
         "Weißt du noch? (3 min).",
         "Demo K1.3-V7 mit Vorhersage (10 min, Aufgabe 13 gleich dabei) – Katalysator kurz erklären.",
-        "Gruppe 4–6: drei Runden à 11 min an Station 1 und 2; Gruppe 1–3: Teil 4 lesen, Aufgaben 9–12 fertig, dann Aufgabe 14 (33 min).",
-        "Reserve 4 min · Hausübung: Erkenntnis/Deutung der Versuche im Protokoll."],
+        "Gruppe 4–6: drei Runden à 11 min an Station 1 und 2; Gruppe 1–3: Aufgaben 9–11 fertig, Deutung V4/V5 im Protokoll, Teil 4 lesen, Aufgabe 14 (ca. 27 min von 33).",
+        "Reserve 4 min · keine Hausübung."],
      "4 Reagenzgläser, H₂O₂ 3 %, Braunstein-Pulver, Kartoffel roh/gekocht, Holzstäbchen, Feuerzeug · Stationen 1–2",
      "Demo mit Vorhersage; Stationen"),
     ("Stunde 5 · Di 17.11. · Tempo + Abschluss", [
-        "Partnercheck Aufgabe 18 (6 min, mündlich) statt »Weißt du noch?«.",
+        "Partnercheck Aufgabe 18 (5 min, mündlich) statt »Weißt du noch?«.",
         "Theorie Teil 5 lesen (6 min).",
         "Gruppenversuch K1.3-V8 Brausetablette (18 min inkl. Austeilen und Aufräumen, Handy = Stoppuhr), Aufgabe 17.",
-        "Aufgabe 16 (4 min) · Besprechung Stationen und Aufgabe 15 (7 min).",
-        "Abgabe der PDFs (5 min) · Reserve 4 min · Quiz zu Hause; Kahoot nur, wenn Zeit bleibt."],
+        "Aufgabe 16 (4 min) · Protokolle fertig (Deutung V4/V5 für Gruppe 4–6) und Besprechung der Stationen (7 min).",
+        "Abgabe der PDFs (5 min) · Reserve 5 min · Quiz als freiwilliger Selbsttest, Kahoot nur, wenn Zeit bleibt · Zusatz 15 für Schnelle. Keine Hausübung."],
      "18 Einweg-Petrischalen, Brausetabletten 9, warmes Wasser (Wasserkocher), Messzylinder · Kahoot-Tabelle",
      "Partnercheck mündlich; Gruppenversuch"),
 ]

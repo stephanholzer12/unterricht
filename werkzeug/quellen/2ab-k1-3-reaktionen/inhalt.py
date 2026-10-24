@@ -5,7 +5,7 @@ Eine Quelle für Handy-Seiten (Theorie-Seite, Arbeitsblatt, Quiz), Word, PPP, Ka
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
 STAND = "24.10.2026"
-V = "v3"
+V = "v4"
 ORDNER = "2ab-nawi/k1-3-reaktionen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -95,17 +95,17 @@ T = [
                       "e) Oxidationsmittel = Sauerstoff (nimmt Elektronen auf) · f) Reduktionsmittel = Magnesium (gibt Elektronen ab)"]]],
   "tip": ["Elektronen wandern: Magnesium verbrennt", "theorie.html#elektronen"]},
 
- {"id": "a4", "nr": 4, "title": "Kupfer aus schwarzem Pulver", "src": "Buch-Aufgabe S. 31", "own": False, "tag": "Hausübung", "h": 1, "hl": False, "zeit": 5, "opt": ["rm"],
+ {"id": "a4", "nr": 4, "title": "Kupfer aus schwarzem Pulver", "src": "Buch-Aufgabe S. 31", "own": False, "tag": "Zusatz", "h": 1, "hl": False, "zeit": 5, "opt": ["rm"],
   "q": "Schwarzes Kupferoxid und Holzkohle werden im Reagenzglas erhitzt – danach liegt rötliches Kupfer im Glas (Versuch und Video im Buch S. 31). "
        "a) Ergänze die Gleichung: C + 2 CuO → CO₂ + 2 ___ b) Wohin ist der Sauerstoff gewandert? c) Welcher Stoff wird reduziert? "
        "Zusatz: d) Bei CuO + Fe → Cu + FeO – welcher Stoff ist das Reduktionsmittel?",
-  "hint": "Hausübung bis Stunde 2. Info: Theorie-Seite Teil 1 »Oxidationsmittel und Reduktionsmittel« · Video: Filmtipp aus dem Buch S. 31 · d) ist freiwillig",
+  "hint": "Zusatz – nur wenn du mit den Pflichtaufgaben dieser Stunde fertig bist (keine Hausübung). Info: Theorie-Seite Teil 1 »Oxidationsmittel und Reduktionsmittel« · Video: Filmtipp aus dem Buch S. 31 · d) ist freiwillig",
   "type": "multi",
   "fields": [["prod", "a) Es entsteht 2 … (Formel oder Name)"],
              ["wohin", "b) Der Sauerstoff wandert …", ["vom Kupfer zum Kohlenstoff", "vom Kohlenstoff zum Kupfer", "in die Luft", "er verschwindet"]],
              ["red", "c) Reduziert wird …", ["Kupferoxid (CuO)", "Kohlenstoff (C)", "Kohlenstoffdioxid (CO₂)"]],
              ["rm", "d) Zusatz (freiwillig): Das Reduktionsmittel ist …", ["Eisen (Fe)", "Kupferoxid (CuO)", "Kupfer (Cu)"]]],
-  "chk": {"prod": {"kw": [["Cu / Kupfer (nicht Kupferoxid)", r"\bcu\b(?!\s*-?\s*o)|kupfer(?!\s*\(?\s*i*\s*\)?\s*-?\s*oxid)"]]}, "wohin": {"sel": "vom Kupfer zum Kohlenstoff"},
+  "chk": {"prod": {"kw": [["Cu / Kupfer (nur der Stoff, keine Verbindung)", r"^\W*(2\s*)?((reines|elementares|metallisches)\s+)?(cu|kupfer)(\s*\(\s*(cu|kupfer)\s*\)|\s*-?\s*metall)?\W*$"]]}, "wohin": {"sel": "vom Kupfer zum Kohlenstoff"},
           "red": {"sel": "Kupferoxid (CuO)"}, "rm": {"sel": "Eisen (Fe)"}},
   "sol": [["Lösung", ["a) C + 2 CuO → CO₂ + 2 Cu (Kupfer)",
                       "b) Der Sauerstoff wandert vom Kupfer zum Kohlenstoff – Kohlenstoff wird oxidiert, Kupferoxid reduziert.",
@@ -160,12 +160,12 @@ T = [
                       "Waschen nach der Winterfahrt: Streusalz beschleunigt das Rosten · Trocknen: ohne Wasser kein Rost"]]],
   "tip": ["Rostschutz an Gerät und Fahrzeug", "theorie.html#schutz"]},
 
- {"id": "a8", "besprechen": True, "nr": 8, "title": "Dein Pflegebefehl für den Winter", "src": "Buch S. 98", "own": True, "tag": "Hausübung", "h": 2, "hl": False, "zeit": 5,
+ {"id": "a8", "nr": 8, "title": "Dein Pflegebefehl für den Winter", "src": "Buch S. 98", "own": True, "tag": "Zusatz", "h": 2, "hl": False, "zeit": 5,
   "q": "Kreativ und mit der Hand: Schreib ins Heft oder aufs Mini-Whiteboard einen kurzen »Pflegebefehl« mit 3 Punkten für ein Fahrzeug, eine Waffe oder deine Ausrüstung im Winter. "
-       "Jeder Punkt braucht eine chemische Begründung (»…, weil …«). Fotografiere ihn und füge das Foto ein. Pflicht: Tippe deinen wichtigsten Punkt mit Begründung ab.",
-  "hint": "Hausübung bis Stunde 3. Handschrift statt Tippen: zuerst schreiben, dann Foto einfügen.",
+       "Jeder Punkt braucht eine chemische Begründung (»…, weil …«). Fotografiere ihn und füge das Foto ein. Tippe außerdem deinen wichtigsten Punkt mit Begründung ab.",
+  "hint": "Zusatz – nur wenn du mit den Pflichtaufgaben dieser Stunde fertig bist (keine Hausübung). Handschrift statt Tippen: zuerst schreiben, dann Foto einfügen.",
   "type": "sketch",
-  "fields": [["punkt", "Mein wichtigster Punkt mit Begründung (Pflicht)"]],
+  "fields": [["punkt", "Mein wichtigster Punkt mit Begründung"]],
   "chk": {"punkt": {"kw": [["Begründung (weil, damit, sonst …)", r"weil|damit|denn|sonst|da |dadurch|wegen"],
                             ["Wasser, Sauerstoff oder Salz", "wasser|sauerstoff|luft|salz|feucht|nass|zink|öl|oel|schicht"]]}},
   "sol": [["Beispiel", ["1. Nach jeder Fahrt durch Streusalz den Unterboden abspritzen, weil Salz das Rosten beschleunigt.",
@@ -219,7 +219,8 @@ T = [
                       "die frei werdende Wärme reicht, um die nächsten Holzteilchen zu aktivieren. Deshalb brennt das Feuer von selbst weiter."]]],
   "tip": ["Aktivierungsenergie – der Berg vor jeder Reaktion", "theorie.html#aktivierung"]},
 
- {"id": "a12", "nr": 12, "title": "Masse und Energie – rechnen mit Eisenwolle", "src": "Buch S. 30, 32", "own": True, "tag": "Stunde 3–4", "h": 3, "hl": False, "zeit": 5,
+ {"id": "a12", "nr": 12, "title": "Masse und Energie – rechnen mit Eisenwolle", "src": "Buch S. 30, 32", "own": True, "tag": "Zusatz", "h": 3, "hl": False, "zeit": 5,
+  "hint": "Zusatz – nur wenn du mit den Pflichtaufgaben dieser Stunde fertig bist (keine Hausübung). Info: Theorie-Seite Teil 1 (Lavoisier) und Teil 3.",
   "q": "Bei der Demo K1.3-V1 lagen 1,20 g Eisenwolle auf der Waage. Nach dem Verbrennen zeigte sie 1,52 g. a) Wie viel Gramm Sauerstoff wurden eingebaut? "
        "b) Um wie viel Prozent ist die Masse gestiegen? (auf eine Kommastelle) c) Exotherm oder endotherm – woran erkennst du es?",
   "type": "multi",
@@ -267,13 +268,13 @@ T = [
   "tip": ["Was ist ein Katalysator?", "theorie.html#kat"]},
 
  # ======================================================= Stunde 5 · Reaktionsgeschwindigkeit + Abschluss
- {"id": "a15", "besprechen": True, "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Hausübung", "h": 5, "hl": False, "zeit": 10, "opt": ["zusatz"],
+ {"id": "a15", "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Zusatz", "h": 5, "hl": False, "zeit": 10, "opt": ["zusatz"],
   "q": "Ein Kadett hat eine KI gefragt: »Wie funktioniert ein Autokatalysator?« Die Antwort: »Der Autokatalysator ist ein feiner Filter, der die giftigen Abgase zurückhält. "
        "Er besteht aus einer Keramikwabe mit einer Schicht, in der Edelmetalle wie Platin, Palladium und Rhodium fein verteilt sind. Der Katalysator wird dabei langsam verbraucht und muss bei jedem Service "
        "nachgefüllt werden. Er arbeitet am besten, wenn er kalt ist – deshalb stößt ein Auto direkt nach dem Start die wenigsten Schadstoffe aus. Aus giftigem "
        "Kohlenstoffmonoxid macht er Kohlenstoffdioxid.« Die Antwort klingt gut, enthält aber drei Fehler. Finde sie und schreib zu jedem den richtigen Satz. "
        "Zusatz: Stell die Frage selbst einer KI und prüfe die Antwort genauso.",
-  "hint": "Hausübung bis Stunde 5. Lies im Buch S. 35 oder auf der Theorie-Seite Teil 4 »Der Autokatalysator« nach. KI-Antworten immer mit einer zweiten Quelle prüfen! Das Zusatzfeld ist freiwillig.",
+  "hint": "Zusatz – nur wenn du mit den Pflichtaufgaben dieser Stunde fertig bist (keine Hausübung). Lies im Buch S. 35 oder auf der Theorie-Seite Teil 4 »Der Autokatalysator« nach. KI-Antworten immer mit einer zweiten Quelle prüfen! Das Zusatzfeld ist freiwillig.",
   "type": "multi",
   "fields": [["fehler", "Die drei Fehler – und was richtig ist"], ["zusatz", "Zusatz (freiwillig): Was hat deine KI geantwortet – stimmt es?"]],
   "chk": {"fehler": {"kw": [["kein Filter – er wandelt um", r"kein filter|nicht.{0,20}filter|umwand|wandelt|verwandelt|umgewandelt|reagier"],
@@ -386,7 +387,7 @@ T = [
   "tip": ["Der Autokatalysator", "theorie.html#autokat"]},
 
  {"id": "a23", "nr": 23, "title": "Kreativ-Challenge: Video, Podcast oder Plakat", "src": "Buch S. 34", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 25,
-  "q": "Erkläre neuen Rekruten, was ein Katalysator macht – allein oder zu zweit, als Hausübung (ca. 25 min). Wähle eine Form: "
+  "q": "Erkläre neuen Rekruten, was ein Katalysator macht – allein oder zu zweit, freiwillig (ca. 25 min). Wähle eine Form: "
        "A) Plakat (A3, mit der Hand gezeichnet) · B) Erklärvideo (höchstens 2 Minuten) · C) Podcast (höchstens 2 Minuten). "
        "Pflichtinhalte: Aktivierungsenergie als »Berg«, der Katalysator öffnet einen niedrigeren Weg, er wird nicht verbraucht, ein Beispiel (Autokatalysator oder Enzym). "
        "Regeln: Andere Personen nur mit deren Zustimmung zeigen oder aufnehmen · keine fremde Musik und keine fremden Bilder · KI-Hilfe angeben. "
@@ -400,17 +401,25 @@ T = [
   "tip": ["Aktivierungsenergie – der Berg vor jeder Reaktion", "theorie.html#aktivierung"]},
 ]
 assert [t["nr"] for t in T] == list(range(1, 24))
-PFLICHT = [t["nr"] for t in T if t["h"]]
+PFLICHT = [t["nr"] for t in T if t["h"] and t["tag"] != "Zusatz"]
 
-GRP = {1: "Stunde 1 · Di 03.11. · Redoxreaktionen (Buch S. 30–31) · Aufgabe 4 als Hausübung",
-       2: "Stunde 2 · Do 05.11. · nach dem Test: Redox im Alltag, Rost (Buch S. 30–31, 98) · Aufgabe 8 als Hausübung",
-       3: "Stunde 3–4 · Di 10.11. / Do 12.11. · Energie – während die anderen Gruppen an den Stationen sind (Buch S. 32–34)",
+# Offene Erklärungen: »Prüfen« zeigt nur eine Schreibhilfe (Stichwörter), keine automatische Richtig-Wertung,
+# und im PDF zählen sie nicht zu den automatischen Punkten – die Lehrkraft bewertet sie (ChatGPT-Bericht v5, N02/N03).
+MANUELL = {"a1": ["warum"], "a5": ["warum"], "a8": ["punkt"], "a11": ["erkl"], "a13": ["warum"], "a15": ["fehler"],
+           "a19": ["kat"], "a21": ["warum"], "a22": ["duenn"], "a23": ["titel"]}
+for _t in T:
+    for _k in MANUELL.get(_t["id"], []):
+        _t["chk"][_k]["man"] = True
+
+GRP = {1: "Stunde 1 · Di 03.11. · Redoxreaktionen (Buch S. 30–31) · Aufgabe 4 ist Zusatz",
+       2: "Stunde 2 · Do 05.11. · nach dem Test: Redox im Alltag, Rost (Buch S. 30–31, 98) · Aufgabe 8 ist Zusatz",
+       3: "Stunde 3–4 · Di 10.11. / Do 12.11. · Energie – während die anderen Gruppen an den Stationen sind (Buch S. 32–34) · Aufgabe 12 ist Zusatz",
        4: "Stunde 4 · Do 12.11. · Katalysatoren (Buch S. 34–36)",
-       5: "Stunde 5 · Di 17.11. · Reaktionsgeschwindigkeit und Abschluss (Buch S. 35–36) · Aufgabe 15 als Hausübung",
+       5: "Stunde 5 · Di 17.11. · Reaktionsgeschwindigkeit und Abschluss (Buch S. 35–36) · Aufgabe 15 ist Zusatz",
        0: "Für Schnelle und Neugierige · optional"}
 
 LERNZIELE = ["**Oxidation** als Abgabe und **Reduktion** als Aufnahme von Elektronen erklären und bei einer Redoxreaktion sagen, wer Elektronen abgibt und wer sie aufnimmt",
-             "einfache **Redoxgleichungen** lesen und ergänzen (z. B. Magnesium + Sauerstoff, Kupferoxid + Kohlenstoff) und erklären, wie Eisen rostet und wie man es schützt",
+             "einfache **Redoxgleichungen** lesen und ergänzen (z. B. Magnesium + Sauerstoff, Eisen in Kupfersulfatlösung) und erklären, wie Eisen rostet und wie man es schützt",
              "**exotherme** und **endotherme** Reaktionen unterscheiden, ein Energiediagramm mit **Aktivierungsenergie** zeichnen und erklären, warum die Masse erhalten bleibt",
              "erklären, wie ein **Katalysator** wirkt (Auto, Enzyme) und wie Oberfläche, Temperatur und Konzentration das **Tempo einer Reaktion** ändern"]
 

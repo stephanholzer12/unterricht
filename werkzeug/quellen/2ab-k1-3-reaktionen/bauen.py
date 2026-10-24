@@ -47,10 +47,21 @@ rep("<h1>Epochen-Aufgaben</h1>", "<h1>" + TITLE + "</h1>")
 rep("<h2>Epochen-Aufgaben am Handy</h2>", "<h2>" + TITLE + " am Handy</h2>")
 s = re.sub(r'(alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,)[A-Za-z0-9+/=]+', lambda m: m.group(1) + qr_b64(I.URL + "aufgaben.html"), s, count=1)
 rep('<option value="">–</option><option>3BK</option>', '<option value="">–</option><option>2A</option><option>2B</option>')
+def _ber(nrs):
+    out, a = [], None
+    for k, n in enumerate(nrs):
+        if a is None: a = n
+        if k + 1 == len(nrs) or nrs[k + 1] != n + 1: out.append(str(a) if a == n else "%d–%d" % (a, n)); a = None
+    return ", ".join(out)
+_ST = {1: "Stunde 1", 2: "Stunde 2", 3: "Stunde 3–4", 4: "Stunde 4", 5: "Stunde 5"}
+_ZU = {3: " (während die anderen Gruppen an den Stationen sind)", 5: " (18 = Partnercheck gleich zu Beginn)"}
+INTRO = ("      <li><b>Pflicht</b> – " + " · ".join("<b>%s</b>: %s%s" % (_ST[h], _ber([t["nr"] for t in I.T if t["h"] == h and t["tag"] != "Zusatz"]), _ZU.get(h, "")) for h in range(1, 6)) + ".</li>\n"
+         "      <li><b>Zusatz in der Stunde</b>, wenn du früher fertig bist: " + _ber([t["nr"] for t in I.T if t["h"] and t["tag"] == "Zusatz"]) +
+         " · <b>Für Schnelle</b>: " + _ber([t["nr"] for t in I.T if not t["h"]]) + ". Es gibt <b>keine Hausübung</b>.</li>")
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
       <li>Lies zuerst den passenden Teil der <a href="theorie.html">Theorie-Seite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
-      <li><b>Stunde 1</b>: 1–4 · <b>Stunde 2</b>: 5–8 · <b>Stunde 3–4</b>: 9–12 (während die anderen Gruppen an den Stationen sind) · <b>Stunde 4</b>: 13–14 · <b>Stunde 5</b>: 15–18 · <b>Für Schnelle</b>: 19–23.</li>
+      """ + INTRO + """
       <li>Bei jeder Aufgabe steht, wie lange sie ungefähr dauert. Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt – die Lösung wird dabei nicht verraten.</li>
       <li>Nach Stunde 5 (Di 17.11.) ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
     </ol>""" + s[j:]
@@ -63,12 +74,42 @@ s = s.replace('if (t.type === "multi") return t.fields.every(f => filled(a[f[0]]
 s = s.replace('if (t.type === "sketch") return !!a.foto && t.fields.every(f => filled(a[f[0]]));', 'if (t.type === "sketch") return !!a.foto && t.fields.every(f => (t.opt || []).includes(f[0]) || filled(a[f[0]]));')
 s = s.replace('const parts = Object.entries(t.chk).map(([k, c]) =>', '/* freiwillige Felder (t.opt) zählen nur, wenn ausgefüllt */\n  const parts = Object.entries(t.chk).filter(([k]) => !((t.opt || []).includes(k) && !(a[k] != null && String(a[k]).trim() !== ""))).map(([k, c]) =>')
 assert "(t.opt || [])" in s
-s = s[:i] + 'const KEY = "%s";\nconst KAP = "K1.3", THEMA = "Stoffumwandlung";\nconst T = ' % I.KEY + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
+# ---- K1.3 v4: offene Erklärungen (c.man) bewertet die Lehrkraft (ChatGPT-Bericht v5, N02/N03) ----
+rep("  return { ok: parts.every(p => p.ok), parts };\n}", """  /* K1.3: offene Erklärungen (c.man) zeigen nur eine Schreibhilfe; »richtig« bezieht sich nur auf die automatisch prüfbaren Teile */
+  parts.forEach(p => { if ((t.chk[p.key] || {}).man) p.man = true; });
+  const auto = parts.filter(p => !p.man), man = parts.filter(p => p.man);
+  if (!auto.length && man.length) return { ok: man.every(p => p.filled), parts, man: true, manOnly: true };
+  return { ok: auto.every(p => p.ok), parts, man: man.length > 0 };
+}""")
+_i = s.index("function showCheck(t) {"); _j = s.index("\nfunction showSolutions()", _i)
+s = s[:_i] + """function showCheck(t) {
+  const r = evalTask(t), fb = $("#fb_" + t.id); fb.hidden = false; fb.textContent = "";
+  const auto = r.parts.filter(p => !p.man), man = r.parts.filter(p => p.man), autoOk = auto.every(p => p.ok), viele = r.parts.length > 1;
+  fb.className = "fb " + (r.man ? (autoOk ? "info" : "no") : (r.ok ? "ok" : "no"));
+  fb.append(el("strong", { text: r.man ? (autoOk ? (auto.length ? "Die automatisch prüfbaren Teile stimmen." : "Gespeichert.") : "Noch nicht ganz.") : (r.ok ? "Richtig!" : "Noch nicht ganz.") }));
+  if (!autoOk) auto.forEach(p => {
+    if (p.kind === "strike") fb.append(el("div", { text: p.n + " von " + p.of + " richtig durchgestrichen." }));
+    else if (p.kind === "kw" && !p.ok) fb.append(el("div", { text: (viele ? p.label + ": " : "") + "enthalten: " + p.hits.map(h => h[0] + (h[1] ? " ✓" : " ✗")).join(", ") }));
+    else if (!p.ok) fb.append(el("div", { text: (viele ? p.label + ": " : "") + (p.kind === "sel" ? (p.filled ? "Auswahl stimmt noch nicht." : "Noch nichts ausgewählt.") : p.msg) }));
+  });
+  man.forEach(p => {
+    const pre = viele ? p.label + ": " : "";
+    if (!p.filled) { fb.append(el("div", { text: pre + "Deine Erklärung fehlt noch." })); return; }
+    const da = p.hits.filter(h => h[1]).map(h => h[0]), fehlt = p.hits.filter(h => !h[1]).map(h => h[0]);
+    fb.append(el("div", { text: pre + "Schreibhilfe – " + (da.length ? "gefunden: " + da.join(", ") : "noch keines der erwarteten Stichwörter") + (fehlt.length ? " · vielleicht fehlt noch: " + fehlt.join(", ") + " (eine richtige Umschreibung zählt auch)" : "") + "." }));
+  });
+  if (man.length) fb.append(el("div", { text: "Ob deine Erklärung fachlich stimmt, bewertet die Lehrkraft. Lies sie noch einmal durch." }));
+  if (t.tip && (!r.ok || man.some(p => p.filled && p.hits.some(h => !h[1])))) fb.append(el("div", {}, "Tipp: Lies nochmal ", el("a", { href: t.tip[1], text: t.tip[0] }), "."));
+}""" + s[_j:]
+rep('    let st = "selbst bewerten";\n    if (ev) {', '    let st = "selbst bewerten";\n    if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + "Erklärung: bewertet die Lehrkraft"; }\n    else if (ev) {')
+rep("(ev && ev.ok ? [70, 110, 40] : muted)", "(ev && ev.ok && !ev.man ? [70, 110, 40] : muted)")
+s = s[:i] + 'const KEY = "%s";\nconst KAP = "K1.3", THEMA = "Stoffumwandlung";\nvar PL_ZUSATZ_ENDE = true;   /* Zusatzaufgaben 4, 8, 12, 15 bleiben in ihrer Stunde, nur 19–23 werden zugeklappt */\nconst T = ' % I.KEY + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
+rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }", ".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }\n.fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }")
 rep('KAP + " Zeit-Einteilung und Epochen – Aufgaben"', 'KAP + " Stoffumwandlung – Aufgaben"')
 rep('clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14")', 'clean("NAWI · 2AB · K1.3 Stoffumwandlung · Schulbuch S. 29–37, 98")')
 rep('d.text("Epochen-Aufgaben", M + 15, y + 11.5)', 'd.text("' + TITLE + '", M + 15, y + 11.5)')
 rep('"Noch offen (Stunde 1 und 2): Aufgabe "', '"Noch offen (Pflicht): Aufgabe "')
-rep('"Alle Pflicht-Aufgaben 1–10 bearbeitet."', '"Alle Pflicht-Aufgaben 1–18 bearbeitet."')
+rep('"Alle Pflicht-Aufgaben 1–10 bearbeitet."', '"Alle Pflicht-Aufgaben bearbeitet."')
 # Zeit je Aufgabe und rote Kennzeichnung »Versuch im Buch«
 rep('el("span", { class: tagCls, text: t.tag })),', 'el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null),')
 rep('el("span", { class: "pill" + (t.own ? " theory" : ""), text: t.src })', 'el("span", { class: "pill" + (t.src.startsWith("Versuch im Buch") ? " versuch" : (t.own ? " theory" : "")), text: t.src })')
@@ -292,7 +333,7 @@ s = s[:i] + """/*STATIONEN*/
 [["Stunde 1 · Di 03.11. · Demo und Klassen-Ansatz – mittippen und eintragen", v => v.id === "eisenwolle" || v.id === "rost"],
  ["Stunde 2 · Do 05.11. · Demo nach dem Test", v => v.id === "kupferbrief"],
  ["Stunde 3 · Di 10.11. · Demo vor den Stationen – mittippen und eintragen", v => v.id === "kaelte"],
- ["Stunde 3–4 · Stationen 1 und 2 – drei Runden à 11 Minuten (Stunde 3: Gruppe 1–3, Stunde 4: Gruppe 4–6). An der Station nur messen und beobachten, Deutung als Hausübung", v => !!v.station],
+ ["Stunde 3–4 · Stationen 1 und 2 – drei Runden à 11 Minuten (Stunde 3: Gruppe 1–3, Stunde 4: Gruppe 4–6). An der Station: messen, beobachten, aufräumen, Erkenntnis eintragen", v => !!v.station],
  ["Stunde 4 · Do 12.11. · Demo Katalysator – mittippen und eintragen", v => v.id === "katalysator"],
  ["Stunde 5 · Di 17.11. · Gruppenversuch", v => v.id === "brause"],
  ["Zusatz – Lehrer-Demo, nur wenn Zeit bleibt", v => !v.kern]].forEach(([t, fn]) => {
@@ -316,7 +357,7 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
       <li><b>Stunde 3:</b> Zuerst Demo K1.3-V6 (Kältemischung) – erst tippen, dann zuschauen.</li>
       <li><b>Stunde 3–4: 6 Gruppen zu viert, 2 Stationen.</b> Stunde 3: Gruppe 1–3 an den Stationen, Gruppe 4–6 macht die Aufgaben 9–12. Stunde 4: umgekehrt.</li>
       <li><b>Drei Runden à 11 Minuten:</b> Runde 1 – Gruppe 1 (bzw. 4) an Station 1, Gruppe 2 (bzw. 5) an Station 2, Gruppe 3 (bzw. 6) macht Aufgaben. Danach rückt jede Gruppe weiter: Station 1 → Station 2 → Aufgaben → Station 1.</li>
-      <li><b>An der Station nur messen, beobachten und Fotos machen</b>, dann aufräumen, wie ihr sie vorgefunden habt. Erkenntnis, Deutung und Schlussfolgerung schreibt ihr bis Stunde 5 (Hausübung).</li>
+      <li><b>An der Station messen, beobachten und Fotos machen</b>, aufräumen, wie ihr sie vorgefunden habt, und gleich die <b>Erkenntnis</b> eintragen. <b>Interpretation und Schlussfolgerung</b> schreibt ihr, sobald ihr beide Stationen fertig habt – in eurer Aufgabenzeit, spätestens in Stunde 5 (Block »Protokolle fertig«). Es gibt keine Hausübung.</li>
       <li><b>Stunde 4:</b> Demo K1.3-V7 (Katalysator) · <b>Stunde 5:</b> Gruppenversuch K1.3-V8 (Brausetablette).</li>
     </ul>
     <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF ab (Namen der Gruppe + dein Nachname) – in LMS nach Stunde 5 (Di 17.11.).</p>
@@ -326,6 +367,10 @@ s = s.replace("26-27-2AB-K1.2-Bindungen-VS-Handy-v1", "26-27-2AB-K1.3-Reaktionen
 _plain = re.sub(r"[A-Za-z0-9+/=]{200,}", "", s)
 for bad in ["Bindungsarten", "K1.2"]:
     assert bad not in _plain, re.findall(r".{60}" + re.escape(bad) + r".{30}", _plain)[:5]
+# Fußzeile im Versuchs-PDF: lange Gruppennamen kürzen, damit »K1.3 Versuche · … · Seite x von y« auf die Seite passt (Test mit 4 langen Namen)
+_alt = 'clean("K1.3 Versuche · " + (S.name || "") + " · Seite " + p + " von " + n)'
+assert s.count(_alt) == 1, s.count(_alt)
+s = s.replace(_alt, 'clean("K1.3 Versuche · " + ((S.name || "").length > 70 ? (S.name || "").slice(0, 67) + " …" : (S.name || "")) + " · Seite " + p + " von " + n)')
 open(DST + "versuche.html", "w", encoding="utf-8").write(s)
 
 for f in ["theorie.html", "aufgaben.html", "versuche.html", "quiz.html"]:

@@ -30,6 +30,8 @@
     var n = (S.tries && S.tries[t.id]) || 0;
     if (LH_viewed(t)) return "Lösung angesehen (nach " + S.solTask[t.id] + " Fehlversuch" + (S.solTask[t.id] === 1 ? "" : "en") + ") – Antwort bitte selbst bewerten";
     var ev = evalTask(t);
+    if (ev && ev.manOnly) return base;   /* nur offene Erklärung (Seite kennzeichnet sie mit man): bewertet die Lehrkraft */
+    if (ev && ev.ok && ev.man) return base + (n === 0 ? " · beim 1. Versuch" : " · nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : ""));
     if (ev && ev.ok) return n === 0 ? base + " · selbst gelöst (1. Versuch)" : base + " · gelöst nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : "");
     return base + (n ? " · " + n + " Fehlversuch" + (n === 1 ? "" : "e") : "");
   };
@@ -38,10 +40,10 @@
   var origCheck = showCheck;
   showCheck = function (t) {
     var r = evalTask(t);
-    if (r && !r.ok && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;
+    if (r && !r.ok && !r.manOnly && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;   /* leere offene Erklärung ist kein Fehlversuch */
     origCheck(t);
     var fb = $("#fb_" + t.id), n = S.tries[t.id] || 0;
-    if (r && !r.ok) {
+    if (r && !r.ok && !r.manOnly) {
       // Tipp mit Link erst ab dem 2. Fehlversuch
       if (n < FEHLER_FUER_TIPP) { var links = fb.querySelectorAll("a"); links.forEach(function (a) { if (a.parentNode) a.parentNode.remove(); }); fb.append(mk("div", "", "Lies deine Antwort noch einmal genau – manchmal fehlt nur ein Wort, eine Einheit oder ein Rechenschritt.")); }
       if (n >= FEHLER_FUER_LOESUNG && !LH_viewed(t)) {

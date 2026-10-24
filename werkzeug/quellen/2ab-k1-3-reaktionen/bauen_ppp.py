@@ -24,7 +24,7 @@ import herrichten as H
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
-VER = "v3"
+VER = "v4"
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("A33A2B")
@@ -693,13 +693,13 @@ def lehrer_infos():
     s = d.slide("Nur Titel", "Lehrer-Info · Stundenvorschlag", hidden=True)
     tb(s, X0, 0.98, 9, 0.3, ["AUSGEBLENDET · Kern in 5 Stunden (Jahresplan: 6) · Rest optional"], size=12, bold=True, color=RUST, after=0)
     rows = [["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Zeit", "Methode"],
-            ["1 · 03.11.", "Einstieg, Teil 1 Redox", "V1 Demo 12 min, V2 Ansatz parallel", "1–3 · HÜ 4", "13 min + 8 Reserve", "Demo mit Vorhersage"],
-            ["2 · 05.11.", "Test 20 min · Teil 2 Rost", "V3 Demo 8 min", "5–7 · HÜ 8", "10 min + 7 Reserve", "Demo, HÜ in Handschrift"],
-            ["3 · 10.11.", "V2 auswerten, Teil 3 Energie", "V6 Demo 8 min · Gr. 1–3: V4 + V5", "Gr. 4–6: 9–12", "Stationen 3 × 11 min", "Demo, Stationenbetrieb"],
-            ["4 · 12.11.", "Teil 4 Katalysator", "V7 Demo 10 min · Gr. 4–6: V4 + V5", "13–14 · Gr. 1–3: 9–12", "Stationen 3 × 11 min", "Demo mit Vorhersage"],
-            ["5 · 17.11.", "Partnercheck, Teil 5 Tempo", "V8 Gruppen 18 min", "18, 16–17 · HÜ 15, Quiz", "9 min + 4 Reserve", "Partnercheck, Gruppenversuch"],
+            ["1 · 03.11.", "Einstieg, Teil 1 Redox", "V1 Demo 12 min, V2 Ansatz parallel", "1–3 · Zusatz 4", "13 min + 8 Reserve", "Demo mit Vorhersage"],
+            ["2 · 05.11.", "Test 20 min · Teil 2 Rost", "V3 Demo 8 min", "5–7 · Zusatz 8", "10 min + 7 Reserve", "Test, Demo mit Vorhersage"],
+            ["3 · 10.11.", "V2 auswerten, Teil 3 Energie", "V6 Demo 8 min · Gr. 1–3: V4 + V5", "Gr. 4–6: 9–11 · Zusatz 12", "Stationen 3 × 11 min", "Demo, Stationenbetrieb"],
+            ["4 · 12.11.", "Teil 4 Katalysator", "V7 Demo 10 min · Gr. 4–6: V4 + V5", "13–14 · Gr. 1–3: 9–11", "Stationen 3 × 11 min", "Demo mit Vorhersage"],
+            ["5 · 17.11.", "Partnercheck, Teil 5 Tempo", "V8 Gruppen 18 min · Protokolle 7 min", "18, 16–17 · Zusatz 15", "9 min + 5 Reserve", "Partnercheck, Gruppenversuch"],
             ["Zusatz", "Für Schnelle", "V9 (Lehrer, Abzug)", "19–23 · Kahoot", "–", "–"],
-            ["Besprechung", "Stunde 1, 2, 5 je 5–7 min", "", "BESPRECHEN: 3, 8, 11, 13, 15", "", "Plenum"]]
+            ["Besprechung", "Stunde 1, 2, 5 je 5–7 min", "", "BESPRECHEN: 3, 11, 13 · keine HÜ", "", "Plenum"]]
     auto_grid(s, X0, 1.32, [1.0, 2.0, 1.75, 1.75, 0.8, 1.7], rows, size=13, minh=0.3)
     s = d.slide("Nur Titel", "Lehrer-Info · Die 5 größten Stolpersteine", hidden=True)
     rows = [["Stolperstein", "Richtig ist …"]] + [[a, plain(b)] for a, b in I.STOLPERSTEINE]

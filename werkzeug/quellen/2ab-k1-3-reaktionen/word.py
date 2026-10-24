@@ -19,7 +19,7 @@ import herrichten as H
 import fachwissen as F
 
 OUT = sys.argv[1]
-VER = "v3"
+VER = "v4"
 PRE = I.PRAEFIX
 OLIVE, TEAL, RED, MUTED, RUST, INK = RGBColor(0x3B, 0x4A, 0x2F), RGBColor(0x2E, 0x7D, 0x8C), RGBColor(0xC0, 0x00, 0x00), RGBColor(0x5E, 0x66, 0x52), RGBColor(0x8C, 0x3B, 0x2E), RGBColor(0x1F, 0x2A, 0x1C)
 THEORY, BOOKRED = RGBColor(0x6E, 0x7F, 0x4E), RGBColor(0xA3, 0x3A, 0x2B)
@@ -178,7 +178,7 @@ def lehrplan_box(doc):
 def stundenvorschlag(doc):
     para(doc, "Stundenvorschlag · Kern in 5 Stunden (Jahresplan: 6) · Rest optional", 11, True, OLIVE, after=2, before=4, keep=True)
     table(doc, ["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Zeit", "Methode (ohne Handy)"], F.STUNDENVORSCHLAG, [1.7, 3.4, 3.3, 2.8, 1.6, 4.6], 8.5)
-    para(doc, "KERN = Pflicht für alle · OPTIONAL = »Für Schnelle« (A19–A23), Zusatz-Versuch K1.3-V9. Besprechung: jede Stunde 5–8 min, Aufgaben mit Tag BESPRECHEN: 3, 8, 11, 13, 15.", 8.5, False, MUTED, after=3)
+    para(doc, "KERN = Pflicht für alle · ZUSATZ in der Stunde (wer früher fertig ist): A4, A8, A12, A15 · OPTIONAL = »Für Schnelle« (A19–A23), Zusatz-Versuch K1.3-V9 · keine Hausübungen. Besprechung: Aufgaben mit Tag BESPRECHEN: 3, 11, 13.", 8.5, False, MUTED, after=3)
 
 
 def stolpersteine(doc):
@@ -331,7 +331,7 @@ def ablauf(doc):
     rows = [[v["nr"], v["titel"], f"Stunde {v['stunde']}" if v["stunde"] else "Zusatz", v["form"], "KERN" if v["kern"] else "ZUSATZ"] for v in VD.VS]
     table(doc, ["ID", "Versuch", "Wann", "Form", "Einsatz"], rows, [1.9, 5.6, 1.6, 6.5, 1.8], 8.5)
     p = para(doc, "", after=2, before=3)
-    run(p, "6 Gruppen zu viert. ", 9.5, True); run(p, "Stunde 3 beginnt mit der Demo K1.3-V6. Danach Stationen 1 und 2 in Stunde 3 (Gruppe 1–3) und Stunde 4 (Gruppe 4–6): drei Runden à 11 Minuten – Runde 1: Gruppe 1 bzw. 4 an Station 1, Gruppe 2 bzw. 5 an Station 2, Gruppe 3 bzw. 6 macht Aufgaben; dann Station 1 → Station 2 → Aufgaben → Station 1. An der Station nur messen und beobachten, Deutung als Hausübung. Protokoll am Handy: ", 9.5)
+    run(p, "6 Gruppen zu viert. ", 9.5, True); run(p, "Stunde 3 beginnt mit der Demo K1.3-V6. Danach Stationen 1 und 2 in Stunde 3 (Gruppe 1–3) und Stunde 4 (Gruppe 4–6): drei Runden à 11 Minuten – Runde 1: Gruppe 1 bzw. 4 an Station 1, Gruppe 2 bzw. 5 an Station 2, Gruppe 3 bzw. 6 macht Aufgaben; dann Station 1 → Station 2 → Aufgaben → Station 1. An der Station messen, beobachten, aufräumen und die Erkenntnis eintragen; Interpretation und Schlussfolgerung in der Aufgabenzeit, spätestens in Stunde 5. Protokoll am Handy: ", 9.5)
     run(p, I.URL + "versuche.html", 9, False, TEAL)
     p = para(doc, "", after=2); run(p, "So wertest du jeden Versuch aus: ", 9.5, True, OLIVE); run(p, "Erkenntnis – Was habt ihr herausgefunden? · Interpretation – Warum ist das so? Erklärt mit den Teilchen und Elektronen. · Schlussfolgerung – Was bedeutet das für Alltag, Sport oder Bundesheer?", 9.5)
     p = para(doc, "", after=2); run(p, "Sicherheit: ", 9.5, True, RUST); run(p, " · ".join(a + " – " + b for a, b in VD.SICHERHEIT), 9)

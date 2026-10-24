@@ -1,5 +1,6 @@
 """EIN Aufruf nach dem Bauen oder Ändern einer Einheit: python3 werkzeug/nach_dem_bauen.py
 Führt der Reihe nach aus (alle wiederholbar, ändern keinen Speicherschlüssel):
+  0. loesungshilfe_einbauen.py   – Tipp-Stufen, »Lösung zeigen«, Übungsvarianten (vorher fehlte er hier: Änderungen an loesungshilfe.js kamen sonst nicht an)
   1. speicherstatus_einbauen.py   – »Gespeichert um …« / Warnung bei Speicherfehler
   2. pdf_erinnerung_einbauen.py   – »Noch keine PDF / seit der PDF geändert / PDF passt«
   3. pdf_programm_auslagern.py    – PDF-Programm + PDF-Schrift aus der Seite in gemeinsam/pdf-programm-v1.js
@@ -15,7 +16,7 @@ Führt der Reihe nach aus (alle wiederholbar, ändern keinen Speicherschlüssel)
 Danach: git status ansehen, nur die eigene Einheit committen, git pull --rebase, git push."""
 import os, subprocess, sys
 W = os.path.dirname(os.path.abspath(__file__))
-for s in ("speicherstatus_einbauen.py", "pdf_erinnerung_einbauen.py", "pdf_programm_auslagern.py",
+for s in ("loesungshilfe_einbauen.py", "speicherstatus_einbauen.py", "pdf_erinnerung_einbauen.py", "pdf_programm_auslagern.py",
           "schriften_einbauen.py", "abgabezeit_einbauen.py", "versuche_pruefen_einbauen.py", "pruefung_nachsicht_einbauen.py", "notenvorschlag_einbauen.py", "pilot_layout_einbauen.py", "teststoff/handyseite.py", "build_index.py", "pruefen.py"):
     print(f"\n=== {s} ===", flush=True)
     r = subprocess.run([sys.executable, os.path.join(W, s)], cwd=os.path.dirname(W))

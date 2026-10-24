@@ -1581,6 +1581,8 @@ window.LH_VARIANTEN = [];
     var n = (S.tries && S.tries[t.id]) || 0;
     if (LH_viewed(t)) return "Lösung angesehen (nach " + S.solTask[t.id] + " Fehlversuch" + (S.solTask[t.id] === 1 ? "" : "en") + ") – Antwort bitte selbst bewerten";
     var ev = evalTask(t);
+    if (ev && ev.manOnly) return base;   /* nur offene Erklärung (Seite kennzeichnet sie mit man): bewertet die Lehrkraft */
+    if (ev && ev.ok && ev.man) return base + (n === 0 ? " · beim 1. Versuch" : " · nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : ""));
     if (ev && ev.ok) return n === 0 ? base + " · selbst gelöst (1. Versuch)" : base + " · gelöst nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : "");
     return base + (n ? " · " + n + " Fehlversuch" + (n === 1 ? "" : "e") : "");
   };
@@ -1589,10 +1591,10 @@ window.LH_VARIANTEN = [];
   var origCheck = showCheck;
   showCheck = function (t) {
     var r = evalTask(t);
-    if (r && !r.ok && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;
+    if (r && !r.ok && !r.manOnly && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;   /* leere offene Erklärung ist kein Fehlversuch */
     origCheck(t);
     var fb = $("#fb_" + t.id), n = S.tries[t.id] || 0;
-    if (r && !r.ok) {
+    if (r && !r.ok && !r.manOnly) {
       // Tipp mit Link erst ab dem 2. Fehlversuch
       if (n < FEHLER_FUER_TIPP) { var links = fb.querySelectorAll("a"); links.forEach(function (a) { if (a.parentNode) a.parentNode.remove(); }); fb.append(mk("div", "", "Lies deine Antwort noch einmal genau – manchmal fehlt nur ein Wort, eine Einheit oder ein Rechenschritt.")); }
       if (n >= FEHLER_FUER_LOESUNG && !LH_viewed(t)) {
@@ -2141,6 +2143,7 @@ window.LH_VARIANTEN = [];
      - jede Auswahl-/Zahlen-Antwort = 1 Punkt; Stichwort-Antworten anteilig (gefundene Stichwortgruppen / verlangte); »durchstreichen«-Aufgaben anteilig
      - Aufgaben mit angesehener Lösung = 0 Punkte (Lehrkraft bewertet selbst); Zusatzaufgaben zählen nur, wenn bearbeitet
      - Aufgaben ohne automatische Prüfung (Freitext, Skizze, Foto) stehen als »selbst bewerten« im Kasten und zählen nicht mit
+     - offene Erklärungen, die die Seite mit man kennzeichnet (evalTask: p.man), zählen weder in Zähler noch Nenner; sie stehen als »bewertet die Lehrkraft« im Kasten
    Notenschlüssel (Vorschlag): ab 88 % = 1, ab 75 % = 2, ab 62 % = 3, ab 50 % = 4, darunter 5 (genau, ohne vorheriges Runden). Ändern: SCHLUESSEL unten.
    Seiten mit eigenem Ergebnis-Kasten (Nobel, Vertiefung) nehmen »x von y Antworten richtig« aus pdfStats().
    Einbau: python3 werkzeug/notenvorschlag_einbauen.py */
@@ -2152,14 +2155,16 @@ window.LH_VARIANTEN = [];
   function liste(a) { return a.length ? a.join(", ") : ""; }
 
   function standStandard() {
-    var pkt = 0, max = 0, selbst = [], gesehen = [];
+    var pkt = 0, max = 0, selbst = [], gesehen = [], lehrkraft = [];
     T.forEach(function (t) {
       var a = S.a[t.id] || {}, beantwortet = Object.keys(a).some(function (k) { return k !== "foto" && a[k] !== "" && a[k] != null; }) || !!a.foto;
       if ((t.tag === "Zusatz" || t.hl) && !beantwortet) return;
       var ev = null; try { ev = t.chk ? evalTask(t) : null; } catch (e) {}
       if (!ev) { selbst.push(t.nr); return; }
       var viewed = (typeof LH_viewed === "function" && LH_viewed(t)) || !!S.solSeen, teile = 0, erreicht = 0;
+      var manuell = false;
       ev.parts.forEach(function (p) {
+        if (p.man) { manuell = true; return; }   /* offene Erklärung: keine automatischen Punkte, keine Abzüge */
         if (p.kind === "strike") { teile += 1; erreicht += p.of ? p.n / p.of : 0; return; }
         teile += 1;
         if (p.kind === "kw") {
@@ -2167,11 +2172,13 @@ window.LH_VARIANTEN = [];
           erreicht += Math.min(1, h / need);
         } else if (p.ok) erreicht += 1;
       });
+      if (manuell) lehrkraft.push(t.nr);
+      if (!teile) { if (!manuell) selbst.push(t.nr); return; }
       max += teile;
       if (viewed) { gesehen.push(t.nr); return; }
       pkt += erreicht;
     });
-    return { pkt: pkt, max: max, selbst: selbst, gesehen: gesehen };
+    return { pkt: pkt, max: max, selbst: selbst, gesehen: gesehen, lehrkraft: lehrkraft };
   }
   function standSeite() {
     var st = pdfStats(), pkt = 0, gesehen = st.shown || [], glob = (typeof S !== "undefined") && !!S.solSeen;
@@ -2204,9 +2211,19 @@ window.LH_VARIANTEN = [];
     if (typeof S !== "undefined" && S.solSeen && s.gesehen.length) rest.push("PDF nach Lösungseinsicht erstellt: 0 Punkte – bitte die erste PDF bewerten");
     else if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
     if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
+    var lk = s.lehrkraft || [];
+    if (lk.length) rest.unshift("Punkte nur aus den automatisch geprüften Teilen; Gesamtnote erst nach fachlicher Durchsicht · Erklärungen bewertet die Lehrkraft (nicht in den Punkten): Aufgabe " + liste(lk));
     var z2 = rest.length ? rest.join(" · ") : "automatische Vorbewertung – freie Texte bitte fachlich lesen";
-    z2 = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4)[0];
-    d.text(z2, M + 2, 9.6);
+    var zl = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4);
+    if (zl.length === 1) { d.text(zl[0], M + 2, 9.6); return; }
+    /* länger als eine Zeile: Kasten auf zwei Zeilen erweitern (kleinere Schrift), nichts unbemerkt abschneiden */
+    d.setFontSize(6.4); zl = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4);
+    if (zl.length > 2) { zl = d.splitTextToSize(clean(z2), W - 2 * M - 4); zl = [zl[0], d.splitTextToSize(clean(zl.slice(1).join(" ")), W - 2 * M - 40)[0] + (zl.length > 2 ? " … (Rest: siehe »Bewertung« bei den Aufgaben)" : "")]; }
+    d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 11.3, 1.5, 1.5, "FD");
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
+    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + zahl(pz) + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
+    d.setFont("C", "normal"); d.setFontSize(6.4);
+    d.text(zl[0], M + 2, 9.2); d.text(zl[1], M + 2, 11.7);
   }
 
   function umhuellen(name) {
@@ -2259,18 +2276,22 @@ window.LH_VARIANTEN = [];
   var zusDet = null, tasks = document.getElementById("tasks");
   if (tasks && zus.length) {
     var kart = zus.map(function (t) { return document.getElementById("card_" + t.id); }).filter(Boolean);
-    /* nur zuklappen, wenn ab der ersten Zusatzkarte nur noch Zusatzkarten (und Zwischenüberschriften) folgen */
-    var kidsA = Array.prototype.slice.call(tasks.children), a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
+    /* Seiten mit PL_ZUSATZ_ENDE: zugeklappt wird nur der Block am Ende, Zusatzkarten mitten in einer Stunde (»wer früher fertig ist«) bleiben an ihrem Platz */
+    var kidsA = Array.prototype.slice.call(tasks.children);
+    var letztePfl = -1; kidsA.forEach(function (c, i) { if (/^card_/.test(c.id || "") && kart.indexOf(c) < 0) letztePfl = i; });
+    if (typeof PL_ZUSATZ_ENDE !== "undefined" && PL_ZUSATZ_ENDE) kart = kart.filter(function (c) { return kidsA.indexOf(c) > letztePfl; });   /* nur Seiten mit var PL_ZUSATZ_ENDE = true (K1.3 2AB); sonst wie bisher */
+    var zusEnde = zus.filter(function (t) { return kart.indexOf(document.getElementById("card_" + t.id)) >= 0; });
+    var a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
     var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });
     if (kart.length && sauber) {
       zusDet = document.createElement("details"); zusDet.className = "pl-zusatz";
-      var s2 = document.createElement("summary"); s2.textContent = (zus.length === 1 ? "Zusatzaufgabe " + zus[0].nr : "Zusatzaufgaben " + zus[0].nr + "–" + zus[zus.length - 1].nr) + " · nur wenn Zeit bleibt";
+      var s2 = document.createElement("summary"); s2.textContent = (zusEnde.length === 1 ? "Zusatzaufgabe " + zusEnde[0].nr : "Zusatzaufgaben " + zusEnde[0].nr + "–" + zusEnde[zusEnde.length - 1].nr) + " · nur wenn Zeit bleibt";
       var inh = document.createElement("div"); inh.className = "pl-zusatz-inhalt";
       var kids = Array.prototype.slice.call(tasks.children), ab = kids.indexOf(kart[0]), rest = kids.slice(ab);
       tasks.insertBefore(zusDet, kart[0]); zusDet.appendChild(s2); zusDet.appendChild(inh);
       /* alles ab der ersten Zusatzkarte verschieben – auch die Zwischenüberschriften (»Halbleiter · optional«) */
       rest.forEach(function (c) { inh.appendChild(c); });
-      if (zus.some(function (t) { var a = S.a[t.id] || {}; return Object.keys(a).some(function (k) { return a[k] != null && String(a[k]).trim() !== ""; }); })) zusDet.open = true;   /* leere Einträge zählen nicht */
+      if (zusEnde.some(function (t) { var a = S.a[t.id] || {}; return Object.keys(a).some(function (k) { return a[k] != null && String(a[k]).trim() !== ""; }); })) zusDet.open = true;   /* leere Einträge zählen nicht */
     }
   }
   function oeffneZiel() {

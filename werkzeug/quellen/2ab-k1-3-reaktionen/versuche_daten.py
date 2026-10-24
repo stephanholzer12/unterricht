@@ -165,7 +165,7 @@ VS = [
   "lehrer": ["Lösung vorab: 15,0 g Kupfer(II)-sulfat-Pentahydrat (blaue Kristalle, #262–264) in Wasser lösen und auf 150 ml fertige Lösung auffüllen (= 10 g pro 100 ml Lösung) → 6 Durchgänge à 20 ml (beide Termine) + Reserve. Neue Lösung pro Durchgang. Vorab einmal ausprobieren, wie stark die Temperatur steigt.",
              "Reagiert die Wolle träge (Schutzöl): Wolle vorher kurz in Spülmittelwasser schwenken und trocknen – oder eine Spatelspitze Kochsalz in die Lösung geben, das zerstört die Oxidschicht.",
              "Nur 2 Thermometer im Bestand: das Analog-Thermometer (#147) an Station 1, das Digitalthermometer (#25) nach der Demo K1.3-V6 an Station 2.",
-             "An der Station nur messen und beobachten (ca. 6 min) und aufräumen; Erkenntnis, Deutung und Schlussfolgerung als Hausübung bis Stunde 5."],
+             "An der Station (11 min): messen und beobachten (ca. 6 min), aufräumen, Erkenntnis gleich eintragen. Interpretation und Schlussfolgerung in der Aufgabenzeit, spätestens im Block »Protokolle fertig« in Stunde 5 – keine Hausübung."],
   "fehler": ["Thermometer nicht in der Lösung, sondern in der Wolle steckend: zeigt zu wenig.", "Zu kurz gewartet – erst nach 1–2 min steigt die Temperatur deutlich."],
   "fach": ["Fe + Cu²⁺ → Fe²⁺ + Cu, ΔH ≈ −150 kJ/mol. Eisen ist unedler als Kupfer und »verdrängt« es aus der Lösung (Vorgriff auf die Redoxreihe, Elektrochemie).",
            "Technisch heißt das Abscheiden von Kupfer an Eisenschrott »Zementation« – so wurde früher Kupfer aus Grubenwasser gewonnen."]},
@@ -197,7 +197,7 @@ VS = [
              "Natron mit der Waage in 6 Portionen à 6,0 g abwiegen und beschriftet bereitstellen (»3 gehäufte Spatel« ist nicht genau genug).",
              "Natron ist #224 (Gefahrstoffschrank L-O). Zitronensäure: laut Fotoabgleich 03.09 vorhanden, Gefäß-Nr. vor der Stunde suchen; sonst Zitronensäure aus dem Supermarkt (Entkalker-Pulver).",
              "Schäumt stark – deshalb das 100-ml-Becherglas, nicht kleiner; Schaumhöhe vorab einmal ausprobieren.",
-             "An der Station nur messen und beobachten (ca. 6 min) und aufräumen; Deutung als Hausübung."],
+             "An der Station (11 min): messen und beobachten (ca. 6 min), aufräumen, Erkenntnis gleich eintragen; Deutung in der Aufgabenzeit bzw. in Stunde 5 – keine Hausübung."],
   "fehler": ["Natron nur teelöffelweise zugegeben: Temperatursturz kleiner.", "Temperatur zu früh abgelesen."],
   "fach": ["C₆H₈O₇ + 3 NaHCO₃ → Na₃C₆H₅O₇ + 3 H₂O + 3 CO₂ (endotherm). Freiwillig läuft sie trotzdem, weil viel Gas entsteht (Entropie nimmt stark zu) – das ist Oberstufenstoff."]},
 

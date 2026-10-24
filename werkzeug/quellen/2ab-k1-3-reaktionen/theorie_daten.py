@@ -61,7 +61,7 @@ PARTS = [
   {"id": "rostansatz", "title": "Wann rostet Eisen? – Ansatz für nächste Woche", "pill": "Buch S. 98",
    "blocks": [("versuch", "K1.3-V2", "Rost-Ansätze mit vier Bedingungen", "Heute ansetzen, am Di 10.11. auswerten: Eisenwolle in Leitungswasser, unter Öl in abgekochtem Wasser, trocken und in Salzwasser. Wo rostet es am stärksten? Tipp jetzt im Versuchsprotokoll ab.")]},
   {"id": "stop1", "title": "Stopp – kannst du das?", "pill": "Buch S. 30–31", "blocks": [("reveal", I.STOPPFRAGEN[1])]},
-  ("jetzt", "Jetzt: Aufgaben 1–4", "aufgaben.html#name"),
+  ("jetzt", "Jetzt: Aufgaben 1–3 · Zusatz: 4", "aufgaben.html#name"),
  ]),
 
  # ---------------------------------------------------------------- Teil 2 · Redox im Alltag
@@ -97,7 +97,7 @@ PARTS = [
               ("hint", "Die Elektronen, die links abgegeben werden, müssen rechts genau aufgenommen werden – darum stehen auf beiden Seiten gleich viele. "
                        "Diese Reaktion ist außerdem exotherm: In Versuch K1.3-V4 wird es messbar warm.")]},
   {"id": "stop2", "title": "Stopp – kannst du das?", "pill": "Buch S. 98", "blocks": [("reveal", I.STOPPFRAGEN[2])]},
-  ("jetzt", "Jetzt: Aufgaben 5–8", "aufgaben.html#card_a5"),
+  ("jetzt", "Jetzt: Aufgaben 5–7 · Zusatz: 8", "aufgaben.html#card_a5"),
  ]),
 
  # ---------------------------------------------------------------- Teil 3 · Energie
@@ -118,7 +118,7 @@ PARTS = [
                          ["Station 1", "K1.3-V4 · Eisenwolle in Kupfersulfatlösung", "Temperatur vorher und nach 2 Minuten"],
                          ["Station 2", "K1.3-V5 · Zitronensäure + Natron", "Temperatur vorher und tiefster Wert"]]),
               ("hint", "Stunde 3: Zuerst zeigt die Lehrkraft die Kältemischung K1.3-V6. Dann Gruppe 1–3: drei Runden zu je 11 Minuten – Runde 1: Gruppe 1 an Station 1, Gruppe 2 an Station 2, Gruppe 3 macht Aufgaben. Runde 2: Gruppe 1 → Station 2, Gruppe 2 → Aufgaben, Gruppe 3 → Station 1. Runde 3: Gruppe 1 → Aufgaben, Gruppe 2 → Station 1, Gruppe 3 → Station 2. Gruppe 4–6 macht die ganze Zeit die Aufgaben 9–12. Stunde 4: umgekehrt."),
-              ("hint", "An der Station nur messen und beobachten, dann aufräumen. Erkenntnis, Deutung und Schlussfolgerung schreibt ihr bis Stunde 5 (Hausübung)."),
+              ("hint", "An der Station: messen, beobachten, aufräumen und gleich die Erkenntnis eintragen. Interpretation und Schlussfolgerung schreibt ihr, sobald ihr beide Stationen fertig habt – in eurer Aufgabenzeit, spätestens in Stunde 5 (dort gibt es Zeit dafür)."),
               ("versuch", "K1.3-V4", "Stationen K1.3-V4 und V5 · Demo K1.3-V6", "Schutzbrille auf! Protokoll pro Gruppe auf der Versuchsseite.")]},
   {"id": "diagramm", "title": "Das Energiediagramm", "pill": "Buch S. 33",
    "blocks": [("img", "img/diagramm_exo_endo.png", "Zwei Energiediagramme: links exotherm (Endstoffe tiefer), rechts endotherm (Endstoffe höher)",
@@ -142,7 +142,7 @@ PARTS = [
                          ["Eisenwolle verbrennt", "1,20 g Eisen + Sauerstoff aus der Luft", "1,52 g Eisenoxid und Rest-Eisen – 0,32 g Sauerstoff wurden eingebaut"],
                          ["Holz verbrennt", "Holz + Sauerstoff", "Asche + Kohlenstoffdioxid + Wasserdampf (Gase entweichen)"]])]},
   {"id": "stop3", "title": "Stopp – kannst du das?", "pill": "Buch S. 32–34", "blocks": [("reveal", I.STOPPFRAGEN[3])]},
-  ("jetzt", "Jetzt: Aufgaben 9–12 (oder Stationen)", "aufgaben.html#card_a9"),
+  ("jetzt", "Jetzt: Aufgaben 9–11 (oder Stationen) · Zusatz: 12", "aufgaben.html#card_a9"),
  ]),
 
  # ---------------------------------------------------------------- Teil 4 · Katalysatoren
@@ -207,7 +207,7 @@ PARTS = [
    "blocks": [("hint", "Für Aufgabe 18 (gleich zu Beginn von Stunde 5): A stellt B drei Fragen, B antwortet ohne Handy. A deckt die Lösung erst danach auf."),
               ("karten", I.PARTNERKARTEN)]},
   {"id": "stop5", "title": "Stopp – kannst du das?", "pill": "Buch S. 36", "blocks": [("reveal", I.STOPPFRAGEN[5])]},
-  ("jetzt", "Jetzt: Aufgaben 15–18", "aufgaben.html#card_a15"),
+  ("jetzt", "Jetzt: Aufgaben 16–17 · Zusatz: 15", "aufgaben.html#card_a16"),
  ]),
 ]
 

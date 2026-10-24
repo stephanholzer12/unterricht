@@ -914,18 +914,22 @@ update();
   var zusDet = null, tasks = document.getElementById("tasks");
   if (tasks && zus.length) {
     var kart = zus.map(function (t) { return document.getElementById("card_" + t.id); }).filter(Boolean);
-    /* nur zuklappen, wenn ab der ersten Zusatzkarte nur noch Zusatzkarten (und Zwischenüberschriften) folgen */
-    var kidsA = Array.prototype.slice.call(tasks.children), a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
+    /* Seiten mit PL_ZUSATZ_ENDE: zugeklappt wird nur der Block am Ende, Zusatzkarten mitten in einer Stunde (»wer früher fertig ist«) bleiben an ihrem Platz */
+    var kidsA = Array.prototype.slice.call(tasks.children);
+    var letztePfl = -1; kidsA.forEach(function (c, i) { if (/^card_/.test(c.id || "") && kart.indexOf(c) < 0) letztePfl = i; });
+    if (typeof PL_ZUSATZ_ENDE !== "undefined" && PL_ZUSATZ_ENDE) kart = kart.filter(function (c) { return kidsA.indexOf(c) > letztePfl; });   /* nur Seiten mit var PL_ZUSATZ_ENDE = true (K1.3 2AB); sonst wie bisher */
+    var zusEnde = zus.filter(function (t) { return kart.indexOf(document.getElementById("card_" + t.id)) >= 0; });
+    var a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
     var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });
     if (kart.length && sauber) {
       zusDet = document.createElement("details"); zusDet.className = "pl-zusatz";
-      var s2 = document.createElement("summary"); s2.textContent = (zus.length === 1 ? "Zusatzaufgabe " + zus[0].nr : "Zusatzaufgaben " + zus[0].nr + "–" + zus[zus.length - 1].nr) + " · nur wenn Zeit bleibt";
+      var s2 = document.createElement("summary"); s2.textContent = (zusEnde.length === 1 ? "Zusatzaufgabe " + zusEnde[0].nr : "Zusatzaufgaben " + zusEnde[0].nr + "–" + zusEnde[zusEnde.length - 1].nr) + " · nur wenn Zeit bleibt";
       var inh = document.createElement("div"); inh.className = "pl-zusatz-inhalt";
       var kids = Array.prototype.slice.call(tasks.children), ab = kids.indexOf(kart[0]), rest = kids.slice(ab);
       tasks.insertBefore(zusDet, kart[0]); zusDet.appendChild(s2); zusDet.appendChild(inh);
       /* alles ab der ersten Zusatzkarte verschieben – auch die Zwischenüberschriften (»Halbleiter · optional«) */
       rest.forEach(function (c) { inh.appendChild(c); });
-      if (zus.some(function (t) { var a = S.a[t.id] || {}; return Object.keys(a).some(function (k) { return a[k] != null && String(a[k]).trim() !== ""; }); })) zusDet.open = true;   /* leere Einträge zählen nicht */
+      if (zusEnde.some(function (t) { var a = S.a[t.id] || {}; return Object.keys(a).some(function (k) { return a[k] != null && String(a[k]).trim() !== ""; }); })) zusDet.open = true;   /* leere Einträge zählen nicht */
     }
   }
   function oeffneZiel() {

@@ -111,25 +111,29 @@ cases[E4].push(
 /* 2AB K1.3 Stoffumwandlung – Prüfbericht ChatGPT v4 (24.10.2026), Punkt 09: halbe, falsche und verneinte Antworten gelten nicht */
 const K13='2ab-nawi/k1-3-reaktionen/aufgaben.html';
 cases[K13]=[
- ['a4','prod','Cu',1],['a4','prod','2 Cu',1],['a4','prod','Kupfer',1],['a4','prod','Cu (Kupfer)',1],['a4','prod','Kupferoxid',0],['a4','prod','CuO',0],['a4','prod','Kupfer(II)-oxid',0],['a4','prod','Kupfer oxid',0],
- ['a5','warum','Außen oxidiert das Kupfer; innen fehlt weitgehend der Luftsauerstoff',1],['a5','warum','Sauerstoff',0],['a5','warum','Innen kommt keine Luft hin, weil der Brief gefaltet ist.',1],
- ['a5','warum','Außen kommt Sauerstoff hin, innen nicht.',1],['a5','warum','Weil es außen heißer ist.',0],
- ['a13','warum','Enzym',0],['a13','warum','Das Enzym ist nicht zerstört.',0],['a13','warum','Beim Kochen verliert die Katalase durch die Hitze ihre Funktion',1],
- ['a13','warum','Das Enzym Katalase wurde durch das Kochen zerstört.',1],['a13','warum','Weil sie gekocht ist.',0],['a13','warum','Die Hitze hat den Biokatalysator unwirksam gemacht.',1],
- ['a1','warum','Sauerstoff wird nicht eingebaut.',0],['a1','warum','Sauerstoff aus der Luft verbindet sich mit dem Eisen.',1],['a1','warum','Das Eisen nimmt Sauerstoff aus der Luft auf.',1],['a1','warum','Sauerstoff',0],
- ['a11','erkl','Aktivierungsenergie wird nicht benötigt; es wird keine Wärme frei.',0],['a11','erkl','Man braucht Aktivierungsenergie zum Start, danach reicht die frei werdende Wärme für die nächsten Holzteilchen.',1],
- ['a11','erkl','Zum Anzünden braucht man Energie, dann brennt es von selbst weiter, weil Wärme frei wird.',1],
+ /* N01: kurze Stoffantwort – nur der Stoff Kupfer zählt */
+ ['a4','prod','Cu',1],['a4','prod','2 Cu',1],['a4','prod','Kupfer',1],['a4','prod','Cu (Kupfer)',1],['a4','prod','Kupfer (Cu)',1],['a4','prod','cu.',1],['a4','prod','elementares Kupfer',1],['a4','prod','Kupfermetall',1],
+ ['a4','prod','Kupferoxid',0],['a4','prod','CuO',0],['a4','prod','Kupfer(II)-oxid',0],['a4','prod','Kupfer oxid',0],['a4','prod','Cu2O',0],
+ ['a4','prod','Kupfersulfat',0],['a4','prod','Kupferchlorid',0],['a4','prod','nicht Kupfer, sondern Kohlenstoff',0],['a4','prod','CO2',0],['a4','prod','Kupfer und Kohlenstoffdioxid entstehen',0],
+ /* N02: offene Erklärungen bewertet die Lehrkraft – M = Teil ist als manuell gekennzeichnet, gibt kein automatisches »richtig« und keine Punkte */
+ ['a5','warum','Innen oxidiert Kupfer, außen fehlt Sauerstoff.','M'],['a5','warum','Sauerstoff gefaltet','M'],['a5','warum','Außen reagiert das heiße Kupfer mit Luftsauerstoff. Zwischen den gefalteten Flächen kommt kaum Luft hin.','M'],
+ ['a13','warum','Enzym gekocht','M'],['a13','warum','Die Kartoffel wurde gekocht, aber die Katalase ist weiterhin aktiv.','M'],['a13','warum','Das Enzym wurde durch Hitze nicht zerstört.','M'],['a13','warum','Beim Kochen verändert sich die Form der Katalase; sie verliert dadurch ihre Wirkung.','M'],
+ ['a1','warum','Sauerstoff wird freigesetzt; Eisen nimmt keinen Sauerstoff auf.','M'],['a1','warum','Das Eisen nimmt Sauerstoff aus der Luft auf.','M'],
+ ['a11','erkl','Aktivierungsenergie wird frei. Danach nimmt das Feuer Wärme auf.','M'],['a11','erkl','Zum Anzünden braucht man Energie. Danach kann die frei werdende Wärme weitere Reaktionen ermöglichen.','M'],
+ ['a8','punkt','Öl drauf, weil Wasser fernbleibt','M'],['a15','fehler','kein Filter','M'],['a19','kat','beschleunigt','M'],['a21','warum','teuer','M'],['a22','duenn','Oberfläche','M'],['a23','titel','Plakat','M'],
+ /* N02: Stofflisten – nur vollständige positive Nennung */
  ['a21','metalle','Chrom',0],['a21','metalle','Ruthenium, Cobalt, Mangan und Chrom',1],['a21','metalle','Chrom, Mangan, Kobalt, Ruthenium',1],['a21','metalle','Ruthenium, Kobalt, Mangan',0],
- ['a22','metalle','Platin',0],['a22','metalle','Platin, Palladium, Rhodium',1],['a22','metalle','Rhodium Palladium Platin',1],
- ['a22','duenn','Oberfläche',0],['a22','duenn','Die Metallteilchen werden nicht verbraucht und sitzen fein verteilt auf einer riesigen Oberfläche.',1],
+ ['a21','metalle','Chrom, Mangan, Kobalt und Ruthenium sind nicht die Metalle.',0],['a21','metalle','Es sind Ruthenium, Kobalt, Mangan und Chrom – Iridium ist nicht dabei.',1],
+ ['a22','metalle','Platin',0],['a22','metalle','Platin, Palladium, Rhodium',1],['a22','metalle','Rhodium Palladium Platin',1],['a22','metalle','Platin, Palladium und Rhodium sind falsch.',0],['a22','metalle','Platin, Palladium und Rhodium sind keine Edelmetalle.',0],
+ ['a13','gas','Sauerstoff',1],['a13','gas','Wasserstoff',0],
  ['a12','o2','0,32 g',1],['a12','o2','0.32 g',1],['a12','o2','320 mg',1],['a12','o2','0,32 kg',0],['a12','proz','26,7',1],['a12','proz','26,7 %',1],['a17','rgt','20 s',1],['a17','rgt','40 s',0],
  ['a3','ea','2',1],['a3','ea','4',0]];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);
  for(const [id,key,txt,exp] of list){
-  const r=await p.evaluate(([id,key,txt])=>{const t=T.find(x=>x.id===id);S.a[id]=S.a[id]||{};S.a[id][key]=txt;const c=t.chk[key];return checkField(t,key,c).ok;},[id,key,txt]);
-  tot++; if(!!r!==!!exp){bad++;console.log('FALSCH',f.split('/')[0],id,key,JSON.stringify(txt),'erwartet',exp,'bekam',r);}
+  const r=await p.evaluate(([id,key,txt])=>{const t=T.find(x=>x.id===id);S.a[id]=S.a[id]||{};S.a[id][key]=txt;const c=t.chk[key];if(c.man){const r=evalTask(t),p=r.parts.find(x=>x.key===key);return p&&p.man&&!(r.ok&&!r.man)?'M':'kein M';}return checkField(t,key,c).ok;},[id,key,txt]);
+  tot++; if(exp==='M'?r!=='M':(!!r!==!!exp)){bad++;console.log('FALSCH',f.split('/')[0],id,key,JSON.stringify(txt),'erwartet',exp,'bekam',r);}
  }
  if(errs.length){console.log('JS-Fehler',f,errs);bad++;}
  await p.close();}
