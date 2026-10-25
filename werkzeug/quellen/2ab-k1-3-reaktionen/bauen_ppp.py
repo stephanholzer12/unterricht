@@ -25,7 +25,7 @@ import herrichten as H
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
-VER = "v5"
+VER = "v6"
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("A33A2B")
@@ -91,7 +91,10 @@ class Deck:
     def slide(self, layout, title, hidden=False):
         s = self.p.slides.add_slide(self.L[layout])
         for ph in s.placeholders:
-            if ph.placeholder_format.type == 1: ph.text_frame.text = title
+            if ph.placeholder_format.type == 1:
+                ph.text_frame.text = title
+                if layout in ("Nur Titel", "Aufgabe") and len(title) > 36:   # lange Titel kleiner, damit sie den Inhalt nicht berühren
+                    for r_ in ph.text_frame.paragraphs[0].runs: r_.font.size = Pt(24 if len(title) <= 44 else 21)
         if hidden: s._element.set("show", "0")
         self.sections[-1][1].append(self.p.slides._sldIdLst[-1].get("id"))
         s._anim = []
@@ -269,19 +272,83 @@ def picture(s, path, x, y, w=None, h=None):
     return s.shapes.add_picture(path, Inches(x), Inches(y), Inches(h * iw / ih), Inches(h)), h
 
 
+
+# ---------------------------------------------------------------- abwechslungsreiche Listen (Stil 1AB »Messen«)
+AKZENT = [GREEN, TEAL, ORANGE]
+_akz = [0]
+
+
+def akzent():
+    _akz[0] += 1
+    return AKZENT[_akz[0] % len(AKZENT)]
+
+
+def lead_split(item):
+    m = re.match(r"\*\*(.+?)\*\*\s*[:.–-]?\s*(.+)$", item, re.S)
+    if m and len(m.group(1)) <= 48 and len(m.group(2)) > 12:
+        return m.group(1).rstrip(":"), m.group(2)
+    return None, item
+
+
+def ul_mode(items, w):
+    if w >= 8 and 2 <= len(items) <= 3 and all(len(plain(x)) <= 210 for x in items): return "spalten"
+    return "zeilen"
+
+
+def spalten_h(items, w):
+    n = len(items); cw = (w - 0.2 * (n - 1)) / n; hs = []
+    for it in items:
+        lead, body = lead_split(it)
+        hs.append(0.16 + (th(lead, 20, cw - 0.25, True, pad=0.04) if lead else 0) + th(body, 20, cw - 0.25, pad=0.16))
+    return max(hs)
+
+
+def zeilen_h(items, w):
+    return sum(max(0.52, th(it, 20, w - 0.8, pad=0.14)) + 0.08 for it in items)
+
+
+def ul_h(items, w):
+    return spalten_h(items, w) + 0.04 if ul_mode(items, w) == "spalten" else zeilen_h(items, w)
+
+
+def draw_ul(s, items, x, y, w, nummern=False):
+    col = akzent()
+    if ul_mode(items, w) == "spalten":
+        n = len(items); cw = (w - 0.2 * (n - 1)) / n; h = spalten_h(items, w)
+        for i, it in enumerate(items):
+            c_ = AKZENT[(_akz[0] + i) % len(AKZENT)]
+            xx = x + i * (cw + 0.2)
+            box(s, xx, y, cw, h, fill=CARD)
+            band = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(xx), Inches(y), Inches(cw), Inches(0.09))
+            band.fill.solid(); band.fill.fore_color.rgb = c_; band.line.fill.background(); band.shadow.inherit = False
+            lead, body = lead_split(it)
+            parts = ([[(lead, {"bold": True, "color": OLIVE})]] if lead else []) + [body]
+            tb(s, xx + 0.1, y + 0.14, cw - 0.2, h - 0.18, parts, size=20, after=3)
+        return h + 0.04
+    yy = y
+    for i, it in enumerate(items):
+        h = max(0.52, th(it, 20, w - 0.8, pad=0.14))
+        box(s, x, yy, w, h, fill=PALE if i % 2 else CARD)
+        c = s.shapes.add_shape(MSO_SHAPE.OVAL, Inches(x + 0.1), Inches(yy + h / 2 - 0.2), Inches(0.4), Inches(0.4))
+        c.fill.solid(); c.fill.fore_color.rgb = col; c.line.fill.background(); c.shadow.inherit = False
+        c.text_frame.margin_left = c.text_frame.margin_right = c.text_frame.margin_top = c.text_frame.margin_bottom = 0
+        text(c, [str(i + 1) if nummern else "›"], size=16 if nummern else 22, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
+        tb(s, x + 0.62, yy + 0.02, w - 0.72, h - 0.04, [it], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0)
+        yy += h + 0.08
+    return yy - y
+
 # ================================================================ Theorie-Blöcke → Folien
 def blk_h(b, w):
     k = b[0]
-    if k == "ul": return sum(th("• " + x, 20, w, pad=0.06) for x in b[1]) + 0.06
-    if k == "ol": return sum(th("1. " + x, 20, w, pad=0.06) for x in b[1]) + 0.06
+    if k in ("ul", "ol"): return ul_h(b[1], w)
     if k == "merke": return th(b[1], 20, w - 0.1, bold=True, pad=0.22)
-    if k == "hint": return th(b[1], 20, w, pad=0.1)
+    if k == "hint": return th(b[1], 18, w - 0.2, pad=0.14)
     if k == "table":
         cw = col_widths(b[1], w); return table_h(cw, b[1])
     if k == "tiles":
         n = len(b[1]); per = 3 if n in (3, 6) else (n if n <= 3 else 2); tw = (w - 0.15 * (per - 1)) / per
         rows = [b[1][i:i + per] for i in range(0, n, per)]
-        return sum(max(th(h_, 20, tw, True, pad=0.05) + sum(th(x, 20, tw, pad=0.04) for x in (bb if isinstance(bb, list) else [bb])) + 0.15 for h_, bb in r) + 0.12 for r in rows)
+        return sum(max(th(h_, 20, tw, True, pad=0.05) + sum(th(x, 20, tw, pad=0.04) for x in (bb if isinstance(bb, list) else [bb])) + 0.22 for h_, bb in r) + 0.12 for r in rows)
     if k == "video": return 0.95
     if k == "versuch": return th(b[2], 20, w - 0.3, True, pad=0.05) + th(b[3], 20, w - 0.3, pad=0.05) + 0.55
     if k == "reveal": return sum(th(q, 20, w, True, pad=0.05) + max(0.75, th(a, 20, w - 0.2, pad=0.25)) + 0.1 for q, a in b[1])
@@ -298,20 +365,26 @@ def col_widths(rows, w):
 def draw_blk(s, b, x, y, w, L):
     k = b[0]
     if k in ("ul", "ol"):
-        h = blk_h(b, w); t = tb(s, x, y, w, h, [("• " if k == "ul" else f"{i + 1}. ") + it for i, it in enumerate(b[1])], size=20, after=4); return h
+        return draw_ul(s, b[1], x, y, w, nummern=(k == "ol"))
     if k == "merke":
         h = blk_h(b, w); c = box(s, x, y, w, h - 0.05, fill=OLIVE); text(c, [b[1]], size=20, color=WHITE, bold=True, anchor=MSO_ANCHOR.MIDDLE, after=0); return h
     if k == "hint":
-        h = blk_h(b, w); tb(s, x, y, w, h, [[(t_, dict(o, color=MUTED)) for t_, o in runs_md(b[1])]], size=20); return h
+        h = blk_h(b, w)
+        strip = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x), Inches(y + 0.04), Inches(0.07), Inches(h - 0.1))
+        strip.fill.solid(); strip.fill.fore_color.rgb = TEAL; strip.line.fill.background(); strip.shadow.inherit = False
+        tb(s, x + 0.17, y, w - 0.2, h, [[(t_, dict(o, color=MUTED)) for t_, o in runs_md(b[1])]], size=18); return h
     if k == "table":
         cw = col_widths(b[1], w); cells, h = auto_grid(s, x, y, cw, b[1]); return h + 0.08
     if k == "tiles":
         n = len(b[1]); per = 3 if n in (3, 6) else (n if n <= 3 else 2); tw = (w - 0.15 * (per - 1)) / per; yy = y
         for i in range(0, n, per):
             r = b[1][i:i + per]
-            rh = max(th(h_, 20, tw, True, pad=0.05) + sum(th(x_, 20, tw, pad=0.04) for x_ in (bb if isinstance(bb, list) else [bb])) + 0.15 for h_, bb in r)
+            rh = max(th(h_, 20, tw, True, pad=0.05) + sum(th(x_, 20, tw, pad=0.04) for x_ in (bb if isinstance(bb, list) else [bb])) + 0.22 for h_, bb in r)
             for j, (h_, bb) in enumerate(r):
                 c = box(s, x + j * (tw + 0.15), yy, tw, rh, fill=CARD)
+                band = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x + j * (tw + 0.15)), Inches(yy), Inches(tw), Inches(0.08))
+                band.fill.solid(); band.fill.fore_color.rgb = AKZENT[(i // per + j) % 3]; band.line.fill.background(); band.shadow.inherit = False
+                c.text_frame.margin_top = Inches(0.13)
                 text(c, [[(h_, {"bold": True, "color": OLIVE})]] + list(bb if isinstance(bb, list) else [bb]), size=20, after=2)
             yy += rh + 0.12
         return yy - y
@@ -339,7 +412,7 @@ def draw_blk(s, b, x, y, w, L):
 def zerlegen(blocks):
     out = []
     for b in blocks:
-        if b[0] == "ul" and len(b[1]) > 1: out += [("ul", [x]) for x in b[1]]
+        if False: pass
         elif b[0] == "tiles":
             n = len(b[1]); per = 3 if n in (3, 6) else 2
             out += [("tiles", b[1][i:i + per]) if per == len(b[1][i:i + per]) or n <= per else ("tiles", b[1][i:i + per]) for i in range(0, n, per)]
@@ -356,24 +429,50 @@ def theorie_folien(item, L):
     karten = next((b for b in blocks if b[0] == "karten"), None)
     khint = None
     if karten and all(b[0] == "hint" for b in rest): khint, rest = rest[0][1], []
-    pages, cur, used = [], [], 0
+    def packen(blocks, w, avail, erste=None):
+        """Blöcke auf Seiten verteilen; Listen werden zwischen den Punkten geteilt statt eine fast leere Folie zu erzeugen."""
+        pages_, cur_, used_ = [], [], 0.0
+        av = erste if erste is not None else avail
+        q = list(blocks)
+        while q:
+            b = q.pop(0); h = blk_h(b, w if not (erste is not None and not pages_) else w_erste) + 0.1
+            ww = w_erste if (erste is not None and not pages_) else w
+            h = blk_h(b, ww) + 0.1
+            if used_ + h <= av + 0.12:
+                cur_.append(b); used_ += h; continue
+            if b[0] in ("ul", "ol") and len(b[1]) > 1:
+                for k_ in range(len(b[1]) - 1, 0, -1):
+                    if used_ + blk_h((b[0], b[1][:k_]), ww) + 0.1 <= av + 0.12:
+                        cur_.append((b[0], b[1][:k_])); q.insert(0, (b[0], b[1][k_:])); break
+                else:
+                    if not cur_: cur_.append(b); q_rest = None
+                    else: q.insert(0, b)
+                pages_.append(cur_); cur_, used_, av = [], 0.0, avail; continue
+            if cur_:
+                pages_.append(cur_); cur_, used_, av = [], 0.0, avail; q.insert(0, b); continue
+            cur_.append(b); used_ += h
+        if cur_: pages_.append(cur_)
+        # fast leere Folien mit der folgenden zusammenlegen
+        hh = lambda pg: sum(blk_h(b_, w) + 0.1 for b_ in pg)
+        k_ = 1 if erste is not None else 0
+        while k_ < len(pages_) - 1:
+            if hh(pages_[k_]) + hh(pages_[k_ + 1]) <= avail + 0.12:
+                pages_[k_] = pages_[k_] + pages_.pop(k_ + 1)
+            else: k_ += 1
+        return pages_
+
+    pages = []
+    w_erste = 4.35
     if img:
-        # Bild auf eigener Hälfte; Text rechts. Ist der Text zu lang, Bild-Folie + Text-Folie(n).
-        cap_w, txt_w = 4.4, 4.35
-        hs = [blk_h(b, txt_w) for b in rest]
-        if sum(hs) + 0.1 * len(hs) <= Y1 - Y0:
-            pages.append(("bild", img, rest))
+        if rest and not (rest[0][0] == "table" and len(rest[0][1][0]) > 2) and blk_h(rest[0], 4.35) + 0.1 <= Y1 - Y0 + 0.05:
+            pk = packen(rest, X1 - X0, Y1 - Y0, erste=Y1 - Y0)
+            pages.append(("bild", img, pk[0]))
+            pages += [("text", None, p_) for p_ in pk[1:]]
         else:
             pages.append(("bild", img, []))
-            img = None
-    if rest and (not pages or pages[0][2] == []):
-        avail = Y1 - Y0
-        for b in rest:
-            h = blk_h(b, X1 - X0) + 0.1
-            if cur and used + h > avail + 0.15:
-                pages.append(("text", None, cur)); cur, used = [], 0
-            cur.append(b); used += h
-        if cur: pages.append(("text", None, cur))
+            pages += [("text", None, p_) for p_ in packen(rest, X1 - X0, Y1 - Y0)]
+    elif rest:
+        pages += [("text", None, p_) for p_ in packen(rest, X1 - X0, Y1 - Y0)]
     out = []
     for n, (art, im, bl) in enumerate(pages):
         title = item["title"] + (f" ({n + 1})" if len(pages) > 1 and n else "")
@@ -670,16 +769,20 @@ def versuch_folien(nr, L, kurz=False):
     pill(s, pl, kind=pk, w=2.4)
     # 4 Interpretation & Schlussfolgerung
     teile = [("Interpretation", v["interp"], v["interp_l"]), ("Schlussfolgerung", v["schluss"], v["schluss_l"])]
-    hs = [th(lab + ": " + q, 20, 9, pad=0.05) + max(0.9, th(a, 20, 8.8, pad=0.35)) + 0.1 for lab, q, a in teile]
-    gruppen = [teile] if sum(hs) <= Y1 - Y0 else [[teile[0]], [teile[1]]]
+    gr_size = 20
+    for gr_size in (20, 18):
+        hs = [th(lab + ": " + q, gr_size, 9, pad=0.05) + max(0.7, th(a, gr_size, 8.8, pad=0.35)) + 0.1 for lab, q, a in teile]
+        if sum(hs) <= Y1 - Y0 - 0.35: break
+    gruppen = [teile] if sum(hs) <= Y1 - Y0 - 0.35 else [[teile[0]], [teile[1]]]
+    if len(gruppen) == 2: gr_size = 20
     for g in gruppen:
         s = d.slide("Nur Titel", f"{nr} · " + " & ".join(x[0] for x in g))
         y = Y0 + 0.05
         for lab, q, a in g:
-            hq = th(lab + ": " + q, 20, 9, pad=0.05)
-            tb(s, X0, y, 9, hq, [[(lab + ": ", {"bold": True, "color": OLIVE}), (q, {})]], size=20); y += hq
-            ha = max(0.9, th(a, 20, 8.8, pad=0.35)) if len(g) == 2 else Y1 - y
-            answer(s, X0, y, 9, ha, lab, a, L, hint="Deine Antwort – im Versuchsprotokoll eintragen", size=20); y += ha + 0.1
+            hq = th(lab + ": " + q, gr_size, 9, pad=0.05)
+            tb(s, X0, y, 9, hq, [[(lab + ": ", {"bold": True, "color": OLIVE}), (q, {})]], size=gr_size); y += hq
+            ha = max(0.7, th(a, gr_size, 8.8, pad=0.35)) if len(g) == 2 else Y1 - y
+            answer(s, X0, y, 9, ha, lab, a, L, hint="Deine Antwort – im Versuchsprotokoll eintragen", size=gr_size); y += ha + 0.1
         pill(s, pl, kind=pk, w=2.4)
     if L:
         s = d.slide("Nur Titel", f"Lehrer-Info · {nr}", hidden=True)
