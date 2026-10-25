@@ -21,7 +21,7 @@ class KadettenLayoutTest(unittest.TestCase):
                 continue
             u = dict(e, unter=e['ordner'].split('/', 1)[1])
             s = ks.arbeitsauftrag(u)
-            erwartet = [r['wann'] + (' · ' + r['datum'] if r.get('datum') else '') for r in e['fahrplan']['zeilen']
+            erwartet = [(r['klasse'] + ' · ' if r.get('klasse') else '') + r['wann'] + (' · ' + r['datum'] if r.get('datum') else '') for r in e['fahrplan']['zeilen']
                         if not re.search(r'für schnelle|zusatz|optional', r['wann'], re.I)]
             self.assertNotIn('<select', s)
             self.assertNotIn(' hidden', s)

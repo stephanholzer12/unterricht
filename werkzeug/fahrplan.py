@@ -12,6 +12,11 @@ build_index.py baut den Fahrplan bei jedem Lauf in theorie.html und aufgaben.htm
 (zwischen den Markierungen <!--FAHRPLAN--> und <!--/FAHRPLAN-->) und zeigt ihn auf der Klassenseite.
 Die im Jahresplan geplanten Stunden (bloecke.json, Felder »stunden« und »brutto«) werden auf der
 Lehrer-Seite mit den Stunden des Fahrplans verglichen.
+
+Getrennte Stundenpläne (z. B. 4AK und 4BK teilen sich eine Klassenseite): Jede Zeile darf zusätzlich
+»klasse": "4AK" haben. Dann zeigt der Fahrplan je Klasse eine eigene Tabelle, und als Stundenzahl zählt
+die Klasse mit den meisten Stunden-Zeilen. Zeilen ohne »klasse« gelten für alle. Einheiten ohne dieses
+Feld bleiben genau wie bisher.
 """
 import html, os, re
 
@@ -38,8 +43,37 @@ CSS = """<style>
 
 
 def stunden(fp):
-    """Anzahl der Unterrichtsstunden, die der Fahrplan vorsieht."""
+    """Anzahl der Unterrichtsstunden, die der Fahrplan vorsieht (bei getrennten Klassen: die größte Zahl)."""
+    je = stunden_je_klasse(fp)
+    if je:
+        return max(je.values())
     return sum(1 for z in (fp or {}).get("zeilen", []) if z["wann"].lower().startswith("stunde"))
+
+
+def stunden_je_klasse(fp):
+    """{"4AK": 5, "4BK": 4} bei getrennten Stundenplänen, sonst None."""
+    z = (fp or {}).get("zeilen", [])
+    klassen = [r["klasse"] for r in z if r.get("klasse")]
+    if not klassen:
+        return None
+    out = {}
+    for k in dict.fromkeys(klassen):
+        out[k] = sum(1 for r in z if r["wann"].lower().startswith("stunde") and r.get("klasse") in (k, None))
+    return out
+
+
+def stunden_text(fp):
+    """»4AK: 5 Stunden · 4BK: 4 Stunden« bzw. »2 Stunden«."""
+    je = stunden_je_klasse(fp)
+    wort = lambda n: f'{n} {"Stunde" if n == 1 else "Stunden"}'
+    if je:
+        return " · ".join(f"{k}: {wort(n)}" for k, n in je.items())
+    return wort(stunden(fp))
+
+
+def zeilen_label(r):
+    """Beschriftung einer Zeile: »4AK · Stunde 2« bzw. »Stunde 2«."""
+    return (r["klasse"] + " · " if r.get("klasse") else "") + r["wann"]
 
 
 def jahresplan(bloecke, ordner, kennung):
@@ -66,14 +100,29 @@ def html_fahrplan(u):
     spalten = [("wann", "Wann"), ("datum", "Datum"), ("lesen", "Das machen wir"), ("aufgaben", "Aufgaben"), ("zeit", "Zeit"), ("wie", "Wie"), ("abgabe", "Abgabe")]
     spalten = [(k, t) for k, t in spalten if k in ("wann", "lesen") or any(r.get(k) for r in z)]
     n = stunden(fp)
+    je = stunden_je_klasse(fp)
     kopf = '<div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2>'
-    if n:
+    if je:
+        kopf += f'<p class="std">Dafür sind eingeplant: {esc(stunden_text(fp))}. Schau in die Tabelle deiner Klasse.</p>'
+    elif n:
         kopf += f'<p class="std">Dafür {"ist" if n == 1 else "sind"} {n} {"Stunde" if n == 1 else "Stunden"} eingeplant.</p>'
     if fp.get("text"):
         kopf += f'<p>{esc(fp["text"])}</p>'
     th = "".join(f"<th>{t}</th>" for _, t in spalten)
-    tr = "".join("<tr>" + "".join(f'<td data-l="{t}">{esc(r.get(k) or "–")}</td>' for k, t in spalten) + "</tr>" for r in z)
-    return f'{A}{CSS}<section class="fahrplan">{kopf}<div class="tablewrap"><table><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table></div></section>{E}'
+    zeile = lambda r: "<tr>" + "".join(f'<td data-l="{t}">{esc(r.get(k) or "–")}</td>' for k, t in spalten) + "</tr>"
+    if not je:
+        tr = "".join(zeile(r) for r in z)
+        return f'{A}{CSS}<section class="fahrplan">{kopf}<div class="tablewrap"><table><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table></div></section>{E}'
+    teile = []
+    for k in je:
+        tr = "".join(zeile(r) for r in z if r.get("klasse") == k)
+        teile.append(f'<h3 class="fp-klasse">{esc(k)}</h3><div class="tablewrap"><table><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table></div>')
+    alle = [r for r in z if not r.get("klasse")]
+    if alle:
+        tr = "".join(zeile(r) for r in alle)
+        teile.append(f'<h3 class="fp-klasse">Beide Klassen</h3><div class="tablewrap"><table><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table></div>')
+    css = CSS.replace("</style>", ".fahrplan h3.fp-klasse { margin: 12px 0 4px; font-size: 19px; color: #fff; background: #3B4A2F; display: inline-block; border-radius: 8px; padding: 2px 12px; }\n</style>")
+    return f'{A}{css}<section class="fahrplan">{kopf}{"".join(teile)}</section>{E}'
 
 
 ANKER = {"theorie.html": '<section class="part" id="einstieg"', "aufgaben.html": '<div class="progress">'}

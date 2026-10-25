@@ -1318,6 +1318,201 @@
      "need": 1
     }
    }
+  },
+  "4ab-nawi/k2-1-wellen": {
+   "pendel": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b0_3": {
+      "zahl": true
+     },
+     "b0_4": {
+      "zahl": true
+     },
+     "b0_5": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b1_3": {
+      "zahl": true
+     },
+     "b1_4": {
+      "zahl": true
+     },
+     "b1_5": {
+      "zahl": true
+     }
+    },
+    "erk": {
+     "kw": [
+      "laenger / groesser=laeng,groess,mehr,hoeher,steigt,zunimmt,langsamer",
+      "Periodendauer / Zeit=periode,dauer,zeit,schwingung,t ="
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Laenge veraendert=laenge,lang,l ",
+      "gleich gelassen=gleich,selb,derselb,konstant,nicht veraendert,blieb",
+      "fairer Vergleich=fair,vergleich,nur eine,eine groesse,einfluss,ursache"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "kuerzer=kuerzer,kurz,verkuerz",
+      "schneller / kleinere Periodendauer=schneller,kleiner,weniger zeit,kuerzere zeit,tickt"
+     ],
+     "need": 2
+    }
+   },
+   "resonanz": {
+    "beob": {
+     "b0_1": {
+      "kw": [
+       "Ausschlag=klein,mittel,gross,groß,riesig,kaum,stark,wenig,schwach,hoch,maximal,winzig,fast nichts,nichts"
+      ],
+      "need": 1
+     },
+     "b1_1": {
+      "kw": [
+       "Ausschlag=klein,mittel,gross,groß,riesig,kaum,stark,wenig,schwach,hoch,maximal,winzig,fast nichts,nichts"
+      ],
+      "need": 1
+     },
+     "b2_1": {
+      "kw": [
+       "Ausschlag=klein,mittel,gross,groß,riesig,kaum,stark,wenig,schwach,hoch,maximal,winzig,fast nichts,nichts"
+      ],
+      "need": 1
+     }
+    },
+    "erk": {
+     "kw": [
+      "eigener Takt / Rhythmus=eigen,rhythm,takt,passend,gleich,frequenz,mittler"
+     ],
+     "need": 1
+    },
+    "interp": {
+     "kw": [
+      "nur eine Groesse aendern=nur,eine,gleich,fair,sonst,handweg,weg,ausholen",
+      "Vergleich=vergleich,unterschied,wissen,ursache,liegt"
+     ],
+     "need": 1
+    },
+    "schluss": {
+     "kw": [
+      "viele kleine Stoesse addieren=viele,addier,summ,aufschaukel,immer,wiederhol,takt,rhythm",
+      "Resonanz / Eigenfrequenz=resonanz,eigenfrequenz,eigen,frequenz,mitschwing"
+     ],
+     "need": 1
+    }
+   },
+   "schnur": {
+    "beob": {
+     "b0_1": {
+      "kw": [
+       "auf und ab / bleibt am Ort=auf,ab,hoch,runter,bleibt,ort,stelle,quer"
+      ],
+      "need": 1
+     },
+     "b0_2": {
+      "kw": [
+       "entlang der Schnur=entlang,ende,anderen,seite,zum,richtung,laengs,weiter"
+      ],
+      "need": 1
+     },
+     "b1_1": {
+      "kw": [
+       "auf und ab=auf,ab,hoch,runter,hocke,aufsteh,steh"
+      ],
+      "need": 1
+     },
+     "b1_2": {
+      "kw": [
+       "die Reihe entlang=reihe,entlang,weiter,naechst,seite,ende,nach"
+      ],
+      "need": 1
+     },
+     "b2_1": {
+      "kw": [
+       "vor und zurueck=vor,zurueck,schritt,nach vorn"
+      ],
+      "need": 1
+     },
+     "b2_2": {
+      "kw": [
+       "die Reihe entlang=reihe,entlang,weiter,naechst,vorn,ende,nach"
+      ],
+      "need": 1
+     }
+    },
+    "erk": {
+     "kw": [
+      "Stoerung / Energie kommt an=stoerung,puls,energie,welle,bewegung,signal",
+      "Material bleibt am Platz=bleibt,platz,ort,stelle,nicht mit,klammer"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "quer / senkrecht=quer,senkrecht,auf und ab,transversal",
+      "laengs / parallel=laengs,parallel,vor und zurueck,gleiche richtung,longitudinal"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "nein, Luft reist nicht=nein,nicht,keine",
+      "weitergegeben / Schall / Funk ohne Luft=weitergeg,teilchen,schall,druck,funk,elektromagnet,ohne luft"
+     ],
+     "need": 2
+    }
+   },
+   "interferenz": {
+    "beob": {
+     "b0_2": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b2_2": {
+      "zahl": true
+     }
+    },
+    "erk": {
+     "kw": [
+      "verstaerken=verstaerk,groesser,addier,4",
+      "abschwaechen / ausloeschen=schwaech,loesch,null,0,aufheb,kleiner"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Richtung / Vorzeichen=richtung,vorzeichen,oben,unten,plus,minus,negativ,positiv",
+      "heben sich auf=aufheb,ausloesch,gegen,abzieh,minus"
+     ],
+     "need": 1
+    },
+    "schluss": {
+     "kw": [
+      "Gegenwelle / Gegenschall=gegen,entgegen,umgekehrt,ausloesch,aufheb",
+      "nur am Ohr / an einer Stelle=ohr,stelle,ort,nur,dort,nah,ueberall,raum"
+     ],
+     "need": 2
+    }
+   }
   }
  }
 }

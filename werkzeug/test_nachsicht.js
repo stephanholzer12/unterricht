@@ -128,6 +128,39 @@ cases[K13]=[
  ['a13','gas','Sauerstoff',1],['a13','gas','Wasserstoff',0],
  ['a12','o2','0,32 g',1],['a12','o2','0.32 g',1],['a12','o2','320 mg',1],['a12','o2','0,32 kg',0],['a12','proz','26,7',1],['a12','proz','26,7 %',1],['a17','rgt','20 s',1],['a17','rgt','40 s',0],
  ['a3','ea','2',1],['a3','ea','4',0]];
+/* 4AB K2.1–2.3 Schwingungen und Wellen (25.10.2026): Zahlen mit Einheit, Rundung, falsche Dimension, Auswahl als ganze Antwort, offene Erklärungen = M */
+const W21='4ab-nawi/k2-1-wellen/aufgaben.html';
+cases[W21]=[
+ ['a1','amp','3 cm',1],['a1','amp','3',1],['a1','amp','0,03 m',1],['a1','amp','30 mm',1],['a1','amp','A = 3 cm',1],['a1','amp','6 cm',0],['a1','amp','3 s',0],['a1','amp','nicht 3 cm, sondern 6 cm',0],
+ ['a1','periode','0,8 s',1],['a1','periode','0.8 s',1],['a1','periode','800 ms',1],['a1','periode','T = 1,0 s - 0,2 s = 0,8 s',1],['a1','periode','1,6 s',0],['a1','periode','0,4 s',0],['a1','periode','0,8 Hz',0],['a1','periode','0,8 m',0],
+ ['a1','frequenz','1,25 Hz',1],['a1','frequenz','1,25',1],['a1','frequenz','f = 1 / 0,8 s = 1,25 Hz',1],['a1','frequenz','1,3 Hz',1],['a1','frequenz','0,8 Hz',0],['a1','frequenz','1,25 s',0],['a1','frequenz','12,5 Hz',0],
+ ['a3','periode','1,81 s',1],['a3','periode','1,8 s',1],['a3','periode','1.81s',1],['a3','periode','T = 2π · 0,287 s = 1,81 s',1],['a3','periode','2 s',0],['a3','periode','1,81 Hz',0],['a3','periode','0,29 s',0],['a3','periode','11,3 s',0],
+ ['a7','schall','0,759 m',1],['a7','schall','0,76 m',1],['a7','schall','75,9 cm',1],['a7','schall','76 cm',1],['a7','schall','λ = 334 : 440 = 0,759 m',1],['a7','schall','0,8 m',0],['a7','schall','1,32 m',0],['a7','schall','0,759 s',0],
+ ['a7','meer','20 m/s',1],['a7','meer','20',1],['a7','meer','v = 300 m : 15 s = 20 m/s',1],['a7','meer','4500 m/s',0],['a7','meer','20 m',0],['a7','meer','0,05 m/s',0],
+ ['a8','summe','1 cm',1],['a8','summe','+1 cm',1],['a8','summe','10 mm',1],['a8','summe','3 cm',0],['a8','summe','-1 cm',0],['a8','summe','1 s',0],
+ ['a11','funk','6 m',1],['a11','funk','6,0 m',1],['a11','funk','600 cm',1],['a11','funk','λ = 3·10^8 m/s : 5·10^7 Hz = 6 m',1],['a11','funk','60 m',0],['a11','funk','0,6 m',0],['a11','funk','6 Hz',0],
+ ['a14','feder','0,628 s',1],['a14','feder','0,63 s',1],['a14','feder','628 ms',1],['a14','feder','0,1 s',0],['a14','feder','6,28 s',0],
+ ['a15','periode','1,63 s',1],['a15','periode','1,6 s',1],['a15','periode','32,6 s',0],['a15','periode','1,5 s',0],
+ ['a15','grav','9,51 m/s²',1],['a15','grav','9,51 m/s2',1],['a15','grav','9,5 m/s²',1],['a15','grav','g = 9,51 m/s^2',1],['a15','grav','9,81 m/s²',0],['a15','grav','9,51 m/s',0],['a15','grav','9,87 m/s²',0],
+ ['a16','gleich','4 cm',1],['a16','gleich','40 mm',1],['a16','gleich','2 cm',0],['a16','gegen','2 cm',1],['a16','gegen','0 cm',0],['a16','gegen','4 cm',0],
+ /* Auswahl: nur die ganze richtige Option */
+ ['a2','trend','T wird größer',1],['a2','trend','T wird kleiner',0],['a2','trend','T bleibt gleich',0],
+ ['a3','laenge','T wird doppelt so groß',1],['a3','laenge','T wird viermal so groß',0],['a3','masse','T bleibt gleich',1],['a3','masse','T wird doppelt so groß',0],
+ ['a4','begriff','Resonanz',1],['a4','begriff','Dämpfung',0],
+ ['a6','quer','transversal (Querwelle)',1],['a6','quer','longitudinal (Längswelle)',0],['a6','laengs','longitudinal (Längswelle)',1],['a6','laengs','transversal (Querwelle)',0],
+ ['a8','danach','laufen beide unverändert weiter',1],['a8','danach','prallen sie voneinander ab',0],
+ ['a10','ordnung','Funk → Infrarot → sichtbares Licht → UV → Röntgen',1],['a10','ordnung','Röntgen → UV → sichtbares Licht → Infrarot → Funk',0],['a10','kamera','Infrarot',1],['a10','kamera','Ultraviolett',0],['a10','sonne','Ultraviolett',1],['a10','sonne','Infrarot',0],
+ ['a11','kurz','Mikrowellen (Teil der Radiowellen)',1],['a11','kurz','sichtbares Licht',0],['a11','rot','sichtbares Licht (roter Rand)',1],['a11','rot','Mikrowellen',0],['a11','lang','Radiowellen (UKW)',1],['a11','lang','UV',0],
+ ['a14','vier','T verdoppelt sich',1],['a14','vier','T bleibt gleich',0],['a17','welle','Gravitationswelle – keine elektromagnetische Welle',1],['a17','welle','Radiowelle',0],
+ /* offene Erklärungen und eigene Messwerte: Lehrkraft bewertet (M) – auch wenn das Stichwort passt oder die Aussage falsch ist */
+ ['a2','t40','1,27 s','M'],['a2','t40','12,7 s','M'],['a2','t90','1,9 s','M'],['a2','fehler','Reaktionszeit – 10 Schwingungen messen','M'],['a2','fehler','keine','M'],
+ ['a4','beob','Im eigenen Takt wurde der Ausschlag am größten.','M'],['a4','beob','Beim schnellsten Takt am größten.','M'],
+ ['a4','fahrzeug','Die Feder federt, der Dämpfer wandelt Energie in Wärme um.','M'],['a4','fahrzeug','Der Dämpfer erzeugt Energie.','M'],
+ ['a5','partner','Lukas','M'],['a5','check','alle Fragen richtig','M'],
+ ['a6','punkt','Die Klammer bleibt am Ort und geht auf und ab, der Puls läuft weiter.','M'],['a6','punkt','Die Klammer läuft mit zum Ende.','M'],
+ ['a8','energie','Die Auslenkung ist nur an dieser Stelle null, danach laufen die Wellen weiter.','M'],['a8','energie','Energie wird vernichtet.','M'],
+ ['a9','front','Die Einhüllende der Elementarwellen ist die neue Front.','M'],['a12','beleg','Teil 5: nur im Vakuum','M'],['a13','titel','Draußen sicher','M'],
+ ['a15','unsicher','Messfehler und Modell','M'],['a17','trennung','Gemessen wurde ein Signal, die Linse ist ein Modell.','M'],['a17','sicherheit','Es ist nur eine Vermutung.','M']];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

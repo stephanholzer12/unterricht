@@ -338,8 +338,8 @@ def unit_html(u, mit_mehr=True):
     z = (u.get("fahrplan") or {}).get("zeilen")
     if mit_mehr and z:
         n = fp.stunden(u["fahrplan"])
-        li = "".join(f'<li><strong>{esc(r["wann"])}</strong> · {esc(r["lesen"])}' + (f' <span class="s">Aufgaben {esc(r["aufgaben"])}</span>' if r.get("aufgaben") and r["aufgaben"] != "–" else "") + "</li>" for r in z)
-        mehr = f'<details class="mehr"><summary>Fahrplan ({n} {"Stunde" if n == 1 else "Stunden"})</summary><div><ul class="fpl">{li}</ul></div></details>' + mehr
+        li = "".join(f'<li><strong>{esc(fp.zeilen_label(r))}</strong> · {esc(r["lesen"])}' + (f' <span class="s">Aufgaben {esc(r["aufgaben"])}</span>' if r.get("aufgaben") and r["aufgaben"] != "–" else "") + "</li>" for r in z)
+        mehr = f'<details class="mehr"><summary>Fahrplan ({esc(fp.stunden_text(u["fahrplan"]))})</summary><div><ul class="fpl">{li}</ul></div></details>' + mehr
     such = esc(" ".join([u["titel"], u["kapitel"], u.get("block", "")]), quote=True)
     return f'<div class="unit{" now" if u["jetzt"] else ""}" id="{esc(u["unter"])}" data-ks-thema="{such}"><div class="eyebrow">{esc(meta)}</div><h3>{esc(u["titel"])}{badge}</h3><div class="links">{knoepfe(u)}</div>{mehr}</div>'
 
@@ -532,6 +532,10 @@ def stunden_html(e, ordner):
     if not jp:
         return f'<div class="std">⏱ Fahrplan: {n} Std. · Jahresplan: keine Stunden gefunden</div>'
     ist, brutto = jp
+    je = fp.stunden_je_klasse(e.get("fahrplan"))
+    if je:
+        txt = " · ".join(f"{k} {m}" for k, m in je.items())
+        return f'<div class="std">⏱ {esc(txt)} Std. laut Fahrplan <span class="s">(Jahresplan: {ist})</span></div>'
     # Maßgeblich ist der Fahrplan (so viele Stunden braucht die Klasse wirklich); der Jahresplan hinkt oft hinterher
     if n == ist:
         return f'<div class="std">⏱ {n} Std. · wie im Jahresplan</div>'
