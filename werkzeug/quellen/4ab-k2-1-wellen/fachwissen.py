@@ -11,9 +11,9 @@ LEHRPLAN = [
     ("K05 ", "mathematische Verfahren zur Lösung physikalischer Problemstellungen anwenden → A1, A3, A7, A8, A11 (Zusatz A14–A16)"),
     ("N01 · N04 · N02/N05/N07 ", "Beobachten, mit Größen beschreiben, darstellen · Untersuchungen planen und auswerten (nur eine Variable ändern) · Technik/Natur verstehen, Nutzen und Risiko beurteilen"),
     ("P7 · P8 · SDG 3 · GLV 2 · GLV 4 ", "KI-Antwort prüfen (A12), Forschungskarte (A17) · Gesundheit: UV-Schutz (A13) · Informationsresilienz: Behauptung vs. Beleg · Krisenfähigkeit: Funk, UV-Schutz im Einsatz"),
-    ("Schulprofil: ", "Gleichschritt-Verbot auf Brücken, Stoßdämpfer im Gelände, Truppenfunk (UKW), Radar, Wärmebild, Sonar · Sport: Schaukel, La-Ola, Kadetten-Welle"),
-    ("Abweichung: ", "Stunden je Klasse verschieden (Fahrplan je Klasse); Gliederung nach Teilen statt Stunden; V4.12 Federpendel/Stimmgabeln und V4.13 Wellenwanne ersetzt "
-                     "(Federn und Wellenwanne nicht im Inventar), V4.14–V4.16 nicht eingeplant (Zeit, Geräte). Kein CLIL."),
+    ("Schulprofil: ", "Gleichschritt-Verbot auf Brücken, Stoßdämpfer im Gelände, Truppenfunk (UKW), Radar, Wärmebild, Sonar (Marine) · Sport: Schaukel, La-Ola, Kadetten-Welle"),
+    ("Abweichung: ", "Stunden je Klasse verschieden (Fahrplan je Klasse); Gliederung nach Teilen statt Stunden; V4.12 Federpendel/Stimmgabeln nicht durchgeführt (Federpendel nicht im Inventar; Stimmgabelpaar #145 vorhanden, Resonanzkasten/Anschläger ungeprüft – K2.1-V2 ist eine Alternative, kein Ersatz), "
+                     "V4.13 Wellenwanne durch Simulation ersetzt (Wellenwanne nicht im Inventar), V4.14–V4.16 nicht eingeplant (Zeit, Geräte). Kein CLIL."),
 ]
 
 
@@ -57,9 +57,9 @@ def _karten():
 STUNDENKARTEN = _karten()
 
 CHECKLISTE = [
-    "Bis spätestens 03.11.: Vorversuch K2.1-V1 – Stativ (#179, #141, #143, #29, #140) über der Tischkante aufbauen, 100-g-Stück aus dem Gewichtssatz #59 an die gelbe Schnur #57 binden (hält der Knoten? hat das Stück einen Griffknopf?), je zwei Probeläufe bei 0,40 m und 0,90 m stoppen.",
-    "Schnur mit zwei Klebeband-Fähnchen markieren: 0,40 m und 0,90 m vom Klemmpunkt bis zur Mitte des Gewichts (Umstellen in 1 Minute).",
-    "2–3 schwere Bücher für den Stativfuß bereitlegen; Pendel vorne am Lehrertisch, Klasse im Halbkreis – Sichtlinie von hinten prüfen.",
+    "Bis spätestens 03.11.: Vorversuch K2.1-V1 – Stativ (#179, #141, #143, #29) über der Tischkante aufbauen, gelbe Schnur #57 am Querstab-Ende festknoten und mit Klebeband sichern (oder Universalklemme #160 testen – #140 ist für 10–25 mm und hält die Schnur kaum), 100-g-Stück aus dem Gewichtssatz #59 anbinden (hält der Knoten? hat das Stück einen Griffknopf?), je zwei Probeläufe bei 0,40 m und 0,90 m stoppen.",
+    "Schnur mit zwei Klebeband-Fähnchen markieren: 0,40 m und 0,90 m vom Aufhängepunkt bis zur Mitte des Gewichts (Umstellen in 1 Minute).",
+    "2–3 schwere Bücher für den Stativfuß bereitlegen; Pendel vorne am Lehrertisch, Schwingung quer zur Klasse; links und rechts in Schwingungsrichtung je ca. 1,5 m frei, die Klasse sitzt davor – Sichtlinie von hinten prüfen.",
     "K2.1-V2 einmal üben: Pendel an der Schnur (0,40 m) mit ca. 1 cm Handweg im eigenen Takt (ca. 0,8 Hz) aufschaukeln; Abbruch bei ca. 20 cm Ausschlag.",
     "K2.2-V1: 3 m Schnur abmessen, Büroklammer bereit; ausprobieren, bei welcher (lockeren) Spannung der Puls gut sichtbar ist. Platz für 10 Kadetten in einer Reihe freiräumen.",
     "Am Lehrer-PC vorab öffnen: PhET »Pendel-Labor«, »Welle an einem Seil«, »Welleninterferenz« (Deutsch, Start prüfen) und die drei Buch-Filmtipps (freigeben oder weglassen).",
@@ -83,14 +83,14 @@ KAPITEL = [
            "**Warum die Masse beim Fadenpendel herausfällt:** Rücktreibende Kraft F = m·g·sin φ und Trägheit m wachsen beide mit m – sie kürzen sich. Beim Federpendel hängt die rücktreibende Kraft nur von der Feder ab (F = −k·y), die Trägheit aber von m – darum T = 2π·√(m/k).",
            "**Energiebrücke:** Am Umkehrpunkt ist die Geschwindigkeit null (nur Lageenergie), in der Gleichgewichtslage am größten (nur Bewegungsenergie). Für die Kadetten reicht die qualitative Aussage."],
   "nur": ["Kleinwinkelnäherung sin φ ≈ φ (Bogenmaß): Bei 10° ist T um ca. 0,2 % länger, bei 30° um ca. 1,7 %, bei 60° um ca. 7 %. Im Versuch (≤ 10°) geht das völlig in der Reaktionszeit unter.",
-          "Realer Pendelkörper = physikalisches Pendel: Länge bis zum Schwerpunkt, dazu ein kleiner Beitrag vom Trägheitsmoment des Körpers. Bei 100-g-Messingzylinder (ca. 2,5 cm Durchmesser) und l = 0,40 m vernachlässigbar (< 0,5 %)."],
+          "Realer Pendelkörper = physikalisches Pendel: Länge bis zum Schwerpunkt, dazu ein kleiner Beitrag vom Trägheitsmoment des Körpers. Falls das 100-g-Stück ein kompakter Zylinder ist (Form im Inventar nicht dokumentiert, z. B. ca. 2,5 cm Durchmesser), ist das bei l = 0,40 m vernachlässigbar (< 0,5 %)."],
   "stolper": "»Schwerer schwingt schneller« – genau die Schaukelfrage im Einstieg. Gegenprobe im Versuch (falls Zeit): dasselbe Pendel mit 50-g- statt 100-g-Stück – gleiche Zeit.",
   "bild": "img/g_pendel.png"},
  {"titel": "2 Dämpfung, erzwungene Schwingung, Resonanz (Buch S. 51–53)",
-  "text": ["**Dämpfung:** Reibung und Luftwiderstand wandeln Schwingungsenergie in innere Energie um; die Amplitude sinkt. Bei schwacher Dämpfung bleibt die Frequenz fast gleich; bei sehr starker Dämpfung schwingt das System gar nicht mehr, sondern kriecht zurück (Stoßdämpfer: gewollt nahe dieser Grenze).",
+  "text": ["**Dämpfung:** Reibung und Luftwiderstand wandeln Schwingungsenergie in innere Energie um; die Amplitude sinkt. Bei schwacher Dämpfung bleibt die Frequenz fast gleich; bei sehr starker Dämpfung schwingt das System gar nicht mehr, sondern kriecht zurück (Fahrzeug: deutlich gedämpft, aber unter diesem Grenzfall – es schwingt nur kurz nach).",
            "**Feder und Dämpfer im Fahrzeug:** Die Feder speichert Energie kurzzeitig und gibt sie zurück; der hydraulische Dämpfer drückt Öl durch enge Ventile und wandelt die Energie in Wärme um. Defekte Dämpfer → Fahrzeug schaukelt nach, Räder verlieren Bodenkontakt (Bremsweg!).",
            "**Resonanz:** Bei periodischer Anregung schwingt das System im Takt der Anregung. Liegt die Erregerfrequenz nahe der Eigenfrequenz, wird bei jedem Zyklus Energie »phasenrichtig« zugeführt – die Amplitude wächst, bis Dämpfung und Zufuhr im Gleichgewicht sind.",
-           "**Brücken:** Broughton (bei Manchester) 1831: Hängebrücke stürzte ein, als 74 Soldaten im Gleichschritt darüber marschierten – seither »ohne Tritt« über Brücken. Millennium Bridge London 2000: seitliches Schwanken durch Fußgänger, die sich unbewusst dem Schwanken anpassten (Rückkopplung). Tacoma Narrows 1940: aeroelastisches Flattern – nicht einfach »Windstöße im Takt«."],
+           "**Brücken:** Broughton (bei Manchester) 1831: Hängebrücke brach teilweise ein (ein schlecht geschmiedeter Bolzen an der Verankerung versagte; 20 Verletzte, keine Toten), als 74 Soldaten im Gleichschritt darüber marschierten – seither »ohne Tritt« über Brücken. Millennium Bridge London 2000: seitliches Schwanken durch Fußgänger, die sich unbewusst dem Schwanken anpassten (Rückkopplung). Tacoma Narrows 1940: aeroelastisches Flattern – nicht einfach »Windstöße im Takt«."],
   "nur": ["Erzwungene gedämpfte Schwingung: Das Maximum der Auslenkungsamplitude liegt bei ω_r = √(ω₀² − 2δ²) (δ = Abklingkonstante) – bei schwacher Dämpfung praktisch bei ω₀. Darum im Kadettentext »nahe der Eigenfrequenz«.",
           "Tacoma Narrows: Billah & Scanlan, American Journal of Physics 59 (1991) 118 – zeigen, dass das Schulbuchbild »Resonanz durch Wind« zu einfach ist (Flattern = selbsterregte Schwingung).",
           "Biologie-Brücke Innenohr: Die Basilarmembran schwingt je nach Frequenz an verschiedenen Orten maximal (Wanderwelle); die äußeren Haarzellen verstärken aktiv. »Resonanzorgan« ist ein brauchbares Bild, aber nicht die ganze Wahrheit – Vertiefung in der Einheit Gehör (E10)."],
@@ -108,7 +108,7 @@ KAPITEL = [
  {"titel": "4 Überlagerung, stehende Wellen, Huygens (Buch S. 51, 56–57)",
   "text": ["**Superposition:** In linearen Medien addieren sich die momentanen Auslenkungen an jedem Ort. Gleiche Frequenz und Gleichtakt: Amplituden addieren sich; Gegentakt: Betrag der Differenz (3 cm und 1 cm → 4 cm bzw. 2 cm). Vollständige Auslöschung nur bei gleichen Amplituden.",
            "**Energie:** Auslenkung null an einem Ort/Zeitpunkt heißt nicht, dass Energie vernichtet ist: Bei laufenden Pulsen steckt sie im Moment der Begegnung in der Bewegung der Teilchen; bei festen Mustern ist sie räumlich umverteilt (helle/dunkle Streifen).",
-           "**Stehende Welle:** zwei gegenläufige gleiche Wellen (oft Welle + Reflexion). Knoten ruhen immer, Abstand λ/2; Bäuche schwingen maximal. Grundlage für Saiten und Pfeifen (Akustik).",
+           "**Stehende Welle:** zwei gegenläufige gleiche Wellen (oft Welle + Reflexion). Knoten ruhen immer, benachbarte Knoten im Abstand λ/2; Bäuche schwingen maximal. Grundlage für Saiten und Pfeifen (Akustik).",
            "**Huygens:** Jeder Punkt einer Wellenfront ist Ausgangspunkt einer Elementarwelle; die Einhüllende ist die neue Front. Erklärt Beugung (stark, wenn Öffnung ≈ λ) und – später in der Optik – Reflexion und Brechung. Huygens baute 1656 auch die erste Pendeluhr (Verbindung zu Teil 1)."],
   "nur": ["Das Huygens-Prinzip liefert ohne Zusatzannahmen (Fresnel) auch eine rückwärts laufende Welle – im Unterricht nur die vordere Hälfte zeichnen.",
           "Aktuelle Forschung (Für Schnelle, A17): Beugung/Interferenz auch bei Gravitationswellen – GW231123 (23.11.2023), mögliche Linsenwirkung, laut MPG-Meldung vom 27.08.2026 nicht eindeutig nachgewiesen. Gut, um Messung und Modell zu trennen."],
@@ -127,7 +127,7 @@ KAPITEL = [
 
 RECHNEN = [
     "**Pendel (V1, A2, A3):** T = 2π·√(l/g). l = 0,40 m → T = 1,269 s (10 Schwingungen 12,69 s, f = 0,788 Hz); l = 0,90 m → T = 1,903 s (19,03 s, f = 0,525 Hz); Verhältnis 1,5. l = 0,81 m → T = 1,805 s ≈ 1,81 s.",
-    "**Diagramm (A1):** y = 3 cm · sin(2πt / 0,8 s): Wellenberge bei 0,2 s, 1,0 s, 1,8 s → T = 0,8 s, f = 1,25 Hz, A = 3 cm (nicht 6 cm).",
+    "**Diagramm (A1):** y = 3 cm · sin(2πt / 0,8 s): Hochpunkte bei 0,2 s, 1,0 s, 1,8 s → T = 0,8 s, f = 1,25 Hz, A = 3 cm (nicht 6 cm).",
     "**Federpendel (A14):** m = 0,200 kg, k = 20,0 N/m → T = 2π·√0,0100 s² = 0,628 s; vierfache Masse → doppelte Periodendauer.",
     "**g aus Daten (A15):** 20 Schwingungen in 32,6 s → T = 1,63 s; g = 4π²·0,640 m / (1,63 s)² = 9,51 m/s² (3 % unter 9,81). Die Daten sind bewusst so gewählt, dass »9,81« nicht als richtig erkannt wird (2-%-Toleranz der Prüfung).",
     "**Wellen (A7):** λ = 334 m/s : 440 Hz = 0,759 m; Meereswelle v = 300 m : 15 s = 20 m/s. **Funk (A11):** 50 MHz → λ = 3,00 · 10⁸ : 5,0 · 10⁷ m = 6,0 m; UKW-Radio 100 MHz → 3,00 m.",
@@ -176,8 +176,8 @@ QUELLEN = [
     "**Trauner Naturwissenschaften HAK 4** S. 47–59: Inhalte, Buch-Aufgaben S. 55, 57, 59 (in eigenen Worten als A7, A9, A11), Versuch S. 53 (→ K2.1-V2), Filmtipps nawi_v50, nawi_v51, stehendeWelle. Die Buchseiten lagen ChatGPT als Fotos vor; Claude hat sie nicht selbst gesehen (Stephan: ChatGPT vertrauen).",
     "**Zusatzquellen A/B** (»Naturwissenschaften HAK IV« und Kapitel 18/19 Schwingungen/Wellen) laut ChatGPT: Ein-Variablen-Vergleich, Stoßdämpfer, Grenzen der Wasserwellen-Darstellung – übernommen in Theorie Teil 2/3 und V1.",
     "**Expedition Physik 4** (Projekt): Wellenlänge aus Ortsdiagrammen → Teil 3 (Grafik Ort/Zeit); Praxisteil V7.2 Schwingkreis geprüft, nicht übernommen (elektrischer Aufbau, Zeit).",
-    "**Jahresplan v23:** E6–E8, Versuche V4.11 (übernommen, gekürzt), V4.12 (ersetzt: keine Federn im Inventar), V4.13 (ersetzt durch Simulation: Wellenwanne nicht nachgewiesen), V4.14–V4.16 (nicht eingeplant: Zeit bzw. Geräte); Referatsthema »Resonanzkatastrophen«, Querverbindung Basilarmembran.",
-    "**Inventar (2026-09):** #10 Bandmaß 3 m, #29 Doppelmuffe, #57 gelbe Schnur, #59 Gewichtssatz, #140 Stativklemme, #141/#143 Stativstäbe, #179 V-Fuß, F-038 Büroklammern; Stimmgabeln #144/#145 vorhanden, aber nicht eingeplant.",
+    "**Jahresplan v23:** E6–E8, Versuche V4.11 (übernommen, gekürzt), V4.12 (nicht durchgeführt: Federpendel fehlt; Stimmgabeln #144/#145 vorhanden, Zubehör ungeprüft; K2.1-V2 ist Alternative, kein Ersatz), V4.13 (ersetzt durch Simulation: Wellenwanne nicht nachgewiesen), V4.14–V4.16 (nicht eingeplant: Zeit bzw. Geräte); Referatsthema »Resonanzkatastrophen«, Querverbindung Basilarmembran.",
+    "**Inventar (2026-09):** #10 Bandmaß 3 m, #29 Doppelmuffe, #57 gelbe Schnur, #59 Gewichtssatz, #141/#143 Stativstäbe, #179 V-Fuß, F-038 Büroklammern; #140 Stativklemme (10–25 mm) passt nicht für die dünne Schnur – Schnur festknoten oder Universalklemme #160 (0–80 mm) testen. Stimmgabel #144 und Stimmgabelpaar #145 vorhanden, aber nicht eingeplant (Resonanzkasten und Anschläger ungeprüft) – Idee für einen Vorversuch bzw. für Akustik E9.",
     "**Fachquellen:** OpenStax University Physics Vol. 1, Kap. 15.4–15.6 und 16.1/16.5 (Pendel, Dämpfung, Resonanz, Wellen, Interferenz); OpenStax College Physics 2e 27.2 (Huygens); Billah & Scanlan, Am. J. Phys. 59 (1991) 118 (Tacoma Narrows) – laut ChatGPT-Entwurf geöffnet.",
     "**Selbst geprüft (25.10.2026):** Max-Planck-Gesellschaft, »Black holes heavier than allowed?« (27.08.2026) und Live Science zur GW231123-Linsenstudie (Goyal, Villarrubia-Rojo, Zumalacárregui, ApJL 2026) → Forschungskarte A17; Dlubal-Blog zu Broughton 1831/Millennium Bridge → Teil 2; PhET-Liste (Pendel-Labor HTML5, Deutsch).",
     "**Nicht prüfbar von hier:** die drei Trauner-Filmtipps (Seite gesperrt) – bitte vor dem Einsatz ansehen; keine zusätzlichen YouTube-Videos eingebaut, weil sie hier nicht geprüft werden konnten.",

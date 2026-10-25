@@ -176,13 +176,15 @@ VS_BY_NR = {v["nr"]: v for v in VD.VS}
 
 
 def video(key):
+    if not I.zeigen(key):
+        return ""  # Buch-Medium noch nicht von Stephan freigegeben
     t, q, d, u = I.VIDEOS[key][:4]
     sim = len(I.VIDEOS[key]) > 4 and I.VIDEOS[key][4] == "sim"
     if sim:
         return (f'<div class="video sim"><div><strong>Simulation: {esc(t)}</strong><br><span class="hint">{esc(q)} · im Browser, auch am Handy</span></div>'
                 f'<a class="btn small" href="{u}" target="_blank" rel="noopener">Simulation öffnen</a></div>')
-    lab = f"Video ansehen ({d})" if d != "kurz" else "Video ansehen"
-    return (f'<div class="video"><div><strong>Video: {esc(t)}</strong><br><span class="hint">{esc(q)}{" · " + esc(d) if d != "kurz" else ""} · Ton an oder Kopfhörer</span></div>'
+    lab = f"Video ansehen ({d})" if d != "kurz" else ("Buch-Link öffnen" if I.VIDEOS[key][4:5] == ("buch",) else "Video ansehen")
+    return (f'<div class="video"><div><strong>{"Aus dem Buch" if I.VIDEOS[key][4:5] == ("buch",) else "Video"}: {esc(t)}</strong><br><span class="hint">{esc(q)}{" · " + esc(d) if d != "kurz" else ""}</span></div>'
             f'<a class="btn small" href="{u}" target="_blank" rel="noopener">{lab}</a></div>')
 
 

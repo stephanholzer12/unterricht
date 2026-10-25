@@ -9,16 +9,16 @@ PLAN = {
   {"std": 1, "datum": "Mi 04.11.", "teile": [1], "methode": "Messung mit Vorhersage (alle Gruppen am selben Pendel)", "phasen": [
      ("Organisation, Gruppen 1–8 einteilen", 2, True, "org"), ("Einstieg: Schaukel – tippen per Handzeichen", 3, True, "org"),
      ("Teil 1 lesen bzw. erklären", 8, False, "lesen"), ("Aufgabe 1", 5, False, "a1"),
-     ("Versuch K2.1-V1 Pendel (inkl. Aufgabe 2)", 18, True, "v:K2.1-V1"), ("Aufgabe 3", 4, False, "a3"),
+     ("Versuch K2.1-V1 Pendel (inkl. Aufgabe 2)", 18, False, "v:K2.1-V1"), ("Aufgabe 3", 4, False, "a3"),
      ("Besprechung (Aufgaben 1–3)", 4, True, "bespr"), ("Reserve", 6, True, "reserve")]},
   {"std": 2, "datum": "Mo 09.11.", "teile": [2], "methode": "Demo mit Vorhersage + Partnercheck", "phasen": [
      ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Wechsel zum Thema", 1, True, "org"), ("Weißt du noch?", 2, True, "org"),
-     ("Teil 2 lesen bzw. erklären", 6, False, "lesen"), ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, True, "v:K2.1-V2"),
+     ("Teil 2 lesen bzw. erklären", 6, False, "lesen"), ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, False, "v:K2.1-V2"),
      ("Aufgabe 5 Partnercheck (ohne Handy)", 6, True, "a5"), ("Besprechung", 4, True, "bespr"), ("Reserve", 4, True, "reserve")]},
   {"std": 3, "datum": "Mi 11.11.", "teile": [3], "methode": "Referat + Kadetten-Welle (Bewegung)", "phasen": [
      ("Organisation", 1, True, "org"), ("Referat EKG/MRT inkl. Fragen", 20, True, "ref"), ("Weißt du noch? + Übergang Schwingung → Welle", 3, True, "org"),
-     ("Teil 3 lesen bzw. erklären", 7, False, "lesen"), ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 6, True, "v:K2.2-V1"),
-     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Reserve", 4, True, "reserve")]},
+     ("Teil 3 lesen bzw. erklären", 6, False, "lesen"), ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 8, True, "v:K2.2-V1"),
+     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Reserve", 3, True, "reserve")]},
   {"std": 4, "datum": "Mo 16.11.", "teile": [4], "methode": "Simulation + Skizzen mit der Hand", "phasen": [
      ("Organisation", 1, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 4 lesen bzw. erklären", 6, False, "lesen"),
      ("Simulation K2.2-V2 (inkl. Aufgabe 8)", 6, False, "v:K2.2-V2"), ("Aufgabe 9 Huygens-Skizze (Handschrift)", 4, True, "a9"),
@@ -34,13 +34,14 @@ PLAN = {
   {"std": 1, "datum": "Mi 04.11.", "teile": [1], "methode": "Messung mit Vorhersage (alle Gruppen am selben Pendel)", "phasen": [
      ("Organisation, Gruppen 1–8 einteilen", 2, True, "org"), ("Einstieg: Schaukel – tippen per Handzeichen", 3, True, "org"),
      ("Teil 1 lesen bzw. erklären", 8, False, "lesen"), ("Aufgabe 1", 5, False, "a1"),
-     ("Versuch K2.1-V1 Pendel (inkl. Aufgabe 2)", 18, True, "v:K2.1-V1"), ("Aufgabe 3", 4, False, "a3"),
+     ("Versuch K2.1-V1 Pendel (inkl. Aufgabe 2)", 18, False, "v:K2.1-V1"), ("Aufgabe 3", 4, False, "a3"),
      ("Besprechung (Aufgaben 1–3)", 4, True, "bespr"), ("Reserve", 6, True, "reserve")]},
   {"std": 2, "datum": "Fr 06.11.", "teile": [2, 3], "methode": "Demo + Partnercheck + Kadetten-Welle", "phasen": [
-     ("Weißt du noch?", 3, True, "org"), ("Teil 2 lesen bzw. erklären", 6, False, "lesen"),
-     ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, True, "v:K2.1-V2"), ("Aufgabe 5 Partnercheck (ohne Handy)", 6, True, "a5"),
-     ("Teil 3 lesen bzw. erklären", 7, False, "lesen"), ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 6, True, "v:K2.2-V1"),
-     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Zwischenstand speichern", 1, False, "org"), ("Reserve", 5, True, "reserve")]},
+     ("Weißt du noch?", 2, True, "org"), ("Teil 2 lesen bzw. erklären", 6, False, "lesen"),
+     ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, False, "v:K2.1-V2"), ("Aufgabe 5 Partnercheck (ohne Handy)", 6, True, "a5"),
+     ("Übergang Schwingung → Welle", 1, True, "org"), ("Teil 3 lesen bzw. erklären", 7, False, "lesen"),
+     ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 8, True, "v:K2.2-V1"),
+     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Zwischenstand speichern", 1, False, "org"), ("Reserve", 3, True, "reserve")]},
   {"std": 3, "datum": "Mi 11.11.", "teile": [5], "methode": "Spektrum ordnen (mündlich, zu zweit)", "phasen": [
      ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Wechsel zum Thema", 1, True, "org"), ("Weißt du noch?", 2, True, "org"),
      ("Teil 5 lesen bzw. erklären", 11, False, "lesen"), ("Aufgabe 10 Spektrum ordnen (zuerst mündlich)", 4, True, "a10"), ("Aufgabe 11", 5, False, "a11"),

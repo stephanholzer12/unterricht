@@ -296,6 +296,8 @@ def beob_table(doc, v, sol=False):
         rows.append(r)
     cms = {2: [5.0, 12.4], 3: [4.6, 6.4, 6.4]}.get(nc) or [2.0] + [15.4 / (nc - 1)] * (nc - 1)
     t = table(doc, b["kopf"], rows, cms, 9, "6E7F4E", zebra=False)
+    if sol and v.get("erwartet_tab"):
+        para(doc, "Rot = Modellwerte aus T = 2π · Wurzel(l/g), berechnet – keine Messung. Eure Werte weichen ab.", 8.5, False, RED, italic=True, after=2)
     if not sol:
         for row in t.rows[1:]: row.height = Cm(0.6)
 

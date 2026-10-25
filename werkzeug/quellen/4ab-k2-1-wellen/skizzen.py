@@ -466,10 +466,10 @@ def v1():
     d.rectangle(P(bx - 6, by - 16, bx + 6, by - 4), fill=BRASS)
     darrow(d, hx - 40, top, hx - 40, by + 17, TEAL, 3)
     ltext(d, hx - 205, 260, "l bis zur Mitte", f(FB, 20), TEAL); ltext(d, hx - 205, 284, "des Gewichts", f(FB, 20), TEAL)
-    ctext(d, hx + 90, 120, "Schnur in der", f(FR, 18), INK); ctext(d, hx + 90, 140, "Klemme festklemmen", f(FR, 18), INK)
+    ctext(d, hx + 90, 120, "Schnur festknoten", f(FR, 18), INK); ctext(d, hx + 90, 140, "+ Klebeband", f(FR, 18), INK)
     d.arc(P(hx - 90, top - 90, hx + 90, top + 90), 80, 90, fill=ORANGE, width=4 * S)
     ltext(d, hx + 16, top + 96, "≤ 10°", f(FB, 20), ORANGE)
-    ctext(d, 450, 520, "Schwingungsebene frei – niemand steht davor", f(FB, 24), RED)
+    ctext(d, 450, 520, "Schwingungsebene frei – links und rechts niemand", f(FB, 24), RED)
     ctext(d, 450, 556, "Messung: 10 volle Schwingungen, zwei Läufe je Länge (0,40 m und 0,90 m)", f(FR, 22), INK)
     save(im, VSI + "d_v1.png")
 

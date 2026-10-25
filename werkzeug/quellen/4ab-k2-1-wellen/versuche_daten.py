@@ -7,7 +7,7 @@ GRUPPEN = 8  # ca. 26 Kadetten je Klasse: Gruppe 1–6 zu dritt, Gruppe 7–8 zu
 
 # Herrichte-Schlüssel → (Bezeichnung, Icon, Inventar-Nr. / Fundort, Bestand laut Inventar oder None = kein Inventargerät)
 LM = {
-    "stativ": ("Stativ-Aufbau: V-Fuß #179, Stab 1000 mm #141, Querstab 500 mm #143, Doppelmuffe #29, Stativklemme mit Muffe #140", "stativ", "Lehrmittel #179, #141, #143, #29, #140 · NAWI-Saal E21", 1),
+    "stativ": ("Stativ-Aufbau: V-Fuß #179, Stab 1000 mm #141, Querstab 500 mm #143, Doppelmuffe #29; Schnur am Querstab-Ende festgeknotet (Klebeband)", "stativ", "Lehrmittel #179, #141, #143, #29 · NAWI-Saal E21", 1),
     "schnur": ("Gelbe Schnur (Rolle 50 m)", "schnur", "Lehrmittel #57 · NAWI-Saal E21", 1),
     "gewicht": ("Pendelkörper: 100-g-Stück (oder 50 g) aus dem Gewichtssatz 10 mg–100 g", "gewicht", "Lehrmittel #59 · NAWI-Saal E21", 1),
     "bandmass": ("Bandmaß 3 m", "bandmass", "Lehrmittel #10 · NAWI-Saal E21", 1),
@@ -22,17 +22,17 @@ VS = [
   "stunde": 1, "wann": "4AK + 4BK: Stunde 1 (Mi 04.11.)", "form": "ein Aufbau, alle Gruppen messen mit", "demo": True, "kern": True, "zeit": 18,
   "jp": "= Jahresplan V4.11 (gekürzt: nur die Länge wird verändert)", "quelle": "Trauner S. 50; Zusatzquelle B (Ein-Variablen-Vergleich) laut ChatGPT-Entwurf; Formel OpenStax University Physics 15.4",
   "intro": "Ein Pendel hängt über der Tischkante. Wir ändern nur seine Länge – von 0,40 m auf 0,90 m. Schwingt das längere Pendel schneller oder langsamer? Erst tippen, dann messen!",
-  "sicher": "Niemand steht vor oder hinter dem Pendel (Schwingungsebene frei). Nicht unter das Gewicht greifen. Kleiner Ausschlag, nicht anschieben, nicht werfen. "
+  "sicher": "Schwingungsebene frei: In Schwingungsrichtung (links und rechts) ca. 1,5 m Platz, dort steht und sitzt niemand. Nicht unter das Gewicht greifen. Kleiner Ausschlag, nicht anschieben, nicht werfen. "
             "Der Stativfuß ist mit Büchern beschwert, der Querstab ragt nur über die Tischkante – nicht über Sitzplätze.",
   "mat": [["Stativ mit Querstab über der Tischkante (Lehrkraft baut auf)", "stativ", "stativ", 1], ["Gelbe Schnur, ca. 1,2 m", "schnur", "schnur", 1],
           ["Pendelkörper 100 g aus dem Gewichtssatz", "gewicht", "gewicht", 1], ["Bandmaß 3 m", "bandmass", "bandmass", 1],
           ["Handy als Stoppuhr – 2 je Gruppe", "handy", "handy", 2]],
   "entsorgung": "Kein Abfall. Gewicht zurück in den Gewichtssatz, Schnur aufrollen, Stativ zerlegen und zurück in den Schrank.",
   "schritte": ["Rollen in der Gruppe: zwei Zeitnehmer (beide stoppen), ein Protokollführer, in Vierergruppen zusätzlich ein Beobachter. Tippt zuerst ab: Ist das Pendel bei 0,90 m schneller oder langsamer als bei 0,40 m?",
-               "Die Lehrkraft stellt die Länge l = 0,40 m ein – gemessen vom Klemmpunkt bis zur Mitte des Gewichts. Die Schnur bleibt in der Klemme fest eingeklemmt.",
+               "Die Lehrkraft stellt die Länge l = 0,40 m ein – gemessen vom Aufhängepunkt am Querstab bis zur Mitte des Gewichts. Die Schnur ist am Querstab fest verknotet und mit Klebeband gesichert.",
                "Ein Helfer zieht das Gewicht etwa 5 cm zur Seite (höchstens 7 cm – das sind ca. 10°) und lässt los, ohne anzuschieben. Gestartet wird, wenn das Gewicht von links nach rechts durch die Mitte geht: Die Klasse zählt laut »Null«.",
                "Bei jedem weiteren Durchgang von links nach rechts zählt die Klasse weiter: »Eins, zwei … zehn«. Bei »Zehn« stoppen beide Zeitnehmer – das sind 10 volle Schwingungen. Gleich danach ein zweiter Lauf.",
-               "Die Lehrkraft stellt l = 0,90 m ein (Schnur in der Klemme nachschieben, nicht abschneiden). Gleiches Gewicht, Ausschlag höchstens 15 cm, wieder zwei Läufe.",
+               "Die Lehrkraft stellt l = 0,90 m ein (Klebeband lösen, Schnur bis zur Markierung nachlassen, wieder festkleben). Gleiches Gewicht, Ausschlag höchstens 15 cm, wieder zwei Läufe.",
                "Rechnet für jede Länge: Mittelwert der Zeiten, T = Zeit : 10, f = 1 : T. Tragt alles ein, dann Aufgabe 2 im Arbeitsblatt."],
   "skizze": "v1",
   "beob": {"titel": "Eure Messwerte – nicht die Beispielwerte abschreiben", "kopf": ["l in m", "10 Schwingungen, Lauf 1 in s", "10 Schwingungen, Lauf 2 in s", "Mittelwert in s", "T in s", "f in Hz"],
@@ -48,20 +48,20 @@ VS = [
   "interp_l": "Verändert wurde nur die Länge l. Gleich blieben: derselbe Pendelkörper, kleiner Ausschlag, gleicher Ort, gleiche Zählweise (10 volle Schwingungen, Start beim Durchgang links → rechts). Nur so kann man sagen, dass die Länge den Unterschied macht.",
   "schluss_l": "Kürzer machen: Ein kürzeres Pendel hat eine kleinere Periodendauer – die Uhr tickt schneller. (Darum haben Pendeluhren eine Stellschraube am Pendelkörper.)",
   "lehrer": ["Aufbau VOR der Stunde (10–15 min): Querstab (#143) mit Doppelmuffe (#29) oben am 1000-mm-Stab (#141), Stab in den V-Fuß (#179); Querstab ca. 25 cm über die Tischkante. "
-             "Schnur in der Stativklemme (#140) am Ende des Querstabs festklemmen – der Klemmpunkt ist der Aufhängepunkt. Fuß mit 2–3 schweren Büchern beschweren.",
-             "Pendelkörper: 100-g-Stück aus dem Gewichtssatz #59 – Schnur mit doppeltem Knoten unter dem Griffknopf festbinden und durch kräftiges Ziehen prüfen. Ob die Stücke einen Griffknopf haben, ist im Inventar nicht dokumentiert → vorher nachsehen.",
+             "Schnur am Ende des Querstabs zweimal umwickeln, festknoten und mit Klebeband sichern – diese Stelle ist der Aufhängepunkt. Die Stativklemme #140 ist für 10–25 mm gebaut und hält eine dünne Schnur voraussichtlich nicht; wer lieber klemmt: Universalklemme #160 (0–80 mm) im Vorversuch testen. Fuß mit 2–3 schweren Büchern beschweren.",
+             "Pendelkörper: 100-g-Stück aus dem Gewichtssatz #59 – falls es einen Griffknopf hat, Schnur mit doppeltem Knoten darunter festbinden und durch kräftiges Ziehen prüfen. Form und Griffknopf sind im Inventar nicht dokumentiert → vorher nachsehen; hält es nicht sicher, die Simulation nehmen.",
              "Längen vorab markieren: Klebeband-Fähnchen auf der Schnur bei 0,40 m und 0,90 m (gemessen bis zur Mitte des Gewichts), dann geht das Umstellen in 1 Minute.",
-             "Sichtbarkeit: Pendel vorne am Lehrertisch, Klasse im Halbkreis sitzend; das laute gemeinsame Zählen synchronisiert alle Gruppen.",
+             "Sichtbarkeit: Pendel vorne am Lehrertisch, Schwingung quer zur Klasse (von links nach rechts). In Schwingungsrichtung links und rechts je ca. 1,5 m frei lassen – die Klasse sitzt davor, niemand seitlich. Das laute gemeinsame Zählen synchronisiert alle Gruppen.",
              "Ausfall (Befestigung unsicher): PhET »Pendel-Labor« am Beamer mit denselben zwei Längen – dann ausdrücklich als Simulation protokollieren, nicht als echte Messung."],
   "fehler": ["Halbe Schwingungen gezählt (jeder Durchgang durch die Mitte) → T nur halb so groß.", "Länge nur bis zum oberen Rand des Gewichts gemessen → l zu klein.",
              "Gewicht beim Loslassen angeschoben oder zu weit ausgelenkt.", "Gruppen starten bei verschiedenen Durchgängen – darum gemeinsam laut zählen."],
   "fach": ["T = 2π · √(l/g): l = 0,40 m → T = 1,269 s; l = 0,90 m → T = 1,903 s (g = 9,81 m/s²). Verhältnis genau 1,5.",
            "Bei 10° Ausschlag ist T nur ca. 0,2 % länger als die Kleinwinkelformel – das geht in der Reaktionszeit (ca. 0,2 s auf 12,7 s = 1,5 %) unter."],
-  "vorversuch": "Befestigung von Schnur und Gewicht, Kippsicherheit mit Querstab, Sichtbarkeit von hinten, je zwei Probeläufe bei 0,40 m und 0,90 m (Dauer messen)."},
+  "vorversuch": "Befestigung von Schnur (Knoten am Querstab bzw. Klemme #160) und Gewicht (Griffknopf?), Kippsicherheit mit Querstab, Sichtbarkeit von hinten, je zwei Probeläufe bei 0,40 m und 0,90 m (Dauer messen)."},
 
  {"id": "resonanz", "nr": "K2.1-V2", "titel": "Eine kleine Anregung – eine große Antwort?", "bindung": "Erzwungene Schwingung und Resonanz · Lehrer-Demo mit Vorhersage",
   "stunde": 2, "wann": "4AK: Stunde 2 (Mo 09.11.) · 4BK: Stunde 2 (Fr 06.11.)", "form": "Lehrer-Demo", "demo": True, "kern": True, "zeit": 7,
-  "jp": "nicht im Jahresplan als eigener Versuch – ersetzt V4.12 (Federpendel und Stimmgabeln: Federn nicht im Inventar)", "quelle": "Versuch im Trauner-Buch S. 53 (laut ChatGPT-Entwurf), sicher begrenzt",
+  "jp": "nicht im Jahresplan als eigener Versuch – Alternative zu V4.12, kein Ersatz (V4.12 nicht durchgeführt: Federpendel nicht im Inventar; Stimmgabelpaar #145 vorhanden, Resonanzkasten und Anschläger ungeprüft)", "quelle": "Versuch im Trauner-Buch S. 53 (laut ChatGPT-Entwurf), sicher begrenzt",
   "intro": "Die Lehrkraft hält das Pendel oben an der Schnur und bewegt die Hand nur ein kleines Stück hin und her – langsam, im eigenen Takt des Pendels und schnell. Wann wird der Ausschlag am größten?",
   "sicher": "Kleiner Handweg (ca. 1 cm). Abbrechen, sobald das Gewicht etwa 20 cm ausschlägt. Niemand steht in der Schwingungsebene. Kein Glas, kein Zerstörungsversuch.",
   "mat": [["Schnur mit Gewicht aus K2.1-V1, l ca. 0,40 m", "schnur", "schnur", 1], ["Pendelkörper 100 g aus K2.1-V1", "gewicht", "gewicht", 1]],
@@ -90,7 +90,7 @@ VS = [
   "vorversuch": "Takt mit gleichem kleinem Handweg üben, Abbruchgrenze 20 cm, Sichtbarkeit von hinten."},
 
  {"id": "schnur", "nr": "K2.2-V1", "titel": "Puls auf der Schnur und Kadetten-Welle", "bindung": "Mechanische Wellen: quer und längs · Demo und Bewegungsaufgabe",
-  "stunde": 3, "wann": "4AK: Stunde 3 (Mi 11.11.) · 4BK: Stunde 2 (Fr 06.11.)", "form": "Demo mit Kadetten", "demo": True, "kern": True, "zeit": 6,
+  "stunde": 3, "wann": "4AK: Stunde 3 (Mi 11.11.) · 4BK: Stunde 2 (Fr 06.11.)", "form": "Demo mit Kadetten", "demo": True, "kern": True, "zeit": 8,
   "jp": "nicht im Jahresplan (V4.13 Wellenwanne ist im Inventar nicht nachgewiesen)", "quelle": "Trauner S. 54–55; Kadetten-Welle: eigene Idee (Bewegungsaufgabe)",
   "intro": "Kann ein Puls am anderen Ende ankommen, obwohl die Büroklammer in der Mitte gar nicht dorthin reist? Und wie sieht eine Längswelle aus, wenn ihr selbst die Teilchen seid?",
   "sicher": "Schnur nur leicht spannen und unter Gesichtshöhe halten, nie um Hand oder Hals wickeln, nicht ruckartig ziehen. Bei der Kadetten-Welle nur kleine Schritte – niemand schubst. Gang und Notausgang frei lassen.",
@@ -113,7 +113,7 @@ VS = [
   "erk_l": "Am anderen Ende kommt die Störung (mit ihrer Energie) an – die Büroklammer und die Kadetten bleiben an ihrem Platz.",
   "interp_l": "Schnur und La-Ola: Teilchen schwingen senkrecht zur Ausbreitung → transversal. Schritt-Welle: Teilchen schwingen in Ausbreitungsrichtung → longitudinal.",
   "schluss_l": "Nein. Beim Zuruf wird die Druckschwankung von Luftteilchen zu Luftteilchen weitergegeben (Schall, longitudinal); die Luft selbst reist nicht mit. Funk ist eine elektromagnetische Welle und braucht gar keine Luft.",
-  "lehrer": ["Die gelbe Schnur ist leicht – ein Puls läuft sehr schnell durch. Möglichst locker halten (leichter Durchhang); dann ist er gut sichtbar. Vorher einmal ausprobieren.",
+  "lehrer": ["Die gelbe Schnur ist vermutlich leicht – dann läuft ein Puls sehr schnell durch (im Vorversuch prüfen: Ist er auf 3 m sichtbar? Dehnt sich die Schnur stark?). Möglichst locker halten (leichter Durchhang). Sonst die Kadetten-Welle als Hauptbeobachtung und PhET »Welle an einem Seil«.",
              "Die Kadetten-Welle ist die eigentliche Beobachtung zur Längswelle – sie braucht kein Gerät und passt zur sportlichen Klasse (Bewegungsaufgabe).",
              "Ist der Puls auf der Schnur nicht zu sehen: PhET »Welle an einem Seil« (Puls, hohe Dämpfung aus) am Beamer und als Modell kennzeichnen."],
   "fehler": ["Schnur zu straff: Puls zu schnell, kaum sichtbar.", "Großer Ruck statt kleiner Handbewegung.", "Kadetten laufen mit der Welle mit, statt am Platz zu bleiben."],
@@ -150,7 +150,7 @@ VS = [
 ]
 assert [v["nr"] for v in VS] == ["K2.1-V1", "K2.1-V2", "K2.2-V1", "K2.2-V2"]
 
-SICHERHEIT = [("Schwingungsebene frei", "niemand steht vor oder hinter dem Pendel, niemand greift unter das Gewicht"),
+SICHERHEIT = [("Schwingungsebene frei", "links und rechts in Schwingungsrichtung ca. 1,5 m frei, niemand greift unter das Gewicht"),
               ("Stativ kippsicher", "Fuß beschweren, Querstab nur über die Tischkante – nicht über Sitzplätze"),
               ("Schnur", "nur leicht spannen, unter Gesichtshöhe, nie um Hand oder Hals wickeln"),
               ("Kadetten-Welle", "kleine Schritte, kein Schubsen, Gang frei"),

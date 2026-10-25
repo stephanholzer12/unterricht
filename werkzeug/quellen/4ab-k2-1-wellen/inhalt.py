@@ -20,15 +20,24 @@ BUCH = "Buch S. 47–59"
 KEY = "26-27-4AB-K2.1-Wellen-TH-Handy-v1"
 PRAEFIX = "26-27-4AB-K2.1-2.3-Wellen"
 
-# (Titel, Quelle, Dauer, Link[, Art]) – Art "sim" = Simulation (Knopf »Simulation öffnen«)
+# (Titel, Quelle, Dauer, Link[, Art]) – Art "sim" = Simulation (Knopf »Simulation öffnen«), "buch" = Medium aus dem Buch, Inhalt ungeprüft:
+# erscheint auf der Handy-Seite und in der Kadetten-PPP erst, wenn der Schlüssel in FREIGEGEBEN steht (Stephan hat es angesehen).
 VIDEOS = {
-    "resonanz_buch": ("Resonanz (Buch-Medium)", "Link aus dem Buch S. 53 (Trauner)", "kurz", "https://www.trauner.at/nawi_v50.aspx"),
-    "stehend_buch": ("Stehende Schallwellen (Buch-Medium)", "Link aus dem Buch S. 56 (Trauner)", "kurz", "https://www.trauner.at/nawi_v51.aspx"),
-    "stehwelle_buch": ("Stehende Welle (Buch-Medium)", "Link aus dem Buch S. 56 (Trauner)", "kurz", "https://www.trauner.at/stehendeWelle.aspx"),
+    "resonanz_buch": ("Resonanz (Buch-Medium)", "Link aus dem Buch S. 53 (Trauner)", "kurz", "https://www.trauner.at/nawi_v50.aspx", "buch"),
+    "stehend_buch": ("Stehende Schallwellen (Buch-Medium)", "Link aus dem Buch S. 56 (Trauner)", "kurz", "https://www.trauner.at/nawi_v51.aspx", "buch"),
+    "stehwelle_buch": ("Stehende Welle (Buch-Medium)", "Link aus dem Buch S. 56 (Trauner)", "kurz", "https://www.trauner.at/stehendeWelle.aspx", "buch"),
     "phet_pendel": ("Pendel-Labor", "PhET, University of Colorado (Deutsch, CC BY 4.0)", "Simulation", "https://phet.colorado.edu/de/simulations/pendulum-lab", "sim"),
     "phet_seil": ("Welle an einem Seil", "PhET, University of Colorado (Deutsch, CC BY 4.0)", "Simulation", "https://phet.colorado.edu/de/simulations/wave-on-a-string", "sim"),
     "phet_interferenz": ("Welleninterferenz", "PhET, University of Colorado (Deutsch, CC BY 4.0)", "Simulation", "https://phet.colorado.edu/de/simulations/wave-interference", "sim"),
 }
+FREIGEGEBEN = set()  # z. B. {"resonanz_buch"} – nach Stephans Freigabe eintragen und neu bauen
+
+
+def zeigen(key, lehrer=False):
+    """Buch-Medien nur nach Freigabe öffentlich zeigen; die Lehrer-PPP zeigt sie immer (mit Hinweis)."""
+    v = VIDEOS[key]
+    return lehrer or len(v) < 5 or v[4] != "buch" or key in FREIGEGEBEN
+
 
 KLASSEN = ["4AK", "4BK"]
 # Termine je Klasse (Stunde → Datum); 4AK: Test 09.11., Referat EKG/MRT 11.11.; 4BK: Test 11.11., 18.11. nur optional
@@ -54,12 +63,12 @@ T = [
  {"id": "a1", "nr": 1, "title": "Ein Diagramm lesen", "src": "Buch S. 49", "own": True, "tag": "Teil 1", "h": 1, "zeit": 5, "img": "img/a1_diagramm.png",
   "q": "Das Diagramm zeigt die Auslenkung y eines Pendels über die Zeit t (Gitter: 0,2 s und 1 cm). Lies ab bzw. berechne: a) die Amplitude A in cm, "
        "b) die Periodendauer T in s, c) die Frequenz f in Hz (auf zwei Dezimalstellen).",
-  "hint": "Amplitude = größte Auslenkung aus der Nulllinie – nicht von oben bis unten. T = Abstand zweier benachbarter Wellenberge auf der Zeitachse. Info: Theorie Teil 1 »Wie misst man eine Schwingung?«",
+  "hint": "Amplitude = größte Auslenkung aus der Nulllinie – nicht von oben bis unten. T = Abstand zweier benachbarter Hochpunkte (Maxima) auf der Zeitachse. Info: Theorie Teil 1 »Wie misst man eine Schwingung?«",
   "type": "multi",
   "fields": [["amp", "a) Amplitude A (mit Einheit)"], ["periode", "b) Periodendauer T (mit Einheit)"], ["frequenz", "c) Frequenz f (mit Einheit)"]],
   "chk": {"amp": {"num": 3, "unit": "cm"}, "periode": {"num": 0.8, "unit": "s"}, "frequenz": {"num": 1.25, "unit": "Hz"}},
   "sol": [["Lösung", ["a) A = 3 cm (nicht 6 cm – das wäre der Abstand von ganz oben bis ganz unten).",
-                      "b) Wellenberge bei 0,2 s, 1,0 s und 1,8 s → T = 1,0 s − 0,2 s = 0,8 s.",
+                      "b) Hochpunkte bei 0,2 s, 1,0 s und 1,8 s → T = 1,0 s − 0,2 s = 0,8 s.",
                       "c) f = 1 : T = 1 : 0,8 s = 1,25 Hz."]]],
   "tip": ["Wie misst man eine Schwingung?", "theorie.html#groessen"]},
 
@@ -137,7 +146,8 @@ T = [
   "fields": [["punkt", "a) Büroklammer und Puls (1–2 Sätze)"],
              ["quer", "b) Schnurwelle", ["transversal (Querwelle)", "longitudinal (Längswelle)", "keine Welle"]],
              ["laengs", "c) Schritt vor und zurück", ["longitudinal (Längswelle)", "transversal (Querwelle)", "keine Welle"]]],
-  "chk": {"punkt": {"kw": [["Klammer bleibt am Ort / auf und ab", r"auf und ab|rauf|hoch|ort|stelle|bleibt|quer|senkrecht|zurück"], ["Puls läuft weiter / entlang", r"läuft|lauft|weiter|entlang|ende|andere|wandert|bewegt sich"]], "man": True},
+  "chk": {"punkt": {"kw": [["Klammer bleibt am Ort / auf und ab", r"auf und ab|rauf|hoch|\bort\b|stelle|bleibt|quer|senkrecht|zurück"], ["Puls läuft weiter / entlang", r"läuft|lauft|weiter|entlang|ende|andere|wandert"]], "man": True,
+                   "contra": [r"klammer\w*\s+(bewegt sich|wandert|läuft|lauft|geht|rutscht)\s+(\w+\s+){0,2}(mit|fort|weiter|bis)"]},
           "quer": {"sel": "transversal (Querwelle)"}, "laengs": {"sel": "longitudinal (Längswelle)"}},
   "sol": [["Lösung", ["a) Die Büroklammer bewegt sich nur kurz auf und ab und bleibt an ihrer Stelle. Der Puls läuft entlang der Schnur zum anderen Ende.",
                       "b) transversal – Schwingungsrichtung (auf/ab) steht senkrecht zur Ausbreitungsrichtung (entlang).",
@@ -165,7 +175,9 @@ T = [
   "fields": [["summe", "a) Summe (mit Einheit)"],
              ["danach", "b) Nach dem Treffen …", ["laufen beide unverändert weiter", "prallen sie voneinander ab", "sind beide für immer verschwunden", "verschmelzen sie zu einem großen Puls"]],
              ["energie", "c) Warum ist die Energie nicht weg? (1–2 Sätze)"]],
-  "chk": {"summe": {"num": 1, "unit": "cm"}, "danach": {"sel": "laufen beide unverändert weiter"},
+  "chk": {"summe": {"kw": [["Ergebnis +1 cm (mit Vorzeichen)", r"(^|[^\d.,\-−–‒])\+?\s*(1([.,]0+)?\s*(cm)?|10\s*mm)\s*\.?\s*$"]],
+                  # eigene Regel statt num: die gemeinsame Zahlenprüfung liest »−1 cm« (typografisches Minus) als +1 – siehe Prüfbericht
+                  "contra": [r"[\-−–‒]\s*(1([.,]0+)?\s*(cm)?|10\s*mm)\s*\.?\s*$"]}, "danach": {"sel": "laufen beide unverändert weiter"},
           "energie": {"kw": [["nur an diesem Ort / kurz", r"ort|stelle|kurz|moment|nur|lokal|dort|punkt"], ["laufen weiter / Energie woanders", r"weiter|woanders|andere|verteilt|danach|bleibt|wieder"]], "man": True}},
   "sol": [["Lösung", ["a) y = (+2 cm) + (−1 cm) = +1 cm.",
                       "b) Sie laufen unverändert weiter – Wellen prallen nicht ab wie Bälle.",
@@ -202,7 +214,7 @@ T = [
  {"id": "a11", "nr": 11, "title": "Funk und Wellenlänge", "src": "Buch-Aufgabe S. 59", "own": False, "tag": "Teil 5", "h": 5, "zeit": 5,
   "q": "Rechne mit c = 3,00 · 10⁸ m/s. a) Ein Truppenfunkgerät sendet im UKW-Bereich mit f = 50 MHz. Berechne die Wellenlänge λ in m. "
        "Ordne dann die Wellenlängen dem richtigen Bereich zu: b) λ = 15 cm, c) λ = 750 nm, d) λ = 3 m.",
-  "hint": "1 MHz = 1 000 000 Hz. λ = c : f. Für b)–d): Grafik »Das elektromagnetische Spektrum« (Teil 5).",
+  "hint": "1 MHz = 1 000 000 Hz. λ = c : f. Für b)–d): Tabelle »Das elektromagnetische Spektrum« (Teil 5, Spalte Wellenlänge).",
   "type": "multi",
   "fields": [["funk", "a) λ (mit Einheit)"],
              ["kurz", "b) 15 cm", ["Mikrowellen (Teil der Radiowellen)", "sichtbares Licht", "UV", "Gammastrahlung"]],
@@ -222,7 +234,7 @@ T = [
   "hint": "Handschrift statt Tippen. KI-Antworten klingen sicher – prüf sie mit der Theorie (Teil 2, 3 und 5).",
   "type": "sketch",
   "fields": [["beleg", "Beleg für Aussage 3: Teil … und Stichwort"]],
-  "chk": {"beleg": {"kw": [["Teil 5", r"teil\s*5|5"], ["Vakuum / nur im Vakuum", r"vakuum|leer|weltraum|all\b|materie|langsamer|stoff"]], "man": True}},
+  "chk": {"beleg": {"kw": [["Teil 5", r"teil\s*(5|fünf|fuenf)\b|^\s*5\b"], ["Vakuum / nur im Vakuum", r"vakuum|leer|weltraum|weltall|\ball\b|materie|langsamer|stoff"]], "man": True}},
   "sol": [["Lösung", ["1. Resonanz macht die Schwingung groß, zerstört aber nicht automatisch – Dämpfung und Bauweise begrenzen sie (Teil 2).",
                       "2. Bei einer Welle schwingen die Teilchen nur an ihrem Ort; weitergegeben wird die Störung mit ihrer Energie (Teil 3).",
                       "3. 300 000 km/s gilt im Vakuum (und fast in Luft); in Glas oder Wasser sind elektromagnetische Wellen langsamer (Teil 5).",
@@ -348,7 +360,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Prinzip von Huygens", "jeder Punkt einer Wellenfront sendet Elementarwellen aus; ihre Einhüllende ist die neue Front"],
                 ["Beugung", "Wellen laufen hinter Hindernisse und Öffnungen in den »Schatten«"],
                 ["elektromagnetisches Spektrum", "alle elektromagnetischen Wellen, geordnet nach Frequenz bzw. Wellenlänge"],
-                ["ionisierende Strahlung", "kann Elektronen aus Atomen lösen (Röntgen, Gamma) – schädigt Erbgut"]]
+                ["ionisierende Strahlung", "kann Elektronen aus Atomen lösen (Röntgen, Gamma) – kann das Erbgut schädigen"]]
 
 # »Weißt du noch?« am Beginn von Teil 2–5 – nur Inhalte, die BEIDE Klassen schon hatten (4BK macht Teil 5 vor Teil 4)
 WEISST_DU_NOCH = {
@@ -371,7 +383,7 @@ STOPPFRAGEN = {
     3: [("Auf der waagrechten Achse steht »t in s«. Kann man dort λ ablesen?", "Nein – dort liest man T ab. λ braucht eine Ortsachse (x in m)."),
         ("Hört man im luftleeren Weltraum eine Explosion?", "Nein – Schall braucht ein Medium (Luft, Wasser …).")],
     4: [("+3 cm und −2 cm treffen sich. Wie groß ist die Auslenkung dort?", "+1 cm."),
-        ("Wie weit liegen zwei Knoten einer stehenden Welle auseinander?", "eine halbe Wellenlänge (λ/2).")],
+        ("Wie weit liegen zwei benachbarte Knoten einer stehenden Welle auseinander?", "eine halbe Wellenlänge (λ/2).")],
     5: [("Die Frequenz einer elektromagnetischen Welle steigt. Was passiert mit λ?", "λ wird kleiner (c = λ · f bleibt gleich)."),
         ("Ist »nicht ionisierend« dasselbe wie »harmlos«?", "Nein – UV oder ein starker Laser können trotzdem schaden.")],
 }

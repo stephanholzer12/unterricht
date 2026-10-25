@@ -393,9 +393,10 @@ def draw_blk(s, b, x, y, w, L):
         return yy - y
     if k == "video":
         t_, q, du, u = I.VIDEOS[b[1]][:4]
-        sim = len(I.VIDEOS[b[1]]) > 4
+        art = I.VIDEOS[b[1]][4] if len(I.VIDEOS[b[1]]) > 4 else "video"; sim = art == "sim"
+        q2 = q + ("" if du == "kurz" else " · " + du) + (" · NICHT GEPRÜFT – vorher ansehen, erst dann zeigen" if art == "buch" and b[1] not in I.FREIGEGEBEN else "")
         c = box(s, x, y, w, 0.88, fill=RGBColor.from_string("E8F1F3" if sim else "FFF4EA"), line=TEAL if sim else ORANGE, lw=1.5)
-        text(c, [[(("Simulation: " if sim else "Video: ") + t_, {"bold": True})], [(q + ("" if du == "kurz" else " · " + du), {"size": 16, "color": MUTED})], [(u, {"size": 11, "color": MUTED})]], size=20, after=0)
+        text(c, [[({"sim": "Simulation: ", "buch": "Aus dem Buch: "}.get(art, "Video: ") + t_, {"bold": True})], [(q2, {"size": 16 if art != "buch" else 13, "color": RED if art == "buch" and b[1] not in I.FREIGEGEBEN else MUTED})], [(u, {"size": 11, "color": MUTED})]], size=20, after=0)
         s.shapes.add_picture(qr_png(u), Inches(x + w - 0.84), Inches(y + 0.04), Inches(0.8), Inches(0.8))
         return 0.95
     if k == "versuch":
@@ -421,13 +422,16 @@ def zerlegen(blocks):
             n = len(b[1]); per = 3 if n in (3, 6) else 2
             out += [("tiles", b[1][i:i + per]) if per == len(b[1][i:i + per]) or n <= per else ("tiles", b[1][i:i + per]) for i in range(0, n, per)]
         elif b[0] == "reveal" and len(b[1]) > 1: out += [("reveal", [x]) for x in b[1]]
+        elif b[0] == "table" and len(b[1][0]) > 3 and len(b[1]) > 5:  # breite, lange Tabelle: in zwei Hälften mit Kopfzeile
+            body = b[1][1:]; m = (len(body) + 1) // 2
+            out += [("table", [b[1][0]] + body[:m]), ("table", [b[1][0]] + body[m:])]
         else: out.append(b)
     return out
 
 
 def theorie_folien(item, L):
     """Theorie-Folie(n) aus einem Eintrag von theorie_daten (Bild links, Text rechts; zu viel Inhalt → Fortsetzungsfolie)."""
-    blocks = zerlegen(item["blocks"])
+    blocks = [b for b in zerlegen(item["blocks"]) if not (b[0] == "video" and not I.zeigen(b[1], L))]
     img = next((b for b in blocks if b[0] == "img"), None)
     rest = [b for b in blocks if b[0] not in ("img", "karten")]
     karten = next((b for b in blocks if b[0] == "karten"), None)
@@ -767,6 +771,8 @@ def versuch_folien(nr, L, kurz=False):
     if L:
         for r in cells[1:]: s._anim.append(r[ng:])
     y = Y0 + 0.2 + h
+    if L and v.get("erwartet_tab"):
+        tb(s, X0, y - 0.05, 9, 0.3, ["Beispielwerte = Modellwerte aus T = 2π·√(l/g), berechnet – keine Messung"], size=12, color=RED); y += 0.27
     hq = th("Erkenntnis: " + v["erk"], 20, 9, pad=0.15)
     if Y1 - y - hq < max(0.75, th(v["erk_l"], 20, 8.8, pad=0.4)):
         pill(s, pl, kind=pk, w=2.4); s = d.slide("Nur Titel", f"{nr} · Erkenntnis"); y = Y0 + 0.05

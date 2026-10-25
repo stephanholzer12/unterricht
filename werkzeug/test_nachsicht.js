@@ -138,6 +138,8 @@ cases[W21]=[
  ['a7','schall','0,759 m',1],['a7','schall','0,76 m',1],['a7','schall','75,9 cm',1],['a7','schall','76 cm',1],['a7','schall','λ = 334 : 440 = 0,759 m',1],['a7','schall','0,8 m',0],['a7','schall','1,32 m',0],['a7','schall','0,759 s',0],
  ['a7','meer','20 m/s',1],['a7','meer','20',1],['a7','meer','v = 300 m : 15 s = 20 m/s',1],['a7','meer','4500 m/s',0],['a7','meer','20 m',0],['a7','meer','0,05 m/s',0],
  ['a8','summe','1 cm',1],['a8','summe','+1 cm',1],['a8','summe','10 mm',1],['a8','summe','3 cm',0],['a8','summe','-1 cm',0],['a8','summe','1 s',0],
+ ['a8','summe','−1 cm',0],['a8','summe','–1 cm',0],['a8','summe','(+2 cm) + (−1 cm) = +1 cm',1],['a8','summe','Die Summe ist +1 cm.',1],['a8','summe','11 cm',0],['a8','summe','(+2 cm) + (−1 cm) = −1 cm',0],
+ ['a6','punkt','Die Büroklammer bewegt sich mit dem Puls fort bis ans andere Ende.','M'],['a12','beleg','Teil 3, Stichwort Schall','M'],
  ['a11','funk','6 m',1],['a11','funk','6,0 m',1],['a11','funk','600 cm',1],['a11','funk','λ = 3·10^8 m/s : 5·10^7 Hz = 6 m',1],['a11','funk','60 m',0],['a11','funk','0,6 m',0],['a11','funk','6 Hz',0],
  ['a14','feder','0,628 s',1],['a14','feder','0,63 s',1],['a14','feder','628 ms',1],['a14','feder','0,1 s',0],['a14','feder','6,28 s',0],
  ['a15','periode','1,63 s',1],['a15','periode','1,6 s',1],['a15','periode','32,6 s',0],['a15','periode','1,5 s',0],
