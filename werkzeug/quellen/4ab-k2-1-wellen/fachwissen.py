@@ -12,7 +12,10 @@ LEHRPLAN = [
     ("N01 · N04 · N02/N05/N07 ", "Beobachten, mit Größen beschreiben, darstellen · Untersuchungen planen und auswerten (nur eine Variable ändern) · Technik/Natur verstehen, Nutzen und Risiko beurteilen"),
     ("P7 · P8 · SDG 3 · GLV 2 · GLV 4 ", "KI-Antwort prüfen (A12), Forschungskarte (A17) · Gesundheit: UV-Schutz (A13) · Informationsresilienz: Behauptung vs. Beleg · Krisenfähigkeit: Funk, UV-Schutz im Einsatz"),
     ("Schulprofil: ", "Gleichschritt-Verbot auf Brücken, Stoßdämpfer im Gelände, Truppenfunk (UKW), Radar, Wärmebild, Sonar (Marine) · Sport: Schaukel, La-Ola, Kadetten-Welle"),
-    ("Abweichung: ", "Stunden je Klasse verschieden (Fahrplan je Klasse); Gliederung nach Teilen statt Stunden; V4.12 Federpendel/Stimmgabeln nicht durchgeführt (Federpendel nicht im Inventar; Stimmgabelpaar #145 vorhanden, Resonanzkasten/Anschläger ungeprüft – K2.1-V2 ist eine Alternative, kein Ersatz), "
+    ("Buchabdeckung: ", "Pflichtkern: Schwingungsgrößen, Fadenpendel, Dämpfung, Resonanz, Quer-/Längswelle, v = λ · f, Überlagerung, stehende Welle, Huygens, EM-Spektrum mit Schutz. "
+                        "Nur als Begriff bzw. Zusatz: harmonische Schwingung, Phase (über Gleich-/Gegentakt in A16), Federpendel (A14). Bewusst vertagt: Schwebung (S. 51), lineare/Flächen-/Raumwellen (S. 55) – passt zu Akustik E9. "
+                        "Für A16 vorher klären, ob die Kadetten Sinuskurven gleicher Periode zeichnen können – sonst ein vorbereitetes Achsenraster (Karopapier, 1 cm = 2 Kästchen) austeilen."),
+    ("Abweichung: ", "Stunden je Klasse verschieden (Fahrplan je Klasse); Gliederung nach Teilen statt Stunden; V4.12 Federpendel/Stimmgabeln nicht durchgeführt (Federpendel nicht im Inventar; laut Stephan nur eine Stimmgabel und zwei Resonanzkästen – Mitschwingen zweier Stimmgabeln nicht möglich; K2.1-V2 ist eine Alternative, kein Ersatz), "
                      "V4.13 Wellenwanne durch Simulation ersetzt (Wellenwanne nicht im Inventar), V4.14–V4.16 nicht eingeplant (Zeit, Geräte). Kein CLIL."),
 ]
 
@@ -46,6 +49,7 @@ def _karten():
     for k in PL.PLAN:
         for st in PL.PLAN[k]:
             schritte = [f"{name} ({m} min)" for name, m, oh, art in st["phasen"]]
+            if (k, st["std"]) in PL.KNAPP: schritte.append("Wenn die Zeit knapp wird – " + PL.KNAPP[(k, st["std"])])
             mat = " · ".join(MATERIAL[t] for t in st["teile"])
             ohne = ", ".join(dict.fromkeys(p[0].split(" (")[0] for p in st["phasen"] if p[2] and p[3] not in ("reserve",)))
             out.append((f"{k} · Stunde {st['std']} · {st['datum']} · " + " + ".join(f"Teil {t}" for t in st["teile"]), schritte, mat, ohne))
@@ -58,7 +62,7 @@ STUNDENKARTEN = _karten()
 
 CHECKLISTE = [
     "Bis spätestens 03.11.: Vorversuch K2.1-V1 – Stativ (#179, #141, #143, #29) über der Tischkante aufbauen, gelbe Schnur #57 am Querstab-Ende festknoten und mit Klebeband sichern (oder Universalklemme #160 testen – #140 ist für 10–25 mm und hält die Schnur kaum), 100-g-Stück aus dem Gewichtssatz #59 anbinden (hält der Knoten? hat das Stück einen Griffknopf?), je zwei Probeläufe bei 0,40 m und 0,90 m stoppen.",
-    "Schnur mit zwei Klebeband-Fähnchen markieren: 0,40 m und 0,90 m vom Aufhängepunkt bis zur Mitte des Gewichts (Umstellen in 1 Minute).",
+    "Schnur mit zwei Klebeband-Fähnchen markieren: 0,40 m und 0,90 m vom Aufhängepunkt bis zur Mitte des Gewichts (Umstellen ca. 2 min: Gewicht stützen, Knoten lösen, nachlassen, neu verknoten – nie nur Klebeband).",
     "2–3 schwere Bücher für den Stativfuß bereitlegen; Pendel vorne am Lehrertisch, Schwingung quer zur Klasse; links und rechts in Schwingungsrichtung je ca. 1,5 m frei, die Klasse sitzt davor – Sichtlinie von hinten prüfen.",
     "K2.1-V2 einmal üben: Pendel an der Schnur (0,40 m) mit ca. 1 cm Handweg im eigenen Takt (ca. 0,8 Hz) aufschaukeln; Abbruch bei ca. 20 cm Ausschlag.",
     "K2.2-V1: 3 m Schnur abmessen, Büroklammer bereit; ausprobieren, bei welcher (lockeren) Spannung der Puls gut sichtbar ist. Platz für 10 Kadetten in einer Reihe freiräumen.",
@@ -176,8 +180,8 @@ QUELLEN = [
     "**Trauner Naturwissenschaften HAK 4** S. 47–59: Inhalte, Buch-Aufgaben S. 55, 57, 59 (in eigenen Worten als A7, A9, A11), Versuch S. 53 (→ K2.1-V2), Filmtipps nawi_v50, nawi_v51, stehendeWelle. Die Buchseiten lagen ChatGPT als Fotos vor; Claude hat sie nicht selbst gesehen (Stephan: ChatGPT vertrauen).",
     "**Zusatzquellen A/B** (»Naturwissenschaften HAK IV« und Kapitel 18/19 Schwingungen/Wellen) laut ChatGPT: Ein-Variablen-Vergleich, Stoßdämpfer, Grenzen der Wasserwellen-Darstellung – übernommen in Theorie Teil 2/3 und V1.",
     "**Expedition Physik 4** (Projekt): Wellenlänge aus Ortsdiagrammen → Teil 3 (Grafik Ort/Zeit); Praxisteil V7.2 Schwingkreis geprüft, nicht übernommen (elektrischer Aufbau, Zeit).",
-    "**Jahresplan v23:** E6–E8, Versuche V4.11 (übernommen, gekürzt), V4.12 (nicht durchgeführt: Federpendel fehlt; Stimmgabeln #144/#145 vorhanden, Zubehör ungeprüft; K2.1-V2 ist Alternative, kein Ersatz), V4.13 (ersetzt durch Simulation: Wellenwanne nicht nachgewiesen), V4.14–V4.16 (nicht eingeplant: Zeit bzw. Geräte); Referatsthema »Resonanzkatastrophen«, Querverbindung Basilarmembran.",
-    "**Inventar (2026-09):** #10 Bandmaß 3 m, #29 Doppelmuffe, #57 gelbe Schnur, #59 Gewichtssatz, #141/#143 Stativstäbe, #179 V-Fuß, F-038 Büroklammern; #140 Stativklemme (10–25 mm) passt nicht für die dünne Schnur – Schnur festknoten oder Universalklemme #160 (0–80 mm) testen. Stimmgabel #144 und Stimmgabelpaar #145 vorhanden, aber nicht eingeplant (Resonanzkasten und Anschläger ungeprüft) – Idee für einen Vorversuch bzw. für Akustik E9.",
+    "**Jahresplan v23:** E6–E8, Versuche V4.11 (übernommen, gekürzt), V4.12 (nicht durchgeführt: Federpendel fehlt; nur eine Stimmgabel und zwei Resonanzkästen vorhanden (Stephan, 25.10.) – kein Mitschwingversuch möglich; K2.1-V2 ist Alternative, kein Ersatz), V4.13 (ersetzt durch Simulation: Wellenwanne nicht nachgewiesen), V4.14–V4.16 (nicht eingeplant: Zeit bzw. Geräte); Referatsthema »Resonanzkatastrophen«, Querverbindung Basilarmembran.",
+    "**Inventar (2026-09):** #10 Bandmaß 3 m, #29 Doppelmuffe, #57 gelbe Schnur, #59 Gewichtssatz, #141/#143 Stativstäbe, #179 V-Fuß, F-038 Büroklammern; #140 Stativklemme (10–25 mm) passt nicht für die dünne Schnur – Schnur festknoten oder Universalklemme #160 (0–80 mm) testen. Stimmgabeln: im Inventar #144 und »Stimmgabelpaar« #145, tatsächlich laut Stephan (25.10.2026) nur eine Stimmgabel und zwei Resonanzkästen – nicht eingeplant; passt zu Akustik E9 (Schallerzeugung, Übertragung, Hörbarkeit), nicht als Resonanzversuch.",
     "**Fachquellen:** OpenStax University Physics Vol. 1, Kap. 15.4–15.6 und 16.1/16.5 (Pendel, Dämpfung, Resonanz, Wellen, Interferenz); OpenStax College Physics 2e 27.2 (Huygens); Billah & Scanlan, Am. J. Phys. 59 (1991) 118 (Tacoma Narrows) – laut ChatGPT-Entwurf geöffnet.",
     "**Selbst geprüft (25.10.2026):** Max-Planck-Gesellschaft, »Black holes heavier than allowed?« (27.08.2026) und Live Science zur GW231123-Linsenstudie (Goyal, Villarrubia-Rojo, Zumalacárregui, ApJL 2026) → Forschungskarte A17; Dlubal-Blog zu Broughton 1831/Millennium Bridge → Teil 2; PhET-Liste (Pendel-Labor HTML5, Deutsch).",
     "**Nicht prüfbar von hier:** die drei Trauner-Filmtipps (Seite gesperrt) – bitte vor dem Einsatz ansehen; keine zusätzlichen YouTube-Videos eingebaut, weil sie hier nicht geprüft werden konnten.",

@@ -740,6 +740,7 @@ def versuch_folien(nr, L, kurz=False):
         text(c, [[("Sicherheit: ", {"bold": True, "color": RUST}), (v["sicher"], {})]], size=16, after=0)
     pill(s, pl, kind=pk, w=2.4)
     # 2 Durchführung
+    d._nfol = 1
     s = d.slide("Nur Titel", f"{nr} · Durchführung")
     tag(s, f"ca. {v['zeit']} min · {v['form'].split(' (')[0][:24]}", OLIVE if v["kern"] else MUTED, x=5.9, w=3.6)
     y = Y0 + 0.3
@@ -750,7 +751,7 @@ def versuch_folien(nr, L, kurz=False):
     for i, st in enumerate(v["schritte"]):
         h = th(st, 20, 8.35, pad=0.06)
         if y + h > Y1:
-            pill(s, pl, kind=pk, w=2.4); s = d.slide("Nur Titel", f"{nr} · Durchführung (2)"); y = Y0 + 0.1
+            pill(s, pl, kind=pk, w=2.4); nfol = getattr(d, "_nfol", 1) + 1; d._nfol = nfol; s = d.slide("Nur Titel", f"{nr} · Durchführung ({nfol})"); y = Y0 + 0.1
         c = box(s, X0, y + 0.04, 0.42, 0.42, fill=TEAL); text(c, [str(i + 1)], size=16, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
         tb(s, X0 + 0.55, y, 8.45, h, [st], size=20); y += h + 0.04
     if y + 0.45 < Y1:
@@ -860,7 +861,7 @@ def fahrplan_folien():
         n = len(rr)
         gruppen, cur = [], []
         for r in rr:
-            if cur and table_h(cw, [["Wann", "Das machen wir", "Aufgaben", "Ohne Handy", "Abgabe"]] + [mk(x) for x in cur + [r]], size=14) > 3.55:
+            if cur and table_h(cw, [["Wann", "Das machen wir", "Aufgaben", "Ohne Handy", "Abgabe"]] + [mk(x) for x in cur + [r]], size=16) > 3.55:
                 gruppen.append(cur); cur = []
             cur.append(r)
         gruppen.append(cur)
@@ -868,27 +869,27 @@ def fahrplan_folien():
             s = d.slide("Nur Titel", f"Dein Fahrplan {k}" + (f" ({part}/{len(gruppen)})" if len(gruppen) > 1 else ""))
             tb(s, X0, 1.0, 9, 0.4, [[(f"{k}: Dafür sind {n} Stunden eingeplant. ", {"bold": True, "color": OLIVE}),
                                      ("Abgabe beider PDFs nach der letzten Stunde.", {})]], size=16, after=0)
-            cells, h = auto_grid(s, X0, 1.45, cw, [["Wann", "Das machen wir", "Aufgaben", "Ohne Handy", "Abgabe"]] + [mk(r) for r in g], size=14, minh=0.32)
+            cells, h = auto_grid(s, X0, 1.45, cw, [["Wann", "Das machen wir", "Aufgaben", "Ohne Handy", "Abgabe"]] + [mk(r) for r in g], size=16, minh=0.34)
             if part == len(gruppen):
                 extra = [r for r in z if r.get("klasse") == k and not r["wann"].startswith("Stunde")] + [r for r in z if not r.get("klasse")]
-                if extra and 1.5 + h < 4.7:
-                    tb(s, X0, 1.5 + h, 9, 0.4, [[("Zusatz: ", {"bold": True, "color": OLIVE}), (" · ".join(f"{r['wann']}{' ' + r['datum'] if r.get('datum') else ''}: Aufgaben {r['aufgaben']}" for r in extra), {})]], size=14)
+                if extra and 1.5 + h < 4.55:
+                    tb(s, X0, 1.5 + h, 9, 0.4, [[("Zusatz: ", {"bold": True, "color": OLIVE}), (" · ".join(f"{r['wann']}{' ' + r['datum'] if r.get('datum') else ''}: Aufgaben {r['aufgaben']}" for r in extra), {})]], size=16)
 
 
 def abgabe_folie():
     s = d.slide("Nur Titel", "Fertig? So gibst du ab")
     steps = [("1", "Arbeitsblatt öffnen (QR) → Name und Klasse eintragen"), ("2", "»PDF erstellen« tippen → PDF in LMS hochladen"),
-             ("3", "Versuchsseite: Namen der Gruppe + dein Nachname → eigene PDF in LMS"),
-             ("4", "Startet kein Download? »Teilen / Speichern« oder »PDF öffnen« tippen bzw. die Seite im Browser öffnen. Geht LMS nicht, schick das PDF per E-Mail an Stephan.")]
-    y = 1.12
+             ("3", "Versuche: Protokollführer macht je Kadett eine PDF (»Ich gebe ab als«) → Teams-Chat → jeder lädt seine in LMS"),
+             ("4", "Kein Download? »Teilen / Speichern« oder »PDF öffnen« tippen. Geht LMS nicht: PDF per E-Mail an Stephan.")]
+    y = 1.0
     for n, t in steps:
         c = box(s, X0, y + 0.04, 0.5, 0.5, fill=OLIVE); text(c, [n], size=20, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
-        h = th(t, 18 if n == "4" else 20, 5.8, pad=0.06); tb(s, X0 + 0.65, y, 5.8, h, [t], size=18 if n == "4" else 20); y += max(0.65, h + 0.08)
+        h = th(t, 18 if n == "4" else 20, 5.8, pad=0.06); tb(s, X0 + 0.65, y, 5.8, h, [t], size=18 if n == "4" else 20); y += max(0.6, h + 0.04)
     s.shapes.add_picture(qr_png(URL["aufgaben"]), Inches(7.35), Inches(1.15), Inches(1.15), Inches(1.15))
     tb(s, 6.9, 2.3, 2.1, 0.3, ["Arbeitsblatt"], size=14, bold=True, color=OLIVE, align=PP_ALIGN.CENTER, after=0)
     s.shapes.add_picture(qr_png(URL["versuche"]), Inches(7.35), Inches(2.8), Inches(1.15), Inches(1.15))
     tb(s, 6.9, 3.95, 2.1, 0.3, ["Versuche"], size=14, bold=True, color=RED, align=PP_ALIGN.CENTER, after=0)
-    tb(s, X0, 4.62, 9, 0.4, ["Abgabe: 4AK nach Stunde 5 (Mi 18.11.) · 4BK nach Stunde 4 (Fr 13.11.)"], size=18, bold=True, color=RUST, after=0)
+    tb(s, X0, max(4.62, min(y + 0.02, 4.72)), 9, 0.4, ["Abgabe: 4AK nach Stunde 5 (Mi 18.11.) · 4BK nach Stunde 4 (Fr 13.11.)"], size=18, bold=True, color=RUST, after=0)
 
 
 def lehrer_infos():
@@ -999,10 +1000,16 @@ def build_vs(L):
     titelfolie("Versuche zu Schwingungen und Wellen", "NAWI · 4AB · K2.1-V1 bis K2.2-V2 · Buch S. 48–57", L)
     sicherheit()
     s = d.slide("Nur Titel", "Versuche im Überblick")
-    rows = [["ID", "Versuch", "Wann", "Form", "Einsatz"]]
+    rows = [["ID", "Versuch", "Wann", "Form"]]
     for v in VD.VS:
-        rows.append([v["nr"], v["titel"], v["wann"], v["form"].split(" (")[0], "KERN" if v["kern"] else "ZUSATZ"])
-    auto_grid(s, X0, Y0 - 0.05, [1.05, 2.75, 2.75, 1.5, 0.85], rows, size=12, minh=0.3)
+        rows.append([v["nr"], v["titel"], v["wann"].replace(" · ", "\n"), v["form"].split(" (")[0]])
+    cw_ = [1.05, 2.75, 2.45, 1.55]
+    if table_h(cw_, rows, size=16, minh=0.34) > Y1 - Y0 + 0.05:  # zu hoch für eine Folie → zwei Folien (16 pt bleibt)
+        auto_grid(s, X0, Y0 - 0.05, cw_, rows[:3], size=16, minh=0.34)
+        s.shapes.add_picture(qr_png(URL["versuche"]), Inches(8.45), Inches(1.15), Inches(1.0), Inches(1.0))
+        s = d.slide("Nur Titel", "Versuche im Überblick (2)"); rows = [rows[0]] + rows[3:]
+    tb(s, X0, Y1 - 0.3, 7.8, 0.3, ["Alle vier Versuche sind KERN (Pflicht)."], size=16, color=MUTED, after=0)
+    auto_grid(s, X0, Y0 - 0.05, cw_, rows, size=16, minh=0.34)
     s.shapes.add_picture(qr_png(URL["versuche"]), Inches(8.45), Inches(1.15), Inches(1.0), Inches(1.0))
     if L: herrichten_folien()
     for v in VD.VS:

@@ -20,7 +20,7 @@ def tabelle():
     for key, d in per.items():
         name, icon, ort, bestand = VD.LM[key]
         gesamt = max(sum(d.get(nr, 0) for nr in slot) for slot in SLOTS)
-        if bestand is None:
+        if bestand is None or isinstance(bestand, str):
             fehlt = "–"
         else:
             fehlt = str(gesamt - bestand) if gesamt > bestand else "–"

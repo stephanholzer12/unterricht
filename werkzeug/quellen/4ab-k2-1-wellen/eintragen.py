@@ -13,7 +13,7 @@ DATEIEN = {"stand": I.STAND, "zip": f"{P}-{V}.zip",
            "liste": [f"{P}-TH-Lehrer-{V}.pptx", f"{P}-TH-Kadetten-{V}.pptx", f"{P}-VS-Lehrer-{V}.pptx", f"{P}-VS-Kadetten-{V}.pptx",
                      f"{P}-TH-AB-{V}.docx", f"{P}-TH-Loesung-{V}.docx", f"{P}-TH-Fachwissen-{V}.docx",
                      f"{P}-VS-AB-{V}.docx", f"{P}-VS-Loesung-{V}.docx", f"{P}-VS-Fachwissen-{V}.docx",
-                     f"{P}-Kahoot-{V}.xlsx", f"{P}-Pruefbericht-Claude-{V}.md"]}
+                     f"{P}-Kahoot-v1.xlsx", f"{P}-Pruefbericht-Claude-{V}.md"]}
 neu = {"klasse": "4AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K2.1–2.3", "titel": I.TITEL, "block": "B Schwingungen & Wellen", "jahresplan": "E6–E8",
        "seiten": ["theorie.html", "aufgaben.html", "versuche.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]

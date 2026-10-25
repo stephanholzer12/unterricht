@@ -53,6 +53,16 @@ PLAN = {
      ("Besprechung", 4, True, "bespr"), ("PDF-Abgabe (Arbeitsblatt + Versuche)", 5, False, "pdf"), ("Reserve", 7, True, "reserve")]},
  ],
 }
+# Enge Stunden (ChatGPT-Bericht v2, Befund 10): Zeitstopp und Kürzungsreihenfolge – Pflichtziele bleiben, nichts wird Hausübung
+KNAPP = {
+ ("4AK", 3): "Zeitstopp: Um Minute 44 beginnt die Besprechung, egal wie weit ihr seid. Wenn es knapp wird: 1. Kadetten-Welle längs nur einmal (5 Kadetten statt 10). "
+             "2. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich sichern – jede Gruppe schreibt nur einen Satz. 3. Aufgabe 7b in der Besprechung gemeinsam rechnen. "
+             "Nachholreserve: Stunde 4 hat mit den Zusätzen 16/17 Luft.",
+ ("4BK", 2): "Zeitstopp: Um Minute 21 kommt der Übergang zu Teil 3, um Minute 43 die Besprechung. Wenn es knapp wird: 1. Resonanz-Demo nur mit zwei Takten (langsam / im eigenen Takt). "
+             "2. Partnercheck mit 2 statt 3 Fragen. 3. Kadetten-Welle längs mit 5 Kadetten. 4. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich, jede Gruppe ein Satz. "
+             "Der optionale Termin am 18.11. ist keine Voraussetzung.",
+}
+
 ZUSATZTERMIN_4BK = {"datum": "Mi 18.11.", "methode": "Vertiefung (nur falls die Stunde stattfindet)", "phasen": [
      ("Wiederholung", 3, True, "org"), ("Zusatz 14", 8, False, "z14"), ("Zusatz 15", 8, False, "z15"), ("Zusatz 16 (Handschrift)", 8, True, "z16"),
      ("Zusatz 17 (zu zweit)", 7, False, "z17"), ("Besprechung", 6, True, "bespr"), ("PDF ergänzen", 4, False, "pdf"), ("Reserve", 6, True, "reserve")]}

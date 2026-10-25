@@ -211,7 +211,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button>
     </div>
     <p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
-    <p class="hint">Stand 25.10.2026 · v1</p>
+    <p class="hint">Stand 25.10.2026 · v2</p>
   </section>
 </main>
 
@@ -1472,6 +1472,8 @@ function evalTask(t) {
   const parts = Object.entries(t.chk).filter(([k]) => !((t.opt || []).includes(k) && !(a[k] != null && String(a[k]).trim() !== ""))).map(([k, c]) => Object.assign({ key: k, label: (t.fields || []).concat([["t", "Antwort"]]).find(f => f[0] === k)[1] }, checkField(t, k, c)));
   /* K1.3: offene Erklärungen (c.man) zeigen nur eine Schreibhilfe; »richtig« bezieht sich nur auf die automatisch prüfbaren Teile */
   parts.forEach(p => { if ((t.chk[p.key] || {}).man) p.man = true; });
+  /* Skizzen-Aufgaben: die Zeichnung (Foto) bewertet immer die Lehrkraft – nie pauschal »Richtig!« (ChatGPT-Bericht v2, Befund 3) */
+  if (t.type === "sketch") { const fo = !!(S.a[t.id] || {}).foto; parts.push({ key: "foto", label: "Zeichnung (Foto)", kind: "foto", man: true, filled: fo, ok: fo, hits: [] }); }
   const auto = parts.filter(p => !p.man), man = parts.filter(p => p.man);
   if (!auto.length && man.length) return { ok: man.every(p => p.filled), parts, man: true, manOnly: true };
   return { ok: auto.every(p => p.ok), parts, man: man.length > 0 };
@@ -1488,11 +1490,12 @@ function showCheck(t) {
   });
   man.forEach(p => {
     const pre = viele ? p.label + ": " : "";
+    if (p.kind === "foto") { fb.append(el("div", { text: p.filled ? "Zeichnung: Foto ist da – sie bewertet die Lehrkraft." : "Zeichnung: Das Foto deiner Zeichnung fehlt noch." })); return; }
     if (!p.filled) { fb.append(el("div", { text: pre + "Deine Erklärung fehlt noch." })); return; }
     const da = p.hits.filter(h => h[1]).map(h => h[0]), fehlt = p.hits.filter(h => !h[1]).map(h => h[0]);
     fb.append(el("div", { text: pre + "Schreibhilfe – " + (da.length ? "gefunden: " + da.join(", ") : "noch keines der erwarteten Stichwörter") + (fehlt.length ? " · vielleicht fehlt noch: " + fehlt.join(", ") + " (eine richtige Umschreibung zählt auch)" : "") + "." }));
   });
-  if (man.length) fb.append(el("div", { text: "Ob deine Erklärung fachlich stimmt, bewertet die Lehrkraft. Lies sie noch einmal durch." }));
+  if (man.some(p => p.kind !== "foto")) fb.append(el("div", { text: "Ob deine Erklärung fachlich stimmt, bewertet die Lehrkraft. Lies sie noch einmal durch." }));
   if (t.tip && (!r.ok || man.some(p => p.filled && p.hits.some(h => !h[1])))) fb.append(el("div", {}, "Tipp: Lies nochmal ", el("a", { href: t.tip[1], text: t.tip[0] }), "."));
 }
 function showSolutions() {
@@ -1601,7 +1604,7 @@ async function buildPdf() {
     for (const l of answerLines(t)) txt(l, 11.5, l.includes("keine Antwort") ? "bold" : "normal", l.includes("keine Antwort") ? rust : ink, M + 4, CW - 4, 1.3);
     const ev = evalTask(t);
     let st = "selbst bewerten";
-    if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + "Erklärung: bewertet die Lehrkraft"; }
+    if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + (ev.parts.some(p => p.man && p.kind === "foto") ? (ev.parts.some(p => p.kind === "foto" && p.filled) ? "Zeichnung" : "Zeichnung (Foto fehlt)") + (ev.parts.some(p => p.man && p.kind !== "foto") ? " und Erklärung" : "") : "Erklärung") + ": bewertet die Lehrkraft"; }
     else if (ev) {
       const kwOnly = ev.parts.every(p => p.kind === "kw");
       if (ev.ok) st = kwOnly ? "Stichwörter vollständig – selbst bewerten" : "automatisch geprüft: richtig";

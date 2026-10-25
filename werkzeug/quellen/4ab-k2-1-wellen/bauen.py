@@ -76,6 +76,8 @@ assert "(t.opt || [])" in s
 # ---- K1.3 v4: offene Erklärungen (c.man) bewertet die Lehrkraft (ChatGPT-Bericht v5, N02/N03) ----
 rep("  return { ok: parts.every(p => p.ok), parts };\n}", """  /* K1.3: offene Erklärungen (c.man) zeigen nur eine Schreibhilfe; »richtig« bezieht sich nur auf die automatisch prüfbaren Teile */
   parts.forEach(p => { if ((t.chk[p.key] || {}).man) p.man = true; });
+  /* Skizzen-Aufgaben: die Zeichnung (Foto) bewertet immer die Lehrkraft – nie pauschal »Richtig!« (ChatGPT-Bericht v2, Befund 3) */
+  if (t.type === "sketch") { const fo = !!(S.a[t.id] || {}).foto; parts.push({ key: "foto", label: "Zeichnung (Foto)", kind: "foto", man: true, filled: fo, ok: fo, hits: [] }); }
   const auto = parts.filter(p => !p.man), man = parts.filter(p => p.man);
   if (!auto.length && man.length) return { ok: man.every(p => p.filled), parts, man: true, manOnly: true };
   return { ok: auto.every(p => p.ok), parts, man: man.length > 0 };
@@ -93,14 +95,15 @@ s = s[:_i] + """function showCheck(t) {
   });
   man.forEach(p => {
     const pre = viele ? p.label + ": " : "";
+    if (p.kind === "foto") { fb.append(el("div", { text: p.filled ? "Zeichnung: Foto ist da – sie bewertet die Lehrkraft." : "Zeichnung: Das Foto deiner Zeichnung fehlt noch." })); return; }
     if (!p.filled) { fb.append(el("div", { text: pre + "Deine Erklärung fehlt noch." })); return; }
     const da = p.hits.filter(h => h[1]).map(h => h[0]), fehlt = p.hits.filter(h => !h[1]).map(h => h[0]);
     fb.append(el("div", { text: pre + "Schreibhilfe – " + (da.length ? "gefunden: " + da.join(", ") : "noch keines der erwarteten Stichwörter") + (fehlt.length ? " · vielleicht fehlt noch: " + fehlt.join(", ") + " (eine richtige Umschreibung zählt auch)" : "") + "." }));
   });
-  if (man.length) fb.append(el("div", { text: "Ob deine Erklärung fachlich stimmt, bewertet die Lehrkraft. Lies sie noch einmal durch." }));
+  if (man.some(p => p.kind !== "foto")) fb.append(el("div", { text: "Ob deine Erklärung fachlich stimmt, bewertet die Lehrkraft. Lies sie noch einmal durch." }));
   if (t.tip && (!r.ok || man.some(p => p.filled && p.hits.some(h => !h[1])))) fb.append(el("div", {}, "Tipp: Lies nochmal ", el("a", { href: t.tip[1], text: t.tip[0] }), "."));
 }""" + s[_j:]
-rep('    let st = "selbst bewerten";\n    if (ev) {', '    let st = "selbst bewerten";\n    if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + "Erklärung: bewertet die Lehrkraft"; }\n    else if (ev) {')
+rep('    let st = "selbst bewerten";\n    if (ev) {', '    let st = "selbst bewerten";\n    if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + (ev.parts.some(p => p.man && p.kind === "foto") ? (ev.parts.some(p => p.kind === "foto" && p.filled) ? "Zeichnung" : "Zeichnung (Foto fehlt)") + (ev.parts.some(p => p.man && p.kind !== "foto") ? " und Erklärung" : "") : "Erklärung") + ": bewertet die Lehrkraft"; }\n    else if (ev) {')
 rep("(ev && ev.ok ? [70, 110, 40] : muted)", "(ev && ev.ok && !ev.man ? [70, 110, 40] : muted)")
 s = s[:i] + 'const KEY = "%s";\nconst KAP = "K2.1", THEMA = "Wellen";\nconst T = ' % I.KEY + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
 rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }", ".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }\n.fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }")
@@ -363,9 +366,9 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
       <li><b>K2.1-V2 Resonanz</b> (4AK Mo 09.11. · 4BK Fr 06.11.): erst tippen, dann zuschauen und eintragen.</li>
       <li><b>K2.2-V1 Schnur und Kadetten-Welle</b> (4AK Mi 11.11. · 4BK Fr 06.11.): ihr seid selbst die Teilchen.</li>
       <li><b>K2.2-V2 Simulation</b> (4AK Mo 16.11. · 4BK Fr 13.11.): ein Modell am Beamer, kein Messversuch.</li>
-      <li>Messwerte und Erkenntnis gleich eintragen; Interpretation und Schlussfolgerung in der Aufgabenzeit derselben Stunde. Es gibt keine Hausübung.</li>
+      <li>Messwerte, Erkenntnis, Interpretation und Schlussfolgerung gleich beim Versuch eintragen – die Zeit dafür ist im Versuch eingeplant. Es gibt keine Hausübung.</li>
     </ul>
-    <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF ab (Namen der Gruppe + dein Nachname) – 4AK nach Stunde 5 (Mi 18.11.), 4BK nach Stunde 4 (Fr 13.11.).</p>
+    <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF in LMS ab – 4AK nach Stunde 5 (Mi 18.11.), 4BK nach Stunde 4 (Fr 13.11.). <b>So geht es mit einem Protokoll-Handy:</b> Der Protokollführer trägt im Feld »Ich gebe diese PDF ab als« nacheinander jeden Nachnamen ein, tippt jedes Mal »PDF erstellen« und schickt die PDF im Teams-Chat der Gruppe an den jeweiligen Kadetten. Jeder lädt seine PDF in LMS hoch – niemand muss etwas abtippen.</p>
   </section><!--/PLAN-->""" + s[j:]
 s = re.sub(r"<!--STAND-->.*?<!--/STAND-->", '<!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">NAWI · 4AB · K2.1–2.3 Versuche · Stand ' + STAND + " · " + I.V + "</p><!--/STAND-->", s, flags=re.S)
 s = s.replace("26-27-2AB-K1.2-Bindungen-VS-Handy-v1", "26-27-4AB-K2.1-Wellen-VS-Handy-v1")

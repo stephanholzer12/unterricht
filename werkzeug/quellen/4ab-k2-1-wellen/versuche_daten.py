@@ -5,13 +5,13 @@ Status aller Versuche: dokumentiert und angepasst, NICHT praktisch erprobt – V
 
 GRUPPEN = 8  # ca. 26 Kadetten je Klasse: Gruppe 1–6 zu dritt, Gruppe 7–8 zu viert
 
-# Herrichte-Schlüssel → (Bezeichnung, Icon, Inventar-Nr. / Fundort, Bestand laut Inventar oder None = kein Inventargerät)
+# Herrichte-Schlüssel → (Bezeichnung, Icon, Inventar-Nr. / Fundort, Bestand laut Inventar: Zahl, Text wie »sehr viele (nicht gezählt)« oder None = kein Inventargerät)
 LM = {
     "stativ": ("Stativ-Aufbau: V-Fuß #179, Stab 1000 mm #141, Querstab 500 mm #143, Doppelmuffe #29; Schnur am Querstab-Ende festgeknotet (Klebeband)", "stativ", "Lehrmittel #179, #141, #143, #29 · NAWI-Saal E21", 1),
     "schnur": ("Gelbe Schnur (Rolle 50 m)", "schnur", "Lehrmittel #57 · NAWI-Saal E21", 1),
     "gewicht": ("Pendelkörper: 100-g-Stück (oder 50 g) aus dem Gewichtssatz 10 mg–100 g", "gewicht", "Lehrmittel #59 · NAWI-Saal E21", 1),
     "bandmass": ("Bandmaß 3 m", "bandmass", "Lehrmittel #10 · NAWI-Saal E21", 1),
-    "klammer": ("Büroklammer (Markierung)", "klammer", "Ergänzung F-038 · NAWI-Saal (sehr viele)", 100),
+    "klammer": ("Büroklammer (Markierung)", "klammer", "Ergänzung F-038 · NAWI-Saal", "sehr viele (nicht gezählt)"),
     "handy": ("Handy als Stoppuhr (Kadetten)", "handy", "Geräte der Kadetten – kein Inventar", None),
     "laptop": ("Lehrer-PC mit Beamer (PhET im Browser)", "laptop", "NAWI-Saal – Unterrichtsgerät", None),
 }
@@ -28,14 +28,14 @@ VS = [
           ["Pendelkörper 100 g aus dem Gewichtssatz", "gewicht", "gewicht", 1], ["Bandmaß 3 m", "bandmass", "bandmass", 1],
           ["Handy als Stoppuhr – 2 je Gruppe", "handy", "handy", 2]],
   "entsorgung": "Kein Abfall. Gewicht zurück in den Gewichtssatz, Schnur aufrollen, Stativ zerlegen und zurück in den Schrank.",
-  "schritte": ["Rollen in der Gruppe: zwei Zeitnehmer (beide stoppen), ein Protokollführer, in Vierergruppen zusätzlich ein Beobachter. Tippt zuerst ab: Ist das Pendel bei 0,90 m schneller oder langsamer als bei 0,40 m?",
-               "Die Lehrkraft stellt die Länge l = 0,40 m ein – gemessen vom Aufhängepunkt am Querstab bis zur Mitte des Gewichts. Die Schnur ist am Querstab fest verknotet und mit Klebeband gesichert.",
+  "schritte": ["Rollen in der Gruppe: zwei Zeitnehmer (beide stoppen jeden Lauf – ihr Mittelwert gleicht die Reaktionszeit aus), ein Protokollführer, in Vierergruppen zusätzlich ein Beobachter. Tippt zuerst ab: Ist das Pendel bei 0,90 m schneller oder langsamer als bei 0,40 m?",
+               "Die Lehrkraft stellt die Länge l = 0,40 m ein – gemessen vom Aufhängepunkt am Querstab bis zur Mitte des Gewichts. Die Schnur ist am Querstab fest verknotet; Klebeband sichert den Knoten nur zusätzlich.",
                "Ein Helfer zieht das Gewicht etwa 5 cm zur Seite (höchstens 7 cm – das sind ca. 10°) und lässt los, ohne anzuschieben. Gestartet wird, wenn das Gewicht von links nach rechts durch die Mitte geht: Die Klasse zählt laut »Null«.",
-               "Bei jedem weiteren Durchgang von links nach rechts zählt die Klasse weiter: »Eins, zwei … zehn«. Bei »Zehn« stoppen beide Zeitnehmer – das sind 10 volle Schwingungen. Gleich danach ein zweiter Lauf.",
-               "Die Lehrkraft stellt l = 0,90 m ein (Klebeband lösen, Schnur bis zur Markierung nachlassen, wieder festkleben). Gleiches Gewicht, Ausschlag höchstens 15 cm, wieder zwei Läufe.",
-               "Rechnet für jede Länge: Mittelwert der Zeiten, T = Zeit : 10, f = 1 : T. Tragt alles ein, dann Aufgabe 2 im Arbeitsblatt."],
+               "Bei jedem weiteren Durchgang von links nach rechts zählt die Klasse weiter: »Eins, zwei … zehn«. Bei »Zehn« stoppen beide Zeitnehmer – das sind 10 volle Schwingungen. Laufzeit = Mittelwert beider Zeitnehmer (12,6 s und 12,8 s → 12,7 s). Gleich danach ein zweiter Lauf.",
+               "Die Lehrkraft stellt l = 0,90 m ein (ca. 2 min: Gewicht stützen, Knoten lösen, nachlassen, neu verknoten – nie nur Klebeband). Gleiches Gewicht, Ausschlag höchstens 15 cm, wieder zwei Läufe.",
+               "Rechnet für jede Länge: Mittelwert der beiden Läufe, T = Mittelwert : 10, f = 1 : T. Tragt alles ein, dann Aufgabe 2 im Arbeitsblatt."],
   "skizze": "v1",
-  "beob": {"titel": "Eure Messwerte – nicht die Beispielwerte abschreiben", "kopf": ["l in m", "10 Schwingungen, Lauf 1 in s", "10 Schwingungen, Lauf 2 in s", "Mittelwert in s", "T in s", "f in Hz"],
+  "beob": {"titel": "Eure Messwerte – nicht die Beispielwerte abschreiben", "kopf": ["l in m", "Lauf 1: 10 Schw. in s (Mittel 2 Zeitnehmer)", "Lauf 2: 10 Schw. in s (Mittel 2 Zeitnehmer)", "Mittelwert beider Läufe in s", "T in s", "f in Hz"],
            "zeilen": [["0,40"], ["0,90"]]},
   "erk": "Wie verändert sich die Periodendauer, wenn das Pendel länger wird? Nenne eure beiden T-Werte.",
   "interp": "Welche Größe habt ihr verändert – und welche habt ihr bewusst gleich gelassen? Warum ist das für einen fairen Vergleich wichtig?",
@@ -50,7 +50,7 @@ VS = [
   "lehrer": ["Aufbau VOR der Stunde (10–15 min): Querstab (#143) mit Doppelmuffe (#29) oben am 1000-mm-Stab (#141), Stab in den V-Fuß (#179); Querstab ca. 25 cm über die Tischkante. "
              "Schnur am Ende des Querstabs zweimal umwickeln, festknoten und mit Klebeband sichern – diese Stelle ist der Aufhängepunkt. Die Stativklemme #140 ist für 10–25 mm gebaut und hält eine dünne Schnur voraussichtlich nicht; wer lieber klemmt: Universalklemme #160 (0–80 mm) im Vorversuch testen. Fuß mit 2–3 schweren Büchern beschweren.",
              "Pendelkörper: 100-g-Stück aus dem Gewichtssatz #59 – falls es einen Griffknopf hat, Schnur mit doppeltem Knoten darunter festbinden und durch kräftiges Ziehen prüfen. Form und Griffknopf sind im Inventar nicht dokumentiert → vorher nachsehen; hält es nicht sicher, die Simulation nehmen.",
-             "Längen vorab markieren: Klebeband-Fähnchen auf der Schnur bei 0,40 m und 0,90 m (gemessen bis zur Mitte des Gewichts), dann geht das Umstellen in 1 Minute.",
+             "Längen vorab markieren: Klebeband-Fähnchen auf der Schnur bei 0,40 m und 0,90 m (gemessen bis zur Mitte des Gewichts), Umstellen in ca. 2 min: Gewicht stützen, Knoten lösen, bis zur Markierung nachlassen, neu verknoten, Klebeband nur als Zusatzsicherung – das Gewicht hängt nie allein am Klebeband.",
              "Sichtbarkeit: Pendel vorne am Lehrertisch, Schwingung quer zur Klasse (von links nach rechts). In Schwingungsrichtung links und rechts je ca. 1,5 m frei lassen – die Klasse sitzt davor, niemand seitlich. Das laute gemeinsame Zählen synchronisiert alle Gruppen.",
              "Ausfall (Befestigung unsicher): PhET »Pendel-Labor« am Beamer mit denselben zwei Längen – dann ausdrücklich als Simulation protokollieren, nicht als echte Messung."],
   "fehler": ["Halbe Schwingungen gezählt (jeder Durchgang durch die Mitte) → T nur halb so groß.", "Länge nur bis zum oberen Rand des Gewichts gemessen → l zu klein.",
@@ -61,7 +61,7 @@ VS = [
 
  {"id": "resonanz", "nr": "K2.1-V2", "titel": "Eine kleine Anregung – eine große Antwort?", "bindung": "Erzwungene Schwingung und Resonanz · Lehrer-Demo mit Vorhersage",
   "stunde": 2, "wann": "4AK: Stunde 2 (Mo 09.11.) · 4BK: Stunde 2 (Fr 06.11.)", "form": "Lehrer-Demo", "demo": True, "kern": True, "zeit": 7,
-  "jp": "nicht im Jahresplan als eigener Versuch – Alternative zu V4.12, kein Ersatz (V4.12 nicht durchgeführt: Federpendel nicht im Inventar; Stimmgabelpaar #145 vorhanden, Resonanzkasten und Anschläger ungeprüft)", "quelle": "Versuch im Trauner-Buch S. 53 (laut ChatGPT-Entwurf), sicher begrenzt",
+  "jp": "nicht im Jahresplan als eigener Versuch – Alternative zu V4.12, kein Ersatz (V4.12 nicht durchgeführt: Federpendel nicht im Inventar; laut Stephan nur eine Stimmgabel und zwei Resonanzkästen – kein Mitschwingversuch mit zwei Stimmgabeln möglich)", "quelle": "Versuch im Trauner-Buch S. 53 (laut ChatGPT-Entwurf), sicher begrenzt",
   "intro": "Die Lehrkraft hält das Pendel oben an der Schnur und bewegt die Hand nur ein kleines Stück hin und her – langsam, im eigenen Takt des Pendels und schnell. Wann wird der Ausschlag am größten?",
   "sicher": "Kleiner Handweg (ca. 1 cm). Abbrechen, sobald das Gewicht etwa 20 cm ausschlägt. Niemand steht in der Schwingungsebene. Kein Glas, kein Zerstörungsversuch.",
   "mat": [["Schnur mit Gewicht aus K2.1-V1, l ca. 0,40 m", "schnur", "schnur", 1], ["Pendelkörper 100 g aus K2.1-V1", "gewicht", "gewicht", 1]],

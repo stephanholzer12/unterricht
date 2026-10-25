@@ -8,7 +8,7 @@ Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. E
 Zeichen √ und ≈ nur in Theorie und Bildern – in Aufgabentexten und Lösungen nicht (die PDF-Schrift kennt sie nicht; clean() ersetzt sie notfalls)."""
 
 STAND = "25.10.2026"
-V = "v1"
+V = "v2"  # v2: Umsetzung ChatGPT-Prüfbericht v2 (Kahoot unverändert v1)
 ORDNER = "4ab-nawi/k2-1-wellen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
