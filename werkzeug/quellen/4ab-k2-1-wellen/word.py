@@ -183,7 +183,7 @@ def stundenvorschlag(doc):
         para(doc, k, 10, True, TEAL, after=1, keep=True)
         table(doc, ["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Zeit (min)", "Methode (ohne Handy)"], rows, [2.0, 3.4, 3.6, 2.4, 2.2, 3.8], 8.5)
     para(doc, "KERN = Pflicht für alle (Aufgaben 1–13, Versuche K2.1-V1 bis K2.2-V2) · OPTIONAL = Zusatz 14–17 (4AK macht 16–17 in Stunde 4) · keine Hausübungen. "
-              "Jede Stunde = 50 min, Summe je Stunde geprüft (plan.py). Besprechung: Aufgaben mit Tag BESPRECHEN (in der Lösungsmappe).", 8.5, False, MUTED, after=3)
+              "Jede Stunde = 50 min, davon ca. 3 min Klassenbuch und Anwesenheit; Summe je Stunde geprüft (plan.py). Besprechung: Aufgaben mit Tag BESPRECHEN (in der Lösungsmappe).", 8.5, False, MUTED, after=3)
 
 
 def stolpersteine(doc):

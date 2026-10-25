@@ -8,7 +8,7 @@ Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. E
 Zeichen √ und ≈ nur in Theorie und Bildern – in Aufgabentexten und Lösungen nicht (die PDF-Schrift kennt sie nicht; clean() ersetzt sie notfalls)."""
 
 STAND = "25.10.2026"
-V = "v2"  # v2: Umsetzung ChatGPT-Prüfbericht v2 (Kahoot unverändert v1)
+V = "v3"  # v3: Stephans Entscheidungen 25.10. (Klassenbuch-Zeit, WhatsApp/Teams, Trauner-Links, Minuszeichen); Kahoot unverändert v1
 ORDNER = "4ab-nawi/k2-1-wellen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -30,7 +30,7 @@ VIDEOS = {
     "phet_seil": ("Welle an einem Seil", "PhET, University of Colorado (Deutsch, CC BY 4.0)", "Simulation", "https://phet.colorado.edu/de/simulations/wave-on-a-string", "sim"),
     "phet_interferenz": ("Welleninterferenz", "PhET, University of Colorado (Deutsch, CC BY 4.0)", "Simulation", "https://phet.colorado.edu/de/simulations/wave-interference", "sim"),
 }
-FREIGEGEBEN = set()  # z. B. {"resonanz_buch"} – nach Stephans Freigabe eintragen und neu bauen
+FREIGEGEBEN = {"resonanz_buch", "stehend_buch", "stehwelle_buch"}  # Stephan, 25.10.2026: Trauner-Links einbauen
 
 
 def zeigen(key, lehrer=False):

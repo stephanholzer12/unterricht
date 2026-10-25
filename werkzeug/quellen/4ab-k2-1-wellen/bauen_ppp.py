@@ -879,7 +879,7 @@ def fahrplan_folien():
 def abgabe_folie():
     s = d.slide("Nur Titel", "Fertig? So gibst du ab")
     steps = [("1", "Arbeitsblatt öffnen (QR) → Name und Klasse eintragen"), ("2", "»PDF erstellen« tippen → PDF in LMS hochladen"),
-             ("3", "Versuche: Protokollführer macht je Kadett eine PDF (»Ich gebe ab als«) → Teams-Chat → jeder lädt seine in LMS"),
+             ("3", "Versuche: Protokollführer macht je Kadett eine PDF (»Ich gebe ab als«) → WhatsApp- oder Teams-Gruppe → jeder lädt seine in LMS"),
              ("4", "Kein Download? »Teilen / Speichern« oder »PDF öffnen« tippen. Geht LMS nicht: PDF per E-Mail an Stephan.")]
     y = 1.0
     for n, t in steps:
@@ -901,7 +901,7 @@ def lehrer_infos():
     tb(s, X0, Y0 + 0.1, 9, Y1 - Y0 - 0.1, parts, size=size, after=4)
     for k, rows in F.STUNDENVORSCHLAG.items():
         s = d.slide("Nur Titel", f"Lehrer-Info · Stundenvorschlag {k}", hidden=True)
-        tb(s, X0, 0.98, 9, 0.3, [f"AUSGEBLENDET · {k}: {len(PL.PLAN[k])} Termine à 50 min (Jahresplan: 6 Std.) · Kern = A1–A13 + 4 Versuche · Zusatz optional"], size=12, bold=True, color=RUST, after=0)
+        tb(s, X0, 0.98, 9, 0.3, [f"AUSGEBLENDET · {k}: {len(PL.PLAN[k])} Termine à 50 min, je ca. 3 min Klassenbuch (Jahresplan: 6 Std.) · Kern = A1–A13 + 4 Versuche · Zusatz optional"], size=12, bold=True, color=RUST, after=0)
         auto_grid(s, X0, 1.32, [1.15, 1.9, 2.1, 1.25, 1.1, 1.5], [["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Zeit", "Methode"]] + rows, size=12, minh=0.28)
     s = d.slide("Nur Titel", "Lehrer-Info · Die 5 größten Stolpersteine", hidden=True)
     rows = [["Stolperstein", "Richtig ist …"]] + [[a, plain(b)] for a, b in I.STOLPERSTEINE]

@@ -2188,7 +2188,9 @@ window.LH_VARIANTEN = [{"id": "a3", "vars": [{"n": "N", "min": 200, "max": 1000,
   }
   function parseZahlen(str) {
     var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
-    var s0 = String(str || "").replace(/[⋅∙•‧]/g, "·").replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+    /* Typografisches Minus (− U+2212, – Halbgeviertstrich, ‒) direkt vor einer Ziffer ist ein Vorzeichen – wie »-« (25.10.2026, Stephans Okay).
+       Nur am Anfang bzw. nach Leerzeichen, Klammer, = : ; , + – ein Strich als Trenner (»Antwort – 24 A«, Leerzeichen danach) oder Bereich (»10–20«) bleibt unberührt. */
+    var s0 = String(str || "").replace(/(^|[\s(\[{=:;,+])[−–‒](?=\d)/g, "$1-").replace(/[⋅∙•‧]/g, "·").replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       .replace(/([A-Za-zµμΩ²³])⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, u, z) { return u + "^-" + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       /* Minuszeichen U+2212, Exponent in Klammern, Nenner in Klammern: »m−2« → »m^-2«, »m^(-2)« → »m^-2«, »N/(A·m)« → »N/A/m« */
       .replace(/([A-Za-zµμΩ²³])[−–](\d)/g, "$1^-$2").replace(/\^\(\s*[-−–]?\s*(\d)\s*\)/g, function (m, z) { return /-|−|–/.test(m) ? "^-" + z : "^" + z; })

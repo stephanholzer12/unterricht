@@ -368,7 +368,7 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
       <li><b>K2.2-V2 Simulation</b> (4AK Mo 16.11. · 4BK Fr 13.11.): ein Modell am Beamer, kein Messversuch.</li>
       <li>Messwerte, Erkenntnis, Interpretation und Schlussfolgerung gleich beim Versuch eintragen – die Zeit dafür ist im Versuch eingeplant. Es gibt keine Hausübung.</li>
     </ul>
-    <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF in LMS ab – 4AK nach Stunde 5 (Mi 18.11.), 4BK nach Stunde 4 (Fr 13.11.). <b>So geht es mit einem Protokoll-Handy:</b> Der Protokollführer trägt im Feld »Ich gebe diese PDF ab als« nacheinander jeden Nachnamen ein, tippt jedes Mal »PDF erstellen« und schickt die PDF im Teams-Chat der Gruppe an den jeweiligen Kadetten. Jeder lädt seine PDF in LMS hoch – niemand muss etwas abtippen.</p>
+    <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF in LMS ab – 4AK nach Stunde 5 (Mi 18.11.), 4BK nach Stunde 4 (Fr 13.11.). <b>So geht es mit einem Protokoll-Handy:</b> Der Protokollführer trägt im Feld »Ich gebe diese PDF ab als« nacheinander jeden Nachnamen ein, tippt jedes Mal »PDF erstellen« und schickt die PDF im WhatsApp- oder Teams-Chat der Gruppe an den jeweiligen Kadetten. Jeder lädt seine PDF in LMS hoch – niemand muss etwas abtippen.</p>
   </section><!--/PLAN-->""" + s[j:]
 s = re.sub(r"<!--STAND-->.*?<!--/STAND-->", '<!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">NAWI · 4AB · K2.1–2.3 Versuche · Stand ' + STAND + " · " + I.V + "</p><!--/STAND-->", s, flags=re.S)
 s = s.replace("26-27-2AB-K1.2-Bindungen-VS-Handy-v1", "26-27-4AB-K2.1-Wellen-VS-Handy-v1")

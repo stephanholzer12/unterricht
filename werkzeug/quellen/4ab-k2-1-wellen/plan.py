@@ -1,5 +1,5 @@
 """Zeitplan K2.1–2.3 je Klasse – EINE Quelle für Fahrplan (einheiten.json), Stundenvorschlag, Stundenkarten (TH-Fachwissen, PPP) und Lösungsmappe.
-Jede Stunde = 50 min (Annahme aus dem Entwurf, von Stephan zu bestätigen). Phasen: (Name, Minuten, ohne Handy?, Art)
+Jede Stunde = 50 min laut Stundenplan (Stephan, 25.10.2026); davon gehen am Beginn ca. 3 min für Klassenbuch und Anwesenheit weg – eigene Phase in jeder Stunde. Phasen: (Name, Minuten, ohne Handy?, Art)
 Art: "a<n>" = Aufgabe n, "v:<ID>" = Versuch (Aufgabenzeit darin enthalten – nicht doppelt zählen), "lesen", "test", "ref", "org", "bespr", "reserve", "pdf", "z<n>" = Zusatz n."""
 import inhalt as I
 
@@ -7,65 +7,76 @@ MIN = 50
 PLAN = {
  "4AK": [
   {"std": 1, "datum": "Mi 04.11.", "teile": [1], "methode": "Messung mit Vorhersage (alle Gruppen am selben Pendel)", "phasen": [
-     ("Organisation, Gruppen 1–8 einteilen", 2, True, "org"), ("Einstieg: Schaukel – tippen per Handzeichen", 3, True, "org"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Gruppen 1–8 einteilen", 2, True, "org"), ("Einstieg: Schaukel – tippen per Handzeichen", 3, True, "org"),
      ("Teil 1 lesen bzw. erklären", 8, False, "lesen"), ("Aufgabe 1", 5, False, "a1"),
      ("Versuch K2.1-V1 Pendel (inkl. Aufgabe 2)", 18, False, "v:K2.1-V1"), ("Aufgabe 3", 4, False, "a3"),
-     ("Besprechung (Aufgaben 1–3)", 4, True, "bespr"), ("Reserve", 6, True, "reserve")]},
+     ("Besprechung (Aufgaben 1–3)", 4, True, "bespr"), ("Reserve", 3, True, "reserve")]},
   {"std": 2, "datum": "Mo 09.11.", "teile": [2], "methode": "Demo mit Vorhersage + Partnercheck", "phasen": [
-     ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Wechsel zum Thema", 1, True, "org"), ("Weißt du noch?", 2, True, "org"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Weißt du noch?", 2, True, "org"),
      ("Teil 2 lesen bzw. erklären", 6, False, "lesen"), ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, False, "v:K2.1-V2"),
-     ("Aufgabe 5 Partnercheck (ohne Handy)", 6, True, "a5"), ("Besprechung", 4, True, "bespr"), ("Reserve", 4, True, "reserve")]},
+     ("Aufgabe 5 Partnercheck (ohne Handy)", 6, True, "a5"), ("Besprechung", 3, True, "bespr"), ("Reserve", 3, True, "reserve")]},
   {"std": 3, "datum": "Mi 11.11.", "teile": [3], "methode": "Referat + Kadetten-Welle (Bewegung)", "phasen": [
-     ("Organisation", 1, True, "org"), ("Referat EKG/MRT inkl. Fragen", 20, True, "ref"), ("Weißt du noch? + Übergang Schwingung → Welle", 3, True, "org"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Referat EKG/MRT inkl. Fragen", 20, True, "ref"), ("Weißt du noch? + Übergang Schwingung → Welle", 2, True, "org"),
      ("Teil 3 lesen bzw. erklären", 6, False, "lesen"), ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 8, True, "v:K2.2-V1"),
-     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Reserve", 3, True, "reserve")]},
+     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Reserve", 2, True, "reserve")]},
   {"std": 4, "datum": "Mo 16.11.", "teile": [4], "methode": "Simulation + Skizzen mit der Hand", "phasen": [
-     ("Organisation", 1, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 4 lesen bzw. erklären", 6, False, "lesen"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 4 lesen bzw. erklären", 6, False, "lesen"),
      ("Simulation K2.2-V2 (inkl. Aufgabe 8)", 6, False, "v:K2.2-V2"), ("Aufgabe 9 Huygens-Skizze (Handschrift)", 4, True, "a9"),
      ("Zusatz 16 Überlagerung zeichnen (Handschrift)", 8, True, "z16"), ("Zusatz 17 Forschungskarte (zu zweit)", 7, False, "z17"),
-     ("Besprechung", 5, True, "bespr"), ("Zwischenstand speichern, Fotos einfügen", 3, False, "org"), ("Reserve", 7, True, "reserve")]},
+     ("Besprechung", 5, True, "bespr"), ("Zwischenstand speichern, Fotos einfügen", 3, False, "org"), ("Reserve", 5, True, "reserve")]},
   {"std": 5, "datum": "Mi 18.11.", "teile": [5], "methode": "Faktencheck + Gestaltung (Handschrift)", "phasen": [
-     ("Organisation", 1, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 5 lesen bzw. erklären", 11, False, "lesen"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 5 lesen bzw. erklären", 11, False, "lesen"),
      ("Aufgabe 10 Spektrum ordnen (zuerst mündlich)", 4, True, "a10"), ("Aufgabe 11", 5, False, "a11"), ("Aufgabe 12 KI-Check (Handschrift)", 6, True, "a12"),
      ("Aufgabe 13 Sicherheitskarte (Handschrift)", 8, True, "a13"), ("Besprechung", 3, True, "bespr"), ("PDF-Abgabe (Arbeitsblatt + Versuche)", 4, False, "pdf"),
-     ("Reserve", 5, True, "reserve")]},
+     ("Reserve", 3, True, "reserve")]},
  ],
  "4BK": [
   {"std": 1, "datum": "Mi 04.11.", "teile": [1], "methode": "Messung mit Vorhersage (alle Gruppen am selben Pendel)", "phasen": [
-     ("Organisation, Gruppen 1–8 einteilen", 2, True, "org"), ("Einstieg: Schaukel – tippen per Handzeichen", 3, True, "org"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Gruppen 1–8 einteilen", 2, True, "org"), ("Einstieg: Schaukel – tippen per Handzeichen", 3, True, "org"),
      ("Teil 1 lesen bzw. erklären", 8, False, "lesen"), ("Aufgabe 1", 5, False, "a1"),
      ("Versuch K2.1-V1 Pendel (inkl. Aufgabe 2)", 18, False, "v:K2.1-V1"), ("Aufgabe 3", 4, False, "a3"),
-     ("Besprechung (Aufgaben 1–3)", 4, True, "bespr"), ("Reserve", 6, True, "reserve")]},
+     ("Besprechung (Aufgaben 1–3)", 4, True, "bespr"), ("Reserve", 3, True, "reserve")]},
   {"std": 2, "datum": "Fr 06.11.", "teile": [2, 3], "methode": "Demo + Partnercheck + Kadetten-Welle", "phasen": [
-     ("Weißt du noch?", 2, True, "org"), ("Teil 2 lesen bzw. erklären", 6, False, "lesen"),
-     ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, False, "v:K2.1-V2"), ("Aufgabe 5 Partnercheck (ohne Handy)", 6, True, "a5"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Weißt du noch?", 2, True, "org"), ("Teil 2 lesen bzw. erklären", 5, False, "lesen"),
+     ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, False, "v:K2.1-V2"), ("Aufgabe 5 Partnercheck mit 2 Fragen (ohne Handy)", 5, True, "a5"),
      ("Übergang Schwingung → Welle", 1, True, "org"), ("Teil 3 lesen bzw. erklären", 7, False, "lesen"),
      ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 8, True, "v:K2.2-V1"),
-     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Zwischenstand speichern", 1, False, "org"), ("Reserve", 3, True, "reserve")]},
+     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Zwischenstand speichern", 1, False, "org"), ("Reserve", 2, True, "reserve")]},
   {"std": 3, "datum": "Mi 11.11.", "teile": [5], "methode": "Spektrum ordnen (mündlich, zu zweit)", "phasen": [
-     ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Wechsel zum Thema", 1, True, "org"), ("Weißt du noch?", 2, True, "org"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Weißt du noch?", 2, True, "org"),
      ("Teil 5 lesen bzw. erklären", 11, False, "lesen"), ("Aufgabe 10 Spektrum ordnen (zuerst mündlich)", 4, True, "a10"), ("Aufgabe 11", 5, False, "a11"),
-     ("Besprechung", 3, True, "bespr"), ("Reserve", 4, True, "reserve")]},
+     ("Besprechung", 3, True, "bespr"), ("Reserve", 2, True, "reserve")]},
   {"std": 4, "datum": "Fr 13.11.", "teile": [4], "methode": "Simulation + Skizzen und Karte mit der Hand", "phasen": [
-     ("Organisation", 1, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 4 lesen bzw. erklären", 6, False, "lesen"),
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 4 lesen bzw. erklären", 6, False, "lesen"),
      ("Simulation K2.2-V2 (inkl. Aufgabe 8)", 6, False, "v:K2.2-V2"), ("Aufgabe 9 Huygens-Skizze (Handschrift)", 4, True, "a9"),
      ("Aufgabe 12 KI-Check (Handschrift)", 6, True, "a12"), ("Aufgabe 13 Sicherheitskarte (Handschrift)", 8, True, "a13"),
-     ("Besprechung", 4, True, "bespr"), ("PDF-Abgabe (Arbeitsblatt + Versuche)", 5, False, "pdf"), ("Reserve", 7, True, "reserve")]},
+     ("Besprechung", 4, True, "bespr"), ("PDF-Abgabe (Arbeitsblatt + Versuche)", 5, False, "pdf"), ("Reserve", 5, True, "reserve")]},
  ],
 }
 # Enge Stunden (ChatGPT-Bericht v2, Befund 10): Zeitstopp und Kürzungsreihenfolge – Pflichtziele bleiben, nichts wird Hausübung
+def _ab(k, std, name):
+    """Minute, in der die erste Phase beginnt, deren Name mit »name« anfängt (für Zeitstopps)."""
+    t = 0
+    for n, m, o, a in [x for x in PLAN[k] if x["std"] == std][0]["phasen"]:
+        if n.startswith(name): return t
+        t += m
+    raise KeyError(name)
+
+
 KNAPP = {
- ("4AK", 3): "Zeitstopp: Um Minute 44 beginnt die Besprechung, egal wie weit ihr seid. Wenn es knapp wird: 1. Kadetten-Welle längs nur einmal (5 Kadetten statt 10). "
+ ("4AK", 3): f"Zeitstopp: Um Minute {_ab('4AK', 3, 'Besprechung')} beginnt die Besprechung, egal wie weit ihr seid. Wenn es knapp wird: 1. Kadetten-Welle längs nur einmal (5 Kadetten statt 10). "
              "2. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich sichern – jede Gruppe schreibt nur einen Satz. 3. Aufgabe 7b in der Besprechung gemeinsam rechnen. "
              "Nachholreserve: Stunde 4 hat mit den Zusätzen 16/17 Luft.",
- ("4BK", 2): "Zeitstopp: Um Minute 21 kommt der Übergang zu Teil 3, um Minute 43 die Besprechung. Wenn es knapp wird: 1. Resonanz-Demo nur mit zwei Takten (langsam / im eigenen Takt). "
-             "2. Partnercheck mit 2 statt 3 Fragen. 3. Kadetten-Welle längs mit 5 Kadetten. 4. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich, jede Gruppe ein Satz. "
+ ("4BK", 2): f"Zeitstopp: Um Minute {_ab('4BK', 2, 'Übergang')} kommt der Übergang zu Teil 3, um Minute {_ab('4BK', 2, 'Besprechung')} die Besprechung. Wenn es knapp wird: 1. Resonanz-Demo nur mit zwei Takten (langsam / im eigenen Takt). "
+             "2. Teil 2 nur kurz erklären, Details auf der Theorie-Seite. 3. Kadetten-Welle längs mit 5 Kadetten. 4. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich, jede Gruppe ein Satz. "
              "Der optionale Termin am 18.11. ist keine Voraussetzung.",
+ ("4BK", 3): f"Nach Test und Klassenbuch bleiben nur ca. {50 - _ab('4BK', 3, 'Weißt du noch?')} min. Zeitstopp: Um Minute {_ab('4BK', 3, 'Besprechung')} beginnt die Besprechung. "
+             "Wenn es knapp wird: Aufgabe 10 nur mündlich zu zweit, eintragen am Beginn von Stunde 4.",
 }
 
 ZUSATZTERMIN_4BK = {"datum": "Mi 18.11.", "methode": "Vertiefung (nur falls die Stunde stattfindet)", "phasen": [
-     ("Wiederholung", 3, True, "org"), ("Zusatz 14", 8, False, "z14"), ("Zusatz 15", 8, False, "z15"), ("Zusatz 16 (Handschrift)", 8, True, "z16"),
-     ("Zusatz 17 (zu zweit)", 7, False, "z17"), ("Besprechung", 6, True, "bespr"), ("PDF ergänzen", 4, False, "pdf"), ("Reserve", 6, True, "reserve")]}
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Wiederholung", 3, True, "org"), ("Zusatz 14", 8, False, "z14"), ("Zusatz 15", 8, False, "z15"), ("Zusatz 16 (Handschrift)", 8, True, "z16"),
+     ("Zusatz 17 (zu zweit)", 7, False, "z17"), ("Besprechung", 6, True, "bespr"), ("PDF ergänzen", 4, False, "pdf"), ("Reserve", 3, True, "reserve")]}
 
 for k, stunden in PLAN.items():
     for st in stunden:
