@@ -527,9 +527,10 @@
    ]
   },
   "dateien": {
-   "stand": "25.10.2026",
-   "zip": "26-27-4AB-K2.1-2.3-Wellen-v3.zip",
+   "stand": "26.10.2026",
+   "zip": "26-27-4AB-K2.1-2.3-Wellen-v4.zip",
    "liste": [
+    "26-27-4AB-K2.1-2.3-Wellen-TH-Unterricht-v3.pptx",
     "26-27-4AB-K2.1-2.3-Wellen-TH-Lehrer-v3.pptx",
     "26-27-4AB-K2.1-2.3-Wellen-TH-Kadetten-v3.pptx",
     "26-27-4AB-K2.1-2.3-Wellen-VS-Lehrer-v3.pptx",
@@ -541,7 +542,8 @@
     "26-27-4AB-K2.1-2.3-Wellen-VS-Loesung-v3.docx",
     "26-27-4AB-K2.1-2.3-Wellen-VS-Fachwissen-v3.docx",
     "26-27-4AB-K2.1-2.3-Wellen-Kahoot-v1.xlsx",
-    "26-27-4AB-K2.1-2.3-Wellen-Pruefbericht-Claude-v3.md"
+    "26-27-4AB-K2.1-2.3-Wellen-Pruefbericht-Claude-v3.md",
+    "26-27-4AB-K2.1-2.3-Wellen-Unterrichts-PPP-Rueckmeldung-Claude-v1.md"
    ]
   },
   "lehrerseite": "https://claude.ai/artifact/C9wRo5pzXVj667D1pkfhYN"
