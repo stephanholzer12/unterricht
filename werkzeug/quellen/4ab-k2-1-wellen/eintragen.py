@@ -11,7 +11,7 @@ V = I.V
 P = I.PRAEFIX
 ZIP_V = "v4"  # Lieferung 26.10.2026: Paket v3 + Unterrichts-PPP v3
 DATEIEN = {"stand": "26.10.2026", "zip": f"{P}-{ZIP_V}.zip",
-           "liste": [f"{P}-TH-Unterricht-v3.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-TH-Kadetten-{V}.pptx", f"{P}-VS-Lehrer-{V}.pptx", f"{P}-VS-Kadetten-{V}.pptx",
+           "liste": [f"{P}-TH-Unterricht-v6.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-TH-Kadetten-{V}.pptx", f"{P}-VS-Lehrer-{V}.pptx", f"{P}-VS-Kadetten-{V}.pptx",
                      f"{P}-TH-AB-{V}.docx", f"{P}-TH-Loesung-{V}.docx", f"{P}-TH-Fachwissen-{V}.docx",
                      f"{P}-VS-AB-{V}.docx", f"{P}-VS-Loesung-{V}.docx", f"{P}-VS-Fachwissen-{V}.docx",
                      f"{P}-Kahoot-v1.xlsx", f"{P}-Pruefbericht-Claude-{V}.md", f"{P}-Unterrichts-PPP-Rueckmeldung-Claude-v1.md"]}
