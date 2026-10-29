@@ -164,6 +164,31 @@ cases[W21]=[
  ['a8','energie','Die Auslenkung ist nur an dieser Stelle null, danach laufen die Wellen weiter.','M'],['a8','energie','Energie wird vernichtet.','M'],
  ['a9','front','Die Einhüllende der Elementarwellen ist die neue Front.','M'],['a12','beleg','Teil 5: nur im Vakuum','M'],['a13','titel','Draußen sicher','M'],
  ['a15','unsicher','Messfehler und Modell','M'],['a17','trennung','Gemessen wurde ein Signal, die Linse ist ein Modell.','M'],['a17','sicherheit','Es ist nur eine Vermutung.','M']];
+/* 1AB K1.4 Erkenntnisgewinn (29.10.2026): Auswahl nur als ganze Option, Zahl als ganze Antwort, Mittelwert mit Einheit, offene Erklärungen = M */
+const E14='1ab-nawi/k1-4-erkenntnis/aufgaben.html';
+cases[E14]=[
+ ['a1','s1','Beobachtung',1],['a1','s1','Vorhersage',0],['a1','s2','Hypothese (Vermutung)',1],['a1','s2','Beobachtung',0],['a1','s3','Vorhersage',1],['a1','s3','Hypothese (Vermutung)',0],['a1','s5','Hypothese (Vermutung)',1],
+ ['a2','b1','stimmt nicht',1],['a2','b1','stimmt',0],['a2','b4','stimmt nicht',1],['a2','b5','stimmt',1],['a2','b5','stimmt nicht',0],
+ ['a3','f1','Physik',1],['a3','f1','Chemie',0],['a3','f3','Chemie',1],['a3','f4','keine NAWI-Frage',1],['a3','f4','Biologie',0],
+ ['a5','w1','gültig – zählt',1],['a5','w1','ungültig – wiederholen',0],['a5','w3','zählt, Kontakt notieren',1],['a5','w3','ungültig – wiederholen',0],['a5','mess','die Weite bis zum ersten Bodenkontakt',1],['a5','mess','die Weite bis zum Stillstand',0],
+ ['a6','anz','3',1],['a6','anz','drei',1],['a6','anz','3 Gruppen',1],['a6','anz','4',0],['a6','anz','13',0],['a6','anz','3 oder 4',0],['a6','anz','Gruppe 3',0],
+ ['a6','muster','Gruppe 3',1],['a6','muster','Gruppe 1',0],['a6','fehlt','Gruppe 5',1],['a6','fehlt','Gruppe 3',0],
+ ['a8','ma','5,2 m',1],['a8','ma','5.2 m',1],['a8','ma','520 cm',1],['a8','ma','(4,8 + 5,6 + 5,2) m : 3 = 5,2 m',1],['a8','ma','15,6 m',0],['a8','ma','5,2 s',0],['a8','ma','5,8 m',0],
+ ['a8','mb','5,8 m',1],['a8','mb','5,8',1],['a8','mb','580 cm',1],['a8','mb','17,4 m',0],['a8','mb','6,1 m',0],
+ ['a8','sb','1,5 m',1],['a8','sb','150 cm',1],['a8','sb','1,5',1],['a8','sb','0,8 m',0],['a8','sb','11,3 m',0],
+ ['a8','schluss','B flog im Mittel weiter, die Werte überlappen aber – nur eine vorsichtige Aussage.',1],['a8','schluss','Damit ist bewiesen, dass eine Büroklammer jeden Flieger verbessert.',0],
+ ['a9','k1','stimmt nicht',1],['a9','k1','stimmt',0],['a9','k3','stimmt',1],['a9','k3','stimmt nicht',0],['a9','k4','stimmt nicht',1],
+ ['a10','z1','Problem analysieren',1],['a10','z1','Testen',0],['a10','z6','Verbessern',1],['a10','z6','Bewerten',0],
+ ['a11','sch2','systematischer Fehler',1],['a11','sch2','zufällige Streuung',0],['a11','links','systematischer Fehler',1],
+ ['a12','p2','nicht prüfbar',1],['a12','p2','prüfbar',0],['a12','p3','prüfbar',1],
+ ['a13','anz','50 Experimente',1],['a13','anz','alle 193 Experimente',0],['a13','eff','deutlich kleiner',1],
+ /* offene Erklärungen: Lehrkraft bewertet – auch wenn Stichwörter passen oder die Aussage falsch ist */
+ ['a4','hyp','Mit Klammer fliegt er weiter, weil die Nase schwerer ist.','M'],['a4','hyp','weiß nicht','M'],['a4','vor','B weiter','M'],['a4','gegen','Wenn B kürzer fliegt.','M'],
+ ['a6','warum','Nein, nur ein Wurf und viele Unterschiede gleichzeitig.','M'],['a6','warum','Ja, der lange Flieger ist besser.','M'],
+ ['a7','partner','Lukas','M'],['a7','check','alle Fragen richtig','M'],
+ ['a9','korr','Wenn B weiter fliegt, unterstützt das unsere Hypothese, bewiesen ist sie nicht.','M'],['a9','korr','Dann ist sie bewiesen.','M'],
+ ['a10','naechst','Klammer weiter nach hinten, alles andere bleibt gleich.','M'],
+ ['a12','auto','Nein, nicht automatisch falsch.','M'],['a13','uns','Wir brauchen die Gegenprobe mit einem zweiten Werfer.','M'],['a14','titel','Hypothese oder Theorie?','M']];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

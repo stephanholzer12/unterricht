@@ -94,6 +94,130 @@
   }
  },
  {
+  "klasse": "1AB",
+  "fach": "NAWI",
+  "ordner": "1ab-nawi/k1-4-erkenntnis",
+  "kapitel": "K1.4",
+  "titel": "Erkenntnisgewinn – vermuten, prüfen, vorsichtig schließen",
+  "block": "A Wissenschaft verstehen",
+  "jahresplan": "E3",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "versuche.html",
+   "quiz.html"
+  ],
+  "versteckt": true,
+  "fahrplan": {
+   "text": "Die Theorie ist in vier Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 1AK Teil 1 → 2 → 3 → 4, 1BK Teil 1 → 3 → 2 → 4 (Teil 3 kommt am Fr 06.11. nach dem Test). Der Papierflieger-Test (Teil 2) findet im Eingangsbereich statt. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS – 1AK am Do 12.11., 1BK am Mi 11.11.",
+   "zeilen": [
+    {
+     "klasse": "1AK",
+     "wann": "Stunde 1",
+     "datum": "Do 05.11. (1. Std.)",
+     "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
+     "aufgaben": "1–4",
+     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
+     "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
+     "abgabe": "Flieger abgeben"
+    },
+    {
+     "klasse": "1AK",
+     "wann": "Stunde 2",
+     "datum": "Do 05.11. (2. Std.)",
+     "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
+     "aufgaben": "5 · Versuchsprotokoll",
+     "zeit": "Aufgaben und Versuch ca. 32 min · Reserve 4 min",
+     "wie": "ohne Handy: Versuch K1.4-V1, Gegenprobe",
+     "abgabe": "Papierblatt der Gruppe abgeben"
+    },
+    {
+     "klasse": "1AK",
+     "wann": "Stunde 3",
+     "datum": "Fr 06.11.",
+     "lesen": "1. Test (20 min) · Teil 3 · Wie Forschung wirklich läuft · Buch S. 29 (4.2)",
+     "aufgaben": "6, 7",
+     "zeit": "Aufgaben und Versuch ca. 12 min · Besprechung 3 min · Reserve 4 min",
+     "wie": "ohne Handy: Aufgabe 6 zu zweit, Aufgabe 7 Partnercheck",
+     "abgabe": "–"
+    },
+    {
+     "klasse": "1AK",
+     "wann": "Stunde 4",
+     "datum": "Do 12.11. (1. Std.)",
+     "lesen": "Teil 4 · Auswerten und vorsichtig schließen · Versuch K1.4-V1 auswerten",
+     "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
+     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 3 min · Reserve 4 min",
+     "wie": "ohne Handy: Aufgabe 10 zu zweit",
+     "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
+    },
+    {
+     "klasse": "1BK",
+     "wann": "Stunde 1",
+     "datum": "Mi 04.11.",
+     "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
+     "aufgaben": "1–4",
+     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
+     "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
+     "abgabe": "Flieger abgeben"
+    },
+    {
+     "klasse": "1BK",
+     "wann": "Stunde 2",
+     "datum": "Fr 06.11.",
+     "lesen": "1. Test (20 min) · Teil 3 · Wie Forschung wirklich läuft · Buch S. 29 (4.2)",
+     "aufgaben": "6, 7",
+     "zeit": "Aufgaben und Versuch ca. 12 min · Besprechung 3 min · Reserve 4 min",
+     "wie": "ohne Handy: Aufgabe 6 zu zweit, Aufgabe 7 Partnercheck",
+     "abgabe": "–"
+    },
+    {
+     "klasse": "1BK",
+     "wann": "Stunde 3",
+     "datum": "Mo 09.11.",
+     "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
+     "aufgaben": "5 · Versuchsprotokoll",
+     "zeit": "Aufgaben und Versuch ca. 32 min · Reserve 3 min",
+     "wie": "ohne Handy: Versuch K1.4-V1, Gegenprobe",
+     "abgabe": "Papierblatt der Gruppe abgeben"
+    },
+    {
+     "klasse": "1BK",
+     "wann": "Stunde 4",
+     "datum": "Mi 11.11.",
+     "lesen": "Teil 4 · Auswerten und vorsichtig schließen · Versuch K1.4-V1 auswerten",
+     "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
+     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 3 min · Reserve 4 min",
+     "wie": "ohne Handy: Aufgabe 10 zu zweit",
+     "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige (Zielscheiben, Forschungskarte)",
+     "aufgaben": "Zusatz 11–14",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "29.10.2026",
+   "zip": "26-27-1AB-K1.4-Erkenntnis-v1.zip",
+   "liste": [
+    "26-27-1AB-K1.4-Erkenntnis-TH-Unterricht-v1.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Lehrer-v1.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Lehrer-v1.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-AB-v1.docx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Loesung-v1.docx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Fachwissen-v1.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-AB-v1.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Loesung-v1.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Fachwissen-v1.docx",
+    "26-27-1AB-K1.4-Erkenntnis-Pruefbericht-Claude-v1.md"
+   ]
+  },
+  "lehrerseite": "https://claude.ai/artifact/7y811wKjJTEmufpoP8Ed7x"
+ },
+ {
   "klasse": "2AB",
   "fach": "NAWI",
   "ordner": "2ab-nawi/test1-training",

@@ -1513,6 +1513,52 @@
      "need": 2
     }
    }
+  },
+  "1ab-nawi/k1-4-erkenntnis": {
+   "flieger": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b2_1": {
+      "zahl": true
+     },
+     "b2_2": {
+      "zahl": true
+     }
+    },
+    "erk": {
+     "kw": [
+      "Mittelwert / im Mittel=mittel,durchschnitt,schnitt",
+      "Vergleich A und B=weiter,kuerzer,gleich,mehr,weniger,unterschied,ohne,mit,klammer",
+      "Streuung / Kontakt=streu,spannweite,unterschiedlich,schwank,decke,wand,kontakt,kein kontakt,keine kontakte"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Einordnung=unterstuetz,stuetz,spricht dafuer,spricht dagegen,dagegen,unklar,keine entscheidung,nicht entscheid,bestaetig,widerspr",
+      "Begruendung mit Daten=mittel,wert,spannweite,ueberlapp,streu,gegenprobe,zweite,werfer,decke,einzel"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=nur drei,wenig,werfer,kraft,hand,decke,hoehe,masse,schwerpunkt,ein flieger,zufall,wind,luft,ungenau",
+      "Verbesserung=mehr,oefter,wiederhol,rampe,schleuder,gleich,zweite,anderer,messen,genauer,flieger"
+     ],
+     "need": 2
+    }
+   }
   }
  }
 }

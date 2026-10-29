@@ -740,7 +740,8 @@ def main():
             if anker_entfernen(e):
                 print(f'{e["ordner"]}: Anker-Links auf das Arbeitsblatt entfernt (Sprung immer nach oben)')
         for e in es:
-            if not e.get("versteckt") and not re.match(r"\d+\.\s*Test", e["kapitel"]):
+            # auch versteckte Einheiten bekommen ihren Fahrplan (ChatGPT-Bericht »Neuerungen v1«, 28.10.2026)
+            if not re.match(r"\d+\.\s*Test", e["kapitel"]):
                 ge = fp.einbauen(e, ROOT)
                 if ge:
                     print(f'{e["ordner"]}: Fahrplan aktualisiert in {", ".join(ge)}')
