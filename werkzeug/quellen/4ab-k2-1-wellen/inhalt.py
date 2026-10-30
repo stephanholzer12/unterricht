@@ -7,8 +7,8 @@ Eine Quelle für Handy-Seiten, Word, PPP, Kahoot und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge).
 Zeichen √ und ≈ nur in Theorie und Bildern – in Aufgabentexten und Lösungen nicht (die PDF-Schrift kennt sie nicht; clean() ersetzt sie notfalls)."""
 
-STAND = "25.10.2026"
-V = "v3"  # v3: Stephans Entscheidungen 25.10. (Klassenbuch-Zeit, WhatsApp/Teams, Trauner-Links, Minuszeichen); Kahoot unverändert v1
+STAND = "30.10.2026"
+V = "v4"  # v4: Resonanzkatastrophe erklärt und von Tacoma-Flattern abgegrenzt; Aufgaben-IDs und Speicherschlüssel unverändert
 ORDNER = "4ab-nawi/k2-1-wellen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -235,7 +235,7 @@ T = [
   "type": "sketch",
   "fields": [["beleg", "Beleg für Aussage 3: Teil … und Stichwort"]],
   "chk": {"beleg": {"kw": [["Teil 5", r"teil\s*(5|fünf|fuenf)\b|^\s*5\b"], ["Vakuum / nur im Vakuum", r"vakuum|leer|weltraum|weltall|\ball\b|materie|langsamer|stoff"]], "man": True}},
-  "sol": [["Lösung", ["1. Resonanz macht die Schwingung groß, zerstört aber nicht automatisch – Dämpfung und Bauweise begrenzen sie (Teil 2).",
+  "sol": [["Lösung", ["1. Resonanz führt nicht automatisch zu Schäden. Erst wenn die Ausschläge bei Resonanz ein Bauteil beschädigen oder zerstören, spricht man von einer Resonanzkatastrophe; geringe Dämpfung begünstigt sie (Teil 2).",
                       "2. Bei einer Welle schwingen die Teilchen nur an ihrem Ort; weitergegeben wird die Störung mit ihrer Energie (Teil 3).",
                       "3. 300 000 km/s gilt im Vakuum (und fast in Luft); in Glas oder Wasser sind elektromagnetische Wellen langsamer (Teil 5).",
                       "4. Auch nicht-ionisierende Strahlung kann schaden – z. B. UV (Sonnenbrand) oder ein starker Laser. Es kommt auf Art, Stärke und Dauer an (Teil 5).",
@@ -351,6 +351,8 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Eigenfrequenz", "Frequenz, mit der ein System von selbst (frei) schwingt"],
                 ["erzwungene Schwingung", "Schwingung, die von außen regelmäßig angetrieben wird (Erregerfrequenz)"],
                 ["Resonanz", "besonders große Schwingung, wenn die Erregerfrequenz nahe der Eigenfrequenz liegt"],
+                ["Resonanzkatastrophe", "Beschädigung oder Zerstörung durch zu große Schwingungsausschläge bei Resonanz; geringe Dämpfung begünstigt sie"],
+                ["aeroelastisches Flattern", "Strömung und Bewegung eines Bauteils verstärken sich gegenseitig; die Strömung führt der Schwingung Energie zu (Tacoma Narrows)"],
                 ["Welle", "Ausbreitung einer Störung (Schwingung) im Raum; transportiert Energie, aber nicht das Material"],
                 ["Wellenlänge λ", "Abstand zweier benachbarter Wellenberge (Punkte gleicher Phase)"],
                 ["Transversalwelle", "Querwelle: Schwingungsrichtung senkrecht zur Ausbreitungsrichtung (Seil)"],
@@ -379,7 +381,7 @@ STOPPFRAGEN = {
     1: [("Ein Pendel schwingt vom linken zum rechten Umkehrpunkt. Ist das eine volle Schwingung?", "Nein – erst eine halbe. Voll ist sie erst, wenn es wieder links ist."),
         ("T steigt von 1 s auf 2 s. Was passiert mit f?", "f sinkt von 1 Hz auf 0,5 Hz.")],
     2: [("Ein Stoßdämpfer wird warm. Ist Energie verloren gegangen?", "Nein – Schwingungsenergie wurde in Wärme (innere Energie) umgewandelt."),
-        ("Warum marschiert man über Brücken »ohne Tritt«?", "Damit der gleichmäßige Schritt die Brücke nicht im Takt ihrer Eigenfrequenz anregt.")],
+        ("Warum marschiert man über Brücken »ohne Tritt« – und was ist eine Resonanzkatastrophe?", "Ohne Gleichschritt vermeidet man eine regelmäßige Anregung nahe der Eigenfrequenz. Eine Resonanzkatastrophe liegt vor, wenn die Ausschläge bei Resonanz zu Schäden oder Zerstörung führen; nicht jede Resonanz endet so.")],
     3: [("Auf der waagrechten Achse steht »t in s«. Kann man dort λ ablesen?", "Nein – dort liest man T ab. λ braucht eine Ortsachse (x in m)."),
         ("Hört man im luftleeren Weltraum eine Explosion?", "Nein – Schall braucht ein Medium (Luft, Wasser …).")],
     4: [("+3 cm und −2 cm treffen sich. Wie groß ist die Auslenkung dort?", "+1 cm."),
@@ -414,8 +416,8 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
   "Im Modell des Fadenpendels kommt die Masse nicht vor: mehr Gewichtskraft, aber auch mehr Trägheit.", "Buch S. 50"),
  ("Dämpfung", "Wohin geht bei einer gedämpften Schwingung die Energie?", ["an die Umgebung, oft als Wärme", "Sie verschwindet einfach.", "Sie wird zu Masse.", "Sie verdoppelt die Frequenz."],
   "Dämpfung wandelt Schwingungsenergie z. B. durch Reibung in innere Energie um – verloren geht nichts.", "Buch S. 52"),
- ("Resonanz", "Wann wird eine erzwungene Schwingung besonders groß?", ["bei Anregung im Takt der Eigenfrequenz", "bei jeder beliebigen Anregung", "nur ohne jede Anregung", "nur bei sehr großer Masse"],
-  "Resonanz: Die Erregerfrequenz liegt nahe der Eigenfrequenz. Dämpfung begrenzt die Amplitude.", "Buch S. 53"),
+ ("Resonanz", "Wann spricht man von einer Resonanzkatastrophe?", ["wenn die Schwingung bei Resonanz ein Bauteil beschädigt oder zerstört", "sobald ein Körper überhaupt schwingt", "bei jeder Resonanz, auch ohne Schäden", "wenn Dämpfung die Schwingung abklingen lässt"],
+  "Bei Anregung nahe einer Eigenfrequenz können große Ausschläge entstehen. Werden dadurch Belastungsgrenzen überschritten, kommt es zur Resonanzkatastrophe. Geringe Dämpfung begünstigt sie; nicht jede Resonanz verursacht Schäden.", "Theorie S. 52–53 · Ergänzung"),
  ("Wellen", "Was zeigt die Büroklammer auf der Schnur?", ["Sie schwingt am Ort, die Störung läuft weiter.", "Sie läuft mit dem Puls zum Ende.", "Sie bleibt völlig still.", "Sie läuft zur Hand zurück."],
   "Die Teilchen des Mediums schwingen nur an ihrem Ort; weitergegeben wird die Störung.", "Buch S. 54–55"),
  ("Wellen", "Was bedeutet »transversal«?", ["Schwingung senkrecht zur Ausbreitung", "Schwingung parallel zur Ausbreitung", "Ausbreitung ohne Medium", "ein anderes Wort für Schall"],
