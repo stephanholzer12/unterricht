@@ -776,6 +776,70 @@
   }
  },
  {
+  "klasse": "5AK",
+  "fach": "IWK",
+  "ordner": "5ak-iwk/k2-globalisierung",
+  "kapitel": "K2",
+  "titel": "Globalisierung und aktuelle Weltpolitik",
+  "block": "B Globalisierung",
+  "jahresplan": "E3–E5 (zusammengefasst)",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ],
+  "versteckt": true,
+  "fahrplan": {
+   "text": "Dafür sind 4 Stunden eingeplant (Fr 13.11., Fr 20.11., Fr 27.11., Fr 04.12.). Lies den jeweiligen Abschnitt im Theorieteil, mach die Aufgaben 1–8 im Arbeitsblatt und gib am 04.12. die PDF in LMS ab. Am 20.11. schreibst du zuerst den angekündigten Test. Keine Hausübung.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "datum": "Fr 13.11.",
+     "lesen": "Einstieg + Verflechtung, Entstehung, Standortwahl, Folgen (Buch S. 43–48, 64–70)",
+     "aufgaben": "1, 2",
+     "zeit": "Lesen 6 min · Aufgaben 24 min · Besprechung 7 min · Organisation, Erklärung 11 min · Reserve 2 min",
+     "wie": "ohne Handy: Einstieg an der Tafel, Flussbild auf Papier, Besprechung",
+     "abgabe": "Antworten bleiben am Handy gespeichert"
+    },
+    {
+     "wann": "Stunde 2",
+     "datum": "Fr 20.11.",
+     "lesen": "Zölle (Karte A) und WTO, IWF, Weltbank (Karte B) (Buch S. 50–63)",
+     "aufgaben": "3, 4",
+     "zeit": "Test 20 min · Lesen 4 min · Aufgaben 17 min · Besprechung 5 min · Organisation, Erklärung 3 min · Reserve 1 min",
+     "wie": "zuerst Test; ohne Handy: Wiedereinstieg und Sicherung",
+     "abgabe": "Antworten bleiben am Handy gespeichert"
+    },
+    {
+     "wann": "Stunde 3",
+     "datum": "Fr 27.11.",
+     "lesen": "KI braucht Daten, Chips, Strom und Regeln · KI-Risiken prüfen (Ergänzung zu Buch S. 48)",
+     "aufgaben": "5–7",
+     "zeit": "Lesen 6 min · Aufgaben 32 min · Besprechung 3 min · Organisation, Erklärung 8 min · Reserve 1 min",
+     "wie": "ohne Handy: Einstieg, kurze Klärung, Sicherung auf Papier",
+     "abgabe": "Antworten bleiben am Handy gespeichert"
+    },
+    {
+     "wann": "Stunde 4",
+     "datum": "Fr 04.12.",
+     "lesen": "Kosten verteilen und Abhängigkeiten verringern (Buch S. 65–77)",
+     "aufgaben": "8 · Selbstcheck-Quiz (6 Fragen)",
+     "zeit": "Lesen 3 min · Aufgaben 30 min · Besprechung 5 min · Organisation, Erklärung, PDF 10 min · Reserve 2 min",
+     "wie": "ohne Handy: Rückblick, Diskussion 8b, Urteil 8c mit der Hand",
+     "abgabe": "Arbeitsblatt-PDF in LMS (alle Aufgaben 1–8)"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "30.10.2026",
+   "zip": "",
+   "liste": [
+    "26-27-5AK-K2-Global-TH-Unterricht-v2.pptx",
+    "26-27-5AK-K2-Global-Pruefbericht-Claude-v2.md"
+   ]
+  }
+ },
+ {
   "klasse": "3AB",
   "fach": "NAWI",
   "ordner": "3ab-nawi/k2-3a-ernaehrung",
