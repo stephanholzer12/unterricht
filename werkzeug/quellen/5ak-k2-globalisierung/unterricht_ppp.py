@@ -352,7 +352,7 @@ def t4_a8b():
 
 
 def t4_a8c():
-    s = d.slide("Aufgabe", "Aufgabe 8c: eigenes Urteil mit der Hand · 8 min")
+    s = d.slide("Aufgabe", "Aufgabe 8c: eigenes Urteil mit der Hand · 10 min")
     y = schritte(s, X0, 1.05, W, ["100–130 Wörter auf Papier – entscheide dich für einen Vorschlag.", "Zusammenhang aus der Lieferkette · soziale oder ökologische Folge · Grenze der Maßnahme.",
                                   "Ein Satz: »Wenn …, dann könnte …; offen bleibt …«. Danach Foto in die Aufgabe 8."], size=19, farbe=GREEN)
     notiz(s, y + 0.1, "Beide Richtungen sind erlaubt. Bewertet wird die Begründung – nicht deine politische Richtung.", size=16, farbe=RUST)
@@ -417,7 +417,7 @@ SPEC = {
      ("t3_a5", [3], "ZU ZWEIT", "Aufgabe 5", "Fallkarten sortieren, EU und USA vergleichen", t3_a5),
      ("t3_klaeren", [4], "KURZ KLÄREN", "Kurz klären", "Verbot, Hochrisiko, Transparenz an je einem Beispiel", t3_klaeren),
      ("t3_lesen2", [5], "LESEN", "Lesen: Risiken", "Befund, Simulation, Szenario, Position",
-      lambda: lesen_folie(3, "**Buch S. 48** zum Nachschlagen · Karte D", ["ki_risiko"], "Befund, Simulation, Szenario oder Position?", [5])),
+      lambda: lesen_folie(3, "**Buch S. 48** zum Nachschlagen · Quellenkarten 1–4", ["ki_risiko"], "Befund, Simulation, Szenario oder Position?", [5])),
      ("t3_a6", [6], "GRUPPE", "Aufgabe 6", "Quellenprüfung arbeitsteilig an vier Karten", t3_a6),
      ("t3_a7", [7], "AUFGABE", "Aufgabe 7", "Fehlerhaften KI-Text korrigieren", t3_a7),
      ("t3_bespr", [8, 9], "BESPRECHEN", None, "Fälle, Quellenkarten, Schutzmaßnahme; Reserve", t3_bespr)],
@@ -513,7 +513,7 @@ def bauen():
         "Zollfolien (Stunde 2) zeigen nur das Rechenmodell; der Rechtsstand wechselt: Supreme Court 20.02.2026 (IEEPA-Zölle gekippt), Section 232/301 gelten weiter. Vor dem 20.11. Karte A neu prüfen.",
         "Namenskarte B: Georgieva (IWF), Banga (Weltbank), Okonjo-Iweala (WTO). Lagardes Abgang zum 07.02.2027 ist laut Reuters/Börsen-Zeitung (Stand 29.10.2026) gemeldet, Primärquelle prüfen; auf den Folien steht er nicht.",
         "KI-Fristen (Karte C) nach AI Omnibus: 02.08.2026 Transparenz, 02.12.2027 Anhang III, 02.08.2028 Anhang I; Übergangsfrist Kennzeichnung ältere Systeme bis 02.12.2026.",
-        "Karte C der Quellenprüfung stammt von Anthropic (Hersteller von Claude): Interessenkonflikt offen ansprechen – gehört zu Aufgabe 6.",
+        "Quellenkarte 3 stammt von Anthropic (Hersteller von Claude): Interessenkonflikt offen ansprechen – gehört zu Aufgabe 6.",
         "Keine Buchbilder auf den Folien (frei weitergebbar); keine Podcasts im Pflichtablauf; Aufgabe 8 ohne Rollentribunal.",
         "Geprüft: in LibreOffice gerendert und alle Folien angesehen. Ein Abspieltest in Microsoft PowerPoint (Klicks, benutzerdefinierte Präsentationen) steht aus."]], size=13, after=5)
 

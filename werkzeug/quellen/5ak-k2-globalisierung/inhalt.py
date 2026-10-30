@@ -52,7 +52,7 @@ def wann(teil=None):
 _KW_STROM = r"bauteil|chip|halbleiter|rohstoff|montage|lieferung|uhr|ware|geld|zahl|euro|dollar|bezahl|kauf|daten|trainingsdaten|server|rechenzentrum|wissen|entwicklung|vorgabe|konstruktion|design|software|know|von |nach |→|->"
 T = [
  # ======================================================= Stunde 1
- {"id": "a1", "nr": 1, "title": "Die Sportuhr ist weltweit vernetzt", "src": "Buch S. 43–48", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 13,
+ {"id": "a1", "nr": 1, "title": "Die Sportuhr ist weltweit vernetzt", "src": "Buch S. 43–48", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 14,
   "q": "Modell »Sportuhr« (siehe Fallblatt im Theorieteil, Abschnitt »Was Globalisierung verbindet«; die Orte sind angenommen, keine reale Marke). Zeichne auf Papier ein Flussbild "
        "mit mindestens vier Stationen und fotografiere es. Trage dann hier ein: a) je einen Warenstrom, Geldstrom, Datenstrom und Wissensstrom (»von … nach … : was fließt«), "
        "b) zwei Akteure und ihren Beitrag zum Produkt, c) einen Engpass und eine Station, die davon betroffen wäre (2 Sätze).",
@@ -74,7 +74,7 @@ T = [
            "akteure": "z. B. Anbieter (Entwicklung, Vertrieb) · Montagebetrieb (Fertigung)", "engpass": "z. B. Chip fehlt → Montage steht → keine Auslieferung"},
   "tip": ["Was Globalisierung verbindet", "theorie.html#verbindet"], "besprechen": True},
 
- {"id": "a2", "nr": 2, "title": "Folgen sind ungleich verteilt", "src": "Buch S. 64–70", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 9,
+ {"id": "a2", "nr": 2, "title": "Folgen sind ungleich verteilt", "src": "Buch S. 64–70", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 10,
   "q": "Füll je eine Zeile für Wirtschaft, Gesellschaft und Umwelt aus: ein möglicher Vorteil, eine mögliche Belastung und die betroffene Gruppe (jeweils kurz). "
        "Ergänze dann eine Bedingung, unter der sich eine dieser Folgen verändert. Schreib zuerst in dein Heft, dann hierher.",
   "hint": "Es gibt kein »alle gewinnen« und kein »alle verlieren«. Info: Theorieteil »Wer gewinnt – und wer trägt die Kosten?«",
@@ -94,7 +94,7 @@ T = [
   "tip": ["Wer gewinnt – und wer trägt die Kosten?", "theorie.html#folgen"], "besprechen": True},
 
  # ======================================================= Stunde 2
- {"id": "a3", "nr": 3, "title": "Ein Zoll und seine Folgen", "src": "Buch S. 50–51 · Karte A", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 7,
+ {"id": "a3", "nr": 3, "title": "Ein Zoll und seine Folgen", "src": "Buch S. 50–51 · Karte A", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 8,
   "q": "Rechenmodell, kein echter Zollbescheid: Ein US-Importeur führt eine Uhr mit einem unveränderten Zollwert von 100 US-Dollar ein. Für das Beispiel gilt ein Zollsatz von 15 Prozent; weitere Kosten bleiben unberücksichtigt. "
        "a) Berechne den Zoll (nur die Zahl, in US-Dollar). b) Berechne Zollwert plus Zoll. c) Wer führt den Zoll zuerst ab? d) Erkläre zwei Wege, wie sich die wirtschaftliche Belastung verteilen kann. "
        "e) Warum lässt sich daraus der Ladenpreis nicht bestimmen? (1 Satz)",
@@ -112,7 +112,7 @@ T = [
   "fsol": {"zoll": "15", "summe": "115", "wer": "der Importeur (an die US-Zollbehörde)", "wege": "Marge sinkt · Preis steigt (oder Lieferant gibt Nachlass)", "laden": "Nachfrage, Verträge, Wechselkurs, weitere Kosten, Wettbewerb"},
   "tip": ["Zölle: Wer zahlt – und wer trägt die Last?", "theorie.html#zoelle"], "besprechen": True},
 
- {"id": "a4", "nr": 4, "title": "Drei Probleme, drei Institutionen", "src": "Buch S. 52–63 · Karte B", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 8,
+ {"id": "a4", "nr": 4, "title": "Drei Probleme, drei Institutionen", "src": "Buch S. 52–63 · Karte B", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 9,
   "q": "In Dreiergruppen: Trag für WTO, IWF und Weltbank je eine Hauptaufgabe, ein Instrument und eine Grenze ein (Stichwörter). Ordne danach die drei Fälle zu: "
        "Fall 1: Zwei Staaten streiten über eine Handelsbeschränkung. Fall 2: Ein Staat kann seine Zahlungen ans Ausland kurzfristig nicht finanzieren. Fall 3: Ein langfristiges Vorhaben soll Stromversorgung oder Schulen verbessern.",
   "hint": "Auch in der Realität können mehrere Akteure beteiligt sein – hier zählt die Hauptzuständigkeit. Info: Theorieteil »Wer organisiert Regeln und Finanzierung?«",
@@ -155,27 +155,27 @@ T = [
   "fsol": {"k1": "möglicher Hochrisiko-Einsatz", "k2": "Transparenzpflicht", "k3": "mögliche verbotene Praxis", "k4": "keine besondere Einstufung aus diesen Angaben", "ziele": "EU: Grundrechte, Sicherheit, Vertrauen · USA: Innovation, Infrastruktur, Führung"},
   "tip": ["KI braucht Daten, Chips, Strom und Regeln", "theorie.html#ki_global"], "besprechen": True},
 
- {"id": "a6", "nr": 6, "title": "KI-Warnung: Befund, Szenario oder Werbung?", "src": "Buch S. 48 · Quellenkarten A–D", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 13,
-  "q": "Arbeitsteilig: Wähle deine Quellenkarte (A, B, C oder D im Theorieteil, Abschnitt »KI-Risiken prüfen«) und trag ein: Aussage – Beleg – mögliche Interessen – Grenze (je ein kurzer Satz). "
+ {"id": "a6", "nr": 6, "title": "KI-Warnung: Befund, Szenario oder Werbung?", "src": "Buch S. 48 · Quellenkarten 1–4", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 14,
+  "q": "Arbeitsteilig: Wähle deine Quellenkarte (1, 2, 3 oder 4 im Theorieteil, Abschnitt »KI-Risiken prüfen«) und trag ein: Aussage – Beleg – mögliche Interessen – Grenze (je ein kurzer Satz). "
        "Nach dem Bericht deiner Gruppe (höchstens 45 Sekunden je Karte) schreib einen Satz: Welche Karte liefert eine Messung, welche eine Position?",
   "hint": "Ein Interesse ist kein Beweis für eine Täuschung – und eine Warnung kann trotzdem begründet sein. Info: Theorieteil »KI-Risiken prüfen«",
   "type": "multi",
-  "fields": [["karte", "Meine Karte", ["A", "B", "C", "D"], False], ["aussage", "Aussage der Quelle"], ["beleg", "Beleg (Art der Quelle, Datum)"], ["interesse", "Mögliche Interessen"], ["grenze", "Grenze der Aussage"],
+  "fields": [["karte", "Meine Karte", ["1", "2", "3", "4"], False], ["aussage", "Aussage der Quelle"], ["beleg", "Beleg (Art der Quelle, Datum)"], ["interesse", "Mögliche Interessen"], ["grenze", "Grenze der Aussage"],
              ["vergleich", "Messung oder Position? (1 Satz)"]],
   "chk": {"aussage": {"kw": [["Aussage", r"warn|fordert|bericht|unterscheid|fehlfunktion|kontrollverlust|simulation|szenario|ziel|aktionsplan|innovation|risiko|test|befund"]], "man": True},
           "beleg": {"kw": [["Art und Datum", r"statement|bericht|studie|simulation|test|plan|regierung|2023|2025|2026|forscher|unterzeichn|fallstudie|bengio|aktionsplan"]], "man": True},
           "interesse": {"kw": [["Interessen", r"interesse|unternehmen|firma|wirtschaft|regierung|politik|werbung|pr\b|ruf|image|geld|investor|wettbewerb|forschung|markt|aufmerksamkeit|keine"]], "man": True},
           "grenze": {"kw": [["Grenze", r"nicht|kein|nur|simulation|künstlich|kuenstlich|unsicher|zukunft|wahrscheinlich|messung|beweis|gestellt|test|ziel|alltag|übertrag|uebertrag"]], "man": True},
           "vergleich": {"kw": [["Messung/Position", r"messung|messen|position|forderung|warn|bericht|simulation|versuch|ziel|plan|statement|befund"]], "man": True}},
-  "sol": [["Musterlösung", ["Karte A (CAIS-Statement 30.05.2023): fordert, das Aussterberisiko durch KI als globale Priorität zu behandeln – eine Position, kein Experiment und keine gemessene Wahrscheinlichkeit. Unterzeichner sind Forscher und Leiter von KI-Unternehmen (Fachwissen und wirtschaftliche Interessen zugleich).",
-                            "Karte B (International AI Safety Report, Feb. 2026): bündelt Forschungsstand; unterscheidet Fehlfunktionen (gibt es) und umfassenden Kontrollverlust (heute nicht erreicht); Zeitpunkt und Wahrscheinlichkeit bleiben unsicher, Fachleute bewerten sie unterschiedlich.",
-                            "Karte C (Forschungsfallstudien Sommer 2026): problematisches Verhalten autonomer Modelle in gestellten Szenarien – kein Bericht über reale Machtübernahme und keine Häufigkeit im Alltag. Der Text stammt von einem KI-Unternehmen (Interessenkonflikt offen benennen), ist aber als Studie prüfbar.",
-                            "Karte D (US-KI-Aktionsplan 23.07.2025): nennt erklärte Ziele und Interessen der US-Regierung (Innovation, Infrastruktur, internationale Führung) – Primärbeleg für Politikziele, kein neutraler Wirkungsnachweis.",
-                            "Satz: Eine Messung liefert höchstens ein Versuch mit klaren Bedingungen (Karte C, in Grenzen); Statement und Aktionsplan sind Positionen, der Bericht bündelt Befunde. Eine mögliche PR-Wirkung beweist weder Täuschung noch, dass die Warnung falsch ist."]]],
+  "sol": [["Musterlösung", ["Quellenkarte 1 (CAIS-Statement 30.05.2023): fordert, das Aussterberisiko durch KI als globale Priorität zu behandeln – eine Position, kein Experiment und keine gemessene Wahrscheinlichkeit. Unterzeichner sind Forscher und Leiter von KI-Unternehmen (Fachwissen und wirtschaftliche Interessen zugleich).",
+                            "Quellenkarte 2 (International AI Safety Report, Feb. 2026): bündelt Forschungsstand; unterscheidet Fehlfunktionen (gibt es) und umfassenden Kontrollverlust (heute nicht erreicht); Zeitpunkt und Wahrscheinlichkeit bleiben unsicher, Fachleute bewerten sie unterschiedlich.",
+                            "Quellenkarte 3 (Forschungsfallstudien Sommer 2026): problematisches Verhalten autonomer Modelle in gestellten Szenarien – kein Bericht über reale Machtübernahme und keine Häufigkeit im Alltag. Der Text stammt von einem KI-Unternehmen (Interessenkonflikt offen benennen), ist aber als Studie prüfbar.",
+                            "Quellenkarte 4 (US-KI-Aktionsplan 23.07.2025): nennt erklärte Ziele und Interessen der US-Regierung (Innovation, Infrastruktur, internationale Führung) – Primärbeleg für Politikziele, kein neutraler Wirkungsnachweis.",
+                            "Satz: Eine Messung liefert höchstens ein Versuch mit klaren Bedingungen (Quellenkarte 3, in Grenzen); Statement und Aktionsplan sind Positionen, der Bericht bündelt Befunde. Eine mögliche PR-Wirkung beweist weder Täuschung noch, dass die Warnung falsch ist."]]],
   "fsol": {"karte": "A, B, C oder D", "aussage": "was die Quelle sagt", "beleg": "Art der Quelle + Datum", "interesse": "wer hat welches Interesse", "grenze": "was der Befund nicht zeigt", "vergleich": "Position (A, D) vs. Befund/Versuch (B, C)"},
   "tip": ["KI-Risiken prüfen", "theorie.html#ki_risiko"], "besprechen": True},
 
- {"id": "a7", "nr": 7, "title": "Korrigiere einen fehlerhaften KI-Text", "src": "Buch S. 48 · Karten C–E", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a7", "nr": 7, "title": "Korrigiere einen fehlerhaften KI-Text", "src": "Buch S. 48 · Karten C–E", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 8,
   "q": "Der Text ist für den Unterricht gebaut und enthält Fehler – er stammt nicht von einem echten KI-Anbieter: »Laut ILO wird KI jeden vierten Arbeitsplatz abschaffen. Das ist ein Beweis, dass die Machtübernahme bereits läuft. "
        "In der EU ist KI seit 2026 vollständig verboten. Die Studie aus einer Simulation zeigt außerdem, wie oft KI im Alltag Menschen täuscht.« "
        "Schreib zu jedem Satz in Stichwörtern, warum er nicht stimmt. Formuliere dann zwei davon richtig und nenn die Quelle. Nenne zum Schluss eine Schutzmaßnahme für einen Betrieb und ihre Grenze.",
@@ -199,11 +199,11 @@ T = [
   "tip": ["KI braucht Daten, Chips, Strom und Regeln", "theorie.html#ki_global"], "besprechen": True},
 
  # ======================================================= Stunde 4
- {"id": "a8", "nr": 8, "title": "Gestalten statt nur bewerten", "src": "Buch S. 65–77 · Debattenblatt", "own": True, "tag": "Stunde 4", "h": 4, "zeit": 28,
+ {"id": "a8", "nr": 8, "title": "Gestalten statt nur bewerten", "src": "Buch S. 65–77 · Debattenblatt", "own": True, "tag": "Stunde 4", "h": 4, "zeit": 30,
   "q": "Frage: »Soll der Anbieter unserer Sportuhr für wichtige Bauteile und KI-Dienste mehrere Bezugsquellen aufbauen, auch wenn das die Kosten erhöht?« "
        "8a (7 min): Wähle deine Perspektive und trag zwei begründete Argumente, eine konkrete Maßnahme und einen Nachteil deiner eigenen Lösung ein. "
        "8b (13 min, ohne Handy): Diskussion – trag danach einen belastbaren Zusammenhang und eine offene Behauptung ein, die du beobachtet hast. "
-       "8c (8 min, ohne Handy): Schreib auf Papier dein Urteil mit 100–130 Wörtern und fotografiere es. Es braucht: einen Zusammenhang aus der Lieferkette, eine soziale oder ökologische Folge, "
+       "8c (10 min, ohne Handy): Schreib auf Papier dein Urteil mit 100–130 Wörtern und fotografiere es. Es braucht: einen Zusammenhang aus der Lieferkette, eine soziale oder ökologische Folge, "
        "eine Grenze deiner Maßnahme und einen Satz »Wenn …, dann könnte …; offen bleibt …«.",
   "hint": "Beide Richtungen sind erlaubt. Bewertet wird Begründung, Gegenargument und gekennzeichnete Unsicherheit – nicht deine politische Richtung. Info: Theorieteil »Kosten verteilen und Abhängigkeiten verringern«",
   "type": "sketch",
@@ -314,15 +314,15 @@ STOLPERSTEINE = [("Aktuelle Zollzahlen ohne Datum und Warengruppe verallgemeiner
 
 # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchseite/Hinweis) – 16 Fragen, Antworten werden beim Anzeigen gemischt
 QUIZ = [
- ("Begriff", "Ist Globalisierung ausschließlich Warenhandel?", ["Nein, auch Wissen, Geld, Menschen, Kultur und Daten sind betroffen.", "Ja, nur Waren überqueren Grenzen.", "Ja, aber nur Rohstoffe.", "Nein, nur Menschen und Geld zählen."],
+ ("Begriff", "Ist Globalisierung ausschließlich Warenhandel?", ["Nein, auch Wissen, Geld, Menschen, Kultur und Daten sind betroffen.", "Ja, nur Waren überqueren Grenzen.", "Ja, aber nur Rohstoffe.", "Ja, Wissen und Daten gehören nur zur Digitalisierung."],
   "Globalisierung ist eine dichte, weltweite Verflechtung in mehreren Dimensionen – nicht nur Handel.", "Buch S. 43–48"),
- ("Sportuhr", "Reicht eine bekannte österreichische Marke als Nachweis, dass ein Produkt aus Österreich kommt?", ["Nein, Marke und Produktionsstufen sind zu unterscheiden.", "Ja, die Marke zeigt immer den Herstellungsort.", "Ja, wenn der Firmensitz in Österreich liegt.", "Nein, Marken sagen gar nichts über Qualität."],
+ ("Sportuhr", "Reicht eine bekannte österreichische Marke als Nachweis, dass ein Produkt aus Österreich kommt?", ["Nein, Marke und Produktionsstufen sind zu unterscheiden.", "Ja, die Marke zeigt in der Regel den Ort der Herstellung.", "Ja, wenn der Firmensitz in Österreich liegt.", "Ja, wenn die Marke schon seit Jahrzehnten am Markt ist."],
   "Entwicklung, Bauteile, Montage und Vertrieb können in verschiedenen Ländern liegen. Das Beispiel der Sportuhr ist ein Modell.", "Buch S. 43–48 · Modellfall"),
  ("Folgen", "Welche Aussage über die Folgen der Globalisierung ist am besten begründet?", ["Sie hängen davon ab, welche Gruppe man betrachtet und welche Regeln gelten.", "Alle Menschen profitieren gleich.", "Nur die Industrieländer verlieren.", "Regionale Produkte sind immer besser für die Umwelt."],
   "Es gibt Gewinner und Belastete – auch innerhalb eines Staates. Umweltwirkung nicht nur aus Transportkilometern ableiten.", "Buch S. 64–70"),
  ("Zoll", "Wer zahlt einen Einfuhrzoll zunächst?", ["Der Importeur.", "Das Ausland automatisch.", "Immer der Verbraucher.", "Die WTO."],
   "Der Importeur führt den Zoll an die Zollbehörde ab. Die spätere Belastung kann sich auf Marge, Lieferant und Käufer verteilen.", "Buch S. 50–51"),
- ("Zoll", "Bedeutet ein Zollsatz von 15 Prozent immer 15 Prozent mehr beim Ladenpreis?", ["Nein, dazu fehlen Annahmen über Kosten und Weitergabe.", "Ja, der Preis steigt genau um 15 Prozent.", "Ja, aber nur im ersten Monat.", "Nein, der Ladenpreis sinkt immer."],
+ ("Zoll", "Bedeutet ein Zollsatz von 15 Prozent immer 15 Prozent mehr beim Ladenpreis?", ["Nein, dazu fehlen Annahmen über Kosten und Weitergabe.", "Ja, der Preis steigt genau um 15 Prozent.", "Ja, aber nur im ersten Monat.", "Ja, aber nur bei Waren aus China."],
   "Der Zoll wirkt auf den Zollwert. Ob und wie er weitergegeben wird, hängt von Nachfrage, Verträgen, Wettbewerb und Wechselkurs ab.", "Buch S. 50–51 · Aufgabe 3"),
  ("Zoll aktuell", "Was gilt für die US-Zölle des Jahres 2025, die das Buch beschreibt, heute?", ["Ein Teil wurde 2026 gerichtlich gekippt; andere Zollarten gelten weiter – daher immer Datum und Rechtsgrundlage nennen.", "Sie gelten unverändert für alle Waren weiter.", "Sie wurden komplett abgeschafft, es gibt keine US-Zölle mehr.", "Sie betreffen nur die EU."],
   "Der US Supreme Court erklärte am 20.02.2026 die auf IEEPA gestützten Zölle für rechtswidrig. Andere Rechtsgrundlagen (z. B. Section 232 und 301) bestehen weiter. Aktuelle Ergänzung zu Buch S. 50–51; Quellen WKO und IHK, Stand 30.10.2026.", "Aktuelle Ergänzung zu Buch S. 50–51"),
@@ -334,15 +334,15 @@ QUIZ = [
   "GATT = Waren, GATS = Dienstleistungen, TRIPS = handelsbezogene Rechte an geistigem Eigentum. Die WTO gibt es seit 1995. (Oft verwechselt: GATT wurde nicht von GATS abgelöst, die WTO löste 1995 das GATT als Organisation ab; GATS ist ein eigenes Abkommen.)", "Buch S. 54–56"),
  ("Institutionen", "Wer leitet derzeit (Stand 30.10.2026) den Internationalen Währungsfonds?", ["Kristalina Georgieva.", "Christine Lagarde.", "Ajay Banga.", "Ngozi Okonjo-Iweala."],
   "Georgieva leitet den IWF. Lagarde war IWF-Chefin bis 2019 und ist EZB-Präsidentin. Banga leitet die Weltbankgruppe, Okonjo-Iweala die WTO. Aktuelle Ergänzung – Namen vor dem Unterricht prüfen.", "Aktuelle Ergänzung · Stand 30.10.2026"),
- ("KI Arbeit", "Bedeutet »ein Viertel der Beschäftigten ist betroffen« auch »ein Viertel ist arbeitslos«?", ["Nein, es geht um mögliche Veränderung von Tätigkeiten.", "Ja, genau ein Viertel verliert die Stelle.", "Ja, aber nur in Österreich.", "Nein, KI hat sicher keinen Einfluss."],
+ ("KI Arbeit", "Bedeutet »ein Viertel der Beschäftigten ist betroffen« auch »ein Viertel ist arbeitslos«?", ["Nein, es geht um mögliche Veränderung von Tätigkeiten.", "Ja, genau ein Viertel verliert die Stelle.", "Ja, aber nur in Österreich.", "Ja, wenn die Beschäftigten in Europa arbeiten."],
   "Die ILO-Studie (2025) misst, in wie vielen Berufen generative KI Tätigkeiten verändern könnte – nicht verlorene Arbeitsplätze.", "Aktuelle Ergänzung · Quelle ILO 2025"),
- ("KI Regeln", "Ist die EU-KI-Verordnung ein vollständiges KI-Verbot?", ["Nein, Pflichten hängen von Risiko und Anwendung ab.", "Ja, KI ist in der EU verboten.", "Ja, aber nur für Unternehmen.", "Nein, es gibt dazu gar keine Regeln."],
+ ("KI Regeln", "Ist die EU-KI-Verordnung ein vollständiges KI-Verbot?", ["Nein, Pflichten hängen von Risiko und Anwendung ab.", "Ja, KI ist in der EU verboten.", "Ja, aber nur für Unternehmen.", "Ja, seit 2026 für alle Anwendungen ohne Ausnahme."],
   "Es gibt Verbote für bestimmte Praktiken, strenge Pflichten für Hochrisiko-Anwendungen und Transparenzpflichten. Fristen wurden 2026 durch den »AI Omnibus« angepasst.", "Aktuelle Ergänzung · Quelle EU-Kommission"),
  ("KI Energie", "Die IEA nennt für 2030 rund 945 TWh Strombedarf der Rechenzentren. Wie ist die Zahl einzuordnen?", ["Als Projektion, nicht als Messwert.", "Als gemessener Wert von 2030.", "Als Verbrauch allein der KI.", "Als gesicherte Obergrenze."],
   "Gemessen ist 2024 (rund 415 TWh). Die 2030-Zahl ist ein Szenario, und »alle Rechenzentren« ist nicht gleich »nur KI«. Aktuelle Ergänzung; Quelle IEA »Energy and AI« (2025).", "Aktuelle Ergänzung · Quelle IEA"),
- ("KI Risiko", "Beweist ein Versuch in einer Simulation, wie oft KI im Alltag täuscht?", ["Nein, die Versuchsbedingungen begrenzen die Schlussfolgerung.", "Ja, die Häufigkeit ist damit gemessen.", "Ja, aber nur bei Chatbots.", "Nein, Simulationen sind wertlos."],
+ ("KI Risiko", "Beweist ein Versuch in einer Simulation, wie oft KI im Alltag täuscht?", ["Nein, die Versuchsbedingungen begrenzen die Schlussfolgerung.", "Ja, die Häufigkeit ist damit gemessen.", "Ja, aber nur bei Chatbots.", "Ja, wenn die Simulation viele Läufe umfasst."],
   "Eine Simulation kann ein mögliches Versagen unter bestimmten Bedingungen zeigen. Die Häufigkeit im Alltag misst sie nicht.", "Aktuelle Ergänzung · Quellenkarten"),
- ("Quellen", "Beweist die Warnung von KI-Firmenchefs automatisch, dass sie nur aus Werbegründen warnen?", ["Nein, Motive lassen sich aus einer Schlagzeile nicht ablesen.", "Ja, Firmen wollen immer nur Werbung.", "Ja, sonst würden sie nicht warnen.", "Nein, Firmenchefs lügen nie."],
+ ("Quellen", "Beweist die Warnung von KI-Firmenchefs automatisch, dass sie nur aus Werbegründen warnen?", ["Nein, Motive lassen sich aus einer Schlagzeile nicht ablesen.", "Ja, Firmen wollen immer nur Werbung.", "Ja, sonst würden sie nicht warnen.", "Ja, sobald das Unternehmen selbst KI verkauft."],
   "Eine Warnung kann fachlich begründet sein und zugleich die öffentliche Wahrnehmung beeinflussen. Interessen sind eine prüfbare Hypothese, kein Beweis.", "Aktuelle Ergänzung · Aufgabe 6"),
  ("Urteil", "Was macht ein begründetes Urteil aus?", ["Eine Entscheidung mit Beleg, Gegenargument und Bedingung.", "Eine möglichst lange Meinung.", "Eine Aussage, der alle zustimmen.", "Ein Satz ohne Einschränkung."],
   "Auch eine fundierte Gegenposition ist akzeptabel. Wichtig sind Begründung, richtige Zusammenhänge und gekennzeichnete Unsicherheit.", "Aufgabe 8"),

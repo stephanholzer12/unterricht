@@ -11,12 +11,12 @@ MIN = 50
 
 S1 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
       ("Einstieg: »Ist eine österreichische Marke automatisch ein österreichisches Produkt?« – zwei Vermutungen an die Tafel", 3, True, "org"),
-      ("Lesen: Theorieteil »Was Globalisierung verbindet«, »Wie die Verflechtung entstand«, »Warum Unternehmen weltweit arbeiten«", 5, False, "lesen"),
+      ("Lesen: Theorieteil »Was Globalisierung verbindet«, »Wie die Verflechtung entstand«, »Warum Unternehmen weltweit arbeiten«", 4, False, "lesen"),
       ("Kurz klären: Begriff, Antriebskräfte, Strömeübersicht am Bild", 4, True, "erkl"),
-      ("Aufgabe 1 zu zweit: Flussbild der Sportuhr auf Papier, dann Foto und Einträge", 13, False, "a1"),
+      ("Aufgabe 1 zu zweit: Flussbild der Sportuhr auf Papier, dann Foto und Einträge", 14, False, "a1"),
       ("Besprechung Aufgabe 1: Beispiel-Flussbild und Engpässe an der Tafel", 3, True, "bespr"),
-      ("Lesen: Theorieteil »Wer gewinnt – und wer trägt die Kosten?«", 3, False, "lesen"),
-      ("Aufgabe 2 allein (Heft, dann Handy)", 9, False, "a2"),
+      ("Lesen: Theorieteil »Wer gewinnt – und wer trägt die Kosten?«", 2, False, "lesen"),
+      ("Aufgabe 2 allein (Heft, dann Handy)", 10, False, "a2"),
       ("Besprechung Aufgabe 2: zwei verkürzte Aussagen korrigieren", 4, True, "bespr"),
       ("Sicherung auf Papier: »Unsere Uhr wäre besonders verwundbar, wenn …, weil …«", 2, True, "org"),
       ("Reserve", 2, True, "reserve")]
@@ -24,32 +24,32 @@ S1 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
 S2 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
       ("Angekündigter Test inkl. Austeilen und Einsammeln (Stoff und Testnummer: nicht in dieser PPP)", 20, True, "test"),
       ("Wiedereinstieg: Sportuhr erinnern, Modellimport in die USA vorstellen", 1, True, "org"),
-      ("Lesen: Theorieteil »Zölle: Wer zahlt – und wer trägt die Last?« (mit Karte A)", 3, False, "lesen"),
-      ("Aufgabe 3 allein rechnen, kurzer Partnercheck", 7, False, "a3"),
+      ("Lesen: Theorieteil »Zölle: Wer zahlt – und wer trägt die Last?« (mit Karte A)", 2, False, "lesen"),
+      ("Aufgabe 3 allein rechnen, kurzer Partnercheck", 8, False, "a3"),
       ("Besprechung Aufgabe 3: Zahler und Last unterscheiden", 2, True, "bespr"),
-      ("Lesen: Theorieteil »Wer organisiert Regeln und Finanzierung?« (mit Karte B)", 3, False, "lesen"),
-      ("Aufgabe 4 in Dreiergruppen: Vergleichskarte und drei Fälle", 8, False, "a4"),
-      ("Sicherung: je Organisation ein Auftrag und eine Grenze · Namenskarte kurz prüfen", 2, True, "bespr"),
-      ("Reserve", 2, True, "reserve")]
+      ("Lesen: Theorieteil »Wer organisiert Regeln und Finanzierung?« (mit Karte B)", 2, False, "lesen"),
+      ("Aufgabe 4 in Dreiergruppen: Vergleichskarte und drei Fälle", 9, False, "a4"),
+      ("Sicherung: je Organisation ein Auftrag und eine Grenze · Namenskarte kurz prüfen", 3, True, "bespr"),
+      ("Reserve", 1, True, "reserve")]
 
 S3 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
       ("Einstieg: vier Bedeutungen von »Übernahme« an der Tafel zuordnen", 3, True, "org"),
-      ("Lesen: Theorieteil »KI braucht Daten, Chips, Strom und Regeln« (Karten C–E)", 4, False, "lesen"),
+      ("Lesen: Theorieteil »KI braucht Daten, Chips, Strom und Regeln« (Karten C–E)", 3, False, "lesen"),
       ("Aufgabe 5 zu zweit: Fallkarten sortieren, EU und USA vergleichen", 10, False, "a5"),
       ("Kurz klären: Modell oder Anwendung · Verbot, Hochrisiko, Transparenz an je einem Beispiel", 3, True, "erkl"),
       ("Lesen: Theorieteil »KI-Risiken prüfen« und die eigene Quellenkarte", 3, False, "lesen"),
-      ("Aufgabe 6 arbeitsteilig: Quellenkarten A–D, gemeinsame Tabelle", 13, False, "a6"),
-      ("Aufgabe 7 allein: fehlerhaften KI-Text korrigieren", 7, False, "a7"),
+      ("Aufgabe 6 arbeitsteilig: Quellenkarten 1–4, gemeinsame Tabelle", 14, False, "a6"),
+      ("Aufgabe 7 allein: fehlerhaften KI-Text korrigieren", 8, False, "a7"),
       ("Besprechung Aufgaben 5–7 · Sicherung auf Papier: eine Schutzmaßnahme und ihre Grenze", 3, True, "bespr"),
-      ("Reserve", 2, True, "reserve")]
+      ("Reserve", 1, True, "reserve")]
 
 S4 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-      ("Rückblick: Sportuhr und drei Institutionenkarten · Aktualitätshinweis (KI-Frist 02.12.)", 3, True, "org"),
-      ("Lesen: Theorieteil »Kosten verteilen und Abhängigkeiten verringern«", 4, False, "lesen"),
+      ("Rückblick: Sportuhr und drei Institutionenkarten · Aktualitätshinweis (KI-Frist 02.12.)", 2, True, "org"),
+      ("Lesen: Theorieteil »Kosten verteilen und Abhängigkeiten verringern«", 3, False, "lesen"),
       ("Aufgabe 8a: vier Perspektivgruppen bereiten Argumente und Maßnahme vor", 7, False, "a8"),
       ("Aufgabe 8b: strukturierte Diskussion ohne Handy", 13, True, "a8"),
-      ("Aufgabe 8c: eigenes Urteil mit der Hand schreiben (100–130 Wörter), dann Foto", 8, True, "a8"),
-      ("Selbstcheck: sechs Quizfragen, Einwände klären", 5, False, "bespr"),
+      ("Aufgabe 8c: eigenes Urteil mit der Hand schreiben (100–130 Wörter), dann Foto", 10, True, "a8"),
+      ("Foto 8c und Einträge aus 8b nachtragen, dann Selbstcheck: sechs Quizfragen", 5, False, "bespr"),
       ("PDF erstellen und in LMS hochladen", 4, False, "pdf"),
       ("Brücke: »Wenn Regeln und Technik Macht schaffen – was macht dann die Macht des Westens aus?«", 2, True, "org"),
       ("Reserve", 2, True, "reserve")]
@@ -133,8 +133,10 @@ def fahrplan_zeilen():
         nrs, _ = aufgaben_der(st)
         teile = [f"Lesen {minuten(st, ['lesen'])} min", f"Aufgaben {minuten(st, ['a'])} min", f"Besprechung {minuten(st, ['bespr'])} min", f"Reserve {minuten(st, ['reserve'])} min"]
         if minuten(st, ["test"]): teile.insert(0, f"Test {minuten(st, ['test'])} min")
+        rest = MIN - minuten(st, ["lesen", "a", "bespr", "reserve", "test"])
+        teile.insert(len(teile) - 1, f"Organisation, Erklärung{', PDF' if st['std'] == 4 else ''} {rest} min")
         z.append({"wann": f"Stunde {st['std']}", "datum": st["datum"], "lesen": LESEN[st["std"]],
-                  "aufgaben": bereich(nrs) + (" · Quiz freiwillig" if st["std"] == 4 else ""),
+                  "aufgaben": bereich(nrs) + (" · Selbstcheck-Quiz (6 Fragen)" if st["std"] == 4 else ""),
                   "zeit": " · ".join(teile), "wie": WIE[st["std"]],
                   "abgabe": "Arbeitsblatt-PDF in LMS (alle Aufgaben 1–8)" if st["std"] == 4 else "Antworten bleiben am Handy gespeichert"})
     return z

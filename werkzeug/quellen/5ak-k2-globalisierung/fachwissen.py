@@ -49,9 +49,9 @@ STUNDENKARTEN = _karten()
 
 CHECKLISTE = [
     "Einheit einblenden vor der ersten Stunde (Fr 13.11.): GitHub → Actions → »Einheit ein-/ausblenden« → 5ak-iwk/k2-globalisierung → einblenden. Die Direktlinks und QR-Codes funktionieren auch versteckt.",
-    "Aktualitätskarten A–E vor jedem Termin neu prüfen (13.11., 20.11., 27.11., 04.12.): Zölle (Karte A), Namen in Spitzenämtern (Karte B), KI-Fristen (Karte C), KI-Risiko-Quellen (Karten D, E).",
+    "Aktualitätskarten A–E vor jedem Termin neu prüfen (13.11., 20.11., 27.11., 04.12.): Zölle (Karte A), Namen in Spitzenämtern (Karte B), KI-Fristen (Karte C), KI-Risiko-Quellen (Quellenkarten 1–4, Karte E).",
     "Stunde 2: Test hat Vorrang (20 min). Stoff und Nummer kenne ich nicht – nichts ergänzt. Dreiergruppen für Aufgabe 4 einteilen.",
-    "Stunde 3: Quellenkarten A–D auf Papier mitnehmen (oder die Seite am Beamer). Karte C stammt von Anthropic, dem Hersteller von Claude – Interessenkonflikt offen ansprechen (gehört zur Aufgabe).",
+    "Stunde 3: Quellenkarten 1–4 auf Papier mitnehmen (oder die Seite am Beamer). Quellenkarte 3 stammt von Anthropic, dem Hersteller von Claude – Interessenkonflikt offen ansprechen (gehört zur Aufgabe).",
     "Stunde 4: Perspektiven (vier Gruppen) und Moderator vorab festlegen; Diskussion ohne Handy; Urteil 8c mit der Hand. LMS-Abgabeordner anlegen (eine PDF mit den Aufgaben 1–8).",
     "Medien: Es gibt keine Pflichtvideos. Optionale Podcast-Kandidaten (Ö1) habe ich nicht geprüft – nur freigeben, wenn du sie vorher hörst.",
 ]
@@ -71,7 +71,7 @@ KAPITEL = [
   "stolper": "Marke = Herkunft; Globalisierung = nur Handel; Umweltwirkung nur aus Transportkilometern ablesen."},
  {"titel": "2 Zölle (Buch S. 50–51) und die Rechtslage 2026",
   "text": ["Rechtlicher Zahler: der Importeur; wirtschaftliche Last: Marge, Preis, Lieferant. Das Buch zeigt den Stand 2025 (u. a. iPhone-Beispiel mit 145 % Zoll, S. 50–51). **Seither hat sich die Rechtslage geändert:** Der US Supreme Court erklärte am 20.02.2026 (6:3) die auf IEEPA gestützten Zölle für rechtswidrig (WKO, Seite vom 23.10.2026). Sie wurden ab 24.02.2026 nicht mehr erhoben; Rückerstattungen laufen über die US-Zollbehörde (CBP-Verfahren »CAPE«) und nicht automatisch.",
-           "Weiter gelten Zölle nach Section 232 (z. B. Stahl, Aluminium) und Section 301. Ein befristeter Zusatzzoll nach Section 122 (10 %) lief am 24.07.2026 ab. Laut IHK Chemnitz (Stand 21.08.2026) gelten seither Section-301-Zölle; WKO und IHK weichen in Details voneinander ab – deshalb ist Karte A bewusst vorsichtig formuliert.",
+           "Weiter gelten Zölle nach Section 232 (z. B. Stahl, Aluminium) und Section 301. Ein befristeter Zusatzzoll nach Section 122 (zunächst 10 %, kurz danach 15 %) lief am 24.07.2026 ab. Laut IHK Chemnitz (Stand 21.08.2026) gelten seither Section-301-Zölle; WKO und IHK weichen in Details voneinander ab – deshalb ist Karte A bewusst vorsichtig formuliert.",
            "EU-US-Handelsrahmen: laut IHK seit 01.07.2026 in Kraft (EU-Verordnung 2026/1455, von mir nicht im Volltext geprüft); die EU-Kommission nennt eine US-Zollobergrenze von 15 % für die meisten EU-Ausfuhren. Ausnahmen und Metalle gesondert."],
   "nur": ["Das Handover beschreibt nur den 15-%-Rahmen und enthält die Gerichtsentscheidung nicht – ohne diese Korrektur wäre Karte A veraltet. Vor 20.11. neu prüfen (Primärquellen von hier aus teilweise nicht abrufbar)."],
   "stolper": "Zollzahlen ohne Datum, Warengruppe und Rechtsgrundlage nennen; »das Ausland zahlt« oder »der Verbraucher zahlt genau 15 %«."},
@@ -89,10 +89,10 @@ KAPITEL = [
   "nur": ["**Nicht übernommen:** Das Handover nennt »02.12.2026: neue Verbote für nicht einvernehmliche intime KI-Inhalte« – ein einziger Treffer (complexdiscovery.com) nennt es, die Verordnung selbst war nicht abrufbar; deshalb weggelassen. Vor dem Termin in EUR-Lex prüfen. Die Verordnungsnummer 2026/1744 aus dem Handover habe ich nicht im Volltext verglichen.",
            "Beim Termin 04.12. ist der 02.12.2026 bereits vorbei: Hinweis im Rückblick (»Übergangsfrist Kennzeichnung ältere Systeme ist abgelaufen – genaue Anwendung nicht Prüfungsstoff«)."],
   "stolper": "»EU verbietet KI« und »USA haben keine Regeln«; Verbot, Hochrisiko und Transparenzpflicht gleichsetzen."},
- {"titel": "5 KI-Risiken, Arbeit und Energie (Karten D und E)",
+ {"titel": "5 KI-Risiken, Arbeit und Energie (Quellenkarten 1–4 und Karte E)",
   "text": ["**ILO (20.05.2025):** etwa jeder vierte Beschäftigte in einem Beruf mit gewissem möglichem Einfluss generativer KI; misst Tätigkeiten, nicht Stellen. **IEA:** Rechenzentren rund 415 TWh (2024, etwa 1,5 % des weltweiten Stroms), Projektion rund 945 TWh für 2030 (»Energy and AI«, 04/2025). Das Handover nennt 485 TWh (2025) und 950 TWh aus einem Bericht vom 16.04.2026 – das konnte ich nicht bestätigen (Seite nicht abrufbar); verwendet sind nur die bestätigten Werte.",
            "**International AI Safety Report 2026** (03.02.2026, Vorsitz Yoshua Bengio, über 100 Fachleute): unterscheidet Fehlfunktionen von hypothetischem umfassendem Kontrollverlust; erste relevante Fähigkeiten in Tests, aber nicht auf dem nötigen Gesamtniveau; Bewertungslücke. **CAIS-Statement** 30.05.2023: Position, kein Experiment. **Karte C:** »Agentic Misalignment in Summer 2026« (Alignment Science Blog, 13.07.2026): fiktive Szenarien, nur wenige Läufe je Modell, Autoren nennen eigene Einschränkungen."],
-  "nur": ["**Interessenkonflikt:** Karte C stammt von Anthropic – dem Hersteller von Claude, mit dem dieses Material gebaut wurde. Das habe ich in Karte C und Aufgabe 6 offen benannt; es gehört zur Lernaufgabe (Interesse ≠ Falschheit). Die Einzelheiten der Studie habe ich nur anhand der Seite und ihrer Zusammenfassung geprüft."],
+  "nur": ["**Interessenkonflikt:** Quellenkarte 3 stammt von Anthropic – dem Hersteller von Claude, mit dem dieses Material gebaut wurde. Das habe ich in Quellenkarte 3 und Aufgabe 6 offen benannt; es gehört zur Lernaufgabe (Interesse ≠ Falschheit). Die Einzelheiten der Studie habe ich nur anhand der Seite und ihrer Zusammenfassung geprüft."],
   "stolper": "Betroffenheit ≠ Arbeitsplatzverlust; Simulation ≠ Alltagshäufigkeit; Motive aus Schlagzeilen ablesen."},
  {"titel": "6 Gestalten und urteilen (Buch S. 65–77)",
   "text": ["Buchbezüge: Standortdumping, Arbeitsbedingungen, Lohndumping, Migration, Care-/Brain-Drain, Globalisierungskritik; Alternativen (u. a. Neokeynesianismus, öko-soziale Marktwirtschaft, SDGs, Weltsozialforum, Attac, Social Entrepreneurship). Das Debattenblatt (Pro/Kontra-Methode) bleibt ohne Seitenzahl; für Aufgabe 8 gibt es vier Perspektiven statt Tribunal.",
