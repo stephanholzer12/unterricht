@@ -37,7 +37,7 @@ STUNDENVORSCHLAG = {k: _stundenvorschlag(k) for k in PL.PLAN}
 MATERIAL = {1: "A4-Papier (2 je Gruppe), Bleistifte, Schachtel für die Flieger · Faltanleitung am Beamer · Einstiegs-Flieger mit Klammer zum Zeigen",
             2: "Bandmaß 20 m (#9), Büroklammern F-038 (1 je Gruppe), die Flieger der Gruppen, Papierblätter VS-AB (1 je Gruppe), Ersatzpapier",
             3: "Test (eigene Unterlagen) · Vorjahres-Tabelle am Beamer · Partnerkarten (Beamer oder ausgedruckt)",
-            4: "eingesammelte Papierblätter der Gruppen · Tafel/Flipchart für die Klassenübersicht · Flieger für den Kraft-Einstieg (1AK)"}
+            4: "eingesammelte Papierblätter der Gruppen · Tafel/Flipchart für die Klassenübersicht · Flieger aufbewahren für den Kraft-Einstieg"}
 
 
 def _karten():
@@ -95,7 +95,7 @@ KAPITEL = [
            "**Gegenprobe:** zweiter Werfer, getrennt protokolliert. Prüft die Übertragbarkeit auf einen anderen Werfer – nicht Masse vs. Schwerpunkt. Werte verschiedener Werfer nie unbemerkt zusammen mitteln.",
            "**Raum:** Eingangsbereich, lang genug, Decke niedrig (Maße nicht bekannt – nicht den historischen 15,5-m-NAWI-Gang übertragen). Flacher, ruhiger Abwurf aus Hüfthöhe; kein universeller »optimaler Abwurfwinkel«."],
   "nur": ["Physik dahinter (für Fragen, nicht für E3): Im antriebslosen Gleitflug wirken nur Gewichtskraft und die Luftkraft (zerlegt in Auftrieb senkrecht zur Anströmung und Widerstand entgegen der Flugrichtung). Die Hand wirkt nach dem Loslassen nicht mehr – ein fortwirkender »Schub« wie bei Gruber S. 20 ist für den Papierflieger falsch.",
-          "Eine Nasenmasse verschiebt den Schwerpunkt nach vorn: meist stabileres, aber steileres Gleiten; ob die Weite wächst oder sinkt, hängt vom Modell, der Trimmung und dem Abwurf ab. Darum keine Wirkung vorwegnehmen.",
+          "Mehr Masse allein ändert im gleichmäßigen Gleitflug den Gleitwinkel nicht (der hängt vom Verhältnis Auftrieb zu Widerstand ab), nur das Tempo. Ein Schwerpunkt weiter vorne ändert die Trimmung – ob die Weite steigt oder sinkt, hängt vom Modell und vom Abwurf ab. Bei rund 1 m Abwurfhöhe bestimmt ohnehin vor allem die Abwurfphase die Weite. Darum keine Wirkung vorwegnehmen.",
           "V-Stellung (Gruber: »Y-Stellung«, Flügel in der Vorderansicht leicht nach oben) ist nicht dasselbe wie der Anstellwinkel (Winkel des Flügels zur anströmenden Luft) – im MINT-Lösungsblatt verwechselt."],
   "stolper": "Kurze Flüge als »Fehlwurf« streichen, bis zum Stillstand messen, zwischen den Würfen nachbiegen. Gegenmittel: Aufgabe 5 VOR dem Versuch, Prüfer-Rolle, Regel-Folie bleibt stehen.",
   "bild": "img/messbahn.png"},
@@ -122,9 +122,9 @@ KAPITEL = [
 ]
 
 RECHNEN = [
-    "**Aufgabe 8:** (4,8 + 5,6 + 5,2) m : 3 = 15,6 m : 3 = 5,2 m · (6,1 + 4,9 + 6,4) m : 3 = 17,4 m : 3 = 5,8 m · Spannweite B = 6,4 m − 4,9 m = 1,5 m (A: 0,8 m). Überlappung A 4,8–5,6 m und B 4,9–6,4 m.",
+    "**Aufgabe 8:** (3,8 + 4,6 + 4,2) m : 3 = 12,6 m : 3 = 4,2 m · (5,1 + 3,9 + 5,4) m : 3 = 14,4 m : 3 = 4,8 m · Spannweite B = 5,4 m − 3,9 m = 1,5 m (A: 0,8 m). Überlappung A 3,8–4,6 m und B 3,9–5,4 m → »unklar«. Werte bewusst unter 5 m: Die Zahlenprüfung erlaubt 2 % Spielraum – bei Mittelwerten über 5 m würde ein Nachbarwert (z. B. 5,1 statt 5,2) als richtig zählen.",
     "**Stopp-Frage Teil 4:** (5,1 + 6,3 + 5,7) m : 3 = 17,1 m : 3 = 5,7 m. **Quiz:** 4,0/5,0/6,0 m → Mittelwert 5,0 m, Spannweite 2,0 m.",
-    "**Kapazität Messbahn:** 8 Gruppen × 6 Würfe × 0,5 min = 24 min (Planannahme). Gegenprobe 1–2 Gruppen × 6 Würfe × 0,5 min = 3–6 min (eingeplant 5).",
+    "**Kapazität Messbahn:** 8 Gruppen × 6 Würfe × 0,5 min = 24 min (Planannahme). Probewürfe 8 × ca. 20 s ≈ 3 min, in der Sicherheitsphase (5 min). Gegenprobe 1 Gruppe × 6 Würfe × 0,5 min = 3 min. Wird es knapp: Gegenprobe entfällt, als Grenze notieren.",
     "**Vorjahr alte 1BK (lang − kurz):** G1 +9,05 · G2 +0,10 · G3 −10,54 · G4 +7,36 · G6 +3,05 · G7 +2,72 · G5 nicht berechenbar. **Alte 1AK:** G1 −0,57 · G2 −2,47 · G3 +6,55 · G4 +6,41 · G5 +4,52 · G6 −1,99 · G7 +3,07.",
 ]
 
@@ -144,7 +144,7 @@ FRAGEN = [
     ("Gibt es in der Naturwissenschaft überhaupt Beweise?", "In der Mathematik ja. In den Naturwissenschaften sprechen wir von gut gestützten Ergebnissen – sie gelten, bis neue Befunde etwas anderes zeigen."),
     ("Warum dürfen wir den schlechten Wurf nicht streichen?", "Weil wir sonst nur die passenden Werte behalten – das Ergebnis würde unsere Erwartung bestätigen, egal was wirklich passiert."),
     ("Warum fliegt ein Flieger mal links, mal rechts?", "Kleinste Asymmetrien in Faltung und Abwurf, Luftbewegungen. Genau deshalb wiederholen wir und vergleichen Mittelwerte."),
-    ("Warum hat Semmelweis niemand geglaubt?", "Seine Erklärung passte nicht zu den damaligen Vorstellungen, Erreger waren unbekannt, und viele Ärzte fühlten sich angegriffen. Gute Daten setzen sich nicht immer sofort durch."),
+    ("Warum haben viele Semmelweis nicht geglaubt?", "Seine Erklärung passte nicht zu den damaligen Vorstellungen, Erreger waren unbekannt, und viele Ärzte fühlten sich angegriffen. Er hatte Unterstützer (z. B. Skoda, Hebra), veröffentlichte seine Daten aber erst 1861 selbst ausführlich. Gute Daten setzen sich nicht immer sofort durch – Veröffentlichung und Prüfung durch andere gehören dazu."),
     ("Ist ein Computermodell auch ein Modell?", "Ja – z. B. Wettermodelle. Auch sie vereinfachen und haben Grenzen; darum vergleicht man sie mit Messungen."),
     ("Warum werden so viele Studien nicht wiederholt?", "Wiederholungen bringen wenig Ansehen und Geld, und oft fehlen Angaben zur Methode. Darum ist ein genaues Protokoll so wichtig."),
     ("Ist Astrologie eine Wissenschaft?", "Ihre Vorhersagen wurden geprüft und haben sich nicht bestätigt; vage Aussagen sind kaum prüfbar. Das ist der Unterschied zu einer wissenschaftlichen Hypothese."),

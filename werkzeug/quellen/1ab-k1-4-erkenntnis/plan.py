@@ -10,7 +10,7 @@ VS = "v:" + I.VS_ID
 
 TEIL1 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Einstieg: Büroklammer-Behauptung – tippen per Handzeichen", 3, True, "org"),
          ("Heute, Lernziele, Gruppen 1–8 einteilen", 2, True, "org"),
-         ("Lesen: Buch S. 29 (4.1) + Theorieteil Teil 1 »Vermutung, Vorhersage, Beobachtung« und »Theorie, Gesetz und Modell«", 5, False, "lesen"),
+         ("Lesen: Buch S. 29 (4.1) + Theorieteil Teil 1 »Vermutung, Vorhersage, Beobachtung«, »Theorie, Gesetz und Modell«, »Welche Fragen kann NAWI beantworten?«", 5, False, "lesen"),
          ("Kurz klären: Hypothese – Vorhersage – Theorie, keine Stufenleiter", 5, True, "erkl"),
          ("Aufgabe 1", 3, False, "a1"), ("Aufgabe 2", 2, False, "a2"), ("Aufgabe 3", 3, False, "a3"), ("Besprechung Aufgaben 1–3", 2, True, "bespr"),
          ("Versuchsplan gemeinsam: Was ändern, messen, gleich lassen?", 3, True, "erkl"), ("Aufgabe 4 in der Gruppe (vor dem Versuch!)", 4, False, "a4"),
@@ -18,9 +18,9 @@ TEIL1 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Einstieg: Büro
 
 def teil2(start):
     return [start, ("Lesen: Theorieteil Teil 2 »Die Messregeln« und »So läuft der Test«", 3, False, "lesen"), ("Aufgabe 5", 3, False, "a5"),
-            ("Weg in den Eingangsbereich, Bandmaß und Linie zeigen", 4, True, "org"), ("Sicherheit, Rollen, flachen Abwurf vorzeigen", 3, True, "erkl"),
+            ("Weg in den Eingangsbereich, Bandmaß und Linie zeigen", 4, True, "org"), ("Sicherheit, Rollen, Abwurf vorzeigen; je Gruppe ein Probewurf (ohne Messen)", 5, True, "erkl"),
             ("Versuch " + I.VS_ID + ": drei Vergleichspaare je Gruppe (eine Messbahn)", 24, True, VS),
-            ("Gegenprobe: zweiter Werfer bei 1–2 Gruppen", 5, True, VS), ("Zurück, Flieger und Papierblätter abgeben", 2, True, "org")]
+            ("Gegenprobe: zweiter Werfer bei einer Gruppe", 3, True, VS), ("Zurück, Flieger und Papierblätter abgeben", 2, True, "org")]
 
 TEIL3 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"),
          ("Lesen: Buch S. 29 (4.2) + Theorieteil »Wien 1847« und Teil 3 »Forschung ist ein Kreislauf«", 5, False, "lesen"),
@@ -28,8 +28,8 @@ TEIL3 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("1. Test inkl. A
          ("Aufgabe 7 Partnercheck (ohne Handy)", 5, True, "a7"), ("Besprechung", 3, True, "bespr"), ("Reserve", 4, True, "reserve")]
 
 TEIL4 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Weißt du noch? Eure Hypothesen wieder hervorholen", 3, True, "org"),
-         ("Lesen: Theorieteil Teil 4 »Mittelwert und Spannweite« und »Drei mögliche Ergebnisse«", 4, False, "lesen"),
-         ("Kurz klären: Rechenweg und Deckenkontakte", 3, True, "erkl"),
+         ("Lesen: Theorieteil Teil 4 »Mittelwert und Spannweite«, »Drei mögliche Ergebnisse«, »Widerlegbar muss es sein«", 4, False, "lesen"),
+         ("Kurz klären: Rechenweg, »unklar«, widerlegbar", 3, True, "erkl"),
          ("Auswertung " + I.VS_ID + ": Mittelwert, Spannweite, Erkenntnis, Interpretation, Schlussfolgerung", 10, False, VS),
          ("Klassenübersicht an der Tafel: Mittelwerte A und B je Gruppe", 4, True, "erkl"),
          ("Aufgabe 8", 4, False, "a8"), ("Aufgabe 9 KI-Check", 4, False, "a9"), ("Aufgabe 10 zu zweit (erst ohne Handy)", 4, True, "a10"),
@@ -67,9 +67,9 @@ def _ab(k, std, name):
 
 
 KNAPP = {
- ("1AK", 2): f"Zeitstopp: Um Minute {_ab('1AK', 2, 'Zurück')} geht es zurück, egal wie weit ihr seid. Wenn es knapp wird: 1. Gegenprobe nur bei einer Gruppe – oder in Stunde 4 statt der Klassenübersicht. "
+ ("1AK", 2): f"Zeitstopp: Um Minute {_ab('1AK', 2, 'Zurück')} geht es zurück, egal wie weit ihr seid. Wenn es knapp wird: 1. Die Gegenprobe entfällt – das als Grenze im Protokoll notieren. "
              "2. Nie Vergleichspaare streichen; lieber eine Gruppe weniger messen lassen und das im Protokoll vermerken.",
- ("1BK", 3): f"Zeitstopp: Um Minute {_ab('1BK', 3, 'Zurück')} geht es zurück. Wenn es knapp wird: 1. Gegenprobe nur bei einer Gruppe oder am Beginn von Stunde 4. 2. Keine Vergleichspaare streichen.",
+ ("1BK", 3): f"Zeitstopp: Um Minute {_ab('1BK', 3, 'Zurück')} geht es zurück. Wenn es knapp wird: 1. Die Gegenprobe entfällt – als Grenze notieren. 2. Keine Vergleichspaare streichen.",
  ("1AK", 3): f"Nach Klassenbuch und Test bleiben {50 - _ab('1AK', 3, 'Lesen')} min. Zeitstopp: Um Minute {_ab('1AK', 3, 'Besprechung')} beginnt die Besprechung. Wenn es knapp wird: Aufgabe 7 nur mit 2 Karten je Kadett.",
  ("1BK", 2): f"Nach Klassenbuch und Test bleiben {50 - _ab('1BK', 2, 'Lesen')} min. Zeitstopp: Um Minute {_ab('1BK', 2, 'Besprechung')} beginnt die Besprechung. Wenn es knapp wird: Aufgabe 7 nur mit 2 Karten je Kadett.",
  ("1AK", 4): f"Zeitstopp: Um Minute {_ab('1AK', 4, 'PDF')} PDFs erstellen, danach nur noch Reserve. Wenn es knapp wird: Aufgabe 10 g) mündlich, Klassenübersicht nur mit 4 Gruppen.",

@@ -127,7 +127,7 @@
      "datum": "Do 05.11. (2. Std.)",
      "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
      "aufgaben": "5 · Versuchsprotokoll",
-     "zeit": "Aufgaben und Versuch ca. 32 min · Reserve 4 min",
+     "zeit": "Aufgaben und Versuch ca. 30 min · Reserve 4 min",
      "wie": "ohne Handy: Versuch K1.4-V1, Gegenprobe",
      "abgabe": "Papierblatt der Gruppe abgeben"
     },
@@ -177,7 +177,7 @@
      "datum": "Mo 09.11.",
      "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
      "aufgaben": "5 · Versuchsprotokoll",
-     "zeit": "Aufgaben und Versuch ca. 32 min · Reserve 3 min",
+     "zeit": "Aufgaben und Versuch ca. 30 min · Reserve 3 min",
      "wie": "ohne Handy: Versuch K1.4-V1, Gegenprobe",
      "abgabe": "Papierblatt der Gruppe abgeben"
     },
@@ -200,19 +200,19 @@
    ]
   },
   "dateien": {
-   "stand": "29.10.2026",
-   "zip": "26-27-1AB-K1.4-Erkenntnis-v1.zip",
+   "stand": "30.10.2026",
+   "zip": "26-27-1AB-K1.4-Erkenntnis-v2.zip",
    "liste": [
-    "26-27-1AB-K1.4-Erkenntnis-TH-Unterricht-v1.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Lehrer-v1.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Lehrer-v1.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-AB-v1.docx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Loesung-v1.docx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Fachwissen-v1.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-AB-v1.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Loesung-v1.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Fachwissen-v1.docx",
-    "26-27-1AB-K1.4-Erkenntnis-Pruefbericht-Claude-v1.md"
+    "26-27-1AB-K1.4-Erkenntnis-TH-Unterricht-v2.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Lehrer-v2.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Lehrer-v2.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-AB-v2.docx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Loesung-v2.docx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Fachwissen-v2.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-AB-v2.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Loesung-v2.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Fachwissen-v2.docx",
+    "26-27-1AB-K1.4-Erkenntnis-Pruefbericht-Claude-v2.md"
    ]
   },
   "lehrerseite": "https://claude.ai/artifact/7y811wKjJTEmufpoP8Ed7x"

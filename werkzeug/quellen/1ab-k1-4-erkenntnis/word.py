@@ -363,7 +363,7 @@ def vs_docs():
 def vs_fachwissen():
     fuss = f"K1.4 Erkenntnisgewinn · Versuche · Stand {I.STAND} · {VER} · Fachwissen"
     doc = new_doc("NUR FÜR DICH · NAWI · 1. JAHRGANG · K1.4", "Versuch – Herrichten & Fachwissen", fuss)
-    para(doc, f"Herrichte-Liste zum Abhaken · {VD.GRUPPEN} Gruppen angenommen (Klassengröße bestätigen) · zuerst Verbrauchsmaterial, dann Geräte, dann was die Kadetten mitbringen", 10.5, True, OLIVE, after=2)
+    para(doc, f"Herrichte-Liste zum Abhaken · {VD.GRUPPEN} Gruppen angenommen (Klassengröße bestätigen) · Mengen je Klasse · zuerst Verbrauchsmaterial, dann Geräte, dann was die Kadetten mitbringen", 10.5, True, OLIVE, after=2)
     listen = [(f"Je Versuch: {nr} {tit}", rows) for nr, tit, rows in H.je_versuch()]
     if len(VD.VS) > 1: listen.append(("Gesamt für alle Versuche", H.gesamt()))
     else: listen = [(listen[0][0] + " = Gesamtliste (nur ein Versuch)", listen[0][1])]

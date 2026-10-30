@@ -6,8 +6,8 @@ Deshalb ist alles nach TEILEN 1–4 gegliedert (»h« = Teil); welche Stunde wel
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe. Kein Kahoot (Stephan, 29.10.2026).
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge, z. B. Zuordnen)."""
 
-STAND = "29.10.2026"
-V = "v1"
+STAND = "30.10.2026"
+V = "v2"
 ORDNER = "1ab-nawi/k1-4-erkenntnis"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -23,8 +23,8 @@ VS_TITEL = "Papierflieger mit und ohne Büroklammer"
 
 # (Titel, Quelle, Dauer, Link[, Art]). »stephan« = aus Stephans bisheriger PPP (Altfolie 6/7), Inhalt und Länge von hier nicht prüfbar (YouTube gesperrt).
 VIDEOS = {
-    "apolin1": ("Hypothese und Theorie – Teil 1", "Martin Apolin (YouTube), aus der bisherigen Unterrichts-PPP", "kurz", "https://www.youtube.com/watch?v=PDwV0oIuK0w", "stephan"),
-    "apolin2": ("Hypothese und Theorie – Teil 2 (Popper)", "Martin Apolin (YouTube), aus der bisherigen Unterrichts-PPP", "kurz", "https://www.youtube.com/watch?v=_g7BQWR7XUs", "stephan"),
+    "apolin1": ("Hypothese und Theorie – Teil 1", "Martin Apolin (YouTube), aus der bisherigen Unterrichts-PPP · freiwillig, Länge vorher prüfen", "kurz", "https://www.youtube.com/watch?v=PDwV0oIuK0w", "stephan"),
+    "apolin2": ("Hypothese und Theorie – Teil 2 (Popper)", "Martin Apolin (YouTube), aus der bisherigen Unterrichts-PPP · freiwillig, Länge vorher prüfen", "kurz", "https://www.youtube.com/watch?v=_g7BQWR7XUs", "stephan"),
 }
 FREIGEGEBEN = {"apolin1", "apolin2"}  # Stephan verwendet beide Videos laut eigener Angabe regelmäßig in dieser Einheit
 
@@ -74,7 +74,7 @@ T = [
                       "e) Hypothese (Vermutung) über eine Ursache – prüfbar, z. B. mit einem zweiten Werfer."]]],
   "tip": ["Vermutung, Vorhersage, Beobachtung", "theorie.html#hypothese"]},
 
- {"id": "a2", "nr": 2, "title": "Stimmt das?", "src": "Buch-Aufgabe S. 30–32", "own": False, "tag": "Teil 1", "h": 1, "zeit": 2,
+ {"id": "a2", "nr": 2, "title": "Stimmt das?", "src": "Buch-Aufgabe Kap. 4", "own": False, "tag": "Teil 1", "h": 1, "zeit": 2,
   "q": "Nach der Buch-Aufgabe »Erkenntnisgewinn in den Naturwissenschaften« (Aufgabenkasten im Kapitel 4): Entscheide bei jeder Aussage, ob sie stimmt. Begründungen besprechen wir danach gemeinsam.",
   "hint": "Denk an Sinnestäuschungen, an Beobachtungen ohne Experiment und daran, was eine wissenschaftliche Theorie ist. Info: Theorieteil Teil 1",
   "type": "multi",
@@ -151,12 +151,12 @@ T = [
   "hint": "Vergleiche in jeder Zeile »kurz« und »lang«. »Ung.« heißt ungültig bzw. fehlend. Zu d): Wie viele Würfe gab es, und was war bei den Fliegern alles verschieden?",
   "type": "multi",
   "fields": [["anz", "a) Anzahl der Gruppen (Zahl)"],
-             ["muster", "b) Gruppe, die nicht ins Muster passt", ["Gruppe 3", "Gruppe 1", "Gruppe 2", "Gruppe 7"]],
+             ["muster", "b) Gruppe, die nicht ins Muster passt", ["Gruppe 3", "Gruppe 1", "Gruppe 4", "Gruppe 7"]],
              ["fehlt", "c) Gruppe mit fehlendem Wert", ["Gruppe 5", "Gruppe 3", "Gruppe 4", "Gruppe 6"]],
              ["warum", "d) Reichen die Daten für eine Ursache? (2 Sätze)"]],
-  "chk": {"anz": {"kw": [["3 Gruppen", r"^\s*(3|drei)\s*(gruppen?)?\s*\.?\s*$"]]},
+  "chk": {"anz": {"kw": [["3 Gruppen", r"^\s*(in\s+)?(3|drei)\b(?![.,]\d)(?!.*\b(oder|bis)\b)"]]},
           "muster": {"sel": "Gruppe 3"}, "fehlt": {"sel": "Gruppe 5"},
-          "warum": {"kw": [["nein / reicht nicht", r"nein|nicht|kein|reicht nicht|zu wenig"],
+          "warum": {"contra": [r"^\s*ja\b"], "kw": [["nein / reicht nicht", r"nein|reicht nicht|zu wenig|nicht genug|nicht sagen"],
                            ["Grund (nur ein Wurf, viele Unterschiede, Werfer, Bauform …)", r"ein(em)? wurf|einmal|wiederhol|werfer|bauform|form|falt|unterschied|viele|mehrere|gleichzeitig|dokument|decke|zufall|streu"]], "need": 2, "man": True}},
   "sol": [["Lösung", ["a) 3 – in Gruppe 1, 2 und 6 der alten 1AK flog der kurze Flieger weiter, in Gruppe 3, 4, 5 und 7 der lange.",
                       "b) Gruppe 3 – dort flog der kurze Flieger (15,31 m) viel weiter als der lange (4,77 m); in den anderen vollständigen Paaren der alten 1BK flog der lange weiter.",
@@ -181,21 +181,21 @@ T = [
 
  # ======================================================= Teil 4 · Auswerten und vorsichtig schließen (Buch S. 29–32)
  {"id": "a8", "nr": 8, "title": "Mittelwert und Spannweite", "src": "Buch S. 29", "own": True, "tag": "Teil 4", "h": 4, "zeit": 4,
-  "q": "Übungsdaten (nicht eure Messung): Ein Flieger flog ohne Klammer 4,8 m · 5,6 m · 5,2 m und mit Klammer 6,1 m · 4,9 m · 6,4 m. "
+  "q": "Übungsdaten (nicht eure Messung): Ein Flieger flog ohne Klammer 3,8 m · 4,6 m · 4,2 m und mit Klammer 5,1 m · 3,9 m · 5,4 m. "
        "a) Berechne den Mittelwert ohne Klammer (A) in m. b) Berechne den Mittelwert mit Klammer (B) in m. c) Berechne die Spannweite von B in m. d) Wähle die passende Schlussfolgerung.",
   "hint": "Mittelwert = Summe der Werte : Anzahl der Werte. Spannweite = größter Wert − kleinster Wert. Info: Theorieteil Teil 4 »Mittelwert und Spannweite«",
   "type": "multi",
   "fields": [["ma", "a) Mittelwert A (mit Einheit)"], ["mb", "b) Mittelwert B (mit Einheit)"], ["sb", "c) Spannweite B (mit Einheit)"],
-             ["schluss", "d) Schlussfolgerung", ["B flog im Mittel weiter, die Werte überlappen aber – nur eine vorsichtige Aussage.",
+             ["schluss", "d) Schlussfolgerung", ["B flog im Mittel 0,6 m weiter, die Werte überlappen aber stark – noch keine Entscheidung möglich (unklar).",
                                                    "Damit ist bewiesen, dass eine Büroklammer jeden Flieger verbessert.",
                                                    "A war besser, weil der kürzeste Wurf bei B war.",
                                                    "Man kann gar nichts sagen, weil ein Wert klein war."]]],
-  "chk": {"ma": {"num": 5.2, "unit": "m"}, "mb": {"num": 5.8, "unit": "m"}, "sb": {"num": 1.5, "unit": "m"},
-          "schluss": {"sel": "B flog im Mittel weiter, die Werte überlappen aber – nur eine vorsichtige Aussage."}},
-  "sol": [["Lösung", ["a) (4,8 + 5,6 + 5,2) m : 3 = 15,6 m : 3 = 5,2 m.",
-                      "b) (6,1 + 4,9 + 6,4) m : 3 = 17,4 m : 3 = 5,8 m.",
-                      "c) 6,4 m − 4,9 m = 1,5 m.",
-                      "d) B war im Mittel um 0,6 m weiter. Weil sich die Werte von A (4,8–5,6 m) und B (4,9–6,4 m) überlappen und es nur drei Würfe sind, ist das ein Hinweis, kein Beweis."]]],
+  "chk": {"ma": {"num": 4.2, "unit": "m"}, "mb": {"num": 4.8, "unit": "m"}, "sb": {"num": 1.5, "unit": "m"},
+          "schluss": {"sel": "B flog im Mittel 0,6 m weiter, die Werte überlappen aber stark – noch keine Entscheidung möglich (unklar)."}},
+  "sol": [["Lösung", ["a) (3,8 + 4,6 + 4,2) m : 3 = 12,6 m : 3 = 4,2 m.",
+                      "b) (5,1 + 3,9 + 5,4) m : 3 = 14,4 m : 3 = 4,8 m.",
+                      "c) 5,4 m − 3,9 m = 1,5 m.",
+                      "d) unklar: B war im Mittel um 0,6 m weiter, aber die Werte von A (3,8–4,6 m) und B (3,9–5,4 m) überlappen stark, und es sind nur drei Würfe. Noch keine Entscheidung möglich."]]],
   "tip": ["Mittelwert und Spannweite", "theorie.html#mittelwert"]},
 
  {"id": "a9", "nr": 9, "title": "Eine KI-Antwort prüfen", "src": "Buch S. 29", "own": True, "tag": "Teil 4", "h": 4, "zeit": 4,
@@ -207,29 +207,29 @@ T = [
   "fields": [["k1", "Aussage 1", STIMMT, False], ["k2", "Aussage 2", STIMMT, False], ["k3", "Aussage 3", STIMMT, False], ["k4", "Aussage 4", STIMMT, False],
              ["korr", "e) Aussage 1 richtig formuliert (1 Satz)"]],
   "chk": {"k1": {"sel": "stimmt nicht"}, "k2": {"sel": "stimmt nicht"}, "k3": {"sel": "stimmt"}, "k4": {"sel": "stimmt nicht"},
-          "korr": {"kw": [["unterstützt / spricht für", r"unterstütz|stütz|spricht (für|dafür)|bestätig|passt|hinweis|stärk"], ["nicht bewiesen / vorläufig / unter diesen Bedingungen", r"nicht bewiesen|kein beweis|vorläufig|vorlaeufig|bedingung|nur für|nur bei|diese[mnrs]? flieger|unsere[mnrs]?|vorsichtig|wahrscheinlich"]], "need": 2, "man": True}},
+          "korr": {"kw": [["unterstützt / spricht für", r"unterstütz|unterstuetz|stütz|stuetz|spricht (\w+ )?(für|fuer|dafür|dafuer)|passt|hinweis|stärk|staerk"], ["nicht bewiesen / vorläufig / unter diesen Bedingungen", r"nicht (endgültig |endgueltig |sicher )?bewiesen|kein (endgültiger |endgueltiger )?beweis|beweis \w+ (es|das) (aber )?nicht|bewiesen ist (sie|die hypothese|das|es) (\w+ )*nicht|vorläufig|vorlaeufig|unter (diesen|unseren) bedingungen|nur für|nur fuer|nur bei|vorsichtig|wahrscheinlich"]], "need": 2, "man": True}},
   "sol": [["Lösung", ["1. stimmt nicht – ein passendes Ergebnis unterstützt die Hypothese unter unseren Bedingungen, beweist sie aber nicht endgültig.",
                       "2. stimmt nicht – unsere Hypothese betrifft den Mittelwert. Ein einzelner kurzer Flug widerlegt sie nicht; es zählt die ganze geplante Messreihe.",
                       "3. stimmt – das ist Poppers Idee der Falsifizierbarkeit. Nicht prüfbar heißt aber nicht automatisch falsch.",
                       "4. stimmt nicht – es gibt keine automatische Stufenleiter Hypothese → Gesetz → Theorie. Ein Gesetz beschreibt eine Regelmäßigkeit, eine Theorie erklärt.",
-                      "e) z. B. »Wenn B unter unseren Bedingungen im Mittel weiter fliegt, unterstützt das unsere Hypothese – bewiesen ist sie damit nicht.«"]]],
+                      "e) z. B. »Wenn B unter unseren Bedingungen im Mittel klar weiter fliegt, unterstützt das unsere Vorhersage – bewiesen ist die Hypothese damit nicht, und die Begründung (»weil …«) hat der Test gar nicht geprüft.«"]]],
   "tip": ["Widerlegbar muss es sein", "theorie.html#popper"]},
 
  {"id": "a10", "nr": 10, "title": "Forschen oder konstruieren?", "src": "Buch S. 29", "own": True, "tag": "Teil 4", "h": 4, "zeit": 4,
   "q": "Zu zweit: Unser Papierflieger-Projekt lässt sich auch als Konstruktionszyklus beschreiben – so arbeiten Technikerinnen und Techniker. Ordne jede Tätigkeit dem passenden Schritt zu. "
        "g) Welche EINE Änderung würdet ihr als Nächstes testen – und was muss dabei gleich bleiben?",
-  "hint": "Die sechs Schritte: Problem analysieren → Entwerfen → Konstruieren → Testen → Bewerten → Verbessern. Info: Theorieteil Teil 4 »Forschen oder konstruieren?«",
+  "hint": "Überleg bei jeder Tätigkeit: Kommt sie vor dem Bauen, beim Bauen oder nach dem Test? Info: Theorieteil Teil 4 »Forschen oder konstruieren?«",
   "type": "multi",
-  "fields": [["z1", "a) Wir legen fest, was »weit« heißt und wie Deckenkontakte zählen.", ZYKLUS, False],
-             ["z2", "b) Wir wählen den Planarflieger und planen die Klammer vorne am Rumpf.", ZYKLUS, False],
-             ["z3", "c) Wir falten den Flieger nach Anleitung.", ZYKLUS, False],
-             ["z4", "d) Wir werfen drei Vergleichspaare und schreiben alles auf.", ZYKLUS, False],
+  "fields": [["z4", "a) Wir werfen drei Vergleichspaare und schreiben alles auf.", ZYKLUS, False],
+             ["z1", "b) Wir legen fest, was »weit« heißt und wie Deckenkontakte zählen.", ZYKLUS, False],
+             ["z6", "c) Wir schieben die Klammer 2 cm nach hinten und testen neu.", ZYKLUS, False],
+             ["z3", "d) Wir falten den Flieger nach Anleitung.", ZYKLUS, False],
              ["z5", "e) Wir vergleichen Mittelwerte, Spannweiten und Kontakte.", ZYKLUS, False],
-             ["z6", "f) Wir schieben die Klammer 2 cm nach hinten und testen neu.", ZYKLUS, False],
+             ["z2", "f) Wir wählen den Planarflieger und planen die Klammer vorne am Rumpf.", ZYKLUS, False],
              ["naechst", "g) Unsere nächste Änderung – und was gleich bleibt"]],
   "chk": {"z1": {"sel": "Problem analysieren"}, "z2": {"sel": "Entwerfen"}, "z3": {"sel": "Konstruieren"}, "z4": {"sel": "Testen"}, "z5": {"sel": "Bewerten"}, "z6": {"sel": "Verbessern"},
           "naechst": {"kw": [["eine Änderung", r"klammer|position|flügel|fluegel|papier|falt|rumpf|ecken|höhe|hoehe|werf|nase|größe|groesse|form"], ["bleibt gleich", r"gleich|selb|nicht ändern|nicht aendern|konstant|sonst nichts|nur eine|alles andere"]], "need": 2, "man": True}},
-  "sol": [["Lösung", ["a) Problem analysieren · b) Entwerfen · c) Konstruieren · d) Testen · e) Bewerten · f) Verbessern.",
+  "sol": [["Lösung", ["a) Testen · b) Problem analysieren · c) Verbessern · d) Konstruieren · e) Bewerten · f) Entwerfen.",
                       "g) z. B. »Wir schieben die Klammer 2 cm nach hinten. Gleich bleiben derselbe Flieger, derselbe Werfer, dieselbe Abwurfhöhe und die drei Vergleichspaare.«",
                       "Unterschied: Beim Forschen prüfen wir eine Hypothese (Was stimmt?). Beim Konstruieren verbessern wir einen Entwurf für ein Ziel (Was funktioniert besser?). Beide brauchen faire Tests."]]],
   "tip": ["Forschen oder konstruieren?", "theorie.html#zyklus"]},
@@ -258,7 +258,7 @@ T = [
              ["p4", "d) Mein Flieger ist der beste – verliert er, zählt der Wurf eben nicht.", PRUEFBAR, False],
              ["auto", "e) Nicht prüfbar = falsch? (1 Satz)"]],
   "chk": {"p1": {"sel": "prüfbar"}, "p2": {"sel": "nicht prüfbar"}, "p3": {"sel": "prüfbar"}, "p4": {"sel": "nicht prüfbar"},
-          "auto": {"kw": [["nein / nicht automatisch", r"nein|nicht automatisch|nicht unbedingt|nicht falsch|nicht zwingend|kann (trotzdem|auch) stimm|weiß man nicht|weiss man nicht"]], "man": True}},
+          "auto": {"kw": [["nein / nicht automatisch", r"nein|nicht automatisch|nicht unbedingt|nicht falsch|nicht zwingend|kann (trotzdem|auch) (stimm|wahr|richtig)|wahr sein|richtig sein|weiß man nicht|weiss man nicht"]], "man": True}},
   "sol": [["Lösung", ["a) prüfbar – Vergleichsreihe mit zwei Flügelgrößen, sonst alles gleich.",
                       "b) nicht prüfbar – so formuliert, dass keine Beobachtung sie widerlegen kann.",
                       "c) prüfbar – zwei Schalen bei verschiedenen Temperaturen, Keimlinge zählen.",
@@ -275,7 +275,7 @@ T = [
              ["eff", "b) Effekte bei der Wiederholung", ["deutlich kleiner", "genau gleich groß", "doppelt so groß", "gar nicht messbar"]],
              ["uns", "c) Bedeutung für unseren Test (1 Satz)"]],
   "chk": {"anz": {"sel": "50 Experimente"}, "eff": {"sel": "deutlich kleiner"},
-          "uns": {"kw": [["wiederholen / Gegenprobe / anderer Werfer", r"wiederhol|gegenprobe|zweite[nr]? werfer|andere[nr]? (werfer|gruppe)|nochmal|noch einmal|mehr würfe|mehr wuerfe|genau beschreib|protokoll"]], "man": True}},
+          "uns": {"kw": [["wiederholen / Gegenprobe / anderer Werfer", r"wiederhol|gegenprobe|zweite[nr]? werfer|andere[nr]? (werfer|gruppe)|andere|bestätig|bestaetig|nachmach|nochmal|noch einmal|mehr würfe|mehr wuerfe|genau beschreib|protokoll"]], "man": True}},
   "sol": [["Lösung", ["a) 50 Experimente (aus 23 Fachartikeln) – geplant waren 193.",
                       "b) deutlich kleiner – im Median um 85 % kleiner als in den Originalarbeiten.",
                       "c) Ein einzelnes Ergebnis reicht nicht: Erst wenn eine Wiederholung – z. B. die Gegenprobe mit einem zweiten Werfer – ein ähnliches Ergebnis liefert, vertrauen wir ihm mehr. Dafür muss das Protokoll genau sein."]]],
@@ -284,7 +284,7 @@ T = [
  {"id": "a14", "nr": 14, "title": "Video, Podcast oder Plakat", "src": "Buch S. 28–29", "own": True, "tag": "Zusatz", "h": 0, "zeit": 25,
   "q": "Kreativ, freiwillig, allein oder zu zweit: Erkläre neuen Rekruten in höchstens 2 Minuten (Video), 3 Minuten (Podcast) oder auf einem A3-Plakat (mit der Hand), was eine Hypothese und was eine wissenschaftliche Theorie ist. "
        "Pflichtinhalte: 1. Hypothese = begründete, prüfbare Vermutung. 2. Theorie = Erklärung, die viele geprüfte Befunde verbindet. 3. ein Beispiel aus unserem Papierflieger-Test. 4. warum »nur eine Theorie« ein Irrtum ist. "
-       "Abgabe: Plakat als Foto ins PDF bzw. Video/Podcast in LMS (Teams nur, wenn die Datei zu groß ist). Trag hier Titel, Form und »hochgeladen am …« ein.",
+       "Abgabe (freiwillig, Termin sagt Stephan): Plakat als Foto ins PDF, Video oder Podcast als Datei in LMS (Teams nur, wenn die Datei zu groß ist). Trag hier Titel, Form und »hochgeladen am …« ein.",
   "hint": "Keine fremde Musik, keine fremden Bilder. Andere Personen nur mit Zustimmung aufnehmen. Wenn dir eine KI beim Skript hilft, schreib das dazu – und prüf den Inhalt.",
   "type": "multi",
   "fields": [["titel", "Titel"], ["form", "Form (Video, Podcast oder Plakat)"], ["inhalt", "Worum geht es? (1–2 Sätze)"], ["hoch", "hochgeladen in LMS am … / Plakat-Foto im PDF"]],
@@ -325,15 +325,15 @@ LERNZIELE = ["eine **naturwissenschaftliche Frage** erkennen und **Biologie, Che
 
 WICHTIGSTE = ["Eine **Beobachtung** beschreibt, was wir sehen oder messen; eine **Hypothese** ist eine begründete, **prüfbare** Vermutung; eine **Vorhersage** sagt, was beim nächsten Test herauskommen sollte.",
               "Eine wissenschaftliche **Theorie** ist keine Vermutung, sondern eine Erklärung, die **viele geprüfte Befunde** verbindet und Vorhersagen erlaubt; ein **Gesetz** beschreibt eine Regelmäßigkeit unter bestimmten Bedingungen.",
-              "Ein **fairer Test** ändert nur **eine** Sache, legt die Regeln **vorher** fest, wiederholt die Messung und behält **alle** Werte – auch die schlechten.",
+              "Ein **fairer Test** ändert nur **eine** Sache, legt die Regeln **vorher** fest, wiederholt die Messung und behält **alle gültigen** Werte – auch die schlechten.",
               "Ein passendes Ergebnis **unterstützt** eine Hypothese, **beweist** sie aber nicht; eine Aussage, die keine Beobachtung widerlegen kann, ist **nicht prüfbar** – aber nicht automatisch falsch.",
               "Forschung ist ein **Kreislauf**: Ergebnisse werden veröffentlicht, von anderen geprüft und wiederholt – und werfen neue Fragen auf."]
 
 FACHBEGRIFFE = [["Begriff", "Bedeutung"],
-                ["Beobachtung", "beschreiben, was man wahrnimmt oder misst – ohne in das untersuchte System einzugreifen"],
+                ["Beobachtung", "was man wahrnimmt oder misst (Ergebnis, auch im Experiment); »beobachten« als Methode heißt: zuschauen, ohne einzugreifen"],
                 ["Experiment (Versuch)", "gezielter Eingriff: eine Bedingung wird geplant verändert und die Wirkung gemessen"],
                 ["qualitativ", "Ergebnis in Worten (»der Flieger kippt nach links«)"],
-                ["quantitativ", "Ergebnis als Zahl mit Einheit (»5,8 m«)"],
+                ["quantitativ", "Ergebnis als Zahl, meist mit Einheit (»5,8 m«)"],
                 ["Hypothese", "begründete, prüfbare Vermutung über einen Zusammenhang; man kann sagen, was gegen sie sprechen würde"],
                 ["Vorhersage", "erwartetes Ergebnis eines bestimmten Tests, abgeleitet aus Hypothese oder Theorie"],
                 ["Theorie (wissenschaftlich)", "zusammenhängende Erklärung, die viele geprüfte Befunde verbindet und überprüfbare Vorhersagen erlaubt"],
@@ -358,14 +358,14 @@ WEISST_DU_NOCH = {
 }
 
 STOPPFRAGEN = {
-    1: [("»Unser Flieger flog einmal weiter – also ist unsere Theorie bewiesen.« Was ist falsch?", "Ein einzelner Wert beweist nichts, und wir prüfen eine Hypothese zu einer Änderung – keine neue Theorie."),
+    1: [("»Unser Flieger flog einmal weiter – also ist unsere Theorie bewiesen.« Was ist falsch?", "Ein einzelner Wert sagt wenig, und auch viele Werte beweisen eine Hypothese nicht endgültig. Außerdem prüfen wir eine Hypothese zu einer Änderung, keine Theorie."),
         ("Ist »Sollen wir mehr Geld für Hubschrauber ausgeben?« eine naturwissenschaftliche Frage?", "Nein – das ist eine Entscheidung (Wirtschaft, Politik). Messungen liefern nur Fakten dazu.")],
     2: [("Warum werfen wir A und B abwechselnd statt erst dreimal A und dann dreimal B?", "Damit Übung, Müdigkeit oder ein verbogener Flieger nicht nur einen Zustand treffen."),
-        ("Was ändert die Büroklammer alles?", "Masse UND Schwerpunkt – deshalb können wir nicht sagen, welches von beiden wirkt.")],
+        ("Was ändert die Büroklammer alles?", "Vor allem Masse und Schwerpunkt, außerdem klemmt sie den Rumpf zusammen. Darum können wir nicht sagen, was davon wirkt.")],
     3: [("Ist Forschung eine gerade Linie von Schritt 1 bis 8?", "Nein – ein Kreislauf mit Rückschritten und neuen Fragen."),
         ("Garantiert eine Begutachtung, dass ein Ergebnis stimmt?", "Nein – sie senkt Fehler; Vertrauen entsteht, wenn andere das Ergebnis wiederholen.")],
     4: [("B: 5,1 m, 6,3 m, 5,7 m. Wie groß ist der Mittelwert?", "(5,1 + 6,3 + 5,7) m : 3 = 17,1 m : 3 = 5,7 m."),
-        ("Die Daten sind unklar. Ist der Versuch dann gescheitert?", "Nein – »noch keine Entscheidung möglich« ist ein ehrliches, erlaubtes Ergebnis.")],
+        ("Die Daten sind unklar. Ist der Versuch dann gescheitert?", "Nein – »noch keine Entscheidung möglich« ist ein erlaubtes Ergebnis.")],
 }
 assert abs((5.1 + 6.3 + 5.7) / 3 - 5.7) < 1e-9
 

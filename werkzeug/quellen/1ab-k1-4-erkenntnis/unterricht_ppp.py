@@ -159,8 +159,8 @@ def lesen_folie(teil, buch, abschnitte, leitfrage, idx):
         B.tb(s, X0 + 0.82, y, W - 0.9, bh, [buch], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += bh + 0.12
     B.tb(s, X0, y, 6.9, 0.36, [[("Im Theorieteil genau diese Abschnitte:", {"bold": True, "color": TEAL})]], size=18, after=0); y += 0.4
     for a in abschnitte:
-        c = B.box(s, X0, y, 6.9, 0.5, fill=RGBColor.from_string("E8F1F3"), line=TEAL, lw=1.25)
-        B.text(c, [[("»" + TITEL[a] + "«", {"bold": True})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += 0.58
+        c = B.box(s, X0, y, 6.9, 0.44, fill=RGBColor.from_string("E8F1F3"), line=TEAL, lw=1.25)
+        B.text(c, [[("»" + TITEL[a] + "«", {"bold": True})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += 0.5
     qr(s, "theorie", 7.75, 1.05 + (bh + 0.12 if buch else 0), 1.2, "Theorieteil")
     y += 0.08
     hq = B.th("Leitfrage: " + leitfrage, 20, W - 0.1, pad=0.2)
@@ -209,7 +209,7 @@ def t1_einstieg():
 def t1_klaeren_hyp():
     s = d.slide("Nur Titel", "Kurz klären: Hypothese ≠ Vorhersage")
     tw = 2.9
-    for i, (kopf, bsp, was, col) in enumerate([("Beobachtung", "»Wurf 1 landete bei 6,4 m.«", "was wir sehen oder messen", TEAL),
+    for i, (kopf, bsp, was, col) in enumerate([("Beobachtung", "»Wurf 1 landete bei 6,4 m.«", "was wir sehen oder messen – auch im Experiment", TEAL),
                                                 ("Hypothese", "»Mit Klammer weiter, **weil** die Nase schwerer ist.«", "begründete, prüfbare Vermutung", GREEN),
                                                 ("Vorhersage", "»Bei drei Paaren hat B den größeren Mittelwert.«", "was beim nächsten Test herauskommen sollte", ORANGE)]):
         karte(s, X0 + i * (tw + 0.15), 1.05, tw, 2.1, kopf, [bsp, [(was, {"color": MUTED, "size": 18})]], col)
@@ -242,7 +242,7 @@ def t1_plan():
     rows = [["", "Unser Test"], ["Wir ändern", "nur die Klammer: A ohne, B mit"], ["Wir messen", "die Weite bis zum **ersten Bodenkontakt**, auf 0,1 m"],
             ["Bleibt gleich", "derselbe Flieger, Papier, Werfer, Abwurflinie und -höhe"], ["Wie oft", "drei Vergleichspaare, A und B abwechselnd"]]
     cells, h = B.auto_grid(s, X0, 1.05, [2.2, 6.8], [[B.plain(c) for c in r] for r in rows], size=20, minh=0.48)
-    c, hm = merke(s, 1.05 + h + 0.15, "Achtung: Die Klammer ändert Masse UND Schwerpunkt. Wir sehen, ob diese EINE Änderung wirkt – nicht, welche Ursache dahinter steckt.", size=20)
+    c, hm = merke(s, 1.05 + h + 0.15, "Der Test prüft eure Vorhersage (fliegt B weiter?). Das »weil« prüft er nicht: Die Klammer ändert Masse, Schwerpunkt und klemmt den Rumpf.", size=20)
     s._anim.append([c])
     return s
 
@@ -297,7 +297,7 @@ def t2_sicher():
         B.text(c, ["!"], size=20, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
         hh = B.th(h_ + ": " + t_, 18, 4.3, pad=0.06)
         B.tb(s, X0 + 0.52, y, 4.3, hh, [[(h_ + ": ", {"bold": True, "color": OLIVE}), (t_, {})]], size=20, after=0); y += max(0.55, hh + 0.04)
-    karte(s, 5.55, 1.05, 3.95, 3.35, "Rollen in der Gruppe", ["**Werfer** – bleibt die ganze Reihe gleich", "**Messer** – am Landepunkt", "**Protokollführer** – tippt sofort",
+    karte(s, 5.55, 1.05, 3.95, 3.35, "Rollen in der Gruppe", ["**Werfer** – bleibt die ganze Reihe gleich", "**Messer** – seitlich außerhalb der Bahn", "**Protokollführer** – tippt sofort",
                                                              "**Prüfer** (Vierergruppe) – Linie, Bahn frei"], GREEN, size=20)
     return s
 
@@ -315,7 +315,7 @@ def t2_ablauf():
 
 def t2_gegenprobe():
     s = d.slide("Nur Titel", "Gegenprobe: ein zweiter Werfer")
-    karte(s, X0, 1.05, 4.4, 2.4, "Wer?", ["Die 1–2 Gruppen, die Stephan aufruft.", "Ein **anderer** Werfer wirft dieselben drei Paare."], TEAL)
+    karte(s, X0, 1.05, 4.4, 2.4, "Wer?", ["Die Gruppe, die Stephan aufruft.", "Ein **anderer** Werfer wirft dieselben drei Paare."], TEAL)
     karte(s, X0 + 4.6, 1.05, 4.4, 2.4, "Wozu?", ["Zeigt sich das Ergebnis auch bei jemand anderem?", "Eingetragen wird **getrennt** – nicht zusammen mitteln."], ORANGE)
     merke(s, 3.65, "Ein Ergebnis wird glaubwürdiger, wenn es sich wiederholen lässt.", size=20)
     return s
@@ -383,6 +383,14 @@ def t4_klaeren():
     return s
 
 
+def t4_popper():
+    s = d.slide("Nur Titel", "Kurz klären: widerlegbar muss es sein")
+    karte(s, X0, 1.05, 4.4, 1.95, "Karl Popper (Wien, 1902)", ["Eine Aussage ist wissenschaftlich, wenn eine Beobachtung sie **widerlegen könnte**."], TEAL)
+    karte(s, X0 + 4.6, 1.05, 4.4, 1.95, "Nicht prüfbar", ["»Mein Flieger ist der beste – verliert er, zählt der Wurf eben nicht.«"], ORANGE)
+    y = frage_klick(s, 3.15, "Ist eine nicht prüfbare Aussage automatisch falsch?", "Nein – sie lässt sich mit Messungen nur nicht entscheiden.")
+    return s
+
+
 def t4_auswertung():
     s = d.slide("Nur Titel", "Jetzt: Protokoll auswerten")
     y = schritte(s, X0, 1.05, 6.9, ["Mittelwert A und B, Spannweite – in die Tabelle.", "**Erkenntnis:** Wer flog im Mittel weiter, um wie viel? Kontakte?",
@@ -403,7 +411,7 @@ def t4_uebersicht():
 
 
 def t4_auftrag():
-    return auftrag_folie("Jetzt: Aufgaben 8–10", [8, 9, 10], {8: "allein am Handy", 9: "allein am Handy", 10: "zu zweit, erst reden, dann tippen"},
+    return auftrag_folie("Jetzt: Aufgaben 8–10", [8, 9, 10], {8: "allein am Handy", 9: "allein am Handy", 10: "zu zweit, »Forschen oder konstruieren?« offen"},
                          "8: drei Ergebnisse mit Einheit · 9: welche KI-Aussage stimmt · 10: Zuordnung + eure nächste Änderung.")
 
 
@@ -437,8 +445,8 @@ SPEC = {
  1: [("t1_einst", [0, 1], "EINSTIEG", None, "Neugier wecken, Vorhersage per Handzeichen – noch nicht auflösen", t1_einstieg),
      ("t1_heute", [2], "START", None, "Ziel und Ablauf zeigen, Gruppen 1–8 einteilen", lambda: heute_folie(1)),
      ("t1_lesen", [3], "LESEN", "Lesen", "Begriffe selbst lesen – Stephan erklärt nicht vor",
-      lambda: lesen_folie(1, "**Buch S. 29**, Abschnitt **4.1 »Von der Hypothese zur Theorie«**", ["hypothese", "theorie"],
-                          "Was ist der Unterschied zwischen einer Hypothese und einer Vorhersage?", [3])),
+      lambda: lesen_folie(1, "**Buch S. 29**, Abschnitt **4.1 »Von der Hypothese zur Theorie«**", ["hypothese", "theorie", "fragen"],
+                          "Was unterscheidet Hypothese und Vorhersage?", [3])),
      ("t1_hyp", [4], "KURZ KLÄREN", "Kurz klären", "Fehlvorstellung »Hypothese = Vorhersage« ausräumen", t1_klaeren_hyp),
      ("t1_theo", [4], "KURZ KLÄREN", None, "Fehlvorstellungen »Theorie = Vermutung« und »Stufenleiter« ausräumen", t1_klaeren_theorie),
      ("t1_a13", [5, 6, 7], "AUFGABE", "Aufgaben 1–3", "Begriffe anwenden (alles automatisch prüfbar)",
@@ -468,8 +476,9 @@ SPEC = {
  4: [("t4_heute", [0], "START", None, "Ziel zeigen, Protokoll-Handys öffnen lassen", lambda: heute_folie(4)),
      ("t4_weiss", [1], "WIEDERHOLEN", "Hypothese von damals", "An die eigene Vorhersage erinnern (nicht mehr ändern)", t4_weisst),
      ("t4_lesen", [2], "LESEN", "Lesen", "Rechenweg und die drei möglichen Ergebnisse selbst lesen",
-      lambda: lesen_folie(4, None, ["mittelwert", "schluss"], "Wann ist die ehrliche Antwort »noch keine Entscheidung möglich«?", [2])),
+      lambda: lesen_folie(4, None, ["mittelwert", "schluss", "popper"], "Wann ist die richtige Antwort »noch keine Entscheidung möglich«?", [2])),
      ("t4_klaeren", [3], "KURZ KLÄREN", "Kurz klären", "Rechenweg einmal vorzeigen (andere Zahlen als A8), Überlappung = unklar", t4_klaeren),
+     ("t4_popper", [3], "KURZ KLÄREN", None, "Falsifizierbarkeit (Popper) – Pflicht-Lehraufgabe, für A9 Aussage 3", t4_popper),
      ("t4_ausw", [4], "VERSUCH", "Protokoll auswerten", "Eigene Daten auswerten – Kern der Einheit", t4_auswertung),
      ("t4_klasse", [5], "KURZ KLÄREN", "Klassenübersicht", "Alle Gruppen nebeneinander: Streuung zwischen Gruppen sichtbar machen", t4_uebersicht),
      ("t4_a810", [6, 7, 8], "AUFGABE", "Aufgaben 8–10", "Rechnen, KI-Aussagen prüfen, Konstruktionszyklus", t4_auftrag),
@@ -606,7 +615,7 @@ def bauen():
 def FOLIE_TITEL(spec):
     """Kurzer »Danach«-Text für Folien ohne eigenen Schritt."""
     return {"t1_theo": "Kurz klären: Theorie", "t1_bespr": "Besprechen A1–A3", "t1_ende": "Flieger abgeben", "t2_sicher": "Sicherheit und Rollen",
-            "t2_ende": "zurück, abgeben", "t3_bespr": "Besprechen A6", "t4_bespr": "Besprechen A9", "t1_heute": "Heute"}.get(spec[0], spec[0])
+            "t2_ende": "zurück, abgeben", "t3_bespr": "Besprechen A6", "t4_bespr": "Besprechen A9", "t4_popper": "Kurz klären: widerlegbar", "t1_heute": "Heute"}.get(spec[0], spec[0])
 
 
 if __name__ == "__main__":

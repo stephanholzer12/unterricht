@@ -873,7 +873,7 @@ def herrichten_folien():
         for ti, (b_, m_) in enumerate(teile_):
           s = d.slide("Nur Titel", "Lehrer-Info · Herrichten" + (f" ({ti + 1}/{len(teile_)})" if len(teile_) > 1 else ""), hidden=True)
           tag(s, "AUSGEBLENDET", RUST, x=7.6, w=1.9)
-          tb(s, X0, 0.98, 7, 0.3, [titel + f" · {VD.GRUPPEN} Gruppen angenommen (Klassengröße bestätigen)"], size=12, bold=True, color=RUST, after=0)
+          tb(s, X0, 0.98, 7, 0.3, [titel + f" · {VD.GRUPPEN} Gruppen angenommen (Klassengröße bestätigen) · Mengen je Klasse"], size=12, bold=True, color=RUST, after=0)
           cells, h = auto_grid(s, X0, 1.3, cw, [head] + b_, size=11, minh=0.24)
           for r, m in zip(cells[1:], m_):
               if m == "kopf":

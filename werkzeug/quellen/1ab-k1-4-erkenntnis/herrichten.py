@@ -1,4 +1,4 @@
-"""Herrichte-Liste K1.4 Erkenntnisgewinn – zum Abhaken (☐), EINE Quelle für VS-Fachwissen (Seite 1), VS-Lehrer-PPP (ausgeblendet) und Lösungsmappe.
+"""Herrichte-Liste K1.4 Erkenntnisgewinn (Mengen je Klasse – für 1AK und 1BK jeweils herrichten) – zum Abhaken (☐), EINE Quelle für VS-Fachwissen (Seite 1), VS-Lehrer-PPP (ausgeblendet) und Lösungsmappe.
 Ordnung laut Regelwerk (14. Fassung): zuerst je Versuch, dann gesamt für alle Versuche; innerhalb jeder Liste zuerst Chemikalien und Verbrauchsmaterial,
 dann Geräte und Lehrmittel, zuletzt was die Kadetten selbst mitbringen. Menge = Stück je Ansatz × Ansätze + Reserve.
 Ansätze: 8 Gruppen (Klassengröße nicht bestätigt) für alles in VD.JE_GRUPPE, sonst 1 Ansatz für die ganze Klasse."""
@@ -63,7 +63,7 @@ VOR_ORT = [  # was außer dem Material noch hergerichtet werden muss – ebenfal
     "Hallenprobe im Eingangsbereich gemacht (Faltung, Klammersitz, flacher Abwurf ohne Deckenkontakt, nutzbare Länge)",
     "Abwurflinie festgelegt (Bodenfuge) und Bandmaß am Rand ausgelegt, Nullpunkt an der Linie",
     "Eingangsbereich zur Stunde frei? (Durchgangsverkehr, Fluchtweg) – ggf. Schulwart informieren",
-    "Papierblätter VS-AB je Gruppe ausgedruckt (8 Stück) – Ersatz, falls ein Protokoll-Handy streikt",
+    "Papierblätter VS-AB je Gruppe ausgedruckt (8 Stück + 2 Reserve, je Klasse) – Ersatz, falls ein Protokoll-Handy streikt",
     "Faltanleitung am Beamer (Theorieteil »So baust du den Flieger«) bzw. 8 Ausdrucke",
     "Schachtel für die fertigen Flieger beschriftet (Klasse) – 1BK lagert von Mi 04.11. bis Mo 09.11.",
 ]

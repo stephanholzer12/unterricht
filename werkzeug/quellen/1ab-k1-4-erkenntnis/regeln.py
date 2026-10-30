@@ -18,8 +18,8 @@ VS_REGELN = {
                      "Verbesserung=mehr,oefter,wiederhol,rampe,schleuder,gleich,zweite,anderer,messen,genauer,flieger"], "need": 2}},
 }
 
-VARIANTE = {"id": "a8", "vars": [{"n": "a1", "min": 3.0, "max": 7.0, "step": 0.1}, {"n": "a2", "min": 3.0, "max": 7.0, "step": 0.1}, {"n": "a3", "min": 3.0, "max": 7.0, "step": 0.1},
-                                 {"n": "b1", "min": 3.5, "max": 7.5, "step": 0.1}, {"n": "b2", "min": 3.5, "max": 7.5, "step": 0.1}, {"n": "b3", "min": 3.5, "max": 7.5, "step": 0.1}],
+VARIANTE = {"id": "a8", "vars": [{"n": "a1", "min": 3.0, "max": 4.9, "step": 0.1}, {"n": "a2", "min": 3.0, "max": 4.9, "step": 0.1}, {"n": "a3", "min": 3.0, "max": 4.9, "step": 0.1},
+                                 {"n": "b1", "min": 3.0, "max": 4.9, "step": 0.1}, {"n": "b2", "min": 3.0, "max": 4.9, "step": 0.1}, {"n": "b3", "min": 3.0, "max": 4.9, "step": 0.1}],
             "text": "Übungsdaten: ohne Klammer {a1} m · {a2} m · {a3} m, mit Klammer {b1} m · {b2} m · {b3} m. Berechne den Mittelwert A, den Mittelwert B und die Spannweite von B.",
             "felder": [{"label": "Mittelwert A", "expr": "(a1+a2+a3)/3", "einheit": "m"}, {"label": "Mittelwert B", "expr": "(b1+b2+b3)/3", "einheit": "m"},
                        {"label": "Spannweite B", "expr": "Math.max(b1,b2,b3)-Math.min(b1,b2,b3)", "einheit": "m"}]}
