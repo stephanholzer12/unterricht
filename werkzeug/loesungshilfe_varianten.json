@@ -27,5 +27,8 @@
   ],
   "3ab-nawi/k2-1-landbau": [
     {"id": "a5", "vars": [{"n": "m", "min": 40, "max": 120, "step": 20}, {"n": "ek", "min": 60, "max": 90, "step": 10}, {"n": "eb", "min": 30, "max": 45, "step": 5}], "text": "Übung mit anderen Zahlen: Du brauchst {m} dt Weizen. Konventionell wachsen {ek} dt/ha, bio {eb} dt/ha. Berechne die Fläche in ha (nur die Zahl, auf zwei Dezimalstellen).", "felder": [{"label": "Fläche konventionell in ha", "expr": "m/ek", "einheit": ""}, {"label": "Fläche bio in ha", "expr": "m/eb", "einheit": ""}]}
+  ],
+  "5ak-iwk/k2-globalisierung": [
+    {"id": "a3", "vars": [{"n": "w", "min": 60, "max": 200, "step": 20}, {"n": "z", "min": 10, "max": 25, "step": 5}], "text": "Übung mit anderen Zahlen: Ein US-Importeur führt eine Uhr mit einem Zollwert von {w} US-Dollar ein. Der Zollsatz beträgt {z} Prozent. Berechne den Zoll und den Betrag aus Zollwert plus Zoll (nur die Zahlen, in US-Dollar).", "felder": [{"label": "Zoll in US-Dollar", "expr": "w*z/100", "einheit": ""}, {"label": "Zollwert plus Zoll in US-Dollar", "expr": "w*(1+z/100)", "einheit": ""}]}
   ]
 }
