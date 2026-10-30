@@ -164,7 +164,7 @@ def tiles(items):
 
 
 def table(rows):
-    h = "".join(f"<th>{esc(c)}</th>" for c in rows[0])
+    h = "".join(f"<th>{md(c)}</th>" for c in rows[0])
     body = "".join("<tr>" + "".join((f"<th scope=row>{md(c)}</th>" if k == 0 else f"<td>{md(c)}</td>") for k, c in enumerate(r)) + "</tr>" for r in rows[1:])
     return f'<div class="tablewrap"><table><thead><tr>{h}</tr></thead><tbody>{body}</tbody></table></div>'
 

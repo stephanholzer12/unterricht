@@ -9,7 +9,7 @@ PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
-ZIP_V = "v2"  # Lieferung 30.10.2026 (v1 nur PPPs vorab; Test: ohne TH-Kadetten, VS-Kadetten, QR-PNG, Kahoot)
+ZIP_V = "v3"  # Lieferung 30.10.2026 nach ChatGPT-Prüfung v1 (Test: ohne TH-Kadetten, VS-Kadetten, QR-PNG, Kahoot)
 DATEIEN = {"stand": "30.10.2026", "zip": f"{P}-{ZIP_V}.zip",
            "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-VS-Lehrer-{V}.pptx",
                      f"{P}-TH-AB-{V}.docx", f"{P}-TH-Loesung-{V}.docx", f"{P}-TH-Fachwissen-{V}.docx",

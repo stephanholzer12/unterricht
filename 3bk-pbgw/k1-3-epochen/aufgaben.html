@@ -2408,7 +2408,7 @@ window.LH_VARIANTEN = [];
   if (typeof checkField !== "function" || typeof S === "undefined") return;
 
   /* ---------- Einheiten ---------- */
-  var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
+  var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, d: 1e-1, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
   var BASE = { A: [0, 0, 0, 1, 1], T: [1, 0, -2, -1, 1], V: [1, 2, -3, -1, 1], Wb: [1, 2, -2, -1, 1], N: [1, 1, -2, 0, 1], W: [1, 2, -3, 0, 1], J: [1, 2, -2, 0, 1],
     "Ω": [1, 2, -3, -2, 1], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
   var WORT = [[/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
@@ -2495,7 +2495,11 @@ window.LH_VARIANTEN = [];
   normU = function (u) { var d = String(u || "").replace(/[μ]/g, "µ"); return normU0(d.replace(/\^2/g, "²")); };
 
   /* Prüft eine Zahlen-Antwort. Gibt {ok, msg, note} zurück. */
-  function numPruefen(text, soll, einheit) {
+  function numPruefen(text, soll, einheit, opt) {
+    opt = opt || {};
+    /* opt.ende (je Feld, z. B. Mittelwert aus vorgegebenen Zahlen): steht ein »=« im Text, zählt nur das Ergebnis nach dem letzten »=« –
+       sonst gilt »4,8 + 5,6 + 5,2 = 15,6« als richtig, weil ein Ausgangswert zufällig dem Mittelwert gleicht (ChatGPT-Prüfung K1.4, F1). */
+    if (opt.ende && /=/.test(String(text || ""))) { var nach = String(text).split("=").pop(); if (/\d/.test(nach)) text = nach; }
     var L = parseZahlen(text);
     if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
     var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
@@ -2518,10 +2522,11 @@ window.LH_VARIANTEN = [];
       for (var q = 0; q < lesarten.length; q++) {
         var wert = f === null ? lesarten[q] : lesarten[q] * f;
         var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
+        if (opt.tol != null) rel = Math.abs(wert - soll) <= opt.tol + 1e-9;   /* opt.tol: fester Spielraum je Feld (z. B. 0,04 m) statt 2 % */
         /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T).
            Zusätzlich höchstens 5 % Abweichung: »3« für 3,1 ist gerundet, »1 T« oder »2 T« für 1,5 T nicht. */
         var halb = (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
-        var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= halb && Math.abs(wert - soll) <= Math.abs(soll) * 0.05;
+        var rund = opt.tol == null && Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= halb && Math.abs(wert - soll) <= Math.abs(soll) * 0.05;
         if (rel || rund) {
           if (f === null) { einheitFalsch = true; zahlOk = true; }
           else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
@@ -2600,7 +2605,7 @@ window.LH_VARIANTEN = [];
   checkField = function (t, key, c) {
     var a = S.a[t.id] || {};
     if (c.num !== undefined) {
-      var r = numPruefen(a[key], c.num, c.unit);
+      var r = numPruefen(a[key], c.num, c.unit, { ende: c.ende, tol: c.tol });
       return { ok: r.ok, kind: "num", msg: r.msg, note: r.note, filled: filled(a[key]) };
     }
     if (c.kw) {

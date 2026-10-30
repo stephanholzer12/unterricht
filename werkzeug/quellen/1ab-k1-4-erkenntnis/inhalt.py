@@ -7,7 +7,7 @@ Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe. Kein Kahoot (Stepha
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge, z. B. Zuordnen)."""
 
 STAND = "30.10.2026"
-V = "v2"
+V = "v3"
 ORDNER = "1ab-nawi/k1-4-erkenntnis"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -190,7 +190,7 @@ T = [
                                                    "Damit ist bewiesen, dass eine Büroklammer jeden Flieger verbessert.",
                                                    "A war besser, weil der kürzeste Wurf bei B war.",
                                                    "Man kann gar nichts sagen, weil ein Wert klein war."]]],
-  "chk": {"ma": {"num": 4.2, "unit": "m"}, "mb": {"num": 4.8, "unit": "m"}, "sb": {"num": 1.5, "unit": "m"},
+  "chk": {"ma": {"num": 4.2, "unit": "m", "ende": True, "tol": 0.04}, "mb": {"num": 4.8, "unit": "m", "ende": True, "tol": 0.04}, "sb": {"num": 1.5, "unit": "m", "ende": True, "tol": 0.04},
           "schluss": {"sel": "B flog im Mittel 0,6 m weiter, die Werte überlappen aber stark – noch keine Entscheidung möglich (unklar)."}},
   "sol": [["Lösung", ["a) (3,8 + 4,6 + 4,2) m : 3 = 12,6 m : 3 = 4,2 m.",
                       "b) (5,1 + 3,9 + 5,4) m : 3 = 14,4 m : 3 = 4,8 m.",
@@ -216,7 +216,7 @@ T = [
   "tip": ["Widerlegbar muss es sein", "theorie.html#popper"]},
 
  {"id": "a10", "nr": 10, "title": "Forschen oder konstruieren?", "src": "Buch S. 29", "own": True, "tag": "Teil 4", "h": 4, "zeit": 4,
-  "q": "Zu zweit: Unser Papierflieger-Projekt lässt sich auch als Konstruktionszyklus beschreiben – so arbeiten Technikerinnen und Techniker. Ordne jede Tätigkeit dem passenden Schritt zu. "
+  "q": "Zu zweit: Unser Papierflieger-Projekt lässt sich auch als Konstruktionszyklus beschreiben – so arbeiten Techniker. Ordne jede Tätigkeit dem passenden Schritt zu. "
        "g) Welche EINE Änderung würdet ihr als Nächstes testen – und was muss dabei gleich bleiben?",
   "hint": "Überleg bei jeder Tätigkeit: Kommt sie vor dem Bauen, beim Bauen oder nach dem Test? Info: Theorieteil Teil 4 »Forschen oder konstruieren?«",
   "type": "multi",
@@ -277,7 +277,7 @@ T = [
   "chk": {"anz": {"sel": "50 Experimente"}, "eff": {"sel": "deutlich kleiner"},
           "uns": {"kw": [["wiederholen / Gegenprobe / anderer Werfer", r"wiederhol|gegenprobe|zweite[nr]? werfer|andere[nr]? (werfer|gruppe)|andere|bestätig|bestaetig|nachmach|nochmal|noch einmal|mehr würfe|mehr wuerfe|genau beschreib|protokoll"]], "man": True}},
   "sol": [["Lösung", ["a) 50 Experimente (aus 23 Fachartikeln) – geplant waren 193.",
-                      "b) deutlich kleiner – im Median um 85 % kleiner als in den Originalarbeiten.",
+                      "b) deutlich kleiner – bei den ursprünglich positiven Effekten im Median um 85 % kleiner als in den Originalarbeiten.",
                       "c) Ein einzelnes Ergebnis reicht nicht: Erst wenn eine Wiederholung – z. B. die Gegenprobe mit einem zweiten Werfer – ein ähnliches Ergebnis liefert, vertrauen wir ihm mehr. Dafür muss das Protokoll genau sein."]]],
   "tip": ["Wiederholen ist Pflicht", "theorie.html#forschung"]},
 

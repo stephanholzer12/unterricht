@@ -1534,6 +1534,96 @@
      },
      "b2_2": {
       "zahl": true
+     },
+     "b0_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b1_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b2_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b4_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b4_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b4_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b5_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b5_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b5_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b6_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b6_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b6_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b7_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b7_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b7_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
      }
     },
     "erk": {

@@ -224,7 +224,7 @@ ol.steps, ul.steps { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
     </details>
     <div id="resetwrap"><button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button></div>
   </section>
-  <!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">NAWI · 1AB · K1.4 Versuch · Stand 30.10.2026 · v2</p><!--/STAND-->
+  <!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">NAWI · 1AB · K1.4 Versuch · Stand 30.10.2026 · v3</p><!--/STAND-->
 </main>
 
 <script src="../../gemeinsam/pdf-programm-v1.js"></script>
@@ -721,7 +721,7 @@ update();
 </script>
 <!-- pdferinnerung:end -->
 <!-- vspruefen:start -->
-<script>window.__VS_PRUEFUNG = {"flieger":{"beob":{"b0_1":{"zahl":true},"b0_2":{"zahl":true},"b1_1":{"zahl":true},"b1_2":{"zahl":true},"b2_1":{"zahl":true},"b2_2":{"zahl":true}},"erk":{"kw":["Mittelwert / im Mittel=mittel,durchschnitt,schnitt","Vergleich A und B=weiter,kuerzer,gleich,mehr,weniger,unterschied,ohne,mit,klammer","Streuung / Kontakt=streu,spannweite,unterschiedlich,schwank,decke,wand,kontakt,kein kontakt,keine kontakte"],"need":2},"interp":{"kw":["Einordnung=unterstuetz,stuetz,spricht dafuer,spricht dagegen,dagegen,unklar,keine entscheidung,nicht entscheid,bestaetig,widerspr","Begruendung mit Daten=mittel,wert,spannweite,ueberlapp,streu,gegenprobe,zweite,werfer,decke,einzel"],"need":2},"schluss":{"kw":["Grenze=nur drei,wenig,werfer,kraft,hand,decke,hoehe,masse,schwerpunkt,ein flieger,zufall,wind,luft,ungenau","Verbesserung=mehr,oefter,wiederhol,rampe,schleuder,gleich,zweite,anderer,messen,genauer,flieger"],"need":2}}};
+<script>window.__VS_PRUEFUNG = {"flieger":{"beob":{"b0_1":{"zahl":true},"b0_2":{"zahl":true},"b1_1":{"zahl":true},"b1_2":{"zahl":true},"b2_1":{"zahl":true},"b2_2":{"zahl":true},"b0_3":{"opt":true,"strich":true,"min":1},"b1_3":{"opt":true,"strich":true,"min":1},"b2_3":{"opt":true,"strich":true,"min":1},"b3_1":{"opt":true,"strich":true,"min":1},"b3_2":{"opt":true,"strich":true,"min":1},"b3_3":{"opt":true,"strich":true,"min":1},"b4_1":{"opt":true,"strich":true,"min":1},"b4_2":{"opt":true,"strich":true,"min":1},"b4_3":{"opt":true,"strich":true,"min":1},"b5_1":{"opt":true,"strich":true,"min":1},"b5_2":{"opt":true,"strich":true,"min":1},"b5_3":{"opt":true,"strich":true,"min":1},"b6_1":{"opt":true,"strich":true,"min":1},"b6_2":{"opt":true,"strich":true,"min":1},"b6_3":{"opt":true,"strich":true,"min":1},"b7_1":{"opt":true,"strich":true,"min":1},"b7_2":{"opt":true,"strich":true,"min":1},"b7_3":{"opt":true,"strich":true,"min":1}},"erk":{"kw":["Mittelwert / im Mittel=mittel,durchschnitt,schnitt","Vergleich A und B=weiter,kuerzer,gleich,mehr,weniger,unterschied,ohne,mit,klammer","Streuung / Kontakt=streu,spannweite,unterschiedlich,schwank,decke,wand,kontakt,kein kontakt,keine kontakte"],"need":2},"interp":{"kw":["Einordnung=unterstuetz,stuetz,spricht dafuer,spricht dagegen,dagegen,unklar,keine entscheidung,nicht entscheid,bestaetig,widerspr","Begruendung mit Daten=mittel,wert,spannweite,ueberlapp,streu,gegenprobe,zweite,werfer,decke,einzel"],"need":2},"schluss":{"kw":["Grenze=nur drei,wenig,werfer,kraft,hand,decke,hoehe,masse,schwerpunkt,ein flieger,zufall,wind,luft,ungenau","Verbesserung=mehr,oefter,wiederhol,rampe,schleuder,gleich,zweite,anderer,messen,genauer,flieger"],"need":2}}};
 /* »Eingaben prüfen« für die Versuchsseiten (Gruppenprotokoll am Handy).
    Unter jedem Versuch steht ein Knopf. Er prüft, ob alles ausgefüllt ist und ob die Texte zur Frage passen, und gibt Hilfe in Stufen
    – bei jedem weiteren Klick etwas mehr (Lösung wird nie verraten, die Lehrkraft liest und bewertet endgültig):
@@ -799,6 +799,7 @@ update();
     var out = [], gut = [];
     felder(v).forEach(function (f) {
       var txt = wert(f, v), t = norm(txt), w = t.split(" "), r = f.regel, p = null;
+      if (!t && r.opt) return;   /* freiwilliges Feld (z. B. Gegenprobe nur bei aufgerufenen Gruppen): leer ist in Ordnung */
       if (!t) p = { typ: "leer" };
       else if (r.strich && /^[-\u2013\u2014\s]+$/.test(txt)) { /* Strich ist erlaubt */ }
       else if (/([a-z])\1{3,}/.test(t) || (wörterZahl(txt) >= 1 && !/[a-z0-9]/.test(t))) p = { typ: "unsinn" };

@@ -7,9 +7,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 import inhalt as I
 
 # Versuchsseite: nur die drei Pflicht-Vergleichspaare (Spalten A und B) müssen Zahlen sein; Mittelwert/Spannweite und Gegenprobe sind nicht Pflicht
+# Pflicht: Spalten A und B der drei Paare. Freiwillig (opt, leer erlaubt, Strich erlaubt): Spalte »Auffälliges«, Mittelwert/Spannweite (Stunde 4) und Gegenprobe
+# (nur aufgerufene Gruppen) – ChatGPT-Prüfung K1.4, F3. »opt« wertet werkzeug/versuche_pruefen.js aus.
+_PFLICHT = {f"b{r}_{c}": {"zahl": True} for r in (0, 1, 2) for c in (1, 2)}
+_FREI = {f"b{r}_{c}": {"opt": True, "strich": True, "min": 1} for r in range(8) for c in (1, 2, 3) if f"b{r}_{c}" not in _PFLICHT}
 VS_REGELN = {
  "flieger": {
-  "beob": {f"b{r}_{c}": {"zahl": True} for r in (0, 1, 2) for c in (1, 2)},
+  "beob": {**_PFLICHT, **_FREI},
   "erk": {"kw": ["Mittelwert / im Mittel=mittel,durchschnitt,schnitt", "Vergleich A und B=weiter,kuerzer,gleich,mehr,weniger,unterschied,ohne,mit,klammer",
                  "Streuung / Kontakt=streu,spannweite,unterschiedlich,schwank,decke,wand,kontakt,kein kontakt,keine kontakte"], "need": 2},
   "interp": {"kw": ["Einordnung=unterstuetz,stuetz,spricht dafuer,spricht dagegen,dagegen,unklar,keine entscheidung,nicht entscheid,bestaetig,widerspr",
