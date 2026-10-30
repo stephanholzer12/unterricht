@@ -1,7 +1,7 @@
 """Theorie-Seite K1.4–1.5 Ökodesign und Ökobilanz: Teile und Folien. Dieselben Daten bauen die Theorie-Folien der TH-Lehrer-/TH-Kadetten-PPP
 und die Lesestopps der TH-Unterricht (eine Quelle).
 Block-Arten: tiles, ul, ol, merke, hint, table, video, reveal, img (Datei, Alt-Text, Bildunterschrift), karten, buch (Leseauftrag im Schulbuch).
-Alles in eigenen Worten; Grafiken selbst gezeichnet (skizzen.py). Die zwei Leseblöcke (»oekodesign«, »oekobilanz«) haben je ca. 180–220 Wörter."""
+Alles in eigenen Worten; Grafiken selbst gezeichnet (skizzen.py). Pflicht-Lesestopps: »oekodesign« + »kriterien« (Teil 1) und »oekobilanz« + »schritte« (Teil 2), je etwa 4 Minuten."""
 import inhalt as I
 
 EINSTIEG = [
@@ -13,7 +13,7 @@ EINSTIEG = [
  {"id": "s0b", "title": "Mythos-Check: »Recycelbar – also umweltfreundlich?«", "pill": "Buch S. 20",
   "blocks": [("tiles", [("Was viele meinen", ["Steht »recycelbar« oder »aus Recyclingmaterial« drauf, ist das Produkt automatisch gut für die Umwelt."]),
                         ("Was dahintersteckt", ["Das Wort sagt nur etwas über **einen** Abschnitt im Leben eines Produkts. Ob es lange hält, wie viel Energie die Herstellung braucht und ob wirklich recycelt wird, steht nicht drauf."])]),
-             ("hint", "Heute klären wir, wie man so etwas ehrlich prüft – mit Ökodesign und Ökobilanz.")]},
+             ("hint", "Heute klären wir, wie man so etwas nachvollziehbar prüft – mit Ökodesign und Ökobilanz.")]},
 ]
 
 PARTS = [
@@ -35,7 +35,7 @@ PARTS = [
                          ("Kluge Materialien", ["so viel wie nötig, so wenig wie möglich; **trennbar** und gekennzeichnet; problematische Stoffe vermeiden"]),
                          ("Wenig Energie", ["in der Herstellung **und** in der Nutzung – bei der Flasche etwa beim Reinigen"])]),
               ("hint", "Bundesheer-Gedanke: Ausrüstung, die sich vor Ort reparieren lässt und für die es Ersatzteile gibt, bleibt länger einsatzbereit. Das ist gut für die Umwelt **und** für die Versorgung."),
-              ("hint", "Buch S. 19 vergleicht Glühbirne und LED. Solche Vergleiche sind nur fair bei **gleicher Helligkeit und gleicher Nutzungsdauer** – das gilt auch für unsere Flaschen.")]},
+              ("hint", "Buch S. 19 vergleicht Glühbirne und LED. Fair ist das nur für **dieselbe Leistung**, z. B. gleich viel Licht über 10.000 Stunden. Wie viele Lampen man dafür braucht, rechnet man mit ein – genau wie bei unseren Flaschen.")]},
   {"id": "vorteile", "title": "Was bringt das – und was nicht?", "pill": "Buch S. 20",
    "blocks": [("tiles", [("Möglicher Nutzen", ["geringere Material- und Nutzungskosten, weniger Abfall, zufriedene Kunden, besseres Image"]),
                          ("Aber", ["Diese Vorteile sind **möglich**, nicht automatisch. Kosten, Umwelt und Image können auch auseinanderlaufen – man muss sie belegen."])]),
@@ -43,7 +43,7 @@ PARTS = [
                       "»Recycelbar« oder »aus Recyclingmaterial« allein belegt noch keine insgesamt gute Umweltbilanz."])]},
   {"id": "eu", "title": "Was gilt heute in der EU?", "pill": "Buch S. 21 · aktualisiert",
    "blocks": [("ul", ["Buch S. 21 beschreibt die ältere Ökodesign-Regelung für Elektrogeräte. Seit **18. Juli 2024** gibt es einen breiteren EU-Rahmen für nachhaltige Produkte: Er kann für fast alle Waren gelten, die genauen Regeln kommen aber **Schritt für Schritt je Produktgruppe**.",
-                      "Beispiel **Smartphones und Tablets**: Für neue Modelle gilt seit **20. Juni 2025** ein EU-Label mit Angaben zu Akku, Robustheit und einer **Reparierbarkeitsklasse A–E**. Ersatzteile müssen bis zu sieben Jahre lang erhältlich sein, Updates gibt es mindestens fünf Jahre.",
+                      "Beispiel **Smartphones und Tablets** (noch nach den älteren Ökodesign-Regeln): Für Geräte, die seit **20. Juni 2025** in der EU verkauft werden, gilt ein EU-Label mit Angaben zu Akku, Robustheit und einer **Reparierbarkeitsklasse A–E**. Ersatzteile müssen noch **sieben Jahre nach dem Verkaufsende** eines Modells erhältlich sein, Updates mindestens **fünf Jahre** danach. Der neue Rahmen soll solche Regeln auf viele weitere Warengruppen ausdehnen.",
                       "Ein **digitaler Produktpass** mit Infos zu Material und Reparatur wird ebenfalls schrittweise eingeführt – noch nicht für jede Ware."]),
               ("hint", "Daten und Gesetzesnummern musst du nicht auswendig können. Wichtig ist die Idee: Die EU verlangt zunehmend Produkte, die länger halten und reparierbar sind.")]},
   {"id": "stop1", "title": "Stopp – kannst du das?", "pill": "Buch S. 19–21", "blocks": [("reveal", I.STOPPFRAGEN[1])]},
@@ -58,7 +58,7 @@ PARTS = [
                       "Zuerst steht die Frage: **Welche Leistung** soll erbracht werden? »Eine Flasche« ist als Vergleich zu ungenau. Bei uns lautet die **funktionale Einheit**: **1.000 Nutzungen einer dichten, hygienischen Ein-Liter-Trinkflasche**. "
                       "So werden kurzlebige und langlebige Produkte auf dieselbe Leistung bezogen.",
                       "Die **Systemgrenze** legt fest, was einbezogen wird – etwa Herstellung, Lieferung, Reinigung und Entsorgung. Ausschlüsse und Annahmen müssen sichtbar bleiben, denn andere Lebensdauern, Daten oder Strommischungen können das Ergebnis verändern.",
-                      "Eine Angabe in **kg CO₂-Äquivalenten** beschreibt nur die **Klimawirkung**. Ein Produkt kann beim Klima besser und bei einer anderen Umweltwirkung schlechter abschneiden. Ein gutes Urteil nennt daher Ergebnis, Annahmen und Grenzen."]),
+                      "Eine Angabe in **kg CO₂-Äquivalenten** beschreibt nur die **Klimawirkung**. Andere Umweltwirkungen sind z. B. **Wasserverbrauch, Rohstoffverbrauch, Versauerung, Überdüngung** oder **giftige Stoffe** – jede wird eigens gerechnet. Ein Produkt kann beim Klima besser und bei einer anderen Wirkung schlechter abschneiden. Ein gutes Urteil nennt daher Ergebnis, Annahmen und Grenzen."]),
               ("merke", "Fair vergleichen heißt: **dieselbe Leistung**, **offene Grenzen**, **gleiche Annahmen**.")]},
   {"id": "schritte", "title": "Vier Schritte einer Ökobilanz", "pill": "Buch S. 24",
    "blocks": [("img", "img/schritte.png", "Vier Kästen nebeneinander: 1 Ziel und Rahmen, 2 Sachbilanz, 3 Wirkungsabschätzung, 4 Auswertung; ein roter Pfeil führt vom vierten zurück zum ersten Schritt", "Die vier Schritte gehören zusammen und werden oft mehrmals durchlaufen."),
@@ -72,7 +72,7 @@ PARTS = [
    "blocks": [("tiles", [("Sachbilanz (Input–Output)", ["**Hinein:** Rohstoffe, Hilfsstoffe, Energie", "**Heraus:** Produkte, Abfälle, Abwasser, Abgase, Abwärme, Lärm"]),
                          ("Wirkungsabschätzung", ["**Klassifizierung:** Jeder Fluss wird einer oder mehreren Umweltwirkungen zugeordnet.", "**Charakterisierung:** Sein Beitrag wird mit einem Faktor ausgerechnet, z. B. in kg CO₂-Äquivalenten."])]),
               ("img", "img/wirkungen.png", "In der Mitte die Sachbilanz, davon gehen Pfeile zu sechs Umweltwirkungen: Klimawirkung (unsere Rechnung), Wasser, Ressourcen, Versauerung, Überdüngung, giftige Stoffe", "Eine Sachbilanz – viele Umweltwirkungen. Unsere Flaschenrechnung erfasst nur eine davon."),
-              ("ul", ["Ein **CO₂-Äquivalent** rechnet andere Treibhausgase wie Methan auf die Wirkung von CO₂ um. Wie stark Methan zählt, hängt vom betrachteten Zeitraum und der Bewertungsgrundlage ab – der Wert im Buch ist ein älterer Stand. Für unsere Rechnung brauchst du ihn nicht.",
+              ("ul", ["Ein **CO₂-Äquivalent** rechnet andere Treibhausgase wie Methan auf die Wirkung von CO₂ um. Wie stark Methan zählt, hängt vom betrachteten Zeitraum und der Bewertungsgrundlage ab – der Wert im Buch ist nicht mehr aktuell. Für unsere Rechnung brauchst du ihn nicht.",
                       "Wirkungen mit verschiedenen Einheiten darf man **nicht einfach zusammenzählen**. Wer sie trotzdem zu einer Note gewichtet, trifft eine Wertentscheidung und muss sie offenlegen."]),
               ("hint", "Die lange Tabelle der Wirkungskategorien auf Buch S. 25 ist zum Nachschlagen da – du musst sie nicht auswendig können.")]},
   {"id": "bilanzarten", "title": "Produkt-, Prozess- und Betriebsbilanz", "pill": "Buch S. 23",
@@ -98,7 +98,7 @@ SCHNELLE = [
   "blocks": [("ul", ["Der neue EU-Rahmen regelt nicht nur die Gestaltung. Seit Juli 2026 dürfen **große Unternehmen** in der EU unverkaufte **Kleidung, Kleidungszubehör und Schuhe** grundsätzlich nicht mehr vernichten; für mittlere Unternehmen soll das ab 2030 gelten, kleine sind ausgenommen.",
                      "Recherche-Frage: Was müssen Händler jetzt mit unverkaufter Ware tun – und was hat das mit Ökodesign zu tun?"]),
              ("hint", "Quelle zum Start: Zusammenfassung der EU-Ökodesign-Verordnung (EU) 2024/1781, z. B. auf den Seiten der EU-Kommission.")]},
- {"id": "offen", "title": "Was weiß die Forschung noch nicht?", "pill": "Ausblick",
+ {"id": "offen", "title": "Offene Fragen: Wo Ökobilanzen unsicher bleiben", "pill": "Ausblick",
   "blocks": [("ul", ["**Wie lange hält ein Produkt wirklich?** Hersteller und Ökobilanzen nehmen eine Lebensdauer an – tatsächlich hängt sie von Pflege, Nutzung und Zufall ab. Unsere Aufgabe 6 zeigt, wie stark diese Annahme das Ergebnis verschiebt.",
                      "**Wie wiegt man verschiedene Umweltwirkungen gegeneinander auf?** Ist weniger Klimawirkung mehr wert als weniger Wasserverbrauch? Darauf gibt es keine rein naturwissenschaftliche Antwort – es braucht offengelegte Werturteile."])]},
  ("jetzt", "Zu den Zusatzaufgaben 4–9", "aufgaben.html#card_a4"),

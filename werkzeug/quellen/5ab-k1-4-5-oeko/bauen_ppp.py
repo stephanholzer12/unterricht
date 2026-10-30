@@ -520,8 +520,8 @@ def theorie_folien(item, L):
         if item.get("pill"): pill(s, item["pill"], kind="versuch" if item["pill"].startswith("Versuch im Buch") else "theory")
         out.append(s)
     if karten:
-        for ki, part in enumerate((karten[1][:4], karten[1][4:])):
-            s = d.slide("Nur Titel", item["title"] + (" (2)" if ki else ""))
+        for ki, part in enumerate([karten[1][:2]] + [karten[1][j:j + 3] for j in range(2, len(karten[1]), 3)]):
+            s = d.slide("Nur Titel", item["title"] + (f" ({ki + 1})" if ki else ""))
             rows = [["Frage", "Lösung (für den Fragenden)"]] + [[q, a if L else ""] for q, a in part]
             y0 = Y0
             if khint and ki == 0:
@@ -712,11 +712,11 @@ def aufgabe(t, L):
 def ueberblick(nrs, titel):
     s = d.slide("Nur Titel", "Aufgaben im Überblick · " + titel)
     rows = [["Nr.", "Aufgabe", "Was ist zu tun?", "Quelle", "Zeit"]]
-    was = {"multi": "auswählen bzw. kurz schreiben", "sketch": "mit der Hand zeichnen/schreiben, Foto", "text": "schreiben"}
+    was = {"multi": "auswählen, kurz schreiben", "sketch": "mit der Hand zeichnen/schreiben, Foto", "text": "schreiben"}
     for t in I.T:
         if t["nr"] in nrs:
             rows.append([str(t["nr"]), t["title"], was[t["type"]], t["src"], f"{t['zeit']} min"])
-    cells, h = auto_grid(s, X0, Y0, [0.55, 3.75, 2.4, 1.6, 0.7], rows, size=16, minh=0.34)
+    cells, h = auto_grid(s, X0, Y0, [0.55, 3.45, 2.7, 1.6, 0.7], rows, size=16, minh=0.34)
     tb(s, X0, Y0 + h + 0.05, 9, 0.35, [f"Zusammen ca. {sum(t['zeit'] for t in I.T if t['nr'] in nrs)} min · Arbeitsblatt: QR auf »Dein Lernpfad«"], size=16, color=MUTED)
 
 

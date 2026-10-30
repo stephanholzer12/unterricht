@@ -54,8 +54,8 @@ for k in I.KLASSEN:
                  f"<div class='body'><div class='scroll'><table>{''.join(li)}</table></div>" + (f"<p class='warnline'><b>Wenn es knapp wird:</b> {e(kn)}</p>" if kn else "") + "</div></details>")
 uber += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 uber += "<h2>So bewertet die Seite</h2>" + ul([
-    "**Automatisch geprüft:** A2 a (Vergleichsleistung, zwei Vorgänge), A2 b (sechs Zahlen, ±2 %, »26 kg CO₂-Äq.« wird erkannt), A2 c Auswahl, A3 a (Auswahl) und c (Umweltfrage), Zusatz 5 a–c und 6 a–d.",
-    "**Offene Texte bewertest du:** A1 (Foto der Tabelle + Zielkonflikt), A2 Ausschluss und die drei Argumente in c, A3 b, Zusatz 4, 5 d, 7, 8, 9. Die Seite zeigt nur eine Schreibhilfe und gibt dafür keine Punkte.",
+    "**Automatisch geprüft:** A2 a (Vergleichsleistung), A2 b (sechs Zahlen; Flaschenzahl genau, sonst ±0,05 – »16« bei Klima B gilt also als falsch, »26 kg CO₂-Äq.« wird erkannt), A2 c Auswahl, A3 a (Auswahl), Zusatz 5 a–c und 6 a–d.",
+    "**Offene Texte bewertest du:** A1 (Foto der Tabelle + Zielkonflikt), A2 »Trinkwasser« und die drei Argumente in c, A3 b und c, Zusatz 4, 5 d, 7, 8, 9. Die Seite zeigt nur eine Schreibhilfe und gibt dafür keine Punkte.",
     "**PDF:** Kasten »Für LMS: x von y Punkten · Notenvorschlag« (88/75/62/50 %); Aufgaben mit angesehener Lösung zählen 0 Punkte. Zusatzaufgaben zählen nur, wenn bearbeitet.",
     "**Keine Versuche** in dieser Einheit (V5.3 bleibt für später).",
 ])
@@ -114,7 +114,7 @@ optionen = "".join(f"<option value='{i}'>Folie {n} · {e(t)}</option>" for i, (t
 STIL = open(os.path.join(HERE, "loesungsmappe_stil.css"), encoding="utf-8").read()
 seite = f"""<title>Lösungsmappe Ökodesign 5AB</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;700&family=Source+Serif+4:wght@700&display=swap">
+<link rel="stylesheet" href="../../schriften/schriften.css">
 <style>{STIL}</style>
 <div class="wrap">
 <header class="lese">

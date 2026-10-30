@@ -316,7 +316,7 @@ const T = [
   "tag": "Teil 2",
   "h": 2,
   "zeit": 11,
-  "q": "Zu zweit: Für Sport und Ausbildung sollen neue Trinkflaschen beschafft werden. Vergleicht die Modelle A und B für 1.000 Nutzungen einer dichten, hygienisch geeigneten Ein-Liter-Flasche. Eine Nutzung heißt: befüllen, verwenden, danach reinigen. Beide Modelle erfüllen dieselben Sicherheits- und Hygieneanforderungen, gehen nicht verloren und erreichen ihre Nutzungsdauer; B schafft das ohne Ersatzteile. a) Formuliert die gemeinsame Vergleichsleistung und nennt zwei einbezogene Vorgänge und einen Ausschluss. b) Berechnet für beide Modelle die Anzahl der Flaschen, die Klimawirkung und die Gesamtkosten (nur die Zahl eintragen). c) Empfehlt ein Modell. Begründet mit einem ökologischen und einem wirtschaftlichen Argument und nennt eine Information, die für ein umfassendes Umwelturteil noch fehlt.",
+  "q": "Zu zweit: Für Sport und Ausbildung sollen neue Trinkflaschen beschafft werden. Vergleicht die Modelle A und B für 1.000 Nutzungen einer dichten, hygienisch geeigneten Ein-Liter-Flasche. Eine Nutzung heißt: befüllen, verwenden, danach reinigen. Beide Modelle erfüllen dieselben Sicherheits- und Hygieneanforderungen, gehen nicht verloren und erreichen ihre Nutzungsdauer – B, weil Deckel und Dichtung getauscht werden können (diese Ersatzteile sind im Modell nicht eingerechnet). a) Formuliert die gemeinsame Vergleichsleistung und erklärt, warum das Trinkwasser weggelassen werden darf. b) Berechnet für beide Modelle die Anzahl der Flaschen, die Klimawirkung und die Gesamtkosten (nur die Zahl eintragen). c) Empfehlt ein Modell. Begründet mit einem ökologischen und einem wirtschaftlichen Argument und nennt eine Information, die für ein umfassendes Umwelturteil noch fehlt.",
   "hint": "Rechenweg: Flaschen = 1.000 : Nutzungen pro Flasche · Klima = Flaschen × (Herstellung + Endbehandlung) + 1.000 × Reinigung · Kosten = Flaschen × Kaufpreis + 1.000 × Reinigungskosten. Info: Theorieteil »So rechnest du den Flaschenvergleich«",
   "tab": [
    [
@@ -355,8 +355,8 @@ const T = [
     "0,02 €"
    ]
   ],
-  "tabnote": "Frei erfundene Modelldaten zum Üben – keine Messwerte echter Produkte. Wir rechnen nur ausgewählte Treibhausgas-Beiträge und vereinfachte Kosten, keine vollständige Ökobilanz. Systemgrenze: Einbezogen sind Herstellung samt Rohstoffen und Lieferung, die Reinigung und die Endbehandlung aller nötigen Flaschen. Ausgeschlossen ist das Trinkwasser selbst (bei beiden gleich). Eine Recycling-Gutschrift gibt es nicht – sie steckt schon in der Endbehandlung.",
-  "tabnote_folie": "Erfundene Modelldaten – keine echten Produkte, keine vollständige Ökobilanz. Einbezogen: Herstellung mit Lieferung, Reinigung, Endbehandlung. Nicht einbezogen: das Trinkwasser selbst. Keine Recycling-Gutschrift.",
+  "tabnote": "Frei erfundene Modelldaten zum Üben – keine Messwerte echter Produkte. Wir rechnen nur ausgewählte Treibhausgas-Beiträge und vereinfachte Kosten, keine vollständige Ökobilanz. Systemgrenze: Einbezogen sind Herstellung samt Rohstoffen und Lieferung, die Reinigung und die Endbehandlung aller nötigen Flaschen. Nicht eingerechnet sind das Trinkwasser selbst und die Ersatzteile für B. Eine zusätzliche Recycling-Gutschrift gibt es nicht – mögliche Gutschriften sind in der Endbehandlung schon eingerechnet.",
+  "tabnote_folie": "Erfundene Modelldaten – keine echten Produkte, keine vollständige Ökobilanz. Einbezogen: Herstellung mit Lieferung, Reinigung, Endbehandlung. Nicht einbezogen: Trinkwasser, Ersatzteile für B. Keine zusätzliche Recycling-Gutschrift.",
   "type": "multi",
   "fields": [
    [
@@ -364,12 +364,8 @@ const T = [
     "a) Gemeinsame Vergleichsleistung (funktionale Einheit)"
    ],
    [
-    "drin",
-    "a) Zwei einbezogene Vorgänge"
-   ],
-   [
-    "aus",
-    "a) Ein Ausschluss"
+    "wasser",
+    "a) Warum darf das Trinkwasser weggelassen werden? (1 Satz)"
    ],
    [
     "nA",
@@ -426,45 +422,42 @@ const T = [
      ],
      [
       "Nutzungen",
-      "nutzung|verwendung|befüll|befuell|einsätz|einsaetz|füllung|fuellung|gebrauch"
+      "nutz|verwend|befüll|befuell|einsatz|einsätz|einsaetz|gebrauch|füllung|fuellung|trinkvorg|liter|[-\\s]mal\\b"
      ]
     ]
    },
-   "drin": {
+   "wasser": {
     "kw": [
      [
-      "zwei Vorgänge",
-      "herstell|produktion|produzier|rohstoff|liefer|transport|reinig|spül|spuel|wasch|endbehandl|entsorg|nutzungsende|verwert",
-      2
-     ]
-    ]
-   },
-   "aus": {
-    "kw": [
-     [
-      "Ausschluss",
-      "trinkwasser|wasser selbst|wasser bereit|wasserbereit|wasserversorg|getränk|getraenk|inhalt|verlust|verloren|ersatzteil|teiletausch|gutschrift"
+      "bei A und B gleich",
+      "gleich|beide|beiden|hebt|aufheb|unterschied|egal|dasselbe|selbe"
      ]
     ],
     "man": true
    },
    "nA": {
-    "num": 5
+    "num": 5,
+    "tol": 0
    },
    "nB": {
-    "num": 1
+    "num": 1,
+    "tol": 0
    },
    "kA": {
-    "num": 26
+    "num": 26,
+    "tol": 0.05
    },
    "kB": {
-    "num": 16.5
+    "num": 16.5,
+    "tol": 0.05
    },
    "eA": {
-    "num": 60
+    "num": 60,
+    "tol": 0.05
    },
    "eB": {
-    "num": 50
+    "num": 50,
+    "tol": 0.05
    },
    "wahl": {
     "sel": "Flasche B"
@@ -502,7 +495,7 @@ const T = [
     "a) Vergleichsleistung und Grenzen",
     [
      "1.000 Nutzungen einer dichten, hygienisch geeigneten Ein-Liter-Trinkflasche.",
-     "Einbezogen z. B.: Herstellung samt Lieferung, Reinigung, Endbehandlung. Ausgeschlossen z. B.: das Trinkwasser selbst (bei beiden gleich); Verluste und Ersatzteile kommen im Modell nicht vor."
+     "Das Trinkwasser ist bei A und B gleich – im Vergleich hebt es sich auf und darf deshalb weggelassen werden (das muss man aber dazuschreiben)."
     ]
    ],
    [
@@ -526,8 +519,7 @@ const T = [
   ],
   "fsol": {
    "fe": "1.000 Nutzungen einer dichten, hygienischen Ein-Liter-Flasche",
-   "drin": "z. B. Herstellung mit Lieferung, Reinigung, Endbehandlung",
-   "aus": "z. B. das Trinkwasser selbst (bei beiden gleich)",
+   "wasser": "bei A und B gleich – hebt sich im Vergleich auf",
    "nA": "5",
    "nB": "1",
    "kA": "26 kg CO₂-Äq.",
@@ -610,9 +602,10 @@ const T = [
     "kw": [
      [
       "andere Umweltwirkung",
-      "wasser|ressourc|rohstoff|versauer|überdüng|ueberdueng|eutroph|giftig|toxi|ozon|fläche|flaeche|lärm|laerm|artenviel|biodivers|abfall|müll|muell|mikroplastik|feinstaub|smog|gesundheit|boden"
+      "wasser|ressourc|rohstoff|material|energie|versauer|überdüng|ueberdueng|eutroph|giftig|toxi|schadstoff|ozon|fläche|flaeche|landnutz|lärm|laerm|artenviel|biodivers|abfall|müll|muell|plastik|verschmutz|gewässer|gewaesser|feinstaub|smog|gesundheit|boden|strahl"
      ]
-    ]
+    ],
+    "man": true
    }
   },
   "sol": [
@@ -699,7 +692,7 @@ const T = [
   "tag": "Zusatz",
   "h": 0,
   "zeit": 5,
-  "q": "Eine KI hat zu unserem Flaschenvergleich (Aufgabe 2) drei Sätze geschrieben. Entscheide bei jedem, ob er mit unseren Modelldaten belegt ist. d) Schreib den ersten Satz so um, dass er stimmt. Tipp: Lass dir ruhig selbst von einer KI einen Vergleich schreiben – und prüf ihn genauso streng.",
+  "q": "Eine KI hat zu unserem Flaschenvergleich (Aufgabe 2) drei Sätze geschrieben. Entscheide bei jedem: belegt, nicht belegt (die Daten sagen dazu nichts) oder widerlegt (die Daten zeigen das Gegenteil). d) Schreib den ersten Satz so um, dass er stimmt. Tipp: Lass dir ruhig selbst von einer KI einen Vergleich schreiben – und prüf ihn genauso streng.",
   "hint": "Was haben wir gerechnet – nur Klima und Kosten über 1.000 Nutzungen? Vergleiche auch Kaufpreis und Gesamtkosten. Info: Theorieteil »Sachbilanz und Wirkungsabschätzung«",
   "type": "multi",
   "fields": [
@@ -708,7 +701,8 @@ const T = [
     "a) »Flasche B ist in jeder Hinsicht umweltfreundlicher, weil sie weniger CO₂ verursacht.«",
     [
      "belegt",
-     "nicht belegt"
+     "nicht belegt",
+     "widerlegt"
     ],
     false
    ],
@@ -717,7 +711,8 @@ const T = [
     "b) »Flasche B ist billiger, weil ihr Kaufpreis niedriger ist.«",
     [
      "belegt",
-     "nicht belegt"
+     "nicht belegt",
+     "widerlegt"
     ],
     false
    ],
@@ -726,7 +721,8 @@ const T = [
     "c) »Für 1.000 Nutzungen verursacht B im Modell 9,5 kg CO₂-Äquivalente weniger als A.«",
     [
      "belegt",
-     "nicht belegt"
+     "nicht belegt",
+     "widerlegt"
     ],
     false
    ],
@@ -740,7 +736,7 @@ const T = [
     "sel": "nicht belegt"
    },
    "k2": {
-    "sel": "nicht belegt"
+    "sel": "widerlegt"
    },
    "k3": {
     "sel": "belegt"
@@ -760,7 +756,7 @@ const T = [
     "Lösung",
     [
      "a) nicht belegt – wir haben nur die Klimawirkung gerechnet; über Wasser, Rohstoffe oder Schadstoffe sagt die Zahl nichts.",
-     "b) nicht belegt – der Kaufpreis von B ist höher (30 € statt 8 €). Billiger ist B nur über 1.000 Nutzungen gerechnet: 50 € statt 60 €.",
+     "b) widerlegt – der Kaufpreis von B ist höher (30 € statt 8 €). Billiger ist B nur über 1.000 Nutzungen gerechnet: 50 € statt 60 €.",
      "c) belegt – 26 − 16,5 = 9,5 kg CO₂-Äquivalente.",
      "d) z. B. »Für 1.000 Nutzungen hat Flasche B im Modell die geringere Klimawirkung – über andere Umweltwirkungen sagt das nichts.«"
     ]
@@ -780,7 +776,7 @@ const T = [
   "tag": "Zusatz",
   "h": 0,
   "zeit": 4,
-  "q": "Maturaniveau: Nimm an, Flasche B hält entgegen der Angabe nur 500 Nutzungen. Alle anderen Modelldaten aus Aufgabe 2 bleiben gleich. Berechne für 1.000 Nutzungen die Anzahl der B-Flaschen, die Klimawirkung und die Gesamtkosten von B (nur die Zahl). d) Was folgt daraus?",
+  "q": "Maturaniveau: Nimm an, Flasche B hält entgegen der Angabe nur 500 Nutzungen. Alle anderen Modelldaten aus Aufgabe 2 bleiben gleich. Berechne für 1.000 Nutzungen a) die Anzahl der B-Flaschen, b) die Klimawirkung, c) die Gesamtkosten von B (nur die Zahl). d) Was folgt daraus?",
   "hint": "Gleicher Rechenweg wie in Aufgabe 2 – nur die Nutzungen pro Flasche B ändern sich. Vergleiche danach mit A (26 kg, 60 €).",
   "type": "multi",
   "fields": [
@@ -808,13 +804,16 @@ const T = [
   ],
   "chk": {
    "n": {
-    "num": 2
+    "num": 2,
+    "tol": 0
    },
    "k": {
-    "num": 23
+    "num": 23,
+    "tol": 0.05
    },
    "e": {
-    "num": 80
+    "num": 80,
+    "tol": 0.05
    },
    "folge": {
     "sel": "B bleibt beim Klima besser als A, ist aber teurer."
@@ -859,7 +858,7 @@ const T = [
     "kw": [
      [
       "mindestens drei Angaben",
-      "vergleich|referenz|weniger als|als was|leistung|nutzung|lebensdauer|haltbar|abschnitt|phase|grenze|systemgrenze|daten|quelle|alter|jahr|methode|reinig|transport|herstell|entsorg|andere umwelt|wasser|ressourc|kosten|preis|ersatz",
+      "vergleich|referenz|weniger als|als was|leistung|nutzung|lebensdauer|haltbar|hält|haelt|abschnitt|phase|grenze|systemgrenze|daten|quelle|alter|jahr|methode|wer |berechn|studie|prüf|pruef|reinig|transport|herstell|entsorg|andere umwelt|wasser|ressourc|kosten|preis|ersatz",
       3
      ]
     ],
@@ -926,7 +925,7 @@ const T = [
    [
     "Erwartung",
     [
-     "a) Der Artikel nennt Maßnahmen, die Belastungen gesenkt haben sollen (Anreise mit Öffis, Mehrwegbecher, getrennte Wertstoffe, geringer Stromverbrauch) – »positiv« ist dort ein Gesamturteil.",
+     "a) Der Artikel nennt Maßnahmen, die Belastungen gesenkt haben sollen (Anreise mit Öffis, Mehrwegbecher, getrennte Wertstoffe, geringer Stromverbrauch) – »positiv« ist dort ein Gesamturteil. Fachlich ist das keine Ökobilanz im Sinn der Methode: Eine Ökobilanz weist Belastungen je Wirkungskategorie aus, kein »positiv«.",
      "b) Es fehlt ein Vergleichsfall (dieselbe Veranstaltung ohne diese Maßnahmen oder ein anderer Song Contest) und eine gemeinsame Bezugsgröße; außerdem wurden nur einzelne Größen genannt, keine vollständige Ökobilanz.",
      "Der Text ist historisch (2015); seine Zahlen nicht als heutigen Maßstab verwenden."
     ]

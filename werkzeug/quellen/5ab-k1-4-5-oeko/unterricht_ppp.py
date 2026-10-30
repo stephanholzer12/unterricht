@@ -199,8 +199,8 @@ def klaeren_1():
     s = d.slide("Nur Titel", "Kurz klären: Ökodesign denkt den ganzen Lebenszyklus")
     B.picture(s, UNIT + "img/lebenszyklus.png", X0, 1.0, 4.6, 3.3)
     y = 1.0
-    y = frage_klick(s, y, "Grünes Blatt auf die Flasche – ist das Ökodesign?", "Nein. Ökodesign ändert Material, Haltbarkeit, Reparatur, Trennbarkeit. Nur Aufdruck = eher Greenwashing.", w=4.3, x=5.2, size=18)
-    y = frage_klick(s, y, "Was gilt seit 2025 für neue Smartphones in der EU?", "Label mit Reparierbarkeit A–E; Ersatzteile bis zu 7 Jahre, Updates mind. 5 Jahre.", w=4.3, x=5.2, size=18)
+    y = frage_klick(s, y, "Grünes Blatt auf die Flasche – ist das Ökodesign?", "Nein – Ökodesign ändert Material, Haltbarkeit, Reparatur. Nur Aufdruck = Greenwashing.", w=4.3, x=5.2, size=18)
+    y = frage_klick(s, y, "Was gilt seit Juni 2025 für Smartphones in der EU?", "Label mit Reparierbarkeit A–E; Ersatzteile 7 Jahre nach Verkaufsende.", w=4.3, x=5.2, size=18)
     return s
 
 
@@ -242,7 +242,7 @@ def klaeren_2b():
 
 def a2_auftrag():
     return auftrag_folie("Jetzt: Aufgabe 2 – zu zweit rechnen", [2], {2: "zu zweit am Handy, Rechenweg im Heft"},
-                         "a) Vergleichsleistung + Grenzen · b) 6 Zahlen (Flaschen, kg CO₂-Äq., €) · c) Empfehlung mit 2 Argumenten und 1 Grenze")
+                         "a) Vergleichsleistung + warum Trinkwasser fehlen darf · b) 6 Zahlen (Flaschen, kg CO₂-Äq., €) · c) Empfehlung mit 2 Argumenten und 1 Grenze")
 
 
 def a2_daten():
@@ -250,7 +250,7 @@ def a2_daten():
     rows = [["", "A", "B"], ["Nutzungen pro Flasche", "200", "1.000"], ["Kaufpreis", "8 €", "30 €"], ["Herstellung + Lieferung (je Flasche)", "3 kg", "6 kg"],
             ["Endbehandlung (je Flasche)", "0,2 kg", "0,5 kg"], ["Reinigung (je Nutzung)", "0,01 kg · 0,02 €", "0,01 kg · 0,02 €"]]
     cells, h = B.auto_grid(s, X0, 1.0, [3.1, 1.85, 1.85], rows, size=16, minh=0.36)
-    B.tb(s, X0, 1.02 + h, 6.8, 0.6, ["kg = kg CO₂-Äquivalente · erfundene Modelldaten · Trinkwasser nicht eingerechnet, keine Recycling-Gutschrift"], size=14, color=RUST, bold=True, after=0)
+    B.tb(s, X0, 1.02 + h, 6.8, 0.6, ["kg = kg CO₂-Äquivalente · erfundene Modelldaten · Trinkwasser und Ersatzteile nicht eingerechnet"], size=14, color=RUST, bold=True, after=0)
     karte(s, 7.0, 1.0, 2.5, 3.45, "Rechenweg", [[("Flaschen", {"bold": True})], "1.000 : Nutzungen", [("Klima", {"bold": True})], "Flaschen × (Herst. + Ende) + 1.000 × Reinig.",
                                                [("Kosten", {"bold": True})], "Flaschen × Preis + 1.000 × 0,02 €"], GREEN, size=16)
     return s
