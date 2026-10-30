@@ -17,7 +17,7 @@ KLASSE_URL = BASE + "3bk-pbgw/"
 EYEBROW = "PBGW · 3BK · Meilensteine, Hochkulturen und antike Vorbilder"
 TITEL = "Vom Vorrat zum Staat – Hochkulturen, Athen und Rom"
 KURZTITEL = "Meilensteine: Vom Vorrat zum Staat – Hochkulturen, Athen, Rom"
-BUCH = "Buch S. 23–44 · Ergänzungsbuch S. 58–73"
+BUCH = "Buch S. 23–44 · S. 105–118"
 KEY = "26-27-3BK-K2.1-5.4-Meilenst-TH-Handy-v1"
 CHECK_KEY = "26-27-3BK-K2.1-5.4-Meilenst-Lernseite-Check-v1"
 PRAEFIX = "26-27-3BK-K2.1-5.4-Meilenst"
@@ -42,7 +42,7 @@ _D = {1: "Mo 16.11.", 2: "Mo 23.11.", 3: "Mo 30.11."}
 DATEN = {k: dict(_D) for k in KLASSEN}
 TEIL_STUNDE = {t: {k: t for k in KLASSEN} for t in (1, 2, 3)}
 TEILNAME = {1: "Teil 1 · Vom Vorrat zum frühen Staat", 2: "Teil 2 · Hammurabis Rechtssammlung", 3: "Teil 3 · Athen und Rom"}
-TEILBUCH = {1: "Buch S. 25–39", 2: "Buch S. 39–40", 3: "Ergänzungsbuch S. 62–73"}
+TEILBUCH = {1: "Buch S. 25–39", 2: "Buch S. 39–40", 3: "Buch S. 105–118"}
 
 
 def wann(teil=None):
@@ -79,7 +79,7 @@ T = [
  {"id": "a2", "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 8,
   "q": "Zu zweit. Verwende die Begriffe Landwirtschaft, Vorrat, Spezialisierung und Verteilung. a) Formuliere drei begründete Zusammenhänge, jeweils mit »kann …, weil …«. "
        "b) Nenne ein neues Problem, das durch das Leben mit Vorräten entstand. c) Erkläre in 1–2 Sätzen, warum aus Landwirtschaft nicht zwangsläufig ein Staat entsteht.",
-  "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme« · Ergänzung: Ergänzungsbuch S. 58–59",
+  "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme«",
   "type": "multi",
   "fields": [["z1", "a) Zusammenhang 1 (kann …, weil …)"], ["z2", "a) Zusammenhang 2 (kann …, weil …)"], ["z3", "a) Zusammenhang 3 (kann …, weil …)"],
              ["problem", "b) Ein neues Problem"], ["staat", "c) Warum nicht zwangsläufig ein Staat? (1–2 Sätze)"]],
@@ -172,7 +172,7 @@ T = [
   "q": "Zu zweit, am Schaubild der Folie und im Theorieteil. a) In welcher Einrichtung entscheiden Bürger unmittelbar selbst? b) Los oder Wahl? Ordne zu. "
        "c) Nenne drei Gruppen ohne politische Mitbestimmung. d) Vergleiche mit Österreich heute: Wer entscheidet über Gesetze, und welche Kontrolle ist vorgesehen? "
        "e) Ergänze: »Athen war für seine Bürger …. Nach heutigen Maßstäben war die politische Gleichberechtigung …«",
-  "hint": "Ergänzungsbuch S. 65, Aufgabe 4, neu formuliert. Das Gemälde auf S. 65 ist von 1852 – eine spätere Darstellung, kein Augenzeugenbild. Info: Theorieteil »Athen: direkte Beteiligung mit Grenzen«",
+  "hint": "Eigene Aufgabe zum Thema (Buch S. 109–111). Bilder von Athen sind meist spätere Darstellungen, keine Augenzeugenbilder. Info: Theorieteil »Athen: direkte Beteiligung mit Grenzen«",
   "type": "multi",
   "fields": [["einr", "a) Hier entscheiden Bürger unmittelbar", ["Volksversammlung", "Areopag", "Heer", "Rat der 500"]],
              ["rat", "b) Rat der 500", LOS, False], ["arch", "Archonten (hohe Beamte)", LOS, False], ["strat", "Strategen (Heerführer)", LOS, False],
@@ -197,7 +197,7 @@ T = [
   "q": "Zu zweit. Arbeitsfassung der Quelle: »Augustus stellt in seinem Tatenbericht dar, er habe nach dem Ende der Bürgerkriege die staatliche Macht wieder dem Senat und dem römischen Volk übertragen. "
        "Seinen Vorrang beschreibt er über sein Ansehen.« a) Wie bezeichnete sich Augustus selbst? b) Welchen Eindruck will er mit seiner Aussage vermitteln? "
        "c) Vergleiche mit dem Theorieteil: Welche Machtmittel und Befugnisse liefen bei ihm zusammen? d) Erkläre, warum der Tatenbericht eine nützliche Quelle ist, seine Aussage aber überprüft werden muss.",
-  "hint": "Ergänzungsbuch S. 71, M3 (Res gestae, im Buch als Bericht von 14 n. Chr. ausgewiesen). Info: Theorieteil »Rom: Republik und Machtkonzentration«",
+  "hint": "Arbeitsfassung des Tatenberichts (Res gestae), sprachlich vereinfacht. Info: Theorieteil »Rom: Republik und Machtkonzentration«",
   "type": "multi",
   "fields": [["name", "a) Augustus nannte sich selbst", ["Princeps – Erster unter Gleichen", "König", "Diktator auf Lebenszeit", "Gott"]],
              ["eindruck", "b) Diesen Eindruck will er erzeugen"], ["macht", "c) Machtmittel und Befugnisse bei Augustus"], ["quelle", "d) Nützlich, aber zu prüfen, weil …"]],
@@ -250,7 +250,7 @@ T = [
   "tabnote": "Gelb auszufüllen: Spalten 3 und 4 für Athen, Republik und Prinzipat.",
   "tip": ["Athen und Rom im Vergleich", "theorie.html#vergleich"], "besprechen": True},
 
- {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 · Ergänzungsbuch S. 58–73", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 9,
+ {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 · 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 9,
   "q": "Teil 1 machst du am 16.11., Teil 2 am 30.11. a) Ordne den Karten den Zeitbereich zu (Karten 1–4 in Stunde 1, Karten 5–9 in Stunde 3). b) Begründe die Zuordnung bei zwei Karten. "
        "c) Ergänze eine Karte, die zeigt, dass nicht alle Entwicklungen überall gleichzeitig verliefen. d) Schlusssatz nach Teil 1: Was haben Landwirtschaft, Metall, Schrift und Städte mit Organisation und Herrschaft zu tun? (1 Satz)",
   "hint": "Jahreszahlen sind Orientierung. Die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",
@@ -304,7 +304,7 @@ T = [
                           "2. Vor dem Gesetz waren nicht alle gleich: Die Rechtsfolgen hingen vom Stand ab (§ 196, 198, 199). "
                           "3. In Athen durften nur erwachsene männliche Bürger abstimmen – Frauen, Versklavte und Metöken nicht. (Auch »erste Demokratie der Welt« ist eine Behauptung, die man belegen müsste.)",
                           "b) z. B. »Erkläre Hammurabis Rechtssammlung und die attische Demokratie. Nenne zu jeder Aussage die Quelle und sage dazu, was in der Forschung unsicher oder umstritten ist.«",
-                          "c) z. B. die Aussage über die Gleichheit: im Buch S. 40 (Paragrafen) und in einer Museumsseite nachlesen; die Athen-Aussage im Ergänzungsbuch S. 62–65."]]],
+                          "c) z. B. die Aussage über die Gleichheit: im Buch S. 40 (Paragrafen) und in einer Museumsseite nachlesen; die Athen-Aussage im Buch S. 107–111."]]],
   "fsol": {"fehler": "nicht der Erste · nicht alle gleich · nur männliche Bürger", "prompt": "… mit Quellen und Angabe, was unsicher ist", "pruefen": "z. B. Buch S. 40 und eine Museumsseite"},
   "tip": ["Recht ist nicht gleich Gleichheit", "theorie.html#regeln"]},
 
@@ -351,7 +351,7 @@ BESPRECHEN = [t["nr"] for t in T if t.get("besprechen")]
 
 GRP = {1: TEILNAME[1] + " (Buch S. 25–39) · " + wann(1),
        2: TEILNAME[2] + " (Buch S. 39–40) · " + wann(2) + " nach dem Test",
-       3: TEILNAME[3] + " (Ergänzungsbuch S. 62–73) · " + wann(3) + " · Aufgabe 8 auch am 16.11.",
+       3: TEILNAME[3] + " (Buch S. 105–118) · " + wann(3) + " · Aufgabe 8 auch am 16.11.",
        0: "Zusatz · Für Schnelle · freiwillig, keine Hausübung"}
 
 LERNZIELE = ["erklären, wie **Landwirtschaft und Vorräte** das Zusammenleben veränderten, und Vorteile und Probleme nennen",
@@ -453,17 +453,17 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
  ("Hammurabi", "Gilt Hammurabis Sammlung als die erste Rechtssammlung der Geschichte?", ["Nein, es gab ältere Rechtssammlungen.", "Ja, davor gab es keine Regeln.", "Ja, weil sie als Einzige aufgeschrieben wurde.", "Nein, sie ist nur eine Legende."],
   "Hammurabis Sammlung ist bedeutend, aber ältere Sammlungen (z. B. von Ur-Nammu) sind bekannt.", "Buch S. 40"),
  ("Athen", "Wer durfte im klassischen Athen in der Volksversammlung mitentscheiden?", ["Erwachsene männliche Bürger.", "Alle erwachsenen Männer, die in Athen lebten, auch Fremde.", "Alle Einwohner, auch Frauen und Versklavte.", "Nur der Adel."],
-  "Große Gruppen waren ausgeschlossen; entscheidend war der Bürgerstatus.", "Ergänzungsbuch S. 62–65"),
+  "Große Gruppen waren ausgeschlossen; entscheidend war der Bürgerstatus.", "Buch S. 107–111"),
  ("Athen", "Welche Aussage zu den Ämtern in Athen stimmt?", ["Viele Ämter wurden gelost, die Strategen gewählt.", "Alle Ämter wurden vererbt.", "Alle Ämter wurden gewählt.", "Ein König ernannte alle Beamten."],
-  "Die Auswahlverfahren unterschieden sich nach Aufgabe.", "Ergänzungsbuch S. 64–65"),
+  "Die Auswahlverfahren unterschieden sich nach Aufgabe.", "Buch S. 109–111"),
  ("Republik", "Warum ist die römische Republik keine moderne Demokratie?", ["Vermögen, Herkunft und Ausschluss prägten die Beteiligung stark.", "Weil das Wort aus dem Lateinischen stammt.", "Weil es keine Ämter gab.", "Weil alle Einwohner abstimmen durften."],
-  "Der Name »Republik« allein beschreibt die tatsächliche Beteiligung nicht.", "Ergänzungsbuch S. 68–69"),
+  "Der Name »Republik« allein beschreibt die tatsächliche Beteiligung nicht.", "Buch S. 113"),
  ("Augustus", "Warum muss Augustus' eigener Tatenbericht geprüft werden?", ["Er enthält auch das Bild, das Augustus von sich vermitteln wollte.", "Alte Texte sind immer gelogen.", "Man darf Quellen nie vergleichen.", "Er ist ein neutraler Bericht Dritter."],
-  "Die Quelle ist nützlich, aber sie ist seine eigene Perspektive.", "Ergänzungsbuch S. 70–71"),
+  "Die Quelle ist nützlich, aber sie ist seine eigene Perspektive.", "Buch S. 114–115"),
  ("Prinzipat", "Was kennzeichnet den Prinzipat des Augustus?", ["Die Einrichtungen bleiben, die entscheidende Macht liegt bei einer Person.", "Alle Römer haben gleich viel Macht.", "Es gibt keinen Senat und keine Ämter mehr.", "Der Herrscher regiert nur als Priester."],
-  "Formale Einrichtungen und tatsächliche Machtverteilung müssen verglichen werden.", "Ergänzungsbuch S. 70–71"),
+  "Formale Einrichtungen und tatsächliche Machtverteilung müssen verglichen werden.", "Buch S. 114–115"),
  ("476", "Welche Aussage zum Jahr 476 ist angemessen?", ["Eine Orientierungsmarke für das Ende Westroms; Ostrom bestand weiter.", "An diesem Tag endete überall jede römische Lebensform.", "Damals begann die Renaissance.", "Das ganze Römische Reich war damit erledigt."],
-  "Eine Epochenmarke ersetzt keine Erklärung längerer Veränderungen.", "Ergänzungsbuch S. 72–73"),
+  "Eine Epochenmarke ersetzt keine Erklärung längerer Veränderungen.", "Buch S. 115–118"),
  ("Zeitstrahl", "Ötzi lebte um 3300 v. Chr., die frühe Schrift entstand in Mesopotamien im späten 4. Jahrtausend v. Chr. Was stimmt?", ["Beides liegt ungefähr in derselben Zeit, aber in verschiedenen Regionen.", "Die Schrift entstand erst lange nach Ötzi – und überall zugleich.", "Ötzi lebte nach Hammurabi.", "Schrift gab es schon vor der Landwirtschaft."],
   "Entwicklungen verlaufen gleichzeitig, aber nicht überall gleich.", "Buch S. 24–35"),
 ]

@@ -18,7 +18,7 @@ LEHRPLAN = [
     ("Abweichung: ", "3 statt 6 Stunden brutto (Stephans Vorgabe); Kern in Aufgaben 1–8, Rest OPTIONAL. Kein Versuch (PBGW), kein CLIL. Teststoff für den 23.11. kommt von dir – es gibt noch keine Teststoff-Seite. Trauner-Seiten S. 105–118 (Antike) lagen nicht vor: Athen und Rom stützen sich auf das Ergänzungsbuch."),
 ]
 
-THEMEN = {1: "Vorrat, Metall, Schrift, frühe Staaten (S. 25–39)", 2: "Hammurabis Rechtssammlung (S. 39–40)", 3: "Athen, Rom, Prinzipat (Ergänzungsbuch S. 62–73)"}
+THEMEN = {1: "Vorrat, Metall, Schrift, frühe Staaten (S. 25–39)", 2: "Hammurabis Rechtssammlung (S. 39–40)", 3: "Athen, Rom, Prinzipat (Buch S. 105–118)"}
 
 
 def _stundenvorschlag(k):
@@ -96,7 +96,7 @@ KAPITEL = [
   "nur": ["Eine historische UN-Geschenkseite nennt die Sammlung »die älteste« – nicht übernommen, weil ältere Sammlungen dokumentiert sind."],
   "stolper": "»Hammurabi erfand das Recht«, »vor dem Gesetz alle gleich«. Gegenmittel: Aufgabe 4 c) und f), Aufgabe 10 (KI-Antwort prüfen).",
   "bild": None},
- {"titel": "4 Athen (Ergänzungsbuch S. 62–65)",
+ {"titel": "4 Athen (Buch S. 107–111)",
   "text": ["**Beteiligung:** In der behandelten klassischen Phase (vor allem 5. Jh. v. Chr.) entscheiden erwachsene männliche Bürger in der Volksversammlung. Frauen, Versklavte und Metöken sind ausgeschlossen. Der Rat (500) bereitet vor und wird gelost; viele Ämter (z. B. Archonten) werden gelost, die Strategen gewählt. Details der Ordnung veränderten sich – Kleisthenes um 508/507 v. Chr. ist nur ein Orientierungspunkt.",
            "**Vergleich mit Österreich:** parlamentarische Demokratie (Wahl von Vertretern, Gesetzgebung, Kontrolle der Regierung; Parlament Österreich, Seite »Parlament und Wahlen«). Auch heute sind Wahlrechte an Voraussetzungen gebunden (Staatsbürgerschaft, Wahlalter). Der Vergleich fragt nach Beteiligung, Ausschluss und Kontrolle – er setzt nicht gleich.",
            "**Quellenfrage:** Das Gemälde »Gefallenenrede des Perikles« im Ergänzungsbuch (S. 65) stammt von 1852 – eine spätere Darstellung, kein Augenzeugenbild."],

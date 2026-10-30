@@ -106,7 +106,7 @@ rep("(ev && ev.ok ? [70, 110, 40] : muted)", "(ev && ev.ok && !ev.man ? [70, 110
 s = s[:i] + 'const KEY = "%s";\nconst KAP = "%s", THEMA = "Meilensteine";\nconst T = ' % (I.KEY, I.KAP) + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
 rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }", ".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }\n.fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }")
 rep('KAP + " Zeit-Einteilung und Epochen – Aufgaben"', '"K2.1–5.4 Meilensteine – Aufgaben"')
-rep('clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14")', 'clean("PBGW · 3BK · K2.1–5.4 Meilensteine · Schulbuch S. 23–44, Ergänzungsbuch S. 58–73")')
+rep('clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14")', 'clean("PBGW · 3BK · K2.1–5.4 Meilensteine · Schulbuch S. 23–44 und 105–118")')
 rep('d.text("Epochen-Aufgaben", M + 15, y + 11.5)', 'd.text("' + TITLE + '", M + 15, y + 11.5)')
 rep('"Noch offen (Stunde 1 und 2): Aufgabe "', '"Noch offen (Pflicht): Aufgabe "')
 rep('"Alle Pflicht-Aufgaben 1–10 bearbeitet."', '"Alle Pflicht-Aufgaben bearbeitet."')
@@ -310,7 +310,7 @@ page = f"""<!doctype html>
   <div class="eyebrow">Weiter geht's</div>
   <h2>Jetzt bist du dran</h2>
   <div class="btns"><a class="btn" href="aufgaben.html">2 · Arbeitsblatt A1–A{len(I.T)}</a><a class="btn alt" href="quiz.html">3 · Meilenstein-Check (Quiz)</a></div>
-  <p class="hint">Theorie zum Nachlesen im Schulbuch PBGW 3 (Trauner) S. 23–44 und im Ergänzungsbuch S. 58–73. Alle Grafiken selbst gezeichnet. Ergänzungen: Pressemeldung des Südtiroler Archäologiemuseums zum Kupfer von Ötzis Beil (1.3.2024), Seite des Louvre zur Hammurabi-Stele. Jahreszahlen sind Orientierung. <a href="../">Klassenübersicht 3BK</a></p>
+  <p class="hint">Theorie zum Nachlesen im Schulbuch PBGW 3 (Trauner) S. 23–44 und S. 105–118. Alle Grafiken selbst gezeichnet. Ergänzungen: Pressemeldung des Südtiroler Archäologiemuseums zum Kupfer von Ötzis Beil (1.3.2024), Seite des Louvre zur Hammurabi-Stele. Jahreszahlen sind Orientierung. <a href="../">Klassenübersicht 3BK</a></p>
   <p class="hint">Stand {STAND} · {I.V}</p>
 </section>
 </main>

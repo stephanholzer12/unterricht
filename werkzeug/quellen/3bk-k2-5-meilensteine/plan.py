@@ -108,7 +108,7 @@ def minuten(st, arten):
 
 LESEN = {1: "Einstieg + Teil 1 · Vorrat, Metall, Schrift, frühe Staaten (Buch S. 25–39)",
          2: "Teil 2 · Hammurabis Rechtssammlung (Buch S. 39–40)",
-         3: "Teil 3 · Athen und Rom (Ergänzungsbuch S. 62–73)"}
+         3: "Teil 3 · Athen und Rom (Buch S. 105–118)"}
 WIE = {1: "ohne Handy: Einstieg mündlich, Mini-Whiteboard, Zeitstrahl-Karten legen",
        2: "zuerst Test; ohne Handy: Paragrafenblatt auf Papier lesen und markieren",
        3: "ohne Handy: Aufstellen auf einer Skala, Vergleich zu zweit besprechen"}

@@ -332,7 +332,7 @@ const T = [
   "h": 1,
   "zeit": 8,
   "q": "Zu zweit. Verwende die Begriffe Landwirtschaft, Vorrat, Spezialisierung und Verteilung. a) Formuliere drei begründete Zusammenhänge, jeweils mit »kann …, weil …«. b) Nenne ein neues Problem, das durch das Leben mit Vorräten entstand. c) Erkläre in 1–2 Sätzen, warum aus Landwirtschaft nicht zwangsläufig ein Staat entsteht.",
-  "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme« · Ergänzung: Ergänzungsbuch S. 58–59",
+  "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme«",
   "type": "multi",
   "fields": [
    [
@@ -847,7 +847,7 @@ const T = [
   "h": 3,
   "zeit": 8,
   "q": "Zu zweit, am Schaubild der Folie und im Theorieteil. a) In welcher Einrichtung entscheiden Bürger unmittelbar selbst? b) Los oder Wahl? Ordne zu. c) Nenne drei Gruppen ohne politische Mitbestimmung. d) Vergleiche mit Österreich heute: Wer entscheidet über Gesetze, und welche Kontrolle ist vorgesehen? e) Ergänze: »Athen war für seine Bürger …. Nach heutigen Maßstäben war die politische Gleichberechtigung …«",
-  "hint": "Ergänzungsbuch S. 65, Aufgabe 4, neu formuliert. Das Gemälde auf S. 65 ist von 1852 – eine spätere Darstellung, kein Augenzeugenbild. Info: Theorieteil »Athen: direkte Beteiligung mit Grenzen«",
+  "hint": "Eigene Aufgabe zum Thema (Buch S. 109–111). Bilder von Athen sind meist spätere Darstellungen, keine Augenzeugenbilder. Info: Theorieteil »Athen: direkte Beteiligung mit Grenzen«",
   "type": "multi",
   "fields": [
    [
@@ -987,7 +987,7 @@ const T = [
   "h": 3,
   "zeit": 7,
   "q": "Zu zweit. Arbeitsfassung der Quelle: »Augustus stellt in seinem Tatenbericht dar, er habe nach dem Ende der Bürgerkriege die staatliche Macht wieder dem Senat und dem römischen Volk übertragen. Seinen Vorrang beschreibt er über sein Ansehen.« a) Wie bezeichnete sich Augustus selbst? b) Welchen Eindruck will er mit seiner Aussage vermitteln? c) Vergleiche mit dem Theorieteil: Welche Machtmittel und Befugnisse liefen bei ihm zusammen? d) Erkläre, warum der Tatenbericht eine nützliche Quelle ist, seine Aussage aber überprüft werden muss.",
-  "hint": "Ergänzungsbuch S. 71, M3 (Res gestae, im Buch als Bericht von 14 n. Chr. ausgewiesen). Info: Theorieteil »Rom: Republik und Machtkonzentration«",
+  "hint": "Arbeitsfassung des Tatenberichts (Res gestae), sprachlich vereinfacht. Info: Theorieteil »Rom: Republik und Machtkonzentration«",
   "type": "multi",
   "fields": [
    [
@@ -1251,7 +1251,7 @@ const T = [
   "id": "a8",
   "nr": 8,
   "title": "Gemeinsamer Zeitstrahl",
-  "src": "Buch S. 24–40 · Ergänzungsbuch S. 58–73",
+  "src": "Buch S. 24–40 · 105–118",
   "own": true,
   "tag": "Stunde 1 und 3",
   "h": 3,
@@ -1611,7 +1611,7 @@ const T = [
     [
      "a) 1. Hammurabi war nicht der Erste: Es gibt ältere Rechtssammlungen (z. B. Ur-Nammu); seine Sammlung ist ein bedeutendes Zeugnis, kein »Erfinder des Rechts«. 2. Vor dem Gesetz waren nicht alle gleich: Die Rechtsfolgen hingen vom Stand ab (§ 196, 198, 199). 3. In Athen durften nur erwachsene männliche Bürger abstimmen – Frauen, Versklavte und Metöken nicht. (Auch »erste Demokratie der Welt« ist eine Behauptung, die man belegen müsste.)",
      "b) z. B. »Erkläre Hammurabis Rechtssammlung und die attische Demokratie. Nenne zu jeder Aussage die Quelle und sage dazu, was in der Forschung unsicher oder umstritten ist.«",
-     "c) z. B. die Aussage über die Gleichheit: im Buch S. 40 (Paragrafen) und in einer Museumsseite nachlesen; die Athen-Aussage im Ergänzungsbuch S. 62–65."
+     "c) z. B. die Aussage über die Gleichheit: im Buch S. 40 (Paragrafen) und in einer Museumsseite nachlesen; die Athen-Aussage im Buch S. 107–111."
     ]
    ]
   ],
@@ -2045,7 +2045,7 @@ async function buildPdf() {
     lines.forEach(l => { if (y + h > BOT) { d.addPage(); y = 18; } d.text(l, x, y + h * 0.78); y += h; });
   };
   d.addImage(LOGO, "PNG", M, y, 11, 12.6);
-  d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean("PBGW · 3BK · K2.1–5.4 Meilensteine · Schulbuch S. 23–44, Ergänzungsbuch S. 58–73"), M + 15, y + 4);
+  d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean("PBGW · 3BK · K2.1–5.4 Meilensteine · Schulbuch S. 23–44 und 105–118"), M + 15, y + 4);
   d.setFontSize(18); d.setTextColor(...olive); d.text("Meilenstein-Aufgaben", M + 15, y + 11.5);
   y += 17;
   d.setFont("C", "normal"); d.setFontSize(11); d.setTextColor(...ink);
@@ -2106,7 +2106,7 @@ async function savePdf() {
 }
 
 // ---------- Start ----------
-const GRP = {"1": "Teil 1 · Vom Vorrat zum frühen Staat (Buch S. 25–39) · 3BK: Mo 16.11.", "2": "Teil 2 · Hammurabis Rechtssammlung (Buch S. 39–40) · 3BK: Mo 23.11. nach dem Test", "3": "Teil 3 · Athen und Rom (Ergänzungsbuch S. 62–73) · 3BK: Mo 30.11. · Aufgabe 8 auch am 16.11.", "0": "Zusatz · Für Schnelle · freiwillig, keine Hausübung"};
+const GRP = {"1": "Teil 1 · Vom Vorrat zum frühen Staat (Buch S. 25–39) · 3BK: Mo 16.11.", "2": "Teil 2 · Hammurabis Rechtssammlung (Buch S. 39–40) · 3BK: Mo 23.11. nach dem Test", "3": "Teil 3 · Athen und Rom (Buch S. 105–118) · 3BK: Mo 30.11. · Aufgabe 8 auch am 16.11.", "0": "Zusatz · Für Schnelle · freiwillig, keine Hausübung"};
 let lastH = null;
 T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });
 $("#solbtn").addEventListener("click", () => { S.solSeen = true; S.snap = {}; T.forEach(t => S.snap[t.id] = snapOf(t.id)); save(); showSolutions(); });
