@@ -12,7 +12,7 @@ P = I.PRAEFIX
 DATEIEN = {"stand": "30.10.2026", "zip": "",
            "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-Pruefbericht-Claude-{V}.md"]}
 neu = {"klasse": "5AK", "fach": "IWK", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL, "block": "B Globalisierung", "jahresplan": "E3–E5 (zusammengefasst)",
-       "seiten": ["theorie.html", "aufgaben.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
+       "seiten": ["theorie.html", "aufgaben.html", "quiz.html"], "versteckt": True, "lehrerseite": "https://claude.ai/artifact/HDe46vKV98ogtwmLxKHr4v", "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]
 if alt:
     u = E[alt[0]]
