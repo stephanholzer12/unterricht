@@ -857,6 +857,82 @@
   }
  },
  {
+  "klasse": "3AB",
+  "fach": "NAWI",
+  "ordner": "3ab-nawi/k2-1-landbau",
+  "kapitel": "K2.1",
+  "titel": "Formen der Landwirtschaft",
+  "block": "B Landwirtschaft & Ernährung",
+  "jahresplan": "E4",
+  "seiten": [
+   "theorie.html",
+   "aufgaben.html",
+   "quiz.html"
+  ],
+  "versteckt": true,
+  "fahrplan": {
+   "text": "Dafür sind 4 Stunden eingeplant (3AK und 3BK gleich: Mi 04.11., Mo 09.11., Mi 11.11., Mo 16.11.). Lies den jeweiligen Teil im Theorieteil, mach die Aufgaben 1–9 im Arbeitsblatt und gib am 16.11. die PDF in LMS ab. Am 09.11. schreibst du zuerst den Test. Keine Hausübung.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "datum": "Mi 04.11.",
+     "lesen": "Einstieg + Teil 1 · Acker, drei Formen, Bio (Buch S. 38–43)",
+     "aufgaben": "1, 2",
+     "zeit": "Lesen 9 min · Aufgaben 17 min · Besprechung 7 min · Reserve 4 min",
+     "wie": "ohne Handy: Einstieg per Handzeichen, Tabelle an der Tafel, Partnercheck mit Karten",
+     "abgabe": "Antworten bleiben am Handy gespeichert"
+    },
+    {
+     "wann": "Stunde 2",
+     "datum": "Mo 09.11.",
+     "lesen": "Teil 2 · Pflanzenschutz, Verpackung (Buch S. 43–47)",
+     "aufgaben": "3, 4",
+     "zeit": "Test 20 min · Lesen 5 min · Aufgaben 15 min · Besprechung 3 min · Reserve 5 min",
+     "wie": "zuerst Test; ohne Handy: Verpackungen in Gruppen lesen",
+     "abgabe": "Antworten bleiben am Handy gespeichert"
+    },
+    {
+     "wann": "Stunde 3",
+     "datum": "Mi 11.11.",
+     "lesen": "Teil 3 · pro Hektar, Gene, Genschere, neue Sorte (Buch S. 45–46) · Podcast-Ausschnitt",
+     "aufgaben": "5–7",
+     "zeit": "Lesen 9 min · Hören 7 min · Aufgaben 20 min · Besprechung 4 min · Reserve 5 min",
+     "wie": "ohne Handy: Podcast hören, Genschere zuerst am Mini-Whiteboard zeichnen",
+     "abgabe": "Antworten bleiben am Handy gespeichert"
+    },
+    {
+     "wann": "Stunde 4",
+     "datum": "Mo 16.11.",
+     "lesen": "Teil 4 · Séralini-Versuch, gute Studie, Folgestudie (Ergänzung zu Buch S. 45)",
+     "aufgaben": "8, 9 · Quiz freiwillig",
+     "zeit": "Lesen 7 min · Aufgaben 20 min · Besprechung 4 min · Reserve 7 min",
+     "wie": "ohne Handy: Aufstellen auf einer Skala, Urteil mit der Hand schreiben",
+     "abgabe": "Arbeitsblatt-PDF in LMS (alle Aufgaben 1–9)"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige (Versorgung, Geschichte, Partnercheck)",
+     "aufgaben": "Zusatz 10–13 · Quiz",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "30.10.2026",
+   "zip": "26-27-3AB-K2.1-Landbau-v2.zip",
+   "liste": [
+    "26-27-3AB-K2.1-Landbau-TH-Unterricht-v2.pptx",
+    "26-27-3AB-K2.1-Landbau-TH-Lehrer-v2.pptx",
+    "26-27-3AB-K2.1-Landbau-TH-Kadetten-v2.pptx",
+    "26-27-3AB-K2.1-Landbau-TH-AB-v2.docx",
+    "26-27-3AB-K2.1-Landbau-TH-Loesung-v2.docx",
+    "26-27-3AB-K2.1-Landbau-TH-Fachwissen-v2.docx",
+    "26-27-3AB-K2.1-Landbau-Pruefbericht-Claude-v2.md"
+   ]
+  },
+  "lehrerseite": "https://claude.ai/artifact/4hnvRdYQudScYrWMkaZtmM"
+ },
+ {
   "klasse": "2AK",
   "fach": "PBGW",
   "ordner": "2ak-pbgw/k1-grundrechte",
