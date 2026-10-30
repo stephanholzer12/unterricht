@@ -189,6 +189,30 @@ cases[E14]=[
  ['a9','korr','Wenn B weiter fliegt, unterstützt das unsere Hypothese, bewiesen ist sie nicht.','M'],['a9','korr','Dann ist sie bewiesen.','M'],
  ['a10','naechst','Klammer weiter nach hinten, alles andere bleibt gleich.','M'],
  ['a12','auto','Nein, nicht automatisch falsch.','M'],['a13','uns','Wir brauchen die Gegenprobe mit einem zweiten Werfer.','M'],['a14','titel','Hypothese oder Theorie?','M']];
+/* 5AB K1.4–1.5 Ökodesign und Ökobilanz (30.10.2026): Zahlen ohne Einheit im Feld, »kg CO₂-Äq.« darf die Zahl nicht stören; offene Begründungen = M */
+const E145='5ab-toew/k1-4-5-oeko/aufgaben.html';
+cases[E145]=[
+ ['a2','fe','1.000 Nutzungen einer Ein-Liter-Flasche',1],['a2','fe','1000 Nutzungen',1],['a2','fe','tausend Mal befüllen und reinigen',1],['a2','fe','1 Flasche',0],['a2','fe','1000 Flaschen',0],['a2','fe','Nutzungen',0],
+ ['a2','drin','Herstellung und Reinigung',1],['a2','drin','Transport, Endbehandlung',1],['a2','drin','Herstellung',0],['a2','drin','das Trinkwasser',0],
+ ['a2','nA','5',1],['a2','nA','5 Flaschen',1],['a2','nA','1000 : 200 = 5',1],['a2','nA','4',0],['a2','nA','200',0],
+ ['a2','nB','1',1],['a2','nB','eine',0],['a2','nB','2',0],
+ ['a2','kA','26',1],['a2','kA','26 kg',1],['a2','kA','26 kg CO2-Äq.',1],['a2','kA','26 kg CO₂-Äquivalente',1],['a2','kA','16 + 10 = 26',1],['a2','kA','16',0],['a2','kA','25 kg CO2',0],['a2','kA','2,6',0],['a2','kA','16,01',0],
+ ['a2','kB','16,5',1],['a2','kB','16.5 kg CO2e',1],['a2','kB','16,5 kg CO₂-Äq.',1],['a2','kB','6,5',0],['a2','kB','6,51',0],['a2','kB','17',1],
+ ['a2','eA','60',1],['a2','eA','60 €',1],['a2','eA','60 Euro',1],['a2','eA','40',0],['a2','eA','8 €',0],
+ ['a2','eB','50',1],['a2','eB','50 €',1],['a2','eB','30 €',0],['a2','eB','30,02',0],
+ ['a2','wahl','Flasche B',1],['a2','wahl','Flasche A',0],['a2','wahl','beide gleich gut',0],
+ ['a3','oe1','umweltgerechten Gestalten eines Produkts',1],['a3','oe1','Ermitteln und Bewerten der Umweltwirkungen',0],
+ ['a3','oe2','Ermitteln und Bewerten der Umweltwirkungen',1],['a3','oe2','Werben mit einem grünen Logo',0],
+ ['a3','frage','Wasserverbrauch',1],['a3','frage','Wie viele Rohstoffe verbraucht werden',1],['a3','frage','Überdüngung von Gewässern',1],['a3','frage','die Klimawirkung',0],['a3','frage','weiß nicht',0],
+ ['a5','k1','nicht belegt',1],['a5','k1','belegt',0],['a5','k2','nicht belegt',1],['a5','k2','belegt',0],['a5','k3','belegt',1],['a5','k3','nicht belegt',0],
+ ['a6','n','2',1],['a6','n','2 Flaschen',1],['a6','n','1',0],['a6','k','23',1],['a6','k','23 kg CO2-Äq.',1],['a6','k','16,5',0],['a6','k','26',0],['a6','e','80',1],['a6','e','80 €',1],['a6','e','60',0],['a6','e','50 €',0],
+ ['a6','folge','B bleibt beim Klima besser als A, ist aber teurer.',1],['a6','folge','B bleibt in beiden Punkten besser als A.',0],
+ /* offene Erklärungen: Lehrkraft bewertet */
+ ['a1','konflikt','Dünnere Wand spart Material, bricht aber leichter.','M'],['a1','konflikt','weiß nicht','M'],
+ ['a2','aus','Trinkwasser','M'],['a2','aus','Herstellung','M'],['a2','oeko','B hat weniger Klimawirkung.','M'],['a2','wirt','B ist teurer im Kauf.','M'],['a2','fehlt','Wasserverbrauch','M'],
+ ['a3','fair','A hält nur 200 Nutzungen, B 1000.','M'],['a3','fair','B ist schöner.','M'],
+ ['a4','partner','Lukas','M'],['a5','neu','Für 1.000 Nutzungen hat B im Modell weniger Klimawirkung.','M'],
+ ['a7','ang','Vergleichsprodukt, Lebensdauer, Datenquelle','M'],['a8','pos','Mehrwegbecher und Öffis','M'],['a8','fehlt','Ein Vergleich mit einem anderen Jahr','M'],['a9','titel','Meine Feldflasche','M']];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);
