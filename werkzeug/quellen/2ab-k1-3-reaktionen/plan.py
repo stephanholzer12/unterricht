@@ -29,7 +29,7 @@ PLAN = [
    ("Reserve", 2, True, "reserve")]},
  {"std": 4, "datum": "Do 12.11.", "titel": "Katalysatoren, Enzyme und Abschluss", "phasen": [
    ("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-   ("Demo K1.3-V7: Zuckerwürfel mit Holzasche, Aufgabe 13 – dabei Katalysator klären", 8, True, "v:K1.3-V7"),
+   ("Demo K1.3-V7: Zuckerwürfel mit Lithiumchlorid, Aufgabe 13 – dabei Katalysator klären", 8, True, "v:K1.3-V7"),
    ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 4–6); Gruppen 1–3: Theorieteil Teil 4, Aufgabe 14, Deutung V4/V5; Gruppen 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde", 33, False, "stat"),
    ("Besprechen: Katalysator, Autokatalysator, Aufgabe 13 und 14", 3, True, "bespr"),
    ("PDF abgeben, Quiz-Hinweis, Ausblick Säuren und Basen", 1, False, "pdf"),

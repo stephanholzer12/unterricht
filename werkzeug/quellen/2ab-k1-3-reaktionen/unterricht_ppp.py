@@ -303,7 +303,7 @@ def s2_bespr():
 
 def s2_ende():
     s = d.slide("Nur Titel", "Nächste Stunde: Stationen")
-    karte(s, X0, 1.05, 4.4, 1.9, "Gruppen 1–3 (Di 10.11.)", ["Drei Runden an **Station 1 (Mobiltisch 1)** und **Station 2 (Wasserleitung 1)**", "11 Minuten je Runde"], RED, size=18)
+    karte(s, X0, 1.05, 4.4, 1.9, "Gruppen 1–3 (Di 10.11.)", ["Drei Runden an **Station 1 (Mobiltisch 1)** und **Station 2 (Schülertisch)**", "11 Minuten je Runde"], RED, size=18)
     karte(s, X0 + 4.6, 1.05, 4.4, 1.9, "Gruppen 4–6 (Di 10.11.)", ["Theorieteil Teil 3 lesen", "Aufgaben 9–11 am Handy"], TEAL, size=19)
     merke(s, 3.15, "Am Do 12.11. tauschen die Gruppen: 4–6 an die Stationen, 1–3 machen Aufgaben.", size=19)
     return s
@@ -332,7 +332,7 @@ def s3_diagramm():
 def runden(sp):
     """Rotationstabelle für drei Gruppen: (Station 1, Station 2, Aufgaben) je Runde."""
     a, b, c = sp
-    return [["Runde", "Station 1 · V4 Mobiltisch 1", "Station 2 · V5 Wasserleitung 1", "Aufgaben + Lesen am Platz"], ["1", f"Gruppe {a}", f"Gruppe {b}", f"Gruppe {c}"],
+    return [["Runde", "Station 1 · V4 Mobiltisch 1", "Station 2 · V5 Schülertisch", "Aufgaben + Lesen am Platz"], ["1", f"Gruppe {a}", f"Gruppe {b}", f"Gruppe {c}"],
             ["2", f"Gruppe {c}", f"Gruppe {a}", f"Gruppe {b}"], ["3", f"Gruppe {b}", f"Gruppe {c}", f"Gruppe {a}"]]
 
 
@@ -365,7 +365,7 @@ def s3_v5():
     s = d.slide("Nur Titel", "Station 2: Zitronensäure und Natron (Pulver)")
     B.picture(s, SK("v5"), X0, 1.0, 3.6, 3.4)
     y = schritte(s, 4.3, 1.05, 5.2, ["25 ml Wasser: Temperatur messen", "Zitronensäure (5,0 g) und Natron (6,0 g) zugleich zugeben, rühren", "Sprudeln beobachten, Temperatur ablesen – wärmer oder kälter?"], size=19, farbe=ORANGE)
-    B.tb(s, 4.3, min(y + 0.05, 3.9), 5.2, 0.4, ["Platz: Wasserleitung 1 (Ablage am Spülbecken)"], size=15, bold=True, color=OLIVE, after=0)
+    B.tb(s, 4.3, min(y + 0.05, 3.9), 5.2, 0.4, ["Platz: Schülertisch (IKT-Tisch, nicht am Fenster)"], size=15, bold=True, color=OLIVE, after=0)
     B.pill(s, "Versuch K1.3-V5", w=2.2, kind="versuch")
     return s
 
@@ -383,10 +383,10 @@ def s3_plaetze():
     s = d.slide("Nur Titel", "Wo steht was?")
     for i, (kopf, zl, col) in enumerate([("Lehrertisch", ["Demos (V6 heute, V7 am Do)", "Waage, Feuerzeug, Material"], OLIVE),
                                          ("Mobiltisch 1 · Station 1", ["V4 Eisenwolle in Kupfersulfat", "**Schutzbrille und Handschuhe**", "Sammelbehälter für Reste stehen hier"], RED),
-                                         ("Wasserleitung 1 · Station 2", ["V5 Zitronensäure + Natron", "Ablage am Spülbecken"], ORANGE),
-                                         ("Wasserleitung 2 · Ausspülen", ["Becher und Thermometer ausspülen", "Kupferlösung NIE in den Ausguss"], TEAL)]):
+                                         ("Schülertisch · Station 2", ["V5 Zitronensäure + Natron", "IKT-Tisch, nicht am Fenster"], ORANGE),
+                                         ("Wasserleitung 1 und 2 · Ausspülen", ["Becher und Thermometer ausspülen", "Kupferlösung NIE in den Ausguss"], TEAL)]):
         karte(s, X0 + (i % 2) * 4.6, 1.05 + (i // 2) * 1.65, 4.4, 1.5, kopf, zl, col, size=17)
-    B.tb(s, X0, 4.2, W, 0.3, ["Mobiltisch 2–4 bleiben frei (Reserve)."], size=14, color=MUTED, after=0)
+    B.tb(s, X0, 4.2, W, 0.3, ["Fenster: Vorhänge beachten – Flamme nur am Lehrertisch. Mobiltisch 2–4 bleiben frei (Reserve)."], size=14, color=MUTED, after=0)
     return s
 
 
@@ -399,11 +399,11 @@ def s4_weisst():
 
 
 def s4_v7w():
-    s = d.slide("Nur Titel", "Kurz klären: Was tat die Asche?")
+    s = d.slide("Nur Titel", "Kurz klären: Was tat das Lithiumchlorid?")
     B.picture(s, IMG("diagramm_kat.png"), X0, 1.0, 4.4, 3.4)
     y = 1.05
-    y = frage_klick(s, y, "Was tat die Asche?", "Katalysator: senkt die Aktivierungsenergie.", w=4.4, x=5.1, size=16)
-    y = frage_klick(s, y, "Wozu der Würfel mit Kochsalz?", "Kontrolle: Nur die Asche wirkt, nicht jedes Pulver.", w=4.4, x=5.1, size=16)
+    y = frage_klick(s, y, "Was tat das Lithiumchlorid?", "Katalysator: senkt die Aktivierungsenergie.", w=4.4, x=5.1, size=16)
+    y = frage_klick(s, y, "Wozu der Würfel mit Kochsalz?", "Kontrolle: Nur das Lithiumchlorid wirkt, nicht jedes Pulver.", w=4.4, x=5.1, size=16)
     y = frage_klick(s, y, "Und im Körper?", "Enzyme: Zucker verbrennt bei 37 °C ohne Flamme.", w=4.4, x=5.1, size=16)
     B.pill(s, "Buch S. 34", w=2.2, kind="book")
     return s
@@ -413,7 +413,7 @@ def s4_tausch():
     s = d.slide("Nur Titel", "Heute tauschen die Gruppen")
     cells, h = B.auto_grid(s, X0, 1.05, [1.2, 2.7, 2.9, 2.2], runden((4, 5, 6)), size=16, minh=0.4)
     y = 1.05 + h + 0.15
-    karte(s, X0, y, 4.4, 4.45 - y, "Gruppen 4–6", ["V4 am Mobiltisch 1, V5 an der Wasserleitung 1 – genau wie am Di 10.11."], RED, size=18)
+    karte(s, X0, y, 4.4, 4.45 - y, "Gruppen 4–6", ["V4 am Mobiltisch 1, V5 am Schülertisch – genau wie am Di 10.11."], RED, size=18)
     karte(s, X0 + 4.6, y, 4.4, 4.45 - y, "Gruppen 1–3 (und Freie)", ["Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll, Aufgaben 9–11 fertig"], TEAL, size=18)
     return s
 
@@ -431,8 +431,8 @@ def s4_auto():
 def s4_bespr():
     s = d.slide("Aufgabe", "Besprechen: Aufgaben 13–14")
     y = 1.05
-    y = frage_klick(s, y, "A13 c) Welche Rolle spielt die Asche?", "Katalysator: Sie senkt die Aktivierungsenergie und wird nicht verbraucht.")
-    y = frage_klick(s, y, "A13 d) Warum gab es den Würfel mit Kochsalz?", "Kontrolle: Nicht irgendein Pulver wirkt, sondern die Asche.")
+    y = frage_klick(s, y, "A13 c) Welche Rolle spielt das Lithiumchlorid?", "Katalysator: Es senkt die Aktivierungsenergie und wird nicht verbraucht.")
+    y = frage_klick(s, y, "A13 d) Warum gab es den Würfel mit Kochsalz?", "Kontrolle: Nicht irgendein Pulver wirkt, sondern das Lithiumchlorid.")
     y = frage_klick(s, y, "A14 Stimmt: »Ein Katalysator wird verbraucht«?", "Stimmt nicht – er wird nicht verbraucht und ändert nur Weg und Tempo.")
     return s
 
@@ -505,7 +505,7 @@ SPEC = {
      ("s3_diag", [2], "KURZ KLÄREN", None, "Energiediagramm lesen: Gipfel, Höhenunterschied", s3_diagramm),
      ("s3_stat", [3], "STATION", "Stationen erklären", "Rotation zeigen: 11 min je Runde",
       lambda: s3_stationen((1, 2, 3), "Theorieteil **Teil 3** lesen (Buch S. 32–34)", "Aufgaben 9–11")),
-     ("s3_plaetze", [3], "STATION", None, "Plätze zeigen: Mobiltisch 1, Wasserleitung 1 und 2", s3_plaetze),
+     ("s3_plaetze", [3], "STATION", None, "Plätze zeigen: Mobiltisch 1, Schülertisch, Wasserleitung 1 und 2", s3_plaetze),
      ("s3_sich", [3], "STATION", None, "Sicherheit an beiden Stationen laut vorlesen", s3_sicher),
      ("s3_v4", [4], "STATION", "Stationen V4 + V5", "Ablauf Station 1 zum Hinsehen während der Runden", s3_v4),
      ("s3_v5", [4], "STATION", None, "Ablauf Station 2", s3_v5),
@@ -514,10 +514,10 @@ SPEC = {
      ("s3_erg", [5], "ABSCHLUSS", None, "Ergebnisse sichern: warm oder kalt; Reserve", s3_ergebnis)],
  4: [("s4_heute", [0], "START", None, "Ziel und Ablauf zeigen", lambda: heute_folie(4)),
      ("s4_weisst", [0], "WIEDERHOLEN", None, "Drei Fragen zur letzten Stunde (Lösung per Klick)", s4_weisst),
-     ("s4_v7", [1], "DEMO", "Demo V7: Zuckerwürfel mit Asche", "Tipp, Demo (nur Lehrkraft zündet); Ergebnis per Klick",
-      lambda: versuch_folie("K1.3-V7", "Demo V7: Was lässt den Zucker brennen?", "Welcher Würfel brennt mit Flamme? – Tipp (Aufgabe 13 a)", "Nur Würfel 2 (mit Holzasche) · Würfel 1 pur und Würfel 3 mit Kochsalz schmelzen und werden braun",
+     ("s4_v7", [1], "DEMO", "Demo V7: Zuckerwürfel mit Lithiumchlorid", "Tipp, Demo (nur Lehrkraft zündet); Ergebnis per Klick",
+      lambda: versuch_folie("K1.3-V7", "Demo V7: Was lässt den Zucker brennen?", "Welcher Würfel brennt mit Flamme? – Tipp (Aufgabe 13 a)", "Nur Würfel 2 (mit Lithiumchlorid) · Würfel 1 pur und Würfel 3 mit Kochsalz schmelzen und werden braun",
                                 extra_sicher="Nur die Lehrkraft zündet. Würfel nur auf der Unterlegplatte, Abstand halten, Schutzbrille. Heißes Karamell nicht berühren. Löschen mit Becherglas, kein Wasser.")),
-     ("s4_v7w", [1], "KURZ KLÄREN", "Kurz klären", "Asche = Katalysator; Kochsalz als Kontrolle; Enzyme im Körper", s4_v7w),
+     ("s4_v7w", [1], "KURZ KLÄREN", "Kurz klären", "Lithiumchlorid = Katalysator; Kochsalz als Kontrolle; Enzyme im Körper", s4_v7w),
      ("s4_tausch", [2], "STATION", "Stationen: Gruppen tauschen", "Rotation zeigen; Gruppen 4–6 jetzt an die Stationen", s4_tausch),
      ("s4_a1314", [2], "AUFGABE", None, "Aufgaben der freien Gruppe (und aller nach dem Tausch)",
       lambda: auftrag_folie("Freie Gruppe: Aufgabe 14", [14], {14: "allein am Handy"}, "6 Aussagen: stimmt oder stimmt nicht – mit »Prüfen«.")),
@@ -533,7 +533,7 @@ for std, sp in SPEC.items():
     STEP[std] = [(x[3], x[1]) for x in sp if x[3]]
 
 DANACH_STD = {1: "Stunde 2 am Do 05.11.: Test, dann Rost", 2: "Stunde 3 am Di 10.11.: Stationen", 3: "Stunde 4 am Do 12.11.: Katalysatoren", 4: "Ende der Einheit – ab Di 17.11. Säuren und Basen"}
-KURZ = {"s1_einst": "Einstieg", "s1_mg": "Magnesium und Sauerstoff", "s2_rost": "Wie Eisen rostet", "s3_v4": "Station 1", "s3_plaetze": "Wo steht was?", "s4_v7w": "Was tat die Asche?", "s4_abg": "PDF abgeben", "s4_wicht2": "Das Wichtigste (2)", "s4_wicht": "Das Wichtigste (1)", "s4_tausch": "Gruppen tauschen", "s1_v1w": "Warum schwerer?", "s1_bespr": "Besprechen A1–A3", "s1_v2": "Ausblick Rost-Ansatz", "s2_bespr": "Besprechen A5–A7", "s2_cu": "Eisen in Kupfersulfat",
+KURZ = {"s1_einst": "Einstieg", "s1_mg": "Magnesium und Sauerstoff", "s2_rost": "Wie Eisen rostet", "s3_v4": "Station 1", "s3_plaetze": "Wo steht was?", "s4_v7w": "Was tat das Lithiumchlorid?", "s4_abg": "PDF abgeben", "s4_wicht2": "Das Wichtigste (2)", "s4_wicht": "Das Wichtigste (1)", "s4_tausch": "Gruppen tauschen", "s1_v1w": "Warum schwerer?", "s1_bespr": "Besprechen A1–A3", "s1_v2": "Ausblick Rost-Ansatz", "s2_bespr": "Besprechen A5–A7", "s2_cu": "Eisen in Kupfersulfat",
         "s2_ende": "Ausblick Stationen", "s3_exo": "exotherm – endotherm", "s3_diag": "Energiediagramm", "s3_sich": "Sicherheit", "s3_v5": "Station 2", "s3_a911": "Aufgaben 9–11",
         "s3_erg": "Ergebnisse sichern", "s4_weisst": "Weißt du noch?", "s4_a1314": "Aufgabe 14", "s4_bespr": "Besprechen A13/A14", "s1_heute": "Heute", "s2_heute": "Heute", "s3_heute": "Heute", "s4_heute": "Heute"}
 

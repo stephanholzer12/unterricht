@@ -357,10 +357,10 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
     <ul class="steps">
       <li><b>Stunde 1 und 2:</b> Demos K1.3-V1 und V3 – erst tippen, dann zuschauen und hier eintragen. Rost-Ansatz K1.3-V2 heute ansetzen, Auswertung am Di 10.11.</li>
       <li><b>Stunde 3:</b> Zuerst Demo K1.3-V6 (Kältemischung) – erst tippen, dann zuschauen.</li>
-      <li><b>Stunde 3–4: 6 Gruppen zu viert, 2 Stationen.</b> Stunde 3: Gruppe 1–3 an den Stationen, Gruppe 4–6 macht die Aufgaben 9–12. Stunde 4: umgekehrt. <b>Station 1 steht am Mobiltisch 1, Station 2 an der Wasserleitung 1</b> (zum Ausspülen: Wasserleitung 2); die Demos macht die Lehrkraft am Lehrertisch.</li>
+      <li><b>Stunde 3–4: 6 Gruppen zu viert, 2 Stationen.</b> Stunde 3: Gruppe 1–3 an den Stationen, Gruppe 4–6 macht die Aufgaben 9–12. Stunde 4: umgekehrt. <b>Station 1 steht am Mobiltisch 1, Station 2 an einem Schülertisch (IKT-Tisch, nicht am Fenster)</b> (zum Ausspülen: Wasserleitung 1 bzw. 2); die Demos macht die Lehrkraft am Lehrertisch.</li>
       <li><b>Drei Runden à 11 Minuten:</b> Runde 1 – Gruppe 1 (bzw. 4) an Station 1, Gruppe 2 (bzw. 5) an Station 2, Gruppe 3 (bzw. 6) macht Aufgaben. Danach rückt jede Gruppe weiter: Station 1 → Station 2 → Aufgaben → Station 1.</li>
       <li><b>An der Station messen, beobachten und Fotos machen</b>, aufräumen, wie ihr sie vorgefunden habt, und gleich die <b>Erkenntnis</b> eintragen. <b>Interpretation und Schlussfolgerung</b> schreibt ihr, sobald ihr beide Stationen fertig habt – in eurer Aufgabenzeit – was fehlt, am Stundenende. Es gibt keine Hausübung.</li>
-      <li><b>Stunde 4:</b> Demo K1.3-V7 (Zuckerwürfel mit Asche, Katalysator). <b>Zusatz:</b> Gruppenversuch K1.3-V8 (Brausetablette, nur nach Freigabe) und K1.3-V9 (nur als Video).</li>
+      <li><b>Stunde 4:</b> Demo K1.3-V7 (Zuckerwürfel mit Lithiumchlorid, Katalysator). <b>Zusatz:</b> Gruppenversuch K1.3-V8 (Brausetablette, nur nach Freigabe) und K1.3-V9 (nur als Video).</li>
     </ul>
     <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF ab (Namen der Gruppe + dein Nachname) – in LMS nach Stunde 4 (Do 12.11.).</p>
   </section><!--/PLAN-->""" + s[j:]

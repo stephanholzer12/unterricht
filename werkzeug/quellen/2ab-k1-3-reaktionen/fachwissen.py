@@ -9,11 +9,11 @@ STUNDENVORSCHLAG = [
 ]
 
 CHECKLISTE = [
-    "Bis Mi 11.11.: Holzasche besorgen (Holzofen/Grill, keine Briketts), fein sieben und trocken lagern; Würfelzucker bereitlegen (V7); Eis für die Demo am 10.11. einfrieren (Kühlbox).",
+    "Bis Mi 11.11.: Lithiumchlorid #253 (Gefahrstoffschrank L-U) bereitlegen, Holzasche nur als Reserve mitbringen; Würfelzucker bereitlegen (V7); Eis für die Demo am 10.11. einfrieren (Kühlbox).",
     "Nichts ansetzen oder verdünnen außer der Kupfersulfatlösung für V4 (15,0 g Pentahydrat auf 150 ml Lösung, am Vortag möglich). V5 braucht nur abgewogenes Pulver: 6 × 5,0 g Zitronensäure und 6 × 6,0 g Natron (Vortag Mo 09.11. möglich).",
     "Löschdecke bzw. Sand für K1.3-V1 bereitlegen (Bestand laut Inventar unklar).",
-    "Vor Stunde 3: Stationen aufbauen – Station 1 am Mobiltisch 1 (Sammelbehälter dazu), Station 2 an der Wasserleitung 1; 30 g Salz abwiegen; beide Stationen einmal selbst ausprobieren (Vorversuch V5: Temperaturabfall bei 25 ml Wasser prüfen).",
-    "Vor Stunde 4 (Vorversuch am Mi 11.11.): Zuckerwürfel mit Asche, mit Salz und pur testen; Becherglas 400 ml als Löschhaube bereitstellen; Rost-Ansätze aus dem Gestell räumen.",
+    "Vor Stunde 3: Stationen aufbauen – Station 1 am Mobiltisch 1 (Sammelbehälter dazu), Station 2 an einem Schülertisch (IKT-Tisch, nicht am Fenster); 30 g Salz abwiegen; beide Stationen einmal selbst ausprobieren (Vorversuch V5: Temperaturabfall bei 25 ml Wasser prüfen).",
+    "Vor Stunde 4 (Vorversuch am Mi 11.11.): Zuckerwürfel mit Lithiumchlorid, mit Salz und pur testen; Becherglas 400 ml als Löschhaube bereitstellen; Rost-Ansätze aus dem Gestell räumen.",
     "Nur 2 Thermometer im Bestand: Analog (#147, bis −10 °C) an Station 1; Digital (#25) zuerst für die Demo V6, dann an Station 2. Messbereich des Digitalthermometers vorab prüfen.",
     "Zusatz: V8 nur nach Freigabe (18 unbenutzte Einweg-Petrischalen #39, 9 Brausetabletten); V9 nur als Video (Buchvideo nawi_v130 bzw. Seilnacht).",
     "QR-Codes am Beamer (Folie »Dein Lernpfad«); Einheit auf der Klassenseite einblenden (GitHub → Actions → »Einheit ein-/ausblenden«).",
@@ -45,10 +45,10 @@ STUNDENKARTEN = [
      "Demo mit Vorhersage; Stationenbetrieb – Handy nur fürs Protokoll"),
     ("Stunde 4 · Do 12.11. · Katalysatoren, Stationen (Gruppe 4–6) und Abschluss", [
         "Weißt du noch? (2 min, im Beginn).",
-        "Demo K1.3-V7 Zuckerwürfel mit Asche (8 min, Aufgabe 13 gleich dabei) – Katalysator, Kontrolle mit Salz, Enzyme kurz klären.",
-        "Gruppe 4–6: drei Runden à 11 min an Station 1 (Mobiltisch 1) und 2 (Wasserleitung 1); Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll. Gruppe 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde.",
+        "Demo K1.3-V7 Zuckerwürfel mit Lithiumchlorid (8 min, Aufgabe 13 gleich dabei) – Katalysator, Kontrolle mit Salz, Enzyme kurz klären.",
+        "Gruppe 4–6: drei Runden à 11 min an Station 1 (Mobiltisch 1) und 2 (Schülertisch); Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll. Gruppe 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde.",
         "Besprechen A13/A14 (3 min) · PDF abgeben (1 min) · Reserve 3 min – dort ggf. »Das Wichtigste in 5 Sätzen«. Tempo (Teil 5) ist Zusatz und fällt nicht in die Stunde. Keine Hausübung."],
-     "3 Würfelzucker, Holzasche, Salz, Unterlegplatte, Feuerzeug, Becherglas 400 ml · Stationen 1–2",
+     "3 Würfelzucker, Lithiumchlorid #253, Salz, Unterlegplatte, Feuerzeug, Becherglas 400 ml · Stationen 1–2",
      "Demo mit Vorhersage; Stationen"),
 ]
 
@@ -56,7 +56,7 @@ AUF_EINEN_BLICK = [
     ["1 · 03.11.", "Oxidation = Elektronenabgabe, Reduktion = Elektronenaufnahme – immer gleichzeitig. Eisenwolle wird beim Verbrennen schwerer.", "Waage, Eisenwolle, Batterie · Rost-Ansätze"],
     ["2 · 05.11.", "Rost braucht Wasser + Sauerstoff, Salz beschleunigt. Schutz: Schicht, Zink, Edelstahl, waschen, trocknen.", "Kupferblech, Brenner"],
     ["3 · 10.11.", "Exotherm gibt Energie ab, endotherm nimmt sie auf. Fast jede Reaktion braucht Aktivierungsenergie. Masse und Energie bleiben erhalten.", "Demo V6 · Stationen V4–V5"],
-    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Asche bei Zucker, Enzyme, Autokatalysator.", "Würfelzucker, Holzasche, Salz"],
+    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Lithiumchlorid bei Zucker, Enzyme, Autokatalysator.", "Würfelzucker, Lithiumchlorid, Salz"],
     ["Zusatz", "Tempo: Oberfläche, Temperatur (+10 °C ≈ doppelt), Konzentration, Katalysator.", "Brausetabletten, Petrischalen (nur V8)"],
 ]
 
@@ -105,7 +105,7 @@ KAPITEL = [
 RECHNEN = [
     "**Masse (A12):** 1,20 g Eisenwolle → 1,52 g. Eingebauter Sauerstoff 0,32 g; Zunahme 0,32 : 1,20 · 100 ≈ 26,7 %. Vollständig zu Fe₃O₄ wären es +38 %, zu Fe₂O₃ +43 %.",
     "**Faustregel (A17):** 80 s bei 20 °C → 40 s bei 30 °C → 20 s bei 40 °C. Allgemein: t = t₀ : 2^(ΔT/10). Übungsvariante mit Zufallszahlen auf dem Arbeitsblatt.",
-    "**V7 ohne Verdünnen:** Zuckerwürfel + Holzasche (Katalysator), Kochsalz als Kontrolle. Asche trocken und fein, Vorversuch Pflicht; Wirkung vermutlich durch Alkalisalze (K, Na), Mechanismus komplex – auf Schulniveau »Katalysator«. Zigarettenasche (Li) wirkt oft stärker.",
+    "**V7 ohne Verdünnen:** Zuckerwürfel + Lithiumchlorid (Katalysator; Holzasche als Ausweichlösung), Kochsalz als Kontrolle. Lithiumchlorid #253 nur in Spuren, Vorversuch Pflicht; Mechanismus komplex – auf Schulniveau »Katalysator«. Holzasche (K-, Na-Salze) wirkt schwächer.",
     "**Kupfersulfat (V4):** 15,0 g CuSO₄ · 5 H₂O auf 150 ml Lösung = 10 g Pentahydrat pro 100 ml Lösung (≈ 6,4 g CuSO₄ pro 100 ml; M = 249,7 g/mol). Keine Angabe »10 %« verwenden.",
     "**Zitronensäure (V5):** Pulver direkt – 5,0 g Zitronensäure (Monohydrat) + 6,0 g Natron auf 25 ml Wasser; 3 NaHCO₃ je Säure: 6,0 g Natron (0,071 mol) entsprechen 0,024 mol Säure (5,0 g Monohydrat). Vorversuch: Temperaturabfall prüfen.",
 ]
@@ -115,7 +115,7 @@ FEHLVORSTELLUNGEN = [
     ["Oxidation braucht immer Sauerstoff.", "Oxidation = Elektronenabgabe, auch ohne Sauerstoffgas.", "Eisen in Kupfersulfat (V4)."],
     ["Endotherme Reaktionen laufen nicht von selbst.", "Viele laufen freiwillig und kühlen dabei.", "Zitronensäure + Natron (V5), Kältekompresse."],
     ["Exotherme Reaktionen brauchen keinen Start.", "Fast jede Reaktion braucht Aktivierungsenergie.", "Holz liegt an der Luft und brennt nicht; Animation »Kugel über den Berg«."],
-    ["Der Katalysator wird verbraucht/filtert.", "Er wandelt um und bleibt unverändert.", "Asche nach V7 zeigen: die Ascheflecken sind noch da."],
+    ["Der Katalysator wird verbraucht/filtert.", "Er wandelt um und bleibt unverändert.", "Nach V7 zeigen: das weiße Salz liegt unverändert auf dem Rest des Würfels."],
     ["Salz schmilzt Eis, weil Salz warm ist.", "Salzwasser gefriert erst unter 0 °C; Schmelzen braucht Energie aus der Umgebung.", "Kältemischung (V6) wird viel kälter als 0 °C."],
 ]
 

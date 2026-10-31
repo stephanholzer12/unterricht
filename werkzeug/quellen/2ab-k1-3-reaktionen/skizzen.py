@@ -470,7 +470,7 @@ def v7():
         if k == 2:
             for j in range(26): cx, cy = x - 40 + (j * 31) % 80, 336 + (j * 17) % 10; d.ellipse(P(cx, cy, cx + 6, cy + 6), fill=(255, 255, 255), outline=(190, 190, 190))
         ctext(d, x, 190 if k else 190, "", f(FR, 22), INK)
-    for x, a, b in [(xs[0], "1 · pur", "Würfel allein"), (xs[1], "2 · mit Holzasche", "dünn bestreut"), (xs[2], "3 · mit Kochsalz", "dünn bestreut")]:
+    for x, a, b in [(xs[0], "1 · pur", "Würfel allein"), (xs[1], "2 · mit Lithiumchlorid", "dünn bestreut"), (xs[2], "3 · mit Kochsalz", "dünn bestreut")]:
         ctext(d, x, 100, a, f(FB, 26), INK); ctext(d, x, 134, b, f(FR, 22), INK)
     ctext(d, 450, 535, "Erst tippen: Welcher Würfel brennt mit Flamme?", f(FB, 28), RED)
     ctext(d, 450, 578, "Schutzbrille · Abstand halten · brennendes Karamell nicht berühren", f(FR, 24), INK)
@@ -588,7 +588,7 @@ def new_icons():
             d.rectangle(P(x, y, x + 46, y + 46), fill=(252, 252, 252), outline=OUT, width=2 * S)
             d.line(P(x + 4, y + 14, x + 42, y + 14), fill=(225, 225, 225), width=2 * S)
     icon("zuckerwuerfel", zucker)
-    icon("asche", lambda d: jar(d, (150, 150, 152), (95, 95, 98)))
+    icon("asche", lambda d: jar(d, (236, 236, 240), (170, 170, 178)))
 
 
 def icons_kopieren():

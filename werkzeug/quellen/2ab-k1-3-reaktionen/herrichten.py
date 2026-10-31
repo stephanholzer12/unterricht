@@ -40,6 +40,6 @@ MENGEN = {  # Verbrauchsmaterial: was insgesamt anzusetzen ist (pro Klasse)
     "Eis": "ca. 150 g, angetaut und zerstoßen (Kühlbox) – nur für die Demo am 10.11.",
     "Eisenwolle": "V1: 1–1,2 g · V2: 4 kleine Bäusche · V4: 6 × 1 g → ca. 10 g",
     "Würfelzucker (Haushaltszucker)": "3 Würfel (V7) + 3 für den Vorversuch",
-    "Holzasche, trocken und fein (vom Holzofen/Grill, keine Briketts)": "1 Messerspitze je Vorführung, insgesamt 1 Esslöffel – mitbringen, sieben, trocken lagern",
+    "Lithiumchlorid, wasserfrei (Chemikalie #253)": "1 Messerspitze je Vorführung (Vorversuch + Demo ca. 1 g) – wenig auf ein Uhrglas, Dose gleich schließen",
     "Brausetabletten": "9 Stück, gleiche Sorte (nur für den Zusatz-Versuch V8)",
 }
