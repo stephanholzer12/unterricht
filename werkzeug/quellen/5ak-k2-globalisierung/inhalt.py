@@ -8,7 +8,7 @@ Korrekturen gegenüber der Übergabe (Prüfbericht): Zollkarte A aktualisiert (U
 nicht verwendet, IEA-Zahlen auf die bestätigten Werte (415 TWh 2024, rund 945 TWh Projektion 2030) gestellt, 02.12.2026-Verbot nur aus einer Sekundärquelle, Primärquelle ungeprüft, weggelassen."""
 
 STAND = "31.10.2026"
-V = "v3"                       # v1 = ChatGPT-Übergabe
+V = "v4"                       # v1 = ChatGPT-Übergabe
 ORDNER = "5ak-iwk/k2-globalisierung"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"

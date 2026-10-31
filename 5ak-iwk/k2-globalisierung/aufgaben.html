@@ -228,7 +228,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button>
     </div>
     <p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
-    <p class="hint">Stand 31.10.2026 · v3</p>
+    <p class="hint">Stand 31.10.2026 · v4</p>
   </section>
 </main>
 
@@ -1249,6 +1249,7 @@ function renderTask(t) {
   card.append(el("h2", { text: t.title }));
   card.append(qText(t.q));
   if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
+  { const _n = {"a1": "verbindet", "a2": "folgen", "a3": "zoelle", "a4": "institutionen", "a5": "ki_global", "a6": "ki_risiko", "a7": "ki_global", "a8": "gestalten"}[t.id]; if (_n) card.append(el("p", { class: "hint" }, el("a", { href: "theorie.html#" + _n, text: "Nachlesen in der Theorie" }))); }
   if (t.img) card.append(el("div", { class: "qimg" }, el("img", { src: t.img, alt: "Abbildung zu Aufgabe " + t.nr })));
   if (t.tab) { const tb = el("table", { class: "dtab" }); t.tab.forEach((r, i) => tb.append(el("tr", {}, ...r.map((c, j) => el(i === 0 || j === 0 ? "th" : "td", { text: c }))))); card.append(el("div", { class: "dwrap" }, tb)); if (t.tabnote) card.append(el("p", { class: "hint dnote", text: t.tabnote })); }
 

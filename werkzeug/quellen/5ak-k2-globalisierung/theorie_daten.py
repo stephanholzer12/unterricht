@@ -137,6 +137,10 @@ SCHNELLE = [
   "blocks": [("ul", ["Stelle den IEA-Wert für 2024 (rund 415 TWh) und die Projektion für 2030 (rund 945 TWh) als eigene Grafik dar. **Beobachtung und Projektion** sichtbar trennen; keine Zwischenwerte als Messdaten erfinden."])]},
  {"id": "opt5", "title": "OPTIONAL: Hilfen und Hürden für kleine Firmen", "pill": "Vertiefung",
   "blocks": [("ul", ["Welche KI-Regeln helfen kleineren Unternehmen, welche Kosten könnten neue Eintrittshürden schaffen? Suche erst **konkrete Belege**; urteile nicht allein aus einer Vermutung über Motive."])]},
+ {"id": "opt6", "title": "OPTIONAL: Herkunft im Schulgebäude suchen", "pill": "Bewegung",
+  "blocks": [("ul", ["Geh zu zweit durch das Schulgebäude (oder zum Spind) und suche fünf Gegenstände mit Herkunftsangabe: Etikett, Typenschild, Aufdruck. Fotografiere sie und trag Gegenstand, Land und Stufe (Rohstoff, Bauteil, Montage) ein.",
+                     "Bundesheer-Bezug: Wähle ein Ausrüstungsstück (z. B. Rucksack, Stiefel, Funkgerät) und überlege, welche Stufen der Lieferkette im Ausland liegen könnten. Aussagen als Vermutung kennzeichnen, solange kein Beleg vorliegt.",
+                     "Kein Pflichtstoff, keine Hausübung."])]},
 ]
 
 TOCLAB = {"einstieg": "Einstieg", "teil1": "Stunde 1 · Sportuhr", "teil2": "Stunde 2 · Zölle", "teil3": "Stunde 3 · KI", "teil4": "Stunde 4 · Gestalten",

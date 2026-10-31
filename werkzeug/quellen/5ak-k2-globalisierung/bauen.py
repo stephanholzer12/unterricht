@@ -81,6 +81,11 @@ rep("  return { ok: parts.every(p => p.ok), parts };\n}", """  /* K1.3: offene E
   if (!auto.length && man.length) return { ok: man.every(p => p.filled), parts, man: true, manOnly: true };
   return { ok: auto.every(p => p.ok), parts, man: man.length > 0 };
 }""")
+# Link »Nachlesen in der Theorie« je Aufgabe (Skill-Regel 12)
+_NACH = {"a1": "verbindet", "a2": "folgen", "a3": "zoelle", "a4": "institutionen", "a5": "ki_global", "a6": "ki_risiko", "a7": "ki_global", "a8": "gestalten"}
+_h = 'if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));'
+assert _h in s
+s = s.replace(_h, _h + '\n  { const _n = ' + json.dumps(_NACH) + '[t.id]; if (_n) card.append(el("p", { class: "hint" }, el("a", { href: "theorie.html#" + _n, text: "Nachlesen in der Theorie" }))); }', 1)
 _i = s.index("function showCheck(t) {"); _j = s.index("\nfunction showSolutions()", _i)
 s = s[:_i] + """function showCheck(t) {
   const r = evalTask(t), fb = $("#fb_" + t.id); fb.hidden = false; fb.textContent = "";
