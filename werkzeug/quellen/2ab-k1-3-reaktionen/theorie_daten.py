@@ -114,11 +114,11 @@ PARTS = [
               ("video", "exoendo_buch"), ("video", "exoendo")]},
   {"id": "stationen", "title": "Versuche: Wird es warm oder kalt?", "pill": "Buch S. 32",
    "blocks": [("table", [["Wo", "Versuch", "Was ihr messt"],
-                         ["Demo (alle)", "K1.3-V6 · Kältemischung aus Eis und Salz", "Temperatur von Eis und von Eis + Salz"],
-                         ["Station 1", "K1.3-V4 · Eisenwolle in Kupfersulfatlösung", "Temperatur vorher und nach 2 Minuten"],
-                         ["Station 2", "K1.3-V5 · Zitronensäure + Natron", "Temperatur vorher und tiefster Wert"]]),
-              ("hint", "Stunde 3: Zuerst zeigt die Lehrkraft die Kältemischung K1.3-V6. Dann Gruppe 1–3: drei Runden zu je 11 Minuten – Runde 1: Gruppe 1 an Station 1, Gruppe 2 an Station 2, Gruppe 3 macht Aufgaben. Runde 2: Gruppe 1 → Station 2, Gruppe 2 → Aufgaben, Gruppe 3 → Station 1. Runde 3: Gruppe 1 → Aufgaben, Gruppe 2 → Station 1, Gruppe 3 → Station 2. Gruppe 4–6 macht die ganze Zeit die Aufgaben 9–12. Stunde 4: umgekehrt."),
-              ("hint", "An der Station: messen, beobachten, aufräumen und gleich die Erkenntnis eintragen. Interpretation und Schlussfolgerung schreibt ihr, sobald ihr beide Stationen fertig habt – in eurer Aufgabenzeit, spätestens in Stunde 5 (dort gibt es Zeit dafür)."),
+                         ["Demo (alle) · Lehrertisch", "K1.3-V6 · Kältemischung aus Eis und Salz", "Temperatur von Eis und von Eis + Salz"],
+                         ["Station 1 · Mobiltisch 1", "K1.3-V4 · Eisenwolle in Kupfersulfatlösung", "Temperatur vorher und nach 2 Minuten"],
+                         ["Station 2 · Wasserleitung 1", "K1.3-V5 · Zitronensäure + Natron (Pulver)", "Temperatur vorher und tiefster Wert"]]),
+              ("hint", "Stunde 3: Zuerst zeigt die Lehrkraft die Kältemischung K1.3-V6. Dann Gruppe 1–3: drei Runden zu je 11 Minuten – Runde 1: Gruppe 1 an Station 1 (Mobiltisch 1), Gruppe 2 an Station 2 (Wasserleitung 1), Gruppe 3 macht Aufgaben an ihrem Platz. Runde 2: Gruppe 1 → Station 2, Gruppe 2 → Aufgaben, Gruppe 3 → Station 1. Runde 3: Gruppe 1 → Aufgaben, Gruppe 2 → Station 1, Gruppe 3 → Station 2. Gruppe 4–6 macht die ganze Zeit die Aufgaben 9–12. Stunde 4: Gruppe 4–6 an den Stationen, Gruppe 1–3 lesen Teil 4 und machen die Aufgaben."),
+              ("hint", "An der Station: messen, beobachten, aufräumen und gleich die Erkenntnis eintragen. Zum Ausspülen geht ihr zur Wasserleitung 2. Interpretation und Schlussfolgerung schreibt ihr in eurer Aufgabenzeit – was fehlt, am Stundenende. Lesen und Messen dauern oft länger als gedacht, die Aufgaben gehen dann meist schneller."),
               ("versuch", "K1.3-V4", "Stationen K1.3-V4 und V5 · Demo K1.3-V6", "Schutzbrille auf! Protokoll pro Gruppe auf der Versuchsseite.")]},
   {"id": "diagramm", "title": "Das Energiediagramm", "pill": "Buch S. 33",
    "blocks": [("img", "img/diagramm_exo_endo.png", "Zwei Energiediagramme: links exotherm (Endstoffe tiefer), rechts endotherm (Endstoffe höher)",
@@ -155,13 +155,14 @@ PARTS = [
                          ("Hemmstoff (Inhibitor)", ["**verlangsamt** eine Reaktion (z. B. Rostschutz, Konservierung). Im Buch heißt er »negativer Katalysator«. Hemmstoffe wirken auf verschiedene Weise – manche blockieren einen Katalysator."])]),
               ("hint", "Ein Katalysator ändert nur den Weg und das Tempo – nicht, wie viel Energie am Anfang und am Ende in den Stoffen steckt. Aus exotherm wird nie endotherm."),
               ("video", "kat")]},
-  {"id": "enzyme", "title": "Demo: Was beschleunigt den Zerfall? – und Enzyme", "pill": "Versuch im Buch S. 36",
-   "blocks": [("versuch", "K1.3-V7", "Wasserstoffperoxid mit Braunstein und Kartoffel (Demo)", "Erst tippen (Aufgabe 13): ohne Zusatz, Braunstein, rohe Kartoffel, gekochte Kartoffel – wo schäumt es?"),
-              ("ul", ["Wasserstoffperoxid zerfällt von selbst nur sehr langsam: 2 H₂O₂ → 2 H₂O + O₂. Mit **Braunstein** (MnO₂) schäumt es sofort – der glimmende Holzspan flammt auf: **Sauerstoff**.",
-                      "In der rohen Kartoffel steckt ein **Enzym** (Katalase). Enzyme sind **Biokatalysatoren** – Katalysatoren in Lebewesen.",
-                      "Enzyme bestehen aus Eiweiß. **Hitze zerstört sie** – deshalb schäumt die gekochte Kartoffel kaum.",
+  {"id": "enzyme", "title": "Demo: Was lässt den Zucker brennen? – und Enzyme", "pill": "Buch S. 34",
+   "blocks": [("versuch", "K1.3-V7", "Zuckerwürfel mit Holzasche und mit Kochsalz (Demo)", "Erst tippen (Aufgabe 13): pur, mit Asche, mit Kochsalz – welcher Würfel brennt mit Flamme?"),
+              ("ul", ["Ein Zuckerwürfel lässt sich kaum anzünden: Er schmilzt und wird braun. Mit etwas **Holzasche** brennt er mit ruhiger, bläulicher Flamme weiter.",
+                      "Die Asche macht die Verbrennung **schneller**, obwohl sie nicht mitbrennt – sie **senkt die Aktivierungsenergie** und wird nicht verbraucht: ein **Katalysator**.",
+                      "Der dritte Würfel mit **Kochsalz** ist die **Kontrolle**: Ein anderes Pulver bewirkt nichts. Es kommt auf die Asche an, nicht auf irgendein Pulver.",
+                      "In deinem Körper verbrennt Zucker bei 37 °C ohne Flamme. Das schaffen **Enzyme** – **Biokatalysatoren**, Katalysatoren in Lebewesen.",
                       "Im Speichel spaltet das Enzym **Amylase** Stärke in Zucker. Darum schmeckt eine Semmel süß, wenn du lange kaust.",
-                      "Biologie-Brücke: Ohne Enzyme liefe deine Verdauung viel zu langsam. Viele Enzyme deines Körpers arbeiten bei normaler Körpertemperatur gut. Starke Erwärmung kann ihre Form und damit ihre Funktion zerstören – eine gemeinsame Grenztemperatur für alle Enzyme gibt es aber nicht."])]},
+                      "Enzyme bestehen aus Eiweiß. **Hitze zerstört sie** – starke Erwärmung kann ihre Form und damit ihre Funktion verändern. Viele Enzyme deines Körpers arbeiten bei normaler Körpertemperatur gut."])]},
   {"id": "autokat", "title": "Der Autokatalysator", "pill": "Buch S. 34–35",
    "blocks": [("img", "img/autokat.png", "Schema: Abgase mit CO, Stickoxiden und Kohlenwasserstoffen strömen durch eine Keramikwabe mit Platin; heraus kommen CO₂, N₂ und Wasser",
                "Keramikwabe mit tausenden feinen Kanälen; darauf eine poröse Schicht mit fein verteilten Teilchen aus Platin, Palladium und Rhodium"),
@@ -183,7 +184,7 @@ PARTS = [
  ]),
 
  # ---------------------------------------------------------------- Teil 5 · Reaktionsgeschwindigkeit
- ("teil5", "Stunde 5 · Buch S. 36", "Teil 5 · Wie schnell läuft eine Reaktion?", [
+ ("teil5", "Zusatz · Selbststudium · Buch S. 36–37", "Teil 5 · Wie schnell läuft eine Reaktion? (Zusatz)", [
   {"id": "tempo", "title": "Vier Stellschrauben für das Tempo", "pill": "Buch S. 36",
    "blocks": [("ul", ["Damit Teilchen reagieren, müssen sie **zusammenstoßen** – oft und kräftig genug. Alles, was mehr und stärkere Zusammenstöße bringt, macht die Reaktion schneller."]),
               ("tiles", [("1 · Oberfläche", ["Fein zerteilt reagiert schneller: Holzspäne statt Scheit, Pulver statt Stück."]),
@@ -201,13 +202,12 @@ PARTS = [
    "blocks": [("ul", ["Fein verteilter Staub hat eine **riesige Oberfläche**. Mehl, Holzstaub oder Kohlenstaub können in der Luft schlagartig verbrennen – eine **Staubexplosion**.",
                       "Darum gelten in Mühlen, Sägewerken und Silos strenge Regeln: kein offenes Feuer, keine Funken, Staub absaugen.",
                       "Im Buch S. 36 wird das mit Bärlappsporen gezeigt – ein Versuch nur mit Abzug und Schutzscheibe."])]},
-  {"id": "brause", "title": "Versuch: Brausetablette im Test", "pill": "Buch S. 36",
-   "blocks": [("versuch", "K1.3-V8", "Brausetablette: ganz oder zerrieben, kalt oder warm", "In der Gruppe: drei Ansätze, Handy als Stoppuhr. Messwerte in Aufgabe 17 eintragen.")]},
+  {"id": "brause", "title": "Zusatz-Versuch: Brausetablette im Test", "pill": "Buch S. 36",
+   "blocks": [("versuch", "K1.3-V8", "Brausetablette: ganz oder zerrieben, kalt oder warm", "Nur wenn die Lehrkraft ihn freigibt (6 Gruppen, Handy als Stoppuhr). Messwerte in Aufgabe 17 eintragen.")]},
   {"id": "partner", "title": "Partnercheck-Karten", "pill": "Buch S. 30–36",
-   "blocks": [("hint", "Für Aufgabe 18 (gleich zu Beginn von Stunde 5): A stellt B drei Fragen, B antwortet ohne Handy. A deckt die Lösung erst danach auf."),
+   "blocks": [("hint", "Für Aufgabe 18 (Zusatz, gut zur Wiederholung vor dem Test): A stellt B drei Fragen, B antwortet ohne Handy. A deckt die Lösung erst danach auf."),
               ("karten", I.PARTNERKARTEN)]},
-  {"id": "stop5", "title": "Stopp – kannst du das?", "pill": "Buch S. 36", "blocks": [("reveal", I.STOPPFRAGEN[5])]},
-  ("jetzt", "Jetzt: Aufgaben 16–17 · Zusatz: 15", "aufgaben.html#card_a16"),
+  ("jetzt", "Zusatz: Aufgaben 16–18", "aufgaben.html#card_a16"),
  ]),
 ]
 
@@ -233,4 +233,4 @@ SCHNELLE = [
 ]
 
 TOCLAB = {"einstieg": "Einstieg", "teil1": "Teil 1 · Redox", "teil2": "Teil 2 · Rost", "teil3": "Teil 3 · Energie", "teil4": "Teil 4 · Katalysator",
-          "teil5": "Teil 5 · Tempo", "begriffe": "Begriffe", "kurz": "Kurz & knapp", "schnelle": "Für Schnelle"}
+          "teil5": "Teil 5 · Tempo (Zusatz)", "begriffe": "Begriffe", "kurz": "Kurz & knapp", "schnelle": "Für Schnelle"}

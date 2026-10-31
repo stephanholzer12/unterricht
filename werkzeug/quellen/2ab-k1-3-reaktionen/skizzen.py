@@ -420,11 +420,11 @@ def v4():
 
 def v5():
     im, d = canvas()
-    ctext(d, 450, 20, "Station 2 · Zitronensäure und Natron", f(FB, 32), INK)
+    ctext(d, 450, 20, "Station 2 · Zitronensäure und Natron (Pulver)", f(FB, 32), INK)
     station(d, 120, 230, (225, 236, 240), therm_fill=0.42)
-    ctext(d, 220, 470, "vorher: Temperatur messen", f(FR, 24), INK)
+    ctext(d, 220, 470, "25 ml Wasser: Temperatur messen", f(FR, 24), INK)
     d.line(P(380, 200, 470, 280), fill=GREY, width=6 * S); d.ellipse(P(455, 270, 495, 300), fill=(250, 250, 250), outline=GREY, width=3 * S)
-    ctext(d, 420, 160, "6 g Natron", f(FB, 24), INK)
+    ctext(d, 400, 100, "5 g Zitronensäure + 6 g Natron", f(FB, 22), INK); ctext(d, 400, 128, "(beide Pulver zugleich)", f(FR, 20), INK)
     beaker(d, 520, 230, 200, 220, (225, 236, 240), 0.62)
     bubbles(d, 535, 705, 320, 440, 26, seed=5, col=(140, 160, 170))
     thermometer(d, 660, 150, 260, fill=0.30)
@@ -457,21 +457,23 @@ def v6():
 
 def v7():
     im, d = canvas()
-    ctext(d, 450, 18, "Was beschleunigt den Zerfall von Wasserstoffperoxid?", f(FB, 30), INK)
-    xs = [170, 350, 530, 710]
-    h2o2 = (225, 238, 245)
-    tube(d, xs[0], 160, 470, [(110, h2o2)], label="1")
-    tube(d, xs[1], 160, 470, [(10, (60, 50, 45)), (100, h2o2), (150, (250, 250, 250))], label="2")
-    tube(d, xs[2], 160, 470, [(110, h2o2), (60, (248, 248, 248))], label="3")
-    tube(d, xs[3], 160, 470, [(110, h2o2)], label="4")
-    bubbles(d, xs[1] - 22, xs[1] + 22, 230, 360, 18, 2, (190, 190, 190)); bubbles(d, xs[2] - 22, xs[2] + 22, 300, 400, 10, 4, (190, 190, 190))
-    d.rectangle(P(xs[2] - 15, 430, xs[2] + 15, 455), fill=(235, 215, 150), outline=(170, 150, 90), width=2 * S)
-    d.rectangle(P(xs[3] - 15, 430, xs[3] + 15, 455), fill=(225, 205, 160), outline=(150, 130, 90), width=2 * S)
-    d.line(P(xs[1] + 120, 60, xs[1] + 6, 150), fill=(170, 130, 80), width=6 * S); d.ellipse(P(xs[1] - 6, 140, xs[1] + 14, 160), fill=ORANGE)
-    ctext(d, xs[1] + 170, 60, "glimmender Span", f(FR, 22), INK)
-    for x, a, b in [(xs[0], "ohne", "Zusatz"), (xs[1], "Braunstein", "(1 Spatelspitze)"), (xs[2], "rohe", "Kartoffel"), (xs[3], "gekochte", "Kartoffel")]:
-        ctext(d, x, 495, a, f(FB, 24), INK); ctext(d, x, 527, b, f(FR, 22), INK)
-    ctext(d, 450, 575, "je ca. 5 ml Wasserstoffperoxid 3 % · Schutzbrille · Gläser nicht verschließen", f(FR, 24), INK)
+    ctext(d, 450, 18, "Demo · Was lässt den Zucker brennen?", f(FB, 32), INK)
+    d.rounded_rectangle(P(60, 440, 840, 470), radius=6 * S, fill=(205, 208, 212), outline=GREY, width=3 * S)
+    ctext(d, 450, 480, "feuerfeste Unterlegplatte", f(FR, 22), INK)
+    xs = [170, 450, 730]
+    for k, x in enumerate(xs):
+        d.rectangle(P(x - 45, 340, x + 45, 430), fill=(252, 252, 252), outline=(150, 150, 150), width=3 * S)
+        d.line(P(x - 45, 360, x + 45, 360), fill=(225, 225, 225), width=2 * S)
+        if k == 1:
+            for j in range(26): cx, cy = x - 40 + (j * 31) % 80, 336 + (j * 17) % 10; d.ellipse(P(cx, cy, cx + 8, cy + 7), fill=(110, 110, 112))
+            flame(d, x, 336, 150, 60)
+        if k == 2:
+            for j in range(26): cx, cy = x - 40 + (j * 31) % 80, 336 + (j * 17) % 10; d.ellipse(P(cx, cy, cx + 6, cy + 6), fill=(255, 255, 255), outline=(190, 190, 190))
+        ctext(d, x, 190 if k else 190, "", f(FR, 22), INK)
+    for x, a, b in [(xs[0], "1 · pur", "Würfel allein"), (xs[1], "2 · mit Holzasche", "dünn bestreut"), (xs[2], "3 · mit Kochsalz", "dünn bestreut")]:
+        ctext(d, x, 100, a, f(FB, 26), INK); ctext(d, x, 134, b, f(FR, 22), INK)
+    ctext(d, 450, 535, "Erst tippen: Welcher Würfel brennt mit Flamme?", f(FB, 28), RED)
+    ctext(d, 450, 578, "Schutzbrille · Abstand halten · brennendes Karamell nicht berühren", f(FR, 24), INK)
     save(im, VSI + "d_v7.png")
 
 
@@ -581,6 +583,12 @@ def new_icons():
         d.rectangle(P(80, 2, 100, 14), fill=(200, 205, 210), outline=OUT, width=2 * S)
         for x in (62, 90, 118): d.line(P(x, 28, x, 20), fill=(46, 125, 140), width=3 * S)
     icon("abzug", abzug)
+    def zucker(d):
+        for x, y in [(34, 52), (84, 52), (59, 18)]:
+            d.rectangle(P(x, y, x + 46, y + 46), fill=(252, 252, 252), outline=OUT, width=2 * S)
+            d.line(P(x + 4, y + 14, x + 42, y + 14), fill=(225, 225, 225), width=2 * S)
+    icon("zuckerwuerfel", zucker)
+    icon("asche", lambda d: jar(d, (150, 150, 152), (95, 95, 98)))
 
 
 def icons_kopieren():

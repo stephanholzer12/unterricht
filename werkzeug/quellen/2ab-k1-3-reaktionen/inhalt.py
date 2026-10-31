@@ -1,11 +1,11 @@
-"""NAWI 2AB · K1.3 Stoffumwandlung (Trauner S. 29–37, Korrosionsschutz S. 98) – 5 Stunden (v1).
-Jahresplan: Einheit 6 »Energie bei chemischen Reaktionen« (3 Std., K04) + Einheit 7 »Redoxreaktionen« (3 Std., K05) = 6 Std.;
-hier in Buch-Reihenfolge auf 5 Stunden zugeschnitten (Stunde 2 = Teststunde, 20 min Test).
+"""NAWI 2AB · K1.3 Stoffumwandlung (Trauner S. 29–37, Korrosionsschutz S. 98) – 4 Stunden (v8).
+Jahresplan (Excel v101): »Stoffumwandlung: Redox, Energie, Katalysatoren« = 4 Stunden (Di 03.11., Do 05.11., Di 10.11., Do 12.11.); ab Di 17.11. Säuren und Basen.
+Hier in Buch-Reihenfolge auf 4 Stunden zugeschnitten (Stunde 2 = Teststunde, 20 min Test). Reaktionsgeschwindigkeit (Tempo, Buch S. 36–37) ist Zusatz/Selbststudium.
 Eine Quelle für Handy-Seiten (Theorie-Seite, Arbeitsblatt, Quiz), Word, PPP, Kahoot und Lehrer-Seite.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "24.10.2026"
-V = "v4"
+STAND = "31.10.2026"
+V = "v5"
 ORDNER = "2ab-nawi/k1-3-reaktionen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -26,7 +26,7 @@ VIDEOS = {
     "kat": ("Katalysator einfach erklärt", "studyflix", "4 min", "https://studyflix.de/chemie/katalysator-2896"),
 }
 
-DATEN = {1: "Di 03.11.", 2: "Do 05.11.", 3: "Di 10.11.", 4: "Do 12.11.", 5: "Di 17.11."}
+DATEN = {1: "Di 03.11.", 2: "Do 05.11.", 3: "Di 10.11.", 4: "Do 12.11."}
 
 
 def first(lst, correct):
@@ -34,6 +34,7 @@ def first(lst, correct):
     return [correct] + [x for x in lst if x != correct]
 
 
+BR = ["brennt mit Flamme", "brennt nicht richtig (schmilzt, wird braun)"]
 OR = ["Verbindung eines Stoffes mit Sauerstoff", "Abgabe von Elektronen", "Entzug (Abspaltung) von Sauerstoff", "Aufnahme von Elektronen"]
 RX = ["Redoxreaktion", "keine Redoxreaktion"]
 SCHUTZ = ["Schutzschicht hält Wasser und Sauerstoff fern", "unedleres Zink wird statt dem Eisen oxidiert",
@@ -234,21 +235,20 @@ T = [
   "tip": ["Masse und Energie bleiben erhalten", "theorie.html#erhalt"]},
 
  # ======================================================= Stunde 4 · Katalysatoren (alle)
- {"id": "a13", "besprechen": True, "nr": 13, "title": "Was beschleunigt den Zerfall? (Demo K1.3-V7)", "src": "Versuch im Buch S. 36", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
-  "q": "Wasserstoffperoxid (3 %) zerfällt nur sehr langsam in Wasser und Sauerstoff. Vier Reagenzgläser bekommen gleich viel davon. a) Tippe: In welchem schäumt es am stärksten? "
-       "b) Trag für jedes Glas ein, was du siehst. c) Ein glimmender Holzspan, in das Gas über Glas 2 gehalten, flammt auf – welches Gas ist das? d) Warum schäumt die gekochte Kartoffel kaum? (1 Satz)",
+ {"id": "a13", "besprechen": True, "nr": 13, "title": "Was lässt den Zucker brennen? (Demo K1.3-V7)", "src": "Buch S. 34", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
+  "q": "Ein Zuckerwürfel lässt sich mit dem Feuerzeug kaum entzünden – er schmilzt und wird braun. Drei Würfel liegen auf der Unterlage: Würfel 1 pur, Würfel 2 mit etwas Holzasche bestreut, Würfel 3 mit etwas Kochsalz bestreut. "
+       "a) Tippe: Welcher Würfel brennt mit Flamme? b) Trag für jeden Würfel ein, was du siehst. c) Welche Rolle spielt die Asche? d) Warum gab es Würfel 3 mit Kochsalz? (1 Satz)",
   "type": "multi",
-  "fields": [["tipp", "a) Mein Tipp", ["Glas 1 · ohne Zusatz", "Glas 2 · Braunstein", "Glas 3 · rohe Kartoffel", "Glas 4 · gekochte Kartoffel"], False],
-             ["g1", "Glas 1 · ohne Zusatz", SCH, False], ["g2", "Glas 2 · eine Spatelspitze Braunstein", SCH, False],
-             ["g3", "Glas 3 · Würfel rohe Kartoffel", SCH, False], ["g4", "Glas 4 · gleich großer Würfel gekochte Kartoffel", SCH, False],
-             ["gas", "c) Das Gas ist …", ["Sauerstoff", "Wasserstoff", "Kohlenstoffdioxid", "Stickstoff"]],
-             ["warum", "d) Darum schäumt die gekochte Kartoffel kaum (1 Satz)"]],
-  "chk": {"g1": {"sel": SCH[1]}, "g2": {"sel": SCH[0]}, "g3": {"sel": SCH[0]}, "g4": {"sel": SCH[1]}, "gas": {"sel": "Sauerstoff"},
-          "warum": {"kw": [["Enzym / Biokatalysator", "enzym|katalase|katalysator|biokatalys|eiweiß|eiweiss|protein"],
-                           ["durch Hitze unwirksam", "hitze|koch|gekocht|zerstör|kaputt|denatur|heiß|heiss|unwirksam|funktion|wirkt nicht|arbeitet nicht|verändert"]]}},
-  "sol": [["Lösung", ["Glas 1 kaum · Glas 2 (Braunstein) schäumt deutlich · Glas 3 (rohe Kartoffel) schäumt deutlich · Glas 4 (gekochte Kartoffel) kaum",
-                      "c) Sauerstoff (Glimmspanprobe): 2 H₂O₂ → 2 H₂O + O₂",
-                      "d) In der rohen Kartoffel steckt das Enzym Katalase – ein Biokatalysator. Beim Kochen verliert das Enzym durch die Hitze seine Form und damit seine Wirkung."]]],
+  "fields": [["tipp", "a) Mein Tipp", ["Würfel 1 · pur", "Würfel 2 · mit Holzasche", "Würfel 3 · mit Kochsalz", "alle drei"], False],
+             ["g1", "Würfel 1 · pur", BR, False], ["g2", "Würfel 2 · mit Holzasche", BR, False], ["g3", "Würfel 3 · mit Kochsalz", BR, False],
+             ["rolle", "c) Die Asche wirkt hier als …", ["Katalysator – sie senkt die Aktivierungsenergie und wird nicht verbraucht", "zusätzlicher Brennstoff, der mitbrennt", "Löschmittel", "Oxidationsmittel, das Sauerstoff liefert"]],
+             ["warum", "d) Darum gab es Würfel 3 mit Kochsalz (1 Satz)"]],
+  "chk": {"g1": {"sel": BR[1]}, "g2": {"sel": BR[0]}, "g3": {"sel": BR[1]}, "rolle": {"sel": "Katalysator – sie senkt die Aktivierungsenergie und wird nicht verbraucht"},
+          "warum": {"kw": [["Vergleich / Kontrolle", "vergleich|kontroll|gegenprobe|test|prüf|pruef|nur.{0,20}asche|andere.{0,10}pulver|auch.{0,10}pulver"],
+                           ["nicht jedes Pulver wirkt", "nicht.{0,25}(jedes|alle|jeder)|nur.{0,25}(asche|bestimmte|manche)|salz.{0,25}(nicht|kein|wirkt)|kein.{0,20}effekt|keine.{0,20}wirkung|nichts"]]}},
+  "sol": [["Lösung", ["Würfel 1 und Würfel 3 brennen nicht richtig (schmelzen, werden braun, verkohlen) · Würfel 2 (mit Asche) brennt mit ruhiger, bläulich-gelber Flamme.",
+                      "c) Die Asche ist hier ein Katalysator: Sie senkt die Aktivierungsenergie der Verbrennung und wird dabei nicht verbraucht. (Wahrscheinlich wirken Salze von Alkalimetallen wie Kalium und Natrium in der Asche.)",
+                      "d) Würfel 3 ist die Kontrolle: Auch ein Pulver auf dem Würfel (Salz) verändert nichts – es kommt auf die Asche an, nicht auf irgendein Pulver."]]],
   "tip": ["Katalysator-Demo und Enzyme", "theorie.html#enzyme"]},
 
  {"id": "a14", "nr": 14, "title": "Katalysator – stimmt das?", "src": "Buch-Aufgabe S. 37", "own": False, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 3,
@@ -268,7 +268,7 @@ T = [
   "tip": ["Was ist ein Katalysator?", "theorie.html#kat"]},
 
  # ======================================================= Stunde 5 · Reaktionsgeschwindigkeit + Abschluss
- {"id": "a15", "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Zusatz", "h": 5, "hl": False, "zeit": 10, "opt": ["zusatz"],
+ {"id": "a15", "nr": 15, "title": "Die KI irrt sich – Fehlersuche beim Autokatalysator", "src": "Buch S. 35", "own": True, "tag": "Zusatz", "h": 4, "hl": False, "zeit": 10, "opt": ["zusatz"],
   "q": "Ein Kadett hat eine KI gefragt: »Wie funktioniert ein Autokatalysator?« Die Antwort: »Der Autokatalysator ist ein feiner Filter, der die giftigen Abgase zurückhält. "
        "Er besteht aus einer Keramikwabe mit einer Schicht, in der Edelmetalle wie Platin, Palladium und Rhodium fein verteilt sind. Der Katalysator wird dabei langsam verbraucht und muss bei jedem Service "
        "nachgefüllt werden. Er arbeitet am besten, wenn er kalt ist – deshalb stößt ein Auto direkt nach dem Start die wenigsten Schadstoffe aus. Aus giftigem "
@@ -286,8 +286,8 @@ T = [
                       "Richtig sind: Keramikwabe mit fein verteilten Edelmetallen (Platin, Palladium, Rhodium) · CO wird zu CO₂."]]],
   "tip": ["Der Autokatalysator", "theorie.html#autokat"]},
 
- {"id": "a16", "nr": 16, "title": "Vier Stellschrauben für das Tempo", "src": "Buch-Aufgabe S. 37", "own": False, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 4,
-  "q": "Welche Stellschraube macht die Reaktion hier schneller oder langsamer? Zusatz zur Buch-Aufgabe: die letzte Zeile.",
+ {"id": "a16", "nr": 16, "title": "Vier Stellschrauben für das Tempo", "src": "Buch-Aufgabe S. 37", "own": False, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 4,
+  "q": "Zusatz zum Thema Tempo (Teil 5 auf der Theorie-Seite, Buch S. 36–37): Welche Stellschraube macht die Reaktion hier schneller oder langsamer? Zusatz zur Buch-Aufgabe: die letzte Zeile.",
   "type": "multi",
   "fields": [["span", "Für das Lagerfeuer wird das Holz in dünne Späne gespalten.", ST, False],
              ["kuehl", "Die Feldverpflegung kommt im Sommer in die Kühlbox.", ST, False],
@@ -303,8 +303,8 @@ T = [
                       "Am schnellsten bei hoher Temperatur und großer Oberfläche."]]],
   "tip": ["Vier Stellschrauben für das Tempo", "theorie.html#tempo"]},
 
- {"id": "a17", "nr": 17, "title": "Brausetablette im Test (Versuch K1.3-V8)", "src": "Buch S. 36", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 5,
-  "hint": "Messwerte aus dem Versuch K1.3-V8 (fällt er aus, nennt die Lehrkraft Beispielwerte). Eure Zeiten dürfen von den Beispielen abweichen.",
+ {"id": "a17", "nr": 17, "title": "Brausetablette im Test (Versuch K1.3-V8)", "src": "Buch S. 36", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 5,
+  "hint": "Zusatz. Messwerte aus dem Versuch K1.3-V8 – den Versuch machst du nur, wenn die Lehrkraft ihn freigibt. Sonst rechne nur d) und e) mit den Beispielwerten aus der Lösung. Eure Zeiten dürfen abweichen.",
   "q": "Trag eure Messwerte aus dem Versuch K1.3-V8 ein (Zeit, bis es nicht mehr sprudelt). d) Welcher Ansatz sollte laut Theorie am langsamsten sein? "
        "e) Modellrechnung mit der Faustregel (nicht eure Messung): Eine Tablette braucht in Wasser von 20 °C 80 s. Wie lange bräuchte sie ungefähr bei 40 °C?",
   "type": "multi",
@@ -318,8 +318,8 @@ T = [
                       "e) Modellrechnung mit der Faustregel: +10 °C → etwa doppelt so schnell. 20 °C → 30 °C: 40 s · 30 °C → 40 °C: 20 s. Also ca. 20 s. Die echte Brausezeit umfasst auch das Auflösen und folgt der Regel nur ungefähr."]]],
   "tip": ["Temperatur – die Faustregel", "theorie.html#rgt"]},
 
- {"id": "a18", "nr": 18, "title": "Partnercheck – fragt euch gegenseitig ab", "src": "Buch S. 30–36", "own": True, "tag": "Stunde 5", "h": 5, "hl": False, "zeit": 6,
-  "q": "Gleich zu Beginn von Stunde 5 (statt »Weißt du noch?«): Arbeitet zu zweit, Handy von B bleibt weg. A öffnet auf der Theorie-Seite die »Partnercheck-Karten« (Teil 5) und stellt B drei Fragen. B antwortet mündlich, "
+ {"id": "a18", "nr": 18, "title": "Partnercheck – fragt euch gegenseitig ab", "src": "Buch S. 30–36", "own": True, "tag": "Zusatz", "h": 0, "hl": False, "zeit": 6,
+  "q": "Zusatz zur Wiederholung (z. B. vor dem Test K1.3): Arbeitet zu zweit, Handy von B bleibt weg. A öffnet auf der Theorie-Seite die »Partnercheck-Karten« (Teil 5) und stellt B drei Fragen. B antwortet mündlich, "
        "A vergleicht mit der Lösung und hakt ab. Dann tauscht ihr. Trag ein, mit wem du geübt hast, wie viele deiner Antworten richtig waren und was du nochmal lernen musst.",
   "type": "multi",
   "fields": [["partner", "Partnercheck mit (Name)"], ["richtig", "Meine Antworten: richtig waren …", ["3 von 3", "2 von 3", "1 von 3", "0 von 3"], False],
@@ -414,9 +414,8 @@ for _t in T:
 GRP = {1: "Stunde 1 · Di 03.11. · Redoxreaktionen (Buch S. 30–31) · Aufgabe 4 ist Zusatz",
        2: "Stunde 2 · Do 05.11. · nach dem Test: Redox im Alltag, Rost (Buch S. 30–31, 98) · Aufgabe 8 ist Zusatz",
        3: "Stunde 3–4 · Di 10.11. / Do 12.11. · Energie – während die anderen Gruppen an den Stationen sind (Buch S. 32–34) · Aufgabe 12 ist Zusatz",
-       4: "Stunde 4 · Do 12.11. · Katalysatoren (Buch S. 34–36)",
-       5: "Stunde 5 · Di 17.11. · Reaktionsgeschwindigkeit und Abschluss (Buch S. 35–36) · Aufgabe 15 ist Zusatz",
-       0: "Für Schnelle und Neugierige · optional"}
+       4: "Stunde 4 · Do 12.11. · Katalysatoren und Abschluss (Buch S. 34–35) · Aufgabe 15 ist Zusatz",
+       0: "Für Schnelle und Neugierige · Zusatz (auch Tempo der Reaktion, Buch S. 36–37)"}
 
 LERNZIELE = ["**Oxidation** als Abgabe und **Reduktion** als Aufnahme von Elektronen erklären und bei einer Redoxreaktion sagen, wer Elektronen abgibt und wer sie aufnimmt",
              "einfache **Redoxgleichungen** lesen und ergänzen (z. B. Magnesium + Sauerstoff, Eisen in Kupfersulfatlösung) und erklären, wie Eisen rostet und wie man es schützt",
@@ -442,7 +441,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Aktivierungsenergie", "Energie, die man zuführen muss, damit eine Reaktion startet"],
                 ["Katalysator", "Stoff, der eine Reaktion beschleunigt, weil er einen Weg mit niedrigerer Aktivierungsenergie öffnet – er wird dabei nicht verbraucht"],
                 ["Hemmstoff (Inhibitor)", "Stoff, der eine Reaktion verlangsamt – im Buch »negativer Katalysator«"],
-                ["Enzym", "Biokatalysator in Lebewesen, z. B. Amylase im Speichel, Katalase in der Kartoffel"],
+                ["Enzym", "Biokatalysator in Lebewesen, z. B. Amylase im Speichel, Katalase in der Leber"],
                 ["Reaktionsgeschwindigkeit", "wie schnell Ausgangsstoffe zu Endstoffen werden – hängt von Oberfläche, Temperatur, Konzentration und Katalysator ab"],
                 ["Faustregel (RGT-Regel)", "10 °C wärmer → viele Reaktionen laufen etwa doppelt so schnell"]]
 
@@ -456,9 +455,6 @@ WEISST_DU_NOCH = {
     4: [("Exotherm oder endotherm: der Handwärmer?", "exotherm – er gibt Wärme ab."),
         ("Was zeigt im Energiediagramm der Gipfel?", "die Aktivierungsenergie – den »Berg« zum Start"),
         ("Warum wird es bei Zitronensäure + Natron kalt?", "Die Reaktion ist endotherm – sie nimmt Wärme aus der Umgebung auf.")],
-    5: [("Was macht ein Katalysator mit der Aktivierungsenergie?", "Er senkt sie – die Reaktion läuft schneller."),
-        ("Wird ein Katalysator verbraucht?", "Nein – er liegt nach der Reaktion unverändert vor."),
-        ("Warum schäumt gekochte Kartoffel mit Wasserstoffperoxid kaum?", "Das Enzym Katalase wurde durch die Hitze zerstört.")],
 }
 
 STOPPFRAGEN = {
@@ -470,8 +466,6 @@ STOPPFRAGEN = {
         ("Warum muss man ein Lagerfeuer anzünden?", "Es braucht die Aktivierungsenergie zum Start.")],
     4: [("Wird ein Katalysator bei der Reaktion verbraucht?", "Nein."),
         ("Wann arbeitet ein Autokatalysator schlecht?", "kalt, direkt nach dem Start – er braucht ca. 300 °C.")],
-    5: [("Nenne die vier Stellschrauben für das Tempo.", "Oberfläche, Temperatur, Konzentration, Katalysator"),
-        ("Warum hält Milch im Kühlschrank länger?", "Kälte verlangsamt die Reaktionen von Bakterien und Enzymen.")],
 }
 
 PARTNERKARTEN = [("Was ist eine Oxidation – heute?", "Abgabe von Elektronen"),
@@ -525,8 +519,8 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
   "Die Edelmetalle sitzen fein verteilt in einer porösen Schicht auf einer Keramikwabe.", "Buch S. 35"),
  ("Katalysator", "Wie nennt man Katalysatoren in Lebewesen?", ["Enzyme", "Ionen", "Hormone", "Oxide"],
   "Enzyme wie die Amylase im Speichel sind Biokatalysatoren.", "Buch S. 35"),
- ("Katalysator", "Wasserstoffperoxid mit Braunstein schäumt stark. Welches Gas entsteht?", ["Sauerstoff", "Wasserstoff", "Kohlenstoffdioxid", "Chlor"],
-  "2 H₂O₂ → 2 H₂O + O₂ – der glimmende Span flammt auf.", "Buch S. 36"),
+ ("Katalysator", "Ein Zuckerwürfel brennt nur, wenn man ihn mit Holzasche bestreut. Welche Rolle hat die Asche?", ["Katalysator – sie senkt die Aktivierungsenergie", "Brennstoff, der mitbrennt", "Löschmittel", "Oxidationsmittel"],
+  "Die Asche beschleunigt die Verbrennung und wird nicht verbraucht – wie jeder Katalysator.", "Buch S. 34"),
  ("Tempo", "Warum brennen dünne Holzspäne schneller als ein dicker Scheit?", ["größere Oberfläche", "höhere Dichte", "weniger Sauerstoff", "mehr Wasser"],
   "Je feiner zerteilt, desto mehr Teilchen können gleichzeitig reagieren.", "Buch S. 36"),
  ("Tempo", "Faustregel: Eine Reaktion braucht bei 20 °C 60 s. Wie lange etwa bei 30 °C?", ["30 s", "60 s", "120 s", "6 s"],

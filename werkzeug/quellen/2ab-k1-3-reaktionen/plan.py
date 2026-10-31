@@ -27,25 +27,16 @@ PLAN = [
    ("Stationen erklären: Sicherheit, Rotation, Protokoll am Handy", 2, True, "erkl"),
    ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 1–3); Gruppen 4–6: Theorieteil Teil 3 lesen, Aufgaben 9–11", 33, False, "stat"),
    ("Reserve", 2, True, "reserve")]},
- {"std": 4, "datum": "Do 12.11.", "titel": "Katalysatoren und Enzyme", "phasen": [
+ {"std": 4, "datum": "Do 12.11.", "titel": "Katalysatoren, Enzyme und Abschluss", "phasen": [
    ("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-   ("Demo K1.3-V7: Wasserstoffperoxid + Braunstein/Kartoffel, Aufgabe 13 – dabei Katalysator klären", 10, True, "v:K1.3-V7"),
-   ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 4–6); Gruppen 1–3: Aufgaben 9–11, 14, Deutung V4/V5; Theorieteil Teil 4", 33, False, "stat"),
-   ("Reserve und kurze Sicherung (Autokatalysator, Aufgabe 14)", 5, True, "reserve")]},
- {"std": 5, "datum": "Di 17.11.", "titel": "Reaktionsgeschwindigkeit und Abschluss", "phasen": [
-   ("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-   ("Partnercheck (Aufgabe 18): mündlich zu zweit, Handy von B bleibt weg", 6, True, "a18"),
-   ("Lesen: Theorieteil Teil 5 · Buch S. 36", 3, False, "lesen"),
-   ("Kurz klären: vier Stellschrauben, Faustregel, Staubexplosion", 5, True, "erkl"),
-   ("Aufgabe 16", 4, False, "a16"),
-   ("Gruppenversuch K1.3-V8: Brausetablette im Test (Handy = Stoppuhr)", 18, True, "v:K1.3-V8"),
-   ("Aufgabe 17 und Protokoll fertig", 5, False, "a17"),
-   ("PDF abgeben, Quiz-Hinweis", 2, False, "pdf"),
-   ("Reserve", 5, True, "reserve")]},
+   ("Demo K1.3-V7: Zuckerwürfel mit Holzasche, Aufgabe 13 – dabei Katalysator klären", 8, True, "v:K1.3-V7"),
+   ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 4–6); Gruppen 1–3: Theorieteil Teil 4, Aufgabe 14, Deutung V4/V5; Gruppen 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde", 33, False, "stat"),
+   ("Besprechen: Katalysator, Autokatalysator, Aufgabe 13 und 14", 3, True, "bespr"),
+   ("PDF abgeben, Quiz-Hinweis, Ausblick Säuren und Basen", 1, False, "pdf"),
+   ("Reserve (Lesen und Versuche dauern oft länger)", 3, True, "reserve")]},
 ]
 for st in PLAN: assert sum(p[1] for p in st["phasen"]) == 50, (st["std"], sum(p[1] for p in st["phasen"]))
 
 KNAPP = {2: "Der Test hat Vorrang. Wird es knapp: Aufgabe 7 und die Besprechung kürzen, Aufgabe 8 (Zusatz) entfällt.",
          3: "Stationen nie kürzen, sondern bei Bedarf eine Runde auf 9 min: Demo V6 auf 5 min kürzen. Aufgaben 9–11 nicht streichen, sie laufen bei den wartenden Gruppen mit.",
-         4: "Reserve ist knapp: Demo V7 auf 8 min, Aufgabe 14 mündlich.",
-         5: "Wird es knapp: Partnercheck auf 4 min, PDF darf auch nach dem Läuten abgegeben werden."}
+         4: "Die Reserve ist klein (3 min): Bei Bedarf Runde 3 auf 9 min kürzen, Demo V7 auf 6 min, Aufgabe 14 mündlich. Tempo (Teil 5) ist Zusatz/Selbststudium und fällt nie in die Stunde. Das PDF darf auch nach dem Läuten abgegeben werden."}

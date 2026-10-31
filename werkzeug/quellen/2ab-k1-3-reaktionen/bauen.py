@@ -53,9 +53,9 @@ def _ber(nrs):
         if a is None: a = n
         if k + 1 == len(nrs) or nrs[k + 1] != n + 1: out.append(str(a) if a == n else "%d–%d" % (a, n)); a = None
     return ", ".join(out)
-_ST = {1: "Stunde 1", 2: "Stunde 2", 3: "Stunde 3–4", 4: "Stunde 4", 5: "Stunde 5"}
-_ZU = {3: " (während die anderen Gruppen an den Stationen sind)", 5: " (18 = Partnercheck gleich zu Beginn)"}
-INTRO = ("      <li><b>Pflicht</b> – " + " · ".join("<b>%s</b>: %s%s" % (_ST[h], _ber([t["nr"] for t in I.T if t["h"] == h and t["tag"] != "Zusatz"]), _ZU.get(h, "")) for h in range(1, 6)) + ".</li>\n"
+_ST = {1: "Stunde 1", 2: "Stunde 2", 3: "Stunde 3–4", 4: "Stunde 4"}
+_ZU = {3: " (während die anderen Gruppen an den Stationen sind)"}
+INTRO = ("      <li><b>Pflicht</b> – " + " · ".join("<b>%s</b>: %s%s" % (_ST[h], _ber([t["nr"] for t in I.T if t["h"] == h and t["tag"] != "Zusatz"]), _ZU.get(h, "")) for h in range(1, 5)) + ".</li>\n"
          "      <li><b>Zusatz in der Stunde</b>, wenn du früher fertig bist: " + _ber([t["nr"] for t in I.T if t["h"] and t["tag"] == "Zusatz"]) +
          " · <b>Für Schnelle</b>: " + _ber([t["nr"] for t in I.T if not t["h"]]) + ". Es gibt <b>keine Hausübung</b>.</li>")
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
@@ -63,7 +63,7 @@ s = s[:i] + """<ol class="steps hint">
       <li>Lies zuerst den passenden Teil der <a href="theorie.html">Theorie-Seite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
       """ + INTRO + """
       <li>Bei jeder Aufgabe steht, wie lange sie ungefähr dauert. Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt – die Lösung wird dabei nicht verraten.</li>
-      <li>Nach Stunde 5 (Di 17.11.) ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
+      <li>Nach Stunde 4 (Do 12.11.) ganz unten <b>PDF erstellen</b> und in LMS hochladen. Die Zeitangaben sind Richtwerte – Lesen und Versuche dauern oft länger, dafür gehen Aufgaben meist schneller.</li>
     </ol>""" + s[j:]
 i = s.index("<!--FAHRPLAN-->"); j = s.index("<!--/FAHRPLAN-->") + len("<!--/FAHRPLAN-->")
 s = s[:i] + "<!--FAHRPLAN--><!--/FAHRPLAN-->" + s[j:]  # wird von build_index.py aus einheiten.json gefüllt
@@ -314,12 +314,15 @@ s = open(os.path.join(ROOT, "2ab-nawi/k1-2-bindungen/versuche.html"), encoding="
 VDATA = []
 for v in VD.VS:
     x = {k: v[k] for k in ("id", "nr", "titel", "bindung", "intro", "sicher", "entsorgung", "schritte", "skizze", "beob", "erk", "interp", "schluss", "buch", "kern")}
+    if v.get("platz"): x["platz"], x["platz_kurz"] = v["platz"], v["platz_kurz"]
     x["mat"] = [[m[0], m[1]] for m in v["mat"]]
     if v.get("station"): x["station"] = v["station"]
     if v.get("demo"): x["demo"] = True
     VDATA.append(x)
 i = s.index("const V = ") + len("const V = "); j = s.index("];\nconst KEY", i) + 1
 s = s[:i] + json.dumps(VDATA, ensure_ascii=False) + s[j:]
+rep('  if (v.sicher) body.append(', '  if (v.platz) body.append(el("div", { class: "hint", style: "margin:6px 0" }, el("b", { text: "Wo steht der Versuch? " }), v.platz));\n  if (v.sicher) body.append(')
+rep('el("h2", { text: v.titel }), el("p", { class: "hint", text: v.bindung }));', 'el("h2", { text: v.titel }), el("p", { class: "hint", text: v.bindung + (v.platz_kurz ? " · Platz: " + v.platz_kurz : "") }));')
 rep('const KEY = "26-27-2AB-K1.2-Bindungen-VS-Handy-v1";', 'const KEY = "26-27-2AB-K1.3-Reaktionen-VS-Handy-v1";')
 s = s.replace("NAWI · 2AB · K1.2 Die Bindungsarten", I.EYEBROW)
 rep("<h1>Bindungs-Versuche</h1>", "<h1>Reaktions-Versuche</h1>")
@@ -335,8 +338,7 @@ s = s[:i] + """/*STATIONEN*/
  ["Stunde 3 · Di 10.11. · Demo vor den Stationen – mittippen und eintragen", v => v.id === "kaelte"],
  ["Stunde 3–4 · Stationen 1 und 2 – drei Runden à 11 Minuten (Stunde 3: Gruppe 1–3, Stunde 4: Gruppe 4–6). An der Station: messen, beobachten, aufräumen, Erkenntnis eintragen", v => !!v.station],
  ["Stunde 4 · Do 12.11. · Demo Katalysator – mittippen und eintragen", v => v.id === "katalysator"],
- ["Stunde 5 · Di 17.11. · Gruppenversuch", v => v.id === "brause"],
- ["Zusatz – Lehrer-Demo, nur wenn Zeit bleibt", v => !v.kern]].forEach(([t, fn]) => {
+  ["Zusatz – Gruppenversuch und Video, nur wenn Zeit bleibt (V8 nur nach Freigabe der Lehrkraft, V9 nur als Video)", v => !v.kern]].forEach(([t, fn]) => {
   $("#vs").append(el("div", { class: "grp", text: t }));
   V.filter(fn).forEach(v => $("#vs").append(versuch(v)));
 });
@@ -355,12 +357,12 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
     <ul class="steps">
       <li><b>Stunde 1 und 2:</b> Demos K1.3-V1 und V3 – erst tippen, dann zuschauen und hier eintragen. Rost-Ansatz K1.3-V2 heute ansetzen, Auswertung am Di 10.11.</li>
       <li><b>Stunde 3:</b> Zuerst Demo K1.3-V6 (Kältemischung) – erst tippen, dann zuschauen.</li>
-      <li><b>Stunde 3–4: 6 Gruppen zu viert, 2 Stationen.</b> Stunde 3: Gruppe 1–3 an den Stationen, Gruppe 4–6 macht die Aufgaben 9–12. Stunde 4: umgekehrt.</li>
+      <li><b>Stunde 3–4: 6 Gruppen zu viert, 2 Stationen.</b> Stunde 3: Gruppe 1–3 an den Stationen, Gruppe 4–6 macht die Aufgaben 9–12. Stunde 4: umgekehrt. <b>Station 1 steht am Mobiltisch 1, Station 2 an der Wasserleitung 1</b> (zum Ausspülen: Wasserleitung 2); die Demos macht die Lehrkraft am Lehrertisch.</li>
       <li><b>Drei Runden à 11 Minuten:</b> Runde 1 – Gruppe 1 (bzw. 4) an Station 1, Gruppe 2 (bzw. 5) an Station 2, Gruppe 3 (bzw. 6) macht Aufgaben. Danach rückt jede Gruppe weiter: Station 1 → Station 2 → Aufgaben → Station 1.</li>
-      <li><b>An der Station messen, beobachten und Fotos machen</b>, aufräumen, wie ihr sie vorgefunden habt, und gleich die <b>Erkenntnis</b> eintragen. <b>Interpretation und Schlussfolgerung</b> schreibt ihr, sobald ihr beide Stationen fertig habt – in eurer Aufgabenzeit, spätestens in Stunde 5 (Block »Protokolle fertig«). Es gibt keine Hausübung.</li>
-      <li><b>Stunde 4:</b> Demo K1.3-V7 (Katalysator) · <b>Stunde 5:</b> Gruppenversuch K1.3-V8 (Brausetablette).</li>
+      <li><b>An der Station messen, beobachten und Fotos machen</b>, aufräumen, wie ihr sie vorgefunden habt, und gleich die <b>Erkenntnis</b> eintragen. <b>Interpretation und Schlussfolgerung</b> schreibt ihr, sobald ihr beide Stationen fertig habt – in eurer Aufgabenzeit – was fehlt, am Stundenende. Es gibt keine Hausübung.</li>
+      <li><b>Stunde 4:</b> Demo K1.3-V7 (Zuckerwürfel mit Asche, Katalysator). <b>Zusatz:</b> Gruppenversuch K1.3-V8 (Brausetablette, nur nach Freigabe) und K1.3-V9 (nur als Video).</li>
     </ul>
-    <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF ab (Namen der Gruppe + dein Nachname) – in LMS nach Stunde 5 (Di 17.11.).</p>
+    <p class="hint"><b>Abgabe:</b> Jeder gibt seine eigene Versuchs-PDF ab (Namen der Gruppe + dein Nachname) – in LMS nach Stunde 4 (Do 12.11.).</p>
   </section><!--/PLAN-->""" + s[j:]
 s = re.sub(r"<!--STAND-->.*?<!--/STAND-->", '<!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">NAWI · 2AB · K1.3 Versuche · Stand ' + STAND + " · " + I.V + "</p><!--/STAND-->", s, flags=re.S)
 s = s.replace("26-27-2AB-K1.2-Bindungen-VS-Handy-v1", "26-27-2AB-K1.3-Reaktionen-VS-Handy-v1")

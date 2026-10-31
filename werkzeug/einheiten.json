@@ -320,14 +320,14 @@
    "quiz.html"
   ],
   "fahrplan": {
-   "text": "Lies die Theorie-Seite Teil für Teil, mach die Pflicht-Aufgaben im Arbeitsblatt, protokolliere die Versuche in der Gruppe und gib nach Stunde 5 beide PDFs in LMS ab. Es gibt keine Hausübung – Zusatz-Aufgaben nur, wenn du früher fertig bist.",
+   "text": "Lies die Theorie-Seite Teil für Teil, mach die Pflicht-Aufgaben im Arbeitsblatt, protokolliere die Versuche in der Gruppe und gib nach Stunde 4 beide PDFs in LMS ab. Es gibt keine Hausübung – Zusatz-Aufgaben (auch das Thema Tempo, Teil 5) nur, wenn du früher fertig bist. Die Zeiten sind Richtwerte: Lesen und Versuche dauern oft länger, Aufgaben gehen dafür schneller.",
    "zeilen": [
     {
      "wann": "Stunde 1",
      "datum": "Di 03.11.",
      "lesen": "Einstieg + Teil 1 · Redoxreaktionen · Demo K1.3-V1 Eisenwolle (12 min) · Lehrkraft setzt K1.3-V2 Rost an",
      "aufgaben": "1–3 · Zusatz: 4",
-     "zeit": "Aufgaben ca. 13 min · ca. 8 min Reserve",
+     "zeit": "Aufgaben ca. 13 min · ca. 8 min Puffer",
      "wie": "ohne Handy: Demo mit Vorhersage (Hand heben)",
      "abgabe": "–"
     },
@@ -345,43 +345,34 @@
      "datum": "Di 10.11.",
      "lesen": "Weißt du noch? · Rost-Ansätze auswerten · Demo K1.3-V6 Kältemischung · Teil 3 · Energie · Gruppe 1–3: Stationen K1.3-V4 und V5 (3 Runden à 11 min, Erkenntnis gleich an der Station) · Gruppe 4–6: Teil 3 lesen und Aufgaben",
      "aufgaben": "9–11 (Gruppe 4–6) · Zusatz: 12",
-     "zeit": "Stationen 33 min · Lesen + Aufgaben ca. 23 min · 2 min Reserve",
+     "zeit": "Stationen 33 min · Lesen + Aufgaben ca. 23 min · 2 min Puffer",
      "wie": "ohne Handy: Demo, Stationen (Handy nur fürs Protokoll), Energiediagramm mit der Hand",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 4",
      "datum": "Do 12.11.",
-     "lesen": "Weißt du noch? · Demo K1.3-V7 Katalysator · Teil 4 · Katalysatoren · Gruppe 4–6: Stationen K1.3-V4 und V5 · Gruppe 1–3: Aufgaben 9–11, Deutung V4/V5 im Protokoll, Aufgabe 14",
-     "aufgaben": "13–14 · 9–11 (Gruppe 1–3)",
-     "zeit": "Demo 10 min · Stationen 33 min · 4 min Reserve",
-     "wie": "ohne Handy: Demo mit Vorhersage, Stationen",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 5",
-     "datum": "Di 17.11.",
-     "lesen": "Partnercheck · Teil 5 · Tempo · Gruppenversuch K1.3-V8 Brausetablette (18 min) · Protokolle fertig (7 min)",
-     "aufgaben": "18, 16–17 · Zusatz: 15 · Quiz freiwillig",
-     "zeit": "Aufgaben ca. 9 min · Protokolle 7 min · 5 min Reserve",
-     "wie": "ohne Handy: Partnercheck mündlich, Gruppenversuch (Handy = Stoppuhr)",
-     "abgabe": "beide PDFs in LMS"
+     "lesen": "Weißt du noch? · Demo K1.3-V7 Zuckerwürfel mit Asche (Katalysator) · Teil 4 · Katalysatoren · Gruppe 4–6: Stationen K1.3-V4 (Mobiltisch 1) und V5 (Wasserleitung 1) · Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll",
+     "aufgaben": "13–14 · 9–11 (Gruppe 1–3: Deutung)",
+     "zeit": "Demo ca. 8 min · Stationen 33 min · Besprechen ca. 3 min · ca. 3 min Puffer",
+     "wie": "ohne Handy: Demo mit Vorhersage, Stationen (Handy nur fürs Protokoll)",
+     "abgabe": "beide PDFs in LMS (nach Stunde 4)"
     },
     {
      "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige · Kreativ-Challenge Video, Podcast oder Plakat",
-     "aufgaben": "19–23",
+     "lesen": "Zusatz: Teil 5 · Tempo der Reaktion (Selbststudium, Buch S. 36–37) · Für Schnelle und Neugierige · Kreativ-Challenge Video, Podcast oder Plakat",
+     "aufgaben": "15–23 (16–18 Tempo)",
      "abgabe": "freiwillig"
     }
    ]
   },
   "dateien": {
-   "stand": "30.10.2026",
+   "stand": "31.10.2026",
    "zip": "26-27-2AB-K1.3-Reaktionen-v7.zip",
    "liste": [
     "26-27-2AB-K1.3-Reaktionen-TH-Lehrer-v6.pptx",
     "26-27-2AB-K1.3-Reaktionen-TH-Kadetten-v6.pptx",
-    "26-27-2AB-K1.3-Reaktionen-TH-Unterricht-v1.pptx",
+    "26-27-2AB-K1.3-Reaktionen-TH-Unterricht-v2.pptx",
     "26-27-2AB-K1.3-Reaktionen-VS-Lehrer-v6.pptx",
     "26-27-2AB-K1.3-Reaktionen-VS-Kadetten-v6.pptx",
     "26-27-2AB-K1.3-Reaktionen-TH-AB-v4.docx",

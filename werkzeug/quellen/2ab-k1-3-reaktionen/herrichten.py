@@ -2,7 +2,7 @@
 import versuche_daten as VD
 
 # Versuche, die gleichzeitig laufen (Stationen 1 und 2); V6 läuft als Demo davor
-SLOTS = [["K1.3-V1", "K1.3-V2"], ["K1.3-V3"], ["K1.3-V6"], ["K1.3-V4", "K1.3-V5"], ["K1.3-V7"], ["K1.3-V8"], ["K1.3-V9"]]
+SLOTS = [["K1.3-V1", "K1.3-V2"], ["K1.3-V3"], ["K1.3-V6"], ["K1.3-V4", "K1.3-V5"], ["K1.3-V7"], ["K1.3-V8"]]
 
 
 def ansaetze(v):
@@ -20,7 +20,7 @@ def tabelle():
     for key, d in per.items():
         name, icon, ort, bestand = VD.LM[key]
         gesamt = max(sum(d.get(nr, 0) for nr in slot) for slot in SLOTS)
-        if key in ("eisenwolle", "salz", "oel", "cuso4", "zitrone", "natron", "h2o2", "braunstein", "cuo", "kohle", "kupferblech", "eis", "kartoffel", "brause", "parafilm"):
+        if key in ("eisenwolle", "salz", "oel", "cuso4", "zitrone", "natron", "zucker", "asche", "kupferblech", "eis", "brause", "parafilm"):
             fehlt = "besorgen" if bestand is None else ""
             gesamt_txt = gesamt
         else:
@@ -34,12 +34,12 @@ def tabelle():
 
 MENGEN = {  # Verbrauchsmaterial: was insgesamt anzusetzen ist (pro Klasse)
     "Kupfersulfatlösung": "15,0 g CuSO₄ · 5 H₂O auf 150 ml Lösung auffüllen (= 10 g pro 100 ml) → 6 Durchgänge à 20 ml + Reserve",
-    "Zitronensäurelösung (w = 40 %)": "60 g Zitronensäure + 90 g Wasser = 150 g (ca. 125 ml) → 6 Durchgänge à 15 ml + Reserve",
-    "Natron": "6 Portionen à 6,0 g (abgewogen)",
-    "Kochsalz": "30 g für die Demo-Kältemischung + 1 Spatel für Rost-Ansatz 4",
+    "Zitronensäure-Pulver, 5,0 g je Ansatz (vorportioniert)": "6 Portionen à 5,0 g abwiegen (Vortag möglich) – nichts ansetzen, kein Verdünnen",
+    "Natron": "6 Portionen à 6,0 g (abgewogen, Vortag möglich)",
+    "Kochsalz": "30 g für die Demo-Kältemischung + 1 Spatel für Rost-Ansatz 4 + 1 Messerspitze für V7",
     "Eis": "ca. 150 g, angetaut und zerstoßen (Kühlbox) – nur für die Demo am 10.11.",
     "Eisenwolle": "V1: 1–1,2 g · V2: 4 kleine Bäusche · V4: 6 × 1 g → ca. 10 g",
-    "Wasserstoffperoxid 3 %": "10,0 g H₂O₂-Lösung 30 % (#127) + 90,0 g Wasser (Waage, Handschuhe, Brille)",
-    "Brausetabletten": "9 Stück, gleiche Sorte (6 Gruppen × 3 Hälften) · 18 Einweg-Petrischalen",
-    "Kartoffel": "1 rohe + 1 gekochte (10 min)",
+    "Würfelzucker (Haushaltszucker)": "3 Würfel (V7) + 3 für den Vorversuch",
+    "Holzasche, trocken und fein (vom Holzofen/Grill, keine Briketts)": "1 Messerspitze je Vorführung, insgesamt 1 Esslöffel – mitbringen, sieben, trocken lagern",
+    "Brausetabletten": "9 Stück, gleiche Sorte (nur für den Zusatz-Versuch V8)",
 }

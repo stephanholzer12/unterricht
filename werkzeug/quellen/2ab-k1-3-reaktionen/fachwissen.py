@@ -4,20 +4,18 @@ STUNDENVORSCHLAG = [
     ["1 · Di 03.11.", "Einstieg (Handwärmer, Mythos), Teil 1 Redox: Lavoisier, Elektronenübergang, Oxidations-/Reduktionsmittel", "K1.3-V1 Demo (12 min) · K1.3-V2 Ansatz (parallel)", "1–3 · Zusatz 4", "Aufgaben ~13 min · Reserve 8 min", "Demo mit Vorhersage: Hand heben »leichter/schwerer/gleich«"],
     ["2 · Do 05.11.", "Test K1.2 (20 min) · Teil 2: Redox im Alltag, Rost, Rostschutz, Eisen + Kupfersulfat", "K1.3-V3 Demo (8 min)", "5–7 · Zusatz 8", "Aufgaben ~10 min · Reserve 7 min", "Test; Demo mit Vorhersage; Zusatz 8 in Handschrift"],
     ["3 · Di 10.11.", "V2 auswerten · Teil 3: exo/endo, Energiediagramm, Aktivierungsenergie, Erhaltung", "V6 Demo (8 min) · Gr. 1–3: Stationen V4 + V5 (3 Runden à 11 min)", "Gr. 4–6: 9–11 · Zusatz 12", "Stationen 33 min · Reserve 2 min", "Demo mit Vorhersage; Stationenbetrieb (Handy nur Protokoll)"],
-    ["4 · Do 12.11.", "Teil 4: Katalysator, Enzyme, Autokatalysator, Industrie", "V7 Demo (10 min) · Gr. 4–6: Stationen V4 + V5", "13–14 · Gr. 1–3: 9–11, Deutung V4/V5", "Stationen 33 min · Reserve 4 min", "Demo mit Vorhersage; Stationen"],
-    ["5 · Di 17.11.", "Partnercheck · Teil 5: vier Stellschrauben, Faustregel, Staubexplosion · Abschluss", "V8 Gruppenversuch (18 min) · Protokolle fertig (7 min)", "18 · 16–17 · Zusatz 15", "Aufgaben ~9 min · Reserve 5 min", "Partnercheck mündlich, Gruppenversuch (Handy = Stoppuhr)"],
-    ["Zusatz", "Für Schnelle: Oxidationszahlen, Forschung, Science oder Fiction", "V9 Lehrer-Demo", "19–23", "–", "–"],
+    ["4 · Do 12.11.", "Teil 4: Katalysator, Enzyme, Autokatalysator, Industrie · Abschluss und Abgabe", "V7 Demo (8 min) · Gr. 4–6: Stationen V4 + V5 (3 Runden à 11 min)", "13–14 · Gr. 1–3: Deutung V4/V5", "Stationen 33 min · Besprechen 3 min · Puffer 3 min", "Demo mit Vorhersage; Stationen; PDF-Abgabe"],
+    ["Zusatz", "Selbststudium: Teil 5 Tempo (Stellschrauben, Faustregel, Staubexplosion) · Für Schnelle: Oxidationszahlen, Forschung, Science oder Fiction", "V8 Brausetabletten (nur nach Freigabe) · V9 nur Video", "15–23", "–", "–"],
 ]
 
 CHECKLISTE = [
-    "Bis Mi 11.11.: 2 Kartoffeln kaufen (V7); Brausetabletten (9 Stück, gleiche Sorte) aus deinem Sortiment bereitlegen (V8); Eis für die Demo am 10.11. einfrieren (Kühlbox).",
-    "Zitronensäure ist in deinem Sortiment: 60 g abfüllen, Lösung am Vortag (Mo 09.11.) ansetzen (V5).",
+    "Bis Mi 11.11.: Holzasche besorgen (Holzofen/Grill, keine Briketts), fein sieben und trocken lagern; Würfelzucker bereitlegen (V7); Eis für die Demo am 10.11. einfrieren (Kühlbox).",
+    "Nichts ansetzen oder verdünnen außer der Kupfersulfatlösung für V4 (15,0 g Pentahydrat auf 150 ml Lösung, am Vortag möglich). V5 braucht nur abgewogenes Pulver: 6 × 5,0 g Zitronensäure und 6 × 6,0 g Natron (Vortag Mo 09.11. möglich).",
     "Löschdecke bzw. Sand für K1.3-V1 bereitlegen (Bestand laut Inventar unklar).",
-    "Vor Stunde 3: Kupfersulfatlösung (15,0 g Pentahydrat auf 150 ml Lösung) und Zitronensäurelösung (60 g + 90 g Wasser) ansetzen und beschriften; 6 × 6,0 g Natron und 30 g Salz abwiegen; beide Stationen einmal selbst ausprobieren.",
-    "Behälter »Schwermetall-Lösungen« und »feste Metallreste« an Station 1 stellen.",
-    "Vor Stunde 4: 10,0 g Wasserstoffperoxid 30 % (#127) + 90,0 g Wasser (Handschuhe, Vollsichtschutzbrille); Kartoffel 10 min kochen und abkühlen lassen; Rost-Ansätze aus dem Gestell räumen; Behälter für manganhaltige Reste bereitstellen.",
+    "Vor Stunde 3: Stationen aufbauen – Station 1 am Mobiltisch 1 (Sammelbehälter dazu), Station 2 an der Wasserleitung 1; 30 g Salz abwiegen; beide Stationen einmal selbst ausprobieren (Vorversuch V5: Temperaturabfall bei 25 ml Wasser prüfen).",
+    "Vor Stunde 4 (Vorversuch am Mi 11.11.): Zuckerwürfel mit Asche, mit Salz und pur testen; Becherglas 400 ml als Löschhaube bereitstellen; Rost-Ansätze aus dem Gestell räumen.",
     "Nur 2 Thermometer im Bestand: Analog (#147, bis −10 °C) an Station 1; Digital (#25) zuerst für die Demo V6, dann an Station 2. Messbereich des Digitalthermometers vorab prüfen.",
-    "Für V8: 18 unbenutzte Einweg-Petrischalen (#39); für V9 (Zusatz): Abzug #97 prüfen, sonst Video.",
+    "Zusatz: V8 nur nach Freigabe (18 unbenutzte Einweg-Petrischalen #39, 9 Brausetabletten); V9 nur als Video (Buchvideo nawi_v130 bzw. Seilnacht).",
     "QR-Codes am Beamer (Folie »Dein Lernpfad«); Einheit auf der Klassenseite einblenden (GitHub → Actions → »Einheit ein-/ausblenden«).",
 ]
 
@@ -45,29 +43,21 @@ STUNDENKARTEN = [
         "Reserve 2 min · keine Hausübung."],
      "Demo V6 (Eis, Salz, Digitalthermometer) · Stationen 1–2 (siehe Herrichte-Liste), Sammelbehälter",
      "Demo mit Vorhersage; Stationenbetrieb – Handy nur fürs Protokoll"),
-    ("Stunde 4 · Do 12.11. · Katalysatoren + Stationen (Gruppe 4–6)", [
-        "Weißt du noch? (3 min).",
-        "Demo K1.3-V7 mit Vorhersage (10 min, Aufgabe 13 gleich dabei) – Katalysator kurz erklären.",
-        "Gruppe 4–6: drei Runden à 11 min an Station 1 und 2; Gruppe 1–3: Aufgaben 9–11 fertig, Deutung V4/V5 im Protokoll, Teil 4 lesen, Aufgabe 14 (ca. 27 min von 33).",
-        "Reserve 4 min · keine Hausübung."],
-     "4 Reagenzgläser, H₂O₂ 3 %, Braunstein-Pulver, Kartoffel roh/gekocht, Holzstäbchen, Feuerzeug · Stationen 1–2",
+    ("Stunde 4 · Do 12.11. · Katalysatoren, Stationen (Gruppe 4–6) und Abschluss", [
+        "Weißt du noch? (2 min, im Beginn).",
+        "Demo K1.3-V7 Zuckerwürfel mit Asche (8 min, Aufgabe 13 gleich dabei) – Katalysator, Kontrolle mit Salz, Enzyme kurz klären.",
+        "Gruppe 4–6: drei Runden à 11 min an Station 1 (Mobiltisch 1) und 2 (Wasserleitung 1); Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll. Gruppe 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde.",
+        "Besprechen A13/A14 (3 min) · PDF abgeben (1 min) · Reserve 3 min – dort ggf. »Das Wichtigste in 5 Sätzen«. Tempo (Teil 5) ist Zusatz und fällt nicht in die Stunde. Keine Hausübung."],
+     "3 Würfelzucker, Holzasche, Salz, Unterlegplatte, Feuerzeug, Becherglas 400 ml · Stationen 1–2",
      "Demo mit Vorhersage; Stationen"),
-    ("Stunde 5 · Di 17.11. · Tempo + Abschluss", [
-        "Partnercheck Aufgabe 18 (5 min, mündlich) statt »Weißt du noch?«.",
-        "Theorie Teil 5 lesen (6 min).",
-        "Gruppenversuch K1.3-V8 Brausetablette (18 min inkl. Austeilen und Aufräumen, Handy = Stoppuhr), Aufgabe 17.",
-        "Aufgabe 16 (4 min) · Protokolle fertig (Deutung V4/V5 für Gruppe 4–6) und Besprechung der Stationen (7 min).",
-        "Abgabe der PDFs (5 min) · Reserve 5 min · Quiz als freiwilliger Selbsttest, Kahoot nur, wenn Zeit bleibt · Zusatz 15 für Schnelle. Keine Hausübung."],
-     "18 Einweg-Petrischalen, Brausetabletten 9, warmes Wasser (Wasserkocher), Messzylinder · Kahoot-Tabelle",
-     "Partnercheck mündlich; Gruppenversuch"),
 ]
 
 AUF_EINEN_BLICK = [
     ["1 · 03.11.", "Oxidation = Elektronenabgabe, Reduktion = Elektronenaufnahme – immer gleichzeitig. Eisenwolle wird beim Verbrennen schwerer.", "Waage, Eisenwolle, Batterie · Rost-Ansätze"],
     ["2 · 05.11.", "Rost braucht Wasser + Sauerstoff, Salz beschleunigt. Schutz: Schicht, Zink, Edelstahl, waschen, trocknen.", "Kupferblech, Brenner"],
     ["3 · 10.11.", "Exotherm gibt Energie ab, endotherm nimmt sie auf. Fast jede Reaktion braucht Aktivierungsenergie. Masse und Energie bleiben erhalten.", "Demo V6 · Stationen V4–V5"],
-    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Braunstein, Enzyme, Autokatalysator.", "H₂O₂, Braunstein, Kartoffel"],
-    ["5 · 17.11.", "Tempo: Oberfläche, Temperatur (+10 °C ≈ doppelt), Konzentration, Katalysator.", "Brausetabletten, Petrischalen"],
+    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Asche bei Zucker, Enzyme, Autokatalysator.", "Würfelzucker, Holzasche, Salz"],
+    ["Zusatz", "Tempo: Oberfläche, Temperatur (+10 °C ≈ doppelt), Konzentration, Katalysator.", "Brausetabletten, Petrischalen (nur V8)"],
 ]
 
 KAPITEL = [
@@ -99,7 +89,7 @@ KAPITEL = [
   "text": ["Ein **Katalysator** öffnet einen anderen Reaktionsweg mit niedrigerer Aktivierungsenergie; er geht aus der Reaktion unverändert hervor. Er ändert das Tempo, nicht die Lage von Anfang und Ende (ΔH bleibt gleich) und auch nicht das Gleichgewicht.",
            "**Positiver/negativer Katalysator** (Buchbegriffe): Nach IUPAC ist ein Katalysator ein Beschleuniger. »Negative Katalysatoren« heißen heute Hemmstoffe/Inhibitoren (z. B. in Rostschutz- oder Konservierungsmitteln); sie wirken auf verschiedene Weise (z. B. Katalysator blockieren, Zwischenstufen abfangen), werden oft verbraucht und »erhöhen die Aktivierungsenergie« nicht allgemein. Die Kadetten lernen: Katalysator beschleunigt, Hemmstoff bremst.",
            "**Autokatalysator (Dreiwege-Kat):** Keramikwabe mit poröser Beschichtung (Washcoat, meist Aluminiumoxid), darin fein verteilte Pt-, Pd-, Rh-Teilchen. Er altert über die Jahre (Hitze, Vergiftung), wird aber nicht pro Reaktion verbraucht. Oxidiert CO und Kohlenwasserstoffe, reduziert NOₓ zu N₂ – braucht etwa 250–300 °C (»Light-off«) und beim Benziner ein genaues Luft-Kraftstoff-Verhältnis (Lambda-Sonde). Kaltstart = Hauptquelle der Emissionen.",
-           "**Enzyme:** Biokatalysatoren aus Eiweiß, sehr spezifisch (Schlüssel-Schloss). Katalase zerlegt H₂O₂ (fällt im Stoffwechsel an) – deshalb schäumt rohe Kartoffel/Leber/Blut. Hitze denaturiert das Eiweiß → Enzym unwirksam (gekochte Kartoffel)."],
+           "**Enzyme:** Biokatalysatoren aus Eiweiß, sehr spezifisch (Schlüssel-Schloss). Katalase zerlegt H₂O₂ (fällt im Stoffwechsel an) – deshalb schäumt rohe Kartoffel/Leber/Blut auf H₂O₂ (Buch-Versuch S. 36, im Unterricht nicht gemacht). Hitze denaturiert das Eiweiß → Enzym unwirksam."],
   "nur": ["Haber-Bosch-Verfahren: N₂ + 3 H₂ ⇌ 2 NH₃ an Eisenkatalysator, 400–500 °C, 150–300 bar. Etwa die Hälfte des Stickstoffs in unseren Körpern stammt rechnerisch aus Kunstdünger – starke Brücke zu Ernährungssicherheit und Wirtschaft (Jahresplan E14).",
           "Katalysator-Diebstahl (ORF Wien, März 2026): Pd, Pt und Rh sind sehr teuer – Rhodium mehr als doppelt so viel wert wie gleich schweres 750er-Gold."],
   "stolper": "»Der Katalysator filtert« bzw. »wird verbraucht« – genau diese Fehler stecken in der KI-Antwort von Aufgabe 15.",
@@ -115,9 +105,9 @@ KAPITEL = [
 RECHNEN = [
     "**Masse (A12):** 1,20 g Eisenwolle → 1,52 g. Eingebauter Sauerstoff 0,32 g; Zunahme 0,32 : 1,20 · 100 ≈ 26,7 %. Vollständig zu Fe₃O₄ wären es +38 %, zu Fe₂O₃ +43 %.",
     "**Faustregel (A17):** 80 s bei 20 °C → 40 s bei 30 °C → 20 s bei 40 °C. Allgemein: t = t₀ : 2^(ΔT/10). Übungsvariante mit Zufallszahlen auf dem Arbeitsblatt.",
-    "**Verdünnen (V7):** Massenanteile! 10,0 g H₂O₂-Lösung (w = 30 %) enthalten 3,0 g H₂O₂; + 90,0 g Wasser = 100,0 g Lösung mit w = 3 %. (10 ml der 30-%-Lösung wiegen wegen der Dichte ≈ 1,11 g/ml ca. 11 g – mit 90 ml Wasser ergäbe das ≈ 3,3 %.)",
+    "**V7 ohne Verdünnen:** Zuckerwürfel + Holzasche (Katalysator), Kochsalz als Kontrolle. Asche trocken und fein, Vorversuch Pflicht; Wirkung vermutlich durch Alkalisalze (K, Na), Mechanismus komplex – auf Schulniveau »Katalysator«. Zigarettenasche (Li) wirkt oft stärker.",
     "**Kupfersulfat (V4):** 15,0 g CuSO₄ · 5 H₂O auf 150 ml Lösung = 10 g Pentahydrat pro 100 ml Lösung (≈ 6,4 g CuSO₄ pro 100 ml; M = 249,7 g/mol). Keine Angabe »10 %« verwenden.",
-    "**Zitronensäure (V5):** 60 g + 90 g Wasser = 150 g Lösung, w = 40 % (Dichte ca. 1,2 g/ml → ca. 125 ml).",
+    "**Zitronensäure (V5):** Pulver direkt – 5,0 g Zitronensäure (Monohydrat) + 6,0 g Natron auf 25 ml Wasser; 3 NaHCO₃ je Säure: 6,0 g Natron (0,071 mol) entsprechen 0,024 mol Säure (5,0 g Monohydrat). Vorversuch: Temperaturabfall prüfen.",
 ]
 
 FEHLVORSTELLUNGEN = [
@@ -125,7 +115,7 @@ FEHLVORSTELLUNGEN = [
     ["Oxidation braucht immer Sauerstoff.", "Oxidation = Elektronenabgabe, auch ohne Sauerstoffgas.", "Eisen in Kupfersulfat (V4)."],
     ["Endotherme Reaktionen laufen nicht von selbst.", "Viele laufen freiwillig und kühlen dabei.", "Zitronensäure + Natron (V5), Kältekompresse."],
     ["Exotherme Reaktionen brauchen keinen Start.", "Fast jede Reaktion braucht Aktivierungsenergie.", "Holz liegt an der Luft und brennt nicht; Animation »Kugel über den Berg«."],
-    ["Der Katalysator wird verbraucht/filtert.", "Er wandelt um und bleibt unverändert.", "Braunstein nach V7 abfiltrieren und zeigen: noch da."],
+    ["Der Katalysator wird verbraucht/filtert.", "Er wandelt um und bleibt unverändert.", "Asche nach V7 zeigen: die Ascheflecken sind noch da."],
     ["Salz schmilzt Eis, weil Salz warm ist.", "Salzwasser gefriert erst unter 0 °C; Schmelzen braucht Energie aus der Umgebung.", "Kältemischung (V6) wird viel kälter als 0 °C."],
 ]
 

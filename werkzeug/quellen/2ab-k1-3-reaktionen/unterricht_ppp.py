@@ -114,8 +114,7 @@ HEUTE_ZIEL = {
     1: "Verstehen, was bei Oxidation und Reduktion passiert: Elektronen wandern – und beim Verbrennen wird ein Stoff nicht leichter.",
     2: "Erklären, wie Eisen rostet und wie man es schützt – und warum eine Redoxreaktion keinen Sauerstoff braucht.",
     3: "Unterscheiden, ob eine Reaktion Wärme abgibt oder aufnimmt – und ein Energiediagramm lesen.",
-    4: "Erklären, was ein Katalysator tut – und was er nicht tut.",
-    5: "Die vier Stellschrauben für das Tempo einer Reaktion nennen und selbst messen.",
+    4: "Erklären, was ein Katalysator tut – und was er nicht tut. Danach: Arbeitsblatt und Protokolle abgeben.",
 }
 STEP = {}   # std -> [(Beschriftung, Phasen-Indizes)] für die »Heute«-Folie
 
@@ -196,7 +195,7 @@ def versuch_folie(nr, titel, tipp, ergebnis, extra_sicher=None, bild=None):
     hs = B.th("Sicherheit: " + sic, 15, 5.2, pad=0.14)
     B.box(s, 4.3, min(max(y, 2.7), YC - hs), 5.2, hs, fill=RGBColor.from_string("F6E3DF"), line=RUST)
     B.tb(s, 4.38, min(max(y, 2.7), YC - hs), 5.04, hs, [[("Sicherheit: ", {"bold": True, "color": RUST}), (sic, {})]], size=15, anchor=MSO_ANCHOR.MIDDLE, after=0)
-    B.tb(s, X0, 4.05, 3.6, 0.4, [v["form"].split(" (")[0]], size=14, color=MUTED, after=0)
+    B.tb(s, X0, 4.05, 3.6, 0.4, [v["form"].split(" (")[0] + (" · " + v["platz_kurz"] if v.get("platz_kurz") else "")], size=14, color=MUTED, after=0)
     B.pill(s, "Versuch " + nr, w=2.2, kind="versuch")
     return s
 
@@ -304,7 +303,7 @@ def s2_bespr():
 
 def s2_ende():
     s = d.slide("Nur Titel", "Nächste Stunde: Stationen")
-    karte(s, X0, 1.05, 4.4, 1.9, "Gruppen 1–3 (Di 10.11.)", ["Drei Runden an **Station 1 und 2** (V4, V5)", "11 Minuten je Runde"], RED, size=19)
+    karte(s, X0, 1.05, 4.4, 1.9, "Gruppen 1–3 (Di 10.11.)", ["Drei Runden an **Station 1 (Mobiltisch 1)** und **Station 2 (Wasserleitung 1)**", "11 Minuten je Runde"], RED, size=18)
     karte(s, X0 + 4.6, 1.05, 4.4, 1.9, "Gruppen 4–6 (Di 10.11.)", ["Theorieteil Teil 3 lesen", "Aufgaben 9–11 am Handy"], TEAL, size=19)
     merke(s, 3.15, "Am Do 12.11. tauschen die Gruppen: 4–6 an die Stationen, 1–3 machen Aufgaben.", size=19)
     return s
@@ -333,13 +332,13 @@ def s3_diagramm():
 def runden(sp):
     """Rotationstabelle für drei Gruppen: (Station 1, Station 2, Aufgaben) je Runde."""
     a, b, c = sp
-    return [["Runde (11 min)", "Station 1 · V4", "Station 2 · V5", "Aufgaben + Lesen"], ["1", f"Gruppe {a}", f"Gruppe {b}", f"Gruppe {c}"],
+    return [["Runde", "Station 1 · V4 Mobiltisch 1", "Station 2 · V5 Wasserleitung 1", "Aufgaben + Lesen am Platz"], ["1", f"Gruppe {a}", f"Gruppe {b}", f"Gruppe {c}"],
             ["2", f"Gruppe {c}", f"Gruppe {a}", f"Gruppe {b}"], ["3", f"Gruppe {b}", f"Gruppe {c}", f"Gruppe {a}"]]
 
 
 def s3_stationen(sp, lesen_teil, aufg):
     s = d.slide("Nur Titel", "Stationen: so wechselt ihr")
-    cells, h = B.auto_grid(s, X0, 1.05, [2.1, 2.3, 2.3, 2.3], runden(sp), size=18, minh=0.46)
+    cells, h = B.auto_grid(s, X0, 1.05, [1.2, 2.7, 2.9, 2.2], runden(sp), size=16, minh=0.4)
     y = 1.05 + h + 0.15
     karte(s, X0, y, 4.4, 4.45 - y, "An der Station", ["messen, beobachten, **aufräumen**", "Erkenntnis am Handy eintragen"], RED, size=18)
     karte(s, X0 + 4.6, y, 4.4, 4.45 - y, "Freie Gruppe", [lesen_teil, aufg], TEAL, size=18)
@@ -348,23 +347,25 @@ def s3_stationen(sp, lesen_teil, aufg):
 
 def s3_sicher():
     s = d.slide("Nur Titel", "Sicherheit an den Stationen")
-    karte(s, X0, 1.05, 4.4, 3.35, "Station 1 · Kupfersulfat", ["**Schutzbrille und Handschuhe**", "reizt Augen und Haut, giftig für Wasserlebewesen", "Reste NUR in den Behälter »Schwermetall-Lösungen« – nie in den Ausguss"], RED, size=19)
-    karte(s, X0 + 4.6, 1.05, 4.4, 3.35, "Station 2 · Zitronensäure", ["**Schutzbrille**", "reizt die Augen – nichts kosten", "nach dem Versuch Hände waschen, Becher ausspülen"], ORANGE, size=19)
+    karte(s, X0, 1.05, 4.4, 3.35, "Station 1 · Kupfersulfat (Mobiltisch 1)", ["**Schutzbrille und Handschuhe**", "reizt Augen und Haut, giftig für Wasserlebewesen", "Reste NUR in den Behälter »Schwermetall-Lösungen« – nie in den Ausguss"], RED, size=19)
+    karte(s, X0 + 4.6, 1.05, 4.4, 3.35, "Station 2 · Zitronensäure-Pulver", ["**Schutzbrille**", "Pulver nicht einatmen, reizt die Augen – nichts kosten", "nach dem Versuch Hände waschen, Becher ausspülen"], ORANGE, size=19)
     return s
 
 
 def s3_v4():
     v = VS["K1.3-V4"]; s = d.slide("Nur Titel", "Station 1: Eisenwolle in Kupfersulfat")
     B.picture(s, SK("v4"), X0, 1.0, 3.6, 3.4)
-    schritte(s, 4.3, 1.05, 5.2, ["Temperatur der Lösung messen, aufschreiben", "Eisenwolle untertauchen, Thermometer bleibt drin", "2 min beobachten: Farbe der Wolle und der Lösung, dann Temperatur"], size=19, farbe=RED)
+    y = schritte(s, 4.3, 1.05, 5.2, ["Temperatur der Lösung messen, aufschreiben", "Eisenwolle untertauchen, Thermometer bleibt drin", "2 min beobachten: Farbe der Wolle und der Lösung, dann Temperatur"], size=19, farbe=RED)
+    B.tb(s, 4.3, min(y + 0.05, 3.9), 5.2, 0.4, ["Platz: Mobiltisch 1 · Ausspülen: Wasserleitung 2"], size=15, bold=True, color=OLIVE, after=0)
     B.pill(s, "Versuch K1.3-V4", w=2.2, kind="versuch")
     return s
 
 
 def s3_v5():
-    s = d.slide("Nur Titel", "Station 2: Zitronensäure und Natron")
+    s = d.slide("Nur Titel", "Station 2: Zitronensäure und Natron (Pulver)")
     B.picture(s, SK("v5"), X0, 1.0, 3.6, 3.4)
-    schritte(s, 4.3, 1.05, 5.2, ["Temperatur der Zitronensäurelösung messen", "Natron (6,0 g) zugeben, kurz rühren", "Sprudeln beobachten, Temperatur ablesen – wärmer oder kälter?"], size=19, farbe=ORANGE)
+    y = schritte(s, 4.3, 1.05, 5.2, ["25 ml Wasser: Temperatur messen", "Zitronensäure (5,0 g) und Natron (6,0 g) zugleich zugeben, rühren", "Sprudeln beobachten, Temperatur ablesen – wärmer oder kälter?"], size=19, farbe=ORANGE)
+    B.tb(s, 4.3, min(y + 0.05, 3.9), 5.2, 0.4, ["Platz: Wasserleitung 1 (Ablage am Spülbecken)"], size=15, bold=True, color=OLIVE, after=0)
     B.pill(s, "Versuch K1.3-V5", w=2.2, kind="versuch")
     return s
 
@@ -378,6 +379,17 @@ def s3_ergebnis():
     return s
 
 
+def s3_plaetze():
+    s = d.slide("Nur Titel", "Wo steht was?")
+    for i, (kopf, zl, col) in enumerate([("Lehrertisch", ["Demos (V6 heute, V7 am Do)", "Waage, Feuerzeug, Material"], OLIVE),
+                                         ("Mobiltisch 1 · Station 1", ["V4 Eisenwolle in Kupfersulfat", "**Schutzbrille und Handschuhe**", "Sammelbehälter für Reste stehen hier"], RED),
+                                         ("Wasserleitung 1 · Station 2", ["V5 Zitronensäure + Natron", "Ablage am Spülbecken"], ORANGE),
+                                         ("Wasserleitung 2 · Ausspülen", ["Becher und Thermometer ausspülen", "Kupferlösung NIE in den Ausguss"], TEAL)]):
+        karte(s, X0 + (i % 2) * 4.6, 1.05 + (i // 2) * 1.65, 4.4, 1.5, kopf, zl, col, size=17)
+    B.tb(s, X0, 4.2, W, 0.3, ["Mobiltisch 2–4 bleiben frei (Reserve)."], size=14, color=MUTED, after=0)
+    return s
+
+
 # ---------------------------------------------------------------- Stunde 4
 def s4_weisst():
     s = d.slide("Nur Titel", "Weißt du noch?")
@@ -386,31 +398,23 @@ def s4_weisst():
     return s
 
 
-def s4_kat():
-    s = d.slide("Nur Titel", "Kurz klären: Der Katalysator")
-    B.picture(s, IMG("diagramm_kat.png"), X0, 1.0, 4.6, 3.4)
+def s4_v7w():
+    s = d.slide("Nur Titel", "Kurz klären: Was tat die Asche?")
+    B.picture(s, IMG("diagramm_kat.png"), X0, 1.0, 4.4, 3.4)
     y = 1.05
-    y = frage_klick(s, y, "Wird ein Katalysator verbraucht?", "Nein – er liegt danach unverändert vor.", w=4.2, x=5.3, size=19)
-    y = frage_klick(s, y, "Ändert er die Energie von Anfang und Ende?", "Nein – nur den Weg: niedrigere Aktivierungsenergie.", w=4.2, x=5.3, size=19)
+    y = frage_klick(s, y, "Was tat die Asche?", "Katalysator: senkt die Aktivierungsenergie.", w=4.4, x=5.1, size=16)
+    y = frage_klick(s, y, "Wozu der Würfel mit Kochsalz?", "Kontrolle: Nur die Asche wirkt, nicht jedes Pulver.", w=4.4, x=5.1, size=16)
+    y = frage_klick(s, y, "Und im Körper?", "Enzyme: Zucker verbrennt bei 37 °C ohne Flamme.", w=4.4, x=5.1, size=16)
     B.pill(s, "Buch S. 34", w=2.2, kind="book")
-    return s
-
-
-def s4_enzyme():
-    s = d.slide("Nur Titel", "Kurz klären: Enzyme")
-    karte(s, X0, 1.05, 4.4, 1.9, "Biokatalysatoren", ["**Enzyme** sind Katalysatoren in Lebewesen, aus Eiweiß.", "Kartoffel: **Katalase**"], GREEN, size=19)
-    karte(s, X0 + 4.6, 1.05, 4.4, 1.9, "Im Mund", ["**Amylase** im Speichel spaltet Stärke in Zucker – die Semmel schmeckt süß."], TEAL, size=19)
-    y = frage_klick(s, 3.1, "Warum schäumt die gekochte Kartoffel kaum?", "Hitze zerstört das Enzym – es verliert seine Form und Wirkung.", size=19)
-    B.pill(s, "Versuch im Buch S. 36", w=2.2, kind="versuch")
     return s
 
 
 def s4_tausch():
     s = d.slide("Nur Titel", "Heute tauschen die Gruppen")
-    cells, h = B.auto_grid(s, X0, 1.05, [2.1, 2.3, 2.3, 2.3], runden((4, 5, 6)), size=18, minh=0.46)
+    cells, h = B.auto_grid(s, X0, 1.05, [1.2, 2.7, 2.9, 2.2], runden((4, 5, 6)), size=16, minh=0.4)
     y = 1.05 + h + 0.15
-    karte(s, X0, y, 4.4, 4.45 - y, "Gruppen 4–6", ["Stationen V4 und V5, genau wie am Di 10.11."], RED, size=18)
-    karte(s, X0 + 4.6, y, 4.4, 4.45 - y, "Gruppen 1–3 (und Freie)", ["Aufgaben 9–11 fertig, Deutung V4/V5 im Protokoll, Teil 4 lesen, Aufgabe 14"], TEAL, size=18)
+    karte(s, X0, y, 4.4, 4.45 - y, "Gruppen 4–6", ["V4 am Mobiltisch 1, V5 an der Wasserleitung 1 – genau wie am Di 10.11."], RED, size=18)
+    karte(s, X0 + 4.6, y, 4.4, 4.45 - y, "Gruppen 1–3 (und Freie)", ["Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll, Aufgaben 9–11 fertig"], TEAL, size=18)
     return s
 
 
@@ -427,80 +431,16 @@ def s4_auto():
 def s4_bespr():
     s = d.slide("Aufgabe", "Besprechen: Aufgaben 13–14")
     y = 1.05
-    y = frage_klick(s, y, "A13 c) Welches Gas flammt den Glimmspan auf?", "Sauerstoff: 2 H₂O₂ → 2 H₂O + O₂")
-    y = frage_klick(s, y, "A13 d) Warum die gekochte Kartoffel kaum?", "Enzym Katalase durch Hitze zerstört.")
+    y = frage_klick(s, y, "A13 c) Welche Rolle spielt die Asche?", "Katalysator: Sie senkt die Aktivierungsenergie und wird nicht verbraucht.")
+    y = frage_klick(s, y, "A13 d) Warum gab es den Würfel mit Kochsalz?", "Kontrolle: Nicht irgendein Pulver wirkt, sondern die Asche.")
     y = frage_klick(s, y, "A14 Stimmt: »Ein Katalysator wird verbraucht«?", "Stimmt nicht – er wird nicht verbraucht und ändert nur Weg und Tempo.")
     return s
 
 
-# ---------------------------------------------------------------- Stunde 5
-def s5_partner():
-    s = d.slide("Aufgabe", "Partnercheck: fragt euch ab")
-    B.tb(s, X0, 1.0, W, 0.4, [[("Ohne Handy: ", {"bold": True, "color": RUST}), ("A fragt, B antwortet – dann tauschen. Lösung per Klick.", {})]], size=19, after=0)
-    rows = [["Frage", "Lösung"]] + [[B.plain(q), B.plain(a)] for q, a in I.PARTNERKARTEN[:4]]
-    cells, h = B.auto_grid(s, X0, 1.45, [4.4, 4.6], rows, size=16, minh=0.36)
-    for r in cells[1:]: s._anim.append([r[1]])
-    return s
-
-
-def s5_tempo():
-    s = d.slide("Nur Titel", "Kurz klären: Vier Stellschrauben")
-    tw = 2.15
-    for i, (k, t_, col) in enumerate([("Oberfläche", "fein zerteilt = schneller", GREEN), ("Temperatur", "wärmer = schneller", RED), ("Konzentration", "mehr Teilchen = schneller", TEAL), ("Katalysator", "macht den Start leichter", ORANGE)]):
-        karte(s, X0 + i * (tw + 0.133), 1.05, tw, 2.0, f"{i + 1} · {k}", [t_], col, size=17)
-    c, h = merke(s, 3.25, "Merksatz: Oma Trinkt Kalten Kakao – Oberfläche, Temperatur, Konzentration, Katalysator.", size=19)
-    s._anim.append([c])
-    B.pill(s, "Buch S. 36", w=2.2, kind="book")
-    return s
-
-
-def s5_rgt():
-    s = d.slide("Nur Titel", "Kurz klären: die Faustregel")
-    rows = [["Temperatur", "Tempo", "Zeit"], ["20 °C", "1-fach", "80 s"], ["30 °C", "2-fach", "40 s"], ["40 °C", "4-fach", "20 s"]]
-    cells, h = B.auto_grid(s, X0, 1.05, [3.0, 3.0, 3.0], rows, size=20, minh=0.5)
-    for r in cells[2:]: s._anim.append([r[1], r[2]])
-    y = frage_klick(s, 1.05 + h + 0.15, "Faustregel: 10 °C wärmer – wie schnell?", "etwa doppelt so schnell (10 °C kälter: etwa halb so schnell)", size=19)
-    B.tb(s, X0, y, W, 0.4, ["Das ist ein Modell – echte Reaktionen weichen davon ab."], size=16, color=MUTED, after=0)
-    return s
-
-
-def s5_staub():
-    s = d.slide("Nur Titel", "Gefahr: Staubexplosion")
-    karte(s, X0, 1.05, 4.4, 2.0, "Warum?", ["Fein verteilter Staub hat eine **riesige Oberfläche** – Mehl, Holzstaub, Kohlenstaub brennen in der Luft schlagartig."], RED, size=19)
-    karte(s, X0 + 4.6, 1.05, 4.4, 2.0, "Wo?", ["Mühlen, Sägewerke, Silos: **kein Feuer, keine Funken**, Staub absaugen."], ORANGE, size=19)
-    c, h = merke(s, 3.25, "Gleicher Stoff, andere Oberfläche – darum brennt ein Scheit Holz, aber der Staub explodiert.", size=19)
-    B.pill(s, "Buch S. 36", w=2.2, kind="book")
-    return s
-
-
-def s5_a16():
-    s = auftrag_folie("Jetzt: Aufgabe 16", [16], {16: "allein am Handy"}, "jede Situation einer Stellschraube zugeordnet; am schnellsten: hohe Temperatur und große Oberfläche.")
-    return s
-
-
-def s5_v8():
-    v = VS["K1.3-V8"]; s = d.slide("Nur Titel", "Versuch V8: Brausetablette im Test")
-    B.picture(s, SK("v8"), X0, 1.0, 3.6, 3.0)
-    rows = [["Ansatz", "Wasser", "Tablette"], ["A", "kalt", "ganz"], ["B", "kalt", "zerdrückt"], ["C", "warm (ca. 40 °C)", "ganz"]]
-    cells, h = B.auto_grid(s, 4.3, 1.05, [1.1, 2.1, 2.0], rows, size=18, minh=0.42)
-    B.tb(s, 4.3, 1.05 + h + 0.1, 5.2, 1.0, ["Stoppuhr: bis es **nicht mehr sprudelt**. Zuerst tippen: Wer ist am schnellsten?"], size=18, after=0)
-    B.tb(s, X0, 4.05, 3.6, 0.4, ["Handy = Stoppuhr · Gruppenversuch"], size=14, color=MUTED, after=0)
-    B.pill(s, "Versuch Buch S. 36", w=2.2, kind="versuch")
-    return s
-
-
-def s5_a17():
-    s = d.slide("Aufgabe", "Jetzt: Aufgabe 17 und Protokoll")
-    B.tb(s, X0, 1.0, W, 0.4, [[("Gruppe: ", {"bold": True, "color": GREEN}), ("Messwerte a)–c) eintragen · allein am Handy d), e)", {})]], size=19, after=0)
-    y = 1.5
-    y = frage_klick(s, y, "d) Welcher Ansatz sollte am langsamsten sein?", "A – ganz und kalt: kleinste Oberfläche, niedrigste Temperatur.")
-    y = frage_klick(s, y, "e) Faustregel: 80 s bei 20 °C – wie lange bei 40 °C?", "20 s (20 → 30 °C: 40 s, 30 → 40 °C: 20 s)")
-    return s
-
-
+# ---------------------------------------------------------------- Abschluss (Stunde 4)
 def s5_abgabe():
     s = d.slide("Nur Titel", "Abgabe: PDF in LMS")
-    schritte(s, X0, 1.1, 6.9, ["Arbeitsblatt: »PDF erstellen« → in LMS hochladen", "Versuchsseite: Protokoll fertig, dann PDF erstellen und hochladen", "Quiz zum Üben – nicht abgabepflichtig", "Geht LMS nicht: PDF per E-Mail an Stephan"], size=20, farbe=RUST)
+    schritte(s, X0, 1.1, 6.9, ["Arbeitsblatt: »PDF erstellen« → in LMS hochladen", "Versuchsseite: Protokoll fertig, dann PDF erstellen und hochladen", "Quiz zum Üben – nicht abgabepflichtig", "Tempo (Teil 5) und Aufgaben 16–18: freiwilliger Zusatz"], size=20, farbe=RUST)
     qr(s, "aufgaben", 7.75, 1.0, 0.85, "Arbeitsblatt")
     qr(s, "versuche", 7.75, 2.15, 0.85, "Versuche")
     qr(s, "quiz", 7.75, 3.3, 0.85, "Quiz")
@@ -524,7 +464,7 @@ def s5_wichtig2(): return s5_wichtig(3, 5, "Das Wichtigste in 5 Sätzen (2/2)")
 
 def zusatz_folie():
     s = d.slide("Nur Titel", "OPTIONAL: Für Schnelle", hidden=True)
-    rows = [["Nr.", "Zusatzaufgabe", "Zeit"]] + [[str(n), B.plain(T[n]["title"]), f"{T[n]['zeit']} min"] for n in (4, 8, 12, 15, 19, 20, 21, 22, 23)]
+    rows = [["Nr.", "Zusatzaufgabe", "Zeit"]] + [[str(n), B.plain(T[n]["title"]), f"{T[n]['zeit']} min"] for n in (4, 8, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23)]
     cells, h = B.auto_grid(s, X0, 1.0, [0.7, 6.9, 1.4], rows, size=16, minh=0.36)
     B.tb(s, X0, 1.0 + h + 0.1, W, 0.6, ["Nur, wenn die Pflicht fertig ist. Aufgabe 23 (Video, Podcast oder Plakat) ist freiwillig – Abgabe als Datei in LMS."], size=16, after=0)
     return s
@@ -565,6 +505,7 @@ SPEC = {
      ("s3_diag", [2], "KURZ KLÄREN", None, "Energiediagramm lesen: Gipfel, Höhenunterschied", s3_diagramm),
      ("s3_stat", [3], "STATION", "Stationen erklären", "Rotation zeigen: 11 min je Runde",
       lambda: s3_stationen((1, 2, 3), "Theorieteil **Teil 3** lesen (Buch S. 32–34)", "Aufgaben 9–11")),
+     ("s3_plaetze", [3], "STATION", None, "Plätze zeigen: Mobiltisch 1, Wasserleitung 1 und 2", s3_plaetze),
      ("s3_sich", [3], "STATION", None, "Sicherheit an beiden Stationen laut vorlesen", s3_sicher),
      ("s3_v4", [4], "STATION", "Stationen V4 + V5", "Ablauf Station 1 zum Hinsehen während der Runden", s3_v4),
      ("s3_v5", [4], "STATION", None, "Ablauf Station 2", s3_v5),
@@ -573,39 +514,28 @@ SPEC = {
      ("s3_erg", [5], "ABSCHLUSS", None, "Ergebnisse sichern: warm oder kalt; Reserve", s3_ergebnis)],
  4: [("s4_heute", [0], "START", None, "Ziel und Ablauf zeigen", lambda: heute_folie(4)),
      ("s4_weisst", [0], "WIEDERHOLEN", None, "Drei Fragen zur letzten Stunde (Lösung per Klick)", s4_weisst),
-     ("s4_v7", [1], "DEMO", "Demo V7: Zerfall beschleunigen", "Tipp, Demo, Glimmspanprobe; Ergebnis per Klick",
-      lambda: versuch_folie("K1.3-V7", "Demo V7: Was macht es schneller?", "Welches Glas schäumt am stärksten? – Tipp (Aufgabe 13 a)", "Glas 2 (Braunstein) und Glas 3 (rohe Kartoffel); Glas 4 (gekocht) kaum – Glimmspan flammt auf: Sauerstoff", extra_sicher="Wasserstoffperoxid 30 % ist ätzend – nur die Lehrkraft verdünnt es. Reagenzgläser nie verschließen.")),
-     ("s4_kat", [1], "KURZ KLÄREN", "Kurz klären", "Katalysator: nicht verbraucht, nur der Weg", s4_kat),
-     ("s4_enz", [1], "KURZ KLÄREN", None, "Enzyme als Biokatalysatoren; Brücke zur Biologie", s4_enzyme),
+     ("s4_v7", [1], "DEMO", "Demo V7: Zuckerwürfel mit Asche", "Tipp, Demo (nur Lehrkraft zündet); Ergebnis per Klick",
+      lambda: versuch_folie("K1.3-V7", "Demo V7: Was lässt den Zucker brennen?", "Welcher Würfel brennt mit Flamme? – Tipp (Aufgabe 13 a)", "Nur Würfel 2 (mit Holzasche) · Würfel 1 pur und Würfel 3 mit Kochsalz schmelzen und werden braun",
+                                extra_sicher="Nur die Lehrkraft zündet. Würfel nur auf der Unterlegplatte, Abstand halten, Schutzbrille. Heißes Karamell nicht berühren. Löschen mit Becherglas, kein Wasser.")),
+     ("s4_v7w", [1], "KURZ KLÄREN", "Kurz klären", "Asche = Katalysator; Kochsalz als Kontrolle; Enzyme im Körper", s4_v7w),
      ("s4_tausch", [2], "STATION", "Stationen: Gruppen tauschen", "Rotation zeigen; Gruppen 4–6 jetzt an die Stationen", s4_tausch),
      ("s4_a1314", [2], "AUFGABE", None, "Aufgaben der freien Gruppe (und aller nach dem Tausch)",
       lambda: auftrag_folie("Freie Gruppe: Aufgabe 14", [14], {14: "allein am Handy"}, "6 Aussagen: stimmt oder stimmt nicht – mit »Prüfen«.")),
      ("s4_auto", [3], "KURZ KLÄREN", "Autokatalysator", "Kein Filter, sondern Umwandlung; Kaltstart", s4_auto),
-     ("s4_bespr", [3], "BESPRECHEN", None, "Heikle Punkte A13/A14 klären; Reserve", s4_bespr)],
- 5: [("s5_heute", [0], "START", None, "Ziel und Ablauf zeigen", lambda: heute_folie(5)),
-     ("s5_partner", [1], "ZU ZWEIT", "Partnercheck", "Ohne Handy mündlich abfragen", s5_partner),
-     ("s5_lesen", [2], "LESEN", "Lesen", "Tempo einer Reaktion selbst lesen",
-      lambda: lesen_folie(5, "**Buch S. 36** (Reaktionsgeschwindigkeit)", ["tempo", "rgt", "staub"], "Welche Stellschraube macht Mehlstaub so gefährlich?")),
-     ("s5_tempo", [3], "KURZ KLÄREN", "Kurz klären", "Vier Stellschrauben mit Merksatz", s5_tempo),
-     ("s5_rgt", [3], "KURZ KLÄREN", None, "Faustregel rechnen (Modell)", s5_rgt),
-     ("s5_staub", [3], "KURZ KLÄREN", None, "Staubexplosion als Anwendung der Oberfläche", s5_staub),
-     ("s5_a16", [4], "AUFGABE", "Aufgabe 16", "Stellschrauben zuordnen", s5_a16),
-     ("s5_v8", [5], "VERSUCH", "Versuch V8", "Gruppenversuch starten; Handy = Stoppuhr", s5_v8),
-     ("s5_a17", [6], "AUFGABE", "Aufgabe 17 + Protokoll", "Messwerte eintragen, Faustregel anwenden", s5_a17),
-     ("s5_abg", [7], "ABGABE", "PDF abgeben", "Abgabe erklären", s5_abgabe),
-     ("s5_wicht", [8], "ABSCHLUSS", None, "Das Wichtigste in 5 Sätzen (Sätze 1–3)", s5_wichtig),
-     ("s5_wicht2", [8], "ABSCHLUSS", None, "Sätze 4–5; Reserve", s5_wichtig2)],
+     ("s4_bespr", [3], "BESPRECHEN", "Besprechen", "Heikle Punkte A13/A14 klären", s4_bespr),
+     ("s4_abg", [4], "ABGABE", "PDF abgeben", "Abgabe erklären; Tempo (Teil 5) ist freiwilliger Zusatz", s5_abgabe),
+     ("s4_wicht", [5], "ABSCHLUSS", None, "Das Wichtigste in 5 Sätzen (Sätze 1–3); nur wenn Reserve bleibt", s5_wichtig),
+     ("s4_wicht2", [5], "ABSCHLUSS", None, "Sätze 4–5", s5_wichtig2)],
 }
 for std, sp in SPEC.items():
     alle = sorted({i for x in sp for i in x[1]})
     assert alle == list(range(len(phasen(std)))), (std, alle)
     STEP[std] = [(x[3], x[1]) for x in sp if x[3]]
 
-DANACH_STD = {1: "Stunde 2 am Do 05.11.: Test, dann Rost", 2: "Stunde 3 am Di 10.11.: Stationen", 3: "Stunde 4 am Do 12.11.: Katalysatoren", 4: "Stunde 5 am Di 17.11.: Tempo und Abschluss", 5: "Ende der Einheit – Test K1.3 laut Jahresplan"}
-KURZ = {"s1_einst": "Einstieg", "s1_mg": "Magnesium und Sauerstoff", "s2_rost": "Wie Eisen rostet", "s3_v4": "Station 1", "s4_kat": "Katalysator", "s4_tausch": "Gruppen tauschen", "s5_partner": "Partnercheck", "s5_tempo": "Vier Stellschrauben", "s5_wicht2": "Das Wichtigste (2)", "s1_v1w": "Warum schwerer?", "s1_bespr": "Besprechen A1–A3", "s1_v2": "Ausblick Rost-Ansatz", "s2_bespr": "Besprechen A5–A7", "s2_cu": "Eisen in Kupfersulfat",
+DANACH_STD = {1: "Stunde 2 am Do 05.11.: Test, dann Rost", 2: "Stunde 3 am Di 10.11.: Stationen", 3: "Stunde 4 am Do 12.11.: Katalysatoren", 4: "Ende der Einheit – ab Di 17.11. Säuren und Basen"}
+KURZ = {"s1_einst": "Einstieg", "s1_mg": "Magnesium und Sauerstoff", "s2_rost": "Wie Eisen rostet", "s3_v4": "Station 1", "s3_plaetze": "Wo steht was?", "s4_v7w": "Was tat die Asche?", "s4_abg": "PDF abgeben", "s4_wicht2": "Das Wichtigste (2)", "s4_wicht": "Das Wichtigste (1)", "s4_tausch": "Gruppen tauschen", "s1_v1w": "Warum schwerer?", "s1_bespr": "Besprechen A1–A3", "s1_v2": "Ausblick Rost-Ansatz", "s2_bespr": "Besprechen A5–A7", "s2_cu": "Eisen in Kupfersulfat",
         "s2_ende": "Ausblick Stationen", "s3_exo": "exotherm – endotherm", "s3_diag": "Energiediagramm", "s3_sich": "Sicherheit", "s3_v5": "Station 2", "s3_a911": "Aufgaben 9–11",
-        "s3_erg": "Ergebnisse sichern", "s4_weisst": "Weißt du noch?", "s4_enz": "Enzyme", "s4_a1314": "Aufgabe 14", "s4_bespr": "Besprechen A13/A14", "s5_staub": "Staubexplosion",
-        "s5_rgt": "Faustregel", "s5_wicht": "Das Wichtigste (1)", "s1_heute": "Heute", "s2_heute": "Heute", "s3_heute": "Heute", "s4_heute": "Heute", "s5_heute": "Heute"}
+        "s3_erg": "Ergebnisse sichern", "s4_weisst": "Weißt du noch?", "s4_a1314": "Aufgabe 14", "s4_bespr": "Besprechen A13/A14", "s1_heute": "Heute", "s2_heute": "Heute", "s3_heute": "Heute", "s4_heute": "Heute"}
 
 
 def nachher(spec): return spec[3] or KURZ.get(spec[0], spec[0])
@@ -627,7 +557,7 @@ def bauen():
     material = d.slide("Nur Titel", "Lehrer-Info · Herrichten", hidden=True)
     stolper = d.slide("Nur Titel", "Lehrer-Info · Stolpersteine", hidden=True)
     quellen = d.slide("Nur Titel", "Lehrer-Info · Quellen", hidden=True)
-    for std in (1, 2, 3, 4, 5):
+    for std in (1, 2, 3, 4):
         d.section(f"Stunde {std}")
         sec = d.slide("Abschnitt", f"Stunde {std} · " + next(p["titel"] for p in P.PLAN if p["std"] == std).split(":")[0])
         for ph in sec.placeholders:
@@ -665,7 +595,7 @@ def bauen():
         cells, h = B.auto_grid(s, X0, 1.28, [0.8, 4.2, 0.7, 3.3], rows, size=size, minh=0.2)
         if kn: B.tb(s, X0, 1.3 + h, W, hk, [[("Wenn es knapp wird: ", {"bold": True, "color": RUST}), (kn, {})]], size=10, after=0)
     B.tb(bedien, X0, 0.98, W, 4.1, [
-        [("Eine Datei, beide Klassen (gleiche Termine). ", {"bold": True, "color": OLIVE}), ("F5 zeigt die sichtbaren Folien Stunde 1 bis 5. Pro Stunde: Bildschirmpräsentation → Benutzerdefinierte Bildschirmpräsentation → z. B. »2AB Do 05.11. Stunde 2«. Ohne Menü: Foliennummer tippen und Enter (Nummern stehen auf den Regiefolien).", {})],
+        [("Eine Datei, beide Klassen (gleiche Termine). ", {"bold": True, "color": OLIVE}), ("F5 zeigt die sichtbaren Folien Stunde 1 bis 4. Pro Stunde: Bildschirmpräsentation → Benutzerdefinierte Bildschirmpräsentation → z. B. »2AB Do 05.11. Stunde 2«. Ohne Menü: Foliennummer tippen und Enter (Nummern stehen auf den Regiefolien).", {})],
         [("Jede Stunde läuft gleich: ", {"bold": True, "color": OLIVE}), ("»Heute« → »Lesen: …« (Buch und Abschnitte im Theorieteil, mit Leitfrage) → »Kurz klären« (nur Schwierigkeiten und Fehlvorstellungen, Antwort per Klick) → Versuch bzw. Demo (Tipp abgeben, dann Ergebnis per Klick) → Aufgaben → Besprechen (nur die heiklen Teilfragen).", {})],
         [("Unten links ", {"bold": True, "color": OLIVE}), ("steht immer, was JETZT läuft (mit Minuten aus dem Zeitplan) und was DANACH kommt.", {})],
         [("Stunde 3 und 4: ", {"bold": True, "color": OLIVE}), ("Stationen mit Rotation (11 min je Runde). Während die Stationen laufen, lässt du die Folie »Stationen: so wechselt ihr« stehen; die Ablauf-Folien V4/V5 sind zum Hinsehen gedacht.", {})],
@@ -709,6 +639,6 @@ def bauen():
     for st in P.PLAN: print(" ", st["std"], st["datum"], "Folien", [nr_von[x.slide_id] for x in folgen[st["std"]]])
 
 
-VER = "v1"
+VER = "v2"
 if __name__ == "__main__":
     bauen()
