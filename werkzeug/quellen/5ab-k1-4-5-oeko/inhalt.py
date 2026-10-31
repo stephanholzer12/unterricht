@@ -8,7 +8,7 @@ Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. E
 
 STAND = "31.10.2026"
 V = "v1"
-V_UNT = "v2"  # TH-Unterricht neu gebaut am 31.10.2026 (Teillieferung); alle anderen Dateien bleiben v1
+V_UNT = "v3"  # TH-Unterricht neu gebaut am 31.10.2026 (Teillieferung); alle anderen Dateien bleiben v1
 ORDNER = "5ab-toew/k1-4-5-oeko"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"

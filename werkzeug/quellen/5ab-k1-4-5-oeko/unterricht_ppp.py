@@ -382,7 +382,7 @@ def bauen():
         [("Ablauf: ", {"bold": True, "color": OLIVE}), ("»Heute« (Klassenbuch) → Einstieg (Handzeichen) → »Lesen: Teil 1« → »Kurz klären« → Aufgabe 1 am Whiteboard → »Lesen: Teil 2« → »Kurz klären« (2 Folien) → Aufgabe 2 (Datenfolie bleibt stehen) → Besprechen (per Klick) → Aufgabe 3 → PDF.", {})],
         [("Unten links ", {"bold": True, "color": OLIVE}), ("steht, was JETZT läuft (Minuten aus plan.py) und was DANACH kommt.", {})],
         [("Lösungen ", {"bold": True, "color": OLIVE}), ("erscheinen erst per Klick – nach der Arbeitszeit. Vollständige Lösungen: TH-Loesung und private Lösungsmappe.", {})],
-        [("Zeit: ", {"bold": True, "color": OLIVE}), ("50 min (Annahme) ohne Luft – Klassenbuch 2 min, Reserve 2 min. Zeitstopp und Kürzungsweg auf der Regiefolie.", {})],
+        [("Zeit: ", {"bold": True, "color": OLIVE}), ("50 min (Annahme) mit 4 min Reserve – Klassenbuch 1 min. Zeitstopp und Kürzungsweg auf der Regiefolie.", {})],
         [("Nachschlagen statt zeigen: ", {"bold": True, "color": OLIVE}), ("TH-Lehrer und Theorieteil bleiben vollständig (EU-Recht, Bilanzarten, Wirkungskategorien). Zusatz 4–9: ausgeblendete Folie »OPTIONAL«.", {})],
         [("Regiepläne: ", {"bold": True, "color": OLIVE}), (f"Folien {nr_von[regie[I.KLASSEN[0]].slide_id]}–{nr_von[regie[I.KLASSEN[-1]].slide_id]} (ausgeblendet), Präsentation »Lehrer-Regiepläne«.", {})]],
         size=13, after=5)

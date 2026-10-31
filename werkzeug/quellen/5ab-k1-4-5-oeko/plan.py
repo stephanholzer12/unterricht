@@ -1,26 +1,26 @@
 """Zeitplan K1.4–1.5 Ökodesign und Ökobilanz – EINE Quelle für Fahrplan (einheiten.json), Stundenvorschlag, Stundenkarte (TH-Fachwissen),
 Regiefolien der TH-Unterricht und Lösungsmappe.
 Annahme laut Übergabe: 50 min je Stunde. Beide Klassen haben denselben Ablauf (5BK Di 03.11., 5AK Do 05.11.).
-Minutenplan der ChatGPT-Übergabe v3 übernommen; nach Regelwerk ergänzt um Klassenbuch (2 min), PDF-Abgabe (2 min) und Reserve (2 min).
-Dafür wurden die beiden Erklärphasen um je 1 min und der zweite Lesestopp um 1 min gekürzt und die Sicherung von 7 auf 5 min verkürzt (im Prüfbericht offen genannt).
+Minutenplan der ChatGPT-Übergabe v3 übernommen; nach Regelwerk ergänzt um Klassenbuch (1 min), PDF-Abgabe (2 min) und Reserve (4 min, Regelwerk 18: 3–8 min).
+Dafür wurden die beiden Erklärphasen und der zweite Lesestopp um 1 min, die Erklärphasen um 1 bzw. 2 min und die Sicherung von 7 auf 5 min gekürzt (im Prüfbericht offen genannt).
 Phasen: (Name, Minuten, ohne Handy?, Art). Art: "a<n>" Aufgabe n · "lesen" · "erkl" kurze Erklärung · "org" · "bespr" · "reserve" · "pdf".
 Lesen und Erklären sind EIN Zeitbudget und deshalb getrennt ausgewiesen."""
 import inhalt as I
 
 MIN = 50
 
-STUNDE = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
+STUNDE = [("Beginn: Klassenbuch, Anwesenheit", 1, True, "org"),
           ("Einstieg: zwei Flaschen – welche beschaffen, welche Information fehlt? (Handzeichen)", 3, True, "org"),
           ("Lesen: Theorieteil »" + I.ABSCHNITT_1 + "« und »Woran man Ökodesign erkennt«", 4, False, "lesen"),
           ("Kurz klären: Lebenszyklus, Ökodesign ≠ grüner Aufdruck, Smartphone-Beispiel", 3, True, "erkl"),
           ("Aufgabe 1 zu zweit am Mini-Whiteboard, zuletzt Foto und b) am Handy", 5, True, "a1"),
           ("Lesen: Theorieteil »" + I.ABSCHNITT_2 + "« und »Vier Schritte einer Ökobilanz«", 4, False, "lesen"),
-          ("Kurz klären: vier Schritte, funktionale Einheit, Systemgrenze, CO₂-Äquivalent", 5, True, "erkl"),
+          ("Kurz klären: vier Schritte, funktionale Einheit, Systemgrenze, CO₂-Äquivalent", 4, True, "erkl"),
           ("Aufgabe 2 zu zweit", 11, False, "a2"),
           ("Besprechung Aufgabe 2: Rechenweg und »Welche Behauptung wäre nicht erlaubt?«", 5, True, "bespr"),
           ("Aufgabe 3 Abschlusscheck allein", 4, False, "a3"),
           ("PDF erstellen und in LMS hochladen", 2, False, "pdf"),
-          ("Reserve: Testhinweis 12.11., Quiz und Partnercheck zum Wiederholen", 2, True, "reserve")]
+          ("Reserve: Testhinweis 12.11., Quiz und Partnercheck zum Wiederholen", 4, True, "reserve")]
 
 M_STD = "Mini-Whiteboard zu zweit + Handzeichen + Besprechung an der Tafel"
 
@@ -53,8 +53,8 @@ for k in PLAN:
             if art.startswith("a"):
                 nrs.append(int(art[1:])); assert mi == _Z[int(art[1:])], (k, art, mi, _Z[int(art[1:])])
     assert sorted(nrs) == I.PFLICHT, (k, sorted(nrs), I.PFLICHT)
-# Übergabe: Lesen 4 + 5 min, Erklären 4 + 6 min, Sicherung 7 min → hier 4 + 4, 3 + 5, 5 (siehe Kopf)
-assert sum(p[1] for p in STUNDE if p[3] in ("lesen", "erkl")) == 16
+# Übergabe: Lesen 4 + 5 min, Erklären 4 + 6 min, Sicherung 7 min → hier 4 + 4, 3 + 4, 5 (siehe Kopf)
+assert sum(p[1] for p in STUNDE if p[3] in ("lesen", "erkl")) == 15
 
 
 def aufgaben_der(st):

@@ -34,7 +34,7 @@ def tab(head, rows, cls=""):
 # ---------------------------------------------------------------- Überblick
 offen = [
     "**Einheit einblenden** vor der ersten Stunde (5BK Di 03.11.): GitHub → Actions → »Einheit ein-/ausblenden« → 5ab-toew/k1-4-5-oeko → einblenden. Die Direktlinks und QR-Codes funktionieren auch versteckt.",
-    "**Zeit:** 50 min ohne Luft (Annahme aus der Übergabe). Zeitstopp: Um Minute 37 beginnt die Besprechung von Aufgabe 2 – auch wenn noch nicht alle fertig sind.",
+    f"**Zeit:** 50 min mit {P.minuten(P.PLAN['5BK'][0], ['reserve'])} min Reserve (Annahme aus der Übergabe). Zeitstopp: Um Minute {P._ab('5BK', 1, 'Besprechung')} beginnt die Besprechung von Aufgabe 2 – auch wenn noch nicht alle fertig sind.",
     "**Mini-Whiteboards** (1 je Paar) für Aufgabe 1 bereitlegen.",
     "**Test am Do 12.11.:** Dauer und Teststoff sind offen. Ob K1.4–1.5 dazugehört, entscheidest du – es gibt keinen Teststoff im Paket.",
     "**Jahresplan:** E3 hat 2 Stunden, du hast 1 Stunde vorgegeben. Die Lehrer-Seite zeigt deshalb »bitte abgleichen« – das ist gewollt.",
