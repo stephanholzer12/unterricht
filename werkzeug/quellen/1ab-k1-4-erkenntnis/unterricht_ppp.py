@@ -123,14 +123,14 @@ NACH = {}             # Schlüssel → Text »Danach: …«
 def heute_folie(teil):
     s = d.slide("Nur Titel", f"Teil {teil} · Heute")
     wann = " · ".join(f"{k}: {I.DATEN[k][I.TEIL_STUNDE[teil][k]]}" for k in I.KLASSEN)
-    B.tb(s, X0, 0.98, W, 0.32, [[(I.TEILNAME[teil] + " · " + wann, {"bold": True, "color": TEAL})]], size=16, after=0)
+    B.tb(s, X0, 0.98, W, 0.36, [[(wann, {"bold": True, "color": TEAL})]], size=20, after=0)
     ziel = HEUTE_ZIEL[teil]
     c = B.box(s, X0, 1.36, 7.0, B.th("Ziel: " + ziel, 20, 6.9, pad=0.16), fill=OLIVE)
     B.text(c, [[("Ziel: ", {"bold": True}), (ziel, {})]], size=20, color=WHITE, anchor=MSO_ANCHOR.MIDDLE, after=0)
     y = 1.36 + c.height / 914400 + 0.12
     st = [(sp[3], sp[1]) for sp in SPEC[teil] if sp[3]]
     items = [f"{lab} · {minuten(teil, idx)}" for lab, idx in st]
-    if len(items) <= 4: schritte(s, X0, y, 6.6, items, size=18, farbe=GREEN)
+    if len(items) <= 4: schritte(s, X0, y, 6.6, items, size=20, farbe=GREEN)
     else:
         h1 = (len(items) + 1) // 2
         for col, part in enumerate((items[:h1], items[h1:])):
@@ -139,8 +139,8 @@ def heute_folie(teil):
                 n = i + 1 + col * h1
                 c = B.box(s, X0 + col * 3.6, yy + 0.04, 0.4, 0.4, fill=GREEN)
                 B.text(c, [str(n)], size=15, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
-                hh = B.th(it, 18, 3.1, pad=0.04)
-                B.tb(s, X0 + col * 3.6 + 0.48, yy, 3.1, hh, [it], size=18, after=0); yy += max(0.5, hh + 0.04)
+                hh = B.th(it, 20, 3.1, pad=0.04)
+                B.tb(s, X0 + col * 3.6 + 0.48, yy, 3.1, hh, [it], size=20, after=0); yy += max(0.5, hh + 0.04)
     qr(s, "aufgaben", 7.75, 1.36, 1.05, "Arbeitsblatt")
     qr(s, "theorie" if teil != 2 else "versuche", 7.75, 2.85, 1.05, "Theorieteil" if teil != 2 else "Versuche")
     return s
@@ -157,7 +157,7 @@ def lesen_folie(teil, buch, abschnitte, leitfrage, idx):
         ic = B.box(s, X0 + 0.1, y + bh / 2 - 0.27, 0.62, 0.54, fill=OLIVE)
         B.text(ic, [[("BUCH", {"size": 12, "bold": True, "color": WHITE})]], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
         B.tb(s, X0 + 0.82, y, W - 0.9, bh, [buch], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += bh + 0.12
-    B.tb(s, X0, y, 6.9, 0.36, [[("Im Theorieteil genau diese Abschnitte:", {"bold": True, "color": TEAL})]], size=18, after=0); y += 0.4
+    B.tb(s, X0, y, 6.9, 0.36, [[("Im Theorieteil genau diese Abschnitte:", {"bold": True, "color": TEAL})]], size=20, after=0); y += 0.4
     for a in abschnitte:
         c = B.box(s, X0, y, 6.9, 0.44, fill=RGBColor.from_string("E8F1F3"), line=TEAL, lw=1.25)
         B.text(c, [[("»" + TITEL[a] + "«", {"bold": True})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += 0.5
@@ -201,7 +201,7 @@ def t1_einstieg():
     B.picture(s, UNIT + "img/flieger.png", X0, 1.05, 5.0, 3.35)
     karte(s, 5.75, 1.05, 3.75, 1.75, "Behauptung", ["»Eine Büroklammer an der Nase macht **jeden** Papierflieger besser.«"], ORANGE)
     c = karte(s, 5.75, 2.95, 3.75, 1.1, "Tipp ab – per Handzeichen", ["weiter · kürzer · gleich weit?"], GREEN)
-    a = B.tb(s, 5.75, 4.1, 3.75, 0.36, ["Aufgelöst wird erst nach dem Test."], size=16, color=RED, bold=True, after=0)
+    a = B.tb(s, 5.0, 4.1, 4.5, 0.4, ["Aufgelöst wird erst nach dem Test."], size=20, color=RED, bold=True, after=0)
     s._anim.append([a])
     return s
 
@@ -212,8 +212,8 @@ def t1_klaeren_hyp():
     for i, (kopf, bsp, was, col) in enumerate([("Beobachtung", "»Wurf 1 landete bei 6,4 m.«", "was wir sehen oder messen – auch im Experiment", TEAL),
                                                 ("Hypothese", "»Mit Klammer weiter, **weil** die Nase schwerer ist.«", "begründete, prüfbare Vermutung", GREEN),
                                                 ("Vorhersage", "»Bei drei Paaren hat B den größeren Mittelwert.«", "was beim nächsten Test herauskommen sollte", ORANGE)]):
-        karte(s, X0 + i * (tw + 0.15), 1.05, tw, 2.1, kopf, [bsp, [(was, {"color": MUTED, "size": 18})]], col)
-    c, h = merke(s, 3.3, "Die Hypothese sagt WARUM, die Vorhersage sagt, WAS beim Test herauskommt – und beides steht fest, bevor geworfen wird.")
+        karte(s, X0 + i * (tw + 0.15), 1.05, tw, 2.45, kopf, [bsp, [(was, {"color": MUTED, "size": 20})]], col)
+    c, h = merke(s, 3.65, "Die Hypothese sagt WARUM, die Vorhersage sagt, WAS beim Test herauskommt – und beides steht fest, bevor geworfen wird.")
     s._anim.append([c])
     return s
 
@@ -224,7 +224,7 @@ def t1_klaeren_theorie():
     y = 1.05
     y = frage_klick(s, y, "»Das ist doch nur eine Theorie!« – Stimmt das?", "Nein. Eine Theorie erklärt **viele geprüfte Befunde** (z. B. Zelltheorie).", w=4.6, x=4.9, size=20)
     y = frage_klick(s, y, "Wird eine oft bestätigte Hypothese zum Gesetz?", "Nein. Gesetz **beschreibt**, Theorie **erklärt** – keine Leiter.", w=4.6, x=4.9, size=20)
-    B.tb(s, X0, 4.1, 4.2, 0.4, ["Buch S. 29 klingt nach Stufenleiter – das stimmt so nicht."], size=14, color=MUTED, after=0)
+    B.tb(s, X0, 4.1, W, 0.4, ["Buch S. 29 klingt nach Stufenleiter – das stimmt so nicht."], size=20, color=MUTED, after=0)
     return s
 
 
@@ -474,12 +474,12 @@ SPEC = {
      ("t3_a7", [5], "ZU ZWEIT", "Aufgabe 7", "Wichtigste Begriffe gegenseitig abfragen", t3_karten),
      ("t3_bespr", [6, 7], "BESPRECHEN", None, "»Abweichende Gruppe = falsch gemessen?« klären; Reserve", t3_besprechen)],
  4: [("t4_heute", [0], "START", None, "Ziel zeigen, Protokoll-Handys öffnen lassen", lambda: heute_folie(4)),
-     ("t4_weiss", [1], "WIEDERHOLEN", "Hypothese von damals", "An die eigene Vorhersage erinnern (nicht mehr ändern)", t4_weisst),
+     ("t4_weiss", [1], "WIEDERHOLEN", "Wiederholen", "An die eigene Vorhersage erinnern (nicht mehr ändern)", t4_weisst),
      ("t4_lesen", [2], "LESEN", "Lesen", "Rechenweg und die drei möglichen Ergebnisse selbst lesen",
       lambda: lesen_folie(4, None, ["vorsichtig", "mittelwert", "schluss", "popper"], "Wann ist die richtige Antwort »noch keine Entscheidung möglich«?", [2])),
      ("t4_klaeren", [3], "KURZ KLÄREN", "Kurz klären", "Rechenweg einmal vorzeigen (andere Zahlen als A8), Überlappung = unklar", t4_klaeren),
      ("t4_popper", [3], "KURZ KLÄREN", None, "Falsifizierbarkeit (Popper) – Pflicht-Lehraufgabe, für A9 Aussage 3", t4_popper),
-     ("t4_ausw", [4], "VERSUCH", "Protokoll auswerten", "Eigene Daten auswerten – Kern der Einheit", t4_auswertung),
+     ("t4_ausw", [4], "VERSUCH", "Auswerten", "Eigene Daten auswerten – Kern der Einheit", t4_auswertung),
      ("t4_klasse", [5], "KURZ KLÄREN", "Klassenübersicht", "Alle Gruppen nebeneinander: Streuung zwischen Gruppen sichtbar machen", t4_uebersicht),
      ("t4_a810", [6, 7, 8], "AUFGABE", "Aufgaben 8–10", "Rechnen, KI-Aussagen prüfen, Konstruktionszyklus", t4_auftrag),
      ("t4_bespr", [9], "BESPRECHEN", None, "»Bewiesen / widerlegt / Stufenleiter« ein letztes Mal geraderücken", t4_besprechen),

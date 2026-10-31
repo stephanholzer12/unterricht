@@ -7,7 +7,7 @@ Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe. Kein Kahoot (Stepha
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge, z. B. Zuordnen)."""
 
 STAND = "30.10.2026"
-V = "v5"
+V = "v6"
 ORDNER = "1ab-nawi/k1-4-erkenntnis"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"

@@ -1188,55 +1188,42 @@
     "beob": {
      "b0_1": {
       "kw": [
-       "Beobachtung=kaum,wenig,nichts,keine,langsam"
+       "Würfel pur=schmilz,braun,karamell,kaum,nicht,keine,verkohl,schwarz,schwach"
       ],
       "need": 1
      },
      "b1_1": {
       "kw": [
-       "schäumt=schaum,schaeum,blasen,sprud,stark,heftig,gas"
+       "brennt mit Flamme=flamm,brenn,brannt,weiter,blau,gelb,feuer"
       ],
       "need": 1
      },
      "b2_1": {
       "kw": [
-       "schäumt=schaum,schaeum,blasen,sprud,gas,deutlich"
-      ],
-      "need": 1
-     },
-     "b3_1": {
-      "kw": [
-       "Beobachtung=kaum,wenig,nichts,keine,langsam"
-      ],
-      "need": 1
-     },
-     "b4_1": {
-      "kw": [
-       "flammt auf=flamm,brennt,hell,glueht,auf,feuer"
+       "Würfel Salz=schmilz,braun,karamell,kaum,nicht,keine,verkohl,schwarz,schwach"
       ],
       "need": 1
      }
     },
     "erk": {
      "kw": [
-      "Braunstein=braunstein,mangan,mno2,2",
-      "rohe Kartoffel=kartoffel,roh,3",
-      "Sauerstoff=sauerstoff,o2"
+      "Würfel mit Lithiumchlorid=lithium,licl,würfel 2,wuerfel 2,zweite,mittlere,2",
+      "andere schmelzen=schmilz,braun,karamell,nicht,kein,verkohl"
      ],
      "need": 2
     },
     "interp": {
      "kw": [
-      "Katalysator=katalys,enzym,katalase,biokatalys",
-      "Aktivierungsenergie=aktivier,energie,schneller,beschleun",
-      "Hitze zerstört Enzym=hitze,koch,zerstoer,kaputt,denatur,heiss"
+      "Katalysator=katalys",
+      "Aktivierungsenergie=aktivier,energie,schneller,beschleun,senkt",
+      "Kontrolle=kontroll,vergleich,gegenprobe,nicht jedes,anderes pulver,anderes salz,kochsalz"
      ],
      "need": 2
     },
     "schluss": {
      "kw": [
-      "Katalase im Blut / Gewebe=blut,wunde,gewebe,koerper,zellen,enzym,katalase",
-      "weitere Katalysatoren=auto,abgas,ammoniak,duenger,verdau,amylase,industrie,enzym"
+      "Enzyme=enzym,katalase,amylase,biokatalys,eiweiss,eiweiß",
+      "Körpertemperatur=koerper,körper,37,warm,langsam,kontrolliert"
      ],
      "need": 1
     }

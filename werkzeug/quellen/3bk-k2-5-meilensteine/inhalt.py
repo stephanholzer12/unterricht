@@ -8,8 +8,8 @@ Grundlage: ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026): Ab
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "30.10.2026"
-V = "v3"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
+STAND = "31.10.2026"
+V = "v4"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
 ORDNER = "3bk-pbgw/k2-5-meilensteine"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -17,7 +17,7 @@ KLASSE_URL = BASE + "3bk-pbgw/"
 EYEBROW = "PBGW · 3BK · Meilensteine, Hochkulturen und antike Vorbilder"
 TITEL = "Vom Vorrat zum Staat – Hochkulturen, Athen und Rom"
 KURZTITEL = "Meilensteine: Vom Vorrat zum Staat – Hochkulturen, Athen, Rom"
-BUCH = "Buch S. 23–44 · S. 105–118"
+BUCH = "Buch S. 23–44 und S. 105–118"
 KEY = "26-27-3BK-K2.1-5.4-Meilenst-TH-Handy-v1"
 CHECK_KEY = "26-27-3BK-K2.1-5.4-Meilenst-Lernseite-Check-v1"
 PRAEFIX = "26-27-3BK-K2.1-5.4-Meilenst"
@@ -250,7 +250,7 @@ T = [
   "tabnote": "Gelb auszufüllen: Spalten 3 und 4 für Athen, Republik und Prinzipat.",
   "tip": ["Athen und Rom im Vergleich", "theorie.html#vergleich"], "besprechen": True},
 
- {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 · 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 9,
+ {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 9,
   "q": "Teil 1 machst du am 16.11., Teil 2 am 30.11. a) Ordne den Karten den Zeitbereich zu (Karten 1–4 in Stunde 1, Karten 5–9 in Stunde 3). b) Begründe die Zuordnung bei zwei Karten. "
        "c) Ergänze eine Karte, die zeigt, dass nicht alle Entwicklungen überall gleichzeitig verliefen. d) Schlusssatz nach Teil 1: Was haben Landwirtschaft, Metall, Schrift und Städte mit Organisation und Herrschaft zu tun? (1 Satz)",
   "hint": "Jahreszahlen sind Orientierung. Die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",

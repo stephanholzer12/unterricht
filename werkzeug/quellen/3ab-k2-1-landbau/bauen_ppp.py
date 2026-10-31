@@ -24,7 +24,7 @@ import plan as PL
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
-VER = I.V
+VER = os.environ.get("PPP_V", I.V)
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("A33A2B")
@@ -341,7 +341,7 @@ def blk_h(b, w):
     k = b[0]
     if k in ("ul", "ol"): return ul_h(b[1], w)
     if k == "merke": return th(b[1], 20, w - 0.1, bold=True, pad=0.22)
-    if k == "hint": return th(b[1], 18, w - 0.2, pad=0.14)
+    if k == "hint": return th(b[1], 20, w - 0.2, pad=0.14)
     if k == "table":
         cw = col_widths(b[1], w); return table_h(cw, b[1])
     if k == "tiles":
@@ -382,7 +382,7 @@ def draw_blk(s, b, x, y, w, L):
         h = blk_h(b, w)
         strip = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x), Inches(y + 0.04), Inches(0.07), Inches(h - 0.1))
         strip.fill.solid(); strip.fill.fore_color.rgb = TEAL; strip.line.fill.background(); strip.shadow.inherit = False
-        tb(s, x + 0.17, y, w - 0.2, h, [[(t_, dict(o, color=MUTED)) for t_, o in runs_md(b[1])]], size=18); return h
+        tb(s, x + 0.17, y, w - 0.2, h, [[(t_, dict(o, color=MUTED)) for t_, o in runs_md(b[1])]], size=20); return h
     if k == "table":
         cw = col_widths(b[1], w); cells, h = auto_grid(s, x, y, cw, b[1]); return h + 0.08
     if k == "tiles":
@@ -508,9 +508,9 @@ def theorie_folien(item, L):
                 y = Y0
                 for b in bl: y += draw_blk(s, b, 5.15, y, 4.35, L) + 0.1
             else:
-                cap_h = th(im[3], 18, 9.0, pad=0.05)
+                cap_h = th(im[3], 20, 9.0, pad=0.05)
                 pic, hh = picture(s, path, X0 + 0.6, Y0, 7.8, min(3.5, Y1 - Y0 - cap_h - 0.05))
-                tb(s, X0, Y0 + hh + 0.05, 9.0, cap_h, [im[3]], size=18, color=MUTED, align=PP_ALIGN.CENTER, after=0)
+                tb(s, X0, Y0 + hh + 0.05, 9.0, cap_h, [im[3]], size=20, color=MUTED, align=PP_ALIGN.CENTER, after=0)
         elif len(bl) == 1 and bl[0][0] in ("merke", "hint") and n > 0:
             # einzelner Merksatz bzw. Hinweis als Folgefolie: groß als Kernaussage statt verloren oben am Rand
             c = box(s, 1.0, 1.9, 8.0, 1.9, fill=OLIVE if bl[0][0] == "merke" else CARD, line=None if bl[0][0] == "merke" else TEAL, lw=2)
@@ -526,7 +526,7 @@ def theorie_folien(item, L):
             rows = [["Frage", "Lösung (für den Fragenden)"]] + [[q, a if L else ""] for q, a in part]
             y0 = Y0
             if khint and ki == 0:
-                hh = th(khint, 18, 9); tb(s, X0, Y0, 9, hh, [khint], size=18, color=MUTED); y0 += hh
+                hh = th(khint, 20, 9); tb(s, X0, Y0, 9, hh, [khint], size=20, color=MUTED); y0 += hh
             cells, _ = auto_grid(s, X0, y0, [4.6, 4.4], rows, size=16)
             if L:
                 for r in cells[1:]: s._anim.append([r[1]])
@@ -635,8 +635,8 @@ def aufgabe(t, L):
     lang = th(kt, 20, 6.45) > 2.0
     size = 20 if (lang or th(kt, 20, 6.45) <= 1.45) else 18
     zus = []
-    if gemeinsam: zus = [[("Wähle: ", {"bold": True, "color": TEAL, "size": 18}), (" · ".join(gemeinsam), {"size": 18})]]
-    ch = max(0.9, th(kt, size, 6.45, pad=0.16) + (th("Wähle: " + " · ".join(gemeinsam), 18, 6.45, pad=0.02) if gemeinsam else 0))
+    if gemeinsam: zus = [[("Wähle: ", {"bold": True, "color": TEAL, "size": 20}), (" · ".join(gemeinsam), {"size": 20})]]
+    ch = max(0.9, th(kt, size, 6.45, pad=0.16) + (th("Wähle: " + " · ".join(gemeinsam), 20, 6.45, pad=0.02) if gemeinsam else 0))
     if lang:
         size = 20
         while size > 16 and th(kt, size, 6.45, pad=0.16) > Y1 - Y0 - 0.05: size -= 1
@@ -655,7 +655,7 @@ def aufgabe(t, L):
     if t.get("tab"):  # K1.4–1.5: Modelldaten als eigene Tabellenfolie (16 pt), Antworten danach
         s = neue_folie()
         cells_, hh_ = auto_grid(s, X0, Y0 - 0.02, [4.9, 2.05, 2.05], t["tab"], size=16, minh=0.34)
-        tb(s, X0, Y0 + hh_ + 0.04, 9, Y1 - (Y0 + hh_ + 0.04), [t.get("tabnote_folie") or t.get("tabnote", "")], size=16, bold=True, color=RUST, after=0)
+        tb(s, X0, Y0 + hh_ + 0.04, 9, Y1 - (Y0 + hh_ + 0.04), [t.get("tabnote_folie") or t.get("tabnote", "")], size=20, bold=True, color=RUST, after=0)
         y = Y1 + 1
     if has_img:
         pic, hh = picture(s, UNIT + t["img"], X0, y, 4.1, Y1 - y)
@@ -666,22 +666,22 @@ def aufgabe(t, L):
         stacked = has_img or art == "text"
         lw_ = wr if stacked else wr * 0.58
         aw = wr if stacked else wr - lw_ - 0.12
-        lh = th(label, 18, lw_ - 0.1, pad=0.06) + (th(opt_txt, 16, lw_ - 0.1, pad=0.02) if opt_txt else 0)
+        lh = th(label, 20, lw_ - 0.1, pad=0.06) + (th(opt_txt, 20, lw_ - 0.1, pad=0.02) if opt_txt else 0)
         atxt = ans if (L and ans) else ""
-        ah = max(0.42, th(atxt or "x", 18, aw - 0.2, bold=True, pad=0.14)) if art != "text" else max(0.5, th(atxt or "x", 18, aw - 0.2, pad=0.16))
+        ah = max(0.42, th(atxt or "x", 20, aw - 0.2, bold=True, pad=0.14)) if art != "text" else max(0.5, th(atxt or "x", 20, aw - 0.2, pad=0.16))
         rh = (lh + ah + 0.04) if stacked else max(lh, ah)
         if y + rh > Y1 + 0.02:
             s = neue_folie(); y = Y0; xr, wr = X0, 9.0
             if has_img: pass
-        parts_ = [[(label, {"size": 18, "bold": True, "color": INK})]]
-        if opt_txt: parts_.append([(opt_txt, {"size": 16, "color": MUTED})])
-        tb(s, xr, y, lw_, lh, parts_, size=18, after=1)
+        parts_ = [[(label, {"size": 20, "bold": True, "color": INK})]]
+        if opt_txt: parts_.append([(opt_txt, {"size": 20, "color": MUTED})])
+        tb(s, xr, y, lw_, lh, parts_, size=20, after=1)
         ax, ay = (xr, y + lh + 0.02) if stacked else (xr + lw_ + 0.12, y)
         frame = box(s, ax, ay, aw, ah, fill=WHITE, line=TEAL if not L else ORANGE, lw=1.5)
         frame.line.dash_style = MSO_LINE_DASH_STYLE.DASH  # gestrichelt wie in der 1AB-PPP
         if L and ans:
             col = MUTED if art == "tipp" else RED
-            a_ = tb(s, ax + 0.05, ay + 0.02, aw - 0.1, ah - 0.04, [ans], size=18, bold=art != "text", color=col, anchor=MSO_ANCHOR.MIDDLE, after=0)
+            a_ = tb(s, ax + 0.05, ay + 0.02, aw - 0.1, ah - 0.04, [ans], size=20, bold=art != "text", color=col, anchor=MSO_ANCHOR.MIDDLE, after=0)
             if art != "tipp": s._anim.append([a_])
         y += rh + 0.1
 
@@ -701,12 +701,12 @@ def aufgabe(t, L):
         zeile("Eure Antwort", " ".join(rest) if rest else "", "text", None); rest = []
     if L and rest:
         txt = rest
-        h = sum(th(x, 18, 8.7, pad=0.04) for x in txt) + 0.45
+        h = sum(th(x, 20, 8.7, pad=0.04) for x in txt) + 0.45
         if y + h > Y1 + 0.02:
             if all(len(f) > 2 for f in fields) and h > 1.6: return
             s = neue_folie(); y = Y0
         b = box(s, X0, y, 9.0, min(h, Y1 - y + 0.02), fill=WHITE, line=ORANGE, lw=2)
-        text(b, [[("Lösung" + (" · BESPRECHEN" if t.get("besprechen") else ""), {"bold": True, "color": ORANGE, "size": 16})]] + txt, size=18, after=2)
+        text(b, [[("Lösung" + (" · BESPRECHEN" if t.get("besprechen") else ""), {"bold": True, "color": ORANGE, "size": 20})]] + txt, size=20, after=2)
         s._anim.append([b])
 
 
