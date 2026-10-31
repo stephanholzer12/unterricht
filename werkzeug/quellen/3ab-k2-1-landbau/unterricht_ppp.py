@@ -120,14 +120,14 @@ NACH = {}             # Schlüssel → Text »Danach: …«
 def heute_folie(teil):
     s = d.slide("Nur Titel", f"Teil {teil} · Heute")
     wann = I.wann(teil)
-    B.tb(s, X0, 0.98, W, 0.32, [[(I.TEILNAME[teil] + " · " + wann, {"bold": True, "color": TEAL})]], size=16, after=0)
+    B.tb(s, X0, 0.98, W, 0.32, [[(I.TEILNAME[teil] + " · " + wann, {"bold": True, "color": TEAL})]], size=20, after=0)
     ziel = HEUTE_ZIEL[teil]
     c = B.box(s, X0, 1.36, 7.0, B.th("Ziel: " + ziel, 20, 6.9, pad=0.16), fill=OLIVE)
     B.text(c, [[("Ziel: ", {"bold": True}), (ziel, {})]], size=20, color=WHITE, anchor=MSO_ANCHOR.MIDDLE, after=0)
     y = 1.36 + c.height / 914400 + 0.12
     st = [(sp[3], sp[1]) for sp in SPEC[teil] if sp[3]]
     items = [f"{lab} · {minuten(teil, idx)}" for lab, idx in st]
-    if len(items) <= 4: schritte(s, X0, y, 6.6, items, size=18, farbe=GREEN)
+    if len(items) <= 4: schritte(s, X0, y, 6.6, items, size=20, farbe=GREEN)
     else:
         h1 = (len(items) + 1) // 2
         for col, part in enumerate((items[:h1], items[h1:])):
@@ -137,7 +137,7 @@ def heute_folie(teil):
                 c = B.box(s, X0 + col * 3.6, yy + 0.04, 0.4, 0.4, fill=GREEN)
                 B.text(c, [str(n)], size=15, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
                 hh = B.th(it, 18, 3.1, pad=0.04)
-                B.tb(s, X0 + col * 3.6 + 0.48, yy, 3.1, hh, [it], size=18, after=0); yy += max(0.5, hh + 0.04)
+                B.tb(s, X0 + col * 3.6 + 0.48, yy, 3.1, hh, [it], size=20, after=0); yy += max(0.5, hh + 0.04)
     qr(s, "aufgaben", 7.75, 1.36, 1.05, "Arbeitsblatt")
     qr(s, "theorie", 7.75, 2.85, 1.05, "Theorieteil")
     return s
@@ -154,7 +154,7 @@ def lesen_folie(teil, buch, abschnitte, leitfrage, idx):
         ic = B.box(s, X0 + 0.1, y + bh / 2 - 0.27, 0.62, 0.54, fill=OLIVE)
         B.text(ic, [[("BUCH", {"size": 12, "bold": True, "color": WHITE})]], align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
         B.tb(s, X0 + 0.82, y, W - 0.9, bh, [buch], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += bh + 0.12
-    B.tb(s, X0, y, 6.9, 0.36, [[("Im Theorieteil genau diese Abschnitte:", {"bold": True, "color": TEAL})]], size=18, after=0); y += 0.4
+    B.tb(s, X0, y, 6.9, 0.36, [[("Im Theorieteil genau diese Abschnitte:", {"bold": True, "color": TEAL})]], size=20, after=0); y += 0.4
     for a in abschnitte:
         hh = max(0.44, B.th("»" + TITEL[a] + "«", 20, 6.4, True, pad=0.16))
         c = B.box(s, X0, y, 6.9, hh, fill=RGBColor.from_string("E8F1F3"), line=TEAL, lw=1.25)
@@ -176,12 +176,15 @@ def auftrag_folie(titel, nrs, tun, erwartet, ohne_handy=False, layout="Aufgabe")
     cells, h = B.auto_grid(s, X0, 1.05, [0.6, 4.0, 0.9, 3.5], rows, size=18, minh=0.42)
     y = 1.05 + h + 0.12
     if ohne_handy:
-        c = B.box(s, X0, y, W, 0.45, fill=RGBColor.from_string("F6E3DF"), line=RUST)
-        B.text(c, [[("Handy bleibt zuerst weg: ", {"bold": True, "color": RUST}), (ohne_handy, {})]], size=18, anchor=MSO_ANCHOR.MIDDLE, after=0); y += 0.55
+        hoh = max(0.45, B.th("Handy bleibt zuerst weg: " + ohne_handy, 20, W - 0.2, pad=0.14))
+        c = B.box(s, X0, y, W, hoh, fill=RGBColor.from_string("F6E3DF"), line=RUST)
+        B.text(c, [[("Handy bleibt zuerst weg: ", {"bold": True, "color": RUST}), (ohne_handy, {})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += hoh + 0.1
     if erwartet:
         he = B.th("Am Ende steht da: " + erwartet, 20, W - 0.2, pad=0.18)
         c = B.box(s, X0, y, W, he, fill=RGBColor.from_string("FFFFFF"), line=GREEN, lw=1.5)
         B.text(c, [[("Am Ende steht da: ", {"bold": True, "color": GREEN}), (erwartet, {})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0)
+        y += he + 0.1
+    s._ende = y
     return s
 
 
@@ -216,8 +219,8 @@ def t1_mythos():
 def t1_klaeren_acker():
     s = d.slide("Nur Titel", "Kurz klären: Was die Ernte mitnimmt")
     bild(s, "acker.png", X0, 1.0, 4.6, 3.3)
-    y = frage_klick(s, 1.0, "Warum ersetzt Sonnenlicht keinen Dünger?", "Licht liefert Energie, keine Nährstoffe (N, P, K) – die gehen mit der Ernte weg.", w=4.3, x=5.2, size=18)
-    y = frage_klick(s, y, "Muss auch Bio düngen?", "Ja – mit Mist, Kompost, Leguminosen.", w=4.3, x=5.2, size=18)
+    y = frage_klick(s, 1.0, "Warum ersetzt Sonnenlicht keinen Dünger?", "Licht liefert Energie, keine Nährstoffe (N, P, K) – die gehen mit der Ernte weg.", w=4.3, x=5.2, size=20)
+    y = frage_klick(s, y, "Muss auch Bio düngen?", "Ja – mit Mist, Kompost, Leguminosen.", w=4.3, x=5.2, size=20)
     return s
 
 
@@ -225,14 +228,14 @@ def t1_klaeren_formen():
     s = d.slide("Nur Titel", "Kurz klären: vier Merkmale, drei Formen")
     rows = [["Merkmal", "konventionell", "integriert", "biologisch"], ["Boden", "", "", ""], ["Dünger und Pflanzenschutz", "", "", ""], ["Kulturen", "", "", ""], ["Tiere", "", "", ""]]
     cells, h = B.auto_grid(s, X0, 1.0, [2.6, 2.1, 2.1, 2.2], rows, size=16, minh=0.34)
-    y = frage_klick(s, 1.0 + h + 0.12, "Ist »integriert« eine eigene dritte Welt?", "Nein – ein Vorgehen (beobachten, dann gezielt), das auch konventionelle Betriebe nutzen.", size=18)
+    y = frage_klick(s, 1.0 + h + 0.12, "Ist »integriert« eine eigene dritte Welt?", "Nein – ein Vorgehen (beobachten, dann gezielt), das auch konventionelle Betriebe nutzen.", size=20)
     return s
 
 
 def t1_a1():
     s = auftrag_folie("Jetzt: Aufgabe 1 – arbeitsteilig zu zweit", [1], {1: "zu zweit, eine Spalte je Paar"},
                       "eure Form mit 4 Stichpunkten – nach der Besprechung Foto der Tafel", ohne_handy="Erst im Heft sammeln, dann eintippen.")
-    B.tb(s, X0, 3.9, W, 0.5, [[("Formen: ", {"bold": True, "color": OLIVE}), ("Reihe 1 → konventionell · Reihe 2 → integriert · Reihe 3 → biologisch", {})]], size=18, after=0)
+    B.tb(s, X0, 3.9, W, 0.5, [[("Formen: ", {"bold": True, "color": OLIVE}), ("Reihe 1 → konventionell · Reihe 2 → integriert · Reihe 3 → biologisch", {})]], size=20, after=0)
     return s
 
 
@@ -274,14 +277,14 @@ def t2_a3():
 def t2_a4():
     s = auftrag_folie("Jetzt: Aufgabe 4 – Verpackungen in Gruppen", [4], {4: "Gruppe, zwei Verpackungen"}, "Zeichen, Code, Herkunft, Preis pro kg · 3 Korrekturen zum KI-Satz",
                       ohne_handy="Erst Verpackungen lesen und notieren, dann eintippen.")
-    B.tb(s, X0, 3.95, W, 0.5, [[("Keine Verpackungen? ", {"bold": True, "color": RUST}), ("Beispiel: Bio-Milch »AT-BIO-301 · Österreich-Landwirtschaft · 1,59 €/l«", {})]], size=16, after=0)
+    B.tb(s, X0, s._ende, W, 0.7, [[("Keine Verpackungen? ", {"bold": True, "color": RUST}), ("Bio-Milch »AT-BIO-301 · Österreich · 1,59 €/l«", {})]], size=20, after=0)
     return s
 
 
 def t2_klaeren():
     s = d.slide("Nur Titel", "Kurz klären: pro Hektar oder pro Kilogramm?")
     bild(s, "flaeche.png", X0, 1.0, 5.2, 3.2)
-    y = frage_klick(s, 1.0, "Fläche = Menge : Ertrag. 20 % weniger Ertrag – wie viel mehr Fläche?", "100 : 80 = 1,25 → 25 % mehr, nicht 20 %.", w=3.7, x=5.8, size=18)
+    y = frage_klick(s, 1.0, "Fläche = Menge : Ertrag. 20 % weniger Ertrag – wie viel mehr Fläche?", "100 : 80 = 1,25 → 25 % mehr, nicht 20 %.", w=3.7, x=5.8, size=20)
     return s
 
 
@@ -315,7 +318,7 @@ def t3_sof():
 def t3_klaeren():
     s = d.slide("Nur Titel", "Kurz klären: die Genschere in vier Schritten")
     bild(s, "genschere.png", X0 + 0.9, 0.98, W - 1.8, 2.25)
-    y = frage_klick(s, 3.3, "Präziser Schnitt = sicher?", "Nein – geprüft wird das Ergebnis, nicht nur die Methode.", size=18)
+    y = frage_klick(s, 3.3, "Präziser Schnitt = sicher?", "Nein – geprüft wird das Ergebnis, nicht nur die Methode.", size=20)
     return s
 
 
@@ -352,8 +355,8 @@ def t4_skala():
     c = B.box(s, X0, 1.05, W, 0.9, fill=RGBColor.from_string("F6E3DF"), line=RUST, lw=2)
     B.text(c, [[("Erfundene Schlagzeile: »Genmais erzeugt Krebs!«", {"bold": True, "color": RUST})]], size=24, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
     bar = B.box(s, X0 + 0.3, 2.35, W - 0.6, 0.22, fill=ORANGE)
-    B.tb(s, X0, 2.65, 3.2, 0.4, ["gar nicht glaubwürdig"], size=18, bold=True, after=0)
-    B.tb(s, X0 + W - 3.2, 2.65, 3.2, 0.4, ["sehr glaubwürdig"], size=18, bold=True, align=PP_ALIGN.RIGHT, after=0)
+    B.tb(s, X0, 2.65, 3.2, 0.4, ["gar nicht glaubwürdig"], size=20, bold=True, after=0)
+    B.tb(s, X0 + W - 3.2, 2.65, 3.2, 0.4, ["sehr glaubwürdig"], size=20, bold=True, align=PP_ALIGN.RIGHT, after=0)
     B.tb(s, X0, 3.2, W, 0.9, ["Stell dich im Raum auf die Linie. Zwei von euch sagen, warum. Am Ende der Stunde stellt ihr euch noch einmal auf."], size=20, after=0)
     return s
 
@@ -373,9 +376,9 @@ def t4_gruppen():
 
 def t4_klaeren():
     s = d.slide("Nur Titel", "Kurz klären: was die Folgestudie zeigt – und was nicht")
-    karte(s, X0, 1.0, 4.4, 1.5, "G-TwYST 2019", ["50 Tiere je Gruppe · derselbe Mais · keine Schadwirkung beim Verfüttern"], GREEN, size=18)
-    karte(s, X0 + 4.6, 1.0, 4.4, 1.5, "Nicht geprüft", ["alle Gentech-Pflanzen · Genschere-Pflanzen · jedes Spritzmittel"], RUST, size=18)
-    y = frage_klick(s, 2.7, "Ist Séralini damit ein Betrüger?", "Nein – schwache Methode ist kein Betrugsbeweis. Und die Folgestudie ist kein Freibrief.", size=18)
+    karte(s, X0, 1.0, 4.4, 1.5, "G-TwYST 2019", ["50 Tiere je Gruppe · derselbe Mais · keine Schadwirkung beim Verfüttern"], GREEN, size=20)
+    karte(s, X0 + 4.6, 1.0, 4.4, 1.5, "Nicht geprüft", ["alle Gentech-Pflanzen · Genschere-Pflanzen · jedes Spritzmittel"], RUST, size=20)
+    y = frage_klick(s, 2.7, "Ist Séralini damit ein Betrüger?", "Nein – schwache Methode ist kein Betrugsbeweis. Und die Folgestudie ist kein Freibrief.", size=20)
     return s
 
 
@@ -388,7 +391,7 @@ def t4_bespr():
     s = d.slide("Aufgabe", "Partner liest gegen – und noch einmal aufstellen")
     rows = [["Kriterium", "✓"]] + [[k, "☐"] for k in I.T[8]["kriterien"]]
     cells, h = B.auto_grid(s, X0, 1.0, [8.0, 1.0], rows, size=18, minh=0.4)
-    y = frage_klick(s, 1.0 + h + 0.12, "Beispiel-Überschrift", "»Rattenversuch beweist Krebsgefahr durch Genmais nicht«", size=18)
+    y = frage_klick(s, 1.0 + h + 0.12, "Beispiel-Überschrift", "»Rattenversuch beweist Krebsgefahr durch Genmais nicht«", size=20)
     return s
 
 
@@ -404,7 +407,7 @@ def zusatz_folie():
     s = d.slide("Nur Titel", "OPTIONAL: Für Schnelle", hidden=True)
     rows = [["Nr.", "Zusatzaufgabe", "Zeit"]] + [[str(n), T[n]["title"], f"{T[n]['zeit']} min"] for n in (10, 11, 12, 13)]
     cells, h = B.auto_grid(s, X0, 1.05, [0.7, 6.9, 1.4], rows, size=20, minh=0.46)
-    B.tb(s, X0, 1.05 + h + 0.15, W, 0.8, ["Nur, wenn die Pflicht fertig ist. Keine Hausübung. Quiz »Landbau-Check« (16 Fragen) freiwillig."], size=18, after=0)
+    B.tb(s, X0, 1.05 + h + 0.15, W, 0.8, ["Nur, wenn die Pflicht fertig ist. Keine Hausübung. Quiz »Landbau-Check« (16 Fragen) freiwillig."], size=20, after=0)
     return s
 
 
@@ -480,7 +483,7 @@ def bauen():
     for ph in s.placeholders:
         if ph.placeholder_format.type == 2:
             B.text(ph, ["NAWI · 3AB · K2.1 · Unterrichts-PPP · 3AK und 3BK: " + " · ".join(I.DATEN["3AK"][n] for n in (1, 2, 3, 4)) + " · Buch S. 38–48",
-                        [(f"Stand {I.STAND} · {I.V} · TH-Unterricht (Ablauf) – zum Nachlesen: TH-Lehrer", {"size": 12})]], size=18, color=RGBColor.from_string("C9D6B0"))
+                        [(f"Stand 31.10.2026 · {B.VER} · TH-Unterricht (Ablauf) – zum Nachlesen: TH-Lehrer", {"size": 14})]], size=20, color=RGBColor.from_string("C9D6B0"))
     titel = s
     bedien = d.slide("Nur Titel", "Lehrer-Info · So führt die PPP", hidden=True)
     regie = {st["std"]: d.slide("Nur Titel", f"Regie 3AK und 3BK · Stunde {st['std']} · {st['datum']}", hidden=True) for st in P.PLAN["3AK"]}
@@ -560,7 +563,7 @@ def bauen():
     show("Optional: Für Schnelle", [zusatz])
 
     os.makedirs(ZIEL, exist_ok=True)
-    name = f"{I.PRAEFIX}-TH-Unterricht-{I.V}.pptx"
+    name = f"{I.PRAEFIX}-TH-Unterricht-{B.VER}.pptx"
     d.save(os.path.join(ZIEL, name))
     sicht = [s for s in d.p.slides if s._element.get("show") != "0"]
     for x in PROBLEME: print("ÜBERLAUF", x)
