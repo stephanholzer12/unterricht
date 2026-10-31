@@ -47,7 +47,7 @@ PARTS = [
                        "Man misst **viele** Schwingungen auf einmal, weil die Reaktionszeit beim Starten und Stoppen dann weniger ausmacht.")]},
   {"id": "pendel", "title": "Fadenpendel und Federpendel", "pill": "Buch S. 49–50",
    "blocks": [("img", "img/g_pendel.png", "Links ein Fadenpendel mit Länge l bis zum Schwerpunkt und höchstens 10 Grad Ausschlag, rechts ein Federpendel mit Masse m und Federkonstante k", "Zwei Pendel – zwei verschiedene Formeln"),
-              ("tiles", [("Fadenpendel", ["T = 2π · √(l/g) (Näherung für kleine Ausschläge)", "l = Länge vom Aufhängepunkt bis zum **Schwerpunkt** des Körpers, g = 9,81 m/s²",
+              ("tiles", [("Fadenpendel", ["T = 2π · √(l/g) (Näherung für kleine Ausschläge)", "l = Länge vom Aufhängepunkt bis zum **Schwerpunkt** des Körpers (m), g = **Fallbeschleunigung**, auf der Erde ca. 9,81 m/s², π = Kreiszahl ≈ 3,14, √ = Quadratwurzel",
                                          "Die **Masse spielt keine Rolle**. Viermal so lang → doppelt so lange Schwingungsdauer."]),
                          ("Federpendel", ["T = 2π · √(m/k)", "m = Masse in kg, k = **Federkonstante** in N/m (wie hart die Feder ist)",
                                          "Mehr Masse → **längere** Schwingungsdauer, härtere Feder → kürzere."])]),
@@ -114,7 +114,7 @@ PARTS = [
               ("ul", ["Die **Wellenlänge λ** (Lambda) ist der Abstand zweier benachbarter Wellenberge – man misst sie in einer **Momentaufnahme** entlang des Ortes.",
                       "Die **Periodendauer T** misst man dagegen an **einem festen Ort** über die Zeit.",
                       "In einer Periodendauer läuft die Welle genau eine Wellenlänge weiter. Daraus folgt:"]),
-              ("merke", "v = λ / T = λ · f   (v in m/s, λ in m, f in Hz)"),
+              ("merke", "v = λ / T = λ · f   (v = Ausbreitungsgeschwindigkeit in m/s, λ = Wellenlänge in m, f = Frequenz in Hz)"),
               ("hint", "Beispiel: λ = 0,50 m und f = 4,0 Hz → v = 0,50 m · 4,0 Hz = 2,0 m/s. Bleibt v gleich und f verdoppelt sich, wird λ halb so groß. "
                        "Marine und Fischerei: Ein Sonar sendet Schallpulse ins Wasser und misst, wann das Echo zurückkommt – aus der Laufzeit folgt die Entfernung (Echoortung wie bei der Fledermaus).")]},
   {"id": "stop3", "title": "Stopp – kannst du das?", "pill": "Buch S. 54–55", "blocks": [("reveal", I.STOPPFRAGEN[3])]},
@@ -151,7 +151,7 @@ PARTS = [
  ("teil5", "4AK: Stunde 5 · Mi 18.11. · 4BK: Stunde 3 · Mi 11.11. · Buch S. 58–59", "Teil 5 · Funk, Wärmebild und Strahlenschutz", [
   {"id": "emwellen", "title": "Elektromagnetische Wellen", "pill": "Buch S. 58–59",
    "blocks": [("ul", ["**Elektromagnetische Wellen** sind sich ausbreitende Änderungen von elektrischen und magnetischen Feldern. Sie brauchen **kein Medium** – das Licht der Sonne kommt durch das Vakuum des Weltraums.",
-                      "Im Vakuum sind alle gleich schnell: **c ≈ 3,00 · 10⁸ m/s** (300 000 km/s). In Luft fast genauso, in Glas oder Wasser **langsamer**.",
+                      "Im Vakuum sind alle gleich schnell: **c ≈ 3,00 · 10⁸ m/s** (c = Lichtgeschwindigkeit im Vakuum, 300 000 km/s). In Luft fast genauso, in Glas oder Wasser **langsamer**.",
                       "Auch hier gilt **c = λ · f**: Je höher die Frequenz, desto kürzer die Wellenlänge."]),
               ("hint", "Beispiel UKW-Radio: f = 100 MHz = 1,00 · 10⁸ Hz → λ = c : f = 3,00 · 10⁸ m/s : 1,00 · 10⁸ Hz = 3,00 m. (»Mega« = Million.)"),
               ("merke", "Science oder Fiction gelöst: Den Lichtblitz der Explosion sieht man im All – Licht braucht kein Medium. Den Knall hört man nicht – Schall braucht eines.")]},
