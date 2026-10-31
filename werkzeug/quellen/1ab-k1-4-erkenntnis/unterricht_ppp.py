@@ -192,7 +192,7 @@ HEUTE_ZIEL = {
     1: "Beobachtung, Hypothese und Vorhersage auseinanderhalten – und einen fairen Test planen, bevor geworfen wird.",
     2: "Den Papierflieger-Test nach festen Regeln durchziehen: drei Vergleichspaare, alle Werte aufschreiben.",
     3: "Verstehen, dass Forschung ein Kreislauf ist – und alte Daten kritisch lesen.",
-    4: "Eigene Daten auswerten und vorsichtig schließen: nur so viel behaupten, wie die Werte zeigen.",
+    4: "Eigene Daten auswerten und nur sagen, was die Werte wirklich zeigen.",
 }
 
 
@@ -374,8 +374,8 @@ def t4_weisst():
 
 
 def t4_klaeren():
-    s = d.slide("Nur Titel", "Kurz klären: vorsichtig schließen")
-    karte(s, X0, 1.0, 9.0, 1.15, "Vorsichtig schließen heißt", ["nur behaupten, was die Werte zeigen – und sagen, wie sicher ihr seid."], TEAL)
+    s = d.slide("Nur Titel", "Kurz klären: Was sagen die Werte?")
+    karte(s, X0, 1.0, 9.0, 1.15, "Auswerten heißt", ["nur behaupten, was die Werte zeigen – und sagen, wie sicher ihr seid."], TEAL)
     B.picture(s, UNIT + "img/mittelwert.png", X0, 2.2, 3.7, 2.14)
     y = 2.2
     y = frage_klick(s, y, "A: 5,1 · 6,0 · 5,4 m. Mittelwert?", "(5,1 + 6,0 + 5,4) m : 3 = 5,5 m. Spannweite: 6,0 − 5,1 = 0,9 m.", w=5.1, x=4.4, size=20)

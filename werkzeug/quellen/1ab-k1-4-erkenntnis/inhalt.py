@@ -7,13 +7,13 @@ Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe. Kein Kahoot (Stepha
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge, z. B. Zuordnen)."""
 
 STAND = "30.10.2026"
-V = "v4"
+V = "v5"
 ORDNER = "1ab-nawi/k1-4-erkenntnis"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
 KLASSE_URL = BASE + "1ab-nawi/"
 EYEBROW = "NAWI · 1AB · K1.4 Erkenntnisgewinn"
-TITEL = "Erkenntnisgewinn – vermuten, prüfen, vorsichtig schließen"
+TITEL = "Erkenntnisgewinn – vermuten, prüfen, auswerten"
 KURZTITEL = "Erkenntnisgewinn"
 BUCH = "Buch S. 28–32"
 KEY = "26-27-1AB-K1.4-Erkenntnis-TH-Handy-v1"
@@ -38,7 +38,7 @@ DATEN = {"1AK": {1: "Do 05.11. (1. Std.)", 2: "Do 05.11. (2. Std.)", 3: "Fr 06.1
          "1BK": {1: "Mi 04.11.", 2: "Fr 06.11.", 3: "Mo 09.11.", 4: "Mi 11.11."}}
 # Welcher Teil in welcher Stunde
 TEIL_STUNDE = {1: {"1AK": 1, "1BK": 1}, 2: {"1AK": 2, "1BK": 3}, 3: {"1AK": 3, "1BK": 2}, 4: {"1AK": 4, "1BK": 4}}
-TEILNAME = {1: "Teil 1 · Vermuten und prüfen", 2: "Teil 2 · Der Papierflieger-Test", 3: "Teil 3 · Wie Forschung wirklich läuft", 4: "Teil 4 · Auswerten und vorsichtig schließen"}
+TEILNAME = {1: "Teil 1 · Vermuten und prüfen", 2: "Teil 2 · Der Papierflieger-Test", 3: "Teil 3 · Wie Forschung wirklich läuft", 4: "Teil 4 · Auswerten: Was sagen die Werte?"}
 TEILBUCH = {1: "Buch S. 28–29", 2: "Buch S. 29", 3: "Buch S. 29", 4: "Buch S. 29–32"}
 
 
@@ -179,7 +179,7 @@ T = [
                       "Semmelweis: Händewaschen mit Chlorkalk, Vorhersage weniger Tote durch Kindbettfieber · abweichendes Ergebnis → zuerst Messung und Bedingungen prüfen."]]],
   "tip": ["Partnerkarten", "theorie.html#partner"]},
 
- # ======================================================= Teil 4 · Auswerten und vorsichtig schließen (Buch S. 29–32)
+ # ======================================================= Teil 4 · Auswerten: Was sagen die Werte? (Buch S. 29–32)
  {"id": "a8", "nr": 8, "title": "Mittelwert und Spannweite", "src": "Buch S. 29", "own": True, "tag": "Teil 4", "h": 4, "zeit": 4,
   "q": "Übungsdaten (nicht eure Messung): Ein Flieger flog ohne Klammer 3,8 m · 4,6 m · 4,2 m und mit Klammer 5,1 m · 3,9 m · 5,4 m. "
        "a) Berechne den Mittelwert ohne Klammer (A) in m. b) Berechne den Mittelwert mit Klammer (B) in m. c) Berechne die Spannweite von B in m. d) Wähle die passende Schlussfolgerung.",
@@ -321,7 +321,7 @@ GRP = {1: TEILNAME[1] + " (Buch S. 28–29) · 1AK: Stunde 1 · Do 05.11. · 1BK
 LERNZIELE = ["eine **naturwissenschaftliche Frage** erkennen und **Biologie, Chemie oder Physik** zuordnen – und Fragen erkennen, die keine Messung beantworten kann",
              "**Beobachtung, Hypothese, Vorhersage und Theorie** unterscheiden und erklären, warum eine Theorie mehr ist als eine Vermutung",
              "einen **fairen Test** planen und durchführen: nur eine Sache ändern, Messregeln vorher festlegen, wiederholen, alles aufschreiben",
-             "aus Messwerten **vorsichtig schließen**: Mittelwert und Spannweite nutzen, Grenzen nennen und sagen, ob die Daten die Vermutung unterstützen, dagegen sprechen oder unklar sind"]
+             "aus Messwerten **Schlüsse ziehen**: Mittelwert und Spannweite nutzen, Grenzen nennen und sagen, ob die Daten die Vermutung unterstützen, dagegen sprechen oder unklar sind"]
 
 WICHTIGSTE = ["Eine **Beobachtung** beschreibt, was wir sehen oder messen; eine **Hypothese** ist eine begründete, **prüfbare** Vermutung; eine **Vorhersage** sagt, was beim nächsten Test herauskommen sollte.",
               "Eine wissenschaftliche **Theorie** ist keine Vermutung, sondern eine Erklärung, die **viele geprüfte Befunde** verbindet und Vorhersagen erlaubt; ein **Gesetz** beschreibt eine Regelmäßigkeit unter bestimmten Bedingungen.",
@@ -343,7 +343,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Gegenprobe", "Wiederholung unter etwas anderen Bedingungen (z. B. anderer Werfer), um ein Ergebnis zu überprüfen"],
                 ["Mittelwert", "Summe aller Werte geteilt durch die Anzahl der Werte"],
                 ["Spannweite", "größter Wert minus kleinster Wert – zeigt, wie stark die Werte streuen"],
-                ["vorsichtig schließen", "aus den Messwerten nur so viel folgern, wie sie zeigen: Streuung beachten, mehrere Würfe nutzen und »unterstützt«, »spricht dagegen« oder »unklar« sagen statt »bewiesen«"],
+                ["Schlüsse ziehen", "aus den Messwerten nur so viel folgern, wie sie zeigen: Streuung beachten, mehrere Würfe nutzen und »unterstützt«, »spricht dagegen« oder »unklar« sagen statt »bewiesen«"],
                 ["Falsifizierbarkeit", "eine Aussage ist so formuliert, dass eine Beobachtung sie widerlegen könnte (Karl Popper)"],
                 ["Publikation", "Veröffentlichung von Methode und Ergebnissen, damit andere sie prüfen können"],
                 ["Begutachtung (Peer Review)", "Fachleute prüfen eine Arbeit vor der Veröffentlichung; das senkt Fehler, garantiert aber keine Wahrheit"],

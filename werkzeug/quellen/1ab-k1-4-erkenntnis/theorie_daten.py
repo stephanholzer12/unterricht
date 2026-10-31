@@ -140,11 +140,11 @@ PARTS = [
   ("jetzt", "Jetzt: Aufgabe 7 eintragen", "aufgaben.html#card_a7"),
  ]),
 
- # ---------------------------------------------------------------- Teil 4 · Auswerten und vorsichtig schließen
+ # ---------------------------------------------------------------- Teil 4 · Auswerten: Was sagen die Werte?
  ("teil4", "1AK: Stunde 4 · Do 12.11. · 1BK: Stunde 4 · Mi 11.11. · Buch S. 29–32", I.TEILNAME[4], [
-  {"id": "vorsichtig", "title": "Was heißt »vorsichtig schließen«?", "pill": "Buch S. 29",
-   "blocks": [("ul", ["**Schließen** heißt: aus den Messwerten einen Satz ableiten, zum Beispiel »Das unterstützt unsere Vorhersage.« **Vorsichtig** heißt: nur so viel behaupten, wie die Werte wirklich zeigen.",
-                      "Beispiel: Flieger A fliegt im Mittel 6,1 m, Flieger B 6,4 m. Überlappen die Einzelwerte stark, kann der Unterschied Zufall sein. Vorsichtig geschlossen: »B war im Mittel etwas weiter, eine sichere Entscheidung ist noch nicht möglich.«",
+  {"id": "vorsichtig", "title": "Was sagen die Werte wirklich?", "pill": "Buch S. 29",
+   "blocks": [("ul", ["Aus den Messwerten leitet ihr einen Satz ab, zum Beispiel »Das unterstützt unsere Vorhersage.« Dabei gilt: **nur so viel behaupten, wie die Werte wirklich zeigen.**",
+                      "Beispiel: Flieger A fliegt im Mittel 6,1 m, Flieger B 6,4 m. Überlappen die Einzelwerte stark, kann der Unterschied Zufall sein. Richtig formuliert: »B war im Mittel etwas weiter, eine sichere Entscheidung ist noch nicht möglich.«",
                       "Dazu gehören drei Gewohnheiten: **mehrere Würfe** statt einem einzelnen zu trauen, **auch die Spannweite ansehen** und **vorsichtige Wörter** wählen (unterstützt, spricht dagegen, unklar) – nicht »bewiesen«."]),
               ("merke", "Wie bei einer Lage-Meldung: Melde, was du gesehen hast, und sag dazu, wie sicher du bist.")]},
   {"id": "mittelwert", "title": "Mittelwert und Spannweite", "pill": "Buch S. 29",
