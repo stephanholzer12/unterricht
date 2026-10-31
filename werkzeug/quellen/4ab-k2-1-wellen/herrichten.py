@@ -36,3 +36,21 @@ MENGEN = {
     "Handys": "2 je Gruppe als Stoppuhr (16 Stück) – reichen sie nicht, stoppt eine Gruppe mit einem Handy",
     "Beamer": "PhET »Pendel-Labor«, »Welle an einem Seil«, »Welleninterferenz« vorab im Browser öffnen",
 }
+
+
+# Wo steht der Versuch? (Regelwerk 9: bei jedem Versuch angeben; Vorschlag, Stephan kann ändern)
+PLATZ = {
+    "K2.1-V1": "Lehrertisch vorne, Pendel quer zur Klasse (von links nach rechts); links und rechts je ca. 1,5 m frei lassen; Querstab nur über die Tischkante, nicht über Sitzplätze",
+    "K2.1-V2": "Lehrertisch vorne, am selben Pendel wie K2.1-V1",
+    "K2.2-V1": "Freie Fläche vorne bzw. Gang im Saal (Schnur ca. 3 m locker gespannt); für die Kadetten-Welle Platz für 10 Kadetten in einer Reihe",
+    "K2.2-V2": "Lehrer-PC mit Beamer (PhET), kein Aufbau am Tisch nötig",
+}
+# Hinweis an der jeweiligen Zeile (Schlüssel = Material-Schlüssel aus versuche_daten.LM)
+HINWEIS = {
+    "stativ": MENGEN["Pendel-Aufbau (K2.1-V1, V2)"],
+    ("schnur", "K2.1-V1"): "ca. 1,2 m mit Fähnchen bei 0,40 m und 0,90 m, fest am Querstab",
+    ("schnur", "K2.1-V2"): "dieselbe Schnur wie K2.1-V1 (Länge 0,40 m)",
+    ("schnur", "K2.2-V1"): MENGEN["Schnur (K2.2-V1)"],
+    "handy": MENGEN["Handys"],
+    "laptop": MENGEN["Beamer"],
+}

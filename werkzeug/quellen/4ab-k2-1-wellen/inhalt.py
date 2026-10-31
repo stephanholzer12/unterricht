@@ -7,7 +7,7 @@ Eine Quelle für Handy-Seiten, Word, PPP, Kahoot und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge).
 Zeichen √ und ≈ nur in Theorie und Bildern – in Aufgabentexten und Lösungen nicht (die PDF-Schrift kennt sie nicht; clean() ersetzt sie notfalls)."""
 
-STAND = "30.10.2026"
+STAND = "31.10.2026"
 V = "v6"  # v6: wie v5, dazu Formelzeichen und Einheiten direkt erklärt (π, √, g, c, v), passend zur Unterrichts-PPP v6; Aufgaben-IDs und Speicherschlüssel unverändert
 ORDNER = "4ab-nawi/k2-1-wellen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
