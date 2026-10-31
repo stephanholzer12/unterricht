@@ -12,7 +12,7 @@ P = I.PRAEFIX
 ZIP_V = "v4"  # Teillieferung 31.10.2026 (nur Unterrichts-PPP v6, Handy-Seiten v6, Lösungsmappe): ZIP, Word, Lehrer-/Kadetten-PPP und Kahoot bleiben auf v3
 V_ALT = "v3"
 DATEIEN = {"stand": "31.10.2026", "zip": f"{P}-{ZIP_V}.zip",
-           "liste": [f"{P}-TH-Unterricht-v7.pptx", f"{P}-TH-Lehrer-{V_ALT}.pptx", f"{P}-TH-Kadetten-{V_ALT}.pptx", f"{P}-VS-Lehrer-{V_ALT}.pptx", f"{P}-VS-Kadetten-{V_ALT}.pptx",
+           "liste": [f"{P}-TH-Unterricht-v8.pptx", f"{P}-TH-Lehrer-{V_ALT}.pptx", f"{P}-TH-Kadetten-{V_ALT}.pptx", f"{P}-VS-Lehrer-{V_ALT}.pptx", f"{P}-VS-Kadetten-{V_ALT}.pptx",
                      f"{P}-TH-AB-{V_ALT}.docx", f"{P}-TH-Loesung-{V_ALT}.docx", f"{P}-TH-Fachwissen-{V_ALT}.docx",
                      f"{P}-VS-AB-{V_ALT}.docx", f"{P}-VS-Loesung-{V_ALT}.docx", f"{P}-VS-Fachwissen-{V_ALT}.docx",
                      f"{P}-Kahoot-v1.xlsx", f"{P}-Pruefbericht-Claude-v3.md", f"{P}-Unterrichts-PPP-Rueckmeldung-Claude-v1.md"]}
