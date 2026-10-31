@@ -142,6 +142,11 @@ PARTS = [
 
  # ---------------------------------------------------------------- Teil 4 · Auswerten und vorsichtig schließen
  ("teil4", "1AK: Stunde 4 · Do 12.11. · 1BK: Stunde 4 · Mi 11.11. · Buch S. 29–32", I.TEILNAME[4], [
+  {"id": "vorsichtig", "title": "Was heißt »vorsichtig schließen«?", "pill": "Buch S. 29",
+   "blocks": [("ul", ["**Schließen** heißt: aus den Messwerten einen Satz ableiten, zum Beispiel »Das unterstützt unsere Vorhersage.« **Vorsichtig** heißt: nur so viel behaupten, wie die Werte wirklich zeigen.",
+                      "Beispiel: Flieger A fliegt im Mittel 6,1 m, Flieger B 6,4 m. Überlappen die Einzelwerte stark, kann der Unterschied Zufall sein. Vorsichtig geschlossen: »B war im Mittel etwas weiter, eine sichere Entscheidung ist noch nicht möglich.«",
+                      "Dazu gehören drei Gewohnheiten: **mehrere Würfe** statt einem einzelnen zu trauen, **auch die Spannweite ansehen** und **vorsichtige Wörter** wählen (unterstützt, spricht dagegen, unklar) – nicht »bewiesen«."]),
+              ("merke", "Wie bei einer Lage-Meldung: Melde, was du gesehen hast, und sag dazu, wie sicher du bist.")]},
   {"id": "mittelwert", "title": "Mittelwert und Spannweite", "pill": "Buch S. 29",
    "blocks": [("img", "img/mittelwert.png", "Punktdiagramm: drei Weiten ohne Klammer und drei mit Klammer, jeweils mit Mittelwert-Linie und Spannweite", "Übungsdaten: Jeder Punkt ist ein Wurf, die Linie der Mittelwert, der Balken die Spannweite."),
               ("tiles", [("Mittelwert", ["**Summe aller Werte : Anzahl der Werte**", "(5,1 + 6,0 + 5,4) m : 3 = 16,5 m : 3 = **5,5 m**"]),

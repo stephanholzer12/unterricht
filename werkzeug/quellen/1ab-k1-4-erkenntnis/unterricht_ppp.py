@@ -192,7 +192,7 @@ HEUTE_ZIEL = {
     1: "Beobachtung, Hypothese und Vorhersage auseinanderhalten – und einen fairen Test planen, bevor geworfen wird.",
     2: "Den Papierflieger-Test nach festen Regeln durchziehen: drei Vergleichspaare, alle Werte aufschreiben.",
     3: "Verstehen, dass Forschung ein Kreislauf ist – und alte Daten kritisch lesen.",
-    4: "Eigene Daten auswerten und vorsichtig schließen.",
+    4: "Eigene Daten auswerten und vorsichtig schließen: nur so viel behaupten, wie die Werte zeigen.",
 }
 
 
@@ -374,12 +374,12 @@ def t4_weisst():
 
 
 def t4_klaeren():
-    s = d.slide("Nur Titel", "Kurz klären: Mittelwert und Spannweite")
-    B.picture(s, UNIT + "img/mittelwert.png", X0, 1.0, 4.6, 2.66)
-    B.tb(s, X0, 3.7, 4.6, 0.8, ["Mittelwert = Summe : Anzahl", "Spannweite = größter − kleinster Wert"], size=20, bold=True, color=OLIVE, after=2)
-    y = 1.05
-    y = frage_klick(s, y, "A: 5,1 m · 6,0 m · 5,4 m. Mittelwert?", "(5,1 + 6,0 + 5,4) m : 3 = 16,5 m : 3 = 5,5 m", w=4.2, x=5.3, size=20)
-    y = frage_klick(s, y, "Werte überlappen stark. Klare Sache?", "Nein – eher »noch keine Entscheidung«. Das ist erlaubt.", w=4.2, x=5.3, size=20)
+    s = d.slide("Nur Titel", "Kurz klären: vorsichtig schließen")
+    karte(s, X0, 1.0, 9.0, 1.15, "Vorsichtig schließen heißt", ["nur behaupten, was die Werte zeigen – und sagen, wie sicher ihr seid."], TEAL)
+    B.picture(s, UNIT + "img/mittelwert.png", X0, 2.2, 3.7, 2.14)
+    y = 2.2
+    y = frage_klick(s, y, "A: 5,1 · 6,0 · 5,4 m. Mittelwert?", "(5,1 + 6,0 + 5,4) m : 3 = 5,5 m. Spannweite: 6,0 − 5,1 = 0,9 m.", w=5.1, x=4.4, size=20)
+    y = frage_klick(s, y, "Werte überlappen stark. Klare Sache?", "Nein – eher »noch keine Entscheidung«. Das ist erlaubt.", w=5.1, x=4.4, size=20)
     return s
 
 
@@ -476,7 +476,7 @@ SPEC = {
  4: [("t4_heute", [0], "START", None, "Ziel zeigen, Protokoll-Handys öffnen lassen", lambda: heute_folie(4)),
      ("t4_weiss", [1], "WIEDERHOLEN", "Hypothese von damals", "An die eigene Vorhersage erinnern (nicht mehr ändern)", t4_weisst),
      ("t4_lesen", [2], "LESEN", "Lesen", "Rechenweg und die drei möglichen Ergebnisse selbst lesen",
-      lambda: lesen_folie(4, None, ["mittelwert", "schluss", "popper"], "Wann ist die richtige Antwort »noch keine Entscheidung möglich«?", [2])),
+      lambda: lesen_folie(4, None, ["vorsichtig", "mittelwert", "schluss", "popper"], "Wann ist die richtige Antwort »noch keine Entscheidung möglich«?", [2])),
      ("t4_klaeren", [3], "KURZ KLÄREN", "Kurz klären", "Rechenweg einmal vorzeigen (andere Zahlen als A8), Überlappung = unklar", t4_klaeren),
      ("t4_popper", [3], "KURZ KLÄREN", None, "Falsifizierbarkeit (Popper) – Pflicht-Lehraufgabe, für A9 Aussage 3", t4_popper),
      ("t4_ausw", [4], "VERSUCH", "Protokoll auswerten", "Eigene Daten auswerten – Kern der Einheit", t4_auswertung),

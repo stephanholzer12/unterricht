@@ -156,7 +156,7 @@ VIDEO_NOTIZ = {
     "apolin1": "Martin Apolin, »Hypothese und Theorie – Teil 1« (YouTube, Link aus der bisherigen E3-PPP, Altfolie 6). Stephan verwendet beide Teile regelmäßig. Inhalt und Länge von hier nicht prüfbar (YouTube gesperrt) – vorher ansehen; im Zeitplan nicht enthalten (Theorieteil zum Selbstansehen bzw. bei Reserve).",
     "apolin2": "Martin Apolin, »Hypothese und Theorie – Teil 2« mit Popper (Altfolie 7). Wie Teil 1. Gut zu Teil 4 »Widerlegbar muss es sein«.",
     "altfolie18": "»So funktioniert Fliegen wirklich« (Altfolie 18, https://www.youtube.com/watch?v=VH0k0H7MgWc&t=234s) – nur als Anknüpfung für die Kraft-Einheit, in E3 nicht eingebaut (Inhalt nicht prüfbar; Auftriebserklärung vorher prüfen: keine »gleichzeitige Ankunft an der Hinterkante«).",
-    "podcast": "Ö1 »Dimensionen«: Peer Review und Open Science (2020, ca. 25 min, Jahresplan P03-03 »Kernvorschlag«, eigene Sammlung) – im Theorieteil als Hör-Tipp genannt, Ausschnitt nur bei Reserve in Teil 3. Alternativen laut Jahresplan: P03-01 Biologie Passion Podcast Folge 034 Meselson-Stahl (12 min), P03-02 Forschungsquartett (14 min).",
+    "podcast": "Ö1 »Dimensionen«: Peer Review und Open Science (2020, ca. 24 min, Jahresplan P03-03 »Kernvorschlag«, eigene Sammlung) – im Theorieteil als Hör-Tipp genannt, Ausschnitt nur bei Reserve in Teil 3. Alternativen laut Jahresplan: P03-01 Biologie Passion Podcast Folge 034 Meselson-Stahl (12 min), P03-02 Forschungsquartett (14 min).",
 }
 
 AUSBLICK = ("Danach laut Stephan direkt »Physik – Kraftbegriff« (1AK ab Do 12.11., 2. Stunde; 1BK nach dem 11.11.). Der Flieger bleibt als Anknüpfung: Kräfte nach dem Loslassen, Luftwiderstand, "
@@ -186,5 +186,5 @@ QUELLEN = [
     "**Selbst geprüft (29.10.2026):** eLife 75830, Rodgers & Collings »Reproducibility in Cancer Biology: What have we learned?« (7.12.2021); Originalarbeiten Errington u. a., eLife 71601 und 67995 → Forschungskarte A13; Wikipedia »Ignaz Semmelweis« (Sterblichkeitszahlen 1841–1847) → Einstieg.",
     "**Jahresplan v64:** Zeile 7, Codes K01/N06/GLV 2, Versuche V1.4 (überarbeitet) und V1.7 (nicht vorgezogen), Podcasts P03-01–03, Didaktik & Übersicht.",
     "**Inventar (Stand 25.10.2026):** #9 Bandmaß 20 m, #10 Bandmaß 3 m (E21, aktuelle Zählung leer), F-038 Büroklammern (»sehr viele«), Kreide und A4-Papier nicht im Inventar.",
-    "**Nicht prüfbar von hier:** Apolin-Videos (YouTube gesperrt) – von Stephan regelmäßig verwendet; Ö1-Podcast (eigene Sammlung). Keine weiteren Videos ungeprüft eingebaut.",
+    "**Nicht prüfbar von hier:** Apolin-Videos (YouTube hier gesperrt) – Stephan hat bestätigt, dass sie bei ihm laufen; Ö1-Podcast (eigene Sammlung). Keine weiteren Videos ungeprüft eingebaut.",
 ]

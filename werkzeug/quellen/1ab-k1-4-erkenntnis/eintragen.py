@@ -10,10 +10,10 @@ E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
 ZIP_V = "v3"  # Lieferung 30.10.2026 nach ChatGPT-Prüfung v1 (Test: ohne TH-Kadetten, VS-Kadetten, QR-PNG, Kahoot)
-DATEIEN = {"stand": "30.10.2026", "zip": f"{P}-{ZIP_V}.zip",
-           "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-VS-Lehrer-{V}.pptx",
-                     f"{P}-TH-AB-{V}.docx", f"{P}-TH-Loesung-{V}.docx", f"{P}-TH-Fachwissen-{V}.docx",
-                     f"{P}-VS-AB-{V}.docx", f"{P}-VS-Loesung-{V}.docx", f"{P}-VS-Fachwissen-{V}.docx", f"{P}-Pruefbericht-Claude-{V}.md"]}
+DATEIEN = {"stand": "31.10.2026", "zip": f"{P}-{ZIP_V}.zip",
+           "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{ZIP_V}.pptx", f"{P}-VS-Lehrer-{ZIP_V}.pptx",
+                     f"{P}-TH-AB-{ZIP_V}.docx", f"{P}-TH-Loesung-{ZIP_V}.docx", f"{P}-TH-Fachwissen-{ZIP_V}.docx",
+                     f"{P}-VS-AB-{ZIP_V}.docx", f"{P}-VS-Loesung-{ZIP_V}.docx", f"{P}-VS-Fachwissen-{ZIP_V}.docx", f"{P}-Pruefbericht-Claude-{ZIP_V}.md"]}
 neu = {"klasse": "1AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K1.4", "titel": I.TITEL, "block": "A Wissenschaft verstehen", "jahresplan": "E3",
        "seiten": ["theorie.html", "aufgaben.html", "versuche.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]

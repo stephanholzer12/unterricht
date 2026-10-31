@@ -7,7 +7,7 @@ Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe. Kein Kahoot (Stepha
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge, z. B. Zuordnen)."""
 
 STAND = "30.10.2026"
-V = "v3"
+V = "v4"
 ORDNER = "1ab-nawi/k1-4-erkenntnis"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -343,6 +343,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Gegenprobe", "Wiederholung unter etwas anderen Bedingungen (z. B. anderer Werfer), um ein Ergebnis zu überprüfen"],
                 ["Mittelwert", "Summe aller Werte geteilt durch die Anzahl der Werte"],
                 ["Spannweite", "größter Wert minus kleinster Wert – zeigt, wie stark die Werte streuen"],
+                ["vorsichtig schließen", "aus den Messwerten nur so viel folgern, wie sie zeigen: Streuung beachten, mehrere Würfe nutzen und »unterstützt«, »spricht dagegen« oder »unklar« sagen statt »bewiesen«"],
                 ["Falsifizierbarkeit", "eine Aussage ist so formuliert, dass eine Beobachtung sie widerlegen könnte (Karl Popper)"],
                 ["Publikation", "Veröffentlichung von Methode und Ergebnissen, damit andere sie prüfen können"],
                 ["Begutachtung (Peer Review)", "Fachleute prüfen eine Arbeit vor der Veröffentlichung; das senkt Fehler, garantiert aber keine Wahrheit"],
