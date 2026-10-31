@@ -27,6 +27,7 @@ sys.path.insert(0, os.path.join(ROOT, "werkzeug"))
 from lernseite_lesen import lesen  # noqa: E402
 import fahrplan as fp  # noqa: E402
 import lehrer_layout as ll  # noqa: E402
+import loesungen_seite as ls_seite  # noqa: E402
 import kadetten_layout as ks  # noqa: E402
 
 W = lambda *p: os.path.join(ROOT, "werkzeug", *p)
@@ -42,6 +43,8 @@ BASIS = "https://stephanholzer12.github.io/unterricht/"
 # Lehrer-Seite: fester Arbeitslink für Stephan, nirgends auf Kadetten-Seiten verlinkt.
 # Die öffentliche Adresse ist keine Zugriffssperre.
 LEHRER = "lehrer-0f6eec.html"
+# Lösungsübersicht (alle Klassen/Einheiten geordnet); wie LEHRER nirgends auf Kadetten-Seiten verlinkt.
+LOESUNGEN = "lehrer-loesungen-0f6eec.html"
 
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Theorie-Seite → Arbeitsblatt → Quiz
 NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
@@ -623,7 +626,11 @@ def seite_lehrer(klassen):
     out[0] = out[0].replace("</style>", LEHRER_CSS + ll.CSS + "</style>").replace("<main>", '<main class="wide">')
     out[0] = re.sub(r'<nav class="toc".*?</nav>', '<nav class="toc" aria-label="Lehrerzentrale"><div>'
         '<a href="#faecher">Fächer</a><a href="#schnellzugriff">Schnellzugriff</a>'
-        '<a href="#tests">Tests</a><a href="#klassen-titel">Alle Materialien</a></div></nav>', out[0], flags=re.S)
+        '<a href="#tests">Tests</a><a href="#klassen-titel">Alle Materialien</a>'
+        f'<a href="{LOESUNGEN}">Lösungen</a></div></nav>', out[0], flags=re.S)
+    out.append(f'<section class="card" id="loesungen-link"><h2 style="margin:0 0 4px">Lösungen</h2>'
+               f'<p class="meta" style="margin:0 0 10px">Alle Lösungen aller Klassen und Einheiten geordnet an einer Stelle – neue Einheiten kommen automatisch dazu.</p>'
+               f'<div class="links"><a class="btn teal" href="{LOESUNGEN}">Alle Lösungen öffnen</a></div></section>')
     out.append(ll.uebersicht(klassen, knoepfe))
     if tests:
         li = "".join(f'<li class="lehrer-test" data-fach="{esc(k["k"]["fach"])}"><strong>{esc(k["k"]["fach"])} {esc(kl)}</strong> · {esc(t["kapitel"].split("·")[0].strip())}'
@@ -780,6 +787,9 @@ def main():
     print("index.html: Startseite ohne Klassenliste")
     open(os.path.join(ROOT, LEHRER), "w", encoding="utf-8").write(seite_lehrer(klassen))
     print(LEHRER + ": Lehrer-Seite mit allen Klassen (nicht verlinkt) →", BASIS + LEHRER)
+    open(os.path.join(ROOT, LOESUNGEN), "w", encoding="utf-8").write(
+        ls_seite.seite(klassen, kopf=kopf, fuss=fuss, knoepfe=knoepfe, kap_key=kap_key, bloecke=BLOECKE, lehrer_seite=LEHRER))
+    print(LOESUNGEN + ": Lösungsübersicht aller Klassen (nicht verlinkt) →", BASIS + LOESUNGEN)
     ks.einbauen(E, ROOT)
     if luecken:
         print("Lücken in den Einheiten (für die Übersicht hilfreich zu ergänzen):")

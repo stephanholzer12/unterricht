@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 E = json.loads((ROOT / "werkzeug/einheiten.json").read_text(encoding="utf-8"))
 GRUPPEN = {e["ordner"].split("/")[0] for e in E}
 LEHRER = "lehrer-0f6eec.html"
+LOESUNGEN = "lehrer-loesungen-0f6eec.html"
 
 
 class Seite(HTMLParser):
@@ -56,6 +57,7 @@ class NavigationTest(unittest.TestCase):
                     except ValueError:
                         continue
                     self.assertNotEqual(rel.as_posix(), LEHRER)
+                    self.assertNotEqual(rel.as_posix(), LOESUNGEN)
                     if rel.parts[0] in GRUPPEN:
                         self.assertEqual(rel.parts[0], seite.relative_to(ROOT).parts[0])
 
@@ -78,6 +80,29 @@ class NavigationTest(unittest.TestCase):
         for b in soup.mit(attr="data-qr-ziel"):
             self.assertIn(b["data-qr-ziel"], ids)
             self.assertTrue(any(u.endswith('/' + b["data-qr-ziel"] + '/') for u in qr_urls))
+
+    def test_loesungsuebersicht_vollstaendig(self):
+        """Jede Einheit steht genau einmal in der Lösungsübersicht, jede Lehrer-Seite ist verlinkt."""
+        soup = Seite(ROOT / LOESUNGEN)
+        ids = [e["id"] for e in soup.mit(attr="id")]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual({s["id"] for s in soup.mit(tag="section", klasse="loes-klasse")}, {"l-" + g for g in GRUPPEN})
+        self.assertEqual(len(soup.mit(tag="article", klasse="loes-zeile")), len(E))
+        hrefs = [a["href"] for a in soup.mit(tag="a", attr="href")]
+        for e in E:
+            if e.get("lehrerseite"):
+                self.assertEqual(hrefs.count(e["lehrerseite"]), 1, e["ordner"])
+            self.assertIn(e["ordner"] + "/" + e["seiten"][0], hrefs, e["ordner"])
+        for link in soup.mit(tag="a", attr="href"):
+            href = urlsplit(link["href"])
+            if href.scheme or href.netloc:
+                continue
+            if not href.path:
+                self.assertIn(unquote(href.fragment), ids)
+            else:
+                self.assertTrue((ROOT / unquote(href.path)).exists(), link["href"])
+        # Rücklink aus der Lehrerzentrale vorhanden
+        self.assertIn(LOESUNGEN, [a["href"] for a in Seite(ROOT / LEHRER).mit(tag="a", attr="href")])
 
 
 if __name__ == "__main__":
