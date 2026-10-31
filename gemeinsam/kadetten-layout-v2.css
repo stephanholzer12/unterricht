@@ -81,3 +81,7 @@ nav.toc div { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.5) trans
   nav.toc { background-image: linear-gradient(90deg, transparent calc(100% - 28px), rgba(0,0,0,.28)); }
 }
 section[id], article[id], .card[id], #name { scroll-margin-top: 64px; }
+
+.ks-nachlesen { margin: 4px 0 10px; font-size: 16px; }
+.ks-nachlesen a { display: inline-block; padding: 6px 12px; border-radius: 999px; background: #E8F1F3; color: #1f5f6b; font-weight: 700; text-decoration: none; border: 1.5px solid #2E7D8C; }
+.ks-zurueck { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 20; background: #3B4A2F; color: #fff; font-weight: 700; text-decoration: none; padding: 12px 16px; border-radius: 999px; box-shadow: 0 2px 10px rgba(0,0,0,.3); }

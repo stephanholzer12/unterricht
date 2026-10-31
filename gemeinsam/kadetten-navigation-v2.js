@@ -34,3 +34,25 @@
     hoehe(); if (typeof ResizeObserver !== 'undefined') new ResizeObserver(hoehe).observe(nav);
   }
 })();
+
+/* Nachlesen: jede Aufgabe zeigt einen Link zur passenden Stelle der Theorie; die Theorie bietet den Rückweg zur Aufgabe */
+(function () {
+  try {
+    if (typeof T !== 'undefined' && Array.isArray(T)) {
+      T.forEach(function (t) {
+        if (!t || !t.tip || !t.tip[1] || t.tip[1].indexOf('theorie.html') !== 0) return;
+        var card = document.getElementById('card_' + t.id);
+        if (!card || card.querySelector('.ks-nachlesen')) return;
+        var p = document.createElement('p'); p.className = 'ks-nachlesen';
+        var a = document.createElement('a'); a.href = t.tip[1]; a.textContent = '📖 Nachlesen in der Theorie: ' + t.tip[0];
+        p.appendChild(a);
+        var h = card.querySelector('h2'); if (h) h.insertAdjacentElement('afterend', p);
+      });
+    }
+    if (/theorie\.html$/.test(location.pathname) && /aufgaben\.html/.test(document.referrer || '')) {
+      var b = document.createElement('a'); b.className = 'ks-zurueck'; b.href = document.referrer; b.textContent = '← Zurück zur Aufgabe';
+      b.addEventListener('click', function (e) { if (history.length > 1) { e.preventDefault(); history.back(); } });
+      document.body.appendChild(b);
+    }
+  } catch (e) {}
+})();
