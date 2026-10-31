@@ -80,7 +80,7 @@ for tit, rows in listen:
             n += 1
             fehlt = f" <span class='chip rot'>fehlt {e(r['fehlt'])}</span>" if r["fehlt"] not in ("–", "") else ""
             herr += (f"<li><label><input type='checkbox' id='h{n}' data-k='h{n}'> <b>{e(r['gesamt'])} ×</b> {e(r['name'])}{fehlt}"
-                     f"<br><span class='klein'>{e(r['rechnung'])} · {e(r['ort'])} · Bestand: {e(r['bestand'])}</span></label></li>")
+                     f"<br><span class='klein'>{e(r['rechnung'])} · {e(r['ort'])} · Bestand: {e(r['bestand'])} · {e(r['vortag'])} · für {e(r['versuche'])}</span></label></li>")
         herr += "</ul>"
 herr += "<h2>Vor der Stunde</h2><ul class='check'>"
 for x in F.CHECKLISTE:
@@ -110,8 +110,8 @@ aufgaben = (f"<input class='search' type='search' id='suche' placeholder='Aufgab
 # ---------------------------------------------------------------- Versuch
 v = VD.VS[0]
 vs = (f"<div class='vsgrid'><div><h2>{e(v['nr'])} · {e(v['titel'])}</h2><p>{md(v['intro'])}</p><p class='klein'>{e(v['form'])} · ca. {v['zeit']} min · {e(v['wann'])}</p>"
-      f"<div class='fehler'><b class='k'>Sicherheit</b>{md(v['sicher'])}</div></div><img src='{b64(UNIT + 'vs-img/d_' + v['skizze'] + '.png', 'image/png')}' alt='Messbahn im Eingangsbereich'></div>"
-      "<h3>Durchführung</h3><ol>" + "".join(f"<li>{md(s)}</li>" for s in v["schritte"]) + "</ol>"
+      f"<div class='box fach'><b class='k'>Wo steht der Versuch?</b>{e(v['platz'])}</div><div class='fehler'><b class='k'>Sicherheit</b>{md(v['sicher'])}</div></div><img src='{b64(UNIT + 'vs-img/d_' + v['skizze'] + '.png', 'image/png')}' alt='Messbahn im Eingangsbereich'></div>"
+      "<h3>Gefahren-Check: harmlosere Alternativen</h3>" + tab(["Punkt", "Prüfung", "Ergebnis"], v["gefahren"]) + "<h3>Durchführung</h3><ol>" + "".join(f"<li>{md(s)}</li>" for s in v["schritte"]) + "</ol>"
       + "<h3>Beispielwerte (erfunden – das Ergebnis ist offen)</h3>"
       + tab(v["beob"]["kopf"], [z + v["erwartet_tab"][i] for i, z in enumerate(v["beob"]["zeilen"][:5])])
       + "".join(f"<div class='box fach'><b class='k'>Erwartet: {e(a)}</b>{md(b)}</div>" for a, b in v["erwartet"])

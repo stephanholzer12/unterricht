@@ -19,11 +19,14 @@ JE_GRUPPE = {"papier", "klammer", "handy", "bleistift"}  # braucht jede Gruppe s
 
 VS = [
  {"id": "flieger", "nr": I.VS_ID, "titel": I.VS_TITEL, "bindung": "Hypothese und Gegenprobe · eine gemeinsame Messbahn im Eingangsbereich",
+  "platz": "Eingangsbereich, gemeinsame Messbahn (Abwurflinie an der Bodenfuge, Bandmaß am Rand). Nicht im NAWI-Saal: kein Lehrertisch, kein Mobiltisch, keine Wasserleitung nötig. Keine Flamme, kein Beamer – es gilt das Papierblatt der Gruppe. Platzverteilung ist ein Vorschlag.",
+  "gefahren": [["Chemikalien", "keine – nur Papier und Büroklammer", "nichts zu ersetzen"], ["Ansetzen / Verdünnen", "nichts nötig", "–"], ["Abzug / Flamme", "nicht nötig", "–"],
+               ["Restgefahr", "Flieger in Gesichtshöhe, Durchgangsverkehr im Eingangsbereich, Rennen auf glattem Boden", "flach aus Hüfthöhe, Bahn frei, Wurf nur auf Kommando, Fluchtweg frei, Schulwart informieren"]],
   "stunde": 2, "wann": "1AK: Stunde 2 (Do 05.11., 2. Std.) · 1BK: Stunde 3 (Mo 09.11.)", "form": "Gruppenversuch an einer gemeinsamen Messbahn", "kern": True, "zeit": 38,
   "jp": "= Jahresplan V1.4 (überarbeitet: derselbe Flieger ohne/mit Klammer statt zwei verschiedener Modelle). Nicht verwechseln mit V1.7 (E5, fünf Würfe je Modell).",
   "quelle": "Trauner S. 28–32 (Theoriebezug, kein Buchversuch); Faltung: W. Gruber, »Ballons, Raketen und Papierflieger«, 4.4 Planarflieger (einfach), S. 34–35; "
             "Vergleichslogik: NZ Ministry of Education »Paper planes – Level 4«; Altfolien 13–31 der bisherigen PPP (Vorjahresdaten)",
-  "intro": "Macht eine Büroklammer vorne am Rumpf euren Flieger besser? Ihr vergleicht denselben Flieger ohne Klammer (A) und mit Klammer (B) – dreimal abwechselnd, mit festen Regeln. Eure Hypothese steht schon fest (Aufgabe 4).",
+  "intro": "Macht eine Büroklammer vorne am Rumpf euren Flieger besser? Ihr vergleicht denselben Flieger ohne Klammer (A) und mit Klammer (B) – dreimal abwechselnd, mit festen Regeln. Eure Hypothese steht schon fest (Aufgabe 4). **Wo steht der Versuch?** Im Eingangsbereich an der gemeinsamen Messbahn (Abwurflinie an der Bodenfuge, Bandmaß am Rand), nicht im Saal.",
   "sicher": "Nur werfen, wenn die Bahn frei ist – nie in Richtung von Personen. Flach und ruhig aus Hüfthöhe werfen, kein Kraftwurf. Nicht zum Flieger rennen. Der Messer steht seitlich außerhalb der Bahn. Das Bandmaß liegt am Rand, nicht quer im Weg. Eingang und Fluchtweg bleiben frei.",
   "mat": [["A4-Papier: 1 Blatt für den Flieger + 1 Reserve", "papier", "papier", 2], ["Büroklammer (dieselbe für die ganze Reihe)", "klammer", "klammer", 1],
           ["Bandmaß 20 m (eines für alle, am Rand der Messbahn)", "bandmass", "bandmass", 1], ["Protokoll-Handy", "handy", "handy", 1], ["Schachtel für die fertigen Flieger (eine für die Klasse)", "dose", "kiste", 1],

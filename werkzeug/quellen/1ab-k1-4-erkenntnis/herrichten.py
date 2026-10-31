@@ -5,6 +5,7 @@ Ansätze: 8 Gruppen (Klassengröße nicht bestätigt) für alles in VD.JE_GRUPPE
 import versuche_daten as VD
 
 RESERVE = {"papier": 4, "klammer": 2}           # Ersatz für verknickte Blätter und verbogene Klammern
+VORTAG = {"papier": "Vortag möglich", "klammer": "Vortag möglich", "bandmass": "am Tag selbst (Messbahn legen)", "kiste": "Vortag möglich", "handy": "bringen die Kadetten", "bleistift": "bringen die Kadetten"}
 KADETTEN = {"handy", "bleistift"}               # bringen die Kadetten selbst mit – nur zur Erinnerung
 ABSCHNITTE = [("chem", "Chemikalien und Verbrauchsmaterial"), ("geraet", "Geräte und Lehrmittel"), ("kadetten", "Bringen die Kadetten mit")]
 
@@ -41,7 +42,7 @@ def zeilen(versuche):
         r = bedarf[key]
         rechnung = (f"{r['je']} × {r['ansaetze']} Gruppen" if r["ansaetze"] > 1 else f"{r['je']} für die Klasse") + (f" + {r['reserve']} Reserve" if r["reserve"] else "")
         out.append(dict(r, name=name, icon=icon, ort=ort, bestand=_bestand_text(bestand), fehlt=_fehlt(r["gesamt"], bestand),
-                        abschnitt=_abschnitt(key), rechnung=rechnung))
+                        abschnitt=_abschnitt(key), rechnung=rechnung, vortag=VORTAG.get(key, "am Tag selbst"), versuche=", ".join(v["nr"] for v in versuche if any(m[2] == key for m in v["mat"]))))
     out.sort(key=lambda r: [a for a, _ in ABSCHNITTE].index(r["abschnitt"]))
     return out
 
