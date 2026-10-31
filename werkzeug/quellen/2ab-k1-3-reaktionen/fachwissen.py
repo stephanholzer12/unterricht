@@ -10,8 +10,8 @@ STUNDENVORSCHLAG = [
 ]
 
 CHECKLISTE = [
-    "Bis 03.11.: Brausetabletten (9 Stück, gleiche Sorte) und 2 Kartoffeln besorgen; Eis für die Demo am 10.11. einfrieren (Kühlbox).",
-    "Zitronensäure suchen (laut Fotoabgleich vorhanden, Gefäß-Nr. fehlt) – sonst Entkalker-Pulver aus dem Supermarkt.",
+    "Bis Mi 11.11.: 2 Kartoffeln kaufen (V7); Brausetabletten (9 Stück, gleiche Sorte) aus deinem Sortiment bereitlegen (V8); Eis für die Demo am 10.11. einfrieren (Kühlbox).",
+    "Zitronensäure ist in deinem Sortiment: 60 g abfüllen, Lösung am Vortag (Mo 09.11.) ansetzen (V5).",
     "Löschdecke bzw. Sand für K1.3-V1 bereitlegen (Bestand laut Inventar unklar).",
     "Vor Stunde 3: Kupfersulfatlösung (15,0 g Pentahydrat auf 150 ml Lösung) und Zitronensäurelösung (60 g + 90 g Wasser) ansetzen und beschriften; 6 × 6,0 g Natron und 30 g Salz abwiegen; beide Stationen einmal selbst ausprobieren.",
     "Behälter »Schwermetall-Lösungen« und »feste Metallreste« an Station 1 stellen.",

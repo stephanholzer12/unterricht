@@ -70,3 +70,14 @@ html:has(body.ks-materialseite) { scroll-padding-top: calc(var(--ks-topnav-hoehe
   .ks-stundenplan td::before { content: attr(data-label); display: block; font-size: 14px; font-weight: 700; color: #52634b; margin-bottom: 3px; }
 }
 @media print { .ks-topnav, .ks-materialnav, .ks-ende, .ks-themen-suche { display: none !important; } }
+
+/* Inhaltsleiste der Theorie-Seiten: am PC umbrechen statt seitlich wischen; am Handy wischen mit Randverlauf */
+nav.toc div { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.5) transparent; }
+@media (min-width: 700px) {
+  nav.toc div { flex-wrap: wrap; overflow-x: visible; justify-content: center; max-width: 960px; }
+  nav.toc a { margin: 0; }
+}
+@media (max-width: 699px) {
+  nav.toc { background-image: linear-gradient(90deg, transparent calc(100% - 28px), rgba(0,0,0,.28)); }
+}
+section[id], article[id], .card[id], #name { scroll-margin-top: 64px; }
