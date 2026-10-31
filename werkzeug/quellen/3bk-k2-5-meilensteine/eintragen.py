@@ -10,9 +10,9 @@ E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
 ZIP_V = "v3"  # v1/v2 = ChatGPT-Auftrag und -Paket (29.10.2026); v3 = erste Claude-Umsetzung 30.10.2026
-DATEIEN = {"stand": "30.10.2026", "zip": f"{P}-{ZIP_V}.zip",
-           "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-TH-Kadetten-{V}.pptx",
-                     f"{P}-TH-AB-{V}.docx", f"{P}-TH-Loesung-{V}.docx", f"{P}-TH-Fachwissen-{V}.docx", f"{P}-Pruefbericht-Claude-{V}.md"]}
+DATEIEN = {"stand": "31.10.2026", "zip": f"{P}-{ZIP_V}.zip",
+           "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{ZIP_V}.pptx", f"{P}-TH-Kadetten-{ZIP_V}.pptx",
+                     f"{P}-TH-AB-{ZIP_V}.docx", f"{P}-TH-Loesung-{ZIP_V}.docx", f"{P}-TH-Fachwissen-{ZIP_V}.docx", f"{P}-Pruefbericht-Claude-{ZIP_V}.md"]}  # nur Unterricht-PPP, Seiten und Lösungsmappe auf v4; Rest noch v3
 neu = {"klasse": "3BK", "fach": "PBGW", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL, "block": "B Meilensteine", "jahresplan": "E3–E5",
        "seiten": ["theorie.html", "aufgaben.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]
