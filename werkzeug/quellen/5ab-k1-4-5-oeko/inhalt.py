@@ -6,8 +6,9 @@ Stephan: EINE Stunde je Klasse – 5BK Di 03.11.2026, 5AK Do 05.11.2026 (Annahme
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe. Keine Versuche (V5.3 bleibt spätere Erweiterung). Keine Kahoot-Tabelle (Stephan, 30.10.2026).
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "30.10.2026"
+STAND = "31.10.2026"
 V = "v1"
+V_UNT = "v2"  # TH-Unterricht neu gebaut am 31.10.2026 (Teillieferung); alle anderen Dateien bleiben v1
 ORDNER = "5ab-toew/k1-4-5-oeko"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"

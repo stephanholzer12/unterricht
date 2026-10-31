@@ -10,8 +10,8 @@ E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
 ZIP_V = "v1"  # erste Lieferung 30.10.2026 (ohne Kahoot – Stephan, 30.10.2026)
-DATEIEN = {"stand": "30.10.2026", "zip": f"{P}-{ZIP_V}.zip",
-           "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-TH-Kadetten-{V}.pptx",
+DATEIEN = {"stand": "31.10.2026", "zip": f"{P}-{ZIP_V}.zip",
+           "liste": [f"{P}-TH-Unterricht-{I.V_UNT}.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-TH-Kadetten-{V}.pptx",
                      f"{P}-TH-AB-{V}.docx", f"{P}-TH-Loesung-{V}.docx", f"{P}-TH-Fachwissen-{V}.docx", f"{P}-Pruefbericht-Claude-{V}.md"]}
 neu = {"klasse": "5AB", "fach": "TÖW", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL, "block": "A Ökologisches Wirtschaften", "jahresplan": "E3",
        "seiten": ["theorie.html", "aufgaben.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}

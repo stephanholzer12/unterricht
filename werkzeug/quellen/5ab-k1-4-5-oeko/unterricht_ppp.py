@@ -334,7 +334,7 @@ def bauen():
     for ph in s.placeholders:
         if ph.placeholder_format.type == 2:
             B.text(ph, ["TÖW · 5AB · K1.4–1.5 · Unterrichts-PPP · " + I.wann() + " · Buch S. 19–25",
-                        [(f"Stand {I.STAND} · {I.V} · TH-Unterricht (Ablauf) – zum Nachlesen: TH-Lehrer", {"size": 12})]], size=18, color=RGBColor.from_string("C9D6B0"))
+                        [(f"Stand {I.STAND} · {I.V_UNT} · TH-Unterricht (Ablauf) – zum Nachlesen: TH-Lehrer", {"size": 12})]], size=18, color=RGBColor.from_string("C9D6B0"))
     titel = s
     bedien = d.slide("Nur Titel", "Lehrer-Info · So führt die PPP", hidden=True)
     regie = {k: d.slide("Nur Titel", f"Regie {k} · {I.DATEN[k][1]} · Stunde 1", hidden=True) for k in I.KLASSEN}
@@ -410,7 +410,7 @@ def bauen():
     show("Optional: Für Schnelle", [zusatz])
 
     os.makedirs(ZIEL, exist_ok=True)
-    name = f"{I.PRAEFIX}-TH-Unterricht-{I.V}.pptx"
+    name = f"{I.PRAEFIX}-TH-Unterricht-{I.V_UNT}.pptx"
     d.save(os.path.join(ZIEL, name))
     sicht = [s for s in d.p.slides if s._element.get("show") != "0"]
     for x in PROBLEME: print("ÜBERLAUF", x)
