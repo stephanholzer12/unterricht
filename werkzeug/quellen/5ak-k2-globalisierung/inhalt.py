@@ -7,8 +7,8 @@ Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. E
 Korrekturen gegenüber der Übergabe (Prüfbericht): Zollkarte A aktualisiert (US-Supreme-Court 20.02.2026), Lagarde-Meldung vom 29.10. nur sekundär belegt (Abgang 07.02.2027 laut Reuters) und
 nicht verwendet, IEA-Zahlen auf die bestätigten Werte (415 TWh 2024, rund 945 TWh Projektion 2030) gestellt, 02.12.2026-Verbot nur aus einer Sekundärquelle, Primärquelle ungeprüft, weggelassen."""
 
-STAND = "30.10.2026"
-V = "v2"                       # v1 = ChatGPT-Übergabe
+STAND = "31.10.2026"
+V = "v3"                       # v1 = ChatGPT-Übergabe
 ORDNER = "5ak-iwk/k2-globalisierung"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
