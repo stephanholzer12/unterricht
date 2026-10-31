@@ -125,7 +125,7 @@ cases[K13]=[
  ['a21','metalle','Chrom',0],['a21','metalle','Ruthenium, Cobalt, Mangan und Chrom',1],['a21','metalle','Chrom, Mangan, Kobalt, Ruthenium',1],['a21','metalle','Ruthenium, Kobalt, Mangan',0],
  ['a21','metalle','Chrom, Mangan, Kobalt und Ruthenium sind nicht die Metalle.',0],['a21','metalle','Es sind Ruthenium, Kobalt, Mangan und Chrom – Iridium ist nicht dabei.',1],
  ['a22','metalle','Platin',0],['a22','metalle','Platin, Palladium, Rhodium',1],['a22','metalle','Rhodium Palladium Platin',1],['a22','metalle','Platin, Palladium und Rhodium sind falsch.',0],['a22','metalle','Platin, Palladium und Rhodium sind keine Edelmetalle.',0],
- ['a13','gas','Sauerstoff',1],['a13','gas','Wasserstoff',0],
+ ['a13','g1','brennt nicht richtig (schmilzt, wird braun)',1],['a13','g1','brennt mit Flamme',0],['a13','g2','brennt mit Flamme',1],['a13','g2','brennt nicht richtig (schmilzt, wird braun)',0],['a13','g3','brennt nicht richtig (schmilzt, wird braun)',1],['a13','g3','brennt mit Flamme',0],
  ['a12','o2','0,32 g',1],['a12','o2','0.32 g',1],['a12','o2','320 mg',1],['a12','o2','0,32 kg',0],['a12','proz','26,7',1],['a12','proz','26,7 %',1],['a17','rgt','20 s',1],['a17','rgt','40 s',0],
  ['a3','ea','2',1],['a3','ea','4',0]];
 /* 4AB K2.1–2.3 Schwingungen und Wellen (25.10.2026): Zahlen mit Einheit, Rundung, falsche Dimension, Auswahl als ganze Antwort, offene Erklärungen = M */
