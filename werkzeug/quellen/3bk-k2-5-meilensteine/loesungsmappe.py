@@ -37,7 +37,7 @@ offen = [
     "**Teststoff Mo 23.11.:** kommt von dir. Er steht in keiner Datei dieser Einheit; der Test (20 min) läuft zu Beginn von Stunde 2, danach bleiben 26 min.",
     "**Zeit:** 50 min je Stunde (Annahme). **Stunde 1:** Mini-Whiteboards, Zeitstrahl-Karten (TH-AB). **Stunde 2:** Paragrafenblatt ausdrucken. **Stunde 3:** Platz für die Skala im Raum.",
     "**Abgabe:** nicht festgelegt (»nach Absprache«). Sag Bescheid, ob eine PDF in das LMS soll.",
-    "**Buchseiten:** Trauner PBGW 3, S. 105–118 (Athen, Rom) liegen nicht vor – Athen und Rom stützen sich auf das Ergänzungsbuch. Filmtipps im Trauner-Buch wurden nicht geprüft.",
+    "**Buchseiten:** Trauner PBGW 3, S. 105–118 (Athen, Rom) liegen nicht vor – Texte zu Athen und Rom stammen aus dem ChatGPT-Auftrag und sind noch nicht mit dem Buch abgeglichen. Filmtipps im Trauner-Buch wurden nicht geprüft.",
     "**Quellen:** Hammurabi und Augustus sind sprachlich vereinfachte Arbeitsfassungen, keine Zitate. Faktencheck: Louvre (Stele um 1750 v. Chr.) und Ötzi-Pressemeldung (Südtiroler Archäologiemuseum, 2024) geprüft; die übrigen Jahreszahlen sind Orientierungsmarken.",
 ]
 uber = "<h2>Was du vor Ort noch prüfen musst</h2>" + ul(offen)
@@ -119,7 +119,7 @@ seite = f"""<title>Lösungsmappe Meilensteine 3BK</title>
 <header class="lese">
   <div class="eyebrow">PBGW · 3BK (16.11.–30.11.) · K2.1–5.4 Meilensteine · nur für dich</div>
   <h1>Lösungen und Fachwissen: Meilensteine</h1>
-  <p class="sub">Aufgaben 1–12 (9–12 Zusatz), die Unterrichts-PPP als Folien und das Fachwissen. Keine Versuche. Buch: Trauner PBGW 3, S. 23–44; Ergänzungsbuch S. 58–73. Stand {e(I.STAND)} · {e(I.V)}</p>
+  <p class="sub">Aufgaben 1–12 (9–12 Zusatz), die Unterrichts-PPP als Folien und das Fachwissen. Keine Versuche. Buch: Trauner PBGW 3, S. 23–44 und S. 105–118. Stand {e(I.STAND)} · {e(I.V)}</p>
   <p class="warn">Privat in deinem Konto – nicht an Kadetten weitergeben. Die Kadetten sehen Musterlösungen erst nach der PDF bzw. nach drei Fehlversuchen.</p>
 </header>
 <nav class="tabs" role="tablist" aria-label="Bereiche">

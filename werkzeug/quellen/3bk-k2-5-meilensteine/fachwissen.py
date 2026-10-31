@@ -5,7 +5,7 @@ import plan as PL
 
 LEHRPLAN = [
     ("Einheit: ", "Jahresplan v14: E3 »Neolithische Revolution«, E4 »Hochkulturen und frühe Staatenbildung«, E5 »Antike Vorbilder« (je 2 Std., zusammen 6 Std. brutto). "
-                  "Hier: 3 Stunden (Stephans Vorgabe), Mo 16.11., Mo 23.11. (zuerst 20 min Test + 4 min Organisation), Mo 30.11.2026; Annahme 50 min. Buch: Trauner PBGW 3 S. 23–44, Ergänzungsbuch S. 58–73."),
+                  "Hier: 3 Stunden (Stephans Vorgabe), Mo 16.11., Mo 23.11. (zuerst 20 min Test + 4 min Organisation), Mo 30.11.2026; Annahme 50 min. Buch: Trauner PBGW 3 S. 23–44, S. 105–118."),
     ("K02 / K04 ", "Einfluss historischer Entwicklungen auf Individuum, Gesellschaft und Staat beschreiben · Veränderungsprozesse beschreiben, Ursachen analysieren → Aufgabe 2 (begründete Zusammenhänge, zusätzliche Bedingung, Grenze der Erklärung)"),
     ("K01 ", "historische Quellen zur kritischen Rekonstruktion und Dekonstruktion einsetzen → Aufgabe 1 (Befund – Vermutung – Grenze), Aufgabe 4 (Hammurabi: Kontext, Aussage, Herrscherperspektive), Aufgabe 6 (Augustus-Tatenbericht)"),
     ("K05 ", "grundlegende Formen der Staatenbildung nennen, vergleichen und diskutieren → Aufgabe 3 (Stadtstaat und Flächenkönigtum)"),
@@ -15,7 +15,7 @@ LEHRPLAN = [
                                       "Ernährungssicherung als heutige Frage (ohne antiken Gesellschaften heutige Ziele zuzuschreiben)"),
     ("GLV: ", "Im Jahresplan E3–E5 stehen keine GLV-Codes. Als **didaktische Ergänzung** (nicht Planbestand): Wertebewusstsein und Informationsresilienz – Rechtsgleichheit, Machtkontrolle, Prüfung von Herrscheraussagen (Aufgaben 4, 6, 10)."),
     ("Schulprofil: ", "Vorratshaltung und Transport als logistische Aufgabe · Verwaltung, Zuständigkeit und Befehlsketten (ein Schaubild einer Hierarchie sagt nichts über ihre Rechtmäßigkeit) · Heer und Gefolgschaft als Faktor römischer Macht – nicht nach dem Muster »die beste Armee gewinnt immer«."),
-    ("Abweichung: ", "3 statt 6 Stunden brutto (Stephans Vorgabe); Kern in Aufgaben 1–8, Rest OPTIONAL. Kein Versuch (PBGW), kein CLIL. Teststoff für den 23.11. kommt von dir – es gibt noch keine Teststoff-Seite. Trauner-Seiten S. 105–118 (Antike) lagen nicht vor: Athen und Rom stützen sich auf das Ergänzungsbuch."),
+    ("Abweichung: ", "3 statt 6 Stunden brutto (Stephans Vorgabe); Kern in Aufgaben 1–8, Rest OPTIONAL. Kein Versuch (PBGW), kein CLIL. Teststoff für den 23.11. kommt von dir – es gibt noch keine Teststoff-Seite. Trauner-Seiten S. 105–118 (Antike) lagen nicht vor: Athen und Rom: Texte stammen aus dem ChatGPT-Auftrag, nicht aus den Trauner-Seiten – bitte mit dem Buch abgleichen."),
 ]
 
 THEMEN = {1: "Vorrat, Metall, Schrift, frühe Staaten (S. 25–39)", 2: "Hammurabis Rechtssammlung (S. 39–40)", 3: "Athen, Rom, Prinzipat (Buch S. 105–118)"}
@@ -59,7 +59,7 @@ CHECKLISTE = [
     "Test am 23.11.: Stoff und Unterlagen kommen von dir. Sobald du den Stoff nennst, baue ich Teststoff und Handy-Seite. Die Stunde ist auf 20 min Test + 4 min Organisation + 26 min Unterricht geplant.",
     "Stunde 1: Ötzi kennen die Kadetten aus der Quellenarbeit (Buch S. 30) – das Beil nur als Anlass für Befund, Vermutung, Grenze. Eigene Zeichnung auf der Folie, kein Foto.",
     "Stunde 2: Paragrafenblatt ausdrucken (TH-AB, Aufgabe 4). Hammurabi-Text ist eine **Arbeitsfassung**, kein wörtliches Zitat (Buch S. 40).",
-    "Stunde 3: Aufgabe 5 und 6 beziehen sich auf das Ergänzungsbuch (S. 62–65, 70–71) – Kadetten brauchen es als Buch oder du zeigst die Seiten. Das Perikles-Gemälde (S. 65) ist von 1852.",
+    "Stunde 3: Aufgabe 5 und 6 arbeiten mit dem Trauner-Teil S. 105–118. Bilder von Athen sind oft spätere Darstellungen, keine Augenzeugenbilder.",
     "Trauner-Filmtipps der Buchseiten sind **nicht eingebaut** (von hier aus nicht prüfbar). Passen sie, sag Bescheid – dann baue ich sie als OPTIONAL ein.",
     "Abgabe: Der Plan sieht keine PDF-Abgabe vor. Soll es eine geben (z. B. am 30.11.), sag es – dann baue ich eine Abgabefolie und einen Ordner in LMS ein.",
 ]
@@ -99,13 +99,13 @@ KAPITEL = [
  {"titel": "4 Athen (Buch S. 107–111)",
   "text": ["**Beteiligung:** In der behandelten klassischen Phase (vor allem 5. Jh. v. Chr.) entscheiden erwachsene männliche Bürger in der Volksversammlung. Frauen, Versklavte und Metöken sind ausgeschlossen. Der Rat (500) bereitet vor und wird gelost; viele Ämter (z. B. Archonten) werden gelost, die Strategen gewählt. Details der Ordnung veränderten sich – Kleisthenes um 508/507 v. Chr. ist nur ein Orientierungspunkt.",
            "**Vergleich mit Österreich:** parlamentarische Demokratie (Wahl von Vertretern, Gesetzgebung, Kontrolle der Regierung; Parlament Österreich, Seite »Parlament und Wahlen«). Auch heute sind Wahlrechte an Voraussetzungen gebunden (Staatsbürgerschaft, Wahlalter). Der Vergleich fragt nach Beteiligung, Ausschluss und Kontrolle – er setzt nicht gleich.",
-           "**Quellenfrage:** Das Gemälde »Gefallenenrede des Perikles« im Ergänzungsbuch (S. 65) stammt von 1852 – eine spätere Darstellung, kein Augenzeugenbild."],
+           "**Quellenfrage:** Bilder von Athen (zum Beispiel Gemälde des 19. Jahrhunderts) sind spätere Darstellungen, keine Augenzeugenbilder."],
   "nur": ["Trauner S. 105–118 (Hellenen, Polis, Klassengesellschaft Athen) lagen nicht vor – nur Kapitelnavigation. Falls du die Seiten hast, schick sie; ich gleiche dann die Aussagen ab."],
   "stolper": "»In Athen durften alle abstimmen«, »alle Ämter wurden gewählt«. Gegenmittel: Aufgabe 5 b) und c), Stopp-Frage 3.",
   "bild": "img/athen.png"},
- {"titel": "5 Rom, Augustus und der Anschluss (Ergänzungsbuch S. 68–73)",
+ {"titel": "5 Rom, Augustus und der Anschluss (Buch S. 112–118)",
   "text": ["**Republik:** zwei Konsuln mit begrenzter Amtszeit, Senat (Gewicht einflussreicher Familien), Volksversammlungen, Volkstribunen (Einspruch). Keine moderne parlamentarische Demokratie: Vermögen, Herkunft und Verbindungen beeinflussen den Zugang; Frauen und Versklavte ausgeschlossen. Das Buchschema ist zeitgebunden – keine unveränderte Ordnung für die ganze Republik behaupten.",
-           "**Augustus:** Octavian setzte sich nach Bürgerkriegen durch, 27 v. Chr. Name Augustus; Princeps (»Erster unter Gleichen«). Republikanische Einrichtungen bestehen weiter; entscheidende Machtmittel liegen bei ihm (Oberbefehl über das Heer, Statthalterschaft in wichtigen Provinzen, Befugnisse von Konsul und Volkstribun). Die Res gestae (Ergänzungsbuch S. 71, M3) sind **Selbstdarstellung**: nützlich als Beleg für das gewollte Bild, aber nicht als unabhängige Bewertung.",
+           "**Augustus:** Octavian setzte sich nach Bürgerkriegen durch, 27 v. Chr. Name Augustus; Princeps (»Erster unter Gleichen«). Republikanische Einrichtungen bestehen weiter; entscheidende Machtmittel liegen bei ihm (Oberbefehl über das Heer, Statthalterschaft in wichtigen Provinzen, Befugnisse von Konsul und Volkstribun). Die Res gestae (Tatenbericht) sind **Selbstdarstellung**: nützlich als Beleg für das gewollte Bild, aber nicht als unabhängige Bewertung.",
            "**476 n. Chr.:** konventioneller Orientierungspunkt für das Ende Westroms; Ostrom besteht weiter. Politische, militärische und wirtschaftliche Faktoren wirken zusammen – keine pauschale Gegenwartsanalogie."],
   "nur": ["Britisches Museum (Augustus, Münze zur republikanischen Selbstdarstellung): nur als Hinweis geprüft, die Münzabbildung wurde nicht als Medium freigegeben. Heer und Gefolgschaft sind Faktoren römischer Macht, aber nicht die einzige Erklärung."],
   "stolper": "»Republik = Demokratie«, »Augustus stellte die Republik tatsächlich wieder her«, »476 endete das Römische Reich«. Gegenmittel: Aufgabe 6 und 7, Stopp-Frage 3.",
@@ -155,15 +155,15 @@ BILDER = [
     ("eigene Zeichnung (Typ des Ötzi-Beils)", "–", "selbst gezeichnet", "img/beil.png (Einstieg, Aufgabe 1)", "Befund, Vermutung, Grenze – kein Foto des Fundes"),
     ("eigene Zeichnung", "–", "selbst gezeichnet", "img/kette.png (Teil 1, Schrift)", "Verwaltung: Ernte – Lager – Liste – Verteilung"),
     ("eigene Karte, Schema", "Nil, Euphrat, Tigris", "selbst gezeichnet", "img/karte.png (Teil 1, Aufgabe 3)", "Orientierung; nicht maßstabsgerecht"),
-    ("eigenes Schaubild", "Athen", "selbst gezeichnet", "img/athen.png (Teil 3, Aufgabe 5)", "nicht das Schaubild des Ergänzungsbuchs"),
+    ("eigenes Schaubild", "Athen", "selbst gezeichnet", "img/athen.png (Teil 3, Aufgabe 5)", "nicht das Schaubild aus dem Schulbuch"),
     ("eigenes Schaubild", "Republik und Prinzipat", "selbst gezeichnet", "img/rom.png (Teil 3, Aufgabe 6/7)", "vereinfacht; Ordnung veränderte sich"),
     ("eigene Zeittafel", "sechs Zeitbereiche", "selbst gezeichnet", "img/zeitstrahl.png (Teil 1, Aufgabe 8)", "Bereiche nicht gleich lang"),
-    ("Trauner PBGW 3 und Ergänzungsbuch (Screenshots im Paket)", "–", "nicht verwendet (nur Verweise)", "–", "keine Buchbilder auf öffentlichen Seiten und in den PPPs"),
+    ("Trauner PBGW 3 (Screenshots im Paket)", "–", "nicht verwendet (nur Verweise)", "–", "keine Buchbilder auf öffentlichen Seiten und in den PPPs"),
 ]
 
 QUELLEN = [
-    "**Grundlage:** ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026) mit Paket (Screenshots Trauner S. 23–44, Ergänzungsbuch S. 58–73, Jahresplan v14, Regelwerk, Muster) – Ablauf, Texte T1–T6, Aufgaben A1–A8 und Quizpool übernommen, sprachlich vereinfacht, nach dem Regelwerk (14. Fassung) umgebaut und nachgeprüft (Prüfbericht).",
-    "**Buchzuordnung:** Hammurabi-Paragrafen (§ 53, 196, 198, 199, 233) mit Trauner S. 40 abgeglichen; Augustus M3 (Ergänzungsbuch S. 71) und Athen-Schaubild (S. 64) bestätigt. Trauner S. 105–118 lagen nicht vor.",
+    "**Grundlage:** ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026) mit Paket (Screenshots Trauner S. 23–44, Jahresplan v14, Regelwerk, Muster) – Ablauf, Texte T1–T6, Aufgaben A1–A8 und Quizpool übernommen, sprachlich vereinfacht, nach dem Regelwerk (14. Fassung) umgebaut und nachgeprüft (Prüfbericht).",
+    "**Buchzuordnung:** Hammurabi-Paragrafen (§ 53, 196, 198, 199, 233) mit Trauner S. 40 abgeglichen; Trauner S. 105–118 lagen nicht vor; Athen und Rom nicht gegen das Buch geprüft.",
     "**Selbst geprüft (30.10.2026):** Südtiroler Archäologiemuseum, Pressemeldung 1.3.2024 (PDF) – Ötzis Beilkupfer, über 50 Objekte, Bleiisotope; Louvre, »The Code of Hammurabi« – Stele um 1750 v. Chr., Rechtsfälle (»case law«), 282 Entscheidungen.",
     "**Aus der Übergabe übernommen, von mir nicht neu geprüft:** Bodleian Libraries (ältere Rechtssammlungen), Universität Graz (Athen und Rom), British Museum (Augustus), NHM Wien (Hallstatt), Evershed u. a. 2022 (Nature), Parlament Österreich (Demokratie), Met Museum (Ursprünge der Schrift).",
     "**Jahresplan v14:** E3–E5 (K01, K02, K04, K05, K06, K08, N01, N02, P3, P4, SDG 2; keine GLV-Codes). Teststoff für den 23.11. liegt bei dir.",

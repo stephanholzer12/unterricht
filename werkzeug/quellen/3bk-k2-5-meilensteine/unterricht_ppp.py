@@ -158,7 +158,7 @@ def lesen_folie(teil, buch, abschnitte, leitfrage, idx):
         c = B.box(s, X0, y, 6.9, hh, fill=RGBColor.from_string("E8F1F3"), line=TEAL, lw=1.25)
         B.text(c, [[("»" + TITEL[a] + "«", {"bold": True})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += hh + 0.04
     qr(s, "theorie", 7.75, 1.05 + (bh + 0.06 if buch else 0), 1.2, "Theorieteil")
-    y += 0.04
+    y = max(y + 0.04, 1.05 + ((bh + 0.06) if buch else 0) + 1.5)
     hq = B.th("Leitfrage: " + leitfrage, 20, W - 0.1, pad=0.2)
     c = B.box(s, X0, y, W, hq, fill=RGBColor.from_string("FFF4EA"), line=ORANGE, lw=1.5)
     B.text(c, [[("Leitfrage: ", {"bold": True, "color": ORANGE}), (leitfrage, {})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0)
@@ -346,7 +346,7 @@ def t3_a6():
     s = d.slide("Aufgabe", "Aufgabe 6: Quelle – Arbeitsfassung")
     c = B.box(s, X0, 1.0, W, 1.5, fill=GR, line=TEAL, lw=2)
     B.text(c, [[("»Augustus stellt in seinem Tatenbericht dar, er habe nach dem Ende der Bürgerkriege die staatliche Macht wieder dem Senat und dem römischen Volk übertragen. Seinen Vorrang beschreibt er über sein Ansehen.«", {"bold": True})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0)
-    B.tb(s, X0, 2.6, W, 0.3, ["Arbeitsfassung nach Ergänzungsbuch S. 71 (M3), sprachlich vereinfacht – kein wörtliches Zitat."], size=14, color=MUTED, after=0)
+    B.tb(s, X0, 2.6, W, 0.3, ["Arbeitsfassung des Tatenberichts (Res gestae), sprachlich vereinfacht – kein wörtliches Zitat."], size=14, color=MUTED, after=0)
     schritte(s, X0, 3.0, W, ["Wie nannte er sich selbst?", "Welchen Eindruck will er erzeugen?", "Welche Machtmittel lagen bei ihm – und warum prüfen wir die Aussage?"], size=18, farbe=GREEN)
     return s
 
@@ -473,7 +473,7 @@ def bauen():
     s = d.slide("Titelfolie", "Meilensteine: Vom Vorrat zum Staat")
     for ph in s.placeholders:
         if ph.placeholder_format.type == 2:
-            B.text(ph, ["PBGW · 3BK · K2.1–5.4 · Unterrichts-PPP · " + " · ".join(I.DATEN[K][n] for n in (1, 2, 3)) + " · Buch S. 23–44, Ergänzungsbuch S. 58–73",
+            B.text(ph, ["PBGW · 3BK · K2.1–5.4 · Unterrichts-PPP · " + " · ".join(I.DATEN[K][n] for n in (1, 2, 3)) + " · Buch S. 23–44 und 105–118",
                         [(f"Stand {I.STAND} · {I.V} · TH-Unterricht (Ablauf) – zum Nachlesen: TH-Lehrer", {"size": 12})]], size=18, color=RGBColor.from_string("C9D6B0"))
     titel = s
     bedien = d.slide("Nur Titel", "Lehrer-Info · So führt die PPP", hidden=True)
