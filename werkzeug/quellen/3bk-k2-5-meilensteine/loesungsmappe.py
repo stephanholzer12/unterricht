@@ -37,7 +37,7 @@ offen = [
     "**Teststoff Mo 23.11.:** kommt von dir. Er steht in keiner Datei dieser Einheit; der Test (20 min) läuft zu Beginn von Stunde 2, danach bleiben 26 min.",
     "**Zeit:** 50 min je Stunde (Annahme). **Stunde 1:** Mini-Whiteboards, Zeitstrahl-Karten (TH-AB). **Stunde 2:** Paragrafenblatt ausdrucken. **Stunde 3:** Platz für die Skala im Raum.",
     "**Abgabe:** nicht festgelegt (»nach Absprache«). Sag Bescheid, ob eine PDF in das LMS soll.",
-    "**Buchseiten:** Trauner PBGW 3, S. 105–118 (Athen, Rom) liegen nicht vor – Texte zu Athen und Rom stammen aus dem ChatGPT-Auftrag und sind noch nicht mit dem Buch abgeglichen. Filmtipps im Trauner-Buch wurden nicht geprüft.",
+    "**Buchseiten:** Trauner PBGW 3, S. 105–118 (Athen S. 111, Rom S. 112–115 laut Inhaltsverzeichnis). Die Buchtexte liegen nicht vor – Texte zu Athen und Rom stammen aus dem ChatGPT-Auftrag und sind noch nicht inhaltlich mit dem Buch abgeglichen. Filmtipps im Trauner-Buch wurden nicht geprüft.",
     "**Quellen:** Hammurabi und Augustus sind sprachlich vereinfachte Arbeitsfassungen, keine Zitate. Faktencheck: Louvre (Stele um 1750 v. Chr.) und Ötzi-Pressemeldung (Südtiroler Archäologiemuseum, 2024) geprüft; die übrigen Jahreszahlen sind Orientierungsmarken.",
 ]
 uber = "<h2>Was du vor Ort noch prüfen musst</h2>" + ul(offen)

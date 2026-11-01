@@ -168,7 +168,7 @@ T = [
   "tip": ["Was die Regeln verraten", "theorie.html#regeln"], "besprechen": True},
 
  # ======================================================= Teil 3 · Stunde 3
- {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch-Aufgabe S. 65", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 8,
+ {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch S. 111 (Athen)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 8,
   "q": "Zu zweit, am Schaubild der Folie und im Theorieteil. a) In welcher Einrichtung entscheiden Bürger unmittelbar selbst? b) Los oder Wahl? Ordne zu. "
        "c) Nenne drei Gruppen ohne politische Mitbestimmung. d) Vergleiche mit Österreich heute: Wer entscheidet über Gesetze, und welche Kontrolle ist vorgesehen? "
        "e) Ergänze: »Athen war für seine Bürger …. Nach heutigen Maßstäben war die politische Gleichberechtigung …«",
@@ -193,7 +193,7 @@ T = [
   "kriterien": ["unmittelbare Entscheidung erklärt", "Los und Wahl unterschieden", "drei ausgeschlossene Gruppen", "Vergleich nennt Vertretung und Kontrolle"],
   "tip": ["Athen: direkte Beteiligung mit Grenzen", "theorie.html#athen"], "besprechen": True},
 
- {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch-Aufgabe S. 71", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
   "q": "Zu zweit. Arbeitsfassung der Quelle: »Augustus stellt in seinem Tatenbericht dar, er habe nach dem Ende der Bürgerkriege die staatliche Macht wieder dem Senat und dem römischen Volk übertragen. "
        "Seinen Vorrang beschreibt er über sein Ansehen.« a) Wie bezeichnete sich Augustus selbst? b) Welchen Eindruck will er mit seiner Aussage vermitteln? "
        "c) Vergleiche mit dem Theorieteil: Welche Machtmittel und Befugnisse liefen bei ihm zusammen? d) Erkläre, warum der Tatenbericht eine nützliche Quelle ist, seine Aussage aber überprüft werden muss.",
@@ -215,7 +215,7 @@ T = [
   "kriterien": ["Selbstbezeichnung Princeps", "gewünschter Eindruck", "mindestens zwei Machtmittel", "Quelle ist Selbstdarstellung"],
   "tip": ["Rom: Republik und Machtkonzentration", "theorie.html#rom"], "besprechen": True},
 
- {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–37, 64–71", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 7,
   "q": "Zu zweit. In der Tabelle sind die Zeile »Ägypten« und die Spalte »Wo liegt die entscheidende Macht?« schon ausgefüllt. a) Ergänze in Stichworten für Athen, die römische Republik und den Prinzipat: "
        "Beteiligung und Ausschluss, Kontrolle und Grenze. b) Wählt zwei Ordnungen aus und erklärt, wie ihre Machtverteilung die Beteiligung oder die Kontrolle beeinflusst. Belegt jede Aussage mit einem konkreten Merkmal.",
   "hint": "Kein Ranking »primitiv – modern«. »Republik« allein sagt nicht, dass alle gleich mitentscheiden. Info: Theorieteile zu Ägypten, Athen und Rom",
