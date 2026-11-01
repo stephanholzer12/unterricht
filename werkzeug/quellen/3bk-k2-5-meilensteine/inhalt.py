@@ -153,7 +153,7 @@ T = [
   "sol": [["Musterlösung", ["a) Wer seinen Damm nicht instand hält und dadurch fremde Felder überschwemmt, muss das vernichtete Getreide ersetzen: Infrastruktur und Verantwortung gegenüber Nachbarn.",
                           "b) § 196: dem Täter wird ein Auge zerstört (Vergeltung) · § 198: eine Mine Silber · § 199: die Hälfte des Kaufpreises (der versklavte Mensch wird als Eigentum behandelt).",
                           "c) Der gesellschaftliche Stand des Opfers – bei gleicher Verletzung unterschiedliche Folgen.",
-                          "d) z. B. § 53 (Getreide wird ersetzt) · § 233 (der Baumeister baut die Wand auf eigene Kosten wieder auf) · § 199 (Zahlung an den Besitzer).",
+                          "d) z. B. § 53 (Getreide wird ersetzt) · § 233 (der Baumeister muss eine mangelhafte Wand auf eigene Kosten instand setzen) · § 199 (Zahlung an den Besitzer).",
                           "e) Eine schriftliche Regel macht Folgen berechenbar, sagt aber nichts darüber, ob alle gleich behandelt werden: Hier hängt die Rechtsfolge vom Stand ab.",
                           "f) Die Sammlung zeigt, welche Konflikte geordnet werden sollten und dass die Gesellschaft hierarchisch war; ob jeder Fall im Alltag genau so entschieden wurde, können wir aus ihr allein nicht feststellen.",
                           "Hinweis: »Auge um Auge« ist eine Form der Vergeltung; daneben stehen Ausgleichszahlungen. Die Sammlung ist eine Darstellung königlicher Ordnung, keine Gerichtsakte."]]],
@@ -163,12 +163,12 @@ T = [
   "tab": [["§", "Arbeitsfassung (vereinfacht)"], ["53", "Wer den Damm seines Feldes nicht instand hält und dadurch andere Felder überschwemmt, ersetzt das vernichtete Getreide."],
           ["196", "Wird einem Bürgersohn ein Auge zerstört, wird dem Täter ein Auge zerstört."], ["198", "Wird das Auge eines Untergebenen zerstört, ist eine Mine Silber zu zahlen."],
           ["199", "Wird das Auge des Knechtes eines Bürgers zerstört, ist die Hälfte seines Kaufpreises zu zahlen."],
-          ["233", "Baut ein Baumeister eine Wand nicht fest genug und sie stürzt ein, baut er sie auf eigene Kosten wieder auf."]],
+          ["233", "Baut ein Baumeister eine Wand nicht fest genug und zeigt sie Schäden oder droht einzustürzen, muss er sie auf eigene Kosten instand setzen."]],
   "tabnote": "Sprachlich vereinfachte Arbeitsfassung nach Buch S. 40, kein wörtliches Zitat. Eine Mine ist eine Gewichts- und Recheneinheit für Silber.",
   "tip": ["Was die Regeln verraten", "theorie.html#regeln"], "besprechen": True},
 
  # ======================================================= Teil 3 · Stunde 3
- {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch-Aufgabe S. 65", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 8,
+ {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch S. 111 (Athen)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 8,
   "q": "Zu zweit, am Schaubild der Folie und im Theorieteil. a) In welcher Einrichtung entscheiden Bürger unmittelbar selbst? b) Los oder Wahl? Ordne zu. "
        "c) Nenne drei Gruppen ohne politische Mitbestimmung. d) Vergleiche mit Österreich heute: Wer entscheidet über Gesetze, und welche Kontrolle ist vorgesehen? "
        "e) Ergänze: »Athen war für seine Bürger …. Nach heutigen Maßstäben war die politische Gleichberechtigung …«",
@@ -180,7 +180,7 @@ T = [
              ["at", "d) Österreich heute: Wer entscheidet, welche Kontrolle?"],
              ["urteil", "e) Dein Urteilssatz"]],
   "chk": {"einr": {"sel": "Volksversammlung"}, "rat": {"sel": "Los"}, "arch": {"sel": "Los"}, "strat": {"sel": "Wahl"},
-          "aus": {"kw": [["Frauen", r"frau"], ["Versklavte", r"sklav|versklav|knecht"], ["Fremde (Metöken)", r"fremd|metök|metoek|ausländ|auslaend|zugezogen"]]},
+          "aus": {"kw": [["Frauen", r"frau"], ["Versklavte", r"sklav|versklav|knecht"], ["Fremde (Metöken)", r"fremd|metök|metoek|ausländ|auslaend|zugezogen"]], "man": True},
           "at": {"kw": [["Parlament oder Wahlen", r"parlament|nationalrat|gewählt|gewaehlt|abgeordnete|wahl|vertreter|verfassung|gericht|kontroll"]], "man": True},
           "urteil": {"kw": [["Beteiligung und Grenze", r"bürger|buerger|beteilig|begrenzt|eingeschränkt|eingeschraenkt|ausgeschlossen|männer|maenner|weitreichend"]], "man": True}},
   "sol": [["Musterlösung", ["a) Volksversammlung (die berechtigten erwachsenen männlichen Bürger entscheiden selbst).",
@@ -193,7 +193,7 @@ T = [
   "kriterien": ["unmittelbare Entscheidung erklärt", "Los und Wahl unterschieden", "drei ausgeschlossene Gruppen", "Vergleich nennt Vertretung und Kontrolle"],
   "tip": ["Athen: direkte Beteiligung mit Grenzen", "theorie.html#athen"], "besprechen": True},
 
- {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch-Aufgabe S. 71", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
   "q": "Zu zweit. Arbeitsfassung der Quelle: »Augustus stellt in seinem Tatenbericht dar, er habe nach dem Ende der Bürgerkriege die staatliche Macht wieder dem Senat und dem römischen Volk übertragen. "
        "Seinen Vorrang beschreibt er über sein Ansehen.« a) Wie bezeichnete sich Augustus selbst? b) Welchen Eindruck will er mit seiner Aussage vermitteln? "
        "c) Vergleiche mit dem Theorieteil: Welche Machtmittel und Befugnisse liefen bei ihm zusammen? d) Erkläre, warum der Tatenbericht eine nützliche Quelle ist, seine Aussage aber überprüft werden muss.",
@@ -215,7 +215,7 @@ T = [
   "kriterien": ["Selbstbezeichnung Princeps", "gewünschter Eindruck", "mindestens zwei Machtmittel", "Quelle ist Selbstdarstellung"],
   "tip": ["Rom: Republik und Machtkonzentration", "theorie.html#rom"], "besprechen": True},
 
- {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–37, 64–71", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 7,
   "q": "Zu zweit. In der Tabelle sind die Zeile »Ägypten« und die Spalte »Wo liegt die entscheidende Macht?« schon ausgefüllt. a) Ergänze in Stichworten für Athen, die römische Republik und den Prinzipat: "
        "Beteiligung und Ausschluss, Kontrolle und Grenze. b) Wählt zwei Ordnungen aus und erklärt, wie ihre Machtverteilung die Beteiligung oder die Kontrolle beeinflusst. Belegt jede Aussage mit einem konkreten Merkmal.",
   "hint": "Kein Ranking »primitiv – modern«. »Republik« allein sagt nicht, dass alle gleich mitentscheiden. Info: Theorieteile zu Ägypten, Athen und Rom",

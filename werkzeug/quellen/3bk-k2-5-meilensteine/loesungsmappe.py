@@ -37,7 +37,7 @@ offen = [
     "**Teststoff Mo 23.11.:** kommt von dir. Er steht in keiner Datei dieser Einheit; der Test (20 min) läuft zu Beginn von Stunde 2, danach bleiben 26 min.",
     "**Zeit:** 50 min je Stunde (Annahme). **Stunde 1:** Mini-Whiteboards, Zeitstrahl-Karten (TH-AB). **Stunde 2:** Paragrafenblatt ausdrucken. **Stunde 3:** Platz für die Skala im Raum.",
     "**Abgabe:** nicht festgelegt (»nach Absprache«). Sag Bescheid, ob eine PDF in das LMS soll.",
-    "**Buchseiten:** Trauner PBGW 3, S. 105–118 (Athen, Rom) liegen nicht vor – Texte zu Athen und Rom stammen aus dem ChatGPT-Auftrag und sind noch nicht mit dem Buch abgeglichen. Filmtipps im Trauner-Buch wurden nicht geprüft.",
+    "**Buchseiten:** Trauner PBGW 3, S. 105–118 (Athen S. 111, Rom S. 112–115 laut Inhaltsverzeichnis). Die Buchtexte liegen nicht vor – Texte zu Athen und Rom stammen aus dem ChatGPT-Auftrag und sind noch nicht inhaltlich mit dem Buch abgeglichen. Filmtipps im Trauner-Buch wurden nicht geprüft.",
     "**Quellen:** Hammurabi und Augustus sind sprachlich vereinfachte Arbeitsfassungen, keine Zitate. Faktencheck: Louvre (Stele um 1750 v. Chr.) und Ötzi-Pressemeldung (Südtiroler Archäologiemuseum, 2024) geprüft; die übrigen Jahreszahlen sind Orientierungsmarken.",
 ]
 uber = "<h2>Was du vor Ort noch prüfen musst</h2>" + ul(offen)
@@ -53,7 +53,7 @@ for st in P.PLAN[I.KLASSEN[0]]:
              f"<div class='body'><div class='scroll'><table>{''.join(li)}</table></div>" + (f"<p class='warnline'><b>Wenn es knapp wird:</b> {e(kn)}</p>" if kn else "") + "</div></details>")
 uber += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 uber += "<h2>So bewertet die Seite</h2>" + ul([
-    "**Automatisch geprüft:** Auswahlfelder (Aufgabe 3 und 8: Zuordnungen, Aufgabe 8: Zeitbereiche).",
+    "**Automatisch geprüft:** Auswahl- und Kurzfelder der Aufgaben 3, 4, 5, 6 und 8 (26 Felder: Zuordnungen, Zeitbereiche). Das offene Feld »Drei Gruppen ohne Mitbestimmung« in Aufgabe 5 bewertest du selbst.",
     "**Offene Texte bewertest du:** alle übrigen Felder. Die Seite zeigt nur eine Schreibhilfe mit Stichwörtern und gibt dafür keine Punkte.",
     "**PDF:** Der Notenvorschlag zählt nur die automatisch geprüften Teile – er ist darum nur eine Hilfe; die Note kommt aus deiner Bewertung.",
     "**Keine Versuche** in PBGW.",

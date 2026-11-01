@@ -2510,14 +2510,15 @@ window.LH_VARIANTEN = [];
       if (!gleich) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
     }
     /* Widerspruch in einer Gleichung: »240 A = 24 A«, »1,5 T = 15 mT« (beide Seiten haben vergleichbare Einheiten, aber verschiedene Werte, Abweichung über 5 %) */
-    for (var e = 1; e < L.length; e++) if (L[e].eq && !L[e].neg && !L[e - 1].neg && L[e].u && L[e - 1].u) {
-      var fq = faktor(L[e - 1].u, L[e].u);
+    for (var e = 1; e < L.length; e++) if (L[e].eq && !L[e].neg && !L[e - 1].neg) {
+      var fq = (L[e].u && L[e - 1].u) ? faktor(L[e - 1].u, L[e].u) : ((!L[e].u && !L[e - 1].u) ? 1 : null);
       if (fq !== null) { var lw = L[e - 1].v * fq, rw = L[e].v; if (Math.abs(lw - rw) > Math.max(Math.abs(lw), Math.abs(rw)) * 0.05 + 1e-12) return { ok: false, msg: "Die beiden Seiten der Gleichung sind nicht gleich." }; }
     }
     for (var i = 0; i < L.length; i++) {
       var x = L[i]; if (x.neg) continue;
       var u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
       if (einheit && hatEinheit) { f = faktor(u, einheit); }
+      else if (einheit === "" && hatEinheit) { f = null; }   /* Prozentfeld (Einheit leer): fremde Einheit wie »kg« ist falsch, »%« wurde oben entfernt */
       var lesarten = x.v2 != null && !isNaN(x.v2) ? [x.v, x.v2] : [x.v];   // 1.500 kann 1500 oder 1,5 heißen
       for (var q = 0; q < lesarten.length; q++) {
         var wert = f === null ? lesarten[q] : lesarten[q] * f;

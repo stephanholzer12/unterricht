@@ -292,7 +292,7 @@ def t2_a4():
 def t2_bespr():
     s = d.slide("Aufgabe", "Besprechen: Aufgabe 4")
     y = frage_klick(s, 1.0, "Was entscheidet bei § 196, 198 und 199 über die Folge?", "Der gesellschaftliche Stand des Opfers.", size=18)
-    y = frage_klick(s, y, "Belege den Schutz von Eigentum.", "z. B. § 53 (Getreide ersetzen), § 233 (Wand neu bauen), § 199 (Zahlung an den Besitzer).", size=18)
+    y = frage_klick(s, y, "Belege den Schutz von Eigentum.", "z. B. § 53 (Getreide ersetzen), § 233 (Wand instand setzen), § 199 (Zahlung an den Besitzer).", size=18)
     y = frage_klick(s, y, "Ergänze: »Die Sammlung zeigt …; ob …, können wir aus ihr allein nicht feststellen.«", "… eine hierarchische Gesellschaft und geordnete Konflikte; ob jeder Fall im Alltag so entschieden wurde.", size=18)
     return s
 
