@@ -247,7 +247,7 @@ T = [
           "warum": {"kw": [["Vergleich / Kontrolle", "vergleich|kontroll|gegenprobe|test|prüf|pruef|nur.{0,20}(asche|lithium)|andere.{0,10}pulver|auch.{0,10}pulver"],
                            ["nicht jedes Pulver wirkt", "nicht.{0,25}(jedes|alle|jeder)|nur.{0,25}(asche|lithium|bestimmte|manche)|salz.{0,25}(nicht|kein|wirkt)|kein.{0,20}effekt|keine.{0,20}wirkung|nichts"]]}},
   "sol": [["Lösung", ["Würfel 1 und Würfel 3 brennen nicht richtig (schmelzen, werden braun, verkohlen) · Würfel 2 (mit Lithiumchlorid) brennt mit ruhiger, bläulich-gelber Flamme.",
-                      "c) Das Lithiumchlorid ist hier ein Katalysator: Es senkt die Aktivierungsenergie der Verbrennung und wird dabei nicht verbraucht. (Bei Holzasche wirken ähnlich Salze von Kalium und Natrium.)",
+                      "c) Das Lithiumchlorid hilft hier, die Verbrennung in Gang zu halten. Auf Schulniveau deuten wir das als Katalysator (Modell: Es senkt die Aktivierungsenergie). Entscheidend ist, was ihr tatsächlich beobachtet habt – die Deutung folgt der Beobachtung.",
                       "d) Würfel 3 ist die Kontrolle: Auch ein Pulver auf dem Würfel (Salz) verändert nichts – es kommt auf das Lithiumchlorid an, nicht auf irgendein Pulver."]]],
   "tip": ["Katalysator-Demo und Enzyme", "theorie.html#enzyme"]},
 

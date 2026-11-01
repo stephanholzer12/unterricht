@@ -173,7 +173,7 @@ T = [
 
  {"id": "a7", "nr": 7, "title": "Eine neue Weizensorte prüfen", "src": "Buch S. 45", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 7,
   "q": "Zu zweit: Eine Firma entwickelt mit der Genschere eine Weizensorte, die weniger oft von einem Pilz befallen wird. a) Was könnte sie bringen? (1 Satz) "
-       "b) Formuliere je eine Prüffrage zu Anbau und Ertrag und zu Lebensmittel oder Umwelt. c) Nenne eine wirtschaftliche Frage, die ein Biologe nicht beantworten kann.",
+       "b) Formuliere je eine Prüffrage zu Anbau und Ertrag und zu Lebensmittel oder Umwelt. c) Nenne eine wirtschaftliche Frage, die sich mit biologischen Versuchsdaten allein nicht beantworten lässt.",
   "hint": "»Könnte« ist noch kein Beweis. Info: Theorieteil »Eine neue Sorte beurteilen«",
   "type": "multi",
   "fields": [["nutzen", "a) Möglicher Nutzen (1 Satz)"], ["anbau", "b) Prüffrage zu Anbau und Ertrag"], ["folgen", "b) Prüffrage zu Lebensmittel oder Umwelt"], ["wirtschaft", "c) Wirtschaftliche Frage"]],

@@ -305,7 +305,7 @@ for _t in T:
     for _x in [_t["q"]] + [z for _a, zz in _t["sol"] for z in zz]:
         assert "√" not in _x and "≈" not in _x, (_t["id"], "Zeichen fehlt in der PDF-Schrift")
 # Rechenkontrolle Aufgabe 8 (vom Aufgabentext aus)
-assert abs((4.8 + 5.6 + 5.2) / 3 - 5.2) < 1e-9 and abs((6.1 + 4.9 + 6.4) / 3 - 5.8) < 1e-9 and abs(6.4 - 4.9 - 1.5) < 1e-9
+assert abs((3.8 + 4.6 + 4.2) / 3 - 4.2) < 1e-9 and abs((5.1 + 3.9 + 5.4) / 3 - 4.8) < 1e-9 and abs(5.4 - 3.9 - 1.5) < 1e-9 and abs(4.6 - 3.8 - 0.8) < 1e-9
 
 PFLICHT = [t["nr"] for t in T if t["h"] and t["tag"] != "Zusatz"]
 BESPRECHEN = [1, 2, 3, 5, 6, 8, 9]  # in der Stunde gemeinsam besprechen (TH-Unterricht, Lösungsmappe); die anderen kontrolliert die PDF

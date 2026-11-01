@@ -158,7 +158,7 @@ PARTS = [
   {"id": "enzyme", "title": "Demo: Was lässt den Zucker brennen? – und Enzyme", "pill": "Buch S. 34",
    "blocks": [("versuch", "K1.3-V7", "Zuckerwürfel mit Lithiumchlorid und mit Kochsalz (Demo)", "Erst tippen (Aufgabe 13): pur, mit Lithiumchlorid, mit Kochsalz – welcher Würfel brennt mit Flamme?"),
               ("ul", ["Ein Zuckerwürfel lässt sich kaum anzünden: Er schmilzt und wird braun. Mit etwas **Lithiumchlorid** (einem weißen Salz) brennt er mit ruhiger, bläulicher Flamme weiter.",
-                      "Das Lithiumchlorid macht die Verbrennung **schneller**, obwohl es nicht mitbrennt – es **senkt die Aktivierungsenergie** und wird nicht verbraucht: ein **Katalysator**.",
+                      "Das Lithiumchlorid hilft der Verbrennung: Auf Schulniveau deuten wir das als **Katalysator** – er **senkt die Aktivierungsenergie** und brennt nicht selbst mit. Was ihr beobachtet, zählt zuerst; die Deutung kommt danach.",
                       "Der dritte Würfel mit **Kochsalz** ist die **Kontrolle**: Ein anderes Pulver bewirkt nichts. Es kommt auf das Lithiumchlorid an, nicht auf irgendein weißes Pulver.",
                       "In deinem Körper verbrennt Zucker bei 37 °C ohne Flamme. Das schaffen **Enzyme** – **Biokatalysatoren**, Katalysatoren in Lebewesen.",
                       "Im Speichel spaltet das Enzym **Amylase** Stärke in Zucker. Darum schmeckt eine Semmel süß, wenn du lange kaust.",

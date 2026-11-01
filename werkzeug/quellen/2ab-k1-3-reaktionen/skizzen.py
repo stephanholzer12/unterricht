@@ -499,7 +499,7 @@ def v8():
 
 def v9():
     im, d = canvas()
-    ctext(d, 450, 20, "Kupferoxid und Holzkohle erhitzen (Lehrer-Demo)", f(FB, 30), INK)
+    ctext(d, 450, 20, "Aufbau im Video – keine Durchführung", f(FB, 30), INK)
     burner(d, 330, 520)
     d.polygon(P(210, 330, 470, 230, 482, 255, 222, 355), outline=GREY, fill=(245, 245, 245))
     d.polygon(P(222, 330, 300, 300, 310, 325, 232, 352), fill=(35, 35, 35))

@@ -10,7 +10,7 @@ STUNDENVORSCHLAG = [
 
 CHECKLISTE = [
     "Bis Mi 11.11.: Lithiumchlorid #253 (Gefahrstoffschrank L-U) bereitlegen, Holzasche nur als Reserve mitbringen; Würfelzucker bereitlegen (V7); Eis für die Demo am 10.11. einfrieren (Kühlbox).",
-    "Nichts ansetzen oder verdünnen außer der Kupfersulfatlösung für V4 (15,0 g Pentahydrat auf 150 ml Lösung, am Vortag möglich). V5 braucht nur abgewogenes Pulver: 6 × 5,0 g Zitronensäure und 6 × 6,0 g Natron (Vortag Mo 09.11. möglich).",
+    "Nichts ansetzen oder verdünnen außer der Kupfersulfatlösung für V4 (15,0 g Pentahydrat auf 150 ml Lösung, am Vortag möglich). V5 braucht nur abgewogenes Pulver: 6 × 5,0 g Zitronensäure und 6 × 6,0 g Natron (vor dem ersten Einsatz am Di 10.11., spätestens Mo 09.11.).",
     "Löschdecke bzw. Sand für K1.3-V1 bereitlegen (Bestand laut Inventar unklar).",
     "Vor Stunde 3: Stationen aufbauen – Station 1 am Mobiltisch 1 (Sammelbehälter dazu), Station 2 an einem Schülertisch (IKT-Tisch, nicht am Fenster); 30 g Salz abwiegen; beide Stationen einmal selbst ausprobieren (Vorversuch V5: Temperaturabfall bei 25 ml Wasser prüfen).",
     "Vor Stunde 4 (Vorversuch am Mi 11.11.): Zuckerwürfel mit Lithiumchlorid, mit Salz und pur testen; Becherglas 400 ml als Löschhaube bereitstellen; Rost-Ansätze aus dem Gestell räumen.",
@@ -56,7 +56,7 @@ AUF_EINEN_BLICK = [
     ["1 · 03.11.", "Oxidation = Elektronenabgabe, Reduktion = Elektronenaufnahme – immer gleichzeitig. Eisenwolle wird beim Verbrennen schwerer.", "Waage, Eisenwolle, Batterie · Rost-Ansätze"],
     ["2 · 05.11.", "Rost braucht Wasser + Sauerstoff, Salz beschleunigt. Schutz: Schicht, Zink, Edelstahl, waschen, trocknen.", "Kupferblech, Brenner"],
     ["3 · 10.11.", "Exotherm gibt Energie ab, endotherm nimmt sie auf. Fast jede Reaktion braucht Aktivierungsenergie. Masse und Energie bleiben erhalten.", "Demo V6 · Stationen V4–V5"],
-    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Lithiumchlorid bei Zucker, Enzyme, Autokatalysator.", "Würfelzucker, Lithiumchlorid, Salz"],
+    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Enzyme, Autokatalysator; Zucker mit Lithiumchlorid als Demo (Deutung als Katalyse im Modell).", "Würfelzucker, Lithiumchlorid, Salz"],
     ["Zusatz", "Tempo: Oberfläche, Temperatur (+10 °C ≈ doppelt), Konzentration, Katalysator.", "Brausetabletten, Petrischalen (nur V8)"],
 ]
 
@@ -105,7 +105,7 @@ KAPITEL = [
 RECHNEN = [
     "**Masse (A12):** 1,20 g Eisenwolle → 1,52 g. Eingebauter Sauerstoff 0,32 g; Zunahme 0,32 : 1,20 · 100 ≈ 26,7 %. Vollständig zu Fe₃O₄ wären es +38 %, zu Fe₂O₃ +43 %.",
     "**Faustregel (A17):** 80 s bei 20 °C → 40 s bei 30 °C → 20 s bei 40 °C. Allgemein: t = t₀ : 2^(ΔT/10). Übungsvariante mit Zufallszahlen auf dem Arbeitsblatt.",
-    "**V7 ohne Verdünnen:** Zuckerwürfel + Lithiumchlorid (Katalysator; Holzasche als Ausweichlösung), Kochsalz als Kontrolle. Lithiumchlorid #253 nur in Spuren, Vorversuch Pflicht; Mechanismus komplex – auf Schulniveau »Katalysator«. Holzasche (K-, Na-Salze) wirkt schwächer.",
+    "**V7 ohne Verdünnen:** Zuckerwürfel + Lithiumchlorid (Katalysator; Holzasche als Ausweichlösung), Kochsalz als Kontrolle. Lithiumchlorid #253 nur in Spuren, Vorversuch Pflicht. Belegt ist die Variante mit Holzasche (Seilnacht, Universität Göttingen Versuch 1220); für reines Lithiumchlorid fehlt eine passende Anleitung. Erwartung und tatsächliche Beobachtung trennen; der Mechanismus ist komplex, die Deutung als Katalyse ist ein Schulmodell. Eine Rangfolge »Asche schwächer als LiCl« ist nicht belegt.",
     "**Kupfersulfat (V4):** 15,0 g CuSO₄ · 5 H₂O auf 150 ml Lösung = 10 g Pentahydrat pro 100 ml Lösung (≈ 6,4 g CuSO₄ pro 100 ml; M = 249,7 g/mol). Keine Angabe »10 %« verwenden.",
     "**Zitronensäure (V5):** Pulver direkt – 5,0 g Zitronensäure (Monohydrat) + 6,0 g Natron auf 25 ml Wasser; 3 NaHCO₃ je Säure: 6,0 g Natron (0,071 mol) entsprechen 0,024 mol Säure (5,0 g Monohydrat). Vorversuch: Temperaturabfall prüfen.",
 ]
