@@ -122,7 +122,7 @@ KAPITEL = [
 ]
 
 RECHNEN = [
-    "**Aufgabe 8:** (3,8 + 4,6 + 4,2) m : 3 = 12,6 m : 3 = 4,2 m · (5,1 + 3,9 + 5,4) m : 3 = 14,4 m : 3 = 4,8 m · Spannweite B = 5,4 m − 3,9 m = 1,5 m (A: 0,8 m). Überlappung A 3,8–4,6 m und B 3,9–5,4 m → »unklar«. Werte bewusst unter 5 m: Die Zahlenprüfung erlaubt 2 % Spielraum – bei Mittelwerten über 5 m würde ein Nachbarwert (z. B. 5,1 statt 5,2) als richtig zählen.",
+    "**Aufgabe 8:** (3,8 + 4,6 + 4,2) m : 3 = 12,6 m : 3 = 4,2 m · (5,1 + 3,9 + 5,4) m : 3 = 14,4 m : 3 = 4,8 m · Spannweite B = 5,4 m − 3,9 m = 1,5 m (A: 0,8 m). Überlappung A 3,8–4,6 m und B 3,9–5,4 m → »unklar«. Werte bewusst unter 5 m: Die Zahlenprüfung lässt bei Aufgabe 8 a–c einen festen Spielraum von ±0,04 m zu (nach Einheitenumrechnung, z. B. 420 cm = 4,2 m); ein Nachbarwert wie 4,3 statt 4,2 gilt damit als falsch.",
     "**Stopp-Frage Teil 4:** (5,1 + 6,3 + 5,7) m : 3 = 17,1 m : 3 = 5,7 m. **Quiz:** 4,0/5,0/6,0 m → Mittelwert 5,0 m, Spannweite 2,0 m.",
     "**Kapazität Messbahn:** 8 Gruppen × 6 Würfe × 0,5 min = 24 min (Planannahme). Probewürfe 8 × ca. 20 s ≈ 3 min, in der Sicherheitsphase (5 min). Gegenprobe 1 Gruppe × 6 Würfe × 0,5 min = 3 min. Wird es knapp: Gegenprobe entfällt, als Grenze notieren.",
     "**Vorjahr alte 1BK (lang − kurz):** G1 +9,05 · G2 +0,10 · G3 −10,54 · G4 +7,36 · G6 +3,05 · G7 +2,72 · G5 nicht berechenbar. **Alte 1AK:** G1 −0,57 · G2 −2,47 · G3 +6,55 · G4 +6,41 · G5 +4,52 · G6 −1,99 · G7 +3,07.",

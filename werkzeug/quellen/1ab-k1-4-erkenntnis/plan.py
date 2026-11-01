@@ -68,8 +68,8 @@ def _ab(k, std, name):
 
 KNAPP = {
  ("1AK", 2): f"Zeitstopp: Um Minute {_ab('1AK', 2, 'Zurück')} geht es zurück, egal wie weit ihr seid. Wenn es knapp wird: 1. Die Gegenprobe entfällt – das als Grenze im Protokoll notieren. "
-             "2. Nie Vergleichspaare streichen; lieber eine Gruppe weniger messen lassen und das im Protokoll vermerken.",
- ("1BK", 3): f"Zeitstopp: Um Minute {_ab('1BK', 3, 'Zurück')} geht es zurück. Wenn es knapp wird: 1. Die Gegenprobe entfällt – als Grenze notieren. 2. Keine Vergleichspaare streichen.",
+             "2. Nie Vergleichspaare streichen; muss eine Gruppe ausfallen, beobachtet und protokolliert sie gemeinsam mit einer messenden Gruppe und wertet deren Daten aus – im Protokoll deutlich als »übernommene Werte von Gruppe …« kennzeichnen, keine Werte erfinden und nicht als selbst gemessen abgeben.",
+ ("1BK", 3): f"Zeitstopp: Um Minute {_ab('1BK', 3, 'Zurück')} geht es zurück. Wenn es knapp wird: 1. Die Gegenprobe entfällt – als Grenze notieren. 2. Keine Vergleichspaare streichen; fällt eine Gruppe aus, protokolliert sie mit einer messenden Gruppe und kennzeichnet die übernommenen Werte.",
  ("1AK", 3): f"Nach Klassenbuch und Test bleiben {50 - _ab('1AK', 3, 'Lesen')} min. Zeitstopp: Um Minute {_ab('1AK', 3, 'Besprechung')} beginnt die Besprechung. Wenn es knapp wird: Aufgabe 7 nur mit 2 Karten je Kadett.",
  ("1BK", 2): f"Nach Klassenbuch und Test bleiben {50 - _ab('1BK', 2, 'Lesen')} min. Zeitstopp: Um Minute {_ab('1BK', 2, 'Besprechung')} beginnt die Besprechung. Wenn es knapp wird: Aufgabe 7 nur mit 2 Karten je Kadett.",
  ("1AK", 4): f"Zeitstopp: Um Minute {_ab('1AK', 4, 'PDF')} PDFs erstellen, danach nur noch Reserve. Wenn es knapp wird: Klassenübersicht nur mit 4 Gruppen, Besprechung nur Aussage 1 und 2 des KI-Checks. Aufgabe 10 g bleibt schriftlich (ein Satz).",
