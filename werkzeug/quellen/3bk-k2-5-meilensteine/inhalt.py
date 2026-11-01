@@ -180,7 +180,7 @@ T = [
              ["at", "d) Österreich heute: Wer entscheidet, welche Kontrolle?"],
              ["urteil", "e) Dein Urteilssatz"]],
   "chk": {"einr": {"sel": "Volksversammlung"}, "rat": {"sel": "Los"}, "arch": {"sel": "Los"}, "strat": {"sel": "Wahl"},
-          "aus": {"kw": [["Frauen", r"frau"], ["Versklavte", r"sklav|versklav|knecht"], ["Fremde (Metöken)", r"fremd|metök|metoek|ausländ|auslaend|zugezogen"]]},
+          "aus": {"kw": [["Frauen", r"frau"], ["Versklavte", r"sklav|versklav|knecht"], ["Fremde (Metöken)", r"fremd|metök|metoek|ausländ|auslaend|zugezogen"]], "man": True},
           "at": {"kw": [["Parlament oder Wahlen", r"parlament|nationalrat|gewählt|gewaehlt|abgeordnete|wahl|vertreter|verfassung|gericht|kontroll"]], "man": True},
           "urteil": {"kw": [["Beteiligung und Grenze", r"bürger|buerger|beteilig|begrenzt|eingeschränkt|eingeschraenkt|ausgeschlossen|männer|maenner|weitreichend"]], "man": True}},
   "sol": [["Musterlösung", ["a) Volksversammlung (die berechtigten erwachsenen männlichen Bürger entscheiden selbst).",

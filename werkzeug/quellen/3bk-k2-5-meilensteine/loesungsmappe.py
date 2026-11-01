@@ -53,7 +53,7 @@ for st in P.PLAN[I.KLASSEN[0]]:
              f"<div class='body'><div class='scroll'><table>{''.join(li)}</table></div>" + (f"<p class='warnline'><b>Wenn es knapp wird:</b> {e(kn)}</p>" if kn else "") + "</div></details>")
 uber += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 uber += "<h2>So bewertet die Seite</h2>" + ul([
-    "**Automatisch geprüft:** Auswahlfelder (Aufgabe 3 und 8: Zuordnungen, Aufgabe 8: Zeitbereiche).",
+    "**Automatisch geprüft:** Auswahl- und Kurzfelder der Aufgaben 3, 4, 5, 6 und 8 (26 Felder: Zuordnungen, Zeitbereiche). Das offene Feld »Drei Gruppen ohne Mitbestimmung« in Aufgabe 5 bewertest du selbst.",
     "**Offene Texte bewertest du:** alle übrigen Felder. Die Seite zeigt nur eine Schreibhilfe mit Stichwörtern und gibt dafür keine Punkte.",
     "**PDF:** Der Notenvorschlag zählt nur die automatisch geprüften Teile – er ist darum nur eine Hilfe; die Note kommt aus deiner Bewertung.",
     "**Keine Versuche** in PBGW.",
