@@ -34,7 +34,7 @@ def first(lst, correct):
     return [correct] + [x for x in lst if x != correct]
 
 
-BR = ["brennt mit Flamme", "brennt nicht richtig (schmilzt, wird braun)"]
+BR = ["kaum oder keine Gasbläschen", "deutlich sichtbare Gasbläschen (schneller)"]  # A13 (H₂O₂ ± Braunstein)
 OR = ["Verbindung eines Stoffes mit Sauerstoff", "Abgabe von Elektronen", "Entzug (Abspaltung) von Sauerstoff", "Aufnahme von Elektronen"]
 RX = ["Redoxreaktion", "keine Redoxreaktion"]
 SCHUTZ = ["Schutzschicht hält Wasser und Sauerstoff fern", "unedleres Zink wird statt dem Eisen oxidiert",
@@ -235,20 +235,25 @@ T = [
   "tip": ["Masse und Energie bleiben erhalten", "theorie.html#erhalt"]},
 
  # ======================================================= Stunde 4 · Katalysatoren (alle)
- {"id": "a13", "besprechen": True, "nr": 13, "title": "Was lässt den Zucker brennen? (Demo K1.3-V7)", "src": "Buch S. 34", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
-  "q": "Ein Zuckerwürfel lässt sich mit dem Feuerzeug kaum entzünden – er schmilzt und wird braun. Drei Würfel liegen auf der Unterlage: Würfel 1 pur, Würfel 2 mit etwas Lithiumchlorid (weißes Salz) bestreut, Würfel 3 mit etwas Kochsalz bestreut. "
-       "a) Tippe: Welcher Würfel brennt mit Flamme? b) Trag für jeden Würfel ein, was du siehst. c) Welche Rolle spielt das Lithiumchlorid? d) Warum gab es Würfel 3 mit Kochsalz? (1 Satz)",
+ {"id": "a13", "besprechen": True, "nr": 13, "title": "Was beschleunigt den Zerfall von Wasserstoffperoxid? (Demo K1.3-V7)", "src": "Buch S. 34", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
+  "q": "Zwei gleiche offene Gefäße enthalten gleich viel Wasserstoffperoxid-Lösung (3 %). In Gefäß 2 gibt die Lehrkraft eine kleine Menge Braunstein (MnO₂, schwarzes Pulver), Gefäß 1 bleibt ohne Braunstein. Die Gleichung lautet 2 H₂O₂ → 2 H₂O + O₂. "
+       "a) Tippe VOR der Demo: In welchem Gefäß entsteht schneller Gas? (Der Tipp zählt nicht.) b) Trag für jedes Gefäß ein, was du siehst – nur die Beobachtung. c) Welche Rolle hat der Braunstein? d) Welches Gas entsteht laut Gleichung? e) Trenne in 1–2 Sätzen: Was war die Beobachtung, was die Erklärung?",
   "type": "multi",
-  "fields": [["tipp", "a) Mein Tipp", ["Würfel 1 · pur", "Würfel 2 · mit Lithiumchlorid", "Würfel 3 · mit Kochsalz", "alle drei"], False],
-             ["g1", "Würfel 1 · pur", BR, False], ["g2", "Würfel 2 · mit Lithiumchlorid", BR, False], ["g3", "Würfel 3 · mit Kochsalz", BR, False],
-             ["rolle", "c) Das Lithiumchlorid wirkt hier als …", ["Katalysator – sie senkt die Aktivierungsenergie und wird nicht verbraucht", "zusätzlicher Brennstoff, der mitbrennt", "Löschmittel", "Oxidationsmittel, das Sauerstoff liefert"]],
-             ["warum", "d) Darum gab es Würfel 3 mit Kochsalz (1 Satz)"]],
-  "chk": {"g1": {"sel": BR[1]}, "g2": {"sel": BR[0]}, "g3": {"sel": BR[1]}, "rolle": {"sel": "Katalysator – sie senkt die Aktivierungsenergie und wird nicht verbraucht"},
-          "warum": {"kw": [["Vergleich / Kontrolle", "vergleich|kontroll|gegenprobe|test|prüf|pruef|nur.{0,20}(asche|lithium)|andere.{0,10}pulver|auch.{0,10}pulver"],
-                           ["nicht jedes Pulver wirkt", "nicht.{0,25}(jedes|alle|jeder)|nur.{0,25}(asche|lithium|bestimmte|manche)|salz.{0,25}(nicht|kein|wirkt)|kein.{0,20}effekt|keine.{0,20}wirkung|nichts"]]}},
-  "sol": [["Lösung", ["Würfel 1 und Würfel 3 brennen nicht richtig (schmelzen, werden braun, verkohlen) · Würfel 2 (mit Lithiumchlorid) brennt mit ruhiger, bläulich-gelber Flamme.",
-                      "c) Das Lithiumchlorid hilft hier, die Verbrennung in Gang zu halten. Auf Schulniveau deuten wir das als Katalysator (Modell: Es senkt die Aktivierungsenergie). Entscheidend ist, was ihr tatsächlich beobachtet habt – die Deutung folgt der Beobachtung.",
-                      "d) Würfel 3 ist die Kontrolle: Auch ein Pulver auf dem Würfel (Salz) verändert nichts – es kommt auf das Lithiumchlorid an, nicht auf irgendein Pulver."]]],
+  "fields": [["t13", "a) Mein Tipp vor der Demo", ["Gefäß 1 · ohne Braunstein", "Gefäß 2 · mit Braunstein", "beide gleich schnell"], False],
+             ["b13a", "b) Gefäß 1 · ohne Braunstein", BR, False], ["b13b", "b) Gefäß 2 · mit Braunstein", BR, False],
+             ["r13", "c) Der Braunstein wirkt hier als …", ["Katalysator – er senkt die Aktivierungsenergie und ist in der Gesamtgleichung kein Ausgangsstoff", "zusätzlicher Ausgangsstoff, der verbraucht wird", "Energielieferant, der die Reaktion antreibt", "Stoff, der den Energieunterschied zwischen Anfang und Ende verändert"]],
+             ["gas13", "d) Laut Gleichung entsteht das Gas …", ["Sauerstoff (O₂)", "Wasserstoff (H₂)", "Kohlenstoffdioxid (CO₂)", "Wasserdampf (H₂O)"]],
+             ["w13", "e) Beobachtung und Erklärung getrennt (1–2 Sätze)"]],
+  "chk": {"b13a": {"sel": BR[0]}, "b13b": {"sel": BR[1]},
+          "r13": {"sel": "Katalysator – er senkt die Aktivierungsenergie und ist in der Gesamtgleichung kein Ausgangsstoff"},
+          "gas13": {"sel": "Sauerstoff (O₂)"},
+          "w13": {"kw": [["Beobachtung genannt", "beobacht|sehe|sah|gesehen|bläschen|blaeschen|gas|schäum|schaeum|blasen"],
+                         ["Erklärung genannt", "erklär|erklaer|katalys|aktivierungs|deut|schneller|beschleunig|senkt"]]}},
+  "sol": [["Lösung", ["b) Das zeigt eure Beobachtung. Erwartet (im Vorversuch zu bestätigen, nicht als eigene Beobachtung ausgeben): Gefäß 1 kaum oder keine Gasbläschen · Gefäß 2 mit Braunstein deutlich schnellere Gasbildung. Erwärmung ist möglich, hängt aber vom Aufbau ab.",
+                      "c) Katalysator: Er senkt die Aktivierungsenergie und beschleunigt die Zersetzung. Er steht über dem Reaktionspfeil, ist also kein Ausgangsstoff der Gesamtgleichung, liefert keine Energie und ändert nicht den Energieunterschied zwischen Anfang und Ende.",
+                      "d) Laut Gleichung 2 H₂O₂ → 2 H₂O + O₂ entsteht Sauerstoff. Die Gasbläschen allein beweisen das aber nicht – ein Nachweis wäre ein eigener Test (z. B. Glimmspanprobe, nur wenn die Lehrkraft sie wirklich durchführt).",
+                      "e) Beispiel: Beobachtung – in Gefäß 2 steigen viel schneller Bläschen auf als in Gefäß 1. Erklärung – der Braunstein ist ein Katalysator und senkt die Aktivierungsenergie. (Bewertung durch die Lehrkraft; das schwarze Pulver als Rückstand beweist nicht, dass der Katalysator unverändert blieb.)",
+                      "Biologie-Brücke: Dasselbe H₂O₂ zerlegt in unseren Zellen das Enzym Katalase. Braunstein ist kein Enzym, wirkt aber ähnlich als Katalysator."]]],
   "tip": ["Katalysator-Demo und Enzyme", "theorie.html#enzyme"]},
 
  {"id": "a14", "nr": 14, "title": "Katalysator – stimmt das?", "src": "Buch-Aufgabe S. 37", "own": False, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 3,
@@ -405,7 +410,7 @@ PFLICHT = [t["nr"] for t in T if t["h"] and t["tag"] != "Zusatz"]
 
 # Offene Erklärungen: »Prüfen« zeigt nur eine Schreibhilfe (Stichwörter), keine automatische Richtig-Wertung,
 # und im PDF zählen sie nicht zu den automatischen Punkten – die Lehrkraft bewertet sie (ChatGPT-Bericht v5, N02/N03).
-MANUELL = {"a1": ["warum"], "a5": ["warum"], "a8": ["punkt"], "a11": ["erkl"], "a13": ["warum"], "a15": ["fehler"],
+MANUELL = {"a1": ["warum"], "a5": ["warum"], "a8": ["punkt"], "a11": ["erkl"], "a13": ["w13"], "a15": ["fehler"],
            "a19": ["kat"], "a21": ["warum"], "a22": ["duenn"], "a23": ["titel"]}
 for _t in T:
     for _k in MANUELL.get(_t["id"], []):
@@ -519,8 +524,8 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
   "Die Edelmetalle sitzen fein verteilt in einer porösen Schicht auf einer Keramikwabe.", "Buch S. 35"),
  ("Katalysator", "Wie nennt man Katalysatoren in Lebewesen?", ["Enzyme", "Ionen", "Hormone", "Oxide"],
   "Enzyme wie die Amylase im Speichel sind Biokatalysatoren.", "Buch S. 35"),
- ("Katalysator", "Ein Zuckerwürfel brennt nur, wenn man ihn mit etwas Lithiumchlorid bestreut. Welche Rolle hat das Lithiumchlorid?", ["Katalysator – sie senkt die Aktivierungsenergie", "Brennstoff, der mitbrennt", "Löschmittel", "Oxidationsmittel"],
-  "Das Lithiumchlorid beschleunigt die Verbrennung und wird nicht verbraucht – wie jeder Katalysator.", "Buch S. 34"),
+ ("Katalysator", "H₂O₂-Lösung zerfällt mit etwas Braunstein viel schneller. Welche Rolle hat der Braunstein?", ["Katalysator – er senkt die Aktivierungsenergie", "Ausgangsstoff, der verbraucht wird", "Energielieferant", "Hemmstoff"],
+  "Der Braunstein steht in der Gleichung über dem Pfeil: Er beschleunigt die Reaktion, ohne ein Ausgangsstoff zu sein.", "Buch S. 34"),
  ("Tempo", "Warum brennen dünne Holzspäne schneller als ein dicker Scheit?", ["größere Oberfläche", "höhere Dichte", "weniger Sauerstoff", "mehr Wasser"],
   "Je feiner zerteilt, desto mehr Teilchen können gleichzeitig reagieren.", "Buch S. 36"),
  ("Tempo", "Faustregel: Eine Reaktion braucht bei 20 °C 60 s. Wie lange etwa bei 30 °C?", ["30 s", "60 s", "120 s", "6 s"],

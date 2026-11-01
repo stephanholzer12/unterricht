@@ -117,7 +117,7 @@ cases[K13]=[
  ['a4','prod','Kupfersulfat',0],['a4','prod','Kupferchlorid',0],['a4','prod','nicht Kupfer, sondern Kohlenstoff',0],['a4','prod','CO2',0],['a4','prod','Kupfer und Kohlenstoffdioxid entstehen',0],
  /* N02: offene Erklärungen bewertet die Lehrkraft – M = Teil ist als manuell gekennzeichnet, gibt kein automatisches »richtig« und keine Punkte */
  ['a5','warum','Innen oxidiert Kupfer, außen fehlt Sauerstoff.','M'],['a5','warum','Sauerstoff gefaltet','M'],['a5','warum','Außen reagiert das heiße Kupfer mit Luftsauerstoff. Zwischen den gefalteten Flächen kommt kaum Luft hin.','M'],
- ['a13','warum','Enzym gekocht','M'],['a13','warum','Die Kartoffel wurde gekocht, aber die Katalase ist weiterhin aktiv.','M'],['a13','warum','Das Enzym wurde durch Hitze nicht zerstört.','M'],['a13','warum','Beim Kochen verändert sich die Form der Katalase; sie verliert dadurch ihre Wirkung.','M'],
+ ['a13','w13','Beobachtung: in Gefäß 2 steigen Bläschen auf. Erklärung: Braunstein senkt die Aktivierungsenergie.','M'],['a13','w13','Der Braunstein ist ein Katalysator.','M'],['a13','w13','keine Ahnung','M'],
  ['a1','warum','Sauerstoff wird freigesetzt; Eisen nimmt keinen Sauerstoff auf.','M'],['a1','warum','Das Eisen nimmt Sauerstoff aus der Luft auf.','M'],
  ['a11','erkl','Aktivierungsenergie wird frei. Danach nimmt das Feuer Wärme auf.','M'],['a11','erkl','Zum Anzünden braucht man Energie. Danach kann die frei werdende Wärme weitere Reaktionen ermöglichen.','M'],
  ['a8','punkt','Öl drauf, weil Wasser fernbleibt','M'],['a15','fehler','kein Filter','M'],['a19','kat','beschleunigt','M'],['a21','warum','teuer','M'],['a22','duenn','Oberfläche','M'],['a23','titel','Plakat','M'],
@@ -125,7 +125,8 @@ cases[K13]=[
  ['a21','metalle','Chrom',0],['a21','metalle','Ruthenium, Cobalt, Mangan und Chrom',1],['a21','metalle','Chrom, Mangan, Kobalt, Ruthenium',1],['a21','metalle','Ruthenium, Kobalt, Mangan',0],
  ['a21','metalle','Chrom, Mangan, Kobalt und Ruthenium sind nicht die Metalle.',0],['a21','metalle','Es sind Ruthenium, Kobalt, Mangan und Chrom – Iridium ist nicht dabei.',1],
  ['a22','metalle','Platin',0],['a22','metalle','Platin, Palladium, Rhodium',1],['a22','metalle','Rhodium Palladium Platin',1],['a22','metalle','Platin, Palladium und Rhodium sind falsch.',0],['a22','metalle','Platin, Palladium und Rhodium sind keine Edelmetalle.',0],
- ['a13','g1','brennt nicht richtig (schmilzt, wird braun)',1],['a13','g1','brennt mit Flamme',0],['a13','g2','brennt mit Flamme',1],['a13','g2','brennt nicht richtig (schmilzt, wird braun)',0],['a13','g3','brennt nicht richtig (schmilzt, wird braun)',1],['a13','g3','brennt mit Flamme',0],
+ ['a13','b13a','kaum oder keine Gasbläschen',1],['a13','b13a','deutlich sichtbare Gasbläschen (schneller)',0],['a13','b13b','deutlich sichtbare Gasbläschen (schneller)',1],['a13','b13b','kaum oder keine Gasbläschen',0],
+ ['a13','r13','Katalysator – er senkt die Aktivierungsenergie und ist in der Gesamtgleichung kein Ausgangsstoff',1],['a13','r13','zusätzlicher Ausgangsstoff, der verbraucht wird',0],['a13','gas13','Sauerstoff (O₂)',1],['a13','gas13','Wasserstoff (H₂)',0],['a13','w13','Beobachtung: Bläschen; Erklärung: Katalysator','M'],
  ['a12','o2','0,32 g',1],['a12','o2','0.32 g',1],['a12','o2','320 mg',1],['a12','o2','0,32 kg',0],['a12','proz','26,7',1],['a12','proz','26,7 %',1],['a17','rgt','20 s',1],['a17','rgt','40 s',0],
  ['a3','ea','2',1],['a3','ea','4',0]];
 /* 4AB K2.1–2.3 Schwingungen und Wellen (25.10.2026): Zahlen mit Einheit, Rundung, falsche Dimension, Auswahl als ganze Antwort, offene Erklärungen = M */

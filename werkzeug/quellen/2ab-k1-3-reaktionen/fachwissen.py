@@ -9,11 +9,11 @@ STUNDENVORSCHLAG = [
 ]
 
 CHECKLISTE = [
-    "Bis Mi 11.11.: Lithiumchlorid #253 (Gefahrstoffschrank L-U) bereitlegen, Holzasche nur als Reserve mitbringen; Würfelzucker bereitlegen (V7); Eis für die Demo am 10.11. einfrieren (Kühlbox).",
+    "Bis Mi 11.11.: Lieferung der 3 %-Lösung prüfen (Etikett, Konzentration), Sicherheitsdatenblatt ablegen, Braunstein #80 aus dem Gefahrstoffschrank L-O bereitlegen; Eis für die Demo am 10.11. einfrieren (Kühlbox).",
     "Nichts ansetzen oder verdünnen außer der Kupfersulfatlösung für V4 (15,0 g Pentahydrat auf 150 ml Lösung, am Vortag möglich). V5 braucht nur abgewogenes Pulver: 6 × 5,0 g Zitronensäure und 6 × 6,0 g Natron (vor dem ersten Einsatz am Di 10.11., spätestens Mo 09.11.).",
     "Löschdecke bzw. Sand für K1.3-V1 bereitlegen (Bestand laut Inventar unklar).",
     "Vor Stunde 3: Stationen aufbauen – Station 1 am Mobiltisch 1 (Sammelbehälter dazu), Station 2 an einem Schülertisch (IKT-Tisch, nicht am Fenster); 30 g Salz abwiegen; beide Stationen einmal selbst ausprobieren (Vorversuch V5: Temperaturabfall bei 25 ml Wasser prüfen).",
-    "Vor Stunde 4 (Vorversuch am Mi 11.11.): Zuckerwürfel mit Lithiumchlorid, mit Salz und pur testen; Becherglas 400 ml als Löschhaube bereitstellen; Rost-Ansätze aus dem Gestell räumen.",
+    "Vor Stunde 4 (Vorversuch spätestens Mi 11.11.): H₂O₂ 3 % mit und ohne Braunstein in gleichen offenen Gefäßen testen – Mengen, Gefäße, Dauer, Sichtbarkeit festlegen; Glimmspanprobe nur, wenn sie sicher klappt; Rost-Ansätze aus dem Gestell räumen.",
     "Nur 2 Thermometer im Bestand: Analog (#147, bis −10 °C) an Station 1; Digital (#25) zuerst für die Demo V6, dann an Station 2. Messbereich des Digitalthermometers vorab prüfen.",
     "Zusatz: V8 nur nach Freigabe (18 unbenutzte Einweg-Petrischalen #39, 9 Brausetabletten); V9 nur als Video (Buchvideo nawi_v130 bzw. Seilnacht).",
     "QR-Codes am Beamer (Folie »Dein Lernpfad«); Einheit auf der Klassenseite einblenden (GitHub → Actions → »Einheit ein-/ausblenden«).",
@@ -45,10 +45,10 @@ STUNDENKARTEN = [
      "Demo mit Vorhersage; Stationenbetrieb – Handy nur fürs Protokoll"),
     ("Stunde 4 · Do 12.11. · Katalysatoren, Stationen (Gruppe 4–6) und Abschluss", [
         "Weißt du noch? (2 min, im Beginn).",
-        "Demo K1.3-V7 Zuckerwürfel mit Lithiumchlorid (8 min, Aufgabe 13 gleich dabei) – Katalysator, Kontrolle mit Salz, Enzyme kurz klären.",
+        "Demo K1.3-V7 Wasserstoffperoxid 3 % mit und ohne Braunstein (8 min, Aufgabe 13 gleich dabei) – Katalysator, Kontrolle ohne Braunstein, Katalase kurz klären.",
         "Gruppe 4–6: drei Runden à 11 min an Station 1 (Mobiltisch 1) und 2 (Schülertisch); Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll. Gruppe 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde.",
         "Besprechen A13/A14 (3 min) · PDF abgeben (1 min) · Reserve 3 min – dort ggf. »Das Wichtigste in 5 Sätzen«. Tempo (Teil 5) ist Zusatz und fällt nicht in die Stunde. Keine Hausübung."],
-     "3 Würfelzucker, Lithiumchlorid #253, Salz, Unterlegplatte, Feuerzeug, Becherglas 400 ml · Stationen 1–2",
+     "H₂O₂ 3 % (Viroxidin), Braunstein #80, 2 gleiche offene Gefäße, Dosierhilfe, Unterlage, Schutzbrille · Stationen 1–2",
      "Demo mit Vorhersage; Stationen"),
 ]
 
@@ -56,7 +56,7 @@ AUF_EINEN_BLICK = [
     ["1 · 03.11.", "Oxidation = Elektronenabgabe, Reduktion = Elektronenaufnahme – immer gleichzeitig. Eisenwolle wird beim Verbrennen schwerer.", "Waage, Eisenwolle, Batterie · Rost-Ansätze"],
     ["2 · 05.11.", "Rost braucht Wasser + Sauerstoff, Salz beschleunigt. Schutz: Schicht, Zink, Edelstahl, waschen, trocknen.", "Kupferblech, Brenner"],
     ["3 · 10.11.", "Exotherm gibt Energie ab, endotherm nimmt sie auf. Fast jede Reaktion braucht Aktivierungsenergie. Masse und Energie bleiben erhalten.", "Demo V6 · Stationen V4–V5"],
-    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird nicht verbraucht – Enzyme, Autokatalysator; Zucker mit Lithiumchlorid als Demo (Deutung als Katalyse im Modell).", "Würfelzucker, Lithiumchlorid, Salz"],
+    ["4 · 12.11.", "Katalysator senkt die Aktivierungsenergie und wird in der Gesamtgleichung nicht verbraucht – Enzyme, Autokatalysator; H₂O₂ 3 % mit und ohne Braunstein als Demo (2 H₂O₂ → 2 H₂O + O₂).", "H₂O₂ 3 %, Braunstein, offene Gefäße"],
     ["Zusatz", "Tempo: Oberfläche, Temperatur (+10 °C ≈ doppelt), Konzentration, Katalysator.", "Brausetabletten, Petrischalen (nur V8)"],
 ]
 
@@ -89,7 +89,7 @@ KAPITEL = [
   "text": ["Ein **Katalysator** öffnet einen anderen Reaktionsweg mit niedrigerer Aktivierungsenergie; er geht aus der Reaktion unverändert hervor. Er ändert das Tempo, nicht die Lage von Anfang und Ende (ΔH bleibt gleich) und auch nicht das Gleichgewicht.",
            "**Positiver/negativer Katalysator** (Buchbegriffe): Nach IUPAC ist ein Katalysator ein Beschleuniger. »Negative Katalysatoren« heißen heute Hemmstoffe/Inhibitoren (z. B. in Rostschutz- oder Konservierungsmitteln); sie wirken auf verschiedene Weise (z. B. Katalysator blockieren, Zwischenstufen abfangen), werden oft verbraucht und »erhöhen die Aktivierungsenergie« nicht allgemein. Die Kadetten lernen: Katalysator beschleunigt, Hemmstoff bremst.",
            "**Autokatalysator (Dreiwege-Kat):** Keramikwabe mit poröser Beschichtung (Washcoat, meist Aluminiumoxid), darin fein verteilte Pt-, Pd-, Rh-Teilchen. Er altert über die Jahre (Hitze, Vergiftung), wird aber nicht pro Reaktion verbraucht. Oxidiert CO und Kohlenwasserstoffe, reduziert NOₓ zu N₂ – braucht etwa 250–300 °C (»Light-off«) und beim Benziner ein genaues Luft-Kraftstoff-Verhältnis (Lambda-Sonde). Kaltstart = Hauptquelle der Emissionen.",
-           "**Enzyme:** Biokatalysatoren aus Eiweiß, sehr spezifisch (Schlüssel-Schloss). Katalase zerlegt H₂O₂ (fällt im Stoffwechsel an) – deshalb schäumt rohe Kartoffel/Leber/Blut auf H₂O₂ (Buch-Versuch S. 36, im Unterricht nicht gemacht). Hitze denaturiert das Eiweiß → Enzym unwirksam."],
+           "**Enzyme:** Biokatalysatoren aus Eiweiß, sehr spezifisch (Schlüssel-Schloss). Katalase zerlegt H₂O₂ (fällt im Stoffwechsel an) – deshalb schäumt rohe Kartoffel/Leber/Blut auf H₂O₂ (Buch-Versuch S. 36, in V7 ersetzt Braunstein den Enzymteil; kein zweiter Demoversuch mit Kartoffel oder Hefe). Hitze denaturiert das Eiweiß → Enzym unwirksam."],
   "nur": ["Haber-Bosch-Verfahren: N₂ + 3 H₂ ⇌ 2 NH₃ an Eisenkatalysator, 400–500 °C, 150–300 bar. Etwa die Hälfte des Stickstoffs in unseren Körpern stammt rechnerisch aus Kunstdünger – starke Brücke zu Ernährungssicherheit und Wirtschaft (Jahresplan E14).",
           "Katalysator-Diebstahl (ORF Wien, März 2026): Pd, Pt und Rh sind sehr teuer – Rhodium mehr als doppelt so viel wert wie gleich schweres 750er-Gold."],
   "stolper": "»Der Katalysator filtert« bzw. »wird verbraucht« – genau diese Fehler stecken in der KI-Antwort von Aufgabe 15.",
@@ -105,7 +105,7 @@ KAPITEL = [
 RECHNEN = [
     "**Masse (A12):** 1,20 g Eisenwolle → 1,52 g. Eingebauter Sauerstoff 0,32 g; Zunahme 0,32 : 1,20 · 100 ≈ 26,7 %. Vollständig zu Fe₃O₄ wären es +38 %, zu Fe₂O₃ +43 %.",
     "**Faustregel (A17):** 80 s bei 20 °C → 40 s bei 30 °C → 20 s bei 40 °C. Allgemein: t = t₀ : 2^(ΔT/10). Übungsvariante mit Zufallszahlen auf dem Arbeitsblatt.",
-    "**V7 ohne Verdünnen:** Zuckerwürfel + Lithiumchlorid (Katalysator; Holzasche als Ausweichlösung), Kochsalz als Kontrolle. Lithiumchlorid #253 nur in Spuren, Vorversuch Pflicht. Belegt ist die Variante mit Holzasche (Seilnacht, Universität Göttingen Versuch 1220); für reines Lithiumchlorid fehlt eine passende Anleitung. Erwartung und tatsächliche Beobachtung trennen; der Mechanismus ist komplex, die Deutung als Katalyse ist ein Schulmodell. Eine Rangfolge »Asche schwächer als LiCl« ist nicht belegt.",
+    "**V7 ohne Verdünnen:** H₂O₂ 3 % (Viroxidin, gekauft, Lieferung ausstehend) mit und ohne Braunstein (#80), gleiche Mengen in gleichen offenen Gefäßen. Nichts aus der 30-%/35-%-Lösung verdünnen. Mengen erst nach dem Vorversuch festlegen. Quellen: Uni Göttingen Schulversuchspraktikum »Sauerstoff« (Kölling 2012, 3–5 %) und Versuchsdatenbank exp_neu.php?id=1002 (Gallikowski, 5 %) – hier angepasst auf 3 %. Erwartung und Beobachtung trennen; Blasen beweisen das Gas nicht; Rückstand beweist keinen unveränderten Katalysator.",
     "**Kupfersulfat (V4):** 15,0 g CuSO₄ · 5 H₂O auf 150 ml Lösung = 10 g Pentahydrat pro 100 ml Lösung (≈ 6,4 g CuSO₄ pro 100 ml; M = 249,7 g/mol). Keine Angabe »10 %« verwenden.",
     "**Zitronensäure (V5):** Pulver direkt – 5,0 g Zitronensäure (Monohydrat) + 6,0 g Natron auf 25 ml Wasser; 3 NaHCO₃ je Säure: 6,0 g Natron (0,071 mol) entsprechen 0,024 mol Säure (5,0 g Monohydrat). Vorversuch: Temperaturabfall prüfen.",
 ]
@@ -115,7 +115,7 @@ FEHLVORSTELLUNGEN = [
     ["Oxidation braucht immer Sauerstoff.", "Oxidation = Elektronenabgabe, auch ohne Sauerstoffgas.", "Eisen in Kupfersulfat (V4)."],
     ["Endotherme Reaktionen laufen nicht von selbst.", "Viele laufen freiwillig und kühlen dabei.", "Zitronensäure + Natron (V5), Kältekompresse."],
     ["Exotherme Reaktionen brauchen keinen Start.", "Fast jede Reaktion braucht Aktivierungsenergie.", "Holz liegt an der Luft und brennt nicht; Animation »Kugel über den Berg«."],
-    ["Der Katalysator wird verbraucht/filtert.", "Er wandelt um und bleibt unverändert.", "Nach V7 zeigen: das weiße Salz liegt unverändert auf dem Rest des Würfels."],
+    ["Der Katalysator wird verbraucht/filtert.", "Er wandelt um und bleibt unverändert.", "Nach V7 nicht behaupten, der Braunstein sei unverändert – das zeigt die Demo allein nicht; in der Gesamtgleichung ist er kein Ausgangsstoff."],
     ["Salz schmilzt Eis, weil Salz warm ist.", "Salzwasser gefriert erst unter 0 °C; Schmelzen braucht Energie aus der Umgebung.", "Kältemischung (V6) wird viel kälter als 0 °C."],
 ]
 

@@ -20,7 +20,7 @@ def tabelle():
     for key, d in per.items():
         name, icon, ort, bestand = VD.LM[key]
         gesamt = max(sum(d.get(nr, 0) for nr in slot) for slot in SLOTS)
-        if key in ("eisenwolle", "salz", "oel", "cuso4", "zitrone", "natron", "zucker", "asche", "kupferblech", "eis", "brause", "parafilm"):
+        if key in ("eisenwolle", "salz", "oel", "cuso4", "zitrone", "natron", "h2o2", "mno2", "kupferblech", "eis", "brause", "parafilm"):
             fehlt = "besorgen" if bestand is None else ""
             gesamt_txt = gesamt
         else:
@@ -36,10 +36,11 @@ MENGEN = {  # Verbrauchsmaterial: was insgesamt anzusetzen ist (pro Klasse)
     "Kupfersulfatlösung": "15,0 g CuSO₄ · 5 H₂O auf 150 ml Lösung auffüllen (= 10 g pro 100 ml) → 6 Durchgänge à 20 ml + Reserve",
     "Zitronensäure-Pulver, 5,0 g je Ansatz (vorportioniert)": "6 Portionen à 5,0 g abwiegen (Vortag möglich) – nichts ansetzen, kein Verdünnen",
     "Natron": "6 Portionen à 6,0 g (abgewogen, Vortag möglich)",
-    "Kochsalz": "30 g für die Demo-Kältemischung + 1 Spatel für Rost-Ansatz 4 + 1 Messerspitze für V7",
+    "Kochsalz": "30 g für die Demo-Kältemischung + 1 Spatel für Rost-Ansatz 4",
     "Eis": "ca. 150 g, angetaut und zerstoßen (Kühlbox) – nur für die Demo am 10.11.",
     "Eisenwolle": "V1: 1–1,2 g · V2: 4 kleine Bäusche · V4: 6 × 1 g → ca. 10 g",
-    "Würfelzucker (Haushaltszucker)": "3 Würfel (V7) + 3 für den Vorversuch",
-    "Lithiumchlorid, wasserfrei (Chemikalie #253)": "1 Messerspitze je Vorführung (Vorversuch + Demo ca. 1 g) – wenig auf ein Uhrglas, Dose gleich schließen",
+    "Wasserstoffperoxid-Lösung 3 % (Viroxidin 3 %, 1000 ml)": "gekauft/bestellt, Lieferung ausstehend: bei Eingang Etikett und Konzentration (3 %) prüfen, echtes Sicherheitsdatenblatt beim Lieferanten anfordern und ablegen; Menge für V7 erst nach dem Vorversuch festlegen – nichts aus den 30-%/35-%-Vorräten verdünnen",
+    "Braunstein (Mangan(IV)-oxid, MnO₂)": "nur eine kleine Menge (Inventar #80) auf ein Uhrglas, Dose gleich schließen; Staub vermeiden; Abfall in den Sammelbehälter für manganhaltige Abfälle",
+    "Dosierhilfe (Messzylinder oder Pipette) für gleiche Mengen": "2 Stück, Menge nach dem Vorversuch; Vorversuch (Dauer, Sichtbarkeit, Gefäßwahl) bis spätestens Mi 11.11.",
     "Brausetabletten": "9 Stück, gleiche Sorte (nur für den Zusatz-Versuch V8)",
 }

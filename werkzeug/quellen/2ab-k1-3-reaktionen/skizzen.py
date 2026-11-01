@@ -457,23 +457,22 @@ def v6():
 
 def v7():
     im, d = canvas()
-    ctext(d, 450, 18, "Demo · Was lässt den Zucker brennen?", f(FB, 32), INK)
+    ctext(d, 450, 18, "Demo · Wasserstoffperoxid mit und ohne Braunstein", f(FB, 32), INK)
     d.rounded_rectangle(P(60, 440, 840, 470), radius=6 * S, fill=(205, 208, 212), outline=GREY, width=3 * S)
-    ctext(d, 450, 480, "feuerfeste Unterlegplatte", f(FR, 22), INK)
-    xs = [170, 450, 730]
-    for k, x in enumerate(xs):
-        d.rectangle(P(x - 45, 340, x + 45, 430), fill=(252, 252, 252), outline=(150, 150, 150), width=3 * S)
-        d.line(P(x - 45, 360, x + 45, 360), fill=(225, 225, 225), width=2 * S)
+    ctext(d, 450, 480, "Unterlage", f(FR, 22), INK)
+    for k, x in enumerate([230, 670]):
+        beaker(d, x - 80, 270, 160, 170, fill=(214, 232, 244), level=0.45)
         if k == 1:
-            for j in range(26): cx, cy = x - 40 + (j * 31) % 80, 336 + (j * 17) % 10; d.ellipse(P(cx, cy, cx + 8, cy + 7), fill=(110, 110, 112))
-            flame(d, x, 336, 150, 60)
-        if k == 2:
-            for j in range(26): cx, cy = x - 40 + (j * 31) % 80, 336 + (j * 17) % 10; d.ellipse(P(cx, cy, cx + 6, cy + 6), fill=(255, 255, 255), outline=(190, 190, 190))
-        ctext(d, x, 190 if k else 190, "", f(FR, 22), INK)
-    for x, a, b in [(xs[0], "1 · pur", "Würfel allein"), (xs[1], "2 · mit Lithiumchlorid", "dünn bestreut"), (xs[2], "3 · mit Kochsalz", "dünn bestreut")]:
+            d.polygon(P(x - 60, 432, x - 30, 410, x + 5, 420, x + 40, 408, x + 62, 432), fill=(35, 35, 35))
+            bubbles(d, x - 60, x + 60, 300, 400, n=22, seed=5, col=(255, 255, 255))
+            bubbles(d, x - 55, x + 55, 250, 300, n=6, seed=8, col=(120, 150, 175))
+        else:
+            bubbles(d, x - 50, x + 50, 380, 420, n=2, seed=2, col=(255, 255, 255))
+    for x, a, b in [(230, "1 · ohne Braunstein", "Kontrolle"), (670, "2 · mit Braunstein", "kleine Menge schwarzes Pulver")]:
         ctext(d, x, 100, a, f(FB, 26), INK); ctext(d, x, 134, b, f(FR, 22), INK)
-    ctext(d, 450, 535, "Erst tippen: Welcher Würfel brennt mit Flamme?", f(FB, 28), RED)
-    ctext(d, 450, 578, "Schutzbrille · Abstand halten · brennendes Karamell nicht berühren", f(FR, 24), INK)
+    ctext(d, 450, 190, "gleiche Lösung (3 %) · gleiche Menge · gleiche offene Gefäße", f(FR, 24), INK)
+    ctext(d, 450, 535, "Erst tippen: In welchem Gefäß entsteht schneller Gas?", f(FB, 28), RED)
+    ctext(d, 450, 578, "Schutzbrille · offene Gefäße · kleine Mengen · Pulver nicht einatmen", f(FR, 24), INK)
     save(im, VSI + "d_v7.png")
 
 
@@ -583,12 +582,8 @@ def new_icons():
         d.rectangle(P(80, 2, 100, 14), fill=(200, 205, 210), outline=OUT, width=2 * S)
         for x in (62, 90, 118): d.line(P(x, 28, x, 20), fill=(46, 125, 140), width=3 * S)
     icon("abzug", abzug)
-    def zucker(d):
-        for x, y in [(34, 52), (84, 52), (59, 18)]:
-            d.rectangle(P(x, y, x + 46, y + 46), fill=(252, 252, 252), outline=OUT, width=2 * S)
-            d.line(P(x + 4, y + 14, x + 42, y + 14), fill=(225, 225, 225), width=2 * S)
-    icon("zuckerwuerfel", zucker)
-    icon("asche", lambda d: jar(d, (236, 236, 240), (170, 170, 178)))
+    icon("peroxid", lambda d: bottle(d, (214, 232, 244), True))
+    icon("braunstein", lambda d: jar(d, (30, 30, 32), (70, 70, 74)))
 
 
 def icons_kopieren():
