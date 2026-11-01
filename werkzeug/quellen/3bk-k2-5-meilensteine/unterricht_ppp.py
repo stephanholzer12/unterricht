@@ -433,7 +433,7 @@ SPEC = {
  3: [("t3_heute", [0], "START", None, "Klassenbuch; Ziel von Teil 3", lambda: heute_folie(3)),
      ("t3_wdn", [1], "WIEDERHOLEN", "Weißt du noch?", "Vorwissen aus Stunde 1 und 2 aktivieren (Mini-Whiteboard)", t3_wdn),
      ("t3_lesen", [2], "LESEN", "Lesen", "Athen selbst lesen",
-      lambda: lesen_folie(3, "**Buch S. 107–111** zum Nachschlagen", ["athen"], "Wer gehörte zum »Volk« – und wer nicht?", [2])),
+      lambda: lesen_folie(3, "**Buch S. 109–111** zum Nachschlagen", ["athen"], "Wer gehörte zum »Volk« – und wer nicht?", [2])),
      ("t3_klaeren", [3], "KURZ KLÄREN", "Kurz klären", "Los und Wahl am Schaubild; wer gehört zum Volk", t3_klaeren),
      ("t3_a5", [4], "ZU ZWEIT", "Aufgabe 5", "Beteiligung und Ausschluss vergleichen (K06)", t3_a5),
      ("t3_skala", [5], "BEWEGUNG", None, "Aufstellen auf einer Skala – Urteil sichtbar machen, ohne Handy", t3_skala),

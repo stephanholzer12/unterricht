@@ -75,7 +75,7 @@ PARTS = [
 
  # ---------------------------------------------------------------- Teil 3 · Stunde 3
  ("teil3", "Stunde 3 · " + I.wann(3) + " · Buch S. 105–118", I.TEILNAME[3], [
-  {"id": "athen", "title": "Athen: direkte Beteiligung mit Grenzen", "pill": "Buch S. 107–111",
+  {"id": "athen", "title": "Athen: direkte Beteiligung mit Grenzen", "pill": "Buch S. 109–111",
    "blocks": [("img", "img/athen.png", "Schaubild: In der Mitte die Volksversammlung der erwachsenen männlichen Bürger. Darüber der Rat der 500 (durch Los), daneben die Archonten (durch Los) und die Strategen (durch Wahl). Daneben, ausgeschlossen: Frauen, Versklavte, Metöken.", "Eigenes, vereinfachtes Schaubild – nicht das Schaubild aus dem Schulbuch."),
               ("ul", ["Die griechische Welt bestand aus vielen selbstständigen Gemeinschaften. Eine **Polis** war eine solche Gemeinschaft aus Stadt und Umland. Athen entwickelte vor allem im 5. Jh. v. Chr. eine **direkte Demokratie**: Die beteiligten Bürger entschieden in der **Volksversammlung** selbst. Ein **Rat** bereitete die Beratungen vor.",
                       "Viele Ämter wurden durch **Los** vergeben, die **Strategen** (Heerführer) durch **Wahl**. Mitentscheiden durften nur **erwachsene männliche Bürger**. **Frauen, Versklavte** und **Metöken** (dauerhaft ansässige Menschen ohne Bürgerrecht) waren ausgeschlossen. »Volk« hieß also nicht »alle Bewohner«.",
@@ -88,7 +88,7 @@ PARTS = [
                       "Das war **keine moderne Demokratie**: Vermögen, Herkunft und Verbindungen beeinflussten den Zugang zur Politik, Frauen und Versklavte waren ausgeschlossen. Nach Bürgerkriegen setzte sich **Octavian** durch, seit **27 v. Chr.** hieß er **Augustus**. Er ließ die Einrichtungen bestehen und stellte sich als **Wahrer der Republik** dar.",
                       "Tatsächlich vereinte er die **entscheidenden Machtmittel**: den **Oberbefehl über das Heer**, die Gewalt in wichtigen **Provinzen**, Befugnisse von **Konsul** und **Volkstribun** und den **Ehrenname** Augustus. Sich selbst nannte er **Princeps** (»Erster unter Gleichen«). Diese Herrschaftsform heißt **Prinzipat**."]),
               ("merke", "Mehrere Einrichtungen können bestehen bleiben, während die **tatsächliche Macht** bei einer Person liegt.")]},
-  {"id": "vergleich", "title": "Athen und Rom im Vergleich", "pill": "Buch S. 107–115",
+  {"id": "vergleich", "title": "Athen und Rom im Vergleich", "pill": "Buch S. 109–115",
    "blocks": [("tiles", [("Drei Prüffragen", ["**Wo liegt die entscheidende Macht?**", "**Wer darf beteiligt sein – und wer nicht?**", "**Welche Kontrolle und welche Grenze gibt es?**"]),
                          ("Beispiel Ägypten", ["Macht: beim König und seiner Verwaltung", "Beteiligung: die Bevölkerung entscheidet nicht mit", "Kontrolle: keine moderne Machtkontrolle"])]),
               ("ul", ["Kein Ranking »primitiv – modern«: Es geht um **verschiedene Antworten** auf die Frage, wie Gemeinschaften Macht verteilen.",
