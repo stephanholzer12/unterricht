@@ -153,7 +153,7 @@ T = [
   "sol": [["Musterlösung", ["a) Wer seinen Damm nicht instand hält und dadurch fremde Felder überschwemmt, muss das vernichtete Getreide ersetzen: Infrastruktur und Verantwortung gegenüber Nachbarn.",
                           "b) § 196: dem Täter wird ein Auge zerstört (Vergeltung) · § 198: eine Mine Silber · § 199: die Hälfte des Kaufpreises (der versklavte Mensch wird als Eigentum behandelt).",
                           "c) Der gesellschaftliche Stand des Opfers – bei gleicher Verletzung unterschiedliche Folgen.",
-                          "d) z. B. § 53 (Getreide wird ersetzt) · § 233 (der Baumeister baut die Wand auf eigene Kosten wieder auf) · § 199 (Zahlung an den Besitzer).",
+                          "d) z. B. § 53 (Getreide wird ersetzt) · § 233 (der Baumeister muss eine mangelhafte Wand auf eigene Kosten instand setzen) · § 199 (Zahlung an den Besitzer).",
                           "e) Eine schriftliche Regel macht Folgen berechenbar, sagt aber nichts darüber, ob alle gleich behandelt werden: Hier hängt die Rechtsfolge vom Stand ab.",
                           "f) Die Sammlung zeigt, welche Konflikte geordnet werden sollten und dass die Gesellschaft hierarchisch war; ob jeder Fall im Alltag genau so entschieden wurde, können wir aus ihr allein nicht feststellen.",
                           "Hinweis: »Auge um Auge« ist eine Form der Vergeltung; daneben stehen Ausgleichszahlungen. Die Sammlung ist eine Darstellung königlicher Ordnung, keine Gerichtsakte."]]],
@@ -163,7 +163,7 @@ T = [
   "tab": [["§", "Arbeitsfassung (vereinfacht)"], ["53", "Wer den Damm seines Feldes nicht instand hält und dadurch andere Felder überschwemmt, ersetzt das vernichtete Getreide."],
           ["196", "Wird einem Bürgersohn ein Auge zerstört, wird dem Täter ein Auge zerstört."], ["198", "Wird das Auge eines Untergebenen zerstört, ist eine Mine Silber zu zahlen."],
           ["199", "Wird das Auge des Knechtes eines Bürgers zerstört, ist die Hälfte seines Kaufpreises zu zahlen."],
-          ["233", "Baut ein Baumeister eine Wand nicht fest genug und sie stürzt ein, baut er sie auf eigene Kosten wieder auf."]],
+          ["233", "Baut ein Baumeister eine Wand nicht fest genug und zeigt sie Schäden oder droht einzustürzen, muss er sie auf eigene Kosten instand setzen."]],
   "tabnote": "Sprachlich vereinfachte Arbeitsfassung nach Buch S. 40, kein wörtliches Zitat. Eine Mine ist eine Gewichts- und Recheneinheit für Silber.",
   "tip": ["Was die Regeln verraten", "theorie.html#regeln"], "besprechen": True},
 
