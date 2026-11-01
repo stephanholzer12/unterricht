@@ -4,7 +4,7 @@ STUNDENVORSCHLAG = [
     ["1 · Di 03.11.", "Einstieg (Handwärmer, Mythos), Teil 1 Redox: Lavoisier, Elektronenübergang, Oxidations-/Reduktionsmittel", "K1.3-V1 Demo (12 min) · K1.3-V2 Ansatz (parallel)", "1–3 · Zusatz 4", "Aufgaben ~13 min · Reserve 8 min", "Demo mit Vorhersage: Hand heben »leichter/schwerer/gleich«"],
     ["2 · Do 05.11.", "Test K1.2 (20 min) · Teil 2: Redox im Alltag, Rost, Rostschutz, Eisen + Kupfersulfat", "K1.3-V3 Demo (8 min)", "5–7 · Zusatz 8", "Aufgaben ~10 min · Reserve 7 min", "Test; Demo mit Vorhersage; Zusatz 8 in Handschrift"],
     ["3 · Di 10.11.", "V2 auswerten · Teil 3: exo/endo, Energiediagramm, Aktivierungsenergie, Erhaltung", "V6 Demo (8 min) · Gr. 1–3: Stationen V4 + V5 (3 Runden à 11 min)", "Gr. 4–6: 9–11 · Zusatz 12", "Stationen 33 min · Reserve 2 min", "Demo mit Vorhersage; Stationenbetrieb (Handy nur Protokoll)"],
-    ["4 · Do 12.11.", "Teil 4: Katalysator, Enzyme, Autokatalysator, Industrie · Abschluss und Abgabe", "V7 Demo (8 min) · Gr. 4–6: Stationen V4 + V5 (3 Runden à 11 min)", "13–14 · Gr. 1–3: Deutung V4/V5", "Stationen 33 min · Besprechen 3 min · Puffer 3 min", "Demo mit Vorhersage; Stationen; PDF-Abgabe"],
+    ["4 · Do 12.11.", "Teil 4: Katalysator, Enzyme, Autokatalysator, Industrie · Abschluss und Abgabe", "V7 Demo (8 min) · Gr. 4–6: Stationen V4 + V5 (3 Runden à 11 min)", "13–14 · Gr. 1–3: 10–11 und Deutung V4/V5 · Gr. 4–6: Deutung am Ende", "Stationen 33 min · Auswertung V4/V5 3 min · Besprechen 2 min · Reserve 1 min", "Demo mit Vorhersage; Stationen; PDF-Abgabe"],
     ["Zusatz", "Selbststudium: Teil 5 Tempo (Stellschrauben, Faustregel, Staubexplosion) · Für Schnelle: Oxidationszahlen, Forschung, Science oder Fiction", "V8 Brausetabletten (nur nach Freigabe) · V9 nur Video", "15–23", "–", "–"],
 ]
 
@@ -39,15 +39,16 @@ STUNDENKARTEN = [
         "Weißt du noch? (3 min, Mini-Whiteboard).",
         "Rost-Ansätze auswerten (4 min): Gläser zeigen, Fotos, Vergleich mit der Vorhersage.",
         "Demo K1.3-V6 Kältemischung mit Vorhersage (8 min) – dabei exotherm/endotherm kurz erklären; Sicherheitsfolie.",
-        "Gruppe 1–3: drei Runden à 11 min an Station 1 (V4) und 2 (V5) – messen, beobachten, aufräumen, Erkenntnis eintragen; die jeweils freie Gruppe liest Teil 3 und macht Aufgaben (wer beide Stationen hinter sich hat: Deutung V4/V5 im Protokoll). Gruppe 4–6: Teil 3 lesen, Aufgaben 9–11 (ca. 23 min, Rest = Puffer, Zusatz 12).",
+        "Gruppe 1–3: drei Runden à 11 min an Station 1 (V4) und 2 (V5) – messen, beobachten, aufräumen, Erkenntnis eintragen; die jeweils freie Gruppe liest Teil 3 und macht Aufgaben (wer beide Stationen hinter sich hat: Deutung V4/V5 im Protokoll). Gruppe 4–6: Teil 3 lesen, Aufgaben 9–11 (ca. 22 min), Fragen zur Deutung V4/V5 vorab lesen, Rest Puffer, Zusatz 12. Gruppe 1–3 nutzen ihre freie Runde (11 min) für Teil 3 und Aufgabe 9.",
         "Reserve 2 min · keine Hausübung."],
      "Demo V6 (Eis, Salz, Digitalthermometer) · Stationen 1–2 (siehe Herrichte-Liste), Sammelbehälter",
      "Demo mit Vorhersage; Stationenbetrieb – Handy nur fürs Protokoll"),
     ("Stunde 4 · Do 12.11. · Katalysatoren, Stationen (Gruppe 4–6) und Abschluss", [
         "Weißt du noch? (2 min, im Beginn).",
         "Demo K1.3-V7 Wasserstoffperoxid 3 % mit und ohne Braunstein (8 min, Aufgabe 13 gleich dabei) – Katalysator, Kontrolle ohne Braunstein, Katalase kurz klären.",
-        "Gruppe 4–6: drei Runden à 11 min an Station 1 (Mobiltisch 1) und 2 (Schülertisch); Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll. Gruppe 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde.",
-        "Besprechen A13/A14 (3 min) · PDF abgeben (1 min) · Reserve 3 min – dort ggf. »Das Wichtigste in 5 Sätzen«. Tempo (Teil 5) ist Zusatz und fällt nicht in die Stunde. Keine Hausübung."],
+        "Gruppe 4–6: drei Runden à 11 min an Station 1 (Mobiltisch 1) und 2 (Schülertisch); in ihrer freien Runde Teil 4 lesen und Aufgabe 14. Gruppe 1–3 (33 min): Aufgaben 10–11 (11 min), Teil 4 lesen (5), Aufgabe 14 (3), Deutung und Schluss V4/V5 (8), Puffer 6.",
+        "Auswertung V4/V5 (3 min): Gruppe 4–6 schreiben Deutung und Schluss ins Protokoll, Gruppe 1–3 prüfen ihr Protokoll. Vorschlag zur Entscheidung (V11-02): Reserve in Stunde 4 ist dadurch nur 1 min.",
+        "Besprechen A13/A14 (2 min) · PDF abgeben (1 min) · Reserve 1 min. Tempo (Teil 5) ist Zusatz und fällt nicht in die Stunde. Keine Hausübung."],
      "H₂O₂ 3 % (Viroxidin), Braunstein #80, 2 gleiche offene Gefäße, Dosierhilfe, Unterlage, Schutzbrille · Stationen 1–2",
      "Demo mit Vorhersage; Stationen"),
 ]

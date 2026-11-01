@@ -25,18 +25,40 @@ PLAN = [
    ("Auswertung K1.3-V2 (Rost-Ansätze nach einer Woche)", 3, True, "v:K1.3-V2"),
    ("Demo K1.3-V6: Kältemischung, dabei exotherm/endotherm klären", 8, True, "v:K1.3-V6"),
    ("Stationen erklären: Sicherheit, Rotation, Protokoll am Handy", 2, True, "erkl"),
-   ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 1–3); Gruppen 4–6: Theorieteil Teil 3 lesen, Aufgaben 9–11", 33, False, "stat"),
+   ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 1–3: je 2 Stationsrunden + 1 freie Runde mit Teil 3 lesen und Aufgabe 9); Gruppen 4–6: Teil 3 lesen, Aufgaben 9–11, Fragen zur Deutung V4/V5 vorab lesen", 33, False, "stat"),
    ("Reserve", 2, True, "reserve")]},
  {"std": 4, "datum": "Do 12.11.", "titel": "Katalysatoren, Enzyme und Abschluss", "phasen": [
    ("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
    ("Demo K1.3-V7: Wasserstoffperoxid 3 % mit und ohne Braunstein, Aufgabe 13 – dabei Katalysator klären", 8, True, "v:K1.3-V7"),
-   ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 4–6); Gruppen 1–3: Theorieteil Teil 4, Aufgabe 14, Deutung V4/V5; Gruppen 4–6 lesen Teil 4 und machen Aufgabe 14 in ihrer Aufgaben-Runde", 33, False, "stat"),
-   ("Besprechen: Katalysator, Autokatalysator, Aufgabe 13 und 14", 3, True, "bespr"),
+   ("Stationen K1.3-V4 + V5 in 3 Runden à 11 min (Gruppen 4–6: je 2 Stationsrunden + 1 freie Runde mit Teil 4 lesen und Aufgabe 14); Gruppen 1–3: Aufgaben 10–11, Teil 4 lesen, Aufgabe 14, Deutung und Schluss V4/V5", 33, False, "stat"),
+   ("Auswertung V4/V5 (Gruppen 4–6: Deutung und Schluss ins Protokoll, 3 min; Gruppen 1–3: Protokoll prüfen), danach Besprechen: Katalysator, Aufgabe 13 und 14 (2 min)", 5, True, "bespr"),
    ("PDF abgeben, Quiz-Hinweis, Ausblick Säuren und Basen", 1, False, "pdf"),
-   ("Reserve (Lesen und Versuche dauern oft länger)", 3, True, "reserve")]},
+   ("Reserve (nur 1 min – Lesen und Versuche dauern oft länger)", 1, True, "reserve")]},
 ]
 for st in PLAN: assert sum(p[1] for p in st["phasen"]) == 50, (st["std"], sum(p[1] for p in st["phasen"]))
 
 KNAPP = {2: "Der Test hat Vorrang. Wird es knapp: Aufgabe 7 und die Besprechung kürzen, Aufgabe 8 (Zusatz) entfällt.",
          3: "Stationen nie kürzen, sondern bei Bedarf eine Runde auf 9 min: Demo V6 auf 5 min kürzen. Aufgaben 9–11 nicht streichen, sie laufen bei den wartenden Gruppen mit.",
-         4: "Die Reserve ist klein (3 min): Bei Bedarf Runde 3 auf 9 min kürzen, Demo V7 auf 6 min, Aufgabe 14 mündlich. Tempo (Teil 5) ist Zusatz/Selbststudium und fällt nie in die Stunde. Das PDF darf auch nach dem Läuten abgegeben werden."}
+         4: "Die Reserve ist nur 1 min: Bei Bedarf Runde 3 auf 9 min kürzen, Demo V7 auf 6 min, Aufgabe 14 mündlich; die Deutung V4/V5 der Gruppen 4–6 (Auswertung) wird nicht gestrichen. Tempo (Teil 5) ist Zusatz/Selbststudium und fällt nie in die Stunde. Das PDF darf auch nach dem Läuten abgegeben werden."}
+
+
+# Vorschlag V11-02 (Entscheidung bei Stephan): Arbeitszeit je Gruppenhälfte, Minuten. Pflichtarbeit wird nicht in Hausübung oder Reserve geschoben.
+# Rotation je Stunde: 3 Runden à 11 min, jede Gruppe der Stationshälfte hat 2 Stationsrunden + 1 freie Runde (Aufgabenzeit).
+GRUPPENHAELFTEN = {
+ "Gruppen 1–3": [
+   ("Std 3 · Stationsrunden V4/V5 (Erkenntnis gleich an der Station)", 22),
+   ("Std 3 · freie Runde: Teil 3 lesen 6 + Aufgabe 9 (5)", 11),
+   ("Std 4 · Aufgaben 10–11 (5 + 6)", 11),
+   ("Std 4 · Teil 4 lesen 5, Aufgabe 14 (3)", 8),
+   ("Std 4 · Deutung und Schluss V4/V5 (beide Versuche)", 8),
+   ("Std 4 · Puffer", 6)],
+ "Gruppen 4–6": [
+   ("Std 3 · Teil 3 lesen 6, Aufgaben 9–11 (5 + 5 + 6), Fragen zur Deutung vorab lesen 2", 24),
+   ("Std 3 · Puffer", 9),
+   ("Std 4 · Stationsrunden V4/V5 (Erkenntnis gleich an der Station)", 22),
+   ("Std 4 · freie Runde: Teil 4 lesen 5, Aufgabe 14 (3), Puffer 3", 11),
+   ("Std 4 · Auswertung: Deutung und Schluss V4/V5 (letzte Minuten)", 3)]}
+assert sum(m for _, m in GRUPPENHAELFTEN["Gruppen 1–3"] if _.startswith("Std 3")) == 33
+assert sum(m for _, m in GRUPPENHAELFTEN["Gruppen 1–3"] if _.startswith("Std 4")) == 33
+assert sum(m for _, m in GRUPPENHAELFTEN["Gruppen 4–6"] if _.startswith("Std 3")) == 33
+assert sum(m for _, m in GRUPPENHAELFTEN["Gruppen 4–6"] if _.startswith("Std 4")) == 36   # 33 + 3 min Auswertung
