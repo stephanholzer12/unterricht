@@ -10,7 +10,7 @@ GRUPPEN = 8  # Klassengröße nicht bestätigt → Regelwerk: 8 Gruppen annehmen
 LM = {
     "papier": ("A4-Kopierpapier, 80 g/m², alle aus demselben Packen", "papier", "Kopierraum / Sekretariat – kein Inventar-Eintrag (»A-Papier: nicht im Inventar/prüfen«)", None, "chem"),
     "klammer": ("Büroklammer aus Metall, alle gleich groß (je Gruppe dieselbe für die ganze Reihe)", "klammer", "Ergänzung F-038 · NAWI-Saal E21", "sehr viele (nicht gezählt)", "geraet"),
-    "bandmass": ("Bandmaß 20 m", "bandmass", "Lehrmittel #9 · NAWI-Saal E21 (Zählung im Inventar leer → vorher prüfen)", 1, "geraet"),
+    "bandmass": ("Bandmaß 20 m", "bandmass", "Lehrmittel #9 · NAWI-Saal E21 (aktuelle Zählung im Inventar leer → vorher prüfen)", "historisch erfasst: 1, aktuell nicht gezählt", "geraet"),
     "kiste": ("Schachtel oder Mappe für die fertigen Flieger (flach lagern)", "dose", "Klassenraum – kein Inventar", None, "geraet"),
     "handy": ("Handy als Protokoll-Handy (Kadetten)", "handy", "Geräte der Kadetten – kein Inventar", None, "geraet"),
     "bleistift": ("Bleistift (Gruppennummer auf den Flügel)", "bleistift", "Kadetten", None, "geraet"),

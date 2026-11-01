@@ -57,10 +57,10 @@ for k in I.KLASSEN:
                  f"<div class='body'><div class='scroll'><table>{''.join(li)}</table></div>" + (f"<p class='warnline'><b>Wenn es knapp wird:</b> {e(kn)}</p>" if kn else "") + "</div></details>")
 uber += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 uber += "<h2>So bewertet die Seite</h2>" + ul([
-    "**Automatisch geprüft:** Auswahlfelder (A1–A3, A5, A6 a–c, A9, A10 a–f, A11–A13 Auswahl) und Zahlen (A8 a–c, ±2 %, Einheit wird umgerechnet).",
+    "**Automatisch geprüft:** Auswahlfelder (A1–A3, A5, A6 a–c, A9, A10 a–f, A11–A13 Auswahl) und Zahlen (A8 a–c: ±0,04 m Spielraum nach Einheitenumrechnung, z. B. 420 cm = 4,2 m).",
     "**Offene Texte bewertest du:** A4 (Hypothese, Vorhersage, Gegenbefund), A6 d, A7, A9 e, A10 g, A12 e, A13 c, A14. Die Seite zeigt nur eine Schreibhilfe und gibt dafür keine Punkte.",
     "**PDF:** Kasten »Für LMS: x von y Punkten · Notenvorschlag« (88/75/62/50 %); Aufgaben mit angesehener Lösung zählen 0 Punkte.",
-    "**Versuchsseite:** ein Protokoll je Gruppe, jedes Mitglied gibt seine eigene PDF ab (»Ich gebe ab als …«). Pflicht sind nur die drei Vergleichspaare; Mittelwert und Gegenprobe nicht.",
+    "**Versuchsseite:** ein Protokoll je Gruppe, jedes Mitglied gibt seine eigene PDF ab (»Ich gebe ab als …«). In der Beobachtungstabelle sind die sechs Rohwerte der drei Vergleichspaare Pflicht; die gezielte Gegenprobe gibt es nur bei aufgerufenen Gruppen. In Stunde 4 folgen Mittelwert und Spannweite sowie Erkenntnis, Interpretation und Schlussfolgerung – die Zusammenfassungszeilen der Tabelle sind nur technisch nicht als Pflichtfelder markiert.",
 ])
 uber += "<h2>Links der Kadetten-Seiten</h2><ul>" + "".join(f"<li><span class='mono'>{I.URL}{k}.html</span></li>" for k in ("theorie", "aufgaben", "versuche", "quiz")) + "</ul>"
 
