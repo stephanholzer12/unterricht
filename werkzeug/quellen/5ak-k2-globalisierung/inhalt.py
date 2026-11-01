@@ -290,7 +290,7 @@ STOPPFRAGEN = {
     1: [("Warum reicht eine bekannte Marke nicht als Herkunftsnachweis?", "Marke, Entwicklung und Fertigung können in verschiedenen Ländern liegen – man muss die Produktionsstufen einzeln betrachten."),
         ("Ist Globalisierung nur Warenhandel?", "Nein – auch Geld, Wissen, Menschen, Kultur und Daten gehören dazu.")],
     2: [("Wer zahlt einen Einfuhrzoll zuerst?", "Der Importeur, an die Zollbehörde des Einfuhrlandes."),
-        ("Warum ist die WTO keine Weltregierung?", "Ihre Mitglieder entscheiden im Konsens; sie kann Staaten nicht zu etwas zwingen. Außerdem ist sie keine UN-Sonderorganisation.")],
+        ("Warum ist die WTO keine Weltregierung?", "Sie hat keine allgemeine Regierungsgewalt: Ihre Mitglieder vereinbaren Handelsregeln und entscheiden meist im Konsens. Die Regeln sind für Mitglieder verbindlich; bei Verstößen können im Streitverfahren Gegenmaßnahmen genehmigt werden. Außerdem ist sie keine UN-Sonderorganisation.")],
     3: [("Was ist der Unterschied zwischen Verbot, Hochrisiko und Transparenzpflicht?", "Verbot: bestimmte Praktiken sind untersagt. Hochrisiko: strenge Anforderungen für sensible Einsatzbereiche. Transparenz: man muss erkennen können, dass KI im Spiel ist."),
         ("Warum zeigt eine Simulation nicht, wie oft etwas im Alltag passiert?", "Sie läuft unter festgelegten, künstlichen Bedingungen; die Häufigkeit im Alltag wird damit nicht gemessen.")],
     4: [("Ändert eine zweite Bezugsquelle automatisch die Arbeitsbedingungen?", "Nein – sie senkt vor allem die Abhängigkeit; faire Arbeit braucht überprüfbare Standards."),

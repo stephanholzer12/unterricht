@@ -509,7 +509,8 @@ def v3():
     mx = 560
     d.rounded_rectangle(P(mx - 10, y0 - 22, mx + 10, y0 + 18), radius=6 * S, outline=(120, 126, 132), width=3 * S)
     darrow(d, mx + 34, y0 - 60, mx + 34, y0 + 50, RED, 4)
-    ltext(d, mx + 48, y0 - 20, "Büroklammer: bewegt sich nur auf und ab", f(FB, 20), RED)
+    ltext(d, mx + 48, y0 - 30, "Büroklammer: schwingt auf und ab,", f(FB, 20), RED)
+    ltext(d, mx + 48, y0 - 2, "bleibt am selben Ort", f(FB, 20), RED)
     ctext(d, 450, 430, "Schnur ca. 3 m · nur leicht gespannt · unter Gesichtshöhe", f(FB, 24), INK)
     ctext(d, 450, 470, "kleine Handbewegung (5–10 cm), kein Ruck", f(FR, 22), INK)
     save(im, VSI + "d_v3.png")

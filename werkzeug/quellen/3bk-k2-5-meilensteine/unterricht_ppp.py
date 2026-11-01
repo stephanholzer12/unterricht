@@ -357,7 +357,7 @@ def t3_a6_arbeit():
 
 def t3_a6_bespr():
     s = d.slide("Aufgabe", "Besprechen: Aufgabe 6")
-    y = frage_klick(s, 1.0, "Welche Machtmittel lagen bei Augustus?", "Oberbefehl über das Heer, Gewalt in Provinzen, Befugnisse von Konsul und Volkstribun, Ehrenname Augustus.", size=18)
+    y = frage_klick(s, 1.0, "Welche Machtmittel lagen bei Augustus?", "Oberbefehl über das Heer, Gewalt in Provinzen, Befugnisse von Konsul und Volkstribun. Der Ehrenname Augustus stützt das Ansehen, ist aber keine Amtsgewalt.", size=18)
     y = frage_klick(s, y, "Warum ist der Tatenbericht nützlich – und warum muss man ihn prüfen?", "Er zeigt das gewollte Bild, ist aber Selbstdarstellung: mit anderen Quellen und der tatsächlichen Machtverteilung vergleichen.", size=18)
     return s
 

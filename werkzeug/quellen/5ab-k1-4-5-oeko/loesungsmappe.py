@@ -54,16 +54,24 @@ for k in I.KLASSEN:
                  f"<div class='body'><div class='scroll'><table>{''.join(li)}</table></div>" + (f"<p class='warnline'><b>Wenn es knapp wird:</b> {e(kn)}</p>" if kn else "") + "</div></details>")
 uber += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 uber += "<h2>So bewertet die Seite</h2>" + ul([
-    "**Automatisch geprüft:** A2 a (Vergleichsleistung), A2 b (sechs Zahlen; Flaschenzahl genau, sonst ±0,05 – »16« bei Klima B gilt also als falsch, »26 kg CO₂-Äq.« wird erkannt), A2 c Auswahl, A3 a (Auswahl), Zusatz 5 a–c und 6 a–d.",
-    "**Offene Texte bewertest du:** A1 (Foto der Tabelle + Zielkonflikt), A2 »Trinkwasser« und die drei Argumente in c, A3 b und c, Zusatz 4, 5 d, 7, 8, 9. Die Seite zeigt nur eine Schreibhilfe und gibt dafür keine Punkte.",
+    "**Automatisch geprüft:** A2 b (sechs Zahlen; Flaschenzahl genau, sonst ±0,05 – »16« bei Klima B gilt also als falsch, »26 kg CO₂-Äq.« wird erkannt), A2 c Auswahl, A3 a (Auswahl), Zusatz 5 a–c und 6 a–d.",
+    "**Offene Texte bewertest du:** A1 (Foto der Tabelle + Zielkonflikt), A2 a (Vergleichsleistung – die Seite zeigt nur eine Schreibhilfe), A2 »Trinkwasser« und die drei Argumente in c, A3 b und c, Zusatz 4, 5 d, 7, 8, 9. Die Seite zeigt nur eine Schreibhilfe und gibt dafür keine Punkte.",
     "**PDF:** Kasten »Für LMS: x von y Punkten · Notenvorschlag« (88/75/62/50 %); Aufgaben mit angesehener Lösung zählen 0 Punkte. Zusatzaufgaben zählen nur, wenn bearbeitet.",
     "**Keine Versuche** in dieser Einheit (V5.3 bleibt für später).",
 ])
 uber += "<h2>Links der Kadetten-Seiten</h2><ul>" + "".join(f"<li><span class='mono'>{I.URL}{k}.html</span></li>" for k in ("theorie", "aufgaben", "quiz")) + "</ul>"
 
 herr = "<h2>Vor der Stunde</h2><ul class='check'>"
-for n, x in enumerate(F.CHECKLISTE, 1):
-    herr += f"<li><label><input type='checkbox' id='h{n}' data-k='h{n}'> {md(x)}</label></li>"
+import re as _re
+def _slug(x):
+    """Stabile Haken-ID aus den ersten Wörtern des Textes (nicht aus der Position)."""
+    s = _re.sub(r"<[^>]+>|[*_`]", "", x).lower().translate(str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss"}))
+    return "-".join(_re.findall(r"[a-z0-9]+", s)[:5])
+
+_ids = [f"hv-{_slug(x)}" for x in F.CHECKLISTE]
+assert len(set(_ids)) == len(_ids), "Haken-IDs nicht eindeutig"
+for n, (x, _k) in enumerate(zip(F.CHECKLISTE, _ids), 1):
+    herr += f"<li><label><input type='checkbox' id='{_k}' data-k='{_k}' data-alt='h{n}'> {md(x)}</label></li>"
 herr += "</ul>"
 uber = herr + uber
 
@@ -148,9 +156,19 @@ const tabs=[...document.querySelectorAll('nav.tabs button')];
 function zeige(id){{tabs.forEach(b=>{{const on=b.id==='t-'+id;b.setAttribute('aria-selected',on);document.getElementById('p-'+b.id.slice(2)).hidden=!on;}});try{{localStorage.setItem('k145oeko-tab',id)}}catch(e){{}}}}
 tabs.forEach(b=>b.addEventListener('click',()=>zeige(b.id.slice(2))));
 try{{const t=localStorage.getItem('k145oeko-tab');if(t&&document.getElementById('p-'+t))zeige(t)}}catch(e){{}}
-// Herrichten: Haken merken
-document.querySelectorAll('input[data-k]').forEach(c=>{{try{{c.checked=localStorage.getItem('k145oeko-'+c.dataset.k)==='1'}}catch(e){{}}
-  c.addEventListener('change',()=>{{try{{localStorage.setItem('k145oeko-'+c.dataset.k,c.checked?'1':'0')}}catch(e){{}}}})}});
+// Herrichten: Haken merken (stabile IDs; der alte Positionsschlüssel wird einmalig übernommen)
+const PRE='k145oeko-';
+function warnung(){{const h=document.getElementById('speicherhinweis');if(h){{h.hidden=false;return;}}
+  const p=document.createElement('p');p.id='speicherhinweis';p.setAttribute('role','status');p.setAttribute('aria-live','polite');
+  p.style.cssText='background:#fff3cd;color:#5c4400;border:1px solid #d9b44a;padding:8px 12px;margin:8px 0;border-radius:6px';
+  p.textContent='Diese Vorbereitungshaken konnten nicht gespeichert werden. Sie gelten nur für die aktuelle Sitzung.';
+  const n=document.querySelector('nav.tabs');(n?n.parentNode:document.body).insertBefore(p,n?n.nextSibling:document.body.firstChild);}}
+function sichern(k,v){{try{{localStorage.setItem(PRE+k,v)}}catch(e){{warnung()}}}}
+try{{localStorage.setItem(PRE+'probe','1');localStorage.removeItem(PRE+'probe')}}catch(e){{warnung()}}
+document.querySelectorAll('input[data-k]').forEach(c=>{{try{{let v=localStorage.getItem(PRE+c.dataset.k);
+  if(v===null&&c.dataset.alt&&localStorage.getItem(PRE+c.dataset.alt)==='1'){{v='1';sichern(c.dataset.k,'1');}}
+  c.checked=v==='1'}}catch(e){{}}
+  c.addEventListener('change',()=>sichern(c.dataset.k,c.checked?'1':'0'))}});
 // Aufgaben: Suche und Filter
 const karten=[...document.querySelectorAll('#p-aufgaben details.card')];let fil=null;
 function filtern(){{const q=document.getElementById('suche').value.toLowerCase().trim();let n=0;
@@ -165,6 +183,8 @@ document.getElementById('f-vor').onclick=()=>geh(i+1);document.getElementById('f
 bu.addEventListener('click',ev=>{{const r=bu.getBoundingClientRect();geh(ev.clientX-r.left<r.width/3?i-1:i+1)}});
 document.getElementById('f-voll').onclick=()=>{{try{{bu.requestFullscreen&&bu.requestFullscreen().catch(()=>{{}})}}catch(e){{}}}};
 document.addEventListener('keydown',ev=>{{if(document.getElementById('p-folien').hidden)return;
+  const z=ev.target;if(z&&(/^(INPUT|SELECT|TEXTAREA)$/.test(z.tagName)||z.isContentEditable))return;
+  if(ev.key===' '&&z&&/^(BUTTON|A)$/.test(z.tagName))return;
   if(['ArrowRight',' ','PageDown'].includes(ev.key)){{ev.preventDefault();geh(i+1)}}else if(['ArrowLeft','PageUp'].includes(ev.key)){{ev.preventDefault();geh(i-1)}}
   else if(ev.key==='f'||ev.key==='F')document.getElementById('f-voll').click();}});
 geh(0);

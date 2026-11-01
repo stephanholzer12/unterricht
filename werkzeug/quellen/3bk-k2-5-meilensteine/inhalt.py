@@ -4,7 +4,7 @@ Trauner PBGW 3: Kap. »Meilensteine der Entwicklungsgeschichte: Ur- und Frühges
 Jahresplan v14: E3, E4, E5 (je 2 Std. = 6 Std. brutto), K01, K02, K04, K05, K06, K08, N01, N02, P3, P4, SDG 2. Stephan: 3 Termine (Mo 16.11., 23.11., 30.11.2026),
 am 23.11. 20 min Test (Stoff kommt von Stephan) + 4 min Organisation. Annahme 50 min je Stunde.
 Grundlage: ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026): Ablauf, Texte T1–T6, Aufgaben A1–A8, Quizpool – von Claude nach dem Regelwerk
-(14. Fassung, 29.10.2026) umgesetzt und gegengeprüft. Trauner S. 108–115 am 01.11.2026 anhand von Buchfotos abgeglichen; S. 105–107 und 116–118 liegen nicht vor.
+(14. Fassung, 29.10.2026) umgesetzt und gegengeprüft. Trauner S. 109–115 am 01.11.2026 anhand von Buchfotos abgeglichen; S. 105–108 und 116–118 liegen nicht vor.
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
@@ -207,10 +207,10 @@ T = [
           "quelle": {"kw": [["Selbstdarstellung", r"selbstdarstell|eigen|perspektive|sicht|bild|wollte|überprüf|ueberpruef|vergleich|andere quellen|nicht neutral|interesse"]], "man": True}},
   "sol": [["Musterlösung", ["a) Princeps (»Erster unter Gleichen«), nicht König.",
                           "b) Er stellt sich als Friedensstifter dar, der die Republik wiederhergestellt und die Macht zurückgegeben hat; sein Vorrang beruhe nur auf Ansehen.",
-                          "c) Entscheidend sind seine militärische Macht (Oberbefehl über das Heer, Statthalterschaft in wichtigen Provinzen) und weitreichende Befugnisse: wichtige Amtsgewalten, die sonst auf mehrere Ämter verteilt waren (Konsul, Volkstribun), und der Ehrenname Augustus. Die republikanischen Einrichtungen bestanden weiter.",
+                          "c) Entscheidend sind seine militärische Macht (Oberbefehl über das Heer, Statthalterschaft in wichtigen Provinzen) und weitreichende Befugnisse: wichtige Amtsgewalten, die sonst auf mehrere Ämter verteilt waren (Konsul, Volkstribun). Der Ehrenname Augustus und der Titel Princeps stützten sein Ansehen, waren aber keine Amtsgewalt. Die republikanischen Einrichtungen bestanden weiter.",
                           "d) Der Tatenbericht ist nützlich, weil er zeigt, wie Augustus gesehen werden wollte. Er ist aber seine eigene Darstellung und keine unabhängige Gesamtbewertung; jede Behauptung muss man mit anderen Quellen und mit der tatsächlichen Machtverteilung vergleichen.",
                           "Schlusssatz: Augustus verwendet die Sprache der Republik, während die entscheidende Macht bei ihm liegt. (Nicht gleich »jede Aussage ist gelogen«: Jede Behauptung konkret prüfen.)"]]],
-  "fsol": {"eindruck": "Friedensstifter, Wiederhersteller der Republik, nur Ansehen", "macht": "Heer, Provinzen, Konsul- und Tribunenbefugnisse, Ehrenname",
+  "fsol": {"eindruck": "Friedensstifter, Wiederhersteller der Republik, nur Ansehen", "macht": "Heer, Provinzen, Konsul- und Tribunenbefugnisse (Ehrenname = Ansehen, keine Amtsgewalt)",
            "quelle": "Selbstdarstellung – mit anderen Quellen und der tatsächlichen Macht vergleichen"},
   "kriterien": ["Selbstbezeichnung Princeps", "gewünschter Eindruck", "mindestens zwei Machtmittel", "Quelle ist Selbstdarstellung"],
   "tip": ["Rom: Republik und Machtkonzentration", "theorie.html#rom"], "besprechen": True},
