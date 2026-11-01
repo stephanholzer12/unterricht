@@ -41,7 +41,7 @@ offen = [
     "**LMS-Abgabeordner** für 5AK anlegen (eine PDF mit Aufgaben 1–8 am Fr 04.12.).",
 ]
 uber = "<h2>Was du vor Ort noch prüfen musst</h2>" + ul(offen)
-uber += "<h2>Ablauf (3AK und 3BK gleich)</h2><p>" + md(P.FAHRPLAN_TEXT) + "</p>"
+uber += "<h2>Ablauf 5AK – vier Stunden</h2><p>" + md(P.FAHRPLAN_TEXT) + "</p>"
 uber += tab(["Std.", "Theorie", "Versuch", "Aufgaben", "Zeit", "Methode"], F.STUNDENVORSCHLAG[I.KLASSEN[0]])
 uber += "<h2>Stundenkarten (Minuten je Phase, Summe 50)</h2>"
 for st in P.PLAN[I.KLASSEN[0]]:

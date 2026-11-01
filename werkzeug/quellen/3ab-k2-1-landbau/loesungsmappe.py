@@ -131,7 +131,7 @@ seite = f"""<title>Lösungsmappe Landwirtschaft 3AB</title>
 </nav>
 <section class="panel lese" id="p-ueberblick">{uber}</section>
 <section class="panel lese" id="p-aufgaben" hidden>{aufgaben}</section>
-<section class="panel lese" id="p-versuch" hidden><h2>Keine Versuche in dieser Einheit</h2><p>Die Stunde arbeitet mit vorgegebenen, erfundenen Modelldaten (Aufgabe 2) – das ist kein Versuch und bekommt keine Versuchs-ID.</p><p>Für später: <b>Jahresplan V5.3 »Vereinfachte Lebenszyklusanalyse eines Produkts«</b> (45 min, Schülerarbeit; Waage, Datenblätter, Taschenrechner; zwei vergleichbare Produkte). Funktionale Einheit und Systemgrenze festlegen, Massen, Transport und Energiedaten mit Quelle dokumentieren, Ergebnis als vereinfachte Analyse ausweisen. Vor einer Durchführung Inventar prüfen.</p></section>
+<section class="panel lese" id="p-versuch" hidden><h2>Keine Versuche in dieser Einheit</h2><p>In dieser Einheit wird kein Versuch durchgeführt. V3.12 Bodenprobe bleibt eine mögliche spätere Praxisstunde; Materialbedarf und Durchführung vorher prüfen.</p></section>
 <section class="panel" id="p-folien" hidden>
   <div class="steuer"><button class="btn ghost" id="f-zur" type="button">◀ zurück</button><button class="btn" id="f-vor" type="button">weiter ▶</button>
   <select id="f-wahl" aria-label="Folie wählen">{optionen}</select><button class="btn ghost" id="f-voll" type="button">Vollbild</button></div>

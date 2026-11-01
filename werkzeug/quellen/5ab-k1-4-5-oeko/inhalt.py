@@ -127,7 +127,7 @@ T = [
              ["oeko", "c) Ökologisches Argument (1 Satz)"], ["wirt", "c) Wirtschaftliches Argument (1 Satz)"], ["fehlt", "c) Diese Information fehlt noch (1 Satz)"]],
   "chk": {"fe": {"kw": [["1.000", r"1[.\s',]?000|tausend"], ["Nutzungen", r"nutz|verwend|befüll|befuell|einsatz|einsätz|einsaetz|gebrauch|füllung|fuellung|trinkvorg|liter|[-\s]mal\b"]]},
           "wasser": {"kw": [["bei A und B gleich", r"gleich|beide|beiden|hebt|aufheb|unterschied|egal|dasselbe|selbe"]], "man": True},
-          "nA": {"num": 5, "tol": 0}, "nB": {"num": 1, "tol": 0}, "kA": {"num": 26, "tol": 0.05}, "kB": {"num": 16.5, "tol": 0.05}, "eA": {"num": 60, "tol": 0.05}, "eB": {"num": 50, "tol": 0.05},
+          "nA": {"num": 5, "tol": 0}, "nB": {"num": 1, "tol": 0}, "kA": {"num": 26, "tol": 0.05}, "kB": {"num": 16.5, "tol": 0.05}, "eA": {"num": 60, "tol": 0.05, "unit": "€"}, "eB": {"num": 50, "tol": 0.05, "unit": "€"},
           "wahl": {"sel": "Flasche B"},
           "oeko": {"kw": [["Klimawirkung kleiner", r"klima|co2|co₂|co 2|treibhaus|emission|16[,.]5|9[,.]5|weniger"]], "man": True},
           "wirt": {"kw": [["Kosten über 1.000 Nutzungen", r"kost|euro|€|billig|günstig|guenstig|50|10|preis|spar"]], "man": True},

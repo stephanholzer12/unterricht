@@ -228,7 +228,7 @@ T = [
   "fields": [["o2", "a) eingebauter Sauerstoff (mit Einheit)"], ["proz", "b) Zunahme in Prozent (mit Rechnung)"],
              ["ee", "c) Die Verbrennung der Eisenwolle ist …", ["exotherm – sie glüht und gibt Wärme und Licht ab", "endotherm – man braucht dafür eine Batterie",
                                                           "endotherm – die Eisenwolle wird schwerer"]]],
-  "chk": {"o2": {"num": 0.32, "unit": "g"}, "proz": {"num": 26.7, "unit": ""}, "ee": {"sel": "exotherm – sie glüht und gibt Wärme und Licht ab"}},
+  "chk": {"o2": {"num": 0.32, "unit": "g", "ende": True}, "proz": {"num": 26.7, "unit": ""}, "ee": {"sel": "exotherm – sie glüht und gibt Wärme und Licht ab"}},
   "sol": [["Lösung", ["a) 1,52 g − 1,20 g = 0,32 g Sauerstoff",
                       "b) 0,32 g : 1,20 g · 100 ≈ 26,7 %",
                       "c) exotherm – die Wolle glüht weiter und gibt Wärme und Licht ab. Die Batterie liefert nur die Aktivierungsenergie zum Start."]]],
