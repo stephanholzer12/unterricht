@@ -192,8 +192,8 @@ cases[E14]=[
 /* 5AB K1.4–1.5 Ökodesign und Ökobilanz (30.10.2026): Zahlen ohne Einheit im Feld, »kg CO₂-Äq.« darf die Zahl nicht stören; offene Begründungen = M */
 const E145='5ab-toew/k1-4-5-oeko/aufgaben.html';
 cases[E145]=[
- ['a2','fe','1.000 Nutzungen einer Ein-Liter-Flasche',1],['a2','fe','1000 Nutzungen',1],['a2','fe','tausend Mal befüllen und reinigen',1],['a2','fe','1 Flasche',0],['a2','fe','1000 Flaschen',0],['a2','fe','Nutzungen',0],
- ['a2','fe','1.000-mal nutzen',1],['a2','fe','1000 mal benutzen',1],['a2','fe','die man 1000 Mal verwenden kann',1],['a2','fe','1000 Trinkvorgänge',1],['a2','fe','1000 Stück',0],
+ ['a2','fe','1.000 Nutzungen einer Ein-Liter-Flasche',1],['a2','fe','1000 Nutzungen',1],['a2','fe','tausend Mal befüllen und reinigen',1],['a2','fe','1 Flasche','M'],['a2','fe','1000 Flaschen','M'],['a2','fe','Nutzungen','M'],
+ ['a2','fe','1.000-mal nutzen',1],['a2','fe','1000 mal benutzen',1],['a2','fe','die man 1000 Mal verwenden kann',1],['a2','fe','1000 Trinkvorgänge',1],['a2','fe','1000 Stück','M'],
  ['a2','nA','5',1],['a2','nA','5 Flaschen',1],['a2','nA','1000 : 200 = 5',1],['a2','nA','4',0],['a2','nA','200',0],
  ['a2','nB','1',1],['a2','nB','eine',0],['a2','nB','2',0],
  ['a2','kA','26',1],['a2','kA','26 kg',1],['a2','kA','26 kg CO2-Äq.',1],['a2','kA','26 kg CO₂-Äquivalente',1],['a2','kA','16 + 10 = 26',1],['a2','kA','16',0],['a2','kA','25 kg CO2',0],['a2','kA','2,6',0],['a2','kA','16,01',0],
