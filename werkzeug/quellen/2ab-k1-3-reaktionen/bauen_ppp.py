@@ -687,6 +687,7 @@ def ueberblick(nrs, titel):
 
 
 def weisst_du_noch(st):
+    if st not in I.WEISST_DU_NOCH: return   # Stunde 5 ist Zusatz (Selbststudium): keine Wiederholungsfolie
     s = d.slide("Nur Titel", "Weißt du noch?")
     y = Y0
     for q, a in I.WEISST_DU_NOCH[st]:
@@ -696,6 +697,7 @@ def weisst_du_noch(st):
 
 
 def stopp(st, L):
+    if st not in I.STOPPFRAGEN: return   # Stunde 5 ist Zusatz: keine Stoppfolie
     s = d.slide("Nur Titel", "Stopp – kannst du das?")
     draw_blk(s, ("reveal", I.STOPPFRAGEN[st]), X0, Y0, 9, L)
 

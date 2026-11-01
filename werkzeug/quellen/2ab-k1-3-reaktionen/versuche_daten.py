@@ -232,7 +232,7 @@ VS = [
   "fach": ["Die Temperatur kann bis zum eutektischen Punkt von NaCl/Wasser sinken: −21 °C bei 23 % Salz. Im Schulversuch erreicht man meist −10 bis −18 °C.",
            "Das ist keine chemische Reaktion und keine Redoxreaktion, sondern ein physikalischer Vorgang (Lösen und Schmelzen, keine neuen Stoffe) – exo-/endotherm gilt aber auch dafür."]},
 
- {"id": "katalysator", "nr": "K1.3-V7", "titel": "Was beschleunigt den Zerfall von Wasserstoffperoxid?", "bindung": "Katalysator: Wasserstoffperoxid 3 % mit und ohne Braunstein · Lehrer-Demo mit Vorhersage",
+ {"id": "katalysator_h2o2", "nr": "K1.3-V7", "titel": "Was beschleunigt den Zerfall von Wasserstoffperoxid?", "bindung": "Katalysator: Wasserstoffperoxid 3 % mit und ohne Braunstein · Lehrer-Demo mit Vorhersage",
   "stunde": 4, "form": "Lehrer-Demo", "platz_kurz": "Lehrertisch", "platz": "Lehrertisch vorne – ihr schaut von euren Plätzen aus zu und tippt mit.", "demo": True, "kern": True, "zeit": 8,
   "jp": "Name K1.3-V7 gilt nur in dieser Einheit; inhaltlich gehört der Braunstein-Vergleich zum Jahresplan-Versuch V2.11 (Katalase-Versuch Kartoffel/H₂O₂, Biologie) – siehe Änderungsvermerk",
   "quelle": "Uni Göttingen, Schulversuchspraktikum »Sauerstoff« (Kölling 2012, 3–5 % H₂O₂ mit Braunstein) und Uni Göttingen Versuchsdatenbank exp_neu.php?id=1002 (Gallikowski; dort 5 %) – hier als angepasster Aufbau mit 3 % (Viroxidin), keine wörtliche Übernahme; Jahresplan V2.11 (Braunstein-Vergleich); Buch S. 36",

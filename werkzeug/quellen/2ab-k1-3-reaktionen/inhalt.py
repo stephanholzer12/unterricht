@@ -34,7 +34,7 @@ def first(lst, correct):
     return [correct] + [x for x in lst if x != correct]
 
 
-BR = ["kaum oder keine Gasbläschen", "deutlich sichtbare Gasbläschen (schneller)"]  # A13 (H₂O₂ ± Braunstein)
+BR = ["kaum oder keine Gasbläschen", "einige Gasbläschen", "viele Gasbläschen oder Schäumen", "kein Unterschied zum anderen Gefäß"]  # A13: Dokumentation, wird nicht bewertet
 OR = ["Verbindung eines Stoffes mit Sauerstoff", "Abgabe von Elektronen", "Entzug (Abspaltung) von Sauerstoff", "Aufnahme von Elektronen"]
 RX = ["Redoxreaktion", "keine Redoxreaktion"]
 SCHUTZ = ["Schutzschicht hält Wasser und Sauerstoff fern", "unedleres Zink wird statt dem Eisen oxidiert",
@@ -237,15 +237,14 @@ T = [
  # ======================================================= Stunde 4 · Katalysatoren (alle)
  {"id": "a13", "besprechen": True, "nr": 13, "title": "Was beschleunigt den Zerfall von Wasserstoffperoxid? (Demo K1.3-V7)", "src": "Buch S. 34", "own": True, "tag": "Stunde 4", "h": 4, "hl": False, "zeit": 4,
   "q": "Zwei gleiche offene Gefäße enthalten gleich viel Wasserstoffperoxid-Lösung (3 %). In Gefäß 2 gibt die Lehrkraft eine kleine Menge Braunstein (MnO₂, schwarzes Pulver), Gefäß 1 bleibt ohne Braunstein. Die Gleichung lautet 2 H₂O₂ → 2 H₂O + O₂. "
-       "a) Tippe VOR der Demo: In welchem Gefäß entsteht schneller Gas? (Der Tipp zählt nicht.) b) Trag für jedes Gefäß ein, was du siehst – nur die Beobachtung. c) Welche Rolle hat der Braunstein? d) Welches Gas entsteht laut Gleichung? e) Trenne in 1–2 Sätzen: Was war die Beobachtung, was die Erklärung?",
+       "a) Tippe VOR der Demo: In welchem Gefäß entsteht schneller Gas? (Der Tipp zählt nicht.) b) Trag für jedes Gefäß ein, was du siehst – nur die Beobachtung (sie wird nicht automatisch bewertet; ehrlich eintragen, auch wenn es anders aussieht als erwartet). c) Welche Rolle hat der Braunstein? d) Welches Gas entsteht laut Gleichung? e) Trenne in 1–2 Sätzen: Was war die Beobachtung, was die Erklärung?",
   "type": "multi",
   "fields": [["t13", "a) Mein Tipp vor der Demo", ["Gefäß 1 · ohne Braunstein", "Gefäß 2 · mit Braunstein", "beide gleich schnell"], False],
              ["b13a", "b) Gefäß 1 · ohne Braunstein", BR, False], ["b13b", "b) Gefäß 2 · mit Braunstein", BR, False],
-             ["r13", "c) Der Braunstein wirkt hier als …", ["Katalysator – er senkt die Aktivierungsenergie und ist in der Gesamtgleichung kein Ausgangsstoff", "zusätzlicher Ausgangsstoff, der verbraucht wird", "Energielieferant, der die Reaktion antreibt", "Stoff, der den Energieunterschied zwischen Anfang und Ende verändert"]],
+             ["r13", "c) Der Braunstein wirkt hier als …", ["Katalysator", "verbrauchter Ausgangsstoff", "Energielieferant", "Stoff, der Start- und Endenergie ändert"]],
              ["gas13", "d) Laut Gleichung entsteht das Gas …", ["Sauerstoff (O₂)", "Wasserstoff (H₂)", "Kohlenstoffdioxid (CO₂)", "Wasserdampf (H₂O)"]],
              ["w13", "e) Beobachtung und Erklärung getrennt (1–2 Sätze)"]],
-  "chk": {"b13a": {"sel": BR[0]}, "b13b": {"sel": BR[1]},
-          "r13": {"sel": "Katalysator – er senkt die Aktivierungsenergie und ist in der Gesamtgleichung kein Ausgangsstoff"},
+  "chk": {"r13": {"sel": "Katalysator"},   # b13a/b13b (Beobachtung) bewusst ohne Prüfung: Dokumentation der tatsächlichen Beobachtung
           "gas13": {"sel": "Sauerstoff (O₂)"},
           "w13": {"kw": [["Beobachtung genannt", "beobacht|sehe|sah|gesehen|bläschen|blaeschen|gas|schäum|schaeum|blasen"],
                          ["Erklärung genannt", "erklär|erklaer|katalys|aktivierungs|deut|schneller|beschleunig|senkt"]]}},

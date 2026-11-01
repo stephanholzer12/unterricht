@@ -1184,43 +1184,6 @@
      "need": 1
     }
    },
-   "katalysator": {
-    "beob": {
-     "b0_1": {
-      "kw": [
-       "kaum Gas=kaum,wenig,keine,nichts,langsam,ruhig"
-      ],
-      "need": 1
-     },
-     "b1_1": {
-      "kw": [
-       "viel Gas=blas,bläs,schaum,schäum,sprudel,gas,schnell,viel,deutlich"
-      ],
-      "need": 1
-     }
-    },
-    "erk": {
-     "kw": [
-      "Gefäß 2 mit Braunstein=braunstein,gefäß 2,gefaess 2,zweite,mit,2",
-      "schneller Gas=schnell,mehr,deutlich,blas,bläs,gas,schäum"
-     ],
-     "need": 2
-    },
-    "interp": {
-     "kw": [
-      "Katalysator=katalys",
-      "Aktivierungsenergie=aktivier,energie,schneller,beschleun,senkt",
-      "nicht verbraucht / über dem Pfeil=nicht verbraucht,unveränder,über dem pfeil,kein edukt,kein ausgangsstoff,bleibt"
-     ],
-     "need": 2
-    },
-    "schluss": {
-     "kw": [
-      "Enzym Katalase=enzym,katalase,biokatalys,eiweiss,eiweiß,zelle"
-     ],
-     "need": 1
-    }
-   },
    "brause": {
     "beob": {
      "b0_1": {
@@ -1294,6 +1257,26 @@
      "kw": [
       "Hochofen=hochofen,eisen,koks,kohlenstoff,co",
       "Sauerstoff entziehen=sauerstoff,reduz,entzieh"
+     ],
+     "need": 1
+    }
+   },
+   "katalysator_h2o2": {
+    "beob": {},
+    "erk": {
+     "min": 4
+    },
+    "interp": {
+     "kw": [
+      "Katalysator=katalys",
+      "Aktivierungsenergie=aktivier,energie,schneller,beschleun,senkt",
+      "nicht verbraucht / über dem Pfeil=nicht verbraucht,unveränder,über dem pfeil,kein edukt,kein ausgangsstoff,bleibt"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "Enzym Katalase=enzym,katalase,biokatalys,eiweiss,eiweiß,zelle"
      ],
      "need": 1
     }
