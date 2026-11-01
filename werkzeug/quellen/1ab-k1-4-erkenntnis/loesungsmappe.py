@@ -69,6 +69,12 @@ herr = "<p>Zum Abhaken – die Haken bleiben nur in diesem Browser gespeichert. 
 listen = [(f"{nr} · {tit}", rows) for nr, tit, rows in H.je_versuch()]
 if len(VD.VS) > 1: listen.append(("Gesamt für alle Versuche", H.gesamt()))
 else: listen[0] = (listen[0][0] + " (= Gesamtliste, nur ein Versuch)", listen[0][1])
+import re as _re
+def _slug(x):
+    """Stabile Haken-ID aus den ersten Wörtern des Textes (nicht aus der Position)."""
+    s = _re.sub(r"<[^>]+>|[*_`]", "", x).lower().translate(str.maketrans({"ä": "ae", "ö": "oe", "ü": "ue", "ß": "ss"}))
+    return "-".join(_re.findall(r"[a-z0-9]+", s)[:4])
+
 n = 0
 for tit, rows in listen:
     herr += f"<h2>{e(tit)}</h2>"
@@ -79,12 +85,12 @@ for tit, rows in listen:
         for r in rr:
             n += 1
             fehlt = f" <span class='chip rot'>fehlt {e(r['fehlt'])}</span>" if r["fehlt"] not in ("–", "") else ""
-            herr += (f"<li><label><input type='checkbox' id='h{n}' data-k='h{n}'> <b>{e(r['gesamt'])} ×</b> {e(r['name'])}{fehlt}"
+            herr += (f"<li><label><input type='checkbox' id='hm-{e(r['key'])}' data-k='hm-{e(r['key'])}'> <b>{e(r['gesamt'])} ×</b> {e(r['name'])}{fehlt}"
                      f"<br><span class='klein'>{e(r['rechnung'])} · {e(r['ort'])} · Bestand: {e(r['bestand'])} · {e(r['vortag'])} · für {e(r['versuche'])}</span></label></li>")
         herr += "</ul>"
 herr += "<h2>Vor der Stunde</h2><ul class='check'>"
 for x in F.CHECKLISTE:
-    n += 1; herr += f"<li><label><input type='checkbox' id='h{n}' data-k='h{n}'> {md(x)}</label></li>"
+    n += 1; _k = f"hv-{_slug(x)}"; herr += f"<li><label><input type='checkbox' id='{_k}' data-k='{_k}'> {md(x)}</label></li>"
 herr += "</ul>"
 
 # ---------------------------------------------------------------- Aufgaben
