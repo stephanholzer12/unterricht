@@ -15,7 +15,7 @@ LEHRPLAN = [
                                       "Ernährungssicherung als heutige Frage (ohne antiken Gesellschaften heutige Ziele zuzuschreiben)"),
     ("GLV: ", "Im Jahresplan E3–E5 stehen keine GLV-Codes. Als **didaktische Ergänzung** (nicht Planbestand): Wertebewusstsein und Informationsresilienz – Rechtsgleichheit, Machtkontrolle, Prüfung von Herrscheraussagen (Aufgaben 4, 6, 10)."),
     ("Schulprofil: ", "Vorratshaltung und Transport als logistische Aufgabe · Verwaltung, Zuständigkeit und Befehlsketten (ein Schaubild einer Hierarchie sagt nichts über ihre Rechtmäßigkeit) · Heer und Gefolgschaft als Faktor römischer Macht – nicht nach dem Muster »die beste Armee gewinnt immer«."),
-    ("Abweichung: ", "3 statt 6 Stunden brutto (Stephans Vorgabe); Kern in Aufgaben 1–8, Rest OPTIONAL. Kein Versuch (PBGW), kein CLIL. Teststoff für den 23.11. kommt von dir – es gibt noch keine Teststoff-Seite. Trauner-Seiten S. 105–118 (Antike) lagen nicht vor: Athen und Rom: Texte stammen aus dem ChatGPT-Auftrag, nicht aus den Trauner-Seiten – bitte mit dem Buch abgleichen."),
+    ("Abweichung: ", "3 statt 6 Stunden brutto (Stephans Vorgabe); Kern in Aufgaben 1–8, Rest OPTIONAL. Kein Versuch (PBGW), kein CLIL. Teststoff für den 23.11. kommt von dir – es gibt noch keine Teststoff-Seite. Athen und Rom sind am 01.11.2026 mit den Buchseiten S. 108–115 (Fotos von dir) abgeglichen: inhaltlich vereinbar; S. 105–107 und 116–118 liegen nicht vor."),
 ]
 
 THEMEN = {1: "Vorrat, Metall, Schrift, frühe Staaten (S. 25–39)", 2: "Hammurabis Rechtssammlung (S. 39–40)", 3: "Athen, Rom, Prinzipat (Buch S. 105–118)"}
@@ -96,18 +96,18 @@ KAPITEL = [
   "nur": ["Eine historische UN-Geschenkseite nennt die Sammlung »die älteste« – nicht übernommen, weil ältere Sammlungen dokumentiert sind."],
   "stolper": "»Hammurabi erfand das Recht«, »vor dem Gesetz alle gleich«. Gegenmittel: Aufgabe 4 c) und f), Aufgabe 10 (KI-Antwort prüfen).",
   "bild": None},
- {"titel": "4 Athen (Buch S. 107–111)",
+ {"titel": "4 Athen (Buch S. 109–111)",
   "text": ["**Beteiligung:** In der behandelten klassischen Phase (vor allem 5. Jh. v. Chr.) entscheiden erwachsene männliche Bürger in der Volksversammlung. Frauen, Versklavte und Metöken sind ausgeschlossen. Der Rat (500) bereitet vor und wird gelost; viele Ämter (z. B. Archonten) werden gelost, die Strategen gewählt. Details der Ordnung veränderten sich – Kleisthenes um 508/507 v. Chr. ist nur ein Orientierungspunkt.",
            "**Vergleich mit Österreich:** parlamentarische Demokratie (Wahl von Vertretern, Gesetzgebung, Kontrolle der Regierung; Parlament Österreich, Seite »Parlament und Wahlen«). Auch heute sind Wahlrechte an Voraussetzungen gebunden (Staatsbürgerschaft, Wahlalter). Der Vergleich fragt nach Beteiligung, Ausschluss und Kontrolle – er setzt nicht gleich.",
            "**Quellenfrage:** Bilder von Athen (zum Beispiel Gemälde des 19. Jahrhunderts) sind spätere Darstellungen, keine Augenzeugenbilder."],
-  "nur": ["Trauner S. 105–118 (Hellenen, Polis, Klassengesellschaft Athen) lagen nicht vor – nur Kapitelnavigation. Falls du die Seiten hast, schick sie; ich gleiche dann die Aussagen ab."],
+  "nur": ["Abgleich mit Trauner S. 109–111 (Buchfotos, 01.11.2026): Die Aussagen stimmen mit dem Buch überein. Das Buch ergänzt, was die Kadetten-Seiten nicht enthalten: Solon (594/593 v. Chr.) teilt die Bürger nach Vermögen in vier Klassen (Timokratie), nur die 1. Klasse kann Archont werden; Kleisthenes (Ende 6. Jh. v. Chr.) erweitert den Rat auf 500 und führt das Scherbengericht ein; Perikles führt Taggelder ein; etwa 175 000 Menschen (Frauen, Kinder, Metöken, Versklavte) bleiben ohne politische Rechte."],
   "stolper": "»In Athen durften alle abstimmen«, »alle Ämter wurden gewählt«. Gegenmittel: Aufgabe 5 b) und c), Stopp-Frage 3.",
   "bild": "img/athen.png"},
  {"titel": "5 Rom, Augustus und der Anschluss (Buch S. 112–118)",
   "text": ["**Republik:** zwei Konsuln mit begrenzter Amtszeit, Senat (Gewicht einflussreicher Familien), Volksversammlungen, Volkstribunen (Einspruch). Keine moderne parlamentarische Demokratie: Vermögen, Herkunft und Verbindungen beeinflussen den Zugang; Frauen und Versklavte ausgeschlossen. Das Buchschema ist zeitgebunden – keine unveränderte Ordnung für die ganze Republik behaupten.",
            "**Augustus:** Octavian setzte sich nach Bürgerkriegen durch, 27 v. Chr. Name Augustus; Princeps (»Erster unter Gleichen«). Republikanische Einrichtungen bestehen weiter; entscheidende Machtmittel liegen bei ihm (Oberbefehl über das Heer, Statthalterschaft in wichtigen Provinzen, Befugnisse von Konsul und Volkstribun). Die Res gestae (Tatenbericht) sind **Selbstdarstellung**: nützlich als Beleg für das gewollte Bild, aber nicht als unabhängige Bewertung.",
            "**476 n. Chr.:** konventioneller Orientierungspunkt für das Ende Westroms; Ostrom besteht weiter. Politische, militärische und wirtschaftliche Faktoren wirken zusammen – keine pauschale Gegenwartsanalogie."],
-  "nur": ["Britisches Museum (Augustus, Münze zur republikanischen Selbstdarstellung): nur als Hinweis geprüft, die Münzabbildung wurde nicht als Medium freigegeben. Heer und Gefolgschaft sind Faktoren römischer Macht, aber nicht die einzige Erklärung."],
+  "nur": ["Abgleich mit Trauner S. 112–115 (Buchfotos, 01.11.2026): Republik (Patrizier und Plebejer, Senat, Magistrate, Volksversammlungen, Volkstribun) und Prinzipat (Augustus 27 v. Chr., Princeps, Heer und Provinzen) stimmen mit dem Buch überein. Zahlen im Buch: Actium 32 v. Chr. (üblich 31 v. Chr.) und Zugang der Plebejer zum Konsulat 386 v. Chr. (üblich 367/366 v. Chr.) – nicht ungeprüft übernehmen.", "Britisches Museum (Augustus, Münze zur republikanischen Selbstdarstellung): nur als Hinweis geprüft, die Münzabbildung wurde nicht als Medium freigegeben. Heer und Gefolgschaft sind Faktoren römischer Macht, aber nicht die einzige Erklärung."],
   "stolper": "»Republik = Demokratie«, »Augustus stellte die Republik tatsächlich wieder her«, »476 endete das Römische Reich«. Gegenmittel: Aufgabe 6 und 7, Stopp-Frage 3.",
   "bild": "img/rom.png"},
 ]
@@ -163,7 +163,7 @@ BILDER = [
 
 QUELLEN = [
     "**Grundlage:** ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026) mit Paket (Screenshots Trauner S. 23–44, Jahresplan v14, Regelwerk, Muster) – Ablauf, Texte T1–T6, Aufgaben A1–A8 und Quizpool übernommen, sprachlich vereinfacht, nach dem Regelwerk (14. Fassung) umgebaut und nachgeprüft (Prüfbericht).",
-    "**Buchzuordnung:** Hammurabi-Paragrafen (§ 53, 196, 198, 199, 233) mit Trauner S. 40 abgeglichen; Trauner S. 105–118 lagen nicht vor; Athen und Rom nicht gegen das Buch geprüft.",
+    "**Buchzuordnung:** Hammurabi-Paragrafen (§ 53, 196, 198, 199, 233) mit Trauner S. 40 abgeglichen; Athen und Rom am 01.11.2026 mit Trauner S. 109–115 abgeglichen (Buchfotos); S. 105–108 und 116–118 liegen nicht vor.",
     "**Selbst geprüft (30.10.2026):** Südtiroler Archäologiemuseum, Pressemeldung 1.3.2024 (PDF) – Ötzis Beilkupfer, über 50 Objekte, Bleiisotope; Louvre, »The Code of Hammurabi« – Stele um 1750 v. Chr., Rechtsfälle (»case law«), 282 Entscheidungen.",
     "**Aus der Übergabe übernommen, von mir nicht neu geprüft:** Bodleian Libraries (ältere Rechtssammlungen), Universität Graz (Athen und Rom), British Museum (Augustus), NHM Wien (Hallstatt), Evershed u. a. 2022 (Nature), Parlament Österreich (Demokratie), Met Museum (Ursprünge der Schrift).",
     "**Jahresplan v14:** E3–E5 (K01, K02, K04, K05, K06, K08, N01, N02, P3, P4, SDG 2; keine GLV-Codes). Teststoff für den 23.11. liegt bei dir.",

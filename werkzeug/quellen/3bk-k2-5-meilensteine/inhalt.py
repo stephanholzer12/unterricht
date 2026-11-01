@@ -4,7 +4,7 @@ Trauner PBGW 3: Kap. »Meilensteine der Entwicklungsgeschichte: Ur- und Frühges
 Jahresplan v14: E3, E4, E5 (je 2 Std. = 6 Std. brutto), K01, K02, K04, K05, K06, K08, N01, N02, P3, P4, SDG 2. Stephan: 3 Termine (Mo 16.11., 23.11., 30.11.2026),
 am 23.11. 20 min Test (Stoff kommt von Stephan) + 4 min Organisation. Annahme 50 min je Stunde.
 Grundlage: ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026): Ablauf, Texte T1–T6, Aufgaben A1–A8, Quizpool – von Claude nach dem Regelwerk
-(14. Fassung, 29.10.2026) umgesetzt und gegengeprüft. Trauner S. 105–118 liegen nicht als Seiten vor: nur Kapitelnavigation, Athen und Rom stützen sich auf das Ergänzungsbuch.
+(14. Fassung, 29.10.2026) umgesetzt und gegengeprüft. Trauner S. 108–115 am 01.11.2026 anhand von Buchfotos abgeglichen; S. 105–107 und 116–118 liegen nicht vor.
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
@@ -304,7 +304,7 @@ T = [
                           "2. Vor dem Gesetz waren nicht alle gleich: Die Rechtsfolgen hingen vom Stand ab (§ 196, 198, 199). "
                           "3. In Athen durften nur erwachsene männliche Bürger abstimmen – Frauen, Versklavte und Metöken nicht. (Auch »erste Demokratie der Welt« ist eine Behauptung, die man belegen müsste.)",
                           "b) z. B. »Erkläre Hammurabis Rechtssammlung und die attische Demokratie. Nenne zu jeder Aussage die Quelle und sage dazu, was in der Forschung unsicher oder umstritten ist.«",
-                          "c) z. B. die Aussage über die Gleichheit: im Buch S. 40 (Paragrafen) und in einer Museumsseite nachlesen; die Athen-Aussage im Buch S. 107–111."]]],
+                          "c) z. B. die Aussage über die Gleichheit: im Buch S. 40 (Paragrafen) und in einer Museumsseite nachlesen; die Athen-Aussage im Buch S. 109–111."]]],
   "fsol": {"fehler": "nicht der Erste · nicht alle gleich · nur männliche Bürger", "prompt": "… mit Quellen und Angabe, was unsicher ist", "pruefen": "z. B. Buch S. 40 und eine Museumsseite"},
   "tip": ["Recht ist nicht gleich Gleichheit", "theorie.html#regeln"]},
 
@@ -453,7 +453,7 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
  ("Hammurabi", "Gilt Hammurabis Sammlung als die erste Rechtssammlung der Geschichte?", ["Nein, es gab ältere Rechtssammlungen.", "Ja, davor gab es keine Regeln.", "Ja, weil sie als Einzige aufgeschrieben wurde.", "Nein, sie ist nur eine Legende."],
   "Hammurabis Sammlung ist bedeutend, aber ältere Sammlungen (z. B. von Ur-Nammu) sind bekannt.", "Buch S. 40"),
  ("Athen", "Wer durfte im klassischen Athen in der Volksversammlung mitentscheiden?", ["Erwachsene männliche Bürger.", "Alle erwachsenen Männer, die in Athen lebten, auch Fremde.", "Alle Einwohner, auch Frauen und Versklavte.", "Nur der Adel."],
-  "Große Gruppen waren ausgeschlossen; entscheidend war der Bürgerstatus.", "Buch S. 107–111"),
+  "Große Gruppen waren ausgeschlossen; entscheidend war der Bürgerstatus.", "Buch S. 109–111"),
  ("Athen", "Welche Aussage zu den Ämtern in Athen stimmt?", ["Viele Ämter wurden gelost, die Strategen gewählt.", "Alle Ämter wurden vererbt.", "Alle Ämter wurden gewählt.", "Ein König ernannte alle Beamten."],
   "Die Auswahlverfahren unterschieden sich nach Aufgabe.", "Buch S. 109–111"),
  ("Republik", "Warum ist die römische Republik keine moderne Demokratie?", ["Vermögen, Herkunft und Ausschluss prägten die Beteiligung stark.", "Weil das Wort aus dem Lateinischen stammt.", "Weil es keine Ämter gab.", "Weil alle Einwohner abstimmen durften."],
