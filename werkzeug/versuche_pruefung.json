@@ -1188,27 +1188,21 @@
     "beob": {
      "b0_1": {
       "kw": [
-       "Würfel pur=schmilz,braun,karamell,kaum,nicht,keine,verkohl,schwarz,schwach"
+       "kaum Gas=kaum,wenig,keine,nichts,langsam,ruhig"
       ],
       "need": 1
      },
      "b1_1": {
       "kw": [
-       "brennt mit Flamme=flamm,brenn,brannt,weiter,blau,gelb,feuer"
-      ],
-      "need": 1
-     },
-     "b2_1": {
-      "kw": [
-       "Würfel Salz=schmilz,braun,karamell,kaum,nicht,keine,verkohl,schwarz,schwach"
+       "viel Gas=blas,bläs,schaum,schäum,sprudel,gas,schnell,viel,deutlich"
       ],
       "need": 1
      }
     },
     "erk": {
      "kw": [
-      "Würfel mit Lithiumchlorid=lithium,licl,würfel 2,wuerfel 2,zweite,mittlere,2",
-      "andere schmelzen=schmilz,braun,karamell,nicht,kein,verkohl"
+      "Gefäß 2 mit Braunstein=braunstein,gefäß 2,gefaess 2,zweite,mit,2",
+      "schneller Gas=schnell,mehr,deutlich,blas,bläs,gas,schäum"
      ],
      "need": 2
     },
@@ -1216,14 +1210,13 @@
      "kw": [
       "Katalysator=katalys",
       "Aktivierungsenergie=aktivier,energie,schneller,beschleun,senkt",
-      "Kontrolle=kontroll,vergleich,gegenprobe,nicht jedes,anderes pulver,anderes salz,kochsalz"
+      "nicht verbraucht / über dem Pfeil=nicht verbraucht,unveränder,über dem pfeil,kein edukt,kein ausgangsstoff,bleibt"
      ],
      "need": 2
     },
     "schluss": {
      "kw": [
-      "Enzyme=enzym,katalase,amylase,biokatalys,eiweiss,eiweiß",
-      "Körpertemperatur=koerper,körper,37,warm,langsam,kontrolliert"
+      "Enzym Katalase=enzym,katalase,biokatalys,eiweiss,eiweiß,zelle"
      ],
      "need": 1
     }
