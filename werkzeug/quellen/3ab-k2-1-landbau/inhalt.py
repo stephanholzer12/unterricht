@@ -29,9 +29,10 @@ VIDEOS = {
     # Folgende Links waren von hier aus nicht prüfbar → nicht eingebaut, Liste an Stephan zur Freigabe (Prüfbericht):
     "v35": ("Biologische Schädlingsbekämpfung (Filmtipp im Buch S. 44)", "Trauner-Verlag", "kurz", "https://www.trauner.at/nawi_v35.aspx"),
     "v39": ("Österreichische Landwirtschaft (Filmtipp im Buch S. 46)", "Trauner-Verlag", "kurz", "https://www.trauner.at/nawi_v39.aspx"),
-    "niggli": ("#185 Erklär mir nachhaltige Landwirtschaft, Urs Niggli", "Podcast »Erklär mir die Welt«, Herbst 2021 (aus Folgennummer berechnet) · Transkript von Stephan am 02.11.2026", "lang (ca. 45 min)", "https://podcasts.apple.com/at/podcast/erkl%C3%A4r-mir-die-welt/id1363234463", "audio"),
+    "niggli": ("#185 Erklär mir nachhaltige Landwirtschaft, Urs Niggli", "Erklär mir die Welt, 14. September 2021", "ca. 45 min · freiwillig",
+               "https://xn--erklrmir-3za.at/2021/09/14/185-erklaer-mir-nachhaltige-landwirtschaft-urs-niggli/", "audio"),
 }
-FREIGEGEBEN = {"moder"}
+FREIGEGEBEN = {"moder", "niggli"}
 
 
 def zeigen(key, lehrer=False):

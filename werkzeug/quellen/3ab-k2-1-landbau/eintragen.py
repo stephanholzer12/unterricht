@@ -12,7 +12,7 @@ P = I.PRAEFIX
 ZIP_V = "v2"  # v1 = ChatGPT-Übergabe 28.10.2026; v2 = erste Claude-Lieferung 30.10.2026 (ohne Kahoot – Stephan, 30.10.2026)
 PPP_V = "v4"  # Unterrichts-PPP: v2 30.10., v3 31.10. (Folienschrift ab 20 pt), v4 02.11. (Niggli-Zusatz)
 DATEIEN = {"stand": "02.11.2026", "zip": f"{P}-{ZIP_V}.zip",  # Teillieferung: nur das Gelieferte (Regelwerk 15); das ZIP v2 ist der alte Stand
-           "liste": [f"{P}-TH-Unterricht-{PPP_V}.pptx", f"{P}-Pruefbericht-Claude-v3.md"]}
+           "liste": [f"{P}-TH-Unterricht-{PPP_V}.pptx", f"{P}-Pruefbericht-Claude-v4.md"]}
 neu = {"klasse": "3AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL, "block": "B Landwirtschaft & Ernährung", "jahresplan": "E4",
        "seiten": ["theorie.html", "aufgaben.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]

@@ -192,7 +192,7 @@ def video(key):
     t, q, d, u = I.VIDEOS[key][:4]
     sim = len(I.VIDEOS[key]) > 4 and I.VIDEOS[key][4] == "sim"
     if len(I.VIDEOS[key]) > 4 and I.VIDEOS[key][4] == "audio":
-        return (f'<div class="video"><div><strong>Podcast: {esc(t)}</strong><br><span class="hint">{esc(q)} · {esc(d)} · im Unterricht gemeinsam</span></div>'
+        return (f'<div class="video"><div><strong>Podcast: {esc(t)}</strong><br><span class="hint">{esc(q)} · {esc(d)}{'' if 'freiwillig' in d else ' · im Unterricht gemeinsam'}</span></div>'
                 f'<a class="btn small" href="{u}" target="_blank" rel="noopener">Podcast öffnen</a></div>')
     if sim:
         return (f'<div class="video sim"><div><strong>Simulation: {esc(t)}</strong><br><span class="hint">{esc(q)} · im Browser, auch am Handy</span></div>'
