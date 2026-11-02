@@ -177,10 +177,10 @@ def lehrplan_box(doc):
 
 def stundenvorschlag(doc):
     para(doc, "AUSGEBLENDET · Kern in 4 Stunden (Jahresplan E4: 3 Stunden) · Rest optional · 3AK und 3BK gleich", 11, True, OLIVE, after=2, before=4, keep=True)
-    rows = F.STUNDENVORSCHLAG[I.KLASSEN[0]] + [["Zusatz", "Für Schnelle (Theorieteil)", "–", "10–13 (OPTIONAL)", "nur wer fertig ist", "Partnercheck"],
+    rows = F.STUNDENVORSCHLAG[I.KLASSEN[0]] + [["Zusatz", "Für Schnelle (Theorieteil)", "–", "10–14 (OPTIONAL)", "nur wer fertig ist", "Partnercheck"],
                                                ["Besprechung", "in jeder Stunde eingeplant", "–", ", ".join(map(str, I.BESPRECHEN)) + " (BESPRECHEN)", "siehe Minutenplan", "Tafel, Skala"]]
     table(doc, ["Std.", "Theorie", "Kern-Versuch", "Aufgaben", "Zeit (min)", "Methode (ohne Handy)"], rows, [2.0, 3.4, 2.2, 2.2, 3.8, 3.8], 8.5)
-    para(doc, "KERN = Pflicht für alle (Aufgaben 1–9) · OPTIONAL = Zusatz 10–13 · keine Hausübung, kein Versuch (V3.12 später möglich). "
+    para(doc, "KERN = Pflicht für alle (Aufgaben 1–9) · OPTIONAL = Zusatz 10–14 · keine Hausübung, kein Versuch (V3.12 später möglich). "
               "50 min je Stunde (Annahme), davon 2 min Klassenbuch; Summen geprüft (plan.py). Am 09.11. zuerst der 1. Test (20 min).", 8.5, False, MUTED, after=3)
     for st in PL.PLAN[I.KLASSEN[0]]:
         para(doc, f"Minutenplan Stunde {st['std']} · {st['datum']} (3AK und 3BK gleich)", 10, True, TEAL, after=1, keep=True)

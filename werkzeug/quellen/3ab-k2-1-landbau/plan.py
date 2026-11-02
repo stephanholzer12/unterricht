@@ -139,7 +139,7 @@ def fahrplan_zeilen():
                   "aufgaben": bereich(nrs) + (" · Quiz freiwillig" if st["std"] == 4 else ""),
                   "zeit": " · ".join(teile), "wie": WIE[st["std"]],
                   "abgabe": "Arbeitsblatt-PDF in LMS (alle Aufgaben 1–9)" if st["std"] == 4 else "Antworten bleiben am Handy gespeichert"})
-    z.append({"wann": "Für Schnelle", "lesen": "Für Schnelle und Neugierige (Versorgung, Geschichte, Partnercheck)", "aufgaben": "Zusatz 10–13 · Quiz", "abgabe": "freiwillig"})
+    z.append({"wann": "Für Schnelle", "lesen": "Für Schnelle und Neugierige (Versorgung, Geschichte, Niggli-Podcast, Partnercheck)", "aufgaben": "Zusatz 10–14 · Quiz", "abgabe": "freiwillig"})
     return z
 
 

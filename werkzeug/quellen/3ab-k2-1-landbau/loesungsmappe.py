@@ -54,7 +54,7 @@ for st in P.PLAN[I.KLASSEN[0]]:
 uber += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 uber += "<h2>So bewertet die Seite</h2>" + ul([
     "**Automatisch geprüft:** nur Aufgabe 5 a–b (Fläche in ha, 2 % Spielraum; »2,2« zählt, »2,22 kg« nicht, »22222 m²« wird nicht umgerechnet).",
-    "**Offene Texte bewertest du:** alle übrigen Felder (Aufgaben 1–4, 5 c, 6–9, Zusatz 10–13). Die Seite zeigt nur eine Schreibhilfe mit Stichwörtern und gibt dafür keine Punkte. Aufgabe 6 und 9 haben zusätzlich ein Foto.",
+    "**Offene Texte bewertest du:** alle übrigen Felder (Aufgaben 1–4, 5 c, 6–9, Zusatz 10–14). Die Seite zeigt nur eine Schreibhilfe mit Stichwörtern und gibt dafür keine Punkte. Aufgabe 6 und 9 haben zusätzlich ein Foto.",
     "**PDF:** Kasten »Für LMS: x von y Punkten · Notenvorschlag« zählt nur die automatisch geprüften Teile – bei dieser Einheit ist der Vorschlag darum wenig aussagekräftig; die Note kommt aus deiner Bewertung.",
     "**Keine Versuche** in dieser Einheit (V3.12 bleibt für später).",
 ])
@@ -127,7 +127,7 @@ seite = f"""<title>Lösungsmappe Landwirtschaft 3AB</title>
 <header class="lese">
   <div class="eyebrow">NAWI · 3AB (3AK und 3BK, 04.–16.11.) · K2.1 Formen der Landwirtschaft · nur für dich</div>
   <h1>Lösungen und Fachwissen: Formen der Landwirtschaft</h1>
-  <p class="sub">Aufgaben 1–13 (10–13 Zusatz), die Unterrichts-PPP als Folien und das Fachwissen. Keine Versuche. Buch: Trauner NAWI HAK 3, S. 38–48. Stand {e(I.STAND)} · {e(I.V)}</p>
+  <p class="sub">Aufgaben 1–14 (10–14 Zusatz), die Unterrichts-PPP als Folien und das Fachwissen. Keine Versuche. Buch: Trauner NAWI HAK 3, S. 38–48. Stand {e(I.STAND)} · {e(I.V)}</p>
   <p class="warn">Privat in deinem Konto – nicht an Kadetten weitergeben. Die Kadetten sehen Musterlösungen erst nach der PDF bzw. nach drei Fehlversuchen.</p>
 </header>
 <nav class="tabs" role="tablist" aria-label="Bereiche">

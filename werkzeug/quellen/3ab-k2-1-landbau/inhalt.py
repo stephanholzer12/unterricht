@@ -6,8 +6,8 @@ Jahresplan v24: Einheit 4 (E4), 3 Std. Kern, K03, N02/N03/N05, P1–P5, SDG 2/15
 Kein Versuch (V3.12 Bodenprobe bleibt spätere Erweiterung). Kein Kahoot (Stephan, 30.10.2026). Eine Quelle für Seiten, Word, PPPs und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "30.10.2026"
-V = "v2"                       # v1 = ChatGPT-Arbeitsfassung (28.10.2026)
+STAND = "02.11.2026"
+V = "v3"
 ORDNER = "3ab-nawi/k2-1-landbau"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -29,7 +29,7 @@ VIDEOS = {
     # Folgende Links waren von hier aus nicht prüfbar → nicht eingebaut, Liste an Stephan zur Freigabe (Prüfbericht):
     "v35": ("Biologische Schädlingsbekämpfung (Filmtipp im Buch S. 44)", "Trauner-Verlag", "kurz", "https://www.trauner.at/nawi_v35.aspx"),
     "v39": ("Österreichische Landwirtschaft (Filmtipp im Buch S. 46)", "Trauner-Verlag", "kurz", "https://www.trauner.at/nawi_v39.aspx"),
-    "niggli": ("#185 Erklär mir nachhaltige Landwirtschaft, Urs Niggli", "Podcast »Erklär mir die Welt«, 2021", "lang", "https://podcasts.apple.com/at/podcast/erkl%C3%A4r-mir-die-welt/id1363234463", "audio"),
+    "niggli": ("#185 Erklär mir nachhaltige Landwirtschaft, Urs Niggli", "Podcast »Erklär mir die Welt«, Herbst 2021 (aus Folgennummer berechnet) · Transkript von Stephan am 02.11.2026", "lang (ca. 45 min)", "https://podcasts.apple.com/at/podcast/erkl%C3%A4r-mir-die-welt/id1363234463", "audio"),
 }
 FREIGEGEBEN = {"moder"}
 
@@ -238,10 +238,10 @@ T = [
 
  {"id": "a11", "nr": 11, "title": "Wie sieht Landwirtschaft 2050 aus?", "src": "Buch S. 39–44 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 5,
   "q": "Du darfst einen Betrieb für 2050 planen. Wähle zwei Maßnahmen aus dem Theorieteil (z. B. Leguminosen in der Fruchtfolge, Hecken, Mischkulturen, robuste Sorten), sag, was sie bringen, und nenne eine Bedingung, damit es klappt.",
-  "hint": "Bedingung = was muss stimmen (Boden, Klima, Geld, Wissen …). Info: Theorieteil Teil 1 und Teil 3",
+  "hint": "Bedingung = was muss stimmen (Boden, Klima, Geld, Wissen …). Ideen auch bei Urs Niggli: Theorieteil »Ein Bio-Forscher ändert seine Meinung«. Info: Theorieteil Teil 1 und Teil 3",
   "type": "multi",
   "fields": [["massnahmen", "Zwei Maßnahmen, Wirkung und eine Bedingung"]],
-  "chk": {"massnahmen": {"kw": [["zwei Maßnahmen", r"fruchtfolge|leguminos|bohne|klee|hecke|mischkultur|sorte|robust|zwischenfrucht|humus|nützling|nuetzling|sensor|drohne|genschere|bewässer|bewaesser", 2]], "man": True}},
+  "chk": {"massnahmen": {"kw": [["zwei Maßnahmen", r"fruchtfolge|leguminos|bohne|klee|hecke|mischkultur|sorte|robust|zwischenfrucht|humus|nützling|nuetzling|sensor|drohne|genschere|bewässer|bewaesser|buntbrach|roboter|digital|präzision|praezision|agrarökolog|agraroekolog|kreislauf", 2]], "man": True}},
   "sol": [["Musterlösung", ["z. B. Leguminosen in der Fruchtfolge (bringen Stickstoff, weniger Dünger) und Hecken (Nützlinge, weniger Erosion). Bedingung: passender Boden und Standort, Wissen, genug Ertrag, damit sich der Betrieb rechnet."]]],
   "tip": ["Drei Formen im Vergleich", "theorie.html#formen"]},
 
@@ -265,8 +265,23 @@ T = [
   "chk": {"partner": {"kw": [["Name", r"[a-zäöüß]{2,}"]], "man": True}},
   "sol": [["Hinweis", ["Kein Lösungsschlüssel – die Antworten stehen auf den Karten im Theorieteil."]]],
   "tip": ["Partnercheck", "theorie.html#partnercheck"]},
+ {"id": "a14", "nr": 14, "title": "Ein Forscher ändert seine Meinung", "src": "Podcast #185 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 6,
+  "q": "Lies im Theorieteil den Abschnitt »Ein Bio-Forscher ändert seine Meinung« (oder hör den Podcast #185 ab dem Ausschnitt, den die Lehrkraft nennt). "
+       "a) Was sagte Urs Niggli früher zur Gentechnik, was sagt er heute – und welchen Grund nennt er für die Änderung? "
+       "b) Er hat lange ein Forschungsinstitut für Bio-Landbau geleitet. Warum ist seine Aussage gerade deshalb interessant – und was solltest du trotzdem prüfen? "
+       "c) Schreib einen Satz auf, der eine Prognose oder Meinung ist (keine Messung).",
+  "hint": "Frage dich: Wer spricht? Was wurde gemessen, was ist nur erwartet? Wie alt ist die Aussage (2021)? Info: Theorieteil »Ein Bio-Forscher ändert seine Meinung«",
+  "type": "multi",
+  "fields": [["frueher", "a) früher – heute – Grund"], ["warum", "b) warum interessant – was prüfen?"], ["meinung", "c) ein Satz, der eine Prognose oder Meinung ist"]],
+  "chk": {"frueher": {"kw": [["früher dagegen", r"gegner|dagegen|ablehn|skeptisch|vorsicht|kritisch|nein"], ["heute dafür", r"heute|jetzt|später|spaeter|befürwort|befuerwort|dafür|dafuer|sinnvoll|gut|geändert|geaendert|offen"], ["Grund", r"genau|gezielt|wissen|forsch|präzis|praezis|sicher|technik|erkenntnis"]], "man": True},
+          "warum": {"kw": [["Interesse/Prüfen", r"interess|bio|gegen|eigen|lager|überzeug|ueberzeug|prüf|pruef|quelle|beleg|meinung|prognose|alt|2021|stand"]], "man": True},
+          "meinung": {"kw": [["ein Satz", r"[a-zäöüß]{4,}"]], "man": True}},
+  "sol": [["a) früher – heute – Grund", ["Früher war er ein großer Gegner der ersten Gentechnik, weil man zu wenig über Freisetzung und Gesundheit wusste. Heute hält er gezielte neue Methoden wie die Genschere für gute moderne Züchtung – weil man viel mehr weiß und die Eingriffe viel genauer sind, vorausgesetzt, sie sind sicher."]],
+          ["b) warum interessant – was prüfen", ["Er kommt aus der Bio-Forschung, wo man der Gentechnik eher skeptisch gegenübersteht – eine Aussage gegen das eigene Lager hat Gewicht. Trotzdem prüfen: Wer spricht und mit welchem Hintergrund? Was ist Messung (Langzeitversuch), was Prognose? Wie alt ist die Aussage (2021) – was gilt heute (EU-Recht 2026, anwendbar ab 2028)? Gibt es andere Fachleute mit anderer Sicht?"]],
+          ["c) Prognose oder Meinung", ["z. B. »In 10–15 Jahren ändert sich das Recht in Europa.« / »Lebensmittel werden wieder teurer.« / »Bio bleibt eine Nische.« Keine Messung: Niemand hat das gemessen, es ist eine Erwartung."]]],
+  "tip": ["Ein Bio-Forscher ändert seine Meinung", "theorie.html#niggli"]},
 ]
-assert [t["nr"] for t in T] == list(range(1, 14))
+assert [t["nr"] for t in T] == list(range(1, 15))
 for _t in T:
     for _k, _c in _t["chk"].items():
         assert _k in [f[0] for f in _t["fields"]], (_t["id"], _k)

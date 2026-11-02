@@ -789,10 +789,10 @@ def lehrer_infos():
     s = d.slide("Nur Titel", "Lehrer-Info · Stundenvorschlag", hidden=True)
     tb(s, X0, 0.98, 9, 0.3, ["AUSGEBLENDET · Kern in 4 Stunden (Jahresplan E4: 3 Std.) · Rest optional · 3AK und 3BK gleich"], size=14, bold=True, color=RUST, after=0)
     rows = [r[:1] + r[1:] for r in F.STUNDENVORSCHLAG[I.KLASSEN[0]]]
-    rows += [["Zusatz", "Für Schnelle (Theorieteil)", "–", "10–13 (OPTIONAL)", "nur wer fertig ist", "Partnercheck"],
+    rows += [["Zusatz", "Für Schnelle (Theorieteil)", "–", "10–14 (OPTIONAL)", "nur wer fertig ist", "Partnercheck"],
              ["Besprechung", "A1, A2, A4, A5, A6, A8, A9", "–", "BESPRECHEN", "in jeder Stunde eingeplant", "Tafel, Skala"]]
     cells, h = auto_grid(s, X0, 1.32, [1.15, 1.9, 0.9, 1.0, 2.4, 1.65], [["Std.", "Theorie", "Versuch", "Aufgaben", "Zeit (min)", "Methode"]] + rows, size=10, minh=0.24)
-    tb(s, X0, 1.36 + h, 9, 0.3, ["KERN = Aufgaben 1–9 · OPTIONAL = Zusatz 10–13 · keine Hausübung. Minutenplan: Regiefolien in der TH-Unterricht."], size=12, color=MUTED, after=0)
+    tb(s, X0, 1.36 + h, 9, 0.3, ["KERN = Aufgaben 1–9 · OPTIONAL = Zusatz 10–14 · keine Hausübung. Minutenplan: Regiefolien in der TH-Unterricht."], size=12, color=MUTED, after=0)
     s = d.slide("Nur Titel", "Lehrer-Info · Die 5 größten Stolpersteine", hidden=True)
     rows = [["Stolperstein", "Richtig ist …"]] + [[a, plain(b)] for a, b in I.STOLPERSTEINE]
     auto_grid(s, X0, 1.1, [2.4, 6.6], rows, size=14)
@@ -808,7 +808,7 @@ def titelfolie(titel, unter, L):
 # ================================================================ TH-Deck
 TEILE = {1: ["acker", "formen", "bio", "dok"], 2: ["pflanzenschutz", "kennzeichnung"], 3: ["bezug", "sof", "gene", "genschere", "sorte"], 4: ["seralini", "studie", "gtwyst"]}
 AUFG = {1: [1, 2], 2: [3, 4], 3: [5, 6, 7], 4: [8, 9]}
-ZUSATZ = [10, 11, 12, 13]
+ZUSATZ = [10, 11, 12, 13, 14]
 
 
 def teil_abschnitt(n):

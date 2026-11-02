@@ -405,9 +405,9 @@ def t4_abgabe():
 
 def zusatz_folie():
     s = d.slide("Nur Titel", "OPTIONAL: Für Schnelle", hidden=True)
-    rows = [["Nr.", "Zusatzaufgabe", "Zeit"]] + [[str(n), T[n]["title"], f"{T[n]['zeit']} min"] for n in (10, 11, 12, 13)]
+    rows = [["Nr.", "Zusatzaufgabe", "Zeit"]] + [[str(n), T[n]["title"], f"{T[n]['zeit']} min"] for n in (10, 11, 12, 13, 14)]
     cells, h = B.auto_grid(s, X0, 1.05, [0.7, 6.9, 1.4], rows, size=20, minh=0.46)
-    B.tb(s, X0, 1.05 + h + 0.15, W, 0.8, ["Nur, wenn die Pflicht fertig ist. Keine Hausübung. Quiz »Landbau-Check« (16 Fragen) freiwillig."], size=20, after=0)
+    B.tb(s, X0, 1.05 + h + 0.15, W, 0.8, [f"Nur, wenn die Pflicht fertig ist. Keine Hausübung. Quiz »Landbau-Check« ({len(I.QUIZ)} Fragen) freiwillig."], size=20, after=0)
     return s
 
 
