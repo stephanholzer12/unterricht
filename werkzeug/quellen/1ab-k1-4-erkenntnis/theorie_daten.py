@@ -40,7 +40,7 @@ PARTS = [
               ("table", [["Begriff", "Was ist das?", "Beispiel aus unserem Versuch"],
                          ["Beobachtung", "was wir sehen oder messen (das Ergebnis, auch im Experiment)", "»Wurf 1 landete bei 6,4 m.«"],
                          ["Hypothese", "**begründete, prüfbare** Vermutung über einen Zusammenhang", "»Mit Klammer fliegt er im Mittel weiter, weil die Nase schwerer ist.«"],
-                         ["Vorhersage", "was beim **nächsten Test** herauskommen sollte", "»Bei drei Vergleichspaaren hat B den größeren Mittelwert.«"]]),
+                         ["Vorhersage", "was beim **nächsten Test** herauskommen sollte", "»Bei unseren sechs Messwürfen fliegt der Flieger mit Klammer (B) im Mittel weiter.«"]]),
               ("ul", ["**Prüfbar** heißt: Wir können vorher sagen, welches Ergebnis **gegen** die Hypothese sprechen würde – hier: B fliegt im Mittel gleich weit oder kürzer.",
                       "Die Hypothese wird **vor** dem Test aufgeschrieben. Wer sie nachher an das Ergebnis anpasst, prüft nichts mehr."]),
               ("hint", "Im Buch steht, eine Hypothese werde »bewiesen oder widerlegt«. Genauer: Ein passendes Ergebnis **unterstützt** sie unter unseren Bedingungen – endgültig beweisen können sie auch viele Versuche nicht. Viele passende Versuche stützen sie nur besser.")]},
