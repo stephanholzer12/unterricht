@@ -1,5 +1,7 @@
 # Werkzeug für die Handy-Seiten
 
+**Verbindlicher Schreibstandard für neue und überarbeitete Aufgaben und Versuche:** [KLARE_ANWEISUNGEN.md](KLARE_ANWEISUNGEN.md) – kurze, eindeutige Schritte; A/B und Messfelder erklären; Kadetten-Anrede nur als „Prof. HOLZER“.
+
 Bauvorlagen für Theorie-Seite (Theorie), Arbeitsblatt (Aufgaben) und Quiz – Stil wie der BHAK-Folienmaster.
 
 ## Ordner und Links
