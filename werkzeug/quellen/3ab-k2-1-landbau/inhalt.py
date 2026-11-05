@@ -59,7 +59,7 @@ _KW_BODEN = r"boden|humus|erosion|verdicht|bearbeit|pflug|pflüg|pflueg|struktur
 T = [
  # ======================================================= Teil 1 · Acker und Landwirtschaftsformen (Stunde 1)
  {"id": "a1", "nr": 1, "title": "Landwirtschaftsformen vergleichen", "src": "Buch S. 39, 41–43", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 10,
-  "q": "Arbeitsteilig zu zweit: Stephan teilt euch eine Form zu (konventionell, integriert oder biologisch). Wähle sie aus und schreib zu deiner Form je einen kurzen Stichpunkt zu "
+  "q": "Arbeitsteilig zu zweit: Prof. HOLZER teilt euch eine Form zu (konventionell, integriert oder biologisch). Wähle sie aus und schreib zu deiner Form je einen kurzen Stichpunkt zu "
        "Boden, Dünger und Pflanzenschutz, Kulturen und Tieren. In der Besprechung füllen wir an der Tafel die ganze Tabelle – fotografiere sie danach und lade das Foto hier hoch. "
        "Achtung: Manche Maßnahmen gibt es in mehreren Formen.",
   "hint": "Stichpunkte reichen. Info: Theorieteil »Drei Formen im Vergleich« und »Was Bio genau heißt«",
@@ -119,7 +119,7 @@ T = [
   "tip": ["Schädlinge, Nützlinge, drei Methoden", "theorie.html#pflanzenschutz"]},
 
  {"id": "a4", "nr": 4, "title": "Verpackungen und ein KI-Satz", "src": "Buch S. 43, 47", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 9,
-  "q": "In Gruppen, zuerst ohne Handy: Vergleicht zwei Verpackungen, die Stephan austeilt. a) Notiert Produkt, Bio-Zeichen (welches?) und den Kontrollstellen-Code (z. B. AT-BIO-…). Steht etwas nicht drauf, schreibt »nicht angegeben«. "
+  "q": "In Gruppen, zuerst ohne Handy: Vergleicht zwei Verpackungen, die Prof. HOLZER austeilt. a) Notiert Produkt, Bio-Zeichen (welches?) und den Kontrollstellen-Code (z. B. AT-BIO-…). Steht etwas nicht drauf, schreibt »nicht angegeben«. "
        "b) Notiert die Herkunft der Rohstoffe und den Preis pro kg bzw. pro Liter (steht oft klein am Regaletikett oder rechnet ihn aus). "
        "c) Eine KI hat geschrieben: »Bio ist automatisch regional, pestizidfrei und klimafreundlicher.« Korrigiert die drei Teile stichwortartig.",
   "hint": "Bio-Zeichen sagt etwas über die Produktionsregeln, nicht über die Region. Info: Theorieteil »Was die Verpackung verrät – und was nicht«",
