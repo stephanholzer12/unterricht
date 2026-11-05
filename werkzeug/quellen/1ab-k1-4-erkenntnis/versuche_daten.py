@@ -4,7 +4,7 @@ Material: [Text auf der Seite, Icon, Herrichte-Schlüssel, Stück je Ansatz]. Ei
 Status: dokumentiert und angepasst, NICHT praktisch erprobt – Vorversuch (Hallenprobe) durch Stephan, siehe VS-Fachwissen."""
 import inhalt as I
 
-GRUPPEN = 8  # Klassengröße nicht bestätigt → Regelwerk: 8 Gruppen annehmen (3–4 Kadetten); bei weniger Kadetten weniger Gruppen
+GRUPPEN = 8  # Maximal pro Klasse: 1AK 28 Kadetten = 7 Vierergruppen; 1BK 29 Kadetten = 5 Vierergruppen + 3 Dreiergruppen
 
 # Herrichte-Schlüssel → (Bezeichnung, Icon, Inventar-Nr. / Fundort, Bestand laut Inventar, Art) – Art: "chem" Chemikalie/Verbrauchsmaterial, "geraet" Gerät/Lehrmittel
 LM = {
@@ -26,23 +26,25 @@ VS = [
   "jp": "= Jahresplan V1.4 (überarbeitet: derselbe Flieger ohne/mit Klammer statt zwei verschiedener Modelle). Nicht verwechseln mit V1.7 (E5, fünf Würfe je Modell).",
   "quelle": "Trauner S. 28–32 (Theoriebezug, kein Buchversuch); Faltung: W. Gruber, »Ballons, Raketen und Papierflieger«, 4.4 Planarflieger (einfach), S. 34–35; "
             "Vergleichslogik: NZ Ministry of Education »Paper planes – Level 4«; Altfolien 13–31 der bisherigen PPP (Vorjahresdaten)",
-  "intro": "Macht eine Büroklammer vorne am Rumpf euren Flieger besser? Ihr vergleicht denselben Flieger ohne Klammer (A) und mit Klammer (B) – dreimal abwechselnd, mit festen Regeln. Eure Hypothese steht schon fest (Aufgabe 4). **Wo steht der Versuch?** Im Eingangsbereich an der gemeinsamen Messbahn (Abwurflinie an der Bodenfuge, Bandmaß am Rand), nicht im Saal.",
+  "intro": "Ihr prüft: Fliegt derselbe Papierflieger mit einer Büroklammer anders als ohne? A = ohne Klammer. B = mit Klammer. Ihr messt dreimal A und dreimal B. Das sind sechs Würfe. Eure Vermutung steht bereits im Arbeitsblatt.",
   "sicher": "Nur werfen, wenn die Bahn frei ist – nie in Richtung von Personen. Flach und ruhig aus Hüfthöhe werfen, kein Kraftwurf. Nicht zum Flieger rennen. Der Messer steht seitlich außerhalb der Bahn. Das Bandmaß liegt am Rand, nicht quer im Weg. Eingang und Fluchtweg bleiben frei.",
   "mat": [["A4-Papier: 1 Blatt für den Flieger + 1 Reserve", "papier", "papier", 2], ["Büroklammer (dieselbe für die ganze Reihe)", "klammer", "klammer", 1],
           ["Bandmaß 20 m (eines für alle, am Rand der Messbahn)", "bandmass", "bandmass", 1], ["Protokoll-Handy", "handy", "handy", 1], ["Schachtel für die fertigen Flieger (eine für die Klasse)", "dose", "kiste", 1],
           ["Bleistift für die Gruppennummer", "bleistift", "bleistift", 1]],
   "entsorgung": "Flieger mit Gruppennummer abgeben (für Stunde 4 und das Kraft-Kapitel). Büroklammern zurück in die Schachtel, Bandmaß aufrollen. Papierreste ins Altpapier.",
-  "schritte": ["Rollen festlegen: Werfer (bleibt die ganze Reihe gleich), Messer (steht seitlich neben dem Bandmaß, außerhalb der Bahn, geht erst nach der Landung hin), Protokollführer, in Vierergruppen ein Prüfer, der auf die Regeln achtet.",
-               "Probewurf mit A (zählt nicht, schon während der Sicherheitseinweisung). Danach wird an Flieger und Wurf nichts mehr verändert.",
-               "Drei Vergleichspaare: ungerade Gruppen A, B · B, A · A, B – gerade Gruppen B, A · A, B · B, A. Flach aus Hüfthöhe werfen, Fuß hinter der Linie.",
-               "Gemessen wird die Weite bis zum ersten Bodenkontakt, entlang des Bandmaßes ab der Abwurflinie, auf 0,1 m gerundet. Nicht dort messen, wo der Flieger nach dem Rutschen liegt.",
-               "Nach jedem Wurf sofort eintragen: Weite und Auffälliges. Deckenkontakt: Wert bleibt, Vermerk »Decke«. Ungültig (Fuß über der Linie, Person in der Bahn, Klammer abgefallen): wiederholen und notieren.",
-               "Gegenprobe (nur die Gruppe, die Prof. HOLZER aufruft): Ein zweiter Werfer wirft dieselben drei Paare. Getrennt in den Zeilen »Gegenprobe« eintragen.",
-               "Mittelwert und Spannweite rechnet ihr in Stunde 4 aus. Werte heute zusätzlich auf das Papierblatt der Gruppe schreiben – das sammelt Prof. HOLZER ein."],
+  "schritte": [
+    "Teilt die Rollen auf: Ein Kadett wirft alle sechs Würfe. Ein Kadett misst die Weite. Ein Kadett trägt die Werte ein. In Vierergruppen prüft der vierte Kadett die Regeln.",
+    "Macht zuerst einen Probewurf ohne Büroklammer (A). Dieser Wurf zählt nicht. Danach verändert ihr den Flieger nicht mehr.",
+    "Jetzt macht ihr sechs Wertungswürfe: drei Paare mit je einem Wurf ohne Klammer (A) und einem Wurf mit Klammer (B). Haltet euch an die Reihenfolge für eure Gruppennummer. Sie steht oben in der Tabelle.",
+    "Werft immer von derselben Linie aus Hüfthöhe. Werft ruhig und möglichst gleich. Der Werfer bleibt bei allen sechs Würfen derselbe.",
+    "Messt vom Abwurfpunkt bis zur ersten Stelle, an der der Flieger den Boden berührt. Schreibt die Entfernung in Metern mit einer Nachkommastelle auf, zum Beispiel 4,6 m.",
+    "Tragt den Wert sofort in das passende Feld ein: A = ohne Klammer, B = mit Klammer. Berührt der Flieger Decke oder Wand, notiert das. Ist ein Wurf ungültig (zum Beispiel Fuß über der Linie), wiederholt ihn.",
+    "Nur wenn Prof. HOLZER eure Gruppe aufruft: Ein zweiter Kadett macht die sechs Würfe noch einmal. Schreibt diese Werte in die Felder „Gegenprobe“. Alle anderen Gruppen lassen diese Felder frei. Mittelwert und Spannweite berechnet ihr erst in Stunde 4. Gebt Prof. HOLZER das Papierblatt mit euren Messwerten."
+  ],
   "skizze": "v1",
-  "beob": {"titel": "Eure Messwerte in m – alle Würfe, auch die kurzen",
+  "beob": {"titel": "Tragt eure sechs Messwerte ein",
            "kopf": ["Paar", "A ohne Klammer in m", "B mit Klammer in m", "Decke/Wand oder Auffälliges"],
-           "zeilen": [["Paar 1"], ["Paar 2"], ["Paar 3"], ["Mittelwert (Stunde 4)"], ["kleinster – größter Wert (Stunde 4)"], ["Gegenprobe Paar 1"], ["Gegenprobe Paar 2"], ["Gegenprobe Paar 3"]]},
+           "zeilen": [["Paar 1 – Würfe 1 und 2"], ["Paar 2 – Würfe 3 und 4"], ["Paar 3 – Würfe 5 und 6"], ["Mittelwert (Stunde 4)"], ["kleinster – größter Wert (Stunde 4)"], ["Gegenprobe Paar 1"], ["Gegenprobe Paar 2"], ["Gegenprobe Paar 3"]]},
   "erk": "Vergleicht eure Werte: Welcher Zustand flog im Mittel weiter – und um wie viel? Wie stark streuen die Werte? Gab es Kontakte mit Decke oder Wand?",
   "interp": "Unterstützen eure Daten eure Hypothese, sprechen sie dagegen oder sind sie unklar? Begründe mit Einzelwerten, Spannweite und – wenn vorhanden – der Gegenprobe.",
   "schluss": "Nenne eine Grenze eures Versuchs und eine Änderung, die beim nächsten Mal die Unsicherheit verkleinert. Auch beim Heer wird neue Ausrüstung so erprobt: mit vorher festgelegtem Kriterium und mehreren Durchgängen.",
