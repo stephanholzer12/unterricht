@@ -339,7 +339,7 @@ def ablauf(doc):
     rows = [[v["nr"], v["titel"], v["wann"], v["form"], "KERN" if v["kern"] else "ZUSATZ"] for v in VD.VS]
     table(doc, ["ID", "Versuch", "Wann", "Form", "Einsatz"], rows, [1.9, 5.2, 4.6, 3.9, 1.8], 8.5)
     p = para(doc, "", after=2, before=3)
-    run(p, f"{VD.GRUPPEN} Gruppen zu 3–4 Kadetten (Klassengröße wird noch bestätigt). ", 9.5, True); run(p, "Eine gemeinsame Messbahn im Eingangsbereich. Werte sofort ins Protokoll-Handy UND auf dieses Blatt – das Blatt bekommt Stephan am Ende der Stunde. Ausgewertet wird in Stunde 4 – keine Hausübung. Protokoll am Handy: ", 9.5)
+    run(p, f"{VD.GRUPPEN} Gruppen zu 3–4 Kadetten (Klassengröße wird noch bestätigt). ", 9.5, True); run(p, "Eine gemeinsame Messbahn im Eingangsbereich. Werte sofort ins Protokoll-Handy UND auf dieses Blatt – das Blatt bekommt Prof. HOLZER am Ende der Stunde. Ausgewertet wird in Stunde 4 – keine Hausübung. Protokoll am Handy: ", 9.5)
     run(p, I.URL + "versuche.html", 9, False, TEAL)
     p = para(doc, "", after=2); run(p, "So wertet ihr aus: ", 9.5, True, OLIVE); run(p, "Erkenntnis – Was zeigen eure Werte? · Interpretation – Unterstützen die Daten eure Hypothese, sprechen sie dagegen oder sind sie unklar? · Schlussfolgerung – eine Grenze und eine Verbesserung.", 9.5)
     p = para(doc, "", after=2); run(p, "Sicherheit: ", 9.5, True, RUST); run(p, " · ".join(a + " – " + b for a, b in VD.SICHERHEIT), 9)
