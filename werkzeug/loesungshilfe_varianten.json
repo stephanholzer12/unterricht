@@ -30,5 +30,8 @@
   ],
   "5ak-iwk/k2-globalisierung": [
     {"id": "a3", "vars": [{"n": "w", "min": 60, "max": 200, "step": 20}, {"n": "z", "min": 10, "max": 25, "step": 5}], "text": "Übung mit anderen Zahlen: Ein US-Importeur führt eine Uhr mit einem Zollwert von {w} US-Dollar ein. Der Zollsatz beträgt {z} Prozent. Berechne den Zoll und den Betrag aus Zollwert plus Zoll (nur die Zahlen, in US-Dollar).", "felder": [{"label": "Zoll in US-Dollar", "expr": "w*z/100", "einheit": ""}, {"label": "Zollwert plus Zoll in US-Dollar", "expr": "w*(1+z/100)", "einheit": ""}]}
+  ],
+  "5ab-toew/k1-8-fairer-handel": [
+    {"id": "a2", "vars": [{"n": "t", "min": 20, "max": 60, "step": 10}, {"n": "p", "min": 200, "max": 300, "step": 25}, {"n": "m", "min": 3300, "max": 3700, "step": 100}, {"n": "w", "min": 2400, "max": 3000, "step": 100}], "text": "Übung mit anderen Zahlen: Eine Kooperative verkauft {t} Tonnen Kakao. Mindestpreis {m} US-Dollar je Tonne, Prämie {p} US-Dollar je Tonne, Weltmarktpreis {w} US-Dollar je Tonne. Berechne die Prämie insgesamt, den Erlös zum Mindestpreis (ohne Prämie) und den Mehrerlös gegenüber dem Weltmarktpreis (alles in US-Dollar, nur die Zahl).", "felder": [{"label": "Prämie insgesamt in US-Dollar", "expr": "t*p", "einheit": ""}, {"label": "Erlös zum Mindestpreis in US-Dollar", "expr": "t*m", "einheit": ""}, {"label": "Mehrerlös gegenüber dem Weltmarkt in US-Dollar", "expr": "(m-w)*t", "einheit": ""}]}
   ]
 }
