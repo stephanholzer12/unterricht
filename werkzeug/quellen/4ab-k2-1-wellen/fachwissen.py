@@ -27,7 +27,7 @@ def _stundenvorschlag(k):
         teile = " + ".join(f"Teil {t}" for t in st["teile"])
         extra = [p[0] for p in st["phasen"] if p[3] in ("test", "ref")]
         vs = [p[0] for p in st["phasen"] if p[3].startswith("v:")]
-        rows.append([f"{st['std']} · {st['datum']}", " · ".join([e.split(" inkl.")[0] for e in extra] + [teile]), " · ".join(v.split(" (inkl.")[0] + f" {m} min" for v, m in
+        rows.append([f"{st['std']} · {st['datum']}", " · ".join([e.split(" inkl.")[0] for e in extra] + ([teile] if teile else [])), " · ".join(v.split(" (inkl.")[0] + f" {m} min" for v, m in
                      [(p[0], p[1]) for p in st["phasen"] if p[3].startswith("v:")]) or "–",
                      PL.bereich(nrs) + (" · Zusatz " + PL.bereich(zus) if zus else ""),
                      f"Reserve {PL.minuten(st, ['reserve'])} · Bespr. {PL.minuten(st, ['bespr'])}", st["methode"]])
@@ -50,9 +50,9 @@ def _karten():
         for st in PL.PLAN[k]:
             schritte = [f"{name} ({m} min)" for name, m, oh, art in st["phasen"]]
             if (k, st["std"]) in PL.KNAPP: schritte.append("Wenn die Zeit knapp wird – " + PL.KNAPP[(k, st["std"])])
-            mat = " · ".join(MATERIAL[t] for t in st["teile"])
+            mat = " · ".join(MATERIAL[t] for t in st["teile"]) or "Prüfungsunterlagen, Beamer für das Referat"
             ohne = ", ".join(dict.fromkeys(p[0].split(" (")[0] for p in st["phasen"] if p[2] and p[3] not in ("reserve",)))
-            out.append((f"{k} · Stunde {st['std']} · {st['datum']} · " + " + ".join(f"Teil {t}" for t in st["teile"]), schritte, mat, ohne))
+            out.append((f"{k} · Stunde {st['std']} · {st['datum']} · " + (" + ".join(f"Teil {t}" for t in st["teile"]) or "Test + Referat"), schritte, mat, ohne))
     z = PL.ZUSATZTERMIN_4BK
     out.append(("4BK · optional · Mi 18.11. · Vertiefung", [f"{n} ({m} min)" for n, m, o, a in z["phasen"]], "keine Geräte", "Wiederholung, Zusatz 16 mit der Hand"))
     return out

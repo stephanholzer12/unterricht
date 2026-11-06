@@ -1,14 +1,14 @@
 """NAWI 4AB · K2.1–2.3 Schwingungen, Wellen und das elektromagnetische Spektrum (Trauner NAWI 4, S. 47–59) – v1.
 Grundlage: Entwurf ChatGPT v1 vom 25.10.2026 (fachlich geprüft, Korrekturen im Prüfbericht).
 Jahresplan: E6 Schwingungen (2 Std., K03, K05) + E7 Wellen (2 Std., K03) + E8 EM-Spektrum (2 Std., K04) = 6 Std.
-Zwei Klassen mit eigenem Stundenplan: 4AK 5 Termine (2 davon nur 30 min wegen Test bzw. Referat), 4BK 4 Termine (+ optional 18.11.).
+Zwei Klassen mit eigenem Stundenplan: 4AK 5 Termine (Stunde 3 nur Test und Referat), 4BK 4 Termine (+ optional 18.11.).
 Deshalb sind Theorie, Aufgaben und PPP nach TEILEN 1–5 gegliedert (»h« = Teil); welche Stunde welcher Teil ist, steht im Fahrplan je Klasse.
 Eine Quelle für Handy-Seiten, Word, PPP, Kahoot und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge).
 Zeichen √ und ≈ nur in Theorie und Bildern – in Aufgabentexten und Lösungen nicht (die PDF-Schrift kennt sie nicht; clean() ersetzt sie notfalls)."""
 
-STAND = "31.10.2026"
-V = "v6"  # v6: wie v5, dazu Formelzeichen und Einheiten direkt erklärt (π, √, g, c, v), passend zur Unterrichts-PPP v6; Aufgaben-IDs und Speicherschlüssel unverändert
+STAND = "06.11.2026"
+V = "v7"  # v7: neuer Testtermin 4AK (Mi 11.11.): Teil 3 jetzt in Stunde 2 (Mo 09.11.), Stunde 3 = Test + Referat; sonst unverändert (Aufgaben-IDs und Speicherschlüssel gleich). v6: wie v5, dazu Formelzeichen und Einheiten direkt erklärt (π, √, g, c, v), passend zur Unterrichts-PPP v6; Aufgaben-IDs und Speicherschlüssel unverändert
 ORDNER = "4ab-nawi/k2-1-wellen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -40,11 +40,11 @@ def zeigen(key, lehrer=False):
 
 
 KLASSEN = ["4AK", "4BK"]
-# Termine je Klasse (Stunde → Datum); 4AK: Test 09.11., Referat EKG/MRT 11.11.; 4BK: Test 11.11., 18.11. nur optional
+# Termine je Klasse (Stunde → Datum); 4AK: Test und danach Referat EKG/MRT am 11.11. (Stunde 3, Stand 06.11.2026); 4BK: Test 11.11., 18.11. nur optional
 DATEN = {"4AK": {1: "Mi 04.11.", 2: "Mo 09.11.", 3: "Mi 11.11.", 4: "Mo 16.11.", 5: "Mi 18.11."},
          "4BK": {1: "Mi 04.11.", 2: "Fr 06.11.", 3: "Mi 11.11.", 4: "Fr 13.11."}}
 # Welcher Teil in welcher Stunde (für Gruppenköpfe, Versuchsseite, PPP)
-TEIL_STUNDE = {1: {"4AK": 1, "4BK": 1}, 2: {"4AK": 2, "4BK": 2}, 3: {"4AK": 3, "4BK": 2}, 4: {"4AK": 4, "4BK": 4}, 5: {"4AK": 5, "4BK": 3}}
+TEIL_STUNDE = {1: {"4AK": 1, "4BK": 1}, 2: {"4AK": 2, "4BK": 2}, 3: {"4AK": 2, "4BK": 2}, 4: {"4AK": 4, "4BK": 4}, 5: {"4AK": 5, "4BK": 3}}
 
 
 def wann(teil):

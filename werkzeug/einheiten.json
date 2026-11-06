@@ -489,11 +489,7 @@
     "klasse": "4AB",
     "fach": "NAWI",
     "ordner": "4ab-nawi/test1-training",
-    "kapitel": "1. Test · 4AK 09.11. · 4BK 11.11.",
-    "termine": {
-      "4AK": "2026-11-09",
-      "4BK": "2026-11-11"
-    },
+    "kapitel": "1. Test · 11.11.",
     "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
     "seiten": [
       "quiz.html"
@@ -588,7 +584,7 @@
       "quiz.html"
     ],
     "fahrplan": {
-      "text": "Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 → 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS (4AK nach Stunde 5 am Mi 18.11., 4BK nach Stunde 4 am Fr 13.11.).",
+      "text": "Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 + 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. Der 1. Test ist für beide Klassen am Mi 11.11. (4AK danach das Referat EKG/MRT). Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS (4AK nach Stunde 5 am Mi 18.11., 4BK nach Stunde 4 am Fr 13.11.).",
       "zeilen": [
         {
           "klasse": "4AK",
@@ -604,20 +600,20 @@
           "klasse": "4AK",
           "wann": "Stunde 2",
           "datum": "Mo 09.11.",
-          "lesen": "1. Test · Teil 2 · Demo K2.1-V2 Resonanz",
-          "aufgaben": "4, 5",
-          "zeit": "Aufgaben und Versuche ca. 13 min · Besprechung 3 min · Reserve 3 min",
-          "wie": "ohne Handy: Aufgabe 5 Partnercheck",
+          "lesen": "Teil 2 + Teil 3 · Demo K2.1-V2 Resonanz · Versuch K2.2-V1 Schnur und Kadetten-Welle",
+          "aufgaben": "4–7",
+          "zeit": "Aufgaben und Versuche ca. 26 min · Besprechung 3 min · Reserve 2 min",
+          "wie": "ohne Handy: Aufgabe 5 Partnercheck mit 2 Fragen, Versuch K2.2-V1 Schnur und Kadetten-Welle",
           "abgabe": "–"
         },
         {
           "klasse": "4AK",
           "wann": "Stunde 3",
           "datum": "Mi 11.11.",
-          "lesen": "Referat EKG/MRT · Teil 3 · Versuch K2.2-V1 Schnur und Kadetten-Welle",
-          "aufgaben": "6, 7",
-          "zeit": "Aufgaben und Versuche ca. 14 min · Besprechung 3 min · Reserve 2 min",
-          "wie": "ohne Handy: Versuch K2.2-V1 Schnur und Kadetten-Welle",
+          "lesen": "1. Test · Referat EKG/MRT",
+          "aufgaben": "–",
+          "zeit": "1. Test 20 min · Referat EKG/MRT 20 min · Besprechung 4 min · Reserve 3 min",
+          "wie": "ohne Handy: 1. Test, Referat EKG/MRT",
           "abgabe": "–"
         },
         {

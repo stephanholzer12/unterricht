@@ -11,14 +11,15 @@ PLAN = {
      ("Teil 1 lesen bzw. erklären", 8, False, "lesen"), ("Aufgabe 1", 5, False, "a1"),
      ("Versuch K2.1-V1 Pendel (inkl. Aufgabe 2)", 18, False, "v:K2.1-V1"), ("Aufgabe 3", 4, False, "a3"),
      ("Besprechung (Aufgaben 1–3)", 4, True, "bespr"), ("Reserve", 3, True, "reserve")]},
-  {"std": 2, "datum": "Mo 09.11.", "teile": [2], "methode": "Demo mit Vorhersage + Partnercheck", "phasen": [
-     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Weißt du noch?", 2, True, "org"),
-     ("Teil 2 lesen bzw. erklären", 6, False, "lesen"), ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, False, "v:K2.1-V2"),
-     ("Aufgabe 5 Partnercheck (ohne Handy)", 6, True, "a5"), ("Besprechung", 3, True, "bespr"), ("Reserve", 3, True, "reserve")]},
-  {"std": 3, "datum": "Mi 11.11.", "teile": [3], "methode": "Referat + Kadetten-Welle (Bewegung)", "phasen": [
-     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Referat EKG/MRT inkl. Fragen", 20, True, "ref"), ("Weißt du noch? + Übergang Schwingung → Welle", 2, True, "org"),
-     ("Teil 3 lesen bzw. erklären", 6, False, "lesen"), ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 8, True, "v:K2.2-V1"),
-     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Reserve", 2, True, "reserve")]},
+  {"std": 2, "datum": "Mo 09.11.", "teile": [2, 3], "methode": "Demo + Partnercheck + Kadetten-Welle", "phasen": [
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Weißt du noch?", 2, True, "org"), ("Teil 2 lesen bzw. erklären", 5, False, "lesen"),
+     ("Demo K2.1-V2 Resonanz (inkl. Aufgabe 4)", 7, False, "v:K2.1-V2"), ("Aufgabe 5 Partnercheck mit 2 Fragen (ohne Handy)", 5, True, "a5"),
+     ("Übergang Schwingung → Welle", 1, True, "org"), ("Teil 3 lesen bzw. erklären", 7, False, "lesen"),
+     ("Versuch K2.2-V1 Schnur und Kadetten-Welle (inkl. Aufgabe 6)", 8, True, "v:K2.2-V1"),
+     ("Aufgabe 7", 6, False, "a7"), ("Besprechung", 3, True, "bespr"), ("Zwischenstand speichern", 1, False, "org"), ("Reserve", 2, True, "reserve")]},
+  {"std": 3, "datum": "Mi 11.11.", "teile": [], "methode": "Test und Referat (zuhören, nachfragen)", "phasen": [
+     ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("1. Test inkl. Austeilen und Einsammeln", 20, True, "test"), ("Referat EKG/MRT inkl. Fragen", 20, True, "ref"),
+     ("Nachbesprechung Teil 2 und 3 (offene Fragen)", 4, True, "bespr"), ("Reserve", 3, True, "reserve")]},
   {"std": 4, "datum": "Mo 16.11.", "teile": [4], "methode": "Simulation + Skizzen mit der Hand", "phasen": [
      ("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"), ("Weißt du noch?", 3, True, "org"), ("Teil 4 lesen bzw. erklären", 6, False, "lesen"),
      ("Simulation K2.2-V2 (inkl. Aufgabe 8)", 6, False, "v:K2.2-V2"), ("Aufgabe 9 Huygens-Skizze (Handschrift)", 4, True, "a9"),
@@ -64,9 +65,12 @@ def _ab(k, std, name):
 
 
 KNAPP = {
- ("4AK", 3): f"Zeitstopp: Um Minute {_ab('4AK', 3, 'Besprechung')} beginnt die Besprechung, egal wie weit ihr seid. Wenn es knapp wird: 1. Kadetten-Welle längs nur einmal (5 Kadetten statt 10). "
-             "2. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich sichern – jede Gruppe schreibt nur einen Satz. 3. Aufgabe 7b in der Besprechung gemeinsam rechnen. "
-             "Nachholreserve: Stunde 4 hat mit den Zusätzen 16/17 Luft.",
+ ("4AK", 2): f"Zeitstopp: Um Minute {_ab('4AK', 2, 'Übergang')} kommt der Übergang zu Teil 3, um Minute {_ab('4AK', 2, 'Besprechung')} die Besprechung. Wenn es knapp wird: 1. Resonanz-Demo nur mit zwei Takten (langsam / im eigenen Takt). "
+             "2. Teil 2 nur kurz erklären, Details auf der Theorie-Seite. 3. Kadetten-Welle längs mit 5 Kadetten. 4. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich, jede Gruppe ein Satz. "
+             "Der Test am Mi 11.11. ist der feste Rahmen: Stunde 3 hat keine Zeit für Teil 3.",
+ ("4AK", 3): f"Zeitstopp: Um Minute {_ab('4AK', 3, 'Referat')} beginnt das Referat, um Minute {_ab('4AK', 3, 'Nachbesprechung')} die Besprechung. Wenn es knapp wird: 1. Fragen zum Referat auf drei begrenzen. "
+             "2. Die Nachbesprechung entfällt, offene Fragen am Beginn von Stunde 4 in »Weißt du noch?« klären."
+             ,
  ("4BK", 2): f"Zeitstopp: Um Minute {_ab('4BK', 2, 'Übergang')} kommt der Übergang zu Teil 3, um Minute {_ab('4BK', 2, 'Besprechung')} die Besprechung. Wenn es knapp wird: 1. Resonanz-Demo nur mit zwei Takten (langsam / im eigenen Takt). "
              "2. Teil 2 nur kurz erklären, Details auf der Theorie-Seite. 3. Kadetten-Welle längs mit 5 Kadetten. 4. Interpretation und Schlussfolgerung von K2.2-V1 gemeinsam mündlich, jede Gruppe ein Satz. "
              "Der optionale Termin am 18.11. ist keine Voraussetzung.",
@@ -128,14 +132,15 @@ def fahrplan_zeilen():
             teile = " + ".join(f"Teil {t}" for t in st["teile"])
             vors = [p[0].split(" (inkl.")[0] for p in st["phasen"] if p[3].startswith("v:")]
             extra = [p[0] for p in st["phasen"] if p[3] in ("test", "ref")]
-            lesen = " · ".join(([e.split(" inkl.")[0] for e in extra]) + (["Einstieg"] if st["std"] == 1 else []) + [teile] + vors)
-            auf = bereich(nrs) + (" · Zusatz " + bereich(zus) if zus else "")
+            lesen = " · ".join(([e.split(" inkl.")[0] for e in extra]) + (["Einstieg"] if st["std"] == 1 else []) + ([teile] if teile else []) + vors)
+            auf = (bereich(nrs) or "–") + (" · Zusatz " + bereich(zus) if zus else "")
             if st["std"] == len(stunden): auf += " · Quiz freiwillig"
             m_auf = minuten(st, ["a", "v:"]); m_res = minuten(st, ["reserve"]); m_bes = minuten(st, ["bespr"])
             zeit = f"Aufgaben und Versuche ca. {m_auf} min · Besprechung {m_bes} min · Reserve {m_res} min"
+            if not m_auf: zeit = " · ".join([f"{e.split(' inkl.')[0]} {minuten(st, [a])} min" for e, a in [(x[0], x[3]) for x in st["phasen"] if x[3] in ("test", "ref")]] + [f"Besprechung {m_bes} min", f"Reserve {m_res} min"])
             if zus: zeit = zeit.replace(" · Besprechung", f" · Zusatz {minuten(st, ['z'])} min · Besprechung")
             ohne = [p[0].split(" (")[0].split(" – ")[0] for p in st["phasen"] if p[2] and (p[3] not in ("reserve", "org", "bespr", "test", "ref") or "tippen" in p[0])]
-            wie = "ohne Handy: " + ", ".join(dict.fromkeys(ohne)) if ohne else "am Handy"
+            wie = "ohne Handy: " + ", ".join(dict.fromkeys(ohne)) if ohne else ("ohne Handy: " + ", ".join(e.split(" inkl.")[0] for e in extra) if extra else "am Handy")
             abgabe = "Arbeitsblatt-PDF + Versuchs-PDF in LMS" if any(p[3] == "pdf" for p in st["phasen"]) else "–"
             z.append({"klasse": k, "wann": f"Stunde {st['std']}", "datum": st["datum"], "lesen": lesen, "aufgaben": auf, "zeit": zeit, "wie": wie, "abgabe": abgabe})
     z.append({"klasse": "4BK", "wann": "Zusatztermin", "datum": ZUSATZTERMIN_4BK["datum"], "lesen": "nur falls die Stunde stattfindet · Vertiefung",
@@ -144,8 +149,8 @@ def fahrplan_zeilen():
     return z
 
 
-FAHRPLAN_TEXT = ("Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 → 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. "
-                 "Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS "
+FAHRPLAN_TEXT = ("Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 + 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. "
+                 "Der 1. Test ist für beide Klassen am Mi 11.11. (4AK danach das Referat EKG/MRT). Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS "
                  "(4AK nach Stunde 5 am Mi 18.11., 4BK nach Stunde 4 am Fr 13.11.).")
 
 

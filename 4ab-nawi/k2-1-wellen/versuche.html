@@ -199,7 +199,7 @@ ol.steps, ul.steps { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
       <li><b>Ein Aufbau für alle:</b> Die Lehrkraft zeigt bzw. baut auf, <b>alle 8 Gruppen</b> beobachten und messen gleichzeitig. Ein Protokoll-Handy pro Gruppe, dazu Handys als Stoppuhr.</li>
       <li><b>K2.1-V1 Pendel</b> (Stunde 1, Mi 04.11.): zwei Zeitnehmer pro Gruppe, die Klasse zählt laut mit.</li>
       <li><b>K2.1-V2 Resonanz</b> (4AK Mo 09.11. · 4BK Fr 06.11.): erst tippen, dann zuschauen und eintragen.</li>
-      <li><b>K2.2-V1 Schnur und Kadetten-Welle</b> (4AK Mi 11.11. · 4BK Fr 06.11.): ihr seid selbst die Teilchen.</li>
+      <li><b>K2.2-V1 Schnur und Kadetten-Welle</b> (4AK Mo 09.11. · 4BK Fr 06.11.): ihr seid selbst die Teilchen.</li>
       <li><b>K2.2-V2 Simulation</b> (4AK Mo 16.11. · 4BK Fr 13.11.): ein Modell am Beamer, kein Messversuch.</li>
       <li>Messwerte, Erkenntnis, Interpretation und Schlussfolgerung gleich beim Versuch eintragen – die Zeit dafür ist im Versuch eingeplant. Es gibt keine Hausübung.</li>
     </ul>
@@ -225,7 +225,7 @@ ol.steps, ul.steps { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
     </details>
     <div id="resetwrap"><button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button></div>
   </section>
-  <!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">NAWI · 4AB · K2.1–2.3 Versuche · Stand 31.10.2026 · v6</p><!--/STAND-->
+  <!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">NAWI · 4AB · K2.1–2.3 Versuche · Stand 06.11.2026 · v7</p><!--/STAND-->
 </main>
 
 <script src="../../gemeinsam/pdf-programm-v1.js"></script>
@@ -422,7 +422,7 @@ async function savePdf() {
 }
 
 /*STATIONEN*/
-[["K2.1-V1 · 4AK + 4BK: Stunde 1 (Mi 04.11.)", "pendel"], ["K2.1-V2 · 4AK: Stunde 2 (Mo 09.11.) · 4BK: Stunde 2 (Fr 06.11.)", "resonanz"], ["K2.2-V1 · 4AK: Stunde 3 (Mi 11.11.) · 4BK: Stunde 2 (Fr 06.11.)", "schnur"], ["K2.2-V2 · 4AK: Stunde 4 (Mo 16.11.) · 4BK: Stunde 4 (Fr 13.11.)", "interferenz"]].forEach(([t, id]) => { $("#vs").append(el("div", { class: "grp", text: t })); V.filter(v => v.id === id).forEach(v => $("#vs").append(versuch(v))); });
+[["K2.1-V1 · 4AK + 4BK: Stunde 1 (Mi 04.11.)", "pendel"], ["K2.1-V2 · 4AK: Stunde 2 (Mo 09.11.) · 4BK: Stunde 2 (Fr 06.11.)", "resonanz"], ["K2.2-V1 · 4AK: Stunde 2 (Mo 09.11.) · 4BK: Stunde 2 (Fr 06.11.)", "schnur"], ["K2.2-V2 · 4AK: Stunde 4 (Mo 16.11.) · 4BK: Stunde 4 (Fr 13.11.)", "interferenz"]].forEach(([t, id]) => { $("#vs").append(el("div", { class: "grp", text: t })); V.filter(v => v.id === id).forEach(v => $("#vs").append(versuch(v))); });
 /*/STATIONEN*/
 const nameI = $("#name"), klI = $("#klasse");
 nameI.value = S.name; klI.value = S.klasse; mark(nameI); mark(klI);

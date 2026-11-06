@@ -90,7 +90,7 @@ VS = [
   "vorversuch": "Takt mit gleichem kleinem Handweg üben, Abbruchgrenze 20 cm, Sichtbarkeit von hinten."},
 
  {"id": "schnur", "nr": "K2.2-V1", "titel": "Puls auf der Schnur und Kadetten-Welle", "bindung": "Mechanische Wellen: quer und längs · Demo und Bewegungsaufgabe",
-  "stunde": 3, "wann": "4AK: Stunde 3 (Mi 11.11.) · 4BK: Stunde 2 (Fr 06.11.)", "form": "Demo mit Kadetten", "demo": True, "kern": True, "zeit": 8,
+  "stunde": 3, "wann": "4AK: Stunde 2 (Mo 09.11.) · 4BK: Stunde 2 (Fr 06.11.)", "form": "Demo mit Kadetten", "demo": True, "kern": True, "zeit": 8,
   "jp": "nicht im Jahresplan (V4.13 Wellenwanne ist im Inventar nicht nachgewiesen)", "quelle": "Trauner S. 54–55; Kadetten-Welle: eigene Idee (Bewegungsaufgabe)",
   "intro": "Kann ein Puls am anderen Ende ankommen, obwohl die Büroklammer in der Mitte gar nicht dorthin reist? Und wie sieht eine Längswelle aus, wenn ihr selbst die Teilchen seid?",
   "sicher": "Schnur nur leicht spannen und unter Gesichtshöhe halten, nie um Hand oder Hals wickeln, nicht ruckartig ziehen. Bei der Kadetten-Welle nur kleine Schritte – niemand schubst. Gang und Notausgang frei lassen.",

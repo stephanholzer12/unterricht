@@ -96,7 +96,7 @@ PARTS = [
  ]),
 
  # ---------------------------------------------------------------- Teil 3 · Wellen
- ("teil3", "4AK: Stunde 3 · Mi 11.11. · 4BK: Stunde 2 · Fr 06.11. · Buch S. 54–55", "Teil 3 · Die Störung reist – das Material bleibt", [
+ ("teil3", "4AK: Stunde 2 · Mo 09.11. · 4BK: Stunde 2 · Fr 06.11. · Buch S. 54–55", "Teil 3 · Die Störung reist – das Material bleibt", [
   {"id": "welle", "title": "Von der Schwingung zur Welle", "pill": "Buch S. 54",
    "blocks": [("ul", ["Bei einer **Schwingung** bewegt sich etwas an **einem Ort** hin und her. Bei einer **Welle** wird diese Bewegung von Teilchen zu Teilchen **weitergegeben** – die Störung läuft durch den Raum.",
                       "Schüttelst du ein Seilende einmal, läuft ein **Puls** bis zum anderen Ende. Ein markiertes Stück des Seils bewegt sich nur kurz auf und ab – es reist **nicht** mit.",

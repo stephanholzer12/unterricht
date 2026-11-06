@@ -364,7 +364,7 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
       <li><b>Ein Aufbau für alle:</b> Die Lehrkraft zeigt bzw. baut auf, <b>alle 8 Gruppen</b> beobachten und messen gleichzeitig. Ein Protokoll-Handy pro Gruppe, dazu Handys als Stoppuhr.</li>
       <li><b>K2.1-V1 Pendel</b> (Stunde 1, Mi 04.11.): zwei Zeitnehmer pro Gruppe, die Klasse zählt laut mit.</li>
       <li><b>K2.1-V2 Resonanz</b> (4AK Mo 09.11. · 4BK Fr 06.11.): erst tippen, dann zuschauen und eintragen.</li>
-      <li><b>K2.2-V1 Schnur und Kadetten-Welle</b> (4AK Mi 11.11. · 4BK Fr 06.11.): ihr seid selbst die Teilchen.</li>
+      <li><b>K2.2-V1 Schnur und Kadetten-Welle</b> (4AK Mo 09.11. · 4BK Fr 06.11.): ihr seid selbst die Teilchen.</li>
       <li><b>K2.2-V2 Simulation</b> (4AK Mo 16.11. · 4BK Fr 13.11.): ein Modell am Beamer, kein Messversuch.</li>
       <li>Messwerte, Erkenntnis, Interpretation und Schlussfolgerung gleich beim Versuch eintragen – die Zeit dafür ist im Versuch eingeplant. Es gibt keine Hausübung.</li>
     </ul>
