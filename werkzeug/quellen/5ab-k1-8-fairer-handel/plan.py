@@ -101,7 +101,7 @@ def fahrplan_zeilen():
                       "zeit": f"Lesen {m_les} min · Aufgaben {m_auf} min · Besprechung {m_bes} min · Reserve {m_res} min",
                       "wie": wie[st["std"]], "abgabe": "Arbeitsblatt-PDF in LMS (am Ende von Stunde 2)" if st["std"] == 2 else "keine Abgabe in Stunde 1"})
     z.append({"wann": "Für Schnelle", "lesen": "Für Schnelle und Neugierige · Partnercheck-Karten zum Wiederholen",
-              "aufgaben": "Zusatz 4–9", "abgabe": "freiwillig"})
+              "aufgaben": "Zusatz 4–6", "abgabe": "freiwillig"})
     return z
 
 

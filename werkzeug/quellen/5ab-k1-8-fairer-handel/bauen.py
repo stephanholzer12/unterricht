@@ -21,7 +21,7 @@ esc = html.escape
 b64 = lambda p: base64.b64encode(open(p, "rb").read()).decode()
 CAMO, LOGO, SMILEY = b64(WZ + "/camo.png"), b64(WZ + "/logo.png"), b64(WZ + "/smiley.png")
 nb = lambda s: re.sub(r"(?<=\d) (?=\d{3}\b)", " ", s)
-md = lambda s: re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(nb(s)))
+md = lambda s: re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(nb(s))))
 
 
 def qr_b64(url):

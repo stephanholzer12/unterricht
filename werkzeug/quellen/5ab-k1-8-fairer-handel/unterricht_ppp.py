@@ -258,17 +258,17 @@ def rueck2():
 
 def klaeren_2():
     s = d.slide("Nur Titel", "Kurz klären: Mindestpreis und Prämie")
-    B.picture(s, UNIT + "img/preis.png", X0, 1.0, 5.2, 3.2)
+    B.picture(s, UNIT + "img/preis.png", X0, 1.0, 4.6, 2.86)
     y = 1.0
     y = frage_klick(s, y, "Mindestpreis oder Marktpreis – was gilt, wenn der Markt höher liegt?", "Der Marktpreis. Der Mindestpreis ist nur die Untergrenze.", w=3.9, x=5.7, size=16)
     y = frage_klick(s, y, "Wofür ist die Prämie?", "Zusatzgeld für Gemeinschaftsprojekte, über die die Mitglieder abstimmen.", w=3.9, x=5.7, size=16)
-    B.tb(s, X0, 4.2, 5.2, 0.3, ["Eigene Darstellung, Verlauf angenommen."], size=14, color=MUTED, after=0)
+    B.tb(s, X0, 3.9, 5.0, 0.6, ["Eigene Darstellung, Verlauf angenommen. Echte Preise je Tonne: Dez. 2023 über 12.000 · Okt. 2025 ca. 5.900 (ORF.at) · März 2026 ca. 3.100 (APA)."], size=12, color=MUTED, after=0)
     return s
 
 
 def a2_auftrag():
     return auftrag_folie("Jetzt: Aufgabe 2 – zu zweit rechnen", [2], {2: "zu zweit am Handy, Rechenweg im Heft"},
-                         "a) Prämie · b) Erlös zum Mindestpreis · c) Mehrerlös gegenüber dem Weltmarkt · d) was bei 5.000 US-Dollar gilt")
+                         "a) Prämie · b) Erlös zum Mindestpreis · c) Mehrerlös gegenüber dem Weltmarkt · d) was bei 12.000 US-Dollar gilt")
 
 
 def a2_daten():
@@ -283,7 +283,7 @@ def a2_daten():
 def a2_bespr():
     s = d.slide("Aufgabe", "Besprechen: Aufgabe 2")
     rows = [["Frage", "Rechnung", "Ergebnis"], ["a) Prämie", "40 × 275", "11.000 US-Dollar"], ["b) Erlös zum Mindestpreis", "40 × 3.500", "140.000 US-Dollar"],
-            ["c) Mehrerlös", "(3.500 − 2.800) × 40", "28.000 US-Dollar"], ["d) Weltmarkt bei 5.000", "Marktpreis gilt", "Prämie kommt dazu"]]
+            ["c) Mehrerlös", "(3.500 − 3.100) × 40", "16.000 US-Dollar"], ["d) Weltmarkt bei 12.000", "Marktpreis gilt", "Prämie kommt dazu"]]
     cells, h = B.auto_grid(s, X0, 1.05, [3.3, 3.1, 2.6], rows, size=18, minh=0.5)
     for r in cells[1:]:
         s._anim.append([r[1], r[2]])
@@ -306,7 +306,7 @@ def zahlen2():
 
 def a3_auftrag():
     s = d.slide("Aufgabe", "Jetzt: Aufgabe 3 – Fair einkaufen in der Kaserne?")
-    for k, (kopf, txt) in enumerate(TD.PARTS[2][3][2]["blocks"][1][1]):
+    for k, (kopf, txt) in enumerate([b for b in next(x for x in TD.PARTS[2][3] if isinstance(x, dict) and x["id"] == "diskussion")["blocks"] if b[0] == "karten"][0][1]):
         x, y = X0 + (k % 2) * 4.55, 1.0 + (k // 2) * 1.55
         karte(s, x, y, 4.45, 1.45, kopf, [txt], [GREEN, ORANGE, TEAL, RUST][k], size=14)
     B.tb(s, X0, 4.1, W, 0.4, ["6 min Diskussion in Vierergruppen · dann entscheidet die Gruppe · danach reden wir gemeinsam"], size=16, bold=True, color=OLIVE, after=0)
@@ -323,9 +323,9 @@ def abgabe():
 
 def zusatz_folie():
     s = d.slide("Nur Titel", "OPTIONAL: Für Schnelle", hidden=True)
-    rows = [["Nr.", "Zusatzaufgabe", "Zeit"]] + [[str(n), T[n]["title"], f"{T[n]['zeit']} min"] for n in (4, 5, 6, 7, 8, 9)]
+    rows = [["Nr.", "Zusatzaufgabe", "Zeit"]] + [[str(n), T[n]["title"], f"{T[n]['zeit']} min"] for n in (4, 5, 6)]
     cells, h = B.auto_grid(s, X0, 1.05, [0.7, 6.9, 1.4], rows, size=18, minh=0.4)
-    B.tb(s, X0, 1.05 + h + 0.1, W, 0.6, ["Nur, wenn die Pflicht fertig ist. Keine Hausübung. Aufgabe 9 (Plakat, Video, Podcast) ist freiwillig."], size=16, after=0)
+    B.tb(s, X0, 1.05 + h + 0.1, W, 0.6, ["Nur, wenn die Pflicht fertig ist. Keine Hausübung. Aufgabe 6 (Plakat, Video, Podcast) ist freiwillig."], size=16, after=0)
     return s
 
 
@@ -417,10 +417,10 @@ def bauen():
         [("Stunde 2: ", {"bold": True, "color": OLIVE}), ("Rückblick → Lesen Teil 2 → Mindestpreis klären → Aufgabe 2 → Besprechen → Zahlen prüfen → Aufgabe 3 (Gruppendiskussion) → PDF.", {})],
         [("Unten links ", {"bold": True, "color": OLIVE}), ("steht, was JETZT läuft (Minuten aus plan.py) und was DANACH kommt.", {})],
         [("Zeit: ", {"bold": True, "color": OLIVE}), ("50 min nominal, aber realistisch höchstens 40 – deshalb 6 bzw. 8 min Reserve. Zeitstopp und Kürzungsweg auf der Regiefolie.", {})],
-        [("Nicht eingebaut: ", {"bold": True, "color": OLIVE}), ("Videos, Ö1/ORF-Beiträge (nicht geprüft), Lösungsmappe, Lehrer-/Kadetten-PPP. Zusatz 4–9: ausgeblendete Folie »OPTIONAL«.", {})]],
+        [("Nicht eingebaut: ", {"bold": True, "color": OLIVE}), ("Videos, Lösungsmappe, Lehrer-/Kadetten-PPP. Zusatz 4–6: ausgeblendete Folie »OPTIONAL«.", {})]],
         size=13, after=5)
     rows = [["Lernziel (Kadetten)", "Wo?"], [B.plain(I.LERNZIELE[0]), "Stunde 1: Lesen, Klären, A1"], [B.plain(I.LERNZIELE[1]), "Stunde 2: Klären, A2"],
-            [B.plain(I.LERNZIELE[2]), "Stunde 2: Zahlen prüfen, Zusatz 4, 8"], [B.plain(I.LERNZIELE[3]), "Stunde 2: A3 Gruppendiskussion"]]
+            [B.plain(I.LERNZIELE[2]), "Stunde 2: Zahlen prüfen, Zusatz 4"], [B.plain(I.LERNZIELE[3]), "Stunde 2: A3 Gruppendiskussion"]]
     cells, h = B.auto_grid(ziele, X0, 1.0, [6.4, 2.6], rows, size=13, minh=0.3)
     B.tb(ziele, X0, 1.05 + h, W, 1.5, ["Jahresplan E5 (Wirtschafts-, Umwelt- und Warenethik; Fairer Handel), 2 Std. – hier nur Fairer Handel (Buch S. 35–38); Ethik S. 31–34 bleibt offen."], size=13, after=0)
 

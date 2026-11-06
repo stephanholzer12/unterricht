@@ -51,8 +51,8 @@ def wann(teil=None):
 KAKAO = {"min": 3500, "praemie": 275, "datum": "11.12.2025", "gilt": "1. Oktober 2026 in Ghana und der Elfenbeinküste, anderswo seit 11. Juni 2026"}
 UMSATZ = {"jahr": 2025, "mio": 796, "plus": "12,7 %"}
 STUDIE = {"datum": "29.09.2025", "arm2017": 58, "arm2020": 36, "arm2024": 17}  # Fairtrade und Impact Institute
-MODELL = {"t": 40, "wm": 2800}
-assert MODELL["t"] * KAKAO["praemie"] == 11000 and MODELL["t"] * KAKAO["min"] == 140000 and (KAKAO["min"] - MODELL["wm"]) * MODELL["t"] == 28000
+MODELL = {"t": 40, "wm": 3100}  # Weltmarktpreis um 3.100 US-Dollar je Tonne laut APA/VOL.AT vom 31.03.2026
+assert MODELL["t"] * KAKAO["praemie"] == 11000 and MODELL["t"] * KAKAO["min"] == 140000 and (KAKAO["min"] - MODELL["wm"]) * MODELL["t"] == 16000
 
 SAEULEN = ["Soziales", "Ökologisches", "Ökonomisches"]
 SELB = [["s1", "Verbot ausbeuterischer Kinderarbeit", "Soziales"],
@@ -66,12 +66,11 @@ DATENTABELLE = [["Angabe (vereinfachtes Modell)", "Wert"],
                 ["Menge, die die Kooperative verkauft", "40 Tonnen Kakao"],
                 ["Fairtrade-Mindestpreis", "3.500 US-Dollar je Tonne"],
                 ["Fairtrade-Prämie (kommt zusätzlich)", "275 US-Dollar je Tonne"],
-                ["Weltmarktpreis (nur angenommen)", "2.800 US-Dollar je Tonne"]]
+                ["Weltmarktpreis (Richtwert März 2026)", "3.100 US-Dollar je Tonne"]]
 TABNOTE = ("Mindestpreis und Prämie für konventionellen Kakao laut Fairtrade-Meldung vom 11.12.2025 (gilt in Ghana und der Elfenbeinküste ab 1. Oktober 2026). "
-           "Der Weltmarktpreis ist hier nur angenommen. Vereinfachtes Modell: ohne Gebühren, Transport und Aufschläge.")
+           "Weltmarktpreis: Richtwert laut APA-Bericht vom 31.03.2026 (ca. 3.100 US-Dollar je Tonne, nach über 12.000 im Höhepunkt). Vereinfachtes Modell: ohne Gebühren, Transport und Aufschläge.")
 SEL_D = ["Dann gilt der höhere Marktpreis – die Prämie kommt trotzdem dazu.", "Dann bleibt es bei 3.500 US-Dollar, der Markt ist egal.", "Dann entfällt die Prämie."]
 
-BELEGT = ["belegt", "nicht belegt", "widerlegt"]
 
 T = [
  # ======================================================= Teil 1 (Buch S. 35–37)
@@ -91,21 +90,21 @@ T = [
  # ======================================================= Teil 2 (Buch S. 36–38)
  {"id": "a2", "nr": 2, "title": "Wie viel Prämie kommt zusammen?", "src": "Buch S. 36–38", "own": True, "tag": "Teil 2", "h": 2, "zeit": 7,
   "q": "Zu zweit: Eine Kakao-Kooperative in der Elfenbeinküste verkauft 40 Tonnen Kakao zu Fairtrade-Bedingungen. Die Zahlen stehen in der Tabelle. "
-       "a) Wie hoch ist die Fairtrade-Prämie insgesamt? b) Wie viel Geld bringt der Verkauf zum Mindestpreis? (ohne Prämie) c) Der Weltmarktpreis liegt nur bei 2.800 US-Dollar je Tonne. "
-       "Wie viel mehr bekommt die Kooperative durch den Mindestpreis als zum Weltmarktpreis? d) Was gilt, wenn der Weltmarktpreis auf 5.000 US-Dollar steigt? (Alle Beträge in US-Dollar, nur die Zahl eintragen.)",
+       "a) Wie hoch ist die Fairtrade-Prämie insgesamt? b) Wie viel Geld bringt der Verkauf zum Mindestpreis? (ohne Prämie) c) Der Weltmarktpreis ist 2026 auf rund 3.100 US-Dollar je Tonne gefallen (nach über 12.000 im Höhepunkt). "
+       "Wie viel mehr bekommt die Kooperative durch den Mindestpreis als zum Weltmarktpreis? d) Was gilt, wenn der Weltmarktpreis wieder auf 12.000 US-Dollar steigt? (Alle Beträge in US-Dollar, nur die Zahl eintragen.)",
   "hint": "Prämie = Tonnen × Prämie je Tonne · Erlös = Tonnen × Mindestpreis · Unterschied = (Mindestpreis − Weltmarktpreis) × Tonnen. Info im Theorieteil »" + ABSCHNITT_2 + "«",
   "tab": DATENTABELLE, "tabnote": TABNOTE,
   "tabnote_folie": "Vereinfachtes Modell. Mindestpreis und Prämie: Fairtrade-Meldung vom 11.12.2025. Weltmarktpreis nur angenommen.",
   "type": "multi",
   "fields": [["pr", "a) Prämie insgesamt in US-Dollar"], ["er", "b) Erlös zum Mindestpreis in US-Dollar"], ["mehr", "c) So viel mehr als zum Weltmarktpreis (US-Dollar)"],
              ["d", "d) Bei 5.000 US-Dollar Weltmarktpreis gilt …", SEL_D]],
-  "chk": {"pr": {"num": 11000, "tol": 0.02}, "er": {"num": 140000, "tol": 0.02}, "mehr": {"num": 28000, "tol": 0.02}, "d": {"sel": SEL_D[0]}},
+  "chk": {"pr": {"num": 11000, "tol": 0.02}, "er": {"num": 140000, "tol": 0.02}, "mehr": {"num": 16000, "tol": 0.02}, "d": {"sel": SEL_D[0]}},
   "sol": [["Rechnung", ["a) 40 × 275 = 11.000 US-Dollar Prämie – sie geht an die Gemeinschaft und wird für Projekte genutzt, über die die Mitglieder abstimmen.",
                         "b) 40 × 3.500 = 140.000 US-Dollar",
-                        "c) (3.500 − 2.800) × 40 = 700 × 40 = 28.000 US-Dollar mehr",
+                        "c) (3.500 − 3.100) × 40 = 400 × 40 = 16.000 US-Dollar mehr",
                         "d) Der Mindestpreis ist nur die Untergrenze. Liegt der Markt höher, gilt der höhere Marktpreis – die Prämie kommt zusätzlich."]]],
-  "fsol": {"pr": "11.000", "er": "140.000", "mehr": "28.000", "d": SEL_D[0]},
-  "fsol_rest": ["Rechnung: a) 40 × 275 = 11.000 · b) 40 × 3.500 = 140.000 · c) (3.500 − 2.800) × 40 = 28.000"],
+  "fsol": {"pr": "11.000", "er": "140.000", "mehr": "16.000", "d": SEL_D[0]},
+  "fsol_rest": ["Rechnung: a) 40 × 275 = 11.000 · b) 40 × 3.500 = 140.000 · c) (3.500 − 3.100) × 40 = 16.000"],
   "tip": [ABSCHNITT_2, "theorie.html#mindestpreis"]},
 
  {"id": "a3", "nr": 3, "title": "Diskussion: Fair einkaufen in der Kaserne?", "src": "Buch-Aufgabe S. 38", "own": True, "tag": "Teil 2", "h": 2, "zeit": 10, "gem": True,
@@ -125,27 +124,29 @@ T = [
   "tip": ["Diskussionsgrundlage", "theorie.html#diskussion"]},
 
  # ======================================================= Zusatz
- {"id": "a4", "nr": 4, "title": "Belegt oder nicht? Die Fairtrade-Studie", "src": "Buch S. 38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 5,
-  "q": "Lies im Theorieteil den Abschnitt »Was die Zahlen zeigen – und was nicht«. Entscheide bei jeder Aussage: belegt, nicht belegt (die Studie sagt dazu nichts) oder widerlegt (die Zahlen zeigen das Gegenteil). "
-       "d) Schreibe Aussage c so um, dass sie durch die Zahlen gedeckt ist.",
-  "hint": "Achte auf Wörter wie »keine«, »alle«, »allein«, »beweist«. Info: Theorieteil »Was die Zahlen zeigen – und was nicht«",
+ {"id": "a4", "nr": 4, "title": "Drei Meldungen, drei Blickwinkel", "src": "Buch S. 38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 15,
+  "q": "Allein oder zu zweit (Gruppenpuzzle: jede Person liest eine andere Meldung und erzählt sie der anderen): Im Theorieteil, Abschnitt »Aktuelle Meldungen«, stehen Links zu echten Artikeln. "
+       "Lies eine Meldung und beantworte: a) Welche Meldung (Titel und Datum)? b) Wer hat sie geschrieben, und wer könnte ein Interesse am Ergebnis haben? c) Was ist die Kernaussage (1–2 Sätze, in eigenen Worten)? "
+       "d) Was sagt sie darüber, ob Mindestpreis oder Fairtrade den Bauern wirklich helfen? e) Welche Zahl aus der Meldung würdest du noch nachprüfen – und wo?",
+  "hint": "Beachte: Eine Studie von Fairtrade selbst ist nicht unabhängig, eine Studie einer Universität schon eher. Nachrichten-Agenturen wie dpa oder APA geben Meldungen weiter. Info: Theorieteil »Was die Zahlen zeigen – und was nicht«",
   "type": "multi",
-  "fields": [["k1", "a) »Der Anteil der befragten Haushalte in extremer Armut ist von 58 % (2017) auf 17 % (2024) gesunken.«", BELEGT, False],
-             ["k2", "b) »Mit Fairtrade gibt es in der Elfenbeinküste keine extreme Armut mehr.«", BELEGT, False],
-             ["k3", "c) »Die Studie beweist, dass Fairtrade der einzige Grund für die Verbesserung ist.«", BELEGT, False],
-             ["neu", "d) Aussage c, richtig umgeschrieben (1 Satz)"]],
-  "chk": {"k1": {"sel": "belegt"}, "k2": {"sel": "widerlegt"}, "k3": {"sel": "nicht belegt"},
-          "neu": {"kw": [["Studie zeigt / könnte", r"zeigt|deutet|hinweis|zusammenhang|könnte|koennte|mit dazu|auch|mehrere|nicht allein|nicht nur|laut|fairtrade selbst|befragt"]], "man": True}},
-  "sol": [["Lösung", ["a) belegt – die Studie nennt 58 % (2017), 36 % (2020) und 17 % (2024).",
-                      "b) widerlegt – 2024 lebten noch 17 % der Haushalte in extremer Armut.",
-                      "c) nicht belegt – die Studie zeigt eine Entwicklung, aber nicht, dass Fairtrade der einzige Grund ist (auch Preise und andere Programme spielen mit).",
-                      "d) z. B. »Die Studie zeigt, dass es den befragten Kakaobauern heute besser geht als früher – ob das allein an Fairtrade liegt, sagt sie nicht.«"]]],
-  "tip": ["Was die Zahlen zeigen – und was nicht", "theorie.html#zahlen"]},
+  "fields": [["quelle", "a) Meldung (Titel und Datum)"], ["wer", "b) Wer hat sie geschrieben – und wer könnte ein Interesse haben?"], ["kern", "c) Kernaussage in eigenen Worten"],
+             ["wirkung", "d) Was sagt sie über die Wirkung von Mindestpreis oder Fairtrade?"], ["pruef", "e) Diese Zahl würde ich nachprüfen"]],
+  "chk": {"quelle": {"kw": [["Titel oder Datum", r"\d{4}|kakao|fairtrade|studie|rallye|preis|bauern"]], "man": True},
+          "wer": {"kw": [["Verfasser / Interesse", r"orf|epd|dpa|apa|uni|göttingen|goettingen|fairtrade|inkota|agentur|zeitung|interesse|unabh|selbst|ngo"]], "man": True},
+          "kern": {"kw": [["Kernaussage", r"[a-zäöüß]{5,}"]], "man": True},
+          "wirkung": {"kw": [["Wirkung", r"mindestpreis|fairtrade|hilft|helfen|reicht|reichen|kosten|armut|preis|nicht|teilweise|nur"]], "man": True},
+          "pruef": {"kw": [["Zahl", r"\d|prozent|%|preis|studie|quelle"]], "man": True}},
+  "sol": [["Hinweis (Beispiele je Meldung)", ["ORF.at 11.10.2025 (sita/ORF): Kakaopreis fällt nach Rekord auf rund 5.930 US-Dollar je Tonne; staatliche Bauernpreise in der Elfenbeinküste +39 %, in Ghana +12 % (laut Fairtrade). Quelle ist eine Nachrichtenagentur plus ORF; Fairtrade ist als Zahlenlieferant genannt. Aussage: Gute Ernte und schwache Nachfrage – Bauern sollen aber mehr verdienen.",
+                                           "epd/evangelisch.de 03.04.2026 (Helena Kreiensiek) bzw. dpa/MiGAZIN 20.04.2026: Seit März 2026 zahlt die Elfenbeinküste Bauern 60 % weniger (2.800 auf 1.200 CFA-Franc je kg), Produktionskosten laut Studie von Inkota und Inades Formation etwa 1,98–2,28 € je kg. Inkota ist eine entwicklungspolitische Organisation – eine Interessengruppe. Fairtrade wird nicht erwähnt: staatliche Mindestpreise sind etwas anderes als der Fairtrade-Mindestpreis.",
+                                           "epd 01.07.2019: Studie der Universität Göttingen (Nature Sustainability), Daten von rund 1.000 Kakaobauern und Landarbeitern in 50 Kooperativen: Fairtrade verbessert die Lage der Angestellten der Kooperativen, zeigt aber keine sichtbare Wirkung für Landarbeiter auf den Kleinbauern-Höfen. Eine Universität gilt als unabhängiger als Fairtrade selbst; die Studie ist aber von 2019.",
+                                           "Fairtrade-Meldung Herbst 2025: Studie von Fairtrade und Impact Institute – extreme Armut 58 % (2017), 36 % (2020), 17 % (2024). Interesse: Fairtrade wirbt für sich selbst."]]],
+  "tip": ["Aktuelle Meldungen", "theorie.html#meldungen"]},
 
  {"id": "a5", "nr": 5, "title": "Siegel-Jagd in Kantine oder Supermarkt", "src": "Buch-Aufgabe S. 38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 10,
   "q": "Bewegungsaufgabe, allein oder zu zweit: Geh in die Kantine, ins Buffet oder in einen Supermarkt. Finde drei Produkte mit Fairtrade-Siegel und zu jedem ein ähnliches Produkt ohne Siegel. "
        "Notiere Produkt und Preis. Beurteile dann: Ist der Unterschied groß oder klein – und würdest du den Aufpreis zahlen?",
-  "hint": "Kakao, Kaffee, Tee, Bananen, Zucker, Saft, Reis oder Baumwolle sind typische Fairtrade-Waren. Vergleiche gleiche Mengen (z. B. Preis pro 100 g). Info im Schulbuch S. 38 (Aufgabe 6).",
+  "hint": "Kakao, Kaffee, Tee, Bananen, Zucker, Saft, Reis oder Baumwolle sind typische Fairtrade-Waren. Vergleiche gleiche Mengen (z. B. Preis pro 100 g). Info im Schulbuch S. 38.",
   "type": "multi",
   "fields": [["p1", "Produkt 1 (mit Siegel) · Preis · Vergleichsprodukt · Preis"], ["p2", "Produkt 2 (mit Siegel) · Preis · Vergleichsprodukt · Preis"], ["p3", "Produkt 3 (mit Siegel) · Preis · Vergleichsprodukt · Preis"],
              ["urteil", "Mein Urteil: Aufpreis ja oder nein – warum? (2 Sätze)"]],
@@ -154,44 +155,7 @@ T = [
   "sol": [["Hinweis", ["Eigene Beobachtung, keine Musterlösung. Gute Antworten vergleichen gleiche Mengen und sagen, ob der Preisunterschied im Alltag spürbar ist."]]],
   "tip": [ABSCHNITT_1, "theorie.html#fairhandel"]},
 
- {"id": "a6", "nr": 6, "title": "KI-Check: Stimmt, was die KI sagt?", "src": "Buch S. 36–38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
-  "q": "Frag eine KI: »Bringt Fairtrade den Kakaobauern wirklich etwas?« Kopiere zwei Aussagen aus der Antwort. Suche für jede Aussage eine Quelle (Zahlen aus dem Theorieteil, Fairtrade Österreich oder eine unabhängige Studie) "
-       "und entscheide, ob sie belegt ist. Wenn ein Beleg fehlt, schreib dazu, was du noch nachprüfen würdest.",
-  "hint": "Die KI darf dir helfen – aber du prüfst. Frag auch nach Gegenargumenten. Info: Theorieteil »Was die Zahlen zeigen – und was nicht«",
-  "type": "multi",
-  "fields": [["a1", "Aussage 1 der KI"], ["b1", "Beleg gefunden? Quelle oder Hinweis"], ["a2", "Aussage 2 der KI"], ["b2", "Beleg gefunden? Quelle oder Hinweis"]],
-  "chk": {"a1": {"kw": [["Aussage", r"[a-zäöüß]{4,}"]], "man": True}, "b1": {"kw": [["Quelle / Hinweis", r"quell|studie|fairtrade|beleg|nicht|www|http|zahl|prüf|pruef|\d"]], "man": True},
-          "a2": {"kw": [["Aussage", r"[a-zäöüß]{4,}"]], "man": True}, "b2": {"kw": [["Quelle / Hinweis", r"quell|studie|fairtrade|beleg|nicht|www|http|zahl|prüf|pruef|\d"]], "man": True}},
-  "sol": [["Hinweis", ["Eigene Recherche. Prüfen, ob Aussagen mit Zahlen (Prämie, Mindestpreis, Einkommen) zu den Angaben im Theorieteil passen und ob die KI Quellen nennt, die es wirklich gibt."]]],
-  "tip": ["Was die Zahlen zeigen – und was nicht", "theorie.html#zahlen"]},
-
- {"id": "a7", "nr": 7, "title": "Partnercheck vor dem Test-Thema Fairtrade", "src": "Buch S. 35–38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 5,
-  "q": "Zu zweit, ohne Handy: A nimmt drei Karten aus dem Abschnitt »Partnercheck« im Theorieteil und liest die Fragen vor. B antwortet, A vergleicht mit der Antwort auf der Karte und hakt ab. "
-       "Dann tauscht ihr. Trag ein, mit wem du geübt hast und wie viele deiner drei Antworten gepasst haben.",
-  "hint": "Ehrlich zählen – es geht um deine Vorbereitung, nicht um Punkte.",
-  "type": "multi",
-  "fields": [["partner", "Partnercheck mit (Vorname)"], ["richtig", "Davon hat gepasst", ["3 von 3", "2 von 3", "1 von 3", "0 von 3"], False],
-             ["unsicher", "Da war ich noch unsicher (Stichwort, freiwillig)"]],
-  "opt": ["unsicher"],
-  "chk": {"partner": {"kw": [["Name", r"[a-zäöüß]{2,}"]], "man": True}},
-  "sol": [["Hinweis", ["Kein Lösungsschlüssel – die Antworten stehen auf den Karten im Theorieteil."]]],
-  "tip": ["Partnercheck", "theorie.html#partnercheck"]},
-
- {"id": "a8", "nr": 8, "title": "Zwei Quellen, zwei Blickwinkel", "src": "Buch S. 38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 20,
-  "q": "Gruppenpuzzle, zu zweit: Eine Person liest Quelle 1, die andere Quelle 2 (Links im Theorieteil, Abschnitt »Für Schnelle«). Erzählt euch gegenseitig in eigenen Worten, was in eurer Quelle steht. "
-       "a) Kernaussage von Quelle 1 (1–2 Sätze) b) Kernaussage von Quelle 2 (1–2 Sätze) c) Wo ergänzen oder widersprechen sich die Quellen? d) Euer Urteil: Wie sicher ist die Wirkung von Fairtrade? Wer hat die Quelle geschrieben – und welches Interesse könnte er haben?",
-  "hint": "Quelle 1 stammt von Fairtrade selbst, Quelle 2 ist ein älterer, kritischer Fachartikel. Info: Theorieteil »Für Schnelle« mit den Links",
-  "type": "multi",
-  "fields": [["q1", "a) Kernaussage Quelle 1"], ["q2", "b) Kernaussage Quelle 2"], ["vgl", "c) Ergänzen oder widersprechen sich die Quellen?"], ["urteil", "d) Unser Urteil und das Interesse der Autoren"]],
-  "chk": {"q1": {"kw": [["Kernaussage", r"[a-zäöüß]{5,}"]], "man": True}, "q2": {"kw": [["Kernaussage", r"[a-zäöüß]{5,}"]], "man": True},
-          "vgl": {"kw": [["Vergleich", r"ergänz|erganz|widerspr|aber|dagegen|ähnlich|aehnlich|beide|unterschied|kritik|nicht"]], "man": True},
-          "urteil": {"kw": [["Urteil / Interesse", r"interesse|selbst|unabh|neutral|werb|studie|beleg|nicht sicher|teilweise|kritisch"]], "man": True}},
-  "sol": [["Hinweis", ["Quelle 1 (Fairtrade Deutschland, Prämienstudie, Kurzfassung 2019): wie Prämie und Mindestpreis in Kooperativen wirken – Auftraggeber ist Fairtrade, das Ergebnis ist positiv gefärbt.",
-                       "Quelle 2 (bpb, Aus Politik und Zeitgeschichte, 2012): Chancen UND Kritik – z. B. »fair« ist nicht geschützt, Siegel sind unübersichtlich, Gefahr von »Fair Washing«. Älter, Zahlen nicht mehr aktuell.",
-                       "Gutes Urteil: beide Quellen zusammen lesen, Interessen nennen, unabhängige Studien suchen."]]],
-  "tip": ["Für Schnelle", "theorie.html#schnelle"]},
-
- {"id": "a9", "nr": 9, "title": "Plakat, Video oder Podcast: Marketing für faire Produkte", "src": "Buch-Aufgabe S. 38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 25,
+ {"id": "a6", "nr": 6, "title": "Plakat, Video oder Podcast: Faire Produkte für Kadetten", "src": "Buch-Aufgabe S. 38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 25,
   "q": "Kreativ und freiwillig, allein oder zu zweit: Entwickle ein Marketingkonzept für ein fair gehandeltes Produkt, das Kadetten wirklich kaufen würden (z. B. Energieriegel, Kaffee, Sporttrikot). "
        "Mach ein A3-Plakat (mit der Hand), ein Erklärvideo (höchstens 2 Minuten) oder einen Podcast (höchstens 3 Minuten). Pflichtinhalte: 1. Zielgruppe, 2. Slogan, 3. zwei Argumente mit belegten Fakten, 4. ein ehrlicher Hinweis, was das Siegel NICHT garantiert. "
        "Abgabe (freiwillig, Termin gibt Prof. HOLZER bekannt): Plakat als Foto ins PDF, Video oder Podcast als Datei in LMS (Teams nur, wenn die Datei zu groß ist). Trag hier Titel, Form und »hochgeladen am …« ein.",
@@ -204,7 +168,7 @@ T = [
                          "Muss vorkommen: Zielgruppe · Slogan · zwei belegte Fakten (z. B. Mindestpreis, Prämie, Einkommen laut Studie mit Quelle) · Grenze des Siegels (z. B. nicht automatisch Bio, keine Garantie für alles)."]]],
   "tip": [ABSCHNITT_1, "theorie.html#fairhandel"]},
 ]
-assert [t["nr"] for t in T] == list(range(1, 10))
+assert [t["nr"] for t in T] == list(range(1, 7))
 for _t in T:
     for _k, _c in _t["chk"].items():
         assert _k in [f[0] for f in _t["fields"]], (_t["id"], _k)
@@ -215,7 +179,7 @@ for _t in T:
     for _x in [_t["q"]] + [z for _a, zz in _t["sol"] for z in zz]:
         assert "√" not in _x and "≈" not in _x, (_t["id"], "Zeichen fehlt in der PDF-Schrift")
 _c = {t["id"]: t["chk"] for t in T}
-assert (_c["a2"]["pr"]["num"], _c["a2"]["er"]["num"], _c["a2"]["mehr"]["num"]) == (11000, 140000, 28000)
+assert (_c["a2"]["pr"]["num"], _c["a2"]["er"]["num"], _c["a2"]["mehr"]["num"]) == (11000, 140000, 16000)
 
 PFLICHT = [t["nr"] for t in T if t["h"] and t["tag"] != "Zusatz"]
 BESPRECHEN = [1, 2, 3]

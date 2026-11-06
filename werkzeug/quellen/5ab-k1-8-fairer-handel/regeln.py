@@ -16,7 +16,7 @@ VARIANTEN = [
 ]
 # Kontrolle: mit den Originalzahlen ergeben die Formeln die Lösungen aus inhalt.py
 _e = lambda expr, **v: eval(expr, {}, v)
-assert _e("t*p", t=40, p=275) == 11000 and _e("t*m", t=40, m=3500) == 140000 and _e("(m-w)*t", m=3500, w=2800, t=40) == 28000
+assert _e("t*p", t=40, p=275) == 11000 and _e("t*m", t=40, m=3500) == 140000 and _e("(m-w)*t", m=3500, w=3100, t=40) == 16000
 
 
 def var():
