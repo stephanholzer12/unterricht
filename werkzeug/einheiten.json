@@ -299,8 +299,7 @@
     "26-27-2AB-K1.2b-Station-VS-Fachwissen-v2.docx",
     "TH-PPP, TH-AB/Loesung, TH-Fachwissen K1.2 (Stunde 1–2): Fassung aus dem Chat vom 11.10."
    ]
-  },
-  "aktuell": true
+  }
  },
  {
   "klasse": "2AB",
@@ -386,7 +385,8 @@
     "26-27-2AB-K1.3-Reaktionen-QR-Theorie-v1.png",
     "26-27-2AB-K1.3-Reaktionen-QR-Versuche-v1.png"
    ]
-  }
+  },
+  "aktuell": true
  },
  {
   "klasse": "5AB",
