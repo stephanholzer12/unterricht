@@ -1777,6 +1777,453 @@
      "need": 2
     }
    }
+  },
+  "1ab-nawi/k2-1-kraefte": {
+   "g1": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b2_4": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b0_4": {
+      "zahl": true
+     },
+     "b2_1": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b0_3": {
+      "zahl": true
+     },
+     "b1_4": {
+      "zahl": true
+     },
+     "b2_3": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b2_2": {
+      "zahl": true
+     },
+     "b1_3": {
+      "zahl": true
+     }
+    },
+    "erk": {
+     "kw": [
+      "Werte genannt=m/s,km/h,sekund,wert,durchgang,zwischen",
+      "Vergleich=unterschied,fast gleich,gleich,streu,schwank,abweich"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Ursache=reaktion,stopp,hand,start,ziel,markier,schrittl,ungenau,ablesen",
+      "zwei Gründe=und,zweite,ausserdem,außerdem,sowie,zudem,auch"
+     ],
+     "need": 1
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=nur drei,mittel,verlauf,nicht,kein,ungenau,hand,zeigt nicht",
+      "Alltag=marsch,weg,zeit,gehen,sport,planung,strecke,schule"
+     ],
+     "need": 2
+    }
+   },
+   "g2": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b2_4": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b2_1": {
+      "zahl": true
+     },
+     "b3_1": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b1_4": {
+      "zahl": true
+     },
+     "b2_3": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b2_2": {
+      "zahl": true
+     },
+     "b1_3": {
+      "zahl": true
+     },
+     "b3_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b0_4": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_4": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b0_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     }
+    },
+    "erk": {
+     "kw": [
+      "Änderung der Kraft=gestiegen,groesser,größer,mehr,zugenommen,1 n,ein newton,etwa 1",
+      "Vergleich Rechnung und Anzeige=rechnung,berechnet,anzeige,gemessen,passt,stimmt,unterschied"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Messgenauigkeit=teilung,skala,ablesen,rundung,genau,0,2,naeherung,näherung,9,81,zehn"
+     ],
+     "need": 1
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=grob,teilung,nicht genau,keine bestaetigung,keine bestätigung,nur,ungenau",
+      "kg und N=masse,kilogramm,newton,kraft,unterschied,rucksack"
+     ],
+     "need": 2
+    }
+   },
+   "g3": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b2_1": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b0_3": {
+      "zahl": true
+     },
+     "b2_3": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b2_2": {
+      "zahl": true
+     },
+     "b1_3": {
+      "zahl": true
+     },
+     "b3_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     }
+    },
+    "erk": {
+     "kw": [
+      "Anzeige steigt=steigt,groesser,größer,mehr,zunimmt,nimmt zu,hoeher,höher",
+      "mit der Tiefe=tiefe,eintauch,volumen,tiefer,cm"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "nicht schwerer=nicht schwerer,gleich schwer,keine masse,nicht mehr masse,wird nicht",
+      "Gegenkraft=gegenkraft,wechselwirkung,drueckt,drückt,nach unten,wasser,gefaess,gefäß"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=klein,oberflaechen,oberfläch,anhaft,durchmesser,hand,ungenau,streu,keine dichte",
+      "Schiff=schiff,hohl,form,verdraeng,verdräng,mittlere dichte,luft"
+     ],
+     "need": 2
+    }
+   },
+   "g4": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b2_1": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b0_3": {
+      "zahl": true
+     },
+     "b2_3": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b2_2": {
+      "zahl": true
+     },
+     "b1_3": {
+      "zahl": true
+     },
+     "b3_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     }
+    },
+    "erk": {
+     "kw": [
+      "welcher Wert größer=losgleiten,vor dem,groesser,größer,hoeher,höher,gleichfoermig,gleichförmig,kleiner",
+      "alle Durchgänge=immer,jedes mal,nicht immer,einmal,durchgang,alle drei"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Haft- und Gleitreibung=haftreibung,haft,gleitreibung,gleit,losbrech,maximum",
+      "mehr Masse=mehr wasser,400,normalkraft,masse,groesser,größer"
+     ],
+     "need": 1
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=klein,unruhig,schwank,ablesen,schraeg,schräg,nicht eindeutig,ein material",
+      "Beispiel=schuh,sohle,reifen,bremse,lager,kette,oel,öl,schmier"
+     ],
+     "need": 2
+    }
+   },
+   "g5": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b2_1": {
+      "zahl": true
+     },
+     "b3_1": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b5_1": {
+      "zahl": true
+     },
+     "b4_1": {
+      "zahl": true
+     },
+     "b1_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b4_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b0_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b2_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b3_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b5_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     }
+    },
+    "erk": {
+     "kw": [
+      "wie weit=mm,cm,ueber,über,gestiegen,hoch,grenze",
+      "schneller oder langsamer=langsam,schnell,am anfang,zuerst,dann,nimmt ab,bremst"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Adhäsion=adhaesion,adhäsion,wand,faser,benetz,haftet",
+      "Kohäsion=kohaesion,kohäsion,zusammen,wassersaeule,wassersäule,zieht nach"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=keine poren,misst nicht,nur,papier,baum,nicht vollstaendig,nicht vollständig,ungenau",
+      "Alltag=tuch,socke,kleidung,verband,handtuch,papier,saug"
+     ],
+     "need": 2
+    }
+   },
+   "g6": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b0_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b1_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     }
+    },
+    "erk": {
+     "kw": [
+      "offen leicht=offen,leicht,gering,entweicht,geht leicht",
+      "geschlossen schwerer=zu,geschlossen,schwer,groesser,größer,widerstand,drueckt zurueck,drückt zurück"
+     ],
+     "need": 2
+    },
+    "interp": {
+     "kw": [
+      "Druck steigt=druck,steigt,groesser,größer,zusammengedrueckt,zusammengedrückt,komprim",
+      "Kraft auf den Kolben=kolben,kraft,zurueck,zurück,flaeche,fläche"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=nicht gemessen,kein wert,qualitativ,keine zahl,nur beobacht,kolbenreibung,dicht",
+      "Schneeschuh=flaeche,fläche,groesser,größer,kleiner druck,verteilt,einsink,schnee"
+     ],
+     "need": 2
+    }
+   },
+   "g7": {
+    "beob": {
+     "b0_1": {
+      "zahl": true
+     },
+     "b1_2": {
+      "zahl": true
+     },
+     "b2_1": {
+      "zahl": true
+     },
+     "b3_1": {
+      "zahl": true
+     },
+     "b1_1": {
+      "zahl": true
+     },
+     "b0_2": {
+      "zahl": true
+     },
+     "b2_2": {
+      "zahl": true
+     },
+     "b3_2": {
+      "zahl": true
+     }
+    },
+    "erk": {
+     "kw": [
+      "Unterschied klein=gleich,fast gleich,kein unterschied,klein,0,2,eine teilung,innerhalb"
+     ],
+     "need": 1
+    },
+    "interp": {
+     "kw": [
+      "dieselbe Zugkraft=dieselbe,gleiche,eine kraft,uebertragen,übertragen,messkette,nicht addier",
+      "Begründung=weil,denn,ruhig,kette,spannung,beide,wechselwirkung"
+     ],
+     "need": 2
+    },
+    "schluss": {
+     "kw": [
+      "Grenze=aufloesung,auflösung,teilung,nullpunkt,skala,ungenau,zwei geraete,zwei geräte",
+      "Beispiel=abstossen,abstoßen,sprint,gehen,rueckstoss,rückstoß,rakete,schwimmen,klettern"
+     ],
+     "need": 2
+    }
+   }
   }
  }
 }

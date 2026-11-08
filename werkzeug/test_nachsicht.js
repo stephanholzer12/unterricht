@@ -213,6 +213,34 @@ cases[E145]=[
  ['a3','fair','A hält nur 200 Nutzungen, B 1000.','M'],['a3','fair','B ist schöner.','M'],
  ['a4','partner','Lukas','M'],['a5','neu','Für 1.000 Nutzungen hat B im Modell weniger Klimawirkung.','M'],
  ['a7','ang','Vergleichsprodukt, Lebensdauer, Datenquelle','M'],['a8','pos','Mehrwegbecher und Öffis','M'],['a8','fehlt','Ein Vergleich mit einem anderen Jahr','M'],['a9','titel','Meine Feldflasche','M']];
+/* 1AB K2.1 Mechanische Kräfte (08.11.2026): Rechenfelder mit Einheit, Auswahl als ganze Option, offene Erklärungen = M */
+const K21='1ab-nawi/k2-1-kraefte/aufgaben.html';
+cases[K21]=[
+ ['a1','wirkung','die Richtung seiner Geschwindigkeit',1],['a1','wirkung','seine Masse',0],['a1','wirkung','keine Bewegungsgröße',0],
+ ['a1','verformung','an der Verformung',1],['a1','verformung','nur an einer Ortsänderung',0],
+ ['a1','tempo','1,25 m/s',1],['a1','tempo','1.25 m/s',1],['a1','tempo','1,25',1],['a1','tempo','v = 5 m : 4 s = 1,25 m/s',1],['a1','tempo','1,3 m/s',0],['a1','tempo','1,25 km/h',0],['a1','tempo','4 m/s',0],['a1','tempo','0,8 m/s',0],
+ ['a1','umrechnen','4,5 km/h',1],['a1','umrechnen','4.5 km/h',1],['a1','umrechnen','4,5',1],['a1','umrechnen','1,25 m/s · 3,6 = 4,5 km/h',1],['a1','umrechnen','4,5 m/s',0],['a1','umrechnen','0,35 km/h',0],['a1','umrechnen','45 km/h',0],
+ ['a1','kraft','6 N',1],['a1','kraft','6',1],['a1','kraft','6 Newton',1],['a1','kraft','F = 2 kg · 3 m/s² = 6 N',1],['a1','kraft','6 kg',0],['a1','kraft','5 N',0],['a1','kraft','0,67 N',0],
+ ['a3','rucksack','60 N',1],['a3','rucksack','60',1],['a3','rucksack','60 Newton',1],['a3','rucksack','F_G = 6 kg · 10 N/kg = 60 N',1],['a3','rucksack','6 N',0],['a3','rucksack','60 kg',0],['a3','rucksack','600 N',0],
+ ['a3','schwimmen','Auftriebskraft und Gewichtskraft sind gleich groß',1],['a3','schwimmen','Die Auftriebskraft ist größer',0],
+ ['a3','haftung','die Haftreibung zwischen Schuh und Boden',1],['a3','haftung','möglichst gar keine Wechselwirkung mit dem Boden',0],
+ ['a3','papier','Wasser breitet sich in feinen benetzbaren Zwischenräumen aus',1],['a3','papier','Wasser wird schwerelos',0],
+ ['a3','druck','6000 Pa',1],['a3','druck','6.000 Pa',1],['a3','druck','6000',1],['a3','druck','p = 120 N : 0,02 m² = 6000 Pa',1],['a3','druck','6000 N',0],['a3','druck','600 Pa',0],['a3','druck','60000 Pa',0],
+ ['a3','gegenkraft','Der Ball zieht die Erde an',1],['a3','gegenkraft','Die Luft bremst den Ball',0],
+ ['a3','gleichgewicht','Mehrere Kräfte auf ihn gleichen sich aus',1],['a3','gleichgewicht','Auf ihn muss zwingend genau eine Kraft wirken',0],
+ ['a3','beschleunigung','ja, weil sich die Richtung der Geschwindigkeit ändert',1],['a3','beschleunigung','nein, weil nur schneller werden zählt',0],
+ ['a3','wegzeit','1,5 m/s',1],['a3','wegzeit','1.5 m/s',1],['a3','wegzeit','150 cm/s',1],['a3','wegzeit','1,5',1],['a3','wegzeit','0,67 m/s',0],['a3','wegzeit','1,5 s',0],['a3','wegzeit','54 m/s',0],
+ ['a3','newton','4 m/s²',1],['a3','newton','4 m/s2',1],['a3','newton','4',1],['a3','newton','a = 12 N : 3 kg = 4 m/s²',1],['a3','newton','4 N',0],['a3','newton','36 m/s²',0],['a3','newton','0,25 m/s²',0],
+ ['z1','b1','stimmt nicht',1],['z1','b1','stimmt',0],['z1','b2','stimmt nicht',1],['z1','b3','stimmt nicht',1],['z1','b3','stimmt',0],
+ ['z2','p1','20000 Pa',1],['z2','p1','20.000 Pa',1],['z2','p1','20 000 Pa',1],['z2','p1','20000',1],['z2','p1','2000 Pa',0],['z2','p1','20000 N',0],
+ ['z2','p2','2000 Pa',1],['z2','p2','2.000 Pa',1],['z2','p2','2000',1],['z2','p2','20000 Pa',0],['z2','p2','200 Pa',0],
+ ['z2','faktor','zehnmal kleiner',1],['z2','faktor','zehnmal größer',0],
+ ['z3','unab','nein',1],['z3','unab','ja',0],
+ /* offene Antworten: Prof. HOLZER bewertet – auch wenn Stichwörter passen oder die Aussage falsch ist */
+ ['a2','grp','3','M'],['a2','rolle','Protokoll','M'],['a2','beob','Gruppe 1 misst die Geschwindigkeit, Grenze: nur drei Durchgänge.','M'],['a2','ki','keine KI verwendet','M'],
+ ['z1','begr','Beide Kräfte wirken auf dasselbe Buch.','M'],['z1','begr','weiß nicht','M'],
+ ['z2','schnee','Größere Fläche, kleinerer Druck – man sinkt weniger ein.','M'],
+ ['z3','wer','TU Wien, Florian Aigner','M'],['z3','idee','Ein Pulver bildet einen gleitenden Film.','M'],['z3','nicht','Nicht für jede Maschine nachgewiesen.','M']];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

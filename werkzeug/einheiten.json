@@ -217,6 +217,95 @@
   "lehrerseite": "https://claude.ai/artifact/7y811wKjJTEmufpoP8Ed7x"
  },
  {
+  "klasse": "1AB",
+  "fach": "NAWI",
+  "ordner": "1ab-nawi/k2-1-kraefte",
+  "kapitel": "K2.1",
+  "titel": "Mechanische Kräfte – messen, rechnen, erklären",
+  "block": "E Physik",
+  "jahresplan": "E15–E17",
+  "seiten": [
+   "aufgaben.html",
+   "theorie.html",
+   "versuche.html",
+   "quiz.html"
+  ],
+  "versteckt": true,
+  "fahrplan": {
+   "text": "Diese Einheit ist ein Projekt über sechs Stunden. In Stunde 1 lernst du die Grundbegriffe und bekommst dein Gruppenthema. In den Stunden 2 bis 4 plant, messt und erklärt eure Gruppe. In Stunde 5 präsentieren alle sieben Gruppen. In Stunde 6 verbindest du alle Themen und löst Aufgabe 4 allein. Die Daten sind geplant – es kann sich etwas verschieben, die Reihenfolge bleibt. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: dein Arbeitsblatt-PDF und das Gruppen-PDF in LMS.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "datum": "geplant",
+     "lesen": "Einstieg + Teil 1 · Was eine Kraft bewirkt + Teil 2 · Geschwindigkeit · Buch S. 45–49",
+     "aufgaben": "1, 2",
+     "zeit": "Aufgaben und Projekt ca. 15 min · Besprechung 3 min · Reserve 4 min",
+     "wie": "ohne Handy: Gemeinsam, Sieben Gruppen bilden, Themen und Rollen verteilen, Buchseiten zeigen",
+     "abgabe": "Zwischenstand als PDF"
+    },
+    {
+     "wann": "Stunde 2",
+     "datum": "geplant",
+     "lesen": "Teil des eigenen Gruppenthemas (Theorie-Seite) + zugewiesene Buchseiten + eine zweite Quelle",
+     "aufgaben": "3 · Gruppen-Protokoll",
+     "zeit": "Aufgaben und Projekt ca. 31 min · Reserve 4 min",
+     "wie": "ohne Handy: Eigene Vermutung in der Gruppe festhalten, Versuchsplan schreiben, Freigabe durch Prof. HOLZER – je Gruppe ungefähr eine Minute",
+     "abgabe": "Zwischenstand als PDF"
+    },
+    {
+     "wann": "Stunde 3",
+     "datum": "geplant",
+     "lesen": "Versuchsseite: eigener Gruppenauftrag · Gruppenprojekt V1.20",
+     "aufgaben": "Gruppen-Protokoll",
+     "zeit": "Aufgaben und Projekt ca. 28 min · Reserve 4 min",
+     "wie": "ohne Handy: Sicherheit und Materialverteilung, Plätze zeigen, Messphase",
+     "abgabe": "Meilenstein-PDF der Gruppe"
+    },
+    {
+     "wann": "Stunde 4",
+     "datum": "geplant",
+     "lesen": "Theorie-Karte des eigenen Themas noch einmal · Versuchsseite auswerten",
+     "aufgaben": "Gruppen-Protokoll",
+     "zeit": "Aufgaben und Projekt ca. 8 min · Reserve 4 min",
+     "wie": "ohne Handy: Drei-Minuten-Erklärung vorbereiten, Partnergruppe prüft nach dem Raster und gibt Rückmeldung",
+     "abgabe": "Zwischenstand als PDF"
+    },
+    {
+     "wann": "Stunde 5",
+     "datum": "geplant",
+     "lesen": "Alle sieben Themen hören · Beobachtungsauftrag",
+     "aufgaben": "3 · Gruppen-Protokoll",
+     "zeit": "Aufgaben und Projekt ca. 31 min · Besprechung 4 min · Reserve 4 min",
+     "wie": "ohne Handy: Start und Beobachtungsauftrag für die Zuhörer erklären, Sieben Gruppen präsentieren",
+     "abgabe": "Gruppen-PDF in LMS"
+    },
+    {
+     "wann": "Stunde 6",
+     "datum": "geplant",
+     "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
+     "aufgaben": "4 · Quiz freiwillig",
+     "zeit": "Aufgaben und Projekt ca. 19 min · Besprechung 8 min · Reserve 4 min",
+     "wie": "ohne Handy: Gemeinsame Übersicht",
+     "abgabe": "Arbeitsblatt-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen)",
+     "aufgaben": "Zusatz 5–7",
+     "zeit": "ca. 26 min",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "08.11.2026",
+   "liste": [
+    "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v1.pptx"
+   ]
+  },
+  "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5"
+ },
+ {
   "klasse": "2AB",
   "fach": "NAWI",
   "ordner": "2ab-nawi/test1-training",
