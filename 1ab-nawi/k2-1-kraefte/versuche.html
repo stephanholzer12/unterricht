@@ -536,6 +536,45 @@ update();
 })();
 </script>
 <!-- pdf_hilfe:end -->
+
+<style>
+.bildzoom { display: block; cursor: zoom-in; }
+.bildzoom img { width: 100%; height: auto; }
+p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
+@media (hover: hover) and (min-width: 900px) { p.zoomhint { display: none; } }
+#lupe[hidden] { display: none; }
+#lupe { position: fixed; inset: 0; z-index: 9999; background: rgba(20,24,18,.96); display: flex;
+  align-items: center; justify-content: center; overflow: auto; -webkit-overflow-scrolling: touch; touch-action: pinch-zoom; }
+#lupe img { max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; border-radius: 8px; }
+#lupe.quer { overflow: hidden; }
+#lupe.quer img { flex: none; width: auto; height: auto; max-width: 100vh; max-height: 100vw; transform: rotate(90deg); }
+#lupe .zu { position: fixed; top: 10px; right: 12px; z-index: 2; font: inherit; font-size: 17px; font-weight: 700;
+  min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 0; background: #fff; color: #2C3424; cursor: pointer; }
+#lupe .dreh { position: fixed; top: 10px; left: 12px; z-index: 2; font: inherit; font-size: 17px; font-weight: 700;
+  min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 0; background: #fff; color: #2C3424; cursor: pointer; }
+</style>
+<div id="lupe" hidden role="dialog" aria-modal="true" aria-label="Bild groß">
+  <button type="button" class="dreh">Drehen</button><button type="button" class="zu">Schließen</button><img alt="">
+</div>
+<script>
+(function () {
+  var lupe = document.getElementById("lupe"), gross = lupe.querySelector("img");
+  function auf(bild) {
+    gross.src = bild.currentSrc || bild.src; gross.alt = bild.alt || "";
+    lupe.classList.toggle("quer", bild.naturalWidth > bild.naturalHeight * 1.15 && window.innerHeight > window.innerWidth);
+    lupe.hidden = false; document.body.style.overflow = "hidden"; lupe.querySelector(".zu").focus();
+  }
+  function zu() { lupe.hidden = true; gross.removeAttribute("src"); document.body.style.overflow = ""; }
+  document.addEventListener("click", function (ev) {
+    var p = ev.target.closest && ev.target.closest(".bildzoom, figure.fig");
+    if (p && !lupe.contains(ev.target)) { var b = p.querySelector("img") || ev.target; if (b.tagName === "IMG") { ev.preventDefault(); auf(b); } }
+  });
+  lupe.querySelector(".zu").addEventListener("click", zu);
+  lupe.querySelector(".dreh").addEventListener("click", function () { lupe.classList.toggle("quer"); });
+  lupe.addEventListener("click", function (ev) { if (ev.target === lupe) zu(); });
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !lupe.hidden) zu(); });
+})();
+</script>
 <!-- speicherstatus:start -->
 <script>
 /* Speicherstatus für die Handy-Seiten (Arbeitsblatt, Versuche, Gruppe …).

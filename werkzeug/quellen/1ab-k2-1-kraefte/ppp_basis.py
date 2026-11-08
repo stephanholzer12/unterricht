@@ -163,13 +163,28 @@ def box(s, x, y, w, h, fill=None, line=None, radius=True, lw=1.25):
     return shp
 
 
+SUB = re.compile(r"(?<![\w/])([A-Za-zρμ])_([A-Za-zäöü]{1,12}|\d{1,2})\b")
+
+
+def tiefstellen(runs):
+    """Zerlegt »F_G« in »F« + tiefgestelltes »G«, damit in der PPP kein Unterstrich steht."""
+    aus = []
+    for t, o in runs:
+        pos = 0
+        for m in SUB.finditer(t):
+            if m.start() > pos: aus.append((t[pos:m.start()], o))
+            aus.append((m.group(1), o)); aus.append((m.group(2), dict(o, sub=True))); pos = m.end()
+        if pos < len(t) or not t: aus.append((t[pos:], o))
+    return aus
+
+
 def runs_md(t):
     out, pos = [], 0
     for m in re.finditer(r"\*\*(.+?)\*\*", t):
         if m.start() > pos: out.append((t[pos:m.start()], {}))
         out.append((m.group(1), {"bold": True})); pos = m.end()
     if pos < len(t): out.append((t[pos:], {}))
-    return out or [("", {})]
+    return tiefstellen(out or [("", {})])
 
 
 def text(target, parts, size=20, color=INK, bold=False, align=PP_ALIGN.LEFT, anchor=MSO_ANCHOR.TOP, after=4):
@@ -178,11 +193,12 @@ def text(target, parts, size=20, color=INK, bold=False, align=PP_ALIGN.LEFT, anc
     for para in parts:
         p = tf.paragraphs[0] if first else tf.add_paragraph(); first = False
         p.alignment = align; p.space_after = Pt(after)
-        runs = para if isinstance(para, list) else runs_md(para)
+        runs = tiefstellen(para) if isinstance(para, list) else runs_md(para)
         for t, o in runs:
             r = p.add_run(); r.text = t; f = r.font
-            f.size = Pt(o.get("size", size)); f.bold = o.get("bold", bold); f.color.rgb = o.get("color", color)
+            f.size = Pt(o.get("size", size) * (0.78 if o.get("sub") else 1)); f.bold = o.get("bold", bold); f.color.rgb = o.get("color", color)
             if o.get("italic"): f.italic = True
+            if o.get("sub"): r.font._rPr.set("baseline", "-25000")
     return target
 
 

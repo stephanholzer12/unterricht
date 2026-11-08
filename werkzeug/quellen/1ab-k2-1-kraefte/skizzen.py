@@ -3,7 +3,7 @@ Aufruf im Repository-Ordner:  python3 werkzeug/quellen/1ab-k2-1-kraefte/skizzen.
 Schreibt 1ab-nawi/k2-1-kraefte/img/*.png, vs-img/d_g1–g7.png, vs-img/i_*.png und neue Icons nach werkzeug/icons/
 (kraftmesser, messbecher, messzylinder, spritze – im Stil der Bindungsarten-Icons: flach, farbig, dünne graue Kontur, transparent, 180 × 108 px).
 Alle Zahlen in den Grafiken stimmen mit inhalt.py und versuche_daten.py überein."""
-import math, os, shutil, sys
+import math, os, re, shutil, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import inhalt as I
 import versuche_daten as VD
@@ -26,7 +26,11 @@ R = lambda s: f(FR, s)
 B = lambda s: f(FB, s)
 
 
+PANELS, LEGENDEN = [], []   # merkt sich je Bild die Kästen und die Legende – für die Hochkant-Fassung (Handy)
+
+
 def canvas(w=900, h=560, bg=BG):
+    PANELS.clear(); LEGENDEN.clear()
     im = Image.new("RGB", (w * S, h * S), bg); return im, ImageDraw.Draw(im)
 
 
@@ -34,22 +38,98 @@ def P(*xy):
     return [v * S for v in xy]
 
 
+SUB = re.compile(r"(?<![\w/])([A-Za-zρμ])_([A-Za-zäöü]{1,12}|\d{1,2})\b")
+
+
+def _teile(t):
+    """Zerlegt »F_G = m · g« in [('F', False), ('G', True), (' = m · g', False)] – G wird tiefgestellt."""
+    aus, pos = [], 0
+    for m in SUB.finditer(t):
+        if m.start() > pos: aus.append((t[pos:m.start()], False))
+        aus.append((m.group(1), False)); aus.append((m.group(2), True)); pos = m.end()
+    if pos < len(t): aus.append((t[pos:], False))
+    return aus or [(t, False)]
+
+
+def _sub_font(font):
+    return ImageFont.truetype(font.path, max(8, int(font.size * 0.72)))
+
+
+def _breite(d, t, font):
+    return sum(d.textlength(s, font=(_sub_font(font) if tief else font)) for s, tief in _teile(t))
+
+
+def _zeichne(d, px, py, t, font, fill):
+    for s, tief in _teile(t):
+        fo = _sub_font(font) if tief else font
+        d.text((px, py + (font.size * 0.3 if tief else 0)), s, font=fo, fill=fill)
+        px += d.textlength(s, font=fo)
+
+
 def ctext(d, x, y, t, font, fill):
-    w = d.textlength(t, font=font); d.text((x * S - w / 2, y * S), t, font=font, fill=fill)
+    _zeichne(d, x * S - _breite(d, t, font) / 2, y * S, t, font, fill)
 
 
 def ltext(d, x, y, t, font, fill):
-    d.text((x * S, y * S), t, font=font, fill=fill)
+    _zeichne(d, x * S, y * S, t, font, fill)
 
 
 def rtext(d, x, y, t, font, fill):
-    w = d.textlength(t, font=font); d.text((x * S - w, y * S), t, font=font, fill=fill)
+    _zeichne(d, x * S - _breite(d, t, font), y * S, t, font, fill)
 
 
-def save(im, path, w=None, h=None, q=160):
+def save(im, path, w=None, h=None, q=160, hoch=True):
     w = w or im.width // S; h = h or im.height // S
     im.resize((w, h), Image.LANCZOS).quantize(colors=q).save(path, optimize=True)
-    print("  ", os.path.relpath(path, ROOT), os.path.getsize(path) // 1024, "KB")
+    rand = randkontrolle(im)
+    print("  ", os.path.relpath(path, ROOT), os.path.getsize(path) // 1024, "KB" + (" · ABGESCHNITTEN am " + rand if rand else ""))
+    if rand: ABGESCHNITTEN.append((os.path.basename(path), rand))
+    if hoch: hochkant(im, path, q)
+
+
+ABGESCHNITTEN = []
+
+
+def randkontrolle(im, saum=3):
+    """Warnt, wenn am unteren oder rechten Bildrand noch gezeichnete Pixel liegen – dann ist etwas abgeschnitten.
+    Als Hintergrund gilt die Farbe der linken oberen Ecke (die Versuchsskizzen haben einen weißen Grund)."""
+    px = im.load()
+    grund = px[1, 1]
+    bunt = lambda c: max(abs(c[i] - grund[i]) for i in range(3)) > 16
+    unten = any(bunt(px[x, im.height - 1 - dy]) for dy in range(saum) for x in range(0, im.width, 2))
+    rechts = any(bunt(px[im.width - 1 - dx, y]) for dx in range(saum) for y in range(0, im.height, 2))
+    return ", ".join([t for t, b in (("unteren Rand", unten), ("rechten Rand", rechts)) if b])
+
+
+def hochkant(im, path, q=160):
+    """Zweite Fassung fürs Handy: die nebeneinander liegenden Kästen werden untereinander gestellt.
+    Dadurch bekommt jeder Kasten die volle Bildschirmbreite – die Beschriftung wird um ein Mehrfaches größer.
+    Es wird nichts neu gezeichnet, nur aus dem fertigen Bild ausgeschnitten und neu gesetzt."""
+    if len(PANELS) < 2 or len({p[0] for p in PANELS}) < 2:
+        return  # kein Bild mit Kästen nebeneinander – die Querfassung ist schon in Ordnung
+    pad, luft = 12, 16
+    pw = max(p[2] for p in PANELS)
+    cw = pw + 2 * pad
+    hoehe = pad + sum(p[3] for p in PANELS) + luft * (len(PANELS) - 1) + pad
+    legh = 0
+    if LEGENDEN:
+        mess = ImageDraw.Draw(Image.new("RGB", (10, 10)))
+        for items in LEGENDEN:
+            for col, txt in items:
+                legh += 22 * len(umbrechen(mess, txt, R(16), cw - 2 * pad - 44)) + 4
+        hoehe += luft + legh
+    out = Image.new("RGB", (cw * S, hoehe * S), BG)
+    y = pad
+    for (x, py, w, h) in sorted(PANELS, key=lambda p: (p[1], p[0])):
+        out.paste(im.crop(tuple(int(v) for v in P(x, py, x + w, py + h))), (int((pad + (pw - w) / 2) * S), int(y * S)))
+        y += h + luft
+    if LEGENDEN:
+        d2 = ImageDraw.Draw(out)
+        for items in LEGENDEN:
+            y += legende(d2, pad, y, items, breite=cw - 2 * pad, _merken=False)
+    ziel = path[:-4] + "-hoch.png"
+    out.resize((cw, hoehe), Image.LANCZOS).quantize(colors=q).save(ziel, optimize=True)
+    print("  ", os.path.relpath(ziel, ROOT), os.path.getsize(ziel) // 1024, "KB ·", len(PANELS), "Kästen untereinander")
 
 
 def arrow(d, x0, y0, x1, y1, col=INK, w=5, head=16):
@@ -59,7 +139,8 @@ def arrow(d, x0, y0, x1, y1, col=INK, w=5, head=16):
     d.polygon([(px * S, py * S) for px, py in pts], fill=col)
 
 
-def panel(d, x, y, w, h, titel, col=OLIVE):
+def panel(d, x, y, w, h, titel, col=OLIVE, _merken=True):
+    if _merken: PANELS.append((x, y, w, h))
     d.rounded_rectangle(P(x, y, x + w, y + h), radius=14 * S, fill=WHITE, outline=GRID, width=int(1.5 * S))
     d.rounded_rectangle(P(x, y, x + w, y + 30), radius=14 * S, fill=col)
     d.rectangle(P(x, y + 18, x + w, y + 30), fill=col)
@@ -73,12 +154,29 @@ def wasser(d, x, y, w, h, level):
     d.line(P(x + 2, y + h - level, x + w - 2, y + h - level), fill=TEAL, width=int(2 * S))
 
 
-def legende(d, x, y, items):
-    for i, (col, txt) in enumerate(items):
-        yy = y + i * 26
+def legende(d, x, y, items, breite=None, _merken=True):
+    """Gibt die Höhe zurück. breite = Umbruchbreite in logischen Pixeln (für die schmale Hochkant-Fassung)."""
+    if _merken: LEGENDEN.append(items)
+    yy = y
+    for col, txt in items:
         d.line(P(x, yy + 9, x + 34, yy + 9), fill=col, width=int(5 * S))
         arrow(d, x + 20, yy + 9, x + 36, yy + 9, col, 5, 11)
-        ltext(d, x + 44, yy, txt, R(16), INK)
+        for zeile in (umbrechen(d, txt, R(16), breite - 44) if breite else [txt]):
+            ltext(d, x + 44, yy, zeile, R(16), INK); yy += 22
+        yy += 4
+    return yy - y
+
+
+def umbrechen(d, txt, font, breite):
+    zeilen, akt = [], ""
+    for wort in txt.split():
+        probe = (akt + " " + wort).strip()
+        if akt and _breite(d, probe, font) > breite * S:
+            zeilen.append(akt); akt = wort
+        else:
+            akt = probe
+    if akt: zeilen.append(akt)
+    return zeilen
 
 
 # ================================================================ 1 · Was eine Kraft bewirkt
@@ -112,7 +210,7 @@ def wirkung():
 
 # ================================================================ 2 · Geschwindigkeit und Beschleunigung
 def bewegung():
-    im, d = canvas(900, 440)
+    im, d = canvas(900, 510)
     reihen = [("gleichförmig: gleiche Abstände", [80, 230, 380, 530, 680], GREEN),
               ("schneller werdend: Abstände wachsen", [80, 150, 260, 420, 640], ORANGE)]
     for ri, (titel, xs, col) in enumerate(reihen):
@@ -341,7 +439,7 @@ def gegenkraft():
 
 # ================================================================ 9 · Größen und Einheiten
 def einheiten():
-    im, d = canvas(900, 430)
+    im, d = canvas(900, 480)
     ctext(d, 450, 18, "Alle Größen dieser Einheit auf einen Blick", B(22), OLIVE)
     zeilen = [("Masse", "m", "kg", "Waage", GREEN), ("Kraft", "F", "N", "F = m · a", RED),
               ("Gewichtskraft", "F_G", "N", "F_G = m · g, hier g = 10 N/kg", RUST),
@@ -637,3 +735,8 @@ if __name__ == "__main__":
     _vs("Gruppe 6 · Spritze offen und geschlossen", vs_g6, "g6")
     _vs("Gruppe 7 · Zwei Kraftmesser ineinander", vs_g7, "g7")
     icons_kopieren()
+    if ABGESCHNITTEN:
+        print("ACHTUNG – da ragt etwas über den Bildrand:")
+        for n, r in ABGESCHNITTEN: print("   ", n, "·", r)
+    else:
+        print("Randkontrolle: kein Bild abgeschnitten.")

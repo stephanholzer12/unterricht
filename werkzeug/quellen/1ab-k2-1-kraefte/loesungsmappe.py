@@ -15,7 +15,9 @@ e = lambda t: html.escape(str(t), quote=False)
 
 
 def md(t):
-    return re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", e(t))
+    """**fett** und Formelzeichen: F_G wird zu F mit tiefgestelltem G."""
+    s = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", e(t))
+    return re.sub(r"(?<![\w/])([A-Za-zρμ])_([A-Za-zäöü]{1,12}|\d{1,2})\b", r"\1<sub>\2</sub>", s)
 
 
 def b64(path, mime):

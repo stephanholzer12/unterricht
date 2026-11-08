@@ -28,7 +28,9 @@ esc = html.escape
 b64 = lambda p: base64.b64encode(open(p, "rb").read()).decode()
 CAMO, LOGO, SMILEY = b64(WZ + "/camo.png"), b64(WZ + "/logo.png"), b64(WZ + "/smiley.png")
 nb = lambda s: re.sub(r"(?<=\d) (?=\d{3}\b)", " ", s)
-md = lambda s: re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(nb(s)))
+# Formelzeichen richtig setzen: F_G wird zu F mit tiefgestelltem G (gilt für Text, Formeltabellen und Karten).
+tief = lambda s: re.sub(r"(?<![\w/])([A-Za-zρμ])_([A-Za-zäöü]{1,12}|\d{1,2})\b", r"\1<sub>\2</sub>", s)
+md = lambda s: tief(re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc(nb(s))))
 
 
 def qr_b64(url):
@@ -119,18 +121,29 @@ rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
 rep("function renderTask(t) {", """function karteEl(k) {
   const K = KARTEN[k], box = el("div", { class: "tkarte" });
   box.append(el("div", { class: "tkh" }, el("span", { class: "tkn", text: "Theorie-Karte" }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
-  if (K.bild) box.append(el("img", { class: "tkimg", src: K.bild, alt: K.alt, loading: "lazy" }));
+  if (K.bild) {
+    const pic = el("picture", { class: "bildzoom" });
+    if (K.bild_hoch) { const so = document.createElement("source"); so.media = "(max-width: 760px)"; so.srcset = K.bild_hoch; pic.append(so); }
+    pic.append(el("img", { class: "tkimg", src: K.bild, alt: K.alt, loading: "lazy" }));
+    box.append(pic);
+    box.append(el("p", { class: "zoomhint", text: "Bild antippen – dann wird es groß." }));
+  }
   K.satz.forEach(x => { const p = el("p"); p.innerHTML = fett(x); box.append(p); });
   if (K.formeln && K.formeln.length) {
     const tb = el("table", { class: "tkf" });
-    K.formeln.forEach(([z, bed, einh]) => tb.append(el("tr", {}, el("td", { class: "z", text: z }), el("td", { text: bed }), el("td", { class: "e", text: einh || "" }))));
+    K.formeln.forEach(([z, bed, einh]) => {
+      const a = el("td", { class: "z" }), b = el("td"), c = el("td", { class: "e" });
+      a.innerHTML = fett(z); b.innerHTML = fett(bed); c.innerHTML = fett(einh || "");
+      tb.append(el("tr", {}, a, b, c));
+    });
     box.append(tb);
   }
   box.append(el("a", { class: "tklink", href: K.link, text: "Mehr dazu im Theorieteil" }));
   return box;
 }
 function fett(x) {
-  return String(x).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])).replace(/\\*\\*(.+?)\\*\\*/g, "<b>$1</b>");
+  return String(x).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])).replace(/\\*\\*(.+?)\\*\\*/g, "<b>$1</b>")
+    .replace(/(^|[^\\w\\/])([A-Za-z\\u03c1\\u03bc])_([A-Za-z\\u00e4\\u00f6\\u00fc]{1,12}|\\d{1,2})\\b/g, "$1$2<sub>$3</sub>");
 }
 function tippStufen(t) {
   const box = el("div", { class: "tipps" });
@@ -288,8 +301,18 @@ jetzt = lambda txt, href: f'<a class="jetzt" href="{href}">{esc(txt)} →</a>'
 VS_BY_NR = {v["nr"]: v for v in VD.VS}
 
 
+def bild_tag(src, alt, cls=""):
+    """Bild mit Hochkant-Fassung fürs Handy (schmale Schirme zeigen die Kästen untereinander – viel größere Schrift)
+    und mit Hinweis, dass man es zum Vergrößern antippen kann."""
+    hoch = src[:-4] + "-hoch.png"
+    quelle = f'<source media="(max-width: 760px)" srcset="{hoch}">' if os.path.exists(os.path.join(DST, hoch)) else ""
+    k = f' class="{cls}"' if cls else ""
+    return (f'<picture class="bildzoom">{quelle}<img{k} src="{src}" alt="{esc(alt)}" loading="lazy"></picture>'
+            '<p class="zoomhint">Bild antippen – dann wird es groß.</p>')
+
+
 def figure(src, alt, cap):
-    return f'<figure class="fig"><img src="{src}" alt="{esc(alt)}" loading="lazy"><figcaption>{md(cap)}</figcaption></figure>'
+    return f'<figure class="fig">{bild_tag(src, alt)}<figcaption>{md(cap)}</figcaption></figure>'
 
 
 def karte_block(v):
@@ -298,7 +321,7 @@ def karte_block(v):
         f = '<table class="tkf">' + "".join(f'<tr><td class="z">{md(z)}</td><td>{md(bed)}</td><td class="e">{md(e)}</td></tr>' for z, bed, e in v["formeln"]) + "</table>"
     return ('<div class="tkarte-s">'
             f'<div class="tkh"><span class="tkn">Theorie-Karte</span><b>{esc(v["titel"])}</b><span class="tkb">{esc(v["buch"])}</span></div>'
-            f'<img class="tkimg" src="{v["bild"]}" alt="{esc(v["alt"])}" loading="lazy">'
+            + bild_tag(v["bild"], v["alt"], "tkimg")
             + "".join(f"<p>{md(x)}</p>" for x in v["satz"]) + f + "</div>")
 
 
@@ -525,6 +548,57 @@ _alt = 'clean("K2.1 Gruppenprojekt · " + (S.name || "") + " · Seite " + p + " 
 assert s.count(_alt) == 1, s.count(_alt)
 s = s.replace(_alt, 'clean("K2.1 Gruppenprojekt · " + ((S.name || "").length > 70 ? (S.name || "").slice(0, 67) + " …" : (S.name || "")) + " · Seite " + p + " von " + n)')
 open(DST + "versuche.html", "w", encoding="utf-8").write(s)
+
+# ================================================================ Bildlupe (alle Seiten mit Grafiken)
+# Am Handy sind die Zeichnungen auch in der Hochkant-Fassung klein. Ein Tippen zeigt das Bild groß:
+# quer gedreht, damit es die ganze Höhe des Handys nutzt, dazu Zoomen mit zwei Fingern.
+ZOOM = """
+<style>
+.bildzoom { display: block; cursor: zoom-in; }
+.bildzoom img { width: 100%; height: auto; }
+p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
+@media (hover: hover) and (min-width: 900px) { p.zoomhint { display: none; } }
+#lupe[hidden] { display: none; }
+#lupe { position: fixed; inset: 0; z-index: 9999; background: rgba(20,24,18,.96); display: flex;
+  align-items: center; justify-content: center; overflow: auto; -webkit-overflow-scrolling: touch; touch-action: pinch-zoom; }
+#lupe img { max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; border-radius: 8px; }
+#lupe.quer { overflow: hidden; }
+#lupe.quer img { flex: none; width: auto; height: auto; max-width: 100vh; max-height: 100vw; transform: rotate(90deg); }
+#lupe .zu { position: fixed; top: 10px; right: 12px; z-index: 2; font: inherit; font-size: 17px; font-weight: 700;
+  min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 0; background: #fff; color: #2C3424; cursor: pointer; }
+#lupe .dreh { position: fixed; top: 10px; left: 12px; z-index: 2; font: inherit; font-size: 17px; font-weight: 700;
+  min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 0; background: #fff; color: #2C3424; cursor: pointer; }
+</style>
+<div id="lupe" hidden role="dialog" aria-modal="true" aria-label="Bild groß">
+  <button type="button" class="dreh">Drehen</button><button type="button" class="zu">Schließen</button><img alt="">
+</div>
+<script>
+(function () {
+  var lupe = document.getElementById("lupe"), gross = lupe.querySelector("img");
+  function auf(bild) {
+    gross.src = bild.currentSrc || bild.src; gross.alt = bild.alt || "";
+    lupe.classList.toggle("quer", bild.naturalWidth > bild.naturalHeight * 1.15 && window.innerHeight > window.innerWidth);
+    lupe.hidden = false; document.body.style.overflow = "hidden"; lupe.querySelector(".zu").focus();
+  }
+  function zu() { lupe.hidden = true; gross.removeAttribute("src"); document.body.style.overflow = ""; }
+  document.addEventListener("click", function (ev) {
+    var p = ev.target.closest && ev.target.closest(".bildzoom, figure.fig");
+    if (p && !lupe.contains(ev.target)) { var b = p.querySelector("img") || ev.target; if (b.tagName === "IMG") { ev.preventDefault(); auf(b); } }
+  });
+  lupe.querySelector(".zu").addEventListener("click", zu);
+  lupe.querySelector(".dreh").addEventListener("click", function () { lupe.classList.toggle("quer"); });
+  lupe.addEventListener("click", function (ev) { if (ev.target === lupe) zu(); });
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape" && !lupe.hidden) zu(); });
+})();
+</script>
+"""
+for f in ["theorie.html", "aufgaben.html", "versuche.html"]:
+    t = open(DST + f, encoding="utf-8").read()
+    if "id=\"lupe\"" not in t:
+        assert t.rstrip().endswith("</html>"), f
+        i = t.rfind("</body>")
+        t = (t[:i] + ZOOM + t[i:]) if i > 0 else t.replace("</html>", ZOOM + "</html>")
+        open(DST + f, "w", encoding="utf-8").write(t)
 
 for f in ["theorie.html", "aufgaben.html", "versuche.html", "quiz.html"]:
     print(f, os.path.getsize(DST + f) // 1024, "KB")

@@ -95,7 +95,17 @@ for _id, _k in AUFGABE_KARTE.items():
 
 def karte_html_daten():
     """Karten als reine Daten für das Arbeitsblatt (Tipp 2)."""
-    return {k: {"titel": v["titel"], "satz": v["satz"], "bild": v["bild"], "alt": v["alt"],
+    import os
+    hier = os.path.dirname(os.path.abspath(__file__))
+    unit = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(hier))), I.ORDNER)
+
+    def hoch(bild):
+        """Hochkant-Fassung fürs Handy (von skizzen.py erzeugt), falls es sie gibt."""
+        if not bild: return ""
+        h = bild[:-4] + "-hoch.png"
+        return h if os.path.exists(os.path.join(unit, h)) else ""
+
+    return {k: {"titel": v["titel"], "satz": v["satz"], "bild": v["bild"], "bild_hoch": hoch(v.get("bild")), "alt": v["alt"],
                 "formeln": v["formeln"], "link": v["link"], "buch": v["buch"]} for k, v in KARTEN.items()}
 
 
