@@ -37,7 +37,7 @@ STUNDENVORSCHLAG = {k: _stundenvorschlag(k) for k in PL.PLAN}
 MATERIAL = {1: "A4-Papier (2 je Gruppe), Bleistifte, Schachtel für die Flieger · Faltanleitung am Beamer · Einstiegs-Flieger mit Klammer zum Zeigen",
             2: "Bandmaß 20 m (#9), Büroklammern F-038 (1 je Gruppe), die Flieger der Gruppen, Papierblätter VS-AB (1 je Gruppe), Ersatzpapier",
             3: "Test (eigene Unterlagen) · Vorjahres-Tabelle am Beamer · Partnerkarten (Beamer oder ausgedruckt)",
-            4: "eingesammelte Papierblätter der Gruppen · Tafel/Flipchart für die Klassenübersicht · Flieger aufbewahren für den Kraft-Einstieg"}
+            4: "eingesammelte Papierblätter der Gruppen · Tafel/Flipchart für die Klassentabelle · Flieger aufbewahren für den Kraft-Einstieg"}
 
 
 def _karten():
@@ -69,7 +69,7 @@ CHECKLISTE = [
 
 AUF_EINEN_BLICK = [
     ["Teil 1 · Std. 1 (beide)", "Beobachtung ≠ Deutung; Hypothese = begründet und prüfbar; Vorhersage = erwartetes Testergebnis; Gesetz beschreibt, Theorie erklärt – keine Leiter. Fragen zuordnen. Hypothese aufschreiben, Flieger bauen.", MATERIAL[1]],
-    ["Teil 2 · 1AK Std. 2 · 1BK Std. 3", "Fairer Test: nur Klammer ab/dran; erster Bodenkontakt; drei Paare abwechselnd; alle Würfe zählen, Kontakte vermerken; Gegenprobe mit zweitem Werfer.", MATERIAL[2]],
+    ["Teil 2 · 1AK Std. 2 · 1BK Std. 3", "Fairer Test: nur Klammer ab/dran; erster Bodenkontakt; je Gruppe ein Paar (A und B, Reihenfolge nach Gruppennummer); beide Würfe zählen, Kontakte vermerken; Testflüge vorher.", MATERIAL[2]],
     ["Teil 3 · Fr 06.11. (beide, nach Test)", "Forschung als Kreislauf; Modell = Vereinfachung mit Grenzen; Veröffentlichung, Begutachtung, Wiederholung; Semmelweis; Vorjahresdaten kritisch lesen.", MATERIAL[3]],
     ["Teil 4 · Std. 4 (beide)", "Mittelwert, Spannweite; unterstützt / spricht dagegen / unklar; Falsifizierbarkeit (nicht prüfbar ≠ falsch); Forschen vs. Konstruieren; Ausblick Kraft.", MATERIAL[4]],
 ]
@@ -78,7 +78,7 @@ KAPITEL = [
  {"titel": "1 Beobachtung, Hypothese, Vorhersage, Theorie (Buch S. 28–29)",
   "text": ["**Beobachtung und Deutung trennen:** »6,4 m« ist eine Beobachtung; »weil die Nase schwerer ist« ist schon eine Deutung. Die Trennung ist das wichtigste Werkzeug der ganzen Einheit – in jeder Aufgabe wiederkehren lassen.",
            "**Hypothese:** begründete, prüfbare Vermutung über einen Zusammenhang. Prüfbar heißt: Man kann vorher angeben, welche Beobachtung dagegen sprechen würde. Die Hypothese betrifft hier einen **Mittelwert** (»im Mittel weiter«) – darum widerlegt ein einzelner kurzer Flug sie nicht.",
-           "**Vorhersage:** das aus der Hypothese abgeleitete erwartete Ergebnis eines konkreten Tests (»bei drei Paaren hat B den größeren Mittelwert«). Viele Schulbücher vermischen Hypothese und Vorhersage – im Unterricht konsequent trennen.",
+           "**Vorhersage:** das aus der Hypothese abgeleitete erwartete Ergebnis eines konkreten Tests (»beim Vergleich aller Gruppen hat B den größeren Mittelwert«). Viele Schulbücher vermischen Hypothese und Vorhersage – im Unterricht konsequent trennen.",
            "**Gesetz und Theorie:** Ein Gesetz beschreibt eine Regelmäßigkeit (oft als Formel, z. B. Fallgesetz ohne Luftwiderstand); eine Theorie erklärt und verbindet viele Befunde (Zelltheorie, Keimtheorie, Evolutionstheorie, Atomtheorie). Es gibt **keine Rangfolge** Hypothese → Gesetz → Theorie; eine Theorie wird auch nicht zum Gesetz, wenn sie »oft genug« bestätigt ist (National Academy of Sciences 1998, Kap. 1 und Glossar).",
            "**Was Trauner S. 29 vereinfacht:** »Hypothese = unbewiesene Annahme … die bewiesen oder widerlegt werden kann« und »bestätigen wiederholte Experimente die Hypothese, dann wird sie zum Gesetz bzw. zur Theorie (= mehrere Gesetze)«. Für die Kadetten präzisiert: Ergebnisse **unterstützen** Hypothesen; endgültige Beweise gibt es in den empirischen Wissenschaften nicht. Die Kapitelüberschrift »Von der Hypothese zur Theorie« bleibt als Buchnavigation.",
            "**Galilei-Beispiel im Buch:** nur mit Bedingung verwenden (»ohne Luftwiderstand fallen alle Körper gleich schnell«). Keine zusätzlichen historischen Details erfinden (der Turm von Pisa ist als Experiment nicht sicher belegt)."],
@@ -90,9 +90,9 @@ KAPITEL = [
   "text": ["**Warum derselbe Flieger:** Im alten Wettbewerb (kurz gegen lang) änderten sich Form, Faltung, Fläche, Masse, Werfer und Abwurf gleichzeitig – eine Ursache ließ sich nicht isolieren (Vorjahresdaten zeigen das gut). Jetzt ändert sich nur »Klammer ab/dran«.",
            "**Was die Klammer ändert:** Masse und Schwerpunktlage gleichzeitig (der Schwerpunkt wandert nach vorne). Der Test beantwortet nur: Welche Wirkung hat diese konkrete Änderung bei diesem Modell und diesem Abwurf? Er trennt die beiden Ursachen nicht.",
            "**Messgröße:** Vorwärtsweite bis zum ersten Bodenkontakt entlang des Bandmaßes, auf 0,1 m gerundet. Die Rundung ist keine geprüfte Messunsicherheit von ±0,1 m. Nicht Flugzeit, nicht Bahnlänge, nicht Rutschweite.",
-           "**Reihenfolge A,B · B,A · A,B (bzw. umgekehrt):** verteilt Übungseffekte, Ermüdung und allmähliche Verformung des Fliegers auf beide Zustände. Drei Paare sind ein Unterrichtskompromiss; mehrere Würfe desselben Fliegers sind keine unabhängige Stichprobe verschiedener Flieger.",
+           "**Reihenfolge A,B bzw. B,A (nach Gruppennummer):** verteilt Übungseffekte, Ermüdung und allmähliche Verformung des Fliegers auf beide Zustände. Jede Gruppe wirft nur ein Paar (Zeitgründe, 08.11.2026); erst die Werte der ganzen Klasse (verschiedene Flieger und Werfer) geben eine brauchbare Datenlage. Gruppen mit unterschiedlichen Werfern und Fliegern werden gemeinsam ausgewertet, das Paar bleibt aber innerhalb der Gruppe vergleichbar.",
            "**Ausschlussregeln vorher:** gültig = jeder reguläre Flug; ungültig nur bei Linienübertritt, Eingriff von außen, abgefallener Klammer – dann wiederholen und notieren. Decken-/Wandkontakt: Wert bleibt mit Vermerk, er ist aber kein unbehinderter Weitenwert. Sind A und B ungleich oft betroffen, ist die Weitenfrage nicht sauber entschieden.",
-           "**Gegenprobe:** zweiter Werfer, getrennt protokolliert. Prüft die Übertragbarkeit auf einen anderen Werfer – nicht Masse vs. Schwerpunkt. Werte verschiedener Werfer nie unbemerkt zusammen mitteln.",
+           "**Gegenprobe:** entfällt im Versuch (seit 08.11.2026). Ersatz: Die anderen Gruppen mit anderen Werfern und Fliegern zeigen, ob das Ergebnis übertragbar ist. Das prüft nicht Masse vs. Schwerpunkt.",
            "**Raum:** Eingangsbereich, lang genug, Decke niedrig (Maße nicht bekannt – nicht den historischen 15,5-m-NAWI-Gang übertragen). Flacher, ruhiger Abwurf aus Hüfthöhe; kein universeller »optimaler Abwurfwinkel«."],
   "nur": ["Physik dahinter (für Fragen, nicht für E3): Im antriebslosen Gleitflug wirken nur Gewichtskraft und die Luftkraft (zerlegt in Auftrieb senkrecht zur Anströmung und Widerstand entgegen der Flugrichtung). Die Hand wirkt nach dem Loslassen nicht mehr – ein fortwirkender »Schub« wie bei Gruber S. 20 ist für den Papierflieger falsch.",
           "Mehr Masse allein ändert im gleichmäßigen Gleitflug den Gleitwinkel nicht (der hängt vom Verhältnis Auftrieb zu Widerstand ab), nur das Tempo. Ein Schwerpunkt weiter vorne ändert die Trimmung – ob die Weite steigt oder sinkt, hängt vom Modell und vom Abwurf ab. Bei rund 1 m Abwurfhöhe bestimmt ohnehin vor allem die Abwurfphase die Weite. Darum keine Wirkung vorwegnehmen.",
@@ -117,21 +117,21 @@ KAPITEL = [
            "**Ausblick 1AK 12.11. (2. Std. Kraftbegriff):** »Die Hand hat losgelassen – warum fliegt er weiter? Welche Kräfte wirken jetzt?« Fehlvorstellung »Bewegung braucht ständig eine Kraft in Bewegungsrichtung« sammeln, nicht gleich auflösen."],
   "nur": ["Physik-Anschlüsse (Stephan: mechanische Kräfte, Geschwindigkeit, Arbeit/Energie, elektrische Kräfte): Kraftbild nach dem Loslassen (Trauner S. 45, 49–50, 61) · Luftwiderstand gezielt verändern (ab S. 54) · Geschwindigkeit auf einer festgelegten Strecke v = s/t (S. 46; nicht aus Weite/Gesamtzeit) · Energie: Höhenenergie m·g·h, Bewegungsenergie ½·m·v², Übertragung an die Luft (S. 67–73) – Auftrieb und Wurfkraft sind Kräfte, keine Energieformen · elektrische Kräfte: geriebener Ballon zieht Papierschnipsel an (S. 79–80, Pool V1.31) – nicht als Erklärung des Fliegens.",
           "Formeln erst in den jeweiligen Einheiten einführen, nicht in E3. Gruber S. 13–28 als Lehrerhintergrund (Trimmung, Abwurf, Kräftebild – Schub-Pfeil korrigieren)."],
-  "stolper": "Einzelwert als Beweis oder Widerlegung; Mittelwert über verschiedene Werfer; »unklar« als Versagen. Gegenmittel: Satzgerüst auf der Folie, Klassenübersicht mit allen Gruppen.",
+  "stolper": "Einzelwert als Beweis oder Widerlegung; Mittelwert über verschiedene Werfer; »unklar« als Versagen. Gegenmittel: Satzgerüst auf der Folie, Klassentabelle mit allen Gruppen.",
   "bild": "img/mittelwert.png"},
 ]
 
 RECHNEN = [
     "**Aufgabe 8:** (3,8 + 4,6 + 4,2) m : 3 = 12,6 m : 3 = 4,2 m · (5,1 + 3,9 + 5,4) m : 3 = 14,4 m : 3 = 4,8 m · Spannweite B = 5,4 m − 3,9 m = 1,5 m (A: 0,8 m). Überlappung A 3,8–4,6 m und B 3,9–5,4 m → »unklar«. Werte bewusst unter 5 m: Die Zahlenprüfung lässt bei Aufgabe 8 a–c einen festen Spielraum von ±0,04 m zu (nach Einheitenumrechnung, z. B. 420 cm = 4,2 m); ein Nachbarwert wie 4,3 statt 4,2 gilt damit als falsch.",
     "**Stopp-Frage Teil 4:** (5,1 + 6,3 + 5,7) m : 3 = 17,1 m : 3 = 5,7 m. **Quiz:** 4,0/5,0/6,0 m → Mittelwert 5,0 m, Spannweite 2,0 m.",
-    "**Kapazität Messbahn:** 8 Gruppen × 6 Würfe × 0,5 min = 24 min (Planannahme). Probewürfe 8 × ca. 20 s ≈ 3 min, in der Sicherheitsphase (5 min). Gegenprobe 1 Gruppe × 6 Würfe × 0,5 min = 3 min. Wird es knapp: Gegenprobe entfällt, als Grenze notieren.",
+    "**Kapazität Messbahn:** 8 Gruppen × 2 Würfe × ca. 30 s ≈ 8 min plus Wechsel und Klammer ≈ 6 min, also rund 14 min. Testflüge machen die Kadetten vorher. Keine Gegenprobe. Wird es knapp: Wert eines Wurfs ungültig, dann wiederholen; mehr nicht.",
     "**Vorjahr alte 1BK (lang − kurz):** G1 +9,05 · G2 +0,10 · G3 −10,54 · G4 +7,36 · G6 +3,05 · G7 +2,72 · G5 nicht berechenbar. **Alte 1AK:** G1 −0,57 · G2 −2,47 · G3 +6,55 · G4 +6,41 · G5 +4,52 · G6 −1,99 · G7 +3,07.",
 ]
 
 FEHLVORSTELLUNGEN = [
     ["Eine Theorie ist eine bloße Vermutung.", "Eine wissenschaftliche Theorie verbindet viele geprüfte Befunde und erlaubt Vorhersagen.", "Mythos-Folie im Einstieg; Zelltheorie als Biologie-Beispiel; Aufgabe 2d."],
     ["Oft bestätigte Hypothesen werden zu Gesetzen, Gesetze zu Theorien.", "Gesetz beschreibt, Theorie erklärt – keine Leiter.", "Grafik »zwei Säulen, keine Leiter«; KI-Check Aussage 4."],
-    ["Ein passendes Ergebnis beweist die Hypothese.", "Es unterstützt sie unter diesen Bedingungen.", "Gegenprobe mit zweitem Werfer; Forschungskarte (Wiederholung)."],
+    ["Ein passendes Ergebnis beweist die Hypothese.", "Es unterstützt sie unter diesen Bedingungen.", "Vergleich mit den Werten der anderen Gruppen; Forschungskarte (Wiederholung)."],
     ["Ein einziger Gegenwert widerlegt die Hypothese.", "Unsere Hypothese betrifft den Mittelwert – es zählt die ganze Messreihe.", "KI-Check Aussage 2; Übungsdaten A8."],
     ["Schlechte Würfe darf man streichen.", "Nur nach vorher festgelegten Regeln ungültig.", "Aufgabe 5 vor dem Versuch; Prüfer-Rolle."],
     ["Die Klammer wirkt, weil sie schwerer ist.", "Masse und Schwerpunkt ändern sich gleichzeitig – der Test trennt sie nicht.", "Stopp-Frage Teil 2; Schlussfolgerung im Protokoll."],

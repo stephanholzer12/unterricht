@@ -301,7 +301,9 @@ function versuch(v) {
   // Beobachtung / Messwerte
   body.append(el("h3", { text: v.beob.titel }));
   const nGiven = Math.max(...v.beob.zeilen.map(z => z.length));
+  const altLeer = (ri) => (v.beob.alt || []).includes(ri) && ![1, 2, 3].some(c => filled((S.a[v.id] || {})["b" + ri + "_" + c]));
   v.beob.zeilen.forEach((z, ri) => {
+    if (altLeer(ri)) return;
     const row = el("div", { class: "row" }, el("div", { class: "stoff", text: z.join(" · ") }));
     for (let c = nGiven; c < v.beob.kopf.length; c++) row.append(field(v.id, "b" + ri + "_" + c, v.beob.kopf[c], false));
     body.append(row);
@@ -346,6 +348,7 @@ function lines(v) {
   const nGiven = Math.max(...v.beob.zeilen.map(z => z.length));
   L.push([v.beob.titel + ":", "h"]);
   v.beob.zeilen.forEach((z, ri) => {
+    if ((v.beob.alt || []).includes(ri) && ![1, 2, 3].some(c => filled(a["b" + ri + "_" + c]))) return;
     const vals = []; for (let c = nGiven; c < v.beob.kopf.length; c++) vals.push(v.beob.kopf[c] + ": " + (filled(a["b" + ri + "_" + c]) ? a["b" + ri + "_" + c].trim() : "–"));
     L.push(["  " + z.join(" · ") + " – " + vals.join(" · "), "n"]);
   });

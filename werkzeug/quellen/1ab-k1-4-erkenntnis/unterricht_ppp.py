@@ -190,7 +190,7 @@ def auftrag_folie(titel, nrs, tun, erwartet, ohne_handy=False, layout="Aufgabe")
 # ---------------------------------------------------------------- Inhalte (kurz, nur das Wichtigste)
 HEUTE_ZIEL = {
     1: "Beobachtung, Hypothese und Vorhersage auseinanderhalten – und einen fairen Test planen, bevor geworfen wird.",
-    2: "Den Papierflieger-Test nach festen Regeln durchziehen: drei Vergleichspaare, alle Werte aufschreiben.",
+    2: "Den Papierflieger-Test nach festen Regeln durchziehen: ein Vergleichspaar je Gruppe (A und B), beide Werte sofort aufschreiben.",
     3: "Verstehen, dass Forschung ein Kreislauf ist – und alte Daten kritisch lesen.",
     4: "Eigene Daten auswerten und nur sagen, was die Werte wirklich zeigen.",
 }
@@ -211,7 +211,7 @@ def t1_klaeren_hyp():
     tw = 2.9
     for i, (kopf, bsp, was, col) in enumerate([("Beobachtung", "»Wurf 1 landete bei 6,4 m.«", "was wir sehen oder messen – auch im Experiment", TEAL),
                                                 ("Hypothese", "»Mit Klammer weiter, **weil** die Nase schwerer ist.«", "begründete, prüfbare Vermutung", GREEN),
-                                                ("Vorhersage", "»Bei drei Paaren hat B den größeren Mittelwert.«", "was beim nächsten Test herauskommen sollte", ORANGE)]):
+                                                ("Vorhersage", "»Beim Vergleich aller Gruppen hat B den größeren Mittelwert.«", "was beim nächsten Test herauskommen sollte", ORANGE)]):
         karte(s, X0 + i * (tw + 0.15), 1.05, tw, 2.45, kopf, [bsp, [(was, {"color": MUTED, "size": 20})]], col)
     c, h = merke(s, 3.65, "Die Hypothese sagt WARUM, die Vorhersage sagt, WAS beim Test herauskommt – und beides steht fest, bevor geworfen wird.")
     s._anim.append([c])
@@ -240,7 +240,7 @@ def t1_besprechen():
 def t1_plan():
     s = d.slide("Nur Titel", "Unser Plan: nur EINE Sache ändern")
     rows = [["", "Unser Test"], ["Wir ändern", "nur die Klammer: A ohne, B mit"], ["Wir messen", "die Weite bis zum **ersten Bodenkontakt**, auf 0,1 m"],
-            ["Bleibt gleich", "derselbe Flieger, Papier, Werfer, Abwurflinie und -höhe"], ["Wie oft", "drei Vergleichspaare, A und B abwechselnd"]]
+            ["Bleibt gleich", "derselbe Flieger, Papier, Werfer, Abwurflinie und -höhe"], ["Wie oft", "jede Gruppe: ein Wurf A und ein Wurf B (ein Paar)"]]
     cells, h = B.auto_grid(s, X0, 1.05, [2.2, 6.8], [[B.plain(c) for c in r] for r in rows], size=20, minh=0.48)
     c, hm = merke(s, 1.05 + h + 0.15, "Der Test prüft eure Vorhersage (fliegt B weiter?). Das »weil« prüft er nicht: Die Klammer ändert Masse, Schwerpunkt und klemmt den Rumpf.", size=20)
     s._anim.append([c])
@@ -303,27 +303,19 @@ def t2_sicher():
 
 
 def t2_ablauf():
-    s = d.slide("Nur Titel", f"Versuch {I.VS_ID}: drei Vergleichspaare")
-    rows = [["Gruppen", "Paar 1", "Paar 2", "Paar 3"], ["ungerade (1, 3, 5, 7)", "A, B", "B, A", "A, B"], ["gerade (2, 4, 6, 8)", "B, A", "A, B", "B, A"]]
-    cells, h = B.auto_grid(s, X0, 1.05, [3.3, 1.9, 1.9, 1.9], rows, size=20, minh=0.46)
+    s = d.slide("Nur Titel", f"Versuch {I.VS_ID}: ein Paar je Gruppe")
+    rows = [["Gruppen", "1. Wurf", "2. Wurf"], ["ungerade (1, 3, 5, 7)", "A (ohne Klammer)", "B (mit Klammer)"], ["gerade (2, 4, 6, 8)", "B (mit Klammer)", "A (ohne Klammer)"]]
+    cells, h = B.auto_grid(s, X0, 1.05, [3.3, 2.85, 2.85], rows, size=20, minh=0.46)
     y = 1.05 + h + 0.15
-    y = schritte(s, X0, y, W, ["Probewurf mit A – zählt nicht. Danach wird nichts mehr verändert.",
+    y = schritte(s, X0, y, W, ["Testflüge habt ihr schon gemacht. Jetzt wird nichts mehr verändert.",
                                "Flach aus Hüfthöhe, Fuß hinter der Linie. Messen bis zum ersten Bodenkontakt.",
-                               "Sofort eintragen – auch kurze Würfe und Deckenkontakte (Vermerk)."], size=20, farbe=RED)
-    return s
-
-
-def t2_gegenprobe():
-    s = d.slide("Nur Titel", "Gegenprobe: ein zweiter Werfer")
-    karte(s, X0, 1.05, 4.4, 2.4, "Wer?", ["Die Gruppe, die Stephan aufruft.", "Ein **anderer** Werfer wirft dieselben drei Paare."], TEAL)
-    karte(s, X0 + 4.6, 1.05, 4.4, 2.4, "Wozu?", ["Zeigt sich das Ergebnis auch bei jemand anderem?", "Eingetragen wird **getrennt** – nicht zusammen mitteln."], ORANGE)
-    merke(s, 3.65, "Ein Ergebnis wird glaubwürdiger, wenn es sich wiederholen lässt.", size=20)
+                               "Sofort eintragen – auch kurze Würfe und Deckenkontakte (Vermerk). Ungültiger Wurf: wiederholen."], size=20, farbe=RED)
     return s
 
 
 def t2_ende():
     s = d.slide("Nur Titel", "Zurück und abgeben")
-    schritte(s, X0, 1.1, W, ["Flieger mit Gruppennummer in die Schachtel.", "Papierblatt mit allen Werten bei Stephan abgeben.",
+    schritte(s, X0, 1.1, W, ["Flieger mit Gruppennummer in die Schachtel.", "Papierblatt mit euren zwei Werten bei Prof. HOLZER abgeben.",
                              "Protokoll-Handy: Seite nicht löschen – ausgewertet wird in Stunde 4.", "Büroklammern zurück, Bandmaß aufrollen."], size=20, farbe=OLIVE)
     return s
 
@@ -392,21 +384,22 @@ def t4_popper():
 
 
 def t4_auswertung():
-    s = d.slide("Nur Titel", "Jetzt: Protokoll auswerten")
-    y = schritte(s, X0, 1.05, 6.9, ["Mittelwert A und B, Spannweite – in die Tabelle.", "**Erkenntnis:** Wer flog im Mittel weiter, um wie viel? Kontakte?",
+    s = d.slide("Nur Titel", "Jetzt: Protokoll auswerten (ganze Klasse)")
+    y = schritte(s, X0, 1.05, 6.9, ["**Rechnen:** Klassentabelle ins Protokoll, dann **Mittelwert der Klasse** für A und B, **kleinster und größter Wert**, **Gruppen zählen**, in denen A bzw. B weiter flog.",
+                                    "**Erkenntnis:** Wer flog im Mittel weiter, um wie viel? Kontakte?",
                                     "**Interpretation:** unterstützt · spricht dagegen · unklar – mit Daten begründen.",
-                                    "**Schlussfolgerung:** eine Grenze + eine Verbesserung."], size=20, farbe=RED)
+                                    "**Schlussfolgerung:** eine Grenze + eine Verbesserung."], size=19, farbe=RED)
     qr(s, "versuche", 7.75, 1.05, 1.2, "Versuche")
     B.tb(s, 7.45, 2.65, 2.05, 1.5, ["ein Protokoll-Handy je Gruppe"], size=14, color=MUTED, align=PP_ALIGN.CENTER, after=0)
     return s
 
 
 def t4_uebersicht():
-    s = d.slide("Nur Titel", "Was sagt die ganze Klasse?")
-    rows = [["Gruppe"] + [str(g) for g in range(1, VD.GRUPPEN + 1)], ["Mittelwert A in m"] + [""] * VD.GRUPPEN, ["Mittelwert B in m"] + [""] * VD.GRUPPEN, ["Kontakte?"] + [""] * VD.GRUPPEN]
+    s = d.slide("Nur Titel", "Klassentabelle: alle Gruppen an der Tafel")
+    rows = [["Gruppe"] + [str(g) for g in range(1, VD.GRUPPEN + 1)], ["A ohne in m"] + [""] * VD.GRUPPEN, ["B mit in m"] + [""] * VD.GRUPPEN, ["B weiter?"] + [""] * VD.GRUPPEN]
     cells, h = B.auto_grid(s, X0, 1.05, [2.2] + [6.8 / VD.GRUPPEN] * VD.GRUPPEN, rows, size=20, minh=0.42)
-    c = B.box(s, X0, 1.05 + h + 0.12, W, 0.95, fill=RGBColor.from_string("FFF4EA"), line=ORANGE, lw=1.5)
-    B.text(c, [[("Frage an alle: ", {"bold": True, "color": ORANGE}), ("Flog B in den meisten Gruppen weiter? Streuen die Gruppen stark? Was heißt das für die Behauptung vom Anfang?", {})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0)
+    c = B.box(s, X0, 1.05 + h + 0.12, W, 1.3, fill=RGBColor.from_string("FFF4EA"), line=ORANGE, lw=1.5)
+    B.text(c, [[("Ablauf: ", {"bold": True, "color": ORANGE}), ("Ein Kadett je Gruppe schreibt A und B an die Tafel. Alle übertragen die Werte ins Protokoll. Dann: Flog B in den meisten Gruppen weiter? Wie stark streuen die Werte? Was heißt das für die Behauptung vom Anfang?", {})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0)
     return s
 
 
@@ -427,7 +420,7 @@ def t4_besprechen():
 def t4_abgabe():
     s = d.slide("Nur Titel", "Abgabe: beide PDFs in LMS")
     y = schritte(s, X0, 1.05, 6.9, ["Arbeitsblatt: »PDF erstellen« → in LMS hochladen.", "Versuch: Protokollführer macht für jeden eine PDF (»Ich gebe ab als …«) und schickt sie in die Gruppe.",
-                                    "Jeder lädt seine Versuchs-PDF selbst in LMS.", "Geht LMS nicht: PDF per E-Mail an Stephan."], size=20, farbe=RUST)
+                                    "Jeder lädt seine Versuchs-PDF selbst in LMS.", "Geht LMS nicht: PDF per E-Mail an Prof. HOLZER."], size=20, farbe=RUST)
     qr(s, "aufgaben", 7.75, 1.05, 1.15, "Arbeitsblatt"); qr(s, "versuche", 7.75, 2.75, 1.15, "Versuche")
     return s
 
@@ -444,7 +437,7 @@ def zusatz_folie():
 SPEC = {
  1: [("t1_einst", [0, 1], "EINSTIEG", None, "Neugier wecken, Vorhersage per Handzeichen – noch nicht auflösen", t1_einstieg),
      ("t1_heute", [2], "START", None, "Ziel und Ablauf zeigen, Gruppen 1–8 einteilen", lambda: heute_folie(1)),
-     ("t1_lesen", [3], "LESEN", "Lesen", "Begriffe selbst lesen – Stephan erklärt nicht vor",
+     ("t1_lesen", [3], "LESEN", "Lesen", "Begriffe selbst lesen – Prof. HOLZER erklärt nicht vor",
       lambda: lesen_folie(1, "**Buch S. 29**, Abschnitt **4.1 »Von der Hypothese zur Theorie«**", ["hypothese", "theorie", "fragen"],
                           "Was unterscheidet Hypothese und Vorhersage?", [3])),
      ("t1_hyp", [4], "KURZ KLÄREN", "Kurz klären", "Fehlvorstellung »Hypothese = Vorhersage« ausräumen", t1_klaeren_hyp),
@@ -463,8 +456,7 @@ SPEC = {
      ("t2_weg", [3], "WEG", "Weg", "Material mitnehmen – im Eingangsbereich gibt es keinen Beamer", t2_weg),
      ("t2_sicher", [4], "KURZ KLÄREN", None, "Sicherheit und Rollen VOR dem Weg zeigen, flachen Abwurf vor Ort vorzeigen", t2_sicher),
      ("t2_ablauf", [5], "VERSUCH", "Versuch", "Reihenfolge der Würfe festlegen (im Saal zeigen, vor Ort gilt das Papierblatt)", t2_ablauf),
-     ("t2_gegen", [6], "VERSUCH", "Gegenprobe", "Wiederholbarkeit zeigen", t2_gegenprobe),
-     ("t2_ende", [7, 8], "ABGABE", None, "Flieger und Papierblätter einsammeln; Reserve", t2_ende)],
+     ("t2_ende", [6, 7], "ABGABE", None, "Flieger und Papierblätter einsammeln; Reserve", t2_ende)],
  3: [("t3_heute", [0, 1], "TEST", None, "Test (20 min); danach Ziel von Teil 3", lambda: heute_folie(3)),
      ("t3_lesen", [2], "LESEN", "Lesen", "Semmelweis und Kreislauf selbst lesen",
       lambda: lesen_folie(3, "**Buch S. 29**, Abschnitt **4.2 »Wissenschaftliche Forschung«**", ["s0c", "kreislauf"],
@@ -479,8 +471,8 @@ SPEC = {
       lambda: lesen_folie(4, None, ["vorsichtig", "mittelwert", "schluss", "popper"], "Wann ist die richtige Antwort »noch keine Entscheidung möglich«?", [2])),
      ("t4_klaeren", [3], "KURZ KLÄREN", "Kurz klären", "Rechenweg einmal vorzeigen (andere Zahlen als A8), Überlappung = unklar", t4_klaeren),
      ("t4_popper", [3], "KURZ KLÄREN", None, "Falsifizierbarkeit (Popper) – Pflicht-Lehraufgabe, für A9 Aussage 3", t4_popper),
-     ("t4_ausw", [4], "VERSUCH", "Auswerten", "Eigene Daten auswerten – Kern der Einheit", t4_auswertung),
-     ("t4_klasse", [5], "KURZ KLÄREN", "Klassenübersicht", "Alle Gruppen nebeneinander: Streuung zwischen Gruppen sichtbar machen", t4_uebersicht),
+     ("t4_klasse", [4], "KURZ KLÄREN", "Klassentabelle", "Jede Gruppe trägt A und B an der Tafel ein; alle übertragen ins Protokoll", t4_uebersicht),
+     ("t4_ausw", [5], "VERSUCH", "Auswerten", "Werte der ganzen Klasse auswerten – Kern der Einheit", t4_auswertung),
      ("t4_a810", [6, 7, 8], "AUFGABE", "Aufgaben 8–10", "Rechnen, KI-Aussagen prüfen, Konstruktionszyklus", t4_auftrag),
      ("t4_bespr", [9], "BESPRECHEN", None, "»Bewiesen / widerlegt / Stufenleiter« ein letztes Mal geraderücken", t4_besprechen),
      ("t4_abgabe", [10, 11], "ABGABE", "Abgabe", "Abgabe in LMS; Reserve", t4_abgabe)],
@@ -567,7 +559,7 @@ def bauen():
         [("Pro Stunde starten: ", {"bold": True, "color": OLIVE}), ("Bildschirmpräsentation → Benutzerdefinierte Bildschirmpräsentation → z. B. »1BK Fr 06.11. Stunde 2«. Ohne Menü: im Vortrag die Foliennummer tippen und Enter (Nummern auf den Regie-Folien).", {})],
         [("Jede Stunde läuft gleich: ", {"bold": True, "color": OLIVE}), ("»Heute« → »Lesen: …« (Abschnitte im Theorieteil und im Buch, mit Leitfrage) → »Kurz klären« (nur Fehlvorstellungen, Antwort per Klick) → »Jetzt: Aufgabe …« → »Besprechen« (Lösung per Klick, erst nach der Arbeitszeit).", {})],
         [("Unten links ", {"bold": True, "color": OLIVE}), ("steht immer, was JETZT läuft (mit Minuten aus dem Zeitplan) und was DANACH kommt – so sehen auch die Kadetten den Ablauf.", {})],
-        [("Teil 2 im Eingangsbereich: ", {"bold": True, "color": OLIVE}), ("Dort gibt es keinen Beamer. Folien »Sicherheit und Rollen« und »drei Vergleichspaare« im Saal zeigen, vor Ort gilt das Papierblatt (VS-AB).", {})],
+        [("Teil 2 im Eingangsbereich: ", {"bold": True, "color": OLIVE}), ("Dort gibt es keinen Beamer. Folien »Sicherheit und Rollen« und »ein Paar je Gruppe« im Saal zeigen, vor Ort gilt das Papierblatt (VS-AB).", {})],
         [("Nachschlagen statt zeigen: ", {"bold": True, "color": OLIVE}), ("Die ausführliche TH-Lehrer-PPP und der Theorieteil bleiben vollständig – hier steht nur das Wichtigste. Zusatzaufgaben 11–14: ausgeblendete Folie »OPTIONAL«, eigene Präsentation »Optional: Für Schnelle«.", {})],
         [("Regiepläne: ", {"bold": True, "color": OLIVE}), (f"Folien {nr_von[regie[('1AK', 1)].slide_id]}–{nr_von[regie[('1BK', 4)].slide_id]} (ausgeblendet), zusammen als Präsentation »Lehrer-Regiepläne«.", {})]],
         size=13, after=5)

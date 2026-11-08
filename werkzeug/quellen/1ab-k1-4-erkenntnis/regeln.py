@@ -9,16 +9,19 @@ import inhalt as I
 # Versuchsseite: nur die drei Pflicht-Vergleichspaare (Spalten A und B) müssen Zahlen sein; Mittelwert/Spannweite und Gegenprobe sind nicht Pflicht
 # Pflicht: Spalten A und B der drei Paare. Freiwillig (opt, leer erlaubt, Strich erlaubt): Spalte »Auffälliges«, Mittelwert/Spannweite (Stunde 4) und Gegenprobe
 # (nur aufgerufene Gruppen) – ChatGPT-Prüfung K1.4, F3. »opt« wertet werkzeug/versuche_pruefen.js aus.
-_PFLICHT = {f"b{r}_{c}": {"zahl": True} for r in (0, 1, 2) for c in (1, 2)}
-_FREI = {f"b{r}_{c}": {"opt": True, "strich": True, "min": 1} for r in range(8) for c in (1, 2, 3) if f"b{r}_{c}" not in _PFLICHT}
+# Stand 08.11.2026: Zeile 0 = Wurfpaar der Gruppe (Pflicht, A und B Zahl). Zeilen 1-7 = alte Zeilen (versteckt, nicht Pflicht).
+# Zeilen 8-15 = Klassentabelle Gruppe 1-8 (freiwillig, nicht jede Klasse hat 8 Gruppen), 16 = Mittelwert Klasse (Pflicht, Zahl),
+# 17 = kleinster-größter Wert (freiwillig), 18 = Zahl der Gruppen je Zustand (Pflicht, Zahl).
+_PFLICHT = {f"b{r}_{c}": {"zahl": True} for r in (0, 16, 18) for c in (1, 2)}
+_FREI = {f"b{r}_{c}": {"opt": True, "strich": True, "min": 1} for r in range(19) for c in (1, 2, 3) if f"b{r}_{c}" not in _PFLICHT}
 VS_REGELN = {
  "flieger": {
   "beob": {**_PFLICHT, **_FREI},
   "erk": {"kw": ["Mittelwert / im Mittel=mittel,durchschnitt,schnitt", "Vergleich A und B=weiter,kuerzer,gleich,mehr,weniger,unterschied,ohne,mit,klammer",
                  "Streuung / Kontakt=streu,spannweite,unterschiedlich,schwank,decke,wand,kontakt,kein kontakt,keine kontakte"], "need": 2},
   "interp": {"kw": ["Einordnung=unterstuetz,stuetz,spricht dafuer,spricht dagegen,dagegen,unklar,keine entscheidung,nicht entscheid,bestaetig,widerspr",
-                    "Begruendung mit Daten=mittel,wert,spannweite,ueberlapp,streu,gegenprobe,zweite,werfer,decke,einzel"], "need": 2},
-  "schluss": {"kw": ["Grenze=nur drei,wenig,werfer,kraft,hand,decke,hoehe,masse,schwerpunkt,ein flieger,zufall,wind,luft,ungenau",
+                    "Begruendung mit Daten=mittel,wert,spannweite,ueberlapp,streu,gruppen,klasse,werfer,decke,einzel"], "need": 2},
+  "schluss": {"kw": ["Grenze=nur ein,wenig,werfer,kraft,hand,decke,hoehe,masse,schwerpunkt,ein flieger,zufall,wind,luft,ungenau,gruppen",
                      "Verbesserung=mehr,oefter,wiederhol,rampe,schleuder,gleich,zweite,anderer,messen,genauer,flieger"], "need": 2}},
 }
 

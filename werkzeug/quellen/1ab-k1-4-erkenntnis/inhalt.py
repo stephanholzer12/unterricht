@@ -6,8 +6,9 @@ Deshalb ist alles nach TEILEN 1–4 gegliedert (»h« = Teil); welche Stunde wel
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe. Kein Kahoot (Stephan, 29.10.2026).
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge, z. B. Zuordnen)."""
 
-STAND = "30.10.2026"
-V = "v6"
+STAND = "08.11.2026"
+V = "v7"   # Version TH-Unterricht (eigener Zähler)
+ZV = "v4"  # Version der übrigen Dateien und der Lieferung (ZIP, Ordner)
 ORDNER = "1ab-nawi/k1-4-erkenntnis"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -63,7 +64,7 @@ T = [
   "type": "multi",
   "fields": [["s1", "a) »Beim ersten Wurf landete der Flieger 6,4 m hinter der Linie.«", ZUORDNUNG, False],
              ["s2", "b) »Mit Büroklammer fliegt er im Mittel weiter, weil die schwerere Nase ihn ruhiger gleiten lässt.«", ZUORDNUNG, False],
-             ["s3", "c) »Bei unseren drei Vergleichspaaren erwarten wir mit Klammer den größeren Mittelwert.«", ZUORDNUNG, False],
+             ["s3", "c) »Beim Vergleich aller Gruppen erwarten wir mit Klammer den größeren Mittelwert.«", ZUORDNUNG, False],
              ["s4", "d) »Bei Wurf 2 hat der Flieger die Decke gestreift.«", ZUORDNUNG, False],
              ["s5", "e) »Vielleicht flog er weiter, weil Kadett Huber fester geworfen hat.«", ZUORDNUNG, False]],
   "chk": {"s1": {"sel": "Beobachtung"}, "s2": {"sel": "Hypothese (Vermutung)"}, "s3": {"sel": "Vorhersage"}, "s4": {"sel": "Beobachtung"}, "s5": {"sel": "Hypothese (Vermutung)"}},
@@ -110,10 +111,10 @@ T = [
 
  {"id": "a4", "nr": 4, "title": "Unsere Vermutung – vor dem ersten Wurf", "src": "Buch S. 29", "own": True, "tag": "Teil 1", "h": 1, "zeit": 4,
   "q": "Arbeitet in eurer Versuchsgruppe und schreibt die Antworten VOR dem Versuch auf. Danach darf nichts mehr geändert werden. a) Eure Hypothese in einem Satz mit »weil …«. "
-       "b) Eure Vorhersage für die drei Vergleichspaare: Was erwartet ihr für A (ohne Klammer) und B (mit Klammer)? c) Welches Ergebnis würde gegen eure Hypothese sprechen?",
+       "b) Eure Vorhersage für den Vergleich aller Gruppen: Was erwartet ihr für A (ohne Klammer) und B (mit Klammer)? c) Welches Ergebnis würde gegen eure Hypothese sprechen?",
   "hint": "Auch »Mit Klammer fliegt er kürzer, weil …« ist eine gute Hypothese – wichtig ist, dass ihr sie vorher festlegt und begründet. Info: Theorieteil Teil 1 »Unser Versuch: der Plan«",
   "type": "multi",
-  "fields": [["hyp", "a) Unsere Hypothese (ein Satz mit »weil«)"], ["vor", "b) Unsere Vorhersage für die Vergleichspaare"], ["gegen", "c) Das würde gegen unsere Hypothese sprechen"]],
+  "fields": [["hyp", "a) Unsere Hypothese (ein Satz mit »weil«)"], ["vor", "b) Unsere Vorhersage für A und B"], ["gegen", "c) Das würde gegen unsere Hypothese sprechen"]],
   "chk": {"hyp": {"kw": [["Klammer / Gewicht vorne", r"klammer|gewicht|schwer|nase|vorn|masse|schwerpunkt"], ["Begründung (weil …)", r"weil|denn|da |deshalb|darum|daher"]], "man": True},
           "vor": {"kw": [["Vergleich A und B / mit und ohne", r"\bb\b|\ba\b|mit|ohne|klammer|mittel|weiter|kürzer|kuerzer|gleich|weniger|mehr"]], "man": True},
           "gegen": {"kw": [["Gegenbefund", r"weiter|kürzer|kuerzer|gleich|kein|nicht|unterschied|mittel|weniger|mehr"]], "man": True}},
@@ -181,7 +182,7 @@ T = [
 
  # ======================================================= Teil 4 · Auswerten: Was sagen die Werte? (Buch S. 29–32)
  {"id": "a8", "nr": 8, "title": "Mittelwert und Spannweite", "src": "Buch S. 29", "own": True, "tag": "Teil 4", "h": 4, "zeit": 4,
-  "q": "Übungsdaten (nicht eure Messung): Ein Flieger flog ohne Klammer 3,8 m · 4,6 m · 4,2 m und mit Klammer 5,1 m · 3,9 m · 5,4 m. "
+  "q": "Übungsdaten (nicht eure Messung): Drei Gruppen warfen ohne Klammer 3,8 m · 4,6 m · 4,2 m und mit Klammer 5,1 m · 3,9 m · 5,4 m. "
        "a) Berechne den Mittelwert ohne Klammer (A) in m. b) Berechne den Mittelwert mit Klammer (B) in m. c) Berechne die Spannweite von B in m. d) Wähle die passende Schlussfolgerung.",
   "hint": "Mittelwert = Summe der Werte : Anzahl der Werte. Spannweite = größter Wert − kleinster Wert. Info: Theorieteil Teil 4 »Mittelwert und Spannweite«",
   "type": "multi",
@@ -195,7 +196,7 @@ T = [
   "sol": [["Lösung", ["a) (3,8 + 4,6 + 4,2) m : 3 = 12,6 m : 3 = 4,2 m.",
                       "b) (5,1 + 3,9 + 5,4) m : 3 = 14,4 m : 3 = 4,8 m.",
                       "c) 5,4 m − 3,9 m = 1,5 m.",
-                      "d) unklar: B war im Mittel um 0,6 m weiter, aber die Werte von A (3,8–4,6 m) und B (3,9–5,4 m) überlappen stark, und es sind nur drei Würfe. Noch keine Entscheidung möglich."]]],
+                      "d) unklar: B war im Mittel um 0,6 m weiter, aber die Werte von A (3,8–4,6 m) und B (3,9–5,4 m) überlappen stark, und es sind nur drei Gruppen. Noch keine Entscheidung möglich."]]],
   "tip": ["Mittelwert und Spannweite", "theorie.html#mittelwert"]},
 
  {"id": "a9", "nr": 9, "title": "Eine KI-Antwort prüfen", "src": "Buch S. 29", "own": True, "tag": "Teil 4", "h": 4, "zeit": 4,
@@ -220,7 +221,7 @@ T = [
        "g) Welche EINE Änderung würdet ihr als Nächstes testen – und was muss dabei gleich bleiben?",
   "hint": "Überleg bei jeder Tätigkeit: Kommt sie vor dem Bauen, beim Bauen oder nach dem Test? Info: Theorieteil Teil 4 »Forschen oder konstruieren?«",
   "type": "multi",
-  "fields": [["z4", "a) Wir werfen drei Vergleichspaare und schreiben alles auf.", ZYKLUS, False],
+  "fields": [["z4", "a) Wir werfen A und B und schreiben alles auf.", ZYKLUS, False],
              ["z1", "b) Wir legen fest, was »weit« heißt und wie Deckenkontakte zählen.", ZYKLUS, False],
              ["z6", "c) Wir schieben die Klammer 2 cm nach hinten und testen neu.", ZYKLUS, False],
              ["z3", "d) Wir falten den Flieger nach Anleitung.", ZYKLUS, False],
@@ -230,7 +231,7 @@ T = [
   "chk": {"z1": {"sel": "Problem analysieren"}, "z2": {"sel": "Entwerfen"}, "z3": {"sel": "Konstruieren"}, "z4": {"sel": "Testen"}, "z5": {"sel": "Bewerten"}, "z6": {"sel": "Verbessern"},
           "naechst": {"kw": [["eine Änderung", r"klammer|position|flügel|fluegel|papier|falt|rumpf|ecken|höhe|hoehe|werf|nase|größe|groesse|form"], ["bleibt gleich", r"gleich|selb|nicht ändern|nicht aendern|konstant|sonst nichts|nur eine|alles andere"]], "need": 2, "man": True}},
   "sol": [["Lösung", ["a) Testen · b) Problem analysieren · c) Verbessern · d) Konstruieren · e) Bewerten · f) Entwerfen.",
-                      "g) z. B. »Wir schieben die Klammer 2 cm nach hinten. Gleich bleiben derselbe Flieger, derselbe Werfer, dieselbe Abwurfhöhe und die drei Vergleichspaare.«",
+                      "g) z. B. »Wir schieben die Klammer 2 cm nach hinten. Gleich bleiben derselbe Flieger, derselbe Werfer, dieselbe Abwurfhöhe und dieselbe Zahl der Würfe.«",
                       "Unterschied: Beim Forschen prüfen wir eine Hypothese (Was stimmt?). Beim Konstruieren verbessern wir einen Entwurf für ein Ziel (Was funktioniert besser?). Beide brauchen faire Tests."]]],
   "tip": ["Forschen oder konstruieren?", "theorie.html#zyklus"]},
 
@@ -269,7 +270,7 @@ T = [
  {"id": "a13", "nr": 13, "title": "Forschungskarte: Wiederholen", "src": "Buch S. 29", "own": True, "tag": "Zusatz", "h": 0, "zeit": 5,
   "q": "Lies die Forschungskarte »Wiederholen ist Pflicht« im Theorieteil (Für Schnelle). a) Wie viele Experimente konnte das Team am Ende tatsächlich wiederholen? "
        "b) Wie groß waren die gemessenen Effekte bei der Wiederholung im Vergleich zum Original (Median)? c) Was bedeutet das für unseren Papierflieger-Test? (1 Satz)",
-  "hint": "Alle Zahlen stehen auf der Karte. Zu c): Denk an die Gegenprobe mit einem zweiten Werfer.",
+  "hint": "Alle Zahlen stehen auf der Karte. Zu c): Denk an andere Gruppen mit anderen Werfern.",
   "type": "multi",
   "fields": [["anz", "a) Tatsächlich wiederholt", ["50 Experimente", "alle 193 Experimente", "10 Experimente", "kein einziges Experiment"]],
              ["eff", "b) Effekte bei der Wiederholung", ["deutlich kleiner", "genau gleich groß", "doppelt so groß", "gar nicht messbar"]],
@@ -278,7 +279,7 @@ T = [
           "uns": {"kw": [["wiederholen / Gegenprobe / anderer Werfer", r"wiederhol|gegenprobe|zweite[nr]? werfer|andere[nr]? (werfer|gruppe)|andere|bestätig|bestaetig|nachmach|nochmal|noch einmal|mehr würfe|mehr wuerfe|genau beschreib|protokoll"]], "man": True}},
   "sol": [["Lösung", ["a) 50 Experimente (aus 23 Fachartikeln) – geplant waren 193.",
                       "b) deutlich kleiner – bei den ursprünglich positiven Effekten im Median um 85 % kleiner als in den Originalarbeiten.",
-                      "c) Ein einzelnes Ergebnis reicht nicht: Erst wenn eine Wiederholung – z. B. die Gegenprobe mit einem zweiten Werfer – ein ähnliches Ergebnis liefert, vertrauen wir ihm mehr. Dafür muss das Protokoll genau sein."]]],
+                      "c) Ein einzelnes Ergebnis reicht nicht: Erst wenn eine Wiederholung – z. B. andere Gruppen mit anderen Werfern – ein ähnliches Ergebnis liefert, vertrauen wir ihm mehr. Dafür muss das Protokoll genau sein."]]],
   "tip": ["Wiederholen ist Pflicht", "theorie.html#forschung"]},
 
  {"id": "a14", "nr": 14, "title": "Video, Podcast oder Plakat", "src": "Buch S. 28–29", "own": True, "tag": "Zusatz", "h": 0, "zeit": 25,
@@ -340,7 +341,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Gesetz", "Beschreibung einer Regelmäßigkeit unter bestimmten Bedingungen, oft als Formel"],
                 ["Modell", "gezielte Vereinfachung für einen Zweck; zeigt manches, lässt anderes weg – hat Grenzen"],
                 ["fairer Test (Variablen kontrollieren)", "nur eine Bedingung wird verändert, alle anderen bleiben gleich"],
-                ["Gegenprobe", "Wiederholung unter etwas anderen Bedingungen (z. B. anderer Werfer), um ein Ergebnis zu überprüfen"],
+                ["Gegenprobe", "Wiederholung unter etwas anderen Bedingungen (z. B. anderer Werfer oder andere Gruppe), um ein Ergebnis zu überprüfen"],
                 ["Mittelwert", "Summe aller Werte geteilt durch die Anzahl der Werte"],
                 ["Spannweite", "größter Wert minus kleinster Wert – zeigt, wie stark die Werte streuen"],
                 ["Schlüsse ziehen", "aus den Messwerten nur so viel folgern, wie sie zeigen: Streuung beachten, mehrere Würfe nutzen und »unterstützt«, »spricht dagegen« oder »unklar« sagen statt »bewiesen«"],
@@ -355,13 +356,13 @@ WEISST_DU_NOCH = {
     3: [("Ist eine wissenschaftliche Theorie »nur eine Vermutung«?", "Nein – sie verbindet viele geprüfte Befunde und erlaubt Vorhersagen."),
         ("Welche Frage gehört zur Chemie: Keimung, Rost oder Flugweite?", "Rost – ein neuer Stoff entsteht.")],
     4: [("Ein Flug streift die Decke. Was macht ihr mit dem Wert?", "Behalten und in der Spalte Decke/Wand vermerken – nicht löschen, nicht durch 0 ersetzen."),
-        ("Was macht die Gegenprobe?", "Ein zweiter Werfer wiederholt die Vergleichspaare – so sehen wir, ob das Ergebnis auch bei jemand anderem ähnlich ist.")],
+        ("Warum werten wir die Werte der ganzen Klasse aus und nicht nur das Paar einer Gruppe?", "Ein Paar sagt fast nichts. Jede Gruppe hat einen anderen Werfer und einen eigenen Flieger – zeigen viele Gruppen Ähnliches, vertrauen wir dem Ergebnis mehr.")],
 }
 
 STOPPFRAGEN = {
     1: [("»Unser Flieger flog einmal weiter – also ist unsere Theorie bewiesen.« Was ist falsch?", "Ein einzelner Wert sagt wenig, und auch viele Werte beweisen eine Hypothese nicht endgültig. Außerdem prüfen wir eine Hypothese zu einer Änderung, keine Theorie."),
         ("Ist »Sollen wir mehr Geld für Hubschrauber ausgeben?« eine naturwissenschaftliche Frage?", "Nein – das ist eine Entscheidung (Wirtschaft, Politik). Messungen liefern nur Fakten dazu.")],
-    2: [("Warum werfen wir A und B abwechselnd statt erst dreimal A und dann dreimal B?", "Damit Übung, Müdigkeit oder ein verbogener Flieger nicht nur einen Zustand treffen."),
+    2: [("Warum werfen manche Gruppen zuerst A und andere zuerst B?", "Damit Übung, Müdigkeit oder ein sich verformender Flieger nicht immer nur einen Zustand treffen – die Reihenfolge gleicht sich in der Klasse aus."),
         ("Was ändert die Büroklammer alles?", "Vor allem Masse und Schwerpunkt, außerdem klemmt sie den Rumpf zusammen. Darum können wir nicht sagen, was davon wirkt.")],
     3: [("Ist Forschung eine gerade Linie von Schritt 1 bis 8?", "Nein – ein Kreislauf mit Rückschritten und neuen Fragen."),
         ("Garantiert eine Begutachtung, dass ein Ergebnis stimmt?", "Nein – sie senkt Fehler; Vertrauen entsteht, wenn andere das Ergebnis wiederholen.")],
@@ -402,8 +403,8 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
   "Ändert man nur eine Sache, kann man ihr den Unterschied zuschreiben.", "Buch S. 29"),
  ("Fairer Test", "Ein regulärer Wurf geht nach 2 m zu Boden. Was tun?", ["Er zählt und wird eingetragen.", "Er wird gelöscht.", "Er wird durch 0 ersetzt.", "Er wird so oft wiederholt, bis er weit ist."],
   "Auch schlechte reguläre Flüge zählen. Wer sie streicht, verfälscht das Ergebnis.", "Buch S. 29"),
- ("Fairer Test", "Was macht eine Gegenprobe mit einem zweiten Werfer?", ["Sie prüft, ob das Ergebnis auch bei jemand anderem ähnlich ist.", "Sie beweist die Hypothese.", "Sie ersetzt die erste Messreihe.", "Sie zeigt, ob die Masse die Ursache ist."],
-  "Die Gegenprobe prüft die Übertragbarkeit – sie trennt aber nicht Masse und Schwerpunkt.", "Buch S. 29"),
+ ("Fairer Test", "Andere Gruppen mit anderen Werfern wiederholen den Versuch (Gegenprobe). Was bringt das?", ["Wir sehen, ob das Ergebnis auch bei anderen ähnlich ist.", "Es beweist die Hypothese.", "Es ersetzt die erste Messreihe.", "Es zeigt, ob die Masse die Ursache ist."],
+  "Eine Wiederholung durch andere prüft die Übertragbarkeit – sie trennt aber nicht Masse und Schwerpunkt.", "Buch S. 29"),
  ("Auswerten", "4,0 m, 5,0 m und 6,0 m – wie groß ist der Mittelwert?", ["5,0 m", "15,0 m", "2,0 m", "6,0 m"],
   "(4,0 + 5,0 + 6,0) m : 3 = 15,0 m : 3 = 5,0 m.", "Buch S. 29"),
  ("Auswerten", "4,0 m, 5,0 m und 6,0 m – wie groß ist die Spannweite?", ["2,0 m", "5,0 m", "15,0 m", "1,0 m"],

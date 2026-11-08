@@ -108,7 +108,7 @@
    "quiz.html"
   ],
   "fahrplan": {
-   "text": "Die Theorie ist in vier Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 1AK Teil 1 → 2 → 3 → 4, 1BK Teil 1 → 3 → 2 → 4 (Teil 3 kommt am Fr 06.11. nach dem Test). Der Papierflieger-Test (Teil 2) findet im Eingangsbereich statt. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS – 1AK am Do 12.11., 1BK am Mi 11.11.",
+   "text": "Die Theorie ist in vier Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 1AK Teil 1 → 2 → 3 → 4, 1BK Teil 1 → 3 → 2 → 4 (Teil 3 kommt am Fr 06.11. nach dem Test). Der Papierflieger-Test (Teil 2) findet im Eingangsbereich statt: Jede Gruppe wirft einmal ohne und einmal mit Büroklammer, in Stunde 4 werten alle die Werte der ganzen Klasse aus. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS – 1AK am Do 12.11., 1BK am Mi 11.11.",
    "zeilen": [
     {
      "klasse": "1AK",
@@ -117,7 +117,7 @@
      "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
      "aufgaben": "1–4",
      "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
-     "wie": "ohne Handy: 1AK (28 Kadetten): 7 Vierergruppen bilden; je Gruppe einen Flieger nach Faltanleitung bauen und Gruppennummer notieren",
+     "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
      "abgabe": "Flieger abgeben"
     },
     {
@@ -126,8 +126,8 @@
      "datum": "Do 05.11. (2. Std.)",
      "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
      "aufgaben": "5 · Versuchsprotokoll",
-     "zeit": "Aufgaben und Versuch ca. 30 min · Reserve 4 min",
-     "wie": "ohne Handy: Versuch K1.4-V1, Gegenprobe",
+     "zeit": "Aufgaben und Versuch ca. 17 min · Reserve 14 min",
+     "wie": "ohne Handy: Versuch K1.4-V1",
      "abgabe": "Papierblatt der Gruppe abgeben"
     },
     {
@@ -144,9 +144,9 @@
      "klasse": "1AK",
      "wann": "Stunde 4",
      "datum": "Do 12.11. (1. Std.)",
-     "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1 auswerten",
+     "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1: Klassentabelle und Auswertung",
      "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
-     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 3 min · Reserve 4 min",
+     "zeit": "Aufgaben und Versuch ca. 23 min · Besprechung 3 min · Reserve 3 min",
      "wie": "ohne Handy: Aufgabe 10 zu zweit",
      "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
     },
@@ -157,7 +157,7 @@
      "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
      "aufgaben": "1–4",
      "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
-     "wie": "ohne Handy: 1BK (29 Kadetten): 8 Gruppen bilden (5 Vierergruppen, 3 Dreiergruppen); je Gruppe einen Flieger nach Faltanleitung bauen und Gruppennummer notieren",
+     "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
      "abgabe": "Flieger abgeben"
     },
     {
@@ -176,17 +176,17 @@
      "datum": "Mo 09.11.",
      "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
      "aufgaben": "5 · Versuchsprotokoll",
-     "zeit": "Aufgaben und Versuch ca. 30 min · Reserve 3 min",
-     "wie": "ohne Handy: Versuch K1.4-V1, Gegenprobe",
+     "zeit": "Aufgaben und Versuch ca. 17 min · Reserve 13 min",
+     "wie": "ohne Handy: Versuch K1.4-V1",
      "abgabe": "Papierblatt der Gruppe abgeben"
     },
     {
      "klasse": "1BK",
      "wann": "Stunde 4",
      "datum": "Mi 11.11.",
-     "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1 auswerten",
+     "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1: Klassentabelle und Auswertung",
      "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
-     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 3 min · Reserve 4 min",
+     "zeit": "Aufgaben und Versuch ca. 23 min · Besprechung 3 min · Reserve 3 min",
      "wie": "ohne Handy: Aufgabe 10 zu zweit",
      "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
     },
@@ -199,19 +199,19 @@
    ]
   },
   "dateien": {
-   "stand": "31.10.2026",
-   "zip": "26-27-1AB-K1.4-Erkenntnis-v3.zip",
+   "stand": "08.11.2026",
+   "zip": "26-27-1AB-K1.4-Erkenntnis-v4.zip",
    "liste": [
-    "26-27-1AB-K1.4-Erkenntnis-TH-Unterricht-v6.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Lehrer-v3.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Lehrer-v3.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-AB-v3.docx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Loesung-v3.docx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Fachwissen-v3.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-AB-v3.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Loesung-v3.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Fachwissen-v3.docx",
-    "26-27-1AB-K1.4-Erkenntnis-Pruefbericht-Claude-v3.md"
+    "26-27-1AB-K1.4-Erkenntnis-TH-Unterricht-v7.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Lehrer-v4.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Lehrer-v4.pptx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-AB-v4.docx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Loesung-v4.docx",
+    "26-27-1AB-K1.4-Erkenntnis-TH-Fachwissen-v4.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-AB-v4.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Loesung-v4.docx",
+    "26-27-1AB-K1.4-Erkenntnis-VS-Fachwissen-v4.docx",
+    "26-27-1AB-K1.4-Erkenntnis-Pruefbericht-Claude-v4.md"
    ]
   },
   "lehrerseite": "https://claude.ai/artifact/7y811wKjJTEmufpoP8Ed7x"

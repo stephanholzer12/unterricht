@@ -28,7 +28,7 @@ import plan as PL
 
 MASTER, OUT = sys.argv[1], sys.argv[2]
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
-VER = I.V
+VER = I.ZV
 OLIVE, INK, CARD, GREEN, ORANGE, TEAL, RUST, MUTED, WHITE, PALE = (RGBColor.from_string(x) for x in
     ["3B4A2F", "1F2A1C", "EEF3E4", "7FA83A", "D9772B", "2E7D8C", "8C3B2E", "5E6652", "FFFFFF", "F7F9F2"])
 RED = RGBColor.from_string("A33A2B")
@@ -791,13 +791,16 @@ def versuch_folien(nr, L, kurz=False):
         rows.append(z + [e if L else ""] + [""] * (len(kopf) - ng - 1))
     if v.get("erwartet_tab"):
         rows = [kopf] + [z + (v["erwartet_tab"][i] if L else [""] * (len(kopf) - ng)) for i, z in enumerate(v["beob"]["zeilen"])]
+    if v.get("beob_folie"):  # Stand 08.11.2026: kurze Fassung (Wurfpaar + Klasse); Details im Protokoll
+        bf = v["beob_folie"]; kopf = bf["kopf"]; ng = max(len(z) for z in bf["zeilen"])
+        rows = [kopf] + [z + ([c for c in bf["tab"][i]][:len(kopf) - ng] if L else [""] * (len(kopf) - ng)) for i, z in enumerate(bf["zeilen"])]
     rows = rows[:nz + 1]
     cw = {2: [3.2, 5.8], 3: [3.0, 3.6, 2.4], 4: [2.9, 1.85, 1.85, 2.4]}.get(len(kopf)) or [1.0] + [8.0 / (len(kopf) - 1)] * (len(kopf) - 1)
     cells, h = auto_grid(s, X0, Y0 + 0.1, cw, rows, size=16, minh=0.42)
     if L:
         for r in cells[1:]: s._anim.append(r[ng:])
     y = Y0 + 0.2 + h
-    tb(s, X0, y - 0.05, 9, 0.3, [("Beispielwerte – eure Werte sind anders · " if L and v.get("erwartet_tab") else "") + "Gegenprobe: eigene Zeilen im Protokoll"], size=12, color=RED if L else MUTED); y += 0.27
+    tb(s, X0, y - 0.05, 9, 0.3, [("Beispielwerte – eure Werte sind anders · " if L and v.get("erwartet_tab") else "") + "Klassentabelle: Zeilen im Protokoll"], size=12, color=RED if L else MUTED); y += 0.27
     hq = th("Erkenntnis: " + v["erk"], 20, 9, pad=0.15)
     if Y1 - y - hq < max(0.75, th(v["erk_l"], 20, 8.8, pad=0.4)):
         pill(s, pl, kind=pk, w=2.4); s = d.slide("Nur Titel", f"{nr} · Erkenntnis"); y = Y0 + 0.05
@@ -1048,7 +1051,7 @@ def build_vs(L):
     global d
     d = Deck(L, "NAWI · 1AB · K1.4 Versuch Papierflieger")
     d.section("Start")
-    titelfolie("Der Papierflieger-Test", f"NAWI · 1AB · Versuch {I.VS_ID} = Jahresplan V1.4 · Hypothese und Gegenprobe · Buch S. 28–32", L)
+    titelfolie("Der Papierflieger-Test", f"NAWI · 1AB · Versuch {I.VS_ID} = Jahresplan V1.4 · Hypothese und Klassenauswertung · Buch S. 28–32", L)
     sicherheit()
     s = d.slide("Nur Titel", "Versuche im Überblick")
     rows = [["ID", "Versuch", "Wann", "Form"]]

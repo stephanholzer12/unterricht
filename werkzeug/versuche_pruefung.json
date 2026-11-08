@@ -1486,16 +1486,16 @@
      "b0_2": {
       "zahl": true
      },
-     "b1_1": {
+     "b16_1": {
       "zahl": true
      },
-     "b1_2": {
+     "b16_2": {
       "zahl": true
      },
-     "b2_1": {
+     "b18_1": {
       "zahl": true
      },
-     "b2_2": {
+     "b18_2": {
       "zahl": true
      },
      "b0_3": {
@@ -1503,7 +1503,27 @@
       "strich": true,
       "min": 1
      },
+     "b1_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b1_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
      "b1_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b2_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b2_2": {
       "opt": true,
       "strich": true,
       "min": 1
@@ -1587,6 +1607,151 @@
       "opt": true,
       "strich": true,
       "min": 1
+     },
+     "b8_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b8_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b8_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b9_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b9_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b9_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b10_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b10_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b10_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b11_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b11_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b11_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b12_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b12_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b12_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b13_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b13_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b13_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b14_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b14_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b14_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b15_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b15_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b15_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b16_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b17_1": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b17_2": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b17_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
+     },
+     "b18_3": {
+      "opt": true,
+      "strich": true,
+      "min": 1
      }
     },
     "erk": {
@@ -1600,13 +1765,13 @@
     "interp": {
      "kw": [
       "Einordnung=unterstuetz,stuetz,spricht dafuer,spricht dagegen,dagegen,unklar,keine entscheidung,nicht entscheid,bestaetig,widerspr",
-      "Begruendung mit Daten=mittel,wert,spannweite,ueberlapp,streu,gegenprobe,zweite,werfer,decke,einzel"
+      "Begruendung mit Daten=mittel,wert,spannweite,ueberlapp,streu,gruppen,klasse,werfer,decke,einzel"
      ],
      "need": 2
     },
     "schluss": {
      "kw": [
-      "Grenze=nur drei,wenig,werfer,kraft,hand,decke,hoehe,masse,schwerpunkt,ein flieger,zufall,wind,luft,ungenau",
+      "Grenze=nur ein,wenig,werfer,kraft,hand,decke,hoehe,masse,schwerpunkt,ein flieger,zufall,wind,luft,ungenau,gruppen",
       "Verbesserung=mehr,oefter,wiederhol,rampe,schleuder,gleich,zweite,anderer,messen,genauer,flieger"
      ],
      "need": 2

@@ -9,8 +9,8 @@ PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
-ZIP_V = "v3"  # Lieferung 30.10.2026 nach ChatGPT-Prüfung v1 (Test: ohne TH-Kadetten, VS-Kadetten, QR-PNG, Kahoot)
-DATEIEN = {"stand": "31.10.2026", "zip": f"{P}-{ZIP_V}.zip",
+ZIP_V = "v4"  # Lieferung 08.11.2026: Versuch vereinfacht (ein Paar je Gruppe, Klassenauswertung in Stunde 4)
+DATEIEN = {"stand": "08.11.2026", "zip": f"{P}-{ZIP_V}.zip",
            "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{ZIP_V}.pptx", f"{P}-VS-Lehrer-{ZIP_V}.pptx",
                      f"{P}-TH-AB-{ZIP_V}.docx", f"{P}-TH-Loesung-{ZIP_V}.docx", f"{P}-TH-Fachwissen-{ZIP_V}.docx",
                      f"{P}-VS-AB-{ZIP_V}.docx", f"{P}-VS-Loesung-{ZIP_V}.docx", f"{P}-VS-Fachwissen-{ZIP_V}.docx", f"{P}-Pruefbericht-Claude-{ZIP_V}.md"]}
@@ -21,6 +21,7 @@ if alt:
     u = E[alt[0]]
     for k in ("lehrerseite", "versteckt", "aktuell"):  # von Stephan oder später gesetzte Felder behalten
         if k in u: neu[k] = u[k]
+    if "versteckt" not in u: neu.pop("versteckt", None)  # sichtbar bleibt sichtbar
     E[alt[0]] = neu
 else:
     pos = max(i for i, u in enumerate(E) if u["klasse"] == "1AB") + 1
