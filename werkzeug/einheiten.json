@@ -1188,7 +1188,6 @@
    "aufgaben.html",
    "quiz.html"
   ],
-  "aktuell": true,
   "fahrplan": {
    "text": "Lies die Theorie-Seite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.",
    "zeilen": [
@@ -1234,6 +1233,7 @@
    "aufgaben.html",
    "quiz.html"
   ],
+  "aktuell": true,
   "fahrplan": {
    "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
    "zeilen": [
