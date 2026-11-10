@@ -1772,7 +1772,7 @@ update();
 <!-- pdf_hilfe:end -->
 <!-- loesungshilfe:start -->
 <script>
-window.LH_VARIANTEN = [];
+window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "A", "min": 2, "max": 6, "step": 1}, {"n": "T", "min": 0.4, "max": 2.0, "step": 0.2}, {"n": "t1", "min": 0.1, "max": 0.5, "step": 0.1}], "abgeleitet": {"t2": "t1+T", "A2": "2*A"}, "text": "Ein Diagramm zeigt eine Schwingung: Vom tiefsten bis zum höchsten Punkt sind es {A2} cm, zwei benachbarte Hochpunkte liegen bei t = {t1} s und t = {t2} s. Gib A und T an und berechne f.", "felder": [{"label": "Amplitude A", "expr": "A", "einheit": "cm"}, {"label": "Periodendauer T", "expr": "T", "einheit": "s"}, {"label": "Frequenz f", "expr": "1/T", "einheit": "Hz"}]}, {"id": "a3", "vars": [{"n": "l", "min": 0.25, "max": 1.5, "step": 0.05}], "text": "Ein ideales Fadenpendel ist l = {l} m lang (g = 9,81 m/s², kleine Auslenkung). Berechne T.", "felder": [{"label": "Periodendauer T", "expr": "2*Math.PI*Math.sqrt(l/9.81)", "einheit": "s"}]}, {"id": "a7", "vars": [{"n": "f", "min": 200, "max": 1000, "step": 20}, {"n": "v", "min": 330, "max": 345, "step": 1}, {"n": "T", "min": 6, "max": 16, "step": 1}], "abgeleitet": {"L": "Math.round(1.56*T*T/10)*10"}, "text": "a) Ein Ton hat f = {f} Hz, Schall ist v = {v} m/s schnell. Berechne λ. b) Eine Meereswelle hat λ = {L} m und T = {T} s. Berechne v.", "felder": [{"label": "a) Wellenlänge λ", "expr": "v/f", "einheit": "m"}, {"label": "b) Geschwindigkeit v", "expr": "Math.round(1.56*T*T/10)*10/T", "einheit": "m/s"}]}, {"id": "a8", "vars": [{"n": "y1", "min": 3, "max": 6, "step": 1}, {"n": "y2", "min": -2, "max": -1, "step": 1}], "text": "Zwei Auslenkungen treffen sich an einem Ort: +{y1} cm und {y2} cm. Berechne die Summe.", "felder": [{"label": "Summe", "expr": "y1+y2", "einheit": "cm"}]}, {"id": "a11", "vars": [{"n": "fMHz", "min": 30, "max": 88, "step": 2}], "text": "Ein Funkgerät sendet mit f = {fMHz} MHz. Berechne die Wellenlänge λ (c = 3,00 · 10⁸ m/s).", "felder": [{"label": "Wellenlänge λ", "expr": "3e8/(fMHz*1e6)", "einheit": "m"}]}, {"id": "a14", "vars": [{"n": "m", "min": 0.1, "max": 0.5, "step": 0.05}, {"n": "k", "min": 10, "max": 50, "step": 5}], "text": "Ein ideales Federpendel: m = {m} kg, k = {k} N/m. Berechne T.", "felder": [{"label": "Periodendauer T", "expr": "2*Math.PI*Math.sqrt(m/k)", "einheit": "s"}]}, {"id": "a15", "vars": [{"n": "l", "min": 0.4, "max": 1.0, "step": 0.05}, {"n": "n", "min": 10, "max": 20, "step": 5}, {"n": "g", "min": 9.78, "max": 9.84, "step": 0.01}], "abgeleitet": {"t": "Math.round(n*2*Math.PI*Math.sqrt(l/g)*10)/10"}, "text": "Übungsdaten: Ein Fadenpendel ist l = {l} m lang, {n} volle Schwingungen dauern {t} s. Berechne T und g.", "felder": [{"label": "Periodendauer T", "expr": "Math.round(n*2*Math.PI*Math.sqrt(l/g)*10)/10/n", "einheit": "s"}, {"label": "Fallbeschleunigung g", "expr": "4*Math.PI*Math.PI*l/Math.pow(Math.round(n*2*Math.PI*Math.sqrt(l/g)*10)/10/n,2)", "einheit": "m/s²"}]}, {"id": "a16", "vars": [{"n": "A1", "min": 3, "max": 6, "step": 1}, {"n": "A2", "min": 1, "max": 2, "step": 1}], "text": "Zwei Schwingungen mit gleicher Frequenz haben die Amplituden {A1} cm und {A2} cm. Wie groß ist die Amplitude der Summe a) im Gleichtakt, b) im Gegentakt?", "felder": [{"label": "a) Gleichtakt", "expr": "A1+A2", "einheit": "cm"}, {"label": "b) Gegentakt", "expr": "A1-A2", "einheit": "cm"}]}];
 /* Lösungshilfe für die Handy-Arbeitsblätter (aufgaben.html mit »Prüfen«).
    Ziel: Kadetten bleiben beim Üben nicht frustriert stecken – und die Lösung bleibt trotzdem sichtbar im PDF.
    1) Fehlversuch 1: nur »Noch nicht ganz« + Hinweis, was fehlt.  Fehlversuch 2: zusätzlich der Tipp mit Link zur Theorie-Seite.
@@ -2113,7 +2113,7 @@ window.LH_VARIANTEN = [];
 </script>
 <!-- pdferinnerung:end -->
 <!-- nachsicht:start -->
-<script>window.__CHK_KORREKTUR = {"a5":{"warum":{"need":1}},"a8":{"warum":{"need":1}},"a10":{"euro":{"need":1},"oe1":{"need":2,"kw":[["Jahr","1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"],["Ein Ereignis dazu (Inhalt liest die Lehrkraft)","\\b(?!ereignis|jahr)[a-zäöüß]{5,}"]]},"oe2":{"need":2,"kw":[["Jahr","1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"],["Ein Ereignis dazu (Inhalt liest die Lehrkraft)","\\b(?!ereignis|jahr)[a-zäöüß]{5,}"]]}},"a11":{"zeit":{"kw":[["Uhrzeit","0?6[:.]?\\s?30|6\\s*(uhr|h)\\s*30"]]},"dzg":{"kw":[["Tag + Uhrzeit","18\\s*2145"],["Zone B","2145\\s*b"],["Monat + Jahr","okt(ober)?\\s*(20)?26"]]}},"a14":{"warum":{"need":1}}};
+<script>window.__CHK_KORREKTUR = {};
 /* Großzügigere Prüfung der Arbeitsblätter (»Prüfen«-Knopf): Richtige Antworten sollen nicht wegen Schreibweise, Format oder Einheit als falsch gelten.
    Wird NACH der Seiten-Prüfung eingesetzt und ersetzt nur checkField/parseNum/normU/showCheck (die Seite selbst bleibt unverändert).
    Ändert keinen Speicherschlüssel und keine gespeicherte Antwort.
@@ -2137,7 +2137,7 @@ window.LH_VARIANTEN = [];
   if (typeof checkField !== "function" || typeof S === "undefined") return;
 
   /* ---------- Einheiten ---------- */
-  var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
+  var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, d: 1e-1, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
   var BASE = { A: [0, 0, 0, 1, 1], T: [1, 0, -2, -1, 1], V: [1, 2, -3, -1, 1], Wb: [1, 2, -2, -1, 1], N: [1, 1, -2, 0, 1], W: [1, 2, -3, 0, 1], J: [1, 2, -2, 0, 1],
     "Ω": [1, 2, -3, -2, 1], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
   var WORT = [[/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
@@ -2161,6 +2161,8 @@ window.LH_VARIANTEN = [];
   }
   /* Faktor, mit dem eine Zahl in Einheit u in die Einheit soll umgerechnet wird; null = andere Größe (falsche Einheit) */
   function faktor(u, soll) {
+    var EU = function (x) { x = String(x).replace(/\s/g, "").toLowerCase(); return (x === "euro" || x === "eur") ? "€" : x; };
+    if (EU(u) === "€" && EU(soll) === "€") return 1;
     var a = einheitDim(u), b = einheitDim(soll);
     if (!a || !b) return String(u).replace(/\s/g, "").toLowerCase() === String(soll).replace(/\s/g, "").toLowerCase() ? 1 : null;
     for (var i = 0; i < 4; i++) if (a.dim[i] !== b.dim[i]) return null;
@@ -2168,7 +2170,9 @@ window.LH_VARIANTEN = [];
   }
   function parseZahlen(str) {
     var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
-    var s0 = String(str || "").replace(/[⋅∙•‧]/g, "·").replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+    /* Typografisches Minus (− U+2212, – Halbgeviertstrich, ‒) direkt vor einer Ziffer ist ein Vorzeichen – wie »-« (25.10.2026, Stephans Okay).
+       Nur am Anfang bzw. nach Leerzeichen, Klammer, = : ; , + – ein Strich als Trenner (»Antwort – 24 A«, Leerzeichen danach) oder Bereich (»10–20«) bleibt unberührt. */
+    var s0 = String(str || "").replace(/(^|[\s(\[{=:;,+])[−–‒](?=\d)/g, "$1-").replace(/[⋅∙•‧]/g, "·").replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       .replace(/([A-Za-zµμΩ²³])⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, u, z) { return u + "^-" + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       /* Minuszeichen U+2212, Exponent in Klammern, Nenner in Klammern: »m−2« → »m^-2«, »m^(-2)« → »m^-2«, »N/(A·m)« → »N/A/m« */
       .replace(/([A-Za-zµμΩ²³])[−–](\d)/g, "$1^-$2").replace(/\^\(\s*[-−–]?\s*(\d)\s*\)/g, function (m, z) { return /-|−|–/.test(m) ? "^-" + z : "^" + z; })
@@ -2222,7 +2226,11 @@ window.LH_VARIANTEN = [];
   normU = function (u) { var d = String(u || "").replace(/[μ]/g, "µ"); return normU0(d.replace(/\^2/g, "²")); };
 
   /* Prüft eine Zahlen-Antwort. Gibt {ok, msg, note} zurück. */
-  function numPruefen(text, soll, einheit) {
+  function numPruefen(text, soll, einheit, opt) {
+    opt = opt || {};
+    /* opt.ende (je Feld, z. B. Mittelwert aus vorgegebenen Zahlen): steht ein »=« im Text, zählt nur das Ergebnis nach dem letzten »=« –
+       sonst gilt »4,8 + 5,6 + 5,2 = 15,6« als richtig, weil ein Ausgangswert zufällig dem Mittelwert gleicht (ChatGPT-Prüfung K1.4, F1). */
+    if (opt.ende && /=/.test(String(text || ""))) { var nach = String(text).split("=").pop(); if (/\d/.test(nach)) text = nach; }
     var L = parseZahlen(text);
     if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
     var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
@@ -2233,22 +2241,24 @@ window.LH_VARIANTEN = [];
       if (!gleich) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
     }
     /* Widerspruch in einer Gleichung: »240 A = 24 A«, »1,5 T = 15 mT« (beide Seiten haben vergleichbare Einheiten, aber verschiedene Werte, Abweichung über 5 %) */
-    for (var e = 1; e < L.length; e++) if (L[e].eq && !L[e].neg && !L[e - 1].neg && L[e].u && L[e - 1].u) {
-      var fq = faktor(L[e - 1].u, L[e].u);
+    for (var e = 1; e < L.length; e++) if (L[e].eq && !L[e].neg && !L[e - 1].neg) {
+      var fq = (L[e].u && L[e - 1].u) ? faktor(L[e - 1].u, L[e].u) : ((!L[e].u && !L[e - 1].u && L.length === 2) ? 1 : null);
       if (fq !== null) { var lw = L[e - 1].v * fq, rw = L[e].v; if (Math.abs(lw - rw) > Math.max(Math.abs(lw), Math.abs(rw)) * 0.05 + 1e-12) return { ok: false, msg: "Die beiden Seiten der Gleichung sind nicht gleich." }; }
     }
     for (var i = 0; i < L.length; i++) {
       var x = L[i]; if (x.neg) continue;
       var u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
       if (einheit && hatEinheit) { f = faktor(u, einheit); }
+      else if (einheit === "" && hatEinheit && einheitDim(u)) { f = null; }   /* Prozentfeld (Einheit leer): fremde Einheit wie »kg« ist falsch, »%« wurde oben entfernt */
       var lesarten = x.v2 != null && !isNaN(x.v2) ? [x.v, x.v2] : [x.v];   // 1.500 kann 1500 oder 1,5 heißen
       for (var q = 0; q < lesarten.length; q++) {
         var wert = f === null ? lesarten[q] : lesarten[q] * f;
         var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
+        if (opt.tol != null) rel = Math.abs(wert - soll) <= opt.tol + 1e-9;   /* opt.tol: fester Spielraum je Feld (z. B. 0,04 m) statt 2 % */
         /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T).
            Zusätzlich höchstens 5 % Abweichung: »3« für 3,1 ist gerundet, »1 T« oder »2 T« für 1,5 T nicht. */
         var halb = (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
-        var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= halb && Math.abs(wert - soll) <= Math.abs(soll) * 0.05;
+        var rund = opt.tol == null && Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= halb && Math.abs(wert - soll) <= Math.abs(soll) * 0.05;
         if (rel || rund) {
           if (f === null) { einheitFalsch = true; zahlOk = true; }
           else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
@@ -2327,7 +2337,7 @@ window.LH_VARIANTEN = [];
   checkField = function (t, key, c) {
     var a = S.a[t.id] || {};
     if (c.num !== undefined) {
-      var r = numPruefen(a[key], c.num, c.unit);
+      var r = numPruefen(a[key], c.num, c.unit, { ende: c.ende, tol: c.tol });
       return { ok: r.ok, kind: "num", msg: r.msg, note: r.note, filled: filled(a[key]) };
     }
     if (c.kw) {
