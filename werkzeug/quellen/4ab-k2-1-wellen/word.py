@@ -339,7 +339,7 @@ def ablauf(doc):
     rows = [[v["nr"], v["titel"], v["wann"], v["form"], "KERN" if v["kern"] else "ZUSATZ"] for v in VD.VS]
     table(doc, ["ID", "Versuch", "Wann", "Form", "Einsatz"], rows, [1.9, 5.2, 4.6, 3.9, 1.8], 8.5)
     p = para(doc, "", after=2, before=3)
-    run(p, "8 Gruppen (ca. 26 Kadetten: Gruppe 1–6 zu dritt, 7–8 zu viert). ", 9.5, True); run(p, "Alle Versuche laufen an EINEM Aufbau vorne: Die Lehrkraft baut auf bzw. zeigt, alle Gruppen beobachten und messen gleichzeitig (beim Pendel zwei Zeitnehmer je Gruppe, die Klasse zählt laut mit). Messwerte und Erkenntnis gleich eintragen, Interpretation und Schlussfolgerung in der Aufgabenzeit derselben Stunde – keine Hausübung. Protokoll am Handy: ", 9.5)
+    run(p, "8 Gruppen (ca. 26 Kadetten: Gruppe 1–6 zu dritt, 7–8 zu viert). ", 9.5, True); run(p, "Alle Versuche laufen an EINEM Aufbau vorne: Die Lehrkraft baut auf; bei K2.1-V2 Resonanz und K2.2-V1 Schnur/Kadetten-Welle führt ein vorher eingeteilter Kadett vor. Alle Gruppen beobachten und messen gleichzeitig (beim Pendel zwei Zeitnehmer je Gruppe, die Klasse zählt laut mit). Messwerte und Erkenntnis gleich eintragen, Interpretation und Schlussfolgerung in der Aufgabenzeit derselben Stunde – keine Hausübung. Protokoll am Handy: ", 9.5)
     run(p, I.URL + "versuche.html", 9, False, TEAL)
     p = para(doc, "", after=2); run(p, "So wertest du jeden Versuch aus: ", 9.5, True, OLIVE); run(p, "Erkenntnis – Was habt ihr herausgefunden? · Interpretation – Warum ist das so? Erklärt mit dem Modell (Pendel, Welle, Teilchen). · Schlussfolgerung – Was bedeutet das für Alltag, Sport oder Bundesheer?", 9.5)
     p = para(doc, "", after=2); run(p, "Sicherheit: ", 9.5, True, RUST); run(p, " · ".join(a + " – " + b for a, b in VD.SICHERHEIT), 9)

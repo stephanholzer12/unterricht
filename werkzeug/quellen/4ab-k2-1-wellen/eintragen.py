@@ -9,12 +9,11 @@ PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
-ZIP_V = "v4"  # Teillieferung 31.10.2026 (nur Unterrichts-PPP v6, Handy-Seiten v6, Lösungsmappe): ZIP, Word, Lehrer-/Kadetten-PPP und Kahoot bleiben auf v3
-V_ALT = "v3"
-DATEIEN = {"stand": "31.10.2026", "zip": f"{P}-{ZIP_V}.zip",
-           "liste": [f"{P}-TH-Unterricht-v8.pptx", f"{P}-TH-Lehrer-{V_ALT}.pptx", f"{P}-TH-Kadetten-{V_ALT}.pptx", f"{P}-VS-Lehrer-{V_ALT}.pptx", f"{P}-VS-Kadetten-{V_ALT}.pptx",
-                     f"{P}-TH-AB-{V_ALT}.docx", f"{P}-TH-Loesung-{V_ALT}.docx", f"{P}-TH-Fachwissen-{V_ALT}.docx",
-                     f"{P}-VS-AB-{V_ALT}.docx", f"{P}-VS-Loesung-{V_ALT}.docx", f"{P}-VS-Fachwissen-{V_ALT}.docx",
+ZIP_V = "v5"  # 10.11.2026: Kadetten führen K2.1-V2 (Resonanz) und K2.2-V1 (Schnur) jetzt selbst vor statt der Lehrkraft -> TH-Unterricht, TH-Lehrer, TH-Kadetten, VS-Lehrer, VS-Kadetten, TH-AB/Loesung/Fachwissen, VS-AB/Loesung/Fachwissen neu auf v9 (v8 bei TH-Unterricht übersprungen, da bereits vergeben); Kahoot unverändert auf v1
+DATEIEN = {"stand": I.STAND, "zip": f"{P}-{ZIP_V}.zip",
+           "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{V}.pptx", f"{P}-TH-Kadetten-{V}.pptx", f"{P}-VS-Lehrer-{V}.pptx", f"{P}-VS-Kadetten-{V}.pptx",
+                     f"{P}-TH-AB-{V}.docx", f"{P}-TH-Loesung-{V}.docx", f"{P}-TH-Fachwissen-{V}.docx",
+                     f"{P}-VS-AB-{V}.docx", f"{P}-VS-Loesung-{V}.docx", f"{P}-VS-Fachwissen-{V}.docx",
                      f"{P}-Kahoot-v1.xlsx", f"{P}-Pruefbericht-Claude-v3.md", f"{P}-Unterrichts-PPP-Rueckmeldung-Claude-v1.md"]}
 neu = {"klasse": "4AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K2.1–2.3", "titel": I.TITEL, "block": "B Schwingungen & Wellen", "jahresplan": "E6–E8",
        "seiten": ["theorie.html", "aufgaben.html", "versuche.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}

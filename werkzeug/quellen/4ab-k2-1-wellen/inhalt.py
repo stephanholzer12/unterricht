@@ -7,8 +7,8 @@ Eine Quelle für Handy-Seiten, Word, PPP, Kahoot und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge).
 Zeichen √ und ≈ nur in Theorie und Bildern – in Aufgabentexten und Lösungen nicht (die PDF-Schrift kennt sie nicht; clean() ersetzt sie notfalls)."""
 
-STAND = "06.11.2026"
-V = "v7"  # v7: neuer Testtermin 4AK (Mi 11.11.): Teil 3 jetzt in Stunde 2 (Mo 09.11.), Stunde 3 = Test + Referat; sonst unverändert (Aufgaben-IDs und Speicherschlüssel gleich). v6: wie v5, dazu Formelzeichen und Einheiten direkt erklärt (π, √, g, c, v), passend zur Unterrichts-PPP v6; Aufgaben-IDs und Speicherschlüssel unverändert
+STAND = "10.11.2026"
+V = "v9"  # v9: K2.1-V2 Resonanz und K2.2-V1 Schnur/Kadetten-Welle sind jetzt Kadetten-Demos statt Lehrer-Demos (ein vorher eingeteilter Kadett führt vor, Stephan übt vorher kurz mit ihm); K2.1-V1 Pendel unverändert (Lehrkraft stellt weiter die Länge ein). Aufgaben-IDs und Speicherschlüssel unverändert. v8 übersprungen (TH-Unterricht-v8 ist schon vergeben). v7: neuer Testtermin 4AK (Mi 11.11.): Teil 3 jetzt in Stunde 2 (Mo 09.11.), Stunde 3 = Test + Referat; sonst unverändert. v6: wie v5, dazu Formelzeichen und Einheiten direkt erklärt (π, √, g, c, v), passend zur Unterrichts-PPP v6; Aufgaben-IDs und Speicherschlüssel unverändert
 ORDNER = "4ab-nawi/k2-1-wellen"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"

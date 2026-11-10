@@ -744,6 +744,7 @@
    "versuche.html",
    "quiz.html"
   ],
+  "versteckt": true,
   "fahrplan": {
    "text": "Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 + 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. Der 1. Test ist für beide Klassen am Mi 11.11. (4AK danach das Referat EKG/MRT). Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS (4AK nach Stunde 5 am Mi 18.11., 4BK nach Stunde 4 am Fr 13.11.).",
    "zeilen": [
@@ -856,20 +857,20 @@
    ]
   },
   "dateien": {
-   "stand": "31.10.2026",
-   "zip": "26-27-4AB-K2.1-2.3-Wellen-v4.zip",
+   "stand": "10.11.2026",
+   "zip": "26-27-4AB-K2.1-2.3-Wellen-v5.zip",
    "liste": [
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Unterricht-v8.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Lehrer-v3.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Kadetten-v3.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Lehrer-v3.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Kadetten-v3.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-AB-v3.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Loesung-v3.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Fachwissen-v3.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-AB-v3.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Loesung-v3.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Fachwissen-v3.docx",
+    "26-27-4AB-K2.1-2.3-Wellen-TH-Unterricht-v9.pptx",
+    "26-27-4AB-K2.1-2.3-Wellen-TH-Lehrer-v9.pptx",
+    "26-27-4AB-K2.1-2.3-Wellen-TH-Kadetten-v9.pptx",
+    "26-27-4AB-K2.1-2.3-Wellen-VS-Lehrer-v9.pptx",
+    "26-27-4AB-K2.1-2.3-Wellen-VS-Kadetten-v9.pptx",
+    "26-27-4AB-K2.1-2.3-Wellen-TH-AB-v9.docx",
+    "26-27-4AB-K2.1-2.3-Wellen-TH-Loesung-v9.docx",
+    "26-27-4AB-K2.1-2.3-Wellen-TH-Fachwissen-v9.docx",
+    "26-27-4AB-K2.1-2.3-Wellen-VS-AB-v9.docx",
+    "26-27-4AB-K2.1-2.3-Wellen-VS-Loesung-v9.docx",
+    "26-27-4AB-K2.1-2.3-Wellen-VS-Fachwissen-v9.docx",
     "26-27-4AB-K2.1-2.3-Wellen-Kahoot-v1.xlsx",
     "26-27-4AB-K2.1-2.3-Wellen-Pruefbericht-Claude-v3.md",
     "26-27-4AB-K2.1-2.3-Wellen-Unterrichts-PPP-Rueckmeldung-Claude-v1.md"

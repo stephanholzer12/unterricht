@@ -476,7 +476,7 @@ def v1():
 
 def v2():
     im, d = canvas()
-    ctext(d, 450, 14, "K2.1-V2 · Pendel im Takt anstoßen (Lehrer-Demo)", f(FB, 30), INK)
+    ctext(d, 450, 14, "K2.1-V2 · Pendel im Takt anstoßen (Kadetten-Demo)", f(FB, 30), INK)
     hx, top = 300, 190
     d.ellipse(P(hx - 40, top - 70, hx + 40, top + 10), fill=(230, 190, 160), outline=GREY, width=2 * S)
     ctext(d, hx, top - 46, "Hand", f(FB, 20), INK)

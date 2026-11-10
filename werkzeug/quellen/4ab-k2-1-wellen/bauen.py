@@ -361,10 +361,10 @@ s = s[:i] + """<!--PLAN--><section class="card" id="plan">
     <div class="head"><span class="nr">Ablauf</span><span class="pill theory">Versuche K2.1-V1 bis K2.2-V2</span></div>
     <h2>So laufen die Versuche</h2>
     <ul class="steps">
-      <li><b>Ein Aufbau für alle:</b> Die Lehrkraft zeigt bzw. baut auf, <b>alle 8 Gruppen</b> beobachten und messen gleichzeitig. Ein Protokoll-Handy pro Gruppe, dazu Handys als Stoppuhr.</li>
+      <li><b>Ein Aufbau für alle:</b> Die Lehrkraft baut auf; bei K2.1-V2 und K2.2-V1 führt ein vorher eingeteilter Kadett vor – <b>alle 8 Gruppen</b> beobachten und messen gleichzeitig. Ein Protokoll-Handy pro Gruppe, dazu Handys als Stoppuhr.</li>
       <li><b>K2.1-V1 Pendel</b> (Stunde 1, Mi 04.11.): zwei Zeitnehmer pro Gruppe, die Klasse zählt laut mit.</li>
-      <li><b>K2.1-V2 Resonanz</b> (4AK Mo 09.11. · 4BK Fr 06.11.): erst tippen, dann zuschauen und eintragen.</li>
-      <li><b>K2.2-V1 Schnur und Kadetten-Welle</b> (4AK Mo 09.11. · 4BK Fr 06.11.): ihr seid selbst die Teilchen.</li>
+      <li><b>K2.1-V2 Resonanz</b> (4AK Mo 09.11. · 4BK Fr 06.11.): ein Kadett führt vor, ihr tippt vorher ab und tragt dann ein.</li>
+      <li><b>K2.2-V1 Schnur und Kadetten-Welle</b> (4AK Mo 09.11. · 4BK Fr 06.11.): zwei Kadetten führen den Puls vor, danach seid ihr selbst die Teilchen.</li>
       <li><b>K2.2-V2 Simulation</b> (4AK Mo 16.11. · 4BK Fr 13.11.): ein Modell am Beamer, kein Messversuch.</li>
       <li>Messwerte, Erkenntnis, Interpretation und Schlussfolgerung gleich beim Versuch eintragen – die Zeit dafür ist im Versuch eingeplant. Es gibt keine Hausübung.</li>
     </ul>

@@ -74,7 +74,7 @@ PARTS = [
                       "Passt die Anregung zur Eigenfrequenz, wird bei jedem Stoß Energie dazugegeben – die Schwingung schaukelt sich auf: **Resonanz**. Wie beim Anschubsen einer Schaukel genau im richtigen Moment."]),
               ("img", "img/g3_resonanz.png", "Resonanzkurven: Amplitude über der Erregerfrequenz, hohe spitze Kurve bei schwacher, flache Kurve bei starker Dämpfung", "Resonanzkurve: das Maximum liegt nahe der Eigenfrequenz (Schema)."),
               ("merke", "Resonanz braucht den passenden Takt. Dämpfung begrenzt das Aufschaukeln."),
-              ("versuch", "K2.1-V2", "Eine kleine Anregung – eine große Antwort?", "Die Lehrkraft bewegt den Aufhängepunkt des Pendels um etwa 1 cm hin und her – langsam, im eigenen Takt des Pendels und schnell. Tipp vorher ab: Wann wird der Ausschlag am größten?"),
+              ("versuch", "K2.1-V2", "Eine kleine Anregung – eine große Antwort?", "Ein Kadett bewegt den Aufhängepunkt des Pendels um etwa 1 cm hin und her – langsam, im eigenen Takt des Pendels und schnell. Tipp vorher ab: Wann wird der Ausschlag am größten?"),
               ("video", "resonanz_buch")]},
   {"id": "resonanzkatastrophe", "title": "Wenn Resonanz gefährlich wird: Resonanzkatastrophe", "pill": "Theorie S. 52–53 · Ergänzung",
    "blocks": [("ul", ["Bei einer **Resonanzkatastrophe** werden die Schwingungsausschläge durch Resonanz so groß, dass ein Bauteil **beschädigt oder zerstört** wird.",
