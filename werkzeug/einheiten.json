@@ -1,1381 +1,1380 @@
 [
- {
-  "klasse": "1AB",
-  "fach": "NAWI",
-  "ordner": "1ab-nawi/test1-training",
-  "kapitel": "1. Test · Termin folgt",
-  "titel": "Test-Training: Wissenschaft, SI-Einheiten, Grundgrößen, Dichte",
-  "seiten": [
-   "quiz.html"
-  ],
-  "dateien": {
-   "stand": "19.10.2026",
-   "liste": [
-    "26-27-1AB-Test1-Teststoff-v1.docx",
-    "26-27-1AB-Test1-Kahoot-v1.xlsx",
-    "26-27-1AB-Test1-Blooket-v1.csv"
-   ],
-   "zip": "26-27-1AB-Test1-v1.zip"
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
+    "ordner": "1ab-nawi/test1-training",
+    "kapitel": "1. Test · Termin folgt",
+    "titel": "Test-Training: Wissenschaft, SI-Einheiten, Grundgrößen, Dichte",
+    "seiten": [
+      "quiz.html"
+    ],
+    "dateien": {
+      "stand": "19.10.2026",
+      "liste": [
+        "26-27-1AB-Test1-Teststoff-v1.docx",
+        "26-27-1AB-Test1-Kahoot-v1.xlsx",
+        "26-27-1AB-Test1-Blooket-v1.csv"
+      ],
+      "zip": "26-27-1AB-Test1-v1.zip"
+    },
+    "teststoff": "werkzeug/teststoff/daten/26-27-1ab-test1.json"
   },
-  "teststoff": "werkzeug/teststoff/daten/26-27-1ab-test1.json"
- },
- {
-  "klasse": "1AB",
-  "fach": "NAWI",
-  "ordner": "1ab-nawi/k1-1-2-nobel2026",
-  "kapitel": "K1.1.2",
-  "titel": "Nobelpreise 2026",
-  "block": "A Wissenschaft verstehen",
-  "jahresplan": "E1",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg + Teil 1 · Der Nobelpreis + Teil 2 · Physik",
-     "aufgaben": "1–4",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 3 · Chemie + Teil 4 · Medizin + Teil 5 · Die anderen Preise",
-     "aufgaben": "5–8 · Quiz",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Versuche",
-     "lesen": "Versuchsseite (im NAWI-Saal)",
-     "aufgaben": "Protokoll",
-     "wie": "zu zweit",
-     "abgabe": "PDF in LMS"
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
+    "ordner": "1ab-nawi/k1-1-2-nobel2026",
+    "kapitel": "K1.1.2",
+    "titel": "Nobelpreise 2026",
+    "block": "A Wissenschaft verstehen",
+    "jahresplan": "E1",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Der Nobelpreis + Teil 2 · Physik",
+          "aufgaben": "1–4",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 3 · Chemie + Teil 4 · Medizin + Teil 5 · Die anderen Preise",
+          "aufgaben": "5–8 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Versuche",
+          "lesen": "Versuchsseite (im NAWI-Saal)",
+          "aufgaben": "Protokoll",
+          "wie": "zu zweit",
+          "abgabe": "PDF in LMS"
+        }
+      ]
     }
-   ]
+  },
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
+    "ordner": "1ab-nawi/k1-2-2-koerper",
+    "kapitel": "K1.2.2",
+    "titel": "Messen wie die Profis – Schätzen, Körpergröße, Reaktionszeit",
+    "block": "B Messen & Untersuchen",
+    "jahresplan": "E4–E5",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Die Länge messen",
+          "aufgaben": "1–5",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Messfehler und Reaktionszeit",
+          "aufgaben": "6–10 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Faktencheck und Kampfanzüge bestellen",
+          "aufgaben": "11–12",
+          "abgabe": "freiwillig"
+        }
+      ]
+    }
+  },
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
+    "ordner": "1ab-nawi/k1-4-erkenntnis",
+    "kapitel": "K1.4",
+    "titel": "Erkenntnisgewinn – vermuten, prüfen, auswerten",
+    "block": "A Wissenschaft verstehen",
+    "jahresplan": "E3",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Die Theorie ist in vier Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 1AK Teil 1 → 2 → 3 → 4, 1BK Teil 1 → 3 → 2 → 4 (Teil 3 kommt am Fr 06.11. nach dem Test). Der Papierflieger-Test (Teil 2) findet im Eingangsbereich statt: Jede Gruppe wirft einmal ohne und einmal mit Büroklammer, in Stunde 4 werten alle die Werte der ganzen Klasse aus. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS – 1AK am Do 12.11., 1BK am Mi 11.11.",
+      "zeilen": [
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 1",
+          "datum": "Do 05.11. (1. Std.)",
+          "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
+          "aufgaben": "1–4",
+          "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
+          "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
+          "abgabe": "Flieger abgeben"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 2",
+          "datum": "Do 05.11. (2. Std.)",
+          "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
+          "aufgaben": "5 · Versuchsprotokoll",
+          "zeit": "Aufgaben und Versuch ca. 17 min · Reserve 14 min",
+          "wie": "ohne Handy: Versuch K1.4-V1",
+          "abgabe": "Papierblatt der Gruppe abgeben"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 3",
+          "datum": "Fr 06.11.",
+          "lesen": "1. Test (20 min) · Teil 3 · Wie Forschung wirklich läuft · Buch S. 29 (4.2)",
+          "aufgaben": "6, 7",
+          "zeit": "Aufgaben und Versuch ca. 12 min · Besprechung 3 min · Reserve 4 min",
+          "wie": "ohne Handy: Aufgabe 6 zu zweit, Aufgabe 7 Partnercheck",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 4",
+          "datum": "Do 12.11. (1. Std.)",
+          "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1: Klassentabelle und Auswertung",
+          "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
+          "zeit": "Aufgaben und Versuch ca. 23 min · Besprechung 3 min · Reserve 3 min",
+          "wie": "ohne Handy: Aufgabe 10 zu zweit",
+          "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 1",
+          "datum": "Mi 04.11.",
+          "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
+          "aufgaben": "1–4",
+          "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
+          "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
+          "abgabe": "Flieger abgeben"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 2",
+          "datum": "Fr 06.11.",
+          "lesen": "1. Test (20 min) · Teil 3 · Wie Forschung wirklich läuft · Buch S. 29 (4.2)",
+          "aufgaben": "6, 7",
+          "zeit": "Aufgaben und Versuch ca. 12 min · Besprechung 3 min · Reserve 4 min",
+          "wie": "ohne Handy: Aufgabe 6 zu zweit, Aufgabe 7 Partnercheck",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 3",
+          "datum": "Mo 09.11.",
+          "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
+          "aufgaben": "5 · Versuchsprotokoll",
+          "zeit": "Aufgaben und Versuch ca. 17 min · Reserve 13 min",
+          "wie": "ohne Handy: Versuch K1.4-V1",
+          "abgabe": "Papierblatt der Gruppe abgeben"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 4",
+          "datum": "Mi 11.11.",
+          "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1: Klassentabelle und Auswertung",
+          "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
+          "zeit": "Aufgaben und Versuch ca. 23 min · Besprechung 3 min · Reserve 3 min",
+          "wie": "ohne Handy: Aufgabe 10 zu zweit",
+          "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige (Zielscheiben, Forschungskarte)",
+          "aufgaben": "Zusatz 11–14",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "08.11.2026",
+      "zip": "26-27-1AB-K1.4-Erkenntnis-v4.zip",
+      "liste": [
+        "26-27-1AB-K1.4-Erkenntnis-TH-Unterricht-v7.pptx",
+        "26-27-1AB-K1.4-Erkenntnis-TH-Lehrer-v4.pptx",
+        "26-27-1AB-K1.4-Erkenntnis-VS-Lehrer-v4.pptx",
+        "26-27-1AB-K1.4-Erkenntnis-TH-AB-v4.docx",
+        "26-27-1AB-K1.4-Erkenntnis-TH-Loesung-v4.docx",
+        "26-27-1AB-K1.4-Erkenntnis-TH-Fachwissen-v4.docx",
+        "26-27-1AB-K1.4-Erkenntnis-VS-AB-v4.docx",
+        "26-27-1AB-K1.4-Erkenntnis-VS-Loesung-v4.docx",
+        "26-27-1AB-K1.4-Erkenntnis-VS-Fachwissen-v4.docx",
+        "26-27-1AB-K1.4-Erkenntnis-Pruefbericht-Claude-v4.md"
+      ]
+    },
+    "lehrerseite": "https://claude.ai/artifact/7y811wKjJTEmufpoP8Ed7x"
+  },
+  {
+    "klasse": "1AB",
+    "fach": "NAWI",
+    "ordner": "1ab-nawi/k2-1-kraefte",
+    "kapitel": "K2.1",
+    "titel": "Mechanische Kräfte – messen, rechnen, erklären",
+    "block": "E Physik",
+    "jahresplan": "E15–E17",
+    "seiten": [
+      "aufgaben.html",
+      "theorie.html",
+      "quiz.html"
+    ],
+    "versteckt": true,
+    "fahrplan": {
+      "ansicht": "kompakt",
+      "text": "Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Die Daten sind geplant – die Reihenfolge zählt.",
+      "zeilen": [
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 1",
+          "datum": "Do 12.11. · 8. Std. · geplant",
+          "marke": "GEMEINSAM",
+          "lesen": "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen",
+          "aufgaben": "1, 2",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 2",
+          "datum": "Fr 13.11. · geplant",
+          "marke": "SELBSTSTUDIUM",
+          "lesen": "Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe",
+          "aufgaben": "3, 4",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "Plan freigeben lassen"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 3",
+          "datum": "Do 19.11. · 7. Std. · geplant",
+          "marke": "VERSUCH",
+          "lesen": "Euren Versuch machen und üben · Material von zu Hause mitbringen",
+          "aufgaben": "5",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 4",
+          "datum": "Do 19.11. · 8. Std. · geplant",
+          "marke": "GRUPPENARBEIT",
+          "lesen": "Steckbrief schreiben, Handout in Teams · Präsentation proben",
+          "aufgaben": "6",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "Handout-PDF in Teams (Schriftführung)"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 5",
+          "datum": "Fr 20.11. · geplant",
+          "marke": "PRÄSENTATION",
+          "lesen": "Alle sieben Gruppen präsentieren · du schreibst mit",
+          "aufgaben": "7",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1AK",
+          "wann": "Stunde 6",
+          "datum": "Do 26.11. · 7. Std. · geplant",
+          "marke": "EINZELARBEIT",
+          "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
+          "aufgaben": "8 · Quiz freiwillig",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "Arbeitsblatt-PDF in LMS"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 1",
+          "datum": "Fr 13.11. · geplant",
+          "marke": "GEMEINSAM",
+          "lesen": "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen",
+          "aufgaben": "1, 2",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 2",
+          "datum": "Mo 16.11. · geplant",
+          "marke": "SELBSTSTUDIUM",
+          "lesen": "Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe",
+          "aufgaben": "3, 4",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "Plan freigeben lassen"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 3",
+          "datum": "Mi 18.11. · geplant",
+          "marke": "VERSUCH",
+          "lesen": "Euren Versuch machen und üben · Material von zu Hause mitbringen",
+          "aufgaben": "5",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 4",
+          "datum": "Fr 20.11. · geplant",
+          "marke": "GRUPPENARBEIT",
+          "lesen": "Steckbrief schreiben, Handout in Teams · Präsentation proben",
+          "aufgaben": "6",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "Handout-PDF in Teams (Schriftführung)"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 5",
+          "datum": "Mo 23.11. · geplant",
+          "marke": "PRÄSENTATION",
+          "lesen": "Alle sieben Gruppen präsentieren · du schreibst mit",
+          "aufgaben": "7",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "1BK",
+          "wann": "Stunde 6",
+          "datum": "Mi 25.11. · geplant",
+          "marke": "EINZELARBEIT",
+          "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
+          "aufgaben": "8 · Quiz freiwillig",
+          "zeit": "ca. 40 min Arbeit",
+          "abgabe": "Arbeitsblatt-PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen)",
+          "aufgaben": "Zusatz 9–11",
+          "zeit": "ca. 26 min",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "11.11.2026",
+      "liste": [
+        "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v2.pptx"
+      ]
+    },
+    "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5"
+  },
+  {
+    "klasse": "2AB",
+    "fach": "NAWI",
+    "ordner": "2ab-nawi/test1-training",
+    "kapitel": "1. Test · 05.11.",
+    "titel": "Test-Training: Atommodelle, Orbitale, Bindungsarten",
+    "seiten": [
+      "quiz.html",
+      "teststoff.html"
+    ],
+    "dateien": {
+      "stand": "24.10.2026",
+      "zip": "26-27-2AB-K1.2b-Station-v3.zip",
+      "liste": [
+        "26-27-2AB-Test1-Teststoff-v2.docx",
+        "26-27-2AB-Test1-Kahoot-v2.xlsx"
+      ]
+    },
+    "teststoff": "werkzeug/teststoff/daten/26-27-2ab-test1.json"
+  },
+  {
+    "klasse": "2AB",
+    "fach": "NAWI",
+    "ordner": "2ab-nawi/k1-2-bindungen",
+    "kapitel": "K1.2",
+    "titel": "Die Bindungsarten",
+    "block": "A Atombau & Bindung",
+    "jahresplan": "E3–E5",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "vertiefung.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Stunde 1–2: Theorie-Seite und Arbeitsblatt (Aufgaben 1–10). Stunde 3–4: Stationen A–D und Vertiefung (Aufgaben 11–16), Demo, Besprechung, Teststoff.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung + Teil 3 · Atombindung",
+          "aufgaben": "1–4 · 6",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 4 · Metallbindung + Teil 5 · Zwischenmolekulare Kräfte + Überblick",
+          "aufgaben": "5 · 7–10 · Quiz",
+          "abgabe": "Arbeitsblatt-PDF in LMS"
+        },
+        {
+          "wann": "Stunde 3",
+          "lesen": "Versuchsseite: Gruppe 1–4 an den Stationen A–D · Gruppe 5–8 Vertiefung",
+          "aufgaben": "Protokoll A–D · Vertiefung 11–16",
+          "wie": "ohne Handy: Versuche an den Stationen (Handy nur zum Protokollieren)",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 4",
+          "lesen": "Demo K1.2-V4 (alle) · Wechsel: Gruppe 5–8 Stationen A–D · Gruppe 1–4 Vertiefung · Besprechung · Teststoff für 05.11.",
+          "aufgaben": "Protokoll A–D + V4 · Vertiefung 11–16",
+          "wie": "ohne Handy: Demo mit Vorhersage, Besprechung im Plenum",
+          "abgabe": "Versuchs-PDF (jeder seine eigene) + Vertiefungs-PDF (jeder) in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Vertiefung Aufgabe 17 · Test-Training-Quiz",
+          "aufgaben": "17",
+          "abgabe": "–"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "19.10.2026",
+      "zip": "26-27-2AB-K1.2b-Station-v3.zip",
+      "liste": [
+        "26-27-2AB-K1.2b-Station-VS-Lehrer-v3.pptx",
+        "26-27-2AB-K1.2b-Station-VS-Kadetten-v3.pptx",
+        "26-27-2AB-K1.2b-Station-VS-AB-v2.docx",
+        "26-27-2AB-K1.2b-Station-VS-Loesung-v2.docx",
+        "26-27-2AB-K1.2b-Station-VS-Fachwissen-v2.docx",
+        "TH-PPP, TH-AB/Loesung, TH-Fachwissen K1.2 (Stunde 1–2): Fassung aus dem Chat vom 11.10."
+      ]
+    }
+  },
+  {
+    "klasse": "2AB",
+    "fach": "NAWI",
+    "ordner": "2ab-nawi/k1-3-reaktionen",
+    "kapitel": "K1.3",
+    "titel": "Stoffumwandlung: Redox, Energie, Katalysatoren",
+    "block": "B Chemische Reaktionen",
+    "jahresplan": "E6–E7",
+    "lehrerseite": "https://claude.ai/artifact/KbMWfk58Rrb9PXw5QnhTxk",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Lies die Theorie-Seite Teil für Teil, mach die Pflicht-Aufgaben im Arbeitsblatt, protokolliere die Versuche in der Gruppe und gib nach Stunde 4 beide PDFs in LMS ab. Es gibt keine Hausübung – Zusatz-Aufgaben (auch das Thema Tempo, Teil 5) nur, wenn du früher fertig bist. Die Zeiten sind Richtwerte: Lesen und Versuche dauern oft länger, Aufgaben gehen dafür schneller.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "datum": "Di 03.11.",
+          "lesen": "Einstieg + Teil 1 · Redoxreaktionen · Demo K1.3-V1 Eisenwolle (12 min) · Lehrkraft setzt K1.3-V2 Rost an",
+          "aufgaben": "1–3 · Zusatz: 4",
+          "zeit": "Aufgaben ca. 13 min · ca. 8 min Puffer",
+          "wie": "ohne Handy: Demo mit Vorhersage (Hand heben)",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "datum": "Do 05.11.",
+          "lesen": "1. Test (20 min) · Demo K1.3-V3 Kupferbrief (8 min) · Teil 2 · Rost und Rostschutz",
+          "aufgaben": "5–7 · Zusatz: 8",
+          "zeit": "Aufgaben ca. 10 min · ca. 7 min Reserve",
+          "wie": "ohne Handy: Test, Demo mit Vorhersage",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 3",
+          "datum": "Di 10.11.",
+          "lesen": "Weißt du noch? · Rost-Ansätze auswerten · Demo K1.3-V6 Kältemischung · Teil 3 · Energie · Gruppe 1–3: Stationen K1.3-V4 und V5 (3 Runden à 11 min, Erkenntnis gleich an der Station) · Gruppe 4–6: Teil 3 lesen und Aufgaben",
+          "aufgaben": "Gruppe 4–6: 9–11 · Gruppe 1–3: 9 in der freien Runde · Zusatz: 12",
+          "zeit": "Stationen 33 min · Lesen + Aufgaben ca. 23 min · 2 min Puffer",
+          "wie": "ohne Handy: Demo, Stationen (Handy nur fürs Protokoll), Energiediagramm mit der Hand",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 4",
+          "datum": "Do 12.11.",
+          "lesen": "Weißt du noch? · Demo K1.3-V7 Wasserstoffperoxid 3 % mit und ohne Braunstein (Katalysator) · Teil 4 · Katalysatoren · Gruppe 4–6: Stationen K1.3-V4 (Mobiltisch 1) und V5 (Wasserleitung 1) · Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll",
+          "aufgaben": "13–14 · Gruppe 1–3: 10–11 und Deutung V4/V5 · Gruppe 4–6: Deutung V4/V5 am Ende",
+          "zeit": "Demo ca. 8 min · Stationen 33 min · Auswertung V4/V5 3 min · Besprechen 2 min · Reserve 1 min",
+          "wie": "ohne Handy: Demo mit Vorhersage, Stationen (Handy nur fürs Protokoll)",
+          "abgabe": "beide PDFs in LMS (nach Stunde 4)"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Zusatz: Teil 5 · Tempo der Reaktion (Selbststudium, Buch S. 36–37) · Für Schnelle und Neugierige · Kreativ-Challenge Video, Podcast oder Plakat",
+          "aufgaben": "15–23 (16–18 Tempo)",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "31.10.2026",
+      "zip": "26-27-2AB-K1.3-Reaktionen-v7.zip",
+      "liste": [
+        "26-27-2AB-K1.3-Reaktionen-TH-Lehrer-v6.pptx",
+        "26-27-2AB-K1.3-Reaktionen-TH-Kadetten-v6.pptx",
+        "26-27-2AB-K1.3-Reaktionen-TH-Unterricht-v2.pptx",
+        "26-27-2AB-K1.3-Reaktionen-VS-Lehrer-v6.pptx",
+        "26-27-2AB-K1.3-Reaktionen-VS-Kadetten-v6.pptx",
+        "26-27-2AB-K1.3-Reaktionen-TH-AB-v4.docx",
+        "26-27-2AB-K1.3-Reaktionen-VS-AB-v4.docx",
+        "26-27-2AB-K1.3-Reaktionen-TH-Loesung-v4.docx",
+        "26-27-2AB-K1.3-Reaktionen-VS-Loesung-v4.docx",
+        "26-27-2AB-K1.3-Reaktionen-TH-Fachwissen-v4.docx",
+        "26-27-2AB-K1.3-Reaktionen-VS-Fachwissen-v4.docx",
+        "26-27-2AB-K1.3-Reaktionen-Kahoot-v2.xlsx",
+        "26-27-2AB-K1.3-Reaktionen-QR-Arbeitsblatt-v1.png",
+        "26-27-2AB-K1.3-Reaktionen-QR-Klassenseite-v1.png",
+        "26-27-2AB-K1.3-Reaktionen-QR-Quiz-v1.png",
+        "26-27-2AB-K1.3-Reaktionen-QR-Theorie-v1.png",
+        "26-27-2AB-K1.3-Reaktionen-QR-Versuche-v1.png"
+      ]
+    },
+    "aktuell": true
+  },
+  {
+    "klasse": "5AB",
+    "fach": "TÖW",
+    "ordner": "5ab-toew/k1-3-nachhaltig",
+    "kapitel": "K1.3",
+    "titel": "Prinzipien der Nachhaltigkeit",
+    "block": "A Ökologisches Wirtschaften",
+    "jahresplan": "E2",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "projekt.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Was heißt nachhaltig? + Teil 2 · Nachhaltigkeit im Unternehmen",
+          "aufgaben": "1–6",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Hausübung",
+          "lesen": "Teil 3 · Agenda 2030 und die SDGs",
+          "aufgaben": "7 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Projekt",
+          "lesen": "Projektseite · Nachhaltigkeitsberichte",
+          "aufgaben": "Projekt 1–7",
+          "wie": "in Gruppen",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
+  },
+  {
+    "klasse": "5AB",
+    "fach": "TÖW",
+    "ordner": "5ab-toew/k1-4-5-oeko",
+    "kapitel": "K1.4–1.5",
+    "titel": "Ökodesign und Ökobilanz",
+    "block": "A Ökologisches Wirtschaften",
+    "jahresplan": "E3",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Dafür ist 1 Stunde eingeplant: Lies Teil 1 und Teil 2 im Theorieteil, mach die Aufgaben 1–3 im Arbeitsblatt und gib die PDF am Stundenende in LMS ab. Es gibt keine Hausübung. Zum Wiederholen vor dem Test am Do 12.11.2026: Quiz und Partnercheck.",
+      "zeilen": [
+        {
+          "klasse": "5BK",
+          "wann": "Stunde 1",
+          "datum": "Di 03.11.",
+          "lesen": "Einstieg + Teil 1 · Ökodesign (Buch S. 19–21) + Teil 2 · Ökobilanz (Buch S. 22–25)",
+          "aufgaben": "1–3 · Quiz freiwillig",
+          "zeit": "Lesen 8 min · Aufgaben 20 min · Besprechung 5 min · Reserve 4 min",
+          "wie": "ohne Handy: Einstieg per Handzeichen, Aufgabe 1 am Mini-Whiteboard, Besprechung",
+          "abgabe": "Arbeitsblatt-PDF in LMS (am Stundenende)"
+        },
+        {
+          "klasse": "5AK",
+          "wann": "Stunde 1",
+          "datum": "Do 05.11.",
+          "lesen": "Einstieg + Teil 1 · Ökodesign (Buch S. 19–21) + Teil 2 · Ökobilanz (Buch S. 22–25)",
+          "aufgaben": "1–3 · Quiz freiwillig",
+          "zeit": "Lesen 8 min · Aufgaben 20 min · Besprechung 5 min · Reserve 4 min",
+          "wie": "ohne Handy: Einstieg per Handzeichen, Aufgabe 1 am Mini-Whiteboard, Besprechung",
+          "abgabe": "Arbeitsblatt-PDF in LMS (am Stundenende)"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige · Partnercheck-Karten zum Wiederholen vor dem Test am Do 12.11.2026",
+          "aufgaben": "Zusatz 4–9",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "31.10.2026",
+      "zip": "26-27-5AB-K1.4-1.5-Oeko-v1.zip",
+      "liste": [
+        "26-27-5AB-K1.4-1.5-Oeko-TH-Unterricht-v3.pptx",
+        "26-27-5AB-K1.4-1.5-Oeko-TH-Lehrer-v1.pptx",
+        "26-27-5AB-K1.4-1.5-Oeko-TH-Kadetten-v1.pptx",
+        "26-27-5AB-K1.4-1.5-Oeko-TH-AB-v1.docx",
+        "26-27-5AB-K1.4-1.5-Oeko-TH-Loesung-v1.docx",
+        "26-27-5AB-K1.4-1.5-Oeko-TH-Fachwissen-v1.docx",
+        "26-27-5AB-K1.4-1.5-Oeko-Pruefbericht-Claude-v1.md"
+      ]
+    },
+    "lehrerseite": "https://claude.ai/artifact/8wMJDUiqB89uNTQ4A1SGqF"
+  },
+  {
+    "klasse": "5AB",
+    "fach": "TÖW",
+    "ordner": "5ab-toew/k1-8-fairer-handel",
+    "kapitel": "K1.8",
+    "titel": "Fairer Handel",
+    "block": "A Ökologisches Wirtschaften",
+    "jahresplan": "E5",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Dafür sind 2 Stunden eingeplant (die erste ist ein Testtag und daher kurz): Lies Teil 1 und 2 im Theorieteil und im Schulbuch S. 35–38, mach die Aufgaben 1–3 im Arbeitsblatt und gib die PDF am Ende der zweiten Stunde in LMS ab. Es gibt keine Hausübung.",
+      "zeilen": [
+        {
+          "klasse": "5BK",
+          "wann": "Stunde 1",
+          "datum": "Di 10.11.",
+          "lesen": "Testtag: kurze Einheit nach dem Test · Einstieg + Teil 1 · Was heißt fair? (Buch S. 35–37)",
+          "aufgaben": "1",
+          "zeit": "Lesen 3 min · Aufgaben 6 min · Besprechung 3 min · Reserve 6 min",
+          "wie": "ohne Handy: Einstieg per Handzeichen, Besprechung; Aufgabe 1 am Handy zu zweit",
+          "abgabe": "keine Abgabe in Stunde 1"
+        },
+        {
+          "klasse": "5BK",
+          "wann": "Stunde 2",
+          "datum": "Di 17.11.",
+          "lesen": "Teil 2 · Was bringt es – und was nicht? (Buch S. 36–38)",
+          "aufgaben": "2, 3 · Quiz freiwillig",
+          "zeit": "Lesen 4 min · Aufgaben 17 min · Besprechung 4 min · Reserve 8 min",
+          "wie": "ohne Handy: Rückblick, Besprechung, Gruppendiskussion; Aufgabe 2 am Handy zu zweit",
+          "abgabe": "Arbeitsblatt-PDF in LMS (am Ende von Stunde 2)"
+        },
+        {
+          "klasse": "5AK",
+          "wann": "Stunde 1",
+          "datum": "Do 12.11.",
+          "lesen": "Testtag: kurze Einheit nach dem Test · Einstieg + Teil 1 · Was heißt fair? (Buch S. 35–37)",
+          "aufgaben": "1",
+          "zeit": "Lesen 3 min · Aufgaben 6 min · Besprechung 3 min · Reserve 6 min",
+          "wie": "ohne Handy: Einstieg per Handzeichen, Besprechung; Aufgabe 1 am Handy zu zweit",
+          "abgabe": "keine Abgabe in Stunde 1"
+        },
+        {
+          "klasse": "5AK",
+          "wann": "Stunde 2",
+          "datum": "Do 19.11.",
+          "lesen": "Teil 2 · Was bringt es – und was nicht? (Buch S. 36–38)",
+          "aufgaben": "2, 3 · Quiz freiwillig",
+          "zeit": "Lesen 4 min · Aufgaben 17 min · Besprechung 4 min · Reserve 8 min",
+          "wie": "ohne Handy: Rückblick, Besprechung, Gruppendiskussion; Aufgabe 2 am Handy zu zweit",
+          "abgabe": "Arbeitsblatt-PDF in LMS (am Ende von Stunde 2)"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige · Partnercheck-Karten zum Wiederholen",
+          "aufgaben": "Zusatz 4–6",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "11.11.2026",
+      "liste": [
+        "26-27-5AB-K1.8-Fairtrade-TH-Unterricht-v2.pptx"
+      ]
+    },
+    "lehrerseite": "https://claude.ai/artifact/R862RGb3AViahWdNcfy6tC"
+  },
+  {
+    "klasse": "4AB",
+    "fach": "NAWI",
+    "ordner": "4ab-nawi/test1-training",
+    "kapitel": "1. Test · 11.11.",
+    "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
+    "seiten": [
+      "quiz.html"
+    ],
+    "dateien": {
+      "stand": "20.10.2026",
+      "liste": [
+        "26-27-4AB-Test1-Teststoff-v3.docx",
+        "26-27-4AB-Test1-Kahoot.xlsx",
+        "26-27-4AB-Test1-Blooket.csv"
+      ]
+    },
+    "teststoff": "werkzeug/teststoff/daten/26-27-4ab-test1.json"
+  },
+  {
+    "klasse": "4AB",
+    "fach": "NAWI",
+    "ordner": "4ab-nawi/k1-5a-elektromagnet",
+    "kapitel": "K1.5a",
+    "titel": "Elektromagnet und Elektromotor",
+    "block": "A Elektrizität & Magnetismus",
+    "jahresplan": "E4",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ],
+    "dateien": {
+      "stand": "18.10.2026",
+      "zip": "26-27-4AB-K1.5a-E-Magnet-v1.zip",
+      "liste": [
+        "26-27-4AB-K1.5a-E-Magnet-TH-Lehrer-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-Kadetten-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-AB-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-Loesung-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-TH-Fachwissen-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Lehrer-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Kadetten-v1.pptx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-AB-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Loesung-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-VS-Fachwissen-v1.docx",
+        "26-27-4AB-K1.5a-E-Magnet-Kahoot-v1.xlsx"
+      ]
+    },
+    "fahrplan": {
+      "text": "Lies Teil 1 und mach die Aufgaben 1–4, dann Teil 2 mit dem Rätsel, die Aufgaben 5–9 und das Quiz – dann PDF abgeben. *Die Versuche zeigt dir dein Lehrer, in der 4BK in einer eigenen Stunde.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Teil 1 · Elektromagnet",
+          "aufgaben": "1–4",
+          "wie": "Versuch K1.5-V1 (Demo)*",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Motor + Rätsel",
+          "aufgaben": "5–9 · Quiz",
+          "wie": "Versuch K1.5-V3 (Demo)*",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Stunde 3",
+          "lesen": "Versuchsseite",
+          "aufgaben": "Protokoll",
+          "wie": "V1, V3 · V5 zu zweit*",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Zusatz · Halbleiter",
+          "aufgaben": "10–20",
+          "wie": "V2, V4 (Station)",
+          "abgabe": "freiwillig"
+        }
+      ]
+    }
+  },
+  {
+    "klasse": "4AB",
+    "fach": "NAWI",
+    "ordner": "4ab-nawi/k2-1-wellen",
+    "kapitel": "K2.1–2.3",
+    "titel": "Schwingungen, Wellen und das elektromagnetische Spektrum",
+    "block": "B Schwingungen & Wellen",
+    "jahresplan": "E6–E8",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "versuche.html",
+      "quiz.html"
+    ],
+    "versteckt": false,
+    "aktuell": true,
+    "fahrplan": {
+      "text": "Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 + 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. Der 1. Test ist für beide Klassen am Mi 11.11. (4AK danach das Referat EKG/MRT). Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS (4AK nach Stunde 5 am Mi 18.11., 4BK nach Stunde 4 am Fr 13.11.).",
+      "zeilen": [
+        {
+          "klasse": "4AK",
+          "wann": "Stunde 1",
+          "datum": "Mi 04.11.",
+          "lesen": "Einstieg · Teil 1 · Versuch K2.1-V1 Pendel",
+          "aufgaben": "1–3",
+          "zeit": "Aufgaben und Versuche ca. 27 min · Besprechung 4 min · Reserve 3 min",
+          "wie": "ohne Handy: Einstieg: Schaukel",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "4AK",
+          "wann": "Stunde 2",
+          "datum": "Mo 09.11.",
+          "lesen": "Teil 2 + Teil 3 · Demo K2.1-V2 Resonanz · Versuch K2.2-V1 Schnur und Kadetten-Welle",
+          "aufgaben": "4–7",
+          "zeit": "Aufgaben und Versuche ca. 26 min · Besprechung 3 min · Reserve 2 min",
+          "wie": "ohne Handy: Aufgabe 5 Partnercheck mit 2 Fragen, Versuch K2.2-V1 Schnur und Kadetten-Welle",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "4AK",
+          "wann": "Stunde 3",
+          "datum": "Mi 11.11.",
+          "lesen": "1. Test · Referat EKG/MRT",
+          "aufgaben": "–",
+          "zeit": "1. Test 20 min · Referat EKG/MRT 20 min · Besprechung 4 min · Reserve 3 min",
+          "wie": "ohne Handy: 1. Test, Referat EKG/MRT",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "4AK",
+          "wann": "Stunde 4",
+          "datum": "Mo 16.11.",
+          "lesen": "Teil 4 · Simulation K2.2-V2",
+          "aufgaben": "8, 9 · Zusatz 16, 17",
+          "zeit": "Aufgaben und Versuche ca. 10 min · Zusatz 15 min · Besprechung 5 min · Reserve 5 min",
+          "wie": "ohne Handy: Aufgabe 9 Huygens-Skizze, Zusatz 16 Überlagerung zeichnen",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "4AK",
+          "wann": "Stunde 5",
+          "datum": "Mi 18.11.",
+          "lesen": "Teil 5",
+          "aufgaben": "10–13 · Quiz freiwillig",
+          "zeit": "Aufgaben und Versuche ca. 23 min · Besprechung 3 min · Reserve 3 min",
+          "wie": "ohne Handy: Aufgabe 10 Spektrum ordnen, Aufgabe 12 KI-Check, Aufgabe 13 Sicherheitskarte",
+          "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
+        },
+        {
+          "klasse": "4BK",
+          "wann": "Stunde 1",
+          "datum": "Mi 04.11.",
+          "lesen": "Einstieg · Teil 1 · Versuch K2.1-V1 Pendel",
+          "aufgaben": "1–3",
+          "zeit": "Aufgaben und Versuche ca. 27 min · Besprechung 4 min · Reserve 3 min",
+          "wie": "ohne Handy: Einstieg: Schaukel",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "4BK",
+          "wann": "Stunde 2",
+          "datum": "Fr 06.11.",
+          "lesen": "Teil 2 + Teil 3 · Demo K2.1-V2 Resonanz · Versuch K2.2-V1 Schnur und Kadetten-Welle",
+          "aufgaben": "4–7",
+          "zeit": "Aufgaben und Versuche ca. 26 min · Besprechung 3 min · Reserve 2 min",
+          "wie": "ohne Handy: Aufgabe 5 Partnercheck mit 2 Fragen, Versuch K2.2-V1 Schnur und Kadetten-Welle",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "4BK",
+          "wann": "Stunde 3",
+          "datum": "Mi 11.11.",
+          "lesen": "1. Test · Teil 5",
+          "aufgaben": "10, 11",
+          "zeit": "Aufgaben und Versuche ca. 9 min · Besprechung 3 min · Reserve 2 min",
+          "wie": "ohne Handy: Aufgabe 10 Spektrum ordnen",
+          "abgabe": "–"
+        },
+        {
+          "klasse": "4BK",
+          "wann": "Stunde 4",
+          "datum": "Fr 13.11.",
+          "lesen": "Teil 4 · Simulation K2.2-V2",
+          "aufgaben": "8, 9, 12, 13 · Quiz freiwillig",
+          "zeit": "Aufgaben und Versuche ca. 24 min · Besprechung 4 min · Reserve 5 min",
+          "wie": "ohne Handy: Aufgabe 9 Huygens-Skizze, Aufgabe 12 KI-Check, Aufgabe 13 Sicherheitskarte",
+          "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
+        },
+        {
+          "klasse": "4BK",
+          "wann": "Zusatztermin",
+          "datum": "Mi 18.11.",
+          "lesen": "nur falls die Stunde stattfindet · Vertiefung",
+          "aufgaben": "Zusatz 14–17",
+          "zeit": "ca. 31 min Aufgaben",
+          "wie": "Überlagerung mit der Hand zeichnen",
+          "abgabe": "PDF ergänzen (freiwillig)"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige (Forschungskarte, Ausblick)",
+          "aufgaben": "14–17",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "10.11.2026",
+      "zip": "26-27-4AB-K2.1-2.3-Wellen-v5.zip",
+      "liste": [
+        "26-27-4AB-K2.1-2.3-Wellen-TH-Unterricht-v9.pptx",
+        "26-27-4AB-K2.1-2.3-Wellen-TH-Lehrer-v9.pptx",
+        "26-27-4AB-K2.1-2.3-Wellen-TH-Kadetten-v9.pptx",
+        "26-27-4AB-K2.1-2.3-Wellen-VS-Lehrer-v9.pptx",
+        "26-27-4AB-K2.1-2.3-Wellen-VS-Kadetten-v9.pptx",
+        "26-27-4AB-K2.1-2.3-Wellen-TH-AB-v9.docx",
+        "26-27-4AB-K2.1-2.3-Wellen-TH-Loesung-v9.docx",
+        "26-27-4AB-K2.1-2.3-Wellen-TH-Fachwissen-v9.docx",
+        "26-27-4AB-K2.1-2.3-Wellen-VS-AB-v9.docx",
+        "26-27-4AB-K2.1-2.3-Wellen-VS-Loesung-v9.docx",
+        "26-27-4AB-K2.1-2.3-Wellen-VS-Fachwissen-v9.docx",
+        "26-27-4AB-K2.1-2.3-Wellen-Kahoot-v1.xlsx",
+        "26-27-4AB-K2.1-2.3-Wellen-Pruefbericht-Claude-v3.md",
+        "26-27-4AB-K2.1-2.3-Wellen-Unterrichts-PPP-Rueckmeldung-Claude-v1.md"
+      ]
+    },
+    "lehrerseite": "https://claude.ai/artifact/C9wRo5pzXVj667D1pkfhYN"
+  },
+  {
+    "klasse": "5AK",
+    "fach": "IWK",
+    "ordner": "5ak-iwk/k1-2-kulturen",
+    "kapitel": "K1.2",
+    "titel": "Die Welt einteilen · Kulturen erleben",
+    "block": "A Räume & Konzepte",
+    "jahresplan": "E1",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "uebung.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Abschnitt 1 · Was ist Kultur? + Abschnitt 2 · Kulturerdteile nach Kolb",
+          "aufgaben": "1–5",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Abschnitt 3 · Huntington + Abschnitt 4 · Cultural Map",
+          "aufgaben": "6–12",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 3",
+          "lesen": "Abschnitt 5 · Fünf Welten + Abschnitt 6 · Weltsystem",
+          "aufgaben": "13–17",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Abschluss",
+          "lesen": "Übung · Kulturen erleben",
+          "aufgaben": "18–22 · Übung · Quiz",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
+  },
+  {
+    "klasse": "5AK",
+    "fach": "IWK",
+    "ordner": "5ak-iwk/k2-1-globalisierung",
+    "kapitel": "K2.1",
+    "titel": "Globalisierung",
+    "block": "B Globalisierung",
+    "jahresplan": "E3 (Prozesse der Globalisierung, 2 Stunden)",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "lehrerseite": "https://claude.ai/artifact/HDe46vKV98ogtwmLxKHr4v",
+    "fahrplan": {
+      "text": "Dafür sind 2 Stunden eingeplant (Fr 13.11. und Fr 20.11.). Lies den jeweiligen Abschnitt im Buch und die Theorie-Karte, mach die Aufgaben 1–3 im Arbeitsblatt und gib am 20.11. die PDF in LMS ab. Am 20.11. schreibst du zuerst den angekündigten Test. Zusatzaufgaben 4–6 sind freiwillig. Keine Hausübung.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "datum": "Fr 13.11.",
+          "lesen": "Beginn der Globalisierung und Antriebskräfte (Buch S. 42–47)",
+          "aufgaben": "1, 2",
+          "zeit": "Lesen 7 min · Aufgaben 19 min · Besprechung 8 min · Organisation, Einstieg, Sicherung 9 min · Reserve 7 min",
+          "wie": "ohne Handy: Einstieg an der Tafel, Besprechungen, Sicherung im Heft",
+          "abgabe": "Antworten bleiben am Handy gespeichert"
+        },
+        {
+          "wann": "Stunde 2",
+          "datum": "Fr 20.11.",
+          "lesen": "Digitalisierung und Digital Divide (Buch S. 48), Statement-Ampel »Ziele erreicht?« (Buch S. 51)",
+          "aufgaben": "3 · Selbstcheck-Quiz (6 Fragen)",
+          "zeit": "Test 20 min · Lesen 2 min · Aufgaben 8 min · Besprechung 2 min · Organisation, Wiederholung, Ampel, PDF 13 min · Reserve 5 min",
+          "wie": "zuerst Test; ohne Handy: Weißt du noch?, Statement-Ampel im Raum",
+          "abgabe": "Arbeitsblatt-PDF in LMS (Aufgaben 1–3)"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "11.11.2026",
+      "zip": "",
+      "liste": [
+        "26-27-5AK-K2.1-Global-TH-Unterricht-v5.pptx"
+      ]
+    }
+  },
+  {
+    "klasse": "3AB",
+    "fach": "NAWI",
+    "ordner": "3ab-nawi/k2-3a-ernaehrung",
+    "kapitel": "K2.3a",
+    "titel": "Ernährungsweisen: Personengruppen, Vegetarismus & Vollwerternährung",
+    "block": "B Landwirtschaft & Ernährung",
+    "jahresplan": "E7 (Teil 1)",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Teil 1 · Personengruppen + Teil 2 · Alternative Ernährungsformen",
+          "aufgaben": "1–2",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2.1 · Vegetarismus + Teil 2.2 · Vollwerternährung, dann Quiz",
+          "aufgaben": "3–6 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige",
+          "aufgaben": "7",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "alt_nummer": "K2.1a",
+    "dateien": {
+      "stand": "20.10.2026",
+      "liste": [
+        "26-27-3AB-K2.1a-Ernaehrungsweisen-Lehrer.pptx"
+      ]
+    }
+  },
+  {
+    "klasse": "3AB",
+    "fach": "NAWI",
+    "ordner": "3ab-nawi/k2-3b-trendcheck",
+    "kapitel": "K2.3b",
+    "titel": "Trend-Check: Hype oder Hilfe?",
+    "block": "B Landwirtschaft & Ernährung",
+    "jahresplan": "E7",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "gruppe.html",
+      "quiz.html",
+      "kurz.html"
+    ],
+    "fahrplan": {
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Der Maßstab + Teil 2 · Belegt oder behauptet?",
+          "aufgaben": "1–2",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 3 · Wer verdient daran? + Teil 4 · Trend-Check in 5 Fragen, dann Gruppen-Steckbrief",
+          "aufgaben": "3–5 · Quiz",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Wenig Zeit?",
+          "lesen": "Kompakt-Seite (alles in einer Stunde)",
+          "aufgaben": "1–6",
+          "abgabe": "PDF in LMS"
+        }
+      ]
+    }
+  },
+  {
+    "klasse": "3AB",
+    "fach": "NAWI",
+    "ordner": "3ab-nawi/k2-1-landbau",
+    "kapitel": "K2.1",
+    "titel": "Formen der Landwirtschaft",
+    "block": "B Landwirtschaft & Ernährung",
+    "jahresplan": "E4",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Dafür sind 4 Stunden eingeplant (3AK und 3BK gleich: Mi 04.11., Mo 09.11., Mi 11.11., Mo 16.11.). Lies den jeweiligen Teil im Theorieteil, mach die Aufgaben 1–9 im Arbeitsblatt und gib am 16.11. die PDF in LMS ab. Am 09.11. schreibst du zuerst den Test. Keine Hausübung.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "datum": "Mi 04.11.",
+          "lesen": "Einstieg + Teil 1 · Acker, drei Formen, Bio (Buch S. 38–43)",
+          "aufgaben": "1, 2",
+          "zeit": "Lesen 9 min · Aufgaben 17 min · Besprechung 7 min · Reserve 4 min",
+          "wie": "ohne Handy: Einstieg per Handzeichen, Tabelle an der Tafel, Partnercheck mit Karten",
+          "abgabe": "Antworten bleiben am Handy gespeichert"
+        },
+        {
+          "wann": "Stunde 2",
+          "datum": "Mo 09.11.",
+          "lesen": "Teil 2 · Pflanzenschutz, Verpackung (Buch S. 43–47)",
+          "aufgaben": "3, 4",
+          "zeit": "Test 20 min · Lesen 5 min · Aufgaben 15 min · Besprechung 3 min · Reserve 5 min",
+          "wie": "zuerst Test; ohne Handy: Verpackungen in Gruppen lesen",
+          "abgabe": "Antworten bleiben am Handy gespeichert"
+        },
+        {
+          "wann": "Stunde 3",
+          "datum": "Mi 11.11.",
+          "lesen": "Teil 3 · pro Hektar, Gene, Genschere, neue Sorte (Buch S. 45–46) · Podcast-Ausschnitt",
+          "aufgaben": "5–7",
+          "zeit": "Lesen 9 min · Hören 7 min · Aufgaben 20 min · Besprechung 4 min · Reserve 5 min",
+          "wie": "ohne Handy: Podcast hören, Genschere zuerst am Mini-Whiteboard zeichnen",
+          "abgabe": "Antworten bleiben am Handy gespeichert"
+        },
+        {
+          "wann": "Stunde 4",
+          "datum": "Mo 16.11.",
+          "lesen": "Teil 4 · Séralini-Versuch, gute Studie, Folgestudie (Ergänzung zu Buch S. 45)",
+          "aufgaben": "8, 9 · Quiz freiwillig",
+          "zeit": "Lesen 7 min · Aufgaben 20 min · Besprechung 4 min · Reserve 7 min",
+          "wie": "ohne Handy: Aufstellen auf einer Skala, Urteil mit der Hand schreiben",
+          "abgabe": "Arbeitsblatt-PDF in LMS (alle Aufgaben 1–9)"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige (Versorgung, Geschichte, Niggli-Podcast, Partnercheck)",
+          "aufgaben": "Zusatz 10–14 · Quiz",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "02.11.2026",
+      "zip": "26-27-3AB-K2.1-Landbau-v2.zip",
+      "liste": [
+        "26-27-3AB-K2.1-Landbau-TH-Unterricht-v4.pptx",
+        "26-27-3AB-K2.1-Landbau-Pruefbericht-Claude-v4.md"
+      ]
+    },
+    "lehrerseite": "https://claude.ai/artifact/4hnvRdYQudScYrWMkaZtmM"
+  },
+  {
+    "klasse": "2AK",
+    "fach": "PBGW",
+    "ordner": "2ak-pbgw/k1-grundrechte",
+    "kapitel": "K1",
+    "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
+    "block": "A Demokratie & Grundrechte",
+    "jahresplan": "E2",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 1 das PDF ab.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Zuerst Teil 1 der Theorie-Seite lesen. Danach das Papier-Arbeitsblatt M1–M4 lesen.",
+          "aufgaben": "1–6",
+          "wie": "Theorie am Handy → Papier-Arbeitsblatt ohne Handy → Antworten im Handy-Arbeitsblatt eintragen.",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Stolz und Schande 2026",
+          "aufgaben": "7 · Quiz · eure Fragen",
+          "wie": "ohne Handy: Vier Ecken, Aufstellen, Diskussion",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige",
+          "aufgaben": "8–11",
+          "wie": "am Handy",
+          "abgabe": "freiwillig"
+        }
+      ]
+    }
+  },
+  {
+    "klasse": "3BK",
+    "fach": "PBGW",
+    "ordner": "3bk-pbgw/k1-2-faelschung",
+    "kapitel": "K1.2",
+    "titel": "Gefälscht! Der Fall der Hitler-Tagebücher – Quellenkritik",
+    "block": "A Geschichte & Quellen",
+    "jahresplan": "E1",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "fahrplan": {
+      "text": "Lies die Theorie-Seite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg, Teil 1 · Der Fall, Teil 2 · Wie flog die Fälschung auf?",
+          "aufgaben": "1–3",
+          "wie": "Theorie-Seite am Handy; ohne Handy: Partnergespräch (2 Min.); Rest der Stunde: Nachbesprechung im Plenum",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige",
+          "aufgaben": "4–6",
+          "wie": "am Handy",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "19.10.2026",
+      "zip": "26-27-3BK-K1.2-Faelschung-v2.zip",
+      "liste": [
+        "26-27-3BK-K1.2-Faelschung-TH-Lehrer-v2.pptx",
+        "26-27-3BK-K1.2-Faelschung-TH-Kadetten-v2.pptx",
+        "26-27-3BK-K1.2-Faelschung-TH-AB-v2.docx",
+        "26-27-3BK-K1.2-Faelschung-TH-Loesung-v2.docx",
+        "26-27-3BK-K1.2-Faelschung-TH-Fachwissen-v2.docx",
+        "26-27-3BK-K1.2-Faelschung-Kahoot-v2.xlsx"
+      ]
+    }
+  },
+  {
+    "klasse": "3BK",
+    "fach": "PBGW",
+    "ordner": "3bk-pbgw/k1-3-epochen",
+    "kapitel": "K1.3–1.4",
+    "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
+    "block": "A Geschichte & Quellen",
+    "jahresplan": "E2",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "aktuell": true,
+    "fahrplan": {
+      "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "lesen": "Einstieg + Teil 1 · Wie zählen wir Zeit?",
+          "aufgaben": "1–5",
+          "wie": "ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy",
+          "abgabe": "–"
+        },
+        {
+          "wann": "Stunde 2",
+          "lesen": "Teil 2 · Die Epochen",
+          "aufgaben": "6–10 · Quiz",
+          "wie": "ohne Handy: lebender Zeitstrahl, dann am Handy",
+          "abgabe": "PDF in LMS"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige",
+          "aufgaben": "11–15",
+          "wie": "am Handy",
+          "abgabe": "freiwillig"
+        }
+      ]
+    }
+  },
+  {
+    "klasse": "3BK",
+    "fach": "PBGW",
+    "ordner": "3bk-pbgw/k2-5-meilensteine",
+    "kapitel": "K2.1–5.4",
+    "titel": "Meilensteine: Vom Vorrat zum Staat – Hochkulturen, Athen, Rom",
+    "block": "B Meilensteine",
+    "jahresplan": "E3–E5",
+    "seiten": [
+      "theorie.html",
+      "aufgaben.html",
+      "quiz.html"
+    ],
+    "versteckt": true,
+    "fahrplan": {
+      "text": "Dafür sind 3 Stunden eingeplant: Mo 16.11., Mo 23.11. und Mo 30.11. Lies den jeweiligen Teil im Theorieteil und mach die Aufgaben 1–8 im Arbeitsblatt. Am 23.11. schreibst du zuerst den Test. Keine Hausübung.",
+      "zeilen": [
+        {
+          "wann": "Stunde 1",
+          "datum": "Mo 16.11.",
+          "lesen": "Einstieg + Teil 1 · Vorrat, Metall, Schrift, frühe Staaten (Buch S. 25–39)",
+          "aufgaben": "1–3, 8 (Teil 1)",
+          "zeit": "Lesen 9 min · Aufgaben 24 min · Besprechung 6 min · Reserve 3 min",
+          "wie": "ohne Handy: Einstieg mündlich, Mini-Whiteboard, Zeitstrahl-Karten legen",
+          "abgabe": "Antworten bleiben am Handy gespeichert"
+        },
+        {
+          "wann": "Stunde 2",
+          "datum": "Mo 23.11.",
+          "lesen": "Teil 2 · Hammurabis Rechtssammlung (Buch S. 39–40)",
+          "aufgaben": "4",
+          "zeit": "Test 20 min · Lesen 4 min · Aufgaben 9 min · Besprechung 6 min",
+          "wie": "zuerst Test; ohne Handy: Paragrafenblatt auf Papier lesen und markieren",
+          "abgabe": "Antworten bleiben am Handy gespeichert"
+        },
+        {
+          "wann": "Stunde 3",
+          "datum": "Mo 30.11.",
+          "lesen": "Teil 3 · Athen und Rom (Buch S. 105–118)",
+          "aufgaben": "5–8 (Teil 2)",
+          "zeit": "Lesen 8 min · Aufgaben 27 min · Besprechung 8 min",
+          "wie": "ohne Handy: Aufstellen auf einer Skala, Vergleich zu zweit besprechen",
+          "abgabe": "Antworten bleiben am Handy gespeichert · Arbeitsblatt-PDF: Abgabe nach Absprache"
+        },
+        {
+          "wann": "Für Schnelle",
+          "lesen": "Für Schnelle und Neugierige (Partnercheck, Stolpersteine, Quellenkritik)",
+          "aufgaben": "Zusatz 9–12 · Quiz",
+          "abgabe": "freiwillig"
+        }
+      ]
+    },
+    "dateien": {
+      "stand": "31.10.2026",
+      "zip": "26-27-3BK-K2.1-5.4-Meilenst-v3.zip",
+      "liste": [
+        "26-27-3BK-K2.1-5.4-Meilenst-TH-Unterricht-v4.pptx",
+        "26-27-3BK-K2.1-5.4-Meilenst-TH-Lehrer-v3.pptx",
+        "26-27-3BK-K2.1-5.4-Meilenst-TH-Kadetten-v3.pptx",
+        "26-27-3BK-K2.1-5.4-Meilenst-TH-AB-v3.docx",
+        "26-27-3BK-K2.1-5.4-Meilenst-TH-Loesung-v3.docx",
+        "26-27-3BK-K2.1-5.4-Meilenst-TH-Fachwissen-v3.docx",
+        "26-27-3BK-K2.1-5.4-Meilenst-Pruefbericht-Claude-v3.md"
+      ]
+    },
+    "lehrerseite": "https://claude.ai/artifact/RknDezX91aGrafrUFaqtJd"
   }
- },
- {
-  "klasse": "1AB",
-  "fach": "NAWI",
-  "ordner": "1ab-nawi/k1-2-2-koerper",
-  "kapitel": "K1.2.2",
-  "titel": "Messen wie die Profis – Schätzen, Körpergröße, Reaktionszeit",
-  "block": "B Messen & Untersuchen",
-  "jahresplan": "E4–E5",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg + Teil 1 · Die Länge messen",
-     "aufgaben": "1–5",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 2 · Messfehler und Reaktionszeit",
-     "aufgaben": "6–10 · Quiz",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Faktencheck und Kampfanzüge bestellen",
-     "aufgaben": "11–12",
-     "abgabe": "freiwillig"
-    }
-   ]
-  }
- },
- {
-  "klasse": "1AB",
-  "fach": "NAWI",
-  "ordner": "1ab-nawi/k1-4-erkenntnis",
-  "kapitel": "K1.4",
-  "titel": "Erkenntnisgewinn – vermuten, prüfen, auswerten",
-  "block": "A Wissenschaft verstehen",
-  "jahresplan": "E3",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Die Theorie ist in vier Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 1AK Teil 1 → 2 → 3 → 4, 1BK Teil 1 → 3 → 2 → 4 (Teil 3 kommt am Fr 06.11. nach dem Test). Der Papierflieger-Test (Teil 2) findet im Eingangsbereich statt: Jede Gruppe wirft einmal ohne und einmal mit Büroklammer, in Stunde 4 werten alle die Werte der ganzen Klasse aus. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS – 1AK am Do 12.11., 1BK am Mi 11.11.",
-   "zeilen": [
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 1",
-     "datum": "Do 05.11. (1. Std.)",
-     "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
-     "aufgaben": "1–4",
-     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
-     "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
-     "abgabe": "Flieger abgeben"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 2",
-     "datum": "Do 05.11. (2. Std.)",
-     "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
-     "aufgaben": "5 · Versuchsprotokoll",
-     "zeit": "Aufgaben und Versuch ca. 17 min · Reserve 14 min",
-     "wie": "ohne Handy: Versuch K1.4-V1",
-     "abgabe": "Papierblatt der Gruppe abgeben"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 3",
-     "datum": "Fr 06.11.",
-     "lesen": "1. Test (20 min) · Teil 3 · Wie Forschung wirklich läuft · Buch S. 29 (4.2)",
-     "aufgaben": "6, 7",
-     "zeit": "Aufgaben und Versuch ca. 12 min · Besprechung 3 min · Reserve 4 min",
-     "wie": "ohne Handy: Aufgabe 6 zu zweit, Aufgabe 7 Partnercheck",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 4",
-     "datum": "Do 12.11. (1. Std.)",
-     "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1: Klassentabelle und Auswertung",
-     "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
-     "zeit": "Aufgaben und Versuch ca. 23 min · Besprechung 3 min · Reserve 3 min",
-     "wie": "ohne Handy: Aufgabe 10 zu zweit",
-     "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 1",
-     "datum": "Mi 04.11.",
-     "lesen": "Einstieg + Teil 1 · Vermuten und prüfen · Buch S. 29 (4.1) · Flieger bauen",
-     "aufgaben": "1–4",
-     "zeit": "Aufgaben und Versuch ca. 22 min · Besprechung 2 min · Reserve 3 min",
-     "wie": "ohne Handy: Flieger bauen nach Faltanleitung, Gruppennummer drauf",
-     "abgabe": "Flieger abgeben"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 2",
-     "datum": "Fr 06.11.",
-     "lesen": "1. Test (20 min) · Teil 3 · Wie Forschung wirklich läuft · Buch S. 29 (4.2)",
-     "aufgaben": "6, 7",
-     "zeit": "Aufgaben und Versuch ca. 12 min · Besprechung 3 min · Reserve 4 min",
-     "wie": "ohne Handy: Aufgabe 6 zu zweit, Aufgabe 7 Partnercheck",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 3",
-     "datum": "Mo 09.11.",
-     "lesen": "Teil 2 · Der Papierflieger-Test · Versuch K1.4-V1 im Eingangsbereich",
-     "aufgaben": "5 · Versuchsprotokoll",
-     "zeit": "Aufgaben und Versuch ca. 17 min · Reserve 13 min",
-     "wie": "ohne Handy: Versuch K1.4-V1",
-     "abgabe": "Papierblatt der Gruppe abgeben"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 4",
-     "datum": "Mi 11.11.",
-     "lesen": "Teil 4 · Auswerten: Was sagen die Werte? · Versuch K1.4-V1: Klassentabelle und Auswertung",
-     "aufgaben": "8–10 · Versuchsprotokoll · Quiz freiwillig",
-     "zeit": "Aufgaben und Versuch ca. 23 min · Besprechung 3 min · Reserve 3 min",
-     "wie": "ohne Handy: Aufgabe 10 zu zweit",
-     "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige (Zielscheiben, Forschungskarte)",
-     "aufgaben": "Zusatz 11–14",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "08.11.2026",
-   "zip": "26-27-1AB-K1.4-Erkenntnis-v4.zip",
-   "liste": [
-    "26-27-1AB-K1.4-Erkenntnis-TH-Unterricht-v7.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Lehrer-v4.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Lehrer-v4.pptx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-AB-v4.docx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Loesung-v4.docx",
-    "26-27-1AB-K1.4-Erkenntnis-TH-Fachwissen-v4.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-AB-v4.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Loesung-v4.docx",
-    "26-27-1AB-K1.4-Erkenntnis-VS-Fachwissen-v4.docx",
-    "26-27-1AB-K1.4-Erkenntnis-Pruefbericht-Claude-v4.md"
-   ]
-  },
-  "lehrerseite": "https://claude.ai/artifact/7y811wKjJTEmufpoP8Ed7x"
- },
- {
-  "klasse": "1AB",
-  "fach": "NAWI",
-  "ordner": "1ab-nawi/k2-1-kraefte",
-  "kapitel": "K2.1",
-  "titel": "Mechanische Kräfte – messen, rechnen, erklären",
-  "block": "E Physik",
-  "jahresplan": "E15–E17",
-  "seiten": [
-   "aufgaben.html",
-   "theorie.html",
-   "quiz.html"
-  ],
-  "versteckt": true,
-  "fahrplan": {
-   "ansicht": "kompakt",
-   "text": "Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Die Daten sind geplant – die Reihenfolge zählt.",
-   "zeilen": [
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 1",
-     "datum": "Do 12.11. · 8. Std. · geplant",
-     "marke": "GEMEINSAM",
-     "lesen": "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen",
-     "aufgaben": "1, 2",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 2",
-     "datum": "Fr 13.11. · geplant",
-     "marke": "SELBSTSTUDIUM",
-     "lesen": "Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe",
-     "aufgaben": "3, 4",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Plan freigeben lassen"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 3",
-     "datum": "Do 19.11. · 7. Std. · geplant",
-     "marke": "VERSUCH",
-     "lesen": "Euren Versuch machen und üben · Material von zu Hause mitbringen",
-     "aufgaben": "5",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 4",
-     "datum": "Do 19.11. · 8. Std. · geplant",
-     "marke": "GRUPPENARBEIT",
-     "lesen": "Steckbrief schreiben, Handout in Teams · Präsentation proben",
-     "aufgaben": "6",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Handout-PDF in Teams (Schriftführung)"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 5",
-     "datum": "Fr 20.11. · geplant",
-     "marke": "PRÄSENTATION",
-     "lesen": "Alle sieben Gruppen präsentieren · du schreibst mit",
-     "aufgaben": "7",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1AK",
-     "wann": "Stunde 6",
-     "datum": "Do 26.11. · 7. Std. · geplant",
-     "marke": "EINZELARBEIT",
-     "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
-     "aufgaben": "8 · Quiz freiwillig",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Arbeitsblatt-PDF in LMS"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 1",
-     "datum": "Fr 13.11. · geplant",
-     "marke": "GEMEINSAM",
-     "lesen": "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen",
-     "aufgaben": "1, 2",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 2",
-     "datum": "Mo 16.11. · geplant",
-     "marke": "SELBSTSTUDIUM",
-     "lesen": "Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe",
-     "aufgaben": "3, 4",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Plan freigeben lassen"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 3",
-     "datum": "Mi 18.11. · geplant",
-     "marke": "VERSUCH",
-     "lesen": "Euren Versuch machen und üben · Material von zu Hause mitbringen",
-     "aufgaben": "5",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 4",
-     "datum": "Fr 20.11. · geplant",
-     "marke": "GRUPPENARBEIT",
-     "lesen": "Steckbrief schreiben, Handout in Teams · Präsentation proben",
-     "aufgaben": "6",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Handout-PDF in Teams (Schriftführung)"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 5",
-     "datum": "Mo 23.11. · geplant",
-     "marke": "PRÄSENTATION",
-     "lesen": "Alle sieben Gruppen präsentieren · du schreibst mit",
-     "aufgaben": "7",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 6",
-     "datum": "Mi 25.11. · geplant",
-     "marke": "EINZELARBEIT",
-     "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
-     "aufgaben": "8 · Quiz freiwillig",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Arbeitsblatt-PDF in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen)",
-     "aufgaben": "Zusatz 9–11",
-     "zeit": "ca. 26 min",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "11.11.2026",
-   "liste": [
-    "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v2.pptx"
-   ]
-  },
-  "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5"
- },
- {
-  "klasse": "2AB",
-  "fach": "NAWI",
-  "ordner": "2ab-nawi/test1-training",
-  "kapitel": "1. Test · 05.11.",
-  "titel": "Test-Training: Atommodelle, Orbitale, Bindungsarten",
-  "seiten": [
-   "quiz.html",
-   "teststoff.html"
-  ],
-  "dateien": {
-   "stand": "24.10.2026",
-   "zip": "26-27-2AB-K1.2b-Station-v3.zip",
-   "liste": [
-    "26-27-2AB-Test1-Teststoff-v2.docx",
-    "26-27-2AB-Test1-Kahoot-v2.xlsx"
-   ]
-  },
-  "teststoff": "werkzeug/teststoff/daten/26-27-2ab-test1.json"
- },
- {
-  "klasse": "2AB",
-  "fach": "NAWI",
-  "ordner": "2ab-nawi/k1-2-bindungen",
-  "kapitel": "K1.2",
-  "titel": "Die Bindungsarten",
-  "block": "A Atombau & Bindung",
-  "jahresplan": "E3–E5",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "vertiefung.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Stunde 1–2: Theorie-Seite und Arbeitsblatt (Aufgaben 1–10). Stunde 3–4: Stationen A–D und Vertiefung (Aufgaben 11–16), Demo, Besprechung, Teststoff.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg + Teil 1 · Warum verbinden sich Atome? + Teil 2 · Ionenbindung + Teil 3 · Atombindung",
-     "aufgaben": "1–4 · 6",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 4 · Metallbindung + Teil 5 · Zwischenmolekulare Kräfte + Überblick",
-     "aufgaben": "5 · 7–10 · Quiz",
-     "abgabe": "Arbeitsblatt-PDF in LMS"
-    },
-    {
-     "wann": "Stunde 3",
-     "lesen": "Versuchsseite: Gruppe 1–4 an den Stationen A–D · Gruppe 5–8 Vertiefung",
-     "aufgaben": "Protokoll A–D · Vertiefung 11–16",
-     "wie": "ohne Handy: Versuche an den Stationen (Handy nur zum Protokollieren)",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 4",
-     "lesen": "Demo K1.2-V4 (alle) · Wechsel: Gruppe 5–8 Stationen A–D · Gruppe 1–4 Vertiefung · Besprechung · Teststoff für 05.11.",
-     "aufgaben": "Protokoll A–D + V4 · Vertiefung 11–16",
-     "wie": "ohne Handy: Demo mit Vorhersage, Besprechung im Plenum",
-     "abgabe": "Versuchs-PDF (jeder seine eigene) + Vertiefungs-PDF (jeder) in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Vertiefung Aufgabe 17 · Test-Training-Quiz",
-     "aufgaben": "17",
-     "abgabe": "–"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "19.10.2026",
-   "zip": "26-27-2AB-K1.2b-Station-v3.zip",
-   "liste": [
-    "26-27-2AB-K1.2b-Station-VS-Lehrer-v3.pptx",
-    "26-27-2AB-K1.2b-Station-VS-Kadetten-v3.pptx",
-    "26-27-2AB-K1.2b-Station-VS-AB-v2.docx",
-    "26-27-2AB-K1.2b-Station-VS-Loesung-v2.docx",
-    "26-27-2AB-K1.2b-Station-VS-Fachwissen-v2.docx",
-    "TH-PPP, TH-AB/Loesung, TH-Fachwissen K1.2 (Stunde 1–2): Fassung aus dem Chat vom 11.10."
-   ]
-  }
- },
- {
-  "klasse": "2AB",
-  "fach": "NAWI",
-  "ordner": "2ab-nawi/k1-3-reaktionen",
-  "kapitel": "K1.3",
-  "titel": "Stoffumwandlung: Redox, Energie, Katalysatoren",
-  "block": "B Chemische Reaktionen",
-  "jahresplan": "E6–E7",
-  "lehrerseite": "https://claude.ai/artifact/KbMWfk58Rrb9PXw5QnhTxk",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Lies die Theorie-Seite Teil für Teil, mach die Pflicht-Aufgaben im Arbeitsblatt, protokolliere die Versuche in der Gruppe und gib nach Stunde 4 beide PDFs in LMS ab. Es gibt keine Hausübung – Zusatz-Aufgaben (auch das Thema Tempo, Teil 5) nur, wenn du früher fertig bist. Die Zeiten sind Richtwerte: Lesen und Versuche dauern oft länger, Aufgaben gehen dafür schneller.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "datum": "Di 03.11.",
-     "lesen": "Einstieg + Teil 1 · Redoxreaktionen · Demo K1.3-V1 Eisenwolle (12 min) · Lehrkraft setzt K1.3-V2 Rost an",
-     "aufgaben": "1–3 · Zusatz: 4",
-     "zeit": "Aufgaben ca. 13 min · ca. 8 min Puffer",
-     "wie": "ohne Handy: Demo mit Vorhersage (Hand heben)",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "datum": "Do 05.11.",
-     "lesen": "1. Test (20 min) · Demo K1.3-V3 Kupferbrief (8 min) · Teil 2 · Rost und Rostschutz",
-     "aufgaben": "5–7 · Zusatz: 8",
-     "zeit": "Aufgaben ca. 10 min · ca. 7 min Reserve",
-     "wie": "ohne Handy: Test, Demo mit Vorhersage",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 3",
-     "datum": "Di 10.11.",
-     "lesen": "Weißt du noch? · Rost-Ansätze auswerten · Demo K1.3-V6 Kältemischung · Teil 3 · Energie · Gruppe 1–3: Stationen K1.3-V4 und V5 (3 Runden à 11 min, Erkenntnis gleich an der Station) · Gruppe 4–6: Teil 3 lesen und Aufgaben",
-     "aufgaben": "Gruppe 4–6: 9–11 · Gruppe 1–3: 9 in der freien Runde · Zusatz: 12",
-     "zeit": "Stationen 33 min · Lesen + Aufgaben ca. 23 min · 2 min Puffer",
-     "wie": "ohne Handy: Demo, Stationen (Handy nur fürs Protokoll), Energiediagramm mit der Hand",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 4",
-     "datum": "Do 12.11.",
-     "lesen": "Weißt du noch? · Demo K1.3-V7 Wasserstoffperoxid 3 % mit und ohne Braunstein (Katalysator) · Teil 4 · Katalysatoren · Gruppe 4–6: Stationen K1.3-V4 (Mobiltisch 1) und V5 (Wasserleitung 1) · Gruppe 1–3: Teil 4 lesen, Aufgabe 14, Deutung V4/V5 im Protokoll",
-     "aufgaben": "13–14 · Gruppe 1–3: 10–11 und Deutung V4/V5 · Gruppe 4–6: Deutung V4/V5 am Ende",
-     "zeit": "Demo ca. 8 min · Stationen 33 min · Auswertung V4/V5 3 min · Besprechen 2 min · Reserve 1 min",
-     "wie": "ohne Handy: Demo mit Vorhersage, Stationen (Handy nur fürs Protokoll)",
-     "abgabe": "beide PDFs in LMS (nach Stunde 4)"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Zusatz: Teil 5 · Tempo der Reaktion (Selbststudium, Buch S. 36–37) · Für Schnelle und Neugierige · Kreativ-Challenge Video, Podcast oder Plakat",
-     "aufgaben": "15–23 (16–18 Tempo)",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "31.10.2026",
-   "zip": "26-27-2AB-K1.3-Reaktionen-v7.zip",
-   "liste": [
-    "26-27-2AB-K1.3-Reaktionen-TH-Lehrer-v6.pptx",
-    "26-27-2AB-K1.3-Reaktionen-TH-Kadetten-v6.pptx",
-    "26-27-2AB-K1.3-Reaktionen-TH-Unterricht-v2.pptx",
-    "26-27-2AB-K1.3-Reaktionen-VS-Lehrer-v6.pptx",
-    "26-27-2AB-K1.3-Reaktionen-VS-Kadetten-v6.pptx",
-    "26-27-2AB-K1.3-Reaktionen-TH-AB-v4.docx",
-    "26-27-2AB-K1.3-Reaktionen-VS-AB-v4.docx",
-    "26-27-2AB-K1.3-Reaktionen-TH-Loesung-v4.docx",
-    "26-27-2AB-K1.3-Reaktionen-VS-Loesung-v4.docx",
-    "26-27-2AB-K1.3-Reaktionen-TH-Fachwissen-v4.docx",
-    "26-27-2AB-K1.3-Reaktionen-VS-Fachwissen-v4.docx",
-    "26-27-2AB-K1.3-Reaktionen-Kahoot-v2.xlsx",
-    "26-27-2AB-K1.3-Reaktionen-QR-Arbeitsblatt-v1.png",
-    "26-27-2AB-K1.3-Reaktionen-QR-Klassenseite-v1.png",
-    "26-27-2AB-K1.3-Reaktionen-QR-Quiz-v1.png",
-    "26-27-2AB-K1.3-Reaktionen-QR-Theorie-v1.png",
-    "26-27-2AB-K1.3-Reaktionen-QR-Versuche-v1.png"
-   ]
-  },
-  "aktuell": true
- },
- {
-  "klasse": "5AB",
-  "fach": "TÖW",
-  "ordner": "5ab-toew/k1-3-nachhaltig",
-  "kapitel": "K1.3",
-  "titel": "Prinzipien der Nachhaltigkeit",
-  "block": "A Ökologisches Wirtschaften",
-  "jahresplan": "E2",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "projekt.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg + Teil 1 · Was heißt nachhaltig? + Teil 2 · Nachhaltigkeit im Unternehmen",
-     "aufgaben": "1–6",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Hausübung",
-     "lesen": "Teil 3 · Agenda 2030 und die SDGs",
-     "aufgaben": "7 · Quiz",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Projekt",
-     "lesen": "Projektseite · Nachhaltigkeitsberichte",
-     "aufgaben": "Projekt 1–7",
-     "wie": "in Gruppen",
-     "abgabe": "PDF in LMS"
-    }
-   ]
-  }
- },
- {
-  "klasse": "5AB",
-  "fach": "TÖW",
-  "ordner": "5ab-toew/k1-4-5-oeko",
-  "kapitel": "K1.4–1.5",
-  "titel": "Ökodesign und Ökobilanz",
-  "block": "A Ökologisches Wirtschaften",
-  "jahresplan": "E3",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Dafür ist 1 Stunde eingeplant: Lies Teil 1 und Teil 2 im Theorieteil, mach die Aufgaben 1–3 im Arbeitsblatt und gib die PDF am Stundenende in LMS ab. Es gibt keine Hausübung. Zum Wiederholen vor dem Test am Do 12.11.2026: Quiz und Partnercheck.",
-   "zeilen": [
-    {
-     "klasse": "5BK",
-     "wann": "Stunde 1",
-     "datum": "Di 03.11.",
-     "lesen": "Einstieg + Teil 1 · Ökodesign (Buch S. 19–21) + Teil 2 · Ökobilanz (Buch S. 22–25)",
-     "aufgaben": "1–3 · Quiz freiwillig",
-     "zeit": "Lesen 8 min · Aufgaben 20 min · Besprechung 5 min · Reserve 4 min",
-     "wie": "ohne Handy: Einstieg per Handzeichen, Aufgabe 1 am Mini-Whiteboard, Besprechung",
-     "abgabe": "Arbeitsblatt-PDF in LMS (am Stundenende)"
-    },
-    {
-     "klasse": "5AK",
-     "wann": "Stunde 1",
-     "datum": "Do 05.11.",
-     "lesen": "Einstieg + Teil 1 · Ökodesign (Buch S. 19–21) + Teil 2 · Ökobilanz (Buch S. 22–25)",
-     "aufgaben": "1–3 · Quiz freiwillig",
-     "zeit": "Lesen 8 min · Aufgaben 20 min · Besprechung 5 min · Reserve 4 min",
-     "wie": "ohne Handy: Einstieg per Handzeichen, Aufgabe 1 am Mini-Whiteboard, Besprechung",
-     "abgabe": "Arbeitsblatt-PDF in LMS (am Stundenende)"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige · Partnercheck-Karten zum Wiederholen vor dem Test am Do 12.11.2026",
-     "aufgaben": "Zusatz 4–9",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "31.10.2026",
-   "zip": "26-27-5AB-K1.4-1.5-Oeko-v1.zip",
-   "liste": [
-    "26-27-5AB-K1.4-1.5-Oeko-TH-Unterricht-v3.pptx",
-    "26-27-5AB-K1.4-1.5-Oeko-TH-Lehrer-v1.pptx",
-    "26-27-5AB-K1.4-1.5-Oeko-TH-Kadetten-v1.pptx",
-    "26-27-5AB-K1.4-1.5-Oeko-TH-AB-v1.docx",
-    "26-27-5AB-K1.4-1.5-Oeko-TH-Loesung-v1.docx",
-    "26-27-5AB-K1.4-1.5-Oeko-TH-Fachwissen-v1.docx",
-    "26-27-5AB-K1.4-1.5-Oeko-Pruefbericht-Claude-v1.md"
-   ]
-  },
-  "lehrerseite": "https://claude.ai/artifact/8wMJDUiqB89uNTQ4A1SGqF"
- },
- {
-  "klasse": "5AB",
-  "fach": "TÖW",
-  "ordner": "5ab-toew/k1-8-fairer-handel",
-  "kapitel": "K1.8",
-  "titel": "Fairer Handel",
-  "block": "A Ökologisches Wirtschaften",
-  "jahresplan": "E5",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Dafür sind 2 Stunden eingeplant (die erste ist ein Testtag und daher kurz): Lies Teil 1 und 2 im Theorieteil und im Schulbuch S. 35–38, mach die Aufgaben 1–3 im Arbeitsblatt und gib die PDF am Ende der zweiten Stunde in LMS ab. Es gibt keine Hausübung.",
-   "zeilen": [
-    {
-     "klasse": "5BK",
-     "wann": "Stunde 1",
-     "datum": "Di 10.11.",
-     "lesen": "Testtag: kurze Einheit nach dem Test · Einstieg + Teil 1 · Was heißt fair? (Buch S. 35–37)",
-     "aufgaben": "1",
-     "zeit": "Lesen 3 min · Aufgaben 6 min · Besprechung 3 min · Reserve 6 min",
-     "wie": "ohne Handy: Einstieg per Handzeichen, Besprechung; Aufgabe 1 am Handy zu zweit",
-     "abgabe": "keine Abgabe in Stunde 1"
-    },
-    {
-     "klasse": "5BK",
-     "wann": "Stunde 2",
-     "datum": "Di 17.11.",
-     "lesen": "Teil 2 · Was bringt es – und was nicht? (Buch S. 36–38)",
-     "aufgaben": "2, 3 · Quiz freiwillig",
-     "zeit": "Lesen 4 min · Aufgaben 17 min · Besprechung 4 min · Reserve 8 min",
-     "wie": "ohne Handy: Rückblick, Besprechung, Gruppendiskussion; Aufgabe 2 am Handy zu zweit",
-     "abgabe": "Arbeitsblatt-PDF in LMS (am Ende von Stunde 2)"
-    },
-    {
-     "klasse": "5AK",
-     "wann": "Stunde 1",
-     "datum": "Do 12.11.",
-     "lesen": "Testtag: kurze Einheit nach dem Test · Einstieg + Teil 1 · Was heißt fair? (Buch S. 35–37)",
-     "aufgaben": "1",
-     "zeit": "Lesen 3 min · Aufgaben 6 min · Besprechung 3 min · Reserve 6 min",
-     "wie": "ohne Handy: Einstieg per Handzeichen, Besprechung; Aufgabe 1 am Handy zu zweit",
-     "abgabe": "keine Abgabe in Stunde 1"
-    },
-    {
-     "klasse": "5AK",
-     "wann": "Stunde 2",
-     "datum": "Do 19.11.",
-     "lesen": "Teil 2 · Was bringt es – und was nicht? (Buch S. 36–38)",
-     "aufgaben": "2, 3 · Quiz freiwillig",
-     "zeit": "Lesen 4 min · Aufgaben 17 min · Besprechung 4 min · Reserve 8 min",
-     "wie": "ohne Handy: Rückblick, Besprechung, Gruppendiskussion; Aufgabe 2 am Handy zu zweit",
-     "abgabe": "Arbeitsblatt-PDF in LMS (am Ende von Stunde 2)"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige · Partnercheck-Karten zum Wiederholen",
-     "aufgaben": "Zusatz 4–6",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "11.11.2026",
-   "liste": [
-    "26-27-5AB-K1.8-Fairtrade-TH-Unterricht-v2.pptx"
-   ]
-  },
-  "lehrerseite": "https://claude.ai/artifact/R862RGb3AViahWdNcfy6tC"
- },
- {
-  "klasse": "4AB",
-  "fach": "NAWI",
-  "ordner": "4ab-nawi/test1-training",
-  "kapitel": "1. Test · 11.11.",
-  "titel": "Test-Training: Ladungen, Feld, Magnetismus, Elektromagnetismus",
-  "seiten": [
-   "quiz.html"
-  ],
-  "dateien": {
-   "stand": "20.10.2026",
-   "liste": [
-    "26-27-4AB-Test1-Teststoff-v3.docx",
-    "26-27-4AB-Test1-Kahoot.xlsx",
-    "26-27-4AB-Test1-Blooket.csv"
-   ]
-  },
-  "teststoff": "werkzeug/teststoff/daten/26-27-4ab-test1.json"
- },
- {
-  "klasse": "4AB",
-  "fach": "NAWI",
-  "ordner": "4ab-nawi/k1-5a-elektromagnet",
-  "kapitel": "K1.5a",
-  "titel": "Elektromagnet und Elektromotor",
-  "block": "A Elektrizität & Magnetismus",
-  "jahresplan": "E4",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ],
-  "dateien": {
-   "stand": "18.10.2026",
-   "zip": "26-27-4AB-K1.5a-E-Magnet-v1.zip",
-   "liste": [
-    "26-27-4AB-K1.5a-E-Magnet-TH-Lehrer-v1.pptx",
-    "26-27-4AB-K1.5a-E-Magnet-TH-Kadetten-v1.pptx",
-    "26-27-4AB-K1.5a-E-Magnet-TH-AB-v1.docx",
-    "26-27-4AB-K1.5a-E-Magnet-TH-Loesung-v1.docx",
-    "26-27-4AB-K1.5a-E-Magnet-TH-Fachwissen-v1.docx",
-    "26-27-4AB-K1.5a-E-Magnet-VS-Lehrer-v1.pptx",
-    "26-27-4AB-K1.5a-E-Magnet-VS-Kadetten-v1.pptx",
-    "26-27-4AB-K1.5a-E-Magnet-VS-AB-v1.docx",
-    "26-27-4AB-K1.5a-E-Magnet-VS-Loesung-v1.docx",
-    "26-27-4AB-K1.5a-E-Magnet-VS-Fachwissen-v1.docx",
-    "26-27-4AB-K1.5a-E-Magnet-Kahoot-v1.xlsx"
-   ]
-  },
-  "fahrplan": {
-   "text": "Lies Teil 1 und mach die Aufgaben 1–4, dann Teil 2 mit dem Rätsel, die Aufgaben 5–9 und das Quiz – dann PDF abgeben. *Die Versuche zeigt dir dein Lehrer, in der 4BK in einer eigenen Stunde.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Teil 1 · Elektromagnet",
-     "aufgaben": "1–4",
-     "wie": "Versuch K1.5-V1 (Demo)*",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 2 · Motor + Rätsel",
-     "aufgaben": "5–9 · Quiz",
-     "wie": "Versuch K1.5-V3 (Demo)*",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Stunde 3",
-     "lesen": "Versuchsseite",
-     "aufgaben": "Protokoll",
-     "wie": "V1, V3 · V5 zu zweit*",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Zusatz · Halbleiter",
-     "aufgaben": "10–20",
-     "wie": "V2, V4 (Station)",
-     "abgabe": "freiwillig"
-    }
-   ]
-  }
- },
- {
-  "klasse": "4AB",
-  "fach": "NAWI",
-  "ordner": "4ab-nawi/k2-1-wellen",
-  "kapitel": "K2.1–2.3",
-  "titel": "Schwingungen, Wellen und das elektromagnetische Spektrum",
-  "block": "B Schwingungen & Wellen",
-  "jahresplan": "E6–E8",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "versuche.html",
-   "quiz.html"
-  ],
-  "versteckt": false,
-  "aktuell": true,
-  "fahrplan": {
-   "text": "Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 + 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. Der 1. Test ist für beide Klassen am Mi 11.11. (4AK danach das Referat EKG/MRT). Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS (4AK nach Stunde 5 am Mi 18.11., 4BK nach Stunde 4 am Fr 13.11.).",
-   "zeilen": [
-    {
-     "klasse": "4AK",
-     "wann": "Stunde 1",
-     "datum": "Mi 04.11.",
-     "lesen": "Einstieg · Teil 1 · Versuch K2.1-V1 Pendel",
-     "aufgaben": "1–3",
-     "zeit": "Aufgaben und Versuche ca. 27 min · Besprechung 4 min · Reserve 3 min",
-     "wie": "ohne Handy: Einstieg: Schaukel",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "4AK",
-     "wann": "Stunde 2",
-     "datum": "Mo 09.11.",
-     "lesen": "Teil 2 + Teil 3 · Demo K2.1-V2 Resonanz · Versuch K2.2-V1 Schnur und Kadetten-Welle",
-     "aufgaben": "4–7",
-     "zeit": "Aufgaben und Versuche ca. 26 min · Besprechung 3 min · Reserve 2 min",
-     "wie": "ohne Handy: Aufgabe 5 Partnercheck mit 2 Fragen, Versuch K2.2-V1 Schnur und Kadetten-Welle",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "4AK",
-     "wann": "Stunde 3",
-     "datum": "Mi 11.11.",
-     "lesen": "1. Test · Referat EKG/MRT",
-     "aufgaben": "–",
-     "zeit": "1. Test 20 min · Referat EKG/MRT 20 min · Besprechung 4 min · Reserve 3 min",
-     "wie": "ohne Handy: 1. Test, Referat EKG/MRT",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "4AK",
-     "wann": "Stunde 4",
-     "datum": "Mo 16.11.",
-     "lesen": "Teil 4 · Simulation K2.2-V2",
-     "aufgaben": "8, 9 · Zusatz 16, 17",
-     "zeit": "Aufgaben und Versuche ca. 10 min · Zusatz 15 min · Besprechung 5 min · Reserve 5 min",
-     "wie": "ohne Handy: Aufgabe 9 Huygens-Skizze, Zusatz 16 Überlagerung zeichnen",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "4AK",
-     "wann": "Stunde 5",
-     "datum": "Mi 18.11.",
-     "lesen": "Teil 5",
-     "aufgaben": "10–13 · Quiz freiwillig",
-     "zeit": "Aufgaben und Versuche ca. 23 min · Besprechung 3 min · Reserve 3 min",
-     "wie": "ohne Handy: Aufgabe 10 Spektrum ordnen, Aufgabe 12 KI-Check, Aufgabe 13 Sicherheitskarte",
-     "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
-    },
-    {
-     "klasse": "4BK",
-     "wann": "Stunde 1",
-     "datum": "Mi 04.11.",
-     "lesen": "Einstieg · Teil 1 · Versuch K2.1-V1 Pendel",
-     "aufgaben": "1–3",
-     "zeit": "Aufgaben und Versuche ca. 27 min · Besprechung 4 min · Reserve 3 min",
-     "wie": "ohne Handy: Einstieg: Schaukel",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "4BK",
-     "wann": "Stunde 2",
-     "datum": "Fr 06.11.",
-     "lesen": "Teil 2 + Teil 3 · Demo K2.1-V2 Resonanz · Versuch K2.2-V1 Schnur und Kadetten-Welle",
-     "aufgaben": "4–7",
-     "zeit": "Aufgaben und Versuche ca. 26 min · Besprechung 3 min · Reserve 2 min",
-     "wie": "ohne Handy: Aufgabe 5 Partnercheck mit 2 Fragen, Versuch K2.2-V1 Schnur und Kadetten-Welle",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "4BK",
-     "wann": "Stunde 3",
-     "datum": "Mi 11.11.",
-     "lesen": "1. Test · Teil 5",
-     "aufgaben": "10, 11",
-     "zeit": "Aufgaben und Versuche ca. 9 min · Besprechung 3 min · Reserve 2 min",
-     "wie": "ohne Handy: Aufgabe 10 Spektrum ordnen",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "4BK",
-     "wann": "Stunde 4",
-     "datum": "Fr 13.11.",
-     "lesen": "Teil 4 · Simulation K2.2-V2",
-     "aufgaben": "8, 9, 12, 13 · Quiz freiwillig",
-     "zeit": "Aufgaben und Versuche ca. 24 min · Besprechung 4 min · Reserve 5 min",
-     "wie": "ohne Handy: Aufgabe 9 Huygens-Skizze, Aufgabe 12 KI-Check, Aufgabe 13 Sicherheitskarte",
-     "abgabe": "Arbeitsblatt-PDF + Versuchs-PDF in LMS"
-    },
-    {
-     "klasse": "4BK",
-     "wann": "Zusatztermin",
-     "datum": "Mi 18.11.",
-     "lesen": "nur falls die Stunde stattfindet · Vertiefung",
-     "aufgaben": "Zusatz 14–17",
-     "zeit": "ca. 31 min Aufgaben",
-     "wie": "Überlagerung mit der Hand zeichnen",
-     "abgabe": "PDF ergänzen (freiwillig)"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige (Forschungskarte, Ausblick)",
-     "aufgaben": "14–17",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "10.11.2026",
-   "zip": "26-27-4AB-K2.1-2.3-Wellen-v5.zip",
-   "liste": [
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Unterricht-v9.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Lehrer-v9.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Kadetten-v9.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Lehrer-v9.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Kadetten-v9.pptx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-AB-v9.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Loesung-v9.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-TH-Fachwissen-v9.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-AB-v9.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Loesung-v9.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-VS-Fachwissen-v9.docx",
-    "26-27-4AB-K2.1-2.3-Wellen-Kahoot-v1.xlsx",
-    "26-27-4AB-K2.1-2.3-Wellen-Pruefbericht-Claude-v3.md",
-    "26-27-4AB-K2.1-2.3-Wellen-Unterrichts-PPP-Rueckmeldung-Claude-v1.md"
-   ]
-  },
-  "lehrerseite": "https://claude.ai/artifact/C9wRo5pzXVj667D1pkfhYN"
- },
- {
-  "klasse": "5AK",
-  "fach": "IWK",
-  "ordner": "5ak-iwk/k1-2-kulturen",
-  "kapitel": "K1.2",
-  "titel": "Die Welt einteilen · Kulturen erleben",
-  "block": "A Räume & Konzepte",
-  "jahresplan": "E1",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "uebung.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg + Abschnitt 1 · Was ist Kultur? + Abschnitt 2 · Kulturerdteile nach Kolb",
-     "aufgaben": "1–5",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Abschnitt 3 · Huntington + Abschnitt 4 · Cultural Map",
-     "aufgaben": "6–12",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 3",
-     "lesen": "Abschnitt 5 · Fünf Welten + Abschnitt 6 · Weltsystem",
-     "aufgaben": "13–17",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Abschluss",
-     "lesen": "Übung · Kulturen erleben",
-     "aufgaben": "18–22 · Übung · Quiz",
-     "abgabe": "PDF in LMS"
-    }
-   ]
-  }
- },
- {
-  "klasse": "5AK",
-  "fach": "IWK",
-  "ordner": "5ak-iwk/k2-1-globalisierung",
-  "kapitel": "K2.1",
-  "titel": "Globalisierung",
-  "block": "B Globalisierung",
-  "jahresplan": "E3 (Prozesse der Globalisierung, 2 Stunden)",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "versteckt": true,
-  "lehrerseite": "https://claude.ai/artifact/HDe46vKV98ogtwmLxKHr4v",
-  "fahrplan": {
-   "text": "Dafür sind 2 Stunden eingeplant (Fr 13.11. und Fr 20.11.). Lies den jeweiligen Abschnitt im Buch und die Theorie-Karte, mach die Aufgaben 1–3 im Arbeitsblatt und gib am 20.11. die PDF in LMS ab. Am 20.11. schreibst du zuerst den angekündigten Test. Zusatzaufgaben 4–6 sind freiwillig. Keine Hausübung.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "datum": "Fr 13.11.",
-     "lesen": "Beginn der Globalisierung und Antriebskräfte (Buch S. 42–47)",
-     "aufgaben": "1, 2",
-     "zeit": "Lesen 7 min · Aufgaben 19 min · Besprechung 8 min · Organisation, Einstieg, Sicherung 9 min · Reserve 7 min",
-     "wie": "ohne Handy: Einstieg an der Tafel, Besprechungen, Sicherung im Heft",
-     "abgabe": "Antworten bleiben am Handy gespeichert"
-    },
-    {
-     "wann": "Stunde 2",
-     "datum": "Fr 20.11.",
-     "lesen": "Digitalisierung und Digital Divide (Buch S. 48), Statement-Ampel »Ziele erreicht?« (Buch S. 51)",
-     "aufgaben": "3 · Selbstcheck-Quiz (6 Fragen)",
-     "zeit": "Test 20 min · Lesen 2 min · Aufgaben 8 min · Besprechung 2 min · Organisation, Wiederholung, Ampel, PDF 13 min · Reserve 5 min",
-     "wie": "zuerst Test; ohne Handy: Weißt du noch?, Statement-Ampel im Raum",
-     "abgabe": "Arbeitsblatt-PDF in LMS (Aufgaben 1–3)"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "11.11.2026",
-   "zip": "",
-   "liste": [
-    "26-27-5AK-K2.1-Global-TH-Unterricht-v5.pptx"
-   ]
-  }
- },
- {
-  "klasse": "3AB",
-  "fach": "NAWI",
-  "ordner": "3ab-nawi/k2-3a-ernaehrung",
-  "kapitel": "K2.3a",
-  "titel": "Ernährungsweisen: Personengruppen, Vegetarismus & Vollwerternährung",
-  "block": "B Landwirtschaft & Ernährung",
-  "jahresplan": "E7 (Teil 1)",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Teil 1 · Personengruppen + Teil 2 · Alternative Ernährungsformen",
-     "aufgaben": "1–2",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 2.1 · Vegetarismus + Teil 2.2 · Vollwerternährung, dann Quiz",
-     "aufgaben": "3–6 · Quiz",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige",
-     "aufgaben": "7",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "alt_nummer": "K2.1a",
-  "dateien": {
-   "stand": "20.10.2026",
-   "liste": [
-    "26-27-3AB-K2.1a-Ernaehrungsweisen-Lehrer.pptx"
-   ]
-  }
- },
- {
-  "klasse": "3AB",
-  "fach": "NAWI",
-  "ordner": "3ab-nawi/k2-3b-trendcheck",
-  "kapitel": "K2.3b",
-  "titel": "Trend-Check: Hype oder Hilfe?",
-  "block": "B Landwirtschaft & Ernährung",
-  "jahresplan": "E7",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "gruppe.html",
-   "quiz.html",
-   "kurz.html"
-  ],
-  "fahrplan": {
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg + Teil 1 · Der Maßstab + Teil 2 · Belegt oder behauptet?",
-     "aufgaben": "1–2",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 3 · Wer verdient daran? + Teil 4 · Trend-Check in 5 Fragen, dann Gruppen-Steckbrief",
-     "aufgaben": "3–5 · Quiz",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Wenig Zeit?",
-     "lesen": "Kompakt-Seite (alles in einer Stunde)",
-     "aufgaben": "1–6",
-     "abgabe": "PDF in LMS"
-    }
-   ]
-  }
- },
- {
-  "klasse": "3AB",
-  "fach": "NAWI",
-  "ordner": "3ab-nawi/k2-1-landbau",
-  "kapitel": "K2.1",
-  "titel": "Formen der Landwirtschaft",
-  "block": "B Landwirtschaft & Ernährung",
-  "jahresplan": "E4",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Dafür sind 4 Stunden eingeplant (3AK und 3BK gleich: Mi 04.11., Mo 09.11., Mi 11.11., Mo 16.11.). Lies den jeweiligen Teil im Theorieteil, mach die Aufgaben 1–9 im Arbeitsblatt und gib am 16.11. die PDF in LMS ab. Am 09.11. schreibst du zuerst den Test. Keine Hausübung.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "datum": "Mi 04.11.",
-     "lesen": "Einstieg + Teil 1 · Acker, drei Formen, Bio (Buch S. 38–43)",
-     "aufgaben": "1, 2",
-     "zeit": "Lesen 9 min · Aufgaben 17 min · Besprechung 7 min · Reserve 4 min",
-     "wie": "ohne Handy: Einstieg per Handzeichen, Tabelle an der Tafel, Partnercheck mit Karten",
-     "abgabe": "Antworten bleiben am Handy gespeichert"
-    },
-    {
-     "wann": "Stunde 2",
-     "datum": "Mo 09.11.",
-     "lesen": "Teil 2 · Pflanzenschutz, Verpackung (Buch S. 43–47)",
-     "aufgaben": "3, 4",
-     "zeit": "Test 20 min · Lesen 5 min · Aufgaben 15 min · Besprechung 3 min · Reserve 5 min",
-     "wie": "zuerst Test; ohne Handy: Verpackungen in Gruppen lesen",
-     "abgabe": "Antworten bleiben am Handy gespeichert"
-    },
-    {
-     "wann": "Stunde 3",
-     "datum": "Mi 11.11.",
-     "lesen": "Teil 3 · pro Hektar, Gene, Genschere, neue Sorte (Buch S. 45–46) · Podcast-Ausschnitt",
-     "aufgaben": "5–7",
-     "zeit": "Lesen 9 min · Hören 7 min · Aufgaben 20 min · Besprechung 4 min · Reserve 5 min",
-     "wie": "ohne Handy: Podcast hören, Genschere zuerst am Mini-Whiteboard zeichnen",
-     "abgabe": "Antworten bleiben am Handy gespeichert"
-    },
-    {
-     "wann": "Stunde 4",
-     "datum": "Mo 16.11.",
-     "lesen": "Teil 4 · Séralini-Versuch, gute Studie, Folgestudie (Ergänzung zu Buch S. 45)",
-     "aufgaben": "8, 9 · Quiz freiwillig",
-     "zeit": "Lesen 7 min · Aufgaben 20 min · Besprechung 4 min · Reserve 7 min",
-     "wie": "ohne Handy: Aufstellen auf einer Skala, Urteil mit der Hand schreiben",
-     "abgabe": "Arbeitsblatt-PDF in LMS (alle Aufgaben 1–9)"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige (Versorgung, Geschichte, Niggli-Podcast, Partnercheck)",
-     "aufgaben": "Zusatz 10–14 · Quiz",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "02.11.2026",
-   "zip": "26-27-3AB-K2.1-Landbau-v2.zip",
-   "liste": [
-    "26-27-3AB-K2.1-Landbau-TH-Unterricht-v4.pptx",
-    "26-27-3AB-K2.1-Landbau-Pruefbericht-Claude-v4.md"
-   ]
-  },
-  "lehrerseite": "https://claude.ai/artifact/4hnvRdYQudScYrWMkaZtmM"
- },
- {
-  "klasse": "2AK",
-  "fach": "PBGW",
-  "ordner": "2ak-pbgw/k1-grundrechte",
-  "kapitel": "K1",
-  "titel": "Menschenrechte – eine unvollständige Geschichte (Grundrechte, Verstöße, 70 Jahre AEMR)",
-  "block": "A Demokratie & Grundrechte",
-  "jahresplan": "E2",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 1 das PDF ab.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Zuerst Teil 1 der Theorie-Seite lesen. Danach das Papier-Arbeitsblatt M1–M4 lesen.",
-     "aufgaben": "1–6",
-     "wie": "Theorie am Handy → Papier-Arbeitsblatt ohne Handy → Antworten im Handy-Arbeitsblatt eintragen.",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 2 · Stolz und Schande 2026",
-     "aufgaben": "7 · Quiz · eure Fragen",
-     "wie": "ohne Handy: Vier Ecken, Aufstellen, Diskussion",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige",
-     "aufgaben": "8–11",
-     "wie": "am Handy",
-     "abgabe": "freiwillig"
-    }
-   ]
-  }
- },
- {
-  "klasse": "3BK",
-  "fach": "PBGW",
-  "ordner": "3bk-pbgw/k1-2-faelschung",
-  "kapitel": "K1.2",
-  "titel": "Gefälscht! Der Fall der Hitler-Tagebücher – Quellenkritik",
-  "block": "A Geschichte & Quellen",
-  "jahresplan": "E1",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "fahrplan": {
-   "text": "Lies die Theorie-Seite Teil für Teil, mach die Aufgaben 1–3 im Arbeitsblatt, teste dich mit dem Quiz und gib am Ende das PDF ab.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg, Teil 1 · Der Fall, Teil 2 · Wie flog die Fälschung auf?",
-     "aufgaben": "1–3",
-     "wie": "Theorie-Seite am Handy; ohne Handy: Partnergespräch (2 Min.); Rest der Stunde: Nachbesprechung im Plenum",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige",
-     "aufgaben": "4–6",
-     "wie": "am Handy",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "19.10.2026",
-   "zip": "26-27-3BK-K1.2-Faelschung-v2.zip",
-   "liste": [
-    "26-27-3BK-K1.2-Faelschung-TH-Lehrer-v2.pptx",
-    "26-27-3BK-K1.2-Faelschung-TH-Kadetten-v2.pptx",
-    "26-27-3BK-K1.2-Faelschung-TH-AB-v2.docx",
-    "26-27-3BK-K1.2-Faelschung-TH-Loesung-v2.docx",
-    "26-27-3BK-K1.2-Faelschung-TH-Fachwissen-v2.docx",
-    "26-27-3BK-K1.2-Faelschung-Kahoot-v2.xlsx"
-   ]
-  }
- },
- {
-  "klasse": "3BK",
-  "fach": "PBGW",
-  "ordner": "3bk-pbgw/k1-3-epochen",
-  "kapitel": "K1.3–1.4",
-  "titel": "Zeit-Einteilung und Epochen – die Landkarte der Geschichte",
-  "block": "A Geschichte & Quellen",
-  "jahresplan": "E2",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "aktuell": true,
-  "fahrplan": {
-   "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "lesen": "Einstieg + Teil 1 · Wie zählen wir Zeit?",
-     "aufgaben": "1–5",
-     "wie": "ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy",
-     "abgabe": "–"
-    },
-    {
-     "wann": "Stunde 2",
-     "lesen": "Teil 2 · Die Epochen",
-     "aufgaben": "6–10 · Quiz",
-     "wie": "ohne Handy: lebender Zeitstrahl, dann am Handy",
-     "abgabe": "PDF in LMS"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige",
-     "aufgaben": "11–15",
-     "wie": "am Handy",
-     "abgabe": "freiwillig"
-    }
-   ]
-  }
- },
- {
-  "klasse": "3BK",
-  "fach": "PBGW",
-  "ordner": "3bk-pbgw/k2-5-meilensteine",
-  "kapitel": "K2.1–5.4",
-  "titel": "Meilensteine: Vom Vorrat zum Staat – Hochkulturen, Athen, Rom",
-  "block": "B Meilensteine",
-  "jahresplan": "E3–E5",
-  "seiten": [
-   "theorie.html",
-   "aufgaben.html",
-   "quiz.html"
-  ],
-  "versteckt": true,
-  "fahrplan": {
-   "text": "Dafür sind 3 Stunden eingeplant: Mo 16.11., Mo 23.11. und Mo 30.11. Lies den jeweiligen Teil im Theorieteil und mach die Aufgaben 1–8 im Arbeitsblatt. Am 23.11. schreibst du zuerst den Test. Keine Hausübung.",
-   "zeilen": [
-    {
-     "wann": "Stunde 1",
-     "datum": "Mo 16.11.",
-     "lesen": "Einstieg + Teil 1 · Vorrat, Metall, Schrift, frühe Staaten (Buch S. 25–39)",
-     "aufgaben": "1–3, 8 (Teil 1)",
-     "zeit": "Lesen 9 min · Aufgaben 24 min · Besprechung 6 min · Reserve 3 min",
-     "wie": "ohne Handy: Einstieg mündlich, Mini-Whiteboard, Zeitstrahl-Karten legen",
-     "abgabe": "Antworten bleiben am Handy gespeichert"
-    },
-    {
-     "wann": "Stunde 2",
-     "datum": "Mo 23.11.",
-     "lesen": "Teil 2 · Hammurabis Rechtssammlung (Buch S. 39–40)",
-     "aufgaben": "4",
-     "zeit": "Test 20 min · Lesen 4 min · Aufgaben 9 min · Besprechung 6 min",
-     "wie": "zuerst Test; ohne Handy: Paragrafenblatt auf Papier lesen und markieren",
-     "abgabe": "Antworten bleiben am Handy gespeichert"
-    },
-    {
-     "wann": "Stunde 3",
-     "datum": "Mo 30.11.",
-     "lesen": "Teil 3 · Athen und Rom (Buch S. 105–118)",
-     "aufgaben": "5–8 (Teil 2)",
-     "zeit": "Lesen 8 min · Aufgaben 27 min · Besprechung 8 min",
-     "wie": "ohne Handy: Aufstellen auf einer Skala, Vergleich zu zweit besprechen",
-     "abgabe": "Antworten bleiben am Handy gespeichert · Arbeitsblatt-PDF: Abgabe nach Absprache"
-    },
-    {
-     "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige (Partnercheck, Stolpersteine, Quellenkritik)",
-     "aufgaben": "Zusatz 9–12 · Quiz",
-     "abgabe": "freiwillig"
-    }
-   ]
-  },
-  "dateien": {
-   "stand": "31.10.2026",
-   "zip": "26-27-3BK-K2.1-5.4-Meilenst-v3.zip",
-   "liste": [
-    "26-27-3BK-K2.1-5.4-Meilenst-TH-Unterricht-v4.pptx",
-    "26-27-3BK-K2.1-5.4-Meilenst-TH-Lehrer-v3.pptx",
-    "26-27-3BK-K2.1-5.4-Meilenst-TH-Kadetten-v3.pptx",
-    "26-27-3BK-K2.1-5.4-Meilenst-TH-AB-v3.docx",
-    "26-27-3BK-K2.1-5.4-Meilenst-TH-Loesung-v3.docx",
-    "26-27-3BK-K2.1-5.4-Meilenst-TH-Fachwissen-v3.docx",
-    "26-27-3BK-K2.1-5.4-Meilenst-Pruefbericht-Claude-v3.md"
-   ]
-  },
-  "lehrerseite": "https://claude.ai/artifact/RknDezX91aGrafrUFaqtJd"
- }
 ]
