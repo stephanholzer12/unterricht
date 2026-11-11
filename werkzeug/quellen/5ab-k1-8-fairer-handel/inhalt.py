@@ -4,13 +4,16 @@ menschlichere Sprache wie im Schulbuch, Verweise auf das Schulbuch, Einstieg »D
 gemeinsame Aufgaben deutlich kennzeichnen, aktuelle Daten, deutschsprachige Quellen/Papers.
 Nachtrag 06.11.2026: Test 5BK Di 10.11., 5AK Do 12.11. – die Einheit läuft am Testtag (kurz, nach dem Test) und zum Teil eine Woche später weiter
 (Annahme: 5BK Di 17.11., 5AK Do 19.11. – Stephan nannte nur den 19.11.). Testdauer angenommen: 20 min.
+Nachtrag 11.11.2026 (Auftrag Stephan 10.11.2026): Zotter-Beispiel und Mengenausgleich-Kritik für Stunde 2 ergänzt (Theorie »Was die Zahlen zeigen«, Fachbegriff, Stolperstein, Quiz, Meldung bei Aufgabe 4, PPP-Folie »zahlen2«).
+Quellen dazu, alle selbst geöffnet und geprüft: zotter.at-Pressetext und Lebensart-Artikel (beide 17./18.08.2018 bzw. 09.10.2018, Kurier-Interview mit Josef Zotter und Hartwig Kirner/Fairtrade Österreich) – Stand von Zotters eigener Fair-Trade-Seite (zotter.at/fair-trade, kein Datum ausgewiesen) bestätigt: kein Fairtrade-Siegel mehr, stattdessen WFTO-Mitgliedschaft und eigene Rückverfolgbarkeit.
+Offizielle Fairtrade-Erklärung zum Mengenausgleich: Fairtrade-Mindesttexte FSI 2026 (PDF, fairtrade.net). Allgemeine Kritikpunkte: utopia.de (zuletzt geändert 01.02.2022) und lebensmittelzeitung.net (Marktcheck Verbraucherzentrale Hamburg, 2014/2025).
 Jahresplan v22, Zeile 5: Einheit 5 (E5) Wirtschafts-, Umwelt- und Warenethik; Fairer Handel, 2 Std. (hier: Fairer Handel allein, Ethik S. 31–34 bleibt offen), K06, N05, N11, P1, P2, P4, P6, SDG 8/12/16, GLV 1/5.
 Quellen: Fairtrade Österreich (Jahresbericht 2026, Meldung 11.12.2025; Fairtrade-Studie Côte d'Ivoire, Meldung 29.09./06.10.2025 – Zahlen verschiedener Fairtrade-Seiten weichen ab, darum nur die gemeinsamen Werte), lebensmittelpraxis.de 07.11.2025, polis aktuell 4/2020, bpb APuZ 2012 (siehe Prüfhinweise).
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "06.11.2026"
+STAND = "11.11.2026"
 V = "v1"
-V_UNT = "v1"
+V_UNT = "v2"
 ORDNER = "5ab-toew/k1-8-fairer-handel"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -140,7 +143,8 @@ T = [
   "sol": [["Hinweis (Beispiele je Meldung)", ["ORF.at 11.10.2025 (sita/ORF): Kakaopreis fällt nach Rekord auf rund 5.930 US-Dollar je Tonne; staatliche Bauernpreise in der Elfenbeinküste +39 %, in Ghana +12 % (laut Fairtrade). Quelle ist eine Nachrichtenagentur plus ORF; Fairtrade ist als Zahlenlieferant genannt. Aussage: Gute Ernte und schwache Nachfrage – Bauern sollen aber mehr verdienen.",
                                            "epd/evangelisch.de 03.04.2026 (Helena Kreiensiek) bzw. dpa/MiGAZIN 20.04.2026: Seit März 2026 zahlt die Elfenbeinküste Bauern 60 % weniger (2.800 auf 1.200 CFA-Franc je kg), Produktionskosten laut Studie von Inkota und Inades Formation etwa 1,98–2,28 € je kg. Inkota ist eine entwicklungspolitische Organisation – eine Interessengruppe. Fairtrade wird nicht erwähnt: staatliche Mindestpreise sind etwas anderes als der Fairtrade-Mindestpreis.",
                                            "epd 01.07.2019: Studie der Universität Göttingen (Nature Sustainability), Daten von rund 1.000 Kakaobauern und Landarbeitern in 50 Kooperativen: Fairtrade verbessert die Lage der Angestellten der Kooperativen, zeigt aber keine sichtbare Wirkung für Landarbeiter auf den Kleinbauern-Höfen. Eine Universität gilt als unabhängiger als Fairtrade selbst; die Studie ist aber von 2019.",
-                                           "Fairtrade-Meldung Herbst 2025: Studie von Fairtrade und Impact Institute – extreme Armut 58 % (2017), 36 % (2020), 17 % (2024). Interesse: Fairtrade wirbt für sich selbst."]]],
+                                           "Fairtrade-Meldung Herbst 2025: Studie von Fairtrade und Impact Institute – extreme Armut 58 % (2017), 36 % (2020), 17 % (2024). Interesse: Fairtrade wirbt für sich selbst.",
+                                           "zotter.at/Kurier, 17.–18.08.2018 (Interview mit Josef Zotter und Hartwig Kirner, Fairtrade Österreich): Zotter verzichtet auf das Fairtrade-Siegel, weil der Mengenausgleich erlaubt, nicht fair gehandelten Kakao in ein Fairtrade-Produkt zu mischen. Fairtrade entgegnet, das senke Kosten und schade den Bauern sonst eher. Zotter selbst ist eine Partei im Streit – seine eigene Firma, nicht unabhängig."]]],
   "tip": ["Aktuelle Meldungen", "theorie.html#meldungen"]},
 
  {"id": "a5", "nr": 5, "title": "Siegel-Jagd in Kantine oder Supermarkt", "src": "Buch-Aufgabe S. 38", "own": True, "tag": "Zusatz", "h": 0, "zeit": 10,
@@ -214,7 +218,8 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["existenzsicherndes Einkommen", "Einkommen, mit dem eine Familie Essen, Wohnen, Schule und Gesundheit bezahlen kann (englisch: living income)"],
                 ["Rückverfolgbarkeit", "Möglichkeit, den Weg einer Ware vom Anbau bis ins Regal nachzuvollziehen"],
                 ["Land Grabbing", "gezielte Vertreibung von Menschen von ihrem Land – oft mit staatlicher Unterstützung – um dort Intensiv-Landwirtschaft zu betreiben"],
-                ["Fair Washing", "Werbung, die ein Produkt fairer darstellt, als die Belege hergeben – vergleichbar mit Greenwashing"]]
+                ["Fair Washing", "Werbung, die ein Produkt fairer darstellt, als die Belege hergeben – vergleichbar mit Greenwashing"],
+                ["Mengenausgleich (Massenbilanzierung)", "Erlaubt bei manchen Zutaten, Fairtrade-Rohstoffe bei der Verarbeitung mit nicht zertifizierten zu mischen – solange die eingekaufte Fairtrade-Menge der im Produkt nötigen Menge entspricht. Nicht bei jedem Rohstoff erlaubt."]]
 
 WEISST_DU_NOCH = {}
 
@@ -222,7 +227,8 @@ STOPPFRAGEN = {
     1: [("Ist ein Produkt mit Fairtrade-Siegel automatisch Bio?", "Nein – die Standards fördern Bio-Anbau, verlangen ihn aber nicht in jedem Fall. Fair und Bio sind zwei verschiedene Dinge."),
         ("Nenne ein Beispiel für jede der drei Säulen.", "z. B. Soziales: Verbot ausbeuterischer Kinderarbeit · Ökologisches: Liste verbotener Pestizide · Ökonomisches: Rückverfolgbarkeit der Ware.")],
     2: [("Der Weltmarktpreis liegt über dem Mindestpreis. Bringt der Mindestpreis dann etwas?", "Dann gilt der höhere Marktpreis. Der Mindestpreis ist ein Sicherheitsnetz für den Fall, dass der Weltmarkt einbricht – die Prämie kommt in beiden Fällen dazu."),
-        ("Die Studie über das Einkommen der Kakaobauern stammt von Fairtrade selbst. Was folgt daraus?", "Die Zahlen sind eine Information, aber keine unabhängige Prüfung. Man vergleicht sie mit anderen Quellen und fragt, wer die Daten erhoben hat.")],
+        ("Die Studie über das Einkommen der Kakaobauern stammt von Fairtrade selbst. Was folgt daraus?", "Die Zahlen sind eine Information, aber keine unabhängige Prüfung. Man vergleicht sie mit anderen Quellen und fragt, wer die Daten erhoben hat."),
+        ("Warum verzichtet Zotter auf das Fairtrade-Siegel?", "Wegen des Mengenausgleichs: Er erlaubt, Fairtrade- und konventionellen Kakao zu mischen. Zotter will die Herkunft jeder Bohne genau kennen und nutzt stattdessen die WFTO-Zertifizierung.")],
 }
 
 PARTNERKARTEN = [("Was ist fairer Handel – in einem Satz?", "Handel, der Produzenten im globalen Süden bessere Preise, Arbeitsbedingungen und stabile Handelsbeziehungen sichern soll."),
@@ -236,7 +242,8 @@ STOLPERSTEINE = [("Fairtrade = Bio", "Beides sind eigene Siegel. Fairtrade förd
                  ("Mindestpreis = immer der Preis", "Liegt der Weltmarkt höher, gilt der höhere Marktpreis. Der Mindestpreis ist nur die Untergrenze."),
                  ("Prämie = Lohn", "Die Prämie kommt zusätzlich zum Preis und geht an die Gemeinschaft, nicht als Lohn an Einzelne."),
                  ("Studie = Beweis", "Eine Studie von Fairtrade selbst zeigt eine Entwicklung, beweist aber nicht, dass Fairtrade der einzige Grund ist."),
-                 ("»Fair« = geschützter Begriff", "Das Wort »fair« ist nicht gesetzlich geschützt – darum zählt, wer das Siegel vergibt und kontrolliert.")]
+                 ("»Fair« = geschützter Begriff", "Das Wort »fair« ist nicht gesetzlich geschützt – darum zählt, wer das Siegel vergibt und kontrolliert."),
+                 ("Fairtrade-Siegel = 100 % fair gehandelter Inhalt", "Der Mengenausgleich erlaubt bei manchen Zutaten das Mischen mit konventioneller Ware. Die steirische Schokoladenmanufaktur Zotter verzichtet deshalb bewusst auf das Siegel und setzt auf vollständige Rückverfolgbarkeit.")]
 
 QUIZ = [
  ("Fairer Handel", "Was ist das Ziel von fairem Handel?", ["bessere Preise und Bedingungen für Produzenten im globalen Süden", "möglichst niedrige Preise für Käufer", "mehr Werbung für Markenprodukte", "weniger Handel mit dem Ausland"],
@@ -261,6 +268,10 @@ QUIZ = [
   "Zahlen von Fairtrade selbst sind nützlich, aber nicht unabhängig – man vergleicht und fragt nach der Methode.", "Buch S. 38"),
  ("Bio", "Ist ein Fairtrade-Produkt automatisch Bio?", ["nein – Fairtrade fördert Bio, verlangt es aber nicht in jedem Fall", "ja, immer", "nur bei Kaffee", "nur bei Schokolade"],
   "Fair und Bio sind zwei verschiedene Siegel mit eigenen Regeln.", "Buch S. 37"),
+ ("Mengenausgleich", "Was bedeutet Mengenausgleich (Massenbilanzierung) bei Fairtrade?",
+  ["Fairtrade-Rohstoffe dürfen bei der Verarbeitung mit konventionellen gemischt werden, wenn die Menge stimmt",
+   "Jede Fairtrade-Bohne wird einzeln bis ins Regal verfolgt", "Der Mindestpreis wird mit dem Weltmarktpreis verrechnet", "Die Prämie wird gleichmäßig auf alle Bauern verteilt"],
+  "Die steirische Schokoladenmanufaktur Zotter verzichtet deshalb bewusst auf das Fairtrade-Siegel und setzt stattdessen auf vollständige Rückverfolgbarkeit jeder Bohne.", "Buch S. 38"),
 ]
 for _q in QUIZ:
     assert len(_q[2]) == 4 and len(set(_q[2])) == 4, _q[1]

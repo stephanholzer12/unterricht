@@ -125,7 +125,7 @@ main { max-width: 680px; margin: 0 auto; padding-inline: 16px; padding-block: 18
 </div>
 
 <main>
-  <div class="progress"><span id="count">Frage 1 von 11</span><div class="bar"><span id="barfill"></span></div><span id="pts">0 Punkte</span></div>
+  <div class="progress"><span id="count">Frage 1 von 12</span><div class="bar"><span id="barfill"></span></div><span id="pts">0 Punkte</span></div>
   <section class="card" id="stage" aria-live="polite"></section>
 </main>
 
@@ -142,7 +142,8 @@ const Q = [
   { t: "Rechnung", q: "40 Tonnen Kakao, Prämie 275 US-Dollar je Tonne. Wie hoch ist die Prämie?", a: ["11.000 US-Dollar", "275 US-Dollar", "140.000 US-Dollar", "1.100 US-Dollar"], e: "40 × 275 = 11.000. Die Prämie kommt zusätzlich zum Preis.", p: "Buch S. 37" },
   { t: "Land Grabbing", q: "Was bedeutet Land Grabbing?", a: ["Menschen werden von ihrem Land vertrieben, damit dort Intensiv-Landwirtschaft entsteht", "Bauern kaufen gemeinsam Land", "Land wird aufgeforstet", "ein Handelsabkommen über Getreide"], e: "Fairtrade engagiert sich dagegen, weil Kleinbauernfamilien ihre Lebensgrundlage verlieren.", p: "Buch S. 37" },
   { t: "Quellen", q: "Fairtrade veröffentlicht eine Studie über seine eigene Wirkung. Was ist sinnvoll?", a: ["Ergebnisse mit unabhängigen Quellen vergleichen", "alles glauben, weil es Zahlen sind", "alles ablehnen, weil es Werbung ist", "nur die Überschrift lesen"], e: "Zahlen von Fairtrade selbst sind nützlich, aber nicht unabhängig – man vergleicht und fragt nach der Methode.", p: "Buch S. 38" },
-  { t: "Bio", q: "Ist ein Fairtrade-Produkt automatisch Bio?", a: ["nein – Fairtrade fördert Bio, verlangt es aber nicht in jedem Fall", "ja, immer", "nur bei Kaffee", "nur bei Schokolade"], e: "Fair und Bio sind zwei verschiedene Siegel mit eigenen Regeln.", p: "Buch S. 37" }
+  { t: "Bio", q: "Ist ein Fairtrade-Produkt automatisch Bio?", a: ["nein – Fairtrade fördert Bio, verlangt es aber nicht in jedem Fall", "ja, immer", "nur bei Kaffee", "nur bei Schokolade"], e: "Fair und Bio sind zwei verschiedene Siegel mit eigenen Regeln.", p: "Buch S. 37" },
+  { t: "Mengenausgleich", q: "Was bedeutet Mengenausgleich (Massenbilanzierung) bei Fairtrade?", a: ["Fairtrade-Rohstoffe dürfen bei der Verarbeitung mit konventionellen gemischt werden, wenn die Menge stimmt", "Jede Fairtrade-Bohne wird einzeln bis ins Regal verfolgt", "Der Mindestpreis wird mit dem Weltmarktpreis verrechnet", "Die Prämie wird gleichmäßig auf alle Bauern verteilt"], e: "Die steirische Schokoladenmanufaktur Zotter verzichtet deshalb bewusst auf das Fairtrade-Siegel und setzt stattdessen auf vollständige Rückverfolgbarkeit jeder Bohne.", p: "Buch S. 38" }
 ];
 const KEYS = ["A", "B", "C", "D"];
 let i = 0, pts = 0, missed = [], order = [];
@@ -186,7 +187,7 @@ function pick(orig, btn) {
 function message(p) {
   if (p === Q.length) return "Alles richtig – ausgezeichnet!";
   if (p >= 8) return "Sehr gut – fast alles sitzt.";
-  if (p >= 7) return "Gut – schau dir die markierten Fragen noch einmal an.";
+  if (p >= 8) return "Gut – schau dir die markierten Fragen noch einmal an.";
   return "Noch üben – lies die Buchseiten unten nach und probier es noch einmal.";
 }
 function result() {

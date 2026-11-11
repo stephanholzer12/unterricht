@@ -300,7 +300,8 @@ def zahlen2():
     B.tb(s, 6.6, 1.0, 2.9, 1.2, ["Haushalte in extremer Armut, befragte Kakaobauern in der Elfenbeinküste. Studie von Fairtrade und Impact Institute, Herbst 2025."], size=14, color=MUTED, after=0)
     y = 2.35
     y = frage_klick(s, y, "Beweist das, dass Fairtrade der einzige Grund ist?", "Nein – die Studie zeigt eine Entwicklung. Und sie stammt von Fairtrade selbst.", size=18)
-    y = frage_klick(s, y, "Welche Frage stellen wir bei jeder Studie?", "Wer hat sie gemacht – und was hat er davon?", size=18)
+    y = frage_klick(s, y, "Welche Frage stellen wir bei jeder Studie – und bei jedem Siegel?",
+                    "Wer sagt das, und was hat er davon? Zotter z. B. verzichtet deshalb auf das Fairtrade-Siegel (Mengenausgleich).", size=18)
     return s
 
 
