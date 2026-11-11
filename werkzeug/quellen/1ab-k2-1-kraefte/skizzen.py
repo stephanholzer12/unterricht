@@ -468,8 +468,8 @@ def einheiten():
 def projekt():
     im, d = canvas(900, 300)
     ctext(d, 450, 14, "Euer Gruppenprojekt in fünf Schritten", B(22), OLIVE)
-    schritte = [("Stunde 2", "Frage und\nVermutung", GREEN), ("Stunde 2", "Plan und\nzwei Quellen", TEAL),
-                ("Stunde 3", "Messen –\nechte Werte", RED), ("Stunde 4", "Erklären\nmit Grenze", ORANGE),
+    schritte = [("Stunde 2", "Thema mit\nLeitfragen", GREEN), ("Stunde 2", "Versuch wählen,\nFreigabe", TEAL),
+                ("Stunde 3", "Versuch\nmachen, üben", RED), ("Stunde 4", "Steckbrief\nfür alle", ORANGE),
                 ("Stunde 5", "3 Minuten\npräsentieren", RUST)]
     bw, gap = 150, 32
     x = (900 - (len(schritte) * bw + (len(schritte) - 1) * gap)) / 2
@@ -485,8 +485,8 @@ def projekt():
         ctext(d, bx + bw / 2, 172, str(i + 1), B(20), WHITE)
         if i < len(schritte) - 1:
             arrow(d, bx + bw + 4, 136, bx + bw + gap - 4, 136, MUTED, 4, 12)
-    ctext(d, 450, 232, "Nur EINE Bedingung ändern – alles andere gleich halten.", B(18), OLIVE)
-    ctext(d, 450, 260, "Beobachtung (was gemessen wurde) und Erklärung (warum) immer trennen.", R(17), MUTED)
+    ctext(d, 450, 232, "Euren Versuch wählt ihr selbst – erst nach der Freigabe wird gebaut.", B(18), OLIVE)
+    ctext(d, 450, 260, "Beobachtung (was ihr seht) und Erklärung (warum) immer trennen.", R(17), MUTED)
     save(im, IMG + "projekt.png")
 
 

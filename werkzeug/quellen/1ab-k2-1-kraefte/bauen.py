@@ -19,6 +19,7 @@ sys.path.insert(0, HERE)
 import inhalt as I
 import theorie_daten as TD
 import versuche_daten as VD
+import gruppen_daten as GD
 STAND = I.STAND
 
 UNIT = I.ORDNER + "/"
@@ -60,13 +61,14 @@ PFL = ", ".join(str(n) for n in I.PFLICHT)
 ZUS = ", ".join(str(t["nr"]) for t in I.T if t["tag"] == "Zusatz")
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
-      <li><b>Hier geht es los.</b> Du musst die Theorie nicht vorher durchlesen: Unter jeder Aufgabe steht eine <b>Theorie-Karte</b> mit dem Wichtigsten in drei Sätzen.
-          Wer mehr wissen will, öffnet den <a href="theorie.html">Theorieteil</a> zum Nachschlagen.</li>
-      <li><b>Auszufüllen:</b> Aufgabe 1 (Schätzung, ohne Punkte) und die Pflichtaufgaben """ + PFL + """ – zusammen die vier im Balken oben.
-          <b>Zusatz</b> für Schnelle: """ + ZUS + """. Es gibt <b>keine Hausübung</b>.</li>
-      <li>Bei jeder Aufgabe steht, wie lange sie ungefähr dauert. <b>Tipps kosten keine Punkte</b> – benutz sie ruhig.
-          Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt; die Lösung wird dabei nicht verraten.</li>
-      <li>Ganz unten <b>PDF erstellen</b> und in LMS hochladen. Das Gruppen-Protokoll gebt ihr getrennt über die <a href="versuche.html">Versuchsseite</a> ab.</li>
+      <li><b>Ein Arbeitsblatt für alles.</b> Aufgaben, Gruppenprojekt und Versuch stehen hier – du brauchst keine andere Seite.
+          Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
+      <li><b>Stunde 1:</b> Aufgaben 1 und 2 mit der ganzen Klasse · <b>Stunden 2–5:</b> Aufgaben 3 bis 7 in deiner Gruppe ·
+          <b>Stunde 6:</b> Aufgabe 8 allein. Zusatz für Schnelle: """ + ZUS + """. Es gibt <b>keine Hausübung</b>.</li>
+      <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein), <b>GRUPPENARBEIT</b>, <b>VERSUCH</b>.
+          Tipps kosten keine Punkte.</li>
+      <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 6 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).
+          Den Steckbrief (Aufgabe 6) stellt die Schriftführung zusätzlich als Handout in Teams.</li>
     </ol>""" + s[j:]
 i = s.index("<!--FAHRPLAN-->"); j = s.index("<!--/FAHRPLAN-->") + len("<!--/FAHRPLAN-->")
 s = s[:i] + "<!--FAHRPLAN--><!--/FAHRPLAN-->" + s[j:]
@@ -204,11 +206,20 @@ for t in I.T:
     x = dict(t)
     if not x["chk"]: x["chk"] = None
     if x.pop("vorhersage", False): x["frei"] = True
-    x.pop("projekt", None); x.pop("besprechen", None)
+    x.pop("besprechen", None)
     TJ.append(x)
+GKD = {}
+for _n, _g in GD.G.items():
+    GKD[str(_n)] = {"thema": _g["thema"], "titel": _g["titel"], "buch": _g["buch"], "teil": _g["teil"], "karte": _g["karte"],
+                    "teiltitel": TD.TOCLAB.get(_g["teil"], _g["teil"]), "leit": _g["leit"], "ideen": _g["ideen"],
+                    "saal": ["%s (%s, Bestand %d)" % m for m in _g["saal"]], "haus": _g["haus"], "formel": _g["formel"], "achtung": _g["achtung"],
+                    "video": list(GD.VIDEOS[_n]) if _n in GD.VIDEOS else None}
+GKEXTRA = {"ja": GD.ZUHAUSE_JA, "nein": GD.ZUHAUSE_NEIN, "frei": GD.FREIGABE_FRAGEN}
 i = s.index("const KEY = "); j = s.index("\n];", i) + 3
 s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K2.1", THEMA = "Kraefte";\n' % I.KEY
      + "const KARTEN = " + json.dumps(TD.karte_html_daten(), ensure_ascii=False) + ";\n"
+     + "const GK = " + json.dumps(GKD, ensure_ascii=False) + ";\n"
+     + "const GKX = " + json.dumps(GKEXTRA, ensure_ascii=False) + ";\n"
      + "const T = " + json.dumps(TJ, ensure_ascii=False, indent=1) + ";" + s[j:])
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
 s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, ensure_ascii=False) + ";" + s[j:]
@@ -246,6 +257,133 @@ rep(".pill.theory { background: var(--theory); }", ".pill.theory { background: v
 s = s.replace("26-27-3BK-K1.3-Epochen-TH-Handy-v1", I.KEY)
 # Klassennavigation (wird von build_index.py ohnehin neu gesetzt) schon hier auf 1AB stellen
 s = s.replace("PBGW 3BK", "NAWI 1AB").replace("3BK · Start", "1AB · Start")
+# ================================================================ v2 (11.11.2026): Gruppenprojekt im Arbeitsblatt
+# Stephans Idee: Themen fest, Versuch frei wählen, Steckbrief als Handout (Teams), Mitschrift bei den Präsentationen, EIN PDF.
+rep(".aufl { margin-top: 10px; display: grid; gap: 8px; }", """.aufl { margin-top: 10px; display: grid; gap: 8px; }
+.marke { font-size: 13px; font-weight: 700; color: #fff; background: #2E7D8C; border-radius: 999px; padding: 2px 10px; margin-left: 4px; }
+.marke.m-VERSUCH { background: #A33A2B; } .marke.m-GRUPPENARBEIT { background: #D9772B; } .marke.m-SELBSTSTUDIUM { background: #2E7D8C; }
+.gkarte { border: 2px solid #3B4A2F; border-radius: 12px; background: #F4F7EC; padding: 12px 14px; display: grid; gap: 8px; margin: 10px 0; }
+.gkarte p, .gkarte li { margin: 0; font-size: 17px; line-height: 1.45; }
+.gkarte ul, .gkarte ol { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
+.gkh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 19px; }
+.gkn { background: #3B4A2F; color: #fff; font-size: 14px; font-weight: 700; border-radius: 999px; padding: 3px 12px; }
+.gkarte h3 { margin: 6px 0 0; font-size: 17px; color: #3B4A2F; }
+.gkarte .nein li { color: #8C3B2E; }
+.gkarte a { color: #2E7D8C; font-weight: 700; }
+.gkhint { background: #E8F1F3; border: 2px solid #2E7D8C; border-radius: 12px; padding: 10px 14px; font-size: 17px; margin: 10px 0; }
+.stbox { display: grid; gap: 8px; margin-top: 10px; }""")
+rep('el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null),',
+    'el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null, t.marke ? el("span", { class: "marke m-" + t.marke, text: t.marke }) : null),')
+rep('const lbl = el("span", { text: "Foto der Heftskizze aufnehmen" });', 'const lbl = el("span", { text: t.fotolabel || "Foto der Heftskizze aufnehmen" });')
+rep('lbl.textContent = f ? "Anderes Foto wählen" : "Foto der Heftskizze aufnehmen"; }', 'lbl.textContent = f ? "Anderes Foto wählen" : (t.fotolabel || "Foto der Heftskizze aufnehmen"); }')
+rep('ph.append(el("label", { class: "lbl", text: "Deine Skizze (Foto)" }), pick, status, img, del);', 'ph.append(el("label", { class: "lbl", text: t.fotolabel || "Deine Skizze (Foto)" }), pick, status, img, del);')
+# Gruppenkarte (Aufgabe 3) und Versuchsideen (Aufgabe 4) direkt unter dem Auftrag
+rep('''  if (t.tipps && t.tipps.length) card.append(tippStufen(t));''', '''  if (t.tipps && t.tipps.length) card.append(tippStufen(t));
+  if (t.id === "p1" || t.id === "p2") card.append(el("div", { id: "gk_" + t.id }));''')
+rep('''  if (t.aufloesung) card.append(aufloesungEl(t));''', '''  if (t.aufloesung) card.append(aufloesungEl(t));
+  if (t.steckbrief) {
+    const sb = el("div", { class: "stbox" }), st = el("p", { class: "status", hidden: "", "aria-live": "polite" });
+    const b = el("button", { class: "btn", type: "button", text: "Handout-PDF erstellen (für Teams)" });
+    b.addEventListener("click", () => steckbriefPdf(st, b));
+    sb.append(el("p", { class: "hint", text: "Nur die Schriftführung: PDF erstellen und in Teams in den Kanal der Klasse stellen. Dein eigenes Arbeitsblatt-PDF bleibt davon unberührt." }), b, st);
+    card.append(sb);
+  }''')
+rep("function renderTask(t) {", """function gruppeNr() { const m = String((S.a.p1 || {}).grp || "").match(/Gruppe (\\d)/); return m ? +m[1] : 0; }
+function liste(xs, cls) { const l = el(cls === "ol" ? "ol" : "ul", cls && cls !== "ol" ? { class: cls } : {}); xs.forEach(x => { const li = el("li"); li.innerHTML = fett(x); l.append(li); }); return l; }
+function gruppenkarte(g, K) {
+  const box = el("div", { class: "gkarte" });
+  box.append(el("div", { class: "gkh" }, el("span", { class: "gkn", text: "Gruppe " + g }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
+  box.append(el("p", {}, el("b", { text: "1 · Lesen: " }), "Schulbuch " + K.buch + " und die ", el("a", { href: "theorie.html#" + K.teil, text: "Theorie-Seite, Teil »" + K.teiltitel + "«" }), ". Markiere dir die Fachbegriffe."));
+  if (KARTEN[K.karte]) { const d = el("details", { class: "tipp" }); d.append(el("summary", { text: "Theorie-Karte zu eurem Thema" }), karteEl(K.karte)); box.append(d); }
+  box.append(el("p", {}, el("b", { text: "2 · Leitfragen: " }), "Sie stehen unten bei c) bis f). Antworte in eigenen Worten."));
+  const v = el("p"); v.append(el("b", { text: "3 · Video oder zweite Quelle: " }));
+  if (K.video) v.append(el("a", { href: K.video[1], target: "_blank", rel: "noopener", text: K.video[0] }), " – " + K.video[2] + ". Sucht trotzdem eine zweite Quelle dazu.");
+  else v.append("Sucht ein kurzes Video (höchstens 5 Minuten) oder eine Seite von einer seriösen Quelle – Universität, ORF, planet schule, LEIFIphysik, Schulbuchverlag. Prüft: Wer hat es gemacht? Wann? Stimmt es mit dem Buch überein?");
+  box.append(v);
+  const fo = el("p"); fo.innerHTML = "<b>Formel:</b> " + fett(K.formel); box.append(fo);
+  return box;
+}
+function ideenKarte(g, K) {
+  const box = el("div", { class: "gkarte" });
+  box.append(el("div", { class: "gkh" }, el("span", { class: "gkn", text: "Gruppe " + g }), el("b", { text: "Ideen für euren Versuch" })));
+  box.append(el("p", { text: "Nehmt eine Idee oder macht eine eigene. Wichtig ist: Man sieht oder misst etwas zu eurem Thema." }), liste(K.ideen, "ol"));
+  box.append(el("h3", { text: "Im NAWI-Saal vorhanden" }), liste(K.saal), el("p", { class: "hint", text: "Manche Geräte gibt es nur einmal. Prof. HOLZER entscheidet bei der Freigabe, wer was bekommt." }));
+  box.append(el("h3", { text: "Von zu Hause zum Beispiel" }), el("p", { text: K.haus }));
+  box.append(el("h3", { text: "Erlaubt" }), liste(GKX.ja), el("h3", { text: "Nicht erlaubt" }), liste(GKX.nein, "nein"));
+  box.append(el("p", {}, el("b", { text: "Achtung: " }), K.achtung));
+  box.append(el("h3", { text: "Das fragt Prof. HOLZER bei der Freigabe" }), liste(GKX.frei, "ol"));
+  return box;
+}
+function gruppeAnwenden() {
+  const g = gruppeNr(), K = GK[g];
+  const t1 = T.find(t => t.id === "p1"), t5 = T.find(t => t.id === "p5");
+  ["lf1", "lf2", "lf3", "lf4"].forEach((k, i) => {
+    const lab = "cdef"[i] + ") " + (K ? K.leit[i] : "Leitfrage " + (i + 1) + " – wähle zuerst bei a) deine Gruppe");
+    t1.fields.find(f => f[0] === k)[1] = lab;
+    const l = document.querySelector('label[for="p1_' + k + '"]'); if (l) l.textContent = lab;
+  });
+  t5.fields.forEach((f, i) => { f[1] = "Gruppe " + (i + 1) + " · " + GK[i + 1].thema + (i + 1 === g ? " (eure eigene Gruppe)" : "");
+    const l = document.querySelector('label[for="p5_' + f[0] + '"]'); if (l) l.textContent = f[1]; });
+  ["p1", "p2"].forEach(id => {
+    const box = document.getElementById("gk_" + id); if (!box) return; box.textContent = "";
+    if (!K) { box.append(el("p", { class: "gkhint", text: id === "p1" ? "Wähle bei a) deine Gruppe – dann erscheint hier deine Gruppenkarte mit Buchseiten und Leitfragen." : "Wähle zuerst bei Aufgabe 3 a) deine Gruppe – dann erscheinen hier die Ideen und das Material für euren Versuch." })); return; }
+    box.append(id === "p1" ? gruppenkarte(g, K) : ideenKarte(g, K));
+  });
+}
+document.addEventListener("change", ev => { if (ev.target && ev.target.id === "p1_grp") gruppeAnwenden(); });
+async function steckbriefPdf(st, btn) {
+  const say = (cls, m) => { st.hidden = false; st.className = "status " + cls; st.textContent = m; };
+  const g = gruppeNr(), K = GK[g], a = S.a.p4 || {}, t4 = T.find(t => t.id === "p4");
+  if (!g) { say("err", "Wähle zuerst bei Aufgabe 3 a) eure Gruppe."); return; }
+  if (!window.jspdf) { say("err", "Das PDF-Programm wurde nicht geladen. Lade die Seite neu."); return; }
+  btn.disabled = true; say("info", "Handout wird erstellt …");
+  try {
+    const { jsPDF } = window.jspdf; const d = new jsPDF({ unit: "mm", format: "a4" });
+    d.addFileToVFS("C-R.ttf", FONT_R); d.addFont("C-R.ttf", "C", "normal"); d.addFileToVFS("C-B.ttf", FONT_B); d.addFont("C-B.ttf", "C", "bold");
+    const W = 210, M = 18, CW = W - 2 * M, BOT = 282; let y = 14;
+    const olive = [59, 74, 47], teal = [46, 125, 140], muted = [94, 102, 82], ink = [31, 42, 28];
+    const txt = (s0, size, style, color, x = M, w = CW) => { d.setFont("C", style); d.setFontSize(size); d.setTextColor(...color);
+      const lines = d.splitTextToSize(clean(s0), w), h = size * 0.3528 * 1.32;
+      lines.forEach(l => { if (y + h > BOT) { d.addPage(); y = 18; } d.text(l, x, y + h * 0.78); y += h; }); };
+    d.addImage(LOGO, "PNG", M, y, 11, 12.6);
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean("NAWI · 1AB · K2.1 Mechanische Kräfte · Handout für die Klasse"), M + 15, y + 4);
+    d.setFontSize(18); d.setTextColor(...olive); d.text(clean("Steckbrief Gruppe " + g + " · " + K.thema), M + 15, y + 11.5);
+    y += 17; txt("Von: " + (a.mitglieder || "—") + " · " + K.buch, 11, "normal", ink);
+    y += 1; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 4;
+    for (const f of t4.fields) {
+      if (f[0] === "mitglieder") continue;
+      txt(String(f[1]).replace(/^[a-g]\\) /, ""), 12, "bold", olive);
+      txt(filled(a[f[0]]) ? String(a[f[0]]).trim() : "—", 11.5, "normal", ink, M + 3, CW - 3); y += 2.5;
+    }
+    const foto = (S.a.p3 || {}).foto;
+    if (foto) { const [iw, ih] = await imgSize(foto); let w = 80, h = w * ih / iw; if (h > 70) { h = 70; w = h * iw / ih; } if (y + h + 6 > BOT) { d.addPage(); y = 18; }
+      txt("Unser Versuch", 12, "bold", olive); d.addImage(foto, "JPEG", M + 3, y + 1, w, h); y += h + 4; }
+    const n = d.getNumberOfPages();
+    for (let p0 = 1; p0 <= n; p0++) { d.setPage(p0); d.setFont("C", "normal"); d.setFontSize(8); d.setTextColor(...muted);
+      d.text(clean("Steckbrief Gruppe " + g + " · " + K.thema + " · erstellt " + new Date().toLocaleDateString("de-AT") + " · Seite " + p0 + " von " + n), W - M, 292, { align: "right" }); }
+    const name = "K2.1-Steckbrief-Gruppe-" + g + "-" + slug(K.thema) + ".pdf";
+    const url = URL.createObjectURL(d.output("blob"));
+    const link = el("a", { href: url, download: name }); document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+    say("ok", "Handout erstellt: " + name + " – jetzt in Teams in den Kanal der Klasse stellen.");
+  } catch (e) { say("err", "Beim Erstellen ist ein Fehler passiert. Lade die Seite neu und versuch es noch einmal."); }
+  finally { btn.disabled = false; }
+}
+
+function renderTask(t) {""", 1)
+# PDF: Projektaufgaben bewertet Prof. HOLZER nach dem Raster
+rep('''    let st = "selbst bewerten";
+    if (t.frei)''', '''    let st = "selbst bewerten";
+    if (t.projekt) st = "Gruppenprojekt – bewertet Prof. HOLZER nach dem Raster";
+    else if (t.frei)''')
+# Musterlösungen erst, wenn Aufgabe 8 bearbeitet ist (die Zwischenstand-PDFs der Stunden 1–5 schalten sie nicht frei)
+rep('''  const b = $("#solbtn"); if (b) b.hidden = !S.pdfDone || S.solSeen;''',
+    '''  const b = $("#solbtn"); if (b) b.hidden = !S.pdfDone || S.solSeen || !isDone(T.find(t => t.id === "a3"));''')
+rep('''  $("#copyArea").value = asText();
+}''', '''  $("#copyArea").value = asText();
+  showSolutions();
+}''')
+rep("update();\n\n</script>", "gruppeAnwenden();\nupdate();\n\n</script>")
 _plain = re.sub(r"[A-Za-z0-9+/=]{200,}", "", s)
 for bad in ["Epochen", "Zeit-Einteilung", "3BK"]:
     assert bad not in _plain, re.findall(r".{60}" + bad + r".{20}", _plain)[:3]
@@ -372,7 +510,7 @@ PARTS.append(("kurz", "Zum Schluss", "Kurz & knapp", [slide("Das Wichtigste in 5
                                                       slide("Kann ich das?", hint("Tippe ehrlich an – bei »noch nicht« den passenden Teil noch einmal lesen.") + CHECK)]))
 PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [render(x) for x in TD.SCHNELLE]))
 
-toc = "".join(f'<a href="#{p[0]}">{TD.TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="#weiter">Aufgaben</a>'
+toc = "".join(f'<a href="#{p[0]}">{TD.TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="aufgaben.html">Arbeitsblatt</a>'
 body = "".join(f'<section class="part" id="{p[0]}"><div class="band"><div class="eyebrow">{esc(p[1])}</div><h2>{esc(p[2])}</h2></div>{"".join(p[3])}</section>' for p in PARTS)
 bt = open(os.path.join(WZ, "vorlagen", "build_theorie.py"), encoding="utf-8").read()
 tcss = bt[bt.index("<style>"):bt.index("</style>") + 8].replace("{{", "{").replace("}}", "}")
@@ -442,16 +580,16 @@ page = f"""<!doctype html>
 <section class="part" id="nachschlagen">
   <div class="band"><div class="eyebrow">So arbeitest du</div><h2>Diese Seite ist dein Nachschlagewerk</h2></div>
   <article class="slide">
-    <p>Beginne beim <strong>Arbeitsblatt</strong>. Dort steht bei jeder Aufgabe das Wichtigste in drei Sätzen auf einer Theorie-Karte.
-    Diese Seite hier brauchst du, wenn du mehr wissen willst, wenn du etwas nachlesen möchtest – und vor dem Test.</p>
-    <div class="btns"><a class="btn" href="aufgaben.html">1 · Arbeitsblatt</a><a class="btn alt" href="versuche.html">2 · Gruppenprojekt {esc(I.VS_ID)}</a><a class="btn alt" href="quiz.html">3 · Kräfte-Check (Quiz)</a></div>
+    <p>Du arbeitest im <strong>Arbeitsblatt</strong> – dort stehen alle Aufgaben, das Gruppenprojekt und dein Versuch. Diese Seite brauchst du zum
+    Nachlesen: für dein Gruppenthema (Teil 2 bis 8), wenn du mehr wissen willst – und vor dem Test.</p>
+    <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a><a class="btn alt" href="quiz.html">Kräfte-Check (Quiz)</a></div>
   </article>
 </section>
 {body}
 <section class="next" id="weiter">
   <div class="eyebrow">Weiter geht's</div>
   <h2>Jetzt bist du dran</h2>
-  <div class="btns"><a class="btn" href="aufgaben.html">1 · Arbeitsblatt A1–A{len(I.T)}</a><a class="btn alt" href="versuche.html">2 · Gruppenprojekt</a><a class="btn alt" href="quiz.html">3 · Kräfte-Check (Quiz)</a></div>
+  <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a><a class="btn alt" href="quiz.html">Kräfte-Check (Quiz)</a></div>
   <p class="hint">Theorie zum Nachlesen im Schulbuch Naturwissenschaften HAK 1 (Trauner) S. 44–65. Alle Grafiken selbst gezeichnet. <a href="../">Klassenübersicht 1AB</a></p>
   <p class="hint">Stand {STAND} · {I.V}</p>
 </section>
@@ -474,80 +612,16 @@ page = f"""<!doctype html>
 """
 open(DST + "theorie.html", "w", encoding="utf-8").write(page)
 
-# ================================================================ Versuchsseite (Gruppenprojekt)
-s = open(os.path.join(HERE, "vorlage_versuche.html"), encoding="utf-8").read()
-VDATA = []
-for v in VD.VS:
-    x = {k: v[k] for k in ("id", "nr", "titel", "bindung", "intro", "sicher", "entsorgung", "schritte", "skizze", "beob", "erk", "interp", "schluss", "buch", "kern")}
-    x["mat"] = [[m[0], m[1]] for m in v["mat"]]
-    x["platz"] = v["platz"]
-    x["vorab"] = VD.VORAB
-    x["nach"] = VD.NACH
-    VDATA.append(x)
-i = s.index("const V = ") + len("const V = "); j = s.index("];\nconst KEY", i) + 1
-s = s[:i] + json.dumps(VDATA, ensure_ascii=False) + s[j:]
-rep('const KEY = "26-27-2AB-K1.2-Bindungen-VS-Handy-v1";', 'const KEY = "%s";' % I.VS_KEY)
-rep('<option value="">–</option><option>2A</option><option>2B</option>', '<option value="">–</option><option>1AK</option><option>1BK</option>')
-s = s.replace("NAWI · 2AB · K1.2 Die Bindungsarten", I.EYEBROW)
-rep("<h1>Bindungs-Versuche</h1>", "<h1>Gruppenprojekt Kräfte</h1>")
-rep("<title>Bindungs-Versuche</title>", "<title>Gruppenprojekt Kräfte</title>")
-rep('d.text("Bindungs-Versuche", M + 15, y + 11.5)', 'd.text("Gruppenprojekt Kräfte", M + 15, y + 11.5)')
-s = s.replace('"K1.2 Die Bindungsarten – Versuchsprotokoll"', '"K2.1 Mechanische Kräfte – Gruppenprotokoll"')
-s = s.replace('clean("K1.2 Versuche · "', 'clean("K2.1 Gruppenprojekt · "').replace('"K1.2-Versuche-" + slug(S.ich)', '"K2.1-Gruppenprojekt-" + slug(S.ich)')
-s = s.replace('s = String(s).replace(/⊙/g, "(Punkt)")', 's = String(s).replace(/√/g, "Wurzel ").replace(/≈/g, "ca.").replace(/⊙/g, "(Punkt)")')
-s = s.replace("Erklärt mit den Teilchen.", "Ordnet eure Daten ein: unterstützt, spricht dagegen oder unklar?")
-s = re.sub(r'(alt="QR-Code zur Versuchsseite" src="data:image/png;base64,)[A-Za-z0-9+/=]+', lambda m: m.group(1) + qr_b64(I.URL + "versuche.html"), s, count=1)
-
-# Zusatzfelder: Frage/Quellen/Plan vor der Messtabelle, Grenze/Alltag danach
-rep('  body.append(el("h3", { text: v.beob.titel }));', """  if (v.platz) body.append(el("p", { class: "hint" }, el("b", { text: "Wo steht der Versuch? " }), v.platz));
-  if (v.vorab) {
-    body.append(el("h3", { text: "Stunde 2: Frage, Quellen und Plan" }));
-    v.vorab.forEach(([k, lab, hw]) => body.append(field(v.id, k, lab, true, hw)));
-  }
-  body.append(el("h3", { text: v.beob.titel }));""")
-rep('  body.append(field(v.id, "erk", "Erkenntnis", true, v.erk), field(v.id, "interp", "Interpretation", true, v.interp), field(v.id, "schluss", "Schlussfolgerung", true, v.schluss));',
-    """  body.append(el("h3", { text: "Stunde 4: Auswerten und erklären" }));
-  body.append(field(v.id, "erk", "Erkenntnis", true, v.erk), field(v.id, "interp", "Interpretation", true, v.interp), field(v.id, "schluss", "Schlussfolgerung", true, v.schluss));
-  if (v.nach) v.nach.forEach(([k, lab, hw]) => body.append(field(v.id, k, lab, true, hw)));""")
-rep('''  [["Erkenntnis", "erk"], ["Interpretation", "interp"], ["Schlussfolgerung", "schluss"]].forEach(([t, k]) => { L.push([t + ":", "h"]); L.push(["  " + (filled(a[k]) ? a[k].trim() : "— keine Antwort —"), filled(a[k]) ? "n" : "x"]); });''',
-    '''  (v.vorab || []).concat([["erk", "Erkenntnis"], ["interp", "Interpretation"], ["schluss", "Schlussfolgerung"]], v.nach || []).forEach(fl => {
-    const k = fl[0], t = fl[1]; L.push([t + ":", "h"]); L.push(["  " + (filled(a[k]) ? String(a[k]).trim() : "— keine Antwort —"), filled(a[k]) ? "n" : "x"]); });''')
-
-i = s.index('<section class="card safety">'); j = s.index("</section>", i) + 10
-s = s[:i] + '<section class="card safety">\n    <h2>Sicherheit in dieser Einheit</h2>\n    <ul class="steps">\n' + "".join(
-    f"      <li><b>{esc(a)}:</b> {esc(b)}</li>\n" for a, b in VD.SICHERHEIT) + "    </ul>\n  </section>" + s[j:]
-i = s.index("/*STATIONEN*/"); j = s.index("/*/STATIONEN*/")
-s = s[:i] + "/*STATIONEN*/\n" + json.dumps([["Gruppe %d · %s" % (v["gruppe"], v["titel"]), v["id"]] for v in VD.VS], ensure_ascii=False) + \
-    """.forEach(([t, id]) => { $("#vs").append(el("div", { class: "grp", text: t })); V.filter(v => v.id === id).forEach(v => $("#vs").append(versuch(v))); });\n""" + s[j:]
-s = s.replace('text: v.station ? "KERN · Station " + v.station : (v.demo ? "KERN · Demo" : "ZUSATZ")', 'text: "KERN"')
-s = s.replace('(v.station ? "KERN · Station " + v.station + " · " : (v.demo ? "KERN · Lehrer-Demo · " : "ZUSATZ · "))', '"KERN · "')
-i = s.index("<!--PLAN-->"); j = s.index("<!--/PLAN-->") + len("<!--/PLAN-->")
-PLANHTML = ('<!--PLAN--><section class="card" id="plan">\n'
-            '    <div class="head"><span class="nr">Ablauf</span><span class="pill theory">Gruppenprojekt ' + I.VS_ID + '</span></div>\n'
-            '    <h2>So läuft das Projekt</h2>\n'
-            '    <ul class="steps">\n'
-            '      <li><b>Sieben Gruppen, sieben Themen.</b> Jede Gruppe öffnet nur ihren eigenen Auftrag weiter unten. Die anderen bleiben zugeklappt – ihr hört sie in Stunde 5.</li>\n'
-            '      <li><b>Rollen:</b> Leitung und Zeit · Quellenprüfung · Aufbau und Messung · Protokoll. In der Fünfergruppe kommt Material und Gegenprobe dazu.</li>\n'
-            '      <li><b>Stunde 2:</b> Frage, Vermutung, geänderte und gleich bleibende Bedingung, zwei geprüfte Quellen. Danach gibt Prof. HOLZER euren Plan frei.</li>\n'
-            '      <li><b>Stunde 3:</b> messen. Schreibt nur auf, was ihr wirklich gemessen habt. Erwartete Zahlen sind keine Messwerte.\n'
-            '          Die Gruppen 2, 4 und 7 teilen sich zwei Kraftmesser: <b>nach 14 Minuten wird gewechselt.</b></li>\n'
-            '      <li><b>Stunde 4:</b> Erkenntnis, Interpretation, Schlussfolgerung, Grenze und Alltagsbeispiel ausfüllen. Dann die Drei-Minuten-Erklärung üben.</li>\n'
-            '      <li><b>Stunde 5:</b> jede Gruppe höchstens <b>3 Minuten</b> einschließlich Versuch. Jeder erklärt einen kurzen Teil. Eine PowerPoint ist nicht nötig.</li>\n'
-            '    </ul>\n'
-            '    <p class="hint"><b>Abgabe:</b> Ein Protokoll-Handy je Gruppe trägt alles ein. Der Protokollführer schreibt im Feld »Ich gebe diese PDF ab als« '
-            'nacheinander jeden Nachnamen hinein, tippt jedes Mal »PDF erstellen« und schickt die PDF in den Gruppenchat. Jeder lädt seine eigene PDF in LMS hoch. '
-            'Eure persönlichen Aufgaben 1, 2 und 4 gebt ihr getrennt über das <a href="aufgaben.html">Arbeitsblatt</a> ab.</p>\n'
-            '  </section><!--/PLAN-->')
-s = s[:i] + PLANHTML + s[j:]
-s = re.sub(r"<!--STAND-->.*?<!--/STAND-->", '<!--STAND--><p class="hint" style="text-align:center;margin:18px 0 8px">' + I.EYEBROW + " · Gruppenprojekt " + I.VS_ID + " · Stand " + STAND + " · " + I.V + "</p><!--/STAND-->", s, flags=re.S)
-s = s.replace("26-27-2AB-K1.2-Bindungen-VS-Handy-v1", I.VS_KEY)
-_plain = re.sub(r"[A-Za-z0-9+/=]{200,}", "", s)
-for bad in ["Bindungsarten", "K1.2", "Wellen", "Pendel"]:
-    assert bad not in _plain, re.findall(r".{60}" + re.escape(bad) + r".{30}", _plain)[:3]
-_alt = 'clean("K2.1 Gruppenprojekt · " + (S.name || "") + " · Seite " + p + " von " + n)'
-assert s.count(_alt) == 1, s.count(_alt)
-s = s.replace(_alt, 'clean("K2.1 Gruppenprojekt · " + ((S.name || "").length > 70 ? (S.name || "").slice(0, 67) + " …" : (S.name || "")) + " · Seite " + p + " von " + n)')
-open(DST + "versuche.html", "w", encoding="utf-8").write(s)
+# ================================================================ Versuchsseite: ab v2 nur Weiterleitung
+# Stephan, 11.11.2026: ein Arbeitsblatt, ein PDF. Die frühere versuche.html bleibt als Weiterleitung, damit alte Links und QR-Codes funktionieren.
+open(DST + "versuche.html", "w", encoding="utf-8").write("""<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=aufgaben.html#card_p3">
+<title>Weiter zum Arbeitsblatt</title></head>
+<body style="font-family:system-ui,sans-serif;padding:24px;font-size:18px">
+<p>Das Gruppenprojekt steht jetzt im <a href="aufgaben.html#card_p3">Arbeitsblatt</a> (Aufgaben 3 bis 7). Du wirst gleich weitergeleitet.</p>
+</body></html>
+""")
 
 # ================================================================ Bildlupe (alle Seiten mit Grafiken)
 # Am Handy sind die Zeichnungen auch in der Hochkant-Fassung klein. Ein Tippen zeigt das Bild groß:
@@ -592,7 +666,7 @@ p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 })();
 </script>
 """
-for f in ["theorie.html", "aufgaben.html", "versuche.html"]:
+for f in ["theorie.html", "aufgaben.html"]:
     t = open(DST + f, encoding="utf-8").read()
     if "id=\"lupe\"" not in t:
         assert t.rstrip().endswith("</html>"), f
@@ -600,5 +674,5 @@ for f in ["theorie.html", "aufgaben.html", "versuche.html"]:
         t = (t[:i] + ZOOM + t[i:]) if i > 0 else t.replace("</html>", ZOOM + "</html>")
         open(DST + f, "w", encoding="utf-8").write(t)
 
-for f in ["theorie.html", "aufgaben.html", "versuche.html", "quiz.html"]:
+for f in ["theorie.html", "aufgaben.html", "quiz.html"]:
     print(f, os.path.getsize(DST + f) // 1024, "KB")

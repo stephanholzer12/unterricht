@@ -152,6 +152,18 @@ table.tkf td.z { font-weight: 700; color: #3B4A2F; }
 table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-space: nowrap; }
 .tklink { font-weight: 700; color: #2E7D8C; min-height: 44px; display: inline-flex; align-items: center; }
 .aufl { margin-top: 10px; display: grid; gap: 8px; }
+.marke { font-size: 13px; font-weight: 700; color: #fff; background: #2E7D8C; border-radius: 999px; padding: 2px 10px; margin-left: 4px; }
+.marke.m-VERSUCH { background: #A33A2B; } .marke.m-GRUPPENARBEIT { background: #D9772B; } .marke.m-SELBSTSTUDIUM { background: #2E7D8C; }
+.gkarte { border: 2px solid #3B4A2F; border-radius: 12px; background: #F4F7EC; padding: 12px 14px; display: grid; gap: 8px; margin: 10px 0; }
+.gkarte p, .gkarte li { margin: 0; font-size: 17px; line-height: 1.45; }
+.gkarte ul, .gkarte ol { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
+.gkh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 19px; }
+.gkn { background: #3B4A2F; color: #fff; font-size: 14px; font-weight: 700; border-radius: 999px; padding: 3px 12px; }
+.gkarte h3 { margin: 6px 0 0; font-size: 17px; color: #3B4A2F; }
+.gkarte .nein li { color: #8C3B2E; }
+.gkarte a { color: #2E7D8C; font-weight: 700; }
+.gkhint { background: #E8F1F3; border: 2px solid #2E7D8C; border-radius: 12px; padding: 10px 14px; font-size: 17px; margin: 10px 0; }
+.stbox { display: grid; gap: 8px; margin-top: 10px; }
 .fb a { color: var(--teal); font-weight: 700; }
 .sol { margin-top: 10px; border: 2px dashed var(--teal); border-radius: 10px; padding: 10px 12px; background: #EEF6F7; font-size: 16px; }
 .sol p { margin: 4px 0; } .solh { font-weight: 700; color: var(--teal); margin-top: 6px; }
@@ -165,7 +177,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
 <!-- ks-kopf:start --><link rel="stylesheet" href="../../gemeinsam/kadetten-layout-v2.css"><!-- ks-kopf:end -->
 </head>
 <body class="ks-materialseite">
-<!-- ks-navigation:start --><nav class="ks-topnav" aria-label="Zur eigenen Klasse"><a href="../index.html">← NAWI 1AB · Start</a><span>Arbeitsblatt</span></nav><nav class="ks-materialnav" aria-label="Material dieser Einheit"><a href="theorie.html">Theorie</a><a href="aufgaben.html" aria-current="page">Arbeitsblatt</a><a href="versuche.html">Versuche</a><a href="quiz.html">Quiz</a><a class="ks-zur-abgabe" href="#abgabe">Zur PDF-Abgabe</a></nav><!-- ks-navigation:end -->
+<!-- ks-navigation:start --><nav class="ks-topnav" aria-label="Zur eigenen Klasse"><a href="../index.html">← NAWI 1AB · Start</a><span>Arbeitsblatt</span></nav><nav class="ks-materialnav" aria-label="Material dieser Einheit"><a href="theorie.html">Theorie</a><a href="aufgaben.html" aria-current="page">Arbeitsblatt</a><a href="quiz.html">Quiz</a><a class="ks-zur-abgabe" href="#abgabe">Zur PDF-Abgabe</a></nav><!-- ks-navigation:end -->
 
 <header class="top">
   <img class="camo" alt="" src="data:image/png;base64,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">
@@ -196,13 +208,14 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>1AK</option><option>1BK</option></select></div>
     </div>
     <ol class="steps hint">
-      <li><b>Hier geht es los.</b> Du musst die Theorie nicht vorher durchlesen: Unter jeder Aufgabe steht eine <b>Theorie-Karte</b> mit dem Wichtigsten in drei Sätzen.
-          Wer mehr wissen will, öffnet den <a href="theorie.html">Theorieteil</a> zum Nachschlagen.</li>
-      <li><b>Auszufüllen:</b> Aufgabe 1 (Schätzung, ohne Punkte) und die Pflichtaufgaben 2, 3, 4 – zusammen die vier im Balken oben.
-          <b>Zusatz</b> für Schnelle: 5, 6, 7. Es gibt <b>keine Hausübung</b>.</li>
-      <li>Bei jeder Aufgabe steht, wie lange sie ungefähr dauert. <b>Tipps kosten keine Punkte</b> – benutz sie ruhig.
-          Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt; die Lösung wird dabei nicht verraten.</li>
-      <li>Ganz unten <b>PDF erstellen</b> und in LMS hochladen. Das Gruppen-Protokoll gebt ihr getrennt über die <a href="versuche.html">Versuchsseite</a> ab.</li>
+      <li><b>Ein Arbeitsblatt für alles.</b> Aufgaben, Gruppenprojekt und Versuch stehen hier – du brauchst keine andere Seite.
+          Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
+      <li><b>Stunde 1:</b> Aufgaben 1 und 2 mit der ganzen Klasse · <b>Stunden 2–5:</b> Aufgaben 3 bis 7 in deiner Gruppe ·
+          <b>Stunde 6:</b> Aufgabe 8 allein. Zusatz für Schnelle: 9, 10, 11. Es gibt <b>keine Hausübung</b>.</li>
+      <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein), <b>GRUPPENARBEIT</b>, <b>VERSUCH</b>.
+          Tipps kosten keine Punkte.</li>
+      <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 6 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).
+          Den Steckbrief (Aufgabe 6) stellt die Schriftführung zusätzlich als Handout in Teams.</li>
     </ol>
   </section>
   <!--FAHRPLAN--><style>
@@ -221,8 +234,43 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
   .fahrplan td:first-child { font-weight: 700; color: #3B4A2F; font-size: 16px; }
   .fahrplan td[data-l]:not(:first-child)::before { content: attr(data-l) ": "; color: #5E6652; font-weight: 700; }
 }
-</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür sind 6 Stunden eingeplant.</p><p>Diese Einheit ist ein Projekt über sechs Stunden. In Stunde 1 lernst du die Grundbegriffe und bekommst dein Gruppenthema. In den Stunden 2 bis 4 plant, messt und erklärt eure Gruppe. In Stunde 5 präsentieren alle sieben Gruppen. In Stunde 6 verbindest du alle Themen und löst Aufgabe 4 allein. Die Daten sind geplant – es kann sich etwas verschieben, die Reihenfolge bleibt. Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: dein Arbeitsblatt-PDF und das Gruppen-PDF in LMS.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Datum</th><th>Das machen wir</th><th>Aufgaben</th><th>Zeit</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Datum">geplant</td><td data-l="Das machen wir">Einstieg + Teil 1 · Was eine Kraft bewirkt + Teil 2 · Geschwindigkeit · Buch S. 45–49</td><td data-l="Aufgaben">1, 2</td><td data-l="Zeit">Aufgaben und Projekt ca. 15 min · Besprechung 3 min · Reserve 4 min</td><td data-l="Wie">ohne Handy: Gemeinsam, Sieben Gruppen bilden, Themen und Rollen verteilen, Buchseiten zeigen</td><td data-l="Abgabe">Zwischenstand als PDF</td></tr><tr><td data-l="Wann">Stunde 2</td><td data-l="Datum">geplant</td><td data-l="Das machen wir">Teil des eigenen Gruppenthemas (Theorie-Seite) + zugewiesene Buchseiten + eine zweite Quelle</td><td data-l="Aufgaben">3 · Gruppen-Protokoll</td><td data-l="Zeit">Aufgaben und Projekt ca. 31 min · Reserve 4 min</td><td data-l="Wie">ohne Handy: Eigene Vermutung in der Gruppe festhalten, Versuchsplan schreiben, Freigabe durch Prof. HOLZER – je Gruppe ungefähr eine Minute</td><td data-l="Abgabe">Zwischenstand als PDF</td></tr><tr><td data-l="Wann">Stunde 3</td><td data-l="Datum">geplant</td><td data-l="Das machen wir">Versuchsseite: eigener Gruppenauftrag · Gruppenprojekt V1.20</td><td data-l="Aufgaben">Gruppen-Protokoll</td><td data-l="Zeit">Aufgaben und Projekt ca. 28 min · Reserve 4 min</td><td data-l="Wie">ohne Handy: Sicherheit und Materialverteilung, Plätze zeigen, Messphase</td><td data-l="Abgabe">Meilenstein-PDF der Gruppe</td></tr><tr><td data-l="Wann">Stunde 4</td><td data-l="Datum">geplant</td><td data-l="Das machen wir">Theorie-Karte des eigenen Themas noch einmal · Versuchsseite auswerten</td><td data-l="Aufgaben">Gruppen-Protokoll</td><td data-l="Zeit">Aufgaben und Projekt ca. 8 min · Reserve 4 min</td><td data-l="Wie">ohne Handy: Drei-Minuten-Erklärung vorbereiten, Partnergruppe prüft nach dem Raster und gibt Rückmeldung</td><td data-l="Abgabe">Zwischenstand als PDF</td></tr><tr><td data-l="Wann">Stunde 5</td><td data-l="Datum">geplant</td><td data-l="Das machen wir">Alle sieben Themen hören · Beobachtungsauftrag</td><td data-l="Aufgaben">3 · Gruppen-Protokoll</td><td data-l="Zeit">Aufgaben und Projekt ca. 31 min · Besprechung 4 min · Reserve 4 min</td><td data-l="Wie">ohne Handy: Start und Beobachtungsauftrag für die Zuhörer erklären, Sieben Gruppen präsentieren</td><td data-l="Abgabe">Gruppen-PDF in LMS</td></tr><tr><td data-l="Wann">Stunde 6</td><td data-l="Datum">geplant</td><td data-l="Das machen wir">Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe</td><td data-l="Aufgaben">4 · Quiz freiwillig</td><td data-l="Zeit">Aufgaben und Projekt ca. 19 min · Besprechung 8 min · Reserve 4 min</td><td data-l="Wie">ohne Handy: Gemeinsame Übersicht</td><td data-l="Abgabe">Arbeitsblatt-PDF in LMS</td></tr><tr><td data-l="Wann">Für Schnelle</td><td data-l="Datum">–</td><td data-l="Das machen wir">Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen)</td><td data-l="Aufgaben">Zusatz 5–7</td><td data-l="Zeit">ca. 26 min</td><td data-l="Wie">–</td><td data-l="Abgabe">freiwillig</td></tr></tbody></table></div></section><!--/FAHRPLAN-->
-  <div class="progress"><span id="count">0 von 7 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
+</style><style>
+.fp-kompakt .fp-wahl { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 4px 0 10px; font-weight: 700; color: #3B4A2F; }
+.fp-kompakt .fp-wahl button { font: inherit; font-size: 17px; font-weight: 700; min-height: 44px; padding: 6px 18px; border-radius: 999px;
+  border: 2px solid #3B4A2F; background: #fff; color: #3B4A2F; cursor: pointer; }
+.fp-kompakt .fp-wahl button[aria-pressed="true"] { background: #3B4A2F; color: #fff; }
+.fp-kompakt .fp-std { border: 2px solid #7FA83A; border-radius: 12px; padding: 10px 12px; background: #F4F7EC; display: grid; gap: 6px; }
+.fp-kompakt .fp-kopf { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 18px; font-weight: 700; color: #3B4A2F; }
+.fp-kompakt .fp-marke { font-size: 13px; font-weight: 700; color: #fff; background: #2E7D8C; border-radius: 999px; padding: 2px 10px; }
+.fp-kompakt .fp-zeile { display: grid; grid-template-columns: 30px 1fr; gap: 6px; font-size: 17px; line-height: 1.4; }
+.fp-kompakt .fp-zeile b.n { display: inline-flex; width: 26px; height: 26px; border-radius: 50%; background: #7FA83A; color: #fff; align-items: center; justify-content: center; font-size: 15px; }
+.fp-kompakt details { margin-top: 10px; } .fp-kompakt summary { cursor: pointer; font-weight: 700; color: #2E7D8C; min-height: 44px; display: flex; align-items: center; }
+.fp-kompakt ol.fp-liste { margin: 4px 0 0; padding-left: 0; list-style: none; display: grid; gap: 4px; }
+.fp-kompakt ol.fp-liste li { font-size: 16px; padding: 6px 8px; border-radius: 8px; background: #fff; border: 1px solid #D3DCC2; }
+.fp-kompakt ol.fp-liste li.fp-jetzt { border: 2px solid #7FA83A; background: #F4F7EC; font-weight: 700; }
+.fp-kompakt .fp-tipp { font-size: 16px; color: #5E6652; }
+</style><section class="fahrplan fp-kompakt"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">1AK: 6 Stunden · 1BK: 6 Stunden · die Daten sind geplant, die Reihenfolge zählt.</p><div class="fp-wahl" role="group" aria-label="Deine Klasse">Deine Klasse:<button type="button" data-k="1AK" aria-pressed="false">1AK</button><button type="button" data-k="1BK" aria-pressed="false">1BK</button></div><p class="fp-tipp">Tippe deine Klasse an – dann siehst du, was in dieser Stunde dran ist.</p><div class="fp-kl" data-k="1AK" hidden><div class="fp-std" data-d="20261112" hidden><div class="fp-kopf">Diese Stunde: Stunde 1 · Do 12.11. · 8. Std. · geplant <span class="fp-marke">GEMEINSAM</span></div><div class="fp-zeile"><b class="n">1</b><span>Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 1, 2</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-d="20261113" hidden><div class="fp-kopf">Diese Stunde: Stunde 2 · Fr 13.11. · geplant <span class="fp-marke">SELBSTSTUDIUM</span></div><div class="fp-zeile"><b class="n">1</b><span>Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 3, 4</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Plan freigeben lassen</span></div></div><div class="fp-std" data-d="20261119" hidden><div class="fp-kopf">Diese Stunde: Stunde 3 · Do 19.11. · 7. Std. · geplant <span class="fp-marke">VERSUCH</span></div><div class="fp-zeile"><b class="n">1</b><span>Euren Versuch machen und üben · Material von zu Hause mitbringen</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 5</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-d="20261119" hidden><div class="fp-kopf">Diese Stunde: Stunde 4 · Do 19.11. · 8. Std. · geplant <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-zeile"><b class="n">1</b><span>Steckbrief schreiben, Handout in Teams · Präsentation proben</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 6</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Handout-PDF in Teams (Schriftführung)</span></div></div><div class="fp-std" data-d="20261120" hidden><div class="fp-kopf">Diese Stunde: Stunde 5 · Fr 20.11. · geplant <span class="fp-marke">PRÄSENTATION</span></div><div class="fp-zeile"><b class="n">1</b><span>Alle sieben Gruppen präsentieren · du schreibst mit</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 7</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-d="20261126" hidden><div class="fp-kopf">Diese Stunde: Stunde 6 · Do 26.11. · 7. Std. · geplant <span class="fp-marke">EINZELARBEIT</span></div><div class="fp-zeile"><b class="n">1</b><span>Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 8 · Quiz freiwillig</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Arbeitsblatt-PDF in LMS</span></div></div><details><summary>Alle Stunden (6)</summary><ol class="fp-liste"><li>Stunde 1 · Do 12.11. · 8. Std. · geplant · GEMEINSAM – Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen</li><li>Stunde 2 · Fr 13.11. · geplant · SELBSTSTUDIUM – Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe</li><li>Stunde 3 · Do 19.11. · 7. Std. · geplant · VERSUCH – Euren Versuch machen und üben · Material von zu Hause mitbringen</li><li>Stunde 4 · Do 19.11. · 8. Std. · geplant · GRUPPENARBEIT – Steckbrief schreiben, Handout in Teams · Präsentation proben</li><li>Stunde 5 · Fr 20.11. · geplant · PRÄSENTATION – Alle sieben Gruppen präsentieren · du schreibst mit</li><li>Stunde 6 · Do 26.11. · 7. Std. · geplant · EINZELARBEIT – Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe</li></ol></details></div><div class="fp-kl" data-k="1BK" hidden><div class="fp-std" data-d="20261113" hidden><div class="fp-kopf">Diese Stunde: Stunde 1 · Fr 13.11. · geplant <span class="fp-marke">GEMEINSAM</span></div><div class="fp-zeile"><b class="n">1</b><span>Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 1, 2</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-d="20261116" hidden><div class="fp-kopf">Diese Stunde: Stunde 2 · Mo 16.11. · geplant <span class="fp-marke">SELBSTSTUDIUM</span></div><div class="fp-zeile"><b class="n">1</b><span>Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 3, 4</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Plan freigeben lassen</span></div></div><div class="fp-std" data-d="20261118" hidden><div class="fp-kopf">Diese Stunde: Stunde 3 · Mi 18.11. · geplant <span class="fp-marke">VERSUCH</span></div><div class="fp-zeile"><b class="n">1</b><span>Euren Versuch machen und üben · Material von zu Hause mitbringen</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 5</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-d="20261120" hidden><div class="fp-kopf">Diese Stunde: Stunde 4 · Fr 20.11. · geplant <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-zeile"><b class="n">1</b><span>Steckbrief schreiben, Handout in Teams · Präsentation proben</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 6</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Handout-PDF in Teams (Schriftführung)</span></div></div><div class="fp-std" data-d="20261123" hidden><div class="fp-kopf">Diese Stunde: Stunde 5 · Mo 23.11. · geplant <span class="fp-marke">PRÄSENTATION</span></div><div class="fp-zeile"><b class="n">1</b><span>Alle sieben Gruppen präsentieren · du schreibst mit</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 7</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-d="20261125" hidden><div class="fp-kopf">Diese Stunde: Stunde 6 · Mi 25.11. · geplant <span class="fp-marke">EINZELARBEIT</span></div><div class="fp-zeile"><b class="n">1</b><span>Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 8 · Quiz freiwillig</span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Arbeitsblatt-PDF in LMS</span></div></div><details><summary>Alle Stunden (6)</summary><ol class="fp-liste"><li>Stunde 1 · Fr 13.11. · geplant · GEMEINSAM – Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen</li><li>Stunde 2 · Mo 16.11. · geplant · SELBSTSTUDIUM – Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe</li><li>Stunde 3 · Mi 18.11. · geplant · VERSUCH – Euren Versuch machen und üben · Material von zu Hause mitbringen</li><li>Stunde 4 · Fr 20.11. · geplant · GRUPPENARBEIT – Steckbrief schreiben, Handout in Teams · Präsentation proben</li><li>Stunde 5 · Mo 23.11. · geplant · PRÄSENTATION – Alle sieben Gruppen präsentieren · du schreibst mit</li><li>Stunde 6 · Mi 25.11. · geplant · EINZELARBEIT – Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe</li></ol></details></div><p class="fp-tipp" style="margin-top:8px"><b>Für Schnelle:</b> Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen) · Aufgaben Zusatz 9–11</p><details><summary>So läuft die ganze Einheit</summary><p>Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Die Daten sind geplant – die Reihenfolge zählt.</p></details></section><script>
+(function () {
+  var box = document.currentScript.previousElementSibling, KEY = "fahrplan-klasse";
+  var btns = box.querySelectorAll(".fp-wahl button"), teile = box.querySelectorAll(".fp-kl");
+  function heute() { var d = new Date(); return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
+  function zeige(k) {
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.k === k)); });
+    teile.forEach(function (t) {
+      t.hidden = t.dataset.k !== k; if (t.hidden) return;
+      var std = t.querySelectorAll(".fp-std"), li = t.querySelectorAll("ol.fp-liste li"), n = 0, h = heute();
+      for (var i = 0; i < std.length; i++) { var d = +std[i].dataset.d || 0; if (d && d >= h) { n = i; break; } if (i === std.length - 1) n = d && d < h ? i : 0; }
+      std.forEach(function (s, i) { s.hidden = i !== n; }); li.forEach(function (l, i) { l.classList.toggle("fp-jetzt", i === n); });
+    });
+    var tipp = box.querySelector(".fp-tipp"); if (tipp) tipp.hidden = !!k;
+  }
+  var k = ""; try { k = localStorage.getItem(KEY) || ""; } catch (e) {}
+  if (!box.querySelector('.fp-kl[data-k="' + k + '"]')) k = "";
+  btns.forEach(function (b) { b.addEventListener("click", function () { try { localStorage.setItem(KEY, b.dataset.k); } catch (e) {} zeige(b.dataset.k); }); });
+  zeige(k);
+})();
+</script><!--/FAHRPLAN-->
+  <div class="progress"><span id="count">0 von 11 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 
   <section class="card" id="abgabe">
@@ -247,7 +295,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button>
     </div>
     <p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
-    <p class="hint">Stand 08.11.2026 · v1</p>
+    <p class="hint">Stand 11.11.2026 · v2</p>
   </section>
 </main>
 
@@ -259,7 +307,9 @@ const FONT_R = window.__PDF_FONT_R || "", FONT_B = window.__PDF_FONT_B || "", LO
 const RANGES = [[32, 126], [160, 172], [174, 383], [884, 885], [890, 894], [900, 906], [908, 908], [910, 929], [931, 974], [976, 1023], [8192, 8207], [8210, 8226], [8230, 8230], [8239, 8240], [8243, 8244], [8249, 8250], [8252, 8254], [8260, 8260], [8286, 8287], [8304, 8305], [8308, 8340], [8364, 8364], [8592, 8601], [8616, 8616], [8722, 8722], [8800, 8801], [8804, 8805]];
 const KEY = "26-27-1AB-K2.1-Kraefte-TH-Handy-v1";
 const KAP = "K2.1", THEMA = "Kraefte";
-const KARTEN = {"k0": {"titel": "So läuft euer Gruppenprojekt", "satz": ["Formuliert eine **prüfbare Frage** und eine Vermutung mit »weil …«.", "Ändert genau **eine Bedingung**; alles andere bleibt gleich.", "Trennt in der Auswertung **Beobachtung** (was ihr gemessen habt) und **Erklärung** (warum es so ist)."], "bild": "img/projekt.png", "bild_hoch": "", "alt": "Ablauf in fünf Schritten: Frage und Vermutung, Plan und Quellen, Messen, Erklären mit Grenze, Präsentieren in drei Minuten.", "formeln": [], "link": "theorie.html#projekt", "buch": "Buch S. 45–61"}, "k1": {"titel": "Was eine Kraft bewirkt", "satz": ["Eine **Kraft** kann das Tempo oder die Richtung einer Bewegung ändern oder einen Körper **verformen**.", "Kräfte haben eine **Richtung** und werden mit Pfeilen gezeichnet.", "Für die Bewegungsänderung zählt die **resultierende Kraft**, also die gemeinsame Wirkung aller Kräfte auf einen Körper."], "bild": "img/wirkung.png", "bild_hoch": "img/wirkung-hoch.png", "alt": "Derselbe Wagen in drei Situationen: beim Anfahren wird er schneller, in der Kurve ändert sich die Richtung, zwischen zwei Händen wird ein Ball verformt. Kraftpfeile rot, Geschwindigkeitspfeile blau.", "formeln": [["F_res", "resultierende Kraft", "N"], ["m", "Masse", "kg"], ["a", "Beschleunigung", "m/s²"], ["F_res = m · a", "1 N = 1 kg · m/s²", ""]], "link": "theorie.html#wirkung", "buch": "Buch S. 45, 49, 61"}, "k2": {"titel": "Geschwindigkeit und Beschleunigung", "satz": ["Die mittlere Schnelligkeit auf gerader Strecke berechnest du mit **v = s / t**.", "Zur Geschwindigkeit gehört auch die **Richtung**.", "**Beschleunigung** heißt: Tempo oder Richtung ändern sich – auch Bremsen und Kurvenfahren gehören dazu."], "bild": "img/bewegung.png", "bild_hoch": "", "alt": "Drei Bildreihen mit gleichen Zeitabständen: gleich große Abstände bei konstantem Tempo, größer werdende Abstände beim Schnellerwerden, gleiche Abstände auf einer Kurve mit sich drehendem Geschwindigkeitspfeil.", "formeln": [["v", "Schnelligkeit", "m/s"], ["s", "Weg", "m"], ["t", "Zeit", "s"], ["v = s / t", "von m/s auf km/h: mal 3,6", ""], ["a = (v_ende − v_anfang) / Δt", "mittlere Beschleunigung", "m/s²"]], "link": "theorie.html#bewegung", "buch": "Buch S. 46–48"}, "k3": {"titel": "Masse und Gewichtskraft", "satz": ["Die **Masse m** wird in Kilogramm angegeben, die **Gewichtskraft F_G** in Newton.", "Es gilt **F_G = m · g**; g ist der Ortsfaktor in N/kg.", "In dieser Einheit rechnen wir immer mit **g = 10 N/kg** – genauer wären 9,81 N/kg."], "bild": "img/gewicht.png", "bild_hoch": "img/gewicht-hoch.png", "alt": "Derselbe Rucksack auf Erde und Mond: gleiche Masse 6 kg, auf der Erde ein langer Kraftpfeil mit 60 N, am Mond ein kurzer mit etwa 10 N.", "formeln": [["F_G", "Gewichtskraft", "N"], ["m", "Masse", "kg"], ["g", "Ortsfaktor", "N/kg"], ["F_G = m · g", "hier mit g = 10 N/kg", ""]], "link": "theorie.html#gewicht", "buch": "Buch S. 50–51"}, "k4": {"titel": "Auftrieb: sinken, steigen und schwimmen", "satz": ["In Wasser und Luft wirkt eine **Auftriebskraft** nach oben.", "Sie ist so groß wie die **Gewichtskraft des verdrängten** Wassers oder der verdrängten Luft.", "Schwimmt ein Körper ruhig an der Oberfläche, sind **Auftriebskraft und Gewichtskraft gleich groß**."], "bild": "img/auftrieb.png", "bild_hoch": "img/auftrieb-hoch.png", "alt": "Drei Körper im Wasser: vollständig eingetaucht und steigend mit langem Auftriebspfeil, schwebend mit gleich langen Pfeilen, ruhig an der Oberfläche schwimmend mit gleich langen Pfeilen.", "formeln": [["F_A", "Auftriebskraft", "N"], ["ρ", "Dichte des Fluids", "kg/m³"], ["V", "verdrängtes Volumen", "m³"], ["F_A = ρ · g · V", "nur zur Erweiterung", ""]], "link": "theorie.html#auftrieb", "buch": "Buch S. 52–53"}, "k5": {"titel": "Reibung hilft und bremst", "satz": ["**Gleitreibung** wirkt gegen das Gleiten zweier berührender Oberflächen.", "**Haftreibung** verhindert Rutschen – dadurch kann sie beim Gehen sogar **antreiben**.", "Reibung kann erwünscht sein (Schuhsohle) oder unerwünscht (Lager)."], "bild": "img/reibung.png", "bild_hoch": "img/reibung-hoch.png", "alt": "Links ein Becher auf dem Tisch mit Zugkraft nach rechts, Gleitreibung nach links, Normalkraft nach oben und Gewichtskraft nach unten. Rechts ein Fuß, der den Boden nach hinten drückt, und der Boden, der den Fuß nach vorne drückt.", "formeln": [["F_R", "Gleitreibungskraft", "N"], ["F_N", "Normalkraft", "N"], ["μ", "Reibungszahl", "ohne Einheit"], ["F_R = μ · F_N", "einfaches Näherungsmodell", ""]], "link": "theorie.html#reibung", "buch": "Buch S. 54–56"}, "k6": {"titel": "Kapillarwirkung und Oberflächenspannung", "satz": ["**Adhäsion** ist die Anziehung zwischen verschiedenen Stoffen, **Kohäsion** der Zusammenhalt innerhalb eines Stoffes.", "In feinen benetzbaren Zwischenräumen kann Wasser durch **Kapillarwirkung** steigen.", "Das sieht man auch bei saugfähigem Papier; für hohe Pflanzen braucht es zusätzlich den **Transpirationssog**."], "bild": "img/kapillar.png", "bild_hoch": "img/kapillar-hoch.png", "alt": "Links ein Filterpapierstreifen, dessen unterer Rand im Wasser steht und dessen feuchte Grenze über dem äußeren Wasserspiegel liegt. Rechts ein enges benetzbares Röhrchen mit angehobenem Wasserstand und Wasserteilchen, die zusammenhalten.", "formeln": [], "link": "theorie.html#kapillar", "buch": "Buch S. 57"}, "k7": {"titel": "Druck: Kraft auf eine Fläche", "satz": ["**Druck p** beschreibt, wie sich eine senkrecht wirkende Kraft auf eine Fläche verteilt.", "Es gilt **p = F_N / A**; der Druck wird in Pascal angegeben.", "Bei gleicher Kraft bedeutet eine **größere Fläche einen kleineren Druck**."], "bild": "img/druck.png", "bild_hoch": "", "alt": "Oben dieselbe Gewichtskraft auf einem schmalen Stiefel und auf einem breiten Schneeschuh, der Druckpfeil unter dem Schneeschuh ist deutlich kleiner. Unten eine Spritze ohne Nadel, einmal offen, einmal mit dem Finger verschlossen und zusammengedrückter Luft.", "formeln": [["p", "Druck", "Pa"], ["F_N", "senkrechte Kraft", "N"], ["A", "Fläche", "m²"], ["p = F_N / A", "1 Pa = 1 N/m², 1 bar = 100 000 Pa", ""]], "link": "theorie.html#druck", "buch": "Buch S. 58–60"}, "k8": {"titel": "Kraft und Gegenkraft", "satz": ["Übt Körper A eine Kraft auf Körper B aus, wirkt gleichzeitig eine gleich große, entgegengesetzte Kraft von B auf A.", "Diese beiden Kräfte wirken auf **verschiedene Körper**.", "Beim **Kräftegleichgewicht** gleichen sich dagegen Kräfte an **demselben** Körper aus."], "bild": "img/gegenkraft.png", "bild_hoch": "img/gegenkraft-hoch.png", "alt": "Links zwei ineinander gehängte Kraftmesser, beide zeigen 2 N; um jedes Gerät ist ein eigener farbiger Rahmen gezeichnet. Rechts ein Buch auf dem Tisch mit Gewichtskraft nach unten und Stützkraft nach oben, beide am selben Buch.", "formeln": [], "link": "theorie.html#gegenkraft", "buch": "Buch S. 61"}, "k9": {"titel": "Alle Größen und Einheiten auf einmal", "satz": ["**Masse** in kg, **Kraft** in N, **Geschwindigkeit** in m/s, **Beschleunigung** in m/s², **Druck** in Pa.", "Die vier Formeln dieser Einheit: **v = s / t · F = m · a · F_G = m · g · p = F / A**.", "Geschwindigkeit, Beschleunigung und Druck sind **keine Kraftarten**."], "bild": "img/einheiten.png", "bild_hoch": "", "alt": "Übersichtstafel: Masse in kg, Kraft in N, Geschwindigkeit in m/s, Beschleunigung in m/s², Druck in Pa, jeweils mit Formel.", "formeln": [["v = s / t", "Schnelligkeit", "m/s"], ["F = m · a", "resultierende Kraft", "N"], ["F_G = m · g", "Gewichtskraft mit g = 10 N/kg", "N"], ["p = F / A", "Druck", "Pa"]], "link": "theorie.html#kurz", "buch": "Buch S. 45–61, Anhang S. 232"}};
+const KARTEN = {"k0": {"titel": "So läuft euer Gruppenprojekt", "satz": ["Ihr erarbeitet euer Thema **selbst** mit den Leitfragen, dem Buch und dieser Seite.", "Den **Versuch wählt ihr selbst** – Material aus dem Saal oder von zu Hause, erst nach der **Freigabe** wird gebaut.", "Euer **Steckbrief** ist das Handout für alle, in Stunde 5 zeigt ihr alles in **drei Minuten**."], "bild": "img/projekt.png", "bild_hoch": "", "alt": "Ablauf in fünf Schritten: Thema mit Leitfragen, Versuch wählen und freigeben lassen, Versuch machen und üben, Steckbrief für alle, drei Minuten präsentieren.", "formeln": [], "link": "theorie.html#projekt", "buch": "Buch S. 45–61"}, "k1": {"titel": "Was eine Kraft bewirkt", "satz": ["Eine **Kraft** kann das Tempo oder die Richtung einer Bewegung ändern oder einen Körper **verformen**.", "Kräfte haben eine **Richtung** und werden mit Pfeilen gezeichnet.", "Für die Bewegungsänderung zählt die **resultierende Kraft**, also die gemeinsame Wirkung aller Kräfte auf einen Körper."], "bild": "img/wirkung.png", "bild_hoch": "img/wirkung-hoch.png", "alt": "Derselbe Wagen in drei Situationen: beim Anfahren wird er schneller, in der Kurve ändert sich die Richtung, zwischen zwei Händen wird ein Ball verformt. Kraftpfeile rot, Geschwindigkeitspfeile blau.", "formeln": [["F_res", "resultierende Kraft", "N"], ["m", "Masse", "kg"], ["a", "Beschleunigung", "m/s²"], ["F_res = m · a", "1 N = 1 kg · m/s²", ""]], "link": "theorie.html#wirkung", "buch": "Buch S. 45, 49, 61"}, "k2": {"titel": "Geschwindigkeit und Beschleunigung", "satz": ["Die mittlere Schnelligkeit auf gerader Strecke berechnest du mit **v = s / t**.", "Zur Geschwindigkeit gehört auch die **Richtung**.", "**Beschleunigung** heißt: Tempo oder Richtung ändern sich – auch Bremsen und Kurvenfahren gehören dazu."], "bild": "img/bewegung.png", "bild_hoch": "", "alt": "Drei Bildreihen mit gleichen Zeitabständen: gleich große Abstände bei konstantem Tempo, größer werdende Abstände beim Schnellerwerden, gleiche Abstände auf einer Kurve mit sich drehendem Geschwindigkeitspfeil.", "formeln": [["v", "Schnelligkeit", "m/s"], ["s", "Weg", "m"], ["t", "Zeit", "s"], ["v = s / t", "von m/s auf km/h: mal 3,6", ""], ["a = (v_ende − v_anfang) / Δt", "mittlere Beschleunigung", "m/s²"]], "link": "theorie.html#bewegung", "buch": "Buch S. 46–48"}, "k3": {"titel": "Masse und Gewichtskraft", "satz": ["Die **Masse m** wird in Kilogramm angegeben, die **Gewichtskraft F_G** in Newton.", "Es gilt **F_G = m · g**; g ist der Ortsfaktor in N/kg.", "In dieser Einheit rechnen wir immer mit **g = 10 N/kg** – genauer wären 9,81 N/kg."], "bild": "img/gewicht.png", "bild_hoch": "img/gewicht-hoch.png", "alt": "Derselbe Rucksack auf Erde und Mond: gleiche Masse 6 kg, auf der Erde ein langer Kraftpfeil mit 60 N, am Mond ein kurzer mit etwa 10 N.", "formeln": [["F_G", "Gewichtskraft", "N"], ["m", "Masse", "kg"], ["g", "Ortsfaktor", "N/kg"], ["F_G = m · g", "hier mit g = 10 N/kg", ""]], "link": "theorie.html#gewicht", "buch": "Buch S. 50–51"}, "k4": {"titel": "Auftrieb: sinken, steigen und schwimmen", "satz": ["In Wasser und Luft wirkt eine **Auftriebskraft** nach oben.", "Sie ist so groß wie die **Gewichtskraft des verdrängten** Wassers oder der verdrängten Luft.", "Schwimmt ein Körper ruhig an der Oberfläche, sind **Auftriebskraft und Gewichtskraft gleich groß**."], "bild": "img/auftrieb.png", "bild_hoch": "img/auftrieb-hoch.png", "alt": "Drei Körper im Wasser: vollständig eingetaucht und steigend mit langem Auftriebspfeil, schwebend mit gleich langen Pfeilen, ruhig an der Oberfläche schwimmend mit gleich langen Pfeilen.", "formeln": [["F_A", "Auftriebskraft", "N"], ["ρ", "Dichte des Fluids", "kg/m³"], ["V", "verdrängtes Volumen", "m³"], ["F_A = ρ · g · V", "nur zur Erweiterung", ""]], "link": "theorie.html#auftrieb", "buch": "Buch S. 52–53"}, "k5": {"titel": "Reibung hilft und bremst", "satz": ["**Gleitreibung** wirkt gegen das Gleiten zweier berührender Oberflächen.", "**Haftreibung** verhindert Rutschen – dadurch kann sie beim Gehen sogar **antreiben**.", "Reibung kann erwünscht sein (Schuhsohle) oder unerwünscht (Lager)."], "bild": "img/reibung.png", "bild_hoch": "img/reibung-hoch.png", "alt": "Links ein Becher auf dem Tisch mit Zugkraft nach rechts, Gleitreibung nach links, Normalkraft nach oben und Gewichtskraft nach unten. Rechts ein Fuß, der den Boden nach hinten drückt, und der Boden, der den Fuß nach vorne drückt.", "formeln": [["F_R", "Gleitreibungskraft", "N"], ["F_N", "Normalkraft", "N"], ["μ", "Reibungszahl", "ohne Einheit"], ["F_R = μ · F_N", "einfaches Näherungsmodell", ""]], "link": "theorie.html#reibung", "buch": "Buch S. 54–56"}, "k6": {"titel": "Kapillarwirkung und Oberflächenspannung", "satz": ["**Adhäsion** ist die Anziehung zwischen verschiedenen Stoffen, **Kohäsion** der Zusammenhalt innerhalb eines Stoffes.", "In feinen benetzbaren Zwischenräumen kann Wasser durch **Kapillarwirkung** steigen.", "Das sieht man auch bei saugfähigem Papier; für hohe Pflanzen braucht es zusätzlich den **Transpirationssog**."], "bild": "img/kapillar.png", "bild_hoch": "img/kapillar-hoch.png", "alt": "Links ein Filterpapierstreifen, dessen unterer Rand im Wasser steht und dessen feuchte Grenze über dem äußeren Wasserspiegel liegt. Rechts ein enges benetzbares Röhrchen mit angehobenem Wasserstand und Wasserteilchen, die zusammenhalten.", "formeln": [], "link": "theorie.html#kapillar", "buch": "Buch S. 57"}, "k7": {"titel": "Druck: Kraft auf eine Fläche", "satz": ["**Druck p** beschreibt, wie sich eine senkrecht wirkende Kraft auf eine Fläche verteilt.", "Es gilt **p = F_N / A**; der Druck wird in Pascal angegeben.", "Bei gleicher Kraft bedeutet eine **größere Fläche einen kleineren Druck**."], "bild": "img/druck.png", "bild_hoch": "", "alt": "Oben dieselbe Gewichtskraft auf einem schmalen Stiefel und auf einem breiten Schneeschuh, der Druckpfeil unter dem Schneeschuh ist deutlich kleiner. Unten eine Spritze ohne Nadel, einmal offen, einmal mit dem Finger verschlossen und zusammengedrückter Luft.", "formeln": [["p", "Druck", "Pa"], ["F_N", "senkrechte Kraft", "N"], ["A", "Fläche", "m²"], ["p = F_N / A", "1 Pa = 1 N/m², 1 bar = 100 000 Pa", ""]], "link": "theorie.html#druck", "buch": "Buch S. 58–60"}, "k8": {"titel": "Kraft und Gegenkraft", "satz": ["Übt Körper A eine Kraft auf Körper B aus, wirkt gleichzeitig eine gleich große, entgegengesetzte Kraft von B auf A.", "Diese beiden Kräfte wirken auf **verschiedene Körper**.", "Beim **Kräftegleichgewicht** gleichen sich dagegen Kräfte an **demselben** Körper aus."], "bild": "img/gegenkraft.png", "bild_hoch": "img/gegenkraft-hoch.png", "alt": "Links zwei ineinander gehängte Kraftmesser, beide zeigen 2 N; um jedes Gerät ist ein eigener farbiger Rahmen gezeichnet. Rechts ein Buch auf dem Tisch mit Gewichtskraft nach unten und Stützkraft nach oben, beide am selben Buch.", "formeln": [], "link": "theorie.html#gegenkraft", "buch": "Buch S. 61"}, "k9": {"titel": "Alle Größen und Einheiten auf einmal", "satz": ["**Masse** in kg, **Kraft** in N, **Geschwindigkeit** in m/s, **Beschleunigung** in m/s², **Druck** in Pa.", "Die vier Formeln dieser Einheit: **v = s / t · F = m · a · F_G = m · g · p = F / A**.", "Geschwindigkeit, Beschleunigung und Druck sind **keine Kraftarten**."], "bild": "img/einheiten.png", "bild_hoch": "", "alt": "Übersichtstafel: Masse in kg, Kraft in N, Geschwindigkeit in m/s, Beschleunigung in m/s², Druck in Pa, jeweils mit Formel.", "formeln": [["v = s / t", "Schnelligkeit", "m/s"], ["F = m · a", "resultierende Kraft", "N"], ["F_G = m · g", "Gewichtskraft mit g = 10 N/kg", "N"], ["p = F / A", "Druck", "Pa"]], "link": "theorie.html#kurz", "buch": "Buch S. 45–61, Anhang S. 232"}};
+const GK = {"1": {"thema": "Bewegung", "titel": "Bewegung: Geschwindigkeit und Beschleunigung", "buch": "Buch S. 46–48", "teil": "bewegung", "karte": "k2", "teiltitel": "2 Bewegung", "leit": ["Was ist der Unterschied zwischen Tempo (Schnelligkeit) und Geschwindigkeit? Warum gehört eine Richtung dazu?", "Wie berechnest du die mittlere Schnelligkeit? Nenne die Formel mit Einheiten und rechne 10 m/s in km/h um.", "Was heißt »beschleunigen« in der Physik? Nenne drei verschiedene Fälle.", "Wo braucht man das im Sport, im Straßenverkehr oder beim Bundesheer? Ein Beispiel mit Zahl."], "ideen": ["Normal gehen auf 5 m abgemessener Strecke, Zeit stoppen, dreimal wiederholen und v = s / t berechnen (auch in km/h).", "Eine Kugel oder ein Spielzeugauto rollt eine schräge Unterlage hinunter: Zeit für die erste und die zweite Hälfte vergleichen.", "Handy-Video mit Zeitlupe: ein Ball rollt gleichmäßig und einmal schneller werdend – Abstände in gleichen Zeitabständen vergleichen."], "saal": ["Bandmaß 20 m (#9, Bestand 1)", "Bandmaß 3 m (#10, Bestand 1)", "Gelbe Schnur 50 m (Markierung) (#57, Bestand 1)"], "haus": "Murmel oder Spielzeugauto, ein Brett oder ein großer Karton als schräge Bahn, Malerkrepp für Markierungen.", "formel": "v = s / t (m/s; mal 3,6 ergibt km/h)", "achtung": "Nur gehen, nicht laufen. Den Gang nur nach Freigabe durch Prof. HOLZER benutzen.", "video": null}, "2": {"thema": "Gewichtskraft", "titel": "Masse und Gewichtskraft", "buch": "Buch S. 49–51", "teil": "gewicht", "karte": "k3", "teiltitel": "3 Gewicht", "leit": ["Was ist der Unterschied zwischen Masse und Gewichtskraft? Welche Einheit hat jede der beiden Größen?", "Was bedeutet g in der Formel Gewichtskraft = Masse · g? Berechne die Gewichtskraft eines Rucksacks mit 8 kg.", "Warum ist ein Kadett am Mond »leichter«, obwohl seine Masse gleich bleibt?", "Wie funktioniert ein Federkraftmesser? Erkläre in zwei Sätzen."], "ideen": ["Mehrere Gegenstände zuerst auf der Waage (Masse) und dann am Kraftmesser (Kraft) messen. Prüft in einer Tabelle, ob die Kraft in N ungefähr Masse in kg mal 10 ist.", "Einen Becher mit 100 ml und mit 200 ml Wasser an den Kraftmesser hängen und vergleichen.", "Einen eigenen Kraftmesser aus einem Gummiring bauen und mit dem Gewichtssatz eichen (Dehnung in cm notieren)."], "saal": ["Federkraftmesser 10 N (braun) (#51, Bestand 1)", "Federkraftmesser 10 N / 0,2 N (#52, Bestand 1)", "Digitaler Kraftmesser (#26, Bestand 1)", "Schulwaage 620 g / 0,1 g (#128, Bestand 5)", "Gewichtssatz 10 mg bis 100 g (#59, Bestand 1)", "Messbecher mit Henkel 250 ml (#87, Bestand 1)", "Messbecher mit Henkel 500 ml (#88, Bestand 1)"], "haus": "Gummiringe, ein kleiner Beutel oder Becher mit Henkel, Gegenstände bis etwa 500 g.", "formel": "F_G = m · g (N; m in kg; g = 10 N/kg)", "achtung": "Kraftmesser langsam belasten, höchstens bis zum Ende der Skala (10 N).", "video": null}, "3": {"thema": "Auftrieb", "titel": "Auftrieb: sinken, schweben, schwimmen", "buch": "Buch S. 52–53", "teil": "auftrieb", "karte": "k4", "teiltitel": "4 Auftrieb", "leit": ["Was ist die Auftriebskraft und in welche Richtung wirkt sie?", "Was sagt das Prinzip von Archimedes? Erkläre es in eigenen Worten.", "Wann sinkt, schwebt oder schwimmt ein Körper? Vergleiche Gewichtskraft und Auftriebskraft.", "Warum schwimmt ein Schiff aus Stahl? Ein Beispiel aus Sicherheit oder Rettung (z. B. Schwimmweste)."], "ideen": ["Einen Gegenstand am Kraftmesser zuerst in Luft und dann ganz unter Wasser messen. Der Unterschied ist die Auftriebskraft.", "Ein Gefäß mit Wasser steht auf der Waage. Einen Finger oder Stab eintauchen und die Anzeige beobachten.", "Knetboot: Eine Kugel aus Knete sinkt, dieselbe Knete als Schiffchen schwimmt. Masse vorher wiegen."], "saal": ["Federkraftmesser 10 N (braun) (#51, Bestand 1)", "Federkraftmesser 10 N / 0,2 N (#52, Bestand 1)", "Digitaler Kraftmesser (#26, Bestand 1)", "Schulwaage 620 g / 0,1 g (#128, Bestand 5)", "Aufbewahrungswanne tief (#7, Bestand 7)", "Zylinder gleichen Volumens (5 Stück) (#171, Bestand 5)", "Messbecher mit Henkel 500 ml (#88, Bestand 1)"], "haus": "Knete, Alufolie, kleine Steine, eine leere Plastikflasche.", "formel": "F_A = Gewichtskraft des verdrängten Wassers · ruhiges Schwimmen: F_A = F_G", "achtung": "Wasser nur in der Wanne, Waage und Handys trocken halten, Verschüttetes sofort aufwischen.", "video": null}, "4": {"thema": "Reibung", "titel": "Reibung hilft und bremst", "buch": "Buch S. 54–56", "teil": "reibung", "karte": "k5", "teiltitel": "5 Reibung", "leit": ["Was ist Reibung? Erkläre Haftreibung und Gleitreibung mit je einem Beispiel.", "Wovon hängt die Reibungskraft ab? Nenne zwei Einflüsse.", "Wo ist Reibung nützlich, wo stört sie? Je ein Beispiel.", "Warum ist ein gutes Schuhprofil beim Marsch oder im Sport wichtig?"], "ideen": ["Einen Becher mit Wasser am Kraftmesser waagrecht über den Tisch ziehen: Kraft beim Losreißen und beim gleichmäßigen Ziehen vergleichen.", "Dieselbe Schachtel auf drei Unterlagen ziehen (Tisch, Papier, Stoff) – sonst alles gleich lassen.", "Schuhe mit verschiedenem Profil auf einer schrägen Unterlage: Ab welcher Neigung rutscht welcher Schuh?"], "saal": ["Federkraftmesser 10 N (braun) (#51, Bestand 1)", "Federkraftmesser 10 N / 0,2 N (#52, Bestand 1)", "Digitaler Kraftmesser (#26, Bestand 1)", "Schulwaage 620 g / 0,1 g (#128, Bestand 5)", "Messbecher mit Henkel 500 ml (#88, Bestand 1)"], "haus": "Federschachtel oder kleiner Karton, Stoff, Schleifpapier, zwei Schuhe mit verschiedenem Profil, ein Brett.", "formel": "keine Pflichtformel · beim gleichmäßigen Ziehen gilt: Zugkraft ungefähr gleich Gleitreibung", "achtung": "Waagrecht und langsam ziehen, nicht reißen. Unter 5 N bleiben.", "video": null}, "5": {"thema": "Kapillarwirkung", "titel": "Kapillarwirkung und Oberflächenspannung", "buch": "Buch S. 57", "teil": "kapillar", "karte": "k6", "teiltitel": "6 Kapillar", "leit": ["Was bedeuten Kohäsion und Adhäsion? Erkläre den Unterschied.", "Was ist Kapillarwirkung? Warum steigt Wasser in engen Räumen (Papier, Röhrchen) nach oben?", "Was ist Oberflächenspannung? Ein Beispiel aus der Natur.", "Wo begegnet dir Kapillarwirkung im Alltag oder in der Natur? Zwei Beispiele (z. B. Handtuch, Funktionsshirt, Pflanze, Erde)."], "ideen": ["Filterpapier-Streifen in Wasser stellen und die feuchte Grenze nach 10, 30 und 60 Sekunden markieren.", "Küchenrolle als Brücke zwischen einem vollen und einem leeren Glas – wie weit wandert das Wasser in 15 Minuten?", "Eine Büroklammer vorsichtig auf Wasser legen, sodass sie liegen bleibt (Oberflächenspannung)."], "saal": ["Filterpapier 50 × 55 mm (100 Stück) (#54, Bestand 100)", "Griffin-Becher 50 ml (#62, Bestand 1)", "Petrischale Glas ø 80 mm (#106, Bestand 7)", "Tropfpipette PE 3 ml (50 Stück) (#156, Bestand 50)", "Aufbewahrungswanne tief (#7, Bestand 7)"], "haus": "Küchenrolle, zwei Gläser oder Plastikbecher, Büroklammern, Lebensmittelfarbe.", "formel": "keine Pflichtformel", "achtung": "Nur Wasser und Lebensmittelfarbe. Glas nur aus dem Saal und vorsichtig verwenden.", "video": null}, "6": {"thema": "Druck", "titel": "Druck: Kraft auf eine Fläche", "buch": "Buch S. 58–60", "teil": "druck", "karte": "k7", "teiltitel": "7 Druck", "leit": ["Was ist Druck? Nenne die Formel p = F / A mit Einheiten (Pa, bar).", "Warum sinkt man mit Schneeschuhen weniger ein, und warum schneidet ein scharfes Messer besser?", "Was passiert in einer verschlossenen Spritze, wenn du drückst? Unterschied zwischen Luft und Wasser.", "Warum spürt man beim Tauchen Druck in den Ohren?"], "ideen": ["Spritze ohne Nadel: vorne zuhalten und drücken – einmal mit Luft, einmal mit Wasser gefüllt.", "Fläche einer Schuhsohle auf Karopapier auszählen und den Druck beim Stehen auf einem und auf zwei Beinen ausrechnen. Rechnet mit einer gewählten Masse von 70 kg – keine echte Körpermasse eintragen.", "Glas oder Becher randvoll mit Wasser, eine Postkarte darauf, umdrehen (über der Wanne): Die Karte bleibt – warum?"], "saal": ["Kunststoffspritze 50 ml (ohne Nadel) (#77, Bestand 4)", "Luftballone (50 Stück) (#84, Bestand 50)", "Aufbewahrungswanne tief (#7, Bestand 7)", "Messbecher mit Henkel 250 ml (#87, Bestand 1)"], "haus": "Postkarte, Plastikbecher, Karopapier, ein Paar Schuhe.", "formel": "p = F / A (Pa = N/m²; 1 bar = 100 000 Pa)", "achtung": "Spritze nie auf Personen richten, nicht mit Gewalt drücken. Wasser nur über der Wanne.", "video": null}, "7": {"thema": "Kraft und Gegenkraft", "titel": "Kraft und Gegenkraft", "buch": "Buch S. 45, 61", "teil": "gegenkraft", "karte": "k8", "teiltitel": "8 Gegenkraft", "leit": ["Was sagt das Wechselwirkungsprinzip (Kraft und Gegenkraft)?", "Warum heben sich Kraft und Gegenkraft nicht gegenseitig auf?", "Ein Buch liegt auf dem Tisch: Was ist ein Kräftegleichgewicht, was ein Wechselwirkungspaar?", "Erkläre den Rückstoß an einem Beispiel (Rakete, Rudern, Absprung oder Rückstoß einer Waffe)."], "ideen": ["Zwei Kraftmesser mit den Haken ineinander hängen und ruhig ziehen – vergleicht beide Anzeigen bei 1, 2 und 3 N.", "Ballon-Rakete: Strohhalm auf eine gespannte Schnur fädeln, aufgeblasenen Ballon daran kleben und loslassen.", "Auf einem Skateboard oder Rollbrett einen schweren Ball wegstoßen – nur sitzend, langsam und mit Freigabe."], "saal": ["Federkraftmesser 10 N (braun) (#51, Bestand 1)", "Federkraftmesser 10 N / 0,2 N (#52, Bestand 1)", "Luftballone (50 Stück) (#84, Bestand 50)", "Gelbe Schnur 50 m (#57, Bestand 1)"], "haus": "Strohhalme, Klebeband, eventuell ein Rollbrett.", "formel": "F_1 = −F_2 (gleich groß, entgegengesetzt, auf zwei verschiedene Körper)", "achtung": "Ballon nicht in Richtung von Personen loslassen. Rollbrett nur sitzend und nur mit Freigabe.", "video": ["Action = Reaction (Pohl-Versuch, IWF Göttingen, 2003)", "https://av.tib.eu/media/30463", "1 min · englisch gesprochen, die Bilder genügen · Lizenz CC BY-ND 3.0 DE · TIB AV-Portal · geöffnet am 11.11.2026"]}};
+const GKX = {"ja": ["Dinge aus Kunststoff, Papier, Karton, Holz und Stoff", "Wasser, Speisesalz, Lebensmittelfarbe", "Knete, Gummiringe, Strohhalme, Klebeband", "Spielzeugauto, Murmel, Ball, Schuhe"], "nein": ["Feuer, Kerzen, Feuerzeug", "Chemikalien, Reinigungs- und Spülmittel, Spraydosen", "Glas von zu Hause, Messer, Nägel, Spitzes", "Strom aus der Steckdose, Akkus, Powerbanks", "Druckbehälter, Feuerwerk, Waffen oder Waffenteile", "Lebensmittel zum Essen, Tiere"], "frei": ["Passt der Versuch zu eurem Thema und zeigt er etwas, das man sehen oder messen kann?", "Ändert ihr nur EINE Sache – und bleibt alles andere gleich?", "Steht jedes Material auf der Liste – mit »Saal« oder »von zu Hause« und wer es mitbringt?", "Ist alles harmlos? (Liste »erlaubt / nicht erlaubt«)", "Schafft ihr den Versuch in der Präsentation in höchstens einer Minute?"]};
 const T = [
  {
   "id": "v0",
@@ -424,103 +474,324 @@ const T = [
   ]
  },
  {
-  "id": "a2",
+  "id": "p1",
   "nr": 3,
-  "title": "Gruppenprojekt: euer Thema erklären",
+  "title": "Euer Thema selbst erarbeiten",
   "src": "Buch S. 45–61",
   "own": true,
-  "tag": "Stunden 2–5",
+  "tag": "Stunde 2",
   "h": 2,
-  "zeit": 12,
-  "q": "Jede Gruppe erklärt ein Thema und zeigt mindestens einen Versuch dazu. Frage, Quellen, Messwerte und Erklärung trägt euer Protokoll-Handy auf der Versuchsseite ein. Hier füllst du deinen persönlichen Teil aus: a) deine Gruppennummer, b) deine Rolle, c) in Stunde 5 zu jeder anderen Gruppe eine Kernaussage und eine Grenze, d) ob und wofür du eine KI benutzt hast.",
-  "hint": "Rollen: Leitung und Zeit · Quellenprüfung · Aufbau und Messung · Protokoll (in der Fünfergruppe zusätzlich Material und Gegenprobe). Zu c) genügt ein Stichwort je Gruppe. Wenn du keine KI benutzt hast, schreib »keine KI verwendet«.",
+  "zeit": 15,
+  "projekt": true,
+  "marke": "SELBSTSTUDIUM",
+  "q": "Wähle zuerst deine Gruppe. Dann erscheint deine Gruppenkarte mit Buchseiten, Theorie-Teil und vier Leitfragen. Lies die Buchseiten und den Theorie-Teil und beantworte die Leitfragen in eigenen Worten – jeder für sich, besprechen dürft ihr euch. Zum Schluss sucht ihr ein kurzes Video oder eine zweite Quelle und prüft sie.",
+  "hint": "Kurze Sätze genügen. Nicht abschreiben – wer es in eigenen Worten sagen kann, kann es auch präsentieren.",
   "type": "multi",
   "fields": [
    [
     "grp",
-    "a) Meine Gruppennummer (1 bis 7)"
+    "a) Meine Gruppe",
+    [
+     "Gruppe 1 · Bewegung",
+     "Gruppe 2 · Gewichtskraft",
+     "Gruppe 3 · Auftrieb",
+     "Gruppe 4 · Reibung",
+     "Gruppe 5 · Kapillarwirkung",
+     "Gruppe 6 · Druck",
+     "Gruppe 7 · Kraft und Gegenkraft"
+    ],
+    false
    ],
    [
     "rolle",
-    "b) Meine Rolle in der Gruppe"
+    "b) Meine Rolle",
+    [
+     "Leitung und Zeit",
+     "Quellen und Video",
+     "Versuch und Material",
+     "Schriftführung (Steckbrief, Teams)",
+     "Präsentation und Probe"
+    ],
+    false
    ],
    [
-    "beob",
-    "c) Beobachtungsauftrag Stunde 5: zu jeder anderen Gruppe eine Kernaussage und eine Grenze"
+    "lf1",
+    "c) Leitfrage 1 (siehe Gruppenkarte)"
    ],
    [
-    "ki",
-    "d) KI-Nutzung: Werkzeug, Frage und was du selbst geprüft oder geändert hast"
+    "lf2",
+    "d) Leitfrage 2 (siehe Gruppenkarte)"
+   ],
+   [
+    "lf3",
+    "e) Leitfrage 3 (siehe Gruppenkarte)"
+   ],
+   [
+    "lf4",
+    "f) Leitfrage 4 (siehe Gruppenkarte)"
+   ],
+   [
+    "video",
+    "g) Video oder zweite Quelle: Titel, wer hat es gemacht, wie lang, warum passt es?"
    ]
   ],
-  "chk": {
-   "grp": {
-    "kw": [
-     [
-      "Gruppennummer 1–7",
-      "[1-7]"
-     ]
-    ],
-    "man": true
-   },
-   "rolle": {
-    "kw": [
-     [
-      "Rolle",
-      "leit|zeit|quell|aufbau|mess|protokoll|material|gegenprobe"
-     ]
-    ],
-    "man": true
-   },
-   "beob": {
-    "kw": [
-     [
-      "Kernaussagen mehrerer Gruppen",
-      "gruppe|kraft|auftrieb|reibung|druck|gegenkraft|kapillar|gewicht|geschwindigkeit|tempo"
-     ],
-     [
-      "Grenze oder Fehlerquelle",
-      "grenze|ungenau|wenig|nur|streu|messfehler|hand|skala|einmal|zufall|klein"
-     ]
-    ],
-    "need": 2,
-    "man": true
-   },
-   "ki": {
-    "kw": [
-     [
-      "KI-Angabe oder »keine KI verwendet«",
-      "keine ki|chatgpt|claude|copilot|gemini|ki |prompt|gefragt|nachgeschlagen|geprueft|geprüft"
-     ]
-    ],
-    "man": true
-   }
-  },
+  "chk": null,
   "sol": [
    [
     "Bewertung",
     [
-     "Raster (10 Punkte, vor Beginn sichtbar): Inhalt 4 · Quellen 3 · verständliche Darstellung und Zeit 2 · Teamarbeit und Meilensteine 1. Halbe Punkte sind möglich.",
-     "Notenschlüssel: ab 8,8 Sehr gut · ab 7,5 Gut · ab 6,2 Befriedigend · ab 5,0 Genügend · darunter Nicht genügend. Halbe Punkte werden nicht aufgerundet.",
-     "Den fachlichen Inhalt und den Versuch bewertet Prof. HOLZER. Die Stichwortprüfung dieser Seite ist keine Note.",
-     "Erlaubt mit KI: unbekannte Wörter klären, eigene Stichwörter ordnen. Nicht erlaubt: Messwerte erfinden, den Versuch durch einen KI-Text ersetzen, eine Erklärung ungeprüft abgeben.",
-     "Keine Namen, Personenbilder oder andere personenbezogenen Angaben in eine KI eingeben."
+     "Antworten zu den Leitfragen je Gruppe: siehe Reiter »Aufgaben« (Gruppenkarten) in der Lösungsmappe.",
+     "Teil des Projekt-Rasters »Inhalt« (3 Punkte). Bewertet Prof. HOLZER."
     ]
    ]
   ],
-  "tipps": [
-   "Vergleicht zuerst zwei klar bezeichnete Zustände, zum Beispiel »ohne Klammer« und »mit Klammer« oder »100 ml« und »200 ml«.",
-   "k0",
-   "Lies die Buchseiten, die in deinem Gruppenauftrag auf der Versuchsseite stehen. Jede Gruppe hat eigene Seiten zwischen S. 45 und S. 61."
-  ],
+  "tipps": [],
   "tip": [
-   "Zum Gruppenprojekt",
-   "versuche.html"
+   "Euer Gruppenprojekt",
+   "theorie.html#projekt"
+  ]
+ },
+ {
+  "id": "p2",
+  "nr": 4,
+  "title": "Euren Versuch auswählen und planen",
+  "src": "Buch S. 45–61",
+  "own": true,
+  "tag": "Stunde 2",
+  "h": 2,
+  "zeit": 10,
+  "projekt": true,
+  "marke": "GRUPPENARBEIT",
+  "q": "Sucht euch einen Versuch zu eurem Thema aus – eine der Ideen auf eurer Gruppenkarte oder eine eigene. Material darf aus dem NAWI-Saal oder von zu Hause kommen. Schreibt die Materialliste genau auf. Bis zum Ende dieser Stunde zeigt ihr den Plan Prof. HOLZER – ohne Freigabe kein Versuch.",
+  "hint": "Ändert nur EINE Sache, alles andere bleibt gleich. Von zu Hause nur Dinge von der Liste »erlaubt«. Wer etwas mitbringt, steht in der Liste.",
+  "type": "multi",
+  "fields": [
+   [
+    "idee",
+    "a) Unser Versuch in zwei Sätzen"
+   ],
+   [
+    "frage",
+    "b) Was soll man sehen oder messen?"
+   ],
+   [
+    "aendern",
+    "c) Was ändern wir – und was bleibt gleich?"
+   ],
+   [
+    "mat",
+    "d) Materialliste: was, wie viel, »Saal« oder »von zu Hause«, wer bringt es mit"
+   ],
+   [
+    "sicher",
+    "e) Sicherheits-Check",
+    [
+     "Alles steht auf der Liste »erlaubt«",
+     "Etwas ist unklar – wir fragen Prof. HOLZER"
+    ],
+    false
+   ],
+   [
+    "frei",
+    "f) Freigabe",
+    [
+     "Prof. HOLZER hat unseren Plan freigegeben",
+     "noch nicht freigegeben"
+    ],
+    false
+   ]
+  ],
+  "chk": null,
+  "sol": [
+   [
+    "Bewertung",
+    [
+     "Freigabe nach den fünf Fragen auf der Folie »Freigabe«. Teil des Rasters »Versuch« (2 Punkte).",
+     "Die Materiallisten aller Gruppen sind die Grundlage für deine Vorbereitung von Stunde 3 (Reiter »Vorbereitung«)."
+    ]
+   ]
+  ],
+  "tipps": [],
+  "tip": [
+   "Euer Gruppenprojekt",
+   "theorie.html#projekt"
+  ]
+ },
+ {
+  "id": "p3",
+  "nr": 5,
+  "title": "Versuch durchführen und festhalten",
+  "src": "Buch S. 45–61",
+  "own": true,
+  "tag": "Stunde 3",
+  "h": 3,
+  "zeit": 30,
+  "projekt": true,
+  "marke": "VERSUCH",
+  "q": "Baut euren Versuch auf, macht ihn und übt ihn gleich so, wie ihr ihn in Stunde 5 zeigen wollt. Jeder trägt die Ergebnisse seiner Gruppe in sein eigenes Arbeitsblatt ein – abschreiben vom Gruppenzettel ist erlaubt. Macht ein Foto vom Aufbau oder von einer Skizze.",
+  "hint": "Schreibt nur auf, was ihr wirklich gesehen oder gemessen habt. Erst Beobachtung, dann Erklärung.",
+  "type": "sketch",
+  "fotolabel": "Foto vom Aufbau oder von eurer Skizze",
+  "fields": [
+   [
+    "gemacht",
+    "a) Was haben wir gemacht? (drei kurze Schritte)"
+   ],
+   [
+    "beob",
+    "b) Beobachtung oder Messwerte mit Einheit"
+   ],
+   [
+    "erkl",
+    "c) Erklärung mit Fachbegriffen: Warum ist das so?"
+   ],
+   [
+    "grenze",
+    "d) Was zeigt unser Versuch NICHT? (eine Grenze)"
+   ]
+  ],
+  "chk": null,
+  "sol": [
+   [
+    "Bewertung",
+    [
+     "Teil des Rasters »Versuch« (2 Punkte): passt zum Thema, sicher durchgeführt, Beobachtung und Erklärung getrennt, Grenze genannt."
+    ]
+   ]
+  ],
+  "tipps": [],
+  "tip": [
+   "Euer Gruppenprojekt",
+   "theorie.html#projekt"
+  ]
+ },
+ {
+  "id": "p4",
+  "nr": 6,
+  "title": "Steckbrief für die Klasse",
+  "src": "Buch S. 45–61",
+  "own": true,
+  "tag": "Stunde 4",
+  "h": 4,
+  "zeit": 17,
+  "projekt": true,
+  "marke": "GRUPPENARBEIT",
+  "q": "Euer Steckbrief ist das Handout für alle anderen. Schreibt ihn gemeinsam und tragt ihn jeder in sein Arbeitsblatt ein. Die Schriftführung tippt danach auf »Handout-PDF erstellen« und stellt das PDF bis zum Ende dieser Stunde in Teams. Eine Partnergruppe liest ihn und sagt euch, was noch unklar ist.",
+  "hint": "Kurz und richtig. Die anderen lernen damit für den Test – schreibt so, dass sie es ohne euch verstehen.",
+  "type": "multi",
+  "steckbrief": true,
+  "fields": [
+   [
+    "mitglieder",
+    "Namen in unserer Gruppe"
+   ],
+   [
+    "kern",
+    "a) Das Wichtigste in drei Sätzen"
+   ],
+   [
+    "begriffe",
+    "b) Drei bis fünf Fachbegriffe mit Bedeutung"
+   ],
+   [
+    "formel",
+    "c) Formel mit Einheiten (oder »keine Formel«)"
+   ],
+   [
+    "versuch",
+    "d) Unser Versuch in zwei Sätzen: Was haben wir gemacht, was sieht man?"
+   ],
+   [
+    "alltag",
+    "e) Ein Beispiel aus Sport, Bundesheer oder Alltag"
+   ],
+   [
+    "kfrage",
+    "f) Eine Kontrollfrage für die Klasse – mit Antwort"
+   ],
+   [
+    "quelle",
+    "g) Unsere Quellen: Buchseite und eine zweite Quelle (Wer? Datum?)"
+   ]
+  ],
+  "chk": null,
+  "sol": [
+   [
+    "Bewertung",
+    [
+     "Raster »Steckbrief« (2 Punkte): vollständig, fachlich richtig, verständlich. Muster je Thema: Reiter »Aufgaben« der Lösungsmappe.",
+     "Prüfe vor Stunde 5 kurz die Steckbriefe in Teams. Ein fachlicher Fehler wird in Stunde 5 bei »Das besprechen wir« geklärt."
+    ]
+   ]
+  ],
+  "tipps": [],
+  "tip": [
+   "Euer Gruppenprojekt",
+   "theorie.html#projekt"
+  ]
+ },
+ {
+  "id": "p5",
+  "nr": 7,
+  "title": "Mitschrift bei den Präsentationen",
+  "src": "Buch S. 45–61",
+  "own": true,
+  "tag": "Stunde 5",
+  "h": 5,
+  "zeit": 3,
+  "projekt": true,
+  "marke": "SELBSTSTUDIUM",
+  "q": "Während die Gruppen präsentieren, schreibst du mit: zu jeder Gruppe die Kernaussage in einem Satz und eine Formel oder ein Beispiel. Stichwörter genügen. Am Ende hast du drei Minuten zum Ergänzen – dazu hilft dir der Steckbrief der Gruppe in Teams.",
+  "hint": "Handy liegt während der Präsentationen auf dem Tisch. Du darfst auch auf Papier mitschreiben und später abtippen.",
+  "type": "multi",
+  "fields": [
+   [
+    "m1",
+    "Gruppe 1 · Bewegung"
+   ],
+   [
+    "m2",
+    "Gruppe 2 · Gewichtskraft"
+   ],
+   [
+    "m3",
+    "Gruppe 3 · Auftrieb"
+   ],
+   [
+    "m4",
+    "Gruppe 4 · Reibung"
+   ],
+   [
+    "m5",
+    "Gruppe 5 · Kapillarwirkung"
+   ],
+   [
+    "m6",
+    "Gruppe 6 · Druck"
+   ],
+   [
+    "m7",
+    "Gruppe 7 · Kraft und Gegenkraft"
+   ]
+  ],
+  "chk": null,
+  "sol": [
+   [
+    "Bewertung",
+    [
+     "Die Mitschrift ist die Grundlage für Aufgabe 8 in Stunde 6. Kernaussagen je Thema: Reiter »Aufgaben« der Lösungsmappe."
+    ]
+   ]
+  ],
+  "tipps": [],
+  "tip": [
+   "Das Wichtigste in 5 Sätzen",
+   "theorie.html#kurz"
   ]
  },
  {
   "id": "a3",
-  "nr": 4,
+  "nr": 8,
   "title": "Alle Themen selbst erklären",
   "src": "Buch S. 45–61",
   "own": true,
@@ -697,7 +968,7 @@ const T = [
  },
  {
   "id": "z1",
-  "nr": 5,
+  "nr": 9,
   "title": "Drei Behauptungen prüfen",
   "src": "Buch S. 52–61",
   "own": true,
@@ -793,7 +1064,7 @@ const T = [
  },
  {
   "id": "z2",
-  "nr": 6,
+  "nr": 10,
   "title": "Druck vergleichen",
   "src": "Buch S. 58",
   "own": true,
@@ -878,7 +1149,7 @@ const T = [
  },
  {
   "id": "z3",
-  "nr": 7,
+  "nr": 11,
   "title": "Forschung prüfen: Schmieren mit einem Pulver?",
   "src": "Recherche im Internet",
   "own": false,
@@ -1096,16 +1367,99 @@ function aufloesungEl(t) {
   return box;
 }
 
+function gruppeNr() { const m = String((S.a.p1 || {}).grp || "").match(/Gruppe (\d)/); return m ? +m[1] : 0; }
+function liste(xs, cls) { const l = el(cls === "ol" ? "ol" : "ul", cls && cls !== "ol" ? { class: cls } : {}); xs.forEach(x => { const li = el("li"); li.innerHTML = fett(x); l.append(li); }); return l; }
+function gruppenkarte(g, K) {
+  const box = el("div", { class: "gkarte" });
+  box.append(el("div", { class: "gkh" }, el("span", { class: "gkn", text: "Gruppe " + g }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
+  box.append(el("p", {}, el("b", { text: "1 · Lesen: " }), "Schulbuch " + K.buch + " und die ", el("a", { href: "theorie.html#" + K.teil, text: "Theorie-Seite, Teil »" + K.teiltitel + "«" }), ". Markiere dir die Fachbegriffe."));
+  if (KARTEN[K.karte]) { const d = el("details", { class: "tipp" }); d.append(el("summary", { text: "Theorie-Karte zu eurem Thema" }), karteEl(K.karte)); box.append(d); }
+  box.append(el("p", {}, el("b", { text: "2 · Leitfragen: " }), "Sie stehen unten bei c) bis f). Antworte in eigenen Worten."));
+  const v = el("p"); v.append(el("b", { text: "3 · Video oder zweite Quelle: " }));
+  if (K.video) v.append(el("a", { href: K.video[1], target: "_blank", rel: "noopener", text: K.video[0] }), " – " + K.video[2] + ". Sucht trotzdem eine zweite Quelle dazu.");
+  else v.append("Sucht ein kurzes Video (höchstens 5 Minuten) oder eine Seite von einer seriösen Quelle – Universität, ORF, planet schule, LEIFIphysik, Schulbuchverlag. Prüft: Wer hat es gemacht? Wann? Stimmt es mit dem Buch überein?");
+  box.append(v);
+  const fo = el("p"); fo.innerHTML = "<b>Formel:</b> " + fett(K.formel); box.append(fo);
+  return box;
+}
+function ideenKarte(g, K) {
+  const box = el("div", { class: "gkarte" });
+  box.append(el("div", { class: "gkh" }, el("span", { class: "gkn", text: "Gruppe " + g }), el("b", { text: "Ideen für euren Versuch" })));
+  box.append(el("p", { text: "Nehmt eine Idee oder macht eine eigene. Wichtig ist: Man sieht oder misst etwas zu eurem Thema." }), liste(K.ideen, "ol"));
+  box.append(el("h3", { text: "Im NAWI-Saal vorhanden" }), liste(K.saal), el("p", { class: "hint", text: "Manche Geräte gibt es nur einmal. Prof. HOLZER entscheidet bei der Freigabe, wer was bekommt." }));
+  box.append(el("h3", { text: "Von zu Hause zum Beispiel" }), el("p", { text: K.haus }));
+  box.append(el("h3", { text: "Erlaubt" }), liste(GKX.ja), el("h3", { text: "Nicht erlaubt" }), liste(GKX.nein, "nein"));
+  box.append(el("p", {}, el("b", { text: "Achtung: " }), K.achtung));
+  box.append(el("h3", { text: "Das fragt Prof. HOLZER bei der Freigabe" }), liste(GKX.frei, "ol"));
+  return box;
+}
+function gruppeAnwenden() {
+  const g = gruppeNr(), K = GK[g];
+  const t1 = T.find(t => t.id === "p1"), t5 = T.find(t => t.id === "p5");
+  ["lf1", "lf2", "lf3", "lf4"].forEach((k, i) => {
+    const lab = "cdef"[i] + ") " + (K ? K.leit[i] : "Leitfrage " + (i + 1) + " – wähle zuerst bei a) deine Gruppe");
+    t1.fields.find(f => f[0] === k)[1] = lab;
+    const l = document.querySelector('label[for="p1_' + k + '"]'); if (l) l.textContent = lab;
+  });
+  t5.fields.forEach((f, i) => { f[1] = "Gruppe " + (i + 1) + " · " + GK[i + 1].thema + (i + 1 === g ? " (eure eigene Gruppe)" : "");
+    const l = document.querySelector('label[for="p5_' + f[0] + '"]'); if (l) l.textContent = f[1]; });
+  ["p1", "p2"].forEach(id => {
+    const box = document.getElementById("gk_" + id); if (!box) return; box.textContent = "";
+    if (!K) { box.append(el("p", { class: "gkhint", text: id === "p1" ? "Wähle bei a) deine Gruppe – dann erscheint hier deine Gruppenkarte mit Buchseiten und Leitfragen." : "Wähle zuerst bei Aufgabe 3 a) deine Gruppe – dann erscheinen hier die Ideen und das Material für euren Versuch." })); return; }
+    box.append(id === "p1" ? gruppenkarte(g, K) : ideenKarte(g, K));
+  });
+}
+document.addEventListener("change", ev => { if (ev.target && ev.target.id === "p1_grp") gruppeAnwenden(); });
+async function steckbriefPdf(st, btn) {
+  const say = (cls, m) => { st.hidden = false; st.className = "status " + cls; st.textContent = m; };
+  const g = gruppeNr(), K = GK[g], a = S.a.p4 || {}, t4 = T.find(t => t.id === "p4");
+  if (!g) { say("err", "Wähle zuerst bei Aufgabe 3 a) eure Gruppe."); return; }
+  if (!window.jspdf) { say("err", "Das PDF-Programm wurde nicht geladen. Lade die Seite neu."); return; }
+  btn.disabled = true; say("info", "Handout wird erstellt …");
+  try {
+    const { jsPDF } = window.jspdf; const d = new jsPDF({ unit: "mm", format: "a4" });
+    d.addFileToVFS("C-R.ttf", FONT_R); d.addFont("C-R.ttf", "C", "normal"); d.addFileToVFS("C-B.ttf", FONT_B); d.addFont("C-B.ttf", "C", "bold");
+    const W = 210, M = 18, CW = W - 2 * M, BOT = 282; let y = 14;
+    const olive = [59, 74, 47], teal = [46, 125, 140], muted = [94, 102, 82], ink = [31, 42, 28];
+    const txt = (s0, size, style, color, x = M, w = CW) => { d.setFont("C", style); d.setFontSize(size); d.setTextColor(...color);
+      const lines = d.splitTextToSize(clean(s0), w), h = size * 0.3528 * 1.32;
+      lines.forEach(l => { if (y + h > BOT) { d.addPage(); y = 18; } d.text(l, x, y + h * 0.78); y += h; }); };
+    d.addImage(LOGO, "PNG", M, y, 11, 12.6);
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean("NAWI · 1AB · K2.1 Mechanische Kräfte · Handout für die Klasse"), M + 15, y + 4);
+    d.setFontSize(18); d.setTextColor(...olive); d.text(clean("Steckbrief Gruppe " + g + " · " + K.thema), M + 15, y + 11.5);
+    y += 17; txt("Von: " + (a.mitglieder || "—") + " · " + K.buch, 11, "normal", ink);
+    y += 1; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 4;
+    for (const f of t4.fields) {
+      if (f[0] === "mitglieder") continue;
+      txt(String(f[1]).replace(/^[a-g]\) /, ""), 12, "bold", olive);
+      txt(filled(a[f[0]]) ? String(a[f[0]]).trim() : "—", 11.5, "normal", ink, M + 3, CW - 3); y += 2.5;
+    }
+    const foto = (S.a.p3 || {}).foto;
+    if (foto) { const [iw, ih] = await imgSize(foto); let w = 80, h = w * ih / iw; if (h > 70) { h = 70; w = h * iw / ih; } if (y + h + 6 > BOT) { d.addPage(); y = 18; }
+      txt("Unser Versuch", 12, "bold", olive); d.addImage(foto, "JPEG", M + 3, y + 1, w, h); y += h + 4; }
+    const n = d.getNumberOfPages();
+    for (let p0 = 1; p0 <= n; p0++) { d.setPage(p0); d.setFont("C", "normal"); d.setFontSize(8); d.setTextColor(...muted);
+      d.text(clean("Steckbrief Gruppe " + g + " · " + K.thema + " · erstellt " + new Date().toLocaleDateString("de-AT") + " · Seite " + p0 + " von " + n), W - M, 292, { align: "right" }); }
+    const name = "K2.1-Steckbrief-Gruppe-" + g + "-" + slug(K.thema) + ".pdf";
+    const url = URL.createObjectURL(d.output("blob"));
+    const link = el("a", { href: url, download: name }); document.body.append(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+    say("ok", "Handout erstellt: " + name + " – jetzt in Teams in den Kanal der Klasse stellen.");
+  } catch (e) { say("err", "Beim Erstellen ist ein Fehler passiert. Lade die Seite neu und versuch es noch einmal."); }
+  finally { btn.disabled = false; }
+}
+
 function renderTask(t) {
   const card = el("section", { class: "card", id: "card_" + t.id });
   const tagCls = (t.tag.startsWith("Stunde") || t.tag.startsWith("Vorhersage")) ? "tag kern" : t.tag === "Hausübung" ? "tag hue" : "tag";
   card.append(el("div", { class: "head" },
-    el("span", { class: "nr" }, el("span", { class: "check", "aria-hidden": "true", text: "✓" }), "Aufgabe " + t.nr, el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null),
+    el("span", { class: "nr" }, el("span", { class: "check", "aria-hidden": "true", text: "✓" }), "Aufgabe " + t.nr, el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null, t.marke ? el("span", { class: "marke m-" + t.marke, text: t.marke }) : null),
     el("span", { class: "pill" + (t.own ? " theory" : ""), text: t.src })));
   card.append(el("h2", { text: t.title }));
   card.append(qText(t.q));
   if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
   if (t.tipps && t.tipps.length) card.append(tippStufen(t));
+  if (t.id === "p1" || t.id === "p2") card.append(el("div", { id: "gk_" + t.id }));
   if (t.img) card.append(el("div", { class: "qimg" }, el("img", { src: t.img, alt: "Abbildung zu Aufgabe " + t.nr })));
 
   if (t.type === "text") card.append(textField(t.id, "t", "Deine Antwort", true, 5));
@@ -1115,10 +1469,10 @@ function renderTask(t) {
     const img = el("img", { alt: "Foto deiner Skizze" });
     const status = el("p", { class: "status info", hidden: "" });
     const file = el("input", { type: "file", accept: "image/*", id: t.id + "_foto", "aria-label": "Foto der Skizze auswählen" });
-    const lbl = el("span", { text: "Foto der Heftskizze aufnehmen" });
+    const lbl = el("span", { text: t.fotolabel || "Foto der Heftskizze aufnehmen" });
     const pick = el("span", { class: "btn secondary small filebtn" }, lbl, file);
     const del = el("button", { class: "btn secondary small", type: "button", text: "Foto entfernen" });
-    function show() { const f = A(t.id).foto; img.hidden = !f; del.hidden = !f; if (f) img.src = f; lbl.textContent = f ? "Anderes Foto wählen" : "Foto der Heftskizze aufnehmen"; }
+    function show() { const f = A(t.id).foto; img.hidden = !f; del.hidden = !f; if (f) img.src = f; lbl.textContent = f ? "Anderes Foto wählen" : (t.fotolabel || "Foto der Heftskizze aufnehmen"); }
     file.addEventListener("change", async () => {
       const f = file.files && file.files[0]; if (!f) return;
       status.hidden = false; status.className = "status info"; status.textContent = "Foto wird verkleinert …";
@@ -1127,7 +1481,7 @@ function renderTask(t) {
       file.value = "";
     });
     del.addEventListener("click", () => { delete A(t.id).foto; show(); update(); saveFoto(t.id); });
-    ph.append(el("label", { class: "lbl", text: "Deine Skizze (Foto)" }), pick, status, img, del);
+    ph.append(el("label", { class: "lbl", text: t.fotolabel || "Deine Skizze (Foto)" }), pick, status, img, del);
     card.append(ph, fieldsFor(t));
     setTimeout(show);
   }
@@ -1157,6 +1511,13 @@ function renderTask(t) {
     card.append(el("div", { class: "checkrow" }, b), fb);
   }
   if (t.aufloesung) card.append(aufloesungEl(t));
+  if (t.steckbrief) {
+    const sb = el("div", { class: "stbox" }), st = el("p", { class: "status", hidden: "", "aria-live": "polite" });
+    const b = el("button", { class: "btn", type: "button", text: "Handout-PDF erstellen (für Teams)" });
+    b.addEventListener("click", () => steckbriefPdf(st, b));
+    sb.append(el("p", { class: "hint", text: "Nur die Schriftführung: PDF erstellen und in Teams in den Kanal der Klasse stellen. Dein eigenes Arbeitsblatt-PDF bleibt davon unberührt." }), b, st);
+    card.append(sb);
+  }
   const sol = el("div", { class: "sol", id: "sol_" + t.id, hidden: "" }, el("strong", { text: "Musterlösung" }));
   t.sol.forEach(([h, ps]) => { if (t.sol.length > 1 || h !== "Lösung") sol.append(el("div", { class: "solh", text: h })); ps.forEach(x => sol.append(el("p", { text: x }))); });
   card.append(sol);
@@ -1238,7 +1599,7 @@ function showCheck(t) {
 }
 function showSolutions() {
   T.forEach(t => { const x = $("#sol_" + t.id); if (x) x.hidden = !S.solSeen; });
-  const b = $("#solbtn"); if (b) b.hidden = !S.pdfDone || S.solSeen;
+  const b = $("#solbtn"); if (b) b.hidden = !S.pdfDone || S.solSeen || !isDone(T.find(t => t.id === "a3"));
   const n = $("#solnote"); if (n) n.hidden = !S.solSeen;
 }
 function snapOf(id) { const c = JSON.parse(JSON.stringify(S.a[id] || {})); delete c.foto; return JSON.stringify(c); }
@@ -1275,6 +1636,7 @@ function update() {
   if (!S.name.trim()) who.push("Name"); if (!S.klasse) who.push("Klasse");
   $("#missing").textContent = (who.length ? "Noch eintragen: " + who.join(" und ") + ". " : "") + (open.length ? "Noch offen (Pflicht): Aufgabe " + open.join(", ") + " – du kannst trotzdem abgeben." : "Alle Pflicht-Aufgaben bearbeitet.");
   $("#copyArea").value = asText();
+  showSolutions();
 }
 
 // ---------- Text-Fassung (für Kopieren und PDF) ----------
@@ -1342,7 +1704,8 @@ async function buildPdf() {
     for (const l of answerLines(t)) txt(l, 11.5, l.includes("keine Antwort") ? "bold" : "normal", l.includes("keine Antwort") ? rust : ink, M + 4, CW - 4, 1.3);
     const ev = evalTask(t);
     let st = "selbst bewerten";
-    if (t.frei) st = "Vorhersage – wird nicht bewertet";
+    if (t.projekt) st = "Gruppenprojekt – bewertet Prof. HOLZER nach dem Raster";
+    else if (t.frei) st = "Vorhersage – wird nicht bewertet";
     else if (ev && ev.man) {
       const au = ev.parts.filter(p => !p.man);
       st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + "Erklärung: bewertet Prof. HOLZER";
@@ -1388,7 +1751,7 @@ async function savePdf() {
 }
 
 // ---------- Start ----------
-const GRP = {"1": "Stunde 1 · Was Kräfte bewirken (Buch S. 44–49) · Vorhersage und erste Rechnungen", "2": "Stunden 2–5 · Gruppenprojekt V1.20 (Buch S. 45–61) · Frage, Versuch, Erklärung, Präsentation", "6": "Stunde 6 · Alles verbinden und einzeln prüfen (Buch S. 45–61) · allein und ohne KI", "0": "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)"};
+const GRP = {"1": "Stunde 1 · Was Kräfte bewirken (Buch S. 44–49) · mit der ganzen Klasse", "2": "Stunde 2 · Thema erarbeiten, Versuch planen · Gruppenprojekt V1.20", "3": "Stunde 3 · Versuch durchführen und üben · Gruppenprojekt V1.20", "4": "Stunde 4 · Steckbrief und Probe · Gruppenprojekt V1.20", "5": "Stunde 5 · Alle sieben Gruppen präsentieren · Gruppenprojekt V1.20", "6": "Stunde 6 · Alles verbinden und einzeln prüfen (Buch S. 45–61) · allein und ohne KI", "0": "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)"};
 let lastH = null;
 T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });
 $("#solbtn").addEventListener("click", () => { S.solSeen = true; S.snap = {}; T.forEach(t => S.snap[t.id] = snapOf(t.id)); save(); showSolutions(); });
@@ -1416,6 +1779,7 @@ const qr = $("#qr");
 $("#qrbtn").addEventListener("click", () => { qr.hidden = false; });
 $("#qrclose").addEventListener("click", () => { qr.hidden = true; });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !qr.hidden) qr.hidden = true; });
+gruppeAnwenden();
 update();
 
 </script>

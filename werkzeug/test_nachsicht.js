@@ -237,7 +237,6 @@ cases[K21]=[
  ['z2','faktor','zehnmal kleiner',1],['z2','faktor','zehnmal größer',0],
  ['z3','unab','nein',1],['z3','unab','ja',0],
  /* offene Antworten: Prof. HOLZER bewertet – auch wenn Stichwörter passen oder die Aussage falsch ist */
- ['a2','grp','3','M'],['a2','rolle','Protokoll','M'],['a2','beob','Gruppe 1 misst die Geschwindigkeit, Grenze: nur drei Durchgänge.','M'],['a2','ki','keine KI verwendet','M'],
  ['z1','begr','Beide Kräfte wirken auf dasselbe Buch.','M'],['z1','begr','weiß nicht','M'],
  ['z2','schnee','Größere Fläche, kleinerer Druck – man sinkt weniger ein.','M'],
  ['z3','wer','TU Wien, Florian Aigner','M'],['z3','idee','Ein Pulver bildet einen gleitenden Film.','M'],['z3','nicht','Nicht für jede Maschine nachgewiesen.','M']];

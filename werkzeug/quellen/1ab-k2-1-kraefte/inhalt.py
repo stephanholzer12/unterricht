@@ -7,8 +7,8 @@ Versuchs-ID: das bereits vorhandene Gruppenprojekt V1.20 (Stephans Vorgabe) – 
 Eine Quelle für Handy-Seiten, Unterrichts-PPP und Lösungsmappe. Kein CLIL, kein Kahoot, keine Hausübung.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "08.11.2026"
-V = "v1"
+STAND = "11.11.2026"
+V = "v2"
 ORDNER = "1ab-nawi/k2-1-kraefte"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -41,9 +41,9 @@ def zeigen(key, lehrer=False):
 
 # ---------------------------------------------------------------- Stunden (ohne Datum, Reihenfolge zählt)
 STUNDENNAME = {1: "Stunde 1 · Was Kräfte bewirken",
-               2: "Stunde 2 · Frage, Quellen und Versuchsplan",
-               3: "Stunde 3 · Messen und auswerten",
-               4: "Stunde 4 · Aus Messwerten wird eine Erklärung",
+               2: "Stunde 2 · Thema erarbeiten, Versuch planen",
+               3: "Stunde 3 · Versuch durchführen und üben",
+               4: "Stunde 4 · Steckbrief und Probe",
                5: "Stunde 5 · Alle sieben Gruppen präsentieren",
                6: "Stunde 6 · Alles verbinden und einzeln prüfen"}
 
@@ -100,36 +100,94 @@ T = [
             "Lies im Buch S. 45 den Abschnitt »Der Begriff Kraft« und auf S. 46–47 »Die Geschwindigkeit«. Die Formel F = m · a steht auf S. 49."],
   "tip": ["Was eine Kraft bewirkt", "theorie.html#wirkung"]},
 
- # --------------------------------------------------------------- Stunden 2–5: Gruppenprojekt
- {"id": "a2", "nr": 3, "title": "Gruppenprojekt: euer Thema erklären", "src": "Buch S. 45–61", "own": True, "tag": "Stunden 2–5", "h": 2, "zeit": 12,
-  "q": "Jede Gruppe erklärt ein Thema und zeigt mindestens einen Versuch dazu. Frage, Quellen, Messwerte und Erklärung trägt euer Protokoll-Handy auf der Versuchsseite ein. "
-       "Hier füllst du deinen persönlichen Teil aus: a) deine Gruppennummer, b) deine Rolle, c) in Stunde 5 zu jeder anderen Gruppe eine Kernaussage und eine Grenze, "
-       "d) ob und wofür du eine KI benutzt hast.",
-  "hint": "Rollen: Leitung und Zeit · Quellenprüfung · Aufbau und Messung · Protokoll (in der Fünfergruppe zusätzlich Material und Gegenprobe). "
-          "Zu c) genügt ein Stichwort je Gruppe. Wenn du keine KI benutzt hast, schreib »keine KI verwendet«.",
+ # --------------------------------------------------------------- Stunden 2–5: Gruppenprojekt (v2: Versuch frei wählen, Steckbrief, Mitschrift)
+ {"id": "p1", "nr": 3, "title": "Euer Thema selbst erarbeiten", "src": "Buch S. 45–61", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 15, "projekt": True,
+  "marke": "SELBSTSTUDIUM",
+  "q": "Wähle zuerst deine Gruppe. Dann erscheint deine Gruppenkarte mit Buchseiten, Theorie-Teil und vier Leitfragen. "
+       "Lies die Buchseiten und den Theorie-Teil und beantworte die Leitfragen in eigenen Worten – jeder für sich, besprechen dürft ihr euch. "
+       "Zum Schluss sucht ihr ein kurzes Video oder eine zweite Quelle und prüft sie.",
+  "hint": "Kurze Sätze genügen. Nicht abschreiben – wer es in eigenen Worten sagen kann, kann es auch präsentieren.",
   "type": "multi",
-  "projekt": True,
-  "fields": [["grp", "a) Meine Gruppennummer (1 bis 7)"],
-             ["rolle", "b) Meine Rolle in der Gruppe"],
-             ["beob", "c) Beobachtungsauftrag Stunde 5: zu jeder anderen Gruppe eine Kernaussage und eine Grenze"],
-             ["ki", "d) KI-Nutzung: Werkzeug, Frage und was du selbst geprüft oder geändert hast"]],
-  "chk": {"grp": {"kw": [["Gruppennummer 1–7", r"[1-7]"]], "man": True},
-          "rolle": {"kw": [["Rolle", r"leit|zeit|quell|aufbau|mess|protokoll|material|gegenprobe"]], "man": True},
-          "beob": {"kw": [["Kernaussagen mehrerer Gruppen", r"gruppe|kraft|auftrieb|reibung|druck|gegenkraft|kapillar|gewicht|geschwindigkeit|tempo"],
-                          ["Grenze oder Fehlerquelle", r"grenze|ungenau|wenig|nur|streu|messfehler|hand|skala|einmal|zufall|klein"]], "need": 2, "man": True},
-          "ki": {"kw": [["KI-Angabe oder »keine KI verwendet«", r"keine ki|chatgpt|claude|copilot|gemini|ki |prompt|gefragt|nachgeschlagen|geprueft|geprüft"]], "man": True}},
-  "sol": [["Bewertung", ["Raster (10 Punkte, vor Beginn sichtbar): Inhalt 4 · Quellen 3 · verständliche Darstellung und Zeit 2 · Teamarbeit und Meilensteine 1. Halbe Punkte sind möglich.",
-                         "Notenschlüssel: ab 8,8 Sehr gut · ab 7,5 Gut · ab 6,2 Befriedigend · ab 5,0 Genügend · darunter Nicht genügend. Halbe Punkte werden nicht aufgerundet.",
-                         "Den fachlichen Inhalt und den Versuch bewertet Prof. HOLZER. Die Stichwortprüfung dieser Seite ist keine Note.",
-                         "Erlaubt mit KI: unbekannte Wörter klären, eigene Stichwörter ordnen. Nicht erlaubt: Messwerte erfinden, den Versuch durch einen KI-Text ersetzen, eine Erklärung ungeprüft abgeben.",
-                         "Keine Namen, Personenbilder oder andere personenbezogenen Angaben in eine KI eingeben."]]],
-  "tipps": ["Vergleicht zuerst zwei klar bezeichnete Zustände, zum Beispiel »ohne Klammer« und »mit Klammer« oder »100 ml« und »200 ml«.",
-            "k0",
-            "Lies die Buchseiten, die in deinem Gruppenauftrag auf der Versuchsseite stehen. Jede Gruppe hat eigene Seiten zwischen S. 45 und S. 61."],
-  "tip": ["Zum Gruppenprojekt", "versuche.html"]},
+  "fields": [["grp", "a) Meine Gruppe", ["Gruppe 1 · Bewegung", "Gruppe 2 · Gewichtskraft", "Gruppe 3 · Auftrieb", "Gruppe 4 · Reibung",
+                                         "Gruppe 5 · Kapillarwirkung", "Gruppe 6 · Druck", "Gruppe 7 · Kraft und Gegenkraft"], False],
+             ["rolle", "b) Meine Rolle", ["Leitung und Zeit", "Quellen und Video", "Versuch und Material", "Schriftführung (Steckbrief, Teams)", "Präsentation und Probe"], False],
+             ["lf1", "c) Leitfrage 1 (siehe Gruppenkarte)"],
+             ["lf2", "d) Leitfrage 2 (siehe Gruppenkarte)"],
+             ["lf3", "e) Leitfrage 3 (siehe Gruppenkarte)"],
+             ["lf4", "f) Leitfrage 4 (siehe Gruppenkarte)"],
+             ["video", "g) Video oder zweite Quelle: Titel, wer hat es gemacht, wie lang, warum passt es?"]],
+  "chk": {},
+  "sol": [["Bewertung", ["Antworten zu den Leitfragen je Gruppe: siehe Reiter »Aufgaben« (Gruppenkarten) in der Lösungsmappe.",
+                         "Teil des Projekt-Rasters »Inhalt« (3 Punkte). Bewertet Prof. HOLZER."]]],
+  "tipps": [], "tip": ["Euer Gruppenprojekt", "theorie.html#projekt"]},
+
+ {"id": "p2", "nr": 4, "title": "Euren Versuch auswählen und planen", "src": "Buch S. 45–61", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 10, "projekt": True,
+  "marke": "GRUPPENARBEIT",
+  "q": "Sucht euch einen Versuch zu eurem Thema aus – eine der Ideen auf eurer Gruppenkarte oder eine eigene. Material darf aus dem NAWI-Saal "
+       "oder von zu Hause kommen. Schreibt die Materialliste genau auf. Bis zum Ende dieser Stunde zeigt ihr den Plan Prof. HOLZER – ohne Freigabe kein Versuch.",
+  "hint": "Ändert nur EINE Sache, alles andere bleibt gleich. Von zu Hause nur Dinge von der Liste »erlaubt«. Wer etwas mitbringt, steht in der Liste.",
+  "type": "multi",
+  "fields": [["idee", "a) Unser Versuch in zwei Sätzen"],
+             ["frage", "b) Was soll man sehen oder messen?"],
+             ["aendern", "c) Was ändern wir – und was bleibt gleich?"],
+             ["mat", "d) Materialliste: was, wie viel, »Saal« oder »von zu Hause«, wer bringt es mit"],
+             ["sicher", "e) Sicherheits-Check", ["Alles steht auf der Liste »erlaubt«", "Etwas ist unklar – wir fragen Prof. HOLZER"], False],
+             ["frei", "f) Freigabe", ["Prof. HOLZER hat unseren Plan freigegeben", "noch nicht freigegeben"], False]],
+  "chk": {},
+  "sol": [["Bewertung", ["Freigabe nach den fünf Fragen auf der Folie »Freigabe«. Teil des Rasters »Versuch« (2 Punkte).",
+                         "Die Materiallisten aller Gruppen sind die Grundlage für deine Vorbereitung von Stunde 3 (Reiter »Vorbereitung«)."]]],
+  "tipps": [], "tip": ["Euer Gruppenprojekt", "theorie.html#projekt"]},
+
+ {"id": "p3", "nr": 5, "title": "Versuch durchführen und festhalten", "src": "Buch S. 45–61", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 30, "projekt": True,
+  "marke": "VERSUCH",
+  "q": "Baut euren Versuch auf, macht ihn und übt ihn gleich so, wie ihr ihn in Stunde 5 zeigen wollt. Jeder trägt die Ergebnisse seiner Gruppe "
+       "in sein eigenes Arbeitsblatt ein – abschreiben vom Gruppenzettel ist erlaubt. Macht ein Foto vom Aufbau oder von einer Skizze.",
+  "hint": "Schreibt nur auf, was ihr wirklich gesehen oder gemessen habt. Erst Beobachtung, dann Erklärung.",
+  "type": "sketch",
+  "fotolabel": "Foto vom Aufbau oder von eurer Skizze",
+  "fields": [["gemacht", "a) Was haben wir gemacht? (drei kurze Schritte)"],
+             ["beob", "b) Beobachtung oder Messwerte mit Einheit"],
+             ["erkl", "c) Erklärung mit Fachbegriffen: Warum ist das so?"],
+             ["grenze", "d) Was zeigt unser Versuch NICHT? (eine Grenze)"]],
+  "chk": {},
+  "sol": [["Bewertung", ["Teil des Rasters »Versuch« (2 Punkte): passt zum Thema, sicher durchgeführt, Beobachtung und Erklärung getrennt, Grenze genannt."]]],
+  "tipps": [], "tip": ["Euer Gruppenprojekt", "theorie.html#projekt"]},
+
+ {"id": "p4", "nr": 6, "title": "Steckbrief für die Klasse", "src": "Buch S. 45–61", "own": True, "tag": "Stunde 4", "h": 4, "zeit": 17, "projekt": True,
+  "marke": "GRUPPENARBEIT",
+  "q": "Euer Steckbrief ist das Handout für alle anderen. Schreibt ihn gemeinsam und tragt ihn jeder in sein Arbeitsblatt ein. "
+       "Die Schriftführung tippt danach auf »Handout-PDF erstellen« und stellt das PDF bis zum Ende dieser Stunde in Teams. "
+       "Eine Partnergruppe liest ihn und sagt euch, was noch unklar ist.",
+  "hint": "Kurz und richtig. Die anderen lernen damit für den Test – schreibt so, dass sie es ohne euch verstehen.",
+  "type": "multi",
+  "steckbrief": True,
+  "fields": [["mitglieder", "Namen in unserer Gruppe"]] + [[k, lab] for k, lab in [
+              ["kern", "a) Das Wichtigste in drei Sätzen"],
+              ["begriffe", "b) Drei bis fünf Fachbegriffe mit Bedeutung"],
+              ["formel", "c) Formel mit Einheiten (oder »keine Formel«)"],
+              ["versuch", "d) Unser Versuch in zwei Sätzen: Was haben wir gemacht, was sieht man?"],
+              ["alltag", "e) Ein Beispiel aus Sport, Bundesheer oder Alltag"],
+              ["kfrage", "f) Eine Kontrollfrage für die Klasse – mit Antwort"],
+              ["quelle", "g) Unsere Quellen: Buchseite und eine zweite Quelle (Wer? Datum?)"]]],
+  "chk": {},
+  "sol": [["Bewertung", ["Raster »Steckbrief« (2 Punkte): vollständig, fachlich richtig, verständlich. Muster je Thema: Reiter »Aufgaben« der Lösungsmappe.",
+                         "Prüfe vor Stunde 5 kurz die Steckbriefe in Teams. Ein fachlicher Fehler wird in Stunde 5 bei »Das besprechen wir« geklärt."]]],
+  "tipps": [], "tip": ["Euer Gruppenprojekt", "theorie.html#projekt"]},
+
+ {"id": "p5", "nr": 7, "title": "Mitschrift bei den Präsentationen", "src": "Buch S. 45–61", "own": True, "tag": "Stunde 5", "h": 5, "zeit": 3, "projekt": True,
+  "marke": "SELBSTSTUDIUM",
+  "q": "Während die Gruppen präsentieren, schreibst du mit: zu jeder Gruppe die Kernaussage in einem Satz und eine Formel oder ein Beispiel. "
+       "Stichwörter genügen. Am Ende hast du drei Minuten zum Ergänzen – dazu hilft dir der Steckbrief der Gruppe in Teams.",
+  "hint": "Handy liegt während der Präsentationen auf dem Tisch. Du darfst auch auf Papier mitschreiben und später abtippen.",
+  "type": "multi",
+  "fields": [["m%d" % n, "Gruppe %d · %s" % (n, t)] for n, t in [(1, "Bewegung"), (2, "Gewichtskraft"), (3, "Auftrieb"), (4, "Reibung"),
+                                                                  (5, "Kapillarwirkung"), (6, "Druck"), (7, "Kraft und Gegenkraft")]],
+  "chk": {},
+  "sol": [["Bewertung", ["Die Mitschrift ist die Grundlage für Aufgabe 8 in Stunde 6. Kernaussagen je Thema: Reiter »Aufgaben« der Lösungsmappe."]]],
+  "tipps": [], "tip": ["Das Wichtigste in 5 Sätzen", "theorie.html#kurz"]},
 
  # --------------------------------------------------------------- Stunde 6
- {"id": "a3", "nr": 4, "title": "Alle Themen selbst erklären", "src": "Buch S. 45–61", "own": True, "tag": "Stunde 6", "h": 6, "zeit": 16,
+ {"id": "a3", "nr": 8, "title": "Alle Themen selbst erklären", "src": "Buch S. 45–61", "own": True, "tag": "Stunde 6", "h": 6, "zeit": 16,
   "q": "Zehn kurze Teilaufgaben über alle sieben Gruppenthemen. Allein und ohne KI. Rechne mit g = 10 N/kg und schreib bei Rechnungen die Einheit dazu.",
   "hint": "Markiere in jeder Frage, welche Größe oder welche beiden Körper gemeint sind. Dann wird die Antwort leichter.",
   "type": "multi",
@@ -187,7 +245,7 @@ T = [
   "tip": ["Kraft und Gegenkraft", "theorie.html#gegenkraft"]},
 
  # --------------------------------------------------------------- Zusatz · Für Schnelle und Neugierige
- {"id": "z1", "nr": 5, "title": "Drei Behauptungen prüfen", "src": "Buch S. 52–61", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+ {"id": "z1", "nr": 9, "title": "Drei Behauptungen prüfen", "src": "Buch S. 52–61", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
   "q": "Entscheide bei jeder Behauptung, ob sie stimmt. d) Begründe die Behauptung, die dir am schwersten gefallen ist, in einem Satz.",
   "hint": "Achte bei c) darauf, auf welchen Körper die beiden Kräfte wirken.",
   "type": "multi",
@@ -208,7 +266,7 @@ T = [
             "Lies im Buch S. 61 den Abschnitt »Kraft und Gegenkraft« und auf S. 54 den Beginn von »Die Reibungskraft«."],
   "tip": ["Kraft und Gegenkraft", "theorie.html#gegenkraft"]},
 
- {"id": "z2", "nr": 6, "title": "Druck vergleichen", "src": "Buch S. 58", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+ {"id": "z2", "nr": 10, "title": "Druck vergleichen", "src": "Buch S. 58", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
   "q": "Modellrechnung: Eine senkrechte Kraft von 600 N verteilt sich zuerst auf 0,03 m², dann auf 0,30 m². a) Berechne den ersten mittleren Druck. b) Berechne den zweiten. "
        "c) Um welchen Faktor ändert sich der Druck? d) Was heißt das für Schneeschuhe?",
   "hint": "p = F / A. Für c) teile den größeren Druck durch den kleineren.",
@@ -229,7 +287,7 @@ T = [
             "Lies im Buch S. 58 den Abschnitt »Druck« mit dem Beispiel der Schneeschuhe."],
   "tip": ["Druck: Kraft auf eine Fläche", "theorie.html#druck"]},
 
- {"id": "z3", "nr": 7, "title": "Forschung prüfen: Schmieren mit einem Pulver?", "src": "Recherche im Internet", "own": False, "tag": "Zusatz", "h": 0, "zeit": 10,
+ {"id": "z3", "nr": 11, "title": "Forschung prüfen: Schmieren mit einem Pulver?", "src": "Recherche im Internet", "own": False, "tag": "Zusatz", "h": 0, "zeit": 10,
   "q": "Lies die Pressemitteilung der TU Wien vom 18.02.2025 »Extrem geringe Reibung durch neues pulverförmiges Schmiermittel« "
        "(tuwien.at → Aktuelles → Presseaussendungen). a) Wer berichtet? b) Worin besteht die Idee des Schmiermittels? "
        "c) Was ist in dem Beitrag NICHT für beliebige Maschinen nachgewiesen? d) Ist eine Pressemitteilung über die eigene Forschung eine unabhängige Quelle?",
@@ -255,14 +313,14 @@ T = [
 ]
 
 # ---------------------------------------------------------------- Kontrollen
-assert [t["nr"] for t in T] == list(range(1, 8))
+assert [t["nr"] for t in T] == list(range(1, 12))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
-assert PFLICHT == [2, 3, 4], PFLICHT
-BESPRECHEN = [2, 4]
+assert PFLICHT == [2, 3, 4, 5, 6, 7, 8], PFLICHT
+BESPRECHEN = [2, 8]
 for _t in T:
     if _t["nr"] in BESPRECHEN: _t["besprechen"] = True
 for _t in T:
-    for _k in _t["chk"]:
+    for _k in (_t["chk"] or {}):
         assert _k in [f[0] for f in _t["fields"]], (_t["id"], _k)
     for _f in _t["fields"]:
         if len(_f) > 2 and _f[0] in _t["chk"] and "sel" in _t["chk"][_f[0]]:
@@ -281,8 +339,11 @@ assert abs(5 / 4 - 1.25) < 1e-9 and abs(1.25 * 3.6 - 4.5) < 1e-9 and abs(2 * 3 -
 assert abs(6 * G_KERN - 60) < 1e-9 and abs(120 / 0.02 - 6000) < 1e-9 and abs(9 / 6 - 1.5) < 1e-9 and abs(12 / 3 - 4) < 1e-9
 assert abs(600 / 0.03 - 20000) < 1e-9 and abs(600 / 0.30 - 2000) < 1e-9 and abs((600 / 0.03) / (600 / 0.30) - 10) < 1e-9
 
-GRP = {1: STUNDENNAME[1] + " (Buch S. 44–49) · Vorhersage und erste Rechnungen",
-       2: "Stunden 2–5 · Gruppenprojekt " + VS_ID + " (Buch S. 45–61) · Frage, Versuch, Erklärung, Präsentation",
+GRP = {1: STUNDENNAME[1] + " (Buch S. 44–49) · mit der ganzen Klasse",
+       2: STUNDENNAME[2] + " · Gruppenprojekt " + VS_ID,
+       3: STUNDENNAME[3] + " · Gruppenprojekt " + VS_ID,
+       4: STUNDENNAME[4] + " · Gruppenprojekt " + VS_ID,
+       5: STUNDENNAME[5] + " · Gruppenprojekt " + VS_ID,
        6: STUNDENNAME[6] + " (Buch S. 45–61) · allein und ohne KI",
        0: "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)"}
 
@@ -330,14 +391,14 @@ WIEDERHOLEN = [("Was macht eine naturwissenschaftliche Hypothese aus?", "Sie ist
                 "Sonst bleibt unklar, welche Änderung den Unterschied verursacht hat.", "K1.4, Vergleich ohne/mit Büroklammer")]
 
 WEISST_DU_NOCH = {
-    2: [("Was unterscheidet eine Beobachtung von einer Erklärung?", "Die Beobachtung ist das, was ihr gesehen oder gemessen habt. Die Erklärung sagt, warum es so ist."),
-        ("Warum darf eine Gruppe ihre Frage nicht nachträglich ändern?", "Dann prüft sie nichts mehr, sondern beschreibt nur das Ergebnis.")],
-    3: [("Was muss in eurem Versuch gleich bleiben?", "Alles außer der einen Bedingung, die ihr absichtlich ändert."),
-        ("Warum liest Prof. HOLZER euren Plan vor dem Versuch?", "Damit Sicherheit, Messgröße und Vergleich stimmen – danach ist eine Korrektur zu spät.")],
+    2: [("In welcher Gruppe bist du, und welches Thema habt ihr?", "Steht in der Einteilung aus Stunde 1 – Prof. HOLZER zeigt sie noch einmal."),
+        ("Woran erkennt man eine Kraftwirkung?", "An einer Änderung von Tempo oder Richtung – oder an einer Verformung.")],
+    3: [("Was muss in eurem Versuch gleich bleiben?", "Alles außer der einen Sache, die ihr absichtlich ändert."),
+        ("Habt ihr alles Material von zu Hause dabei?", "Wenn nicht: sofort Prof. HOLZER sagen – dann nehmt ihr die Saal-Variante eurer Idee.")],
     4: [("Beobachtung oder Erklärung: »Die Anzeige stieg von 1,0 N auf 2,0 N.«", "Beobachtung – ein gemessener Wert."),
-        ("Was gehört zu jeder Auswertung dazu?", "Eine Grenze: Was zeigt euer Versuch nicht?")],
-    5: [("Wie lange hat eure Gruppe für die Präsentation?", "Drei Minuten einschließlich Versuch. Jeder erklärt einen kurzen Teil."),
-        ("Was notierst du bei den anderen Gruppen?", "Eine Kernaussage und eine Grenze oder Fehlerquelle.")],
+        ("Für wen schreibt ihr den Steckbrief?", "Für die ganze Klasse. Die anderen lernen damit euer Thema für den Test.")],
+    5: [("Wie lange hat eure Gruppe für die Präsentation?", "Höchstens drei Minuten einschließlich Versuch. Jeder spricht."),
+        ("Was schreibst du bei den anderen Gruppen mit?", "Die Kernaussage in einem Satz und eine Formel oder ein Beispiel.")],
     6: [("Ist Geschwindigkeit eine Kraftart?", "Nein. Geschwindigkeit, Beschleunigung und Druck sind keine Kraftarten."),
         ("Welche Einheit hat die Kraft, welche die Masse?", "Kraft in Newton (N), Masse in Kilogramm (kg).")],
 }
@@ -360,7 +421,7 @@ STOPPFRAGEN = {
 }
 
 STOLPERSTEINE = [("»Wo Bewegung ist, wirkt eine Kraft«",
-                  "Für eine gleichförmige geradlinige Bewegung braucht es **keine resultierende** Kraft. Gleichgewicht heißt: Vektorsumme null – Ruhe **oder** gleichförmige gerade Bewegung. Mit Aufgabe 4 g) ansprechen."),
+                  "Für eine gleichförmige geradlinige Bewegung braucht es **keine resultierende** Kraft. Gleichgewicht heißt: Vektorsumme null – Ruhe **oder** gleichförmige gerade Bewegung. Mit Aufgabe 8 g) ansprechen."),
                  ("»Geschwindigkeit, Beschleunigung und Druck sind Kraftarten«",
                   "Sie sind **keine** Kräfte. Druck verbindet eine Kraft mit einer Fläche, Geschwindigkeit und Beschleunigung beschreiben die Bewegung. Buch S. 49 listet sie in einer gemeinsamen Übersicht – das lädt zur Verwechslung ein."),
                  ("»Beim Schwimmen ist der Auftrieb größer«",
@@ -424,7 +485,7 @@ QUELLEN = [
   "Messmethode für Gruppe 4: Losbrechmaximum und gleichförmiges Ziehen unterscheiden", "Aufgabe und Lösung geöffnet"),
  ("W8", "Extrem geringe Reibung durch neues pulverförmiges Schmiermittel (18.02.2025)", "TU Wien, Aussender Florian Aigner",
   "https://www.tuwien.at/tu-wien/aktuelles/presseaussendungen/news/extrem-geringe-reibung-durch-neues-pulverfoermiges-schmiermittel",
-  "Zusatzaufgabe 7: aktueller Forschungsbezug und Quellenkritik (Eigenbericht)", "Titel, Datum, Aussender und Kernaussage geprüft"),
+  "Zusatzaufgabe 11: aktueller Forschungsbezug und Quellenkritik (Eigenbericht)", "Titel, Datum, Aussender und Kernaussage geprüft"),
  ("W9", "Advanced Solid Lubrication with COK-47", "Hanglin Li et al., Advanced Science 2025", "https://doi.org/10.1002/advs.202415268",
   "Originalpublikation zur TU-Wien-Meldung", "Originalseite geöffnet, Autorenschaft geprüft"),
  ("W13", "Mittlere Geschwindigkeit", "FWU / LEIFIphysik", "https://www.leifiphysik.de/mechanik/gleichfoermige-bewegung/grundwissen/mittlere-geschwindigkeit",

@@ -10,13 +10,13 @@ PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
-# Teillieferung 08.11.2026: nur Handy-Seiten, Unterrichts-PPP und private Lösungsseite.
+# Teillieferung 08.11.2026 / v2 11.11.2026: nur Handy-Seiten, Unterrichts-PPP und private Lösungsseite.
 DATEIEN = {"stand": I.STAND, "liste": [f"{P}-TH-Unterricht-{V}.pptx"]}
 neu = {"klasse": "1AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K2.1", "titel": I.TITEL,
        "block": "E Physik", "jahresplan": "E15–E17",
-       "seiten": ["aufgaben.html", "theorie.html", "versuche.html", "quiz.html"],
+       "seiten": ["aufgaben.html", "theorie.html", "quiz.html"],
        "versteckt": True,
-       "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
+       "fahrplan": {"ansicht": "kompakt", "text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
        "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]
 if alt:

@@ -6,7 +6,7 @@ Aufruf im Repository-Ordner: python3 werkzeug/quellen/1ab-k2-1-kraefte/unterrich
 import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import ppp_basis as B
-import inhalt as I, plan as P, theorie_daten as TD, versuche_daten as VD
+import inhalt as I, plan as P, theorie_daten as TD, versuche_daten as VD, gruppen_daten as GD
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
@@ -21,11 +21,12 @@ NS_P = "http://schemas.openxmlformats.org/presentationml/2006/main"
 NS_R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 
 FARBE = {"START": MUTED, "WIEDERHOLEN": TEAL, "EINSTIEG": ORANGE, "KURZ KLÄREN": OLIVE, "AUFGABE": GREEN,
+         "SELBSTSTUDIUM": TEAL, "GRUPPENARBEIT": ORANGE, "GRUPPEN": OLIVE, "FREIGABE": RUST, "PARTNERCHECK": GREEN,
          "RECHERCHE": TEAL, "PLANEN": TEAL, "VERSUCH": RED, "ZU ZWEIT": GREEN, "PRÄSENTATION": RUST,
          "BESPRECHEN": ORANGE, "ABGABE": RUST}
 T = {t["nr"]: t for t in I.T}
-METHODE_KURZ = {1: "Tafel und Handzeichen", 2: "Recherche in der Gruppe", 3: "Gruppenversuch im Saal",
-                4: "Peer-Feedback ohne Handy", 5: "Kurzpräsentationen", 6: "Tafel und Einzelarbeit"}
+METHODE_KURZ = {1: "Mit der ganzen Klasse", 2: "Selbststudium mit Leitfragen", 3: "Selbst gewählter Versuch",
+                4: "Steckbrief und Partnercheck", 5: "Kurzpräsentationen", 6: "Tafel und Einzelarbeit"}
 PROBLEME = []
 SPEC = {}
 FOLIE = {}
@@ -124,7 +125,7 @@ def heute_folie(std):
                 B.tb(s, X0 + col * 3.5 + 0.48, yy, 3.0, hh, [it], size=18, after=0)
                 yy += max(0.48, hh + 0.04)
     qr(s, "aufgaben", 7.8, 1.0, 1.05, "Arbeitsblatt")
-    qr(s, "versuche" if std in (2, 3, 4, 5) else "theorie", 7.8, 2.5, 1.05, "Gruppenprojekt" if std in (2, 3, 4, 5) else "Theorie")
+    qr(s, "theorie", 7.8, 2.5, 1.05, "Theorie")
     return s
 
 
@@ -195,7 +196,7 @@ def s1_rechnen():
 
 
 def s1_bespr():
-    s = d.slide("Aufgabe", "Besprechen: Aufgabe 2")
+    s = d.slide("Aufgabe", "Das besprechen wir: Aufgabe 2")
     y = 1.05
     y = frage_klick(s, y, "a) Fahrrad fährt mit gleichem Tempo durch eine Kurve. Was ändert sich?", "Die Richtung der Geschwindigkeit – das ist auch eine Beschleunigung.")
     y = frage_klick(s, y, "c) und d) 5 m in 4 s – wie schnell?", "v = 5 m : 4 s = 1,25 m/s · mal 3,6 = 4,5 km/h.")
@@ -203,191 +204,174 @@ def s1_bespr():
     return s
 
 
+def grosse_tabelle(s, zeilen, size=22, y=1.0, lw=1.9):
+    """Große, einfache Übersicht: links die Frage (Wer? Was? …), rechts kurz die Antwort."""
+    rows = [["", ""]] + [[a, b] for a, b in zeilen]
+    cells, h = B.auto_grid(s, X0, y, [lw, W - lw], rows[1:], size=size, head=False, minh=0.5)
+    return y + h
+
+
 def s1_gruppen():
-    s = d.slide("Nur Titel", "Sieben Gruppen, sieben Themen")
-    rows = [["Gr.", "Thema", "Buch", "Was ihr messt"]]
-    kurz = {1: "Weg und Zeit auf 5 m", 2: "Masse und Kraft am Kraftmesser", 3: "Waagenanzeige beim Eintauchen",
-            4: "Zugkraft vor und beim Gleiten", 5: "feuchte Grenze nach 10/30/60 s", 6: "Spritze offen und zu", 7: "beide Kraftmesser-Anzeigen"}
-    for v in VD.VS:
-        rows.append([str(v["gruppe"]), v["titel"].split(":")[0], v["buch"]["s"], kurz[v["gruppe"]]])
-    cells, h = B.auto_grid(s, X0, 0.94, [0.55, 3.4, 1.25, 3.8], rows, size=14, minh=0.28)
-    y = 0.94 + h + 0.1
-    c = B.box(s, X0, y, W, min(0.68, YC - y), fill=CARD, line=OLIVE, lw=1.5)
-    B.text(c, [[("Rollen: ", {"bold": True, "color": OLIVE}), ("Leitung · Quellenprüfung · Aufbau und Messung · Protokoll; Fünfergruppe zusätzlich Material.", {})]],
-           size=14, anchor=MSO_ANCHOR.MIDDLE, after=0)
+    s = d.slide("Nur Titel", "Eure Gruppen")
+    rows = [["Gr.", "Thema", "Buch", "Namen"]]
+    for n in range(1, 8):
+        g = GD.G[n]; rows.append([str(n), g["thema"], g["buch"].replace("Buch ", ""), ""])
+    cells, h = B.auto_grid(s, X0, 0.94, [0.6, 3.1, 1.4, 3.9], rows, size=17, minh=0.38)
+    B.tb(s, X0, 0.94 + h + 0.08, W, 0.36, [[("Die Einteilung lost Prof. HOLZER aus. ", {"bold": True, "color": OLIVE}),
+                                           ("Sie gilt für alle sechs Stunden.", {})]], size=16, after=0)
+    return s
+
+
+def s1_projekt():
+    s = d.slide("Nur Titel", "So läuft euer Projekt")
+    grosse_tabelle(s, [["Wer?", "Eure Gruppe – jeder hat eine Rolle"],
+                       ["Was?", "Thema selbst erarbeiten · Versuch selbst wählen · Steckbrief · 3 Minuten präsentieren"],
+                       ["Abgeben?", "EIN Arbeitsblatt-PDF in LMS · Steckbrief als Handout in Teams"],
+                       ["Bis wann?", "Plan: Ende Stunde 2 · Steckbrief: Ende Stunde 4 · PDF: Stunde 6"],
+                       ["Wo?", "Arbeitsblatt, Aufgaben 3 bis 7"]], size=21)
     return s
 
 
 def s1_ende():
     s = d.slide("Nur Titel", "Zwischenstand sichern")
-    schritte(s, X0, 1.05, 6.9, ["Arbeitsblatt: »PDF erstellen« – das ist euer Zwischenstand aus Stunde 1.",
-                                "Gruppennummer und Rolle stehen in Aufgabe 3 a) und b).",
-                                "Nächste Stunde: Frage, zwei Quellen und Versuchsplan."], size=20, farbe=RUST)
+    schritte(s, X0, 1.05, 6.9, ["Arbeitsblatt: »PDF erstellen« und aufheben – noch nicht hochladen.",
+                                "Aufgabe 3 a) und b): Gruppe und Rolle schon jetzt eintragen.",
+                                "Nächste Stunde arbeitet ihr selbstständig: Thema erarbeiten, Versuch planen."], size=20, farbe=RUST)
     qr(s, "aufgaben", 7.9, 1.05, 1.1, "Arbeitsblatt")
     return s
 
 
 # ================================================================ Folien Stunde 2
-def s2_quellen():
-    s = d.slide("Nur Titel", "Kurz klären: Quellen prüfen")
-    for i, (kopf, txt, col) in enumerate([("Wer schreibt?", "Person, Einrichtung, Verlag – steht das überhaupt da?", TEAL),
-                                          ("Gibt es ein Datum?", "Ohne Datum weiß niemand, ob es noch stimmt.", GREEN),
-                                          ("Welches Interesse?", "Wer über die eigene Forschung oder das eigene Produkt berichtet, ist nicht unabhängig.", ORANGE),
-                                          ("Kernaussage?", "In einem Satz: Was sagt die Quelle zu eurer Frage?", RUST)]):
-        karte(s, X0 + (i % 2) * 4.6, 0.96 + (i // 2) * 1.52, 4.4, 1.38, kopf, [txt], col, size=18)
-    c, h = merke(s, 4.04, "Zwei Berichte derselben Organisation sind nicht automatisch zwei unabhängige Quellen.", size=17, h=0.44)
+def s2_selbst():
+    s = d.slide("Nur Titel", "Heute arbeitet ihr selbstständig")
+    schritte(s, X0, 1.0, 6.7, ["Arbeitsblatt öffnen, Aufgabe 3: Gruppe wählen – eure Gruppenkarte erscheint.",
+                               "Buchseiten und Theorie-Teil lesen, Leitfragen in eigenen Worten beantworten.",
+                               "Aufgabe 4: Versuch aussuchen und planen – erst auf Papier.",
+                               "Plan Prof. HOLZER zeigen. Ohne Freigabe kein Versuch."], size=20, farbe=TEAL)
+    qr(s, "aufgaben", 7.8, 1.0, 1.1, "Arbeitsblatt")
     return s
 
 
-def s2_recherche():
-    s = auftrag_folie("Jetzt: Frage, Vermutung und zwei Quellen", [3], {3: "in der Gruppe, Protokoll-Handy tippt"},
-                      "Eine prüfbare Frage, eine Vermutung mit »weil …« und zwei Quellen mit Wer / Datum / Kernaussage.",
-                      ohne_handy="Erst auf Papier formulieren, dann auf der Versuchsseite eintragen.")
-    return s
+def s2_a3():
+    return auftrag_folie("Jetzt: Aufgabe 3 – Thema erarbeiten", [3], {3: "allein lesen, in der Gruppe besprechen"},
+                         "Vier Leitfragen in eigenen Worten und ein geprüftes Video oder eine zweite Quelle.",
+                         ohne_handy="Zuerst im Buch lesen und markieren, dann tippen.")
 
 
-def s2_plan():
-    s = d.slide("Nur Titel", "Euer Versuchsplan: nur EINE Sache ändern")
-    rows = [["", "Das schreibt ihr auf"],
-            ["Wir ändern", "genau eine Bedingung – zum Beispiel die Wassermenge oder die Eintauchtiefe"],
-            ["Wir messen", "welche Größe, in welcher Einheit, mit welchem Gerät"],
-            ["Bleibt gleich", "alles andere: Gefäß, Platz, Person, Messmethode"],
-            ["Wie oft", "mindestens zwei Durchgänge, besser drei"]]
-    cells, h = B.auto_grid(s, X0, 0.98, [2.0, 7.0], rows, size=18, minh=0.42)
-    c, hm = merke(s, 0.98 + h + 0.14, "Erst nach der Freigabe durch Prof. HOLZER wird gemessen. Danach wird der Plan nicht mehr geändert.", size=18)
-    s._anim.append([c])
+def s2_a4():
+    s = d.slide("Nur Titel", "Euren Versuch selbst wählen")
+    karte(s, X0, 0.98, 4.4, 2.5, "Von zu Hause erlaubt", ["Kunststoff, Papier, Holz, Stoff", "Wasser, Salz, Lebensmittelfarbe",
+                                                          "Knete, Gummiringe, Strohhalme", "Spielzeugauto, Ball, Schuhe"], GREEN, size=18)
+    karte(s, X0 + 4.6, 0.98, 4.4, 2.5, "Nicht erlaubt", ["Feuer, Kerzen", "Chemikalien, Spraydosen", "Glas von zu Hause, Messer, Nägel",
+                                                         "Steckdose, Akkus · Waffen, Feuerwerk"], RED, size=18)
+    c, h = merke(s, 3.6, "Materialliste genau aufschreiben: was, wie viel, Saal oder zu Hause, wer bringt es mit.", size=18)
     return s
 
 
 def s2_freigabe():
     s = d.slide("Aufgabe", "Freigabe: je Gruppe eine Minute")
-    y = schritte(s, X0, 1.0, 6.9, ["Frage vorlesen – ist sie prüfbar?", "Welche eine Bedingung ändert ihr?",
-                                   "Was bleibt gleich?", "Sicherheit: Glas, Wasser, Kraftmesser – passt der Platz?",
-                                   "Quellen: Wer schreibt, und seit wann?"], size=19, farbe=ORANGE)
-    qr(s, "versuche", 7.9, 1.0, 1.1, "Versuchsseite")
+    y = schritte(s, X0, 1.0, 6.9, [x for x in GD.FREIGABE_FRAGEN], size=18, farbe=ORANGE)
+    qr(s, "aufgaben", 7.9, 1.0, 1.1, "Arbeitsblatt")
     return s
 
 
 def s2_ende():
-    s = d.slide("Nur Titel", "Meilenstein sichern")
-    schritte(s, X0, 1.05, 9.0, ["Versuchsseite: »PDF erstellen« – Frage, Plan und Quellen sind gesichert.",
-                                "Nächste Stunde wird gemessen. Wer seinen Plan nicht hat, kann nicht beginnen."], size=20, farbe=RUST)
+    s = d.slide("Nur Titel", "Sichern und mitbringen")
+    schritte(s, X0, 1.05, 9.0, ["Aufgabe 4 f): »freigegeben« eintragen.",
+                                "Arbeitsblatt: »PDF erstellen« und aufheben – noch nicht hochladen.",
+                                "Nächste Stunde: Material von zu Hause mitbringen. Wer es vergisst, nimmt die Saal-Variante."], size=20, farbe=RUST)
     return s
 
 
 # ================================================================ Folien Stunde 3
 def s3_sicher():
     s = d.slide("Nur Titel", "Sicherheit heute")
-    y = 0.92
-    for h_, t_ in VD.SICHERHEIT[:6]:
-        c = B.box(s, X0, y + 0.03, 0.36, 0.36, fill=ORANGE)
-        B.text(c, ["!"], size=17, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
-        hh = B.th(h_ + ": " + t_, 16, 8.4, pad=0.04)
-        B.tb(s, X0 + 0.46, y, 8.5, hh, [[(h_ + ": ", {"bold": True, "color": OLIVE}), (t_, {})]], size=16, after=0)
-        y += max(0.42, hh + 0.02)
+    y = 0.95
+    for h_, t_ in [("Nur Freigegebenes", "Ihr baut nur, was Prof. HOLZER freigegeben hat."),
+                   ("Wasser", "nur in der Wanne, sofort aufwischen."),
+                   ("Kraftmesser", "langsam ziehen, nie gegen den Körper."),
+                   ("Spritze, Ballon", "nie auf Personen richten."),
+                   ("Glas", "nur Saal-Glas; bei Bruch Prof. HOLZER rufen."),
+                   ("Gang", "nur gehen, Weg frei halten.")]:
+        c = B.box(s, X0, y + 0.03, 0.4, 0.4, fill=ORANGE)
+        B.text(c, ["!"], size=18, color=WHITE, bold=True, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE, after=0)
+        hh = B.th(h_ + ": " + t_, 20, 8.3, pad=0.02)
+        B.tb(s, X0 + 0.52, y, 8.4, hh, [[(h_ + ": ", {"bold": True, "color": OLIVE}), (t_, {})]], size=20, after=0)
+        y += max(0.48, hh + 0.02)
     return s
 
 
-def s3_plaetze():
-    s = d.slide("Nur Titel", "Wo steht was?")
-    rows = [["Gruppe", "Platz", "Wasser?"]]
-    kurz = {1: ("Gang vor dem Saal, 5 m freie Strecke", "nein"), 2: ("Mobiltisch 1, Wanne darunter", "ja"),
-            3: ("Mobiltisch 2, Waage trocken daneben", "ja"), 4: ("Schülertisch, trockene Fläche", "ja, wenig"),
-            5: ("Schülertisch", "ja, wenig"), 6: ("Schülertisch", "nein"), 7: ("Lehrertisch / Mobiltisch 3", "nein")}
-    for g in range(1, 8): rows.append([str(g), kurz[g][0], kurz[g][1]])
-    cells, h = B.auto_grid(s, X0, 0.96, [1.1, 6.3, 1.6], rows, size=16, minh=0.3)
-    c = B.box(s, X0, 0.96 + h + 0.1, W, min(0.56, YC - (0.96 + h + 0.1)), fill=RGBColor.from_string("F6E3DF"), line=RUST, lw=1.5)
-    B.text(c, [[("Keine Flamme, kein Gefahrstoff. ", {"bold": True, "color": RUST}),
-                ("Wasser holen und ausspülen nur an der Wasserleitung. Waagen und Handys bleiben trocken.", {})]], size=16, anchor=MSO_ANCHOR.MIDDLE, after=0)
+def s3_versuch():
+    s = d.slide("Nur Titel", "So läuft der Versuch")
+    grosse_tabelle(s, [["Wer?", "Eure Gruppe aus Stunde 1"],
+                       ["Was tun?", "Aufbauen · machen · eintragen · vorführen"],
+                       ["Abgeben?", "Aufgabe 5 mit Foto – jeder selbst"],
+                       ["Bis wann?", "Bis Minute 41, dann aufräumen"],
+                       ["Wo?", "Euer Platz laut Freigabe"]], size=28, lw=2.1)
     return s
 
 
-def s3_messen():
-    s = d.slide("Nur Titel", "Messen: 28 Minuten")
-    y = schritte(s, X0, 0.98, 6.6, ["Material holen, Aufbau zeigen lassen, erst dann messen.",
-                                    "Nur echte Werte eintragen. Erwartete Zahlen sind keine Messwerte.",
-                                    "Jede Messung mindestens zweimal.",
-                                    "Auffälliges sofort in die letzte Spalte schreiben."], size=19, farbe=RED)
-    c = B.box(s, 7.3, 0.98, 2.2, 1.9, fill=RGBColor.from_string("FFF4EA"), line=ORANGE, lw=2)
-    B.text(c, [[("Nach 14 min", {"bold": True, "color": ORANGE, "size": 18})], [("Kraftmesser", {"bold": True})], "#51: Gr. 2 → Gr. 7", "#52: Gr. 4 → Gr. 7"], size=16, after=2)
-    B.tb(s, 7.2, 3.0, 2.4, 1.3, [[("Gruppe 7 ", {"bold": True, "color": OLIVE}), ("bereitet in der ersten Hälfte Zeichnung, Tabelle und Erklärung vor.", {})]], size=15, after=0)
-    return s
-
-
-def s3_deutung():
-    s = d.slide("Aufgabe", "Noch am Platz: erste Deutung")
-    y = 1.0
-    for q, a in [("Was habt ihr beobachtet?", "Nur das, was ihr wirklich gesehen oder gemessen habt – ohne Erklärung."),
-                 ("Was erklärt ihr daraus?", "Die Deutung kommt getrennt dazu: »Das liegt daran, dass …«")]:
-        y = frage_klick(s, y, q, a)
-    c, h = merke(s, y + 0.1, "Beobachtung und Erklärung immer trennen. Was ihr heute nicht messen konntet, wird als Grenze notiert – nicht als Zahl erfunden.", size=19)
+def s3_probe():
+    s = d.slide("Aufgabe", "Probe: einmal vorführen")
+    y = frage_klick(s, 1.05, "Was sieht die Klasse in eurem Versuch?", "Eine Sache, die man sehen oder messen kann – in einem Satz.")
+    y = frage_klick(s, y, "Was ist eure Erklärung?", "Mit dem Fachbegriff eures Themas. Erst Beobachtung, dann Erklärung.")
     return s
 
 
 def s3_ende():
     s = d.slide("Nur Titel", "Aufräumen und sichern")
-    schritte(s, X0, 1.0, 9.0, ["Gefäße ausspülen, Tische trocken wischen, Geräte zurück an den Lehrertisch.",
-                               "Kraftmesser und Waagen zuletzt – Nullpunkt kurz prüfen.",
-                               "Versuchsseite: »PDF erstellen« mit den Messwerten von heute.",
-                               "Nächste Stunde: aus den Werten wird eine Erklärung."], size=19, farbe=RUST)
+    schritte(s, X0, 1.0, 9.0, ["Gefäße ausspülen, Tische trocken wischen, Saal-Material zurück an den Lehrertisch.",
+                               "Eigenes Material wieder einpacken.",
+                               "Arbeitsblatt: »PDF erstellen« und aufheben – noch nicht hochladen.",
+                               "Nächste Stunde: Steckbrief schreiben und Präsentation proben."], size=19, farbe=RUST)
     return s
 
 
 # ================================================================ Folien Stunde 4
-def s4_daten():
-    s = d.slide("Nur Titel", "Kurz klären: Beobachtung, Deutung, Grenze")
-    for i, (kopf, txt, col) in enumerate([("Beobachtung", "Was steht in eurer Tabelle? Zahlen mit Einheit, ohne Erklärung.", TEAL),
-                                          ("Deutung", "Warum ist das so? Hier kommt die Physik aus eurem Thema hinein.", GREEN),
-                                          ("Grenze", "Was zeigt euer Versuch NICHT? Zum Beispiel: nur zwei Durchgänge, grobe Skala, ein Material.", ORANGE)]):
-        karte(s, X0 + i * 3.05, 1.0, 2.85, 2.5, kopf, [txt], col, size=19)
-    y = frage_klick(s, 3.65, "Dürft ihr eine fehlende Messung durch den erwarteten Wert ersetzen?",
-                    "Nein. Fehlende Werte bleiben leer und werden als Grenze beschrieben.", size=19)
+def s4_steck():
+    s = d.slide("Nur Titel", "Euer Steckbrief – das Handout für alle")
+    rows = [["", "Das steht drin"]] + [[f[1].split(") ")[0] + ")", f[1].split(") ", 1)[1]] for f in GD.STECKBRIEF]
+    cells, h = B.auto_grid(s, X0, 0.95, [0.6, 8.4], rows[1:], size=17, head=False, minh=0.36)
+    B.tb(s, X0, 0.95 + h + 0.08, W, 0.36, [[("Schriftführung: ", {"bold": True, "color": RUST}),
+                                           ("»Handout-PDF erstellen« und bis Ende der Stunde in Teams stellen.", {})]], size=17, after=0)
     return s
 
 
-def s4_drei():
-    s = d.slide("Aufgabe", "Eure Erklärung in drei Minuten")
+def s4_probe():
+    s = d.slide("Aufgabe", "Präsentation: höchstens 3 Minuten")
     rows = [["Teil", "Inhalt", "Zeit"],
-            ["1", "Frage und was ihr geändert habt", "30 s"],
-            ["2", "Versuch kurz zeigen und das Ergebnis nennen", "90 s"],
-            ["3", "Erklärung, eine Grenze und ein Alltagsbeispiel", "60 s"]]
-    cells, h = B.auto_grid(s, X0, 1.0, [0.8, 6.8, 1.4], rows, size=19, minh=0.46)
-    c = B.box(s, X0, 1.0 + h + 0.16, W, 0.95, fill=CARD, line=OLIVE, lw=1.5)
-    B.text(c, [[("Jeder erklärt einen Teil. ", {"bold": True, "color": OLIVE}),
-                ("Eine PowerPoint ist nicht nötig – drei Abschnitte im Gruppen-PDF genügen. Übt einmal laut mit Stoppuhr.", {})]],
-           size=19, anchor=MSO_ANCHOR.MIDDLE, after=0)
+            ["1", "Euer Thema in zwei Sätzen und die Formel", "45 s"],
+            ["2", "Versuch zeigen: Was sieht man?", "75 s"],
+            ["3", "Erklärung und ein Beispiel aus Sport oder Bundesheer", "60 s"]]
+    cells, h = B.auto_grid(s, X0, 1.0, [0.8, 6.8, 1.4], rows, size=20, minh=0.48)
+    c, hm = merke(s, 1.0 + h + 0.18, "Jeder spricht. Keine PowerPoint nötig – der Steckbrief ist euer Spickzettel. Mit Stoppuhr üben.", size=19)
     return s
 
 
 def s4_peer():
-    s = d.slide("Aufgabe", "Partnergruppe prüft nach dem Raster")
-    rows = [["Was", "Punkte", "Frage an die andere Gruppe"],
-            ["Inhalt", "4", "Stimmt die Physik? Wird Beobachtung und Erklärung getrennt?"],
-            ["Quellen", "3", "Wer schreibt, seit wann, warum passend?"],
-            ["Darstellung und Zeit", "2", "Verständlich? Unter drei Minuten?"],
-            ["Teamarbeit", "1", "Redet jeder? Sind die Meilensteine da?"]]
-    cells, h = B.auto_grid(s, X0, 1.0, [2.3, 1.0, 5.7], rows, size=18, minh=0.42)
-    c = B.box(s, X0, 1.0 + h + 0.14, W, 0.6, fill=RGBColor.from_string("F6E3DF"), line=RUST, lw=1.5)
-    B.text(c, [[("Ohne Handy: ", {"bold": True, "color": RUST}), ("Erst zuhören, dann zwei Dinge sagen, die gut waren, und eine Sache, die noch fehlt.", {})]],
-           size=18, anchor=MSO_ANCHOR.MIDDLE, after=0)
+    s = d.slide("Aufgabe", "Partnercheck")
+    y = schritte(s, X0, 1.0, W, ["Gruppe 1 mit 2, 3 mit 4, 5 mit 6 – Gruppe 7 mit Prof. HOLZER.",
+                                 "Die Partnergruppe liest euren Steckbrief und hört die Probe.",
+                                 "Rückmeldung: zwei Dinge, die gut sind, und eine Sache, die noch unklar ist."], size=19, farbe=GREEN)
+    c = B.box(s, X0, y + 0.1, W, 0.55, fill=RGBColor.from_string("F6E3DF"), line=RUST, lw=1.5)
+    B.text(c, [[("Ohne Handy: ", {"bold": True, "color": RUST}), ("zuhören, dann reden.", {})]], size=19, anchor=MSO_ANCHOR.MIDDLE, after=0)
     return s
 
 
 def s4_ende():
-    s = d.slide("Nur Titel", "Überarbeiten und sichern")
-    schritte(s, X0, 1.0, 9.0, ["Baut die Rückmeldung der Partnergruppe ein.",
-                               "Füllt Erkenntnis, Interpretation, Schlussfolgerung, Grenze und Alltagsbeispiel aus.",
-                               "Versuchsseite: »Eingaben prüfen« tippen – die Seite sagt, was noch fehlt.",
-                               "Dann »PDF erstellen«. Nächste Stunde wird präsentiert."], size=19, farbe=RUST)
+    s = d.slide("Nur Titel", "Handout teilen, sichern")
+    schritte(s, X0, 1.0, 9.0, ["Schriftführung: Handout-PDF in Teams stellen – Kanal der Klasse.",
+                               "Alle: Arbeitsblatt »PDF erstellen« und aufheben.",
+                               "Nächste Stunde präsentieren alle sieben Gruppen. Eigenes Material mitbringen!"], size=20, farbe=RUST)
     return s
 
 
 # ================================================================ Folien Stunde 5
 def s5_auftrag():
-    s = d.slide("Nur Titel", "Beobachtungsauftrag für alle")
-    karte(s, X0, 1.0, 4.4, 2.1, "Du notierst zu jeder Gruppe", ["eine **Kernaussage** in einem Satz", "eine **Grenze** oder Fehlerquelle"], TEAL, size=20)
-    karte(s, X0 + 4.6, 1.0, 4.4, 2.1, "Wohin?", ["Arbeitsblatt, **Aufgabe 3 c)**", "Stichworte genügen – ganze Sätze brauchst du nicht"], GREEN, size=20)
-    c, h = merke(s, 3.35, "Ihr braucht die Themen der anderen: In Stunde 6 kommen alle sieben in Aufgabe 4 vor.", size=18, w=7.6)
+    s = d.slide("Nur Titel", "Mitschreiben – für Aufgabe 8")
+    karte(s, X0, 1.0, 4.4, 2.1, "Zu jeder Gruppe", ["die **Kernaussage** in einem Satz", "eine **Formel** oder ein **Beispiel**"], TEAL, size=20)
+    karte(s, X0 + 4.6, 1.0, 4.4, 2.1, "Wohin?", ["Arbeitsblatt, **Aufgabe 7**", "oder auf Papier – später abtippen"], GREEN, size=20)
+    c, h = merke(s, 3.35, "In Stunde 6 kommen alle sieben Themen in Aufgabe 8 vor. Die Steckbriefe stehen in Teams.", size=18, w=7.6)
     qr(s, "aufgaben", 8.5, 3.35, 0.72, "")
     return s
 
@@ -395,18 +379,18 @@ def s5_auftrag():
 def s5_praes():
     s = d.slide("Nur Titel", "Sieben Gruppen · je 3 Minuten")
     rows = [["Gruppe"] + [str(g) for g in range(1, 8)],
-            ["Thema"] + ["Tempo", "Gewicht", "Auftrieb", "Reibung", "Kapillar", "Druck", "Gegen-\nkraft"],
-            ["fertig nach Minute"] + ["%d" % (9 + 4 * g) for g in range(7)]]
+            ["Thema"] + ["Bewe-\ngung", "Gewicht", "Auftrieb", "Reibung", "Kapillar", "Druck", "Gegen-\nkraft"],
+            ["fertig nach Minute"] + ["%d" % (9 + 4 * g) for g in range(1, 8)]]
     cells, h = B.auto_grid(s, X0, 1.0, [1.85] + [1.02] * 7, rows, size=15, minh=0.4)
     y = 1.0 + h + 0.16
     y = schritte(s, X0, y, W, ["3 Minuten je Gruppe einschließlich Versuch – danach 1 Minute Übergang.",
-                               "Jeder in der Gruppe erklärt einen Teil.",
-                               "Zuhörer schreiben mit: eine Kernaussage, eine Grenze."], size=19, farbe=RUST)
+                               "Jeder in der Gruppe spricht.",
+                               "Alle anderen schreiben mit: Kernaussage und Formel oder Beispiel."], size=19, farbe=RUST)
     return s
 
 
 def s5_klaeren():
-    s = d.slide("Aufgabe", "Zwei Sachen gemeinsam klären")
+    s = d.slide("Aufgabe", "Das besprechen wir")
     y = 1.05
     y = frage_klick(s, y, "Ist Druck eine eigene Kraftart?", "Nein. Druck verbindet eine Kraft mit der Fläche, auf die sie wirkt: p = F / A.")
     y = frage_klick(s, y, "Wie groß ist die Auftriebskraft bei einem ruhig schwimmenden Körper?", "Genauso groß wie seine Gewichtskraft – das ist ein Kräftegleichgewicht.")
@@ -414,11 +398,11 @@ def s5_klaeren():
 
 
 def s5_ende():
-    s = d.slide("Nur Titel", "Gruppenprodukt abgeben")
-    schritte(s, X0, 1.0, 6.8, ["Protokollführer trägt bei »Ich gebe diese PDF ab als« jeden Nachnamen ein und erstellt je eine PDF.",
-                               "PDFs im Gruppenchat verteilen – jeder lädt seine eigene in LMS hoch.",
-                               "Beobachtungsübersicht im Arbeitsblatt fertig machen."], size=19, farbe=RUST)
-    qr(s, "versuche", 7.8, 1.0, 1.1, "Gruppenprojekt")
+    s = d.slide("Nur Titel", "Mitschrift ergänzen, sichern")
+    schritte(s, X0, 1.0, 6.8, ["Aufgabe 7 ergänzen – die Steckbriefe der anderen findest du in Teams.",
+                               "Arbeitsblatt »PDF erstellen« und aufheben.",
+                               "Nächste Stunde: Aufgabe 8 allein, danach Abgabe in LMS."], size=19, farbe=RUST)
+    qr(s, "aufgaben", 7.8, 1.0, 1.1, "Arbeitsblatt")
     return s
 
 
@@ -440,12 +424,12 @@ def s6_denkfehler():
 
 
 def s6_a4():
-    return auftrag_folie("Jetzt: Aufgabe 4 – allein und ohne KI", [4], {4: "allein am Handy, Tipps erlaubt"},
+    return auftrag_folie("Jetzt: Aufgabe 8 – allein und ohne KI", [8], {8: "allein am Handy, Tipps erlaubt"},
                          "Zehn Teilantworten mit Einheit. Tipps kosten keine Punkte – »Lösung ansehen« zählt null.")
 
 
 def s6_bespr():
-    s = d.slide("Aufgabe", "Besprechen: die vier Rechenwege")
+    s = d.slide("Aufgabe", "Das besprechen wir: die Rechenwege")
     y = 1.05
     y = frage_klick(s, y, "a) 6 kg bei g = 10 N/kg", "F_G = m · g = 6 kg · 10 N/kg = 60 N")
     y = frage_klick(s, y, "e) 120 N auf 0,02 m²", "p = F / A = 120 N : 0,02 m² = 6000 Pa")
@@ -457,8 +441,8 @@ def s6_ende():
     s = d.slide("Nur Titel", "Auflösung, Selbsteinschätzung, Abgabe")
     y = schritte(s, X0, 1.0, 6.7, ["Aufgabe 1: »Auflösung zeigen« – die Seite zeigt eure Vermutung aus Stunde 1.",
                                    "Theorie-Seite, »Kann ich das?«: sicher / fast / noch nicht antippen.",
-                                   "Arbeitsblatt: »PDF erstellen« und in LMS hochladen.",
-                                   "Freiwillig: Kräfte-Check (Quiz) und die Zusatzaufgaben 5 bis 7."], size=19, farbe=RUST)
+                                   "Arbeitsblatt: »PDF erstellen« und JETZT in LMS hochladen – das ist deine Abgabe.",
+                                   "Freiwillig: Kräfte-Check (Quiz) und die Zusatzaufgaben 9 bis 11."], size=19, farbe=RUST)
     qr(s, "aufgaben", 7.9, 1.0, 1.05, "Arbeitsblatt")
     qr(s, "quiz", 7.9, 2.5, 1.05, "Quiz")
     return s
@@ -475,38 +459,38 @@ SPEC = {
       lambda: auftrag_folie("Jetzt: Aufgabe 2", [2], {2: "allein am Handy, Theorie-Karte ist dabei"},
                             "Zwei Auswahlfelder und drei Rechnungen – immer mit Einheit.")),
      ("s1_bespr", [5], "BESPRECHEN", None, "Die drei Rechenwege gemeinsam durchgehen", s1_bespr),
-     ("s1_gruppen", [6], "START", "Gruppen", "Themen, Buchseiten und Rollen verteilen", s1_gruppen),
+     ("s1_gruppen", [6], "GRUPPEN", "Gruppen", "Gruppen mit dem Generator der Lösungsseite auslosen und zeigen", s1_gruppen),
+     ("s1_projekt", [6], "GRUPPEN", "So läuft das Projekt", "Wer, was, abgeben, bis wann, wo – einmal klar für alle", s1_projekt),
      ("s1_ende", [7, 8], "ABGABE", "Sichern", "Zwischenstand sichern; Reserve", s1_ende)],
  2: [("s2_heute", [0], "START", None, "Ziel zeigen, Gruppen setzen sich zusammen", lambda: heute_folie(2)),
-     ("s2_wdh", [1], "WIEDERHOLEN", "Weißt du noch?", "Gruppe, Thema und Rolle aktivieren", lambda: wdh_folie(2)),
-     ("s2_quellen", [2], "KURZ KLÄREN", "Quellen prüfen", "Quellenkritik vor der Recherche klären", s2_quellen),
-     ("s2_rech", [3], "RECHERCHE", "Recherche", "Frage, Vermutung und zwei Quellen erarbeiten", s2_recherche),
-     ("s2_plan", [4], "PLANEN", "Versuchsplan", "Nur eine Bedingung ändern – Kontrollbedingungen festlegen", s2_plan),
-     ("s2_frei", [5], "BESPRECHEN", "Freigabe", "Jeden Plan kurz prüfen, bevor gemessen wird", s2_freigabe),
-     ("s2_ende", [6, 7], "ABGABE", "Sichern", "Meilenstein-PDF; Reserve", s2_ende)],
+     ("s2_wdh", [1], "WIEDERHOLEN", "Wo stehen wir?", "Gruppe, Thema und Rolle aktivieren", lambda: wdh_folie(2)),
+     ("s2_selbst", [2], "START", "Selbstständig", "Ablauf der selbstständigen Stunde zeigen", s2_selbst),
+     ("s2_a3", [3], "SELBSTSTUDIUM", "Aufgabe 3", "Thema mit Leitfragen erarbeiten – du gehst herum und hilfst", s2_a3),
+     ("s2_a4", [4], "GRUPPENARBEIT", "Versuch wählen", "Regeln für Material von zu Hause zeigen, Plan auf Papier", s2_a4),
+     ("s2_frei", [5], "FREIGABE", "Freigabe", "Jeden Plan kurz prüfen; Materiallisten fotografieren", s2_freigabe),
+     ("s2_ende", [6, 7], "ABGABE", "Sichern", "Sichern, Mitbringen ansagen; Reserve", s2_ende)],
  3: [("s3_heute", [0], "START", None, "Ziel zeigen, Gruppen an ihre Plätze schicken", lambda: heute_folie(3)),
-     ("s3_wdh", [1], "WIEDERHOLEN", "Wo stehen wir?", "Plan noch einmal lesen lassen", lambda: wdh_folie(3)),
-     ("s3_sicher", [2], "KURZ KLÄREN", "Sicherheit", "Sicherheitsregeln vor der Materialausgabe", s3_sicher),
-     ("s3_plaetze", [2], "KURZ KLÄREN", None, "Platzverteilung zeigen – wer arbeitet wo, wer braucht Wasser", s3_plaetze),
-     ("s3_messen", [3], "VERSUCH", "Messen", "Messphase mit festem Gerätewechsel nach 14 min", s3_messen),
-     ("s3_deut", [4], "VERSUCH", "Erste Deutung", "Beobachtung und Erklärung schon am Platz trennen", s3_deutung),
-     ("s3_ende", [5, 6, 7], "ABGABE", "Aufräumen", "Aufräumen, Meilenstein-PDF; Reserve", s3_ende)],
+     ("s3_wdh", [1], "WIEDERHOLEN", "Wo stehen wir?", "Plan und Material da?", lambda: wdh_folie(3)),
+     ("s3_sicher", [2], "KURZ KLÄREN", "Sicherheit", "Sicherheitsregeln vor dem Aufbau", s3_sicher),
+     ("s3_versuch", [3], "VERSUCH", "Versuch", "Folie bleibt während der Arbeit stehen", s3_versuch),
+     ("s3_probe", [4], "VERSUCH", "Probe", "Jede Gruppe führt einmal vor – du hörst bei zwei Gruppen zu", s3_probe),
+     ("s3_ende", [5, 6, 7], "ABGABE", "Aufräumen", "Aufräumen, sichern; Reserve", s3_ende)],
  4: [("s4_heute", [0], "START", None, "Ziel zeigen", lambda: heute_folie(4)),
-     ("s4_wdh", [1], "WIEDERHOLEN", "Wo stehen wir?", "Messwerte laut vorlesen lassen – Lücken fallen sofort auf", lambda: wdh_folie(4)),
-     ("s4_daten", [2], "KURZ KLÄREN", "Daten prüfen", "Beobachtung, Deutung und Grenze auseinanderhalten", s4_daten),
-     ("s4_drei", [3], "AUFGABE", "Erklärung bauen", "Drei-Minuten-Erklärung strukturieren", s4_drei),
-     ("s4_peer", [4], "ZU ZWEIT", "Peer-Feedback", "Raster vor der Präsentation anwenden", s4_peer),
-     ("s4_ende", [5, 6, 7], "ABGABE", "Sichern", "Überarbeiten, Meilenstein-PDF; Reserve", s4_ende)],
+     ("s4_wdh", [1], "WIEDERHOLEN", "Wo stehen wir?", "Ergebnis des Versuchs in einem Satz", lambda: wdh_folie(4)),
+     ("s4_steck", [2], "GRUPPENARBEIT", "Steckbrief", "Steckbrief gemeinsam schreiben", s4_steck),
+     ("s4_probe", [3], "GRUPPENARBEIT", "Präsentation proben", "Drei-Minuten-Ablauf mit Stoppuhr", s4_probe),
+     ("s4_peer", [4], "PARTNERCHECK", "Partnercheck", "Partnergruppe liest und hört zu", s4_peer),
+     ("s4_ende", [5, 6], "ABGABE", "Teilen", "Handout in Teams, sichern; Reserve", s4_ende)],
  5: [("s5_heute", [0], "START", None, "Ziel zeigen, Reihenfolge ansagen", lambda: heute_folie(5)),
-     ("s5_auftrag", [1], "START", "Beobachtungsauftrag", "Zuhörer bekommen eine Aufgabe", s5_auftrag),
+     ("s5_auftrag", [1], "START", "Mitschreiben", "Zuhörer bekommen eine Aufgabe", s5_auftrag),
      ("s5_praes", [2], "PRÄSENTATION", "Präsentationen", "Sieben Gruppen mit fester Zeit", s5_praes),
-     ("s5_klaeren", [3], "BESPRECHEN", "Klären", "Die beiden häufigsten Fehler aus den Vorträgen geraderücken", s5_klaeren),
-     ("s5_ende", [4, 5, 6], "ABGABE", "Abgabe", "Beobachtungsübersicht und Gruppen-PDF; Reserve", s5_ende)],
+     ("s5_klaeren", [3], "BESPRECHEN", "Das besprechen wir", "Die häufigsten Fehler aus den Vorträgen geraderücken", s5_klaeren),
+     ("s5_ende", [4, 5, 6], "ABGABE", "Ergänzen", "Mitschrift ergänzen, sichern; Reserve", s5_ende)],
  6: [("s6_heute", [0], "START", None, "Ziel zeigen", lambda: heute_folie(6)),
      ("s6_wdh", [1], "WIEDERHOLEN", "Weißt du noch?", "Die sieben Themen kurz aktivieren", lambda: wdh_folie(6)),
      ("s6_tab", [2], "KURZ KLÄREN", "Übersicht", "Alle Größen und Einheiten nebeneinander", s6_tabelle),
      ("s6_denk", [2], "KURZ KLÄREN", None, "Die drei häufigsten Denkfehler ansprechen", s6_denkfehler),
-     ("s6_a4", [3], "AUFGABE", "Aufgabe 4", "Einzelleistung ohne KI – zählt für die Note", s6_a4),
+     ("s6_a4", [3], "AUFGABE", "Aufgabe 8", "Einzelleistung ohne KI – zählt für die Note", s6_a4),
      ("s6_bespr", [4], "BESPRECHEN", None, "Rechenwege und Denkfehler ein letztes Mal", s6_bespr),
      ("s6_ende", [5, 6, 7], "ABGABE", "Abgabe", "Auflösung, Selbsteinschätzung, PDF; Reserve", s6_ende)],
 }
@@ -514,7 +498,7 @@ for _std, _sp in SPEC.items():
     _alle = sorted({i for x in _sp for i in x[1]})
     assert _alle == list(range(len(phasen(_std)))), (_std, _alle, len(phasen(_std)))
 
-DANACH_STUNDE = {1: "Stunde 2 · Frage, Quellen und Versuchsplan", 2: "Stunde 3 · Messen", 3: "Stunde 4 · Erklärung bauen",
+DANACH_STUNDE = {1: "Stunde 2 · Thema erarbeiten, Versuch planen", 2: "Stunde 3 · Versuch machen", 3: "Stunde 4 · Steckbrief und Probe",
                  4: "Stunde 5 · alle Gruppen präsentieren", 5: "Stunde 6 · alles verbinden",
                  6: "Ende der Einheit – nächste Einheit: Arbeit und Energie (Buch S. 66)"}
 KURZNAME = {"s1_rechnen": "Kurz klären: rechnen", "s1_bespr": "Besprechen A2", "s2_ende": "Sichern", "s3_plaetze": "Wo steht was?",
@@ -532,12 +516,12 @@ def danach_text(sp, j, std):
 def folie_lehrplan():
     s = d.slide("Nur Titel", "Lehrer-Info · Lehrplanbezug", hidden=True)
     rows = [["Code", "Wortlaut", "Wo abgedeckt?"],
-            ["K03", "die Grundgrößen und die entsprechenden Einheiten des SI benennen", "Aufgabe 2 c–e, Aufgabe 4 a/e/i/j, Theorie-Karte k9, Quiz 2/4/5/11"],
+            ["K03", "die Grundgrößen und die entsprechenden Einheiten des SI benennen", "Aufgabe 2 c–e, Aufgabe 8 a/e/i/j, Theorie-Karte k9, Quiz 2/4/5/11"],
             ["K02 (zusätzlich)", "einfache naturwissenschaftliche Untersuchungen planen, durchführen, dokumentieren und präsentieren", "Gruppenprojekt V1.20, Stunden 2–5"],
-            ["N01", "beobachten, beschreiben, berechnen, darstellen und erläutern", "Versuchsseite: Beobachtung, Erkenntnis, Interpretation"],
-            ["N02", "Bedeutung für Wirtschaft, Technik und Umwelt erfassen", "Alltagsbeispiel je Gruppe, Zusatzaufgabe 7 (TU Wien)"],
+            ["N01", "beobachten, beschreiben, berechnen, darstellen und erläutern", "Arbeitsblatt Aufgabe 5 (Versuch) und 6 (Steckbrief)"],
+            ["N02", "Bedeutung für Wirtschaft, Technik und Umwelt erfassen", "Alltagsbeispiel je Gruppe, Zusatzaufgabe 11 (TU Wien)"],
             ["P8", "Gesundheit und Sicherheit", "Sicherheitsregeln, Druck unter Schuh und Schultergurt"],
-            ["P7", "Quellen und Medien", "Quellenprüfung Stunde 2, Zusatzaufgabe 7"],
+            ["P7", "Quellen und Medien", "Quellenprüfung Stunde 2, Zusatzaufgabe 11"],
             ["GLV 6", "verantwortungsvoller Umgang mit Modellen und Technik", "Grenzen jedes Versuchs, keine Waffenversuche nötig"]]
     B.auto_grid(s, X0, 0.98, [1.5, 3.6, 3.9], rows, size=12, minh=0.26)
     B.tb(s, X0, 4.62, W, 0.38, [[("Jahresplan: ", {"bold": True, "color": RUST}),
@@ -546,32 +530,27 @@ def folie_lehrplan():
 
 
 def folie_herrichten():
-    s = d.slide("Nur Titel", "Lehrer-Info · Herrichten (Stunde 3)", hidden=True)
-    rows = [["☐", "Material", "Inventar / Fundort", "für Gruppe", "Stück"]]
-    gesehen = {}
-    for v in VD.VS:
-        for text, ic, key, n in v["mat"]:
-            gesehen.setdefault(key, []).append(v["gruppe"])
-    for key, grp in gesehen.items():
-        bez, ic, fund, best, art = VD.LM[key]
-        if key in VD.JE_GRUPPE: stueck = "je Gruppe"
-        else: stueck = str(len(set(grp)))
-        rows.append(["☐", bez, fund, ", ".join(str(g) for g in sorted(set(grp))), stueck])
-    size = 10
-    while size > 7 and B.table_h([0.35, 3.3, 3.4, 1.1, 0.85], rows, size=size, minh=0.18) > 3.95: size -= 1
-    B.auto_grid(s, X0, 0.95, [0.35, 3.3, 3.4, 1.1, 0.85], rows, size=size, minh=0.18)
+    s = d.slide("Nur Titel", "Lehrer-Info · Vorbereitung (Stunde 3)", hidden=True)
+    B.tb(s, X0, 0.92, W, 0.34, [[("Die Gruppen wählen ihren Versuch selbst. ", {"bold": True, "color": RUST}),
+                                 ("Was du wirklich brauchst, steht auf den freigegebenen Materiallisten (Stunde 2). Hier die Saal-Grundausstattung je Thema:", {})]], size=11, after=0)
+    rows = [["Gr.", "Thema", "Im Saal bereitlegen (Inventar-Nr., Bestand)"]]
+    for n in range(1, 8):
+        g = GD.G[n]; rows.append([str(n), g["thema"], " · ".join("%s %s" % (a, b) for a, b, c in g["saal"])])
+    size = 11
+    while size > 8 and B.table_h([0.5, 1.8, 6.7], rows, size=size, minh=0.2) > 3.2: size -= 1
+    cells, h = B.auto_grid(s, X0, 1.3, [0.5, 1.8, 6.7], rows, size=size, minh=0.2)
+    B.tb(s, X0, 1.32 + h, W, 0.5, [[("Knapp: ", {"bold": True, "color": RUST}),
+                                    ("nur 3 Kraftmesser (#51, #52, #26) für bis zu vier Gruppen (2, 3, 4, 7) – bei der Freigabe verteilen, Gummiband-Kraftmesser als Ausweg.", {})]], size=11, after=0)
     return s
 
 
 def folie_vorversuche():
-    s = d.slide("Nur Titel", "Lehrer-Info · Vorversuche und offene Punkte", hidden=True)
-    items = ["**Vorversuch Pflicht (Gruppe 3):** Auftrieb mit der tatsächlich verwendeten Waage vorführen. Ist das Signal von etwa 1 g bei 2 cm stabil sichtbar? "
-             "Wenn nicht: nur qualitativ auswerten und das als Grenze dokumentieren – keine Modellwerte in die Messspalten.",
-             "**Gruppe 4:** Waagrechten Zug am Henkel ausprobieren. Hebt der Becher vorne ab, tiefer ansetzen oder eine Schnur verwenden.",
-             "**Gruppen 2, 4 und 7 teilen sich zwei analoge Kraftmesser (#51, #52).** Der Wechsel nach 14 Minuten ist verbindlich. Der digitale Kraftmesser #26 wird nicht gebraucht.",
-             "**Drei Waagen** aus dem 5er-Pack #128 vorher einschalten und auf Funktion prüfen. Gesamtlast immer unter 620 g.",
-             "**Zwei Wannen #6** werden gebraucht (Gruppe 2 und 3) – das ist der gesamte Bestand.",
-             "**Filterpapier #54** vorher zuschneiden, alle Streifen gleich breit.",
+    s = d.slide("Nur Titel", "Lehrer-Info · Vor der Stunde und offene Punkte", hidden=True)
+    items = ["**Stunde 1:** Gruppen mit dem Generator der Lösungsseite auslosen (Reiter »Gruppen«, Namenslisten einmal einfügen) und am Beamer zeigen.",
+             "**Teams:** Einen Kanal oder Ordner je Klasse für die Steckbriefe (Handouts) bereitstellen – bis Stunde 4.",
+             "**Stunde 2:** Materiallisten bei der Freigabe abfotografieren oder im Arbeitsblatt-Stand der Schriftführung ansehen. Daraus richtest du Stunde 3 her.",
+             "**Stunde 3:** Nur das freigegebene Saal-Material bereitlegen. Wer Material von zu Hause vergisst, nimmt Idee 1 der Gruppenkarte (Saal-Variante).",
+             "**Kraftmesser** gibt es nur dreimal (#51, #52, #26). Bei der Freigabe festlegen, welche Gruppe wann misst.",
              "**Gang für Gruppe 1** vorher ansehen: 5 m frei, kein Durchgangsverkehr.",
              "**Einheit einblenden**, wenn es losgeht: GitHub → Actions → »Einheit ein-/ausblenden« → 1ab-nawi/k2-1-kraefte."]
     B.tb(s, X0, 0.95, W, 3.5, ["· " + x for x in items], size=13, after=5)
@@ -590,7 +569,7 @@ def folie_kuerzen():
 
 def folie_quellen():
     s = d.slide("Nur Titel", "Lehrer-Info · Quellen und was nicht geprüft ist", hidden=True)
-    zeilen = ["· Inhalt und Zeiten: dieselbe Datenquelle wie Theorie-Seite, Arbeitsblatt, Versuchsseite und Lösungsseite (werkzeug/quellen/1ab-k2-1-kraefte)."]
+    zeilen = ["· Inhalt und Zeiten: dieselbe Datenquelle wie Theorie-Seite, Arbeitsblatt und Lösungsseite (werkzeug/quellen/1ab-k2-1-kraefte)."]
     zeilen += ["· %s – %s (%s)" % (q[0], q[1], q[2]) for q in I.QUELLEN[:6]]
     zeilen += ["· Nicht geprüft: " + x for x in I.NICHT_GEPRUEFT[:3]]
     B.tb(s, X0, 0.95, W, 3.6, zeilen, size=11, after=4)
@@ -602,10 +581,10 @@ def folie_bedienung(nr_regie):
     B.tb(s, X0, 0.95, W, 3.8, [
         [("Eine Datei für beide Klassen. ", {"bold": True, "color": OLIVE}), ("1AK und 1BK haben denselben Fahrplan – es gibt keine eigene Reihenfolge je Klasse.", {})],
         [("Pro Stunde starten: ", {"bold": True, "color": OLIVE}), ("Bildschirmpräsentation → Benutzerdefinierte Bildschirmpräsentation → »Stunde 1« bis »Stunde 6«. Ohne Menü: im Vortrag die Foliennummer tippen und Enter (die Nummern stehen auf den Regie-Folien).", {})],
-        [("Jede Stunde läuft gleich: ", {"bold": True, "color": OLIVE}), ("»Heute« → »Weißt du noch?« → »Kurz klären« (nur Fehlvorstellungen, Antwort per Klick) → Arbeitsauftrag → »Besprechen« → Abgabe.", {})],
+        [("Jede Stunde läuft gleich: ", {"bold": True, "color": OLIVE}), ("»Heute« → »Weißt du noch?« → Arbeitsauftrag (Marke: SELBSTSTUDIUM, GRUPPENARBEIT, VERSUCH …) → »Das besprechen wir« → Sichern.", {})],
         [("Unten links ", {"bold": True, "color": OLIVE}), ("steht immer, was JETZT läuft (mit Minuten aus dem Zeitplan) und was DANACH kommt – so sehen auch die Kadetten den Ablauf.", {})],
         [("Antworten erscheinen per Klick. ", {"bold": True, "color": OLIVE}), ("Erst nach der Arbeitszeit klicken, sonst lesen die Kadetten mit.", {})],
-        [("Ausgeblendet: ", {"bold": True, "color": OLIVE}), ("Regie je Stunde (Folien %s), Lehrplanbezug, Herrichten, Vorversuche, Kürzungsliste und Quellen. Alle zusammen als Präsentation »Lehrer-Regie«." % nr_regie, {})],
+        [("Ausgeblendet: ", {"bold": True, "color": OLIVE}), ("Regie je Stunde (Folien %s), Lehrplanbezug, Vorbereitung, offene Punkte, Kürzungsliste und Quellen. Alle zusammen als Präsentation »Lehrer-Regie«." % nr_regie, {})],
         [("Die Kadetten arbeiten am Handy. ", {"bold": True, "color": OLIVE}), ("Diese PPP ersetzt die Seiten nicht – sie führt durch die Stunde. Lösungen stehen in der privaten Lösungsseite, nicht hier.", {})]],
         size=13, after=5)
     return s
@@ -619,7 +598,7 @@ def bauen():
     s = d.slide("Titelfolie", "Mechanische Kräfte")
     for ph in s.placeholders:
         if ph.placeholder_format.type == 2:
-            B.text(ph, ["NAWI · 1AB · K2.1 · Unterrichts-PPP: sechs Stunden mit Gruppenprojekt " + I.VS_ID + " · Buch S. 44–65",
+            B.text(ph, ["NAWI · 1AB · K2.1 · Unterrichts-PPP: sechs Stunden, Gruppenprojekt mit selbst gewähltem Versuch · Buch S. 44–65",
                         [("Stand %s · %s · TH-Unterricht (Ablauf)" % (I.STAND, I.V), {"size": 12})]], size=18, color=RGBColor.from_string("C9D6B0"))
     titel = s
     FOLIE["bedien"] = d.slide("Nur Titel", "Lehrer-Info · So führt die PPP", hidden=True)

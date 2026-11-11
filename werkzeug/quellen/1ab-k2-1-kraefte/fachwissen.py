@@ -4,12 +4,12 @@ Wird von der privaten Lösungsmappe gelesen (und später vom TH-Fachwissen-Word)
 Quelle der Inhalte: inhaltliche Ausarbeitung vom 07.11.2026 (Abschnitte 9, 10, 15) plus eigene Prüfung."""
 
 LEHRPLAN = [
-    ("K03 (verbindlich)", "die Grundgrößen und die entsprechenden Einheiten des Internationalen Einheitensystems benennen – abgedeckt in Aufgabe 2 c–e, Aufgabe 4 a/e/i/j, Theorie-Karte »Alle Größen und Einheiten« und Quiz 2/4/5/11."),
+    ("K03 (verbindlich)", "die Grundgrößen und die entsprechenden Einheiten des Internationalen Einheitensystems benennen – abgedeckt in Aufgabe 2 c–e, Aufgabe 8 a/e/i/j, Theorie-Karte »Alle Größen und Einheiten« und Quiz 2/4/5/11."),
     ("K02 (zusätzlich sichtbar)", "einfache naturwissenschaftliche Untersuchungen planen, durchführen, dokumentieren und präsentieren – das Gruppenprojekt V1.20 über die Stunden 2 bis 5. Der Jahresplan wird dadurch nicht geändert."),
     ("N01", "beobachten, beschreiben, berechnen, darstellen und erläutern – Versuchsseite: Beobachtung, Erkenntnis, Interpretation, Schlussfolgerung."),
-    ("N02", "Bedeutung für Wirtschaft, Technik und Umwelt erfassen – Alltagsbeispiel je Gruppe, Zusatzaufgabe 7 zur TU-Wien-Meldung."),
+    ("N02", "Bedeutung für Wirtschaft, Technik und Umwelt erfassen – Alltagsbeispiel je Gruppe, Zusatzaufgabe 11 zur TU-Wien-Meldung."),
     ("P8", "Gesundheit und Sicherheit – Sicherheitsregeln der Messstunde, Druck unter Schuhsohle und Schultergurt."),
-    ("P7", "Quellen und Medien – Quellenprüfung in Stunde 2, Zusatzaufgabe 7."),
+    ("P7", "Quellen und Medien – Quellenprüfung in Stunde 2, Zusatzaufgabe 11."),
     ("GLV 6", "verantwortungsvoller Umgang mit wissenschaftlichen Modellen und Technik – jede Gruppe nennt eine Grenze ihrer Untersuchung. Waffenversuche sind dafür nicht nötig."),
     ("Jahresplan", "Block »E Physik«, E15–E17 sind 7 Stunden laut bloecke.json. Geplant sind hier SECHS Stunden einschließlich Präsentationen; die Lehrer-Seite meldet deshalb eine Abweichung von einer Stunde."),
 ]
@@ -84,8 +84,8 @@ FRAGEN = [
 
 RECHENKONTROLLE = [
     "Aufgabe 2 c) v = 5 m : 4 s = 1,25 m/s · d) 1,25 · 3,6 = 4,5 km/h · e) F = 2 kg · 3 m/s² = 6 N.",
-    "Aufgabe 4 a) F_G = 6 kg · 10 N/kg = 60 N · e) p = 120 N : 0,02 m² = 6000 Pa · i) v = 9 m : 6 s = 1,5 m/s · j) a = 12 N : 3 kg = 4 m/s².",
-    "Zusatzaufgabe 6: p₁ = 600 N : 0,03 m² = 20 000 Pa · p₂ = 600 N : 0,30 m² = 2 000 Pa – zehnmal kleiner.",
+    "Aufgabe 8 a) F_G = 6 kg · 10 N/kg = 60 N · e) p = 120 N : 0,02 m² = 6000 Pa · i) v = 9 m : 6 s = 1,5 m/s · j) a = 12 N : 3 kg = 4 m/s².",
+    "Zusatzaufgabe 10: p₁ = 600 N : 0,03 m² = 20 000 Pa · p₂ = 600 N : 0,30 m² = 2 000 Pa – zehnmal kleiner.",
     "Gruppe 3, Modellwerte für den 8-mm-Stab: 2 / 4 / 6 cm Eintauchtiefe ergeben rechnerisch etwa 1,0 / 2,0 / 3,0 g zusätzlich. Das sind Rechenwerte, keine Messdaten.",
     "Kraftmesser 10 N mit 0,2-N-Teilung: Die kleinste ablesbare Stufe entspricht rund 20 g Masse. Feinere Werte sind nicht ablesbar.",
     "Gruppe 7: Bei 2 N angestrebter Zugkraft zeigen beide Geräte ungefähr 2 N – nicht 4 N.",
@@ -111,7 +111,7 @@ OFFEN = [
     "**Gruppenstärke:** 1AK sieben Vierergruppen, 1BK sechs Vierergruppen und eine Fünfergruppe. Keine namentliche Einteilung vorgegeben.",
     "**Keine festen Termine:** Im Fahrplan steht »geplant«. Es zählt die Reihenfolge der Stunden, nicht das Datum.",
     "**Fällt eine Stunde aus**, entfällt zuerst Stunde 4. Das Meilenstein-PDF aus Stunde 3 taugt als Präsentationsunterlage.",
-    "**Supplierstunde möglich: Stunde 6** – Aufgabe 4, Theorie-Karten und Selbsteinschätzung brauchen kein Material und keinen Versuch.",
+    "**Supplierstunde möglich: Stunde 6** – Aufgabe 8, Theorie-Karten und Selbsteinschätzung brauchen kein Material und keinen Versuch.",
     "**Noch nicht geliefert:** TH-Lehrer- und TH-Kadetten-PPP, Word (AB/Lösung/Fachwissen), Kahoot-Tabelle und ZIP. Das war als Teillieferung so bestellt.",
 ]
 
