@@ -744,7 +744,8 @@
    "versuche.html",
    "quiz.html"
   ],
-  "versteckt": true,
+  "versteckt": false,
+  "aktuell": true,
   "fahrplan": {
    "text": "Die Theorie ist in Teile gegliedert – deine Klasse macht sie in dieser Reihenfolge: 4AK Teil 1 → 2 + 3 → 4 → 5, 4BK Teil 1 → 2 + 3 → 5 → 4. Der 1. Test ist für beide Klassen am Mi 11.11. (4AK danach das Referat EKG/MRT). Pflichtaufgaben werden in der Stunde fertig, es gibt keine Hausübung. Abgabe: Arbeitsblatt-PDF und Versuchs-PDF in LMS (4AK nach Stunde 5 am Mi 18.11., 4BK nach Stunde 4 am Fr 13.11.).",
    "zeilen": [
