@@ -36,9 +36,6 @@ def ressourcen(u, klasse="ks-ressourcen"):
 
 
 def arbeitsauftrag(u):
-    if (u.get("fahrplan") or {}).get("ansicht") == "kompakt":  # Probe K2.1 1AB (11.11.2026): Klasse wählen, nur »Diese Stunde«
-        import fahrplan
-        return '<section class="ks-auftrag" aria-label="Arbeitsauftrag">' + fahrplan.html_kompakt(u) + "</section>"
     zeilen = (u.get("fahrplan") or {}).get("zeilen", [])
     if not zeilen:
         return '<p class="note">Beachte den Arbeitsauftrag deines Lehrers auf dem Arbeitsblatt.</p>'
