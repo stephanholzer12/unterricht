@@ -1,4 +1,4 @@
-"""Private Lehrer-Seite (Lösungsmappe) K2 Globalisierung und aktuelle Weltpolitik (5AK) – als Artifact, nur für Stephan. NICHT ins öffentliche Repository legen.
+"""Private Lehrer-Seite (Lösungsmappe) K2.1 Globalisierung (5AK, Buch S. 42–51) – als Artifact, nur für Stephan. NICHT ins öffentliche Repository legen.
 Aus derselben Datenquelle wie alle anderen Ausgaben (inhalt, plan, fachwissen). Keine Versuche in IWK.
 Aufruf: python3 loesungsmappe.py <TH-Unterricht.pptx> <Ordner mit Folienbildern s-NN.jpg> <Ziel.html>
 Die Folienbilder sind die sichtbaren Folien der TH-Unterricht (LibreOffice-Render), damit die Seite am Beamer-PC als Ersatz taugt."""
@@ -33,16 +33,18 @@ def tab(head, rows, cls=""):
 
 # ---------------------------------------------------------------- Überblick
 offen = [
-    "**Einheit einblenden** vor der ersten Stunde (Fr 13.11.): GitHub → Actions → »Einheit ein-/ausblenden« → 5ak-iwk/k2-globalisierung → einblenden. Die Direktlinks und QR-Codes funktionieren auch versteckt.",
-    "**Zeit:** 4 Stunden à 50 min (Fr 13.11., 20.11., 27.11., 04.12.). Am Fr 20.11. zuerst der Test (20 min) – danach bleiben 28 min für Teil 2.",
-    "**Aktualitätskarten A–E** vor jedem Termin neu prüfen (Zollrechtslage, Namen in Spitzenämtern, KI-Fristen, KI-Risiko-Quellen). Die Stände stehen im Fachwissen.",
-    "**Buchbezug:** Die Stundenzuordnung zu den Buchseiten (S. 41–77) beruht auf dem Inhaltsverzeichnis. Die Seiten selbst hast du nicht als Text im Projekt – bitte kurz gegen das Buch halten.",
-    "**Jahresplan:** E3+E4+E5 sind hier auf 4 Stunden zusammengefasst (Vorgabe aus der Übergabe). Kein Referat, kein Kahoot, keine Hausübung.",
-    "**LMS-Abgabeordner** für 5AK anlegen (eine PDF mit Aufgaben 1–8 am Fr 04.12.).",
+    "**Einheit einblenden** vor der ersten Stunde (Fr 13.11.): GitHub → Actions → »Einheit ein-/ausblenden« → 5ak-iwk/k2-1-globalisierung → einblenden. Die Direktlinks und QR-Codes funktionieren auch versteckt.",
+    "**Zeit:** 2 Stunden à 50 min (Fr 13.11. und Fr 20.11.). Am Fr 20.11. zuerst der angekündigte Test (20 min nur angenommen – bitte bestätigen); danach bleiben etwa 22 min.",
+    "**Jahresplan:** E3 = 2 Stunden. Die Lehraufgaben dort sind verbindlich – bitte gegen die Aufgaben 1–3 halten. Institutionen (S. 52–63) folgen ab Fr 27.11. als eigene Einheit, Auswirkungen danach.",
+    "**Aktualität:** Zollmeldung vom 09.11.2026 (nur Berliner Zeitung geprüft) vor dem 20.11. neu prüfen; Treffen Trump–Xi am APEC-Rand wurde angekündigt, Ergebnis ungeprüft.",
+    "**Nicht geprüft:** Testdauer, Ö1/radioWissen-Beiträge, Beispielländer der Vorjahres-PPP, Hayek-Text (nur Diskussionsgrundlage), keine Buchbilder auf den Seiten.",
+    "**LMS-Abgabeordner** für 5AK anlegen (eine PDF mit den Aufgaben 1–3 am Fr 20.11.).",
+    "**Zum Prüfen (Design):** Die neuen Tipp-Stufen und Theorie-Karten unter den Aufgaben sind eine Probe. Bitte ansehen und freigeben, bevor sie Standard werden.",
 ]
 uber = "<h2>Was du vor Ort noch prüfen musst</h2>" + ul(offen)
-uber += "<h2>Ablauf 5AK – vier Stunden</h2><p>" + md(P.FAHRPLAN_TEXT) + "</p>"
+uber += "<h2>Ablauf 5AK – zwei Stunden</h2><p>" + md(P.FAHRPLAN_TEXT) + "</p>"
 uber += tab(["Std.", "Theorie", "Versuch", "Aufgaben", "Zeit", "Methode"], F.STUNDENVORSCHLAG[I.KLASSEN[0]])
+uber += "<h2>Auf einen Blick</h2>" + tab(["Stunde", "Das Wichtigste", "Methode"], F.AUF_EINEN_BLICK)
 uber += "<h2>Stundenkarten (Minuten je Phase, Summe 50)</h2>"
 for st in P.PLAN[I.KLASSEN[0]]:
     t0, li = 0, []
@@ -51,12 +53,14 @@ for st in P.PLAN[I.KLASSEN[0]]:
     kn = P.KNAPP.get((I.KLASSEN[0], st["std"]))
     uber += (f"<details class='card'><summary><span class='nr'>{st['std']}</span><span class='ttl'>Stunde {st['std']} · {e(st['datum'])} · {e(I.TEILNAME[st['teile'][0]])}</span></summary>"
              f"<div class='body'><div class='scroll'><table>{''.join(li)}</table></div>" + (f"<p class='warnline'><b>Wenn es knapp wird:</b> {e(kn)}</p>" if kn else "") + "</div></details>")
-uber += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
+uber += "<h2>Kürzungsliste (wenn eine Stunde verloren geht)</h2>" + ul(P.KUERZUNG) + "<p>" + md(P.SUPPLIER) + "</p>"
+uber += "<h2>Die größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 uber += "<h2>So bewertet die Seite</h2>" + ul([
-    "**Automatisch geprüft:** Rechen- und Auswahlfelder (Aufgabe 3: Zoll 15 / Summe 115; Aufgaben 4, 5, 6: Auswahlfelder). Der Zahlenvergleich ist bewusst streng; Fehlversuche zeigen Hinweise.",
-    "**Offene Texte bewertest du:** alle Textfelder (z. B. Aufgabe 3 »wer trägt die Last«, 7, 8a–c). Die Seite zeigt nur eine Schreibhilfe mit Stichwörtern und gibt dafür keine Punkte. Aufgabe 1 (Flussbild) und 8c (Urteil) haben zusätzlich ein Foto.",
-    "**PDF:** Kasten »Für LMS: x von y Punkten · Notenvorschlag« zählt nur die automatisch geprüften Teile – bei dieser Einheit ist der Vorschlag darum wenig aussagekräftig; die Note kommt aus deiner Bewertung.",
-    "**Keine Versuche** in IWK. Aufgabe 8 ist eine Meinungs- und Begründungsaufgabe: bewertet wird die Begründung, nicht die politische Richtung.",
+    "**Automatisch geprüft:** Zahlenfelder (Aufgabe 1: 452; Aufgabe 3: 71, 27; Zusatz 5: 1159, 1958) und Auswahlfelder (Aufgabe 2). »Was glaubst du?« wird ohne Wertung gespeichert.",
+    "**Offene Texte bewertest du:** Begründungen (Aufgabe 1 e, 2 b/c, 3 d/e). Die Seite zeigt nur eine Schreibhilfe mit Stichwörtern. Höchstens eine offene Pflichtaufgabe je Einheit – hier Aufgabe 1 (Kriterium begründen).",
+    "**Tipp-Stufen:** Tipp 1 (Denkanstoß) · Tipp 2 (Theorie-Karte) · Tipp 3 (Buch). Im PDF steht, welche Tipps benutzt wurden; Tipps kosten keine Punkte, »Lösung angesehen« zählt 0.",
+    "**PDF:** Kasten »Für LMS: x von y Punkten · Notenvorschlag« zählt nur die automatisch geprüften Teile – die Note kommt aus deiner Bewertung.",
+    "**KI-Regel:** Jede Aufgabe nennt »ohne KI« oder »KI erlaubt« (nur Zusatz 6, nur zum Nachschlagen).",
 ])
 uber += "<h2>Links der Kadetten-Seiten</h2><ul>" + "".join(f"<li><span class='mono'>{I.URL}{k}.html</span></li>" for k in ("theorie", "aufgaben", "quiz")) + "</ul>"
 
@@ -90,10 +94,11 @@ for t in I.T:
                f"<div class='box sol'><b class='k'>Lösung</b>{sol}</div>"
                + (f"<div class='box bew'><b class='k'>Bewertungshilfe</b>Offene Felder ({', '.join(man)}): Die Seite prüft nur Stichwörter als Schreibhilfe – fachlich entscheidest du. Musterantwort oben.</div>" if man else "")
                + (f"<p class='klein'>Hinweis für Kadetten: {md(t['hint'])}</p>" if t.get("hint") else "") + "</div></details>")
-filt = "".join(f"<button type='button' data-f='{h}' aria-pressed='false'>{e(I.GRP[h].split(' · ')[0] + (' · ' + I.GRP[h].split(' · ')[1] if h else ''))}</button>" for h in (1, 2, 3, 4, 0))
+filt = "".join(f"<button type='button' data-f='{h}' aria-pressed='false'>{e(I.GRP[h].split(' · ')[0] + (' · ' + I.GRP[h].split(' · ')[1] if h else ''))}</button>" for h in (1, 2, 0))
 aufgaben = (f"<input class='search' type='search' id='suche' placeholder='Aufgaben durchsuchen' aria-label='Aufgaben durchsuchen'><div class='filter' id='filter'>{filt}</div>"
             + "".join(auf) + "<p class='leer' id='leer' hidden>Nichts gefunden.</p>"
-            + "<h2>Zusatzkarten für Schnelle (optional)</h2>" + tab(["Frage", "Lösung"], I.PARTNERKARTEN))
+            + "<h2>Zusatzkarten für Schnelle (optional)</h2>" + tab(["Frage", "Lösung"], I.PARTNERKARTEN)
+            + "<h2>Quiz »Globalisierung-Check« – Antworten</h2>" + "".join(f"<p><b>{n}. {e(q[1])}</b><br>{md(q[2][0])} <span class='klein'>({e(q[4])})</span></p>" for n, q in enumerate(I.QUIZ, 1)))
 
 # ---------------------------------------------------------------- Fachwissen
 fw = "<h2>Lehrplanbezug</h2><ul>" + "".join(f"<li><b>{e(a)}</b> {md(b)}</li>" for a, b in F.LEHRPLAN) + "</ul>"
@@ -119,15 +124,15 @@ folien_js = json.dumps([[b64(b, "image/jpeg"), t, n] for b, t, n in zip(bilder, 
 optionen = "".join(f"<option value='{i}'>Folie {n} · {e(t)}</option>" for i, (t, n) in enumerate(zip(titel, nr_phys)))
 
 STIL = open(os.path.join(HERE, "loesungsmappe_stil.css"), encoding="utf-8").read()
-seite = f"""<title>Lösungsmappe Globalisierung 5AK</title>
+seite = f"""<title>Lösungsmappe Globalisierung K2.1 5AK</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="../../schriften/schriften.css">
 <style>{STIL}</style>
 <div class="wrap">
 <header class="lese">
-  <div class="eyebrow">IWK · 5AK (13.11.–04.12.) · K2 Globalisierung und aktuelle Weltpolitik · nur für dich</div>
-  <h1>Lösungen und Fachwissen: Globalisierung und Weltpolitik</h1>
-  <p class="sub">Aufgaben 1–8, die Unterrichts-PPP als Folien und das Fachwissen. Keine Versuche. Buch: Trauner IWK, S. 41–77. Stand {e(I.STAND)} · {e(I.V)}</p>
+  <div class="eyebrow">IWK · 5AK (13.11. und 20.11.) · K2.1 Globalisierung · nur für dich</div>
+  <h1>Lösungen und Fachwissen: Globalisierung</h1>
+  <p class="sub">Aufgaben 1–6, die Unterrichts-PPP als Folien und das Fachwissen. Keine Versuche. Buch: Trauner IWK, S. 42–51. Stand {e(I.STAND)} · {e(I.V)}</p>
   <p class="warn">Privat in deinem Konto – nicht an Kadetten weitergeben. Die Kadetten sehen Musterlösungen erst nach der PDF bzw. nach drei Fehlversuchen.</p>
 </header>
 <nav class="tabs" role="tablist" aria-label="Bereiche">
@@ -150,11 +155,11 @@ seite = f"""<title>Lösungsmappe Globalisierung 5AK</title>
 <script>
 const F={folien_js};
 const tabs=[...document.querySelectorAll('nav.tabs button')];
-function zeige(id){{tabs.forEach(b=>{{const on=b.id==='t-'+id;b.setAttribute('aria-selected',on);document.getElementById('p-'+b.id.slice(2)).hidden=!on;}});try{{localStorage.setItem('k2global-tab',id)}}catch(e){{}}}}
+function zeige(id){{tabs.forEach(b=>{{const on=b.id==='t-'+id;b.setAttribute('aria-selected',on);document.getElementById('p-'+b.id.slice(2)).hidden=!on;}});try{{localStorage.setItem('k2-1global-tab',id)}}catch(e){{}}}}
 tabs.forEach(b=>b.addEventListener('click',()=>zeige(b.id.slice(2))));
-try{{const t=localStorage.getItem('k2global-tab');if(t&&document.getElementById('p-'+t))zeige(t)}}catch(e){{}}
+try{{const t=localStorage.getItem('k2-1global-tab');if(t&&document.getElementById('p-'+t))zeige(t)}}catch(e){{}}
 // Herrichten: Haken merken (stabile IDs; der alte Positionsschlüssel wird einmalig übernommen)
-const PRE='k2global-';
+const PRE='k2-1global-';
 function warnung(){{const h=document.getElementById('speicherhinweis');if(h){{h.hidden=false;return;}}
   const p=document.createElement('p');p.id='speicherhinweis';p.setAttribute('role','status');p.setAttribute('aria-live','polite');
   p.style.cssText='background:#fff3cd;color:#5c4400;border:1px solid #d9b44a;padding:8px 12px;margin:8px 0;border-radius:6px';

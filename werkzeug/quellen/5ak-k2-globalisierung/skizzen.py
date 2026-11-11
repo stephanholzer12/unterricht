@@ -114,7 +114,7 @@ def antriebe():
 def digital():
     im, d = canvas(900, 520)
     ctext(d, 450, 10, "Wer nutzt das Internet? Anteil der Bevölkerung 2025", f(FB, 28), INK)
-    gr = [("Länder mit hohem\nEinkommen", 94, GREEN), ("Länder mit niedrigem\nEinkommen", 23, RED), ("Stadt", 85, GREEN), ("Land", 58, ORANGE), ("Männer", 77, GREEN), ("Frauen", 71, ORANGE)]
+    gr = [("Hohes Einkommen\n(Länder)", 94, GREEN), ("Niedriges Einkommen\n(Länder)", 23, RED), ("Stadt", 85, GREEN), ("Land", 58, ORANGE), ("Männer", 77, GREEN), ("Frauen", 71, ORANGE)]
     x0, base, h = 60, 400, 280
     d.line(P(40, base, 860, base), fill=INK, width=3 * S)
     for i, (t, v, c) in enumerate(gr):
