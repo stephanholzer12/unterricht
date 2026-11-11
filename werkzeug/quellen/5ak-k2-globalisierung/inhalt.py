@@ -1,29 +1,27 @@
-"""IWK 5AK · K2 Globalisierung und aktuelle Weltpolitik (Trauner IWK, S. 41–77) – v2.
-Grundlage: ChatGPT-Übergabe »26-27-5AK-K2-Global-Claude-v1« vom 29./30.10.2026 (Planung, Aufgaben 1–8 mit Erwartungshorizont, Karten A–E, Quellen Q1–Q21)
-– von Claude nach dem Regelwerk umgesetzt und fachlich nachgeprüft (Prüfbericht). Jahresplan v14: E3 + E4 + E5 zu einer Einheit zusammengefasst
-(Stephan, 30.10.2026): Fr 13.11., Fr 20.11. (zuerst 20 min angekündigter Test), Fr 27.11., Fr 04.12.2026; Annahme 50 min je Stunde.
-Durchgehender Fall: Sportuhr mit KI-Dienst (didaktisches Modell, keine reale Lieferkette). Kein Versuch, kein Kahoot, keine Referate, keine Hausübung.
-Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge).
-Korrekturen gegenüber der Übergabe (Prüfbericht): Zollkarte A aktualisiert (US-Supreme-Court 20.02.2026), Lagarde-Meldung vom 29.10. nur sekundär belegt (Abgang 07.02.2027 laut Reuters) und
-nicht verwendet, IEA-Zahlen auf die bestätigten Werte (415 TWh 2024, rund 945 TWh Projektion 2030) gestellt, 02.12.2026-Verbot nur aus einer Sekundärquelle, Primärquelle ungeprüft, weggelassen."""
+"""IWK 5AK · K2.1 Die Welt ohne Grenzen: Globalisierung (Trauner IWK, Teil II, S. 42–51) – v5.
+Neu aufgebaut am 11.11.2026 nach den Schulbuchseiten S. 42–51 und Stephans PPP des Vorjahres (»Globalisierung – wann begann sie?«); die frühere Fassung (v1–v4, Sportuhr-Modellfall,
+KI-Regeln, vier Stunden) ist ersetzt. Stundenplan (Stephan, 11.11.2026): Fr 13.11. = Stunde 1 (volle Stunde), Fr 20.11. = Stunde 2 mit angekündigtem Test (Annahme 20 min).
+Institutionen der Globalisierung (Buch S. 52–63) folgen als eigene Einheit ab Fr 27.11., Auswirkungen (S. 64–77) danach – nicht Teil dieser Einheit.
+Realistisch nutzbar sind 40 min je Stunde (Regel 06.11.2026); Stunde 2: 20 min Test + 20 min Unterricht.
+Kein Versuch, kein Kahoot, keine Referate, keine Hausübung. Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "31.10.2026"
-V = "v4"                       # v1 = ChatGPT-Übergabe
-ORDNER = "5ak-iwk/k2-globalisierung"
+STAND = "11.11.2026"
+V = "v5"
+ORDNER = "5ak-iwk/k2-1-globalisierung"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
 KLASSE_URL = BASE + "5ak-iwk/"
-EYEBROW = "IWK · 5AK · K2 Globalisierung und Weltpolitik"
-TITEL = "Globalisierung und aktuelle Weltpolitik – von der Sportuhr bis zur KI"
-KURZTITEL = "Globalisierung und aktuelle Weltpolitik"
-BUCH = "Buch S. 41–77"
-KEY = "26-27-5AK-K2-Global-TH-Handy-v1"
-CHECK_KEY = "26-27-5AK-K2-Global-Lernseite-Check-v1"
-PRAEFIX = "26-27-5AK-K2-Global"
-KAP = "K2"
+EYEBROW = "IWK · 5AK · K2.1 Globalisierung"
+TITEL = "Die Welt ohne Grenzen: Globalisierung – Zufall, Überlegenheit oder alternativlos?"
+KURZTITEL = "Globalisierung"
+BUCH = "Buch S. 42–51"
+KEY = "26-27-5AK-K2.1-Global-TH-Handy-v1"
+CHECK_KEY = "26-27-5AK-K2.1-Global-Lernseite-Check-v1"
+PRAEFIX = "26-27-5AK-K2.1-Global"
+KAP = "K2.1"
 TEST = "Fr 20.11.2026"
 
-VIDEOS = {}                      # keine Pflichtvideos, keine Podcasts im Pflichtablauf (Übergabe 11)
+VIDEOS = {}
 
 
 def zeigen(key, lehrer=False):
@@ -31,322 +29,256 @@ def zeigen(key, lehrer=False):
 
 
 KLASSEN = ["5AK"]
-_D = {1: "Fr 13.11.", 2: "Fr 20.11.", 3: "Fr 27.11.", 4: "Fr 04.12."}
+_D = {1: "Fr 13.11.", 2: "Fr 20.11."}
 DATEN = {k: dict(_D) for k in KLASSEN}
-TEIL_STUNDE = {t: {k: t for k in KLASSEN} for t in (1, 2, 3, 4)}
-TEILNAME = {1: "Stunde 1 · Warum steckt in einer Sportuhr die ganze Welt?",
-            2: "Stunde 2 · Wer bezahlt den US-Zoll?",
-            3: "Stunde 3 · KI: Fortschritt, Macht und Risiko",
-            4: "Stunde 4 · Welche Globalisierung wollen wir gestalten?"}
-TEILKURZ = {1: "Sportuhr und Verflechtung", 2: "Zölle und Institutionen", 3: "KI und Globalisierung", 4: "Gestalten und urteilen"}
-TEILBUCH = {1: "Buch S. 43–48 · 64–70", 2: "Buch S. 50–63", 3: "Buch S. 48 · Ergänzung KI", 4: "Buch S. 65–77"}
+TEIL_STUNDE = {t: {k: t for k in KLASSEN} for t in (1, 2)}
+TEILNAME = {1: "Stunde 1 · Wann begann die Globalisierung – und was treibt sie an?",
+            2: "Stunde 2 · Digitalisierung und »Ziele erreicht?« (nach dem Test)"}
+TEILKURZ = {1: "Beginn und Antriebskräfte", 2: "Digitalisierung und Statement-Ampel"}
+TEILBUCH = {1: "Buch S. 42–47", 2: "Buch S. 48–51"}
 
 
 def wann(teil=None):
     if teil: return _D[teil]
-    return " · ".join(_D[t] for t in (1, 2, 3, 4))
+    return " · ".join(_D[t] for t in (1, 2))
 
 
 # ======================================================================= Aufgaben
-# Politische Urteile und offene Erklärungen: »man« (Lehrkraft bewertet), Stichwörter nur als Schreibhilfe. Automatisch geprüft: Aufgabe 3 a/b (Zahl), 3 c (Wer zahlt zuerst?), 5 (Zuordnung), 4 (Zuordnung).
-_KW_STROM = r"bauteil|chip|halbleiter|rohstoff|montage|lieferung|uhr|ware|geld|zahl|euro|dollar|bezahl|kauf|daten|trainingsdaten|server|rechenzentrum|wissen|entwicklung|vorgabe|konstruktion|design|software|know|von |nach |→|->"
+# 3 Pflichtaufgaben (Stunde 1: Aufgabe 1 und 2, Stunde 2: Aufgabe 3) + 3 Zusatzaufgaben (nur wer fertig ist). Höchstens EINE offene Pflichtaufgabe: Aufgabe 1 (Teilfelder, Lehrkraft liest nur c und e).
+# Aufgabe 2 und 3 sind überwiegend automatisch prüfbar. KI-Regel (Stephan, 07.11.2026): jede Aufgabe sagt »ohne KI« oder »KI erlaubt«.
+# tipp1 = Denkanstoß, karte = Theorie-Karte (Tipp 2, aus theorie_daten.KARTEN), tipp3 = Leseauftrag im Buch.
+_OPT = ["Informationsrevolution", "Innovationen im Transport", "Marktwirtschaft", "Liberalisierung", "Transnationale Konzerne", "Normen und Standards"]
 T = [
- # ======================================================= Stunde 1
- {"id": "a1", "nr": 1, "title": "Die Sportuhr ist weltweit vernetzt", "src": "Buch S. 43–48", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 14,
-  "q": "Modell »Sportuhr« (siehe Fallblatt im Theorieteil, Abschnitt »Was Globalisierung verbindet«; die Orte sind angenommen, keine reale Marke). Zeichne auf Papier ein Flussbild "
-       "mit mindestens vier Stationen und fotografiere es. Trage dann hier ein: a) je einen Warenstrom, Geldstrom, Datenstrom und Wissensstrom (»von … nach … : was fließt«), "
-       "b) zwei Akteure und ihren Beitrag zum Produkt, c) einen Engpass und eine Station, die davon betroffen wäre (2 Sätze).",
-  "hint": "Beschriftete Pfeile zählen mehr als schönes Zeichnen. Info: Theorieteil »Was Globalisierung verbindet«",
-  "type": "sketch",
-  "fields": [["ware", "a) Warenstrom (von … nach … : was)"], ["geld", "a) Geldstrom (von … nach … : was)"], ["daten", "a) Datenstrom (von … nach … : was)"], ["wissen", "a) Wissensstrom (von … nach … : was)"],
-             ["akteure", "b) Zwei Akteure und ihr Beitrag"], ["engpass", "c) Engpass und betroffene Station (2 Sätze)"]],
-  "chk": {"ware": {"kw": [["Bauteil, Rohstoff oder Uhr", r"bauteil|chip|halbleiter|rohstoff|montage|lieferung|uhr|ware|teil|produkt|akku|metall"]], "man": True},
-          "geld": {"kw": [["Zahlung", r"geld|zahl|euro|dollar|bezahl|kauf|preis|lohn|gewinn|rechnung|überweis|ueberweis|invest"]], "man": True},
-          "daten": {"kw": [["Daten", r"daten|training|server|rechenzentrum|cloud|auswert|puls|gps|messwert|app|ki"]], "man": True},
-          "wissen": {"kw": [["Entwicklung oder Know-how", r"wissen|entwicklung|vorgabe|konstruktion|design|software|know|forschung|plan|ausbildung|patent|technik"]], "man": True},
-          "akteure": {"kw": [["zwei Akteure", r"unternehmen|anbieter|hersteller|zulieferer|montage|firma|konzern|händler|haendler|kunde|käufer|kaeufer|rechenzentrum|beschäftigte|beschaeftigte|staat|zoll", 2]], "man": True},
-          "engpass": {"kw": [["Engpass und Folge", r"chip|engpass|fehl|ausfall|verzöger|verzoeger|lieferung|montage|stopp|knapp|rohstoff|server|rechenzentrum|absatz|auslief"]], "man": True}},
-  "sol": [["Musterlösung", ["Warenstrom: Halbleiter von Ostasien nach Südostasien (Montage); fertige Uhren von der Montage nach Europa und in die USA. Geldstrom: Käufer in Europa/USA → Anbieter → Zulieferer und Montagebetrieb; Zahlung ans Rechenzentrum für den KI-Dienst.",
-                            "Datenstrom: Trainingsdaten der Uhr → Rechenzentrum → Auswertung zurück an die App. Wissensstrom: Entwicklungsvorgaben und Software aus Europa → Hersteller; Know-how der Montagebetriebe → zurück.",
-                            "Akteure z. B.: Anbieter (Entwicklung, Marke, Vertrieb) · Montagebetrieb (Fertigung) · Chiphersteller · Rechenzentrumsanbieter. Wert entsteht auch durch Entwicklung, Software und Vertrieb – nicht nur durch Montage.",
-                            "Engpass z. B.: Fehlt der Chip, verzögert sich die Montage und damit die Auslieferung nach Europa und in die USA. Beschriftete Verknüpfungen sind wichtiger als künstlerische Gestaltung."]]],
-  "fsol": {"ware": "z. B. Chips Ostasien → Montage Südostasien", "geld": "z. B. Käufer → Anbieter → Zulieferer", "daten": "z. B. Trainingsdaten → Rechenzentrum", "wissen": "z. B. Entwicklungsvorgaben → Hersteller",
-           "akteure": "z. B. Anbieter (Entwicklung, Vertrieb) · Montagebetrieb (Fertigung)", "engpass": "z. B. Chip fehlt → Montage steht → keine Auslieferung"},
-  "tip": ["Was Globalisierung verbindet", "theorie.html#verbindet"], "besprechen": True},
-
- {"id": "a2", "nr": 2, "title": "Folgen sind ungleich verteilt", "src": "Buch S. 64–70", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 10,
-  "q": "Füll je eine Zeile für Wirtschaft, Gesellschaft und Umwelt aus: ein möglicher Vorteil, eine mögliche Belastung und die betroffene Gruppe (jeweils kurz). "
-       "Ergänze dann eine Bedingung, unter der sich eine dieser Folgen verändert. Schreib zuerst in dein Heft, dann hierher.",
-  "hint": "Es gibt kein »alle gewinnen« und kein »alle verlieren«. Info: Theorieteil »Wer gewinnt – und wer trägt die Kosten?«",
+ {"id": "a1", "nr": 1, "title": "Wann begann die Globalisierung?", "src": "Buch S. 43–44", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 9,
+  "q": "Lies im Buch S. 43–44 den Abschnitt »Für manche begann die Globalisierung …« und die Absätze darunter. KI: ohne KI. "
+       "a) Tipp zuerst, ohne nachzulesen (Was glaubst du?). b) Nenne drei Ereignisse, die man als Beginn ansetzen kann (Stichwort + Jahr). "
+       "c) Rechne: Wie viele Jahre liegen zwischen 1492 und 1944? d) Welche Aussage passt zum Buch? e) Welcher Beginn überzeugt dich am meisten? Begründe in 2 Sätzen.",
+  "hint": "Es gibt keine richtige Jahreszahl – es zählt, welches Kriterium du wählst.",
   "type": "multi",
-  "fields": [["wirtschaft", "Wirtschaft: Vorteil · Belastung · betroffene Gruppe"], ["gesellschaft", "Gesellschaft: Vorteil · Belastung · betroffene Gruppe"],
-             ["umwelt", "Umwelt: Vorteil · Belastung · betroffene Gruppe"], ["bedingung", "Eine Bedingung, unter der sich eine Folge ändert"]],
-  "chk": {"wirtschaft": {"kw": [["Vorteil und Belastung", r"markt|absatz|export|arbeitsplat|einkommen|wettbewerb|preis|druck|zulieferer|betrieb|lieferdruck|kosten|billig|unternehm"]], "man": True},
-          "gesellschaft": {"kw": [["Vorteil und Belastung", r"einkommen|wissen|bildung|arbeit|lohn|bedingung|ungleich|zugang|migration|abwander|digital|familie|beschäftigte|beschaeftigte|region"]], "man": True},
-          "umwelt": {"kw": [["Vorteil und Belastung", r"emission|abfall|rohstoff|energie|effizien|technik|sauber|umwelt|verbrauch|klima|müll|muell|recycl|transport"]], "man": True},
-          "bedingung": {"kw": [["Bedingung", r"wenn|falls|kontroll|standard|prüf|pruef|reparier|langlebig|gesetz|regel|mindest|lieferketten|zertifi|überprüf|ueberpruef"]], "man": True}},
-  "sol": [["Musterlösung", ["Wirtschaft: Zugang zu größeren Märkten (Vorteil); Wettbewerbs- oder Lieferdruck für bestimmte Betriebe, z. B. Zulieferer mit knappen Margen (Belastung).",
-                            "Gesellschaft: Einkommen und Wissenstransfer in der Montageregion (Vorteil); problematische Arbeitsbedingungen oder ungleicher Zugang (Belastung). Bei Abwanderung: Gewinn für die einzelne Person, mögliche Engpässe im Herkunftsland.",
-                            "Umwelt: effizientere Produktion, Verbreitung sauberer Technik (Vorteil); Rohstoffbedarf, Emissionen und Elektroschrott (Belastung). Die Umweltwirkung nicht nur aus Transportkilometern ableiten.",
-                            "Bedingung z. B.: überprüfbarer Arbeitsstandard oder eine langlebige, reparierbare Uhr – dann verändert sich die Belastung."]]],
-  "fsol": {"wirtschaft": "Markt größer · Druck auf Zulieferer", "gesellschaft": "Einkommen, Wissen · schlechte Arbeitsbedingungen", "umwelt": "effizientere Technik · Rohstoffe, Abfall",
-           "bedingung": "z. B. überprüfbare Sozialstandards, reparierbare Uhr"},
-  "tip": ["Wer gewinnt – und wer trägt die Kosten?", "theorie.html#folgen"], "besprechen": True},
+  "fields": [["wg", "a) Was glaubst du? Die Globalisierung begann …", ["um 1492 (Kolumbus)", "um 1844 (erste Nachricht per Telegraf)", "um 1944 (IWF und Weltbank)", "erst in den 1980er/1990er Jahren (Technik, Internet)", "je nach Kriterium früher oder später"], False],
+             ["drei", "b) Drei Ereignisse (Stichwort + Jahr)"], ["jahre", "c) Jahre zwischen 1492 und 1944"],
+             ["buch", "d) Welche Aussage passt zum Buch?", ["Es gibt nur einen einzigen, klar belegten Beginn.", "Je nach Kriterium beginnt die Globalisierung früher oder später.", "Sie begann erst mit dem Internet.", "Sie begann mit dem Ersten Weltkrieg."]],
+             ["wahl", "e) Mein Beginn und warum (2 Sätze)"]],
+  "chk": {"drei": {"kw": [["drei Ereignisse", r"kolumbus|1492|adam smith|morse|1844|telegraf|iwf|weltbank|1944|gatt|gats|1995|internet|satellit|kommunikationstechn|1980|1960|handelshemmnis|dampf|eisenbahn|container", 3]], "man": True},
+          "jahre": {"num": 452, "ende": True},
+          "buch": {"sel": "Je nach Kriterium beginnt die Globalisierung früher oder später."},
+          "wahl": {"kw": [["Begründung", r"weil|da |denn|deshalb|kriteri|technik|handel|verflecht|regel|netz|kommunikation|zeit|schiff"]], "man": True}},
+  "sol": [["Musterlösung", ["a) Ohne Wertung – die Vermutung wird am Ende mit dem Buch verglichen.",
+                           "b) Z. B.: 1492 Kolumbus erreicht Amerika · 1844 erste Nachricht per Telegraf (Morse) · 1944 Gründung von IWF und Weltbank · 1980er technische Entwicklungen, Rivalität USA – Sowjetunion · 1995 WTO löst das GATT ab · Kommunikationssatelliten und Internet.",
+                           "c) 1944 − 1492 = 452 Jahre.",
+                           "d) Je nach Kriterium (Entdeckungen, Handelsliberalismus, Technik, Institutionen) beginnt die Globalisierung früher oder später. Das Buch nennt auch die Deglobalisierung der Zwischenkriegszeit.",
+                           "e) Offen. Gute Antworten nennen ein Kriterium (z. B. Verflechtung über Kontinente = 1492; Regeln = 1944; Datenverkehr = Internet) und begründen, warum es Globalisierung ausmacht."]]],
+  "fsol": {"wg": "keine Wertung", "drei": "z. B. 1492 Kolumbus · 1844 Telegraf · 1944 IWF/Weltbank", "jahre": "452", "buch": "je nach Kriterium früher oder später", "wahl": "ein Kriterium + Begründung"},
+  "tip": ["Wann begann die Globalisierung?", "theorie.html#beginn"], "besprechen": True,
+  "tipp1": "Denk an ein Kriterium: Handel über Kontinente, schnelle Nachrichten, gemeinsame Regeln oder Internet – je nachdem beginnt die Globalisierung früher oder später.",
+  "tipp3": "Lies im Buch S. 43 den Kasten »Für manche begann die Globalisierung …« und S. 44 die ersten beiden Absätze.",
+  "karte": "beginn",
+  "wgvergleich": {"feld": "wg", "text": "Das Buch nennt mehrere Standpunkte (1492, Mitte des 19. Jahrhunderts, 1944, 1980er, Kommunikationstechnik). Die Antwort »je nach Kriterium früher oder später« passt am besten – eine einzige Geburtsstunde gibt es nicht.", "richtig": "je nach Kriterium früher oder später"}},
 
- # ======================================================= Stunde 2
- {"id": "a3", "nr": 3, "title": "Ein Zoll und seine Folgen", "src": "Buch S. 50–51 · Karte A", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 8,
-  "q": "Rechenmodell, kein echter Zollbescheid: Ein US-Importeur führt eine Uhr mit einem unveränderten Zollwert von 100 US-Dollar ein. Für das Beispiel gilt ein Zollsatz von 15 Prozent; weitere Kosten bleiben unberücksichtigt. "
-       "a) Berechne den Zoll (nur die Zahl, in US-Dollar). b) Berechne Zollwert plus Zoll. c) Wer führt den Zoll zuerst ab? d) Erkläre zwei Wege, wie sich die wirtschaftliche Belastung verteilen kann. "
-       "e) Warum lässt sich daraus der Ladenpreis nicht bestimmen? (1 Satz)",
-  "hint": "Rechenweg ins Heft. Info: Theorieteil »Zölle: Wer zahlt – und wer trägt die Last?«",
+ {"id": "a2", "nr": 2, "title": "Sechs Antriebskräfte und Liberalisierung", "src": "Buch S. 45–47", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 10,
+  "q": "Lies im Buch S. 45–47 die Antriebskräfte. KI: ohne KI. a) Ordne vier Beispiele der passenden Antriebskraft zu. b) Erkläre den Begriff »Liberalisierung« in eigenen Worten (1–2 Sätze, Buch S. 46). "
+       "c) Nenne einen Bezug zu einem anderen Prozess der Globalisierung (z. B. Konzerne, Transport, Internet).",
+  "hint": "Jedes Beispiel passt am besten zu genau einer Antriebskraft. Info: Theorie-Karte »Sechs Antriebskräfte«",
   "type": "multi",
-  "fields": [["zoll", "a) Zoll in US-Dollar"], ["summe", "b) Zollwert plus Zoll in US-Dollar"], ["wer", "c) Wer führt den Zoll zuerst ab?"], ["wege", "d) Zwei Wege der Belastung"], ["laden", "e) Warum ist der Ladenpreis offen? (1 Satz)"]],
-  "chk": {"zoll": {"num": 15, "ende": True}, "summe": {"num": 115, "ende": True},
-          "wer": {"kw": [["Importeur (zahlt an die US-Zollbehörde)", r"importeur|einführer|einfuehrer|importfirma|importierende|einfuhr"]], "man": True},
-          "wege": {"kw": [["zwei Wege", r"marge|gewinn|preis|anheb|aufschlag|nachlass|rabatt|lieferant|hersteller|verbraucher|käufer|kaeufer|kunde|weitergeb|teilen", 2]], "man": True},
-          "laden": {"kw": [["Gründe", r"nachfrage|vertrag|wechselkurs|kosten|wettbewerb|marge|weitere|annahme|konkurrenz|nicht bekannt|offen|abhängig|abhaengig"]], "man": True}},
-  "sol": [["Musterlösung", ["a) 100 × 0,15 = 15 US-Dollar", "b) 100 + 15 = 115 US-Dollar",
-                            "c) Zuerst führt der Importeur den Zoll an die zuständige US-Zollbehörde ab.",
-                            "d) Z. B.: Der Importeur senkt seine Marge. Oder er erhöht den Preis für Kunden. Auch ein Lieferant kann einen Preisnachlass geben.",
-                            "e) Nachfrage, Verträge, Wechselkurs, weitere Kosten und Wettbewerb beeinflussen den Endpreis. »Das Ausland zahlt alles automatisch« und »der Verbraucher zahlt immer genau 15 % mehr« sind beide zu einfach. Die Rechnung setzt einen unveränderten Zollwert voraus."]]],
-  "fsol": {"zoll": "15", "summe": "115", "wer": "der Importeur (an die US-Zollbehörde)", "wege": "Marge sinkt · Preis steigt (oder Lieferant gibt Nachlass)", "laden": "Nachfrage, Verträge, Wechselkurs, weitere Kosten, Wettbewerb"},
-  "tip": ["Zölle: Wer zahlt – und wer trägt die Last?", "theorie.html#zoelle"], "besprechen": True},
+  "fields": [["f1", "a) Ein Konzern produziert auf drei Kontinenten und verkauft weltweit.", _OPT],
+             ["f2", "a) Staaten senken Zölle und öffnen die Märkte für Telefon- und Stromanbieter.", _OPT],
+             ["f3", "a) Container und Großraumflugzeuge machen Transporte billiger.", _OPT],
+             ["f4", "a) Weltweit gelten dieselben Standards für Stecker und Schienen.", _OPT],
+             ["libdef", "b) Liberalisierung in eigenen Worten (1–2 Sätze)"], ["libbez", "c) Ein Bezug zu einem anderen Prozess"]],
+  "chk": {"f1": {"sel": "Transnationale Konzerne"}, "f2": {"sel": "Liberalisierung"}, "f3": {"sel": "Innovationen im Transport"}, "f4": {"sel": "Normen und Standards"},
+          "libdef": {"kw": [["Abbau von Hürden", r"abbau|öffn|oeffn|zoll|handelshemmnis|frei|hürde|huerde|beschränk|beschraenk|dereguli|privatisier"], ["Märkte", r"markt|handel|kapital|güter|gueter|dienstleist|wirtschaft"]], "man": True},
+          "libbez": {"kw": [["Bezug", r"konzern|unternehmen|digital|internet|transport|kapital|privatisier|outsourcing|auslager|informations|markt|global|finanz"]], "man": True}},
+  "sol": [["Musterlösung", ["a) Konzern auf drei Kontinenten → Transnationale Konzerne · Zölle senken, Märkte öffnen → Liberalisierung · Container und Großraumflugzeuge → Innovationen im Transport · gleiche Stecker- und Schienenstandards → Normen und Standards.",
+                           "b) Liberalisierung heißt: Staaten bauen Handelshemmnisse (z. B. Zölle und Beschränkungen) ab und öffnen Märkte für Güter, Dienstleistungen und Kapital; dazu gehören auch Deregulierung und Privatisierung (z. B. Telefon, Strom, Wasser).",
+                           "c) Z. B.: Liberalisierung erleichtert es transnationalen Konzernen, weltweit zu produzieren und zu verkaufen. Oder: Das Internet macht den Kapital- und Datenverkehr der liberalisierten Märkte schneller."]]],
+  "fsol": {"f1": "Transnationale Konzerne", "f2": "Liberalisierung", "f3": "Innovationen im Transport", "f4": "Normen und Standards", "libdef": "Abbau von Handelshemmnissen, Öffnung der Märkte", "libbez": "z. B. Konzerne nutzen offene Märkte"},
+  "tip": ["Sechs Antriebskräfte", "theorie.html#antrieb"], "besprechen": True,
+  "tipp1": "Frag dich bei jedem Beispiel: Geht es um Technik, um Regeln, um Unternehmen oder um offene Märkte?",
+  "tipp3": "Lies im Buch S. 45 (Informationsrevolution, Transport) und S. 46 (Marktwirtschaft, Liberalisierung, Konzerne, Normen).",
+  "karte": "antrieb"},
 
- {"id": "a4", "nr": 4, "title": "Drei Probleme, drei Institutionen", "src": "Buch S. 52–63 · Karte B", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 9,
-  "q": "In Dreiergruppen: Trag für WTO, IWF und Weltbank je eine Hauptaufgabe, ein Instrument und eine Grenze ein (Stichwörter). Ordne danach die drei Fälle zu: "
-       "Fall 1: Zwei Staaten streiten über eine Handelsbeschränkung. Fall 2: Ein Staat kann seine Zahlungen ans Ausland kurzfristig nicht finanzieren. Fall 3: Ein langfristiges Vorhaben soll Stromversorgung oder Schulen verbessern.",
-  "hint": "Auch in der Realität können mehrere Akteure beteiligt sein – hier zählt die Hauptzuständigkeit. Info: Theorieteil »Wer organisiert Regeln und Finanzierung?«",
+ {"id": "a3", "nr": 3, "title": "Digital Divide: Wer ist offline?", "src": "Buch S. 48 · ITU 2025", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 8,
+  "q": "Lies im Buch S. 48 »Ein Segen für alle?« und werte die Tabelle aus (ITU, Facts and Figures 2025, Anteil der Menschen, die das Internet nutzen). KI: ohne KI. "
+       "a) Wie groß ist der Unterschied zwischen Ländern mit hohem und mit niedrigem Einkommen (Prozentpunkte)? b) Unterschied Stadt – Land (Prozentpunkte)? c) Wie viele Menschen sind laut ITU 2025 noch offline? "
+       "d) Das Buch nennt rund 32 % ohne Internet. Woran kann es liegen, dass Quellen verschieden zählen? e) Nenne einen Lebensbereich, in dem Offline-Sein heute ein Nachteil ist, und warum (1 Satz).",
+  "hint": "Prozentpunkte = Differenz der beiden Prozentwerte. Quellen zählen oft verschieden (Jahr, Messweise).",
   "type": "multi",
-  "fields": [["wto", "WTO: Hauptaufgabe · Instrument · Grenze"], ["iwf", "IWF: Hauptaufgabe · Instrument · Grenze"], ["wb", "Weltbank: Hauptaufgabe · Instrument · Grenze"],
-             ["f1", "Fall 1 (Handelsstreit) gehört vor allem zu …", ["WTO", "IWF", "Weltbank"], False], ["f2", "Fall 2 (Zahlungsproblem) gehört vor allem zu …", ["WTO", "IWF", "Weltbank"], False],
-             ["f3", "Fall 3 (langfristiges Vorhaben) gehört vor allem zu …", ["WTO", "IWF", "Weltbank"], False]],
-  "chk": {"f1": {"sel": "WTO"}, "f2": {"sel": "IWF"}, "f3": {"sel": "Weltbank"},
-          "wto": {"kw": [["Handelsregeln oder Streit", r"handel|regel|streit|verhandl|zoll|schlicht|gatt|dienstleist|schutz"], ["Grenze", r"konsens|keine weltregierung|blockier|berufung|durchsetz|langsam|einstimm|nicht erzwing|kein zwang|macht"]], "man": True},
-          "iwf": {"kw": [["Stabilität oder Zahlungsbilanz", r"stabil|währung|waehrung|zahlungsbilanz|kredit|überwach|ueberwach|beratung|finanz|krise|lücke|luecke"], ["Grenze", r"bedingung|auflage|sozial|spar|stimmrecht|nicht alle|kritik|macht|quote"]], "man": True},
-          "wb": {"kw": [["Entwicklungsfinanzierung", r"entwicklung|kredit|projekt|infrastruktur|zuschuss|beratung|armut|langfristig|ida|ibrd|schule|strom|vergünstigt"], ["Grenze", r"schulden|folgen|ökolog|oekolog|sozial|auswahl|stimmrecht|kritik|prüf|pruef|abhängig|abhaengig"]], "man": True}},
-  "sol": [["Musterlösung", ["WTO: Hauptaufgabe Handelsregeln, Verhandlungen und Streitbeilegung · Instrument: Streitverfahren (Panels) · Grenze: keine Weltregierung, Entscheidungen im Konsens, Berufungsinstanz derzeit blockiert.",
-                            "IWF: Hauptaufgabe Stabilität, Überwachung und Beratung, Finanzierung bei Zahlungsbilanzproblemen · Instrument: Kredite mit Auflagen · Grenze: Mittel und Bedingungen lösen nicht automatisch alle sozialen Probleme; Stimmrechte nach Kapitalanteil.",
-                            "Weltbank: Hauptaufgabe Entwicklungsfinanzierung und Beratung · Instrument: vergünstigte Kredite (je nach Instrument auch Zuschüsse) für Projekte · Grenze: Projektauswahl, Schulden sowie soziale und ökologische Folgen müssen geprüft werden.",
-                            "Fall 1 → WTO · Fall 2 → IWF · Fall 3 → vor allem Weltbank. Die OECD liefert Daten, Analysen und Standards – sie ersetzt weder WTO noch IWF."]]],
-  "fsol": {"wto": "Handelsregeln, Streitverfahren · keine Weltregierung", "iwf": "Stabilität, Kredit bei Zahlungsproblemen · Auflagen", "wb": "Entwicklungsprojekte, vergünstigte Kredite · Schulden prüfen",
-           "f1": "WTO", "f2": "IWF", "f3": "Weltbank"},
-  "tip": ["Wer organisiert Regeln und Finanzierung?", "theorie.html#institutionen"], "besprechen": True},
+  "tab": [["Gruppe", "Internetnutzer 2025"], ["Länder mit hohem Einkommen", "94 %"], ["Länder mit niedrigem Einkommen", "23 %"], ["Stadtbevölkerung", "85 %"], ["Landbevölkerung", "58 %"], ["Männer", "77 %"], ["Frauen", "71 %"]],
+  "tabnote": "Quelle: ITU, Facts and Figures 2025 (17.11.2025). Weltweit rund 6 Mrd. Menschen online, 2,2 Mrd. offline.",
+  "fields": [["diff", "a) Hoch – niedrig (Prozentpunkte)"], ["sl", "b) Stadt – Land (Prozentpunkte)"],
+             ["off", "c) Offline laut ITU 2025", ["rund 2,2 Milliarden", "rund 220 Millionen", "rund 6 Milliarden", "rund 0,5 Milliarden"]],
+             ["quelle", "d) Warum zählen Quellen verschieden?", ["Jahr, Messweise und Definition von »Nutzer« können sich unterscheiden.", "Eine der beiden Quellen ist wertlos.", "Das Internet wurde 2025 wieder kleiner.", "Offline gibt es nur auf dem Land."]],
+             ["bereich", "e) Lebensbereich und Nachteil (1 Satz)"]],
+  "chk": {"diff": {"num": 71, "ende": True}, "sl": {"num": 27, "ende": True}, "off": {"sel": "rund 2,2 Milliarden"},
+          "quelle": {"sel": "Jahr, Messweise und Definition von »Nutzer« können sich unterscheiden."},
+          "bereich": {"kw": [["Bereich", r"arbeit|bildung|schule|lernen|gesundheit|telemedizin|bank|behörde|behoerde|homeoffice|einkauf|kommunikation|information|nachrichten|corona|amt|job"]], "man": True}},
+  "sol": [["Musterlösung", ["a) 94 − 23 = 71 Prozentpunkte. b) 85 − 58 = 27 Prozentpunkte. c) Rund 2,2 Milliarden Menschen (ITU 2025).",
+                           "d) Quellen können verschiedene Jahre, Messmethoden und Definitionen (Nutzer, Zugang, Haushalte) verwenden. Darum nennt man Quelle und Jahr und vergleicht nicht blind. Das Buch nennt rund 32 % für 2025; die ITU rund 2,2 Mrd. von ca. 8 Mrd. Menschen, also etwa ein Viertel – gleiche Richtung, andere Zahl.",
+                           "e) Z. B. Bildung: Distance Learning und Plattformen setzen Internet voraus. Oder Arbeit/Homeoffice, Telemedizin, Behördenwege, Einkauf. In der Corona-Pandemie hat das die Ungleichheit sichtbar gemacht."]]],
+  "fsol": {"diff": "71", "sl": "27", "off": "rund 2,2 Milliarden", "quelle": "Jahr, Messweise, Definition", "bereich": "z. B. Bildung: Plattformen brauchen Internet"},
+  "tip": ["Digital Divide", "theorie.html#digital"], "besprechen": True,
+  "tipp1": "Prozentpunkte rechnest du als Unterschied: größerer Wert minus kleinerer Wert.",
+  "tipp3": "Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?« und den Kasten mit der Definition von »Digital Divide«.",
+  "karte": "digital"},
 
- # ======================================================= Stunde 3
- {"id": "a5", "nr": 5, "title": "KI: Welche Art von Regel?", "src": "Buch S. 48 · Karten A und C", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 10,
-  "q": "Ordne die vier vereinfachten Fälle zu. Die Karten im Theorieteil (Abschnitt »KI braucht Daten, Chips, Strom und Regeln«) nennen die Voraussetzungen; es geht um die Grundidee, nicht um ein Gerichtsurteil. "
-       "Fall 1: Ein Unternehmen nutzt KI, die Bewerbungen vorsortiert. Fall 2: Ein Kundendienst setzt einen Chatbot ein, der wie ein Mensch auftritt, ohne es zu sagen. "
-       "Fall 3: Ein System bewertet Menschen über längere Zeit nach sachfremdem Sozialverhalten und benachteiligt sie dadurch in einem anderen Lebensbereich. "
-       "Fall 4: Jemand lässt einen privaten Trainingsplan sprachlich überarbeiten. Dann: Welches Ziel betont die EU-Regelung, welches der US-KI-Aktionsplan?",
-  "hint": "Verbot, Hochrisiko und Transparenzpflicht sind verschiedene Kategorien. Info: Theorieteil »KI braucht Daten, Chips, Strom und Regeln«",
+ # ======================================================= Zusatz (nur wer fertig ist, Gruppe 0)
+ {"id": "a4", "nr": 4, "title": "Woher kommt dein Alltag?", "src": "Buch S. 44 · Arbeitsaufgabe", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+  "q": "Such im Klassenzimmer oder in deiner Tasche drei Gegenstände mit Herkunftsangabe (Etikett, Typenschild, Aufdruck). KI: ohne KI. Trag ein: Gegenstand und Land. Wo ist die Herkunft schwer zu erkennen – und warum? "
+       "Bundesheer-Bezug: Wähle ein Ausrüstungsstück (z. B. Rucksack, Stiefel, Funkgerät) und überlege, welche Stufen der Herstellung im Ausland liegen könnten (als Vermutung kennzeichnen).",
+  "hint": "Auf dem Etikett steht oft nur, wo zusammengebaut wurde – nicht, woher die Teile kommen.",
   "type": "multi",
-  "fields": [["k1", "Fall 1 (Bewerbungen vorsortieren)", ["mögliche verbotene Praxis", "möglicher Hochrisiko-Einsatz", "Transparenzpflicht", "keine besondere Einstufung aus diesen Angaben"], False],
-             ["k2", "Fall 2 (Chatbot im Kundendienst)", ["mögliche verbotene Praxis", "möglicher Hochrisiko-Einsatz", "Transparenzpflicht", "keine besondere Einstufung aus diesen Angaben"], False],
-             ["k3", "Fall 3 (soziale Bewertung)", ["mögliche verbotene Praxis", "möglicher Hochrisiko-Einsatz", "Transparenzpflicht", "keine besondere Einstufung aus diesen Angaben"], False],
-             ["k4", "Fall 4 (privater Trainingsplan)", ["mögliche verbotene Praxis", "möglicher Hochrisiko-Einsatz", "Transparenzpflicht", "keine besondere Einstufung aus diesen Angaben"], False],
-             ["ziele", "EU: betontes Ziel · USA (KI-Aktionsplan): betontes Ziel"]],
-  "chk": {"k1": {"sel": "möglicher Hochrisiko-Einsatz"}, "k2": {"sel": "Transparenzpflicht"}, "k3": {"sel": "mögliche verbotene Praxis"}, "k4": {"sel": "keine besondere Einstufung aus diesen Angaben"},
-          "ziele": {"kw": [["EU-Ziel", r"grundrecht|sicherheit|vertrauen|risiko|schutz|regel|innovation"], ["US-Ziel", r"innovation|infrastruktur|führung|fuehrung|wirtschaft|sicherheitspolit|tempo|rechenzentr|partner|diplomatie|export"]], "man": True}},
-  "sol": [["Musterlösung", ["Fall 1: möglicher Hochrisiko-Einsatz (Bewerberauswahl) – die genauen Voraussetzungen sind zu beachten.",
-                            "Fall 2: Transparenzpflicht – man muss erkennen können, dass man mit einer KI spricht.",
-                            "Fall 3: mögliche verbotene Praxis (soziale Bewertung) unter den gesetzlichen Bedingungen.",
-                            "Fall 4: aus diesen Angaben keine besondere Einstufung; Datenschutz und andere Regeln können trotzdem eine Rolle spielen.",
-                            "EU: u. a. Grundrechte, Sicherheit und Vertrauen, außerdem Innovation. USA (Aktionsplan Juli 2025): u. a. Innovation, Infrastruktur, wirtschaftliche und sicherheitspolitische Führung. Beide verfolgen mehrere Ziele – »EU verbietet Innovation, USA haben keinerlei Regeln« ist zu einfach."]]],
-  "fsol": {"k1": "möglicher Hochrisiko-Einsatz", "k2": "Transparenzpflicht", "k3": "mögliche verbotene Praxis", "k4": "keine besondere Einstufung aus diesen Angaben", "ziele": "EU: Grundrechte, Sicherheit, Vertrauen · USA: Innovation, Infrastruktur, Führung"},
-  "tip": ["KI braucht Daten, Chips, Strom und Regeln", "theorie.html#ki_global"], "besprechen": True},
+  "fields": [["funde", "Drei Gegenstände mit Land"], ["schwer", "Wo ist die Herkunft schwer zu erkennen – und warum?"], ["heer", "Ausrüstungsstück: mögliche Auslands-Stufen (Vermutung)"]],
+  "chk": {"funde": {"kw": [["drei Gegenstände", r"[a-zäöüß]{3,}.{0,20}(china|japan|vietnam|deutschland|österreich|oesterreich|italien|usa|türkei|tuerkei|indien|bangladesch|polen|tschechien|taiwan|korea|indonesien|kambodscha|slowakei|ungarn|frankreich|schweiz|spanien|rumänien|rumaenien|bulgarien|pakistan|thailand|malaysia|mexiko|brasilien)", 3]], "man": True},
+          "schwer": {"kw": [["Begründung", r"weil|montage|bauteil|teile|etikett|marke|zusammenbau|rohstoff|nur|angabe|kennzeichn|made in|hergestellt"]], "man": True},
+          "heer": {"kw": [["Vermutung", r"vermut|könnte|koennte|wahrscheinlich|möglich|moeglich|vielleicht|rohstoff|bauteil|stoff|chip|montage|nähen|naehen|produktion|ausland"]], "man": True}},
+  "sol": [["Musterlösung (Beispiele)", ["Funde: z. B. Rucksack – Vietnam · Handy – China · Kugelschreiber – Deutschland. Die Länder hängen vom Etikett ab.",
+                                     "Schwierig: Das Etikett nennt meist den Ort der letzten wesentlichen Fertigung, nicht die Herkunft der Rohstoffe und Bauteile; Marke und Firmensitz sagen wenig.",
+                                     "Ausrüstung: z. B. Stiefel – Leder, Gummi, Garn und Montage können aus verschiedenen Ländern stammen; ohne Beleg bleibt es eine Vermutung."]]],
+  "fsol": {"funde": "z. B. Rucksack – Vietnam", "schwer": "Etikett nennt nur den Ort der Montage", "heer": "z. B. Stiefel: Material aus dem Ausland (Vermutung)"},
+  "tip": ["Wann begann die Globalisierung?", "theorie.html#beginn"], "besprechen": False,
+  "tipp1": "Schau auf Etiketten, Typenschilder und Aufdrucke – »Made in …« sagt nicht alles.",
+  "tipp3": "Lies im Buch S. 44 den Text »Globalisierung im Alltag« und die Arbeitsaufgabe darunter.",
+  "karte": "beginn"},
 
- {"id": "a6", "nr": 6, "title": "KI-Warnung: Befund, Szenario oder Werbung?", "src": "Buch S. 48 · Quellenkarten 1–4", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 14,
-  "q": "Arbeitsteilig: Wähle deine Quellenkarte (1, 2, 3 oder 4 im Theorieteil, Abschnitt »KI-Risiken prüfen«) und trag ein: Aussage – Beleg – mögliche Interessen – Grenze (je ein kurzer Satz). "
-       "Nach dem Bericht deiner Gruppe (höchstens 45 Sekunden je Karte) schreib einen Satz: Welche Karte liefert eine Messung, welche eine Position?",
-  "hint": "Ein Interesse ist kein Beweis für eine Täuschung – und eine Warnung kann trotzdem begründet sein. Info: Theorieteil »KI-Risiken prüfen«",
+ {"id": "a5", "nr": 5, "title": "US-Zölle: 2025 und heute", "src": "Buch S. 50–51 · aktuelle Meldung", "own": True, "tag": "Zusatz", "h": 0, "zeit": 10,
+  "q": "Das Buch beschreibt US-Zölle des Jahres 2025 (S. 50–51). KI: ohne KI. a) Rechne das Zeitungsbeispiel nach: Ein Gerät kostet vor dem Zoll 799 US-Dollar (Zollwert), der Zollsatz beträgt 145 %. Wie hoch ist der Zoll, wie hoch die Summe (ohne weitere Kosten, gerundet auf ganze US-Dollar)? "
+       "b) Nenne eine Gruppe, die von Zöllen profitieren kann, und eine, die verliert. c) Welche Aussage über solche Zollzahlen stimmt?",
+  "hint": "Das Buch zeigt den Stand 2025. Lies auch die Karte »Zölle 2025 und heute« im Theorieteil.",
   "type": "multi",
-  "fields": [["karte", "Meine Karte", ["1", "2", "3", "4"], False], ["aussage", "Aussage der Quelle"], ["beleg", "Beleg (Art der Quelle, Datum)"], ["interesse", "Mögliche Interessen"], ["grenze", "Grenze der Aussage"],
-             ["vergleich", "Messung oder Position? (1 Satz)"]],
-  "chk": {"aussage": {"kw": [["Aussage", r"warn|fordert|bericht|unterscheid|fehlfunktion|kontrollverlust|simulation|szenario|ziel|aktionsplan|innovation|risiko|test|befund"]], "man": True},
-          "beleg": {"kw": [["Art und Datum", r"statement|bericht|studie|simulation|test|plan|regierung|2023|2025|2026|forscher|unterzeichn|fallstudie|bengio|aktionsplan"]], "man": True},
-          "interesse": {"kw": [["Interessen", r"interesse|unternehmen|firma|wirtschaft|regierung|politik|werbung|pr\b|ruf|image|geld|investor|wettbewerb|forschung|markt|aufmerksamkeit|keine"]], "man": True},
-          "grenze": {"kw": [["Grenze", r"nicht|kein|nur|simulation|künstlich|kuenstlich|unsicher|zukunft|wahrscheinlich|messung|beweis|gestellt|test|ziel|alltag|übertrag|uebertrag"]], "man": True},
-          "vergleich": {"kw": [["Messung/Position", r"messung|messen|position|forderung|warn|bericht|simulation|versuch|ziel|plan|statement|befund"]], "man": True}},
-  "sol": [["Musterlösung", ["Quellenkarte 1 (CAIS-Statement 30.05.2023): fordert, das Aussterberisiko durch KI als globale Priorität zu behandeln – eine Position, kein Experiment und keine gemessene Wahrscheinlichkeit. Unterzeichner sind Forscher und Leiter von KI-Unternehmen (Fachwissen und wirtschaftliche Interessen zugleich).",
-                            "Quellenkarte 2 (International AI Safety Report, Feb. 2026): bündelt Forschungsstand; unterscheidet Fehlfunktionen (gibt es) und umfassenden Kontrollverlust (heute nicht erreicht); Zeitpunkt und Wahrscheinlichkeit bleiben unsicher, Fachleute bewerten sie unterschiedlich.",
-                            "Quellenkarte 3 (Forschungsfallstudien Sommer 2026): problematisches Verhalten autonomer Modelle in gestellten Szenarien – kein Bericht über reale Machtübernahme und keine Häufigkeit im Alltag. Der Text stammt von einem KI-Unternehmen (Interessenkonflikt offen benennen), ist aber als Studie prüfbar.",
-                            "Quellenkarte 4 (US-KI-Aktionsplan 23.07.2025): nennt erklärte Ziele und Interessen der US-Regierung (Innovation, Infrastruktur, internationale Führung) – Primärbeleg für Politikziele, kein neutraler Wirkungsnachweis.",
-                            "Satz: Eine Messung liefert höchstens ein Versuch mit klaren Bedingungen (Quellenkarte 3, in Grenzen); Statement und Aktionsplan sind Positionen, der Bericht bündelt Befunde. Eine mögliche PR-Wirkung beweist weder Täuschung noch, dass die Warnung falsch ist."]]],
-  "fsol": {"karte": "A, B, C oder D", "aussage": "was die Quelle sagt", "beleg": "Art der Quelle + Datum", "interesse": "wer hat welches Interesse", "grenze": "was der Befund nicht zeigt", "vergleich": "Position (A, D) vs. Befund/Versuch (B, C)"},
-  "tip": ["KI-Risiken prüfen", "theorie.html#ki_risiko"], "besprechen": True},
+  "fields": [["zoll", "a) Zoll in US-Dollar"], ["summe", "b) Summe in US-Dollar"], ["gv", "b) Eine Gruppe, die profitiert, und eine, die verliert"],
+             ["stand", "c) Welche Aussage stimmt?", ["Zollsätze gelten für Waren, Länder und Zeiträume und haben sich seither mehrfach geändert – Datum nennen.", "Sie gelten unverändert für immer.", "Sie wurden nie wirklich erhoben.", "Sie betreffen nur Österreich."]]],
+  "chk": {"zoll": {"num": 1159, "ende": True}, "summe": {"num": 1958, "ende": True},
+          "gv": {"kw": [["Gewinner", r"heimisch|us-industrie|hersteller|arbeitsplätze|arbeitsplaetze|staat|regierung|zolleinnahmen|landwirt|stahl"], ["Verlierer", r"verbraucher|konsument|importeur|exporteur|händler|haendler|preise|china|unternehmen|apple|aktion|landwirt|kunden"]], "man": True},
+          "stand": {"sel": "Zollsätze gelten für Waren, Länder und Zeiträume und haben sich seither mehrfach geändert – Datum nennen."}},
+  "sol": [["Musterlösung", ["a) 799 × 1,45 = 1 158,55, gerundet 1 159 US-Dollar Zoll. b) 799 + 1 158,55 = 1 957,55, gerundet 1 958 US-Dollar – das entspricht der Zahl im Zeitungsbeispiel des Buches (Annahme: voller Zoll wird weitergegeben, keine weiteren Kosten).",
+                           "Gewinner möglich: heimische Hersteller geschützter Waren, der Staat durch Zolleinnahmen. Verlierer möglich: Verbraucher mit höheren Preisen, Importeure, Exporteure bei Gegenzöllen.",
+                           "c) Solche Zahlen hängen von Datum, Ware, Land und Rechtsgrundlage ab. Seither haben sich Zölle durch Urteile, Verhandlungen und Zollpausen mehrfach geändert (siehe Karte im Theorieteil)."]]],
+  "fsol": {"zoll": "1159", "summe": "1958", "gv": "z. B. heimische Industrie · Verbraucher", "stand": "Datum und Rechtsgrundlage nennen"},
+  "tip": ["Zölle 2025 und heute", "theorie.html#zoelle"], "besprechen": False,
+  "tipp1": "Zoll = Zollwert mal Zollsatz. 145 % sind 1,45.",
+  "tipp3": "Lies im Buch S. 50 den Abschnitt »Donald Trump – Gegner der Globalisierung oder Deal Maker?« und den Zeitungskasten.",
+  "karte": "zoelle"},
 
- {"id": "a7", "nr": 7, "title": "Korrigiere einen fehlerhaften KI-Text", "src": "Buch S. 48 · Karten C–E", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 8,
-  "q": "Der Text ist für den Unterricht gebaut und enthält Fehler – er stammt nicht von einem echten KI-Anbieter: »Laut ILO wird KI jeden vierten Arbeitsplatz abschaffen. Das ist ein Beweis, dass die Machtübernahme bereits läuft. "
-       "In der EU ist KI seit 2026 vollständig verboten. Die Studie aus einer Simulation zeigt außerdem, wie oft KI im Alltag Menschen täuscht.« "
-       "Schreib zu jedem Satz in Stichwörtern, warum er nicht stimmt. Formuliere dann zwei davon richtig und nenn die Quelle. Nenne zum Schluss eine Schutzmaßnahme für einen Betrieb und ihre Grenze.",
-  "hint": "Betroffene Tätigkeiten sind keine verlorenen Arbeitsplätze. Info: Theorieteil »KI braucht Daten, Chips, Strom und Regeln«",
+ {"id": "a6", "nr": 6, "title": "Stiglitz: Was kritisiert er?", "src": "Buch S. 49 · Buch-Aufgaben 1–3", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+  "q": "Lies im Buch S. 49 den Text von Joseph Stiglitz. KI erlaubt: nur um unbekannte Wörter nachzuschlagen – schreib dazu, was du gefragt hast. a) Nenne stichwortartig seine zentralen Argumente (mindestens drei). "
+       "b) Beurteile: Ist Globalisierung für ihn eher positiv oder negativ? Begründe. c) Nimm Stellung zur These, dass die Menschen der wichtigste Produktionsfaktor eines Landes sind (2 Sätze).",
+  "hint": "Stiglitz ist US-Ökonom und war nach dem Buch Chefökonom der Weltbank – er bewertet Globalisierung differenziert.",
   "type": "multi",
-  "fields": [["s1", "Satz 1 (ILO) – warum falsch?"], ["s2", "Satz 2 (Machtübernahme) – warum falsch?"], ["s3", "Satz 3 (EU-Verbot) – warum falsch?"], ["s4", "Satz 4 (Simulation) – warum falsch?"],
-             ["richtig", "Zwei Sätze richtig formuliert, mit Quelle"], ["schutz", "Schutzmaßnahme und ihre Grenze"]],
-  "chk": {"s1": {"kw": [["Tätigkeiten ≠ Arbeitsplätze", r"tätigkeit|taetigkeit|betroffen|einfluss|einwirk|beruf|nicht abgeschafft|kein ersatz|verändert|veraendert|exposure|mögliche|moegliche|messen"]], "man": True},
-          "s2": {"kw": [["Arbeit ≠ Macht", r"arbeit|macht|herrschaft|übernahme|uebernahme|kein beweis|nicht gleich|politisch|automatis|kontrolle|nicht dasselbe|verwechsel"]], "man": True},
-          "s3": {"kw": [["risikobasiert", r"risiko|nicht verboten|kein verbot|teilweise|bestimmte|einzelne|pflicht|anwendung|regel|transparenz|hochrisiko|nur manche"]], "man": True},
-          "s4": {"kw": [["Simulation ≠ Alltag", r"simulation|versuch|künstlich|kuenstlich|bedingung|alltag|häufigkeit|haeufigkeit|quote|nicht übertrag|nicht uebertrag|gestellt|test"]], "man": True},
-          "richtig": {"kw": [["Quelle", r"ilo|iea|eu|verordnung|ki-verordnung|bericht|studie|safety|quelle|2025|2026"]], "man": True},
-          "schutz": {"kw": [["Maßnahme", r"zugriff|freigabe|mensch|protokoll|prüf|pruef|kontrolle|unabhängig|unabhaengig|rechte|begrenz|schulung|test"], ["Grenze", r"grenze|nicht|kein|nie|garantie|fehler|schwäche|schwaeche|umgeh|aufwand|kosten|restrisiko"]], "man": True}},
-  "sol": [["Musterlösung", ["Satz 1: Die ILO misst mögliche Betroffenheit von Tätigkeiten (rund jeder vierte Beschäftigte in einem Beruf mit gewissem Einfluss generativer KI), nicht abgeschaffte Arbeitsplätze; Veränderung von Berufen ist wahrscheinlicher als Ersatz.",
-                            "Satz 2: Eine Aufgabe zu automatisieren ist nicht dasselbe, wie politische Herrschaft auszuüben; Arbeit, Macht, Abhängigkeit und Kontrollverlust sind vier verschiedene Fragen.",
-                            "Satz 3: Die EU-KI-Verordnung ist risikobasiert (Verbote, Hochrisiko, Transparenz) – kein vollständiges KI-Verbot.",
-                            "Satz 4: Ein Versuch unter künstlichen Bedingungen zeigt mögliche Schwachstellen, aber nicht, wie oft etwas im Alltag passiert.",
-                            "Schutzmaßnahmen z. B.: begrenzte Zugriffsrechte, menschliche Freigabe bei folgenreichen Entscheidungen, Protokollierung, unabhängige Prüfung. Keine ist eine absolute Sicherheitsgarantie."]]],
-  "fsol": {"s1": "Tätigkeiten betroffen ≠ Arbeitsplätze abgeschafft", "s2": "Arbeit verändern ≠ Machtübernahme", "s3": "risikobasiert, kein Totalverbot", "s4": "Simulation sagt nichts über Alltagshäufigkeit",
-           "richtig": "z. B. S1 + S3 mit Quelle (ILO 2025, EU-KI-VO)", "schutz": "z. B. menschliche Freigabe – Grenze: keine Garantie"},
-  "tip": ["KI braucht Daten, Chips, Strom und Regeln", "theorie.html#ki_global"], "besprechen": True},
-
- # ======================================================= Stunde 4
- {"id": "a8", "nr": 8, "title": "Gestalten statt nur bewerten", "src": "Buch S. 65–77 · Debattenblatt", "own": True, "tag": "Stunde 4", "h": 4, "zeit": 30,
-  "q": "Frage: »Soll der Anbieter unserer Sportuhr für wichtige Bauteile und KI-Dienste mehrere Bezugsquellen aufbauen, auch wenn das die Kosten erhöht?« "
-       "8a (7 min): Wähle deine Perspektive und trag zwei begründete Argumente, eine konkrete Maßnahme und einen Nachteil deiner eigenen Lösung ein. "
-       "8b (13 min, ohne Handy): Diskussion – trag danach einen belastbaren Zusammenhang und eine offene Behauptung ein, die du beobachtet hast. "
-       "8c (10 min, ohne Handy): Schreib auf Papier dein Urteil mit 100–130 Wörtern und fotografiere es. Es braucht: einen Zusammenhang aus der Lieferkette, eine soziale oder ökologische Folge, "
-       "eine Grenze deiner Maßnahme und einen Satz »Wenn …, dann könnte …; offen bleibt …«.",
-  "hint": "Beide Richtungen sind erlaubt. Bewertet wird Begründung, Gegenargument und gekennzeichnete Unsicherheit – nicht deine politische Richtung. Info: Theorieteil »Kosten verteilen und Abhängigkeiten verringern«",
-  "type": "sketch",
-  "fields": [["persp", "8a: Meine Perspektive", ["Unternehmensleitung", "Beschäftigte und Zulieferregion", "Nutzer und öffentliche Beschaffung", "Umwelt- und Verbraucherschutz"], False],
-             ["arg1", "8a: Argument 1"], ["arg2", "8a: Argument 2"], ["massnahme", "8a: Eine konkrete Maßnahme"], ["nachteil", "8a: Ein Nachteil meiner Lösung"],
-             ["zusammenhang", "8b: Ein belastbarer Zusammenhang aus der Diskussion"], ["offen", "8b: Eine offene Behauptung (noch nicht belegt)"]],
-  "chk": {"arg1": {"kw": [["Argument", r"weil|da |denn|abhängig|abhaengig|kosten|risiko|liefer|ausfall|preis|arbeit|umwelt|daten|wechsel|qualität|qualitaet|sicher"]], "man": True},
-          "arg2": {"kw": [["Argument", r"weil|da |denn|abhängig|abhaengig|kosten|risiko|liefer|ausfall|preis|arbeit|umwelt|daten|wechsel|qualität|qualitaet|sicher"]], "man": True},
-          "massnahme": {"kw": [["Maßnahme", r"quelle|lieferant|lager|bestand|standard|vertrag|prüf|pruef|reparier|wechsel|zertifi|kontrolle|partner|mehrere|zweit|investier|regel"]], "man": True},
-          "nachteil": {"kw": [["Nachteil", r"kosten|teuer|aufwand|zeit|umstellung|prüf|pruef|vertrag|komplex|preis|mehr|schwierig|nachteil"]], "man": True},
-          "zusammenhang": {"kw": [["Zusammenhang", r"weil|dadurch|deshalb|führt|fuehrt|wenn|folge|abhängig|abhaengig|kosten|liefer"]], "man": True},
-          "offen": {"kw": [["offene Behauptung", r"nicht|offen|unklar|belegt|behaupt|vermut|unsicher|beweis|fehlt|prüf|pruef"]], "man": True}},
-  "sol": [["Musterlösung (Beispiele, kein Muss)", ["Unternehmensleitung: mehrere Bezugsquellen senken das Ausfallrisiko und stärken die Verhandlungsposition · Nachteil: Prüf-, Vertrags- und Umstellungskosten.",
-                            "Beschäftigte/Zulieferregion: stabile Aufträge, wenn Standards vertraglich verlangt und kontrolliert werden · Nachteil: Aufträge können auch wegfallen, wenn Quellen gewechselt werden.",
-                            "Nutzer/öffentliche Beschaffung: Lieferfähigkeit, Ersatzteile, Wechselmöglichkeit beim KI-Dienst, Kontrolle sensibler Daten · Nachteil: höherer Preis.",
-                            "Umwelt-/Verbraucherschutz: überprüfbare Standards, Reparierbarkeit · Nachteil: Standortverlagerung allein garantiert weder faire Arbeit noch geringere Umweltfolgen.",
-                            "Urteil (8c): Eine fundierte Gegenposition ist ebenso akzeptabel; die politische Richtung wird nicht benotet. Bewertet werden nachvollziehbare Begründung, fachlich richtige Zusammenhänge, Gegenargument und gekennzeichnete Unsicherheit."]]],
-  "fsol": {"persp": "eine der vier Perspektiven", "arg1": "begründetes Argument", "arg2": "begründetes Argument", "massnahme": "z. B. zweite Bezugsquelle, Lagerbestand, Sozialstandards",
-           "nachteil": "z. B. höhere Kosten", "zusammenhang": "z. B. mehr Quellen → weniger Ausfallrisiko, aber Mehrkosten", "offen": "z. B. »Das macht die Arbeit automatisch fairer« – nicht belegt"},
-  "kriterien": ["Zusammenhang aus der Lieferkette", "soziale oder ökologische Folge", "Grenze der Maßnahme", "Wenn …, dann könnte …; offen bleibt …", "100–130 Wörter"],
-  "tip": ["Kosten verteilen und Abhängigkeiten verringern", "theorie.html#gestalten"], "besprechen": True},
+  "fields": [["args", "a) Zentrale Argumente (mindestens drei)"], ["bewert", "b) Eher positiv oder negativ – warum?"], ["these", "c) Menschen als wichtigster Produktionsfaktor – meine Stellung"]],
+  "chk": {"args": {"kw": [["Argumente", r"märkte|maerkte|öffnung|oeffnung|armut|afrika|china|subvention|agrar|patent|biopiraterie|bildung|ausbildung|hochschul|outsourcing|indien|löhne|loehne|ungleich|treibhaus|klima|terror|krankheit|nicht allein|nicht lösen|nicht loesen", 3]], "man": True},
+          "bewert": {"kw": [["Urteil", r"positiv|negativ|differenz|beides|chancen|risiken|weil|nicht nur|ungleich|armut|gewinner|verlierer"]], "man": True},
+          "these": {"kw": [["Stellung", r"mensch|bildung|ausbildung|produktionsfaktor|kapital|technik|arbeit|zustimm|stimme|weil|denn|rohstoff"]], "man": True}},
+  "sol": [["Musterlösung (Beispiele)", ["a) Globalisierung ist mehr als Liberalisierung der Märkte · Offene Märkte allein lösen die Armut nicht · Reiche Staaten behalten Agrarsubventionen, arme müssen Subventionen abbauen · Biopiraterie und Patente auf traditionelles Wissen · Bildung und Hochschulen sind der Schlüssel (Beispiel Indien/Bangalore) · Auch in Industrieländern geraten gering Qualifizierte unter Druck.",
+                                     "b) Differenziert: Chancen bei Bildung und Wachstum, aber starke Ungleichheit und Verlierer. Eine eindeutige Antwort ist nicht verlangt, die Begründung zählt.",
+                                     "c) Beide Richtungen möglich: Für die These spricht, dass Wissen und Bildung Wirtschaftskraft schaffen (Stiglitz). Dagegen können Rohstoffe, Kapital und Technik eigene Gewichte haben."]]],
+  "fsol": {"args": "mind. drei Argumente aus dem Text", "bewert": "differenziert, mit Begründung", "these": "Zustimmung oder Gegenposition mit Begründung"},
+  "tip": ["Stiglitz", "theorie.html#stiglitz"], "besprechen": False,
+  "tipp1": "Suche im Text Stellen mit »nicht«, »aber« und »Beispiel« – dort steckt oft ein Argument.",
+  "tipp3": "Lies im Buch S. 49 den Text »Die Globalisierung aus der Sicht von Joseph Stiglitz« einmal ganz.",
+  "karte": "stiglitz"},
 ]
 PFLICHT = [t["nr"] for t in T if t["h"] and t["tag"] != "Zusatz"]
-assert PFLICHT == list(range(1, 9))
+assert PFLICHT == [1, 2, 3]
+ZUSATZ = [t["nr"] for t in T if t["tag"] == "Zusatz"]
 BESPRECHEN = [t["nr"] for t in T if t.get("besprechen")]
 
-GRP = {1: TEILNAME[1] + " (Buch S. 43–48, 64–70) · " + wann(1),
-       2: TEILNAME[2] + " (Buch S. 50–63) · " + wann(2) + " nach dem Test",
-       3: TEILNAME[3] + " (Ergänzung zu Buch S. 48) · " + wann(3),
-       4: TEILNAME[4] + " (Buch S. 65–77) · " + wann(4) + " · PDF-Abgabe",
-       0: "OPTIONAL · Für Schnelle · im Theorieteil, keine Hausübung"}
+GRP = {1: TEILNAME[1] + " (Buch S. 42–47) · " + wann(1),
+       2: TEILNAME[2] + " (Buch S. 48–51) · " + wann(2),
+       0: "ZUSATZ · nur wer fertig ist · keine Hausübung"}
 
-LERNZIELE = ["Ich kann an einem Produkt erklären, wie **Waren, Geld, Daten und Wissen** grenzüberschreitend zusammenwirken.",
-             "Ich kann **wirtschaftliche, soziale und ökologische Folgen** für verschiedene Gruppen erklären.",
-             "Ich kann **WTO, IWF und Weltbank** unterscheiden und aktuelle Handels- oder KI-Regeln einem Problem zuordnen.",
-             "Ich kann zu **KI und Globalisierung** ein begründetes Urteil formulieren und sichere Befunde von unsicheren Erwartungen trennen."]
+LERNZIELE = ["Ich kann **drei Ereignisse** nennen, die man als Beginn der Globalisierung ansetzen kann, und mein Kriterium begründen.",
+             "Ich kann die wichtigsten **Antriebskräfte** der Globalisierung und den Begriff **Liberalisierung** erklären.",
+             "Ich kann die **Rolle der Digitalisierung** bewerten und den **Digital Divide** mit Zahlen belegen."]
 
-LEITFRAGE = "Wie können wir die Vorteile weltweiter Zusammenarbeit nutzen und zugleich Abhängigkeiten, soziale Kosten und politische Risiken begrenzen?"
-HEUTE_ZIEL = {1: "An der Sportuhr zeigen, wie Waren, Geld, Daten und Wissen über Grenzen fließen – und wer dabei gewinnt oder trägt.",
-              2: "Zoll als Zahlung und als wirtschaftliche Last unterscheiden; WTO, IWF und Weltbank einem Problem zuordnen.",
-              3: "KI-Regeln einordnen und Warnungen als Befund, Szenario oder Position prüfen.",
-              4: "Abhängigkeiten und Kosten gestalten statt nur bewerten – mit begründetem eigenem Urteil."}
-WICHTIGSTE = ["Globalisierung verbindet Produktion, Menschen, Wissen und Entscheidungen über Grenzen hinweg.",
-              "Ihre Folgen hängen davon ab, welche Gruppe wir betrachten und welche Regeln gelten.",
-              "Ein Zoll wird zunächst vom Importeur bezahlt; die wirtschaftliche Belastung kann sich verteilen.",
-              "WTO, IWF und Weltbank bearbeiten unterschiedliche Probleme und haben begrenzte Macht.",
-              "Bei KI müssen wir konkrete Fähigkeiten, globale Abhängigkeiten und unsichere Zukunftsszenarien auseinanderhalten."]
+LEITFRAGE = "War die Globalisierung Zufall, Überlegenheit oder alternativlos – und wem nützt sie heute?"
+HEUTE_ZIEL = {1: "Wann begann die Globalisierung, und welche sechs Kräfte treiben sie an?",
+              2: "Digitalisierung bewerten, Zahlen zum Digital Divide lesen, Aussagen zur Globalisierung prüfen."}
+WICHTIGSTE = ["Globalisierung heißt: Wirtschaft, Gesellschaft und Kultur sind weltweit immer dichter verflochten.",
+              "Einen einzigen Beginn gibt es nicht – je nach Kriterium nennt man 1492, 1844, 1944 oder die 1980er/1990er.",
+              "Antriebskräfte sind Informationstechnik, billigerer Transport, Marktwirtschaft, Liberalisierung, transnationale Konzerne und gemeinsame Normen.",
+              "Die Digitalisierung verbindet die Welt – aber rund ein Viertel der Menschen ist noch offline (Digital Divide).",
+              "Zahlen und Aussagen immer mit Quelle, Jahr und Interessen prüfen – das gilt auch für Zölle und Schlagzeilen."]
 
 FACHBEGRIFFE = [["Begriff", "Bedeutung"],
- ["Globalisierung", "dichte, weltweite Verflechtung von Wirtschaft, Menschen, Wissen, Kultur und Entscheidungen; keine starre, überall gültige Definition"],
- ["Internationalisierung", "Ausweitung von Wirtschaft oder Politik über die Staatsgrenze hinaus – weniger dicht als Globalisierung"],
- ["Wertschöpfungskette", "alle Stufen vom Rohstoff über Entwicklung und Herstellung bis zum Verkauf, bei denen Wert entsteht"],
- ["Standortfaktor", "Bedingung, die ein Unternehmen bei der Wahl eines Ortes abwägt: Kosten, Fachwissen, Infrastruktur, Marktzugang, Regeln"],
- ["transnationales Unternehmen", "Unternehmen, das in mehreren Staaten produziert und verkauft"],
- ["Liberalisierung", "Abbau von Handelshürden, z. B. von Zöllen"],
- ["Protektionismus", "Schutz der eigenen Wirtschaft durch Zölle oder andere Hürden"],
- ["Zoll", "Abgabe auf eine Ware beim Grenzübertritt; wird zuerst vom Importeur bezahlt"],
- ["Lieferfähigkeit", "Fähigkeit, bestellte Waren rechtzeitig zu liefern – bei Sport, Rettung oder Bundesheer so wichtig wie der Preis"],
- ["Direktinvestition", "Geld, das ein Unternehmen im Ausland in Anlagen oder Firmen steckt"],
- ["digitale Kluft", "ungleicher Zugang zu Internet und digitaler Technik"],
- ["Fachkräfteabwanderung", "Fachleute verlassen ihr Land, um anderswo zu arbeiten (Brain-Drain); bei Pflegekräften: Abwanderung von Pflegekräften"],
- ["WTO", "Welthandelsorganisation: Regeln, Verhandlungen und Streitbeilegung im Handel (seit 1995)"],
- ["IWF", "Internationaler Währungsfonds: Stabilität, Überwachung, Kredite bei Zahlungsproblemen"],
- ["Weltbank", "Entwicklungsfinanzierung und Beratung, vor allem für langfristige Vorhaben"],
- ["GATT / GATS / TRIPS", "Abkommen im WTO-System: Waren / Dienstleistungen / handelsbezogene Rechte an geistigem Eigentum"],
- ["geistiges Eigentum", "Rechte an Ideen und Erfindungen, z. B. Patente und Urheberrecht"],
- ["generative KI", "KI, die neue Texte, Bilder oder Code erzeugt"],
- ["KI-Modell / KI-Anwendung", "Modell = das trainierte System; Anwendung = der konkrete Einsatz, z. B. ein Chatbot im Kundendienst"],
- ["Hochrisiko-Anwendung", "KI-Einsatz in sensiblen Bereichen (z. B. Bewerberauswahl), für den die EU strengere Pflichten vorsieht"],
- ["Transparenzpflicht", "Pflicht, offenzulegen, dass jemand mit einer KI zu tun hat oder ein Inhalt KI-erzeugt ist"],
- ["Szenario / Simulation", "Szenario = durchgespielte mögliche Zukunft; Simulation = Versuch unter künstlich festgelegten Bedingungen"],
- ["Interessenkonflikt", "Wer etwas sagt, kann zugleich wirtschaftlich davon betroffen sein – das macht die Aussage nicht automatisch falsch, aber man prüft sie genauer"]]
+ ["Globalisierung", "zunehmende wirtschaftliche, gesellschaftliche und kulturelle weltumspannende Verflechtung; seit den 1960er-Jahren als Schlagwort verbreitet"],
+ ["Deglobalisierung", "Phase, in der die Verflechtung zurückgeht, z. B. in der Zwischenkriegszeit"],
+ ["Informationsrevolution", "Informationen werden durch neue Technik in kürzester Zeit gewonnen, verarbeitet und verbreitet"],
+ ["Liberalisierung", "Abbau von Handelshemmnissen und Öffnung von Märkten für Güter, Dienstleistungen und Kapital"],
+ ["Neoliberalismus", "Ausrichtung, die vor allem auf freie Märkte und weniger staatliche Eingriffe setzt"],
+ ["Deregulierung / Privatisierung", "weniger staatliche Vorschriften / Übergabe öffentlicher Dienste an private Anbieter"],
+ ["transnationales Unternehmen / Global Player", "Unternehmen, das weltweit produziert und verkauft; oft durch Fusionen und Übernahmen gewachsen"],
+ ["Outsourcing", "Auslagerung von Produktion oder Diensten an andere Betriebe, oft ins Ausland"],
+ ["Just-in-time", "Teile werden genau dann geliefert, wenn die Produktion sie braucht"],
+ ["Normen und Standards", "gemeinsame technische Regeln, die den internationalen Handel erleichtern"],
+ ["Global Village", "»Weltdorf«: durch Informationstechnik schrumpft die räumliche Distanz"],
+ ["Global Governance", "Aufgabe, grenzüberschreitende Probleme gemeinsam zu lösen"],
+ ["Big Data", "riesige Mengen strukturierter und unstrukturierter Daten; entscheidend ist ihre Verwendung"],
+ ["Digital Divide", "digitale Kluft: ungleicher Zugang zu Internet und Technik zwischen Gruppen"],
+ ["Protektionismus / Zoll", "Schutz der eigenen Wirtschaft / Abgabe auf eine Ware beim Grenzübertritt, zuerst vom Importeur bezahlt"],
+ ["Prozentpunkte", "Unterschied zwischen zwei Prozentwerten (94 % − 23 % = 71 Prozentpunkte)"]]
 
 WEISST_DU_NOCH = {
-    2: [("Nenne einen Waren-, einen Geld-, einen Daten- und einen Wissensstrom der Sportuhr.", "z. B. Chips nach Südostasien · Zahlung vom Käufer an den Anbieter · Trainingsdaten ins Rechenzentrum · Entwicklungsvorgaben zum Hersteller."),
-        ("Ist eine österreichische Marke automatisch ein österreichisches Produkt?", "Nein – Marke und Produktionsstufen sind zu unterscheiden; Entwicklung kann in Österreich liegen, Montage und Bauteile anderswo.")],
-    3: [("Wer führt einen Einfuhrzoll zuerst ab – und muss er ihn am Ende allein tragen?", "Der Importeur zahlt zuerst; die Belastung kann sich auf Marge, Preis und Lieferanten verteilen."),
-        ("Welche Institution ist bei einem Handelsstreit, welche bei einer Zahlungskrise zuständig?", "WTO bei Handelsstreit, IWF bei akuter Zahlungslücke; die Weltbank finanziert langfristige Entwicklungsvorhaben.")],
-    4: [("Nenne die vier Bedeutungen von »KI übernimmt die Macht«.", "Arbeit · politische und wirtschaftliche Macht · Abhängigkeit · Kontrollverlust."),
-        ("Warum beweist »ein Viertel betroffen« keine Arbeitslosigkeit?", "Es misst betroffene Tätigkeiten, nicht verlorene Arbeitsplätze.")],
+    2: [("Nenne zwei Ereignisse, die man als Beginn der Globalisierung ansetzen kann.", "z. B. 1492 Kolumbus · 1844 Telegraf · 1944 IWF und Weltbank · 1980er Technik · Internet."),
+        ("Nenne zwei Antriebskräfte der Globalisierung.", "z. B. Informationsrevolution, Transporttechnik, Marktwirtschaft, Liberalisierung, transnationale Konzerne, Normen."),
+        ("Was bedeutet Liberalisierung?", "Abbau von Handelshemmnissen, Öffnung der Märkte.")],
 }
 
 STOPPFRAGEN = {
-    1: [("Warum reicht eine bekannte Marke nicht als Herkunftsnachweis?", "Marke, Entwicklung und Fertigung können in verschiedenen Ländern liegen – man muss die Produktionsstufen einzeln betrachten."),
-        ("Ist Globalisierung nur Warenhandel?", "Nein – auch Geld, Wissen, Menschen, Kultur und Daten gehören dazu.")],
-    2: [("Wer zahlt einen Einfuhrzoll zuerst?", "Der Importeur, an die Zollbehörde des Einfuhrlandes."),
-        ("Warum ist die WTO keine Weltregierung?", "Sie hat keine allgemeine Regierungsgewalt: Ihre Mitglieder vereinbaren Handelsregeln und entscheiden meist im Konsens. Die Regeln sind für Mitglieder verbindlich; bei Verstößen können im Streitverfahren Gegenmaßnahmen genehmigt werden. Außerdem ist sie keine UN-Sonderorganisation.")],
-    3: [("Was ist der Unterschied zwischen Verbot, Hochrisiko und Transparenzpflicht?", "Verbot: bestimmte Praktiken sind untersagt. Hochrisiko: strenge Anforderungen für sensible Einsatzbereiche. Transparenz: man muss erkennen können, dass KI im Spiel ist."),
-        ("Warum zeigt eine Simulation nicht, wie oft etwas im Alltag passiert?", "Sie läuft unter festgelegten, künstlichen Bedingungen; die Häufigkeit im Alltag wird damit nicht gemessen.")],
-    4: [("Ändert eine zweite Bezugsquelle automatisch die Arbeitsbedingungen?", "Nein – sie senkt vor allem die Abhängigkeit; faire Arbeit braucht überprüfbare Standards."),
-        ("Was gehört in ein begründetes Urteil?", "Eine Entscheidung mit Beleg, Gegenargument, Bedingung und gekennzeichneter Unsicherheit.")],
+    1: [("Gibt es einen einzigen Beginn der Globalisierung?", "Nein – je nach Kriterium nennt man 1492, Mitte des 19. Jahrhunderts, 1944 oder die 1980er/1990er."),
+        ("Was bedeutet Liberalisierung?", "Abbau von Handelshemmnissen und Öffnung der Märkte für Güter, Dienstleistungen und Kapital.")],
+    2: [("Was heißt Digital Divide?", "Ungleicher Zugang zu Technologie und Internet zwischen Gruppen (Einkommen, Stadt/Land, Geschlecht, Alter)."),
+        ("Warum nennt man bei Zahlen immer die Quelle und das Jahr?", "Quellen zählen verschieden und Werte ändern sich; nur so kann man sie prüfen und vergleichen.")],
 }
 
-PARTNERKARTEN = [("Nenne die vier Arten von Strömen bei der Sportuhr.", "Waren, Geld, Daten, Wissen."),
+PARTNERKARTEN = [("Nenne drei Ereignisse, die man als Beginn ansetzen kann.", "1492, 1844, 1944, 1980er, Internet."),
+                 ("Nenne die sechs Antriebskräfte.", "Informationsrevolution, Transport, Marktwirtschaft, Liberalisierung, transnationale Konzerne, Normen."),
+                 ("Was heißt Liberalisierung?", "Abbau von Handelshemmnissen, Öffnung der Märkte."),
+                 ("Wie viele Menschen sind laut ITU 2025 offline?", "Rund 2,2 Milliarden."),
+                 ("Was bedeutet 94 % zu 23 %?", "Internetnutzung in Ländern mit hohem zu niedrigem Einkommen: 71 Prozentpunkte Unterschied."),
                  ("Wer zahlt einen Zoll zuerst?", "Der Importeur."),
-                 ("Bedeutet 15 % Zoll immer 15 % mehr Ladenpreis?", "Nein – Weitergabe, Marge, Nachfrage und Wettbewerb fehlen in der Rechnung."),
-                 ("Welches Problem gehört zu WTO, IWF, Weltbank?", "Handelsstreit · akute Zahlungslücke · langfristiges Entwicklungsvorhaben."),
-                 ("Was bedeutet GATS?", "Abkommen über den Handel mit Dienstleistungen."),
-                 ("Ist die EU-KI-Verordnung ein vollständiges KI-Verbot?", "Nein – sie arbeitet nach Risiko und Einsatzbereich."),
-                 ("Was zeigt »ein Viertel betroffen«?", "Betroffene Tätigkeiten – keine Arbeitslosenquote."),
-                 ("Was gehört in ein begründetes Urteil?", "Beleg, Gegenargument, Bedingung, Unsicherheit.")]
+                 ("Was gehört zu einer guten Quellenangabe?", "Wer, Jahr, Messweise, mögliche Interessen.")]
 
-STOLPERSTEINE = [("Aktuelle Zollzahlen ohne Datum und Warengruppe verallgemeinern", "Zölle gelten für bestimmte Waren, Länder und Zeiträume und werden gerichtlich und politisch geändert. Immer Datum und Rechtsgrundlage nennen; das Buch beschreibt den Stand 2025."),
-                 ("WTO, IWF und Weltbank auf dieselbe Aufgabe reduzieren", "Handelsregeln und Streit (WTO), kurzfristige Stabilität und Zahlungsprobleme (IWF), langfristige Entwicklungsfinanzierung (Weltbank). Diese Aufgaben werden oft vermischt – im Buch gegenprüfen."),
-                 ("KI-Betroffenheit mit Arbeitsplatzverlust verwechseln", "»Ein Viertel der Beschäftigten arbeitet in einem Beruf mit möglichem KI-Einfluss« heißt nicht, dass ein Viertel der Stellen verschwindet."),
-                 ("Simulation, reale Vorfälle und Zukunftsszenarien vermischen", "Ein Versuch in gestellter Umgebung zeigt eine mögliche Schwachstelle – nicht die Häufigkeit im Alltag und keine bereits erfolgte Machtübernahme."),
-                 ("Interessen ohne Beleg als persönliche Motive behaupten", "Aus einer Schlagzeile kann man Motive (»Angst«, »PR«) nicht ablesen. Eine Warnung kann fachlich begründet sein und zugleich wirtschaftliche Wirkung haben.")]
+STOLPERSTEINE = [("Einen einzigen Beginn der Globalisierung behaupten", "Je nach Kriterium nennt man 1492, Mitte des 19. Jahrhunderts, 1944 oder die 1980er/1990er. Wichtig ist, dass die Kadetten ein Kriterium begründen."),
+                 ("Die China-Marine-These als Tatsache nehmen", "Gesichert: Die staatlichen Flottenfahrten (Zheng He, 1405–1433) endeten. Ob China seine Flotte »zerstörte« und warum, ist eine vereinfachte Deutung (EBSCO Research Starter). Als Quellenkritik-Beispiel nutzen."),
+                 ("Zahlen der Quellen vermischen", "Buch (rund 32 % ohne Internet) und ITU (2,2 Mrd. offline, rund ein Viertel) zählen verschieden. Quelle, Jahr und Definition nennen, nicht eine Zahl als »falsch« abtun."),
+                 ("Zölle von 2025 als heutigen Stand sagen", "Das Buch zeigt 2025. Seither Urteil des Supreme Court (20.02.2026), Vereinbarungen und Zollpausen (China, 09.11.2026). Immer Datum und Rechtsgrundlage nennen."),
+                 ("Statements der Ampel parteipolitisch auflösen", "Die Aussagen sind Diskussionsanlässe. Keine Auflösung »richtig/falsch«, sondern Quelle, Zahl und Gegenargument verlangen.")]
 
 # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchseite/Hinweis) – 16 Fragen, Antworten werden beim Anzeigen gemischt
 QUIZ = [
- ("Begriff", "Ist Globalisierung ausschließlich Warenhandel?", ["Nein, auch Wissen, Geld, Menschen, Kultur und Daten sind betroffen.", "Ja, nur Waren überqueren Grenzen.", "Ja, aber nur Rohstoffe.", "Ja, Wissen und Daten gehören nur zur Digitalisierung."],
-  "Globalisierung ist eine dichte, weltweite Verflechtung in mehreren Dimensionen – nicht nur Handel.", "Buch S. 43–48"),
- ("Sportuhr", "Reicht eine bekannte österreichische Marke als Nachweis, dass ein Produkt aus Österreich kommt?", ["Nein, Marke und Produktionsstufen sind zu unterscheiden.", "Ja, die Marke zeigt in der Regel den Ort der Herstellung.", "Ja, wenn der Firmensitz in Österreich liegt.", "Ja, wenn die Marke schon seit Jahrzehnten am Markt ist."],
-  "Entwicklung, Bauteile, Montage und Vertrieb können in verschiedenen Ländern liegen. Das Beispiel der Sportuhr ist ein Modell.", "Buch S. 43–48 · Modellfall"),
- ("Folgen", "Welche Aussage über die Folgen der Globalisierung ist am besten begründet?", ["Sie hängen davon ab, welche Gruppe man betrachtet und welche Regeln gelten.", "Alle Menschen profitieren gleich.", "Nur die Industrieländer verlieren.", "Regionale Produkte sind immer besser für die Umwelt."],
-  "Es gibt Gewinner und Belastete – auch innerhalb eines Staates. Umweltwirkung nicht nur aus Transportkilometern ableiten.", "Buch S. 64–70"),
+ ("Begriff", "Was bezeichnet man allgemein mit »Globalisierung«?", ["Die zunehmende wirtschaftliche, gesellschaftliche und kulturelle weltumspannende Verflechtung.", "Nur den Warenhandel zwischen Staaten.", "Die Gründung der WTO im Jahr 1995.", "Die Abschaffung aller Staatsgrenzen."],
+  "Das Buch beschreibt Globalisierung als weltumspannende Verflechtung in Wirtschaft, Gesellschaft und Kultur.", "Buch S. 42–43"),
+ ("Beginn", "Wann begann die Globalisierung?", ["Das hängt vom Kriterium ab – genannt werden u. a. 1492, Mitte des 19. Jahrhunderts, 1944 und die 1980er.", "Genau am 12. Oktober 1492.", "Erst mit dem Internet um das Jahr 2000.", "Mit dem Ersten Weltkrieg."],
+  "Das Buch nennt mehrere Standpunkte; eine einzige Geburtsstunde gibt es nicht.", "Buch S. 43–44"),
+ ("Geschichte", "Was bedeutet »Deglobalisierung« in der Zwischenkriegszeit?", ["Verflechtung und Welthandel gingen zurück.", "Der Welthandel wuchs besonders stark.", "Alle Zölle wurden abgeschafft.", "Das Internet wurde abgeschaltet."],
+  "Nach der starken Verflechtung bis zum Ersten Weltkrieg erlebte die Welt eine Phase der Deglobalisierung.", "Buch S. 44"),
+ ("Kritik", "Die Aussage »China zerstörte seine Marine, weil die Herrscher Angst vor Freihandel hatten« ist …", ["zugespitzt: gesichert ist nur, dass die staatlichen Flottenfahrten (1405–1433) endeten; Gründe und Folgen sind Deutung.", "ein bewiesener Fakt.", "völlig erfunden.", "nur für Europa gültig."],
+  "Quellenkritik: Eine einprägsame Überschrift ist noch kein Beleg. Quelle: EBSCO Research Starter zu den Expeditionen des Zheng He.", "Quellenkritik · PPP-Impuls"),
+ ("Antriebskräfte", "Container, Hochgeschwindigkeitszüge und Großraumflugzeuge machen Transporte billiger. Zu welcher Antriebskraft gehört das?", ["Innovationen im Transport", "Informationsrevolution", "Liberalisierung", "Normen und Standards"],
+  "Die Kosten für See- und Lufttransport sanken bis Mitte des 20. Jahrhunderts um mehr als zwei Drittel.", "Buch S. 45"),
+ ("Antriebskräfte", "Welche Antriebskraft meint den Abbau von Zöllen und die Öffnung der Märkte?", ["Liberalisierung", "Informationsrevolution", "Normen und Standards", "Just-in-time"],
+  "Liberalisierung bedeutet Abbau von Handelshemmnissen für Güter, Dienstleistungen und Kapital.", "Buch S. 46"),
+ ("Antriebskräfte", "Warum erleichtern internationale Normen und Standards den Welthandel?", ["Waren müssen nicht für jeden Markt neu angepasst werden.", "Normen verbieten Importe.", "Normen ersetzen Zölle.", "Normen gelten nur in Österreich."],
+  "Gemeinsame Standards (z. B. Stecker, Spurbreiten) senken Kosten und Hürden.", "Buch S. 46"),
+ ("Konzerne", "Was sind Global Player laut Buch?", ["Weltweit tätige Unternehmen, meist durch Fusionen und Übernahmen entstanden.", "Staaten mit Atomwaffen.", "Spitzensportler im Ausland.", "Städte mit großem Hafen."],
+  "Global Player agieren und reagieren auf globale Herausforderungen und nutzen Kosten- und Steuervorteile.", "Buch S. 46"),
+ ("Digital Divide", "Was bedeutet »Digital Divide«?", ["Ungleicher Zugang zu Technologie und Internet zwischen Gruppen.", "Die Teilung eines Netzwerks in zwei Hälften.", "Ein Gesetz über Datenschutz.", "Das Ende der Digitalisierung."],
+  "Die Kluft besteht z. B. zwischen Einkommensgruppen, Stadt und Land und Geschlechtern.", "Buch S. 48"),
+ ("Zahlen", "Wie viele Menschen waren laut ITU 2025 noch offline?", ["Rund 2,2 Milliarden.", "Rund 220 Millionen.", "Rund 6 Milliarden.", "Praktisch niemand."],
+  "ITU, Facts and Figures 2025 (17.11.2025): rund 6 Mrd. online, 2,2 Mrd. offline.", "ITU 2025 · Aufgabe 3"),
+ ("Zahlen", "Wie groß ist laut ITU 2025 der Unterschied bei der Internetnutzung zwischen Ländern mit hohem (94 %) und niedrigem Einkommen (23 %)?", ["71 Prozentpunkte", "117 Prozentpunkte", "23 Prozentpunkte", "4 Prozentpunkte"],
+  "94 − 23 = 71 Prozentpunkte.", "ITU 2025 · Aufgabe 3"),
+ ("Quellen", "Buch und ITU nennen verschiedene Anteile ohne Internet. Was tust du?", ["Jahr, Messweise und Definition vergleichen und beide Quellen nennen.", "Die niedrigere Zahl nehmen.", "Beide Quellen weglassen.", "Die Zahl nehmen, die besser klingt."],
+  "Quellen zählen verschieden; entscheidend sind Quelle, Jahr und Definition.", "Buch S. 48 · Aufgabe 3"),
  ("Zoll", "Wer zahlt einen Einfuhrzoll zunächst?", ["Der Importeur.", "Das Ausland automatisch.", "Immer der Verbraucher.", "Die WTO."],
-  "Der Importeur führt den Zoll an die Zollbehörde ab. Die spätere Belastung kann sich auf Marge, Lieferant und Käufer verteilen.", "Buch S. 50–51"),
- ("Zoll", "Bedeutet ein Zollsatz von 15 Prozent immer 15 Prozent mehr beim Ladenpreis?", ["Nein, dazu fehlen Annahmen über Kosten und Weitergabe.", "Ja, der Preis steigt genau um 15 Prozent.", "Ja, aber nur im ersten Monat.", "Ja, aber nur bei Waren aus China."],
-  "Der Zoll wirkt auf den Zollwert. Ob und wie er weitergegeben wird, hängt von Nachfrage, Verträgen, Wettbewerb und Wechselkurs ab.", "Buch S. 50–51 · Aufgabe 3"),
- ("Zoll aktuell", "Was gilt für die US-Zölle des Jahres 2025, die das Buch beschreibt, heute?", ["Ein Teil wurde 2026 gerichtlich gekippt; andere Zollarten gelten weiter – daher immer Datum und Rechtsgrundlage nennen.", "Sie gelten unverändert für alle Waren weiter.", "Sie wurden komplett abgeschafft, es gibt keine US-Zölle mehr.", "Sie betreffen nur die EU."],
-  "Der US Supreme Court erklärte am 20.02.2026 die auf IEEPA gestützten Zölle für rechtswidrig. Andere Rechtsgrundlagen (z. B. Section 232 und 301) bestehen weiter. Aktuelle Ergänzung zu Buch S. 50–51; Quellen WKO und IHK, Stand 30.10.2026.", "Aktuelle Ergänzung zu Buch S. 50–51"),
- ("Institutionen", "Zwei Staaten streiten über eine Handelsbeschränkung. Wer ist vor allem zuständig?", ["WTO", "IWF", "Weltbank", "OECD allein"],
-  "Die WTO hat Regeln, Verhandlungen und ein Streitverfahren. Die Berufungsinstanz ist derzeit blockiert.", "Buch S. 53–56"),
- ("Institutionen", "Ein Staat hat eine akute Lücke bei der Finanzierung seiner Zahlungen ans Ausland. Wer ist vor allem zuständig?", ["IWF", "WTO", "Weltbank", "UNESCO"],
-  "Der IWF sichert Stabilität und kann bei Zahlungsbilanzproblemen Kredite mit Bedingungen geben.", "Buch S. 53, 60–62"),
- ("Institutionen", "Wofür steht GATS inhaltlich?", ["Internationaler Handel mit Dienstleistungen.", "Handel mit Waren.", "Rechte an geistigem Eigentum.", "Entwicklungskredite."],
-  "GATT = Waren, GATS = Dienstleistungen, TRIPS = handelsbezogene Rechte an geistigem Eigentum. Die WTO gibt es seit 1995. (Oft verwechselt: GATT wurde nicht von GATS abgelöst, die WTO löste 1995 das GATT als Organisation ab; GATS ist ein eigenes Abkommen.)", "Buch S. 54–56"),
- ("Institutionen", "Wer leitet derzeit (Stand 30.10.2026) den Internationalen Währungsfonds?", ["Kristalina Georgieva.", "Christine Lagarde.", "Ajay Banga.", "Ngozi Okonjo-Iweala."],
-  "Georgieva leitet den IWF. Lagarde war IWF-Chefin bis 2019 und ist EZB-Präsidentin. Banga leitet die Weltbankgruppe, Okonjo-Iweala die WTO. Aktuelle Ergänzung – Namen vor dem Unterricht prüfen.", "Aktuelle Ergänzung · Stand 30.10.2026"),
- ("KI Arbeit", "Bedeutet »ein Viertel der Beschäftigten ist betroffen« auch »ein Viertel ist arbeitslos«?", ["Nein, es geht um mögliche Veränderung von Tätigkeiten.", "Ja, genau ein Viertel verliert die Stelle.", "Ja, aber nur in Österreich.", "Ja, wenn die Beschäftigten in Europa arbeiten."],
-  "Die ILO-Studie (2025) misst, in wie vielen Berufen generative KI Tätigkeiten verändern könnte – nicht verlorene Arbeitsplätze.", "Aktuelle Ergänzung · Quelle ILO 2025"),
- ("KI Regeln", "Ist die EU-KI-Verordnung ein vollständiges KI-Verbot?", ["Nein, Pflichten hängen von Risiko und Anwendung ab.", "Ja, KI ist in der EU verboten.", "Ja, aber nur für Unternehmen.", "Ja, seit 2026 für alle Anwendungen ohne Ausnahme."],
-  "Es gibt Verbote für bestimmte Praktiken, strenge Pflichten für Hochrisiko-Anwendungen und Transparenzpflichten. Fristen wurden 2026 durch den »AI Omnibus« angepasst.", "Aktuelle Ergänzung · Quelle EU-Kommission"),
- ("KI Energie", "Die IEA nennt für 2030 rund 945 TWh Strombedarf der Rechenzentren. Wie ist die Zahl einzuordnen?", ["Als Projektion, nicht als Messwert.", "Als gemessener Wert von 2030.", "Als Verbrauch allein der KI.", "Als gesicherte Obergrenze."],
-  "Gemessen ist 2024 (rund 415 TWh). Die 2030-Zahl ist ein Szenario, und »alle Rechenzentren« ist nicht gleich »nur KI«. Aktuelle Ergänzung; Quelle IEA »Energy and AI« (2025).", "Aktuelle Ergänzung · Quelle IEA"),
- ("KI Risiko", "Beweist ein Versuch in einer Simulation, wie oft KI im Alltag täuscht?", ["Nein, die Versuchsbedingungen begrenzen die Schlussfolgerung.", "Ja, die Häufigkeit ist damit gemessen.", "Ja, aber nur bei Chatbots.", "Ja, wenn die Simulation viele Läufe umfasst."],
-  "Eine Simulation kann ein mögliches Versagen unter bestimmten Bedingungen zeigen. Die Häufigkeit im Alltag misst sie nicht.", "Aktuelle Ergänzung · Quellenkarten"),
- ("Quellen", "Beweist die Warnung von KI-Firmenchefs automatisch, dass sie nur aus Werbegründen warnen?", ["Nein, Motive lassen sich aus einer Schlagzeile nicht ablesen.", "Ja, Firmen wollen immer nur Werbung.", "Ja, sonst würden sie nicht warnen.", "Ja, sobald das Unternehmen selbst KI verkauft."],
-  "Eine Warnung kann fachlich begründet sein und zugleich die öffentliche Wahrnehmung beeinflussen. Interessen sind eine prüfbare Hypothese, kein Beweis.", "Aktuelle Ergänzung · Aufgabe 6"),
+  "Der Importeur führt den Zoll an die Zollbehörde ab. Die spätere Belastung kann sich auf Marge, Lieferanten und Käufer verteilen.", "Buch S. 50–51"),
+ ("Zoll aktuell", "Das Buch nennt US-Zölle von bis zu 145 % (2025). Was gilt für solche Zahlen?", ["Sie gelten für Waren, Länder und Zeiträume und haben sich seither mehrfach geändert – Datum nennen.", "Sie gelten unverändert für immer.", "Sie wurden nie erhoben.", "Sie betreffen nur Österreich."],
+  "Seither u. a. Urteil des US Supreme Court (20.02.2026) und Zollpausen; am 09.11.2026 meldete die Berliner Zeitung (nach Xinhua, Reuters, dpa): China setzt einen Zusatzzoll von 24 % auf US-Waren für zwei Monate aus.", "Aktuelle Ergänzung zu Buch S. 50–51"),
+ ("Stiglitz", "Welche Kernaussage vertritt Stiglitz laut Buch?", ["Offene Märkte allein lösen die Armut nicht; Bildung und Institutionen sind wichtig.", "Globalisierung ist immer gut.", "Globalisierung ist beendet.", "Zölle sind die beste Lösung."],
+  "Er kritisiert Subventionen, Biopiraterie und fordert Investitionen in Bildung.", "Buch S. 49"),
  ("Urteil", "Was macht ein begründetes Urteil aus?", ["Eine Entscheidung mit Beleg, Gegenargument und Bedingung.", "Eine möglichst lange Meinung.", "Eine Aussage, der alle zustimmen.", "Ein Satz ohne Einschränkung."],
-  "Auch eine fundierte Gegenposition ist akzeptabel. Wichtig sind Begründung, richtige Zusammenhänge und gekennzeichnete Unsicherheit.", "Aufgabe 8"),
+  "Auch eine Gegenposition ist akzeptabel – wichtig sind Begründung und gekennzeichnete Unsicherheit.", "Buch S. 49–51"),
 ]
-# Sechs Fragen für den Selbstcheck in Stunde 4 (Nummern der Quizfragen, ab 1)
-SELBSTCHECK = [4, 5, 8, 11, 14, 16]
+# Sechs Fragen für den Selbstcheck in Stunde 2 (Nummern der Quizfragen, ab 1)
+SELBSTCHECK = [2, 5, 6, 9, 10, 14]
 assert len(QUIZ) == 16 and all(len(q[2]) == 4 for q in QUIZ)
