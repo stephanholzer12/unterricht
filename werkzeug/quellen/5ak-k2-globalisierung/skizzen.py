@@ -1,5 +1,5 @@
-"""Bilder für IWK 5AK K2 Globalisierung – alles selbst gezeichnet (keine Buchabbildungen).
-Aufruf im Repository-Ordner:  python3 werkzeug/quellen/5ak-k2-globalisierung/skizzen.py  →  5ak-iwk/k2-globalisierung/img/*.png"""
+"""Bilder für IWK 5AK K2.1 Die Welt ohne Grenzen: Globalisierung – alles selbst gezeichnet (keine Buchabbildungen).
+Aufruf im Repository-Ordner:  python3 werkzeug/quellen/5ak-k2-globalisierung/skizzen.py  →  5ak-iwk/k2-1-globalisierung/img/*.png"""
 import math, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import inhalt as I
@@ -74,33 +74,58 @@ def label_box(d, x, y, w, h, title, lines, col):
 BROWN, BLUE = (120, 86, 52), (46, 125, 140)
 
 
-# ------------------------------------------------------------ Modell Sportuhr
-def sportuhr():
-    im, d = canvas(900, 560)
-    ctext(d, 450, 12, "Modell »Sportuhr mit KI-Dienst« – Orte sind angenommen, keine echte Lieferkette", fit(d, "Modell »Sportuhr mit KI-Dienst« – Orte sind angenommen, keine echte Lieferkette", FB, 24, 860), INK)
-    st = [(30, 70, "1 Entwicklung", ["und Vermarktung", "Europa"], OLIVE), (320, 70, "2 Halbleiter", ["Ostasien"], TEAL), (610, 70, "3 Montage", ["Südostasien"], ORANGE),
-          (30, 300, "4 Rohstoffe", ["mehrere", "Weltregionen"], BROWN), (320, 300, "5 Rechenzentrum", ["internationaler", "Anbieter"], BLUE), (610, 300, "6 Absatz", ["Europa und USA"], GREEN)]
-    for x, y, t, ls, c in st:
-        label_box(d, x, y, 260, 130, t, ls, c)
-    ctext(d, 450, 450, "Verbinde die Stationen mit Pfeilen und beschrifte sie: Waren · Geld · Daten · Wissen", fit(d, "Verbinde die Stationen mit Pfeilen und beschrifte sie: Waren · Geld · Daten · Wissen", FB, 22, 860), INK)
-    ctext(d, 450, 492, "Mindestens vier Stationen. Wer bezahlt wen? Was fließt zurück?", f(FR, 20), MUTED)
-    save(im, IMG + "sportuhr.png")
+# ------------------------------------------------------------ Zeitstrahl: Wann begann die Globalisierung?
+def zeitstrahl():
+    im, d = canvas(900, 440)
+    ctext(d, 450, 12, "Wann begann die Globalisierung? Je nach Kriterium anders", f(FB, 28), INK)
+    d.line(P(60, 230, 840, 230), fill=INK, width=6 * S)
+    ev = [(100, "1492", "Kolumbus", "Seeweg nach Amerika", OLIVE, 70), (270, "1844", "Telegraf", "erste Nachricht per Strom", TEAL, 290),
+          (440, "1944", "IWF und Weltbank", "Regeln nach dem Krieg", ORANGE, 70), (610, "1980er", "Technik", "Rivalität USA – Sowjetunion", BROWN, 290),
+          (780, "ab 1990er", "Internet", "Satelliten, Datenverkehr", GREEN, 70)]
+    for x, jahr, kurz, text, c, y in ev:
+        d.ellipse(P(x - 11, 219, x + 11, 241), fill=c)
+        yy = y + 60 if y < 230 else y - 10
+        d.line(P(x, 241 if y > 230 else 219, x, y + 70 if y < 230 else y), fill=c, width=3 * S)
+        d.rounded_rectangle(P(x - 78, y, x + 78, y + 70), radius=12 * S, fill=WHITE, outline=c, width=3 * S)
+        ctext(d, x, y + 6, jahr, f(FB, 24), c)
+        ctext(d, x, y + 34, kurz, fit(d, kurz, FB, 18, 140), INK)
+        ctext(d, x, y + 53, text, fit(d, text, FR, 14, 146), MUTED)
+    ctext(d, 450, 395, "Dazwischen: Zwischenkriegszeit = Phase der Deglobalisierung (Handel geht zurück)", f(FR, 20), MUTED)
+    save(im, IMG + "zeitstrahl.png")
 
 
-# ------------------------------------------------------------ Vier Bedeutungen von »Übernahme«
-def vier_fragen():
-    im, d = canvas(900, 480)
-    ctext(d, 450, 12, "»KI übernimmt die Macht« – vier verschiedene Fragen", f(FB, 28), INK)
-    felder = [(30, 70, "Arbeit", ["Welche Tätigkeiten werden", "automatisiert oder unterstützt?"], GREEN),
-              (460, 70, "Macht", ["Wer kontrolliert Rechenleistung,", "Daten und Plattformen?"], TEAL),
-              (30, 260, "Abhängigkeit", ["Wer verliert Fähigkeiten oder", "Spielraum, wenn er sich verlässt?"], ORANGE),
-              (460, 260, "Kontrollverlust", ["Könnten künftige Systeme", "Aufsicht wirksam umgehen?"], RED)]
-    for x, y, t, ls, c in felder:
-        label_box(d, x, y, 410, 160, t, ls, c)
-    ctext(d, 450, 440, "Nicht ineinander rutschen lassen: Automatisieren ist nicht Herrschaft ausüben.", f(FB, 20), MUTED)
-    save(im, IMG + "vier_fragen.png")
+# ------------------------------------------------------------ Sechs Antriebskräfte
+def antriebe():
+    im, d = canvas(900, 520)
+    ctext(d, 450, 12, "Sechs Antriebskräfte der Globalisierung (Buch S. 45–47)", f(FB, 28), INK)
+    k = [("Informations-", "revolution", OLIVE), ("Transport-", "technik", TEAL), ("Markt-", "wirtschaft", ORANGE),
+         ("Liberalisierung", "", BROWN), ("Transnationale", "Konzerne", GREEN), ("Normen und", "Standards", BLUE)]
+    for i, (a, b, c) in enumerate(k):
+        x, y = 30 + (i % 3) * 290, 70 + (i // 3) * 190
+        d.rounded_rectangle(P(x, y, x + 270, y + 160), radius=16 * S, fill=WHITE, outline=c, width=4 * S)
+        d.ellipse(P(x + 14, y + 14, x + 54, y + 54), fill=c); ctext(d, x + 34, y + 19, str(i + 1), f(FB, 24), WHITE)
+        ctext(d, x + 140, y + 62, a, f(FB, 28), INK)
+        if b: ctext(d, x + 140, y + 98, b, f(FB, 28), INK)
+    ctext(d, 450, 470, "Ordne zu: Welche Antriebskraft steckt hinter welchem Beispiel?", f(FR, 22), MUTED)
+    save(im, IMG + "antriebskraefte.png")
+
+
+# ------------------------------------------------------------ Digital Divide (ITU Facts and Figures 2025)
+def digital():
+    im, d = canvas(900, 520)
+    ctext(d, 450, 10, "Wer nutzt das Internet? Anteil der Bevölkerung 2025", f(FB, 28), INK)
+    gr = [("Hohes Einkommen\n(Länder)", 94, GREEN), ("Niedriges Einkommen\n(Länder)", 23, RED), ("Stadt", 85, GREEN), ("Land", 58, ORANGE), ("Männer", 77, GREEN), ("Frauen", 71, ORANGE)]
+    x0, base, h = 60, 400, 280
+    d.line(P(40, base, 860, base), fill=INK, width=3 * S)
+    for i, (t, v, c) in enumerate(gr):
+        x = x0 + i * 135 + (i // 2) * 8
+        d.rectangle(P(x, base - h * v / 100, x + 100, base), fill=c)
+        ctext(d, x + 50, base - h * v / 100 - 36, f"{v} %", f(FB, 26), INK)
+        for j, ln in enumerate(t.split("\n")): ctext(d, x + 50, base + 8 + j * 22, ln, fit(d, ln, FR, 18, 130), INK)
+    ctext(d, 450, 470, "Quelle: ITU, Facts and Figures 2025 (17.11.2025) · rund 6 Mrd. online, 2,2 Mrd. offline", f(FR, 18), MUTED)
+    save(im, IMG + "digital_divide.png")
 
 
 if __name__ == "__main__":
-    sportuhr(); vier_fragen()
+    zeitstrahl(); antriebe(); digital()
     print("Bilder:", sorted(os.listdir(IMG)))

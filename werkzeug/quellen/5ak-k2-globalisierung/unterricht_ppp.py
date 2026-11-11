@@ -1,7 +1,7 @@
-"""Unterrichts-PPP K2 Globalisierung und aktuelle Weltpolitik (TH-Unterricht, 5AK IWK) – die kurze, geführte PPP für den Frontalunterricht im Saal.
-Nach »bhak-ppp-gestaltung«: Lesestopps mit exaktem Abschnittstitel und QR, »KURZ KLÄREN« mit Grafik und Klick-Antwort, alle Pflichtaufgaben 1–8 mit Zeit und erwartetem Ergebnis,
+"""Unterrichts-PPP K2.1 Globalisierung (TH-Unterricht, 5AK IWK) – die kurze, geführte PPP für den Frontalunterricht im Saal.
+Nach »bhak-ppp-gestaltung«: Lesestopps mit exaktem Abschnittstitel und QR, »KURZ KLÄREN« mit Grafik und Klick-Antwort, alle Pflichtaufgaben 1–3 mit Zeit und erwartetem Ergebnis,
 Regie je Stunde als ausgeblendete Tabelle (Minute · Was läuft · Folie · Wozu, aus plan.py), Phasenhinweis unten links, benutzerdefinierte Präsentationen je Stunde,
-»Aufgabe n«, »Buch S.«, keine Buchbilder. Alle Minuten kommen aus plan.py. Ein Test in Stunde 2 (20 min) ist nicht Teil dieser PPP.
+»Aufgabe n«, »Buch S.«, keine Buchbilder. Alle Minuten kommen aus plan.py. Der Test in Stunde 2 (20 min, Dauer angenommen) ist nicht Teil dieser PPP.
 Aufruf im Repository-Ordner: python3 werkzeug/quellen/5ak-k2-globalisierung/unterricht_ppp.py <BHAK_Folienmaster_Vorlage.pptx> <Zielordner>"""
 import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -196,252 +196,168 @@ def bild(s, name, x, y, w, h):
     B.picture(s, UNIT + "img/" + name, x, y, w, h)
 
 
-def notiz(s, y, txt, size=16, farbe=None):
-    B.tb(s, X0, y, W, 0.5, [[(txt, {})]], size=size, color=farbe or INK, after=0)
+def notiz(s, y, txt, size=16, farbe=None, w=None):
+    B.tb(s, X0, y, w or W, 0.5, [[(txt, {})]], size=size, color=farbe or INK, after=0)
 
 
 # ---- Stunde 1
 def t1_einst():
-    s = d.slide("Nur Titel", "Marke oder Produkt – woher kommt es?")
-    karte(s, X0, 1.0, 4.4, 1.35, "Die Marke", ["Österreichischer Anbieter · Entwicklung und Vertrieb"], GREEN)
-    karte(s, X0 + 4.6, 1.0, 4.4, 1.35, "Das Produkt", ["Bauteile · Montage · Datenverarbeitung – wo?"], ORANGE)
-    frage_klick(s, 2.55, "Ist eine österreichische Marke automatisch ein österreichisches Produkt? Zwei begründete Vermutungen an die Tafel.",
-                "Nein – Marke, Entwicklung, Bauteile, Montage und Daten können in verschiedenen Ländern liegen. Die Sportuhr ist ein Modell, keine echte Marke.")
-    return s
-
-
-def t1_klaeren():
-    s = d.slide("Nur Titel", "Kurz klären: vier Ströme am Modell")
-    bild(s, "sportuhr.png", X0, 1.0, 4.6, 2.86)
-    y = frage_klick(s, 1.0, "Welche vier Ströme verbinden die Stationen?", "Waren · Geld · Daten · Wissen", w=4.3, x=5.2, size=18)
-    y = frage_klick(s, y, "Ist Globalisierung nur Warenhandel?", "Nein – auch Wissen, Geld, Menschen, Kultur und Daten.", w=4.3, x=5.2, size=18)
+    s = d.slide("Nur Titel", "Was verbindest du mit Globalisierung?")
+    karte(s, X0, 1.0, 4.3, 1.5, "An die Tafel (Buch S. 42)", ["Sammelt Begriffe, die ihr mit Globalisierung verbindet. Je ein Begriff pro Zuruf."], GREEN, size=18)
+    karte(s, X0 + 4.5, 1.0, 4.5, 2.6, "Vermutung per Handzeichen: Wann begann sie?",
+          ["1 · um 1492 (Kolumbus)", "2 · um 1844 (Telegraf)", "3 · um 1944 (IWF, Weltbank)", "4 · erst 1980er/1990er (Technik, Internet)", "5 · je nach Kriterium früher oder später"], ORANGE, size=16)
+    notiz(s, 3.75, "Noch nicht auflösen – am Arbeitsblatt tippt jeder zuerst allein (»Was glaubst du?«).", size=16, farbe=RUST)
     return s
 
 
 def t1_a1():
-    s = auftrag_folie("Jetzt: Aufgabe 1 – Flussbild zu zweit", [1], {1: "zu zweit: Papier, dann Foto"},
-                      "Flussbild mit ≥ 4 Stationen · je ein Waren-, Geld-, Daten-, Wissensstrom · zwei Akteure · ein Engpass",
-                      ohne_handy="Erst auf Papier zeichnen, dann fotografieren und eintippen.")
-    notiz(s, 3.95, "Modell: Entwicklung (Europa) · Halbleiter (Ostasien) · Montage (Südostasien) · Rohstoffe · Rechenzentrum · Absatz (Europa, USA)")
+    s = auftrag_folie("Jetzt: Aufgabe 1 – Wann begann sie?", [1], {1: "allein am Handy, ohne KI"},
+                      "Tipp (ohne Wertung) · drei Ereignisse mit Jahr · 452 Jahre · passende Aussage · eigener Beginn mit Begründung",
+                      ohne_handy=None)
+    notiz(s, 3.95, "Tipps auf Abruf unter der Aufgabe: Denkanstoß · Theorie-Karte · Buch.", size=16)
     return s
 
 
 def t1_a1b():
-    s = d.slide("Aufgabe", "Besprechen: Aufgabe 1 – Beispielströme")
-    rows = [["Strom", "Beispiel (Modell)"], ["Waren", "Chips Ostasien → Montage Südostasien · Uhren → Europa, USA"], ["Geld", "Käufer → Anbieter → Zulieferer · Zahlung ans Rechenzentrum"],
-            ["Daten", "Trainingsdaten → Rechenzentrum → Auswertung zurück"], ["Wissen", "Entwicklungsvorgaben, Software, Know-how"]]
-    cells, h = B.auto_grid(s, X0, 0.98, [1.4, 7.6], rows, size=16, minh=0.34)
-    for r in cells[1:]: s._anim.append(r[1:])
-    frage_klick(s, 0.98 + h + 0.12, "Engpass: Der Chip fehlt – wer ist betroffen?", "Montage und Auslieferung. Wert entsteht auch durch Entwicklung, Software und Vertrieb – nicht nur durch Montage.", size=18)
+    s = d.slide("Aufgabe", "Besprechen: Aufgabe 1 – der Zeitstrahl")
+    bild(s, "zeitstrahl.png", X0, 1.0, 4.4, 2.15)
+    y = frage_klick(s, 1.0, "Gibt es einen einzigen Beginn?", "Nein – je nach Kriterium: 1492, 1844, 1944, 1980er, Internet.", w=4.4, x=5.1, size=17)
+    y = frage_klick(s, y, "1944 − 1492 = ?", "452 Jahre.", w=4.4, x=5.1, size=17)
+    notiz(s, 3.3, "Zwei, drei Kadetten nennen ihr Kriterium – ohne Wertung (Aufgabe 1 e).", size=16)
+    return s
+
+
+def t1_china():
+    s = d.slide("Nur Titel", "Gemeinsam: Folgen für die Weltgeschichte?")
+    karte(s, X0, 1.0, W, 0.95, "Überschrift aus dem Vorjahr", ["»Vor 500 Jahren zerstörte China seine Marine, weil die Herrscher Angst vor Freihandel hatten.«"], ORANGE, size=18)
+    y = frage_klick(s, 2.05, "Quellenkritik: Was ist gesichert?", "Die staatlichen Flottenfahrten unter Zheng He (1405–1433) endeten. »Zerstört« und »Angst vor Freihandel« sind Deutungen.", size=17)
+    y = frage_klick(s, y, "Gedankenspiel (kein Fakt): Wäre China weitergesegelt?", "Offen – Vermutungen sammeln: Handelszentrum Asien? Kolonien? Rolle Europas?", size=17)
     return s
 
 
 def t1_lesen2():
-    return lesen_folie(1, "**Buch S. 48 und 64–70** zum Nachschlagen", ["folgen"], "Für wen ist eine Folge ein Vorteil, für wen eine Belastung?", [6])
+    return lesen_folie(1, "**Buch S. 45–47** zum Nachschlagen", ["antrieb", "liberal"], "Welche sechs Kräfte treiben die Globalisierung an – und was heißt Liberalisierung?", [5])
 
 
 def t1_a2():
-    return auftrag_folie("Jetzt: Aufgabe 2 – allein", [2], {2: "erst im Heft, dann am Handy"}, "je eine Zeile Wirtschaft, Gesellschaft, Umwelt: Vorteil · Belastung · Gruppe + eine Bedingung")
+    return auftrag_folie("Jetzt: Aufgabe 2 – Antriebskräfte", [2], {2: "allein am Handy, ohne KI"}, "vier Beispiele zugeordnet · Liberalisierung in eigenen Worten · ein Bezug zu einem anderen Prozess")
 
 
 def t1_a2b():
-    s = d.slide("Aufgabe", "Besprechen: zwei verkürzte Aussagen")
-    y = frage_klick(s, 1.05, "»Alle profitieren gleich.«", "Nein – Gruppen sind verschieden betroffen; es kommt auf Regeln und Bedingungen an.")
-    y = frage_klick(s, y, "»Regional ist immer besser für die Umwelt.«", "Nein – Herstellung, Energie und Lebensdauer zählen, nicht nur Transportkilometer.")
+    s = d.slide("Aufgabe", "Besprechen: Antriebskräfte und Liberalisierung")
+    bild(s, "antriebskraefte.png", X0, 1.0, 4.2, 2.43)
+    y = frage_klick(s, 1.0, "Konzern auf drei Kontinenten?", "Transnationale Konzerne", w=4.5, x=5.0, size=16)
+    y = frage_klick(s, y, "Zölle senken, Märkte öffnen?", "Liberalisierung", w=4.5, x=5.0, size=16)
+    y = frage_klick(s, y, "Container, Großraumflugzeuge?", "Innovationen im Transport", w=4.5, x=5.0, size=16)
+    y = frage_klick(s, y, "Gleiche Stecker und Schienen?", "Normen und Standards", w=4.5, x=5.0, size=16)
+    notiz(s, 3.5, "Liberalisierung = Handelshemmnisse abbauen, Märkte öffnen. Neoliberalismus: Befürworter und Kritiker kennen (Buch S. 46–47).", size=12, w=4.3)
     return s
 
 
 def t1_sich():
-    s = d.slide("Nur Titel", "Sicherung auf Papier")
-    karte(s, X0, 1.05, W, 1.5, "Schreib einen Satz ins Heft", ["Unsere Uhr wäre besonders verwundbar, wenn …, weil …"], ORANGE, size=24)
-    notiz(s, 2.8, "Ohne Handy · danach sind Aufgaben 1 und 2 fertig.")
+    s = d.slide("Nur Titel", "Sicherung ins Heft")
+    karte(s, X0, 1.05, W, 1.5, "Merksatz", ["Es gibt keinen einzelnen Beginn der Globalisierung – und sechs Kräfte treiben sie an."], ORANGE, size=22)
+    notiz(s, 2.8, "Ohne Handy · danach sind Aufgaben 1 und 2 fertig. Ausblick: Fr 20.11. zuerst der angekündigte Test, danach Digitalisierung (Buch S. 48).", size=16)
     return s
 
 
 # ---- Stunde 2
+def t2_wdn():
+    s = d.slide("Nur Titel", "Weißt du noch? Drei Fragen aus Stunde 1")
+    y = 1.0
+    for q, a in I.WEISST_DU_NOCH[2]:
+        y = frage_klick(s, y, q, a, size=17)
+    return s
+
+
 def t2_a3():
-    s = auftrag_folie("Jetzt: Aufgabe 3 – allein rechnen", [3], {3: "allein, Rechenweg im Heft"}, "Zoll und Summe in US-Dollar · Zahler · zwei Wege der Belastung · Grund für den offenen Ladenpreis")
-    notiz(s, 3.95, "Modell: Zollwert 100 US-Dollar · Zollsatz 15 Prozent · weitere Kosten bleiben unberücksichtigt")
+    s = auftrag_folie("Jetzt: Aufgabe 3 – Digital Divide", [3], {3: "allein am Handy, ohne KI"}, "71 und 27 Prozentpunkte · 2,2 Mrd. offline · Grund für verschiedene Zahlen · ein Lebensbereich")
+    notiz(s, 3.95, "ITU 2025: hohes Einkommen 94 % · niedriges 23 % · Stadt 85 % · Land 58 % · Männer 77 % · Frauen 71 %", size=16)
     return s
 
 
 def t2_a3b():
     s = d.slide("Aufgabe", "Besprechen: Aufgabe 3")
-    y = frage_klick(s, 1.05, "Zoll und Summe?", "100 × 0,15 = 15 US-Dollar · 100 + 15 = 115 US-Dollar")
-    y = frage_klick(s, y, "Wer zahlt zuerst – und wer trägt die Last?", "Der Importeur zahlt zuerst; die Last kann bei Marge, Preis oder Lieferant liegen – offen.")
-    y = frage_klick(s, y, "Warum bleibt der Ladenpreis offen?", "Nachfrage, Verträge, Wechselkurs, weitere Kosten, Wettbewerb.", size=18)
+    bild(s, "digital_divide.png", X0, 1.0, 3.9, 2.25)
+    y = frage_klick(s, 1.0, "Hoch − niedrig? Stadt − Land?", "94 − 23 = 71 · 85 − 58 = 27 Prozentpunkte", w=4.9, x=4.6, size=15)
+    y = frage_klick(s, y, "Buch: rund 32 %. ITU: 2,2 Mrd. offline.", "Quellen zählen verschieden: Jahr, Messweise, Definition. Quelle nennen.", w=4.9, x=4.6, size=15)
+    y = frage_klick(s, y, "Corona und Digitalisierung?", "Homeoffice und Distance Learning beschleunigt – Ungleichheit sichtbar.", w=4.9, x=4.6, size=15)
     return s
 
 
-def t2_a4():
-    s = auftrag_folie("Jetzt: Aufgabe 4 – Dreiergruppen", [4], {4: "Dreiergruppe: Matrix + drei Fälle"}, "je Organisation Aufgabe · Instrument · Grenze + Fälle 1–3 zugeordnet")
-    notiz(s, 3.95, "Fall 1: Streit über Handelsbeschränkung · Fall 2: Zahlungslücke ans Ausland · Fall 3: Strom oder Schulen, langfristig", size=16)
+def t2_ampel():
+    s = d.slide("Nur Titel", "Statement-Ampel im Raum – ohne Handy")
+    for i, (kopf, col) in enumerate((("stimmt", GREEN), ("unklar", ORANGE), ("stimmt nicht", RUST))):
+        karte(s, X0 + i * 3.05, 1.0, 2.9, 0.8, kopf, [], col, size=20)
+    y = schritte(s, X0, 1.95, W, ["Stephan liest eine Aussage vor. Alle stellen sich in eine Zone.", "Gruppen prüfen mit den vier Fragen: Wer sagt das? Woher weiß er das? Was hat er davon? Was sagen andere?",
+                                  "Neu aufstellen. Wer wechselt, sagt in einem Satz warum. Keine Note."], size=16, farbe=GREEN)
     return s
 
 
-def t2_sich():
-    s = d.slide("Aufgabe", "Sichern: drei Organisationen, drei Fälle")
-    rows = [["", "WTO", "IWF", "Weltbank"], ["Aufgabe", "Handelsregeln, Streit", "Stabilität, Zahlungsprobleme", "Entwicklungsfinanzierung"],
-            ["Grenze", "keine Weltregierung, Berufung blockiert", "Auflagen lösen nicht alles", "Schulden und Folgen prüfen"], ["Fall", "1 · Handelsstreit", "2 · Zahlungslücke", "3 · Strom, Schulen"]]
-    cells, h = B.auto_grid(s, X0, 0.98, [1.4, 2.5, 2.5, 2.6], rows, size=16, minh=0.34)
-    for r in cells[1:]: s._anim.append(r[1:])
-    frage_klick(s, 0.98 + h + 0.12, "Wer leitet den IWF? (Namenskarte B)", "Georgieva – Lagarde war bis 2019 IWF-Chefin, jetzt EZB. Namen vor dem Termin prüfen.", size=18)
+def t2_ampel2():
+    s = d.slide("Nur Titel", "Aussagen zur Ampel (Buch S. 51)")
+    karte(s, X0, 1.0, 4.4, 1.55, "Aussage 1", ["Globalisierung ist eine Bereicherung für Europa."], GREEN, size=18)
+    karte(s, X0 + 4.6, 1.0, 4.4, 1.55, "Aussage 4", ["Die Schäden des US-Handelskriegs zeigen, wie eng die Weltwirtschaft verflochten ist."], GREEN, size=18)
+    frage_klick(s, 2.7, "Hilfe zu Aussage 4 (Stand 09.11.2026)", "China setzt den Zusatzzoll von 24 % auf US-Waren für weitere zwei Monate aus, 10 % bleiben (Berliner Zeitung, nach Xinhua, Reuters, dpa). Heißt das »Krieg vorbei«? Offen.", size=15)
     return s
 
 
-# ---- Stunde 3
-def t3_uebernahme():
-    s = d.slide("Nur Titel", "Vier Bedeutungen von »Übernahme«")
-    bild(s, "vier_fragen.png", X0, 1.0, 4.2, 2.24)
-    karte(s, 4.9, 1.0, 4.6, 2.24, "Ordne zu", ["1 · Ein Chatbot schreibt Kundenmails.", "2 · Ein Konzern kontrolliert Chips und Rechenzentren.", "3 · Ein Team plant ohne KI nicht mehr.", "4 · Ein System umgeht seine Aufsicht."], TEAL, size=16)
-    frage_klick(s, 3.3, "Welches Feld passt zu 1–4?", "1 Arbeit · 2 Macht · 3 Abhängigkeit · 4 Kontrollverlust (Nr. 4 ist nur eine Möglichkeit).", size=16)
-    return s
-
-
-def t3_a5():
-    return auftrag_folie("Jetzt: Aufgabe 5 – zu zweit", [5], {5: "zu zweit am Handy"}, "vier Fälle zugeordnet · je ein betontes Ziel von EU und USA")
-
-
-def t3_klaeren():
-    s = d.slide("Nur Titel", "Kurz klären: drei Kategorien")
-    for i, (kopf, txt, col) in enumerate((("Verbot", "z. B. bestimmte soziale Bewertung", RUST), ("Hochrisiko", "z. B. Bewerberauswahl", ORANGE), ("Transparenz", "z. B. Chatbot gibt sich als Mensch aus", TEAL))):
-        karte(s, X0 + i * 3.05, 1.0, 2.9, 1.5, kopf, [txt], col, size=16)
-    frage_klick(s, 2.7, "Ist die EU-KI-Verordnung ein KI-Verbot?", "Nein – Pflichten nach Risiko und Einsatz. Ausschließlich militärische, Verteidigungs- oder nationale Sicherheitszwecke sind nach Artikel 2 ausgenommen (bei auch ziviler Nutzung gilt die Verordnung) – kein rechtsfreier Raum.", size=18)
-    return s
-
-
-def t3_a6():
-    s = auftrag_folie("Jetzt: Aufgabe 6 – Quellenkarten arbeitsteilig", [6], {6: "eine Karte je Gruppe, Tabelle gemeinsam"}, "Aussage – Art der Quelle – Beleg – Interesse – Grenze · 45 Sekunden Bericht je Karte")
-    notiz(s, 3.95, "A: CAIS-Statement 2023 · B: AI Safety Report 2026 · C: Fallstudien 2026 · D: US-KI-Aktionsplan 2025", size=16)
-    return s
-
-
-def t3_a7():
-    return auftrag_folie("Jetzt: Aufgabe 7 – allein", [7], {7: "allein am Handy"}, "vier Fehler begründet · zwei Sätze richtig mit Quelle · eine Schutzmaßnahme mit Grenze")
-
-
-def t3_bespr():
-    s = d.slide("Aufgabe", "Besprechen: Aufgaben 5–7")
-    y = frage_klick(s, 1.05, "Fälle 1–4 (Bewerber, Chatbot, Bewertung, Trainingsplan)?", "Hochrisiko · Transparenz · verbotene Praxis · keine besondere Einstufung", size=18)
-    y = frage_klick(s, y, "Welche Karte liefert eine Messung?", "Keine allein: C zeigt einen Versuch unter Bedingungen, A und D sind Positionen, B bündelt Befunde.", size=18)
-    y = frage_klick(s, y, "Eine Schutzmaßnahme – und ihre Grenze?", "z. B. menschliche Freigabe – keine Garantie gegen jeden Fehler.", size=18)
-    return s
-
-
-# ---- Stunde 4
-def t4_rueck():
-    s = d.slide("Nur Titel", "Rückblick: Sportuhr und drei Institutionen")
-    for i, (kopf, col) in enumerate((("WTO", GREEN), ("IWF", TEAL), ("Weltbank", ORANGE))):
-        karte(s, X0 + i * 3.05, 1.0, 2.9, 0.9, kopf, [], col, size=20)
-    y = frage_klick(s, 2.05, "Handelsstreit · Zahlungskrise · Schulprojekt – wer ist zuständig?", "WTO · IWF · Weltbank", size=18)
-    karte(s, X0, y + 0.05, W, 1.05, "Aktualitätshinweis", ["Die Übergangsfrist für die Kennzeichnung älterer KI-Systeme lief bis 02.12.2026 – seit zwei Tagen vorbei (Stand Karte C prüfen)."], ORANGE, size=16)
-    return s
-
-
-def t4_a8a():
-    s = auftrag_folie("Jetzt: Aufgabe 8a – Perspektivgruppen", [8], {8: "Gruppe, dann am Handy"}, "2 Argumente · 1 Maßnahme · 1 Nachteil der eigenen Lösung", zeit=7)
-    notiz(s, 3.9, "Soll der Anbieter für wichtige Bauteile und KI-Dienste mehrere Bezugsquellen aufbauen, auch wenn das die Kosten erhöht?", size=16, farbe=OLIVE)
-    return s
-
-
-def t4_a8b():
-    s = d.slide("Aufgabe", "Aufgabe 8b: Diskussion ohne Handy · 13 min")
-    y = schritte(s, X0, 1.05, W, ["Je 1 Minute Ausgangsposition pro Perspektive.", "Moderierte Rückfragen, dann der gemeinsame Zielkonflikt.", "Beobachter: ein belastbarer Zusammenhang, eine offene Behauptung."], size=20, farbe=GREEN)
-    karte(s, X0, y + 0.1, W, 1.1, "Regeln", ["Argumente auf Menschenwürde, Demokratie und überprüfbare Tatsachen beziehen. Niemand muss die eigene Haltung spielen."], RUST, size=16)
-    return s
-
-
-def t4_a8c():
-    s = d.slide("Aufgabe", "Aufgabe 8c: eigenes Urteil mit der Hand · 10 min")
-    y = schritte(s, X0, 1.05, W, ["100–130 Wörter auf Papier – entscheide dich für einen Vorschlag.", "Zusammenhang aus der Lieferkette · soziale oder ökologische Folge · Grenze der Maßnahme.",
-                                  "Ein Satz: »Wenn …, dann könnte …; offen bleibt …«. Danach Foto in die Aufgabe 8."], size=19, farbe=GREEN)
-    notiz(s, y + 0.1, "Beide Richtungen sind erlaubt. Bewertet wird die Begründung – nicht deine politische Richtung.", size=16, farbe=RUST)
-    return s
-
-
-def t4_check():
-    s = d.slide("Nur Titel", "Selbstcheck: sechs Quizfragen")
-    schritte(s, X0, 1.05, 6.9, ["Quiz per QR-Code öffnen: genau sechs Fragen.", "Einwände und Unsicheres sofort fragen.", "Das Quiz zählt nicht für die Note."], size=20, farbe=TEAL)
-    qr(s, "quizcheck", 7.75, 1.05, 1.3, "Quiz (6 Fragen)")
-    return s
-
-
-def t4_abgabe():
+def t2_abgabe():
     s = d.slide("Nur Titel", "Abgabe: eine PDF in LMS")
-    schritte(s, X0, 1.05, 6.9, ["Arbeitsblatt: alle Aufgaben 1–8 fertig? Dann »PDF erstellen« → in LMS hochladen.", "Kein Download? »Teilen / Speichern« oder »PDF öffnen«. Geht LMS nicht: PDF per E-Mail an Stephan.", "Fotos nicht vergessen: Aufgabe 1 (Flussbild) und Aufgabe 8c (Urteil)."], size=20, farbe=RUST)
-    qr(s, "aufgaben", 7.75, 1.05, 1.3, "Arbeitsblatt")
-    return s
-
-
-def t4_bruecke():
-    s = d.slide("Nur Titel", "Brücke zur nächsten Einheit")
-    karte(s, X0, 1.05, W, 1.7, "Offene Frage", ["Wenn Regeln und Technik Macht schaffen: Was macht dann die Macht des Westens aus?"], OLIVE, size=24)
-    notiz(s, 3.0, "Kein Stoff, nur die Anschlussfrage. Fertig? Reserve nutzen, nichts Neues beginnen.", size=18)
+    schritte(s, X0, 1.05, 6.9, ["Arbeitsblatt: Aufgaben 1–3 fertig? Dann »PDF erstellen« → in LMS hochladen.", "Kein Download? »Teilen / Speichern« oder »PDF öffnen«. Geht LMS nicht: PDF per E-Mail an Stephan.",
+                                "Wer fertig ist: Selbstcheck-Quiz (6 Fragen) oder Zusatzaufgaben 4–6."], size=18, farbe=RUST)
+    qr(s, "aufgaben", 7.75, 1.05, 1.2, "Arbeitsblatt")
+    qr(s, "quizcheck", 7.75, 2.75, 1.2, "Quiz (6 Fragen)")
     return s
 
 
 def zusatz_folie():
-    s = d.slide("Nur Titel", "OPTIONAL: Für Schnelle", hidden=True)
-    rows = [["Nr.", "OPTIONAL (Theorieteil, ganz unten)"]] + [[str(i + 1), it["title"].replace("OPTIONAL: ", "")] for i, it in enumerate(TD.SCHNELLE)]
-    cells, h = B.auto_grid(s, X0, 1.05, [0.7, 8.3], rows, size=18, minh=0.42)
+    s = d.slide("Nur Titel", "ZUSATZ: Für Schnelle", hidden=True)
+    rows = [["Nr.", "Zusatzaufgabe (Arbeitsblatt, ganz unten)", "Zeit"]] + [[str(n), T[n]["title"], f"{T[n]['zeit']} min"] for n in I.ZUSATZ]
+    cells, h = B.auto_grid(s, X0, 1.05, [0.7, 7.0, 1.3], rows, size=18, minh=0.42)
     B.tb(s, X0, 1.05 + h + 0.15, W, 0.8, ["Nur, wenn die Pflicht fertig ist. Keine Hausübung. Quiz »Globalisierung-Check« (16 Fragen) freiwillig."], size=18, after=0)
+    return s
+
+
+def kuerzung_folie():
+    s = d.slide("Nur Titel", "Lehrer-Info · Kürzungsliste und Supplierstunde", hidden=True)
+    B.tb(s, X0, 0.98, W, 4.0, [[("Wenn Zeit verloren geht, in dieser Reihenfolge:", {"bold": True, "color": OLIVE})]] + ["· " + x for x in P.KUERZUNG] + [[(P.SUPPLIER, {"bold": True, "color": RUST})]], size=13, after=5)
     return s
 
 
 # ---------------------------------------------------------------- Ablauf je Stunde: (Schlüssel, Phasen, Art, Schritt auf »Heute«, Wozu?, Funktion)
 SPEC = {
  1: [("t1_heute", [0], "START", None, "Klassenbuch; Ziel und Ablauf zeigen (QR Arbeitsblatt, Theorieteil)", lambda: heute_folie(1)),
-     ("t1_einst", [1], "EINSTIEG", None, "Vorwissen: Marke ≠ Produkt – Vermutungen sammeln, noch nicht auflösen", t1_einst),
-     ("t1_lesen", [2], "LESEN", "Lesen", "Begriff, Entstehung, Standortwahl selbst lesen – Stephan erklärt nicht vor",
-      lambda: lesen_folie(1, "**Buch S. 43–48** zum Nachschlagen", ["verbindet", "entstehung", "warum"], "Welche Verbindungen gehen über den Warenhandel hinaus?", [2])),
-     ("t1_klaeren", [3], "KURZ KLÄREN", "Kurz klären", "Vier Ströme am Bild; Globalisierung ≠ nur Warenhandel", t1_klaeren),
-     ("t1_a1", [4], "ZU ZWEIT", "Aufgabe 1", "Flussbild der Sportuhr (K03-nah): Ströme, Akteure, Engpass", t1_a1),
-     ("t1_a1b", [5], "BESPRECHEN", "Besprechen", "Beispielströme per Klick; Engpass besprechen", t1_a1b),
-     ("t1_lesen2", [6], "LESEN", "Lesen: Folgen", "Gewinner und Belastete: selbst lesen", t1_lesen2),
-     ("t1_a2", [7], "AUFGABE", "Aufgabe 2", "Folgen für Wirtschaft, Gesellschaft, Umwelt unterscheiden", t1_a2),
-     ("t1_a2b", [8], "BESPRECHEN", None, "Zwei verkürzte Aussagen korrigieren", t1_a2b),
-     ("t1_sich", [9, 10], "ABGABE", None, "Ein Satz auf Papier; Reserve", t1_sich)],
- 2: [("t2_heute", [0, 1, 2], "TEST", None, "Klassenbuch, Test (20 min); Wiedereinstieg Modellimport; Ziel der Stunde", lambda: heute_folie(2)),
-     ("t2_lesen", [3], "LESEN", "Lesen: Zölle", "Zoll als Zahlung und Last selbst lesen (mit Karte A)",
-      lambda: lesen_folie(2, "**Buch S. 50–51** zum Nachschlagen · Karte A", ["zoelle"], "Wer führt den Zoll zuerst ab – und wer trägt die Last?", [3])),
-     ("t2_a3", [4], "AUFGABE", "Aufgabe 3", "Modellrechnung, Zahler und Last unterscheiden", t2_a3),
-     ("t2_a3b", [5], "BESPRECHEN", None, "Rechnung, Zahler, offener Ladenpreis", t2_a3b),
-     ("t2_lesen2", [6], "LESEN", "Lesen: Institutionen", "WTO, IWF, Weltbank selbst lesen (mit Karte B)",
-      lambda: lesen_folie(2, "**Buch S. 52–63** zum Nachschlagen · Karte B", ["institutionen"], "Welches Problem gehört zu welcher Organisation?", [6])),
-     ("t2_a4", [7], "GRUPPE", "Aufgabe 4", "Matrix und drei Fälle in Dreiergruppen", t2_a4),
-     ("t2_sich", [8, 9], "BESPRECHEN", None, "Je Organisation Aufgabe und Grenze sichern; Namen prüfen; Reserve", t2_sich)],
- 3: [("t3_heute", [0], "START", None, "Klassenbuch; Ziel von Stunde 3", lambda: heute_folie(3)),
-     ("t3_uebern", [1], "EINSTIEG", None, "Vier Bedeutungen von »Übernahme« trennen", t3_uebernahme),
-     ("t3_lesen", [2], "LESEN", "Lesen: KI-Regeln", "Daten, Chips, Strom, Regeln selbst lesen (Karten C–E)",
-      lambda: lesen_folie(3, "**Buch S. 48** zum Anschluss · Karten C bis E", ["ki_global"], "Welche Art von Regel gilt für welchen Einsatz?", [2])),
-     ("t3_a5", [3], "ZU ZWEIT", "Aufgabe 5", "Fallkarten sortieren, EU und USA vergleichen", t3_a5),
-     ("t3_klaeren", [4], "KURZ KLÄREN", "Kurz klären", "Verbot, Hochrisiko, Transparenz an je einem Beispiel", t3_klaeren),
-     ("t3_lesen2", [5], "LESEN", "Lesen: Risiken", "Befund, Simulation, Szenario, Position",
-      lambda: lesen_folie(3, "**Buch S. 48** zum Nachschlagen · Quellenkarten 1–4", ["ki_risiko"], "Befund, Simulation, Szenario oder Position?", [5])),
-     ("t3_a6", [6], "GRUPPE", "Aufgabe 6", "Quellenprüfung arbeitsteilig an vier Karten", t3_a6),
-     ("t3_a7", [7], "AUFGABE", "Aufgabe 7", "Fehlerhaften KI-Text korrigieren", t3_a7),
-     ("t3_bespr", [8, 9], "BESPRECHEN", None, "Fälle, Quellenkarten, Schutzmaßnahme; Reserve", t3_bespr)],
- 4: [("t4_heute", [0], "START", None, "Klassenbuch; Ziel von Stunde 4", lambda: heute_folie(4)),
-     ("t4_rueck", [1], "EINSTIEG", None, "Rückblick Sportuhr und Institutionen; Datumsbewusstsein KI-Frist", t4_rueck),
-     ("t4_lesen", [2], "LESEN", "Lesen: Gestalten", "Maßnahmen und Grenzen selbst lesen",
-      lambda: lesen_folie(4, "**Buch S. 65–77** zum Nachschlagen", ["gestalten"], "Wie nutzen wir die Vorteile und begrenzen Abhängigkeiten, Kosten und Risiken?", [2])),
-     ("t4_a8a", [3], "GRUPPE", "Aufgabe 8a", "Vier Perspektiven bereiten Argumente und Maßnahme vor", t4_a8a),
-     ("t4_a8b", [4], "BEWEGUNG", "Aufgabe 8b", "Strukturierte Diskussion ohne Handy", t4_a8b),
-     ("t4_a8c", [5], "AUFGABE", "Aufgabe 8c", "Eigenes Urteil mit der Hand; Foto danach", t4_a8c),
-     ("t4_check", [6], "WIEDERHOLEN", "Selbstcheck", "Sechs Quizfragen; Einwände klären", t4_check),
-     ("t4_abgabe", [7], "ABGABE", "Abgabe", "PDF erstellen, in LMS hochladen", t4_abgabe),
-     ("t4_bruecke", [8, 9], "EINSTIEG", None, "Brücke zur nächsten Einheit; Reserve", t4_bruecke)],
+     ("t1_einst", [1], "EINSTIEG", None, "Begriffe sammeln (Buch S. 42); Vermutung zum Beginn per Handzeichen, noch nicht auflösen", t1_einst),
+     ("t1_lesen", [2], "LESEN", "Lesen", "Theorie-Karte und Buch S. 43–44 selbst lesen – Stephan erklärt nicht vor",
+      lambda: lesen_folie(1, "**Buch S. 43–44** zum Nachschlagen", ["beginn"], "Wann begann die Globalisierung – und nach welchem Kriterium?", [2])),
+     ("t1_a1", [3], "AUFGABE", "Aufgabe 1", "Beginn der Globalisierung: Tipp, drei Ereignisse, Rechnung, Begründung", t1_a1),
+     ("t1_a1b", [4], "BESPRECHEN", "Besprechen", "Zeitstrahl, Kriterien; Lösungen per Klick", t1_a1b),
+     ("t1_china", [4], "BESPRECHEN", "Gemeinsam", "Quellenkritik an einer Überschrift; Gedankenspiel China-Flotte", t1_china),
+     ("t1_lesen2", [5], "LESEN", "Lesen: Antriebskräfte", "Sechs Antriebskräfte und Liberalisierung selbst lesen",
+      t1_lesen2),
+     ("t1_a2", [6], "AUFGABE", "Aufgabe 2", "Vier Beispiele zuordnen, Liberalisierung erklären", t1_a2),
+     ("t1_a2b", [7], "BESPRECHEN", None, "Zuordnung per Klick; Liberalisierung an der Tafel", t1_a2b),
+     ("t1_sich", [8, 9], "ABGABE", None, "Merksatz ins Heft; Ausblick Stunde 2; Reserve", t1_sich)],
+ 2: [("t2_heute", [0, 1], "TEST", None, "Klassenbuch, Test (20 min, Dauer angenommen); Ziel der Stunde", lambda: heute_folie(2)),
+     ("t2_wdn", [2], "WIEDERHOLEN", None, "Drei Fragen aus Stunde 1, mündlich", t2_wdn),
+     ("t2_lesen", [3], "LESEN", "Lesen: Digital Divide", "Theorie-Karte und Buch S. 48 selbst lesen",
+      lambda: lesen_folie(2, "**Buch S. 48** zum Nachschlagen", ["digital"], "Wer ist offline – und warum zählen Quellen verschieden?", [3])),
+     ("t2_a3", [4], "AUFGABE", "Aufgabe 3", "ITU-Zahlen auswerten, Quellenkritik", t2_a3),
+     ("t2_a3b", [5], "BESPRECHEN", None, "Zahlen, Buch gegen ITU, Corona", t2_a3b),
+     ("t2_ampel", [6], "BEWEGUNG", "Ampel", "Statement-Ampel im Raum: so läuft sie", t2_ampel),
+     ("t2_ampel2", [6], "BEWEGUNG", None, "Zwei Aussagen (Buch S. 51); Hilfe zu Aussage 4 mit Stand 09.11.2026", t2_ampel2),
+     ("t2_abgabe", [7, 8], "ABGABE", "Abgabe", "PDF erstellen, in LMS hochladen; Reserve: Selbstcheck-Quiz", t2_abgabe)],
 }
 
 for teil, sp in SPEC.items():
     alle = sorted({i for x in sp for i in x[1]})
     assert alle == list(range(len(phasen(teil)))), (teil, alle)
 
-DANACH_TEIL = {1: "Stunde 2 am Fr 20.11.: zuerst Test", 2: "Stunde 3 am Fr 27.11.: KI", 3: "Stunde 4 am Fr 04.12.: Gestalten und PDF-Abgabe",
-               4: "Ende der Einheit – nächste Einheit: Macht des Westens"}
+DANACH_TEIL = {1: "Stunde 2 am Fr 20.11.: zuerst Test", 2: "Fr 27.11.: Institutionen der Globalisierung (WTO, IWF, Weltbank)"}
 
-KURZ_TITEL = {"t1_einst": "Marke oder Produkt", "t1_a2b": "Besprechen", "t1_sich": "Sicherung auf Papier", "t2_a3b": "Besprechen", "t2_sich": "Sicherung", "t3_uebern": "Vier Bedeutungen",
-              "t3_bespr": "Besprechen", "t4_rueck": "Rückblick", "t4_bruecke": "Brücke", "t1_lesen": "Lesen"}
+KURZ_TITEL = {"t1_einst": "Begriffe und Vermutung", "t1_a1b": "Besprechen", "t1_china": "Gemeinsam", "t1_sich": "Sicherung ins Heft", "t2_wdn": "Weißt du noch?",
+              "t2_a3b": "Besprechen", "t2_ampel2": "Aussagen", "t1_a2b": "Besprechen", "t1_lesen": "Lesen"}
 
 
 def FOLIE_TITEL(spec):
@@ -451,18 +367,19 @@ def FOLIE_TITEL(spec):
 # ================================================================ Deck bauen
 def bauen():
     global d
-    d = B.Deck(True, "IWK · 5AK · K2 Globalisierung · Unterricht"); B.d = d
+    d = B.Deck(True, "IWK · 5AK · K2.1 Globalisierung · Unterricht"); B.d = d
     d.section("Start")
-    s = d.slide("Titelfolie", "Globalisierung und aktuelle Weltpolitik")
+    s = d.slide("Titelfolie", "Die Welt ohne Grenzen: Globalisierung")
     for ph in s.placeholders:
         if ph.placeholder_format.type == 2:
-            B.text(ph, ["IWK · 5AK · K2 · Unterrichts-PPP · " + " · ".join(I.DATEN[K0][n] for n in (1, 2, 3, 4)) + " · Buch S. 41–77",
+            B.text(ph, ["IWK · 5AK · K2.1 · Unterrichts-PPP · " + " · ".join(I.DATEN[K0][n] for n in (1, 2)) + " · Buch S. 42–51",
                         [(f"Stand {I.STAND} · {I.V} · TH-Unterricht (Ablauf) – zum Nachlesen: Theorieteil", {"size": 12})]], size=18, color=RGBColor.from_string("C9D6B0"))
     titel = s
     bedien = d.slide("Nur Titel", "Lehrer-Info · So führt die PPP", hidden=True)
     regie = {st["std"]: d.slide("Nur Titel", f"Regie {K0} · {st['datum']} · Stunde {st['std']}", hidden=True) for st in P.PLAN[K0]}
     quellen = d.slide("Nur Titel", "Lehrer-Info · Was vor dem Unterricht zu prüfen ist", hidden=True)
-    for teil in (1, 2, 3, 4):
+    kuerz = kuerzung_folie()
+    for teil in (1, 2):
         d.section(f"Stunde {teil}")
         sec = d.slide("Abschnitt", I.TEILNAME[teil].split(" · ", 1)[1])
         for ph in sec.placeholders:
@@ -476,12 +393,12 @@ def bauen():
             hinweis(s, art, minuten(teil, idx), nn)
             B.pill(s, I.TEILBUCH[teil], w=2.4)
             check(s)
-    d.section("Optional")
+    d.section("Zusatz")
     zusatz = zusatz_folie()
 
     nr_von = {s.slide_id: i + 1 for i, s in enumerate(d.p.slides)}
     NR = lambda key: nr_von[FOLIE[key].slide_id]
-    folgen = {t: [FOLIE[f"t{t}_sec"]] + [FOLIE[x[0]] for x in SPEC[t]] for t in (1, 2, 3, 4)}
+    folgen = {t: [FOLIE[f"t{t}_sec"]] + [FOLIE[x[0]] for x in SPEC[t]] for t in (1, 2)}
     for st in P.PLAN[K0]:
         s = regie[st["std"]]; teil = st["std"]
         rows = [["Minute", "Was läuft jetzt?", "Folie", "Wozu?"]]; t0 = 0
@@ -501,21 +418,21 @@ def bauen():
         cells, h = B.auto_grid(s, X0, 1.28, [0.75, 4.2, 0.65, 3.4], rows, size=size, minh=0.2)
         B.tb(s, X0, 1.3 + h, W, hk, [[("Wenn es knapp wird: ", {"bold": True, "color": RUST}), (kn, {})]], size=10, after=0)
     B.tb(bedien, X0, 0.98, W, 4.1, [
-        [("Eine Datei, eine Klasse. ", {"bold": True, "color": OLIVE}), ("F5 zeigt alle sichtbaren Folien in Unterrichtsreihenfolge (Stunde 1 → 4).", {})],
+        [("Eine Datei, eine Klasse. ", {"bold": True, "color": OLIVE}), ("F5 zeigt alle sichtbaren Folien in Unterrichtsreihenfolge (Stunde 1 → 2).", {})],
         [("Pro Stunde starten: ", {"bold": True, "color": OLIVE}), ("Bildschirmpräsentation → Benutzerdefinierte Bildschirmpräsentation → z. B. »Stunde 2 Fr 20.11.«. Ohne Menü: Foliennummer tippen und Enter (Nummern auf den Regiefolien).", {})],
-        [("Jede Stunde läuft gleich: ", {"bold": True, "color": OLIVE}), ("»Heute« → »Lesen: …« (genaue Abschnitte im Theorieteil, Leitfrage) → »Kurz klären« (nur Fehlvorstellungen, Antwort per Klick) → »Jetzt: Aufgabe …« → »Besprechen« (Lösung per Klick, erst nach der Arbeitszeit).", {})],
+        [("Jede Stunde läuft gleich: ", {"bold": True, "color": OLIVE}), ("»Heute« → »Lesen« (Theorie-Karte, Buch) → »Jetzt: Aufgabe …« → »Besprechen« (Lösung per Klick, erst nach der Arbeitszeit). Dazwischen Gemeinsam-Folien (Tafel, Ampel).", {})],
         [("Unten links ", {"bold": True, "color": OLIVE}), ("steht, was JETZT läuft (Minuten aus plan.py) und was DANACH kommt.", {})],
-        [("Stunde 2: ", {"bold": True, "color": OLIVE}), ("zuerst der angekündigte Test (20 min, nicht in dieser PPP; Stoff und Nummer unbekannt).", {})],
-        [("Nachschlagen: ", {"bold": True, "color": OLIVE}), ("Theorieteil bleibt vollständig; Lösungen in der privaten Lösungsmappe. OPTIONAL: ausgeblendete Folie am Ende.", {})],
-        [("Regiepläne: ", {"bold": True, "color": OLIVE}), (f"Folien {nr_von[regie[1].slide_id]}–{nr_von[regie[4].slide_id]} (ausgeblendet), Präsentation »Lehrer-Regiepläne«.", {})]],
+        [("Stunde 2: ", {"bold": True, "color": OLIVE}), ("zuerst der angekündigte Test (20 min angenommen, nicht in dieser PPP; Stoff und Nummer unbekannt).", {})],
+        [("Aufgaben am Handy: ", {"bold": True, "color": OLIVE}), ("Tipp-Stufen unter jeder Aufgabe (Denkanstoß, Theorie-Karte, Buch). KI-Regel: jede Aufgabe sagt »ohne KI« oder »KI erlaubt«.", {})],
+        [("Regiepläne: ", {"bold": True, "color": OLIVE}), (f"Folien {nr_von[regie[1].slide_id]}–{nr_von[regie[2].slide_id]} (ausgeblendet), Präsentation »Lehrer-Regiepläne«.", {})]],
         size=13, after=5)
     B.tb(quellen, X0, 0.98, W, 4.1, ["· " + x for x in [
-        "Zollfolien (Stunde 2) zeigen nur das Rechenmodell; der Rechtsstand wechselt: Supreme Court 20.02.2026 (IEEPA-Zölle gekippt), Section 232/301 gelten weiter. Vor dem 20.11. Karte A neu prüfen.",
-        "Namenskarte B: Georgieva (IWF), Banga (Weltbank), Okonjo-Iweala (WTO). Lagardes Abgang zum 07.02.2027 ist laut Reuters/Börsen-Zeitung (Stand 29.10.2026) gemeldet, Primärquelle prüfen; auf den Folien steht er nicht.",
-        "KI-Fristen (Karte C) nach AI Omnibus: 02.08.2026 Transparenz, 02.12.2027 Anhang III, 02.08.2028 Anhang I; Übergangsfrist Kennzeichnung ältere Systeme bis 02.12.2026.",
-        "Quellenkarte 3 stammt von Anthropic (Hersteller von Claude): Interessenkonflikt offen ansprechen – gehört zu Aufgabe 6.",
-        "Keine Buchbilder auf den Folien (frei weitergebbar); keine Podcasts im Pflichtablauf; Aufgabe 8 ohne Rollentribunal.",
-        "Geprüft: in LibreOffice gerendert und alle Folien angesehen. Ein Abspieltest in Microsoft PowerPoint (Klicks, benutzerdefinierte Präsentationen) steht aus."]], size=13, after=5)
+        "Zölle: Berliner Zeitung 09.11.2026 (Anika Schlünz, nach Xinhua/Reuters/dpa): China setzt 24 % Zusatzzoll für zwei Monate aus, 10 % bleiben. Supreme Court 20.02.2026 (WKO, 23.10.2026). Ein Trump-Xi-Treffen am Rand des APEC-Gipfels in Shenzhen wurde angekündigt, Ergebnis ungeprüft – vor dem 20.11. neu prüfen.",
+        "Digital Divide: ITU Facts and Figures 2025 (17.11.2025). Buch nennt rund 32 % – bewusst als Quellenkritik. Beispielländer aus deiner PPP vom Vorjahr (Stand 2024) sind nicht geprüft und stehen nicht auf den Folien.",
+        "China-Flotte: EBSCO Research Starter (Zheng He, 1405–1433). Überschrift »zerstörte« als zugespitzt behandeln; Szenarien sind Gedankenspiel.",
+        "Jahresplan E3 nennt Ö1 Dimensionen »Zölle: Regulierungsinstrument oder Konfliktpotenzial …« (24 min, 2025) und radioWissen »Globalisierung um das Jahr 1000« – nicht geprüft, nicht eingebaut; du entscheidest.",
+        "Keine Buchbilder auf Folien und Seiten (deine PPP enthält Buchseiten, Wikipedia-Bilder, Kartenausschnitte: nicht übernommen). Grafiken selbst gezeichnet.",
+        "Geprüft: in LibreOffice gerendert. Ein Abspieltest in Microsoft PowerPoint (Klicks, benutzerdefinierte Präsentationen) steht aus."]], size=12, after=5)
 
     pres = d.p.part._element
     csl = etree.Element("{%s}custShowLst" % NS_P)
@@ -530,11 +447,11 @@ def bauen():
         l = etree.SubElement(cs, "{%s}sldLst" % NS_P)
         for sl in folien: etree.SubElement(l, "{%s}sld" % NS_P).set("{%s}id" % NS_R, rid[sl.slide_id])
 
-    show(f"{K0} gesamt", [titel] + sum([folgen[t] for t in (1, 2, 3, 4)], []))
+    show(f"{K0} gesamt", [titel] + sum([folgen[t] for t in (1, 2)], []))
     for st in P.PLAN[K0]:
         show(f"Stunde {st['std']} {st['datum']}", ([titel] if st["std"] == 1 else []) + folgen[st["std"]])
-    show("Lehrer-Regiepläne", [bedien] + [regie[n] for n in (1, 2, 3, 4)] + [quellen])
-    show("Optional: Für Schnelle", [zusatz])
+    show("Lehrer-Regiepläne", [bedien] + [regie[n] for n in (1, 2)] + [quellen, kuerz])
+    show("Zusatz: Für Schnelle", [zusatz])
 
     os.makedirs(ZIEL, exist_ok=True)
     name = f"{I.PRAEFIX}-TH-Unterricht-{I.V}.pptx"
@@ -542,7 +459,7 @@ def bauen():
     sicht = [s for s in d.p.slides if s._element.get("show") != "0"]
     for x in PROBLEME: print("ÜBERLAUF", x)
     print("ok", name, len(d.p.slides._sldIdLst), "Folien,", len(sicht), "sichtbar ·", nid[0], "Präsentationen")
-    for t in (1, 2, 3, 4): print("  Stunde", t, "Folien", [nr_von[x.slide_id] for x in folgen[t]])
+    for t in (1, 2): print("  Stunde", t, "Folien", [nr_von[x.slide_id] for x in folgen[t]])
 
 
 if __name__ == "__main__":

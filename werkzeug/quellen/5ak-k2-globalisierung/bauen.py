@@ -38,6 +38,12 @@ def rep(old, new, count=1):
 
 
 # ================================================================ Arbeitsblatt
+T_OUT = []
+for _t in I.T:
+    _t = dict(_t); _k = _t.pop("karte", None)
+    if _k:
+        _d = dict(TD.KARTEN[_k]); _d["bild"] = list(_d["bild"]) if _d.get("bild") else None; _t["karteD"] = _d
+    T_OUT.append(_t)
 s = open(os.path.join(HERE, "vorlage_aufgaben.html"), encoding="utf-8").read()
 TITLE = "Globalisierung-Aufgaben"
 rep("<title>Epochen-Aufgaben</title>", "<title>" + TITLE + "</title>")
@@ -52,16 +58,16 @@ def _ber(nrs):
         if a is None: a = n
         if k + 1 == len(nrs) or nrs[k + 1] != n + 1: out.append(str(a) if a == n else "%d–%d" % (a, n)); a = None
     return ", ".join(out)
-_TL = {1: "Stunde 1", 2: "Stunde 2", 3: "Stunde 3", 4: "Stunde 4"}
-INTRO = ("      <li><b>Pflicht</b> – " + " · ".join("<b>%s</b>: %s" % (_TL[h], _ber([t["nr"] for t in I.T if t["h"] == h and t["tag"] != "Zusatz"])) for h in range(1, 5)) + " (" + I.wann() + "). "
+_TL = {1: "Stunde 1", 2: "Stunde 2"}
+INTRO = ("      <li><b>Pflicht</b> – " + " · ".join("<b>%s</b>: %s" % (_TL[h], _ber([t["nr"] for t in I.T if t["h"] == h and t["tag"] != "Zusatz"])) for h in range(1, 3)) + " (" + I.wann() + "). "
          "Die Minuten stehen im <b>Fahrplan</b> oben.</li>\n"
-         "      <li><b>OPTIONAL</b> für Schnelle steht im Theorieteil ganz unten. Es gibt <b>keine Hausübung</b>.</li>")
+         "      <li><b>Zusatz</b> (Aufgaben 4–6) ist nur für Schnelle. Es gibt <b>keine Hausübung</b>. Bei jeder Aufgabe stehen unten <b>Tipps auf Abruf</b>.</li>")
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
       <li>Lies zuerst den passenden Teil im <a href="theorie.html">Theorieteil</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
       """ + INTRO + """
       <li>Bei jeder Aufgabe steht, wie lange sie ungefähr dauert. Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt – die Lösung wird dabei nicht verraten.</li>
-      <li>Deine Antworten bleiben am Handy gespeichert. In der 4. Stunde (Fr 04.12.) ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
+      <li>Deine Antworten bleiben am Handy gespeichert. In der 2. Stunde (Fr 20.11.) ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
     </ol>""" + s[j:]
 i = s.index("<!--FAHRPLAN-->"); j = s.index("<!--/FAHRPLAN-->") + len("<!--/FAHRPLAN-->")
 s = s[:i] + "<!--FAHRPLAN--><!--/FAHRPLAN-->" + s[j:]  # wird von build_index.py aus einheiten.json gefüllt
@@ -82,7 +88,7 @@ rep("  return { ok: parts.every(p => p.ok), parts };\n}", """  /* K1.3: offene E
   return { ok: auto.every(p => p.ok), parts, man: man.length > 0 };
 }""")
 # Link »Nachlesen in der Theorie« je Aufgabe (Skill-Regel 12)
-_NACH = {"a1": "verbindet", "a2": "folgen", "a3": "zoelle", "a4": "institutionen", "a5": "ki_global", "a6": "ki_risiko", "a7": "ki_global", "a8": "gestalten"}
+_NACH = {"a1": "beginn", "a2": "antrieb", "a3": "digital", "a4": "beginn", "a5": "zoelle", "a6": "stiglitz"}
 _h = 'if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));'
 assert _h in s
 s = s.replace(_h, _h + '\n  { const _n = ' + json.dumps(_NACH) + '[t.id]; if (_n) card.append(el("p", { class: "hint" }, el("a", { href: "theorie.html#" + _n, text: "Nachlesen in der Theorie" }))); }', 1)
@@ -109,10 +115,10 @@ s = s[:_i] + """function showCheck(t) {
 }""" + s[_j:]
 rep('    let st = "selbst bewerten";\n    if (ev) {', '    let st = "selbst bewerten";\n    if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + (ev.parts.some(p => p.man && p.kind === "foto") ? (ev.parts.some(p => p.kind === "foto" && p.filled) ? "Zeichnung" : "Zeichnung (Foto fehlt)") + (ev.parts.some(p => p.man && p.kind !== "foto") ? " und Erklärung" : "") : "Erklärung") + ": bewertet die Lehrkraft"; }\n    else if (ev) {')
 rep("(ev && ev.ok ? [70, 110, 40] : muted)", "(ev && ev.ok && !ev.man ? [70, 110, 40] : muted)")
-s = s[:i] + 'const KEY = "%s";\nconst KAP = "K2", THEMA = "Globalisierung";\nconst T = ' % I.KEY + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
+s = s[:i] + 'const KEY = "%s";\nconst KAP = "K2.1", THEMA = "Globalisierung";\nconst T = ' % I.KEY + json.dumps(T_OUT, ensure_ascii=False, indent=1) + ";" + s[j:]
 rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }", ".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }\n.fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }")
-rep('KAP + " Zeit-Einteilung und Epochen – Aufgaben"', '"K2 Globalisierung und Weltpolitik – Aufgaben"')
-rep('clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14")', 'clean("IWK · 5AK · K2 Globalisierung und Weltpolitik · Schulbuch S. 41–77")')
+rep('KAP + " Zeit-Einteilung und Epochen – Aufgaben"', '"K2.1 Globalisierung – Aufgaben"')
+rep('clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14")', 'clean("IWK · 5AK · K2.1 Globalisierung · Schulbuch S. 42–51")')
 rep('d.text("Epochen-Aufgaben", M + 15, y + 11.5)', 'd.text("' + TITLE + '", M + 15, y + 11.5)')
 rep('"Noch offen (Stunde 1 und 2): Aufgabe "', '"Noch offen (Pflicht): Aufgabe "')
 rep('"Alle Pflicht-Aufgaben 1–10 bearbeitet."', '"Alle Pflicht-Aufgaben bearbeitet."')
@@ -293,7 +299,7 @@ page = f"""<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Globalisierung und Weltpolitik – Theorie</title>
+<title>Globalisierung – Theorie</title>
 <link rel="stylesheet" href="../../schriften/schriften.css">
 {tcss}
 </head>
@@ -312,8 +318,8 @@ page = f"""<!doctype html>
 <section class="next" id="weiter">
   <div class="eyebrow">Weiter geht's</div>
   <h2>Jetzt bist du dran</h2>
-  <div class="btns"><a class="btn" href="aufgaben.html">2 · Arbeitsblatt Aufgaben 1–{len(I.T)}</a><a class="btn alt" href="quiz.html">3 · Globalisierung-Check (Quiz)</a></div>
-  <p class="hint">Theorie zum Nachlesen im Schulbuch IWK (Trauner) S. 41–77. Alle Grafiken selbst gezeichnet. Aktuelle Ergänzungen (Karten A–E) mit Quelle und Stand 30.10.2026: WKO, IHK, EU-Kommission, ILO, IEA, International AI Safety Report. Vor dem Unterricht prüfen wir diese Karten erneut.</p>
+  <div class="btns"><a class="btn" href="aufgaben.html">2 · Arbeitsblatt Aufgaben 1–3 (+ Zusatz)</a><a class="btn alt" href="quiz.html">3 · Globalisierung-Check (Quiz)</a></div>
+  <p class="hint">Theorie zum Nachlesen im Schulbuch IWK (Trauner) S. 42–51. Alle Grafiken selbst gezeichnet. Aktuelle Zahlen mit Quelle und Stand 11.11.2026: ITU (Facts and Figures 2025), Berliner Zeitung (09.11.2026), WKO. Vor dem Unterricht prüfen wir diese Zahlen erneut.</p>
   <p class="hint">Stand {STAND} · {I.V}</p>
 </section>
 </main>

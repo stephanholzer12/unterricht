@@ -1,65 +1,36 @@
-"""Zeitplan K2 Globalisierung und aktuelle Weltpolitik – EINE Quelle für Fahrplan (einheiten.json), Stundenvorschlag, Stundenkarten (TH-Fachwissen),
-Regiefolien der TH-Unterricht und Lösungsmappe.
-Annahme laut Übergabe: 50 min je Stunde. Fr 13.11., Fr 20.11. (zuerst 20 min angekündigter Test, Stoff und Nummer unbekannt – nichts ergänzt), Fr 27.11., Fr 04.12.2026.
-Minutenplan der ChatGPT-Übergabe (Abschnitt 7) übernommen und nach Regelwerk angepasst: Klassenbuch (2 min) je Stunde, Besprechung als eigene Phase, Reserve je Stunde,
-Methodenwechsel (nie dieselbe Methode in zwei Stunden hintereinander), je Stunde eine Phase ohne Handy. Aufgabe 8 besteht aus drei Phasen (8a, 8b, 8c) – ihre Summe ist die Aufgabenzeit.
-Phasen: (Name, Minuten, ohne Handy?, Art). Art: "a<n>" Aufgabe n · "lesen" · "erkl" kurze Erklärung · "test" · "org" · "bespr" · "reserve" · "pdf".
-Lesezeit aus der Wortzahl (ca. 130 Wörter/min, theorie_daten.py) – wird unten geprüft."""
+"""Zeitplan K2.1 Globalisierung – EINE Quelle für Fahrplan (einheiten.json), Stundenvorschlag, Regiefolien der TH-Unterricht und Lösungsmappe.
+Stephan (11.11.2026): Fr 13.11. = Stunde 1 (volle Stunde), Fr 20.11. = Stunde 2 mit angekündigtem Test. Institutionen folgen ab Fr 27.11. (eigene Einheit).
+Regel 06.11.2026: 50 min = 10 min Organisation und Reserve + 40 min Arbeit. Stunde 2: Test (Annahme 20 min, Dauer von Stephan bestätigen) + ca. 20 min Unterricht.
+Phasen: (Name, Minuten, ohne Handy?, Art). Art: "a<n>" Aufgabe n · "lesen" · "erkl" kurze Erklärung/Einstieg · "test" · "org" · "bespr" · "reserve" · "pdf".
+Lesezeit aus der Wortzahl (ca. 130 Wörter/min, theorie_daten.py)."""
 import inhalt as I
 
 MIN = 50
 
-S1 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-      ("Einstieg: »Ist eine österreichische Marke automatisch ein österreichisches Produkt?« – zwei Vermutungen an die Tafel", 3, True, "org"),
-      ("Lesen: Theorieteil »Was Globalisierung verbindet«, »Wie die Verflechtung entstand«, »Warum Unternehmen weltweit arbeiten«", 4, False, "lesen"),
-      ("Kurz klären: Begriff, Antriebskräfte, Strömeübersicht am Bild", 4, True, "erkl"),
-      ("Aufgabe 1 zu zweit: Flussbild der Sportuhr auf Papier, dann Foto und Einträge", 14, False, "a1"),
-      ("Besprechung Aufgabe 1: Beispiel-Flussbild und Engpässe an der Tafel", 3, True, "bespr"),
-      ("Lesen: Theorieteil »Wer gewinnt – und wer trägt die Kosten?«", 2, False, "lesen"),
-      ("Aufgabe 2 allein (Heft, dann Handy)", 10, False, "a2"),
-      ("Besprechung Aufgabe 2: zwei verkürzte Aussagen korrigieren", 4, True, "bespr"),
-      ("Sicherung auf Papier: »Unsere Uhr wäre besonders verwundbar, wenn …, weil …«", 2, True, "org"),
-      ("Reserve", 2, True, "reserve")]
+S1 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"),
+      ("Einstieg: Begriffe zur Globalisierung an die Tafel sammeln (Buch S. 42) · Vermutung »Wann begann sie?« per Handzeichen", 4, True, "erkl"),
+      ("Lesen: Theorie-Karte »Wann begann die Globalisierung?« und Buch S. 43–44", 3, False, "lesen"),
+      ("Aufgabe 1: drei Beginn-Ereignisse, Rechnung, Begründung (Handy)", 9, False, "a1"),
+      ("Gemeinsam: Besprechung Aufgabe 1 · Impuls »Folgen für die Weltgeschichte?« (Kolumbus, China-Flotte) · Quellenkritik an der Überschrift", 5, True, "bespr"),
+      ("Lesen: Theorie-Karte »Sechs Antriebskräfte« und Buch S. 45–47", 4, False, "lesen"),
+      ("Aufgabe 2: Antriebskräfte zuordnen, Liberalisierung erklären (Handy)", 10, False, "a2"),
+      ("Besprechung Aufgabe 2: Zuordnung und Liberalisierung an der Tafel", 3, True, "bespr"),
+      ("Sicherung ins Heft: Merksatz »Kein einzelner Beginn – sechs Antriebskräfte« · Ausblick Stunde 2", 2, True, "erkl"),
+      ("Reserve", 7, True, "reserve")]
 
-S2 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-      ("Angekündigter Test inkl. Austeilen und Einsammeln (Stoff und Testnummer: nicht in dieser PPP)", 20, True, "test"),
-      ("Wiedereinstieg: Sportuhr erinnern, Modellimport in die USA vorstellen", 1, True, "org"),
-      ("Lesen: Theorieteil »Zölle: Wer zahlt – und wer trägt die Last?« (mit Karte A)", 2, False, "lesen"),
-      ("Aufgabe 3 allein rechnen, kurzer Partnercheck", 8, False, "a3"),
-      ("Besprechung Aufgabe 3: Zahler und Last unterscheiden", 2, True, "bespr"),
-      ("Lesen: Theorieteil »Wer organisiert Regeln und Finanzierung?« (mit Karte B)", 2, False, "lesen"),
-      ("Aufgabe 4 in Dreiergruppen: Vergleichskarte und drei Fälle", 9, False, "a4"),
-      ("Sicherung: je Organisation ein Auftrag und eine Grenze · Namenskarte kurz prüfen", 3, True, "bespr"),
-      ("Reserve", 1, True, "reserve")]
+S2 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"),
+      ("Angekündigter Test inkl. Austeilen und Einsammeln (Dauer angenommen, Stoff und Testnummer: nicht in dieser PPP)", 20, True, "test"),
+      ("Weißt du noch? Drei Fragen aus Stunde 1, mündlich", 3, True, "erkl"),
+      ("Lesen: Theorie-Karte »Digital Divide« und Buch S. 48", 2, False, "lesen"),
+      ("Aufgabe 3: Zahlen zum Digital Divide auswerten (Handy)", 8, False, "a3"),
+      ("Besprechung Aufgabe 3: Zahlen, Quellenkritik (Buch 32 % gegen ITU)", 2, True, "bespr"),
+      ("Statement-Ampel im Raum: »Ziele erreicht?« (Buch S. 51), zwei Aussagen", 5, True, "erkl"),
+      ("PDF erstellen und in LMS hochladen (darf auch nach dem Läuten)", 2, False, "pdf"),
+      ("Reserve", 5, True, "reserve")]
 
-S3 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-      ("Einstieg: vier Bedeutungen von »Übernahme« an der Tafel zuordnen", 3, True, "org"),
-      ("Lesen: Theorieteil »KI braucht Daten, Chips, Strom und Regeln« (Karten C–E)", 3, False, "lesen"),
-      ("Aufgabe 5 zu zweit: Fallkarten sortieren, EU und USA vergleichen", 10, False, "a5"),
-      ("Kurz klären: Modell oder Anwendung · Verbot, Hochrisiko, Transparenz an je einem Beispiel", 3, True, "erkl"),
-      ("Lesen: Theorieteil »KI-Risiken prüfen« und die eigene Quellenkarte", 3, False, "lesen"),
-      ("Aufgabe 6 arbeitsteilig: Quellenkarten 1–4, gemeinsame Tabelle", 14, False, "a6"),
-      ("Aufgabe 7 allein: fehlerhaften KI-Text korrigieren", 8, False, "a7"),
-      ("Besprechung Aufgaben 5–7 · Sicherung auf Papier: eine Schutzmaßnahme und ihre Grenze", 3, True, "bespr"),
-      ("Reserve", 1, True, "reserve")]
+M = {1: "Handzeichen + Handyaufgaben + Tafel-Gemeinsam", 2: "Test + Zahlenaufgabe + Bewegung im Raum"}
 
-S4 = [("Beginn: Klassenbuch, Anwesenheit", 2, True, "org"),
-      ("Rückblick: Sportuhr und drei Institutionenkarten · Aktualitätshinweis (KI-Frist 02.12.)", 2, True, "org"),
-      ("Lesen: Theorieteil »Kosten verteilen und Abhängigkeiten verringern«", 3, False, "lesen"),
-      ("Aufgabe 8a: vier Perspektivgruppen bereiten Argumente und Maßnahme vor", 7, False, "a8"),
-      ("Aufgabe 8b: strukturierte Diskussion ohne Handy", 13, True, "a8"),
-      ("Aufgabe 8c: eigenes Urteil mit der Hand schreiben (100–130 Wörter), dann Foto", 10, True, "a8"),
-      ("Foto 8c und Einträge aus 8b nachtragen, dann Selbstcheck: sechs Quizfragen", 5, False, "bespr"),
-      ("PDF erstellen und in LMS hochladen", 4, False, "pdf"),
-      ("Brücke: »Wenn Regeln und Technik Macht schaffen – was macht dann die Macht des Westens aus?«", 2, True, "org"),
-      ("Reserve", 2, True, "reserve")]
-
-M = {1: "Handzeichen + Flussbild auf Papier zu zweit + Tafel",
-     2: "Test + Rechnung allein + Dreiergruppen-Matrix",
-     3: "Fallkarten sortieren + arbeitsteilige Quellenkarten + Textkorrektur allein",
-     4: "Perspektivgruppen + strukturierte Diskussion + Handschrift"}
-
-PLAN = {k: [{"std": n, "datum": I.DATEN[k][n], "teile": [n], "methode": M[n], "phasen": ph} for n, ph in ((1, S1), (2, S2), (3, S3), (4, S4))] for k in I.KLASSEN}
+PLAN = {k: [{"std": n, "datum": I.DATEN[k][n], "teile": [n], "methode": M[n], "phasen": ph} for n, ph in ((1, S1), (2, S2))] for k in I.KLASSEN}
 
 
 def _ab(st, name):
@@ -73,14 +44,10 @@ def _ab(st, name):
 _st = PLAN[I.KLASSEN[0]]
 KNAPP = {}
 for k in I.KLASSEN:
-    KNAPP[(k, 1)] = (f"Zeitstopp: Um Minute {_ab(_st[0], 'Aufgabe 2')} beginnt Aufgabe 2. Wird es knapp: Die Kurzerklärung auf Begriff und eine Antriebskraft kürzen und die Besprechung von Aufgabe 1 auf zwei Beispiele. "
-                     "Aufgabe 1 und 2 bleiben vollständig.")
-    KNAPP[(k, 2)] = ("Der Test hat Vorrang. Nach dem Test bleiben 28 Minuten: Wird es knapp, zuerst den Namensüberblick (Karte B) kürzen, dann die Besprechung von Aufgabe 3. "
-                     "Aufgabe 4 nicht streichen; notfalls den letzten Fall als Einstieg in Stunde 4 sichern.")
-    KNAPP[(k, 3)] = (f"Zeitstopp: Um Minute {_ab(_st[2], 'Aufgabe 6')} beginnt Aufgabe 6. Wird es knapp: Aufgabe 5 b (EU/USA) mündlich und die Besprechung am Ende auf die Schutzmaßnahme kürzen. "
-                     "Die vier Bedeutungen von »Übernahme« bleiben Pflicht.")
-    KNAPP[(k, 4)] = (f"Zeitstopp: Um Minute {_ab(_st[3], 'Aufgabe 8a')} beginnt Aufgabe 8a. Wird es knapp: Selbstcheck auf drei Fragen kürzen; die PDF darf auch nach dem Läuten hochgeladen werden. "
-                     "Kein Rollentribunal, keine Referate, kein Film zusätzlich.")
+    KNAPP[(k, 1)] = (f"Zeitstopp: Um Minute {_ab(_st[0], 'Aufgabe 2')} beginnt Aufgabe 2. Wird es knapp: Besprechung von Aufgabe 1 auf den China-Impuls kürzen (3 min), Reserve nutzen. "
+                     "Aufgabe 1 und 2 bleiben.")
+    KNAPP[(k, 2)] = ("Der Test hat Vorrang. Nach dem Test bleiben etwa 22 Minuten: Wird es knapp, zuerst die Statement-Ampel auf eine Aussage kürzen, dann Weißt du noch? streichen. "
+                     "Aufgabe 3 nicht streichen; die PDF darf nach dem Läuten hochgeladen werden.")
 
 _Z = {t["nr"]: t["zeit"] for t in I.T}
 for k, stunden in PLAN.items():
@@ -95,8 +62,9 @@ for k, stunden in PLAN.items():
         for n, mi in summen.items():
             nrs.append(n); assert mi == _Z[n], (k, n, mi, _Z[n])
             assert [t for t in I.T if t["nr"] == n][0]["h"] == st["std"], (k, n, "Aufgabe in falscher Stunde")
+        arbeit = sum(p[1] for p in st["phasen"] if p[3] not in ("org", "reserve", "test"))
+        assert arbeit <= 40 - (20 if st["std"] == 2 else 0) + 2, (k, st["std"], "mehr als 40 min Arbeit", arbeit)
     assert sorted(nrs) == I.PFLICHT, (k, sorted(nrs), I.PFLICHT)
-assert len(set(M.values())) == 4
 
 
 def aufgaben_der(st):
@@ -116,14 +84,16 @@ def minuten(st, arten):
     return sum(p[1] for p in st["phasen"] if any(p[3].startswith(a) for a in arten))
 
 
-LESEN = {1: "Einstieg + Verflechtung, Entstehung, Standortwahl, Folgen (Buch S. 43–48, 64–70)",
-         2: "Zölle (Karte A) und WTO, IWF, Weltbank (Karte B) (Buch S. 50–63)",
-         3: "KI braucht Daten, Chips, Strom und Regeln · KI-Risiken prüfen (Ergänzung zu Buch S. 48)",
-         4: "Kosten verteilen und Abhängigkeiten verringern (Buch S. 65–77)"}
-WIE = {1: "ohne Handy: Einstieg an der Tafel, Flussbild auf Papier, Besprechung",
-       2: "zuerst Test; ohne Handy: Wiedereinstieg und Sicherung",
-       3: "ohne Handy: Einstieg, kurze Klärung, Sicherung auf Papier",
-       4: "ohne Handy: Rückblick, Diskussion 8b, Urteil 8c mit der Hand"}
+LESEN = {1: "Beginn der Globalisierung und Antriebskräfte (Buch S. 42–47)",
+         2: "Digitalisierung und Digital Divide (Buch S. 48), Statement-Ampel »Ziele erreicht?« (Buch S. 51)"}
+WIE = {1: "ohne Handy: Einstieg an der Tafel, Besprechungen, Sicherung im Heft",
+       2: "zuerst Test; ohne Handy: Weißt du noch?, Statement-Ampel im Raum"}
+
+KUERZUNG = ["Zuerst: Zusatzaufgaben 4–6 (sind ohnehin nur für Schnelle).",
+            "Dann: Impuls »Folgen für die Weltgeschichte?« in Stunde 1 auf 3 Minuten kürzen.",
+            "Dann: Statement-Ampel auf eine Aussage; Weißt du noch? streichen.",
+            "Fällt Stunde 1 aus: Aufgabe 1 und 2 wandern in Stunde 2 – dann Test und Aufgaben 1–3 nicht in eine Stunde pressen; Aufgabe 3 und Ampel entfallen oder wandern zu Beginn der Einheit »Institutionen« (27.11.)."]
+SUPPLIER = "Supplierstunde möglich: Stunde 1 ohne Stephan – Aufgaben 1 und 2 mit Tipp-Stufen und Theorie-Karten, kein Material nötig. Nur die gemeinsame Besprechung (China-Impuls) entfällt oder folgt in Stunde 2."
 
 
 def fahrplan_zeilen():
@@ -134,16 +104,16 @@ def fahrplan_zeilen():
         teile = [f"Lesen {minuten(st, ['lesen'])} min", f"Aufgaben {minuten(st, ['a'])} min", f"Besprechung {minuten(st, ['bespr'])} min", f"Reserve {minuten(st, ['reserve'])} min"]
         if minuten(st, ["test"]): teile.insert(0, f"Test {minuten(st, ['test'])} min")
         rest = MIN - minuten(st, ["lesen", "a", "bespr", "reserve", "test"])
-        teile.insert(len(teile) - 1, f"Organisation, Erklärung{', PDF' if st['std'] == 4 else ''} {rest} min")
+        teile.insert(len(teile) - 1, f"{'Organisation, Wiederholung, Ampel, PDF' if st['std'] == 2 else 'Organisation, Einstieg, Sicherung'} {rest} min")
         z.append({"wann": f"Stunde {st['std']}", "datum": st["datum"], "lesen": LESEN[st["std"]],
-                  "aufgaben": bereich(nrs) + (" · Selbstcheck-Quiz (6 Fragen)" if st["std"] == 4 else ""),
+                  "aufgaben": bereich(nrs) + (" · Selbstcheck-Quiz (6 Fragen)" if st["std"] == 2 else ""),
                   "zeit": " · ".join(teile), "wie": WIE[st["std"]],
-                  "abgabe": "Arbeitsblatt-PDF in LMS (alle Aufgaben 1–8)" if st["std"] == 4 else "Antworten bleiben am Handy gespeichert"})
+                  "abgabe": "Arbeitsblatt-PDF in LMS (Aufgaben 1–3)" if st["std"] == 2 else "Antworten bleiben am Handy gespeichert"})
     return z
 
 
-FAHRPLAN_TEXT = ("Dafür sind 4 Stunden eingeplant (Fr 13.11., Fr 20.11., Fr 27.11., Fr 04.12.). Lies den jeweiligen Abschnitt im Theorieteil, "
-                 "mach die Aufgaben 1–8 im Arbeitsblatt und gib am 04.12. die PDF in LMS ab. Am 20.11. schreibst du zuerst den angekündigten Test. Keine Hausübung.")
+FAHRPLAN_TEXT = ("Dafür sind 2 Stunden eingeplant (Fr 13.11. und Fr 20.11.). Lies den jeweiligen Abschnitt im Buch und die Theorie-Karte, "
+                 "mach die Aufgaben 1–3 im Arbeitsblatt und gib am 20.11. die PDF in LMS ab. Am 20.11. schreibst du zuerst den angekündigten Test. Zusatzaufgaben 4–6 sind freiwillig. Keine Hausübung.")
 
 
 if __name__ == "__main__":

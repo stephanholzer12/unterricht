@@ -1,4 +1,4 @@
-"""Trägt die Einheit K2 Globalisierung und aktuelle Weltpolitik (5AK IWK) in werkzeug/einheiten.json ein bzw. aktualisiert sie (Fahrplan aus plan.py, Dateiliste der Lieferung).
+"""Trägt die Einheit K2.1 Globalisierung (5AK IWK) in werkzeug/einheiten.json ein bzw. aktualisiert sie (Fahrplan aus plan.py, Dateiliste der Lieferung).
 Aufruf im Repository-Ordner:  python3 werkzeug/quellen/5ak-k2-globalisierung/eintragen.py"""
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -9,11 +9,12 @@ PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
-DATEIEN = {"stand": "31.10.2026", "zip": "",
+DATEIEN = {"stand": I.STAND, "zip": "",
            "liste": [f"{P}-TH-Unterricht-{V}.pptx"]}
-neu = {"klasse": "5AK", "fach": "IWK", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL, "block": "B Globalisierung", "jahresplan": "E3–E5 (zusammengefasst)",
+neu = {"klasse": "5AK", "fach": "IWK", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL, "block": "B Globalisierung", "jahresplan": "E3 (Prozesse der Globalisierung, 2 Stunden)",
        "seiten": ["theorie.html", "aufgaben.html", "quiz.html"], "versteckt": True, "lehrerseite": "https://claude.ai/artifact/HDe46vKV98ogtwmLxKHr4v", "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
-alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]
+OLD = "5ak-iwk/k2-globalisierung"   # frühere Fassung (v1–v4, K2): wird ersetzt
+alt = [i for i, u in enumerate(E) if u["ordner"] in (I.ORDNER, OLD)]
 if alt:
     u = E[alt[0]]
     for k in ("lehrerseite", "versteckt", "aktuell"):  # von Stephan oder später gesetzte Felder behalten

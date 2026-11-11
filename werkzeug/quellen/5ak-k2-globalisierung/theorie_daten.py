@@ -1,18 +1,17 @@
-"""Theorie-Seite K2 Globalisierung und aktuelle Weltpolitik: Teile und Folien. Dieselben Daten bauen die Theorie-Folien der TH-Lehrer-/TH-Kadetten-PPP
-und die Lesestopps der TH-Unterricht (eine Quelle).
+"""Theorie-Seite K2.1 Globalisierung: Teile und Folien. Dieselben Daten bauen die Theorie-Folien der TH-Lehrer-/TH-Kadetten-PPP und die Lesestopps der TH-Unterricht (eine Quelle).
 Block-Arten: tiles, ul, ol, merke, hint, table, video, reveal, img (Datei, Alt-Text, Bildunterschrift), karten, buch (Leseauftrag im Schulbuch).
-Alles in eigenen Worten; Grafiken selbst gezeichnet (skizzen.py), keine Buchabbildungen. Lesezeit: ca. 130 Wörter/min (siehe woerter()).
-Aktuelle Karten (A–E) tragen Datum und Quelle. Stand der Recherche: 30.10.2026 – vor 13.11., 20.11., 27.11. und 04.12. erneut prüfen."""
+Alles in eigenen Worten (Buch S. 42–51 als Orientierung, kein Buchtext, keine Buchbilder); Grafiken selbst gezeichnet (skizzen.py). Lesezeit: ca. 130 Wörter/min.
+KARTEN = Theorie-Karten für die Tipp-Stufen im Arbeitsblatt (höchstens 3 kurze Sätze, ein Bild). Aktuelle Zahlen tragen Datum und Quelle (Stand 11.11.2026)."""
 import re
 import inhalt as I
 
 EINSTIEG = [
- {"id": "s0a", "title": "Eine Sportuhr – woher kommt sie?", "pill": "Modellfall",
-  "blocks": [("tiles", [("Die Marke", ["Ein österreichischer Anbieter entwickelt und verkauft eine Sportuhr mit KI-Auswertung."]),
-                        ("Das Produkt", ["Bauteile, Montage und Datenverarbeitung können ganz woanders stattfinden."])]),
-             ("ul", ["Ist eine österreichische Marke automatisch ein österreichisches Produkt? Gib zwei begründete Vermutungen ab.",
-                     "Die Uhr ist ein **didaktisches Modell** – keine recherchierte Lieferkette einer echten Marke."]),
-             ("hint", "Leitfrage der Einheit: " + I.LEITFRAGE)]},
+ {"id": "s0a", "title": "Das Wichtigste vorab – wozu brauchst du das?", "pill": "Einstieg",
+  "blocks": [("tiles", [("Wozu das Ganze?", ["Fast alles, was du nutzt, hängt an weltweiten Netzen: Handy, Sportschuhe, Treibstoff, Funkgeräte, Streaming. Wer Globalisierung versteht, versteht Preise, Lieferengpässe und Machtfragen."]),
+                        ("Für dich", ["**Sport und Heer:** Ausrüstung und Rohstoffe kommen oft aus dem Ausland – Lieferfähigkeit ist Sicherheitspolitik. **Beruf:** Handel, Daten und Regeln bestimmen, wo Jobs entstehen. **Alltag:** Jede Zeitungsmeldung über Zölle trifft am Ende auch Preise."])]),
+             ("ul", ["Dein Buch: Teil II »Aspekte der Internationalisierung und Globalisierung«, Kapitel »Die Welt ohne Grenzen«, **S. 42–51**.",
+                     "Heute geht es um zwei Fragen: Wann begann die Globalisierung – und was treibt sie an? Danach: Was bringt die Digitalisierung, und wer bleibt dabei draußen?"]),
+             ("hint", "Leitfrage: " + I.LEITFRAGE + " Die Institutionen der Globalisierung (WTO, IWF, Weltbank) und die Auswirkungen kommen ab 27.11.")]},
 ]
 
 PARTS = [
@@ -20,131 +19,102 @@ PARTS = [
 
  # ---------------------------------------------------------------- Stunde 1
  ("teil1", I.TEILNAME[1].split(" · ")[0] + " · " + I.wann(1) + " · " + I.TEILBUCH[1], I.TEILNAME[1].split(" · ", 1)[1], [
-  {"id": "verbindet", "title": "Was Globalisierung verbindet", "pill": "Buch S. 43–48",
-   "blocks": [("ul", ["**Globalisierung** heißt: Wirtschaft, Menschen, Wissen, Kultur und Entscheidungen sind weltweit dicht miteinander verbunden. **Internationalisierung** meint die Ausweitung über die Staatsgrenze hinaus – weniger dicht. Eine überall gültige, starre Grenze zwischen beiden Begriffen gibt es nicht.",
-                      "An jedem Produkt kann man vier **Ströme** verfolgen: **Waren** (Bauteile, fertige Produkte), **Geld** (Zahlungen, Investitionen), **Daten** (Messwerte, Auswertungen) und **Wissen** (Entwicklung, Software, Know-how). Auch Menschen und Kultur wandern über Grenzen.",
-                      "**Fall Sportuhr (Modell):** Ein österreichischer Anbieter lässt eine Sportuhr aus international beschafften Bauteilen herstellen. Zur Uhr gehört ein KI-Dienst für die Auswertung von Trainingsdaten. Die Orte im Bild sind **gesetzte Annahmen**."]),
-              ("img", "img/sportuhr.png", "Modell der Sportuhr: sechs Stationen von Entwicklung in Europa über Halbleiter aus Ostasien, Montage in Südostasien und Rohstoffe aus mehreren Regionen bis zum Rechenzentrum und zum Absatz in Europa und den USA, verbunden durch Pfeile.",
-               "Modellfall Sportuhr: Stationen und Orte sind **angenommen**, keine echte Lieferkette."),
-              ("merke", "Eine **Marke** sagt nicht, wo Bauteile, Montage und Datenverarbeitung stattfinden."),
-              ("hint", "Bei der Beschaffung für Sport, Rettung oder Bundesheer zählen neben dem Preis auch Lieferfähigkeit, Ersatzteile und die Kontrolle sensibler Daten.")]},
-  {"id": "entstehung", "title": "Wie die Verflechtung entstand", "pill": "Buch S. 43–46",
-   "blocks": [("ul", ["**Ältere Netze:** Handelswege über Land und Meer verbanden Weltregionen schon lange vor der Industrie.",
-                      "**Kolonialzeit:** Die Expansion europäischer Mächte baute Handelsnetze auf – oft mit Zwang und Ausbeutung.",
-                      "**Industrialisierung und Transport:** Dampfschiff, Eisenbahn, später Container und Flugzeug machten Transporte schneller und billiger. Das Buch zeigt auf S. 43, wie stark die Reisegeschwindigkeiten stiegen.",
-                      "**Nach 1945:** IWF und Weltbank (Bretton Woods 1944) sowie das GATT-Abkommen über den Warenhandel (1947/48) schufen Regeln; Zölle wurden schrittweise gesenkt.",
-                      "**Digitalisierung:** Das Internet bringt Daten in Sekunden um die Welt und macht auch Dienstleistungen grenzüberschreitend."]),
-              ("merke", "Es gibt **keine einzige Geburtsstunde** der Globalisierung – je nach Blickwinkel beginnt sie früher oder später.")]},
-  {"id": "warum", "title": "Warum Unternehmen weltweit arbeiten", "pill": "Buch S. 45–47",
-   "blocks": [("ul", ["Unternehmen wählen **Standorte** nach **Standortfaktoren**: Kosten, Fachwissen, Infrastruktur, Marktzugang und rechtliche Regeln. Die **Wertschöpfungskette** wird aufgeteilt, weil nicht jede Stufe überall gleich gut möglich ist.",
-                      "Antriebskräfte laut Buch (S. 45–46): bessere Informations- und Verkehrstechnik, **Marktwirtschaft und Liberalisierung** (weniger Handelshürden), flexible Produktion (**Just-in-time**: Teile kommen genau dann, wenn man sie braucht), **transnationale Unternehmen** und gemeinsame **Normen**.",
-                      "Dazu kommen **Daten**: Ein KI-Dienst kann in einem Rechenzentrum in einem anderen Land laufen als dort, wo die Uhr getragen wird."]),
-              ("table", [["Standortfaktor", "Beispiel Sportuhr (Modell)"], ["Kosten", "Montage dort, wo Fertigung günstiger ist"], ["Fachwissen", "Chips von Spezialisten; Software aus Europa"],
-                         ["Infrastruktur", "Häfen, Strom und Rechenzentren"], ["Marktzugang", "Absatz in Europa und den USA"], ["Regeln", "Zölle, Datenschutz, Arbeits- und Umweltstandards"]]),
-              ("merke", "Weltweite Arbeitsteilung spart Kosten – sie schafft aber auch **Abhängigkeiten**.")]},
-  {"id": "stop1a", "title": "Stopp – kannst du das?", "pill": "Buch S. 43–47", "blocks": [("reveal", I.STOPPFRAGEN[1])]},
+  {"id": "beginn", "title": "Wann begann die Globalisierung?", "pill": "Buch S. 42–44",
+   "blocks": [("ul", ["**Globalisierung** heißt: Wirtschaft, Gesellschaft und Kultur sind weltweit immer dichter verflochten. Das Wort wird seit den 1960er-Jahren häufig benutzt, das Phänomen ist aber viel älter.",
+                      "Einen **einzigen Beginn** gibt es nicht. Je nachdem, was du als Kennzeichen ansiehst, setzt du ihn früher oder später an. Das Buch nennt unter anderem: **1492** (Kolumbus erreicht Amerika), **1844** (erste Nachricht per Telegraf), **1944** (Gründung von IWF und Weltbank), die **1980er** (neue Technik, Rivalität USA – Sowjetunion) und **Kommunikationssatelliten und Internet**.",
+                      "Manche Fachleute sprechen schon im 15. Jahrhundert von einer »ersten Globalisierung«. Sicher ist: Ab der Mitte des 19. Jahrhunderts nahm der Handel besonders stark zu, bis der Erste Weltkrieg das beendete. In der **Zwischenkriegszeit** ging die Verflechtung zurück (**Deglobalisierung**).",
+                      "Im Alltag spürst du sie täglich: Obst aus Übersee, Geräte aus Asien, Nachrichten in Sekunden. Prüf bei deinen Sachen, woher sie kommen."]),
+              ("img", "img/zeitstrahl.png", "Zeitstrahl mit fünf Zeitpunkten: 1492 Kolumbus, 1844 Telegraf, 1944 IWF und Weltbank, 1980er Technik, ab den 1990ern Internet. Darunter der Hinweis auf die Deglobalisierung der Zwischenkriegszeit.",
+               "Je nach Kriterium beginnt die Globalisierung früher oder später."),
+              ("merke", "Es gibt **keine einzelne Geburtsstunde** – wichtig ist, dass du dein **Kriterium** begründest."),
+              ("buch", "Lies im Buch S. 43 den Kasten »Für manche begann die Globalisierung …« und S. 44 die ersten beiden Absätze. Die Aufgaben am Rand von S. 42–44 eignen sich fürs Heft.")]},
+  {"id": "china", "title": "Folgen für die Weltgeschichte? – ein Gedankenspiel", "pill": "Gemeinsam",
+   "blocks": [("ul", ["**Gemeinsam:** Wir besprechen das in der Klasse. Zwischen 1405 und 1433 schickte China große Flotten unter **Zheng He** bis nach Indien und Ostafrika. Danach endeten die staatlichen Seefahrten. Das ist gesichert.",
+                      "Oft liest man verkürzt: »China zerstörte seine Marine, weil die Herrscher Angst vor Freihandel hatten.« Das ist eine **vereinfachte Deutung**. Quellen nennen eher hohe Kosten und innenpolitischen Streit – wie viel davon stimmt, ist unter Fachleuten diskutiert.",
+                      "Gedankenspiel, **kein Fakt**: Was wäre geschehen, wenn China weitergesegelt wäre – eine Globalisierung mit Zentrum in Asien? Wer hätte Kolonien gegründet? Welche Rolle hätte Europa gespielt?",
+                      "Quellenkritik an einer Überschrift: Wer sagt das? Woher weiß er das? Was hat er davon? Was sagen andere Quellen?"]),
+              ("hint", "Quellen: EBSCO Research Starter »Zheng He's Naval Expeditions« (geprüft am 11.11.2026). Die Folgen im Gedankenspiel sind Vermutungen.")]},
+  {"id": "stop1a", "title": "Stopp – kannst du das?", "pill": "Buch S. 43–44", "blocks": [("reveal", I.STOPPFRAGEN[1][:1])]},
   ("jetzt", "Jetzt: Aufgabe 1", "aufgaben.html#a1"),
-  {"id": "folgen", "title": "Wer gewinnt – und wer trägt die Kosten?", "pill": "Buch S. 48, 64–70",
-   "blocks": [("ul", ["Die Folgen sind **ungleich verteilt** – auch innerhalb eines Staates. Beschäftigte, Betriebe, Regionen und Verbraucher sind verschieden betroffen.",
-                      "**Chancen:** größere Märkte, Einkommen, Wissenstransfer, effizientere Technik. **Belastungen:** Wettbewerbs- und Lieferdruck, niedrige Löhne und schlechte Arbeitsbedingungen, Rohstoffverbrauch und Abfall.",
-                      "**Menschen:** Fachkräfte und Pflegekräfte wandern ab (Fachkräfteabwanderung). Für die Person kann das ein Gewinn sein, dem Herkunftsland fehlen sie dann. Rücküberweisungen und Rückkehr mildern das teilweise.",
-                      "**Digitale Kluft:** Wer keinen Zugang zu Internet und Technik hat, nutzt die Chancen kaum. Das Buch nennt dazu auf S. 48 den Anteil der Weltbevölkerung ohne Internet.",
-                      "Umweltfolgen lassen sich nicht allein aus **Transportkilometern** ablesen – Herstellung, Energie und Lebensdauer zählen mit."]),
-              ("merke", "Frage nie nur »Ist Globalisierung gut?«, sondern: **Für wen, unter welchen Regeln?**")]},
-  {"id": "stop1b", "title": "Stopp – kannst du das?", "pill": "Buch S. 64–70", "blocks": [("reveal", I.STOPPFRAGEN[1][1:])]},
+  {"id": "antrieb", "title": "Sechs Antriebskräfte der Globalisierung", "pill": "Buch S. 45–47",
+   "blocks": [("ul", ["**1 · Informationsrevolution:** Neue Technik (PC, Handy, Navigation, Netze) bringt Informationen in kürzester Zeit um die Welt. Das Internet verändert Arbeit, Lernen und Freizeit. Noch ist es nicht überall verbreitet.",
+                      "**2 · Innovationen im Transport:** Containerschiffe, Hochgeschwindigkeitszüge und Großraumflugzeuge machten Transporte billiger und schneller. Bis zur Mitte des 20. Jahrhunderts sanken die Kosten für See- und Lufttransport um mehr als zwei Drittel.",
+                      "**3 · Marktwirtschaft:** Nach dem Zusammenbruch der kommunistischen Systeme in Osteuropa (1989/1991) setzte sich das marktwirtschaftliche System fast weltweit durch – auch das kommunistisch regierte China hat heute marktwirtschaftliche Elemente.",
+                      "**4 · Liberalisierung:** Abbau von Handelshemmnissen und Öffnung der Märkte für Güter, Dienstleistungen und Kapital (siehe nächster Abschnitt).",
+                      "**5 · Transnationale Konzerne:** Unternehmen gründen Tochterfirmen im Ausland, nutzen Kosten- und Steuervorteile und teilen die Arbeit weltweit auf. **Global Player** sind meist durch Fusionen und Übernahmen entstanden.",
+                      "**6 · Normen und Standards:** Gemeinsame technische Regeln (z. B. Stecker, Spurbreiten, ISO-Normen) erleichtern den internationalen Handel.",
+                      "Dazu kommen neue Produktionskonzepte: **Lean Production** und **Just-in-time** (Teile kommen genau dann, wenn man sie braucht) und **Outsourcing** (Auslagerung an andere Betriebe)."]),
+              ("img", "img/antriebskraefte.png", "Sechs Felder: Informationsrevolution, Transporttechnik, Marktwirtschaft, Liberalisierung, Transnationale Konzerne, Normen und Standards.", "Sechs Antriebskräfte – ordne die Beispiele aus Aufgabe 2 zu."),
+              ("merke", "Es gibt nicht **die eine** Ursache – die sechs Kräfte verstärken sich gegenseitig."),
+              ("buch", "Lies im Buch S. 45 (Informationsrevolution, Transport) und S. 46 (Marktwirtschaft bis Normen). Die Begriffsliste am linken Rand von S. 46 (Global Village, Global Player …) ist gutes Nachschlagematerial.")]},
+  {"id": "liberal", "title": "Liberalisierung und Neoliberalismus", "pill": "Buch S. 46–47",
+   "blocks": [("ul", ["Der **Liberalismus** war im 19. Jahrhundert die wichtigste politische Idee des aufstrebenden Bürgertums. Er forderte drei Freiheiten: **individuelle** Freiheit, **politische** Freiheit (durch den Rechtsstaat) und **wirtschaftliche** Freiheit (Eigentum, freie Märkte).",
+                      "Heute spricht man vom **Neoliberalismus**, wenn es vor allem um die wirtschaftliche Seite geht: Märkte für Güter, Dienstleistungen und Kapital werden geöffnet, Handelshemmnisse abgebaut. Dazu gehören **Deregulierung** (weniger Vorschriften) und **Privatisierung** (z. B. Telefon, Energie, Wasser) sowie die Öffnung der Finanzmärkte.",
+                      "**Zwei Sichtweisen, beide gehören zur Diskussion:** Befürworter nennen Wohlstand, Wettbewerb und Innovation. Kritiker – im Buch zitiert Kurt Rothschild – sehen die Gefahr, dass wirtschaftliche Interessen die Demokratie überlagern. Als Gewährsmann der Marktgesellschaft nennt der Text Friedrich Hayek.",
+                      "Die Buch-Aufgabe 2 auf S. 47 fragt dich nach deiner Stellungnahme. Prüf dafür: Wer sagt das? Welche Belege nennt er? Welche Interessen hat er?"]),
+              ("hint", "Das ist eine Diskussionsfrage – du bildest dir dein eigenes Urteil. Es gibt hier keine »richtige« Partei.")]},
+  {"id": "stop1b", "title": "Stopp – kannst du das?", "pill": "Buch S. 46–47", "blocks": [("reveal", I.STOPPFRAGEN[1][1:])]},
   ("jetzt", "Jetzt: Aufgabe 2", "aufgaben.html#a2"),
  ]),
 
  # ---------------------------------------------------------------- Stunde 2
  ("teil2", I.TEILNAME[2].split(" · ")[0] + " · " + I.wann(2) + " · nach dem Test · " + I.TEILBUCH[2], I.TEILNAME[2].split(" · ", 1)[1], [
-  {"id": "zoelle", "title": "Zölle: Wer zahlt – und wer trägt die Last?", "pill": "Buch S. 50–51 · Karte A",
-   "blocks": [("ul", ["Ein **Zoll** ist eine Abgabe auf eine Ware beim Grenzübertritt. Er wird nach dem **Zollwert** der Ware und einem **Zollsatz** berechnet. Rechtlich muss ihn der **Importeur** an die Zollbehörde des Einfuhrlandes abführen.",
-                      "Die **wirtschaftliche Last** kann woanders liegen: Der Importeur kann seine Marge senken, den Preis erhöhen oder einen Nachlass vom Lieferanten verlangen. Wie sich das verteilt, hängt von Nachfrage, Verträgen, Wechselkurs und Wettbewerb ab.",
-                      "Trump-Zölle sind ein **datierter Fall**: Das Buch beschreibt den Stand von 2025. Seither hat sich die Rechtslage geändert (Karte A)."]),
-              ("tiles", [("Karte A · Zölle (Stand 30.10.2026)", [
-                  "Der **US Supreme Court** erklärte am 20.02.2026 die auf IEEPA gestützten Zölle für rechtswidrig. Rückerstattungen laufen nicht automatisch. Zölle nach **Section 232** (z. B. Stahl, Aluminium) und **Section 301** gelten weiter; in Details unterscheiden sich die Quellen (WKO, IHK) – vor dem Unterricht neu prüfen.",
-                  "Für die EU nennt die EU-Kommission im Handelsrahmen mit den USA eine **Obergrenze von 15 %** für die meisten EU-Ausfuhren, mit Ausnahmen und Sonderregeln, etwa bei Metallen. Das ist kein einheitlicher Zoll auf alle Einfuhren.",
-                  "Die US-Regierung will heimische Produktion, wirtschaftliche Sicherheit und Verhandlungsmacht stärken. Betroffene Firmen und Verbraucher sehen Preisrisiken, Unsicherheit und Gegenmaßnahmen. Ob ein Zoll Arbeitsplätze sichert, hängt von Vorleistungen, Wechselkursen, Nachfrage und Reaktionen anderer Staaten ab."])]),
-              ("hint", "Der US-KI-Aktionsplan (23.07.2025) setzt auf Innovation und Infrastruktur auch mit Partnern. »Gegen jede Globalisierung« beschreibt die US-Politik daher nicht – eher Schutz plus ausgewählte Abhängigkeiten. Das ist eine Schlussfolgerung, kein Zitat.")]},
-  {"id": "stop2a", "title": "Stopp – kannst du das?", "pill": "Buch S. 50–51", "blocks": [("reveal", I.STOPPFRAGEN[2][:1])]},
+  {"id": "digital", "title": "Digitalisierung und Digital Divide", "pill": "Buch S. 48 · ITU 2025",
+   "blocks": [("ul", ["Eine Prognose aus dem Jahr 2015 (im Buch zitiert) erwartete: Technik und Kapital gewinnen an Bedeutung, Arbeit verliert an Gewicht; Produktion kehrt teils näher an die Märkte zurück; Kundinnen und Kunden werden an der Herstellung beteiligt. **Prüf selbst:** Was davon spürst du heute?",
+                      "**Wer ist offline?** Laut der UN-Organisation **ITU** (Facts and Figures 2025, 17.11.2025) nutzen rund **6 Milliarden** Menschen das Internet, **2,2 Milliarden** nicht. In Ländern mit hohem Einkommen sind es **94 %** Nutzer, in Ländern mit niedrigem Einkommen **23 %**. In Städten sind **85 %** online, auf dem Land **58 %**. Bei Männern **77 %**, bei Frauen **71 %**.",
+                      "Diese Ungleichheit heißt **Digital Divide**. Das Buch nennt etwa 32 % ohne Internet – die ITU zählt für 2025 rund ein Viertel. **Quellen zählen verschieden** (Jahr, Messweise, Definition von »Nutzer«). Darum immer Quelle und Jahr nennen.",
+                      "**Corona-Pandemie:** Homeoffice, Distance Learning und Online-Termine wurden stark beschleunigt. Wer keine Geräte oder keinen Zugang hatte, wurde abgehängt. Auch zwischen den Generationen gibt es Unterschiede in der Nutzung."]),
+              ("img", "img/digital_divide.png", "Balkendiagramm: Internetnutzung 2025 in Ländern mit hohem Einkommen 94 Prozent, mit niedrigem Einkommen 23 Prozent, Stadt 85, Land 58, Männer 77, Frauen 71 Prozent.",
+               "Digital Divide in Zahlen (ITU, Facts and Figures 2025)."),
+              ("merke", "**Prozentpunkte** sind der Unterschied zweier Prozentwerte: 94 % − 23 % = **71 Prozentpunkte**."),
+              ("buch", "Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?« und die Prognose von 2015. Die Buch-Aufgaben 1–3 am Seitenende eignen sich fürs Heft (Länder mit wenig Internet recherchieren: Startseite ITU DataHub).")]},
+  {"id": "stop2a", "title": "Stopp – kannst du das?", "pill": "Buch S. 48", "blocks": [("reveal", I.STOPPFRAGEN[2])]},
   ("jetzt", "Jetzt: Aufgabe 3", "aufgaben.html#a3"),
-  {"id": "institutionen", "title": "Wer organisiert Regeln und Finanzierung?", "pill": "Buch S. 52–63 · Karte B",
-   "blocks": [("ul", ["**WTO** (seit 1995, Nachfolgerin des GATT-Systems von 1947/48): Regeln und Verhandlungen für den Handel, dazu ein Streitverfahren. **GATT** = Waren, **GATS** = Dienstleistungen, **TRIPS** = Rechte an geistigem Eigentum. Mitglieder vereinbaren verbindliche Handelsregeln und entscheiden meist im Konsens; bei Verstößen können im Streitverfahren Gegenmaßnahmen genehmigt werden. Die WTO ist keine Weltregierung und keine UN-Sonderorganisation. Die Berufungsinstanz im Streitverfahren ist derzeit blockiert.",
-                      "**IWF** (Bretton Woods 1944): wacht über die Stabilität des Währungssystems, berät und gibt Ländern mit Zahlungsbilanzproblemen Kredite, oft mit Auflagen. Stimmrechte folgen dem Kapitalanteil.",
-                      "**Weltbank** (ebenfalls Bretton Woods): finanziert Entwicklung und berät – mit vergünstigten Krediten und, je nach Instrument, Zuschüssen. Projektauswahl, Schulden und soziale sowie ökologische Folgen werden kritisch diskutiert.",
-                      "Weitere Akteure: die **OECD** erarbeitet Daten, Analysen und Standards; **Unternehmen** organisieren Produktion und Datenverarbeitung; **NGOs** bringen Anliegen ein. Entscheidungen beruhen auf Mitgliedern und Machtverhältnissen – nicht auf den Wünschen einer Person."]),
-              ("table", [["Funktion (Karte B, Stand 30.10.2026)", "Person"], ["IWF", "Kristalina Georgieva (seit 01.10.2019, zweite Amtszeit seit 01.10.2024)"],
-                         ["Weltbankgruppe", "Ajay Banga (seit 02.06.2023)"], ["WTO", "Ngozi Okonjo-Iweala (zweite Amtszeit seit 01.09.2025)"], ["Christine Lagarde", "IWF 2011–2019, derzeit EZB-Präsidentin (Abgang für Februar 2027 gemeldet)"]]),
-              ("hint", "Die Aufgaben sind wichtiger als die Namen. Meldungen über Wechsel in Spitzenämtern immer mit Datum und Primärquelle prüfen.")]},
-  {"id": "stop2b", "title": "Stopp – kannst du das?", "pill": "Buch S. 52–63", "blocks": [("reveal", I.STOPPFRAGEN[2][1:])]},
-  ("jetzt", "Jetzt: Aufgabe 4", "aufgaben.html#a4"),
- ]),
-
- # ---------------------------------------------------------------- Stunde 3
- ("teil3", I.TEILNAME[3].split(" · ")[0] + " · " + I.wann(3) + " · " + I.TEILBUCH[3], I.TEILNAME[3].split(" · ", 1)[1], [
-  {"id": "ki_global", "title": "KI braucht Daten, Chips, Strom und Regeln", "pill": "Ergänzung zu Buch S. 48 · Karten C und E",
-   "blocks": [("ul", ["KI ist selbst ein globales Produkt: **Daten**, **Chips** (Halbleiter aus wenigen Regionen), **Strom**, **Rechenzentren**, Fachleute und **Regeln** kommen aus verschiedenen Ländern. Wer davon abhängt, ist verwundbar.",
-                      "**Arbeit (Karte E):** Laut ILO (2025) arbeitet etwa jeder vierte Beschäftigte weltweit in einem Beruf, auf den generative KI einen gewissen Einfluss haben könnte. Das misst **betroffene Tätigkeiten**, nicht verlorene Arbeitsplätze; Veränderung ist wahrscheinlicher als vollständiger Ersatz.",
-                      "**Energie (Karte E):** Nach der IEA brauchten Rechenzentren 2024 rund 415 TWh Strom (etwa 1,5 % des weltweiten Verbrauchs); für 2030 ist rund 945 TWh eine **Projektion**. TWh = Terawattstunde. »Alle Rechenzentren« ist nicht gleich »nur KI«.",
-                      "**EU-Regeln (Karte C):** Die KI-Verordnung arbeitet nach **Risiko** und Einsatzbereich: **Verbote** (z. B. bestimmte soziale Bewertung), **Hochrisiko** (z. B. Bewerberauswahl) und **Transparenzpflichten** (z. B. Chatbot, KI-erzeugte Inhalte). Sie ist **kein** KI-Verbot. Rein militärische, Verteidigungs- und nationale Sicherheitszwecke sind in Artikel 2 gesondert ausgenommen – das ist kein rechtsfreier Raum.",
-                      "**USA:** Der KI-Aktionsplan (23.07.2025) setzt auf Innovation, Infrastruktur und internationale Führung. Datenschutz und Urheberrecht sind eigene Rechtsgebiete."]),
-              ("table", [["Zeitpunkt (Karte C)", "Einordnung"], ["01.08.2024", "Verordnung in Kraft"], ["02.02.2025", "erste Verbote, KI-Kompetenzpflicht"], ["02.08.2025", "Regeln für KI-Modelle mit allgemeinem Zweck"],
-                         ["27.07.2026", "Änderung »AI Omnibus« in Kraft"], ["02.08.2026", "u. a. Transparenzregeln anwendbar"], ["02.12.2027", "Hochrisiko nach Anhang III (z. B. Beschäftigung)"], ["02.08.2028", "Hochrisiko bei Produkten (Anhang I)"]]),
-              ("hint", "Für ältere Systeme gilt eine Übergangsfrist für die technische Kennzeichnung bis 02.12.2026. Fristen sind Stand 30.10.2026 – nicht die Grafik von 2024 verwenden.")]},
-  {"id": "stop3a", "title": "Stopp – kannst du das?", "pill": "Karten C bis E", "blocks": [("reveal", I.STOPPFRAGEN[3][:1])]},
-  ("jetzt", "Jetzt: Aufgabe 5", "aufgaben.html#a5"),
-  {"id": "ki_risiko", "title": "KI-Risiken prüfen", "pill": "Ergänzung zu Buch S. 48 · Quellenkarten 1–4",
-   "blocks": [("ul", ["»Übernimmt KI die Macht?« sind vier verschiedene Fragen. **Arbeit:** Welche Tätigkeiten werden automatisiert oder unterstützt? **Macht:** Wer kontrolliert Rechenleistung, Daten und Plattformen? **Abhängigkeit:** Wer verliert Fähigkeiten, wenn er sich auf Systeme verlässt? **Kontrollverlust:** Könnten künftige Systeme menschliche Aufsicht wirksam umgehen?",
-                      "Eine Aufgabe zu automatisieren ist nicht dasselbe, wie politische Herrschaft auszuüben.",
-                      "Unterscheide beim Prüfen: **Befund** (gemessen), **Simulation** (Versuch unter festgelegten Bedingungen), **Szenario** (durchgespielte Zukunft) und **Motive** (aus Schlagzeilen nicht ablesbar)."]),
-              ("img", "img/vier_fragen.png", "Vier Felder: Arbeit, Macht, Abhängigkeit und Kontrollverlust, jeweils mit einer Leitfrage.", "Die vier Bedeutungen von »Übernahme« – nicht ineinander rutschen lassen."),
-              ("merke", "Eine Warnung kann **fachlich begründet** sein und zugleich die **öffentliche Wahrnehmung** eines Unternehmens beeinflussen. Interessen sind eine prüfbare Hypothese, kein Beweis.")]},
-  {"id": "quellenkarten", "title": "Quellenkarten 1–4 für Aufgabe 6", "pill": "Quellenkarten 1 bis 4",
-   "blocks": [("tiles", [("Quellenkarte 1 · Warnstatement (30.05.2023)", ["Das CAIS-Statement fordert, das Risiko eines Aussterbens durch KI global ernst zu nehmen – neben anderen Großrisiken. Unterzeichnet haben es Forscher und Leiter von KI-Unternehmen.", "**Prüfauftrag:** Was wird gefordert? Welche Messung oder Wahrscheinlichkeit liefert das Statement selbst?"]),
-                        ("Quellenkarte 2 · International AI Safety Report (03.02.2026)", ["Der Bericht (Vorsitz Yoshua Bengio, über 100 Fachleute) bündelt den Forschungsstand. Er unterscheidet heutige **Fehlfunktionen** von einem hypothetischen **umfassenden Kontrollverlust**. Erste relevante Fähigkeiten zeigen sich in Tests, nicht aber auf dem nötigen Gesamtniveau; Fachleute bewerten Wahrscheinlichkeit und Folgen verschieden.", "**Prüfauftrag:** Welche Unsicherheit bleibt? Was unterscheidet Fehlfunktion und Kontrollverlust?"]),
-                        ("Quellenkarte 3 · Forschungsfallstudien (Sommer 2026)", ["**Quelle:** Anthropic, »Agentic Misalignment« (Forschungsbericht, 13.07.2026), alignment.anthropic.com/2026/agentic-misalignment-summer-2026/. Eine Studie testet autonome KI-Modelle in gezielt gestalteten, ausgedachten Szenarien und berichtet problematisches Verhalten, etwa verdeckte Änderungen. Die Autoren nennen selbst Einschränkungen; pro Modell gab es nur wenige Durchläufe. Der Text stammt vom Hersteller eigener KI-Modelle (Interessenlage beachten!), die Methode ist trotzdem prüfbar.", "**Prüfauftrag:** Unter welchen künstlichen Bedingungen wurde beobachtet? Wie weit reicht der Befund?"]),
-                        ("Quellenkarte 4 · US-KI-Aktionsplan (23.07.2025)", ["Ein Regierungsprogramm der USA mit erklärten Zielen: Innovation beschleunigen, Infrastruktur aufbauen, international führen.", "**Prüfauftrag:** Welche Ziele und Interessen werden genannt? Sind sie schon nachgewiesene Ergebnisse?"])]),
-              ("hint", "In die gemeinsame Tabelle: Aussage – Art der Quelle – Beleg – mögliche Interessen – Grenze. Pro Karte höchstens 45 Sekunden Bericht. Kein eigenes KI-Konto nötig.")]},
-  {"id": "stop3b", "title": "Stopp – kannst du das?", "pill": "Quellenkarte 4", "blocks": [("reveal", I.STOPPFRAGEN[3][1:])]},
-  ("jetzt", "Jetzt: Aufgaben 6 und 7", "aufgaben.html#a6"),
- ]),
-
- # ---------------------------------------------------------------- Stunde 4
- ("teil4", I.TEILNAME[4].split(" · ")[0] + " · " + I.wann(4) + " · " + I.TEILBUCH[4], I.TEILNAME[4].split(" · ", 1)[1], [
-  {"id": "gestalten", "title": "Kosten verteilen und Abhängigkeiten verringern", "pill": "Buch S. 65–77",
-   "blocks": [("ul", ["**Unternehmen** können Abhängigkeiten senken: mehrere Bezugsquellen, Lagerbestände, überprüfbare Sozialstandards, reparierbare Produkte und Wechselmöglichkeiten beim Dienstanbieter. Das kostet Geld und Zeit.",
-                      "**Politik** setzt Regeln: Mindeststandards, Transparenz in Lieferketten, internationale Abkommen. Grenzen: unterschiedliche Interessen der Staaten, schwierige Kontrolle.",
-                      "**Arbeitnehmervertretungen** (Gewerkschaften) bringen Beschäftigteninteressen ein; **Einzelne** entscheiden über Kauf, Nutzung und Daten.",
-                      "Das Buch stellt auf S. 72–77 Alternativen und Reformideen vor, z. B. eine **öko-soziale Marktwirtschaft**, die **Ziele für nachhaltige Entwicklung** (SDGs) und zivilgesellschaftliche Bewegungen wie Attac. Sie haben Möglichkeiten und Grenzen – keine ist ein Allheilmittel.",
-                      "**Standortverlagerung allein** garantiert weder faire Arbeit noch geringere Umweltfolgen. Mehrere Maßnahmen lassen sich kombinieren."]),
-              ("table", [["Diskussionsrunde (Aufgabe 8)", "So läuft sie"], ["Perspektiven", "Unternehmensleitung · Beschäftigte und Zulieferregion · Nutzer und öffentliche Beschaffung · Umwelt- und Verbraucherschutz"],
-                         ["Ablauf", "je 1 min Ausgangsposition, dann moderierte Rückfragen, Beobachter notieren"], ["Regeln", "Argumente auf Menschenwürde, Demokratie und überprüfbare Tatsachen beziehen; niemand muss die eigene Haltung spielen"]]),
-              ("merke", "Ein **begründetes Urteil** hat: Entscheidung · Beleg · Gegenargument · Bedingung · gekennzeichnete Unsicherheit (»Wenn …, dann könnte …; offen bleibt …«).")]},
-  {"id": "stop4", "title": "Stopp – kannst du das?", "pill": "Buch S. 65–77", "blocks": [("reveal", I.STOPPFRAGEN[4])]},
-  ("jetzt", "Jetzt: Aufgabe 8", "aufgaben.html#a8"),
+  {"id": "ampel", "title": "Ziele erreicht? Statement-Ampel im Raum", "pill": "Buch S. 51 · Gemeinsam",
+   "blocks": [("ul", ["**So läuft es (ohne Handy):** Prof. Holzer liest eine Aussage vor. Du stellst dich in eine Zone: **stimmt – unklar – stimmt nicht**. Dann prüft ihr in der Gruppe die Aussage mit den vier Fragen (Wer sagt das? Woher weiß er das? Was hat er davon? Was sagen andere?) und stellt euch neu auf. Wer wechselt, sagt in einem Satz warum.",
+                      "**Aussagen (nach Buch S. 51, in eigenen Worten):** (1) Globalisierung ist eine Bereicherung für Europa. (2) Als Gegenreaktion auf die Globalisierung gewinnt der Nationalismus wieder an Bedeutung. (3) Lokale Wirtschaftskreisläufe sollten globale ersetzen. (4) Die Schäden des US-Handelskriegs zeigen, wie eng die Weltwirtschaft verflochten ist.",
+                      "Es gibt **keine Note** und keine »richtige Seite«. Gute Begründungen nennen eine Zahl, eine Quelle und ein Gegenargument."]),
+              ("hint", "Heute probieren wir zwei Aussagen. Übrige Aussagen kannst du in Ruhe selbst prüfen.")]},
  ]),
 ]
+
+KARTEN = {
+ "beginn": {"text": ["Es gibt **keinen einzigen Beginn** der Globalisierung – je nach **Kriterium** nennt man 1492, 1844, 1944, die 1980er oder das Internet.",
+                     "Die **Zwischenkriegszeit** war eine Phase der **Deglobalisierung**.",
+                     "Wichtig: Dein Kriterium begründen."], "bild": ("img/zeitstrahl.png", "Zeitstrahl mit fünf möglichen Anfängen der Globalisierung"), "teil": "Teil 1", "link": "theorie.html#beginn", "buch": "Buch S. 43–44"},
+ "antrieb": {"text": ["Sechs Kräfte treiben die Globalisierung an: **Information, Transport, Marktwirtschaft, Liberalisierung, Konzerne, Normen**.",
+                      "**Liberalisierung** = Zölle und Hürden **abbauen**, Märkte **öffnen**.",
+                      "Normen (z. B. Stecker) und Containerschiffe senken Kosten."], "bild": ("img/antriebskraefte.png", "Sechs Antriebskräfte der Globalisierung"), "teil": "Teil 1", "link": "theorie.html#antrieb", "buch": "Buch S. 45–47"},
+ "digital": {"text": ["**Digital Divide** = ungleicher Zugang zu Internet und Technik.",
+                      "ITU 2025: **94 %** online in reichen, **23 %** in ärmsten Ländern; **2,2 Mrd.** Menschen offline.",
+                      "**Prozentpunkte** = größerer Wert minus kleinerer Wert."], "bild": ("img/digital_divide.png", "Balkendiagramm zur Internetnutzung 2025"), "teil": "Teil 2", "link": "theorie.html#digital", "buch": "Buch S. 48"},
+ "zoelle": {"text": ["Ein **Zoll** ist eine Abgabe auf Importe; zuerst zahlt ihn der **Importeur**.",
+                     "Das Buch zeigt den Stand **2025** (bis 145 % auf China-Waren). Seither wurde vieles geändert.",
+                     "Immer **Datum und Rechtsgrundlage** nennen."], "bild": None, "teil": "Zusatz", "link": "theorie.html#zoelle", "buch": "Buch S. 50–51"},
+ "stiglitz": {"text": ["Joseph **Stiglitz** (US-Ökonom) sagt: **Offene Märkte allein** lösen die Armut nicht.",
+                       "Er kritisiert Subventionen der reichen Staaten und fordert Investitionen in **Bildung**.",
+                       "Er beschreibt auch Verlierer in den Industriestaaten."], "bild": None, "teil": "Zusatz", "link": "theorie.html#stiglitz", "buch": "Buch S. 49"},
+}
 
 SCHNELLE = [
- {"id": "opt1", "title": "OPTIONAL: Echte Sportuhr prüfen", "pill": "Vertiefung",
-  "blocks": [("ul", ["Prüfe eine reale Sportuhr oder ein Smartphone anhand der Herstellerunterlagen: Welche Lieferketteninformationen sind belegt? **Lücken ausdrücklich stehen lassen.**",
-                     "Kein Pflichtstoff, keine Hausübung."])]},
- {"id": "opt2", "title": "OPTIONAL: Science oder Fiction?", "pill": "Vertiefung",
-  "blocks": [("ul", ["Eine Serie zeigt, wie ein Bordcomputer die Kontrolle über ein Raumschiff übernimmt. Ordne die Szene den **vier Bedeutungen von Übernahme** zu (Arbeit, Macht, Abhängigkeit, Kontrollverlust). Es genügt, die Szene zu beschreiben – kein Vorwissen nötig."])]},
- {"id": "opt3", "title": "OPTIONAL: Pflegekräfte-Abwanderung", "pill": "Vertiefung",
-  "blocks": [("ul", ["Stelle die Interessen von Pflegekraft, Herkunftsregion und Aufnahmeland gegenüber. Berücksichtige Rücküberweisungen und Rückkehr."])]},
- {"id": "opt4", "title": "OPTIONAL: Rechenzentren als Grafik", "pill": "Vertiefung",
-  "blocks": [("ul", ["Stelle den IEA-Wert für 2024 (rund 415 TWh) und die Projektion für 2030 (rund 945 TWh) als eigene Grafik dar. **Beobachtung und Projektion** sichtbar trennen; keine Zwischenwerte als Messdaten erfinden."])]},
- {"id": "opt5", "title": "OPTIONAL: Hilfen und Hürden für kleine Firmen", "pill": "Vertiefung",
-  "blocks": [("ul", ["Welche KI-Regeln helfen kleineren Unternehmen, welche Kosten könnten neue Eintrittshürden schaffen? Suche erst **konkrete Belege**; urteile nicht allein aus einer Vermutung über Motive."])]},
- {"id": "opt6", "title": "OPTIONAL: Herkunft im Schulgebäude suchen", "pill": "Bewegung",
-  "blocks": [("ul", ["Geh zu zweit durch das Schulgebäude (oder zum Spind) und suche fünf Gegenstände mit Herkunftsangabe: Etikett, Typenschild, Aufdruck. Fotografiere sie und trag Gegenstand, Land und Stufe (Rohstoff, Bauteil, Montage) ein.",
-                     "Bundesheer-Bezug: Wähle ein Ausrüstungsstück (z. B. Rucksack, Stiefel, Funkgerät) und überlege, welche Stufen der Lieferkette im Ausland liegen könnten. Aussagen als Vermutung kennzeichnen, solange kein Beleg vorliegt.",
-                     "Kein Pflichtstoff, keine Hausübung."])]},
+ {"id": "zoelle", "title": "ZUSATZ · Aufgabe 5: US-Zölle 2025 und heute", "pill": "Aktuell",
+  "blocks": [("ul", ["Ein **Zoll** ist eine Abgabe auf Importe. Er wird nach dem **Zollwert** und dem **Zollsatz** berechnet; zuerst zahlt ihn der **Importeur**. Wer ihn am Ende trägt (Marge, Preis, Lieferant), hängt von Nachfrage, Verträgen und Wettbewerb ab.",
+                     "Das Buch beschreibt den Stand **2025**: massive US-Zölle, bis zu 145 % auf Waren aus China, Gegenzölle von 125 %.",
+                     "**Seither:** Der US Supreme Court erklärte am **20.02.2026** die auf IEEPA gestützten Zölle für rechtswidrig (WKO, Seite vom 23.10.2026). Im Oktober 2025 hatten Trump und Xi vereinbart, bestimmte Zölle etwa ein Jahr auszusetzen. Am **09.11.2026** berichtete die Berliner Zeitung (nach Xinhua, Reuters, dpa): China setzt den Zusatzzoll von 24 % auf US-Waren für weitere zwei Monate aus, ein Aufschlag von 10 % bleibt; die Vereinbarung ist laut Artikel noch nicht endgültig.",
+                     "Heißt das »Handelskrieg vorbei«? Das lässt sich aus der Meldung nicht sagen. Darum: immer **Datum, Ware, Land und Rechtsgrundlage** nennen."]),
+             ("hint", "Quellen: Berliner Zeitung 09.11.2026 (Autorin Anika Schlünz, Agenturen Xinhua/Reuters/dpa); WKO (23.10.2026). Stand der Meldungen vor dem Unterricht erneut prüfen.")]},
+ {"id": "stiglitz", "title": "ZUSATZ · Aufgabe 6: Stiglitz und die Kritik an der Globalisierung", "pill": "Buch S. 49",
+  "blocks": [("ul", ["Joseph **Stiglitz** ist US-Ökonom und war laut Buch Chefökonom der Weltbank. Er sieht Globalisierung **differenziert**.",
+                     "Seine Hauptpunkte (Buch S. 49): Globalisierung ist mehr als Marktöffnung. Offene Märkte allein lösen die Armut nicht. Reiche Staaten behalten Subventionen, arme sollen sie abbauen. Patente auf traditionelles Wissen nennt er **Biopiraterie**. **Bildung** ist der Schlüssel (Beispiel Bangalore/Indien).",
+                     "Auch in den Industriestaaten geraten **gering Qualifizierte** unter Druck."]),
+             ("merke", "Prüfe jede Position: Wer sagt das, mit welchen Belegen, und was könnte ein Gegenargument sein?")]},
+ {"id": "alltag", "title": "ZUSATZ · Aufgabe 4: Woher kommt dein Alltag?", "pill": "Bewegung · Buch S. 44",
+  "blocks": [("ul", ["Geh zu zweit durch den Raum oder schau in deine Tasche und such **drei Gegenstände** mit Herkunftsangabe. Trag Gegenstand und Land ein.",
+                     "Auf Etiketten steht oft nur, **wo zusammengebaut** wurde – nicht, woher Rohstoffe und Bauteile stammen.",
+                     "**Bundesheer-Bezug:** Wähle ein Ausrüstungsstück (Rucksack, Stiefel, Funkgerät) und überlege, welche Stufen im Ausland liegen könnten. Ohne Beleg ist das eine Vermutung."])]},
 ]
 
-TOCLAB = {"einstieg": "Einstieg", "teil1": "Stunde 1 · Sportuhr", "teil2": "Stunde 2 · Zölle", "teil3": "Stunde 3 · KI", "teil4": "Stunde 4 · Gestalten",
-          "begriffe": "Fachbegriffe", "kurz": "Kurz & knapp", "schnelle": "Optional"}
+TOCLAB = {"einstieg": "Einstieg", "teil1": "Stunde 1 · Beginn", "teil2": "Stunde 2 · Digital", "begriffe": "Fachbegriffe", "kurz": "Kurz & knapp", "schnelle": "Zusatz"}
 
 
 def _text(b):
@@ -158,8 +128,9 @@ def _text(b):
 
 
 def woerter(ids):
-    """Wortzahl der genannten Abschnitte (Lesezeit-Prüfung in plan.py)."""
+    """Wortzahl der genannten Abschnitte (Lesezeit-Prüfung)."""
     allei = {it["id"]: it for p in PARTS for it in p[3] if isinstance(it, dict)}
+    allei.update({it["id"]: it for it in SCHNELLE})
     n = 0
     for i in ids:
         for b in allei[i]["blocks"]: n += len(re.sub(r"\*\*", "", _text(b)).split())
@@ -167,5 +138,5 @@ def woerter(ids):
 
 
 if __name__ == "__main__":
-    for ids in (["verbindet", "entstehung", "warum"], ["folgen"], ["zoelle"], ["institutionen"], ["ki_global"], ["ki_risiko"], ["gestalten"], ["quellenkarten"]):
+    for ids in (["beginn", "china"], ["antrieb", "liberal"], ["digital"], ["ampel"]):
         w = woerter(ids); print(ids, w, "Wörter ≈", round(w / 130, 1), "min")
