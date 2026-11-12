@@ -252,6 +252,14 @@ fw += "<h2>Häufige Fehlvorstellungen</h2>" + tab(["Fehlvorstellung", "Richtig i
 fw += "<h2>Fragen, die Kadetten stellen</h2>" + "".join(f"<p><b>{e(q)}</b><br>{md(a)}</p>" for q, a in F.FRAGEN)
 fw += "<h2>Rechenkontrolle</h2>" + ul(F.RECHENKONTROLLE)
 fw += "<h2>Fachbegriffe</h2>" + tab(I.FACHBEGRIFFE[0], I.FACHBEGRIFFE[1:])
+fw += "<h2>Videos</h2>" + tab(["Video", "Wo eingebaut", "Link"], [
+    [f"Apolin: {GD.NEWTON[1]['titel']} (Trägheit)", "Theorie Teil 1 · Gruppenkarten 1 und 4 · PPP Stunde 1 (optional)", GD.NEWTON[1]["url"]],
+    [f"Apolin: {GD.NEWTON[2]['titel']} (F = m · a)", "Theorie Teil 1 · Gruppenkarten 1 und 2 · PPP Stunde 1 (optional)", GD.NEWTON[2]["url"]],
+    [f"Apolin: {GD.NEWTON[3]['titel']} (Kraft und Gegenkraft)", "Theorie Teil 8 · Gruppenkarte 7 · PPP Stunde 1 (optional)", GD.NEWTON[3]["url"]],
+    ["Action = Reaction (Pohl, TIB AV-Portal, 1 min)", "Gruppenkarte 7 (zusätzlich)", "https://av.tib.eu/media/30463"]]) + ul([
+    "Die Apolin-Links hast du ausgewählt; von hier aus war YouTube gesperrt. **Bitte einmal Länge und Inhalt prüfen** – die Beobachtungsfragen sind nach Titel und Thema formuliert.",
+    "In Stunde 1 ist für die Videos keine eigene Zeit eingeplant. Die Folie zeigt die QR-Codes; einen Ausschnitt nur zeigen, wenn Zeit bleibt.",
+    "Gute Wahl für die Supplierstunde (Stunde 6): Video 2 oder 3 mit den Beobachtungsfragen vor Aufgabe 8."])
 fw += "<h2>Ausblick</h2><p>" + md(F.AUSBLICK) + "</p>"
 fw += "<h2>Geprüfte Quellen</h2><ul>" + "".join(
     f"<li><b>{e(q[0])} – {e(q[1])}</b><br>{e(q[2])}<br><span class='mono'>{e(q[3])}</span></li>" for q in I.QUELLEN) + "</ul>"

@@ -7,8 +7,8 @@ Versuchs-ID: das bereits vorhandene Gruppenprojekt V1.20 (Stephans Vorgabe) – 
 Eine Quelle für Handy-Seiten, Unterrichts-PPP und Lösungsmappe. Kein CLIL, kein Kahoot, keine Hausübung.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "11.11.2026"
-V = "v2"
+STAND = "12.11.2026"
+V = "v3"
 ORDNER = "1ab-nawi/k2-1-kraefte"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"

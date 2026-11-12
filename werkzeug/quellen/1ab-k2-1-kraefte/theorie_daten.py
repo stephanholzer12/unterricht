@@ -4,6 +4,7 @@ Block-Arten: tiles, ul, ol, merke, hint, table, video, reveal, img (Datei, Alt-T
 Alles in eigenen Worten; alle Grafiken selbst gezeichnet (skizzen.py). Das Schulbuch wird gelesen – die Seite erklärt anders und ergänzt.
 Neue Standards 07.11.2026: »Aufgabe zuerst« – die Theorie-Seite ist das Nachschlagewerk, die Karten stehen bei der Aufgabe."""
 import inhalt as I
+import gruppen_daten as GD
 
 TOCLAB = {"einstieg": "Start", "wirkung": "1 Kraft", "bewegung": "2 Bewegung", "gewicht": "3 Gewicht", "auftrieb": "4 Auftrieb",
           "reibung": "5 Reibung", "kapillar": "6 Kapillar", "druck": "7 Druck", "gegenkraft": "8 Gegenkraft",
@@ -151,6 +152,7 @@ PARTS = [
                       "Ein **Kraftpfeil** zeigt drei Dinge: den Angriffspunkt, die Richtung und den Betrag. Der Betrag steckt in der **Pfeillänge** – dazu muss der Maßstab dabeistehen.",
                       "Kräfte **verschiedener** Körper werden nicht in einem Kräftebild vermischt. Zeichne zuerst einen Rahmen um den Körper, den du betrachtest."]),
               ("merke", "Bei gleichbleibender Masse gilt F_res = m · a. 1 N = 1 kg · m/s². Nur die resultierende Kraft ändert die Bewegung."),
+              ("video", 1), ("video", 2),
               ("reveal", I.STOPPFRAGEN[1])]},
   ("jetzt", "Jetzt: Aufgaben 1 und 2", "aufgaben.html#name")]),
 
@@ -236,6 +238,7 @@ PARTS = [
                       "Zwei ineinander gehängte Federkraftmesser zeigen bei ruhigem Ziehen in einer Linie annähernd **denselben Betrag**. Aus zwei Anzeigen von 2 N werden nicht 4 N.",
                       "Ein Buch auf dem Tisch ist im **Gleichgewicht**: Gewichtskraft und Stützkraft sind gleich groß und entgegengesetzt – beide am **Buch**. Die Gegenkraft zur Gewichtskraft auf das Buch ist die Anziehung des Buches auf die Erde."]),
               ("merke", "Wechselwirkungspaar: zwei Körper, zwei Kräfte. Kräftegleichgewicht: ein Körper, mehrere Kräfte, Summe null."),
+              ("video", 3),
               ("reveal", I.STOPPFRAGEN[6])]},
   ("jetzt", "Jetzt: Aufgabe 8", "aufgaben.html#card_a3")]),
 

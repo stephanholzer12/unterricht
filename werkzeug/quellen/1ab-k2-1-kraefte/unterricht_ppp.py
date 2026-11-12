@@ -21,7 +21,7 @@ NS_P = "http://schemas.openxmlformats.org/presentationml/2006/main"
 NS_R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 
 FARBE = {"START": MUTED, "WIEDERHOLEN": TEAL, "EINSTIEG": ORANGE, "KURZ KLÄREN": OLIVE, "AUFGABE": GREEN,
-         "SELBSTSTUDIUM": TEAL, "GRUPPENARBEIT": ORANGE, "GRUPPEN": OLIVE, "FREIGABE": RUST, "PARTNERCHECK": GREEN,
+         "SELBSTSTUDIUM": TEAL, "GRUPPENARBEIT": ORANGE, "VIDEO": TEAL, "GRUPPEN": OLIVE, "FREIGABE": RUST, "PARTNERCHECK": GREEN,
          "RECHERCHE": TEAL, "PLANEN": TEAL, "VERSUCH": RED, "ZU ZWEIT": GREEN, "PRÄSENTATION": RUST,
          "BESPRECHEN": ORANGE, "ABGABE": RUST}
 T = {t["nr"]: t for t in I.T}
@@ -209,6 +209,19 @@ def grosse_tabelle(s, zeilen, size=22, y=1.0, lw=1.9):
     rows = [["", ""]] + [[a, b] for a, b in zeilen]
     cells, h = B.auto_grid(s, X0, y, [lw, W - lw], rows[1:], size=size, head=False, minh=0.5)
     return y + h
+
+
+def s1_videos():
+    s = d.slide("Nur Titel", "Video: Newtons drei Gesetze")
+    for i, n in enumerate((1, 2, 3)):
+        v = GD.NEWTON[n]; x = X0 + i * 3.05
+        s.shapes.add_picture(B.qr_png(v["url"]), Inches(x + 0.7), Inches(0.95), Inches(1.45), Inches(1.45))
+        B.tb(s, x, 2.45, 2.85, 0.4, [[("%d. Gesetz" % n, {"bold": True, "color": OLIVE})]], size=20, align=PP_ALIGN.CENTER, after=0)
+        B.tb(s, x, 2.85, 2.85, 0.4, [[(v["kurz"], {"bold": True, "color": TEAL})]], size=20, align=PP_ALIGN.CENTER, after=0)
+        B.tb(s, x - 0.1, 3.3, 3.05, 0.3, [v["url"].replace("https://", "")], size=9, color=MUTED, align=PP_ALIGN.CENTER, after=0)
+    B.tb(s, X0, 3.75, W, 0.36, [[("Martin Apolin, YouTube · ", {"bold": True}), ("Gruppen 1, 2, 4 und 7: Video auf der Gruppenkarte. Alle: Theorie-Seite, Teil 1 und 8.", {})]],
+         size=16, after=0)
+    return s
 
 
 def s1_gruppen():
@@ -455,6 +468,7 @@ SPEC = {
      ("s1_vor", [2], "EINSTIEG", "Was glaubst du?", "Vorhersagen festhalten – nicht auflösen", s1_vor),
      ("s1_kraft", [3], "KURZ KLÄREN", "Kraftwirkung", "Fehlvorstellung »Bewegung heißt Kraft« ausräumen", s1_kraft),
      ("s1_rechnen", [3], "KURZ KLÄREN", None, "Einheiten und ein Musterbeispiel zeigen, bevor gerechnet wird", s1_rechnen),
+     ("s1_videos", [3], "KURZ KLÄREN", "Newton-Videos", "Optional: einen kurzen Ausschnitt aus Video 1 (Trägheit) zeigen – nur wenn Zeit bleibt, sonst nur QR-Codes zeigen", s1_videos),
      ("s1_a2", [4], "AUFGABE", "Aufgabe 2", "Begriffe und die drei Rechnungen anwenden",
       lambda: auftrag_folie("Jetzt: Aufgabe 2", [2], {2: "allein am Handy, Theorie-Karte ist dabei"},
                             "Zwei Auswahlfelder und drei Rechnungen – immer mit Einheit.")),

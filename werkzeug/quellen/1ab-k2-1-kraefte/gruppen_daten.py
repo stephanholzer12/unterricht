@@ -101,11 +101,27 @@ G = {
      "achtung": "Ballon nicht in Richtung von Personen loslassen. Rollbrett nur sitzend und nur mit Freigabe."},
 }
 
-# Geprüfte Videos je Gruppe (Regelwerk 7: nur selbst geöffnete Quellen). Für die übrigen Gruppen suchen die Kadetten selbst ein Video
-# und prüfen es nach den Quellenfragen (Leitfrage »Video«).
+# Apolin-Videos zu den drei Newton'schen Gesetzen (Links von Stephan, 12.11.2026; YouTube ist von Claudes Umgebung aus gesperrt –
+# Stephan hat die Videos ausgewählt und kennt sie, Inhalt und Länge prüft er selbst). Nur verlinkt, nicht eingebettet.
+NEWTON = {
+ 1: {"titel": "1. Newtonsches Grundgesetz", "kurz": "Trägheit", "url": "https://www.youtube.com/watch?v=Y9sN0rgIyJY",
+     "fragen": ["Was macht ein Körper, auf den keine resultierende Kraft wirkt?", "Nenne ein Beispiel aus dem Video, bei dem die Trägheit spürbar wird."]},
+ 2: {"titel": "2. Newtonsches Grundgesetz", "kurz": "F = m · a", "url": "https://www.youtube.com/watch?v=GHo2PI5Cgkg",
+     "fragen": ["Wie hängen Kraft, Masse und Beschleunigung zusammen?", "Was passiert mit der Beschleunigung, wenn die Masse doppelt so groß ist und die Kraft gleich bleibt?"]},
+ 3: {"titel": "3. Newtonsches Grundgesetz", "kurz": "Kraft und Gegenkraft", "url": "https://www.youtube.com/watch?v=zPKRoT3JTNQ",
+     "fragen": ["Auf welche Körper wirken Kraft und Gegenkraft?", "Warum heben sie sich trotzdem nicht auf?"]},
+}
+QUELLE_NEWTON = "Martin Apolin (YouTube)"
+
+# Videos je Gruppe: zuerst die passenden Apolin-Videos, bei Gruppe 7 zusätzlich der kurze Pohl-Versuch (TIB AV-Portal, geprüft 11.11.2026).
 VIDEOS = {
- 7: ("Action = Reaction (Pohl-Versuch, IWF Göttingen, 2003)", "https://av.tib.eu/media/30463",
-     "1 min · englisch gesprochen, die Bilder genügen · Lizenz CC BY-ND 3.0 DE · TIB AV-Portal · geöffnet am 11.11.2026"),
+ 1: [("Apolin: " + NEWTON[1]["titel"] + " (" + NEWTON[1]["kurz"] + ")", NEWTON[1]["url"], QUELLE_NEWTON, NEWTON[1]["fragen"]),
+     ("Apolin: " + NEWTON[2]["titel"] + " (" + NEWTON[2]["kurz"] + ")", NEWTON[2]["url"], QUELLE_NEWTON, NEWTON[2]["fragen"])],
+ 2: [("Apolin: " + NEWTON[2]["titel"] + " (" + NEWTON[2]["kurz"] + ")", NEWTON[2]["url"], QUELLE_NEWTON, NEWTON[2]["fragen"])],
+ 4: [("Apolin: " + NEWTON[1]["titel"] + " (" + NEWTON[1]["kurz"] + ")", NEWTON[1]["url"], QUELLE_NEWTON, NEWTON[1]["fragen"])],
+ 7: [("Apolin: " + NEWTON[3]["titel"] + " (" + NEWTON[3]["kurz"] + ")", NEWTON[3]["url"], QUELLE_NEWTON, NEWTON[3]["fragen"]),
+     ("Action = Reaction (Pohl-Versuch, IWF Göttingen, 2003)", "https://av.tib.eu/media/30463",
+      "1 min · englisch gesprochen, die Bilder genügen · Lizenz CC BY-ND 3.0 DE · TIB AV-Portal", [])],
 }
 
 ROLLEN = ["Leitung und Zeit", "Quellen und Video", "Versuch und Material", "Schriftführung (Steckbrief, Teams)", "Präsentation und Probe"]

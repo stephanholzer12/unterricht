@@ -213,7 +213,7 @@ for _n, _g in GD.G.items():
     GKD[str(_n)] = {"thema": _g["thema"], "titel": _g["titel"], "buch": _g["buch"], "teil": _g["teil"], "karte": _g["karte"],
                     "teiltitel": TD.TOCLAB.get(_g["teil"], _g["teil"]), "leit": _g["leit"], "ideen": _g["ideen"],
                     "saal": ["%s (%s, Bestand %d)" % m for m in _g["saal"]], "haus": _g["haus"], "formel": _g["formel"], "achtung": _g["achtung"],
-                    "video": list(GD.VIDEOS[_n]) if _n in GD.VIDEOS else None}
+                    "videos": [list(v) for v in GD.VIDEOS.get(_n, [])]}
 GKEXTRA = {"ja": GD.ZUHAUSE_JA, "nein": GD.ZUHAUSE_NEIN, "frei": GD.FREIGABE_FRAGEN}
 i = s.index("const KEY = "); j = s.index("\n];", i) + 3
 s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K2.1", THEMA = "Kraefte";\n' % I.KEY
@@ -270,8 +270,10 @@ rep(".aufl { margin-top: 10px; display: grid; gap: 8px; }", """.aufl { margin-to
 .gkarte h3 { margin: 6px 0 0; font-size: 17px; color: #3B4A2F; }
 .gkarte .nein li { color: #8C3B2E; }
 .gkarte a { color: #2E7D8C; font-weight: 700; }
+.gkarte a.btn { color: #fff; text-decoration: none; }
 .gkhint { background: #E8F1F3; border: 2px solid #2E7D8C; border-radius: 12px; padding: 10px 14px; font-size: 17px; margin: 10px 0; }
-.stbox { display: grid; gap: 8px; margin-top: 10px; }""")
+.stbox { display: grid; gap: 8px; margin-top: 10px; }
+.vid { display: grid; gap: 6px; } .vid .btn { justify-self: start; } .vid ul { margin: 0; padding-left: 22px; }""")
 rep('el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null),',
     'el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null, t.marke ? el("span", { class: "marke m-" + t.marke, text: t.marke }) : null),')
 rep('const lbl = el("span", { text: "Foto der Heftskizze aufnehmen" });', 'const lbl = el("span", { text: t.fotolabel || "Foto der Heftskizze aufnehmen" });')
@@ -296,10 +298,18 @@ function gruppenkarte(g, K) {
   box.append(el("p", {}, el("b", { text: "1 · Lesen: " }), "Schulbuch " + K.buch + " und die ", el("a", { href: "theorie.html#" + K.teil, text: "Theorie-Seite, Teil »" + K.teiltitel + "«" }), ". Markiere dir die Fachbegriffe."));
   if (KARTEN[K.karte]) { const d = el("details", { class: "tipp" }); d.append(el("summary", { text: "Theorie-Karte zu eurem Thema" }), karteEl(K.karte)); box.append(d); }
   box.append(el("p", {}, el("b", { text: "2 · Leitfragen: " }), "Sie stehen unten bei c) bis f). Antworte in eigenen Worten."));
-  const v = el("p"); v.append(el("b", { text: "3 · Video oder zweite Quelle: " }));
-  if (K.video) v.append(el("a", { href: K.video[1], target: "_blank", rel: "noopener", text: K.video[0] }), " – " + K.video[2] + ". Sucht trotzdem eine zweite Quelle dazu.");
-  else v.append("Sucht ein kurzes Video (höchstens 5 Minuten) oder eine Seite von einer seriösen Quelle – Universität, ORF, planet schule, LEIFIphysik, Schulbuchverlag. Prüft: Wer hat es gemacht? Wann? Stimmt es mit dem Buch überein?");
-  box.append(v);
+  const v = el("p"); v.append(el("b", { text: "3 · Video und zweite Quelle: " }));
+  if (K.videos.length) {
+    v.append("Seht euch diese Videos an und beantwortet die Fragen für euch. Sucht danach noch eine zweite Quelle (Buch zählt nicht).");
+    box.append(v);
+    K.videos.forEach(x => { const d = el("div", { class: "vid" });
+      d.append(el("a", { class: "btn", href: x[1], target: "_blank", rel: "noopener", text: "Video: " + x[0] }), el("p", { class: "hint", text: x[2] }));
+      if (x[3] && x[3].length) d.append(liste(x[3]));
+      box.append(d); });
+  } else {
+    v.append("Sucht ein kurzes Video (höchstens 5 Minuten) oder eine Seite von einer seriösen Quelle – Universität, ORF, planet schule, LEIFIphysik, Schulbuchverlag. Prüft: Wer hat es gemacht? Wann? Stimmt es mit dem Buch überein?");
+    box.append(v);
+  }
   const fo = el("p"); fo.innerHTML = "<b>Formel:</b> " + fett(K.formel); box.append(fo);
   return box;
 }
@@ -480,6 +490,11 @@ def block(b):
     if k == "reveal": return "".join(reveal(q, a) for q, a in b[1])
     if k == "img": return figure(b[1], b[2], b[3])
     if k == "versuch": return versuch_block(b[1], b[2], b[3])
+    if k == "video":
+        v = GD.NEWTON[b[1]]
+        fr = "".join(f"<li>{esc(q)}</li>" for q in v["fragen"])
+        return (f'<div class="vid"><a class="btn" href="{v["url"]}" target="_blank" rel="noopener">Video ansehen: {esc(v["titel"])}</a>'
+                f'<p class="vq">{esc(v["kurz"])} · {esc(GD.QUELLE_NEWTON)}. Achte beim Ansehen auf:</p><ul>{fr}</ul></div>')
     if k == "buch": return f'<div class="buch"><span class="bicon">Buch</span><p>{md(b[1])}</p></div>'
     if k == "karte": return karte_block(b[1])
     if k == "gemeinsam": return f'<div class="gem"><span class="gicon">BESPRECHEN</span><p>{md(b[1])}</p></div>'
@@ -542,6 +557,8 @@ details.reveal p { margin: 8px 0 0; }
 .vtag { font-size: 13px; font-weight: 700; color: #fff; background: #3B4A2F; border-radius: 999px; padding: 2px 10px; }
 .vbox .btn { justify-self: start; background: #A33A2B; color: #fff; text-decoration: none; font-weight: 700; border-radius: 10px; padding: 10px 14px; }
 .buch { display: flex; gap: 12px; align-items: center; background: #EEF3E4; border: 2px solid #3B4A2F; border-radius: 12px; padding: 10px 14px; }
+.vid { border: 2px solid #2E7D8C; background: #E8F1F3; border-radius: 12px; padding: 10px 14px; margin: 10px 0; }
+.vid .btn { display: inline-block; } .vid p.vq { margin: 8px 0 4px; font-weight: 700; color: #2E7D8C; } .vid ul { margin: 0; padding-left: 22px; }
 .buch p { margin: 0; } .bicon { font-weight: 700; color: #fff; background: #3B4A2F; border-radius: 8px; padding: 4px 10px; white-space: nowrap; }
 .gem { display: flex; gap: 12px; align-items: center; background: #FFF4EA; border: 2px solid #D9772B; border-radius: 12px; padding: 10px 14px; }
 .gem p { margin: 0; } .gicon { font-weight: 700; color: #fff; background: #D9772B; border-radius: 8px; padding: 4px 10px; white-space: nowrap; }
