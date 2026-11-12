@@ -49,11 +49,11 @@ def rep(old, new, count=1):
 
 # ================================================================ Arbeitsblatt
 s = open(os.path.join(HERE, "vorlage_aufgaben.html"), encoding="utf-8").read()
-TITLE = "Kräfte-Aufgaben"
+TITLE = "Arbeitsblatt Kräfte"  # Stephan 11.11.2026: die Seite heißt überall »Arbeitsblatt«
 rep("<title>Epochen-Aufgaben</title>", "<title>" + TITLE + "</title>")
 rep("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen</div>", I.EYEBROW + "</div>", 2)
 rep("<h1>Epochen-Aufgaben</h1>", "<h1>" + TITLE + "</h1>")
-rep("<h2>Epochen-Aufgaben am Handy</h2>", "<h2>" + TITLE + " am Handy</h2>")
+rep("<h2>Epochen-Aufgaben am Handy</h2>", "<h2>" + TITLE + "</h2>")
 s = re.sub(r'(alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,)[A-Za-z0-9+/=]+', lambda m: m.group(1) + qr_b64(I.URL + "aufgaben.html"), s, count=1)
 rep('<option value="">–</option><option>3BK</option>', '<option value="">–</option><option>1AK</option><option>1BK</option>')
 
@@ -482,7 +482,7 @@ def block(b):
     if k == "versuch": return versuch_block(b[1], b[2], b[3])
     if k == "buch": return f'<div class="buch"><span class="bicon">Buch</span><p>{md(b[1])}</p></div>'
     if k == "karte": return karte_block(b[1])
-    if k == "gemeinsam": return f'<div class="gem"><span class="gicon">Gemeinsam</span><p>{md(b[1])}</p></div>'
+    if k == "gemeinsam": return f'<div class="gem"><span class="gicon">BESPRECHEN</span><p>{md(b[1])}</p></div>'
     raise ValueError(k)
 
 

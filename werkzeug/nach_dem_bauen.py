@@ -4,6 +4,7 @@ Führt der Reihe nach aus (alle wiederholbar, ändern keinen Speicherschlüssel)
   0b. tippstufen_einbauen.py     – Tipp-Stufen, Theorie-Karte, »Was glaubst du?« (nur bei Aufgaben mit tipp1)
   1. speicherstatus_einbauen.py   – »Gespeichert um …« / Warnung bei Speicherfehler
   2. pdf_erinnerung_einbauen.py   – »Noch keine PDF / seit der PDF geändert / PDF passt«
+  2b. pdf_sicherung_einbauen.py  – Probe: Antworten stecken in der PDF und lassen sich daraus zurückholen (nur Einheiten der Liste PROBE)
   3. pdf_programm_auslagern.py    – PDF-Programm + PDF-Schrift aus der Seite in gemeinsam/pdf-programm-v1.js
   4. schriften_einbauen.py        – Schriften lokal statt Google Fonts
   4b. abgabezeit_einbauen.py      – Datum UND Uhrzeit im PDF-Kopf und im Kopier-Text
@@ -17,7 +18,7 @@ Führt der Reihe nach aus (alle wiederholbar, ändern keinen Speicherschlüssel)
 Danach: git status ansehen, nur die eigene Einheit committen, git pull --rebase, git push."""
 import os, subprocess, sys
 W = os.path.dirname(os.path.abspath(__file__))
-for s in ("loesungshilfe_einbauen.py", "tippstufen_einbauen.py", "speicherstatus_einbauen.py", "pdf_erinnerung_einbauen.py", "pdf_programm_auslagern.py",
+for s in ("loesungshilfe_einbauen.py", "tippstufen_einbauen.py", "speicherstatus_einbauen.py", "pdf_erinnerung_einbauen.py", "pdf_sicherung_einbauen.py", "pdf_programm_auslagern.py",
           "schriften_einbauen.py", "abgabezeit_einbauen.py", "versuche_pruefen_einbauen.py", "pruefung_nachsicht_einbauen.py", "notenvorschlag_einbauen.py", "pilot_layout_einbauen.py", "teststoff/handyseite.py", "build_index.py", "pruefen.py"):
     print(f"\n=== {s} ===", flush=True)
     r = subprocess.run([sys.executable, os.path.join(W, s)], cwd=os.path.dirname(W))

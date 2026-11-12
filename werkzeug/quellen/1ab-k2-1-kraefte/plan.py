@@ -80,7 +80,7 @@ DATUM = {"1AK": {1: "Do 12.11. · 8. Std.", 2: "Fr 13.11.", 3: "Do 19.11. · 7. 
          "1BK": {1: "Fr 13.11.", 2: "Mo 16.11.", 3: "Mi 18.11.", 4: "Fr 20.11.", 5: "Mo 23.11.", 6: "Mi 25.11."}}
 # Die Daten sind GEPLANT (aus dem Stundenmuster von K1.4 abgeleitet: 1AK Do Doppelstunde + Fr, 1BK Mo/Mi/Fr) – Prof. HOLZER bestätigt sie.
 PLAN = {k: [{"std": n, "datum": DATUM[k][n], "teile": [n], "methode": METHODE[n], "phasen": STUNDE[n]} for n in sorted(STUNDE)] for k in I.KLASSEN}
-MARKE = {1: "GEMEINSAM", 2: "SELBSTSTUDIUM", 3: "VERSUCH", 4: "GRUPPENARBEIT", 5: "PRÄSENTATION", 6: "EINZELARBEIT"}
+MARKE = {1: "BESPRECHEN", 2: "SELBSTSTUDIUM", 3: "VERSUCH", 4: "GRUPPENARBEIT", 5: "PRÄSENTATION", 6: "SELBSTSTUDIUM"}  # Marken laut Skill 11.11.2026 (GEMEINSAM -> BESPRECHEN, EINZELARBEIT -> SELBSTSTUDIUM)
 
 # ---------------------------------------------------------------- Kontrollen
 _Z = {t["nr"]: t["zeit"] for t in I.T}
