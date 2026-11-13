@@ -109,7 +109,7 @@ OFFEN = [
     "**Geräte sind nur im Inventar belegt, nicht heute gezählt.** Vor Stunde 3 wirklich nachsehen – besonders Kraftmesser, Waagen, Wannen und Filterpapier.",
     "**Der Kraftmesserwechsel nach 14 Minuten ist verbindlich** (Gruppen 2 und 4 → Gruppe 7). Es gibt nur zwei analoge Geräte; der digitale #26 wird nicht gebraucht.",
     "**Gruppenstärke:** 1AK sieben Vierergruppen, 1BK sechs Vierergruppen und eine Fünfergruppe. Keine namentliche Einteilung vorgegeben.",
-    "**Keine festen Termine:** Im Fahrplan steht »geplant«. Es zählt die Reihenfolge der Stunden, nicht das Datum.",
+    "**Keine Daten auf den Kadetten-Seiten:** Termine, Doppelstunden und Referate trägst du selbst im Reiter »Kalender« der Lösungsseite ein. Fahrplan und Arbeitsblatt kennen nur Stunde 1 bis 6.",
     "**Fällt eine Stunde aus**, entfällt zuerst Stunde 4. Das Meilenstein-PDF aus Stunde 3 taugt als Präsentationsunterlage.",
     "**Supplierstunde möglich: Stunde 6** – Aufgabe 8, Theorie-Karten und Selbsteinschätzung brauchen kein Material und keinen Versuch.",
     "**Noch nicht geliefert:** TH-Lehrer- und TH-Kadetten-PPP, Word (AB/Lösung/Fachwissen), Kahoot-Tabelle und ZIP. Das war als Teillieferung so bestellt.",

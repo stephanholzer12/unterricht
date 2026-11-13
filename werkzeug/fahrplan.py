@@ -22,6 +22,8 @@ Kompakte Ansicht (Stephan, 11.11.2026, Probe an K2.1 Kräfte 1AB): »fahrplan": 
 Die Kadetten tippen ihre Klasse an (wird im Browser gemerkt), groß steht nur »Diese Stunde« (nächste geplante Stunde
 nach Datum) mit drei Zeilen: Lesen/Tun · Im Arbeitsblatt · Abgabe, dazu die Marke (»marke«: SELBSTSTUDIUM, VERSUCH …).
 Alle anderen Stunden sind zugeklappt, je eine Zeile. Keine Minuten. Einheiten ohne »ansicht« bleiben unverändert.
+Ohne »klasse« und ohne »datum« in den Zeilen (Stephan, 13.11.2026: Termine ändern sich ständig, Daten gehören nicht auf die Kadetten-Seiten):
+Die Kadetten tippen oben die Nummer der Stunde an, die heute dran ist (wird im Browser gemerkt; Prof. HOLZER sagt sie an).
 """
 import html, os, re
 
@@ -176,12 +178,59 @@ def html_kompakt(u, mit_marken=True):
     return CSS + KOMPAKT_CSS + "".join(out) + KOMPAKT_JS
 
 
+STUNDEN_JS = """<script>
+(function () {
+  var box = document.currentScript.previousElementSibling, KEY = "fahrplan-stunde|" + location.pathname.replace(/[^/]*$/, "");
+  var btns = box.querySelectorAll(".fp-wahl button"), std = box.querySelectorAll(".fp-std"), li = box.querySelectorAll("ol.fp-liste li");
+  function zeige(n) {
+    btns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.n === String(n))); });
+    std.forEach(function (s) { s.hidden = s.dataset.n !== String(n); });
+    li.forEach(function (l) { l.classList.toggle("fp-jetzt", l.dataset.n === String(n)); });
+  }
+  var n = "1"; try { n = localStorage.getItem(KEY) || "1"; } catch (e) {}
+  if (!box.querySelector('.fp-std[data-n="' + n + '"]')) n = "1";
+  btns.forEach(function (b) { b.addEventListener("click", function () { try { localStorage.setItem(KEY, b.dataset.n); } catch (e) {} zeige(b.dataset.n); }); });
+  zeige(n);
+})();
+</script>"""
+
+
+def html_kompakt_stunden(u):
+    """Kompakter Fahrplan ohne Klassen und Daten: Stundennummer antippen, groß steht nur diese Stunde."""
+    fp = u["fahrplan"]
+    rows = [r for r in fp["zeilen"] if r["wann"].lower().startswith("stunde")]
+    rest = [r for r in fp["zeilen"] if not r["wann"].lower().startswith("stunde")]
+    nr = lambda r: re.sub(r"\D", "", r["wann"])
+    out = ['<section class="fahrplan fp-kompakt fp-st"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2>',
+           f'<p class="std">{esc(stunden_text(fp))} · Welche Stunde heute dran ist, sagt dir Prof. HOLZER.</p>',
+           '<div class="fp-wahl" role="group" aria-label="Welche Stunde ist heute?">Heute ist Stunde:'
+           + "".join(f'<button type="button" data-n="{esc(nr(r))}" aria-pressed="false">{esc(nr(r))}</button>' for r in rows) + "</div>"]
+    for r in rows:
+        mk = f'<span class="fp-marke">{esc(r["marke"])}</span>' if r.get("marke") else ""
+        ab = r.get("abgabe") or "–"
+        out.append(f'<div class="fp-std" data-n="{esc(nr(r))}" hidden><div class="fp-kopf">Diese Stunde: {esc(r["wann"])} {mk}</div>'
+                   f'<div class="fp-zeile"><b class="n">1</b><span>{esc(r["lesen"])}</span></div>'
+                   f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}</span></div>'
+                   f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div></div>')
+    out.append(f'<details><summary>Alle Stunden ({len(rows)})</summary><ol class="fp-liste">'
+               + "".join(f'<li data-n="{esc(nr(r))}">{esc(r["wann"])}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}</li>' for r in rows)
+               + "</ol></details>")
+    if rest:
+        out.append("".join(f'<p class="fp-tipp" style="margin-top:8px"><b>{esc(r["wann"])}:</b> {esc(r["lesen"])} · Aufgaben {esc(r.get("aufgaben") or "–")}</p>' for r in rest))
+    if fp.get("text"):
+        out.append(f'<details><summary>So läuft die ganze Einheit</summary><p>{esc(fp["text"])}</p></details>')
+    out.append("</section>")
+    return CSS + KOMPAKT_CSS + "".join(out) + STUNDEN_JS
+
+
 def html_fahrplan(u):
     fp = u.get("fahrplan")
     if not fp or not fp.get("zeilen"):
         return None
     if fp.get("ansicht") == "kompakt" and any(r.get("klasse") for r in fp["zeilen"]):
         return A + html_kompakt(u) + E
+    if fp.get("ansicht") == "kompakt" and any(r["wann"].lower().startswith("stunde") for r in fp["zeilen"]):
+        return A + html_kompakt_stunden(u) + E
     z = fp["zeilen"]
     spalten = [("wann", "Wann"), ("datum", "Datum"), ("lesen", "Das machen wir"), ("aufgaben", "Aufgaben"), ("zeit", "Zeit"), ("wie", "Wie"), ("abgabe", "Abgabe")]
     spalten = [(k, t) for k, t in spalten if k in ("wann", "lesen") or any(r.get(k) for r in z)]

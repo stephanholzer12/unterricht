@@ -1,14 +1,14 @@
 """NAWI 1AB · K2.1 Mechanische Kräfte (Trauner NAWI HAK 1, Teil II »Grundlagen der Physik«, Kapitel »Mechanische Kräfte«, S. 44–65) – v1.
 Grundlage: Übergabepaket »26-27-1AB-K2.1-Kraefte-Claude-v1« vom 07.11.2026 (Planung, Quellenprüfung, fachliche Korrekturen) – von Claude umgesetzt und nachgeprüft.
 Jahresplan: Block »E Physik«, Einheiten E15–E17 (bloecke.json: 3+3+1 = 7 Stunden). Stephans engerer Rahmen: SECHS Stunden einschließlich Gruppenprojekt und Präsentationen.
-Keine festen Daten – es zählt die Reihenfolge der Stunden (Ausfälle, Tests, Veranstaltungen). Beide Klassen bekommen denselben Fahrplan.
+Keine Daten auf den Kadetten-Seiten (13.11.2026) – es zählt die Reihenfolge der Stunden; Termine und Referate trägt Prof. HOLZER im Kalender der Lösungsseite ein. Beide Klassen bekommen denselben Fahrplan.
 Sieben Gruppen: 1AK 28 Kadetten = 7 Vierergruppen · 1BK 29 Kadetten = 6 Vierergruppen + 1 Fünfergruppe. Keine namentliche Einteilung auf der öffentlichen Seite.
 Versuchs-ID: das bereits vorhandene Gruppenprojekt V1.20 (Stephans Vorgabe) – es werden KEINE neuen Kapitel-Versuchsnummern vergeben.
 Eine Quelle für Handy-Seiten, Unterrichts-PPP und Lösungsmappe. Kein CLIL, kein Kahoot, keine Hausübung.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "12.11.2026"
-V = "v3"
+STAND = "13.11.2026"
+V = "v4"
 ORDNER = "1ab-nawi/k2-1-kraefte"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"

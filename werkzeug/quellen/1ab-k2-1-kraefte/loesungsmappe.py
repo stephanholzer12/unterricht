@@ -1,19 +1,21 @@
 """Private Lehrer-Seite (Lösungsmappe) K2.1 Mechanische Kräfte – als Artifact, nur für Prof. HOLZER.
 NICHT ins öffentliche Repository legen und nicht auf Kadetten-Seiten verlinken.
 Aus derselben Datenquelle wie Handy-Seiten und Unterrichts-PPP (inhalt, theorie_daten, versuche_daten, plan, fachwissen).
-Aufruf: python3 loesungsmappe.py <TH-Unterricht.pptx> <Ordner mit Folienbildern s-NN.jpg> <Ziel.html> <Ordner mit loesungen_gruppen.py>
+Aufruf: python3 loesungsmappe.py <TH-Unterricht.pptx> <Ordner mit Folienbildern s-NN.jpg> <Ziel.html> <Ordner mit loesungen_gruppen.py und termine_k2_1.py>
 v2 (11.11.2026): Reiter Kalender · Vorbereitung · Besprechen · Aufgaben · Versuche · Gruppen (Zufallsgenerator) · Folien · Fachwissen.
+v4 (13.11.2026): Kalender mit Terminen, die Prof. HOLZER selbst einträgt (Datum, Doppelstunde, Referat; nur im Browser gespeichert), Ablauf je Termin, Reiter Ausgleich.
 Die Musterantworten zu den Leitfragen liegen NICHT im Repository (loesungen_gruppen.py, im Claude-Projekt gespeichert).
 Die Folienbilder sind die sichtbaren Folien der TH-Unterricht (LibreOffice-Render), damit die Seite am Beamer-PC als Ersatz taugt."""
 import base64, glob, html, json, os, re, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
-import inhalt as I, theorie_daten as TD, versuche_daten as VD, plan as P, fachwissen as F, gruppen_daten as GD
+import inhalt as I, theorie_daten as TD, versuche_daten as VD, plan as P, fachwissen as F, gruppen_daten as GD, ausgleich as AG
 from pptx import Presentation
 
 PPTX, FOLDIR, ZIEL, PRIVAT = sys.argv[1:5]
 sys.path.insert(0, PRIVAT)
 import loesungen_gruppen as LG
+import termine_k2_1 as TK   # private Standardtermine (nicht im Repository)
 UNIT = os.path.join(ROOT, I.ORDNER) + "/"
 e = lambda t: html.escape(str(t), quote=False)
 
@@ -43,29 +45,21 @@ def slug(x):
     return "-".join(re.findall(r"[a-z0-9]+", s)[:5])
 
 
-# ---------------------------------------------------------------- Kalender (beide Klassen in EINER Liste nach Datum)
-sys.path.insert(0, os.path.join(ROOT, "werkzeug"))
-import fahrplan as FP_  # noqa: E402  (nur für das Datumsformat)
+# ---------------------------------------------------------------- Kalender: Termine trägt Prof. HOLZER selbst ein (kein Datum im Repository)
 BRAUCHST = {1: "Beamer, Reiter »Gruppen« (Namen eingefügt), Bücher", 2: "Bücher; Handy der Gruppe für das Foto der Materiallisten",
             3: "freigegebenes Saal-Material je Gruppe, Wannen, Tücher; Gang für Gruppe 1 frei", 4: "Teams-Kanal für die Steckbriefe",
             5: "Beamer; Material der Gruppen steht an den Plätzen", 6: "nichts – Supplierstunde möglich"}
 VORB_MIN = {1: 5, 2: 3, 3: 15, 4: 3, 5: 5, 6: 0}
-termine = []
-for k in I.KLASSEN:
-    for st in P.PLAN[k]:
-        termine.append((FP_._iso(st["datum"]) + ("8" if "8. Std" in st["datum"] else "1"), k, st))
-termine.sort(key=lambda x: x[0])
-krow = []
-for iso, k, st in termine:
-    n = st["std"]
-    krow.append(f"<tr data-d='{iso[:8]}'><td class='num'>{e(st['datum'])}</td><td><b>{e(k)}</b></td><td>{e(I.STUNDENNAME[n])}</td>"
-                f"<td><span class='tag'>{e(P.MARKE[n])}</span></td><td>{e(BRAUCHST[n])}</td><td class='num'>{VORB_MIN[n] or '–'}{' min' if VORB_MIN[n] else ''}</td></tr>")
-kal = ("<p class='warn'>Die Daten sind <b>geplant</b> – abgeleitet aus dem Stundenmuster von K1.4 (1AK Donnerstag Doppelstunde und Freitag, 1BK Montag, Mittwoch, Freitag). "
-       "Bitte einmal prüfen; falsche Daten ändere ich im Fahrplan, die Seiten ziehen nach.</p>"
-       "<div class='scroll'><table class='kal'><tr><th>Datum</th><th>Klasse</th><th>Stunde</th><th>Was läuft</th><th>Du brauchst</th><th>Vorbereiten</th></tr>"
-       + "".join(krow) + "</table></div>"
-       "<p class='klein'>Hervorgehoben: der nächste Termin. 1AK hat Stunde 3 und 4 am selben Donnerstag (Doppelstunde) – Versuch und Steckbrief hintereinander, nur einmal auf- und abbauen.</p>")
-kal += "<h2>Stundenkarten (Minuten je Phase, Summe je 50)</h2>"
+kal = ("<p class='warn'><b>Die Termine änderst du hier selbst</b> – Datum, Doppelstunde und Referat. Die Kadetten-Seiten kennen keine Daten, ich muss nichts ändern. "
+       "Deine Einträge bleiben nur in diesem Browser. »Standard wiederherstellen« holt die Termine zurück, die du mir am 13.11. genannt hast.</p>"
+       "<div class='steuer'><button type='button' class='btn' id='k-neu'>+ Termin</button>"
+       "<button type='button' class='btn ghost' id='k-reset'>Standard wiederherstellen</button></div>"
+       "<div class='fehler' id='k-warn' role='status' hidden></div><p class='warnline' id='k-vorsprung' role='status' hidden></p>"
+       "<div id='k-liste'></div>"
+       f"<p class='klein'>Hervorgehoben: der nächste Termin. Ein Referat zählt mit {P.REFERAT_MIN} Minuten einschließlich Rückfragen. Dauert es länger, nimmst du zuerst die Reserve, "
+       "dann die Zeile »Wenn es knapp wird«. Doppelstunde: Klassenbuch, »Weißt du noch?«, Zwischenstand-PDF und Reserve gibt es nur einmal – das ergibt 11 bis 15 Minuten, "
+       "in die ein Referat passt.</p>")
+kal += "<h2>Stundenkarten (Ablauf einer normalen Einzelstunde, Summe 50)</h2>"
 for std in sorted(P.STUNDE):
     t0, li = 0, []
     for name, mi, oh, a in P.STUNDE[std]:
@@ -77,6 +71,7 @@ for std in sorted(P.STUNDE):
             f"<p class='warnline'><b>Wenn es knapp wird:</b> {e(P.KUERZEN[std].replace('Wenn es knapp wird: ', ''))}</p></div></details>")
 kal += "<h2>Wenn eine Stunde ausfällt</h2>" + ul(["Zuerst fällt **Stunde 4** weg: Steckbrief in den ersten 15 Minuten von Stunde 5, Präsentationen je 2 Minuten.",
                                                  "**Supplierstunde möglich: Stunde 6** – Aufgabe 8 braucht kein Material und keinen Versuch.",
+                                                 "**Ein Referat fällt in die Stunde?** Trag es beim Termin ein – dann zeigt die Karte den Ablauf mit Referat. Die Kürzungen sind vorbereitet, nichts musst du selbst rechnen.",
                                                  "Nie zwei Stunden in eine pressen, keine Hausübung."])
 kal += "<h2>Links der Kadetten-Seiten</h2><ul>" + "".join(
     f"<li><b>{lab}</b><br><span class='mono'>{I.URL}{k}.html</span></li>"
@@ -86,47 +81,51 @@ kal += ("<p class='warnline'><b>Die Einheit ist noch versteckt.</b> Direktlink u
 
 # ---------------------------------------------------------------- Vorbereitung (statt »Herrichten«): nach Tagen, abhakbar
 n_haken = 0
-def haken(key, text, klein=""):
+def haken(key, text, klein="", vs=None):
     global n_haken
     n_haken += 1
-    return f"<li><label><input type='checkbox' data-k='{e(key)}'> {md(text)}" + (f"<br><span class='klein'>{md(klein)}</span>" if klein else "") + "</label></li>"
+    kl = ""
+    if klein:
+        kl = (f"<br><span class='klein' data-vs='{vs}' data-basis='{e(klein)}'>{md(klein)}</span>" if vs else f"<br><span class='klein'>{md(klein)}</span>")
+    return f"<li><label><input type='checkbox' data-k='{e(key)}'> {md(text)}{kl}</label></li>"
 
-VORHER = [("vh-teams", "**Teams:** je Klasse einen Kanal oder Ordner »Steckbriefe K2.1« anlegen", "spätestens vor Stunde 4"),
-          ("vh-namen", "**Gruppen-Generator:** Namenslisten 1AK und 1BK einmal einfügen (Reiter »Gruppen«)", "spätestens vor Stunde 1"),
-          ("vh-gang", "**Gang für Gruppe 1** ansehen: 5 m frei, kein Durchgangsverkehr", "vor Stunde 3"),
-          ("vh-km", "**Kraftmesser #51, #52, #26:** Nullpunkt und Skala prüfen – nur drei Stück für bis zu vier Gruppen", "vor Stunde 2 (Freigabe)"),
-          ("vh-waage", "**Waagen #128:** einschalten, Funktion prüfen; Höchstlast 620 g", "vor Stunde 3"),
-          ("vh-filter", "**Filterpapier #54:** gleich breite Streifen schneiden, falls Gruppe 5 es braucht", "nach der Freigabe")]
+VORHER = [("vh-teams", "**Teams:** je Klasse einen Kanal oder Ordner »Steckbriefe K2.1« anlegen", "wann: spätestens vor Stunde 4", 4),
+          ("vh-namen", "**Gruppen-Generator:** Namenslisten 1AK und 1BK einmal einfügen (Reiter »Gruppen«)", "wann: spätestens vor Stunde 1", 1),
+          ("vh-gang", "**Gang für Gruppe 1** ansehen: 5 m frei, kein Durchgangsverkehr", "wann: vor Stunde 3", 3),
+          ("vh-km", "**Kraftmesser #51, #52, #26:** Nullpunkt und Skala prüfen – nur drei Stück für bis zu vier Gruppen", "wann: vor Stunde 2 (Freigabe)", 2),
+          ("vh-waage", "**Waagen #128:** einschalten, Funktion prüfen; Höchstlast 620 g", "wann: vor Stunde 3", 3),
+          ("vh-filter", "**Filterpapier #54:** gleich breite Streifen schneiden, falls Gruppe 5 es braucht", "wann: nach der Freigabe in Stunde 2", None)]
 vb = ("<p>Zum Abhaken – die Haken bleiben nur in diesem Browser. Es gibt <b>keine Chemikalien</b> in dieser Einheit: nichts ansetzen, nichts verdünnen. "
       "Weil die Gruppen ihren Versuch selbst wählen, steht das genaue Material erst nach der <b>Freigabe in Stunde 2</b> fest. "
       "Unten bei Stunde 3 steht die Saal-Grundausstattung je Thema – streiche, was keine Gruppe braucht.</p>"
       "<div class='werkzeug'><button type='button' class='btn ghost' id='h-nur' aria-pressed='false'>Nur offene zeigen</button>"
       "<span class='zaehler' id='h-zaehler'>0 von 0 abgehakt</span><div class='balken'><i id='h-balken'></i></div></div>")
-vb += "<h2>Schon vorher erledigen</h2><ul class='check'>" + "".join(haken(k, t, "wann: " + w) for k, t, w in VORHER) + "</ul>"
-vb += "<h2>Pro Tag</h2>"
-for iso, k, st in termine:
-    n = st["std"]
-    if VORB_MIN[n] == 0: continue
-    li = []
-    if n == 1:
-        li = [haken(f"t{iso}-gen", "Gruppen auslosen und am Beamer zeigen (Reiter »Gruppen«)"), haken(f"t{iso}-buch", "Schulbücher für alle")]
-    elif n == 2:
-        li = [haken(f"t{iso}-buch", "Schulbücher – jede Gruppe braucht ihre Seiten"),
-              haken(f"t{iso}-frei", "Freigabe: Materiallisten der sieben Gruppen fotografieren", "Daraus richtest du Stunde 3 her."),
-              haken(f"t{iso}-km", "Kraftmesser verteilen: welche Gruppe misst wann", "nur #51, #52, #26")]
-    elif n == 3:
-        li = [haken(f"t{iso}-g{g}-{a}", f"Gruppe {g} · {GD.THEMEN[g]}: {a}", f"{nr} · Bestand {best} · NAWI-Saal E21 · am Vortag möglich")
-              for g in range(1, 8) for a, nr, best in GD.G[g]["saal"]]
-        li += [haken(f"t{iso}-wanne", "Wannen und Putztücher für alle Gruppen mit Wasser"),
-               haken(f"t{iso}-weg", "Nach der Stunde: Saal-Material zurück, Gefäße trocknen")]
-    elif n == 4:
-        li = [haken(f"t{iso}-teams", "Teams-Kanal offen, Schriftführungen wissen, wohin das Handout kommt")]
-    elif n == 5:
-        li = [haken(f"t{iso}-reihe", "Reihenfolge der Gruppen 1 bis 7 an die Tafel"), haken(f"t{iso}-mat", "Material der Gruppen an den Plätzen")]
-    offen = " open" if not vb.count("<details") else ""
-    vb += (f"<details class='card tag-karte' data-d='{iso[:8]}'{offen}><summary><span class='nr'>{n}</span><span class='ttl'>{e(st['datum'])} · {e(k)}</span>"
-           f"<span class='tag'>{e(P.MARKE[n])}</span><span class='tag zus'>ca. {VORB_MIN[n]} min</span></summary>"
-           f"<div class='body'><ul class='check'>{''.join(li)}</ul></div></details>")
+vb += "<h2>Schon vorher erledigen</h2><ul class='check'>" + "".join(haken(k, t, w, vs) for k, t, w, vs in VORHER) + "</ul>"
+vb += "<h2>Pro Termin</h2><p class='klein'>Die Karten ordnen sich nach den Terminen im Reiter »Kalender«. Karten ohne Termin sind ausgeblendet.</p><div id='vb-karten'>"
+for k in I.KLASSEN:
+    for n in (1, 2, 3, 4, 5):
+        pre = f"t{k}{n}"
+        li = []
+        if n == 1:
+            li = [haken(f"{pre}-gen", "Gruppen auslosen und am Beamer zeigen (Reiter »Gruppen«)"), haken(f"{pre}-buch", "Schulbücher für alle")]
+        elif n == 2:
+            li = [haken(f"{pre}-buch", "Schulbücher – jede Gruppe braucht ihre Seiten"),
+                  haken(f"{pre}-frei", "Freigabe: Materiallisten der sieben Gruppen fotografieren", "Daraus richtest du Stunde 3 her."),
+                  haken(f"{pre}-km", "Kraftmesser verteilen: welche Gruppe misst wann", "nur #51, #52, #26")]
+        elif n == 3:
+            li = [haken(f"{pre}-g{g}-{a_}", f"Gruppe {g} · {GD.THEMEN[g]}: {a_}", f"{nr} · Bestand {best} · NAWI-Saal E21 · am Vortag möglich")
+                  for g in range(1, 8) for a_, nr, best in GD.G[g]["saal"]]
+            li += [haken(f"{pre}-wanne", "Wannen und Putztücher für alle Gruppen mit Wasser"),
+                   haken(f"{pre}-weg", "Nach der Stunde: Saal-Material zurück, Gefäße trocknen")]
+        elif n == 4:
+            li = [haken(f"{pre}-teams", "Teams-Kanal offen, Schriftführungen wissen, wohin das Handout kommt")]
+        elif n == 5:
+            li = [haken(f"{pre}-reihe", "Reihenfolge der Gruppen 1 bis 7 an die Tafel"), haken(f"{pre}-mat", "Material der Gruppen an den Plätzen")]
+        vb += (f"<details class='card tag-karte' data-k='{k}' data-n='{n}'><summary><span class='nr'>{n}</span>"
+               f"<span class='ttl'>Stunde {n} · {k}<span class='dt'></span></span>"
+               f"<span class='tag'>{e(P.MARKE[n])}</span><span class='tag zus'>ca. {VORB_MIN[n]} min</span></summary>"
+               f"<div class='body'><ul class='check'>{''.join(li)}</ul></div></details>")
+vb += "</div>"
 vb += "<h2>Was du vor Ort noch prüfen musst</h2>" + ul([
     "Die Saal-Bestände sind aus der Inventarliste gerechnet, nicht gezählt.",
     "Freigabe: Nichts von der Liste »nicht erlaubt« (Feuer, Chemikalien, Glas von zu Hause, Steckdose, Akkus, Waffen oder Waffenteile, Druckbehälter).",
@@ -157,6 +156,10 @@ for n in sorted(BESP):
     t_, xs = BESP[n]
     besp += (f"<details class='card'{' open' if n == 1 else ''}><summary><span class='nr'>{n}</span><span class='ttl'>{e(I.STUNDENNAME[n])}</span><span class='tag besp'>{e(t_)}</span></summary>"
              "<div class='body'>" + "".join(f"<p class='q'>{md(q)}</p><div class='box sol'>{md(a)}</div>" for q, a in xs) + "</div></details>")
+besp += ("<h2>Referate: eine Minute Verbindung zur Einheit</h2><p class='klein'>Fällt ein Schüler-Referat in eine Stunde, stellst du danach eine Frage zur Einheit. "
+         "Im Reiter »Kalender« erscheint die passende Frage automatisch bei dem Termin, wenn der Titel des Referats ein Stichwort enthält.</p>"
+         + "".join(f"<details class='card'><summary><span class='ttl'>{e(b['thema'])}</span><span class='tag besp'>{e(b['wo'])}</span></summary><div class='body'>"
+                   f"<p class='q'>{md(b['frage'])}</p><div class='box sol'><b class='k'>Kurzantwort</b>{md(b['antwort'])}</div></div></details>" for b in AG.BRUECKEN))
 besp += "<h2>Kernaussage je Gruppenthema</h2>" + tab(["Gruppe", "Thema", "Das muss im Steckbrief stehen"], [[str(g), GD.THEMEN[g], LG.KERN[g]] for g in range(1, 8)])
 besp += "<h2>Die 5 größten Stolpersteine</h2>" + "".join(f"<div class='fehler'><b class='k'>{e(a)}</b>{md(b)}</div>" for a, b in I.STOLPERSTEINE)
 besp += "<h2>So bewertest du das Projekt</h2>" + tab(["Teil", "Punkte", "Woran du es siehst"], [[a, str(b), c] for a, b, c in GD.RASTER]) + ul([
@@ -265,6 +268,32 @@ fw += "<h2>Geprüfte Quellen</h2><ul>" + "".join(
     f"<li><b>{e(q[0])} – {e(q[1])}</b><br>{e(q[2])}<br><span class='mono'>{e(q[3])}</span></li>" for q in I.QUELLEN) + "</ul>"
 fw += "<h2>Nicht geprüft – nicht eingebaut</h2>" + ul(I.NICHT_GEPRUEFT)
 
+# ---------------------------------------------------------------- Ausgleich (für die Klasse, die vorne liegt)
+ausg = ("<p>Wenn eine Klasse früher fertig ist (jetzt zum Beispiel die 1AK), gibst du ihr einen dieser Bausteine, bevor das nächste Thema beginnt – "
+        "dann sind beide Klassen danach ungefähr gleich weit. Alle sind <b>freiwillig, ohne Note, ohne Hausübung</b> und brauchen nur Papier und Handy. "
+        "Sie stehen <b>nicht</b> auf den Kadetten-Seiten. Die Folien dazu sind in der PPP ausgeblendet und als Präsentation <b>»Ausgleich«</b> gespeichert.</p>"
+        f"<p class='warnline'>{e(AG.VORHANDEN)}</p>"
+        "<p class='klein' id='ausgleich-hinweis'>Ob eine Klasse vorne liegt, zeigt dir der Reiter »Kalender« anhand deiner Termine.</p>")
+for b in AG.BAUSTEINE:
+    extra = ""
+    if b["id"] == "A1":
+        extra = ("<h3>Die fünf Behauptungen mit richtiger Version</h3>"
+                 + tab(["Behauptung", "Richtig ist"], [[a, r] for a, r in AG.AUSSAGEN]))
+    if b["id"] == "A4":
+        extra = ("<h3>Beobachtungsfragen</h3><ul>" + "".join(f"<li><b>{e(GD.NEWTON[i]['titel'])}</b> ({e(GD.NEWTON[i]['kurz'])}): "
+                 + " · ".join(e(f) for f in GD.NEWTON[i]["fragen"]) + "</li>" for i in (2, 3)) + "</ul>"
+                 f"<p class='klein'>Videos: <span class='mono'>{e(GD.NEWTON[2]['url'])}</span><br><span class='mono'>{e(GD.NEWTON[3]['url'])}</span></p>")
+    ausg += (f"<details class='card'><summary><span class='nr'>{b['id']}</span><span class='ttl'>{e(b['titel'])}</span>"
+             f"<span class='tag'>{e(b['marke'])}</span><span class='tag zus'>ca. {b['min']} min</span></summary><div class='body'>"
+             f"<p class='klein'><b>Material:</b> {e(b['material'])} · <b>Quelle:</b> {e(b['quelle'])}</p>"
+             "<h3>So läuft es</h3><ol>" + "".join(f"<li>{md(x)}</li>" for x in b["tun"]) + "</ol>"
+             f"<div class='box sol'><b class='k'>Ergebnis</b>{md(b['ergebnis'])}</div>"
+             f"<div class='box bew'><b class='k'>Hinweis für dich</b>{md(b['hinweis'])}</div>{extra}</div></details>")
+ausg += ("<h2>Passende Kombinationen</h2>" + ul(["**Ausgleich ca. 20 min:** A2 oder A4.",
+                                                 "**Ausgleich ca. 35 min (eine ganze Einzelstunde):** A1 + A3 oder A1 + A2.",
+                                                 "**Doppelstunde mit Puffer:** A1 (15 min) füllt den Puffer, ohne dass jemand etwas nacharbeiten muss.",
+                                                 "**Supplierstunde:** A4 (mit geprüftem Video) oder A1 – beide brauchen kein Material."]))
+
 # ---------------------------------------------------------------- Folien (TH-Unterricht als Bilder)
 prs = Presentation(PPTX)
 titel = [next((ph.text_frame.text for ph in s.placeholders if ph.placeholder_format.type == 1), "") for s in prs.slides if s._element.get("show") != "0"]
@@ -304,7 +333,24 @@ table.kal tr.jetzt td { background: var(--olive-soft); font-weight: 700; }
 .g-raster.gross { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 .g-raster.gross .g { font-size: 24px; } .g-raster.gross .g b { font-size: 28px; } .g-raster.gross .g span { font-size: 18px; }
 #g-namen { min-height: 160px; font: 16px var(--sans); }
+.fgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 10px 0; }
+.fk { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.fk input, .fk select { font: 16px var(--sans); padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink); width: 100%; min-width: 0; }
+.card.jetzt { border: 2px solid var(--olive); }
+tr.weg td { text-decoration: line-through; color: var(--muted); }
+tr.ref td { background: var(--amber-soft); font-weight: 700; }
 """
+KAL_DATEN = json.dumps({
+    "kl": I.KLASSEN,
+    "term": TK.TERMINE,
+    "var": {k: [[r[0], r[1], P._chip(r[3], r[2]), r[3], r[4]] for r in rows] for k, rows in P.VARIANTEN.items()},
+    "std": {str(n): {"marke": P.MARKE[n], "brauchst": BRAUCHST[n], "vorb": VORB_MIN[n]} for n in sorted(P.STUNDE)},
+    "doppel": {"%d+%d" % k: v for k, v in P.DOPPEL_HINWEIS.items()},
+    "kuerz": {str(n): P.kuerzen_text(n) for n in sorted(P.STUNDE)},
+    "bruecken": [{"such": b["such"], "frage": b["frage"], "antwort": b["antwort"], "wo": b["wo"]} for b in AG.BRUECKEN],
+    "allg": AG.BRUECKE_ALLGEMEIN,
+}, ensure_ascii=False).replace("</", "<\\/")
+KAL_JS = open(os.path.join(HERE, "loesungsmappe_kalender.js"), encoding="utf-8").read().replace("</script", "<\\/script")
 seite = f"""<title>Lösungsmappe Mechanische Kräfte 1AB</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="schriften/schriften.css">
@@ -313,8 +359,8 @@ seite = f"""<title>Lösungsmappe Mechanische Kräfte 1AB</title>
 <header class="lese">
   <div class="eyebrow">NAWI · 1AB (1AK, 1BK) · K2.1 Mechanische Kräfte · nur für dich</div>
   <h1>Lösungen und Fachwissen: sechs Stunden mit Gruppenprojekt</h1>
-  <p class="sub">Aufgaben 1–11 (9–11 Zusatz), sieben Gruppen mit selbst gewähltem Versuch, Kalender beider Klassen, Vorbereitung nach Tagen,
-     Gruppen-Generator, die Unterrichts-PPP als Folien und das Fachwissen. Buch: Trauner NAWI HAK 1, S. 44–65. Stand {e(I.STAND)} · {e(I.V)}</p>
+  <p class="sub">Aufgaben 1–11 (9–11 Zusatz), sieben Gruppen mit selbst gewähltem Versuch, Kalender mit Terminen und Referaten, die du selbst änderst, Vorbereitung nach Terminen,
+     Gruppen-Generator, Ausgleichsbausteine, die Unterrichts-PPP als Folien und das Fachwissen. Buch: Trauner NAWI HAK 1, S. 44–65. Stand {e(I.STAND)} · {e(I.V)}</p>
   <p class="warn">Privat in deinem Konto – nicht an Kadetten weitergeben und nicht ins Repository legen.
      Die Kadetten sehen Musterlösungen erst nach Aufgabe 8 und dem PDF bzw. nach drei Fehlversuchen.</p>
 </header>
@@ -325,6 +371,7 @@ seite = f"""<title>Lösungsmappe Mechanische Kräfte 1AB</title>
   <button role="tab" id="t-aufgaben" aria-selected="false">Aufgaben ({len(I.T)})</button>
   <button role="tab" id="t-versuche" aria-selected="false">Versuche (7 Gruppen)</button>
   <button role="tab" id="t-gruppen" aria-selected="false">Gruppen</button>
+  <button role="tab" id="t-ausgleich" aria-selected="false">Ausgleich</button>
   <button role="tab" id="t-folien" aria-selected="false">Folien</button>
   <button role="tab" id="t-fachwissen" aria-selected="false">Fachwissen</button>
 </nav>
@@ -334,6 +381,7 @@ seite = f"""<title>Lösungsmappe Mechanische Kräfte 1AB</title>
 <section class="panel lese" id="p-aufgaben" hidden>{aufgaben}</section>
 <section class="panel lese" id="p-versuche" hidden>{vs}</section>
 <section class="panel lese" id="p-gruppen" hidden>{gen}</section>
+<section class="panel lese" id="p-ausgleich" hidden>{ausg}</section>
 <section class="panel" id="p-folien" hidden>
   <div class="steuer"><button class="btn ghost" id="f-zur" type="button">◀ zurück</button><button class="btn" id="f-vor" type="button">weiter ▶</button>
   <select id="f-wahl" aria-label="Folie wählen">{optionen}</select><button class="btn ghost" id="f-voll" type="button">Vollbild</button></div>
@@ -370,10 +418,6 @@ haken.forEach(c=>{{try{{c.checked=localStorage.getItem(PRE+c.dataset.k)==='1'}}c
 document.getElementById('h-nur').addEventListener('click',ev=>{{nurOffen=!nurOffen;ev.currentTarget.setAttribute('aria-pressed',nurOffen);
   ev.currentTarget.textContent=nurOffen?'Alle zeigen':'Nur offene zeigen';stand();}});
 stand();
-// Kalender und Vorbereitung: nächster Termin
-(function(){{const d=new Date(),h=String(d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate());
-  const z=[...document.querySelectorAll('table.kal tr[data-d]')];const n=z.find(r=>r.dataset.d>=h);if(n)n.classList.add('jetzt');
-  const k=[...document.querySelectorAll('details.tag-karte')];const m=k.find(x=>x.dataset.d>=h);if(m){{k.forEach(x=>x.open=false);m.open=true;}}}})();
 // Gruppen-Generator (Namen nur in diesem Browser)
 const TH={THEMEN_JS};
 const gk=document.getElementById('g-kl'),gn=document.getElementById('g-n'),ga=document.getElementById('g-namen'),gi=document.getElementById('g-info'),gaus=document.getElementById('g-aus');
@@ -417,6 +461,8 @@ document.addEventListener('keydown',ev=>{{if(document.getElementById('p-folien')
   else if(ev.key==='f'||ev.key==='F')document.getElementById('f-voll').click();}});
 geh(0);
 </script>
+<script type="application/json" id="k-daten">{KAL_DATEN}</script>
+<script>{KAL_JS}</script>
 """
 open(ZIEL, "w", encoding="utf-8").write(seite)
 print("ok", ZIEL, len(seite) // 1024, "KB ·", len(titel), "Folien ·", n_haken, "Haken")

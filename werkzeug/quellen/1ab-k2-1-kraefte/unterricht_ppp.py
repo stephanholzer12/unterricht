@@ -1,12 +1,13 @@
 """Unterrichts-PPP K2.1 Mechanische Kräfte (TH-Unterricht) – die eine PPP, aus der Prof. HOLZER die sechs Stunden hält.
 Aufbau: je Stunde »Heute« → »Weißt du noch?« → »Kurz klären« → Arbeitsauftrag → »Besprechen« → Abgabe.
 Unten links auf jeder Folie die Phasenleiste »JETZT <Phase> · x min« und »Danach: …«. Alle Minuten kommen aus plan.py (eine Quelle mit Fahrplan und Lösungsseite).
-Ausgeblendet: Bedienung, Regie je Stunde (Minute · Was läuft jetzt? · Folie · Wozu?), Lehrplanbezug, Herrichten, Kürzungsliste, Quellen.
+Ausgeblendet: Bedienung, Regie je Stunde (Minute · Was läuft jetzt? · Folie · Wozu?), Lehrplanbezug, Herrichten, Kürzungsliste, Referat/Doppelstunde, Quellen,
+Ausgleichsbausteine (eigene Präsentation »Ausgleich« für die Klasse, die vorne liegt).
 Aufruf im Repository-Ordner: python3 werkzeug/quellen/1ab-k2-1-kraefte/unterricht_ppp.py <BHAK_Folienmaster.pptx> <Zielordner>"""
 import os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 import ppp_basis as B
-import inhalt as I, plan as P, theorie_daten as TD, versuche_daten as VD, gruppen_daten as GD
+import inhalt as I, plan as P, theorie_daten as TD, versuche_daten as VD, gruppen_daten as GD, ausgleich as AG
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
@@ -23,7 +24,7 @@ NS_R = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 FARBE = {"START": MUTED, "WIEDERHOLEN": TEAL, "EINSTIEG": ORANGE, "KURZ KLÄREN": OLIVE, "AUFGABE": GREEN,
          "SELBSTSTUDIUM": TEAL, "GRUPPENARBEIT": ORANGE, "VIDEO": TEAL, "GRUPPEN": OLIVE, "FREIGABE": RUST, "PARTNERCHECK": GREEN,
          "RECHERCHE": TEAL, "PLANEN": TEAL, "VERSUCH": RED, "ZU ZWEIT": GREEN, "PRÄSENTATION": RUST,
-         "BESPRECHEN": ORANGE, "ABGABE": RUST}
+         "BESPRECHEN": ORANGE, "ABGABE": RUST, "DISKUSSION": ORANGE}
 T = {t["nr"]: t for t in I.T}
 METHODE_KURZ = {1: "Mit der ganzen Klasse", 2: "Selbststudium mit Leitfragen", 3: "Selbst gewählter Versuch",
                 4: "Steckbrief und Partnercheck", 5: "Kurzpräsentationen", 6: "Tafel und Einzelarbeit"}
@@ -581,6 +582,41 @@ def folie_kuerzen():
     return s
 
 
+def folie_referat():
+    s = d.slide("Nur Titel", "Lehrer-Info · Referat oder Doppelstunde", hidden=True)
+    rows = [["Stunde", "Fällt ein Referat (%d min) in die Stunde, ändert sich:" % P.REFERAT_MIN]]
+    for n in sorted(P.STUNDE): rows.append([str(n), P.kuerzen_text(n)])
+    size = 11
+    while size > 8 and B.table_h([0.8, 8.2], rows, size=size, minh=0.2) > 2.8: size -= 1
+    cells, h = B.auto_grid(s, X0, 0.95, [0.8, 8.2], rows, size=size, minh=0.2)
+    txt = ("Klassenbuch, »Weißt du noch?«, Zwischenstand-PDF und Reserve gibt es nur einmal – das ergibt 11 bis 15 Minuten, in die ein Referat passt. "
+           "Bei Stunde 2 + 3: Material von zu Hause kann nicht mitgebracht werden, alle nehmen die Saal-Variante (Idee 1).")
+    hh = B.th("Doppelstunde: " + txt, 11, W, pad=0.04)
+    B.tb(s, X0, 1.0 + h, W, hh, [[("Doppelstunde: ", {"bold": True, "color": RUST}), (txt, {})]], size=11, after=0)
+    B.tb(s, X0, 1.05 + h + hh, W, 0.3, [[("Die fertigen Abläufe je Termin stehen im Reiter »Kalender« der Lösungsseite. ", {"bold": True, "color": OLIVE}),
+                                         ("Dauert ein Referat länger: zuerst die Reserve nehmen.", {})]], size=11, after=0)
+    return s
+
+
+def folien_ausgleich():
+    """Ausgeblendete Folien für die Klasse, die vorne liegt (Präsentation »Ausgleich«)."""
+    out = []
+    for b in AG.BAUSTEINE:
+        s = d.slide("Nur Titel", "Ausgleich %s · %s" % (b["id"], b["titel"]), hidden=True)
+        w = 6.9 if b["id"] == "A4" else W
+        y = schritte(s, X0, 1.0, w, b["tun"], size=18, farbe=FARBE.get(b["marke"], OLIVE))
+        merke(s, y + 0.04, "Ergebnis: " + b["ergebnis"].split(". ")[0].rstrip(".") + ".", size=16, w=w)
+        if b["id"] == "A4": qr(s, "quiz", 7.9, 1.0, 1.1, "Kräfte-Check")
+        hinweis(s, b["marke"], "ca. %d min" % b["min"], "freiwillig · keine Note")
+        check(s); out.append(s)
+        if b["id"] == "A1":
+            s2 = d.slide("Nur Titel", "Ausgleich A1 · Die Behauptungen", hidden=True)
+            schritte(s2, X0, 1.0, W, [a for a, r in AG.AUSSAGEN], size=18, farbe=ORANGE)
+            hinweis(s2, "DISKUSSION", "ca. 3 min je Behauptung", "Auflösung steht in der Lösungsseite")
+            check(s2); out.append(s2)
+    return out
+
+
 def folie_quellen():
     s = d.slide("Nur Titel", "Lehrer-Info · Quellen und was nicht geprüft ist", hidden=True)
     zeilen = ["· Inhalt und Zeiten: dieselbe Datenquelle wie Theorie-Seite, Arbeitsblatt und Lösungsseite (werkzeug/quellen/1ab-k2-1-kraefte)."]
@@ -593,12 +629,12 @@ def folie_quellen():
 def folie_bedienung(nr_regie):
     s = FOLIE["bedien"]
     B.tb(s, X0, 0.95, W, 3.8, [
-        [("Eine Datei für beide Klassen. ", {"bold": True, "color": OLIVE}), ("1AK und 1BK haben denselben Fahrplan – es gibt keine eigene Reihenfolge je Klasse.", {})],
+        [("Eine Datei für beide Klassen. ", {"bold": True, "color": OLIVE}), ("1AK und 1BK haben denselben Fahrplan und keine Daten – Termine und Referate trägst du in der Lösungsseite ein.", {})],
         [("Pro Stunde starten: ", {"bold": True, "color": OLIVE}), ("Bildschirmpräsentation → Benutzerdefinierte Bildschirmpräsentation → »Stunde 1« bis »Stunde 6«. Ohne Menü: im Vortrag die Foliennummer tippen und Enter (die Nummern stehen auf den Regie-Folien).", {})],
         [("Jede Stunde läuft gleich: ", {"bold": True, "color": OLIVE}), ("»Heute« → »Weißt du noch?« → Arbeitsauftrag (Marke: SELBSTSTUDIUM, GRUPPENARBEIT, VERSUCH …) → »Das besprechen wir« → Sichern.", {})],
         [("Unten links ", {"bold": True, "color": OLIVE}), ("steht immer, was JETZT läuft (mit Minuten aus dem Zeitplan) und was DANACH kommt – so sehen auch die Kadetten den Ablauf.", {})],
         [("Antworten erscheinen per Klick. ", {"bold": True, "color": OLIVE}), ("Erst nach der Arbeitszeit klicken, sonst lesen die Kadetten mit.", {})],
-        [("Ausgeblendet: ", {"bold": True, "color": OLIVE}), ("Regie je Stunde (Folien %s), Lehrplanbezug, Vorbereitung, offene Punkte, Kürzungsliste und Quellen. Alle zusammen als Präsentation »Lehrer-Regie«." % nr_regie, {})],
+        [("Ausgeblendet: ", {"bold": True, "color": OLIVE}), ("Regie je Stunde (Folien %s), Lehrplanbezug, Vorbereitung, offene Punkte, Kürzungsliste, Referat/Doppelstunde und Quellen (Präsentation »Lehrer-Regie«). Ausgleich für die Klasse, die vorne liegt: Präsentation »Ausgleich«." % nr_regie, {})],
         [("Die Kadetten arbeiten am Handy. ", {"bold": True, "color": OLIVE}), ("Diese PPP ersetzt die Seiten nicht – sie führt durch die Stunde. Lösungen stehen in der privaten Lösungsseite, nicht hier.", {})]],
         size=13, after=5)
     return s
@@ -620,6 +656,7 @@ def bauen():
     herrichten = folie_herrichten()
     vorversuche = folie_vorversuche()
     kuerzen = folie_kuerzen()
+    referat = folie_referat()
     regie = {std: d.slide("Nur Titel", "Regie · Stunde %d" % std, hidden=True) for std in sorted(SPEC)}
     quellen = folie_quellen()
     for std in sorted(SPEC):
@@ -659,6 +696,8 @@ def bauen():
         cells, h = B.auto_grid(sl, X0, 1.24, [0.8, 4.2, 0.7, 3.3], rows, size=size, minh=0.2)
         B.tb(sl, X0, 1.26 + h, W, hk, [[("Wenn es knapp wird: ", {"bold": True, "color": RUST}), (kn, {})]], size=10, after=0)
     folie_bedienung("%d–%d" % (nr_von[regie[1].slide_id], nr_von[regie[6].slide_id]))
+    d.section("Ausgleich")
+    ausgleich = folien_ausgleich()
 
     # ---------------- benutzerdefinierte Präsentationen
     pres = d.p.part._element
@@ -678,7 +717,8 @@ def bauen():
     show("Alle sechs Stunden", [titel] + sum([folgen[std] for std in sorted(SPEC)], []))
     for std in sorted(SPEC):
         show("Stunde %d" % std, ([titel] if std == 1 else []) + folgen[std])
-    show("Lehrer-Regie", [FOLIE["bedien"], lehrplan, herrichten, vorversuche, kuerzen] + [regie[s_] for s_ in sorted(regie)] + [quellen])
+    show("Lehrer-Regie", [FOLIE["bedien"], lehrplan, herrichten, vorversuche, kuerzen, referat] + [regie[s_] for s_ in sorted(regie)] + [quellen])
+    show("Ausgleich", ausgleich)
 
     os.makedirs(ZIEL, exist_ok=True)
     name = "%s-TH-Unterricht-%s.pptx" % (I.PRAEFIX, I.V)

@@ -232,126 +232,48 @@
   "versteckt": true,
   "fahrplan": {
    "ansicht": "kompakt",
-   "text": "Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Die Daten sind geplant – die Reihenfolge zählt.",
+   "text": "Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER – die Reihenfolge zählt, nicht das Datum.",
    "zeilen": [
     {
-     "klasse": "1AK",
      "wann": "Stunde 1",
-     "datum": "Do 12.11. · 8. Std. · geplant",
      "marke": "BESPRECHEN",
      "lesen": "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen",
      "aufgaben": "1, 2",
-     "zeit": "ca. 40 min Arbeit",
      "abgabe": "–"
     },
     {
-     "klasse": "1AK",
      "wann": "Stunde 2",
-     "datum": "Fr 13.11. · geplant",
      "marke": "SELBSTSTUDIUM",
      "lesen": "Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe",
      "aufgaben": "3, 4",
-     "zeit": "ca. 40 min Arbeit",
      "abgabe": "Plan freigeben lassen"
     },
     {
-     "klasse": "1AK",
      "wann": "Stunde 3",
-     "datum": "Do 19.11. · 7. Std. · geplant",
      "marke": "VERSUCH",
      "lesen": "Euren Versuch machen und üben · Material von zu Hause mitbringen",
      "aufgaben": "5",
-     "zeit": "ca. 40 min Arbeit",
      "abgabe": "–"
     },
     {
-     "klasse": "1AK",
      "wann": "Stunde 4",
-     "datum": "Do 19.11. · 8. Std. · geplant",
      "marke": "GRUPPENARBEIT",
      "lesen": "Steckbrief schreiben, Handout in Teams · Präsentation proben",
      "aufgaben": "6",
-     "zeit": "ca. 40 min Arbeit",
      "abgabe": "Handout-PDF in Teams (Schriftführung)"
     },
     {
-     "klasse": "1AK",
      "wann": "Stunde 5",
-     "datum": "Fr 20.11. · geplant",
      "marke": "PRÄSENTATION",
      "lesen": "Alle sieben Gruppen präsentieren · du schreibst mit",
      "aufgaben": "7",
-     "zeit": "ca. 40 min Arbeit",
      "abgabe": "–"
     },
     {
-     "klasse": "1AK",
      "wann": "Stunde 6",
-     "datum": "Do 26.11. · 7. Std. · geplant",
      "marke": "SELBSTSTUDIUM",
      "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
      "aufgaben": "8 · Quiz freiwillig",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Arbeitsblatt-PDF in LMS"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 1",
-     "datum": "Fr 13.11. · geplant",
-     "marke": "BESPRECHEN",
-     "lesen": "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen",
-     "aufgaben": "1, 2",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 2",
-     "datum": "Mo 16.11. · geplant",
-     "marke": "SELBSTSTUDIUM",
-     "lesen": "Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe",
-     "aufgaben": "3, 4",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Plan freigeben lassen"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 3",
-     "datum": "Mi 18.11. · geplant",
-     "marke": "VERSUCH",
-     "lesen": "Euren Versuch machen und üben · Material von zu Hause mitbringen",
-     "aufgaben": "5",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 4",
-     "datum": "Fr 20.11. · geplant",
-     "marke": "GRUPPENARBEIT",
-     "lesen": "Steckbrief schreiben, Handout in Teams · Präsentation proben",
-     "aufgaben": "6",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "Handout-PDF in Teams (Schriftführung)"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 5",
-     "datum": "Mo 23.11. · geplant",
-     "marke": "PRÄSENTATION",
-     "lesen": "Alle sieben Gruppen präsentieren · du schreibst mit",
-     "aufgaben": "7",
-     "zeit": "ca. 40 min Arbeit",
-     "abgabe": "–"
-    },
-    {
-     "klasse": "1BK",
-     "wann": "Stunde 6",
-     "datum": "Mi 25.11. · geplant",
-     "marke": "SELBSTSTUDIUM",
-     "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
-     "aufgaben": "8 · Quiz freiwillig",
-     "zeit": "ca. 40 min Arbeit",
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {
@@ -364,9 +286,9 @@
    ]
   },
   "dateien": {
-   "stand": "12.11.2026",
+   "stand": "13.11.2026",
    "liste": [
-    "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v3.pptx"
+    "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v4.pptx"
    ]
   },
   "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5"

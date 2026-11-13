@@ -1,9 +1,11 @@
 """Zeitplan K2.1 Mechanische Kräfte – EINE Quelle für Fahrplan (einheiten.json), Stundenvorschlag, Regiefolien der Unterrichts-PPP und Lösungsmappe.
 Neue Standards 07.11.2026: 50 min je Stunde = 10 min Organisation/Reserve + 40 min Arbeit. Sechs Einzelstunden, jede Stunde ist abgeschlossen.
-Keine festen Daten: Der Plan weicht oft ab (Ausfälle, Tests, Veranstaltungen). Es zählt die Reihenfolge der Stunden, nicht das Datum.
-Beide Klassen bekommen denselben Fahrplan. Die 1AK darf Stunde 3 und 4 als Doppelstunde verbinden (Pause ohne Arbeitszeit) – Prof. HOLZER entscheidet.
+KEINE DATEN in dieser Quelle und auf den Kadetten-Seiten (Stephan, 13.11.2026): Termine, Doppelstunden und Referate ändern sich ständig. Prof. HOLZER trägt sie
+selbst im Reiter »Kalender« der privaten Lösungsseite ein (Standardwerte stehen in der privaten Datei termine_k2_1.py, nicht im Repository).
+Für jeden möglichen Termin liefert dieses Modul den fertigen Ablauf: Einzelstunde, Einzelstunde MIT Referat, Doppelstunde (zwei aufeinanderfolgende Stunden), Doppelstunde MIT Referat.
+Beide Klassen bekommen denselben Fahrplan.
 Phasen: (Name, Minuten, ohne Handy?, Art). Art: "a<n>" Aufgabe n · "v:<ID>" Gruppenversuch · "erkl" gemeinsame Erklärung · "wdh" Wiederholen ·
-"plan" Versuchsplan · "freigabe" · "peer" Peer-Feedback · "praes" Präsentation · "org" · "bespr" · "pdf" · "reserve"."""
+"plan" Versuchsplan · "freigabe" · "peer" Peer-Feedback · "praes" Präsentation · "org" · "bespr" · "pdf" · "reserve" · "referat" · "pause"."""
 import re
 import inhalt as I
 
@@ -11,6 +13,9 @@ MIN = 50
 ORG_RESERVE = 10        # Klassenbuch, Ankommen, Handys, Aufräumen, Puffer
 ARBEIT = MIN - ORG_RESERVE
 VS = "v:" + I.VS_ID
+REFERAT_MIN = 10        # ein Schüler-Referat einschließlich kurzer Rückfragen (Annahme – bei längeren Referaten Reserve und »Wenn es knapp wird« nutzen)
+PAUSE = 5               # Doppelstunde: Pause ohne Arbeitszeit
+DOPPEL_MIN = 2 * MIN + PAUSE   # z. B. 13.35–15.20 Uhr
 
 STUNDE = {
  1: [("Beginn: Klassenbuch, Anwesenheit, Handys weg", 6, True, "org"),
@@ -76,10 +81,7 @@ ZIEL = {1: "Kraftwirkungen erkennen, Masse und Kraft auseinanderhalten – und w
         5: "Das eigene Thema verständlich zeigen und von allen anderen Gruppen die Kernaussage mitnehmen.",
         6: "Alle sieben Themen selbst erklären und die Einheiten sicher verwenden."}
 
-DATUM = {"1AK": {1: "Do 12.11. · 8. Std.", 2: "Fr 13.11.", 3: "Do 19.11. · 7. Std.", 4: "Do 19.11. · 8. Std.", 5: "Fr 20.11.", 6: "Do 26.11. · 7. Std."},
-         "1BK": {1: "Fr 13.11.", 2: "Mo 16.11.", 3: "Mi 18.11.", 4: "Fr 20.11.", 5: "Mo 23.11.", 6: "Mi 25.11."}}
-# Die Daten sind GEPLANT (aus dem Stundenmuster von K1.4 abgeleitet: 1AK Do Doppelstunde + Fr, 1BK Mo/Mi/Fr) – Prof. HOLZER bestätigt sie.
-PLAN = {k: [{"std": n, "datum": DATUM[k][n], "teile": [n], "methode": METHODE[n], "phasen": STUNDE[n]} for n in sorted(STUNDE)] for k in I.KLASSEN}
+PLAN = {k: [{"std": n, "teile": [n], "methode": METHODE[n], "phasen": STUNDE[n]} for n in sorted(STUNDE)] for k in I.KLASSEN}
 MARKE = {1: "BESPRECHEN", 2: "SELBSTSTUDIUM", 3: "VERSUCH", 4: "GRUPPENARBEIT", 5: "PRÄSENTATION", 6: "SELBSTSTUDIUM"}  # Marken laut Skill 11.11.2026 (GEMEINSAM -> BESPRECHEN, EINZELARBEIT -> SELBSTSTUDIUM)
 
 # ---------------------------------------------------------------- Kontrollen
@@ -120,6 +122,92 @@ SUPPLIER = 6
 AUSFALL_ZUERST = 4
 
 
+# ---------------------------------------------------------------- Ablauf je Termin: Referat und Doppelstunde
+# Referat: Diese Phasen werden gekürzt (Phasen-Nummer ab 0 -> neue Minuten), zusammen genau REFERAT_MIN. Aufgaben mit Punkten und der Versuch bleiben, soweit es geht.
+REF_KUERZEN = {
+ 1: {1: 0, 3: 7, 6: 5, 7: 0},
+ 2: {1: 2, 3: 12, 4: 8, 5: 6, 6: 0},
+ 3: {1: 0, 3: 27, 4: 0, 5: 0},
+ 4: {1: 1, 2: 14, 3: 8, 4: 5},
+ 5: {1: 2, 2: 23, 3: 2, 5: 0},
+ 6: {1: 0, 2: 5, 4: 5, 5: 2},
+}
+for _n, _c in REF_KUERZEN.items():
+    assert sum(STUNDE[_n][i][1] - m for i, m in _c.items()) == REFERAT_MIN, (_n, "Kürzungen ergeben nicht die Referatzeit")
+    assert all(STUNDE[_n][i][3] not in ("org", "reserve") for i in _c), (_n, "Organisation und Reserve bleiben")
+    assert all(0 <= m < STUNDE[_n][i][1] for i, m in _c.items()), _n
+# Doppelstunde (zwei aufeinanderfolgende Stunden a, a+1): Klassenbuch, »Weißt du noch?«, Zwischenstand-PDF der ersten und Reserve der ersten entfallen
+# (nur einmal nötig). Die gewonnenen Minuten bleiben als Puffer oder reichen für ein Referat.
+DOPPEL_HINWEIS = {
+ (1, 2): "Gut machbar. Gruppen auslosen und gleich in die selbstständige Arbeit gehen.",
+ (2, 3): "Achtung: Material von zu Hause kann nicht mitgebracht werden – alle Gruppen nehmen die Saal-Variante (Idee 1).",
+ (3, 4): "Sehr gut: Versuch und Steckbrief hintereinander, nur einmal auf- und abbauen.",
+ (4, 5): "Gut: Steckbrief schreiben und gleich präsentieren. Handout vor den Präsentationen in Teams stellen lassen.",
+ (5, 6): "Gut: Nach den Präsentationen gleich Aufgabe 8. Die Steckbriefe stehen in Teams.",
+}
+
+
+def _zeilen(n, cuts=None):
+    z = []
+    for i, (name, mi, oh, art) in enumerate(STUNDE[n]):
+        neu, note = mi, ""
+        if cuts and i in cuts:
+            neu = cuts[i]
+            note = "entfällt" if neu == 0 else f"gekürzt, sonst {mi} min"
+        z.append([name, neu, bool(oh), art, note])
+    return z
+
+
+def _chip(art, oh):
+    return bool(oh) and art not in ("org", "reserve", "bespr", "erkl", "pause", "referat", "wdh")
+
+
+def _referat_zeile():
+    return ["Referat einer Mitschülerin bzw. eines Mitschülers einschließlich kurzer Rückfragen", REFERAT_MIN, True, "referat", ""]
+
+
+def variante(a, doppel=False, referat=False):
+    """Ablauf als Liste [Name, Minuten, ohne Handy, Art, Hinweis]. Einzelstunde: Summe 50. Doppelstunde: Summe 105 (mit Pause)."""
+    if not doppel:
+        z = _zeilen(a, REF_KUERZEN[a] if referat else None)
+        if referat:
+            z.insert(1, _referat_zeile())
+        assert sum(r[1] for r in z) == MIN, (a, referat, sum(r[1] for r in z))
+        return z
+    b = a + 1
+    za = [r for r in _zeilen(a) if r[3] not in ("pdf", "reserve")]
+    zb = [r for r in _zeilen(b)][1:]            # Klassenbuch entfällt
+    zb = [r for r in zb if r[3] != "wdh"]       # »Weißt du noch?« entfällt
+    z = za + [["Pause (keine Arbeitszeit)", PAUSE, True, "pause", ""]] + zb
+    if referat:
+        z.insert(1, _referat_zeile())
+    rest = DOPPEL_MIN - sum(r[1] for r in z)
+    assert rest >= 0, (a, referat, rest)
+    if rest:
+        z.append(["Puffer, Verlängerung der Arbeitsphasen oder ein Ausgleichsbaustein (Reiter »Ausgleich«)" if rest >= 10 else "Puffer", rest, True, "reserve", ""])
+    assert sum(r[1] for r in z) == DOPPEL_MIN, (a, referat)
+    return z
+
+
+VARIANTEN = {}
+for _n in sorted(STUNDE):
+    for _r in (False, True):
+        VARIANTEN["%d%s" % (_n, "R" if _r else "")] = variante(_n, False, _r)
+for _n in sorted(STUNDE)[:-1]:
+    for _r in (False, True):
+        VARIANTEN["%d+%d%s" % (_n, _n + 1, "R" if _r else "")] = variante(_n, True, _r)
+
+
+def kuerzen_text(n):
+    """»Weißt du noch? entfällt · Kräftebild 9 -> 7 min · …« – was bei einem Referat in Stunde n geändert wird."""
+    out = []
+    for i, m in sorted(REF_KUERZEN[n].items()):
+        name, mi = STUNDE[n][i][0], STUNDE[n][i][1]
+        kurz = re.split(r"[:–(?]| einschließlich", name)[0].strip()
+        out.append(f"{kurz} entfällt" if m == 0 else f"{kurz} {mi} auf {m} min")
+    return " · ".join(out)
+
+
 def aufgaben_der(st):
     nrs, zus = [], []
     for name, mi, oh, art in st["phasen"]:
@@ -153,17 +241,14 @@ ABGABE = {1: "–", 2: "Plan freigeben lassen", 3: "–", 4: "Handout-PDF in Tea
 
 
 def fahrplan_zeilen():
-    """Zeilen für einheiten.json (Feld »fahrplan«) – je Klasse mit geplantem Datum, aus PLAN erzeugt, nicht von Hand."""
+    """Zeilen für einheiten.json (Feld »fahrplan«) – OHNE Datum und ohne Klasse (beide Klassen gleich), aus PLAN erzeugt, nicht von Hand."""
     z = []
-    for k in I.KLASSEN:
-        for st in PLAN[k]:
-            n = st["std"]
-            nrs, _ = aufgaben_der(st)
-            auf = bereich(nrs) if nrs else "–"
-            if n == 6: auf += " · Quiz freiwillig"
-            m_auf = sum(p[1] for p in st["phasen"] if p[3] not in ("org", "reserve"))
-            z.append({"klasse": k, "wann": f"Stunde {n}", "datum": st["datum"] + " · geplant", "marke": MARKE[n], "lesen": LESEN[n],
-                      "aufgaben": auf, "zeit": f"ca. {m_auf} min Arbeit", "abgabe": ABGABE[n]})
+    for st in PLAN[I.KLASSEN[0]]:
+        n = st["std"]
+        nrs, _ = aufgaben_der(st)
+        auf = bereich(nrs) if nrs else "–"
+        if n == 6: auf += " · Quiz freiwillig"
+        z.append({"wann": f"Stunde {n}", "marke": MARKE[n], "lesen": LESEN[n], "aufgaben": auf, "abgabe": ABGABE[n]})
     z.append({"wann": "Für Schnelle", "lesen": "Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen)",
               "aufgaben": "Zusatz 9–11", "zeit": "ca. 26 min", "abgabe": "freiwillig"})
     return z
@@ -171,7 +256,7 @@ def fahrplan_zeilen():
 
 FAHRPLAN_TEXT = ("Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, "
                  "Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. "
-                 "Keine Hausübung. Die Daten sind geplant – die Reihenfolge zählt.")
+                 "Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER – die Reihenfolge zählt, nicht das Datum.")
 
 STUNDENVORSCHLAG = {
  k: [[str(st["std"]),
