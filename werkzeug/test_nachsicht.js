@@ -240,6 +240,43 @@ cases[K21]=[
  ['z1','begr','Beide Kräfte wirken auf dasselbe Buch.','M'],['z1','begr','weiß nicht','M'],
  ['z2','schnee','Größere Fläche, kleinerer Druck – man sinkt weniger ein.','M'],
  ['z3','wer','TU Wien, Florian Aigner','M'],['z3','idee','Ein Pulver bildet einen gleitenden Film.','M'],['z3','nicht','Nicht für jede Maschine nachgewiesen.','M']];
+/* 4AB K2.4/K3.2 Akustik und Gehör (14.11.2026): Rechenfelder mit Einheit, Auswahl als ganze Option, offene Erklärungen = M */
+const AK='4ab-nawi/k2-4-akustik/aufgaben.html';
+cases[AK]=[
+ ['a1','was','eine Druckschwankung – die Luftteilchen schwingen nur hin und her',1],['a1','was','die Luft selbst strömt zum Ohr',0],
+ ['a1','richtung','längs – in Ausbreitungsrichtung vor und zurück',1],['a1','richtung','quer – auf und ab',0],
+ ['a1','vakuum','Es gibt keine Teilchen, die sich anstoßen können',1],['a1','schnell','in Stahl',1],['a1','schnell','in Luft',0],
+ ['a2','gewitter','2040 m',1],['a2','gewitter','2.040 m',1],['a2','gewitter','2,04 km',1],['a2','gewitter','2040',1],['a2','gewitter','s = 340 m/s · 6 s = 2040 m',1],['a2','gewitter','2 km',1],
+ ['a2','gewitter','2040 s',0],['a2','gewitter','1020 m',0],['a2','gewitter','56,7 m',0],['a2','gewitter','204 m',0],
+ ['a2','echo','204 m',1],['a2','echo','204',1],['a2','echo','0,204 km',1],['a2','echo','340 · 1,2 = 408, durch 2 = 204 m',1],['a2','echo','408 m',0],['a2','echo','204 s',0],['a2','echo','283 m',0],
+ ['a2','lambda','0,77 m',1],['a2','lambda','0.77 m',1],['a2','lambda','77 cm',1],['a2','lambda','0,773 m',1],['a2','lambda','0,8 m',0],['a2','lambda','1,29 m',0],['a2','lambda','0,77 s',0],['a2','lambda','7,7 m',0],
+ ['a2','licht','Licht ist fast eine Million Mal schneller als Schall',1],['a2','licht','Licht braucht genau 3 s pro Kilometer',0],
+ ['a2','winter','Sie bleibt brauchbar – der Unterschied ist nur etwa 3 %',1],['a2','winter','Im Winter ist Schall schneller als im Sommer',0],
+ ['a3','i10','zehnmal so viel',1],['a3','i10','doppelt so viel',0],['a3','p10','etwa 3,2-mal so viel',1],['a3','p10','zehnmal so viel',0],
+ ['a3','p20','zehnmal so viel',1],['a3','p20','hundertmal so viel',0],
+ ['a3','kopfh','10000',1],['a3','kopfh','10.000',1],['a3','kopfh','10 000',1],['a3','kopfh','1·10^4',1],['a3','kopfh','1 · 10⁴',1],['a3','kopfh','10000-mal',1],['a3','kopfh','40',0],['a3','kopfh','1000',0],['a3','kopfh','100000',0],
+ ['a3','zwei','etwa 83 dB',1],['a3','zwei','160 dB',0],['a3','empf','Nein – doppelt so laut empfinden die meisten erst bei rund 10 dB mehr',1],['a3','empf','Ja, 3 dB mehr sind doppelt so laut',0],
+ ['a4','saal','Wände, Decke und Boden werfen Schall zurück',1],['a4','saal','Schall wird mit dem Abstand schneller',0],
+ ['a5','n1','Gehörgang',1],['a5','n1','Trommelfell',0],['a5','n2','Trommelfell',1],['a5','n3','Gehörknöchelchen',1],['a5','n4','Bogengänge',1],['a5','n4','Schnecke',0],
+ ['a5','n5','Schnecke',1],['a5','n6','Hörnerv',1],['a5','n6','Ohrtrompete',0],
+ ['a5','w1','Das Trommelfell schwingt mit',1],['a5','w1','Haarzellen erzeugen elektrische Signale',0],['a5','w2','Gehörknöchelchen übertragen und verstärken den Druck',1],
+ ['a5','w3','Die Lymphe in der Schnecke wird bewegt',1],['a5','w4','Haarzellen erzeugen elektrische Signale',1],['a5','w4','Das Trommelfell schwingt mit',0],
+ ['a5','knochen','Sie verstärken den Druck, damit die Schwingung von der Luft in die Flüssigkeit der Schnecke kommt',1],['a5','knochen','Sie verwandeln Schall in elektrischen Strom',0],
+ ['a6','weg','über die Schädelknochen (Knochenleitung)',1],['a6','weg','über den Gehörgang (Luftleitung)',0],
+ ['a7','stimmt','nein',1],['a7','stimmt','ja',0],['a7','haar','die Haarzellen in der Schnecke',1],['a7','haar','die Ohrmuschel',0],
+ ['a7','tinn','ein Ohrgeräusch ohne äußere Schallquelle',1],['a7','quelle','Er nennt keine Messung und keine Prüfung – nur seine Meinung',1],['a7','quelle','Er hat sehr viele Follower',0],
+ ['a8','dt','0,59 ms',1],['a8','dt','0.59 ms',1],['a8','dt','0,588 ms',1],['a8','dt','0,6 ms',1],['a8','dt','0,00059 s',1],['a8','dt','t = 0,2 m : 340 m/s = 0,00059 s = 0,59 ms',1],['a8','dt','0,59',1],
+ ['a8','dt','1,7 ms',0],['a8','dt','0,59 m',0],['a8','dt','59 ms',0],['a8','dt','0,5 ms',0],
+ ['a8','lage','die Vorhofsäckchen mit den Kalkkristallen',1],['a8','lage','die Bogengänge',0],['a8','dreh','die Bogengänge',1],['a8','dreh','die Vorhofsäckchen',0],
+ ['a8','schwindel','Die träge Lymphe fließt noch weiter und meldet eine Drehung, die es nicht mehr gibt',1],['a8','schwindel','Das Blut sammelt sich in den Ohren',0],
+ ['a8','pilot','Die Bogengänge melden nur Änderungen der Drehung – bei gleichmäßiger Drehung meldet die Lymphe nichts mehr',1],['a8','pilot','Die Wolken drücken auf das Trommelfell',0],
+ ['z1','tiefe','59,2 m',1],['z1','tiefe','59 m',1],['z1','tiefe','118,4 m',0],['z1','insekt','1,02 m',1],['z1','insekt','102 cm',1],['z1','insekt','2,04 m',0],['z1','insekt','1,02 s',0],
+ ['z2','s1','stimmt',1],['z2','s2','stimmt nicht',1],['z2','s2','stimmt',0],['z2','s3','stimmt nicht',1],['z2','s4','stimmt',1],['z2','s5','stimmt nicht',1],['z2','s5','stimmt',0],
+ /* offene Antworten: Prof. HOLZER bewertet – auch wenn Stichwörter passen oder die Aussage falsch ist */
+ ['a4','beob','Bei 4 m waren es −9 dB.','M'],['a4','beob','keine Ahnung','M'],['a4','schluss','Abstand hilft, aber Gehörschutz trotzdem tragen.','M'],
+ ['a6','stimme','Das Mikrofon nimmt nur die Luftleitung auf, die Knochenleitung fehlt.','M'],['a6','stimme','weil das Handy schlecht ist','M'],
+ ['a7','antwort','Trag geprüften Gehörschutz, ANC schützt die Haarzellen nicht vor dem Knall.','M'],['a7','antwort','passt schon','M'],
+ ['a8','tun','Den Instrumenten vertrauen, nicht dem Gefühl.','M'],['z2','fix','10 dB mehr bedeuten zehnmal so viel Intensität.','M'],['z3','info','Podcast, hochgeladen in LMS am 2.12.','M']];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

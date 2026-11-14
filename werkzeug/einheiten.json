@@ -868,6 +868,71 @@
   "lehrerseite": "https://claude.ai/artifact/C9wRo5pzXVj667D1pkfhYN"
  },
  {
+  "klasse": "4AB",
+  "fach": "NAWI",
+  "ordner": "4ab-nawi/k2-4-akustik",
+  "kapitel": "K2.4 · K3.2",
+  "titel": "Vom Knall zum Kopf – Schall, Gehör und Gleichgewicht",
+  "block": "C Akustik, Optik & Sinne",
+  "jahresplan": "E9–E10",
+  "seiten": [
+   "aufgaben.html",
+   "theorie.html"
+  ],
+  "versteckt": true,
+  "fahrplan": {
+   "ansicht": "kompakt",
+   "text": "Vier Stunden, ein Weg: vom Knall zum Kopf. Stunde 1 Schall und Tempo, Stunde 2 messen in Dezibel, Stunde 3 das Ohr und sein Schutz, Stunde 4 Richtung und Gleichgewicht. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "marke": "DEMO",
+     "lesen": "DEMO Stimmgabel · Druckwelle · Theorie-Karten 1 und 2 · Buch S. 61",
+     "aufgaben": "1–3",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "marke": "VERSUCH",
+     "lesen": "DEMO Lineal und Tongenerator · Dezibel-Leiter · VERSUCH Schallpegel messen · Buch S. 63–64",
+     "aufgaben": "4, 5",
+     "abgabe": "Messwerte deiner Gruppe eintragen"
+    },
+    {
+     "wann": "Stunde 3",
+     "marke": "SELBSTSTUDIUM",
+     "lesen": "Aufbau des Ohrs, Hörvorgang · Mini-Versuch am eigenen Kopf · Gehörschutz · Buch S. 109–110",
+     "aufgaben": "6–8",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 4",
+     "marke": "DEMO",
+     "lesen": "DEMOS Richtungshören und Wasserglas · Lage- und Drehsinn · Partnercheck · Buch S. 110–112",
+     "aufgaben": "9",
+     "abgabe": "Arbeitsblatt-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Echolot und Fledermaus, KI-Fehlerjagd, Gehörschutz-Briefing (Podcast oder Plakat)",
+     "aufgaben": "Zusatz 10–12",
+     "zeit": "ca. 34 min",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "14.11.2026",
+   "zip": "26-27-4AB-Akustik-Gehoer-Claude-v2.zip",
+   "liste": [
+    "26-27-4AB-K2.4-3.2-Akustik-Lehrer-v1.html",
+    "26-27-4AB-K2.4-3.2-Akustik-Konzept-v1.md",
+    "26-27-4AB-K2.4-3.2-Akustik-Pruefbericht-Claude-v1.md"
+   ]
+  },
+  "lehrerseite": "https://claude.ai/artifact/TTopFaGJM1GEoWybNVspqJ"
+ },
+ {
   "klasse": "5AK",
   "fach": "IWK",
   "ordner": "5ak-iwk/k1-2-kulturen",
