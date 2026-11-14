@@ -466,6 +466,70 @@
   "aktuell": true
  },
  {
+  "klasse": "2AB",
+  "fach": "NAWI",
+  "ordner": "2ab-nawi/k1-5-saeuren",
+  "kapitel": "K1.5",
+  "titel": "Von sauer bis basisch – Säuren, Laugen und der pH-Wert",
+  "block": "B Chemische Reaktionen",
+  "jahresplan": "E8",
+  "seiten": [
+   "aufgaben.html",
+   "theorie.html"
+  ],
+  "versteckt": true,
+  "fahrplan": {
+   "ansicht": "kompakt",
+   "text": "Vier Stunden von sauer bis basisch: Stunde 1 Säuren, Stunde 2 Laugen und Protonen-Pingpong, Stunde 3 pH-Wert und Versuch, Stunde 4 Neutralisation und dein Blut. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "marke": "DEMO",
+     "lesen": "DEMO Rotkraut-Farbenspiel · Buch S. 54 lesen · Säuren",
+     "aufgaben": "1, 2",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "Laugen und Sicherheit · Protonen-Pingpong mit Ball · Buch S. 56–58",
+     "aufgaben": "3, 4",
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 3",
+     "marke": "VERSUCH",
+     "lesen": "pH-Skala · VERSUCH pH-Detektive (Gruppen) · Buch S. 59–61",
+     "aufgaben": "5, 6",
+     "abgabe": "Messwerte deiner Gruppe eintragen"
+    },
+    {
+     "wann": "Stunde 4",
+     "marke": "PARTNERCHECK",
+     "lesen": "DEMO Atemluft und Natron · Neutralisation · Blut-pH · Partnercheck",
+     "aufgaben": "7",
+     "abgabe": "Arbeitsblatt-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat)",
+     "aufgaben": "Zusatz 8–10",
+     "zeit": "ca. 33 min",
+     "abgabe": "freiwillig"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "14.11.2026",
+   "liste": [
+    "GitHub: theorie.html, aufgaben.html (v1)",
+    "Lösungsseite (Artifact, privat)",
+    "26-27-2AB-K1.5-Saeuren-Pruefbericht-Claude-v1.md"
+   ]
+  },
+  "lehrerseite": "https://claude.ai/artifact/BCm9427922aFp3BjgoQiZf"
+ },
+ {
   "klasse": "5AB",
   "fach": "TÖW",
   "ordner": "5ab-toew/k1-3-nachhaltig",

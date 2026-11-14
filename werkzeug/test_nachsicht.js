@@ -277,6 +277,35 @@ cases[AK]=[
  ['a6','stimme','Das Mikrofon nimmt nur die Luftleitung auf, die Knochenleitung fehlt.','M'],['a6','stimme','weil das Handy schlecht ist','M'],
  ['a7','antwort','Trag geprüften Gehörschutz, ANC schützt die Haarzellen nicht vor dem Knall.','M'],['a7','antwort','passt schon','M'],
  ['a8','tun','Den Instrumenten vertrauen, nicht dem Gefühl.','M'],['z2','fix','10 dB mehr bedeuten zehnmal so viel Intensität.','M'],['z3','info','Podcast, hochgeladen in LMS am 2.12.','M']];
+/* 2AB K1.5 Säuren und Basen (14.11.2026): Auswahl als ganze Option, Faktor- und Prozentfelder, Messwerte und Erklärungen = M */
+const SB='2ab-nawi/k1-5-saeuren/aufgaben.html';
+cases[SB]=[
+ ['a1','was','H⁺-Ionen (Protonen)',1],['a1','was','OH⁻-Ionen (Hydroxid-Ionen)',0],['a1','oxo','H₃O⁺ (Oxonium-Ion) – das H⁺ hängt sich an ein Wassermolekül',1],['a1','oxo','H₂ (Wasserstoffgas)',0],
+ ['a1','lackmus','rot',1],['a1','lackmus','blau',0],['a1','cola','Phosphorsäure',1],['a1','cola','Salzsäure',0],['a1','prickel','Kohlensäure',1],['a1','magen','Salzsäure',1],['a1','magen','Kohlensäure',0],
+ ['a1','rk_essig','sauer',1],['a1','rk_essig','basisch',0],['a1','rk_natron','basisch',1],['a1','rk_natron','neutral',0],
+ ['a2','oh','OH⁻-Ionen (Hydroxid-Ionen)',1],['a2','oh','H₃O⁺-Ionen (Oxonium-Ionen)',0],['a2','verd','das Wasser – dann langsam die Säure dazu',1],['a2','verd','die Säure – dann das Wasser darauf',0],
+ ['a2','auge','lange mit viel Wasser spülen und Hilfe holen',1],['a2','auge','mit Essig neutralisieren',0],['a2','beton','Handschuhe und Schutzbrille – nasser Beton kann die Haut verätzen',1],['a2','beton','nichts – Beton ist neutral',0],
+ ['a3','g1s','HCl',1],['a3','g1s','H₂O',0],['a3','g1b','H₂O',1],['a3','g1b','HCl',0],['a3','g1n','H₃O⁺',1],['a3','g1n','Cl⁻',0],
+ ['a3','g2s','H₂O',1],['a3','g2s','NH₃',0],['a3','g2b','NH₃',1],['a3','g2b','NH₄⁺',0],['a3','ampho','Ampholyt',1],['a3','ampho','Katalysator',0],['a3','hno3','H₃O⁺',1],['a3','hno3','OH⁻',0],
+ ['a4','faktor','1000',1],['a4','faktor','1.000',1],['a4','faktor','1 000',1],['a4','faktor','1000-mal',1],['a4','faktor','10^3',1],['a4','faktor','10³',1],['a4','faktor','10 · 10 · 10 = 1000',1],
+ ['a4','faktor','3',0],['a4','faktor','100',0],['a4','faktor','30',0],['a4','faktor','10000',0],['a4','faktor','10^4',0],['a4','faktor','10^2',0],
+ ['a4','blut','schwach basisch',1],['a4','blut','genau neutral',0],['a4','meer','Das Meer ist basisch und wird nur weniger basisch',1],['a4','meer','Das Meer ist schon sauer',0],
+ ['a4','seife','Sie hat etwa den pH-Wert der Haut – leicht sauer, um 5',1],['a4','seife','Sie hat genau pH 7',0],['a4','trink','leicht basisch – und in Ordnung',1],['a4','trink','sauer – und bedenklich',0],
+ ['a5','basisch','Natronlösung',1],['a5','basisch','Cola',0],['a5','co2','Gelöstes CO₂ bildet mit Wasser Kohlensäure',1],['a5','co2','Mineralwasser enthält Salzsäure',0],
+ ['a5','meter','Das pH-Meter misst genauer (mit Kommastelle), das Papier schätzt nur',1],['a5','meter','Beide zeigen immer genau denselben Wert',0],
+ ['a6','ion','H₃O⁺ + OH⁻ → 2 H₂O',1],['a6','ion','Na⁺ + OH⁻ → NaOH',0],['a6','salz','Wasser',1],['a6','salz','Wasserstoff',0],['a6','warm','exotherm',1],['a6','warm','endotherm',0],
+ ['a6','sod','eine schwache Base enthält, die Säure neutralisiert',1],['a6','sod','noch mehr Säure liefert',0],['a6','blut','schneller atmen – mit dem CO₂ wird Kohlensäure abgeatmet',1],['a6','blut','viel Wasser trinken',0],
+ ['a6','kater','Nein – Laktat ist nach 30 bis 90 Minuten abgebaut, Muskelkater kommt erst 1 bis 3 Tage später',1],['a6','kater','Ja, genau so',0],
+ ['z1','wie','drei (Satz 2, 3 und 4)',1],['z1','wie','alle vier',0],
+ ['z2','prozent','26 %',1],['z2','prozent','26',1],['z2','prozent','25,9 %',1],['z2','prozent','26 Prozent',1],['a4','faktor','100 oder 1000',0],['a4','faktor','1000 %',0],['a4','faktor','1000 mol/l',0],['a4','faktor','1000 pH',0],['a4','faktor','1/1000',0],['a4','faktor','1000 weniger',0],['a4','faktor','1000-mal so viele H₃O⁺-Ionen',1],['a4','faktor','1000 mal mehr',1],['a4','faktor','1000x',1],['a4','faktor','1000-fach',1],['z2','prozent','26 mal',0],['z2','prozent','26-mal so viele',0],['z2','prozent','26 pH',0],['z2','prozent','26 % weniger',0],['z2','prozent','25 oder 26 %',0],['z2','prozent','26 % mehr',1],['z2','prozent','ca. 26 %',1],['z2','prozent','126 %',0],['z2','prozent','1,26',0],['z2','prozent','10 %',0],['z2','prozent','30 %',0],
+ ['z2','warum','»rund 0,1« ist gerundet – schon 0,11 bis 0,15 ergeben 30 bis 40 %',1],['z2','warum','Das PIK hat sich verrechnet',0],
+ ['z2','schale','Im saureren Wasser fällt der Schalenbau aus Kalk schwerer, dünne Schalen lösen sich an',1],['z2','schale','Basisches Wasser löst Kalk auf',0],
+ ['z2','quelle','eine Pressemitteilung eines Forschungsinstituts – guter Start, Zahlen im Bericht nachprüfen',1],['z2','quelle','eine Werbung eines Unternehmens',0],
+ /* Messwerte und offene Antworten: Prof. HOLZER bewertet */
+ ['a5','m1','2–3','M'],['a5','m2','2','M'],['a5','m4','7','M'],['a5','m5','8 bis 9','M'],['a5','m6','keine Ahnung','M'],['a5','verm','Zitrone am sauersten, Seife am stärksten basisch','M'],
+ ['a5','schluss','Die Getränke sind sauer, der Zahnschmelz wird bei Dauertrinken angegriffen.','M'],['a5','schluss','egal','M'],
+ ['a6','partner','Max, 3 von 4','M'],['z1','meer','Das Meer ist basisch (pH 8,1) und wird nur weniger basisch.','M'],['z1','lauge','Laugen sind oft gefährlicher, sie dringen tiefer ins Auge.','M'],
+ ['z3','merksatz','Brille auf, im Notfall spülen.','M']];
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

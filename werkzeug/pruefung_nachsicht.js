@@ -74,6 +74,7 @@
       .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1·$2/")
       .replace(/(\d\s*[A-Za-zµμΩ][A-Za-zµμΩ·²³^\-0-9]{0,12})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1/")
       .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?([+-]?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      .replace(/(^|[^\d.,·*x×^])10\s*\^\s*\(?([+-]?\d{1,2})\)?(?![\d.,])/g, function (_, v, e) { return v + String(Math.pow(10, parseInt(e, 10))); })   /* reine Zehnerpotenz »10^3« bzw. »10³« = 1000 (14.11.2026, K1.5) */
       .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
     var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*)?)/g, out = [], m;
@@ -96,7 +97,7 @@
       if (/\bnicht\s+(falsch|unrichtig|inkorrekt)\b/i.test(nach)) neg = false;   // »240 A sind nicht falsch« bestätigt die Zahl
       /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
       var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);
-      var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test(davor) && !/\d/.test(davor);
+      var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test((out.length ? out[out.length - 1].u + " " : "") + davor) && !/\d/.test(davor);   /* »100 oder 1000«: »oder« wurde als Einheit der ersten Zahl gelesen (14.11.2026, K1.5) */
       /* Gleichheitszeichen direkt zwischen zwei Zahlen (»240 A = 24 A«): Gleichung, die nur stimmt, wenn beide Seiten gleich sind. Nicht gewertet, wenn eine Seite in einer Rechnung steht (+ − · × / davor oder danach) */
       var zw = out.length ? s0.slice(out[out.length - 1].ende, m.index) : "";
       var eq = !!out.length && /^\s*=\s*$/.test(zw) && !/[+\-−·×*\/x]\s*$/i.test(s0.slice(0, out.length === 1 ? out[0].start : out[out.length - 1].start)) && !/^\s*[+\-−·×*\/^]/.test(s0.slice(m.index + m[0].length));
@@ -221,6 +222,10 @@
   checkField = function (t, key, c) {
     var a = S.a[t.id] || {};
     if (c.num !== undefined) {
+      /* »nicht« (je Feld, Liste von Mustern): Antworten mit diesen Wörtern/Zeichen sind falsch, auch wenn die Zahl stimmt
+         (z. B. Faktor-Feld: »1000 %«, »1/1000«, »1000 weniger«; Prozent-Feld: »26-mal«) – 14.11.2026, K1.5 */
+      if (c.nicht && filled(a[key]) && c.nicht.some(function (rx) { try { return new RegExp(rx, "i").test(String(a[key])); } catch (e) { return false; } }))
+        return { ok: false, kind: "num", msg: "Lies die Frage noch einmal genau – so passt die Antwort nicht.", filled: true };
       var r = numPruefen(a[key], c.num, c.unit, { ende: c.ende, tol: c.tol });
       return { ok: r.ok, kind: "num", msg: r.msg, note: r.note, filled: filled(a[key]) };
     }
