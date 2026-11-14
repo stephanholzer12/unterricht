@@ -186,14 +186,22 @@ function aufloesungEl(t) {
 }
 /* ---------------- Versuchsanleitung (KLARE_ANWEISUNGEN.md): Ziel, Material, Gruppen, Vorbereitung, Schritte, Messwerte, Sicherheit, Abgabe, Auswertung ---------------- */
 function anleitungEl() {
+  /* Aufbau wie die Versuchsseiten (K1.3 Reaktionen): Ziel, Platz, Sicherheit, Geräte & Chemikalien mit Icons, Durchführung, Skizze, Entsorgung */
   const A_ = ANL, dd = el("details", { class: "anl", open: "" });
   dd.append(el("summary", { text: "Anleitung VERSUCH " + VSID + " (antippen zum Zu- oder Aufklappen)" }));
-  const zeile = (k, v) => { const p = el("p"); p.append(el("b", { text: k + ": " })); const sp = el("span"); sp.innerHTML = fett(v); p.append(sp); return p; };
-  const liste = (k, arr, ol) => { const box = el("div"); box.append(el("b", { text: k + ":" })); const l = el(ol ? "ol" : "ul"); arr.forEach(x => { const li = el("li"); li.innerHTML = fett(x); l.append(li); }); box.append(l); return box; };
-  dd.append(zeile("Ziel", A_.ziel), liste("Material je Gruppe", A_.material), zeile("Gruppen", A_.gruppen), zeile("Wo?", A_.platz),
-    zeile("Vorbereitung", A_.vorbereitung), liste("So geht's", A_.schritte, true), zeile("Messwerte", A_.messwerte),
-    liste("Sicherheit", A_.sicherheit), zeile("Abgabe", A_.abgabe), zeile("Auswertung", A_.auswertung));
+  const html = (tag, cls, x) => { const n = el(tag, cls ? { class: cls } : {}); n.innerHTML = fett(x); return n; };
+  const zeile = (k, v, cls) => { const p = el("div", { class: cls || "hint" }); p.append(el("b", { text: k + " " })); const sp = el("span"); sp.innerHTML = fett(v); p.append(sp); return p; };
+  const icons = (arr) => { const m = el("div", { class: "mat" }); arr.forEach(([t, ic]) => m.append(el("div", { class: "matitem" }, el("img", { src: "vs-img/i_" + ic + ".png", alt: "", loading: "lazy" }), el("span", { text: t })))); return m; };
+  dd.append(html("p", "q", A_.ziel));
+  dd.append(zeile("Wo steht der Versuch?", A_.platz));
+  const w = el("div", { class: "warn" }); w.append(el("b", { text: "Sicherheit: " })); const ws = el("span"); ws.innerHTML = fett(A_.sicherheit.join(" ")); w.append(ws); dd.append(w);
+  dd.append(el("h3", { text: "Geräte & Chemikalien – je Gruppe" }), icons(A_.mat));
+  dd.append(el("h3", { text: "An der Probenstation" }), icons(A_.station));
+  dd.append(zeile("Gruppen und Rollen:", A_.gruppen), zeile("Vorbereitung:", A_.vorbereitung));
+  dd.append(el("h3", { text: "Durchführung" }));
+  const ol = el("ol", { class: "steps" }); A_.schritte.forEach(x => ol.append(html("li", "", x))); dd.append(ol);
   if (A_.bild) dd.append(el("picture", { class: "bildzoom" }, el("img", { class: "tkimg", src: A_.bild, alt: A_.alt, loading: "lazy" })));
+  dd.append(zeile("Messwerte:", A_.messwerte), zeile("Entsorgung und Reinigung:", A_.entsorgung), zeile("Abgabe:", A_.abgabe), zeile("Auswertung:", A_.auswertung));
   return dd;
 }
 
@@ -261,6 +269,14 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .anl { border: 3px solid #A33A2B; border-radius: 14px; background: #FBF1EE; padding: 10px 14px; margin: 10px 0; display: grid; gap: 6px; }
 .anl > summary { cursor: pointer; font-weight: 700; color: #A33A2B; font-size: 18px; min-height: 44px; display: flex; align-items: center; }
 .anl p, .anl li { font-size: 17px; line-height: 1.45; margin: 2px 0; } .anl ol, .anl ul { margin: 2px 0 4px; padding-left: 22px; }
+.anl h3 { margin: 10px 0 2px; font-size: 19px; color: #3B4A2F; }
+.anl .q { font-weight: 700; }
+.anl .hint { font-size: 16px; color: #5E6652; margin: 2px 0; } .anl .hint b { color: #3B4A2F; }
+.anl .warn { background: #F6E3DF; border-left: 4px solid #8C3B2E; border-radius: 8px; padding: 10px 12px; color: #8C3B2E; font-size: 16px; }
+.anl .mat { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 8px; }
+.anl .matitem { display: grid; gap: 4px; justify-items: center; text-align: center; font-size: 15px; background: #EEF2E6; border-radius: 10px; padding: 8px; }
+.anl .matitem img { width: 72px; height: auto; }
+.anl .steps { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
 .pegel { border: 3px solid #A33A2B; border-radius: 14px; background: #FBF1EE; padding: 12px 14px; display: grid; gap: 8px; margin: 10px 0; }
 .pgh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 19px; }
 .pgz { font-size: 44px; font-weight: 700; color: #3B4A2F; text-align: center; font-variant-numeric: tabular-nums; }
@@ -526,6 +542,10 @@ p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 })();
 </script>
 """
+import shutil
+os.makedirs(DST + "vs-img", exist_ok=True)
+for _n in sorted({ic for _t, ic in I.ANLEITUNG["mat"] + I.ANLEITUNG["station"]}):
+    shutil.copyfile(os.path.join(ROOT, "werkzeug", "icons", _n + ".png"), DST + "vs-img/i_" + _n + ".png")
 for f in ["theorie.html", "aufgaben.html"]:
     t = open(DST + f, encoding="utf-8").read()
     if "window.SIMINIT" not in t:

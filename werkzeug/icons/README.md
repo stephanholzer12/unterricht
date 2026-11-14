@@ -70,3 +70,4 @@ Ergänzt am 15.10.2026 (Elektromagnetismus 4AB): batterie, bleistift, cutter, dr
 Ergänzt am 19.10.2026 (Stationen 2AB K1.2): muenze, wanne.
 
 Ergänzt am 24.10.2026 (Stoffumwandlung 2AB K1.3): abdampfschale = schale, abzug, brausetablette, braunstein, digitalthermometer, eisenwolle, handschuhe, holzkohle, holzspan, kartoffel, kupferblech, kupferoxid, kupfersulfat, natron, waage, wasserstoffperoxid, zitronensaeure.
+Ergänzt am 14.11.2026 (Säuren und Basen 2AB K1.5): flasche (Getränkeflasche), indikatorpapier, tuepfelplatte.

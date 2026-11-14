@@ -364,7 +364,12 @@ ANLEITUNG = {
                 "Kommt etwas ins Auge: sofort an der Wasserleitung spülen und Prof. HOLZER rufen."],
  "abgabe": "Jeder trägt die Werte in sein Arbeitsblatt ein (Abschnitt Aufgabe 6) und gibt am Ende EIN PDF in LMS ab.",
  "auswertung": "Heute: d) bis g) in der Gruppe besprechen und eintragen. Am Ende der Stunde vergleicht die Klasse alle Werte am Beamer.",
- "platz": "Jede Gruppe am eigenen Schülertisch · Probenstationen: Mobiltisch 1 (Gruppe 1–3) und Mobiltisch 2 (Gruppe 4–6) · Farbskala und pH-Meter am Lehrertisch · Ausspülen an der Wasserleitung",
+ "mat": [["Tüpfelplatte (Gruppe 6: 6 kleine Petrischalen)", "tuepfelplatte"], ["6 Stück Indikatorpapier, je ca. 2 cm", "indikatorpapier"],
+            ["weißes Blatt Papier", "papier"], ["Stift", "bleistift"], ["Handy für das Foto der Farbskala", "handy"], ["Schutzbrille für jeden", "brille"]],
+    "station": [["1 Zitronensaft", "zitronensaeure"], ["2 Cola", "flasche"], ["3 Mineralwasser prickelnd", "flasche"], ["4 Leitungswasser", "hahn"],
+                ["5 Natronlösung (1 TL Natron in 250 ml Wasser)", "natron"], ["6 Seifenlösung (Kernseife)", "seife"], ["bei jeder Probe eine Tropfpipette", "pipette"]],
+    "entsorgung": "Alle Proben sind Lebensmittel oder Haushaltsstoffe: Reste in den Ausguss, mit Wasser nachspülen. Indikatorpapier in den Restmüll. Tüpfelplatte bzw. Petrischalen an der Wasserleitung ausspülen und zurückgeben.",
+    "platz": "Jede Gruppe am eigenen Schülertisch · Probenstationen: Mobiltisch 1 (Gruppe 1–3) und Mobiltisch 2 (Gruppe 4–6) · Farbskala und pH-Meter am Lehrertisch · Ausspülen an der Wasserleitung",
 }
 
 # ---------------------------------------------------------------- Kontrollen
