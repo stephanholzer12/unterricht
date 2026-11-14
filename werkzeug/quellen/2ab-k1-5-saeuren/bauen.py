@@ -527,7 +527,15 @@ open(DST + "theorie.html", "w", encoding="utf-8").write(page)
 ZOOM = """
 <style>
 .bildzoom { display: block; cursor: zoom-in; }
-.bildzoom img { width: 100%; height: auto; }
+.bildzoom img { width: 100%; height: auto; max-width: 560px; display: block; margin: 0 auto; }
+/* Handy: Grafiken in Theorie-Karten und Abbildungen fast über die ganze Bildschirmbreite (Stephan, 14.11.2026) */
+@media (max-width: 600px) {
+  .tkarte .bildzoom, .tkarte-s .bildzoom, figure.fig .bildzoom, .anl .bildzoom { margin-left: calc(50% - 50vw + 6px); margin-right: calc(50% - 50vw + 6px); }
+}
+/* Aufgabenkopf: Marken umbrechen statt über den Kartenrand hinaus (Samsung, 360 px) */
+.card { grid-template-columns: minmax(0, 1fr); }
+.head .nr { flex-wrap: wrap; row-gap: 6px; min-width: 0; }
+.head .nr > * { white-space: nowrap; }
 p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 @media (hover: hover) and (min-width: 900px) { p.zoomhint { display: none; } }
 #lupe[hidden] { display: none; }
