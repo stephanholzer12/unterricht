@@ -54,7 +54,7 @@ T = [
                          "b) die Lauge – Laugenverätzungen am Auge sind meist schwerer, weil Laugen tiefer eindringen."]]],
   "tipps": [], "tip": ["Säuren", "theorie.html#saeuren"]},
 
- {"id": "a1", "nr": 2, "title": "Säuren erkennen", "src": "Buch S. 54–55", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 10, "marke": "SELBSTSTUDIUM",
+ {"id": "a1", "sim": ["rotkraut"], "nr": 2, "title": "Säuren erkennen", "src": "Buch S. 54–55", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 10, "marke": "SELBSTSTUDIUM",
   "q": "Acht kurze Auswahlfragen. Bei g) und h) nimmst du die Farben aus der DEMO mit dem Rotkrautsaft.",
   "hint": "Säure heißt: gibt ein H⁺ ab. Denk bei jeder Frage zuerst an dieses kleine Teilchen.",
   "type": "multi",
@@ -163,7 +163,7 @@ T = [
   "tip": ["Protonen-Pingpong", "theorie.html#protolyse"]},
 
  # --------------------------------------------------------------- Stunde 3
- {"id": "a4", "nr": 5, "title": "Die pH-Skala lesen", "src": "Buch S. 59–61", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 6, "marke": "SELBSTSTUDIUM",
+ {"id": "a4", "sim": ["ph"], "nr": 5, "title": "Die pH-Skala lesen", "src": "Buch S. 59–61", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 6, "marke": "SELBSTSTUDIUM",
   "q": "Die pH-Skala geht von 0 bis 14. Jede Stufe ist ein Faktor 10. Sechs Fragen – c) ist eine Rechnung.",
   "hint": "pH 4 hat zehnmal so viele H₃O⁺-Ionen wie pH 5, hundertmal so viele wie pH 6.",
   "type": "multi",
@@ -242,7 +242,7 @@ T = [
   "tip": ["Messen mit Indikatorpapier", "theorie.html#messen"]},
 
  # --------------------------------------------------------------- Stunde 4
- {"id": "a6", "nr": 7, "title": "Neutralisation – im Glas und in deinem Körper", "src": "Buch S. 61–62, 65", "own": True, "tag": "Stunde 4", "h": 4, "zeit": 9, "marke": "SELBSTSTUDIUM",
+ {"id": "a6", "sim": ["neutral", "blut"], "nr": 7, "title": "Neutralisation – im Glas und in deinem Körper", "src": "Buch S. 61–62, 65", "own": True, "tag": "Stunde 4", "h": 4, "zeit": 9, "marke": "SELBSTSTUDIUM",
   "q": "Sechs Auswahlfragen zur Neutralisation und zum Blut-pH. g) füllst du beim PARTNERCHECK aus.",
   "hint": "Bei der Neutralisation treffen sich die beiden Teilchen aus Stunde 1 und 2: H₃O⁺ und OH⁻.",
   "type": "multi",

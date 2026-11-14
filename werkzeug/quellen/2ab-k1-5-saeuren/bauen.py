@@ -14,6 +14,7 @@ WZ = os.path.join(ROOT, "werkzeug")
 sys.path.insert(0, HERE)
 import inhalt as I
 import theorie_daten as TD
+import sims as SIMS
 STAND = I.STAND
 
 DST = os.path.join(ROOT, I.ORDNER) + "/"
@@ -118,7 +119,13 @@ rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
     '''  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
   if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle Gruppen machen dasselbe · jeder trägt die Werte selbst ein" }));
   if (t.anleitung) card.append(anleitungEl());
-  if (t.tipps && t.tipps.length) card.append(tippStufen(t));''')
+  if (t.tipps && t.tipps.length) card.append(tippStufen(t));
+  (t.sim || []).forEach(k => {
+    if (!SIMHTML[k]) return;
+    const d = el("details", { class: "simd" }); d.append(el("summary", { text: "Ausprobieren: " + SIMTITEL[k] + " – " + SIMZEILE[k] }));
+    d.insertAdjacentHTML("beforeend", SIMHTML[k]); card.append(d);
+    if (window.simStart) window.simStart();
+  });''')
 rep("function renderTask(t) {", """function karteEl(k) {
   const K = KARTEN[k], box = el("div", { class: "tkarte" });
   box.append(el("div", { class: "tkh" }, el("span", { class: "tkn", text: "Theorie-Karte" }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
@@ -221,6 +228,7 @@ s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K1.5", THEMA = "Saeuren";\n' % I.K
      + "const VSID = " + json.dumps(list(I.VS)[0]) + ";\n"
      + "const ANL = " + json.dumps(dict(I.ANLEITUNG, bild="img/versuch.svg", alt=TD.KARTEN["k5"]["alt"]), ensure_ascii=False) + ";\n"
      + "const KARTEN = " + json.dumps(TD.karte_html_daten(), ensure_ascii=False) + ";\n"
+     + "const SIMTITEL = " + json.dumps(SIMS.TITEL, ensure_ascii=False) + ", SIMZEILE = " + json.dumps(SIMS.ZEILE, ensure_ascii=False) + ", SIMHTML = " + json.dumps(SIMS.HTML, ensure_ascii=False).replace("</", "<\\/") + ";\n"
      + "const T = " + json.dumps(TJ, ensure_ascii=False, indent=1) + ";" + s[j:])
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
 s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, ensure_ascii=False) + ";" + s[j:]
@@ -325,42 +333,6 @@ def karte_block(v):
             + bild_tag(v["bild"], v["alt"], "tkimg") + "".join(f"<p>{md(x)}</p>" for x in v["satz"]) + f + "</div>")
 
 
-SIM = """<div class="sim" id="sim-ph">
- <div class="simh"><span class="tkn">Ausprobieren</span><b>pH-Schieber</b></div>
- <div class="phz"><span class="phw" data-o="ph">pH 7,0</span><span class="phk" data-o="art">neutral</span></div>
- <input type="range" min="0" max="14" step="0.1" value="7" data-i="ph" aria-label="pH-Wert einstellen">
- <div class="phband" aria-hidden="true"></div>
- <div class="phfarben"><div><span class="sw" data-o="ui"></span>Indikatorpapier</div><div><span class="sw" data-o="rk"></span>Rotkrautsaft</div></div>
- <p class="simt" data-o="vgl"></p>
- <p class="simt" data-o="bsp"></p>
- <p class="simt">Farben ungefähr – echte Papiere und Säfte weichen ab. Faustregel: eine Stufe = Faktor 10.</p>
-</div>
-<script>
-(function () {
-  var box = document.getElementById("sim-ph"), inp = box.querySelector("input"), o = function (k) { return box.querySelector('[data-o="' + k + '"]'); };
-  var UI = ["#C62828","#E53935","#F4511E","#FB8C00","#FFB300","#FDD835","#C0CA33","#7CB342","#43A047","#00897B","#1E88E5","#3949AB","#5E35B1","#6A1B9A","#4A148C"];
-  var RK = [[2,"#C2185B"],[4,"#C2508A"],[6,"#8A4C9E"],[7,"#5C5BA8"],[9,"#3F6FB5"],[12,"#3E9A6A"],[14.1,"#D4C21A"]];
-  var BSP = [[1.5,"Magensaft"],[2.4,"Zitronensaft"],[2.5,"Cola"],[5,"Kaffee, Haut"],[5.5,"Mineralwasser prickelnd"],[6.6,"Milch"],[7,"reines Wasser"],[7.4,"Blut"],[7.5,"Leitungswasser Wr. Neustadt"],[8.1,"Meerwasser"],[8.3,"Natronlösung"],[9.5,"Seifenlösung"],[12.5,"nasser Beton"],[13.5,"Rohrreiniger"]];
-  var band = box.querySelector(".phband"); band.style.background = "linear-gradient(90deg," + UI.join(",") + ")";
-  function f(x) { return String(x).replace(".", ","); }
-  function zahl(n) { return n >= 1e6 ? Math.round(n / 1e6).toLocaleString("de-AT") + " Millionen" : Math.round(n).toLocaleString("de-AT"); }
-  function zeig() {
-    var p = Math.round(parseFloat(inp.value) * 10) / 10;
-    o("ph").textContent = "pH " + f(p.toFixed(1));
-    var art = p < 6.95 ? "sauer" : p > 7.05 ? "basisch" : "neutral"; o("art").textContent = art; o("art").className = "phk " + art;
-    o("ui").style.background = UI[Math.min(14, Math.round(p))];
-    for (var i = 0; i < RK.length; i++) if (p <= RK[i][0] + 0.49) { o("rk").style.background = RK[i][1]; break; }
-    var d = 7 - p, v;
-    if (Math.abs(d) < 0.05) v = "Gleich viele H₃O⁺- und OH⁻-Ionen.";
-    else if (d > 0) v = "Etwa " + zahl(Math.pow(10, d)) + "-mal so viele H₃O⁺-Ionen wie in neutralem Wasser.";
-    else v = "Etwa " + zahl(Math.pow(10, -d)) + "-mal so viele OH⁻-Ionen wie in neutralem Wasser.";
-    o("vgl").textContent = v;
-    var best = BSP[0]; BSP.forEach(function (b) { if (Math.abs(b[0] - p) < Math.abs(best[0] - p)) best = b; });
-    o("bsp").textContent = "In der Nähe: " + best[1] + " (pH " + f(best[0]) + ")";
-  }
-  inp.addEventListener("input", zeig); zeig();
-})();
-</script>"""
 
 
 
@@ -377,7 +349,7 @@ def block(b):
     if k == "buch": return f'<div class="buch"><span class="bicon">Buch</span><p>{md(b[1])}</p></div>'
     if k == "karte": return karte_block(b[1])
     if k == "gemeinsam": return f'<div class="gem"><span class="gicon">BESPRECHEN</span><p>{md(b[1])}</p></div>'
-    if k == "sim": return SIM
+    if k == "sim": return SIMS.HTML[b[1]]
     if k == "demo":
         d = I.DEMOS[b[1]]
         return (f'<div class="dbox"><div class="vhead"><span class="dnr">DEMO {esc(b[1])}</span><span class="vtag">Stunde {d["stunde"]}</span></div>'
@@ -455,17 +427,6 @@ table.tkf { border-collapse: collapse; width: 100%; font-size: 17px; }
 table.tkf td { border-top: 1px solid #C2D4D8; padding: 5px 4px; }
 table.tkf td.z { font-weight: 700; color: #3B4A2F; }
 table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-space: nowrap; }
-.sim { border: 2px solid #2E7D8C; border-radius: 12px; background: #fff; padding: 12px 14px; display: grid; gap: 8px; }
-.simh { display: flex; gap: 8px; align-items: center; font-size: 18px; flex-wrap: wrap; }
-.sim canvas { width: 100%; height: auto; border-radius: 10px; }
-.sim label { display: grid; gap: 4px; font-size: 17px; } .sim input[type=range] { width: 100%; min-height: 44px; }
-.simb { display: flex; gap: 8px; flex-wrap: wrap; } .simb .btn { min-height: 44px; }
-.simt { margin: 0; font-size: 16px; color: #5E6652; }
-.phz { display: flex; gap: 12px; align-items: baseline; } .phw { font-size: 40px; font-weight: 700; color: #3B4A2F; font-variant-numeric: tabular-nums; }
-.phk { font-size: 20px; font-weight: 700; border-radius: 999px; padding: 2px 12px; color: #fff; background: #7CB342; } .phk.sauer { background: #C0392B; } .phk.basisch { background: #2A5C8C; }
-.phband { height: 16px; border-radius: 8px; }
-.phfarben { display: flex; gap: 16px; flex-wrap: wrap; font-size: 17px; } .phfarben div { display: flex; gap: 8px; align-items: center; }
-.sw { display: inline-block; width: 44px; height: 30px; border-radius: 8px; border: 2px solid #1F2A1C; }
 </style>""")
 page = f"""<!doctype html>
 <html lang="de">
@@ -541,9 +502,10 @@ p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 #lupe[hidden] { display: none; }
 #lupe { position: fixed; inset: 0; z-index: 9999; background: rgba(20,24,18,.96); display: flex; align-items: center; justify-content: center; overflow: auto; -webkit-overflow-scrolling: touch; touch-action: pinch-zoom; }
 #lupe img { max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; border-radius: 8px; }
+#lupe { box-sizing: border-box; padding: 66px 6px 6px; }   /* Knöpfe »Drehen« und »Schließen« verdecken das Bild nicht mehr */
 #lupe .zu, #lupe .dreh { position: fixed; top: 10px; z-index: 2; font: inherit; font-size: 17px; font-weight: 700; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 0; background: #fff; color: #2C3424; cursor: pointer; }
 #lupe .zu { right: 12px; } #lupe .dreh { left: 12px; }
-#lupe.quer img { width: auto; height: auto; max-width: 100vh; max-height: 100vw; transform: rotate(90deg); }
+#lupe.quer img { width: auto; height: auto; max-width: calc(100vh - 78px); max-height: calc(100vw - 12px); transform: rotate(90deg); }
 </style>
 <div id="lupe" hidden role="dialog" aria-modal="true" aria-label="Bild groß">
   <button type="button" class="dreh">Drehen</button><button type="button" class="zu">Schließen</button><img alt="">
@@ -566,6 +528,9 @@ p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 """
 for f in ["theorie.html", "aufgaben.html"]:
     t = open(DST + f, encoding="utf-8").read()
+    if "window.SIMINIT" not in t:
+        i = t.rfind("</body>")
+        t = t[:i] + "<style>" + SIMS.CSS + "</style>" + SIMS.JS + t[i:]
     if 'id="lupe"' not in t:
         i = t.rfind("</body>")
         t = (t[:i] + ZOOM + t[i:]) if i > 0 else t.replace("</html>", ZOOM + "</html>")

@@ -487,6 +487,7 @@
      "marke": "DEMO",
      "lesen": "DEMO Rotkraut-Farbenspiel · Buch S. 54 lesen · Säuren",
      "aufgaben": "1, 2",
+     "theorie": "Teil 1 Säuren",
      "abgabe": "–"
     },
     {
@@ -494,6 +495,7 @@
      "marke": "GRUPPENARBEIT",
      "lesen": "Laugen und Sicherheit · Protonen-Pingpong mit Ball · Buch S. 56–58",
      "aufgaben": "3, 4",
+     "theorie": "Teil 2 Laugen, Teil 3 Pingpong",
      "abgabe": "–"
     },
     {
@@ -501,6 +503,7 @@
      "marke": "VERSUCH",
      "lesen": "pH-Skala · VERSUCH pH-Detektive (Gruppen) · Buch S. 59–61",
      "aufgaben": "5, 6",
+     "theorie": "Teil 4 pH-Wert, Teil 5 Messen",
      "abgabe": "Messwerte deiner Gruppe eintragen"
     },
     {
@@ -508,6 +511,7 @@
      "marke": "PARTNERCHECK",
      "lesen": "DEMO Atemluft und Natron · Neutralisation · Blut-pH · Partnercheck",
      "aufgaben": "7",
+     "theorie": "Teil 6 Neutralisation, Teil 7 Blut",
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {

@@ -181,11 +181,14 @@ LESEN = {1: "DEMO Rotkraut-Farbenspiel · Buch S. 54 lesen · Säuren",
 ABGABE = {1: "–", 2: "–", 3: "Messwerte deiner Gruppe eintragen", 4: "Arbeitsblatt-PDF in LMS"}
 
 
+THEORIE_TEILE = {1: "Teil 1 Säuren", 2: "Teil 2 Laugen, Teil 3 Pingpong", 3: "Teil 4 pH-Wert, Teil 5 Messen", 4: "Teil 6 Neutralisation, Teil 7 Blut"}
+
+
 def fahrplan_zeilen():
     z = []
     for n in sorted(STUNDE):
         auf = bereich(aufgaben_der(n)) or "–"
-        z.append({"wann": f"Stunde {n}", "marke": MARKE[n], "lesen": LESEN[n], "aufgaben": auf, "abgabe": ABGABE[n]})
+        z.append({"wann": f"Stunde {n}", "marke": MARKE[n], "lesen": LESEN[n], "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
     z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat)",
               "aufgaben": "Zusatz 8–10", "zeit": "ca. 33 min", "abgabe": "freiwillig"})
     return z

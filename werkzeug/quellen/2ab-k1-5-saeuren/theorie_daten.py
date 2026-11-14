@@ -120,6 +120,7 @@ PARTS = [
                "Rotkrautsaft als Indikator: Die Farbe verrät, wie sauer oder basisch eine Lösung ist (ungefähre Werte)."),
               ("demo", "K1.5-D1", "Prof. HOLZER gibt Rotkrautsaft in vier Gläser mit Wasser. Dazu kommen **Essig, Zitronensaft, nichts** und **Natron**. "
                                   "**Erst vermuten:** Welche Farbe bekommt jedes Glas? Dann vergleicht ihr. Warum heißt Rotkraut in manchen Gegenden Blaukraut? Mit Essig oder Äpfeln gekocht wird es rot, ohne Säure eher blau-violett."),
+              ("sim", "rotkraut"),
               ("reveal", I.STOPPFRAGEN["saeuren"])]},
   ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 2", "aufgaben.html#card_a1")]),
 
@@ -186,6 +187,7 @@ PARTS = [
                       "Dampft man das Wasser ab, bleibt das **Salz** als Kristall zurück – aus Salzsäure und Natronlauge wird Kochsalz. Mehr zu Salzen kommt in der Einheit »Salze und Kunstdünger«.",
                       "**Sodbrennen:** Magensäure steigt in die Speiseröhre. Mittel aus der Apotheke (**Antazida**) enthalten schwache Basen, die einen Teil der Säure neutralisieren.",
                       "**Essig + Natron** ist auch eine Säure-Base-Reaktion: Das Hydrogencarbonat nimmt Protonen auf, dabei entsteht CO₂ – darum schäumt es. Hier ist kein OH⁻ im Spiel, und das Glas wird sogar ein wenig **kühler**: Nicht jede Säure-Base-Reaktion gibt Wärme ab."]),
+              ("sim", "neutral"),
               ("reveal", I.STOPPFRAGEN["neutral"])]}]),
 
  ("blut", "Teil 7 · Buch S. 61–62 · Stunde 4", "Warum dein Blut bei 7,4 bleibt", [
@@ -199,6 +201,7 @@ PARTS = [
                       "**Mythos Muskelkater:** Lange hieß es, Milchsäure (Laktat) sei schuld. Laktat ist aber nach 30 bis 90 Minuten wieder auf dem Ausgangswert – "
                       "Muskelkater kommt erst nach 1 bis 3 Tagen. Ursache sind winzige Verletzungen der Muskelfasern.",
                       "Sinkt der Blut-pH unter 7,35, spricht man von **Azidose**, steigt er über 7,45, von **Alkalose**. Nach einem harten Sprint ist eine kurze Azidose **normal** – Atmung und Puffer gleichen sie in Minuten aus. Hält eine Azidose oder Alkalose an (z. B. bei einer Krankheit), muss sie ärztlich behandelt werden."]),
+              ("sim", "blut"),
               ("reveal", I.STOPPFRAGEN["blut"])]},
   ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 7", "aufgaben.html#card_a6")]),
 ]

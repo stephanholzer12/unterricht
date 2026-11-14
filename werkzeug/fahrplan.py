@@ -210,10 +210,11 @@ def html_kompakt_stunden(u):
         ab = r.get("abgabe") or "–"
         out.append(f'<div class="fp-std" data-n="{esc(nr(r))}" hidden><div class="fp-kopf">Diese Stunde: {esc(r["wann"])} {mk}</div>'
                    f'<div class="fp-zeile"><b class="n">1</b><span>{esc(r["lesen"])}</span></div>'
-                   f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}</span></div>'
+                   f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}'
+                   + (f'<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: {esc(r["theorie"])}</span>' if r.get("theorie") else "") + '</span></div>'
                    f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div></div>')
     out.append(f'<details><summary>Alle Stunden ({len(rows)})</summary><ol class="fp-liste">'
-               + "".join(f'<li data-n="{esc(nr(r))}">{esc(r["wann"])}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}</li>' for r in rows)
+               + "".join(f'<li data-n="{esc(nr(r))}">{esc(r["wann"])}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}{" · Theorie: " + esc(r["theorie"]) if r.get("theorie") else ""}</li>' for r in rows)
                + "</ol></details>")
     if rest:
         out.append("".join(f'<p class="fp-tipp" style="margin-top:8px"><b>{esc(r["wann"])}:</b> {esc(r["lesen"])} · Aufgaben {esc(r.get("aufgaben") or "–")}</p>' for r in rest))
