@@ -133,6 +133,7 @@ rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
   if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle Gruppen machen dasselbe · jeder trägt die Werte selbst ein" }));
   if (t.anleitung) card.append(anleitungEl());
   if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
+  if (t.bild) { const pic = el("picture", { class: "bildzoom qbild" }); pic.append(el("img", Object.assign({ class: "tkimg", src: t.bild[0], alt: t.bild[1], loading: "lazy" }, IMGMASS[t.bild[0]] ? { width: IMGMASS[t.bild[0]][0], height: IMGMASS[t.bild[0]][1] } : {}))); card.append(pic, el("p", { class: "zoomhint", text: t.bild[2] })); }
   if (t.tipps && t.tipps.length) card.append(tippStufen(t));
   (t.sim || []).forEach(k => {
     if (!SIMHTML[k]) return;
@@ -140,6 +141,8 @@ rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
     d.insertAdjacentHTML("beforeend", SIMHTML[k]); card.append(d);
     if (window.simStart) window.simStart();
   });''')
+rep('  if (t.type === "multi") return t.fields.every(f => filled(a[f[0]]));',
+    '  if (t.type === "multi") return t.fields.every(f => (t.opt || []).includes(f[0]) || filled(a[f[0]]));   // freiwillige Felder (opt) zählen nicht')
 rep("function renderTask(t) {", """function karteEl(k) {
   const K = KARTEN[k], box = el("div", { class: "tkarte" });
   box.append(el("div", { class: "tkh" }, el("span", { class: "tkn", text: "Theorie-Karte" }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
@@ -630,7 +633,7 @@ ZOOM = """
 .bildzoom img { width: 100%; height: auto; max-width: 560px; display: block; margin: 0 auto; }
 /* Handy: Grafiken in Theorie-Karten und Abbildungen fast über die ganze Bildschirmbreite (Stephan, 14.11.2026) */
 @media (max-width: 600px) {
-  .tkarte .bildzoom, .tkarte-s .bildzoom, figure.fig .bildzoom, .anl .bildzoom { margin-left: calc(50% - 50vw + 6px); margin-right: calc(50% - 50vw + 6px); }
+  .tkarte .bildzoom, .tkarte-s .bildzoom, figure.fig .bildzoom, .anl .bildzoom, .card .qbild { margin-left: calc(50% - 50vw + 6px); margin-right: calc(50% - 50vw + 6px); }
 }
 /* Aufgabenkopf: Marken umbrechen statt über den Kartenrand hinaus (Samsung, 360 px) */
 .card { grid-template-columns: minmax(0, 1fr); }

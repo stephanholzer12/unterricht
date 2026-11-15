@@ -323,8 +323,46 @@ def ueberblick():
     save("ueberblick.svg", svg(W, H, "".join(b), "Überblick: sauer und basisch, pH-Skala, Protonenübergang und Neutralisation"))
 
 
+# ------------------------------------------------------------------ 10 pH im Mund nach dem Essen (Zusatz 13)
+# Verlauf vereinfacht nach der Stephan-Kurve (Stephan 1940er): pH fällt in 5–10 min unter den kritischen Wert 5,5,
+# ohne Hilfe dauert die Erholung 30–60 min (DocCheck Flexikon »Stephan-Kurve«; Ernährungs-Umschau 10/2014, S. 41–44);
+# zuckerfreier Kaugummi regt den Speichel an und verkürzt die Phase (Prophylaxe Journal 3/2016; zm-online 2010). Werte ungefähr.
+KURVE_A = [(0, 6.8), (3, 6.0), (6, 5.3), (10, 4.9), (15, 5.0), (25, 5.4), (35, 5.8), (45, 6.2), (60, 6.6)]
+KURVE_B = [(0, 6.8), (3, 6.0), (6, 5.3), (10, 4.9), (13, 5.3), (16, 5.8), (20, 6.3), (25, 6.7), (35, 6.9), (60, 6.9)]
+
+
+def mundph():
+    H = 620
+    b = kopf("Säure-Alarm im Mund", ["pH-Wert am Zahn nach dem Essen", "zwei Kadetten, gleiches Essen"])
+    x0, x1, y0, y1 = 70, 410, 140, 440            # Achsen: 0–60 min, pH 7,5 (oben) bis 4,5 (unten)
+    def px(m): return x0 + m / 60 * (x1 - x0)
+    def py(ph): return y0 + (7.5 - ph) / 3.0 * (y1 - y0)
+    b.append(f"<rect x='{x0}' y='{py(5.5):.1f}' width='{x1 - x0}' height='{y1 - py(5.5):.1f}' fill='#F6D3CF'/>")
+    for ph in (5, 6, 7):
+        b.append(f"<line x1='{x0}' y1='{py(ph):.1f}' x2='{x1}' y2='{py(ph):.1f}' stroke='{LIGHT}' stroke-width='2'/>")
+        b.append(t(x0 - 10, py(ph) + 7, str(ph), 20, "b", "end"))
+    b.append(t(x0 - 10, py(7.5) + 4, "pH", 18, "m", "end"))
+    b.append(f"<line x1='{x0}' y1='{py(5.5):.1f}' x2='{x1}' y2='{py(5.5):.1f}' stroke='{RED}' stroke-width='3' stroke-dasharray='10 7'/>")
+    b.append(t(x1 - 4, py(5.5) - 10, "5,5 kritisch", 20, "b", "end", RED))
+    b.append(t(x1 - 4, y1 - 14, "Zahnschmelz wird angegriffen", 18, "b", "end", RUST))
+    b.append(f"<line x1='{x0}' y1='{y0}' x2='{x0}' y2='{y1}' stroke='{INK}' stroke-width='3'/>")
+    b.append(f"<line x1='{x0}' y1='{y1}' x2='{x1}' y2='{y1}' stroke='{INK}' stroke-width='3'/>")
+    for m in (0, 10, 20, 30, 40, 50, 60):
+        b.append(f"<line x1='{px(m):.1f}' y1='{y1}' x2='{px(m):.1f}' y2='{y1 + 8}' stroke='{INK}' stroke-width='2'/>")
+        b.append(t(px(m), y1 + 30, str(m), 19, "b", "middle"))
+    b.append(t(M + 20, y1 + 58, "Minuten nach dem Essen", 19, "m", "middle"))
+    b.append(arrow(px(0) + 14, y0 - 4, px(0) + 2, py(6.8) - 10, INK, 3, 11))
+    b.append(t(px(0) + 18, y0 - 6, "Essen", 19, "b"))
+    for pts, col, dash, lab, ly in ((KURVE_A, RUST, "", "A", 6.45), (KURVE_B, TEAL, " stroke-dasharray='12 6'", "B", 7.15)):
+        d = " ".join(f"{'M' if i == 0 else 'L'}{px(m):.1f},{py(ph):.1f}" for i, (m, ph) in enumerate(pts))
+        b.append(f"<path d='{d}' fill='none' stroke='{col}' stroke-width='5' stroke-linejoin='round'{dash}/>")
+        b.append(kreis(px(55), py(ly), 15, col, lab, 20, WHITE))
+    b += balken(530, 70, ["vereinfacht nach der Stephan-Kurve", "(Zahnmedizin) – Werte ungefähr"], 19)
+    save("mundph.svg", svg(W, H, "".join(b), "pH-Wert am Zahn nach dem Essen: Kurve A und Kurve B fallen nach etwa 5 Minuten unter 5,5; Kurve B steigt ab Minute 10 schnell wieder, Kurve A erst nach etwa 30 Minuten"))
+
+
 TEILE = {"saeure.svg": saeure, "lauge.svg": lauge, "protolyse.svg": protolyse, "phskala.svg": phskala, "rotkraut.svg": rotkraut,
-         "versuch.svg": versuch, "neutralisation.svg": neutralisation, "blutpuffer.svg": blutpuffer, "ueberblick.svg": ueberblick}
+         "versuch.svg": versuch, "neutralisation.svg": neutralisation, "blutpuffer.svg": blutpuffer, "ueberblick.svg": ueberblick, "mundph.svg": mundph}
 if __name__ == "__main__":
     for n, f in TEILE.items():
         f()

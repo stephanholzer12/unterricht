@@ -295,9 +295,8 @@ def fahrplan_zeilen():
         auf = bereich(aufgaben_der(n)) or "–"
         z.append({"wann": f"Stunde {n}", "titel": I.STUNDENTITEL[n], "marke": MARKE[n], "lesen": LESEN[n], "folge": folge(n), "buch": BUCH[n],
                   "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
-    z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET), Lesen und prüfen: »Übersäuert« – was ist dran?",
-              "aufgaben": "Zusatz 8–12", "zeit": "ca. 60 min", "abgabe": "freiwillig"})
-    z.append({"wann": "Danach", "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"})
+    z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET), Lesen und prüfen: »Übersäuert« – was ist dran?, Säure-Alarm im Mund",
+              "aufgaben": "Zusatz 8–13", "zeit": "ca. 70 min", "abgabe": "freiwillig"})
     z.append({"wann": "Danach", "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"})
     return z
 

@@ -11,6 +11,7 @@ Herkunft: Versuche »Die Bindungsarten« (2AB K1.2). Diese Icons gelten in **all
 - `alaun`
 - `ballon`
 - `batterie`
+- `beutel` (Gefrierbeutel mit Gummiring, 2AB K1.5)
 - `becher`
 - `bleche`
 - `bleistift`
