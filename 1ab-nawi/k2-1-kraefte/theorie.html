@@ -566,6 +566,10 @@ window.SIMINIT = window.SIMINIT || {};
 <style>
 .bildzoom { display: block; cursor: zoom-in; }
 .bildzoom img { width: 100%; height: auto; }
+/* Aufgabenkopf: Marken umbrechen statt über den Kartenrand hinaus (Samsung, 360 px; aus K1.5 2AB, 15.11.2026) */
+.card { grid-template-columns: minmax(0, 1fr); }
+.head .nr { flex-wrap: wrap; row-gap: 6px; min-width: 0; }
+.head .nr > * { white-space: nowrap; }
 p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 @media (hover: hover) and (min-width: 900px) { p.zoomhint { display: none; } }
 #lupe[hidden] { display: none; }
