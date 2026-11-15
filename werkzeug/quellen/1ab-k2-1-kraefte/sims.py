@@ -7,14 +7,23 @@ Fachliche Grundlagen (gerechnet wird mit den Formeln der Einheit, g = 10 N/kg wi
   Erde 9,8 (gerechnet mit 10), Mond 1,6, Mars 3,7 m/s² = N/kg. Jupiter bewusst weggelassen (NASA 23,1, PhET 24,8 – Quellen uneinig).
 - auftrieb: dichte Dose V = 500 cm³; F_A,max = ρ · V · g; Süßwasser 1000 kg/m³, Meerwasser ca. 1025 kg/m³ (Spektrum Lexikon der Geowissenschaften,
   »Meerwasserdichte«, Beispielwert 1027 kg/m³ – schwankt mit Salzgehalt und Temperatur). Schwimmt: eingetauchter Anteil = m / (ρ · V).
+- reibung: Haften bis F_H,max = μ_H · F_N, danach Gleitreibung F_R = μ_G · F_N (bleibt rutschend, bis die Zugkraft unter μ_G · F_N fällt).
+  Reibungszahlen aus Duden Schülerlexikon (lernhelfer.de »Haftreibung« / »Gleitreibung«, abgerufen 15.11.2026): Holz/Holz 0,6/0,5 ·
+  Reifen auf trockenem Asphalt 0,8/0,5 · nass 0,5/0,3 · Stahl auf Eis 0,03/0,01.
+- gegenkraft: zwei Kraftmesser zeigen denselben Betrag; Buch im Gleichgewicht: Stützkraft = Gewichtskraft = m · g.
+- kapillar: Steighöhe h = 2σ / (ρ · g · r) (lernhelfer.de »Kapillarität«: σ = 0,07 N/m, r = 1 mm → ca. 14 mm); hier mit g = 10 N/kg → h ≈ 28 mm : d.
+- Knopf »Groß« an jeder Simulation: Vollbild innerhalb der Seite (keine Fullscreen-API nötig), »Schließen« oder Esc.
 - druck: p = F / A mit F = m · g. Auflageflächen sind MODELLWERTE (Stiefelsohle 30 cm × 10 cm, Ski 170 cm × 7 cm, Schneeschuh 25 cm × 60 cm)
   und beim Gehen trägt EIN Fuß die ganze Last – auf der Seite als »ungefähr« gekennzeichnet.
 PHET: externe Simulationen (nur Link, neuer Tab). Geprüft 15.11.2026: phet.colorado.edu/de/search (HTML5-Hinweis, deutscher Titel),
 deutsche Texte in github.com/phetsims/babel, Modell von »Kräfte und Bewegung: Grundlagen« in doc/model.md des Repos (Massen: Kiste 50 kg, Kühlschrank 200 kg,
 Mülltonne 100 kg, Mann 80 kg, Mädchen 40 kg; Kraft −500 … 500 N; Reibung abschaltbar), Lehrerhandbuch »Masses and Springs: Basics« (Erde 9,8, Mond 1,6, Jupiter 24,8)."""
 
-TITEL = {"kraefte": "Kräfte am Wagen", "gewicht": "Kraftmesser auf Erde, Mond und Mars", "auftrieb": "Schwimmt die Dose?", "druck": "Einsinken im Schnee"}
-ZEILE = {"kraefte": "Zieh links und rechts – wann wird der Wagen schneller, wann rollt er gleichmäßig?",
+TITEL = {"reibung": "Haften oder rutschen?", "gegenkraft": "Kraft und Gegenkraft", "kapillar": "Wie hoch steigt das Wasser?", "kraefte": "Kräfte am Wagen", "gewicht": "Kraftmesser auf Erde, Mond und Mars", "auftrieb": "Schwimmt die Dose?", "druck": "Einsinken im Schnee"}
+ZEILE = {"reibung": "Zieh die Kiste langsam stärker – wann rutscht sie los?",
+         "gegenkraft": "Zwei Kraftmesser und ein Buch – welche Kräfte gehören zusammen?",
+         "kapillar": "Mach das Röhrchen enger oder weiter – wie hoch steigt das Wasser?",
+         "kraefte": "Zieh links und rechts – wann wird der Wagen schneller, wann rollt er gleichmäßig?",
          "gewicht": "Gleiche Masse, anderer Ort – was zeigt der Kraftmesser?",
          "auftrieb": "Füll Sand in die Dose – wann schwimmt, schwebt oder sinkt sie?",
          "druck": "Gleiche Kraft, andere Fläche – wie groß ist der Druck?"}
@@ -34,6 +43,34 @@ PHET = {
 }
 
 HTML = {
+ "reibung": """<div class="sim" data-sim="reibung">
+ <div class="simh"><span class="tkn">Ausprobieren</span><b>Haften oder rutschen?</b></div>
+ <svg viewBox="0 0 340 110" class="kwbox rbild" aria-hidden="true"></svg>
+ <div class="kwzahl"><span>Zugkraft <b data-o="fz">0 N</b></span><span>F<sub>R</sub> = <b data-o="fr">0 N</b></span><span class="phk" data-o="art">haftet</span></div>
+ <svg viewBox="0 0 340 180" class="kwbox rdia" aria-hidden="true"></svg>
+ <label>Zugkraft: <b data-o="fzv">0</b> N<input type="range" min="0" max="350" step="5" value="0" data-i="fz" aria-label="Zugkraft in Newton"></label>
+ <label>Masse der Kiste: <b data-o="m">30</b> kg (F<sub>N</sub> = <b data-o="fn">300</b> N)<input type="range" min="10" max="40" step="5" value="30" data-i="m" aria-label="Masse in Kilogramm"></label>
+ <div class="simb"><button type="button" class="btn" data-u="holz" aria-pressed="true">Holz auf Holz</button><button type="button" class="btn ghost" data-u="gummi" aria-pressed="false">Gummi auf Asphalt</button><button type="button" class="btn ghost" data-u="nass" aria-pressed="false">… nass</button><button type="button" class="btn ghost" data-u="eis" aria-pressed="false">Stahl auf Eis</button></div>
+ <p class="simt" data-o="info"></p>
+ <p class="simt">Reibungszahlen (Haften | Gleiten) aus Tabellen: Holz auf Holz 0,6 | 0,5 · Reifen auf trockenem Asphalt 0,8 | 0,5 · nass 0,5 | 0,3 · Stahl auf Eis 0,03 | 0,01. Vereinfachtes Modell, g = 10 N/kg.</p>
+</div>""",
+ "gegenkraft": """<div class="sim" data-sim="gegenkraft">
+ <div class="simh"><span class="tkn">Ausprobieren</span><b>Kraft und Gegenkraft</b></div>
+ <div class="simb"><button type="button" class="btn" data-g="km" aria-pressed="true">Zwei Kraftmesser</button><button type="button" class="btn ghost" data-g="buch" aria-pressed="false">Buch auf dem Tisch</button></div>
+ <svg viewBox="0 0 340 170" class="kwbox gkbild" aria-hidden="true"></svg>
+ <label data-teil="km">Deine Hand zieht an B: <b data-o="f">2</b> N<input type="range" min="0" max="5" step="0.5" value="2" data-i="f" aria-label="Zugkraft in Newton"></label>
+ <label data-teil="buch" hidden>Masse des Buches: <b data-o="mb">1</b> kg<input type="range" min="0.2" max="3" step="0.1" value="1" data-i="mb" aria-label="Masse des Buches in Kilogramm"></label>
+ <p class="simt" data-o="info"></p>
+ <p class="simt">Rahmen = der Körper, den du gerade betrachtest. Kräfte an verschiedenen Körpern werden nie zusammengezählt. g = 10 N/kg.</p>
+</div>""",
+ "kapillar": """<div class="sim" data-sim="kapillar">
+ <div class="simh"><span class="tkn">Ausprobieren</span><b>Wie hoch steigt das Wasser?</b></div>
+ <svg viewBox="0 0 320 230" class="kwbox kbild" aria-hidden="true"></svg>
+ <div class="phz"><span class="phw" data-o="h">28 mm</span><span class="simt" data-o="d">Röhrchen 1,0 mm weit</span></div>
+ <label>Innendurchmesser des Röhrchens: <b data-o="dv">1,0</b> mm<input type="range" min="0.5" max="4" step="0.1" value="1" aria-label="Innendurchmesser in Millimeter"></label>
+ <p class="simt" data-o="info"></p>
+ <p class="simt">Gerechnet mit h = 2 · σ : (ρ · g · r): Wasser σ = 0,07 N/m, ρ = 1000 kg/m³, g = 10 N/kg, sauberes Glas – ungefähre Werte.</p>
+</div>""",
  "kraefte": """<div class="sim" data-sim="kraefte">
  <div class="simh"><span class="tkn">Ausprobieren</span><b>Kräfte am Wagen</b></div>
  <svg viewBox="0 0 340 130" class="kwbox" aria-hidden="true"></svg>
@@ -91,6 +128,13 @@ CSS = """
 .gzahl p { margin: 0 0 6px; font-size: 17px; } .gzahl b { font-size: 20px; color: #3B4A2F; } .gzahl .gfg b { font-size: 28px; color: #B23A2E; }
 .dbars { display: grid; gap: 6px; } .dbar { display: grid; grid-template-columns: 96px 1fr; gap: 8px; align-items: center; font-size: 15px; }
 .dbar i { display: block; height: 18px; border-radius: 6px; background: #C9D3BC; min-width: 3px; transition: width .3s; } .dbar.an i { background: #2E7D8C; } .dbar.an { font-weight: 700; }
+.simgross { margin-left: auto; font: inherit; font-size: 15px; font-weight: 700; min-height: 40px; padding: 4px 14px; border-radius: 999px; border: 2px solid #2E7D8C; background: #fff; color: #2E7D8C; cursor: pointer; }
+.sim.sim-voll { position: fixed; inset: 0; z-index: 9998; overflow: auto; border: 0; border-radius: 0; margin: 0; align-content: start; font-size: 18px;
+  padding: max(12px, env(safe-area-inset-top)) max(16px, calc((100vw - 860px) / 2)) 28px; }
+.sim.sim-voll { display: block; } .sim.sim-voll > * + * { margin-top: 10px; }
+.sim.sim-voll svg { display: block; width: 100%; height: auto; max-height: 62vh; } .sim.sim-voll .gwrap { grid-template-columns: 170px 1fr; } .sim.sim-voll .gsvg { width: 170px; }
+body.sim-offen { overflow: hidden; }
+.sim [hidden] { display: none !important; }
 details.simd { border: 2px solid #2E7D8C; border-radius: 12px; background: #F3F8F9; margin: 10px 0; }
 details.simd > summary { cursor: pointer; font-weight: 700; color: #2E7D8C; font-size: 17px; min-height: 44px; padding: 10px 14px; }
 details.simd > .sim { border: 0; margin: 0 4px 6px; }
@@ -244,7 +288,127 @@ window.SIMINIT = window.SIMINIT || {};
     zeig();
   };
 
-  function start() { document.querySelectorAll(".sim[data-sim]").forEach(function (b) { if (!b.dataset.go && SIMINIT[b.dataset.sim]) { b.dataset.go = "1"; SIMINIT[b.dataset.sim](b); } }); }
+  SIMINIT.reibung = function (box) {
+    var iZ = box.querySelector('[data-i="fz"]'), iM = box.querySelector('[data-i="m"]'), bild = box.querySelector(".rbild"), dia = box.querySelector(".rdia");
+    var MU = { holz: [0.6, 0.5, "Holzkiste auf Holzboden"], gummi: [0.8, 0.5, "Gummi auf trockenem Asphalt"], nass: [0.5, 0.3, "Gummi auf nassem Asphalt"], eis: [0.03, 0.01, "Stahlkufe auf Eis"] };
+    var u = "holz", rutscht = false;
+    function zeig() {
+      var fz = +iZ.value, m = +iM.value, fn = m * 10, hmax = Math.round(MU[u][0] * fn * 100) / 100, gl = Math.round(MU[u][1] * fn * 100) / 100;
+      if (!rutscht && fz > hmax) rutscht = true;
+      if (rutscht && fz < gl) rutscht = false;
+      var fr = rutscht ? gl : fz, fres = rutscht ? fz - gl : 0;
+      q(box, "fz").textContent = tsd(fz) + " N"; q(box, "fzv").textContent = tsd(fz); q(box, "fr").textContent = f(Math.round(fr * 10) / 10) + " N";
+      q(box, "m").textContent = m; q(box, "fn").textContent = tsd(fn);
+      q(box, "art").textContent = rutscht ? "rutscht" : "haftet"; q(box, "art").className = "phk " + (rutscht ? "sinkt" : "");
+      var s = '<line x1="10" y1="86" x2="330" y2="86" stroke="#8A8F80" stroke-width="3"/>', x = rutscht ? 150 : 130;
+      for (var k = 14; k < 330; k += 14) s += '<line x1="' + k + '" y1="86" x2="' + (k - 6) + '" y2="94" stroke="#C9D3BC" stroke-width="1.5"/>';
+      s += '<rect x="' + (x - 34) + '" y="44" width="68" height="42" rx="3" fill="' + (u === "eis" ? "#9AA4AE" : "#C9A66B") + '" stroke="#1F2A1C" stroke-width="2"/>';
+      if (rutscht) for (var j = 0; j < 3; j++) s += '<line x1="' + (x - 58 - j * 10) + '" y1="' + (54 + j * 10) + '" x2="' + (x - 42 - j * 10) + '" y2="' + (54 + j * 10) + '" stroke="#5E6652" stroke-width="2"/>';
+      s += pfeil(x + 34, 64, x + 34 + fz * 0.38 + (fz ? 6 : 0), 64, "#7FA83A") + pfeil(x - 34, 82, x - 34 - fr * 0.38 - (fr ? 6 : 0), 82, "#8C3B2E");
+      if (fz) s += '<text x="' + (x + 40) + '" y="56" font-size="11" fill="#5A7A22">Zugkraft</text>';
+      if (fr) s += '<text x="' + (x - 40) + '" y="104" font-size="11" text-anchor="end" fill="#8C3B2E">Reibung</text>';
+      bild.innerHTML = s;
+      /* Diagramm: x = Zugkraft, y = Reibungskraft, beide 0 … 350 N */
+      var X = function (v) { return 40 + v / 350 * 285; }, Y = function (v) { return 150 - v / 350 * 130; }, d = "";
+      d += '<line x1="40" y1="150" x2="330" y2="150" stroke="#1F2A1C"/><line x1="40" y1="150" x2="40" y2="12" stroke="#1F2A1C"/>';
+      d += '<text x="330" y="177" font-size="11" text-anchor="end" fill="#1F2A1C">Zugkraft in N</text><text x="44" y="12" font-size="11" fill="#1F2A1C">Reibungskraft in N</text>';
+      [100, 200, 300].forEach(function (v) { d += '<text x="' + X(v) + '" y="163" font-size="9" text-anchor="middle" fill="#5E6652">' + v + '</text><text x="36" y="' + (Y(v) + 3) + '" font-size="9" text-anchor="end" fill="#5E6652">' + v + '</text>'; });
+      d += '<line x1="' + X(0) + '" y1="' + Y(0) + '" x2="' + X(hmax) + '" y2="' + Y(hmax) + '" stroke="#7FA83A" stroke-width="3"/>';
+      d += '<line x1="' + X(hmax) + '" y1="' + Y(hmax) + '" x2="' + X(hmax) + '" y2="' + Y(gl) + '" stroke="#8A8F80" stroke-width="2" stroke-dasharray="4 3"/>';
+      d += '<line x1="' + X(gl) + '" y1="' + Y(gl) + '" x2="' + X(350) + '" y2="' + Y(gl) + '" stroke="#D9772B" stroke-width="3"/>';
+      d += '<text x="' + (X(hmax / 2) - 4) + '" y="' + (Y(hmax / 2) - 6) + '" font-size="10" text-anchor="end" fill="#5A7A22">Haftreibung</text><text x="' + X(Math.min(340, hmax + 20)) + '" y="' + (Y(gl) - 5) + '" font-size="10" fill="#B85F1C">Gleitreibung</text>';
+      d += '<circle cx="' + X(fz) + '" cy="' + Y(fr) + '" r="6" fill="#B23A2E" stroke="#fff" stroke-width="2"/>';
+      dia.innerHTML = d;
+      var txt;
+      if (!rutscht) txt = fz === 0 ? "Zieh langsam stärker. " + MU[u][2] + ": Die Haftreibung hält bis höchstens " + tsd(hmax) + " N."
+        : "Die Kiste bleibt stehen. Die Haftreibung ist genau so groß wie deine Zugkraft (" + tsd(fz) + " N) – höchstens " + tsd(hmax) + " N.";
+      else if (Math.abs(fres) < 0.01) txt = "Sie rutscht gleichmäßig weiter: Zugkraft und Gleitreibung sind gleich groß, die resultierende Kraft ist null.";
+      else if (fz <= hmax) txt = "Sie rutscht weiter, obwohl du jetzt weniger ziehst als zum Losreißen nötig war: Die Gleitreibung (" + f(gl) + " N) ist kleiner als die größte Haftreibung (" + tsd(hmax) + " N).";
+      else txt = "Losgerutscht! Jetzt bremst nur die Gleitreibung mit " + f(gl) + " N. Übrig bleiben " + f(Math.round(fres * 10) / 10) + " N – die Kiste wird schneller (a = " + f(fres / m, 1) + " m/s²).";
+      q(box, "info").textContent = txt;
+    }
+    iZ.addEventListener("input", zeig);
+    iM.addEventListener("input", function () { rutscht = false; zeig(); });
+    box.addEventListener("click", function (ev) { var b = ev.target.closest("[data-u]"); if (!b) return; u = b.dataset.u; rutscht = false; iZ.value = 0; knopf(box, "data-u", u); zeig(); });
+    zeig();
+  };
+
+  SIMINIT.gegenkraft = function (box) {
+    var svg = box.querySelector(".gkbild"), iF = box.querySelector('[data-i="f"]'), iB = box.querySelector('[data-i="mb"]'), art = "km";
+    function km(x, y, wert, farbe, name) {
+      var s = '<rect x="' + x + '" y="' + y + '" width="96" height="34" rx="6" fill="#fff" stroke="' + farbe + '" stroke-width="3"/>' +
+        '<rect x="' + (x + 8) + '" y="' + (y + 9) + '" width="80" height="14" fill="#DFE5D0" stroke="#5E6652"/>';
+      for (var k = 0; k <= 5; k++) s += '<line x1="' + (x + 8 + k * 16) + '" y1="' + (y + 23) + '" x2="' + (x + 8 + k * 16) + '" y2="' + (y + 28) + '" stroke="#5E6652"/>';
+      return s + '<line x1="' + (x + 8 + wert * 16) + '" y1="' + (y + 9) + '" x2="' + (x + 8 + wert * 16) + '" y2="' + (y + 23) + '" stroke="#B23A2E" stroke-width="3"/>' +
+        '<text x="' + (x + 48) + '" y="' + (y - 6) + '" font-size="12" font-weight="700" text-anchor="middle" fill="' + farbe + '">' + name + '</text>' +
+        '<text x="' + (x + 48) + '" y="' + (y + 52) + '" font-size="15" font-weight="700" text-anchor="middle" fill="#B23A2E">' + f(wert) + ' N</text>';
+    }
+    function zeig() {
+      box.querySelectorAll("[data-teil]").forEach(function (l) { l.hidden = l.dataset.teil !== art; });
+      var s = "", txt;
+      if (art === "km") {
+        var F = +iF.value; q(box, "f").textContent = f(F);
+        s += '<rect x="4" y="30" width="12" height="70" fill="#8A8F80"/><line x1="16" y1="65" x2="34" y2="65" stroke="#1F2A1C" stroke-width="3"/>';
+        s += km(34, 48, F, "#7FA83A", "Kraftmesser A") + km(170, 48, F, "#D9772B", "Kraftmesser B");
+        s += '<path d="M130 58 a8 8 0 0 1 0 16" fill="none" stroke="#1F2A1C" stroke-width="3"/><path d="M178 58 a8 8 0 0 0 0 16" fill="none" stroke="#1F2A1C" stroke-width="3"/>';
+        s += '<line x1="266" y1="65" x2="290" y2="65" stroke="#1F2A1C" stroke-width="3"/><circle cx="302" cy="65" r="12" fill="#E2C4A2" stroke="#1F2A1C" stroke-width="2"/><text x="302" y="96" font-size="10" text-anchor="middle" fill="#5E6652">Hand</text>';
+        var L = F * 16;
+        s += pfeil(82, 128, 82 + L + (F ? 4 : 0), 128, "#7FA83A") + '<text x="82" y="152" font-size="11" fill="#5A7A22">B zieht an A: ' + f(F) + ' N</text>';
+        s += pfeil(218, 128, 218 - L - (F ? 4 : 0), 128, "#D9772B") + '<text x="330" y="152" font-size="11" text-anchor="end" fill="#B85F1C">A zieht an B: ' + f(F) + ' N</text>';
+        txt = F === 0 ? "Zieh an B – was zeigt A?" : "Beide Kraftmesser zeigen " + f(F) + " N: gleich groß, entgegengesetzt, an zwei verschiedenen Körpern. Zusammen sind das NICHT " + f(2 * F) + " N.";
+      } else {
+        var m = Math.round(+iB.value * 10) / 10, G = m * 10, l = Math.min(70, G * 2.3 + 8); q(box, "mb").textContent = f(m);
+        s += '<rect x="60" y="104" width="220" height="12" fill="#CEB080" stroke="#1F2A1C" stroke-width="2"/><line x1="80" y1="116" x2="80" y2="166" stroke="#5E6652" stroke-width="5"/><line x1="260" y1="116" x2="260" y2="166" stroke="#5E6652" stroke-width="5"/>';
+        var hb = 8 + m * 6;
+        s += '<rect x="120" y="' + (104 - hb) + '" width="90" height="' + hb + '" rx="3" fill="#C49678" stroke="#1F2A1C" stroke-width="2"/>';
+        s += '<rect x="112" y="' + (96 - hb) + '" width="106" height="' + (hb + 16) + '" rx="8" fill="none" stroke="#8C3B2E" stroke-width="2.5" stroke-dasharray="5 3"/><text x="108" y="' + (92 - hb) + '" font-size="10" text-anchor="end" fill="#8C3B2E">Rahmen: Buch</text>';
+        var cy = 104 - hb / 2;
+        s += pfeil(150, cy, 150, cy - l, "#2E7D8C") + '<text x="146" y="' + (cy - l + 4) + '" font-size="11" text-anchor="end" fill="#2E7D8C">Stützkraft ' + f(G) + ' N</text>';
+        s += pfeil(180, cy, 180, cy + l, "#B23A2E") + '<text x="186" y="' + Math.min(160, cy + l) + '" font-size="11" fill="#B23A2E">Gewichtskraft ' + f(G) + ' N</text>';
+        txt = "Beide Kräfte wirken auf das BUCH: Kräftegleichgewicht, Summe null. Die Gegenkraft zur Gewichtskraft ist eine andere: Das Buch zieht die Erde mit " + f(G) + " N an.";
+      }
+      svg.innerHTML = s; q(box, "info").textContent = txt;
+    }
+    iF.addEventListener("input", zeig); iB.addEventListener("input", zeig);
+    box.addEventListener("click", function (ev) { var b = ev.target.closest("[data-g]"); if (!b) return; art = b.dataset.g; knopf(box, "data-g", art); zeig(); });
+    zeig();
+  };
+
+  SIMINIT.kapillar = function (box) {
+    var svg = box.querySelector(".kbild"), inp = box.querySelector("input");
+    function zeig() {
+      var dmm = Math.round(+inp.value * 10) / 10, h = 2 * 0.07 / (1000 * 10 * dmm / 2000) * 1000;   /* h in mm */
+      var sc = 2.4, wy = 170, w = Math.max(4, dmm * 9), x = 160 - w / 2, top = Math.max(14, wy - h * sc), s = "";
+      s += '<rect x="20" y="130" width="280" height="90" fill="#DEEAEE" stroke="#5E6652" stroke-width="2"/><rect x="22" y="' + wy + '" width="276" height="48" fill="#A7CDDE"/><line x1="22" y1="' + wy + '" x2="298" y2="' + wy + '" stroke="#2E7D8C" stroke-width="2"/>';
+      s += '<rect x="' + (x - 3) + '" y="10" width="' + (w + 6) + '" height="200" fill="#EEF3F8" stroke="#5E6652" stroke-width="2"/>';
+      s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (210 - top) + '" fill="#A7CDDE"/>';
+      s += '<line x1="' + (x + w + 8) + '" y1="' + top + '" x2="' + (x + w + 40) + '" y2="' + top + '" stroke="#7FA83A" stroke-width="2"/>';
+      s += pfeil(x + w + 30, wy, x + w + 30, top + 2, "#7FA83A", 3) + '<text x="' + (x + w + 44) + '" y="' + ((wy + top) / 2 + 4) + '" font-size="13" font-weight="700" fill="#5A7A22">' + f(Math.round(h)) + ' mm</text>';
+      s += '<text x="26" y="' + (wy - 6) + '" font-size="11" fill="#2E7D8C">Wasserspiegel</text>';
+      svg.innerHTML = s;
+      q(box, "h").textContent = "ca. " + f(Math.round(h)) + " mm"; q(box, "d").textContent = "Röhrchen " + f(dmm, 1) + " mm weit"; q(box, "dv").textContent = f(dmm, 1);
+      q(box, "info").textContent = dmm <= 1 ? "Je enger das Röhrchen, desto höher steigt das Wasser: Adhäsion an der Wand zieht, Kohäsion zieht das Wasser darunter mit. Halber Durchmesser – doppelte Höhe."
+        : "Weiteres Röhrchen – das Wasser steigt weniger hoch. Selbst im engsten Röhrchen sind es nur Zentimeter: Für einen 30 m hohen Baum reicht Kapillarwirkung allein nicht.";
+    }
+    inp.addEventListener("input", zeig); zeig();
+  };
+
+  function gross(b) {
+    var k = b.querySelector(".simh"); if (!k || k.querySelector(".simgross")) return;
+    var btn = document.createElement("button"); btn.type = "button"; btn.className = "simgross"; btn.textContent = "Groß"; btn.setAttribute("aria-label", "Grafik groß anzeigen");
+    var platz = null;   /* Vollbild: die Simulation wandert kurz an das Ende von <body>, damit kein Elternelement (transform, overflow) sie einschränkt */
+    btn.addEventListener("click", function () {
+      var an = !b.classList.contains("sim-voll");
+      document.querySelectorAll(".sim.sim-voll .simgross").forEach(function (o) { if (o !== btn) o.click(); });
+      if (an) { platz = document.createComment("sim"); b.parentNode.insertBefore(platz, b); document.body.appendChild(b); }
+      else if (platz) { platz.parentNode.insertBefore(b, platz); platz.remove(); platz = null; }
+      b.classList.toggle("sim-voll", an); document.body.classList.toggle("sim-offen", an);
+      btn.textContent = an ? "Schließen" : "Groß"; if (an) b.scrollTop = 0; else b.scrollIntoView({ block: "center" });
+    });
+    k.appendChild(btn);
+  }
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") { var o = document.querySelector(".sim.sim-voll .simgross"); if (o) o.click(); } });
+  function start() { document.querySelectorAll(".sim[data-sim]").forEach(function (b) { if (!b.dataset.go && SIMINIT[b.dataset.sim]) { b.dataset.go = "1"; gross(b); SIMINIT[b.dataset.sim](b); } }); }
   window.simStart = start;
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();
@@ -257,6 +421,6 @@ def extern_html(key, md, esc):
     return (f'<div class="simlink"><div class="simh"><span class="tkn">Simulation</span><b>{esc(p["titel"])}</b></div><p class="simt">{md(p["text"])}</p>'
             f'<a class="btn" href="{esc(p["url"])}" target="_blank" rel="noopener">Simulation öffnen</a><p class="simt">{esc(LIZENZ)}</p></div>')
 
-# Gruppenkarten im Arbeitsblatt (Aufgabe 3): eigene Simulationen und PhET-Links je Gruppe (Gruppe 5 Kapillarwirkung, 7 Gegenkraft: nichts Passendes geprüft)
-GRUPPE_SIM = {1: ["kraefte"], 2: ["gewicht"], 3: ["auftrieb"], 6: ["druck"]}
+# Gruppenkarten im Arbeitsblatt (Aufgabe 3): eigene Simulationen (jede Gruppe eine) und PhET-Links (Gruppe 5 und 7: kein passendes PhET geprüft)
+GRUPPE_SIM = {1: ["kraefte"], 2: ["gewicht"], 3: ["auftrieb"], 4: ["reibung"], 5: ["kapillar"], 6: ["druck"], 7: ["gegenkraft"]}
 GRUPPE_PHET = {1: ["fmb"], 2: ["federn"], 3: ["auftrieb"], 4: ["fmb_reibung"], 6: ["druck"]}

@@ -124,7 +124,7 @@ EINSTIEG = [
                      "**Wozu?** Beim Marsch spürst du die Gewichtskraft deines Rucksacks. Beim Sprint brauchst du Haftreibung unter den Schuhen, beim Schwimmen trägt dich der Auftrieb, "
                      "im Tiefschnee entscheidet der Druck unter der Sohle, ob du einsinkst. Und jedes Fahrzeug bremst und lenkt mit Kräften.",
                      "**Das kannst du nachher:** zu jedem der sieben Themen in einem Satz sagen, was passiert, was man misst und in welcher Einheit.",
-                     "**Selbst ausprobieren:** In den Teilen 1, 3, 4 und 7 stehen kleine Simulationen. Stell etwas ein und schau, was passiert – das geht schneller als jede Erklärung."]),
+                     "**Selbst ausprobieren:** In Teil 1 und in den Teilen 3 bis 8 steht je eine kleine Simulation. Stell etwas ein und schau, was passiert – das geht schneller als jede Erklärung. Mit »Groß« siehst du sie bildschirmfüllend, Bilder machst du mit einem Tipp groß."]),
              ("hint", "Diese Einheit ist ein Projekt: Sieben Gruppen untersuchen je ein Thema und erklären es den anderen. Du brauchst also auch die Themen der anderen Gruppen.")]},
  {"id": "s0b", "title": "Mythos-Check: »Wo etwas fährt, zieht eine Kraft«", "pill": "Buch S. 45",
   "blocks": [("tiles", [("Was viele meinen", ["Wenn sich etwas bewegt, muss ständig eine Kraft wirken. Bleibt die Kraft weg, bleibt der Körper sofort stehen."]),
@@ -212,6 +212,7 @@ PARTS = [
                       "Reibung hängt von **Material, Oberflächenzustand und Normalkraft** ab. Auf waagrechter Unterlage ohne weitere senkrechte Kraft ist die Normalkraft betragsmäßig gleich der Gewichtskraft.",
                       "Reibung entsteht nicht nur durch sichtbare Rauigkeit, sondern auch durch Wechselwirkungen und Verformungen an den Kontaktstellen."]),
               ("merke", "Reibung wirkt gegen das relative Gleiten an der Kontaktstelle – nicht automatisch gegen die Bewegung über den Boden. Beim Gehen drückt der Boden deinen Fuß nach vorne."),
+              ("sim", "reibung"),
               ("extern", "fmb_reibung"),
               ("reveal", I.STOPPFRAGEN[4])]}]),
 
@@ -223,6 +224,7 @@ PARTS = [
                       "Steigt ein feuchter Rand **über** die äußere Wasseroberfläche, ohne dass jemand nachgießt, zeigt das Kapillarwirkung im porösen Material. Ein schmalerer Streifen hat aber nicht automatisch engere Poren.",
                       "Die **Oberflächenspannung** beschreibt die Tendenz einer Flüssigkeitsoberfläche, ihre Fläche zu verkleinern. Eine vorsichtig aufgelegte Büroklammer kann dadurch oben bleiben, obwohl Metall dichter als Wasser ist – das ist etwas anderes als ein Schiff, das durch Auftrieb getragen wird.",
                       "Bei Pflanzen wirken Wasserpotentialunterschiede, Kohäsion und Verdunstung an den Blättern zusammen. Kapillarwirkung allein erklärt den Transport in einen hohen Baum **nicht**."]),
+              ("sim", "kapillar"),
               ("hint", "Der »Spülmittelfisch« schwimmt wegen Unterschieden der Oberflächenspannung los, nicht wegen Rückstoß. Als Nachweis des Raketenprinzips taugt er nicht."),
               ("reveal", [("Warum reicht Kapillarität für einen hohen Baum nicht?",
                            "Die Verdunstung an den Blättern erzeugt eine Zugspannung, und die Kohäsion überträgt sie im Holz nach unten. Die Steighöhe einer einzelnen Kapillare ist viel kleiner als ein Baum.")])]}]),
@@ -249,6 +251,7 @@ PARTS = [
                       "Zwei ineinander gehängte Federkraftmesser zeigen bei ruhigem Ziehen in einer Linie annähernd **denselben Betrag**. Aus zwei Anzeigen von 2 N werden nicht 4 N.",
                       "Ein Buch auf dem Tisch ist im **Gleichgewicht**: Gewichtskraft und Stützkraft sind gleich groß und entgegengesetzt – beide am **Buch**. Die Gegenkraft zur Gewichtskraft auf das Buch ist die Anziehung des Buches auf die Erde."]),
               ("merke", "Wechselwirkungspaar: zwei Körper, zwei Kräfte. Kräftegleichgewicht: ein Körper, mehrere Kräfte, Summe null."),
+              ("sim", "gegenkraft"),
               ("video", 3),
               ("reveal", I.STOPPFRAGEN[6])]},
   ("jetzt", "Jetzt: Aufgabe 8", "aufgaben.html#card_a3")]),

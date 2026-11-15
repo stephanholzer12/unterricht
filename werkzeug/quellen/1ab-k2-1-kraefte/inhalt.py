@@ -245,7 +245,7 @@ T = [
   "tip": ["Kraft und Gegenkraft", "theorie.html#gegenkraft"]},
 
  # --------------------------------------------------------------- Zusatz · Für Schnelle und Neugierige
- {"id": "z1", "nr": 9, "title": "Drei Behauptungen prüfen", "src": "Buch S. 52–61", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+ {"id": "z1", "sim": ["reibung", "gegenkraft"], "nr": 9, "title": "Drei Behauptungen prüfen", "src": "Buch S. 52–61", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
   "q": "Entscheide bei jeder Behauptung, ob sie stimmt. d) Begründe die Behauptung, die dir am schwersten gefallen ist, in einem Satz.",
   "hint": "Achte bei c) darauf, auf welchen Körper die beiden Kräfte wirken.",
   "type": "multi",
