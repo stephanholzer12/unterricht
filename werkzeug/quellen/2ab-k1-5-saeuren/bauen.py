@@ -18,6 +18,18 @@ import sims as SIMS
 STAND = I.STAND
 
 DST = os.path.join(ROOT, I.ORDNER) + "/"
+
+
+def bild_mass(src):
+    """Breite und Höhe aus der viewBox der eigenen SVG – damit reserviert der Browser den Platz, nichts verrutscht beim Laden."""
+    try:
+        t = open(os.path.join(DST, src), encoding="utf-8").read(600)
+        m = re.search(r'viewBox="0 0 ([\d.]+) ([\d.]+)"', t)
+        return (round(float(m.group(1))), round(float(m.group(2)))) if m else None
+    except OSError:
+        return None
+
+
 os.makedirs(DST, exist_ok=True)
 esc = html.escape
 b64 = lambda p: base64.b64encode(open(p, "rb").read()).decode()
@@ -132,7 +144,7 @@ rep("function renderTask(t) {", """function karteEl(k) {
   box.append(el("div", { class: "tkh" }, el("span", { class: "tkn", text: "Theorie-Karte" }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
   if (K.bild) {
     const pic = el("picture", { class: "bildzoom" });
-    pic.append(el("img", { class: "tkimg", src: K.bild, alt: K.alt, loading: "lazy" }));
+    pic.append(el("img", Object.assign({ class: "tkimg", src: K.bild, alt: K.alt, loading: "lazy" }, IMGMASS[K.bild] ? { width: IMGMASS[K.bild][0], height: IMGMASS[K.bild][1] } : {})));
     box.append(pic, el("p", { class: "zoomhint", text: "Bild antippen – dann wird es groß." }));
   }
   K.satz.forEach(x => { const p = el("p"); p.innerHTML = fett(x); box.append(p); });
@@ -201,7 +213,7 @@ function anleitungEl() {
   dd.append(zeile("Gruppen und Rollen:", A_.gruppen), zeile("Vorbereitung:", A_.vorbereitung));
   dd.append(el("h3", { text: "Durchführung" }));
   const ol = el("ol", { class: "steps" }); A_.schritte.forEach(x => ol.append(html("li", "", x))); dd.append(ol);
-  if (A_.bild) dd.append(el("picture", { class: "bildzoom" }, el("img", { class: "tkimg", src: A_.bild, alt: A_.alt, loading: "lazy" })));
+  if (A_.bild) dd.append(el("picture", { class: "bildzoom" }, el("img", Object.assign({ class: "tkimg", src: A_.bild, alt: A_.alt, loading: "lazy" }, IMGMASS[A_.bild] ? { width: IMGMASS[A_.bild][0], height: IMGMASS[A_.bild][1] } : {}))));
   dd.append(zeile("Messwerte:", A_.messwerte), zeile("Entsorgung und Reinigung:", A_.entsorgung), zeile("Abgabe:", A_.abgabe), zeile("Auswertung:", A_.auswertung));
   return dd;
 }
@@ -237,6 +249,7 @@ s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K1.5", THEMA = "Saeuren";\n' % I.K
      + "const VSID = " + json.dumps(list(I.VS)[0]) + ";\n"
      + "const ANL = " + json.dumps(dict(I.ANLEITUNG, bild="img/versuch.svg", alt=TD.KARTEN["k5"]["alt"]), ensure_ascii=False) + ";\n"
      + "const KARTEN = " + json.dumps(TD.karte_html_daten(), ensure_ascii=False) + ";\n"
+     + "const IMGMASS = " + json.dumps({"img/" + f: bild_mass("img/" + f) for f in sorted(os.listdir(DST + "img")) if f.endswith(".svg")}) + ";\n"
      + "const SIMTITEL = " + json.dumps(SIMS.TITEL, ensure_ascii=False) + ", SIMZEILE = " + json.dumps(SIMS.ZEILE, ensure_ascii=False) + ", SIMHTML = " + json.dumps(SIMS.HTML, ensure_ascii=False).replace("</", "<\\/") + ";\n"
      + "const T = " + json.dumps(TJ, ensure_ascii=False, indent=1) + ";" + s[j:])
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
@@ -334,6 +347,8 @@ jetzt = lambda txt, href: f'<a class="jetzt" href="{href}">{esc(txt)} →</a>'
 
 def bild_tag(src, alt, cls=""):
     k = f' class="{cls}"' if cls else ""
+    wh = bild_mass(src)
+    k += f' width="{wh[0]}" height="{wh[1]}"' if wh else ""
     return (f'<picture class="bildzoom"><img{k} src="{src}" alt="{esc(alt)}" loading="lazy"></picture>'
             '<p class="zoomhint">Bild antippen – dann wird es groß.</p>')
 
@@ -404,7 +419,7 @@ PARTS.append(("kurz", "Zum Schluss", "Kurz & knapp", [slide("Das Wichtigste in 5
                                                       slide("Kann ich das?", hint("Tippe ehrlich an – bei »noch nicht« den passenden Teil noch einmal lesen.") + CHECK)]))
 PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [render(x) for x in TD.SCHNELLE]))
 
-toc = "".join(f'<a href="#{p[0]}">{TD.TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="aufgaben.html">Arbeitsblatt</a>'
+toc = "".join(f'<a href="#{p[0]}">{TD.TOCLAB[p[0]]}</a>' for p in PARTS)
 body = "".join(f'<section class="part" id="{p[0]}"><div class="band"><div class="eyebrow">{esc(p[1])}</div><h2>{esc(p[2])}</h2></div>{"".join(p[3])}</section>' for p in PARTS)
 bt = open(os.path.join(WZ, "vorlagen", "build_theorie.py"), encoding="utf-8").read()
 tcss = bt[bt.index("<style>"):bt.index("</style>") + 8].replace("{{", "{").replace("}}", "}")
@@ -423,7 +438,17 @@ details.reveal p { margin: 8px 0 0; }
 .chip[aria-pressed="true"][data-v="noch nicht"] { background: #F6E3DF; border-color: #8C3B2E; }
 .chip:focus-visible { outline: 3px solid #2E7D8C; outline-offset: 2px; }
 .jetzt { display: block; text-align: center; background: #7FA83A; color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; border-radius: 12px; padding: 12px 16px; }
-.slide[id], .part { scroll-margin-top: 56px; }
+.slide[id], .part { scroll-margin-top: 64px; }
+/* Kapitel-Menü */
+nav.toc div.tocbar { display: flex; align-items: center; gap: 8px; overflow: visible; padding: 8px 12px; }
+nav.toc .tocbtn { font: inherit; font-size: 16px; font-weight: 700; color: #3B4A2F; background: #fff; border: 0; border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer; white-space: nowrap; }
+nav.toc .toccur { flex: 1; min-width: 0; color: #fff; font-weight: 700; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+nav.toc a.tocab { flex: 0 0 auto; background: #7FA83A; border-color: #7FA83A; }
+nav.toc div.tocpanel { display: flex; flex-wrap: wrap; gap: 6px; overflow: visible; padding: 2px 12px 12px; }
+nav.toc div.tocpanel[hidden] { display: none; }
+nav.toc div.tocpanel a { font-size: 16px; padding: 8px 14px; }
+nav.toc div.tocpanel a.aktiv { background: #fff; color: #3B4A2F; }
+nav.toc:not(.mitmenue) .tocbtn, nav.toc:not(.mitmenue) .toccur { display: none; }   /* ohne JavaScript: alle Kapitel umbrechend sichtbar */
 .fig { margin: 0; display: grid; gap: 6px; justify-items: center; }
 .fig img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid #D3DCC2; background: #fff; }
 .fig figcaption { font-size: 15px; color: #5E6652; text-align: center; }
@@ -468,7 +493,7 @@ page = f"""<!doctype html>
     <img class="smiley" alt="" src="data:image/png;base64,{SMILEY}">
   </div>
 </header>
-<nav class="toc" aria-label="Inhalt"><div>{toc}</div></nav>
+<nav class="toc" aria-label="Inhalt"><div class="tocbar"><button type="button" class="tocbtn" aria-expanded="false" aria-controls="tocpanel">☰ Kapitel</button><span class="toccur" aria-live="polite">Start</span><a class="tocab" href="aufgaben.html">Arbeitsblatt</a></div><div class="tocpanel" id="tocpanel">{toc}</div></nav>
 <main>
 <section class="part" id="nachschlagen">
   <div class="band"><div class="eyebrow">So arbeitest du</div><h2>Diese Seite ist dein Nachschlagewerk</h2></div>
@@ -498,6 +523,31 @@ page = f"""<!doctype html>
     try {{ localStorage.setItem(KEY, JSON.stringify(S)); }} catch (e) {{}}
   }}); }});
   paint();
+}})();
+/* Kapitel-Menü statt Wischleiste (Stephan, 15.11.2026): alle Kapitel auf einen Blick, aktuelles Kapitel oben angezeigt */
+(function () {{
+  var nav = document.querySelector("nav.toc"), btn = nav.querySelector(".tocbtn"), panel = nav.querySelector(".tocpanel"), cur = nav.querySelector(".toccur");
+  nav.classList.add("mitmenue"); panel.hidden = true;
+  function zu() {{ panel.hidden = true; btn.setAttribute("aria-expanded", "false"); btn.textContent = "☰ Kapitel"; }}
+  btn.addEventListener("click", function () {{ var auf = panel.hidden; panel.hidden = !auf; btn.setAttribute("aria-expanded", String(auf)); btn.textContent = auf ? "✕ Schließen" : "☰ Kapitel"; }});
+  panel.addEventListener("click", function (ev) {{
+    var a = ev.target.closest("a"); if (!a) return; zu();
+    var h = a.getAttribute("href"); if (h.charAt(0) !== "#") return;
+    var z = document.getElementById(h.slice(1)); if (!z) return;
+    ev.preventDefault(); try {{ history.replaceState(null, "", h); }} catch (e) {{}}
+    var hin = function () {{ window.scrollTo({{ top: z.getBoundingClientRect().top + window.scrollY - nav.getBoundingClientRect().bottom - 8, behavior: "instant" }}); }};
+    hin(); setTimeout(hin, 350); setTimeout(hin, 1000);   /* nachladende Bilder verschieben sonst das Ziel */
+  }});
+  document.addEventListener("keydown", function (ev) {{ if (ev.key === "Escape") zu(); }});
+  var links = [].slice.call(panel.querySelectorAll('a[href^="#"]'));
+  var ziele = links.map(function (a) {{ return document.getElementById(a.getAttribute("href").slice(1)); }});
+  function markiere() {{
+    var y = nav.getBoundingClientRect().bottom + 24, best = 0;
+    ziele.forEach(function (z, i) {{ if (z && z.getBoundingClientRect().top <= y) best = i; }});
+    links.forEach(function (a, i) {{ a.classList.toggle("aktiv", i === best); }});
+    cur.textContent = links[best] ? links[best].textContent : "";
+  }}
+  window.addEventListener("scroll", markiere, {{ passive: true }}); window.addEventListener("resize", markiere); markiere();
 }})();
 </script>
 </body>
