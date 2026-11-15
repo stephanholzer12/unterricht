@@ -241,6 +241,7 @@ FOLGE_CSS = """<style>
 .fp-pill.m-VERSUCH { background: #8C3B2E; border-color: #8C3B2E; color: #fff; }
 .fp-pill.m-BESPRECHEN, .fp-pill.m-PARTNERCHECK { background: #3B4A2F; color: #fff; }
 .fp-pill.m-SELBSTSTUDIUM { background: #E8DDBB; border-color: #E8DDBB; color: #6B4F00; }
+.fp-pill.m-GRUPPENARBEIT, .fp-pill.m-PRÄSENTATION { background: #B5541F; border-color: #B5541F; color: #fff; }
 .fp-pfeil { font-style: normal; color: #5E6652; font-size: 15px; }
 </style>"""
 

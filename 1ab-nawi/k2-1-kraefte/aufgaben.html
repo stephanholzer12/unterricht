@@ -166,6 +166,36 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .gkhint { background: #E8F1F3; border: 2px solid #2E7D8C; border-radius: 12px; padding: 10px 14px; font-size: 17px; margin: 10px 0; }
 .stbox { display: grid; gap: 8px; margin-top: 10px; }
 .vid { display: grid; gap: 6px; } .vid .btn { justify-self: start; } .vid ul { margin: 0; padding-left: 22px; }
+.grpbox { background: #fff; border: 2px solid #D3DCC2; border-radius: 14px; padding: 10px 14px; margin: 14px 0 6px; }
+.grpbox .grp { margin-top: 0; color: #3B4A2F; }
+.ablaufk { margin: 6px 0 4px; font-size: 15px; color: #5E6652; }
+ol.ablauf { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 16px; line-height: 1.35; }
+ol.ablauf li.gem { font-weight: 700; color: #3B4A2F; }
+ol.ablauf a { color: #2E7D8C; font-weight: 700; }
+.abm { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; border-radius: 999px; padding: 1px 8px; margin-right: 6px; color: #fff; background: #5E6652; vertical-align: 1px; }
+.abm.m-DEMO { background: #2E7D8C; } .abm.m-VERSUCH { background: #8C3B2E; } .abm.m-BESPRECHEN, .abm.m-PARTNERCHECK { background: #3B4A2F; }
+.abm.m-GRUPPENARBEIT, .abm.m-PRÄSENTATION { background: #B5541F; }
+.abm.m-SELBSTSTUDIUM { background: #E8DDBB; color: #6B4F00; } .abm.m-ABGABE { background: #7FA83A; }
+.phbalken { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: 14px 0; padding: 10px 14px; border-radius: 12px; border-left: 8px solid #3B4A2F; background: #EEF1E6; font-size: 17px; line-height: 1.4; font-weight: 600; color: #1F2A1C; }
+.phbalken .phm { font-size: 12.5px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 8px; }
+.phbalken.m-DEMO { border-color: #2E7D8C; background: #E6F1F3; } .phbalken.m-DEMO .phm { background: #2E7D8C; }
+.phbalken.m-VERSUCH { border-color: #8C3B2E; background: #F6E9E6; } .phbalken.m-VERSUCH .phm { background: #8C3B2E; }
+.phbalken.m-GRUPPENARBEIT, .phbalken.m-PRÄSENTATION { border-color: #B5541F; background: #F8ECE2; } .phbalken.m-GRUPPENARBEIT .phm, .phbalken.m-PRÄSENTATION .phm { background: #B5541F; }
+.phbalken.m-SELBSTSTUDIUM { border-color: #B8962E; background: #F7F1DE; } .phbalken.m-SELBSTSTUDIUM .phm { background: #8A6400; }
+.gesichert { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin: 6px 0 10px; padding: 6px 10px; border-radius: 10px; background: #EEF1E6; font-size: 15.5px; font-weight: 600; color: #3B4A2F; }
+.gesichert .phm { font-size: 12px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 7px; }
+.phabcd { margin-left: auto; min-height: 44px; font: inherit; font-size: 15px; font-weight: 700; border-radius: 999px; border: 2px solid #2E7D8C; background: #fff; color: #2E7D8C; padding: 4px 14px; cursor: pointer; }
+.abcdbtn { margin-top: 10px; width: 100%; min-height: 48px; font: inherit; font-weight: 700; font-size: 16px; border-radius: 12px; border: 2px solid #3B4A2F; background: #fff; color: #3B4A2F; cursor: pointer; }
+#abcd { position: fixed; inset: 0; z-index: 200; background: #11150F; display: flex; flex-direction: column; padding: 12px; gap: 10px; }
+#abcd[hidden] { display: none; }
+.abcd-tipp { color: #DDE3D2; margin: 0; text-align: center; font-size: 16px; }
+.abcd-wahl { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.abcd-wahl[hidden] { display: none; }
+.abcd-k, .abcd-gross { border: 0; border-radius: 18px; color: #fff; font: 800 18vmin/1 "Source Sans 3", system-ui, sans-serif; cursor: pointer; }
+.abcd-gross { flex: 1; font-size: 60vmin; }
+.abcd-gross[hidden] { display: none; }
+.abcd-A { background: #C0392B; } .abcd-B { background: #2A5C8C; } .abcd-C { background: #3E8E41; } .abcd-D { background: #D99A00; }
+.abcd-zu { min-height: 52px; font: inherit; font-weight: 700; font-size: 18px; border-radius: 12px; border: 0; background: #fff; color: #3B4A2F; }
 .fb a { color: var(--teal); font-weight: 700; }
 .sol { margin-top: 10px; border: 2px dashed var(--teal); border-radius: 10px; padding: 10px 12px; background: #EEF6F7; font-size: 16px; }
 .sol p { margin: 4px 0; } .solh { font-weight: 700; color: var(--teal); margin-top: 6px; }
@@ -179,7 +209,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
 <!-- ks-kopf:start --><link rel="stylesheet" href="../../gemeinsam/kadetten-layout-v2.css"><!-- ks-kopf:end -->
 </head>
 <body class="ks-materialseite">
-<!-- ks-navigation:start --><nav class="ks-topnav" aria-label="Zur eigenen Klasse"><a href="../index.html">← NAWI 1AB · Start</a><span>Arbeitsblatt</span></nav><nav class="ks-materialnav" aria-label="Material dieser Einheit"><a href="theorie.html">Theorie</a><a href="aufgaben.html" aria-current="page">Arbeitsblatt</a><a href="quiz.html">Quiz</a><a class="ks-zur-abgabe" href="#abgabe">Zur PDF-Abgabe</a></nav><!-- ks-navigation:end -->
+<!-- ks-navigation:start --><nav class="ks-topnav" aria-label="Zur eigenen Klasse"><a href="../index.html">← NAWI 1AB · Start</a><span>Arbeitsblatt</span></nav><nav class="ks-materialnav" aria-label="Material dieser Einheit"><a href="theorie.html">Theorie</a><a href="aufgaben.html" aria-current="page">Arbeitsblatt</a><a href="quiz.html">Quiz</a><a href="check.html">Mitarbeits-Check</a><a class="ks-zur-abgabe" href="#abgabe">Zur PDF-Abgabe</a></nav><!-- ks-navigation:end -->
 
 <header class="top">
   <img class="camo" alt="" src="data:image/png;base64,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">
@@ -213,7 +243,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <li><b>Ein Arbeitsblatt für alles.</b> Aufgaben, Gruppenprojekt und Versuch stehen hier – du brauchst keine andere Seite.
           Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
       <li><b>Stunde 1:</b> Aufgaben 1 und 2 mit der ganzen Klasse · <b>Stunden 2–5:</b> Aufgaben 3 bis 7 in deiner Gruppe ·
-          <b>Stunde 6:</b> Aufgabe 8 allein. Zusatz für Schnelle: 9, 10, 11, 12. Es gibt <b>keine Hausübung</b>.</li>
+          <b>Stunde 6:</b> Aufgabe 8 allein. Zusatz für Schnelle: 9, 10, 11, 12, 13. Es gibt <b>keine Hausübung</b>.</li>
       <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein), <b>GRUPPENARBEIT</b>, <b>VERSUCH</b>.
           Tipps kosten keine Punkte.</li>
       <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 6 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).
@@ -251,7 +281,17 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
 .fp-kompakt ol.fp-liste li { font-size: 16px; padding: 6px 8px; border-radius: 8px; background: #fff; border: 1px solid #D3DCC2; }
 .fp-kompakt ol.fp-liste li.fp-jetzt { border: 2px solid #7FA83A; background: #F4F7EC; font-weight: 700; }
 .fp-kompakt .fp-tipp { font-size: 16px; color: #5E6652; }
-</style><section class="fahrplan fp-kompakt fp-st"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">6 Stunden · Welche Stunde heute dran ist, sagt dir Prof. HOLZER.</p><div class="fp-wahl" role="group" aria-label="Welche Stunde ist heute?">Heute ist Stunde:<button type="button" data-n="1" aria-pressed="false">1</button><button type="button" data-n="2" aria-pressed="false">2</button><button type="button" data-n="3" aria-pressed="false">3</button><button type="button" data-n="4" aria-pressed="false">4</button><button type="button" data-n="5" aria-pressed="false">5</button><button type="button" data-n="6" aria-pressed="false">6</button></div><div class="fp-std" data-n="1" hidden><div class="fp-kopf">Diese Stunde: Stunde 1 <span class="fp-marke">BESPRECHEN</span></div><div class="fp-zeile"><b class="n">1</b><span>Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 1, 2<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil 1 Kraft, Teil 2 Bewegung</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="2" hidden><div class="fp-kopf">Diese Stunde: Stunde 2 <span class="fp-marke">SELBSTSTUDIUM</span></div><div class="fp-zeile"><b class="n">1</b><span>Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 3, 4<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil eurer Gruppe (Gruppenkarte) und Projekt</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Plan freigeben lassen</span></div></div><div class="fp-std" data-n="3" hidden><div class="fp-kopf">Diese Stunde: Stunde 3 <span class="fp-marke">VERSUCH</span></div><div class="fp-zeile"><b class="n">1</b><span>Euren Versuch machen und üben · Material von zu Hause mitbringen</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 5<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil eurer Gruppe</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="4" hidden><div class="fp-kopf">Diese Stunde: Stunde 4 <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-zeile"><b class="n">1</b><span>Steckbrief schreiben, Handout in Teams · Präsentation proben</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 6<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil eurer Gruppe</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Handout-PDF in Teams (Schriftführung)</span></div></div><div class="fp-std" data-n="5" hidden><div class="fp-kopf">Diese Stunde: Stunde 5 <span class="fp-marke">PRÄSENTATION</span></div><div class="fp-zeile"><b class="n">1</b><span>Alle sieben Gruppen präsentieren · du schreibst mit</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 7<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: alle sieben Teile beim Mitschreiben</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="6" hidden><div class="fp-kopf">Diese Stunde: Stunde 6 <span class="fp-marke">SELBSTSTUDIUM</span></div><div class="fp-zeile"><b class="n">1</b><span>Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe</span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 8 · Quiz freiwillig<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teile 1–8 und »Kurz &amp; knapp«</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Arbeitsblatt-PDF in LMS</span></div></div><details><summary>Alle Stunden (6)</summary><ol class="fp-liste"><li data-n="1">Stunde 1 · BESPRECHEN – Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen · Theorie: Teil 1 Kraft, Teil 2 Bewegung</li><li data-n="2">Stunde 2 · SELBSTSTUDIUM – Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe · Theorie: Teil eurer Gruppe (Gruppenkarte) und Projekt</li><li data-n="3">Stunde 3 · VERSUCH – Euren Versuch machen und üben · Material von zu Hause mitbringen · Theorie: Teil eurer Gruppe</li><li data-n="4">Stunde 4 · GRUPPENARBEIT – Steckbrief schreiben, Handout in Teams · Präsentation proben · Theorie: Teil eurer Gruppe</li><li data-n="5">Stunde 5 · PRÄSENTATION – Alle sieben Gruppen präsentieren · du schreibst mit · Theorie: alle sieben Teile beim Mitschreiben</li><li data-n="6">Stunde 6 · SELBSTSTUDIUM – Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe · Theorie: Teile 1–8 und »Kurz &amp; knapp«</li></ol></details><p class="fp-tipp" style="margin-top:8px"><b>Für Schnelle:</b> Behauptungen prüfen, Druck rechnen, Forschung prüfen, virtueller Versuch am Handy (PhET) · Aufgaben Zusatz 9–12</p><details><summary>So läuft die ganze Einheit</summary><p>Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER – die Reihenfolge zählt, nicht das Datum.</p></details></section><script>
+</style><style>
+.fp-titel { font-family: "Source Serif 4", Georgia, serif; font-weight: 700; font-size: 21px; line-height: 1.2; color: #3B4A2F; margin: 2px 0 8px; }
+.fp-folge { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 4px; margin-top: 6px; }
+.fp-pill { display: inline-block; border: 2px solid #3B4A2F; color: #3B4A2F; background: #fff; border-radius: 999px; padding: 2px 10px; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.fp-pill.m-DEMO { background: #2E7D8C; border-color: #2E7D8C; color: #fff; }
+.fp-pill.m-VERSUCH { background: #8C3B2E; border-color: #8C3B2E; color: #fff; }
+.fp-pill.m-BESPRECHEN, .fp-pill.m-PARTNERCHECK { background: #3B4A2F; color: #fff; }
+.fp-pill.m-SELBSTSTUDIUM { background: #E8DDBB; border-color: #E8DDBB; color: #6B4F00; }
+.fp-pill.m-GRUPPENARBEIT, .fp-pill.m-PRÄSENTATION { background: #B5541F; border-color: #B5541F; color: #fff; }
+.fp-pfeil { font-style: normal; color: #5E6652; font-size: 15px; }
+</style><section class="fahrplan fp-kompakt fp-st"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">6 Stunden · Welche Stunde heute dran ist, sagt dir Prof. HOLZER.</p><div class="fp-wahl" role="group" aria-label="Welche Stunde ist heute?">Heute ist Stunde:<button type="button" data-n="1" aria-pressed="false">1</button><button type="button" data-n="2" aria-pressed="false">2</button><button type="button" data-n="3" aria-pressed="false">3</button><button type="button" data-n="4" aria-pressed="false">4</button><button type="button" data-n="5" aria-pressed="false">5</button><button type="button" data-n="6" aria-pressed="false">6</button></div><div class="fp-std" data-n="1" hidden><div class="fp-kopf">Diese Stunde: Stunde 1 <span class="fp-marke">BESPRECHEN</span></div><div class="fp-titel">Kräfte-Detektive: Was eine Kraft verrät</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde:<span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill">Aufgabe 1</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill">Aufgabe 2</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Gruppen auslosen</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 1, 2 · Buch S. 44–49<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil 1 Kraft, Teil 2 Bewegung</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="2" hidden><div class="fp-kopf">Diese Stunde: Stunde 2 <span class="fp-marke">SELBSTSTUDIUM</span></div><div class="fp-titel">Experten-Auftrag: Euer Thema, euer Versuchsplan</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde:<span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill">Aufgabe 3</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-GRUPPENARBEIT">Aufgabe 4 in der Gruppe</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Freigabe</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 3, 4 · Buch S. 45–61 (dein Thema)<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil eurer Gruppe (Gruppenkarte) und Projekt</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Plan freigeben lassen</span></div></div><div class="fp-std" data-n="3" hidden><div class="fp-kopf">Diese Stunde: Stunde 3 <span class="fp-marke">VERSUCH</span></div><div class="fp-titel">Labor frei: Euer Kräfte-Versuch</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde:<span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-VERSUCH">VERSUCH (Aufgabe 5)</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-PARTNERCHECK">Probe</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 5 · Buch S. 45–61 (dein Thema)<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil eurer Gruppe</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="4" hidden><div class="fp-kopf">Diese Stunde: Stunde 4 <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-titel">Spickzettel für alle: Steckbrief und Generalprobe</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde:<span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-GRUPPENARBEIT">Aufgabe 6 in der Gruppe</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-GRUPPENARBEIT">Probe mit Stoppuhr</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-PARTNERCHECK">Partnercheck</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 6 · Buch S. 45–61 (dein Thema)<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teil eurer Gruppe</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Handout-PDF in Teams (Schriftführung)</span></div></div><div class="fp-std" data-n="5" hidden><div class="fp-kopf">Diese Stunde: Stunde 5 <span class="fp-marke">PRÄSENTATION</span></div><div class="fp-titel">Bühne frei: Sieben Kräfte in einer Stunde</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde:<span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-PRÄSENTATION">Präsentationen</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill">Aufgabe 7</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 7 · Buch S. 45–61<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: alle sieben Teile beim Mitschreiben</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="6" hidden><div class="fp-kopf">Diese Stunde: Stunde 6 <span class="fp-marke">SELBSTSTUDIUM</span></div><div class="fp-titel">Tauziehen ohne Sieger: Alle Kräfte selbst erklären</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde:<span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Kraftmesser</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill">Aufgabe 8</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill">Auflösung Aufgabe 1</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe 8 · Buch S. 45–61<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: Teile 1–8 und »Kurz &amp; knapp«</span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Arbeitsblatt-PDF in LMS</span></div></div><details><summary>Alle Stunden (6)</summary><ol class="fp-liste"><li data-n="1">Stunde 1 · Kräfte-Detektive: Was eine Kraft verrät · BESPRECHEN – Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen · Theorie: Teil 1 Kraft, Teil 2 Bewegung</li><li data-n="2">Stunde 2 · Experten-Auftrag: Euer Thema, euer Versuchsplan · SELBSTSTUDIUM – Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe · Theorie: Teil eurer Gruppe (Gruppenkarte) und Projekt</li><li data-n="3">Stunde 3 · Labor frei: Euer Kräfte-Versuch · VERSUCH – Euren Versuch machen und üben · Material von zu Hause mitbringen · Theorie: Teil eurer Gruppe</li><li data-n="4">Stunde 4 · Spickzettel für alle: Steckbrief und Generalprobe · GRUPPENARBEIT – Steckbrief schreiben, Handout in Teams · Präsentation proben · Theorie: Teil eurer Gruppe</li><li data-n="5">Stunde 5 · Bühne frei: Sieben Kräfte in einer Stunde · PRÄSENTATION – Alle sieben Gruppen präsentieren · du schreibst mit · Theorie: alle sieben Teile beim Mitschreiben</li><li data-n="6">Stunde 6 · Tauziehen ohne Sieger: Alle Kräfte selbst erklären · SELBSTSTUDIUM – DEMO Kraftmesser · Aufgabe 8 allein · Teile 1 bis 8 als Nachschlagewerk · Theorie: Teile 1–8 und »Kurz &amp; knapp«</li></ol></details><p class="fp-tipp" style="margin-top:8px"><b>Für Schnelle:</b> Behauptungen prüfen, Druck rechnen, Forschung prüfen, virtueller Versuch am Handy (PhET), Lesen und prüfen: Winterreifen im Test · Aufgaben Zusatz 9–13</p><p class="fp-tipp" style="margin-top:8px"><b>Danach:</b> Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER</p><details><summary>So läuft die ganze Einheit</summary><p>Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER – die Reihenfolge zählt, nicht das Datum.</p></details></section><script>
 (function () {
   var box = document.currentScript.previousElementSibling, KEY = "fahrplan-stunde|" + location.pathname.replace(/[^/]*$/, "");
   var btns = box.querySelectorAll(".fp-wahl button"), std = box.querySelectorAll(".fp-std"), li = box.querySelectorAll("ol.fp-liste li");
@@ -266,7 +306,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
   zeige(n);
 })();
 </script><!--/FAHRPLAN-->
-  <div class="progress"><span id="count">0 von 12 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
+  <div class="progress"><span id="count">0 von 13 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 
   <section class="card" id="abgabe">
@@ -291,7 +331,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button>
     </div>
     <p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
-    <p class="hint">Stand 15.11.2026 · v5</p>
+    <p class="hint">Stand 15.11.2026 · v6</p>
   </section>
 </main>
 
@@ -1412,6 +1452,127 @@ const T = [
    "Was eine Kraft bewirkt",
    "theorie.html#wirkung"
   ]
+ },
+ {
+  "id": "z5",
+  "nr": 13,
+  "title": "Lesen und prüfen: Winterreifen – billig oder sicher?",
+  "src": "ingenieur.de · Buch S. 54–56",
+  "own": false,
+  "tag": "Zusatz",
+  "h": 0,
+  "zeit": 12,
+  "marke": "ZUSATZ",
+  "link": [
+   "Artikel bei ingenieur.de öffnen",
+   "https://www.ingenieur.de/technik/fachbereiche/verkehr/winterreifentest-2025-deutliche-unterschiede-zwischen-marken-und-billigreifen/",
+   "ingenieur.de (VDI Verlag) · Anke Benstem · 14.10.2025 · Bericht über einen Test des ADAC · frei lesbar, ca. 5 min"
+  ],
+  "q": "Spätestens beim Führerschein betrifft dich das: Reifen entscheiden, wie gut ein Auto bremst. Lies den Artikel (Knopf oben, ca. 5 min) und prüf ihn mit dem, was du über Haftreibung weißt.",
+  "hint": "Such im Text nach »31«, »80 km/h« und »mangelhaft«.",
+  "type": "multi",
+  "fields": [
+   [
+    "anzahl",
+    "a) Wie viele Winterreifen-Modelle wurden laut Artikel getestet?",
+    [
+     "31",
+     "11",
+     "6",
+     "225"
+    ]
+   ],
+   [
+    "weg",
+    "b) Vollbremsung bei 80 km/h: Wie groß war der Unterschied im Bremsweg zwischen dem besten und dem schlechtesten Reifen?",
+    [
+     "über 15 Meter",
+     "etwa 1 Meter",
+     "über 80 Meter",
+     "kein Unterschied"
+    ]
+   ],
+   [
+    "billig",
+    "c) Wie viele günstige Modelle bekamen laut Artikel die Note »mangelhaft«?",
+    [
+     "elf",
+     "zwei",
+     "keines",
+     "alle"
+    ]
+   ],
+   [
+    "geld",
+    "d) Quellenkritik: Wer verdient am Verkauf von Winterreifen – und warum ist es wichtig zu wissen, wer getestet hat? (1–2 Sätze)"
+   ],
+   [
+    "haft",
+    "e) Welche Kraft entscheidet, wie schnell ein Auto auf Schnee bremsen kann, und was macht ein guter Winterreifen besser? (1–2 Sätze)"
+   ]
+  ],
+  "chk": {
+   "anzahl": {
+    "sel": "31"
+   },
+   "weg": {
+    "sel": "über 15 Meter"
+   },
+   "billig": {
+    "sel": "elf"
+   },
+   "geld": {
+    "kw": [
+     [
+      "Hersteller / Händler / Interesse",
+      "herstell|händl|haendl|verkau|firma|firmen|marke|geld|verdien|gewinn|werb|interesse"
+     ]
+    ],
+    "need": 1,
+    "man": true
+   },
+   "haft": {
+    "kw": [
+     [
+      "Reibung / Haftung / Grip",
+      "reib|haft|grip|griff|halt"
+     ]
+    ],
+    "need": 1,
+    "man": true
+   }
+  },
+  "fb": {
+   "anzahl": {
+    "225": "225/40 R18 ist die Reifengröße, nicht die Zahl der Modelle.",
+    "11": "11 ist die Zahl der Reifen mit »mangelhaft«."
+   },
+   "weg": {
+    "etwa 1 Meter": "Der Artikel nennt einen deutlich größeren Unterschied – such nach »80 km/h«.",
+    "kein Unterschied": "Lies die Überschrift noch einmal."
+   },
+   "billig": {
+    "keines": "Such im Text nach »mangelhaft«.",
+    "zwei": "Zwei Budgetreifen bekamen »befriedigend« – wie viele »mangelhaft«?"
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "a) 31 Winterreifen-Modelle der Größe 225/40 R18 – auf Schnee, Eis, nasser und trockener Fahrbahn.",
+     "b) über 15 Meter bei einer Vollbremsung aus 80 km/h – das sind mehrere Autolängen.",
+     "c) elf günstige Modelle bekamen »mangelhaft«; zwei Budgetreifen schafften »befriedigend«.",
+     "d) Hersteller und Händler verdienen am Verkauf; laut Artikel kostet ein günstiger Reifen ab 95 €, ein Premiumreifen 177 €. Darum zählt, wer testet und wie: hier ein Autofahrerclub (ADAC) mit 31 Reifen unter gleichen Bedingungen – und nicht die Werbung eines Herstellers. Auch eine Zeitschrift lebt von Werbung: am besten mehrere Tests vergleichen.",
+     "e) Die Haftreibung zwischen Reifen und Straße bremst das Auto. Auf Schnee ist sie klein; ein guter Winterreifen hat mehr Grip (passende Gummimischung und Profil) und damit eine größere Haftreibung – der Bremsweg wird kürzer."
+    ]
+   ]
+  ],
+  "tipps": [
+   "Such im Text nach »31«, »80 km/h« und »mangelhaft«.",
+   "k5",
+   "Buch S. 54–56: Reibung"
+  ]
  }
 ];
 
@@ -1952,9 +2113,58 @@ async function savePdf() {
 }
 
 // ---------- Start ----------
-const GRP = {"1": "Stunde 1 · Was Kräfte bewirken (Buch S. 44–49) · mit der ganzen Klasse", "2": "Stunde 2 · Thema erarbeiten, Versuch planen · Gruppenprojekt V1.20", "3": "Stunde 3 · Versuch durchführen und üben · Gruppenprojekt V1.20", "4": "Stunde 4 · Steckbrief und Probe · Gruppenprojekt V1.20", "5": "Stunde 5 · Alle sieben Gruppen präsentieren · Gruppenprojekt V1.20", "6": "Stunde 6 · Alles verbinden und einzeln prüfen (Buch S. 45–61) · allein und ohne KI", "0": "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)"};
+const ABLAUF = {"1": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu »Erkenntnisgewinn« – ABCD-Karte", null], ["", "Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", "v0"], ["BESPRECHEN", "Prof. HOLZER erklärt: Kraftwirkung, Richtung, resultierende Kraft – Kräftebild an der Tafel, Puck-Frage mit der ABCD-Karte", null], ["SELBSTSTUDIUM", "Aufgabe 2: Kraft und Bewegung unterscheiden", "a1"], ["BESPRECHEN", "Sicherung: Aufgabe 2 – Kurve, Tempo, F = m · a", null], ["BESPRECHEN", "Gruppen auslosen (Generator), sieben Themen zeigen, »So läuft das Projekt«", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "2": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 1 – ABCD-Karte", null], ["BESPRECHEN", "Prof. HOLZER erklärt: So arbeitet ihr heute – Gruppenkarte im Arbeitsblatt", null], ["SELBSTSTUDIUM", "Aufgabe 3: Euer Thema selbst erarbeiten (Leitfragen, Buch, Theorie-Seite)", "p1"], ["GRUPPENARBEIT", "Aufgabe 4: Euren Versuch auswählen und planen (erst auf Papier)", "p2"], ["BESPRECHEN", "Freigabe durch Prof. HOLZER – je Gruppe eine Minute", null], ["BESPRECHEN", "Sicherung: Jede Gruppe sagt ihre Frage und ihren Versuch in einem Satz", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "3": [["BESPRECHEN", "Weißt du noch? Drei Fragen zum Versuchsplan – ABCD-Karte", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Sicherheit – was erlaubt ist, wo gearbeitet wird", null], ["VERSUCH", "Aufgabe 5: VERSUCH aufbauen, machen, Ergebnisse eintragen", "p3"], ["PARTNERCHECK", "Versuch einmal so vorführen wie in Stunde 5 (Probe)", null], ["BESPRECHEN", "Sicherung: Was hat euer Versuch gezeigt? Ein Satz je Gruppe", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "4": [["BESPRECHEN", "Weißt du noch? Drei Fragen zum Versuch – ABCD-Karte", null], ["GRUPPENARBEIT", "Aufgabe 6: Steckbrief für die Klasse gemeinsam schreiben", "p4"], ["GRUPPENARBEIT", "Präsentation vorbereiten und mit Stoppuhr proben (3 min)", null], ["PARTNERCHECK", "Eine andere Gruppe liest den Steckbrief und hört die Probe", null], ["BESPRECHEN", "Sicherung: Was macht einen guten Steckbrief aus?", null], ["ABGABE", "Handout-PDF in Teams, Zwischenstand als PDF sichern", null]], "5": [["BESPRECHEN", "Weißt du noch? Zwei Fragen zu den Themen – ABCD-Karte", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Reihenfolge ansagen, Mitschrift erklären", null], ["PRÄSENTATION", "Sieben Gruppen präsentieren: je 3 min einschließlich Versuch, 1 min Übergang – alle schreiben mit", null], ["BESPRECHEN", "Sicherung: Zwei fachliche Klärungen aus den Präsentationen", null], ["SELBSTSTUDIUM", "Aufgabe 7: Mitschrift ergänzen (Steckbriefe in Teams)", "p5"], ["ABGABE", "Zwischenstand als PDF sichern", null]], "6": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu den Präsentationen – ABCD-Karte", null], ["DEMO", "DEMO K2.1-D1: Zwei Kraftmesser ziehen aneinander – erst vermuten (ABCD-Karte), dann zeigen", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Begriffstabelle Kraft, Bewegung, Druck an der Tafel", null], ["SELBSTSTUDIUM", "Aufgabe 8: Alle Themen selbst erklären – einzeln und ohne KI", "a3"], ["BESPRECHEN", "Sicherung: Aufgabe 8 – drei häufige Denkfehler und die vier Formeln", null], ["", "Auflösung »Was glaubst du?« und Selbsteinschätzung", null], ["ABGABE", "PDF-Abgabe: Arbeitsblatt in LMS", null]]};
+const BALKEN = {"vor": {"2": [["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Kraftwirkung, Richtung, resultierende Kraft. Handy weg, zuhören."]], "3": [["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: So arbeitet ihr heute. Handy weg, zuhören."]], "5": [["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Sicherheit. Handy weg, zuhören."]], "7": [["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Reihenfolge ansagen, Mitschrift erklären. Handy weg, zuhören."], ["PRÄSENTATION", "Jetzt präsentieren alle sieben Gruppen. Handy weg, du schreibst mit der Hand mit."], ["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Zwei fachliche Klärungen aus den Präsentationen."]], "8": [["DEMO", "Jetzt DEMO am Lehrertisch: Kraftmesser. Erst vermuten – ABCD-Karte bereit, dann schauen."], ["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Begriffstabelle Kraft, Bewegung, Druck an der Tafel. Handy weg, zuhören."]]}, "nach": {"2": [["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Aufgabe 2 a, c, e · Kräftebild an der Tafel."], ["BESPRECHEN", "Jetzt: Gruppen auslosen – merk dir deine Gruppennummer und tipp sie in Aufgabe 3 an."]], "4": [["BESPRECHEN", "Jetzt FREIGABE: Prof. HOLZER kommt zu jeder Gruppe. Plan bereithalten, erst danach wird gebaut."], ["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Jede Gruppe sagt ihre Frage und ihren Versuch in einem Satz."]], "5": [["PARTNERCHECK", "Jetzt PARTNERCHECK: Versuch einmal so vorführen wie in Stunde 5."], ["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Jede Gruppe sagt in einem Satz, was ihr Versuch gezeigt hat."]], "6": [["GRUPPENARBEIT", "Jetzt in der Gruppe: Präsentation vorbereiten und mit Stoppuhr proben – höchstens 3 Minuten."], ["PARTNERCHECK", "Jetzt PARTNERCHECK: Eine andere Gruppe liest den Steckbrief und hört die Probe."], ["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Was die andere Gruppe gut erklärt hat und was im Steckbrief noch fehlt."]], "8": [["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Aufgabe 8 b, e, f, g · DEMO Kraftmesser."], ["", "Jetzt: bei Aufgabe 1 »Auflösung zeigen« und die Selbsteinschätzung auf der Theorie-Seite."]]}};
+const GESICHERT = {"2": "Am Ende der Stunde sichern wir gemeinsam: a, c, e.", "4": "Am Ende der Stunde: Jede Gruppe sagt ihre Frage und ihren Versuch in einem Satz.", "5": "Am Ende der Stunde: Jede Gruppe sagt in einem Satz, was ihr Versuch gezeigt hat.", "6": "Am Ende der Stunde: Was die andere Gruppe gut erklärt hat und was im Steckbrief noch fehlt.", "7": "Am Ende der Stunde: Zwei fachliche Klärungen aus den Präsentationen.", "8": "Am Ende der Stunde sichern wir gemeinsam: b, e, f, g."};
+const GRP = {"1": "Stunde 1 · Kräfte-Detektive: Was eine Kraft verrät (Buch S. 44–49) · mit der ganzen Klasse", "2": "Stunde 2 · Experten-Auftrag: Euer Thema, euer Versuchsplan · Gruppenprojekt V1.20", "3": "Stunde 3 · Labor frei: Euer Kräfte-Versuch · Gruppenprojekt V1.20", "4": "Stunde 4 · Spickzettel für alle: Steckbrief und Generalprobe · Gruppenprojekt V1.20", "5": "Stunde 5 · Bühne frei: Sieben Kräfte in einer Stunde · Gruppenprojekt V1.20", "6": "Stunde 6 · Tauziehen ohne Sieger: Alle Kräfte selbst erklären (Buch S. 45–61) · allein und ohne KI", "0": "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)"};
+/* ABCD-Karte (neue Standards 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
+   Nichts wird gespeichert oder bewertet. */
+function abcdAuf() {
+  let ov = document.getElementById("abcd");
+  if (!ov) {
+    ov = el("div", { id: "abcd", role: "dialog", "aria-label": "ABCD-Karte" });
+    const wahl = el("div", { class: "abcd-wahl" }), gross = el("button", { type: "button", class: "abcd-gross", hidden: "" });
+    ["A", "B", "C", "D"].forEach(b => { const k = el("button", { type: "button", class: "abcd-k abcd-" + b, text: b }); k.addEventListener("click", () => { gross.textContent = b; gross.className = "abcd-gross abcd-" + b; gross.hidden = false; wahl.hidden = true; }); wahl.append(k); });
+    gross.addEventListener("click", () => { gross.hidden = true; wahl.hidden = false; });
+    const zu = el("button", { type: "button", class: "abcd-zu", text: "Schließen" }); zu.addEventListener("click", () => { ov.hidden = true; });
+    ov.append(el("p", { class: "abcd-tipp", text: "Antippen – dann Handy hochhalten. Nochmal tippen = neu wählen." }), wahl, gross, zu);
+    document.body.append(ov);
+  }
+  ov.hidden = false; ov.querySelector(".abcd-gross").hidden = true; ov.querySelector(".abcd-wahl").hidden = false;
+}
+document.addEventListener("keydown", ev => { const ov = document.getElementById("abcd"); if (ev.key === "Escape" && ov && !ov.hidden) ov.hidden = true; });
+/* Hinweis bei der Aufgabe: Das wird am Ende der Stunde gemeinsam gesichert. */
+function gesichertEl(card, nr) {
+  const g = GESICHERT[String(nr)]; if (!g) return;
+  const p = el("p", { class: "gesichert" }); p.append(el("span", { class: "phm", text: "SICHERUNG" }), el("span", { text: g }));
+  const h = card.querySelector(".head"); if (h && h.nextSibling) card.insertBefore(p, h.nextSibling); else card.append(p);
+}
+/* Balken zwischen den Aufgaben: Wer nur Aufgaben macht, läuft direkt auf »Jetzt erklärt Prof. HOLZER …« zu. */
+function balkenEl(wo, nr) {
+  (BALKEN[wo][String(nr)] || []).forEach(([m, txt]) => {
+    const b = el("div", { class: "phbalken" + (m ? " m-" + m : ""), role: "note" });
+    b.append(el("span", { class: "phm", text: m || "JETZT" }), el("span", { text: txt }));
+    if (/ABCD-Karte/.test(txt)) { const k = el("button", { type: "button", class: "phabcd", text: "ABCD-Karte" }); k.addEventListener("click", abcdAuf); b.append(k); }
+    $("#tasks").append(b);
+  });
+}
+function grpEl(g) {
+  const box = el("div", { class: "grpbox" }); box.append(el("div", { class: "grp", text: GRP[g] }));
+  const z = ABLAUF[String(g)]; if (!z) return box;
+  const ol = el("ol", { class: "ablauf" });
+  z.forEach(([m, txt, ziel]) => {
+    const li = el("li", { class: m && m !== "SELBSTSTUDIUM" && m !== "ABGABE" ? "gem" : "" });
+    if (m) li.append(el("span", { class: "abm m-" + m, text: m }));
+    if (ziel) { const a = el("a", { href: "#card_" + ziel, text: txt }); li.append(a); } else li.append(el("span", { text: txt }));
+    ol.append(li);
+  });
+  box.append(el("p", { class: "ablaufk", text: "So läuft die Stunde. Fett = mit der ganzen Klasse bzw. in der Gruppe:" }), ol);
+  const kb = el("button", { type: "button", class: "abcdbtn", text: "ABCD-Karte öffnen – für »Weißt du noch?« und Vermutungen" });
+  kb.addEventListener("click", abcdAuf); box.append(kb);
+  return box;
+}
 let lastH = null;
-T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });
+T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); const kc = renderTask(t); gesichertEl(kc, t.nr); $("#tasks").append(kc); balkenEl("nach", t.nr); });
 $("#solbtn").addEventListener("click", () => { S.solSeen = true; S.snap = {}; T.forEach(t => S.snap[t.id] = snapOf(t.id)); save(); showSolutions(); });
 showSolutions();
 const nameI = $("#name"), klI = $("#klasse");

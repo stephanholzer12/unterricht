@@ -10,11 +10,11 @@ PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 V = I.V
 P = I.PRAEFIX
-# Teillieferung 08.11.2026 / v2 11.11.2026: nur Handy-Seiten, Unterrichts-PPP und private Lösungsseite.
-DATEIEN = {"stand": I.STAND, "liste": [f"{P}-TH-Unterricht-{V}.pptx"]}
+# v6 (15.11.2026): Handy-Seiten mit Mitarbeits-Check, private Lösungsseite mit HTML-Präsentation (ersetzt die Unterrichts-PPP).
+DATEIEN = {"stand": I.STAND, "liste": ["GitHub: theorie.html, aufgaben.html, quiz.html, check.html (" + V + ")", "Lösungsseite mit Präsentation (Artifact, privat)"]}
 neu = {"klasse": "1AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K2.1", "titel": I.TITEL,
        "block": "E Physik", "jahresplan": "E15–E17",
-       "seiten": ["aufgaben.html", "theorie.html", "quiz.html"],
+       "seiten": ["aufgaben.html", "theorie.html", "quiz.html", "check.html"],
        "versteckt": True, "kapitelmenue": True,
        "fahrplan": {"ansicht": "kompakt", "text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
        "dateien": DATEIEN}

@@ -8,7 +8,7 @@ Eine Quelle für Handy-Seiten, Unterrichts-PPP und Lösungsmappe. Kein CLIL, kei
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
 STAND = "15.11.2026"
-V = "v5"
+V = "v6"
 ORDNER = "1ab-nawi/k2-1-kraefte"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -40,12 +40,14 @@ def zeigen(key, lehrer=False):
 
 
 # ---------------------------------------------------------------- Stunden (ohne Datum, Reihenfolge zählt)
-STUNDENNAME = {1: "Stunde 1 · Was Kräfte bewirken",
-               2: "Stunde 2 · Thema erarbeiten, Versuch planen",
-               3: "Stunde 3 · Versuch durchführen und üben",
-               4: "Stunde 4 · Steckbrief und Probe",
-               5: "Stunde 5 · Alle sieben Gruppen präsentieren",
-               6: "Stunde 6 · Alles verbinden und einzeln prüfen"}
+# Stundentitel (neue Standards 15.11.2026): kreativ, mit Fachteil nach dem Doppelpunkt – EINE Quelle für Fahrplan, Arbeitsblatt, Präsentation, Lösungsseite
+STUNDENTITEL = {1: "Kräfte-Detektive: Was eine Kraft verrät",
+                2: "Experten-Auftrag: Euer Thema, euer Versuchsplan",
+                3: "Labor frei: Euer Kräfte-Versuch",
+                4: "Spickzettel für alle: Steckbrief und Generalprobe",
+                5: "Bühne frei: Sieben Kräfte in einer Stunde",
+                6: "Tauziehen ohne Sieger: Alle Kräfte selbst erklären"}
+STUNDENNAME = {n: f"Stunde {n} · {t}" for n, t in STUNDENTITEL.items()}
 
 # ---------------------------------------------------------------- Auswahllisten
 STIMMT = ["stimmt", "stimmt nicht"]
@@ -351,8 +353,47 @@ T = [
   "tip": ["Was eine Kraft bewirkt", "theorie.html#wirkung"]},
 ]
 
+# ---- Lesen und prüfen (neue Standards 15.11.2026: Texte aus ORF Science, Quarks o. Ä.). ORF Science und Quarks hatten zu Reibung nichts Passendes
+# für die 1. Klasse; geprüft und verwendet (Seite geöffnet, Kernaussagen und Zahlen gelesen am 15.11.2026):
+# ingenieur.de (VDI Verlag), Anke Benstem, »Winterreifentest 2025: Deutliche Unterschiede zwischen Marken- und Billigreifen«, 14.10.2025 – Bericht über den ADAC-Test.
+REIFEN = {"titel": "Winterreifentest 2025: Deutliche Unterschiede zwischen Marken- und Billigreifen",
+          "url": "https://www.ingenieur.de/technik/fachbereiche/verkehr/winterreifentest-2025-deutliche-unterschiede-zwischen-marken-und-billigreifen/",
+          "herkunft": "ingenieur.de (VDI Verlag) · Anke Benstem · 14.10.2025 · Bericht über einen Test des ADAC · frei lesbar, ca. 5 min"}
+T.append({
+    "id": "z5", "nr": 13, "title": "Lesen und prüfen: Winterreifen – billig oder sicher?", "src": "ingenieur.de · Buch S. 54–56",
+    "own": False, "tag": "Zusatz", "h": 0, "zeit": 12, "marke": "ZUSATZ",
+    "link": ["Artikel bei ingenieur.de öffnen", REIFEN["url"], REIFEN["herkunft"]],
+    "q": "Spätestens beim Führerschein betrifft dich das: Reifen entscheiden, wie gut ein Auto bremst. Lies den Artikel (Knopf oben, ca. 5 min) "
+         "und prüf ihn mit dem, was du über Haftreibung weißt.",
+    "hint": "Such im Text nach »31«, »80 km/h« und »mangelhaft«.",
+    "type": "multi",
+    "fields": [
+        ["anzahl", "a) Wie viele Winterreifen-Modelle wurden laut Artikel getestet?", ["31", "11", "6", "225"]],
+        ["weg", "b) Vollbremsung bei 80 km/h: Wie groß war der Unterschied im Bremsweg zwischen dem besten und dem schlechtesten Reifen?",
+         ["über 15 Meter", "etwa 1 Meter", "über 80 Meter", "kein Unterschied"]],
+        ["billig", "c) Wie viele günstige Modelle bekamen laut Artikel die Note »mangelhaft«?", ["elf", "zwei", "keines", "alle"]],
+        ["geld", "d) Quellenkritik: Wer verdient am Verkauf von Winterreifen – und warum ist es wichtig zu wissen, wer getestet hat? (1–2 Sätze)"],
+        ["haft", "e) Welche Kraft entscheidet, wie schnell ein Auto auf Schnee bremsen kann, und was macht ein guter Winterreifen besser? (1–2 Sätze)"],
+    ],
+    "chk": {"anzahl": {"sel": "31"}, "weg": {"sel": "über 15 Meter"}, "billig": {"sel": "elf"},
+            "geld": {"kw": [["Hersteller / Händler / Interesse", r"herstell|händl|haendl|verkau|firma|firmen|marke|geld|verdien|gewinn|werb|interesse"]], "need": 1, "man": True},
+            "haft": {"kw": [["Reibung / Haftung / Grip", r"reib|haft|grip|griff|halt"]], "need": 1, "man": True}},
+    "fb": {"anzahl": {"225": "225/40 R18 ist die Reifengröße, nicht die Zahl der Modelle.", "11": "11 ist die Zahl der Reifen mit »mangelhaft«."},
+           "weg": {"etwa 1 Meter": "Der Artikel nennt einen deutlich größeren Unterschied – such nach »80 km/h«.", "kein Unterschied": "Lies die Überschrift noch einmal."},
+           "billig": {"keines": "Such im Text nach »mangelhaft«.", "zwei": "Zwei Budgetreifen bekamen »befriedigend« – wie viele »mangelhaft«?"}},
+    "sol": [["Lösung", ["a) 31 Winterreifen-Modelle der Größe 225/40 R18 – auf Schnee, Eis, nasser und trockener Fahrbahn.",
+                        "b) über 15 Meter bei einer Vollbremsung aus 80 km/h – das sind mehrere Autolängen.",
+                        "c) elf günstige Modelle bekamen »mangelhaft«; zwei Budgetreifen schafften »befriedigend«.",
+                        "d) Hersteller und Händler verdienen am Verkauf; laut Artikel kostet ein günstiger Reifen ab 95 €, ein Premiumreifen 177 €. "
+                        "Darum zählt, wer testet und wie: hier ein Autofahrerclub (ADAC) mit 31 Reifen unter gleichen Bedingungen – und nicht die Werbung eines Herstellers. "
+                        "Auch eine Zeitschrift lebt von Werbung: am besten mehrere Tests vergleichen.",
+                        "e) Die Haftreibung zwischen Reifen und Straße bremst das Auto. Auf Schnee ist sie klein; ein guter Winterreifen hat mehr Grip "
+                        "(passende Gummimischung und Profil) und damit eine größere Haftreibung – der Bremsweg wird kürzer."]]],
+    "tipps": ["Such im Text nach »31«, »80 km/h« und »mangelhaft«.", "k5", "Buch S. 54–56: Reibung"],
+})
+
 # ---------------------------------------------------------------- Kontrollen
-assert [t["nr"] for t in T] == list(range(1, 13))
+assert [t["nr"] for t in T] == list(range(1, 14))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
 assert PFLICHT == [2, 3, 4, 5, 6, 7, 8], PFLICHT
 BESPRECHEN = [2, 8]
@@ -537,9 +578,143 @@ QUELLEN = [
 QUELLE = {q[0]: q for q in QUELLEN}
 
 NICHT_GEPRUEFT = [
- "PhET »Forces and Motion: Basics« – Lizenztext, Einbettung und Handybedienung wurden nicht geprüft. Deshalb ist keine Simulation eingebaut.",
+ "PhET-Simulationen: Die Seite phet.colorado.edu ist von hier aus gesperrt. Inhalt, Werte und deutsche Bezeichnungen sind über den Quellcode (github.com/phetsims) geprüft – die Bedienung am Handy bitte einmal selbst ausprobieren.",
  "Journal of Chemical Education, »Soap Boat 2.0« (DOI 10.1021/ed400316a) – Zugriff mit 403 verweigert. Nur als fachlicher Hinweis im Lehrerwissen, nicht als Unterrichtsmedium.",
  "Seilnacht-Filmverzeichnis »Chemische Phänomene erleben« (Ausgabe 2): passende Titel für Oberflächenspannung und Benetzung sind »Die schwimmende Büroklammer«, "
  "»Wasserläufer«, »Konfetti und Seife«, »Benetzung eines Gewebes mit einem Tensid«. Nur das Verzeichnis wurde geöffnet, kein Film angesehen – Einbau durch Prof. HOLZER.",
  "Videos: YouTube ist von hier aus nicht prüfbar. Deshalb ist in dieser Einheit kein Video verlinkt.",
+]
+
+# ================================================================ Neue Standards 15.11.2026 (Vorbild 2AB K1.5)
+# ABCD-Fragen: (Frage, richtig, [3 Ablenker aus echten Fehlvorstellungen], kurze Erklärung). Die Präsentation stellt die richtige Antwort an wechselnde Stellen.
+WDN_ABCD = {
+ 1: [("Was ist eine Hypothese?", "eine begründete, prüfbare Vermutung", ["ein bewiesenes Naturgesetz", "eine Meinung, die man nicht prüfen kann", "das Ergebnis eines Versuchs"],
+      "Eine Hypothese ist begründet und prüfbar – der Versuch kann sie bestätigen oder widerlegen (K1.4)."),
+     ("»Die Anzeige stieg von 1,0 N auf 2,0 N.« Was ist das?", "eine Beobachtung", ["eine Erklärung", "eine Hypothese", "eine Theorie"],
+      "Ein gemessener Wert ist eine Beobachtung. Die Erklärung sagt, warum."),
+     ("Warum ändert man in einem Vergleichsversuch nur eine Bedingung?", "sonst weiß man nicht, was den Unterschied macht",
+      ["damit es schneller geht", "weil es nur ein Messgerät gibt", "egal – Hauptsache viele Messungen"],
+      "Nur eine Änderung – dann ist klar, woher der Unterschied kommt (K1.4, Versuch mit und ohne Büroklammer).")],
+ 2: [("In welcher Einheit misst man eine Kraft?", "Newton (N)", ["Kilogramm (kg)", "Meter pro Sekunde (m/s)", "Pascal (Pa)"],
+      "Kraft in Newton, Masse in Kilogramm – nicht verwechseln."),
+     ("Ein weicher Ball wird zusammengedrückt. Woran siehst du die Kraft?", "an der Verformung", ["an seiner Masse", "an seiner Einheit", "gar nicht – er bewegt sich ja nicht"],
+      "Eine Kraft kann bewegen oder verformen. Bewegung ist nicht nötig."),
+     ("Ein Rad fährt mit gleichem Tempo durch eine Kurve. Ist es beschleunigt?", "ja – die Richtung ändert sich",
+      ["nein – es wird nicht schneller", "nur, wenn es bremst", "nein – es wirkt keine Kraft"],
+      "Auch eine Richtungsänderung ist eine Beschleunigung. Dafür braucht es eine Kraft zur Kurvenmitte.")],
+ 3: [("Was gehört in einen guten Versuchsplan?", "Frage, Material, Schritte und was gemessen wird", ["nur das erwartete Ergebnis", "nur die Materialliste", "eine lange Einleitung"],
+      "Mit Frage, Material, Schritten und Messgröße kann jede Gruppe den Versuch nachmachen."),
+     ("Ihr prüft, ob mehr Masse mehr Reibung bringt. Was bleibt gleich?", "Unterlage und Kontaktfläche", ["die Masse", "nichts – alles darf sich ändern", "nur die Uhrzeit"],
+      "Nur die Masse wird geändert – alles andere bleibt gleich."),
+     ("Was zeigt ein Federkraftmesser an?", "eine Kraft in Newton", ["eine Masse in Kilogramm", "einen Druck in Pascal", "eine Geschwindigkeit"],
+      "Der Federkraftmesser misst Kräfte. Die Waage zeigt die Masse.")],
+ 4: [("Ein Messwert passt gar nicht zu den anderen. Was tut ihr?", "die Messung wiederholen und den Ausreißer notieren",
+      ["einen passenden Wert erfinden", "ihn streichen, ohne es zu sagen", "alle Werte löschen"],
+      "Nie Werte erfinden oder verstecken. Wiederholen und offen notieren."),
+     ("Ein Rucksack hat 2 kg Masse. Wie groß ist seine Gewichtskraft (g = 10 N/kg)?", "20 N", ["2 N", "200 N", "2 kg"],
+      "F_G = m · g = 2 kg · 10 N/kg = 20 N."),
+     ("Was ist eine »Grenze« eures Versuchs?", "etwas, das der Versuch nicht zeigt oder nur ungenau misst",
+      ["das Ergebnis, das ihr gefunden habt", "die Zeit für die Präsentation", "die Zahl der Gruppenmitglieder"],
+      "Jeder Versuch hat Grenzen – wer sie nennt, arbeitet wissenschaftlich.")],
+ 5: [("Ein Boot schwimmt ruhig. Wie sind Auftriebskraft und Gewichtskraft?", "gleich groß", ["die Auftriebskraft ist größer", "die Gewichtskraft ist größer", "es wirkt keine Auftriebskraft"],
+      "Ruhiges Schwimmen ist ein Kräftegleichgewicht: F_A = F_G."),
+     ("Was ermöglicht dir das Abstoßen beim Gehen?", "die Haftreibung zwischen Schuh und Boden", ["die Gleitreibung", "der Luftwiderstand", "möglichst gar keine Reibung"],
+      "Ohne Haftreibung rutschst du weg – wie auf Glatteis.")],
+ 6: [("Kraft und Gegenkraft – auf welche Körper wirken sie?", "auf zwei verschiedene Körper", ["auf denselben Körper", "nur auf den schwereren Körper", "auf gar keinen Körper"],
+      "Deshalb heben sie sich nicht auf – anders als beim Gleichgewicht an einem Körper."),
+     ("Warum sinkst du mit Schneeschuhen weniger ein?", "gleiche Kraft auf größere Fläche – kleinerer Druck",
+      ["deine Gewichtskraft wird kleiner", "der Druck wird größer", "der Schnee wird härter"],
+      "p = F / A: Die Fläche wird größer, der Druck kleiner."),
+     ("Wasser steigt in einem Papierstreifen nach oben. Wie heißt das?", "Kapillarwirkung", ["Auftrieb", "Reibung", "Gegenkraft"],
+      "In feinen, benetzbaren Zwischenräumen steigt Wasser – Kapillarwirkung.")],
+}
+VERMUTUNG_ABCD = {
+ 1: [("Ein Puck gleitet auf ganz glattem Eis. Was braucht er, damit er weiter geradeaus gleitet?", "nichts – ohne Reibung gleitet er von selbst weiter",
+      ["eine ständige Kraft nach vorne", "einen Stoß jede Sekunde", "Rückenwind"],
+      "Für gleiches Tempo geradeaus braucht es keine resultierende Kraft. Erst Reibung bremst ihn.")],
+ 6: [("Zwei Kraftmesser hängen mit den Haken ineinander. Prof. HOLZER zieht, der linke zeigt 2 N. Was zeigt der rechte?", "ungefähr 2 N",
+      ["ungefähr 4 N", "ungefähr 1 N", "0 N"],
+      "Beide messen dieselbe Zugkraft – Kraft und Gegenkraft sind gleich groß. Die Anzeigen werden nicht addiert.")],
+}
+for _n, _l in list(WDN_ABCD.items()) + list(VERMUTUNG_ABCD.items()):
+    for _q, _r, _f, _e in _l:
+        assert len(_f) == 3 and _r not in _f and len(set(_f)) == 3, (_n, _q)
+assert all(len(WDN_ABCD[n]) == 3 for n in (1, 2, 3, 4, 6)) and len(WDN_ABCD[5]) == 2
+
+# DEMO (Prof. HOLZER zeigt; getrennt vom Gruppenversuch V1.20). Material nur aus dem Inventar.
+DEMOS = [
+ {"id": "K2.1-D1", "std": 6, "titel": "Zwei Kraftmesser ziehen aneinander", "min": 4, "vorb": 2, "platz": "Lehrertisch, vorne – alle sehen beide Skalen",
+  "material": ["kraftmesser51", "kraftmesser52"],
+  "schritte": ["Beide Kraftmesser waagrecht halten und auf 0 stellen (Nullpunkt in Messlage).",
+               "Die Haken ineinander hängen. Ein Kadett hält links, Prof. HOLZER zieht rechts langsam, bis links 2 N steht.",
+               "Vorher vermuten lassen (ABCD-Karte): Was zeigt der rechte Kraftmesser?",
+               "Beide Skalen zeigen – dann mit 4 N und 6 N wiederholen."],
+  "erwartung": "Beide zeigen ungefähr gleich viel (Unterschied höchstens etwa 0,2 N durch Ablesen und Nullpunkt).",
+  "deutung": "Kraft und Gegenkraft sind gleich groß und wirken auf verschiedene Körper (Kraftmesser links auf rechts und umgekehrt). Die Anzeigen werden nicht addiert.",
+  "fehler": "Nullpunkt nicht eingestellt; schräg gezogen; ruckartig gezogen. Über 10 N ziehen beschädigt die Feder.",
+  "ausweich": "Zwei Gummibänder oder zwei Kadetten mit einem Seil: Beide spüren dieselbe Zugkraft. Oder Theorie-Karte k8 am Beamer."},
+]
+
+# Mitarbeits-Check (neue Standards 15.11.2026): 10 Auswahlfragen nur aus Pflichtstoff, je Bereich n Fragen; eine Zahlenfrage mit Zufallszahlen.
+# Format: (Frage-ID, Frage, richtig, [3 falsch], Buchseite). Frage "gewicht" = Zahlenfrage (Zahlen zieht die Seite selbst).
+# Der Startcode steht NICHT hier, sondern in der privaten Datei (termine_k2_1.py) und auf Stephans Lösungsseite.
+CHECK_KEY = "26-27-1AB-K2.1-check"
+CHECK = [
+ {"thema": "Kraft und Bewegung", "n": 2, "fragen": [
+   ("kb1", "Woran erkennt man eine Kraftwirkung?", "an einer Änderung der Bewegung oder an einer Verformung",
+    ["nur daran, dass sich ein Körper bewegt", "an einer größeren Masse", "nur daran, dass etwas warm wird"], "S. 45"),
+   ("kb2", "Ein Auto fährt mit gleichem Tempo durch eine Kurve. Ist es beschleunigt?", "ja, weil sich die Richtung der Geschwindigkeit ändert",
+    ["nein, weil es nicht schneller wird", "nur, wenn es bremst", "nein, weil keine Kraft wirkt"], "S. 47–48"),
+   ("kb3", "Was sagt F = m · a?", "Je größer die resultierende Kraft, desto größer die Beschleunigung",
+    ["Je größer die Masse, desto größer die Beschleunigung bei gleicher Kraft", "Kraft und Masse sind dasselbe", "Ohne Kraft bleibt jeder Körper sofort stehen"], "S. 49"),
+   ("kb4", "In welcher Einheit gibt man eine Kraft an?", "Newton (N)", ["Kilogramm (kg)", "Pascal (Pa)", "Meter pro Sekunde (m/s)"], "S. 45")]},
+ {"thema": "Zahlenfrage Gewichtskraft", "n": 1, "fragen": [("gw", "gewicht", "", [], "S. 50–51")]},
+ {"thema": "Masse und Gewichtskraft", "n": 1, "fragen": [
+   ("mg1", "Ein Kadett hat 70 kg Masse. Was ist auf dem Mond anders?", "Seine Gewichtskraft ist kleiner, die Masse bleibt 70 kg",
+    ["Seine Masse ist kleiner", "Masse und Gewichtskraft bleiben gleich", "Masse und Gewichtskraft werden größer"], "S. 50–51"),
+   ("mg2", "Womit misst man eine Kraft?", "mit einem Federkraftmesser", ["mit einem Messzylinder", "mit einem Thermometer", "mit einem Maßband"], "S. 45")]},
+ {"thema": "Auftrieb", "n": 1, "fragen": [
+   ("af1", "Ein Boot schwimmt ruhig an der Oberfläche. Wie sind Auftriebskraft und Gewichtskraft?", "gleich groß",
+    ["Die Auftriebskraft ist größer", "Die Gewichtskraft ist größer", "Es wirkt keine Auftriebskraft"], "S. 52–53"),
+   ("af2", "Wie groß ist die Auftriebskraft auf einen Körper im Wasser?", "so groß wie die Gewichtskraft des verdrängten Wassers",
+    ["immer so groß wie seine eigene Gewichtskraft", "immer null bei sinkenden Körpern", "so groß wie die Masse des Körpers in kg"], "S. 52–53")]},
+ {"thema": "Reibung", "n": 1, "fragen": [
+   ("rb1", "Was ermöglicht das Abstoßen beim Gehen?", "die Haftreibung zwischen Schuh und Boden",
+    ["möglichst gar keine Reibung", "der Luftwiderstand", "die Gewichtskraft allein"], "S. 54–56"),
+   ("rb2", "Du schiebst eine schwere Kiste, sie bleibt aber stehen. Warum?", "Die Haftreibung ist genauso groß wie deine Schiebekraft",
+    ["Es wirkt gar keine Kraft", "Die Kiste hat keine Gewichtskraft", "Deine Schiebekraft ist größer als die Reibung"], "S. 54–56")]},
+ {"thema": "Kapillarwirkung", "n": 1, "fragen": [
+   ("kp1", "In Filterpapier steigt Wasser über den Wasserspiegel. Welche Erklärung passt?", "Wasser breitet sich in feinen benetzbaren Zwischenräumen aus",
+    ["Das Papier erzeugt Strom", "Wasser wird im Papier schwerelos", "Die Luft drückt das Wasser nach oben"], "S. 57"),
+   ("kp2", "Was ist Kohäsion?", "der Zusammenhalt innerhalb eines Stoffes",
+    ["die Anziehung zwischen zwei verschiedenen Stoffen", "der Druck auf eine Fläche", "die Reibung in engen Röhren"], "S. 57")]},
+ {"thema": "Druck", "n": 1, "fragen": [
+   ("dr1", "Warum sinkst du mit Schneeschuhen weniger ein?", "Die Kraft verteilt sich auf eine größere Fläche – der Druck ist kleiner",
+    ["Deine Gewichtskraft wird kleiner", "Der Druck wird größer", "Der Schnee übt dann keine Kraft aus"], "S. 58–60"),
+   ("dr2", "In welcher Einheit gibt man den Druck an?", "Pascal (Pa)", ["Newton (N)", "Kilogramm (kg)", "Newton pro Kilogramm (N/kg)"], "S. 58")]},
+ {"thema": "Kraft und Gegenkraft", "n": 2, "fragen": [
+   ("gk1", "Die Erde zieht einen Ball nach unten. Was ist die Gegenkraft?", "Der Ball zieht die Erde an",
+    ["Die Luft bremst den Ball", "Der Tisch drückt den Ball hoch", "Es gibt keine Gegenkraft"], "S. 61"),
+   ("gk2", "Warum heben sich Kraft und Gegenkraft nicht auf?", "Sie wirken auf zwei verschiedene Körper",
+    ["Sie sind verschieden groß", "Sie wirken nacheinander", "Sie heben sich doch immer auf"], "S. 61"),
+   ("gk3", "Zwei Kraftmesser hängen ineinander, einer zeigt 2 N. Was zeigt der andere?", "ungefähr 2 N",
+    ["ungefähr 4 N", "ungefähr 1 N", "0 N"], "S. 61")]},
+]
+assert sum(g["n"] for g in CHECK) == 10
+assert len({q[0] for g in CHECK for q in g["fragen"]}) == sum(len(g["fragen"]) for g in CHECK)
+for _g in CHECK:
+    assert _g["n"] <= len(_g["fragen"])
+    for _q in _g["fragen"]:
+        if _q[1] != "gewicht": assert len(_q[3]) == 3 and _q[2] not in _q[3], _q[0]
+
+# Hören und Lesen (neue Standards 15.11.2026): Stephans Podcast-Liste (Jahresplan, Blatt »Podcasts«) zuerst; nur Geprüftes auf den Kadetten-Seiten.
+HOEREN_LESEN = [
+ ("Lesen", "Winterreifentest 2025: Deutliche Unterschiede zwischen Marken- und Billigreifen", "ingenieur.de (VDI Verlag), Anke Benstem, 14.10.2025 – Bericht über den ADAC-Test",
+  REIFEN["url"], "Zusatz 13 »Lesen und prüfen« (Reibung, Bremsweg, Quellenkritik)", "Seite geöffnet, Zahlen gelesen (31 Reifen, über 15 m Unterschied bei 80 km/h, elf »mangelhaft«)"),
+ ("Hören", "Ö1 Kinderuni: Schwerkraft erklärt (14 min, 2022)", "deine Podcast-Liste P15-01 · Ö1 (ORF)", "",
+  "Vorschlag: Einstieg Stunde 1 oder Gruppe 2 (Gewichtskraft) – Ausschnitt", "bitte anhören – nicht angehört, Folge nur in deiner Liste gefunden"),
+ ("Hören", "Forschungsquartett: Gravitationswellen gibt es doch – Shaking News! (8 min, 2016)", "deine Podcast-Liste P15-02 · FM4/Forschungsquartett", "",
+  "eher für Neugierige (Gravitation), nicht Pflichtstoff", "bitte anhören – nicht angehört"),
+ ("Hören", "Auftrieb, Druck, Reibung, Kapillarkraft", "deine Podcast-Liste P16-00, P17-00", "", "–",
+  "laut deiner Liste kein fachlich eindeutiger Treffer – nichts eingebaut"),
 ]

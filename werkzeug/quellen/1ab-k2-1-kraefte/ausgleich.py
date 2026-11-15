@@ -1,8 +1,8 @@
-"""Ausgleich und Referat-Brücken K2.1 Mechanische Kräfte (13.11.2026) – EINE Quelle für Lösungsseite und Unterrichts-PPP.
+"""Ausgleich und Referat-Brücken K2.1 Mechanische Kräfte (13.11.2026) – EINE Quelle für Lösungsseite und Präsentation.
 
 AUSGLEICH: Fertige Bausteine für die Klasse, die vorne liegt (z. B. 1AK ist früher fertig als 1BK), damit beide beim nächsten Thema ungefähr gleich weit sind.
 Alle Bausteine sind freiwillig und ohne Note, brauchen kein Material außer Papier und Handy und stehen NICHT auf den öffentlichen Kadetten-Seiten
-(Prof. HOLZER sagt sie an, die Folien dazu stehen in der PPP als ausgeblendete Folien in der Präsentation »Ausgleich«).
+(Prof. HOLZER sagt sie an und zeigt sie aus dem Reiter »Ausgleich« der privaten Lösungsseite).
 Alles stammt aus bereits geprüften Inhalten dieser Einheit (Fehlvorstellungen, Newton-Fragen, Kräfte-Check) – hier steht nichts Neues, was nicht schon geprüft wäre.
 
 BRUECKEN: Zu jedem Schüler-Referat, das in eine Stunde fällt, eine Minute Verbindung zur Einheit (eine Frage an die Klasse mit Kurzantwort für Prof. HOLZER).
@@ -43,7 +43,7 @@ BAUSTEINE = [
   "hinweis": "Länge und Inhalt der Videos vorher prüfen (von hier nicht prüfbar). Passt auch als Supplierstunde.", "quelle": "Apolin: Newtonsche Grundgesetze; Kräfte-Check"},
 ]
 
-VORHANDEN = "Schon im Arbeitsblatt für Schnelle: Zusatz 9 bis 12 (ca. 41 Minuten, darunter ein virtueller Versuch mit PhET) – dafür braucht es keine Vorbereitung."
+VORHANDEN = "Schon im Arbeitsblatt für Schnelle: Zusatz 9 bis 13 (ca. 53 Minuten, darunter ein virtueller Versuch mit PhET und »Lesen und prüfen«) – dafür braucht es keine Vorbereitung."
 
 BRUECKEN = [
  {"such": ["rückstoß", "rueckstoss", "stg", "gewehr", "waffe"], "thema": "Rückstoß",
@@ -71,7 +71,7 @@ BRUECKE_ALLGEMEIN = {"thema": "Referat",
                       "frage": "Welche der sieben Themen (Bewegung, Gewichtskraft, Auftrieb, Reibung, Kapillarwirkung, Druck, Kraft und Gegenkraft) steckt in diesem Referat?",
                       "antwort": "Lass zwei Kadetten ein Thema nennen und in einem Satz begründen. Eine Minute reicht.", "wo": "alle Gruppen"}
 
-# Reihenfolge der Aufgaben für die Folien: genau diese Texte stehen in der PPP
+# Reihenfolge der Bausteine im Reiter »Ausgleich«
 assert [b["id"] for b in BAUSTEINE] == ["A1", "A2", "A3", "A4"]
 assert all(b["min"] in (15, 20) for b in BAUSTEINE)
 assert len(AUSSAGEN) == 5

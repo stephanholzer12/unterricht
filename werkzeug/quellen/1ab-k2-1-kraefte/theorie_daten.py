@@ -288,6 +288,7 @@ SCHNELLE = [
  {"id": "schnell2", "title": "Forschung und Technik", "pill": "OPTIONAL",
   "blocks": [("ul", ["**Zusatzaufgabe 11** führt zu einer Pressemitteilung der TU Wien über ein pulverförmiges Schmiermittel. Übe daran Quellenkritik: Wer berichtet, und wer hat die Forschung gemacht?",
                      "**Offene Frage der Forschung:** Reibung lässt sich noch nicht allein aus der Rauigkeit zweier Oberflächen berechnen. Genau daran arbeiten Tribologen.",
+                     "**Zusatzaufgabe 13 »Lesen und prüfen«:** ein Artikel über den Winterreifentest 2025. Über 15 Meter Unterschied im Bremsweg – das ist Haftreibung im Alltag. Und: Wer verdient am Reifenverkauf?",
                      "**Pro und Contra zum Diskutieren:** Soll ein neues Schmiermittel in Fahrzeugen des Bundesheeres eingesetzt werden, solange es nur unter Laborbedingungen geprüft ist? Sammelt je zwei Argumente."]),
              ("hint", "Zusatzaufgaben zählen nicht zum Pflichtfortschritt und sind keine Hausübung.")]},
  {"id": "schnell3", "title": "Was in dieser Einheit NICHT dran war", "pill": "OPTIONAL",
