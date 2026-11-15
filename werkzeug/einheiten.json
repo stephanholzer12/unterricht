@@ -485,6 +485,7 @@
    "theorie.html"
   ],
   "versteckt": true,
+  "kapitelmenue": true,
   "fahrplan": {
    "ansicht": "kompakt",
    "text": "Vier Stunden von sauer bis basisch: Stunde 1 Säuren, Stunde 2 Laugen und Protonen-Pingpong, Stunde 3 pH-Wert und Versuch, Stunde 4 Neutralisation und dein Blut. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
@@ -499,7 +500,7 @@
     },
     {
      "wann": "Stunde 2",
-     "marke": "GRUPPENARBEIT",
+     "marke": "BESPRECHEN",
      "lesen": "Laugen und Sicherheit · Protonen-Pingpong mit Ball · Buch S. 56–58",
      "aufgaben": "3, 4",
      "theorie": "Teil 2 Laugen, Teil 3 Pingpong",
@@ -523,9 +524,9 @@
     },
     {
      "wann": "Für Schnelle",
-     "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat)",
-     "aufgaben": "Zusatz 8–10",
-     "zeit": "ca. 33 min",
+     "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET)",
+     "aufgaben": "Zusatz 8–11",
+     "zeit": "ca. 48 min",
      "abgabe": "freiwillig"
     }
    ]
@@ -538,8 +539,7 @@
     "26-27-2AB-K1.5-Saeuren-Pruefbericht-Claude-v1.md"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/BCm9427922aFp3BjgoQiZf",
-  "kapitelmenue": true
+  "lehrerseite": "https://claude.ai/artifact/BCm9427922aFp3BjgoQiZf"
  },
  {
   "klasse": "5AB",

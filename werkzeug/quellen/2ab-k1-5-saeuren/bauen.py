@@ -13,6 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 WZ = os.path.join(ROOT, "werkzeug")
 sys.path.insert(0, HERE)
 import inhalt as I
+import plan as P
 import theorie_daten as TD
 import sims as SIMS
 STAND = I.STAND
@@ -255,6 +256,45 @@ s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K1.5", THEMA = "Saeuren";\n' % I.K
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
 s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, ensure_ascii=False) + ";" + s[j:]
 
+
+def ablauf_daten():
+    """Stunden-Ablauf für das Arbeitsblatt (Stephan, 15.11.2026): Wer nur das Arbeitsblatt benutzt, soll trotzdem sehen,
+    was in der Stunde gemeinsam passiert (DEMO, Pingpong, Besprechen, Partnercheck) – aus derselben Quelle wie Fahrplan und Lösungsseite."""
+    nr_zu_id = {t["nr"]: t["id"] for t in I.T}
+    out = {}
+    for n, rows in P.STUNDE.items():
+        z = []
+        for text, minuten, _ohne, art, marke in rows:
+            if art in ("org", "reserve"): continue
+            t = text
+            for pre in ("KURZ KLÄREN: ", "ALLE GEMEINSAM: ", "SELBSTSTUDIUM: ", "BESPRECHEN: ", "PARTNERCHECK: "):
+                if t.startswith(pre): t = ("Prof. HOLZER erklärt: " if pre == "KURZ KLÄREN: " else "") + t[len(pre):]
+            ziel = None
+            if art.startswith("a") and art[1:].isdigit(): ziel = nr_zu_id.get(int(art[1:]))
+            if marke == "" and art == "pdf": marke = "ABGABE"
+            z.append([marke, t, ziel])
+        out[str(n)] = z
+    return out
+
+
+s = s.replace("const GRP = ", "const ABLAUF = " + json.dumps(ablauf_daten(), ensure_ascii=False) + ";\nconst GRP = ", 1)
+s = s.replace('T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });',
+  'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } $("#tasks").append(renderTask(t)); });')
+s = s.replace("let lastH = null;", """function grpEl(g) {
+  const box = el("div", { class: "grpbox" }); box.append(el("div", { class: "grp", text: GRP[g] }));
+  const z = ABLAUF[String(g)]; if (!z) return box;
+  const ol = el("ol", { class: "ablauf" });
+  z.forEach(([m, txt, ziel]) => {
+    const li = el("li", { class: m && m !== "SELBSTSTUDIUM" && m !== "ABGABE" ? "gem" : "" });
+    if (m) li.append(el("span", { class: "abm m-" + m, text: m }));
+    if (ziel) { const a = el("a", { href: "#card_" + ziel, text: txt }); li.append(a); } else li.append(el("span", { text: txt }));
+    ol.append(li);
+  });
+  box.append(el("p", { class: "ablaufk", text: "So läuft die Stunde. Fett = mit der ganzen Klasse bzw. in der Gruppe (BESPRECHEN, DEMO, VERSUCH, PARTNERCHECK) – dafür legst du das Handy kurz weg:" }), ol);
+  return box;
+}
+let lastH = null;""", 1)
+
 rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }",
     """.fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }
 .fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }
@@ -291,6 +331,15 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .anl .matitem { display: grid; gap: 4px; justify-items: center; text-align: center; font-size: 15px; background: #EEF2E6; border-radius: 10px; padding: 8px; }
 .anl .matitem img { width: 72px; height: auto; }
 .anl .steps { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
+.grpbox { background: #fff; border: 2px solid #D3DCC2; border-radius: 14px; padding: 10px 14px; margin: 14px 0 6px; }
+.grpbox .grp { margin-top: 0; color: #3B4A2F; }
+.ablaufk { margin: 6px 0 4px; font-size: 15px; color: #5E6652; }
+ol.ablauf { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 16px; line-height: 1.35; }
+ol.ablauf li.gem { font-weight: 700; color: #3B4A2F; }
+ol.ablauf a { color: #2E7D8C; font-weight: 700; }
+.abm { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; border-radius: 999px; padding: 1px 8px; margin-right: 6px; color: #fff; background: #5E6652; vertical-align: 1px; }
+.abm.m-DEMO { background: #2E7D8C; } .abm.m-VERSUCH { background: #8C3B2E; } .abm.m-BESPRECHEN, .abm.m-PARTNERCHECK { background: #3B4A2F; }
+.abm.m-SELBSTSTUDIUM { background: #E8DDBB; color: #6B4F00; } .abm.m-ABGABE { background: #7FA83A; }
 .simlink { display: grid; gap: 4px; margin: 8px 0; } .simlink .btn { justify-self: start; text-decoration: none; }
 .pegel { border: 3px solid #A33A2B; border-radius: 14px; background: #FBF1EE; padding: 12px 14px; display: grid; gap: 8px; margin: 10px 0; }
 .pgh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 19px; }

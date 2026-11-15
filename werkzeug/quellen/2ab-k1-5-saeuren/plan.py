@@ -28,7 +28,7 @@ STUNDE = {
      ("Weißt du noch? Drei Fragen zu Stunde 1 (Zettel hochhalten)", 3, True, "wdh", "BESPRECHEN"),
      ("KURZ KLÄREN: Laugen, OH⁻, Sicherheit (Auge, erst das Wasser)", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 3: Laugen – nützlich und ätzend", 7, False, "a3", "SELBSTSTUDIUM"),
-     ("BEWEGUNG: Protonen-Pingpong mit Ball und Schildern (HCl, H₂O, NH₃)", 8, True, "bewegung", "GRUPPENARBEIT"),
+     ("ALLE GEMEINSAM: Protonen-Pingpong mit Ball und Schildern (HCl, H₂O, NH₃) – die ganze Klasse spielt mit", 8, True, "bewegung", "BESPRECHEN"),
      ("Aufgabe 4: Protonen-Pingpong", 10, False, "a4", "SELBSTSTUDIUM"),
      ("BESPRECHEN: Wer gibt ab, wer fängt? Ampholyt Wasser", 6, True, "bespr", "BESPRECHEN"),
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
@@ -63,7 +63,7 @@ ZIEL = {1: "Säuren an ihrem Teilchen (H⁺ → H₃O⁺) und mit Indikatoren er
         3: "pH-Werte messen, auf der Skala einordnen und den Faktor 10 pro Stufe anwenden.",
         4: "Die Neutralisation erklären und verstehen, wie Atmung und Puffer den Blut-pH halten."}
 
-MARKE = {1: "DEMO", 2: "GRUPPENARBEIT", 3: "VERSUCH", 4: "PARTNERCHECK"}
+MARKE = {1: "DEMO", 2: "BESPRECHEN", 3: "VERSUCH", 4: "PARTNERCHECK"}
 PLAN = {k: [{"std": n, "methode": METHODE[n], "phasen": STUNDE[n]} for n in sorted(STUNDE)] for k in I.KLASSEN}
 
 # ---------------------------------------------------------------- Kontrollen
