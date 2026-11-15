@@ -279,8 +279,10 @@ def ablauf_daten():
 
 s = s.replace("const GRP = ", "const ABLAUF = " + json.dumps(ablauf_daten(), ensure_ascii=False) + ";\nconst GRP = ", 1)
 s = s.replace("const GRP = ", "const BALKEN = " + json.dumps(P.balken(), ensure_ascii=False) + ";\nconst GRP = ", 1)
+GESICHERT = {str(nr): ", ".join(P.buchstaben(nr, ids)) for n in P.SICHERUNG for nr, ids in P.SICHERUNG[n]["teile"]}
+s = s.replace("const GRP = ", "const GESICHERT = " + json.dumps(GESICHERT, ensure_ascii=False) + ";\nconst GRP = ", 1)
 s = s.replace('T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });',
-  'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); $("#tasks").append(renderTask(t)); balkenEl("nach", t.nr); });')
+  'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); const kc = renderTask(t); gesichertEl(kc, t.nr); $("#tasks").append(kc); balkenEl("nach", t.nr); });')
 s = s.replace("let lastH = null;", """/* ABCD-Karte (Stephan, 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
    Nichts wird gespeichert oder bewertet. */
 function abcdAuf() {
@@ -297,6 +299,12 @@ function abcdAuf() {
   ov.hidden = false; ov.querySelector(".abcd-gross").hidden = true; ov.querySelector(".abcd-wahl").hidden = false;
 }
 /* Balken zwischen den Aufgaben (Stephan 15.11.2026): Wer nur Aufgaben macht, läuft direkt auf »Jetzt DEMO …« zu. */
+/* Hinweis auf der Aufgabe: Diese Teile werden am Ende der Stunde gemeinsam gesichert (Stephan 15.11.2026). */
+function gesichertEl(card, nr) {
+  const g = GESICHERT[String(nr)]; if (!g) return;
+  const p = el("p", { class: "gesichert" }); p.append(el("span", { class: "phm", text: "SICHERUNG" }), el("span", { text: "Am Ende der Stunde sichern wir gemeinsam: " + g + "." }));
+  const h = card.querySelector(".head"); if (h && h.nextSibling) card.insertBefore(p, h.nextSibling); else card.append(p);
+}
 function balkenEl(wo, nr) {
   (BALKEN[wo][String(nr)] || []).forEach(([m, txt]) => {
     const b = el("div", { class: "phbalken" + (m ? " m-" + m : ""), role: "note" });
@@ -372,6 +380,8 @@ ol.ablauf a { color: #2E7D8C; font-weight: 700; }
 .phbalken.m-DEMO { border-color: #2E7D8C; background: #E6F1F3; } .phbalken.m-DEMO .phm { background: #2E7D8C; }
 .phbalken.m-VERSUCH { border-color: #8C3B2E; background: #F6E9E6; } .phbalken.m-VERSUCH .phm { background: #8C3B2E; }
 .phbalken.m-SELBSTSTUDIUM { border-color: #B8962E; background: #F7F1DE; } .phbalken.m-SELBSTSTUDIUM .phm { background: #8A6400; }
+.gesichert { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin: 6px 0 10px; padding: 6px 10px; border-radius: 10px; background: #EEF1E6; font-size: 15.5px; font-weight: 600; color: #3B4A2F; }
+.gesichert .phm { font-size: 12px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 7px; }
 .phabcd { margin-left: auto; min-height: 40px; font: inherit; font-size: 15px; font-weight: 700; border-radius: 999px; border: 2px solid #2E7D8C; background: #fff; color: #2E7D8C; padding: 4px 14px; cursor: pointer; }
 .abcdbtn { margin-top: 10px; width: 100%; min-height: 48px; font: inherit; font-weight: 700; font-size: 16px; border-radius: 12px; border: 2px solid #3B4A2F; background: #fff; color: #3B4A2F; cursor: pointer; }
 #abcd { position: fixed; inset: 0; z-index: 200; background: #11150F; display: flex; flex-direction: column; padding: 12px; gap: 10px; }

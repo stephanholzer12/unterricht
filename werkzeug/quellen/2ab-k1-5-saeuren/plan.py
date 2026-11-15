@@ -202,18 +202,69 @@ def folge(n):
         elif art == "erkl": out.append(["BESPRECHEN", "Prof. HOLZER erklärt"])
         elif art == "lesen": out.append(["SELBSTSTUDIUM", "Buch lesen"])
         elif art == "bewegung": out.append(["BESPRECHEN", "Protonen-Pingpong"])
-        elif art == "bespr": out.append(["BESPRECHEN", "Besprechen"])
+        elif art == "bespr": out.append(["BESPRECHEN", "Sicherung"])
         elif art == "partner": out.append(["PARTNERCHECK", "Partnercheck"])
         elif art == "selbst": out.append(["", "Auflösung Aufgabe 1"])
         else: raise ValueError(art)
     return out
 
 
+# Sicherung (Stephan 15.11.2026): Was wird am Ende der Stunde gemeinsam gesichert? EINE Quelle für Präsentation, Arbeitsblatt
+# (»Wird gemeinsam gesichert: …«), Fahrplan-Balken und Lösungsseite. teile = (Aufgabe, [Feld-IDs]); auch = weitere Punkte; merken = Merksätze.
+SICHERUNG = {
+ 1: {"teile": [(2, ["oxo", "cola", "rk_essig", "rk_natron"])], "auch": ["DEMO Rotkraut"],
+     "merken": ["Säuren geben in Wasser ein **H⁺** ab – daraus wird **H₃O⁺**. Das macht eine Lösung **sauer**.",
+                "Ein **Indikator** zeigt mit seiner Farbe: sauer, neutral oder basisch."]},
+ 2: {"teile": [(3, ["verd", "auge"]), (4, ["g2s", "g2b", "ampho"])], "auch": ["Protonen-Pingpong"],
+     "merken": ["Laugen enthalten **OH⁻**. Lauge im Auge: **sofort lange mit Wasser spülen**.",
+                "Die **Säure gibt** ein Proton ab, die **Base nimmt** es auf. Wasser kann beides – ein **Ampholyt**."]},
+ 3: {"teile": [(5, ["faktor", "meer"]), (6, ["co2", "meter"])], "auch": ["VERSUCH: Klassenwerte gegen pH-Meter"],
+     "merken": ["pH **unter 7 sauer**, **7 neutral**, **über 7 basisch** – eine Stufe ist **Faktor 10**.",
+                "**Indikatorpapier schätzt**, das **pH-Meter misst** genauer."]},
+ 4: {"teile": [(7, ["ion", "warm", "sod", "blut", "kater"])], "auch": ["DEMO Atemluft", "PARTNERCHECK"],
+     "merken": ["**Säure + Lauge → Salz + Wasser**. Im Kern: **H₃O⁺ + OH⁻ → 2 H₂O**.",
+                "**Puffer und Atmung** halten deinen Blut-pH zwischen **7,35 und 7,45**."]},
+}
+ANTWORT = {(5, "faktor"): "1000-mal – drei Stufen: 10 · 10 · 10"}   # Felder ohne Auswahl
+
+
+def buchstaben(nr, ids):
+    t = next(x for x in I.T if x["nr"] == nr)
+    out = []
+    for fid in ids:
+        f = next(x for x in t["fields"] if x[0] == fid)
+        m = re.match(r"([a-z]\d?)\)", f[1]); out.append(m.group(1) if m else fid)
+    return out
+
+
+def sicherung_kurz(n):
+    """»Aufgabe 2 b, d, g, h · DEMO Rotkraut« – für Balken, Präsentation und Lösungsseite."""
+    S = SICHERUNG[n]
+    return " · ".join([f"Aufgabe {nr} " + ", ".join(buchstaben(nr, ids)) for nr, ids in S["teile"]] + S["auch"])
+
+
+def sicherung_fragen(nr, ids):
+    """[(Frage, Antwort)] für die Sicherungs-Folien – Antwort = richtige Auswahl (erste Option) oder ANTWORT."""
+    t = next(x for x in I.T if x["nr"] == nr)
+    out = []
+    for fid in ids:
+        f = next(x for x in t["fields"] if x[0] == fid)
+        a = ANTWORT.get((nr, fid)) or (t.get("chk", {}).get(fid) or {}).get("sel")   # richtige Antwort aus der Prüfregel (nicht die erste Option!)
+        assert a, (nr, fid)
+        out.append((f[1], a))
+    return out
+
+
+for _n in SICHERUNG:
+    for _nr, _ids in SICHERUNG[_n]["teile"]:
+        assert _nr in aufgaben_der(_n), (_n, _nr)
+        sicherung_fragen(_nr, _ids)
+
 BALKEN_TEXT = {"demo": "Jetzt DEMO am Lehrertisch: {d}. Erst vermuten – ABCD-Karte bereit, dann schauen.",
                "lesen": "Jetzt SELBSTSTUDIUM: Buch S. 54 lesen, den Merksatz markieren, drei Säuren aus dem Alltag suchen.",
                "erkl": "Jetzt erklärt Prof. HOLZER: {t}. Handy weg, zuhören.",
                "bewegung": "Jetzt alle gemeinsam: Protonen-Pingpong mit Ball und Schildern.",
-               "bespr": "Jetzt BESPRECHEN mit Prof. HOLZER: {t}.",
+               "bespr": "Jetzt SICHERUNG mit Prof. HOLZER: {s}.",
                "partner": "Jetzt PARTNERCHECK: vier Karten zu zweit – einer fragt, einer antwortet.",
                "selbst": "Jetzt: bei Aufgabe 1 »Auflösung zeigen« und die Selbsteinschätzung auf der Theorie-Seite.",
                "wdh": "Jetzt »Weißt du noch?«: Antwort mit der ABCD-Karte zeigen."}
@@ -233,7 +284,7 @@ def balken():
                 continue
             if art in ("org", "reserve", "pdf") or (erste and art == "wdh"): continue
             t = re.sub(r"^(KURZ KLÄREN|BESPRECHEN|ALLE GEMEINSAM|PARTNERCHECK|SELBSTSTUDIUM): ", "", text).split(" (")[0]
-            warte.append([marke, BALKEN_TEXT[art].format(d=DEMO_NAME.get(n, ""), t=t)])
+            warte.append([marke, BALKEN_TEXT[art].format(d=DEMO_NAME.get(n, ""), t=t, s=sicherung_kurz(n))])
         if warte and letzte: nach[letzte] = warte
     return {"vor": vor, "nach": nach}
 
