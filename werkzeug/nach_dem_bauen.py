@@ -12,6 +12,7 @@ Führt der Reihe nach aus (alle wiederholbar, ändern keinen Speicherschlüssel)
   4d. pruefung_nachsicht_einbauen.py – großzügigere »Prüfen«-Auswertung der Arbeitsblätter (Einheiten, Rundung, Schreibweise); Korrekturen: werkzeug/pruefregeln_korrekturen.json
   4g. teststoff/handyseite.py     – Teststoff als Handy-Seite (nur wenn im JSON keine [[gelben Stellen]] mehr offen sind)
   4f. pilot_layout_einbauen.py    – Fahrplan/Zusatz zugeklappt, Pflicht-Fortschritt
+  4g. kapitelmenue_einbauen.py   – Kapitel-Menü statt Wischleiste auf Theorie-Seiten (nur Einheiten mit "kapitelmenue": true)
   4e. notenvorschlag_einbauen.py  – Kasten »Für LMS: x von y Punkten · Notenvorschlag« oben auf Seite 1 der PDF (nur im PDF)
   5. build_index.py               – Klassenseiten, Fahrplan, Lehrer-Seite
   6. pruefen.py                   – Kontrolle (dieselbe wie bei jedem Push)
@@ -19,7 +20,7 @@ Danach: git status ansehen, nur die eigene Einheit committen, git pull --rebase,
 import os, subprocess, sys
 W = os.path.dirname(os.path.abspath(__file__))
 for s in ("loesungshilfe_einbauen.py", "tippstufen_einbauen.py", "speicherstatus_einbauen.py", "pdf_erinnerung_einbauen.py", "pdf_sicherung_einbauen.py", "pdf_programm_auslagern.py",
-          "schriften_einbauen.py", "abgabezeit_einbauen.py", "versuche_pruefen_einbauen.py", "pruefung_nachsicht_einbauen.py", "notenvorschlag_einbauen.py", "pilot_layout_einbauen.py", "teststoff/handyseite.py", "build_index.py", "pruefen.py"):
+          "schriften_einbauen.py", "abgabezeit_einbauen.py", "versuche_pruefen_einbauen.py", "pruefung_nachsicht_einbauen.py", "notenvorschlag_einbauen.py", "pilot_layout_einbauen.py", "kapitelmenue_einbauen.py", "teststoff/handyseite.py", "build_index.py", "pruefen.py"):
     print(f"\n=== {s} ===", flush=True)
     r = subprocess.run([sys.executable, os.path.join(W, s)], cwd=os.path.dirname(W))
     if r.returncode:

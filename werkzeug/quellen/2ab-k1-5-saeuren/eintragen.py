@@ -14,7 +14,7 @@ DATEIEN = {"stand": I.STAND,
 neu = {"klasse": "2AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K1.5", "titel": I.TITEL,
        "block": "B Chemische Reaktionen", "jahresplan": "E8",
        "seiten": ["aufgaben.html", "theorie.html"],
-       "versteckt": True,
+       "versteckt": True, "kapitelmenue": True,
        "fahrplan": {"ansicht": "kompakt", "text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
        "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]

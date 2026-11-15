@@ -291,7 +291,8 @@
     "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v4.pptx"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5"
+  "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5",
+  "kapitelmenue": true
  },
  {
   "klasse": "2AB",
@@ -531,7 +532,8 @@
     "26-27-2AB-K1.5-Saeuren-Pruefbericht-Claude-v1.md"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/BCm9427922aFp3BjgoQiZf"
+  "lehrerseite": "https://claude.ai/artifact/BCm9427922aFp3BjgoQiZf",
+  "kapitelmenue": true
  },
  {
   "klasse": "5AB",
@@ -998,7 +1000,8 @@
     "26-27-4AB-K2.4-3.2-Akustik-Pruefbericht-Claude-v1.md"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/TTopFaGJM1GEoWybNVspqJ"
+  "lehrerseite": "https://claude.ai/artifact/TTopFaGJM1GEoWybNVspqJ",
+  "kapitelmenue": true
  },
  {
   "klasse": "5AK",
@@ -1430,6 +1433,7 @@
     "26-27-3BK-K2.1-5.4-Meilenst-Pruefbericht-Claude-v3.md"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/RknDezX91aGrafrUFaqtJd"
+  "lehrerseite": "https://claude.ai/artifact/RknDezX91aGrafrUFaqtJd",
+  "kapitelmenue": true
  }
 ]

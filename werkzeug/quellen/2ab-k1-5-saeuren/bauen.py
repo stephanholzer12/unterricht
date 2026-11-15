@@ -419,7 +419,7 @@ PARTS.append(("kurz", "Zum Schluss", "Kurz & knapp", [slide("Das Wichtigste in 5
                                                       slide("Kann ich das?", hint("Tippe ehrlich an – bei »noch nicht« den passenden Teil noch einmal lesen.") + CHECK)]))
 PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [render(x) for x in TD.SCHNELLE]))
 
-toc = "".join(f'<a href="#{p[0]}">{TD.TOCLAB[p[0]]}</a>' for p in PARTS)
+toc = "".join(f'<a href="#{p[0]}">{TD.TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="aufgaben.html">Arbeitsblatt</a>'   # Kapitel-Menü: werkzeug/kapitelmenue.js
 body = "".join(f'<section class="part" id="{p[0]}"><div class="band"><div class="eyebrow">{esc(p[1])}</div><h2>{esc(p[2])}</h2></div>{"".join(p[3])}</section>' for p in PARTS)
 bt = open(os.path.join(WZ, "vorlagen", "build_theorie.py"), encoding="utf-8").read()
 tcss = bt[bt.index("<style>"):bt.index("</style>") + 8].replace("{{", "{").replace("}}", "}")
@@ -439,16 +439,6 @@ details.reveal p { margin: 8px 0 0; }
 .chip:focus-visible { outline: 3px solid #2E7D8C; outline-offset: 2px; }
 .jetzt { display: block; text-align: center; background: #7FA83A; color: #fff; font-weight: 700; font-size: 18px; text-decoration: none; border-radius: 12px; padding: 12px 16px; }
 .slide[id], .part { scroll-margin-top: 64px; }
-/* Kapitel-Menü */
-nav.toc div.tocbar { display: flex; align-items: center; gap: 8px; overflow: visible; padding: 8px 12px; }
-nav.toc .tocbtn { font: inherit; font-size: 16px; font-weight: 700; color: #3B4A2F; background: #fff; border: 0; border-radius: 999px; padding: 8px 14px; min-height: 40px; cursor: pointer; white-space: nowrap; }
-nav.toc .toccur { flex: 1; min-width: 0; color: #fff; font-weight: 700; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-nav.toc a.tocab { flex: 0 0 auto; background: #7FA83A; border-color: #7FA83A; }
-nav.toc div.tocpanel { display: flex; flex-wrap: wrap; gap: 6px; overflow: visible; padding: 2px 12px 12px; }
-nav.toc div.tocpanel[hidden] { display: none; }
-nav.toc div.tocpanel a { font-size: 16px; padding: 8px 14px; }
-nav.toc div.tocpanel a.aktiv { background: #fff; color: #3B4A2F; }
-nav.toc:not(.mitmenue) .tocbtn, nav.toc:not(.mitmenue) .toccur { display: none; }   /* ohne JavaScript: alle Kapitel umbrechend sichtbar */
 .fig { margin: 0; display: grid; gap: 6px; justify-items: center; }
 .fig img { max-width: 100%; height: auto; border-radius: 10px; border: 1px solid #D3DCC2; background: #fff; }
 .fig figcaption { font-size: 15px; color: #5E6652; text-align: center; }
@@ -493,7 +483,7 @@ page = f"""<!doctype html>
     <img class="smiley" alt="" src="data:image/png;base64,{SMILEY}">
   </div>
 </header>
-<nav class="toc" aria-label="Inhalt"><div class="tocbar"><button type="button" class="tocbtn" aria-expanded="false" aria-controls="tocpanel">☰ Kapitel</button><span class="toccur" aria-live="polite">Start</span><a class="tocab" href="aufgaben.html">Arbeitsblatt</a></div><div class="tocpanel" id="tocpanel">{toc}</div></nav>
+<nav class="toc" aria-label="Inhalt"><div>{toc}</div></nav>
 <main>
 <section class="part" id="nachschlagen">
   <div class="band"><div class="eyebrow">So arbeitest du</div><h2>Diese Seite ist dein Nachschlagewerk</h2></div>
@@ -523,31 +513,6 @@ page = f"""<!doctype html>
     try {{ localStorage.setItem(KEY, JSON.stringify(S)); }} catch (e) {{}}
   }}); }});
   paint();
-}})();
-/* Kapitel-Menü statt Wischleiste (Stephan, 15.11.2026): alle Kapitel auf einen Blick, aktuelles Kapitel oben angezeigt */
-(function () {{
-  var nav = document.querySelector("nav.toc"), btn = nav.querySelector(".tocbtn"), panel = nav.querySelector(".tocpanel"), cur = nav.querySelector(".toccur");
-  nav.classList.add("mitmenue"); panel.hidden = true;
-  function zu() {{ panel.hidden = true; btn.setAttribute("aria-expanded", "false"); btn.textContent = "☰ Kapitel"; }}
-  btn.addEventListener("click", function () {{ var auf = panel.hidden; panel.hidden = !auf; btn.setAttribute("aria-expanded", String(auf)); btn.textContent = auf ? "✕ Schließen" : "☰ Kapitel"; }});
-  panel.addEventListener("click", function (ev) {{
-    var a = ev.target.closest("a"); if (!a) return; zu();
-    var h = a.getAttribute("href"); if (h.charAt(0) !== "#") return;
-    var z = document.getElementById(h.slice(1)); if (!z) return;
-    ev.preventDefault(); try {{ history.replaceState(null, "", h); }} catch (e) {{}}
-    var hin = function () {{ window.scrollTo({{ top: z.getBoundingClientRect().top + window.scrollY - nav.getBoundingClientRect().bottom - 8, behavior: "instant" }}); }};
-    hin(); setTimeout(hin, 350); setTimeout(hin, 1000);   /* nachladende Bilder verschieben sonst das Ziel */
-  }});
-  document.addEventListener("keydown", function (ev) {{ if (ev.key === "Escape") zu(); }});
-  var links = [].slice.call(panel.querySelectorAll('a[href^="#"]'));
-  var ziele = links.map(function (a) {{ return document.getElementById(a.getAttribute("href").slice(1)); }});
-  function markiere() {{
-    var y = nav.getBoundingClientRect().bottom + 24, best = 0;
-    ziele.forEach(function (z, i) {{ if (z && z.getBoundingClientRect().top <= y) best = i; }});
-    links.forEach(function (a, i) {{ a.classList.toggle("aktiv", i === best); }});
-    cur.textContent = links[best] ? links[best].textContent : "";
-  }}
-  window.addEventListener("scroll", markiere, {{ passive: true }}); window.addEventListener("resize", markiere); markiere();
 }})();
 </script>
 </body>
