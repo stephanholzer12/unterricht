@@ -10,10 +10,10 @@ PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 P = I.PRAEFIX
 DATEIEN = {"stand": I.STAND,
-           "liste": ["GitHub: theorie.html, aufgaben.html (" + I.V + ")", "Lösungsseite (Artifact, privat)", f"{P}-Pruefbericht-Claude-{I.V}.md"]}
+           "liste": ["GitHub: theorie.html, aufgaben.html, check.html (" + I.V + ")", "Lösungsseite (Artifact, privat)", f"{P}-Pruefbericht-Claude-{I.V}.md"]}
 neu = {"klasse": "2AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K1.5", "titel": I.TITEL,
        "block": "B Chemische Reaktionen", "jahresplan": "E8",
-       "seiten": ["aufgaben.html", "theorie.html"],
+       "seiten": ["aufgaben.html", "theorie.html", "check.html"],
        "versteckt": True, "kapitelmenue": True,
        "fahrplan": {"ansicht": "kompakt", "text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
        "dateien": DATEIEN}

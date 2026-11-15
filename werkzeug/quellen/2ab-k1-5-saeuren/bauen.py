@@ -278,8 +278,9 @@ def ablauf_daten():
 
 
 s = s.replace("const GRP = ", "const ABLAUF = " + json.dumps(ablauf_daten(), ensure_ascii=False) + ";\nconst GRP = ", 1)
+s = s.replace("const GRP = ", "const BALKEN = " + json.dumps(P.balken(), ensure_ascii=False) + ";\nconst GRP = ", 1)
 s = s.replace('T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });',
-  'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } $("#tasks").append(renderTask(t)); });')
+  'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); $("#tasks").append(renderTask(t)); balkenEl("nach", t.nr); });')
 s = s.replace("let lastH = null;", """/* ABCD-Karte (Stephan, 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
    Nichts wird gespeichert oder bewertet. */
 function abcdAuf() {
@@ -294,6 +295,15 @@ function abcdAuf() {
     document.body.append(ov);
   }
   ov.hidden = false; ov.querySelector(".abcd-gross").hidden = true; ov.querySelector(".abcd-wahl").hidden = false;
+}
+/* Balken zwischen den Aufgaben (Stephan 15.11.2026): Wer nur Aufgaben macht, läuft direkt auf »Jetzt DEMO …« zu. */
+function balkenEl(wo, nr) {
+  (BALKEN[wo][String(nr)] || []).forEach(([m, txt]) => {
+    const b = el("div", { class: "phbalken" + (m ? " m-" + m : ""), role: "note" });
+    b.append(el("span", { class: "phm", text: m || "JETZT" }), el("span", { text: txt }));
+    if (/ABCD-Karte/.test(txt)) { const k = el("button", { type: "button", class: "phabcd", text: "ABCD-Karte" }); k.addEventListener("click", abcdAuf); b.append(k); }
+    $("#tasks").append(b);
+  });
 }
 function grpEl(g) {
   const box = el("div", { class: "grpbox" }); box.append(el("div", { class: "grp", text: GRP[g] }));
@@ -357,6 +367,12 @@ ol.ablauf a { color: #2E7D8C; font-weight: 700; }
 .abm { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; border-radius: 999px; padding: 1px 8px; margin-right: 6px; color: #fff; background: #5E6652; vertical-align: 1px; }
 .abm.m-DEMO { background: #2E7D8C; } .abm.m-VERSUCH { background: #8C3B2E; } .abm.m-BESPRECHEN, .abm.m-PARTNERCHECK { background: #3B4A2F; }
 .abm.m-SELBSTSTUDIUM { background: #E8DDBB; color: #6B4F00; } .abm.m-ABGABE { background: #7FA83A; }
+.phbalken { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: 14px 0; padding: 10px 14px; border-radius: 12px; border-left: 8px solid #3B4A2F; background: #EEF1E6; font-size: 17px; line-height: 1.4; font-weight: 600; color: #1F2A1C; }
+.phbalken .phm { font-size: 12.5px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 8px; }
+.phbalken.m-DEMO { border-color: #2E7D8C; background: #E6F1F3; } .phbalken.m-DEMO .phm { background: #2E7D8C; }
+.phbalken.m-VERSUCH { border-color: #8C3B2E; background: #F6E9E6; } .phbalken.m-VERSUCH .phm { background: #8C3B2E; }
+.phbalken.m-SELBSTSTUDIUM { border-color: #B8962E; background: #F7F1DE; } .phbalken.m-SELBSTSTUDIUM .phm { background: #8A6400; }
+.phabcd { margin-left: auto; min-height: 40px; font: inherit; font-size: 15px; font-weight: 700; border-radius: 999px; border: 2px solid #2E7D8C; background: #fff; color: #2E7D8C; padding: 4px 14px; cursor: pointer; }
 .abcdbtn { margin-top: 10px; width: 100%; min-height: 48px; font: inherit; font-weight: 700; font-size: 16px; border-radius: 12px; border: 2px solid #3B4A2F; background: #fff; color: #3B4A2F; cursor: pointer; }
 #abcd { position: fixed; inset: 0; z-index: 200; background: #11150F; display: flex; flex-direction: column; padding: 12px; gap: 10px; }
 #abcd[hidden] { display: none; }

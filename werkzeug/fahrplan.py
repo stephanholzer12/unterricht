@@ -171,7 +171,7 @@ def html_kompakt(u, mit_marken=True):
                    + "</ol></details></div>")
     rest = [r for r in z if not r.get("klasse")]
     if rest:
-        out.append("".join(f'<p class="fp-tipp" style="margin-top:8px"><b>{esc(r["wann"])}:</b> {esc(r["lesen"])} · Aufgaben {esc(r.get("aufgaben") or "–")}</p>' for r in rest))
+        out.append("".join(f'<p class="fp-tipp" style="margin-top:8px"><b>{esc(r["wann"])}:</b> {esc(r["lesen"])}{" · Aufgaben " + esc(r["aufgaben"]) if r.get("aufgaben") else ""}</p>' for r in rest))
     if fp.get("text"):
         out.append(f'<details><summary>So läuft die ganze Einheit</summary><p>{esc(fp["text"])}</p></details>')
     out.append("</section>")
@@ -208,20 +208,41 @@ def html_kompakt_stunden(u):
     for r in rows:
         mk = f'<span class="fp-marke">{esc(r["marke"])}</span>' if r.get("marke") else ""
         ab = r.get("abgabe") or "–"
-        out.append(f'<div class="fp-std" data-n="{esc(nr(r))}" hidden><div class="fp-kopf">Diese Stunde: {esc(r["wann"])} {mk}</div>'
-                   f'<div class="fp-zeile"><b class="n">1</b><span>{esc(r["lesen"])}</span></div>'
-                   f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}'
+        # optional (seit 15.11.2026, K1.5 2AB): "titel" = Stundentitel, "folge" = Reihenfolge [[Marke, Text], …], "buch" = Buchseiten
+        titel = f'<div class="fp-titel">{esc(r["titel"])}</div>' if r.get("titel") else ""
+        if r.get("folge"):
+            eins = ('So läuft die Stunde:<span class="fp-folge">' + '<i class="fp-pfeil" aria-hidden="true">→</i>'.join(
+                f'<span class="fp-pill{" m-" + esc(m) if m else ""}">{esc(t)}</span>' for m, t in r["folge"]) + '</span>')
+        else:
+            eins = esc(r["lesen"])
+        buch = f' · {esc(r["buch"])}' if r.get("buch") else ""
+        out.append(f'<div class="fp-std" data-n="{esc(nr(r))}" hidden><div class="fp-kopf">Diese Stunde: {esc(r["wann"])} {mk}</div>{titel}'
+                   f'<div class="fp-zeile"><b class="n">1</b><span>{eins}</span></div>'
+                   f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}{buch}'
                    + (f'<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: {esc(r["theorie"])}</span>' if r.get("theorie") else "") + '</span></div>'
                    f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div></div>')
     out.append(f'<details><summary>Alle Stunden ({len(rows)})</summary><ol class="fp-liste">'
-               + "".join(f'<li data-n="{esc(nr(r))}">{esc(r["wann"])}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}{" · Theorie: " + esc(r["theorie"]) if r.get("theorie") else ""}</li>' for r in rows)
+               + "".join(f'<li data-n="{esc(nr(r))}">{esc(r["wann"])}{" · " + esc(r["titel"]) if r.get("titel") else ""}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}{" · Theorie: " + esc(r["theorie"]) if r.get("theorie") else ""}</li>' for r in rows)
                + "</ol></details>")
     if rest:
-        out.append("".join(f'<p class="fp-tipp" style="margin-top:8px"><b>{esc(r["wann"])}:</b> {esc(r["lesen"])} · Aufgaben {esc(r.get("aufgaben") or "–")}</p>' for r in rest))
+        out.append("".join(f'<p class="fp-tipp" style="margin-top:8px"><b>{esc(r["wann"])}:</b> {esc(r["lesen"])}{" · Aufgaben " + esc(r["aufgaben"]) if r.get("aufgaben") else ""}</p>' for r in rest))
     if fp.get("text"):
         out.append(f'<details><summary>So läuft die ganze Einheit</summary><p>{esc(fp["text"])}</p></details>')
     out.append("</section>")
-    return CSS + KOMPAKT_CSS + "".join(out) + STUNDEN_JS
+    extra = FOLGE_CSS if any(r.get("folge") or r.get("titel") for r in rows) else ""
+    return CSS + KOMPAKT_CSS + extra + "".join(out) + STUNDEN_JS
+
+
+FOLGE_CSS = """<style>
+.fp-titel { font-family: "Source Serif 4", Georgia, serif; font-weight: 700; font-size: 21px; line-height: 1.2; color: #3B4A2F; margin: 2px 0 8px; }
+.fp-folge { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 4px; margin-top: 6px; }
+.fp-pill { display: inline-block; border: 2px solid #3B4A2F; color: #3B4A2F; background: #fff; border-radius: 999px; padding: 2px 10px; font-size: 15px; font-weight: 700; line-height: 1.35; }
+.fp-pill.m-DEMO { background: #2E7D8C; border-color: #2E7D8C; color: #fff; }
+.fp-pill.m-VERSUCH { background: #8C3B2E; border-color: #8C3B2E; color: #fff; }
+.fp-pill.m-BESPRECHEN, .fp-pill.m-PARTNERCHECK { background: #3B4A2F; color: #fff; }
+.fp-pill.m-SELBSTSTUDIUM { background: #E8DDBB; border-color: #E8DDBB; color: #6B4F00; }
+.fp-pfeil { font-style: normal; color: #5E6652; font-size: 15px; }
+</style>"""
 
 
 def html_fahrplan(u):

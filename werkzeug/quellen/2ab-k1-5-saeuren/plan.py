@@ -185,13 +185,69 @@ ABGABE = {1: "–", 2: "–", 3: "Messwerte deiner Gruppe eintragen", 4: "Arbeit
 THEORIE_TEILE = {1: "Teil 1 Säuren", 2: "Teil 2 Laugen, Teil 3 Pingpong", 3: "Teil 4 pH-Wert, Teil 5 Messen", 4: "Teil 6 Neutralisation, Teil 7 Blut"}
 
 
+BUCH = {1: "Buch S. 53–55", 2: "Buch S. 56–59", 3: "Buch S. 59–61", 4: "Buch S. 61–62, 65"}
+DEMO_NAME = {1: "Rotkraut-Farbenspiel", 4: "Atemluft macht sauer"}
+
+
+def folge(n):
+    """Reihenfolge der Stunde für den Fahrplan (Stephan 15.11.2026: man soll sehen, wann die DEMO dran ist, z. B. nach Aufgabe 1).
+    Liste [Marke, kurzer Text]; Organisation, Reserve und PDF-Sicherung fehlen (stehen nicht im Kadetten-Fahrplan)."""
+    out = []
+    for text, _mi, _oh, art, marke in STUNDE[n]:
+        if art in ("org", "reserve", "pdf"): continue
+        if re.match(r"a\d+$", art):
+            nr = int(art[1:]); out.append(["VERSUCH" if marke == "VERSUCH" else "", ("VERSUCH (Aufgabe %d)" % nr) if marke == "VERSUCH" else "Aufgabe %d" % nr])
+        elif art == "demo": out.append(["DEMO", "DEMO " + DEMO_NAME[n]])
+        elif art == "wdh": out.append(["BESPRECHEN", "Weißt du noch?"])
+        elif art == "erkl": out.append(["BESPRECHEN", "Prof. HOLZER erklärt"])
+        elif art == "lesen": out.append(["SELBSTSTUDIUM", "Buch lesen"])
+        elif art == "bewegung": out.append(["BESPRECHEN", "Protonen-Pingpong"])
+        elif art == "bespr": out.append(["BESPRECHEN", "Besprechen"])
+        elif art == "partner": out.append(["PARTNERCHECK", "Partnercheck"])
+        elif art == "selbst": out.append(["", "Auflösung Aufgabe 1"])
+        else: raise ValueError(art)
+    return out
+
+
+BALKEN_TEXT = {"demo": "Jetzt DEMO am Lehrertisch: {d}. Erst vermuten – ABCD-Karte bereit, dann schauen.",
+               "lesen": "Jetzt SELBSTSTUDIUM: Buch S. 54 lesen, den Merksatz markieren, drei Säuren aus dem Alltag suchen.",
+               "erkl": "Jetzt erklärt Prof. HOLZER: {t}. Handy weg, zuhören.",
+               "bewegung": "Jetzt alle gemeinsam: Protonen-Pingpong mit Ball und Schildern.",
+               "bespr": "Jetzt BESPRECHEN mit Prof. HOLZER: {t}.",
+               "partner": "Jetzt PARTNERCHECK: vier Karten zu zweit – einer fragt, einer antwortet.",
+               "selbst": "Jetzt: bei Aufgabe 1 »Auflösung zeigen« und die Selbsteinschätzung auf der Theorie-Seite.",
+               "wdh": "Jetzt »Weißt du noch?«: Antwort mit der ABCD-Karte zeigen."}
+
+
+def balken():
+    """Balken im Arbeitsblatt zwischen den Aufgaben: {"vor": {Aufgabennr: [[Marke, Text], …]}, "nach": {Aufgabennr: […]}}.
+    Phasen vor der ersten Aufgabe einer Stunde stehen schon im Kasten »So läuft die Stunde« – außer DEMO und KURZ KLÄREN (die sollen sichtbar sein)."""
+    vor, nach = {}, {}
+    for n, rows in STUNDE.items():
+        warte, erste, letzte = [], True, None
+        for text, _mi, _oh, art, marke in rows:
+            if re.match(r"a\d+$", art):
+                nr = int(art[1:])
+                if warte: vor[nr] = warte
+                warte, erste, letzte = [], False, nr
+                continue
+            if art in ("org", "reserve", "pdf") or (erste and art == "wdh"): continue
+            t = re.sub(r"^(KURZ KLÄREN|BESPRECHEN|ALLE GEMEINSAM|PARTNERCHECK|SELBSTSTUDIUM): ", "", text).split(" (")[0]
+            warte.append([marke, BALKEN_TEXT[art].format(d=DEMO_NAME.get(n, ""), t=t)])
+        if warte and letzte: nach[letzte] = warte
+    return {"vor": vor, "nach": nach}
+
+
 def fahrplan_zeilen():
     z = []
     for n in sorted(STUNDE):
         auf = bereich(aufgaben_der(n)) or "–"
-        z.append({"wann": f"Stunde {n}", "marke": MARKE[n], "lesen": LESEN[n], "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
-    z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET)",
-              "aufgaben": "Zusatz 8–11", "zeit": "ca. 48 min", "abgabe": "freiwillig"})
+        z.append({"wann": f"Stunde {n}", "titel": I.STUNDENTITEL[n], "marke": MARKE[n], "lesen": LESEN[n], "folge": folge(n), "buch": BUCH[n],
+                  "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
+    z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET), Lesen und prüfen: »Übersäuert« – was ist dran?",
+              "aufgaben": "Zusatz 8–12", "zeit": "ca. 60 min", "abgabe": "freiwillig"})
+    z.append({"wann": "Danach", "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"})
+    z.append({"wann": "Danach", "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"})
     return z
 
 

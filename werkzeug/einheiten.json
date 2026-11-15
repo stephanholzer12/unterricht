@@ -482,7 +482,8 @@
   "jahresplan": "E8",
   "seiten": [
    "aufgaben.html",
-   "theorie.html"
+   "theorie.html",
+   "check.html"
   ],
   "versteckt": true,
   "kapitelmenue": true,
@@ -492,49 +493,173 @@
    "zeilen": [
     {
      "wann": "Stunde 1",
+     "titel": "Rotkraut lügt nicht: Säuren erkennen",
      "marke": "DEMO",
      "lesen": "DEMO Rotkraut-Farbenspiel · Buch S. 54 lesen · Säuren",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "",
+       "Aufgabe 1"
+      ],
+      [
+       "DEMO",
+       "DEMO Rotkraut-Farbenspiel"
+      ],
+      [
+       "SELBSTSTUDIUM",
+       "Buch lesen"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 2"
+      ],
+      [
+       "BESPRECHEN",
+       "Besprechen"
+      ]
+     ],
+     "buch": "Buch S. 53–55",
      "aufgaben": "1, 2",
      "theorie": "Teil 1 Säuren",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 2",
+     "titel": "Pingpong mit Protonen: Laugen und wer was abgibt",
      "marke": "BESPRECHEN",
      "lesen": "Laugen und Sicherheit · Protonen-Pingpong mit Ball · Buch S. 56–58",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 3"
+      ],
+      [
+       "BESPRECHEN",
+       "Protonen-Pingpong"
+      ],
+      [
+       "",
+       "Aufgabe 4"
+      ],
+      [
+       "BESPRECHEN",
+       "Besprechen"
+      ]
+     ],
+     "buch": "Buch S. 56–59",
      "aufgaben": "3, 4",
      "theorie": "Teil 2 Laugen, Teil 3 Pingpong",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 3",
+     "titel": "pH-Detektive: Wie sauer ist deine Cola wirklich?",
      "marke": "VERSUCH",
      "lesen": "pH-Skala · VERSUCH pH-Detektive (Gruppen) · Buch S. 59–61",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 5"
+      ],
+      [
+       "VERSUCH",
+       "VERSUCH (Aufgabe 6)"
+      ],
+      [
+       "BESPRECHEN",
+       "Besprechen"
+      ]
+     ],
+     "buch": "Buch S. 59–61",
      "aufgaben": "5, 6",
      "theorie": "Teil 4 pH-Wert, Teil 5 Messen",
      "abgabe": "Messwerte deiner Gruppe eintragen"
     },
     {
      "wann": "Stunde 4",
+     "titel": "Sauer gelaufen? Neutralisation und dein Blut beim Sprint",
      "marke": "PARTNERCHECK",
      "lesen": "DEMO Atemluft und Natron · Neutralisation · Blut-pH · Partnercheck",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "DEMO",
+       "DEMO Atemluft macht sauer"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 7"
+      ],
+      [
+       "PARTNERCHECK",
+       "Partnercheck"
+      ],
+      [
+       "BESPRECHEN",
+       "Besprechen"
+      ],
+      [
+       "",
+       "Auflösung Aufgabe 1"
+      ]
+     ],
+     "buch": "Buch S. 61–62, 65",
      "aufgaben": "7",
      "theorie": "Teil 6 Neutralisation, Teil 7 Blut",
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {
      "wann": "Für Schnelle",
-     "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET)",
-     "aufgaben": "Zusatz 8–11",
-     "zeit": "ca. 48 min",
+     "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET), Lesen und prüfen: »Übersäuert« – was ist dran?",
+     "aufgaben": "Zusatz 8–12",
+     "zeit": "ca. 60 min",
      "abgabe": "freiwillig"
+    },
+    {
+     "wann": "Danach",
+     "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"
+    },
+    {
+     "wann": "Danach",
+     "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"
     }
    ]
   },
   "dateien": {
    "stand": "14.11.2026",
    "liste": [
-    "GitHub: theorie.html, aufgaben.html (v1)",
+    "GitHub: theorie.html, aufgaben.html, check.html (v1)",
     "Lösungsseite (Artifact, privat)",
     "26-27-2AB-K1.5-Saeuren-Pruefbericht-Claude-v1.md"
    ]

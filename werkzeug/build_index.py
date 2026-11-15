@@ -49,8 +49,8 @@ LOESUNGEN = "lehrer-loesungen-0f6eec.html"
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Theorie-Seite → Arbeitsblatt → Quiz
 NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
          "versuche.html": ("Versuche", "rust"), "vertiefung.html": ("Vertiefung", ""), "uebung.html": ("Übung", ""), "projekt.html": ("Projekt", ""),
-         "gruppe.html": ("Gruppe", ""), "teststoff.html": ("Teststoff", "rust"), "kurz.html": ("Gruppe kompakt", "")}
-REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html"]
+         "gruppe.html": ("Gruppe", ""), "teststoff.html": ("Teststoff", "rust"), "kurz.html": ("Gruppe kompakt", ""), "check.html": ("Mitarbeits-Check", "rust")}
+REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html", "check.html"]
 
 CSS = """
 :root { --bg: #EEF3E4; --card: #FFFFFF; --ink: #1F2A1C; --olive: #3B4A2F; --teal: #2E7D8C; --green: #7FA83A;

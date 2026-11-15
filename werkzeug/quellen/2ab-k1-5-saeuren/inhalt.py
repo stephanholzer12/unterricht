@@ -29,10 +29,12 @@ DEMOS = {"K1.5-D1": {"titel": "Rotkraut-Farbenspiel", "jp": "Buch S. 54–55 · 
          "K1.5-D2": {"titel": "pH-Meter gegen Indikatorpapier", "jp": "Teil von V2.18 – nur 1 pH-Meter (#107)", "stunde": 3},
          "K1.5-D3": {"titel": "Atemluft macht sauer – Natron holt zurück", "jp": "Buch S. 55 · Jahresplan V2.21 als Demo, erweitert um Neutralisation", "stunde": 4}}
 
-STUNDENNAME = {1: "Stunde 1 · Sauer macht's – Säuren erkennen und sichtbar machen",
-               2: "Stunde 2 · Laugen und das Protonen-Pingpong",
-               3: "Stunde 3 · Der pH-Wert – wir messen nach",
-               4: "Stunde 4 · Neutralisation – und warum dein Blut bei 7,4 bleibt"}
+# Stundentitel (Stephan 15.11.2026: kreativ und interessant, Fachteil nach dem Doppelpunkt) – EINE Quelle für Fahrplan, Arbeitsblatt, Präsentation, Lösungsseite.
+STUNDENTITEL = {1: "Rotkraut lügt nicht: Säuren erkennen",
+                2: "Pingpong mit Protonen: Laugen und wer was abgibt",
+         3: "pH-Detektive: Wie sauer ist deine Cola wirklich?",
+         4: "Sauer gelaufen? Neutralisation und dein Blut beim Sprint"}
+STUNDENNAME = {n: f"Stunde {n} · {t}" for n, t in STUNDENTITEL.items()}
 
 SNB = ["sauer", "neutral", "basisch"]
 
@@ -418,7 +420,40 @@ T.append({
                         "g) Besser: ohne Gefahr, gefährliche Stoffe (Batteriesäure, Abflussreiniger) möglich, genaue Werte, beliebig oft. Nicht: echtes Hantieren, Geruch, Messfehler, Überraschungen – die echte Welt."]]],
     "tipps": ["Sonde eintauchen, dann ablesen. Kleinere Zahl = saurer.", "k4", "Buch S. 60–61: pH-Wert"],
 })
-assert [t["nr"] for t in T] == list(range(1, 12))
+# ---- Lesen und prüfen (Stephan 15.11.2026: passende Texte aus ORF Science o. Ä. suchen). ORF/Ö1 hatte nichts Passendes;
+# geprüft und verwendet: Quarks (WDR), Linda Fischer, »Darum sind viele Säure-Basen-Kuren Quatsch«, 29.10.2019, aktualisiert 15.02.2022, frei lesbar.
+QUARKS = {"titel": "Darum sind viele Säure-Basen-Kuren Quatsch", "url": "https://www.quarks.de/?p=19042",
+          "herkunft": "Quarks (WDR) · Linda Fischer · 29.10.2019, aktualisiert 15.02.2022 · frei lesbar, ca. 7 min"}
+T.append({
+    "id": "z5", "nr": 12, "title": "Lesen und prüfen: »Übersäuert« – was ist dran?", "src": "Quarks (WDR) · Buch S. 61–62",
+    "own": True, "tag": "Zusatz", "h": 0, "zeit": 12, "marke": "ZUSATZ",
+    "link": ["Artikel bei Quarks öffnen", QUARKS["url"], QUARKS["herkunft"]],
+    "q": "Werbung verspricht Basenpulver, basische Socken und Kuren gegen »Übersäuerung«. Lies den Artikel von Quarks (Knopf oben, ca. 7 min) "
+         "und prüf ihn mit dem, was du über Blut-pH und Puffer weißt.",
+    "hint": "Such im Text nach »7,4«, »Puffer«, »Lunge« und »Niere«.",
+    "type": "multi",
+    "fields": [
+        ["blut", "a) Welchen Blut-pH nennt der Artikel als normal?", ["etwa 7,4 – leicht basisch", "etwa 5,5 – leicht sauer", "genau 7 – neutral", "etwa 9 – basisch"]],
+        ["halt", "b) Was hält den Blut-pH laut Artikel konstant?", ["Puffer, die Lunge (CO₂) und die Nieren", "Basenpulver", "basische Socken und Decken", "nur die richtige Ernährung"]],
+        ["wer", "c) Wem droht laut Artikel wirklich eine Übersäuerung (Acidose)?", ["Menschen mit Vorerkrankungen, z. B. der Nieren oder Diabetes", "jedem, der Fleisch isst", "allen, die viel Sport machen", "jedem, der Cola trinkt"]],
+        ["geld", "d) Quellenkritik: Wer verdient am Wort »Übersäuerung« – und warum ist das wichtig, wenn du Werbung liest? (1–2 Sätze)"],
+        ["sprint", "e) Nach dem Sprint ist dein Blut kurz saurer (Aufgabe 7). Ist das die »Übersäuerung« aus der Werbung? Begründe kurz."],
+    ],
+    "chk": {"blut": {"sel": "etwa 7,4 – leicht basisch"}, "halt": {"sel": "Puffer, die Lunge (CO₂) und die Nieren"},
+            "wer": {"sel": "Menschen mit Vorerkrankungen, z. B. der Nieren oder Diabetes"},
+            "geld": {"kw": [["Anbieter / Verkäufer", r"verkau|anbiet|herstell|firma|firmen|unternehm|geld|verdien|gewinn|werb"]], "need": 1, "man": True},
+            "sprint": {"kw": [["kurz / Atmung / Puffer", r"kurz|atm|puffer|lunge|co2|co₂|normal|wieder"]], "need": 1, "man": True}},
+    "fb": {"blut": {"etwa 5,5 – leicht sauer": "5,5 ist der pH der Haut, nicht des Blutes.", "genau 7 – neutral": "Blut ist leicht basisch – schau in Aufgabe 7 oder im Artikel."},
+           "halt": {"Basenpulver": "Das verkauft die Werbung. Was sagt der Artikel – welche Organe arbeiten?", "nur die richtige Ernährung": "Der Körper regelt das selbst. Womit?"},
+           "wer": {"allen, die viel Sport machen": "Beim Sport sinkt der pH nur kurz – und die Atmung holt ihn zurück."}},
+    "sol": [["Lösung", ["a) etwa 7,4 (leicht basisch); von Acidose spricht man laut Artikel erst unter 7,35.",
+                        "b) Puffer im Blut, die Lunge (atmet CO₂ ab) und die Nieren (scheiden Säure aus).",
+                        "c) Menschen mit Vorerkrankungen, z. B. chronischer Nierenerkrankung oder Diabetes – nicht Gesunde durch normales Essen.",
+                        "d) Anbieter von Basenpulver, Kuren, Hotels und »basischer« Kleidung. Wer etwas verkauft, hat ein Interesse daran, dass du ein Problem hast – darum unabhängige Quellen prüfen.",
+                        "e) Nein: Der pH sinkt beim Sprint nur kurz und bleibt im Rahmen; Atmung und Puffer holen ihn in Minuten zurück. Das ist normale Regelung, keine Krankheit."]]],
+    "tipps": ["Such im Text nach »7,4«, »Lunge« und »Niere«.", "k7", "Buch S. 61–62: Puffer im Blut"],
+})
+assert [t["nr"] for t in T] == list(range(1, 13))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
 assert PFLICHT == [2, 3, 4, 5, 6, 7], PFLICHT
 BESPRECHEN = [2, 4, 6, 7]
@@ -545,6 +580,41 @@ VERMUTUNG_ABCD = {   # DEMO-Vermutungen, ebenfalls mit der ABCD-Karte
 }
 for _n, _qs in list(WDN_ABCD.items()) + list(VERMUTUNG_ABCD.items()):
     for _q in _qs: assert len(_q) == 4 and len(set([_q[1]] + _q[2])) == 4, _q
+
+# Mitarbeits-Check (Stephan 15.11.2026: nach jeder Einheit ein kurzer Kontroll-Check mit Benotung, kein Test; GitHub, 10 Fragen).
+# Nur Pflichtstoff (keine Zusatzaufgaben, kein Militärbezug). Gruppen: aus jeder Gruppe werden so viele Fragen gezogen, wie "n" sagt (Summe 10).
+# Jede Frage: (id, Frage, richtige Antwort, [drei falsche], Buchseite). "faktor" wird mit Zufallszahlen gebaut (siehe check.py).
+CHECK = [
+    {"thema": "Säuren", "n": 2, "fragen": [
+        ("s1", "Welches Teilchen gibt eine Säure in Wasser ab?", "ein H⁺-Ion (Proton)", ["ein OH⁻-Ion", "ein Elektron", "ein Na⁺-Ion"], "S. 54"),
+        ("s2", "Welches Ion macht eine Lösung sauer?", "H₃O⁺ (Oxonium-Ion)", ["OH⁻ (Hydroxid-Ion)", "Cl⁻ (Chlorid-Ion)", "Na⁺ (Natrium-Ion)"], "S. 58–59"),
+        ("s3", "Rotkrautsaft wird in einer Lösung rot bis rosa. Die Lösung ist …", "sauer", ["basisch", "neutral", "eine Lauge"], "S. 55"),
+        ("s4", "Was ist ein Indikator?", "ein Farbstoff, der je nach pH-Wert die Farbe wechselt", ["ein Gerät, das Strom misst", "ein Stoff, der jede Säure neutralisiert", "eine besonders starke Base"], "S. 54–55")]},
+    {"thema": "Laugen", "n": 1, "fragen": [
+        ("l1", "Welches Ion macht eine Lösung basisch?", "OH⁻ (Hydroxid-Ion)", ["H₃O⁺ (Oxonium-Ion)", "H⁺ (Proton)", "Cl⁻ (Chlorid-Ion)"], "S. 56"),
+        ("l2", "Welche dieser Flüssigkeiten ist eine Lauge?", "Rohrreiniger (pH über 13)", ["Zitronensaft", "Cola", "Speiseessig"], "S. 56–57")]},
+    {"thema": "Protonen-Pingpong", "n": 2, "fragen": [
+        ("b1", "HCl + H₂O → Cl⁻ + H₃O⁺: Welches Teilchen ist hier die Base?", "H₂O", ["HCl", "Cl⁻", "H₃O⁺"], "S. 58"),
+        ("b2", "NH₃ + H₂O → NH₄⁺ + OH⁻: Wer gibt hier das Proton ab?", "H₂O", ["NH₃", "NH₄⁺", "OH⁻"], "S. 58"),
+        ("b3", "Ein Teilchen, das ein Proton abgeben UND aufnehmen kann, heißt …", "Ampholyt", ["Indikator", "Puffer", "Katalysator"], "S. 59")]},
+    {"thema": "pH-Wert", "n": 2, "fragen": [
+        ("p1", "Eine Lösung hat pH 9. Sie ist …", "schwach basisch", ["stark sauer", "neutral", "schwach sauer"], "S. 59"),
+        ("p2", "faktor", "", [], "S. 60"),
+        ("p3", "Welche Probe aus dem Versuch ist basisch?", "Seifenlösung", ["Cola", "Zitronensaft", "Mineralwasser prickelnd"], "S. 61")]},
+    {"thema": "Sicherheit", "n": 1, "fragen": [
+        ("x1", "Du verdünnst eine Säure. Was kommt zuerst ins Gefäß?", "das Wasser", ["die Säure", "egal", "beides gleichzeitig"], "S. 57"),
+        ("x2", "Lauge spritzt dir ins Auge. Was tust du zuerst?", "sofort lange mit viel Wasser spülen", ["mit Essig neutralisieren", "das Auge reiben", "abwarten, ob es brennt"], "S. 53")]},
+    {"thema": "Neutralisation und Blut", "n": 2, "fragen": [
+        ("n1", "Säure + Lauge → …", "Salz + Wasser", ["Säure + Wasser", "nur Wasserstoff", "Lauge + Salz"], "S. 65"),
+        ("n2", "Wie groß ist der normale pH-Wert deines Blutes?", "7,35 bis 7,45", ["6,0 bis 6,5", "8,5 bis 9,0", "genau 7,0"], "S. 62"),
+        ("n3", "Warum atmest du nach einem Sprint schneller?", "um CO₂ abzuatmen – das senkt die Säure im Blut", ["um mehr Milchsäure zu bilden", "weil das Blut zu basisch geworden ist", "um Stickstoff aufzunehmen"], "S. 62")]},
+]
+assert sum(g["n"] for g in CHECK) == 10 and all(g["n"] <= len(g["fragen"]) for g in CHECK)
+for _g in CHECK:
+    for _q in _g["fragen"]:
+        if _q[1] != "faktor": assert len(set([_q[2]] + _q[3])) == 4, _q
+CHECK_KEY = "26-27-2AB-K1.5-check"
+CHECK_CODE = "7414"   # Startcode – steht nur als Prüfsumme in der Seite; Stephan zeigt ihn am Beamer (Präsentation, Lösungsseite)
 
 PARTNERCHECK = [  # vier Karten für Stunde 4 (Paar: einer fragt, einer antwortet, dann tauschen)
     ("Was ist eine Säure, was eine Base – nach Brønsted?", "Säure gibt ein Proton (H⁺) ab, Base nimmt es auf."),

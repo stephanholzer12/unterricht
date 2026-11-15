@@ -13,21 +13,21 @@ JS_DATEI = "kadetten-navigation-v2.js"
 NAMEN = {"theorie.html": "Theorie", "aufgaben.html": "Arbeitsblatt", "versuche.html": "Versuche",
          "quiz.html": "Quiz", "vertiefung.html": "Vertiefung", "uebung.html": "Übung",
          "projekt.html": "Projekt", "gruppe.html": "Gruppenarbeit", "kurz.html": "Gruppe kompakt",
-         "teststoff.html": "Teststoff"}
+         "teststoff.html": "Teststoff", "check.html": "Mitarbeits-Check"}
 REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html",
-         "projekt.html", "gruppe.html", "kurz.html", "teststoff.html", "quiz.html"]
+         "projekt.html", "gruppe.html", "kurz.html", "teststoff.html", "quiz.html", "check.html"]
 
 
 def ressourcen(u, klasse="ks-ressourcen"):
     beschreibung = {"theorie.html": "Lesen und nachschlagen", "aufgaben.html": "Aufgaben bearbeiten und PDF erstellen",
                     "quiz.html": "Wissen selbst prüfen", "versuche.html": "Anleitung und Protokoll",
-                    "teststoff.html": "Prüfungsumfang nachlesen"}
+                    "teststoff.html": "Prüfungsumfang nachlesen", "check.html": "10 Fragen · zählt zur Mitarbeit"}
     out, weitere = [], []
     for s in REIHE:
         if s not in u["seiten"]:
             continue
         text = NAMEN[s]
-        if s not in ("theorie.html", "aufgaben.html", "quiz.html"):
+        if s not in ("theorie.html", "aufgaben.html", "quiz.html", "check.html"):
             weitere.append(f'<a href="{esc(u["unter"])}/{s}">{text}</a>')
             continue
         sub = beschreibung.get(s, "Nach Arbeitsauftrag bearbeiten")
