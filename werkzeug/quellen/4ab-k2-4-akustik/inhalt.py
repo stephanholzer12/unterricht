@@ -9,7 +9,7 @@ Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. E
 Rechengrundlage: v = 340 m/s in Luft (Buch S. 61, gilt bei rund 15 °C; bei 20 °C 343 m/s). Wasser 1480 m/s."""
 
 STAND = "15.11.2026"
-V = "v2"
+V = "v3"
 ORDNER = "4ab-nawi/k2-4-akustik"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -34,10 +34,11 @@ DEMOS = {"K2.4-D1": {"titel": "Stimmgabel: sehen, hören, spüren", "jp": "Buch 
          "K3.2-D1": {"titel": "Woher kommt das Schnippen?", "jp": "Buch S. 110 (Versuch Richtungshören, ohne Schlauch)", "stunde": 4},
          "K3.2-D2": {"titel": "Drehendes Wasserglas – die träge Lymphe", "jp": "Modell zu Buch S. 112 (nicht im Jahresplan)", "stunde": 4}}
 
-STUNDENNAME = {1: "Stunde 1 · Was ist Schall – und wie schnell ist er?",
-               2: "Stunde 2 · Hoch, tief, laut, leise – wie laut ist zu laut?",
-               3: "Stunde 3 · Was das Ohr aus Schall macht – und wie du es schützt",
-               4: "Stunde 4 · Woher kommt das? Wo bin ich? Richtung und Gleichgewicht"}
+STUNDENTITEL = {1: "Kein Knall im All: Schall als Druckwelle",
+                2: "Der Saal wird zum Messlabor: Tonhöhe, Dezibel, Pegel",
+                3: "Einmal kaputt, immer kaputt: Ohr und Gehörschutz",
+                4: "Schwindel im Cockpit: Richtungshören und Gleichgewicht"}
+STUNDENNAME = {n: f"Stunde {n} · {t}" for n, t in STUNDENTITEL.items()}
 
 STIMMT = ["stimmt", "stimmt nicht"]
 JANEIN = ["ja", "nein"]
@@ -452,10 +453,38 @@ T = [
                       "i) Besser: Vakuum möglich, Wellen sichtbar, beliebig oft, ruhig. Nicht: echte Pegel in dB, echter Saal mit Nachhall, echte Messfehler."]]],
   "tipps": ["Bei 0 ATM: Sind in der Box noch Teilchen, die sich anstoßen können?", "k1", "Buch S. 61: Wecker unter der Glocke; Buch S. 63: Tonhöhe und Frequenz."],
   "tip": ["Schall ist eine Druckwelle", "theorie.html#schall"]},
+ # ---- Lesen und prüfen (Standard 15.11.2026). Artikel am 15.11.2026 geöffnet und gelesen (Titel, Autor, Datum, Zahlen) – siehe QUELLE W11.
+ {"id": "z5", "nr": 13, "title": "Lesen und prüfen: Kopfhörer – wie laut ist zu laut?", "src": "ZDFheute · Buch S. 64, 110", "own": True, "tag": "Zusatz", "h": 0, "zeit": 12,
+  "link": ["Artikel bei ZDFheute öffnen", "https://www.zdfheute.de/ratgeber/gesundheit/kopfhoerer-gesunde-nutzung-hoerschaden-verhindern-100.html",
+           "ZDFheute · Markus Böhle · 23.09.2025 · frei lesbar, ca. 5 min"],
+  "q": "Viele von euch tragen täglich Kopfhörer – im Zug, beim Training, beim Zocken. Lies den Artikel von ZDFheute (Knopf oben, ca. 5 min) und prüf ihn mit dem, was du über Dezibel und Haarzellen weißt. Ohne KI.",
+  "hint": "Such im Text nach »60/60«, »100 Dezibel« und »40 Stunden«.",
+  "type": "multi",
+  "fields": [["regel", "a) Was bedeutet die 60/60-Regel der WHO laut Artikel?",
+              ["höchstens 60 % der maximalen Lautstärke und höchstens 60 Minuten am Stück", "höchstens 60 dB und höchstens 60 Minuten pro Tag", "60 Minuten Musik, dann 60 Minuten Pause, egal wie laut", "höchstens 60 Songs pro Tag"]],
+             ["max", "b) Wie laut kann ein Smartphone laut Artikel maximal werden?", ["bis zu 100 dB", "bis zu 60 dB", "bis zu 150 dB", "bis zu 85 dB"]],
+             ["zeit", "c) Mit 80 dB sind laut Artikel bis zu 40 Stunden pro Woche in Ordnung. Du hörst mit 90 dB – das ist zehnmal so viel Intensität (Aufgabe 3). Wie lange pro Woche ergibt ungefähr gleich viel Schallenergie?",
+              ["etwa 4 Stunden", "etwa 36 Stunden", "etwa 20 Stunden", "etwa 400 Stunden"]],
+             ["geld", "d) Quellenkritik: Wer verdient daran, dass du lange und laut Kopfhörer trägst – und warum ist die Empfehlung der WHO glaubwürdiger als die Werbung eines Kopfhörer-Herstellers? (1–2 Sätze)"],
+             ["bruecke", "e) Brücke zu Aufgabe 7: Warum hilft es dir mehr, gleich leiser zu hören, als nach dem Pfeifen im Ohr aufzuhören? (1–2 Sätze)"]],
+  "chk": {"regel": {"sel": "höchstens 60 % der maximalen Lautstärke und höchstens 60 Minuten am Stück"}, "max": {"sel": "bis zu 100 dB"}, "zeit": {"sel": "etwa 4 Stunden"},
+          "geld": {"kw": [["Hersteller / Anbieter", r"herstell|firma|firmen|verkau|anbiet|unternehm|geld|verdien|gewinn|werb|streaming|plattform"]], "need": 1, "man": True},
+          "bruecke": {"kw": [["Haarzellen wachsen nicht nach", r"haarzell|wachsen nicht|nicht nach|kaputt|bleib|dauerhaft|für immer|fuer immer|irrepar"]], "need": 1, "man": True}},
+  "fb": {"regel": {"höchstens 60 dB und höchstens 60 Minuten pro Tag": "Lies genau: Die 60 bezieht sich auf den Lautstärkeregler, nicht auf Dezibel.",
+                   "60 Minuten Musik, dann 60 Minuten Pause, egal wie laut": "Die Lautstärke spielt sehr wohl eine Rolle – was sagt die erste 60?"},
+         "max": {"bis zu 150 dB": "So laut ist ein Schuss am Ohr – ein Handy schafft weniger. Such »Dezibel« im Text.", "bis zu 85 dB": "85 dB ist die Grenze, ab der Geräte warnen sollen – das Maximum ist höher."},
+         "zeit": {"etwa 36 Stunden": "Du hast 10 dB wie 10 % behandelt. Dezibel sind eine Leiter in Zehnerschritten.", "etwa 400 Stunden": "Mehr Intensität heißt WENIGER Zeit für dieselbe Schallenergie, nicht mehr."}},
+  "sol": [["Lösung", ["a) Höchstens 60 % der maximalen Lautstärke und höchstens 60 Minuten am Stück, dann Pause.",
+                      "b) Bis zu 100 dB – so laut wie eine Kreissäge (Dezibel-Leiter).",
+                      "c) Etwa 4 Stunden: +10 dB = zehnmal so viel Intensität, also nur ein Zehntel der Zeit (40 h : 10). Das ist eine Modellrechnung nach der Regel »gleiche Schallenergie«.",
+                      "d) Kopfhörer-Hersteller, Streaming- und Spieleanbieter verdienen an langer Nutzung; Werbung betont Klang, nicht Gefahren. Die WHO verkauft nichts, stützt sich auf Studien und ist unabhängig von Herstellern. Der Artikel nennt außerdem eine Umfrage eines Medienkonzerns (Burda) – für Gewohnheiten brauchbar, nicht für Grenzwerte.",
+                      "e) Zerstörte Haarzellen wachsen nicht nach (Aufgabe 7). Pfeifen im Ohr kommt oft erst, wenn schon Schaden entsteht; leiser hören verhindert ihn vorher."]]],
+  "tipps": ["Such im Text nach »60/60«, »100 Dezibel« und »40 Stunden«.", "k4", "Buch S. 64: Dezibel-Leiter; Buch S. 110: Hörschäden"],
+  "tip": ["Dezibel: die Leiter in Zehnerschritten", "theorie.html#dezibel"]},
 ]
 
 # ---------------------------------------------------------------- Kontrollen
-assert [t["nr"] for t in T] == list(range(1, 13))
+assert [t["nr"] for t in T] == list(range(1, 14))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
 assert PFLICHT == [2, 3, 4, 5, 6, 7, 8], PFLICHT
 BESPRECHEN = [2, 4, 7, 8]
@@ -640,6 +669,9 @@ QUELLEN = [
   "0,7–1,5 % der Wehrpflichtigen erlitten ein Knalltrauma, in 88 % ohne Gehörschutz, meist mit Platzpatrone; häufigstes Symptom Tinnitus", "Abstract per Websuche gelesen (Volltext von hier nicht erreichbar)"),
  ("W9", "Prevention works: Hearing loss decimated in the military", "save.ch (Schweizer Fachportal) mit Daten der Schweizer Militärversicherung", "https://news.save.ch/en/?p=1991",
   "Sturmgewehrschuss über 160 dB am Ohr des Schützen; Gehörschäden im Militär durch Prävention etwa zehnmal seltener", "Textauszug per Websuche gelesen"),
+ ("W11", "Kopfhörer: So schützt man sein Gehör und vermeidet Hörschäden (23.09.2025, Markus Böhle)", "ZDFheute (öffentlich-rechtlicher Rundfunk, Deutschland)",
+  "https://www.zdfheute.de/ratgeber/gesundheit/kopfhoerer-gesunde-nutzung-hoerschaden-verhindern-100.html",
+  "WHO-60/60-Regel; Smartphones bis 100 dB; 80 dB bis 40 h/Woche, Kinder 75 dB; EU: Warnung ab 85 dB; HNO-Arzt Dr. Tilman Krieger; Burda-Umfrage zu Gewohnheiten", "Seite am 15.11.2026 geöffnet, Text gelesen; keine Werbelinks für Kopfhörer"),
  ("W10", "Speed of sound – calculator", "Sengpiel Audio (Universität der Künste Berlin, Tonmeister-Tutorium)", "https://sengpielaudio.com/calculator-speedsound.htm",
   "331,3 m/s bei 0 °C, 340 m/s bei 15 °C, 343 m/s bei 20 °C", "Textauszug per Websuche gelesen"),
 ]
@@ -647,8 +679,83 @@ QUELLE = {q[0]: q for q in QUELLEN}
 
 NICHT_GEPRUEFT = [
  "Trauner-Filmtipp trauner.at/nawi_v52.aspx (Buch S. 60, Fledermäuse/Ultraschall): Seite ist von hier aus gesperrt – nicht geöffnet. Er steht nur als Buch-Filmtipp in der Zusatzaufgabe; bitte einmal selbst ansehen.",
- "PhET »Sound Waves« (HTML5, Universität Colorado, Quellcode GPL-3.0): gibt es laut Suche, Seite von hier gesperrt – Lizenz, deutsche Fassung und Handybedienung NICHT geprüft. Deshalb nicht eingebaut; die eigene Druckwellen-Animation ersetzt sie.",
+ "PhET »Sound Waves« (Zusatz 12): Lizenz (Simulation CC BY 4.0, Code GPL-3.0) und deutsche Texte im Quellcode geprüft. Die Seite selbst und die Bedienung am Handy wurden von hier NICHT live geöffnet – bitte einmal öffnen und die Wellenlänge bei 500 Hz ablesen (erwartet etwa 0,6–0,8 m).",
+ "Stephans Podcast-Liste (Standard 15.11.2026: zuerst diese) liegt in diesem Projekt nicht vor – darum nur der geprüfte ZDFheute-Artikel als »Lesen und prüfen«.",
  "Podcasts aus dem Jahresplan (Ö1 Wissen aktuell »Schall und Lärm verstehen« 2024; Ö1 Dimensionen »Schallkanonen« 2025; Bayern 2 radioWissen »Das Ohr« 2023): Links waren nicht auffindbar bzw. nicht prüfbar – Freigabe-Liste in der Lehrerseite.",
  "Videos: YouTube ist von hier aus nicht prüfbar. Darum steht auf den Kadetten-Seiten kein Video; stattdessen eigene Animationen. Vorschläge zur Freigabe in der Lehrerseite.",
  "Seilnacht-Filmverzeichnis »Chemische Phänomene erleben«: Chemie-Sammlung; ein Akustik-Titel ist dort nicht zu erwarten – das Verzeichnis wurde in dieser Sitzung nicht geöffnet.",
+]
+
+
+# ---------------------------------------------------------------- ABCD-Karte (Stephan 15.11.2026): »Weißt du noch?« und DEMO-Vermutungen
+# (Frage, richtig, [3 Ablenker aus echten Fehlvorstellungen], kurze Erklärung)
+WDN_ABCD = {
+    1: [("Was gibt die Frequenz einer Schwingung an?", "Schwingungen pro Sekunde (Hz)", ["die größte Auslenkung", "die Dauer einer Schwingung", "die Geschwindigkeit der Welle"], "Frequenz = Schwingungen pro Sekunde, Einheit Hertz."),
+        ("Bei einer Längswelle schwingen die Teilchen …", "in Ausbreitungsrichtung vor und zurück", ["quer zur Ausbreitungsrichtung", "im Kreis", "gar nicht"], "Längs = in Ausbreitungsrichtung. So ist es beim Schall."),
+        ("Resonanz heißt: Ein Körper schwingt besonders stark, wenn …", "er mit seiner Eigenfrequenz angeregt wird", ["die Welle an einer Wand zurückkommt", "zwei Wellen sich auslöschen", "die Welle langsamer wird"], "Anregung mit der Eigenfrequenz – heute bei der Stimmgabel.")],
+    2: [("Warum gibt es im Weltall keinen Schall?", "Es fehlen Teilchen, die schwingen können", ["Es ist zu kalt", "Das Licht ist zu schnell", "Der Schall wird zu leise"], "Schall braucht einen Träger: Luft, Wasser oder einen festen Stoff."),
+        ("Das Echo kommt nach 2 s zurück. Wie weit ist die Wand?", "340 m", ["680 m", "170 m", "2 km"], "340 m/s · 2 s = 680 m hin und zurück – die Wand ist halb so weit weg."),
+        ("Wo ist Schall am schnellsten?", "in Stahl", ["in Luft", "in Wasser", "im Vakuum"], "Stahl rund 5000 m/s, Wasser 1480 m/s, Luft 340 m/s.")],
+    3: [("Wovon hängt die Tonhöhe ab?", "von der Frequenz", ["von der Amplitude", "von der Lautstärke", "von der Schallgeschwindigkeit"], "Hoch oder tief = Frequenz; laut oder leise = Amplitude."),
+        ("+10 dB bedeuten für die Schallintensität …", "zehnmal so viel", ["doppelt so viel", "dreimal so viel", "hundertmal so viel"], "Jede Zehnerstufe: Intensität × 10."),
+        ("Im Saal sank der Pegel mit dem Abstand …", "weniger stark als im Freien", ["stärker als im Freien", "gar nicht", "genau um 6 dB pro Meter"], "Wände, Decke und Boden werfen Schall zurück.")],
+    4: [("Was verstärkt den Druck zwischen Trommelfell und Schnecke?", "die Gehörknöchelchen", ["die Bogengänge", "die Ohrtrompete", "der Hörnerv"], "Hammer, Amboss, Steigbügel – sie übertragen und verstärken den Druck."),
+        ("Wo sitzen die Haarzellen, mit denen du hörst?", "in der Schnecke", ["im Trommelfell", "im Gehörgang", "in der Ohrmuschel"], "In der Schnecke, im Corti-Organ."),
+        ("Ab welchem Pegel muss am Arbeitsplatz Gehörschutz getragen werden?", "85 dB", ["60 dB", "120 dB", "150 dB"], "Ab 85 dB(A) tragen, ab 80 dB(A) muss der Betrieb ihn bereitstellen.")],
+}
+VERMUTUNG_ABCD = {
+    "K2.4-D1": [("Die angeschlagene Stimmgabel taucht ins Wasser. Was passiert?", "Das Wasser spritzt", ["nichts", "das Wasser wird warm", "die Stimmgabel wird lauter"], "Die Zinken schwingen – man sieht es am Wasser."),
+                ("Der Stiel drückt auf den Tisch. Wie klingt es?", "lauter", ["leiser", "gleich", "höher"], "Der Tisch schwingt mit und bewegt viel mehr Luft.")],
+    "K2.4-D2": [("Das schwingende Stück Lineal wird kürzer. Der Ton wird …", "höher", ["tiefer", "lauter", "bleibt gleich"], "Das kurze Stück schwingt öfter pro Sekunde."),
+                ("Du schlägst stärker an. Was ändert sich?", "Der Ton wird lauter", ["Der Ton wird höher", "Der Ton wird tiefer", "nichts"], "Größere Amplitude = lauter, nicht höher.")],
+    "K3.2-D1": [("Wo irrt sich der Freiwillige mit geschlossenen Augen am häufigsten?", "vorne, hinten oder oben", ["genau links", "genau rechts", "nie"], "Dort kommt der Schall an beiden Ohren gleichzeitig und gleich laut an.")],
+    "K3.2-D2": [("Das Glas beginnt sich zu drehen. Das Wasser …", "bleibt zuerst zurück", ["dreht sofort mit", "dreht schneller als das Glas", "spritzt heraus"], "Wasser ist träge – wie die Lymphe in deinen Bogengängen."),
+                ("Das Glas stoppt. Das Wasser …", "dreht weiter", ["bleibt sofort stehen", "dreht zurück", "steigt nach oben"], "Genau so entsteht der Schwindel nach dem Drehen.")],
+}
+for _n, _qs in list(WDN_ABCD.items()) + list(VERMUTUNG_ABCD.items()):
+    for _q in _qs: assert len(_q) == 4 and len(set([_q[1]] + _q[2])) == 4, _q
+assert set(VERMUTUNG_ABCD) == set(DEMOS)
+
+# ---------------------------------------------------------------- Mitarbeits-Check (Stephan 15.11.2026): 10 Fragen, nur Pflichtstoff, kein Militärbezug
+CHECK = [
+    {"thema": "Schall", "n": 2, "fragen": [
+        ("s1", "Was wandert bei Schall in der Luft zum Ohr?", "eine Druckschwankung – die Teilchen schwingen nur hin und her", ["die Luft selbst strömt zum Ohr", "kleine Schallteilchen", "Licht"], "S. 61"),
+        ("s2", "Warum gibt es im Vakuum keinen Schall?", "Es gibt keine Teilchen, die schwingen können", ["Es ist zu kalt", "Das Vakuum schluckt den Schall wie ein Schwamm", "Schall ist dort zu schnell"], "S. 61"),
+        ("s3", "Schall in Luft ist eine …", "Längswelle", ["Querwelle", "Lichtwelle", "Wasserwelle"], "S. 61"),
+        ("s4", "Wo breitet sich Schall am schnellsten aus?", "in Stahl", ["in Luft", "in Wasser", "überall gleich schnell"], "S. 61")]},
+    {"thema": "Rechnen", "n": 2, "fragen": [
+        ("r1", "echo", "", [], "S. 61, 66"),
+        ("r2", "Donner kommt 9 s nach dem Blitz. Wie weit ist das Gewitter ungefähr?", "etwa 3 km", ["etwa 9 km", "etwa 27 km", "etwa 300 m"], "S. 61"),
+        ("r3", "Welche Wellenlänge hat ein Ton mit 340 Hz in Luft (v = 340 m/s)?", "1 m", ["340 m", "0,1 m", "115 600 m"], "S. 63")]},
+    {"thema": "Frequenz und Dezibel", "n": 2, "fragen": [
+        ("d1", "Ein Ton wird höher. Was wird größer?", "die Frequenz", ["die Amplitude", "die Wellenlänge", "die Schallgeschwindigkeit"], "S. 63"),
+        ("d2", "+20 dB: Wievielmal so viel Schallintensität?", "100-mal", ["2-mal", "20-mal", "10-mal"], "S. 64"),
+        ("d3", "Was ist Ultraschall?", "Schall über 20 000 Hz", ["Schall unter 20 Hz", "besonders lauter Schall", "Schall im Vakuum"], "S. 66"),
+        ("d4", "Zwei gleich laute Maschinen mit je 80 dB laufen gleichzeitig. Der Pegel ist etwa …", "83 dB", ["160 dB", "80 dB", "90 dB"], "S. 64")]},
+    {"thema": "Ohr", "n": 2, "fragen": [
+        ("o1", "In welcher Reihenfolge läuft der Schall?", "Trommelfell → Gehörknöchelchen → Schnecke → Hörnerv", ["Schnecke → Trommelfell → Hörnerv → Gehörknöchelchen", "Hörnerv → Schnecke → Trommelfell → Gehörknöchelchen", "Gehörknöchelchen → Hörnerv → Trommelfell → Schnecke"], "S. 110"),
+        ("o2", "Wozu braucht das Ohr die Gehörknöchelchen?", "Sie verstärken den Druck, damit die Flüssigkeit in der Schnecke mitschwingt", ["Sie messen das Gleichgewicht", "Sie bilden Ohrenschmalz", "Sie verbinden das Ohr mit dem Rachen"], "S. 109–110"),
+        ("o3", "Wo werden Schwingungen in elektrische Nervensignale umgewandelt?", "von den Haarzellen in der Schnecke", ["im Trommelfell", "in der Ohrmuschel", "in den Gehörknöchelchen"], "S. 110"),
+        ("o4", "Mit zugehaltenen Ohren klingt dein eigenes Summen lauter. Warum?", "Der Schall kommt über die Knochen zur Schnecke", ["Die Ohren werden wärmer", "Die Luft im Gehörgang verstärkt jeden Ton", "Das Gehirn dreht lauter"], "S. 109–110")]},
+    {"thema": "Gehörschutz", "n": 1, "fragen": [
+        ("g1", "Wachsen zerstörte Haarzellen beim Menschen nach?", "nein", ["ja, nach zwei Wochen", "ja, wenn man schläft", "nur bei Kindern"], "S. 110"),
+        ("g2", "Ab welchem Pegel muss am Arbeitsplatz Gehörschutz getragen werden?", "ab 85 dB", ["ab 60 dB", "ab 120 dB", "nie – das ist freiwillig"], "S. 110")]},
+    {"thema": "Richtung und Gleichgewicht", "n": 1, "fragen": [
+        ("q1", "Welches Organ meldet, dass sich der Kopf zu drehen beginnt?", "die Bogengänge", ["die Schnecke", "die Vorhofsäckchen", "das Trommelfell"], "S. 112"),
+        ("q2", "Welches Organ meldet, dass der Kopf geneigt ist?", "die Vorhofsäckchen", ["die Bogengänge", "die Schnecke", "die Gehörknöchelchen"], "S. 112"),
+        ("q3", "Warum hörst du, aus welcher Richtung ein Geräusch kommt?", "Das abgewandte Ohr hört es später und leiser", ["Ein Ohr hört nur hohe Töne", "Die Ohrmuschel dreht sich zur Quelle", "Das Gehirn rät"], "S. 110")]},
+]
+assert sum(g["n"] for g in CHECK) == 10 and all(g["n"] <= len(g["fragen"]) for g in CHECK)
+for _g in CHECK:
+    for _q in _g["fragen"]:
+        if _q[1] != "echo": assert len(set([_q[2]] + _q[3])) == 4, _q
+assert abs(340 / 340 - 1) < 1e-9 and abs(340 * 9 / 1000 - 3.06) < 0.01
+CHECK_KEY = "26-27-4AB-K2.4-check"
+CHECK_CODE = "4821"   # Startcode – im Seitencode nur als Prüfsumme; Prof. HOLZER zeigt ihn am Beamer
+
+PARTNERCHECK = [
+    ("Was wandert beim Schall – und was nicht?", "Die Druckwelle wandert, die Luftteilchen schwingen nur hin und her."),
+    ("Echo nach 0,5 s: Wie weit ist die Wand?", "340 m/s · 0,5 s = 170 m hin und zurück → 85 m."),
+    ("Wie viel mehr Intensität sind +20 dB?", "100-mal (zwei Zehnerstufen)."),
+    ("Welche Zellen gehen bei einem Knall kaputt – und wachsen sie nach?", "Die Haarzellen in der Schnecke – sie wachsen nicht nach."),
 ]

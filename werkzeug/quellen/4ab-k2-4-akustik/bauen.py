@@ -15,6 +15,7 @@ sys.path.insert(0, HERE)
 import inhalt as I
 import theorie_daten as TD
 import sims as SIMS
+import plan as P
 STAND = I.STAND
 
 DST = os.path.join(ROOT, I.ORDNER) + "/"
@@ -291,9 +292,113 @@ s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K2.4", THEMA = "Akustik";\n' % I.K
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
 s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, ensure_ascii=False) + ";" + s[j:]
 
+
+# ---------------------------------------------------------------- Stundenablauf, Balken, Sicherung, ABCD-Karte (Standards 15.11.2026, Vorbild K1.5 Säuren)
+def ablauf_daten():
+    """Stunden-Ablauf für das Arbeitsblatt (Stephan, 15.11.2026): Wer nur das Arbeitsblatt benutzt, soll trotzdem sehen,
+    was in der Stunde gemeinsam passiert (DEMO, Versuch, Gruppenarbeit, Besprechen, Partnercheck) – aus derselben Quelle wie Fahrplan und Lösungsseite."""
+    nr_zu_id = {t["nr"]: t["id"] for t in I.T}
+    out = {}
+    for n, rows in P.STUNDE.items():
+        z = []
+        for text, minuten, _ohne, art, marke in rows:
+            if art in ("org", "reserve"): continue
+            t = text
+            for pre in ("KURZ KLÄREN: ", "SELBSTSTUDIUM: ", "BESPRECHEN: ", "PARTNERCHECK: ", "DISKUSSION: "):
+                if t.startswith(pre): t = ("Prof. HOLZER erklärt: " if pre == "KURZ KLÄREN: " else "") + t[len(pre):]
+            ziel = None
+            if art.startswith("a") and art[1:].isdigit(): ziel = nr_zu_id.get(int(art[1:]))
+            if marke == "" and art == "pdf": marke = "ABGABE"
+            z.append([marke, t, ziel])
+        out[str(n)] = z
+    return out
+
+
+s = s.replace("const GRP = ", "const ABLAUF = " + json.dumps(ablauf_daten(), ensure_ascii=False) + ";\nconst GRP = ", 1)
+s = s.replace("const GRP = ", "const BALKEN = " + json.dumps(P.balken(), ensure_ascii=False) + ";\nconst GRP = ", 1)
+GESICHERT = {str(nr): ", ".join(P.buchstaben(nr, ids)) for n in P.SICHERUNG for nr, ids in P.SICHERUNG[n]["teile"]}
+s = s.replace("const GRP = ", "const GESICHERT = " + json.dumps(GESICHERT, ensure_ascii=False) + ";\nconst GRP = ", 1)
+s = s.replace('T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });',
+  'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); const kc = renderTask(t); gesichertEl(kc, t.nr); $("#tasks").append(kc); balkenEl("nach", t.nr); });')
+s = s.replace("let lastH = null;", """/* ABCD-Karte (Stephan, 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
+   Nichts wird gespeichert oder bewertet. */
+function abcdAuf() {
+  let ov = document.getElementById("abcd");
+  if (!ov) {
+    ov = el("div", { id: "abcd", role: "dialog", "aria-label": "ABCD-Karte" });
+    const wahl = el("div", { class: "abcd-wahl" }), gross = el("button", { type: "button", class: "abcd-gross", hidden: "" });
+    ["A", "B", "C", "D"].forEach(b => { const k = el("button", { type: "button", class: "abcd-k abcd-" + b, text: b }); k.addEventListener("click", () => { gross.textContent = b; gross.className = "abcd-gross abcd-" + b; gross.hidden = false; wahl.hidden = true; }); wahl.append(k); });
+    gross.addEventListener("click", () => { gross.hidden = true; wahl.hidden = false; });
+    const zu = el("button", { type: "button", class: "abcd-zu", text: "Schließen" }); zu.addEventListener("click", () => { ov.hidden = true; });
+    ov.append(el("p", { class: "abcd-tipp", text: "Antippen – dann Handy hochhalten. Nochmal tippen = neu wählen." }), wahl, gross, zu);
+    document.body.append(ov);
+  }
+  ov.hidden = false; ov.querySelector(".abcd-gross").hidden = true; ov.querySelector(".abcd-wahl").hidden = false;
+}
+/* Balken zwischen den Aufgaben (Stephan 15.11.2026): Wer nur Aufgaben macht, läuft direkt auf »Jetzt DEMO …« zu. */
+/* Hinweis auf der Aufgabe: Diese Teile werden am Ende der Stunde gemeinsam gesichert (Stephan 15.11.2026). */
+function gesichertEl(card, nr) {
+  const g = GESICHERT[String(nr)]; if (!g) return;
+  const p = el("p", { class: "gesichert" }); p.append(el("span", { class: "phm", text: "SICHERUNG" }), el("span", { text: "Am Ende der Stunde sichern wir gemeinsam: " + g + "." }));
+  const h = card.querySelector(".head"); if (h && h.nextSibling) card.insertBefore(p, h.nextSibling); else card.append(p);
+}
+function balkenEl(wo, nr) {
+  (BALKEN[wo][String(nr)] || []).forEach(([m, txt]) => {
+    const b = el("div", { class: "phbalken" + (m ? " m-" + m : ""), role: "note" });
+    b.append(el("span", { class: "phm", text: m || "JETZT" }), el("span", { text: txt }));
+    if (/ABCD-Karte/.test(txt)) { const k = el("button", { type: "button", class: "phabcd", text: "ABCD-Karte" }); k.addEventListener("click", abcdAuf); b.append(k); }
+    $("#tasks").append(b);
+  });
+}
+function grpEl(g) {
+  const box = el("div", { class: "grpbox" }); box.append(el("div", { class: "grp", text: GRP[g] }));
+  const z = ABLAUF[String(g)]; if (!z) return box;
+  const ol = el("ol", { class: "ablauf" });
+  z.forEach(([m, txt, ziel]) => {
+    const li = el("li", { class: m && m !== "SELBSTSTUDIUM" && m !== "ABGABE" ? "gem" : "" });
+    if (m) li.append(el("span", { class: "abm m-" + m, text: m }));
+    if (ziel) { const a = el("a", { href: "#card_" + ziel, text: txt }); li.append(a); } else li.append(el("span", { text: txt }));
+    ol.append(li);
+  });
+  box.append(el("p", { class: "ablaufk", text: "So läuft die Stunde. Fett = mit der ganzen Klasse bzw. in der Gruppe (BESPRECHEN, DEMO, VERSUCH, GRUPPENARBEIT, DISKUSSION, PARTNERCHECK):" }), ol);
+  const kb = el("button", { type: "button", class: "abcdbtn", text: "ABCD-Karte öffnen – für »Weißt du noch?« und Vermutungen" });
+  kb.addEventListener("click", abcdAuf); box.append(kb);
+  return box;
+}
+let lastH = null;""", 1)
+
 rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }",
     """.fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }
 .fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }
+.grpbox { background: #fff; border: 2px solid #D3DCC2; border-radius: 14px; padding: 10px 14px; margin: 14px 0 6px; }
+.grpbox .grp { margin-top: 0; color: #3B4A2F; }
+.ablaufk { margin: 6px 0 4px; font-size: 15px; color: #5E6652; }
+ol.ablauf { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 16px; line-height: 1.35; }
+ol.ablauf li.gem { font-weight: 700; color: #3B4A2F; }
+ol.ablauf a { color: #2E7D8C; font-weight: 700; }
+.abm { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; border-radius: 999px; padding: 1px 8px; margin-right: 6px; color: #fff; background: #5E6652; vertical-align: 1px; }
+.abm.m-DEMO { background: #2E7D8C; } .abm.m-VERSUCH { background: #8C3B2E; } .abm.m-BESPRECHEN, .abm.m-PARTNERCHECK, .abm.m-DISKUSSION { background: #3B4A2F; } .abm.m-GRUPPENARBEIT { background: #6B4E8C; }
+.abm.m-SELBSTSTUDIUM { background: #E8DDBB; color: #6B4F00; } .abm.m-ABGABE { background: #7FA83A; }
+.phbalken { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: 14px 0; padding: 10px 14px; border-radius: 12px; border-left: 8px solid #3B4A2F; background: #EEF1E6; font-size: 17px; line-height: 1.4; font-weight: 600; color: #1F2A1C; }
+.phbalken .phm { font-size: 12.5px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 8px; }
+.phbalken.m-DEMO { border-color: #2E7D8C; background: #E6F1F3; } .phbalken.m-DEMO .phm { background: #2E7D8C; }
+.phbalken.m-VERSUCH { border-color: #8C3B2E; background: #F6E9E6; } .phbalken.m-VERSUCH .phm { background: #8C3B2E; }
+.phbalken.m-GRUPPENARBEIT { border-color: #6B4E8C; background: #F0EBF5; } .phbalken.m-GRUPPENARBEIT .phm { background: #6B4E8C; }
+.phbalken.m-SELBSTSTUDIUM { border-color: #B8962E; background: #F7F1DE; } .phbalken.m-SELBSTSTUDIUM .phm { background: #8A6400; }
+.gesichert { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin: 6px 0 10px; padding: 6px 10px; border-radius: 10px; background: #EEF1E6; font-size: 15.5px; font-weight: 600; color: #3B4A2F; }
+.gesichert .phm { font-size: 12px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 7px; }
+.phabcd { margin-left: auto; min-height: 40px; font: inherit; font-size: 15px; font-weight: 700; border-radius: 999px; border: 2px solid #2E7D8C; background: #fff; color: #2E7D8C; padding: 4px 14px; cursor: pointer; }
+.abcdbtn { margin-top: 10px; width: 100%; min-height: 48px; font: inherit; font-weight: 700; font-size: 16px; border-radius: 12px; border: 2px solid #3B4A2F; background: #fff; color: #3B4A2F; cursor: pointer; }
+#abcd { position: fixed; inset: 0; z-index: 200; background: #11150F; display: flex; flex-direction: column; padding: 12px; gap: 10px; }
+#abcd[hidden] { display: none; }
+.abcd-tipp { color: #DDE3D2; margin: 0; text-align: center; font-size: 16px; }
+.abcd-wahl { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.abcd-wahl[hidden] { display: none; }
+.abcd-k, .abcd-gross { border: 0; border-radius: 18px; color: #fff; font: 800 18vmin/1 "Source Sans 3", system-ui, sans-serif; cursor: pointer; }
+.abcd-gross { flex: 1; font-size: 60vmin; }
+.abcd-gross[hidden] { display: none; }
+.abcd-A { background: #C0392B; } .abcd-B { background: #2A5C8C; } .abcd-C { background: #3E8E41; } .abcd-D { background: #D99A00; }
+.abcd-zu { min-height: 52px; font: inherit; font-weight: 700; font-size: 18px; border-radius: 12px; border: 0; background: #fff; color: #3B4A2F; }
 .rollen { display: grid; gap: 8px; margin: 8px 0; } .rolle { border: 2px solid #3B4A2F; border-radius: 10px; padding: 8px 10px; background: #F2F3EE; display: grid; gap: 2px; font-size: 17px; } .rolle b { color: #3B4A2F; letter-spacing: .04em; }
 .tipps { display: grid; gap: 8px; margin: 10px 0; }
 .tippk { font-size: 15px; color: #5E6652; }

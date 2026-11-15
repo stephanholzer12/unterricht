@@ -1078,7 +1078,8 @@
   "jahresplan": "E9–E10",
   "seiten": [
    "aufgaben.html",
-   "theorie.html"
+   "theorie.html",
+   "check.html"
   ],
   "versteckt": true,
   "kapitelmenue": true,
@@ -1088,51 +1089,179 @@
    "zeilen": [
     {
      "wann": "Stunde 1",
+     "titel": "Kein Knall im All: Schall als Druckwelle",
      "marke": "DEMO",
      "lesen": "DEMO Stimmgabel · Druckwelle · Theorie-Karten 1 und 2 · Buch S. 61",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "",
+       "Aufgabe 1"
+      ],
+      [
+       "DEMO",
+       "DEMO Stimmgabel"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 2"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 60–61",
      "aufgaben": "1, 2",
      "theorie": "Teil 1 Schall, Teil 2 Tempo",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 2",
+     "titel": "Der Saal wird zum Messlabor: Tonhöhe, Dezibel, Pegel",
      "marke": "VERSUCH",
      "lesen": "DEMO Lineal und Tongenerator · Dezibel-Leiter · VERSUCH Schallpegel messen · Buch S. 63–64",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "DEMO",
+       "DEMO Lineal und Tongenerator"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 3"
+      ],
+      [
+       "VERSUCH",
+       "VERSUCH (Aufgabe 4)"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 62–64",
      "aufgaben": "3, 4",
      "theorie": "Teil 3 Tonhöhe, Teil 4 Dezibel, Teil 5 Messen",
      "abgabe": "Messwerte deiner Gruppe eintragen"
     },
     {
      "wann": "Stunde 3",
+     "titel": "Einmal kaputt, immer kaputt: Ohr und Gehörschutz",
      "marke": "GRUPPENARBEIT",
      "lesen": "Aufbau des Ohrs, Hörvorgang · Mini-Versuch am eigenen Kopf · GRUPPENARBEIT Gehörschutz · Buch S. 109–110",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 5"
+      ],
+      [
+       "VERSUCH",
+       "VERSUCH (Aufgabe 6)"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "GRUPPENARBEIT (Aufgabe 7)"
+      ],
+      [
+       "DISKUSSION",
+       "Diskussion der Rollen"
+      ]
+     ],
+     "buch": "Buch S. 109–110",
      "aufgaben": "5–7",
      "theorie": "Teil 6 Ohr, Teil 7 Schutz",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 4",
+     "titel": "Schwindel im Cockpit: Richtungshören und Gleichgewicht",
      "marke": "DEMO",
      "lesen": "DEMOS Richtungshören und Wasserglas · Lage- und Drehsinn · Partnercheck · Buch S. 110–112",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "DEMO",
+       "DEMO Woher kommt das Schnippen?"
+      ],
+      [
+       "DEMO",
+       "DEMO Drehendes Wasserglas"
+      ],
+      [
+       "",
+       "Aufgabe 8"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ],
+      [
+       "PARTNERCHECK",
+       "Partnercheck"
+      ],
+      [
+       "",
+       "Auflösung Aufgabe 1"
+      ]
+     ],
+     "buch": "Buch S. 110–112",
      "aufgaben": "8",
      "theorie": "Teil 8 Richtung, Teil 9 Gleichgewicht",
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {
      "wann": "Für Schnelle",
-     "lesen": "Echolot und Fledermaus, KI-Fehlerjagd, Gehörschutz-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET)",
-     "aufgaben": "Zusatz 9–12",
-     "zeit": "ca. 49 min",
+     "lesen": "Echolot und Fledermaus, KI-Fehlerjagd, Gehörschutz-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET), Lesen und prüfen",
+     "aufgaben": "Zusatz 9–13",
+     "zeit": "ca. 61 min",
      "abgabe": "freiwillig"
+    },
+    {
+     "wann": "Danach",
+     "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"
     }
    ]
   },
   "dateien": {
    "stand": "15.11.2026",
    "liste": [
-    "GitHub: theorie.html, aufgaben.html (v2)",
-    "Lösungsseite (Artifact, privat) – Stand v1, an v2 noch nicht angepasst",
-    "26-27-4AB-K2.4-3.2-Akustik-Pruefbericht-Claude-v2.md"
+    "GitHub: theorie.html, aufgaben.html, check.html (v3)",
+    "Lösungsseite (Artifact, privat) mit Präsentation, Kalender, Gruppen",
+    "26-27-4AB-K2.4-3.2-Akustik-Pruefbericht-Claude-v3.md"
    ]
   },
   "lehrerseite": "https://claude.ai/artifact/TTopFaGJM1GEoWybNVspqJ"
