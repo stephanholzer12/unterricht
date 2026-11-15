@@ -90,7 +90,7 @@ assert sorted(_einmal) == list(range(1, 9)), sorted(_einmal)
 # ---------------------------------------------------------------- Kürzen, Ausfall, Supplier
 KUERZEN = {
  1: "Wenn es knapp wird: DEMO K2.4-D1 nur mit Wasser und Tisch (ohne Resonanzkasten), Aufgabe 2 j) wird Zusatz. Die Echo-Rechnung h) bleibt – sie ist der häufigste Fehler.",
- 2: "Zeitstopp für den Versuch: Minute 34 – egal wie weit. Wenn es knapp wird: Grundgeräusch (c) weglassen, nur »Ton an« messen; Aufgabe 3 f) und g) werden Zusatz. "
+ 2: "Zeitstopp für den Versuch: Minute 40 – egal wie weit. Wenn es knapp wird: Grundgeräusch (c) weglassen, nur »Ton an« messen; Aufgabe 3 f) und g) werden Zusatz. "
     "Geht das Handy-Mikrofon nicht: Gruppe schreibt die Werte einer Nachbargruppe ab (im Protokoll vermerken). Fällt der Versuch ganz aus: virtueller Versuch K2.4-VV1 (Zusatz 12) wird Pflicht.",
  3: "Supplierstunde möglich: Aufgabe 5, der Mini-Versuch und die Gruppenarbeit (Aufgabe 7) brauchen kein Material; die Theorie-Karten und die Hörvorgang-Animation stehen im Arbeitsblatt bzw. auf der Theorie-Seite. "
     "Wenn es knapp wird: Die Diskussion der Rollen an den Anfang von Stunde 4 legen.",
