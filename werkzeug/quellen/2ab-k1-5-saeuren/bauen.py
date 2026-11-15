@@ -119,6 +119,7 @@ rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
     '''  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
   if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle Gruppen machen dasselbe · jeder trägt die Werte selbst ein" }));
   if (t.anleitung) card.append(anleitungEl());
+  if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
   if (t.tipps && t.tipps.length) card.append(tippStufen(t));
   (t.sim || []).forEach(k => {
     if (!SIMHTML[k]) return;
@@ -277,6 +278,7 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .anl .matitem { display: grid; gap: 4px; justify-items: center; text-align: center; font-size: 15px; background: #EEF2E6; border-radius: 10px; padding: 8px; }
 .anl .matitem img { width: 72px; height: auto; }
 .anl .steps { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
+.simlink { display: grid; gap: 4px; margin: 8px 0; } .simlink .btn { justify-self: start; text-decoration: none; }
 .pegel { border: 3px solid #A33A2B; border-radius: 14px; background: #FBF1EE; padding: 12px 14px; display: grid; gap: 8px; margin: 10px 0; }
 .pgh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 19px; }
 .pgz { font-size: 44px; font-weight: 700; color: #3B4A2F; text-align: center; font-variant-numeric: tabular-nums; }
@@ -366,6 +368,9 @@ def block(b):
     if k == "karte": return karte_block(b[1])
     if k == "gemeinsam": return f'<div class="gem"><span class="gicon">BESPRECHEN</span><p>{md(b[1])}</p></div>'
     if k == "sim": return SIMS.HTML[b[1]]
+    if k == "extern":   # externe Simulation (z. B. PhET) als Link – öffnet in neuem Tab, nichts von fremden Servern eingebettet
+        return (f'<div class="sim"><div class="simh"><span class="tkn">Simulation</span><b>{esc(b[1])}</b></div><p class="simt">{md(b[3])}</p>'
+                f'<p class="simt">{esc(b[4])}</p><a class="btn" style="justify-self:start;text-decoration:none" href="{esc(b[2])}" target="_blank" rel="noopener">Simulation öffnen</a></div>')
     if k == "demo":
         d = I.DEMOS[b[1]]
         return (f'<div class="dbox"><div class="vhead"><span class="dnr">DEMO {esc(b[1])}</span><span class="vtag">Stunde {d["stunde"]}</span></div>'

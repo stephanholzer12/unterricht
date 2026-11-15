@@ -167,6 +167,7 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .anl .matitem { display: grid; gap: 4px; justify-items: center; text-align: center; font-size: 15px; background: #EEF2E6; border-radius: 10px; padding: 8px; }
 .anl .matitem img { width: 72px; height: auto; }
 .anl .steps { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
+.simlink { display: grid; gap: 4px; margin: 8px 0; } .simlink .btn { justify-self: start; text-decoration: none; }
 .pegel { border: 3px solid #A33A2B; border-radius: 14px; background: #FBF1EE; padding: 12px 14px; display: grid; gap: 8px; margin: 10px 0; }
 .pgh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 19px; }
 .pgz { font-size: 44px; font-weight: 700; color: #3B4A2F; text-align: center; font-variant-numeric: tabular-nums; }
@@ -219,7 +220,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
     </div>
     <ol class="steps hint">
       <li><b>Ein Arbeitsblatt für alles.</b> Aufgaben, Versuch und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
-      <li><b>Stunde 1:</b> Aufgaben 1–2 · <b>Stunde 2:</b> Aufgaben 3–4 · <b>Stunde 3:</b> Aufgabe 5 und VERSUCH (Aufgabe 6) · <b>Stunde 4:</b> Aufgabe 7. Zusatz für Schnelle: 8, 9, 10. Es gibt <b>keine Hausübung</b>.</li>
+      <li><b>Stunde 1:</b> Aufgaben 1–2 · <b>Stunde 2:</b> Aufgaben 3–4 · <b>Stunde 3:</b> Aufgabe 5 und VERSUCH (Aufgabe 6) · <b>Stunde 4:</b> Aufgabe 7. Zusatz für Schnelle: 8, 9, 10, 11. Es gibt <b>keine Hausübung</b>.</li>
       <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein) oder <b>VERSUCH</b> (Gruppe). Tipps kosten keine Punkte.</li>
       <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 4 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).</li>
     </ol>
@@ -270,7 +271,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
   zeige(n);
 })();
 </script><!--/FAHRPLAN-->
-  <div class="progress"><span id="count">0 von 10 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
+  <div class="progress"><span id="count">0 von 11 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 
   <section class="card" id="abgabe">
@@ -1627,6 +1628,208 @@ const T = [
    "Basen und Laugen",
    "theorie.html#basen"
   ]
+ },
+ {
+  "id": "z4",
+  "nr": 11,
+  "title": "VIRTUELLER VERSUCH K1.5-VV1: pH-Werte messen und verdünnen",
+  "src": "PhET-Simulation · Buch S. 60–61",
+  "own": true,
+  "tag": "Zusatz",
+  "h": 0,
+  "zeit": 15,
+  "marke": "ZUSATZ",
+  "link": [
+   "pH Skala: Grundlagen öffnen",
+   "https://phet.colorado.edu/de/simulations/ph-scale-basics",
+   "PhET, University of Colorado Boulder · Deutsch · CC BY 4.0 · läuft im Browser, auch am Handy"
+  ],
+  "q": "Öffne die Simulation »pH Skala: Grundlagen« (Knopf oben). Oben wählst du eine Flüssigkeit, mit dem Hahn füllst du sie in den Becher. Tauch die Sonde des pH-Meters ein. Mit dem Wasserhahn rechts verdünnst du. Das ist ein Versuch am Handy – du schreibst ein Protokoll wie im Labor.",
+  "hint": "Die Sonde muss in die Flüssigkeit tauchen, sonst zeigt das Gerät nichts an.",
+  "type": "multi",
+  "fields": [
+   [
+    "verm",
+    "a) Vermutung: Welche ist am sauersten – Kaffee, Limonade oder Orangensaft? Begründe kurz."
+   ],
+   [
+    "m_lim",
+    "b1) Limonade: pH ="
+   ],
+   [
+    "m_or",
+    "b2) Orangensaft: pH ="
+   ],
+   [
+    "m_kaf",
+    "b3) Kaffee: pH ="
+   ],
+   [
+    "m_milch",
+    "b4) Milch: pH ="
+   ],
+   [
+    "m_blut",
+    "b5) Blut: pH ="
+   ],
+   [
+    "m_seife",
+    "b6) Handseife: pH ="
+   ],
+   [
+    "sauer",
+    "c) Welche der sechs Flüssigkeiten ist am sauersten?",
+    [
+     "Limonade",
+     "Orangensaft",
+     "Kaffee",
+     "Milch"
+    ]
+   ],
+   [
+    "verd",
+    "d) Nimm Limonade und gib mehrmals Wasser dazu. Was passiert mit dem pH-Wert?",
+    [
+     "Er steigt und nähert sich 7",
+     "Er sinkt",
+     "Er bleibt gleich",
+     "Er steigt bis über 7"
+    ]
+   ],
+   [
+    "basisch",
+    "e) Kann man eine Säure nur durch Wasser basisch machen?",
+    [
+     "Nein – der pH-Wert kommt 7 immer näher, aber nicht darüber",
+     "Ja, mit genug Wasser wird sie basisch",
+     "Ja, aber nur bei Limonade"
+    ]
+   ],
+   [
+    "erk",
+    "f) Erkenntnis: Was bedeutet das Verdünnen für die Sicherheit im Labor? (1–2 Sätze)"
+   ],
+   [
+    "vgl",
+    "g) Vergleich: Was kann der virtuelle Versuch besser als der echte – und was nicht? (je ein Punkt)"
+   ]
+  ],
+  "chk": {
+   "verm": {
+    "kw": [
+     [
+      "Begründung",
+      "\\w{3,}"
+     ]
+    ],
+    "need": 1,
+    "man": true
+   },
+   "m_lim": {
+    "num": 2.5,
+    "unit": "",
+    "tol": 0.1,
+    "kurz": true
+   },
+   "m_or": {
+    "num": 3.5,
+    "unit": "",
+    "tol": 0.1,
+    "kurz": true
+   },
+   "m_kaf": {
+    "num": 5,
+    "unit": "",
+    "tol": 0.1,
+    "kurz": true
+   },
+   "m_milch": {
+    "num": 6.5,
+    "unit": "",
+    "tol": 0.1,
+    "kurz": true
+   },
+   "m_blut": {
+    "num": 7.4,
+    "unit": "",
+    "tol": 0.1,
+    "kurz": true
+   },
+   "m_seife": {
+    "num": 10,
+    "unit": "",
+    "tol": 0.1,
+    "kurz": true
+   },
+   "sauer": {
+    "sel": "Limonade"
+   },
+   "verd": {
+    "sel": "Er steigt und nähert sich 7"
+   },
+   "basisch": {
+    "sel": "Nein – der pH-Wert kommt 7 immer näher, aber nicht darüber"
+   },
+   "erk": {
+    "kw": [
+     [
+      "verdünnt / weniger sauer / weniger gefährlich",
+      "verd(ue|ü)nn|weniger (sauer|gef|aetz|ätz)|harmlos"
+     ]
+    ],
+    "need": 1,
+    "man": true
+   },
+   "vgl": {
+    "kw": [
+     [
+      "besser",
+      "\\w{3,}"
+     ]
+    ],
+    "need": 1,
+    "man": true
+   }
+  },
+  "fb": {
+   "m_lim": [
+    [
+     7,
+     "Das ist reines Wasser. Hast du Limonade gewählt und die Sonde eingetaucht?"
+    ]
+   ],
+   "sauer": {
+    "Orangensaft": "Vergleiche b1 und b2: Der kleinere pH-Wert ist saurer.",
+    "Kaffee": "Kaffee liegt bei pH 5 – eher schwach sauer.",
+    "Milch": "Milch ist fast neutral."
+   },
+   "verd": {
+    "Er sinkt": "Mehr Wasser – weniger H₃O⁺ pro Liter. Wird es dann saurer oder weniger sauer?",
+    "Er bleibt gleich": "Schau genau aufs pH-Meter, während du Wasser dazugibst.",
+    "Er steigt bis über 7": "Fülle so lange auf, bis der Becher voll ist – wird es wirklich basisch?"
+   },
+   "basisch": {
+    "Ja, mit genug Wasser wird sie basisch": "Wasser selbst hat pH 7. Kann eine Mischung mit Wasser über 7 kommen?",
+    "Ja, aber nur bei Limonade": "Probier es auch mit Erbrochenem oder Batteriesäure."
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "a) z. B. »Limonade, weil viel Säure drin ist« – Vermutung, keine Bewertung.",
+     "b) Werte in der Simulation: Limonade 2,5 · Orangensaft 3,5 · Kaffee 5,0 · Milch 6,5 · Blut 7,4 · Handseife 10,0 (bei vollem Becher ohne Wasser).",
+     "c) Limonade. d) Der pH-Wert steigt und nähert sich 7. e) Nein – Wasser hat pH 7, die Mischung kommt nicht darüber.",
+     "f) Verdünnte Säure ist weniger sauer und weniger gefährlich – darum verdünnt man (»Erst das Wasser, dann die Säure«). Aber: Auch verdünnt bleibt sie sauer.",
+     "g) Besser: ohne Gefahr, gefährliche Stoffe (Batteriesäure, Abflussreiniger) möglich, genaue Werte, beliebig oft. Nicht: echtes Hantieren, Geruch, Messfehler, Überraschungen – die echte Welt."
+    ]
+   ]
+  ],
+  "tipps": [
+   "Sonde eintauchen, dann ablesen. Kleinere Zahl = saurer.",
+   "k4",
+   "Buch S. 60–61: pH-Wert"
+  ]
  }
 ];
 
@@ -1783,6 +1986,7 @@ function renderTask(t) {
   if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
   if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle Gruppen machen dasselbe · jeder trägt die Werte selbst ein" }));
   if (t.anleitung) card.append(anleitungEl());
+  if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
   if (t.tipps && t.tipps.length) card.append(tippStufen(t));
   (t.sim || []).forEach(k => {
     if (!SIMHTML[k]) return;

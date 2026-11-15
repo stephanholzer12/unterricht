@@ -95,7 +95,8 @@ KUERZEN = {
 AUSFALL = ("Fällt eine der vier Stunden aus, wird nichts zusammengepresst: Die drei übrigen Stunden laufen als Stunde 1, 2 und 3 wie geplant "
            "(K06 Protonen-Pingpong und K07 Versuch bleiben). Stunde 4 entfällt: DEMO K1.5-D3 und der Partnercheck fallen weg, "
            "Aufgabe 7 (Neutralisation) wird Zusatz für Schnelle, die Arbeitsblatt-PDF wird am Ende von Stunde 3 abgegeben. "
-           "Die Gleichung H₃O⁺ + OH⁻ → 2 H₂O nennst du in Stunde 3 beim Besprechen in einem Satz. Keine Hausübung.")
+           "Die Gleichung H₃O⁺ + OH⁻ → 2 H₂O nennst du in Stunde 3 beim Besprechen in einem Satz. "
+           "Kann der echte VERSUCH nicht stattfinden (Material, Supplierung), ersetzt der virtuelle Versuch K1.5-VV1 (Zusatz 11, PhET) ihn – dann zählt er als Pflicht. Keine Hausübung.")
 SUPPLIER = 2   # Aufgabe 3 und 4 brauchen kein Material; das Ballspiel entfällt dann
 
 # ---------------------------------------------------------------- Ablauf je Termin: Referat und Doppelstunde
@@ -189,8 +190,8 @@ def fahrplan_zeilen():
     for n in sorted(STUNDE):
         auf = bereich(aufgaben_der(n)) or "–"
         z.append({"wann": f"Stunde {n}", "marke": MARKE[n], "lesen": LESEN[n], "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
-    z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat)",
-              "aufgaben": "Zusatz 8–10", "zeit": "ca. 33 min", "abgabe": "freiwillig"})
+    z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET)",
+              "aufgaben": "Zusatz 8–11", "zeit": "ca. 48 min", "abgabe": "freiwillig"})
     return z
 
 

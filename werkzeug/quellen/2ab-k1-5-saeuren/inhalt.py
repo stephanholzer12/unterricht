@@ -373,7 +373,52 @@ ANLEITUNG = {
 }
 
 # ---------------------------------------------------------------- Kontrollen
-assert [t["nr"] for t in T] == list(range(1, 11))
+# ---- Virtueller Versuch (PhET, Stephan 15.11.2026: externe Simulationen als virtueller Versuch mit Protokoll) ----
+# Werte geprüft im Quellcode der Simulation (github.com/phetsims/ph-scale, js/common/model/Solute.ts):
+# Limonade 2,5 · Orangensaft 3,5 · Kaffee 5 · Milch 6,5 · Blut 7,4 · Handseife 10 · Abflussreiniger 13; deutsche Namen aus phetsims/babel.
+PHET = {"titel": "pH Skala: Grundlagen", "url": "https://phet.colorado.edu/de/simulations/ph-scale-basics",
+        "herkunft": "PhET, University of Colorado Boulder · Deutsch · CC BY 4.0 · läuft im Browser, auch am Handy"}
+T.append({
+    "id": "z4", "nr": 11, "title": "VIRTUELLER VERSUCH K1.5-VV1: pH-Werte messen und verdünnen", "src": "PhET-Simulation · Buch S. 60–61",
+    "own": True, "tag": "Zusatz", "h": 0, "zeit": 15, "marke": "ZUSATZ",
+    "link": [PHET["titel"] + " öffnen", PHET["url"], PHET["herkunft"]],
+    "q": "Öffne die Simulation »pH Skala: Grundlagen« (Knopf oben). Oben wählst du eine Flüssigkeit, mit dem Hahn füllst du sie in den Becher. "
+         "Tauch die Sonde des pH-Meters ein. Mit dem Wasserhahn rechts verdünnst du. Das ist ein Versuch am Handy – du schreibst ein Protokoll wie im Labor.",
+    "hint": "Die Sonde muss in die Flüssigkeit tauchen, sonst zeigt das Gerät nichts an.",
+    "type": "multi",
+    "fields": [
+        ["verm", "a) Vermutung: Welche ist am sauersten – Kaffee, Limonade oder Orangensaft? Begründe kurz."],
+        ["m_lim", "b1) Limonade: pH ="], ["m_or", "b2) Orangensaft: pH ="], ["m_kaf", "b3) Kaffee: pH ="],
+        ["m_milch", "b4) Milch: pH ="], ["m_blut", "b5) Blut: pH ="], ["m_seife", "b6) Handseife: pH ="],
+        ["sauer", "c) Welche der sechs Flüssigkeiten ist am sauersten?", ["Limonade", "Orangensaft", "Kaffee", "Milch"]],
+        ["verd", "d) Nimm Limonade und gib mehrmals Wasser dazu. Was passiert mit dem pH-Wert?",
+         ["Er steigt und nähert sich 7", "Er sinkt", "Er bleibt gleich", "Er steigt bis über 7"]],
+        ["basisch", "e) Kann man eine Säure nur durch Wasser basisch machen?",
+         ["Nein – der pH-Wert kommt 7 immer näher, aber nicht darüber", "Ja, mit genug Wasser wird sie basisch", "Ja, aber nur bei Limonade"]],
+        ["erk", "f) Erkenntnis: Was bedeutet das Verdünnen für die Sicherheit im Labor? (1–2 Sätze)"],
+        ["vgl", "g) Vergleich: Was kann der virtuelle Versuch besser als der echte – und was nicht? (je ein Punkt)"],
+    ],
+    "chk": {"verm": {"kw": [["Begründung", r"\w{3,}"]], "need": 1, "man": True},
+            "m_lim": {"num": 2.5, "unit": "", "tol": 0.1, "kurz": True}, "m_or": {"num": 3.5, "unit": "", "tol": 0.1, "kurz": True},
+            "m_kaf": {"num": 5, "unit": "", "tol": 0.1, "kurz": True}, "m_milch": {"num": 6.5, "unit": "", "tol": 0.1, "kurz": True},
+            "m_blut": {"num": 7.4, "unit": "", "tol": 0.1, "kurz": True}, "m_seife": {"num": 10, "unit": "", "tol": 0.1, "kurz": True},
+            "sauer": {"sel": "Limonade"}, "verd": {"sel": "Er steigt und nähert sich 7"},
+            "basisch": {"sel": "Nein – der pH-Wert kommt 7 immer näher, aber nicht darüber"},
+            "erk": {"kw": [["verdünnt / weniger sauer / weniger gefährlich", r"verd(ue|ü)nn|weniger (sauer|gef|aetz|ätz)|harmlos"]], "need": 1, "man": True},
+            "vgl": {"kw": [["besser", r"\w{3,}"]], "need": 1, "man": True}},
+    "fb": {"m_lim": [[7, "Das ist reines Wasser. Hast du Limonade gewählt und die Sonde eingetaucht?"]],
+           "sauer": {"Orangensaft": "Vergleiche b1 und b2: Der kleinere pH-Wert ist saurer.", "Kaffee": "Kaffee liegt bei pH 5 – eher schwach sauer.", "Milch": "Milch ist fast neutral."},
+           "verd": {"Er sinkt": "Mehr Wasser – weniger H₃O⁺ pro Liter. Wird es dann saurer oder weniger sauer?", "Er bleibt gleich": "Schau genau aufs pH-Meter, während du Wasser dazugibst.",
+                    "Er steigt bis über 7": "Fülle so lange auf, bis der Becher voll ist – wird es wirklich basisch?"},
+           "basisch": {"Ja, mit genug Wasser wird sie basisch": "Wasser selbst hat pH 7. Kann eine Mischung mit Wasser über 7 kommen?", "Ja, aber nur bei Limonade": "Probier es auch mit Erbrochenem oder Batteriesäure."}},
+    "sol": [["Lösung", ["a) z. B. »Limonade, weil viel Säure drin ist« – Vermutung, keine Bewertung.",
+                        "b) Werte in der Simulation: Limonade 2,5 · Orangensaft 3,5 · Kaffee 5,0 · Milch 6,5 · Blut 7,4 · Handseife 10,0 (bei vollem Becher ohne Wasser).",
+                        "c) Limonade. d) Der pH-Wert steigt und nähert sich 7. e) Nein – Wasser hat pH 7, die Mischung kommt nicht darüber.",
+                        "f) Verdünnte Säure ist weniger sauer und weniger gefährlich – darum verdünnt man (»Erst das Wasser, dann die Säure«). Aber: Auch verdünnt bleibt sie sauer.",
+                        "g) Besser: ohne Gefahr, gefährliche Stoffe (Batteriesäure, Abflussreiniger) möglich, genaue Werte, beliebig oft. Nicht: echtes Hantieren, Geruch, Messfehler, Überraschungen – die echte Welt."]]],
+    "tipps": ["Sonde eintauchen, dann ablesen. Kleinere Zahl = saurer.", "k4", "Buch S. 60–61: pH-Wert"],
+})
+assert [t["nr"] for t in T] == list(range(1, 12))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
 assert PFLICHT == [2, 3, 4, 5, 6, 7], PFLICHT
 BESPRECHEN = [2, 4, 6, 7]
