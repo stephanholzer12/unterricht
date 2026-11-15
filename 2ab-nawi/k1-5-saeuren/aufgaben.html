@@ -176,6 +176,17 @@ ol.ablauf a { color: #2E7D8C; font-weight: 700; }
 .abm { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; border-radius: 999px; padding: 1px 8px; margin-right: 6px; color: #fff; background: #5E6652; vertical-align: 1px; }
 .abm.m-DEMO { background: #2E7D8C; } .abm.m-VERSUCH { background: #8C3B2E; } .abm.m-BESPRECHEN, .abm.m-PARTNERCHECK { background: #3B4A2F; }
 .abm.m-SELBSTSTUDIUM { background: #E8DDBB; color: #6B4F00; } .abm.m-ABGABE { background: #7FA83A; }
+.abcdbtn { margin-top: 10px; width: 100%; min-height: 48px; font: inherit; font-weight: 700; font-size: 16px; border-radius: 12px; border: 2px solid #3B4A2F; background: #fff; color: #3B4A2F; cursor: pointer; }
+#abcd { position: fixed; inset: 0; z-index: 200; background: #11150F; display: flex; flex-direction: column; padding: 12px; gap: 10px; }
+#abcd[hidden] { display: none; }
+.abcd-tipp { color: #DDE3D2; margin: 0; text-align: center; font-size: 16px; }
+.abcd-wahl { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.abcd-wahl[hidden] { display: none; }
+.abcd-k, .abcd-gross { border: 0; border-radius: 18px; color: #fff; font: 800 18vmin/1 "Source Sans 3", system-ui, sans-serif; cursor: pointer; }
+.abcd-gross { flex: 1; font-size: 60vmin; }
+.abcd-gross[hidden] { display: none; }
+.abcd-A { background: #C0392B; } .abcd-B { background: #2A5C8C; } .abcd-C { background: #3E8E41; } .abcd-D { background: #D99A00; }
+.abcd-zu { min-height: 52px; font: inherit; font-weight: 700; font-size: 18px; border-radius: 12px; border: 0; background: #fff; color: #3B4A2F; }
 .simlink { display: grid; gap: 4px; margin: 8px 0; } .simlink .btn { justify-self: start; text-decoration: none; }
 .pegel { border: 3px solid #A33A2B; border-radius: 14px; background: #FBF1EE; padding: 12px 14px; display: grid; gap: 8px; margin: 10px 0; }
 .pgh { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 19px; }
@@ -2289,8 +2300,23 @@ async function savePdf() {
 }
 
 // ---------- Start ----------
-const ABLAUF = {"1": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu K1.3 (Ion, Proton, Elektron) – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", null], ["", "Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", "v0"], ["DEMO", "DEMO K1.5-D1: Rotkraut-Farbenspiel – erst vermuten (Vermutung auf einen Zettel schreiben, auf Kommando hochhalten), dann zeigen", null], ["SELBSTSTUDIUM", "Buch S. 54 lesen und markieren", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Säure gibt H⁺ ab, H₃O⁺, Indikatoren", null], ["SELBSTSTUDIUM", "Aufgabe 2: Säuren erkennen", "a1"], ["BESPRECHEN", "Rotkraut-Farben und die Säuren-Tabelle", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "2": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 1 – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Laugen, OH⁻, Sicherheit (Auge, erst das Wasser)", null], ["SELBSTSTUDIUM", "Aufgabe 3: Laugen – nützlich und ätzend", "a2"], ["BESPRECHEN", "Protonen-Pingpong mit Ball und Schildern (HCl, H₂O, NH₃) – die ganze Klasse spielt mit", null], ["SELBSTSTUDIUM", "Aufgabe 4: Protonen-Pingpong", "a3"], ["BESPRECHEN", "Wer gibt ab, wer fängt? Ampholyt Wasser", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "3": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 2 – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", null], ["BESPRECHEN", "Prof. HOLZER erklärt: pH-Skala, Faktor 10 (pH-Schieber am Beamer)", null], ["SELBSTSTUDIUM", "Aufgabe 5: Die pH-Skala lesen", "a4"], ["VERSUCH", "VERSUCH K1.5-V1 (Aufgabe 6) mit DEMO K1.5-D2 pH-Meter: messen, ablesen, aufräumen, auswerten", "a5"], ["BESPRECHEN", "Klassenwerte am Beamer – Papier gegen pH-Meter", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "4": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 3 – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", null], ["DEMO", "DEMO K1.5-D3: Atemluft macht sauer – Essig und Natron (erst vermuten)", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Neutralisation, Puffer, Blut-pH beim Sport", null], ["SELBSTSTUDIUM", "Aufgabe 7: Neutralisation – im Glas und in deinem Körper", "a6"], ["PARTNERCHECK", "vier Karten über die ganze Einheit", null], ["BESPRECHEN", "Sodbrennen, Sprint, Muskelkater", null], ["", "Auflösung »Was glaubst du?« und Selbsteinschätzung", null], ["ABGABE", "PDF-Abgabe: Arbeitsblatt in LMS", null]]};
+const ABLAUF = {"1": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu K1.3 (Ion, Proton, Elektron) – mit der ABCD-Karte am Handy antworten", null], ["", "Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", "v0"], ["DEMO", "DEMO K1.5-D1: Rotkraut-Farbenspiel – erst vermuten (Vermutung mit der ABCD-Karte am Handy zeigen), dann zeigen", null], ["SELBSTSTUDIUM", "Buch S. 54 lesen und markieren", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Säure gibt H⁺ ab, H₃O⁺, Indikatoren", null], ["SELBSTSTUDIUM", "Aufgabe 2: Säuren erkennen", "a1"], ["BESPRECHEN", "Rotkraut-Farben und die Säuren-Tabelle", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "2": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 1 – mit der ABCD-Karte am Handy antworten", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Laugen, OH⁻, Sicherheit (Auge, erst das Wasser)", null], ["SELBSTSTUDIUM", "Aufgabe 3: Laugen – nützlich und ätzend", "a2"], ["BESPRECHEN", "Protonen-Pingpong mit Ball und Schildern (HCl, H₂O, NH₃) – die ganze Klasse spielt mit", null], ["SELBSTSTUDIUM", "Aufgabe 4: Protonen-Pingpong", "a3"], ["BESPRECHEN", "Wer gibt ab, wer fängt? Ampholyt Wasser", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "3": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 2 – mit der ABCD-Karte am Handy antworten", null], ["BESPRECHEN", "Prof. HOLZER erklärt: pH-Skala, Faktor 10 (pH-Schieber am Beamer)", null], ["SELBSTSTUDIUM", "Aufgabe 5: Die pH-Skala lesen", "a4"], ["VERSUCH", "VERSUCH K1.5-V1 (Aufgabe 6) mit DEMO K1.5-D2 pH-Meter: messen, ablesen, aufräumen, auswerten", "a5"], ["BESPRECHEN", "Klassenwerte am Beamer – Papier gegen pH-Meter", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "4": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 3 – mit der ABCD-Karte am Handy antworten", null], ["DEMO", "DEMO K1.5-D3: Atemluft macht sauer – Essig und Natron (erst vermuten)", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Neutralisation, Puffer, Blut-pH beim Sport", null], ["SELBSTSTUDIUM", "Aufgabe 7: Neutralisation – im Glas und in deinem Körper", "a6"], ["PARTNERCHECK", "vier Karten über die ganze Einheit", null], ["BESPRECHEN", "Sodbrennen, Sprint, Muskelkater", null], ["", "Auflösung »Was glaubst du?« und Selbsteinschätzung", null], ["ABGABE", "PDF-Abgabe: Arbeitsblatt in LMS", null]]};
 const GRP = {"1": "Stunde 1 · Sauer macht's – Säuren erkennen und sichtbar machen (Buch S. 53–55)", "2": "Stunde 2 · Laugen und das Protonen-Pingpong (Buch S. 56–59)", "3": "Stunde 3 · Der pH-Wert – wir messen nach (Buch S. 59–61) · VERSUCH K1.5-V1", "4": "Stunde 4 · Neutralisation – und warum dein Blut bei 7,4 bleibt (Buch S. 61–62, 65)", "0": "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)"};
+/* ABCD-Karte (Stephan, 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
+   Nichts wird gespeichert oder bewertet. */
+function abcdAuf() {
+  let ov = document.getElementById("abcd");
+  if (!ov) {
+    ov = el("div", { id: "abcd", role: "dialog", "aria-label": "ABCD-Karte" });
+    const wahl = el("div", { class: "abcd-wahl" }), gross = el("button", { type: "button", class: "abcd-gross", hidden: "" });
+    ["A", "B", "C", "D"].forEach(b => { const k = el("button", { type: "button", class: "abcd-k abcd-" + b, text: b }); k.addEventListener("click", () => { gross.textContent = b; gross.className = "abcd-gross abcd-" + b; gross.hidden = false; wahl.hidden = true; }); wahl.append(k); });
+    gross.addEventListener("click", () => { gross.hidden = true; wahl.hidden = false; });
+    const zu = el("button", { type: "button", class: "abcd-zu", text: "Schließen" }); zu.addEventListener("click", () => { ov.hidden = true; });
+    ov.append(el("p", { class: "abcd-tipp", text: "Antippen – dann Handy hochhalten. Nochmal tippen = neu wählen." }), wahl, gross, zu);
+    document.body.append(ov);
+  }
+  ov.hidden = false; ov.querySelector(".abcd-gross").hidden = true; ov.querySelector(".abcd-wahl").hidden = false;
+}
 function grpEl(g) {
   const box = el("div", { class: "grpbox" }); box.append(el("div", { class: "grp", text: GRP[g] }));
   const z = ABLAUF[String(g)]; if (!z) return box;
@@ -2301,7 +2327,9 @@ function grpEl(g) {
     if (ziel) { const a = el("a", { href: "#card_" + ziel, text: txt }); li.append(a); } else li.append(el("span", { text: txt }));
     ol.append(li);
   });
-  box.append(el("p", { class: "ablaufk", text: "So läuft die Stunde. Fett = mit der ganzen Klasse bzw. in der Gruppe (BESPRECHEN, DEMO, VERSUCH, PARTNERCHECK) – dafür legst du das Handy kurz weg:" }), ol);
+  box.append(el("p", { class: "ablaufk", text: "So läuft die Stunde. Fett = mit der ganzen Klasse bzw. in der Gruppe (BESPRECHEN, DEMO, VERSUCH, PARTNERCHECK):" }), ol);
+  const kb = el("button", { type: "button", class: "abcdbtn", text: "ABCD-Karte öffnen – für »Weißt du noch?« und Vermutungen" });
+  kb.addEventListener("click", abcdAuf); box.append(kb);
   return box;
 }
 let lastH = null;

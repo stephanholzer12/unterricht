@@ -521,6 +521,31 @@ STOPPFRAGEN = {
              ("Wie hilft die Atmung dem Blut-pH?", "Mit dem ausgeatmeten CO₂ verschwindet Kohlensäure aus dem Blut.")],
 }
 
+# ABCD-Fragen für »Weißt du noch?« und Vermutungen (Stephan 15.11.2026: digital statt Zettel – die Kadetten zeigen die ABCD-Karte am Handy).
+# (Frage, richtige Antwort, [drei falsche], Erklärung). Die Präsentation mischt die Reihenfolge, die richtige steht nicht immer bei A.
+WDN_ABCD = {
+    1: [("Was wandert bei einer Redoxreaktion (K1.3) von einem Teilchen zum anderen?", "Elektronen", ["Protonen", "Neutronen", "Atomkerne"], "Elektronen. Heute wandert etwas anderes: ein Proton."),
+        ("Ein Wasserstoff-Atom gibt sein einziges Elektron ab. Was bleibt übrig?", "ein Proton (H⁺-Ion)", ["ein Neutron", "ein Wasserstoff-Molekül", "gar nichts"], "Übrig bleibt der Kern: ein Proton, also ein H⁺-Ion."),
+        ("Was ist ein Ion?", "ein geladenes Teilchen", ["ein ungeladenes Atom", "ein kleines Molekül", "ein freies Elektron"], "Ein Ion hat Elektronen abgegeben oder aufgenommen – es ist geladen.")],
+    2: [("Welches Teilchen geben Säuren in Wasser ab?", "H⁺ (ein Proton)", ["OH⁻", "Elektronen", "Na⁺"], "H⁺ – im Wasser wird daraus H₃O⁺."),
+        ("Rotkrautsaft und Essig: Welche Farbe?", "rot bis rosa", ["blau", "grün", "gelb"], "Rot bis rosa – Essig ist sauer."),
+        ("Welche Säure steckt in Cola – neben der Kohlensäure?", "Phosphorsäure", ["Salzsäure", "Schwefelsäure", "Essigsäure"], "Phosphorsäure (Buch S. 54).")],
+    3: [("HCl + H₂O → Cl⁻ + H₃O⁺: Wer fängt das Proton?", "H₂O", ["HCl", "Cl⁻", "niemand"], "Wasser nimmt das Proton auf – hier ist Wasser die Base."),
+        ("Ein Teilchen, das Säure UND Base sein kann, heißt …", "Ampholyt", ["Indikator", "Puffer", "Oxonium-Ion"], "Ampholyt – zum Beispiel Wasser."),
+        ("Säure verdünnen: Was kommt zuerst ins Gefäß?", "das Wasser", ["die Säure", "egal", "beides gleichzeitig"], "Erst das Wasser, dann die Säure – sonst kann es spritzen.")],
+    4: [("pH 3 und pH 5: Wievielmal mehr H₃O⁺ hat pH 3?", "100-mal", ["2-mal", "20-mal", "1000-mal"], "Zwei Stufen, je Faktor 10: 10 · 10 = 100."),
+        ("Welche Probe war im Versuch basisch?", "Natronlösung", ["Cola", "Zitronensaft", "Mineralwasser"], "Natronlösung (pH um 8) – und die Seifenlösung."),
+        ("Warum ist prickelndes Mineralwasser leicht sauer?", "Gelöstes CO₂ bildet Kohlensäure", ["wegen der Mineralstoffe", "es enthält Salzsäure", "es ist gar nicht sauer"], "CO₂ + H₂O → H₂CO₃ (Kohlensäure).")],
+}
+VERMUTUNG_ABCD = {   # DEMO-Vermutungen, ebenfalls mit der ABCD-Karte
+    "K1.5-D1": [("Rotkrautsaft + Essig wird …", "rot bis rosa", ["blau", "grün", "bleibt violett"], "Rot bis rosa – Essig ist sauer."),
+                ("Rotkrautsaft + Natron wird …", "blau bis grün-blau", ["rot", "gelb", "bleibt violett"], "Blau bis grün-blau – Natron ist schwach basisch.")],
+    "K1.5-D3": [("Was passiert, wenn man Atemluft in Rotkrautsaft bläst?", "er wird etwas violetter (saurer)", ["er wird grün", "er wird gelb", "nichts – Luft ist neutral"], "Atemluft enthält CO₂ – daraus wird Kohlensäure."),
+                ("Und was passiert danach mit Natron?", "es schäumt, die Farbe geht zurück", ["es wird rot", "es wird gelb", "nichts"], "Natron fängt die Protonen ab, CO₂ entweicht – die Säure wird neutralisiert.")],
+}
+for _n, _qs in list(WDN_ABCD.items()) + list(VERMUTUNG_ABCD.items()):
+    for _q in _qs: assert len(_q) == 4 and len(set([_q[1]] + _q[2])) == 4, _q
+
 PARTNERCHECK = [  # vier Karten für Stunde 4 (Paar: einer fragt, einer antwortet, dann tauschen)
     ("Was ist eine Säure, was eine Base – nach Brønsted?", "Säure gibt ein Proton (H⁺) ab, Base nimmt es auf."),
     ("pH 3 und pH 6 – wievielmal mehr H₃O⁺ hat pH 3?", "1000-mal (drei Stufen, je Faktor 10)."),

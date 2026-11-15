@@ -15,9 +15,9 @@ DOPPEL_MIN = 2 * MIN + PAUSE
 
 STUNDE = {
  1: [("Beginn: Klassenbuch, Anwesenheit, Handys bereit", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu K1.3 (Ion, Proton, Elektron) – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", 3, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu K1.3 (Ion, Proton, Elektron) – mit der ABCD-Karte am Handy antworten", 3, True, "wdh", "BESPRECHEN"),
      ("Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", 2, False, "a1", ""),
-     ("DEMO K1.5-D1: Rotkraut-Farbenspiel – erst vermuten (Vermutung auf einen Zettel schreiben, auf Kommando hochhalten), dann zeigen", 9, True, "demo", "DEMO"),
+     ("DEMO K1.5-D1: Rotkraut-Farbenspiel – erst vermuten (Vermutung mit der ABCD-Karte am Handy zeigen), dann zeigen", 9, True, "demo", "DEMO"),
      ("SELBSTSTUDIUM: Buch S. 54 lesen und markieren", 5, True, "lesen", "SELBSTSTUDIUM"),
      ("KURZ KLÄREN: Säure gibt H⁺ ab, H₃O⁺, Indikatoren", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 2: Säuren erkennen", 10, False, "a2", "SELBSTSTUDIUM"),
@@ -25,7 +25,7 @@ STUNDE = {
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
  2: [("Beginn: Klassenbuch, Anwesenheit", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu Stunde 1 – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", 3, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu Stunde 1 – mit der ABCD-Karte am Handy antworten", 3, True, "wdh", "BESPRECHEN"),
      ("KURZ KLÄREN: Laugen, OH⁻, Sicherheit (Auge, erst das Wasser)", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 3: Laugen – nützlich und ätzend", 7, False, "a3", "SELBSTSTUDIUM"),
      ("ALLE GEMEINSAM: Protonen-Pingpong mit Ball und Schildern (HCl, H₂O, NH₃) – die ganze Klasse spielt mit", 8, True, "bewegung", "BESPRECHEN"),
@@ -34,7 +34,7 @@ STUNDE = {
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
  3: [("Beginn: Klassenbuch, Anwesenheit, Schutzbrillen austeilen", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu Stunde 2 – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", 2, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu Stunde 2 – mit der ABCD-Karte am Handy antworten", 2, True, "wdh", "BESPRECHEN"),
      ("KURZ KLÄREN: pH-Skala, Faktor 10 (pH-Schieber am Beamer)", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 5: Die pH-Skala lesen", 6, False, "a5", "SELBSTSTUDIUM"),
      ("VERSUCH K1.5-V1 (Aufgabe 6) mit DEMO K1.5-D2 pH-Meter: messen, ablesen, aufräumen, auswerten", 20, False, "a6", "VERSUCH"),
@@ -42,7 +42,7 @@ STUNDE = {
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
  4: [("Beginn: Klassenbuch, Anwesenheit", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu Stunde 3 – Antwort auf einen Zettel schreiben, auf Kommando hochhalten", 3, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu Stunde 3 – mit der ABCD-Karte am Handy antworten", 3, True, "wdh", "BESPRECHEN"),
      ("DEMO K1.5-D3: Atemluft macht sauer – Essig und Natron (erst vermuten)", 8, True, "demo", "DEMO"),
      ("KURZ KLÄREN: Neutralisation, Puffer, Blut-pH beim Sport", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 7: Neutralisation – im Glas und in deinem Körper", 9, False, "a7", "SELBSTSTUDIUM"),
@@ -53,7 +53,7 @@ STUNDE = {
      ("Reserve", 6, True, "reserve", "")],
 }
 
-METHODE = {1: "Demo mit Vorhersage auf Zetteln, Lesen im Buch",
+METHODE = {1: "Demo mit Vorhersage über die ABCD-Karte, Lesen im Buch",
            2: "Bewegung: Protonen-Pingpong mit Ball und Schildern",
            3: "Gruppenversuch mit Rollen – Handy nur zum Eintragen",
            4: "Demo mit Freiwilligem, Partnercheck ohne Handy"}
