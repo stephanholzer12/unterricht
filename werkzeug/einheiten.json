@@ -956,6 +956,7 @@
    "theorie.html"
   ],
   "versteckt": true,
+  "kapitelmenue": true,
   "fahrplan": {
    "ansicht": "kompakt",
    "text": "Vier Stunden, ein Weg: vom Knall zum Kopf. Stunde 1 Schall und Tempo, Stunde 2 messen in Dezibel, Stunde 3 das Ohr und sein Schutz, Stunde 4 Richtung und Gleichgewicht. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
@@ -964,50 +965,52 @@
      "wann": "Stunde 1",
      "marke": "DEMO",
      "lesen": "DEMO Stimmgabel · Druckwelle · Theorie-Karten 1 und 2 · Buch S. 61",
-     "aufgaben": "1–3",
+     "aufgaben": "1, 2",
+     "theorie": "Teil 1 Schall, Teil 2 Tempo",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 2",
      "marke": "VERSUCH",
      "lesen": "DEMO Lineal und Tongenerator · Dezibel-Leiter · VERSUCH Schallpegel messen · Buch S. 63–64",
-     "aufgaben": "4, 5",
+     "aufgaben": "3, 4",
+     "theorie": "Teil 3 Tonhöhe, Teil 4 Dezibel, Teil 5 Messen",
      "abgabe": "Messwerte deiner Gruppe eintragen"
     },
     {
      "wann": "Stunde 3",
-     "marke": "SELBSTSTUDIUM",
-     "lesen": "Aufbau des Ohrs, Hörvorgang · Mini-Versuch am eigenen Kopf · Gehörschutz · Buch S. 109–110",
-     "aufgaben": "6–8",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "Aufbau des Ohrs, Hörvorgang · Mini-Versuch am eigenen Kopf · GRUPPENARBEIT Gehörschutz · Buch S. 109–110",
+     "aufgaben": "5–7",
+     "theorie": "Teil 6 Ohr, Teil 7 Schutz",
      "abgabe": "–"
     },
     {
      "wann": "Stunde 4",
      "marke": "DEMO",
      "lesen": "DEMOS Richtungshören und Wasserglas · Lage- und Drehsinn · Partnercheck · Buch S. 110–112",
-     "aufgaben": "9",
+     "aufgaben": "8",
+     "theorie": "Teil 8 Richtung, Teil 9 Gleichgewicht",
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {
      "wann": "Für Schnelle",
-     "lesen": "Echolot und Fledermaus, KI-Fehlerjagd, Gehörschutz-Briefing (Podcast oder Plakat)",
-     "aufgaben": "Zusatz 10–12",
-     "zeit": "ca. 34 min",
+     "lesen": "Echolot und Fledermaus, KI-Fehlerjagd, Gehörschutz-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET)",
+     "aufgaben": "Zusatz 9–12",
+     "zeit": "ca. 49 min",
      "abgabe": "freiwillig"
     }
    ]
   },
   "dateien": {
-   "stand": "14.11.2026",
-   "zip": "26-27-4AB-Akustik-Gehoer-Claude-v2.zip",
+   "stand": "15.11.2026",
    "liste": [
-    "26-27-4AB-K2.4-3.2-Akustik-Lehrer-v1.html",
-    "26-27-4AB-K2.4-3.2-Akustik-Konzept-v1.md",
-    "26-27-4AB-K2.4-3.2-Akustik-Pruefbericht-Claude-v1.md"
+    "GitHub: theorie.html, aufgaben.html (v2)",
+    "Lösungsseite (Artifact, privat) – Stand v1, an v2 noch nicht angepasst",
+    "26-27-4AB-K2.4-3.2-Akustik-Pruefbericht-Claude-v2.md"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/TTopFaGJM1GEoWybNVspqJ",
-  "kapitelmenue": true
+  "lehrerseite": "https://claude.ai/artifact/TTopFaGJM1GEoWybNVspqJ"
  },
  {
   "klasse": "5AK",

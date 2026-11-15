@@ -1,6 +1,6 @@
 """Theorie-Seite K2.4/K3.2 Akustik und Gehör: Theorie-Karten, Teile und Abschnitte.
 Dieselben Daten füttern die Theorie-Seite, die Tipp-Stufe 2 im Arbeitsblatt (Theorie-Karte) und die KURZ-KLÄREN-Folien der Beamer-Präsentation.
-Block-Arten: tiles, ul, ol, merke, hint, table, reveal, img (Datei, Alt, Unterschrift), buch, karte, gemeinsam, sim (interaktive Druckwelle), demo (ID, Text), versuch (ID, Text, Anker).
+Block-Arten: tiles, ul, ol, merke, hint, table, reveal, img (Datei, Alt, Unterschrift), buch, karte, gemeinsam, sim (Simulation aus sims.py), extern (PhET-Link), demo (ID, Text), versuch (ID, Text, Anker).
 Alles in eigenen Worten; alle Grafiken selbst gezeichnet (skizzen.py, SVG). Das Schulbuch wird gelesen – die Seite erklärt anders und ergänzt."""
 import inhalt as I
 
@@ -113,7 +113,11 @@ PARTS = [
   {"id": "schall", "title": "Was schwingt, wenn wir etwas hören?", "pill": "Buch S. 61",
    "blocks": [("buch", "Lies im **Buch S. 61** die Abschnitte **»Schall«** und **»Schallfeld und Schallausbreitung«** (3 min). Markiere, was Schall braucht, um sich auszubreiten."),
               kartenblock("k1"),
-              ("sim", "druckwelle"),
+              ("sim", "druck"),
+              ("extern", "Schallwellen (PhET)", "https://phet.colorado.edu/de/simulations/sound-waves",
+               "Virtuelles Labor: Bildschirm **»Luftdruck«** – pump die Luft aus der Box und schau, was mit den Wellen passiert. Bildschirm **»Einführung«** – Frequenz und Amplitude verändern. "
+               "Bildschirm **»Messen«** – Wellenlänge mit dem Meterstab messen. Ton (»Hörer-Audio«) nur leise, ohne Kopfhörer. Dazu gibt es den virtuellen Versuch K2.4-VV1 (Zusatz 12).",
+               "PhET, University of Colorado Boulder · Deutsch · CC BY 4.0 · läuft im Browser, auch am Handy · öffnet in einem neuen Tab"),
               ("ul", ["Eine **Schallquelle** – Stimmband, Lautsprechermembran, Stimmgabel – schwingt. Bei jedem Schwung nach vorne drückt sie die Luft davor zusammen (**Verdichtung**), beim Zurückschwingen entsteht eine **Verdünnung**.",
                       "Die Luftteilchen geben den Stoß an ihre Nachbarn weiter. Jedes Teilchen bewegt sich dabei nur Bruchteile eines Millimeters **längs** der Ausbreitungsrichtung hin und her. Das ist eine **Längswelle (Longitudinalwelle)**.",
                       "**Der Schalldruck** ist die kleine Abweichung vom normalen Luftdruck. Selbst ein lautes Gespräch ändert den Luftdruck um weniger als ein Zehntausendstel Prozent.",
@@ -127,6 +131,7 @@ PARTS = [
   {"id": "tempo", "title": "Blitz, Donner, Echo", "pill": "Buch S. 61, 67",
    "blocks": [("buch", "Lies im **Buch S. 61** den letzten Absatz zur **Schallgeschwindigkeit** mit der Gewitterregel."),
               kartenblock("k2"),
+              ("sim", "echo"),
               ("table", [["Stoff", "Schallgeschwindigkeit", "für 1 km braucht Schall"],
                          ["Luft, 0 °C", "331 m/s", "3,0 s"], ["Luft, 15 °C", "340 m/s", "2,9 s"], ["Luft, 20 °C", "343 m/s", "2,9 s"],
                          ["Wasser", "rund 1480 m/s", "0,7 s"], ["Stahl", "rund 5000 m/s", "0,2 s"]]),
@@ -136,7 +141,7 @@ PARTS = [
                       "**Wellenlänge:** Mit λ = v / f hat der Kammerton a' (440 Hz) in Luft eine Wellenlänge von rund 0,77 m – tiefe Töne haben Meter, Ultraschall nur Millimeter."]),
               ("merke", "s = v · t. Beim Echo durch 2 teilen. In Luft rechnen wir mit v = 340 m/s."),
               ("reveal", I.STOPPFRAGEN["tempo"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 3", "aufgaben.html#card_a2")]),
+  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 2 f) bis j)", "aufgaben.html#card_a1")]),
 
  ("tonhoehe", "Teil 3 · Buch S. 63–64, 66 · Stunde 2", "Tonhöhe, Lautstärke, Hörbereich", [
   {"id": "tonhoehe", "title": "Hoch oder tief, laut oder leise", "pill": "Buch S. 63–64",
@@ -144,7 +149,8 @@ PARTS = [
               kartenblock("k3"),
               ("demo", "K2.4-D2", "Ein Lineal an der Tischkante: Je kürzer das schwingende Stück, desto **höher** der Ton – es schwingt öfter pro Sekunde. "
                                   "Schlägst du stärker an, wird der Ton **lauter**, aber nicht höher. Danach spielt Prof. HOLZER Töne mit dem Tongenerator am Beamer – leise, ohne Kopfhörer."),
-              ("ul", ["Bei einer Gitarre gilt dasselbe: Greifst du die Saite ab, wird das schwingende Stück kürzer und der Ton höher. Stärker gespannte Saiten klingen ebenfalls höher.",
+              ("ul", ["**Hummel und Gelse** (Buch S. 110): Die Flügel der Hummel schlagen rund 130-mal pro Sekunde – sie brummt tief. Die Gelse schlägt mehrere hundert Mal pro Sekunde – sie sirrt hoch.",
+                      "Bei einer Gitarre gilt dasselbe: Greifst du die Saite ab, wird das schwingende Stück kürzer und der Ton höher. Stärker gespannte Saiten klingen ebenfalls höher.",
                       "**Ton, Klang, Geräusch:** Ein reiner Ton ist eine einzige Sinusschwingung. Ein Instrument erzeugt einen **Klang** aus Grundton und Obertönen – darum klingen Gitarre und Trompete verschieden. Ein **Geräusch** hat kein regelmäßiges Muster.",
                       "**Infraschall** (unter 20 Hz): Elefanten verständigen sich damit über Kilometer, auch Erdbeben und Windräder erzeugen ihn. Er ist nicht grundsätzlich gefährlich – entscheidend ist, wie stark er ist.",
                       "**Ultraschall** (über 20 000 Hz): Fledermäuse und Delfine orten damit. In der Medizin macht er Bilder vom Herz oder vom Baby im Bauch, in der Technik prüft er Werkstücke auf Risse und reinigt Brillen.",
@@ -156,6 +162,7 @@ PARTS = [
   {"id": "dezibel", "title": "Warum Dezibel und nicht Pascal?", "pill": "Buch S. 64, 110",
    "blocks": [("buch", "Lies im **Buch S. 64** den Abschnitt **»Lautstärke (Schalldruckpegel)«** und sieh dir auf **S. 110** die Tabelle der Alltagsgeräusche an."),
               kartenblock("k4"),
+              ("sim", "db"),
               ("ul", ["Unser Ohr verarbeitet Schalldrücke von 0,00002 Pa (Hörschwelle) bis etwa 20 Pa an der Schmerzgrenze – das ist das Millionenfache. Damit diese riesige Spanne handlich wird, zählt man in **Zehnerstufen**: Jede Stufe von 10 dB ist **zehnmal so viel Intensität**.",
                       "**Drei Größen, nicht verwechseln:** Die **Schallintensität** ist Energie pro Fläche und Zeit (W/m²). Der **Schalldruckpegel** ist das Messergebnis in dB. Die **Lautstärke** ist, wie laut **wir** es empfinden – sie hängt zusätzlich von der Frequenz ab (am empfindlichsten sind wir zwischen etwa 500 und 5000 Hz).",
                       "**Dezibel addiert man nicht.** Zwei gleich laute Quellen liefern doppelte Intensität: Das sind nur etwa **+3 dB**. Zwei Rasenmäher mit je 90 dB ergeben rund 93 dB – nicht 180 dB.",
@@ -168,7 +175,7 @@ PARTS = [
                          ["Schmerzgrenze", "um 120–130 dB", ""], ["Schuss am Ohr des Schützen", "über 150 dB (Spitze)", "ein einziger Knall kann schädigen"]]),
               ("hint", "Werte sind Richtwerte, gerundet. Das Buch nennt für Diskotheken auf S. 64 110 phon und auf S. 110 100 dB – beides kommt vor, je nach Musik und Platz."),
               ("reveal", I.STOPPFRAGEN["dezibel"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 4", "aufgaben.html#card_a3")]),
+  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 3", "aufgaben.html#card_a3")]),
 
  ("messen", "Teil 5 · Buch S. 62–64 · Stunde 2", "Versuch: Schallpegel im langen Saal", [
   {"id": "messen", "title": "So messt ihr – und warum nur vergleichend", "pill": "Buch S. 62",
@@ -179,7 +186,7 @@ PARTS = [
                       "**Was zu erwarten ist:** Im Freien sinkt der Pegel bei **doppeltem Abstand um etwa 6 dB** – die Energie verteilt sich auf eine viermal so große Fläche. Im Saal werfen Wände, Decke und Boden Schall zurück; der Abfall ist dann kleiner.",
                       "**Datenschutz:** Der Pegelmesser wertet das Mikrofon nur im Handy aus. Es wird nichts aufgenommen, gespeichert oder verschickt."]),
               ("merke", "Doppelter Abstand: im Freien etwa −6 dB. Abstand hilft – ersetzt aber nie den Gehörschutz.")]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Versuch K2.4-V1 (Aufgabe 5)", "aufgaben.html#card_a4")]),
+  ("jetzt", "Jetzt im Arbeitsblatt: Versuch K2.4-V1 (Aufgabe 4)", "aufgaben.html#card_a4")]),
 
  ("ohr", "Teil 6 · Buch S. 109–110 · Stunde 3", "Der Weg ins Ohr", [
   {"id": "ohr", "title": "Vom Trommelfell zur Haarzelle", "pill": "Buch S. 109–110",
@@ -194,7 +201,7 @@ PARTS = [
                       "**Luft- und Knochenleitung:** Schall kommt über Gehörgang und Mittelohr (Luftleitung) – oder über die Schädelknochen direkt zur Schnecke (Knochenleitung). Deine eigene Stimme hörst du über beide Wege; auf einer Aufnahme fehlt die Knochenleitung."]),
               ("versuch", "K3.2-V1", "Summe leise, halte dir dann beide Ohren mit den Fingern zu und summe weiter: Was ändert sich? Denk danach an eine Sprachnachricht mit deiner Stimme.", "aufgaben.html#card_a6"),
               ("reveal", I.STOPPFRAGEN["ohr"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgaben 6 und 7", "aufgaben.html#card_a5")]),
+  ("jetzt", "Jetzt im Arbeitsblatt: Aufgaben 5 und 6", "aufgaben.html#card_a5")]),
 
  ("schutz", "Teil 7 · Buch S. 109–110 · Stunde 3", "Hörschäden und Gehörschutz", [
   {"id": "schutz", "title": "Was dein Gehör wirklich schützt", "pill": "Buch S. 109–110",
@@ -208,12 +215,13 @@ PARTS = [
                                                         "Sie sind kein geprüfter Gehörschutz und in Lärmbereichen nicht zugelassen. Watte und Finger im Ohr reichen auch nicht."])]),
               ("hint", "Stöpsel richtig einsetzen: zwischen den Fingern dünn rollen, mit der anderen Hand das Ohr nach hinten oben ziehen, Stöpsel tief einsetzen und kurz halten, bis er sich ausdehnt."),
               ("reveal", I.STOPPFRAGEN["schutz"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 8", "aufgaben.html#card_a7")]),
+  ("jetzt", "Jetzt im Arbeitsblatt: GRUPPENARBEIT Aufgabe 7", "aufgaben.html#card_a7")]),
 
  ("richtung", "Teil 8 · Buch S. 110 · Stunde 4", "Richtungshören", [
   {"id": "richtung", "title": "Woher kommt das?", "pill": "Buch S. 110",
    "blocks": [("buch", "Lies im **Buch S. 110** den Abschnitt **»Richtungshören«**. Achtung: Im Tipp beim Buchversuch steht »ca. 300 m/s« – rechne in dieser Einheit mit 340 m/s wie auf S. 61."),
               kartenblock("k7"),
+              ("sim", "richtung"),
               ("demo", "K3.2-D1", "Ein Freiwilliger schließt die Augen. Andere schnippen leise an verschiedenen Stellen – links, rechts, vorne, hinten, oben. Er zeigt, woher es kommt. "
                                   "Danach dasselbe mit einem zugehaltenen Ohr. **Vorher vermuten:** Wo wird er sich am häufigsten irren?"),
               ("ul", ["Bei tiefen Tönen wertet das Gehirn vor allem den **Zeitunterschied** aus, bei hohen Tönen den **Pegelunterschied**: Der Kopf wirft einen »Schallschatten« auf das abgewandte Ohr.",
@@ -228,17 +236,18 @@ PARTS = [
                                   "Genau so verhält sich die **Lymphe** in deinen Bogengängen. Keine Drehversuche am eigenen Körper – Sturzgefahr."),
               ("img", "img/bogengang.svg", "Drei Bilder eines Bogengangs: Drehung beginnt – Lymphe bleibt zurück, Kuppel biegt sich. Gleichmäßige Drehung – Kuppel steht gerade. Stopp – Lymphe fließt weiter, Kuppel biegt sich in die andere Richtung.",
                "Beginn, gleichmäßige Drehung, Stopp: Nur Änderungen biegen die Kuppel."),
+              ("sim", "bogen"),
               ("ul", ["**Drehschwindel:** Nach langem Drehen hast du dich »angepasst«. Beim Stoppen fließt die Lymphe weiter und meldet eine Drehung in die Gegenrichtung – die Augen sehen aber Stillstand. Dieser Widerspruch ist Schwindel.",
                       "**Piloten:** In Wolken oder nachts fehlt der Blick nach draußen. Eine lange, gleichmäßige Kurve fühlt sich nach einiger Zeit wie Geradeausflug an. Wer dem Gefühl folgt, gerät in eine Spirale. Die Regel lautet: **den Instrumenten vertrauen, nicht dem Körper**.",
                       "**Seekrankheit:** Im Schiffsinneren sieht alles ruhig aus, das Gleichgewichtsorgan meldet aber Schaukeln. Hilfe: an Deck gehen und den Horizont anschauen.",
                       "**Sport:** Eiskunstläufer und Tänzer drehen den Kopf ruckartig und halten einen Punkt mit den Augen fest (»Spotting«). Das Training dämpft außerdem die Reaktion des Gehirns auf die Bogengang-Signale."]),
               ("reveal", I.STOPPFRAGEN["gleichgewicht"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 9", "aufgaben.html#card_a8")]),
+  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 8", "aufgaben.html#card_a8")]),
 ]
 
 SCHNELLE = [
  {"id": "schnell1", "title": "Ultraschall, Echolot und Wale", "pill": "OPTIONAL · Buch S. 60, 66",
-  "blocks": [("ul", ["**Zusatzaufgabe 10** rechnet mit Echolot und Fledermaus. Filmtipp aus dem Schulbuch (S. 60): trauner.at/nawi_v52.aspx.",
+  "blocks": [("ul", ["**Zusatzaufgabe 9** rechnet mit Echolot und Fledermaus. Filmtipp aus dem Schulbuch (S. 60): trauner.at/nawi_v52.aspx.",
                      "**Ökologie:** Wale und Delfine verständigen sich über weite Strecken mit Schall. Schiffsmotoren, Sonar und Bauarbeiten im Meer übertönen ihre Rufe – ein wachsendes Problem für Tiere, die sich im Dunkeln nur über das Hören orientieren.",
                      "**Medizin:** Ultraschall erwärmt Gewebe nur wenig und strahlt nicht wie Röntgen. Darum ist er für Untersuchungen in der Schwangerschaft das Mittel der Wahl."])]},
  {"id": "schnell2", "title": "Kurz zum Dopplereffekt (kein Teststoff)", "pill": "OPTIONAL · Buch S. 65",

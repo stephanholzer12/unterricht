@@ -8,8 +8,8 @@ Demos: K2.4-D1 Stimmgabel · K2.4-D2 Lineal · K3.2-D1 Richtungshören · K3.2-D
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge).
 Rechengrundlage: v = 340 m/s in Luft (Buch S. 61, gilt bei rund 15 °C; bei 20 °C 343 m/s). Wasser 1480 m/s."""
 
-STAND = "14.11.2026"
-V = "v1"
+STAND = "15.11.2026"
+V = "v2"
 ORDNER = "4ab-nawi/k2-4-akustik"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -73,9 +73,11 @@ T = [
                          "b) über 150 dB – am Ohr des Schützen über 160 dB (Spitzenpegel). Darum ist Gehörschutz beim Schießen Pflicht."]]],
   "tipps": [], "tip": ["Schall ist eine Druckwelle", "theorie.html#schall"]},
 
- {"id": "a1", "nr": 2, "title": "Schall unterwegs", "src": "Buch S. 61", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 6, "marke": "SELBSTSTUDIUM",
-  "q": "Fünf kurze Auswahlfragen. Denk bei jeder an das Bild mit den schwingenden Luftteilchen.",
-  "hint": "Die Teilchen bleiben ungefähr an ihrem Platz. Was wandert dann eigentlich?",
+ {"id": "a1", "nr": 2, "title": "Schall unterwegs – was wandert, wie schnell?", "src": "Buch S. 61 · Buch-Aufgabe S. 67/1", "own": False, "tag": "Stunde 1", "h": 1, "zeit": 16, "marke": "SELBSTSTUDIUM",
+  "sim": ["druck"],
+  "q": "Lies zuerst im Buch S. 61 die Abschnitte »Schall« und »Schallfeld und Schallausbreitung« (3 min) und markiere, was Schall zum Ausbreiten braucht. "
+       "Dann: a) bis e) kurze Auswahlfragen – denk an die schwingenden Luftteilchen. f) bis j) rechnest du mit v = 340 m/s (Luft bei rund 15 °C). Schreib bei jeder Rechnung die Einheit dazu.",
+  "hint": "Die Teilchen bleiben ungefähr an ihrem Platz – was wandert dann? Fürs Rechnen: s = v · t. Beim Echo läuft der Schall hin UND zurück.",
   "type": "multi",
   "fields": [["was", "a) Was wandert bei Schall in der Luft vom Lautsprecher zu deinem Ohr?",
               ["eine Druckschwankung – die Luftteilchen schwingen nur hin und her", "die Luft selbst strömt zum Ohr", "kleine Schallteilchen fliegen durch die Luft"]],
@@ -85,12 +87,24 @@ T = [
               ["Die Linie zeigt, wie der Luftdruck an einer Stelle schwankt", "Die Luftteilchen bewegen sich auf und ab", "Schall ist eigentlich eine Wasserwelle"]],
              ["vakuum", "d) Warum gibt es im Vakuum keinen Schall?",
               ["Es gibt keine Teilchen, die sich anstoßen können", "Im Vakuum ist es zu kalt", "Das Vakuum verschluckt den Schall wie ein Schwamm"]],
-             ["schnell", "e) Wo ist Schall am schnellsten?", ["in Stahl", "in Wasser", "in Luft"]]],
+             ["schnell", "e) Wo ist Schall am schnellsten?", ["in Stahl", "in Wasser", "in Luft"]],
+             ["gewitter", "f) Nach einem Blitz hörst du den Donner 6 s später. Wie weit ist das Gewitter entfernt? (mit Einheit)"],
+             ["licht", "g) Warum darf man das Licht des Blitzes als »sofort da« rechnen?",
+              ["Licht ist fast eine Million Mal schneller als Schall", "Licht braucht genau 3 s pro Kilometer", "Der Blitz ist näher als der Donner"]],
+             ["echo", "h) Ihr ruft im Gelände gegen eine Felswand. Das Echo kommt nach 1,2 s zurück. Wie weit ist die Wand entfernt? (mit Einheit)"],
+             ["lambda", "i) Der Kammerton a' hat 440 Hz. Berechne seine Wellenlänge in Luft mit λ = v / f (mit Einheit, auf zwei Kommastellen)."],
+             ["winter", "j) Bei 0 °C ist Schall in Luft nur etwa 331 m/s schnell. Was heißt das für die Gewitter-Faustregel »Sekunden durch 3 = Kilometer«?",
+              ["Sie bleibt brauchbar – der Unterschied ist nur etwa 3 %", "Sie stimmt im Winter überhaupt nicht", "Im Winter ist Schall schneller als im Sommer"]]],
   "chk": {"was": {"sel": "eine Druckschwankung – die Luftteilchen schwingen nur hin und her"},
           "richtung": {"sel": "längs – in Ausbreitungsrichtung vor und zurück"},
           "kurve": {"sel": "Die Linie zeigt, wie der Luftdruck an einer Stelle schwankt"},
           "vakuum": {"sel": "Es gibt keine Teilchen, die sich anstoßen können"},
-          "schnell": {"sel": "in Stahl"}},
+          "schnell": {"sel": "in Stahl"},
+          "gewitter": {"num": 2040, "unit": "m", "tol": 41},
+          "licht": {"sel": "Licht ist fast eine Million Mal schneller als Schall"},
+          "echo": {"num": 204, "unit": "m", "tol": 4},
+          "lambda": {"num": 0.7727, "unit": "m", "tol": 0.0155},
+          "winter": {"sel": "Sie bleibt brauchbar – der Unterschied ist nur etwa 3 %"}},
   "fb": {"was": {"die Luft selbst strömt zum Ohr": "Dann gäbe es bei jedem Ton Wind. Die Luft bleibt, nur die Verdichtung wandert weiter.",
                  "kleine Schallteilchen fliegen durch die Luft": "Schall besteht nicht aus eigenen Teilchen. Er ist ein Zustand der Luft: dichter, dünner, dichter …"},
          "richtung": {"quer – auf und ab": "Das wäre eine Querwelle wie beim Seil. Schall in Luft ist eine Längswelle.",
@@ -100,53 +114,33 @@ T = [
          "vakuum": {"Im Vakuum ist es zu kalt": "Kälte allein verhindert Schall nicht. Entscheidend ist, ob Teilchen da sind.",
                     "Das Vakuum verschluckt den Schall wie ein Schwamm": "Im Vakuum ist nichts, was verschlucken könnte – es fehlt der Träger."},
          "schnell": {"in Wasser": "Wasser ist schneller als Luft, aber feste Stoffe wie Stahl sind noch schneller.",
-                     "in Luft": "Luft ist der langsamste der drei Stoffe: etwa 340 m/s."}},
-  "sol": [["Lösung", ["a) eine Druckschwankung – die Teilchen schwingen nur um ihren Platz.",
-                      "b) längs (longitudinal) – in Ausbreitungsrichtung vor und zurück.",
-                      "c) Die Wellenlinie ist ein Diagramm des Luftdrucks an einer Stelle (oben Überdruck, unten Unterdruck).",
-                      "d) Ohne Teilchen kann keine Verdichtung weitergegeben werden.",
-                      "e) in Stahl (rund 5000 m/s), Wasser rund 1480 m/s, Luft rund 340 m/s."]]],
-  "tipps": ["Stell dir eine Menschenkette vor, in der jeder seinen Nachbarn kurz anschubst. Wer bewegt sich weit – und was wandert durch die Kette?",
-            "k1",
-            "Lies im Buch S. 61 den Abschnitt »Schallfeld und Schallausbreitung« und den Versuch mit dem Wecker unter der Glocke."],
-  "tip": ["Schall ist eine Druckwelle", "theorie.html#schall"]},
-
- {"id": "a2", "nr": 3, "title": "Rechnen mit Schall: Gewitter, Echo, Wellenlänge", "src": "Buch-Aufgabe S. 67/1", "own": False, "tag": "Stunde 1", "h": 1, "zeit": 10, "marke": "SELBSTSTUDIUM",
-  "q": "Rechne mit v = 340 m/s (Luft bei rund 15 °C). Schreib bei jeder Rechnung die Einheit dazu. Licht des Blitzes darfst du als »sofort da« rechnen.",
-  "hint": "Formel: s = v · t. Beim Echo läuft der Schall hin UND zurück.",
-  "type": "multi",
-  "fields": [["gewitter", "a) Nach einem Blitz hörst du den Donner 6 s später. Wie weit ist das Gewitter entfernt? (mit Einheit)"],
-             ["licht", "b) Warum darf man das Licht des Blitzes als »sofort da« rechnen?",
-              ["Licht ist fast eine Million Mal schneller als Schall", "Licht braucht genau 3 s pro Kilometer", "Der Blitz ist näher als der Donner"]],
-             ["echo", "c) Ihr ruft gegen eine Felswand. Das Echo kommt nach 1,2 s zurück. Wie weit ist die Wand entfernt? (mit Einheit)"],
-             ["lambda", "d) Der Kammerton a' hat 440 Hz. Berechne seine Wellenlänge in Luft mit λ = v / f (mit Einheit, auf zwei Kommastellen)."],
-             ["winter", "e) Bei 0 °C ist Schall in Luft nur etwa 331 m/s schnell. Was heißt das für die Gewitter-Faustregel »Sekunden durch 3 = Kilometer«?",
-              ["Sie bleibt brauchbar – der Unterschied ist nur etwa 3 %", "Sie stimmt im Winter überhaupt nicht", "Im Winter ist Schall schneller als im Sommer"]]],
-  "chk": {"gewitter": {"num": 2040, "unit": "m", "tol": 41},
-          "licht": {"sel": "Licht ist fast eine Million Mal schneller als Schall"},
-          "echo": {"num": 204, "unit": "m", "tol": 4},
-          "lambda": {"num": 0.7727, "unit": "m", "tol": 0.0155},
-          "winter": {"sel": "Sie bleibt brauchbar – der Unterschied ist nur etwa 3 %"}},
-  "fb": {"gewitter": [[56.7, "Du hast v durch t geteilt. Der Weg ist s = v · t."], [18, "Faustregel: Sekunden durch 3 ergibt Kilometer – nicht mal 3."]],
+                     "in Luft": "Luft ist der langsamste der drei Stoffe: etwa 340 m/s."},
+         "gewitter": [[56.7, "Du hast v durch t geteilt. Der Weg ist s = v · t."], [18, "Faustregel: Sekunden durch 3 ergibt Kilometer – nicht mal 3."]],
          "echo": [[408, "Das ist der ganze Weg hin und zurück. Die Wand ist nur halb so weit weg."]],
          "lambda": [[1.294, "Du hast f durch v geteilt. Es heißt λ = v / f."], [149600, "Nicht mal, sondern geteilt: λ = v / f."]],
          "licht": {"Licht braucht genau 3 s pro Kilometer": "Die 3 s pro Kilometer gelten für den Schall. Licht schafft 300 000 km in einer Sekunde.",
                    "Der Blitz ist näher als der Donner": "Blitz und Donner entstehen am selben Ort – nur kommen sie verschieden schnell an."},
          "winter": {"Sie stimmt im Winter überhaupt nicht": "Rechne nach: 331 statt 340 m/s ist nur ein kleiner Unterschied.",
                     "Im Winter ist Schall schneller als im Sommer": "Umgekehrt: In wärmerer Luft ist Schall schneller."}},
-  "sol": [["Lösung", ["a) s = v · t = 340 m/s · 6 s = 2040 m ≈ 2,0 km (Faustregel: 6 : 3 = 2 km).",
-                      "b) Licht ist mit 300 000 km/s fast eine Million Mal schneller als Schall – seine Laufzeit ist hier vernachlässigbar.",
-                      "c) Hin und zurück: 340 m/s · 1,2 s = 408 m. Die Wand ist halb so weit weg: 204 m.",
-                      "d) λ = v / f = 340 m/s : 440 Hz = 0,77 m (gerundet).",
-                      "e) Brauchbar: (340 − 331) : 340 sind etwa 3 % – für eine Schätzung egal."]]],
-  "tipps": ["Bei c) zuerst den ganzen Weg ausrechnen, den der Schall läuft. Wie viel davon ist der Weg zur Wand?",
+  "sol": [["Lösung", ["a) eine Druckschwankung – die Teilchen schwingen nur um ihren Platz.",
+                      "b) längs (longitudinal) – in Ausbreitungsrichtung vor und zurück.",
+                      "c) Die Wellenlinie ist ein Diagramm des Luftdrucks an einer Stelle (oben Überdruck, unten Unterdruck).",
+                      "d) Ohne Teilchen kann keine Verdichtung weitergegeben werden.",
+                      "e) in Stahl (rund 5000 m/s), Wasser rund 1480 m/s, Luft rund 340 m/s.",
+                      "f) s = v · t = 340 m/s · 6 s = 2040 m ≈ 2,0 km (Faustregel: 6 : 3 = 2 km).",
+                      "g) Licht ist mit 300 000 km/s fast eine Million Mal schneller als Schall – seine Laufzeit ist hier vernachlässigbar.",
+                      "h) Hin und zurück: 340 m/s · 1,2 s = 408 m. Die Wand ist halb so weit weg: 204 m.",
+                      "i) λ = v / f = 340 m/s : 440 Hz = 0,77 m (gerundet).",
+                      "j) Brauchbar: (340 − 331) : 340 sind etwa 3 % – für eine Schätzung egal."]]],
+  "tipps": ["Menschenkette: Jeder schubst nur seinen Nachbarn – was wandert durch die Kette? Bei h) zuerst den ganzen Weg ausrechnen: Wie viel davon ist der Weg zur Wand?",
             "k2",
-            "Lies im Buch S. 61 die Gewitterregel und auf S. 67 Aufgabe 1. Die Formel λ = v / f kennst du aus der Wellenlehre (Buch S. 55)."],
-  "tip": ["Wie schnell ist Schall?", "theorie.html#tempo"]},
+            "Lies im Buch S. 61 »Schallfeld und Schallausbreitung« (Wecker unter der Glocke) und die Gewitterregel, auf S. 67 Aufgabe 1. λ = v / f kennst du aus der Wellenlehre (Buch S. 55)."],
+  "tip": ["Schall ist eine Druckwelle", "theorie.html#schall"]},
 
  # --------------------------------------------------------------- Stunde 2
- {"id": "a3", "nr": 4, "title": "Die Dezibel-Leiter", "src": "Buch S. 64, 110", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 7, "marke": "SELBSTSTUDIUM",
-  "q": "Sechs Auswahl- und Rechenfragen zur Dezibel-Skala. Merke: Jede Stufe von 10 dB heißt zehnmal so viel Schallintensität.",
+ {"id": "a3", "nr": 3, "title": "Hoch, tief, laut: die Dezibel-Leiter", "src": "Buch S. 64, 110", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 8, "marke": "SELBSTSTUDIUM",
+  "sim": ["db"],
+  "q": "Schau dir im Buch S. 110 die Tabelle der Alltagsgeräusche an und lies auf S. 64 den Kasten über das Addieren von Lautstärken (2 min). Dann sieben kurze Fragen. Merke: Jede Stufe von 10 dB heißt zehnmal so viel Schallintensität.",
   "hint": "Intensität und Schalldruck sind nicht dasselbe. Schau dir die Leiter auf der Theorie-Karte an.",
   "type": "multi",
   "fields": [["i10", "a) +10 dB bedeuten für die Schallintensität …", ["zehnmal so viel", "doppelt so viel", "10 % mehr"]],
@@ -155,11 +149,14 @@ T = [
              ["kopfh", "d) Kopfhörer mit 100 dB gegen ein Gespräch mit 60 dB: Wievielmal größer ist die Schallintensität? (nur die Zahl)"],
              ["zwei", "e) Zwei gleich laute Maschinen mit je 80 dB laufen gleichzeitig. Wie hoch ist der Pegel ungefähr?", ["etwa 83 dB", "160 dB", "genau 80 dB"]],
              ["empf", "f) Eine App zeigt 3 dB mehr als vorher. Klingt es jetzt doppelt so laut?",
-              ["Nein – doppelt so laut empfinden die meisten erst bei rund 10 dB mehr", "Ja, 3 dB mehr sind doppelt so laut", "Das zeigt die App direkt an"]]],
+              ["Nein – doppelt so laut empfinden die meisten erst bei rund 10 dB mehr", "Ja, 3 dB mehr sind doppelt so laut", "Das zeigt die App direkt an"]],
+             ["gelse", "g) Eine Hummel brummt tief, eine Gelse sirrt hoch (Buch S. 110). Was ist bei der Gelse größer?",
+              ["die Frequenz – ihre Flügel schlagen öfter pro Sekunde", "die Amplitude – sie ist lauter", "die Schallgeschwindigkeit"]]],
   "chk": {"i10": {"sel": "zehnmal so viel"}, "p10": {"sel": "etwa 3,2-mal so viel"}, "p20": {"sel": "zehnmal so viel"},
           "kopfh": {"num": 10000, "unit": "", "tol": 1},
           "zwei": {"sel": "etwa 83 dB"},
-          "empf": {"sel": "Nein – doppelt so laut empfinden die meisten erst bei rund 10 dB mehr"}},
+          "empf": {"sel": "Nein – doppelt so laut empfinden die meisten erst bei rund 10 dB mehr"},
+          "gelse": {"sel": "die Frequenz – ihre Flügel schlagen öfter pro Sekunde"}},
   "fb": {"i10": {"doppelt so viel": "Doppelte Intensität sind nur etwa +3 dB.", "10 % mehr": "Die Dezibel-Skala zählt in Faktoren, nicht in Prozent."},
          "p10": {"zehnmal so viel": "Genau dieser Fehler stand auf einer Folie im Vorjahr. Zehnfach ist die Intensität – der Schalldruck nur etwa 3,2-fach.",
                  "hundertmal so viel": "Hundertfach wird die Intensität erst bei +20 dB."},
@@ -168,19 +165,22 @@ T = [
          "zwei": {"160 dB": "Dezibel darf man nicht einfach addieren. Zwei gleiche Quellen = doppelte Intensität.",
                   "genau 80 dB": "Zwei Maschinen geben mehr Energie ab als eine – ein bisschen steigt der Pegel schon."},
          "empf": {"Ja, 3 dB mehr sind doppelt so laut": "3 dB mehr ist doppelte Intensität. Unser Ohr empfindet das nur als etwas lauter.",
-                  "Das zeigt die App direkt an": "Die App misst den Pegel. Wie laut es klingt, ist unsere Empfindung."}},
+                  "Das zeigt die App direkt an": "Die App misst den Pegel. Wie laut es klingt, ist unsere Empfindung."},
+         "gelse": {"die Amplitude – sie ist lauter": "Laut oder leise ist die Amplitude. Hoch oder tief ist etwas anderes.",
+                   "die Schallgeschwindigkeit": "In Luft ist jeder Ton gleich schnell – etwa 340 m/s."}},
   "sol": [["Lösung", ["a) zehnmal so viel Intensität.",
                       "b) etwa 3,2-mal so viel Schalldruck (3,2 · 3,2 ≈ 10).",
                       "c) zehnmal so viel Schalldruck (Intensität hundertfach).",
                       "d) 40 dB Unterschied = vier Zehnerstufen: 10 · 10 · 10 · 10 = 10 000-mal so viel Intensität.",
                       "e) etwa 83 dB – doppelte Intensität ergibt rund +3 dB.",
-                      "f) Nein. Als etwa doppelt so laut empfinden die meisten rund +10 dB (grobe Faustregel, hängt auch von der Frequenz ab)."]]],
+                      "f) Nein. Als etwa doppelt so laut empfinden die meisten rund +10 dB (grobe Faustregel, hängt auch von der Frequenz ab).",
+                      "g) die Frequenz: Die Flügel der Gelse schlagen viel öfter pro Sekunde (mehrere hundert Mal) als die der Hummel – darum ist ihr Ton höher."]]],
   "tipps": ["Zähle bei d) die Zehnerstufen zwischen 60 dB und 100 dB. Jede Stufe heißt: mal 10.",
             "k4",
             "Lies im Buch S. 64 den Abschnitt »Lautstärke (Schalldruckpegel)« mit dem Kasten über das Addieren von Lautstärken."],
   "tip": ["Dezibel: die Leiter in Zehnerschritten", "theorie.html#dezibel"]},
 
- {"id": "a4", "nr": 5, "title": "VERSUCH K2.4-V1: Schallpegel im langen Saal", "src": "Buch S. 62–64", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 14, "marke": "VERSUCH",
+ {"id": "a4", "nr": 4, "title": "VERSUCH K2.4-V1: Schallpegel im langen Saal", "src": "Buch S. 62–64", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 14, "marke": "VERSUCH",
   "versuch": "K2.4-V1",
   "q": "Ihr messt, wie der Schall mit dem Abstand schwächer wird. Vorne spielt ein Lautsprecher einen gleichmäßigen Ton. "
        "Jede Gruppe misst mit EINEM Handy und dem Pegelmesser unten. Jeder trägt die Werte seiner Gruppe in sein eigenes Arbeitsblatt ein.",
@@ -209,7 +209,7 @@ T = [
   "tip": ["Versuch: Pegel messen", "theorie.html#messen"]},
 
  # --------------------------------------------------------------- Stunde 3
- {"id": "a5", "nr": 6, "title": "Der Weg ins Ohr", "src": "Buch-Aufgabe S. 112/4", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 10, "marke": "SELBSTSTUDIUM",
+ {"id": "a5", "nr": 5, "title": "Der Weg ins Ohr", "src": "Buch-Aufgabe S. 112/4", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 10, "marke": "SELBSTSTUDIUM",
   "img": "img/ohr-nummern.svg",
   "q": "a) bis f): Beschrifte die Zeichnung – wähle zu jeder Nummer den richtigen Teil. Ein Begriff bleibt übrig. "
        "g) bis j): Der Schall ist im Gehörgang angekommen. Bring die vier nächsten Schritte in die richtige Reihenfolge. k) Wozu braucht das Ohr die Gehörknöchelchen?",
@@ -233,7 +233,7 @@ T = [
             "Lies im Buch S. 109 die Tabelle zu Außen-, Mittel- und Innenohr und auf S. 110 den Abschnitt »Hörvorgang«."],
   "tip": ["Der Weg ins Ohr", "theorie.html#ohr"]},
 
- {"id": "a6", "nr": 7, "title": "VERSUCH K3.2-V1: Luft- und Knochenleitung", "src": "Buch S. 109–110", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5, "marke": "VERSUCH",
+ {"id": "a6", "nr": 6, "title": "VERSUCH K3.2-V1: Luft- und Knochenleitung", "src": "Buch S. 109–110", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5, "marke": "VERSUCH",
   "versuch": "K3.2-V1",
   "q": "Ein Mini-Versuch am eigenen Kopf, ohne Material. 1. Summe leise einen Ton. 2. Halte dir mit den Zeigefingern beide Ohren zu und summe gleich weiter. "
        "3. Denk an eine Sprachnachricht mit deiner eigenen Stimme: Wie klingt sie für dich?",
@@ -255,49 +255,64 @@ T = [
             "Im Buch S. 109 siehst du, wie nahe die Schnecke am Schädelknochen (Felsenbein) liegt."],
   "tip": ["Luft- und Knochenleitung", "theorie.html#ohr"]},
 
- {"id": "a7", "nr": 8, "title": "Statement-Check: Noise-Cancelling statt Gehörschutz?", "src": "Buch S. 109–110", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 6, "marke": "SELBSTSTUDIUM",
-  "q": "Beispiel-Aussage (erfunden): Ein Fitness-Influencer sagt in einem Video: »Beim Schießen trag ich einfach meine Noise-Cancelling-Earbuds. Die machen eh alles leise.« "
-       "Prüf die Aussage mit dem, was du über Haarzellen und Gehörschutz weißt. Ohne KI.",
-  "hint": "Frag dich: Woher weiß er das? Und was passiert bei einem kurzen, sehr lauten Knall im Innenohr?",
+ {"id": "a7", "nr": 7, "title": "GRUPPENARBEIT: Gehörschutz-Lagebesprechung", "src": "Buch S. 109–110", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 9, "marke": "GRUPPENARBEIT",
+  "img": "img/gehoerschutz.svg",
+  "q": "Lagebesprechung vor einer Übung. In eurer Gruppe übernimmt jeder eine Rolle (Rollenkarten). Besprecht a) bis g) gemeinsam (6 min) – jeder trägt die Entscheidung selbst ein. "
+       "Danach fragt Prof. HOLZER einzelne Rollen, warum ihr so entschieden habt. Ohne KI.",
+  "rollen": [["REKRUT", "findet Gehörschutz lästig und will schnell fertig werden."],
+             ["SCHIESSAUSBILDER", "ist verantwortlich, dass niemand zu Schaden kommt."],
+             ["TRUPPENÄRZTIN", "kennt die Folgen von Knalltrauma und Tinnitus."],
+             ["INFLUENCER", "sagt in einem Video (Beispiel, erfunden): »Beim Schießen reichen meine Noise-Cancelling-Earbuds, die machen eh alles leise.«"]],
+  "hint": "Die Zeichnung zeigt links gesunde, rechts geschädigte Haarzellen. Ab 85 dB muss am Arbeitsplatz Gehörschutz getragen werden.",
   "type": "multi",
-  "fields": [["stimmt", "a) Stimmt die Aussage?", JANEIN[::-1]],
-             ["warum", "b) Welche Begründung passt am besten?",
-              ["ANC-Kopfhörer sind kein geprüfter Gehörschutz und wirken vor allem gegen gleichmäßige tiefe Geräusche – ein Schuss ist ein kurzer, extrem lauter Knall",
-               "ANC macht den Schall schneller", "Earbuds sind zu klein für Schall"]],
-             ["haar", "c) Was schädigt ein Knalltrauma im Innenohr?", ["die Haarzellen in der Schnecke", "die Ohrmuschel", "das Ohrenschmalz"]],
-             ["tinn", "d) Was ist ein Tinnitus?", ["ein Ohrgeräusch ohne äußere Schallquelle", "eine Entzündung des Gehörgangs", "ein Teil des Gleichgewichtsorgans"]],
-             ["quelle", "e) Woran erkennst du, dass die Aussage keine gute Quelle ist?",
-              ["Er nennt keine Messung und keine Prüfung – nur seine Meinung", "Er hat sehr viele Follower", "Das Video ist kurz"]],
-             ["antwort", "f) Schreib ihm eine Antwort in zwei Sätzen: Was soll er stattdessen tragen – und warum?"]],
-  "chk": {"stimmt": {"sel": "nein"},
-          "warum": {"sel": "ANC-Kopfhörer sind kein geprüfter Gehörschutz und wirken vor allem gegen gleichmäßige tiefe Geräusche – ein Schuss ist ein kurzer, extrem lauter Knall"},
-          "haar": {"sel": "die Haarzellen in der Schnecke"},
-          "tinn": {"sel": "ein Ohrgeräusch ohne äußere Schallquelle"},
-          "quelle": {"sel": "Er nennt keine Messung und keine Prüfung – nur seine Meinung"},
+  "fields": [["rolle", "a) Meine Rolle in der Gruppe", ["Rekrut", "Schießausbilder", "Truppenärztin", "Influencer"], False],
+             ["bild", "b) Truppenärztin: Welches Bild zeigt das Innenohr nach einem Knalltrauma?",
+              ["rechts: geknickte und fehlende Härchen der Haarzellen", "links: aufrechte Härchen in Reihen", "Man sieht den Schaden nur am Trommelfell"]],
+             ["nach", "c) Wachsen zerstörte Haarzellen beim Menschen nach?", ["Nein", "Ja, nach etwa zwei Wochen", "Ja, wenn man viel Wasser trinkt"]],
+             ["schiess", "d) Lage 1 – Schießplatz mit dem Sturmgewehr: Welcher Schutz?",
+              ["Kapselgehörschutz oder richtig eingesetzte Stöpsel – vom ersten Schuss an", "Noise-Cancelling-Earbuds", "Kein Schutz – ein paar Schüsse schaden nicht", "Watte in die Ohren"]],
+             ["werk", "e) Lage 2 – Werkstatt, den ganzen Tag etwa 88 dB: Was gilt?",
+              ["Gehörschutz muss getragen werden – ab 85 dB ist das Pflicht", "Gehörschutz nur bereitlegen, tragen ist freiwillig", "Schutz braucht man erst ab 120 dB"]],
+             ["zug", "f) Lage 3 – Heimfahrt im Zug, etwa 70 dB: Was passt?",
+              ["Kein Gehörschutz nötig – mit Noise-Cancelling kannst du die Musik leiser stellen", "Kapselgehörschutz ist Pflicht", "Musik laut aufdrehen, dann hört man den Zug nicht"]],
+             ["anc", "g) Influencer: Stimmt seine Aussage – und was ist das Problem an ihr?",
+              ["Nein – ANC ist kein geprüfter Gehörschutz; er nennt keine Messung, nur seine Meinung", "Ja – teure Earbuds dämpfen jeden Knall", "Ja – er hat sehr viele Follower"]],
+             ["antwort", "h) Eure Entscheidung als Gruppe in zwei Sätzen: Was trägt der Rekrut beim Schießen – und warum?"]],
+  "chk": {"bild": {"sel": "rechts: geknickte und fehlende Härchen der Haarzellen"},
+          "nach": {"sel": "Nein"},
+          "schiess": {"sel": "Kapselgehörschutz oder richtig eingesetzte Stöpsel – vom ersten Schuss an"},
+          "werk": {"sel": "Gehörschutz muss getragen werden – ab 85 dB ist das Pflicht"},
+          "zug": {"sel": "Kein Gehörschutz nötig – mit Noise-Cancelling kannst du die Musik leiser stellen"},
+          "anc": {"sel": "Nein – ANC ist kein geprüfter Gehörschutz; er nennt keine Messung, nur seine Meinung"},
           "antwort": {"kw": [["geprüfter Gehörschutz", r"gehoerschutz|gehörschutz|stoepsel|stöpsel|kapsel|otoplastik|zertifiz|gepruef|geprüf|en 352"],
-                             ["Begründung", r"haarzell|knall|innenohr|kaputt|schaed|schäd|tinnitus|zu laut|spitze|wachsen nicht"]], "need": 2, "man": True}},
-  "fb": {"stimmt": {"ja": "Schau dir an, wofür ANC gebaut ist – und wofür nicht."},
-         "warum": {"ANC macht den Schall schneller": "ANC ändert nichts an der Schallgeschwindigkeit. Es erzeugt Gegenschall.",
-                   "Earbuds sind zu klein für Schall": "Auch kleine Stöpsel können sehr gut dämmen – wenn sie dafür gebaut und geprüft sind."},
-         "haar": {"die Ohrmuschel": "Die Ohrmuschel sammelt nur den Schall. Der Schaden entsteht tief innen.",
-                  "das Ohrenschmalz": "Ohrenschmalz schützt den Gehörgang – mit dem Knalltrauma hat es nichts zu tun."},
-         "tinn": {"eine Entzündung des Gehörgangs": "Das wäre eine Gehörgangsentzündung (Otitis externa).",
-                  "ein Teil des Gleichgewichtsorgans": "Tinnitus ist ein Symptom, kein Organ."},
-         "quelle": {"Er hat sehr viele Follower": "Viele Follower sagen nichts darüber, ob etwas stimmt.",
-                    "Das Video ist kurz": "Auch kurze Videos können stimmen – entscheidend ist, woher er es weiß."}},
-  "sol": [["Lösung", ["a) nein.",
-                      "b) ANC dämpft vor allem gleichmäßige, tiefe Geräusche und ist kein geprüfter Gehörschutz (EN 352). Gegen einen Schuss mit über 150 dB Spitzenpegel schützt es nicht.",
-                      "c) die Haarzellen der Schnecke – sie wachsen nicht nach.",
-                      "d) ein Ohrgeräusch ohne äußere Schallquelle (Pfeifen, Rauschen, Klingeln).",
-                      "e) keine Messung, keine Prüfung, keine Fachquelle – nur Meinung (Quellenkritik: Woher weiß er das?).",
-                      "f) Beispiel: »Trag geprüften Gehörschutz – Kapsel oder richtig eingesetzte Stöpsel. ANC ist dafür nicht gemacht, und ein Knall kann Haarzellen für immer zerstören.«"]]],
-  "tipps": ["Wofür wurde Noise-Cancelling erfunden: Flugzeug, Zug, Büro – oder Schießplatz?",
+                             ["Begründung", r"haarzell|knall|innenohr|kaputt|schaed|schäd|tinnitus|zu laut|spitze|wachsen nicht|150"]], "need": 2, "man": True}},
+  "fb": {"bild": {"links: aufrechte Härchen in Reihen": "So sehen gesunde Haarzellen aus – schön in Reihen.",
+                  "Man sieht den Schaden nur am Trommelfell": "Das Trommelfell kann auch reißen – der bleibende Schaden liegt aber tiefer, in der Schnecke."},
+         "nach": {"Ja, nach etwa zwei Wochen": "Vögel und Fische können das – Menschen leider nicht.", "Ja, wenn man viel Wasser trinkt": "Trinken hilft dem Körper, aber Haarzellen wachsen davon nicht nach."},
+         "schiess": {"Noise-Cancelling-Earbuds": "ANC ist für gleichmäßigen Lärm gebaut, nicht für Knalle – und nicht als Gehörschutz geprüft.",
+                     "Kein Schutz – ein paar Schüsse schaden nicht": "Schon ein einziger Knall über 150 dB kann Haarzellen sofort zerstören.",
+                     "Watte in die Ohren": "Watte dämmt kaum. Nur geprüfter Gehörschutz zählt."},
+         "werk": {"Gehörschutz nur bereitlegen, tragen ist freiwillig": "Bereitlegen muss der Betrieb schon ab 80 dB. Ab 85 dB muss man ihn auch tragen.",
+                  "Schutz braucht man erst ab 120 dB": "120 dB ist schon die Schmerzgrenze. Schaden entsteht viel früher – bei langer Belastung ab etwa 85 dB."},
+         "zug": {"Kapselgehörschutz ist Pflicht": "70 dB sind etwa Straßenverkehr – dafür braucht man keinen Gehörschutz.",
+                 "Musik laut aufdrehen, dann hört man den Zug nicht": "Dann kommt zur Zugfahrt noch laute Musik dazu – das belastet die Haarzellen zusätzlich."},
+         "anc": {"Ja – teure Earbuds dämpfen jeden Knall": "Der Preis sagt nichts. Entscheidend ist, ob ein Gehörschutz geprüft ist (EN 352).",
+                 "Ja – er hat sehr viele Follower": "Viele Follower sagen nichts darüber, ob etwas stimmt. Woher weiß er es?"}},
+  "sol": [["Lösung", ["a) Rolle – keine Wertung.",
+                      "b) rechts: geknickte und fehlende Härchen (geschädigte Haarzellen). c) Nein – beim Menschen wachsen sie nicht nach.",
+                      "d) Kapselgehörschutz oder richtig eingesetzte Stöpsel, vom ersten Schuss an – auch für alle in der Nähe.",
+                      "e) Ab 85 dB muss Gehörschutz getragen werden (ab 80 dB muss ihn der Betrieb bereitstellen).",
+                      "f) Kein Gehörschutz nötig. Noise-Cancelling ist hier sogar sinnvoll: Man kann die Musik leiser stellen.",
+                      "g) Nein: ANC wirkt vor allem gegen gleichmäßige tiefe Geräusche und ist kein geprüfter Gehörschutz. Er nennt keine Messung und keine Fachquelle – nur Meinung (Quellenkritik).",
+                      "h) Beispiel: »Der Rekrut trägt geprüften Gehörschutz – Kapsel oder richtig eingesetzte Stöpsel. Ein Schuss liegt über 150 dB und kann Haarzellen für immer zerstören.«"]]],
+  "tipps": ["Was ist ein Knall für das Innenohr: kurz und extrem laut. Wofür wurde Noise-Cancelling gebaut: Flugzeug, Zug – oder Schießplatz?",
             "k6",
             "Lies im Buch S. 109 den Einstieg zum Hörsinn (Lärm am Arbeitsplatz) und auf S. 110 die Tabelle der Lautstärken."],
   "tip": ["Hörschäden und Gehörschutz", "theorie.html#schutz"]},
 
  # --------------------------------------------------------------- Stunde 4
- {"id": "a8", "nr": 9, "title": "Orientierung: Richtung und Gleichgewicht", "src": "Buch-Aufgabe S. 112/6", "own": False, "tag": "Stunde 4", "h": 4, "zeit": 12, "marke": "SELBSTSTUDIUM",
+ {"id": "a8", "nr": 8, "title": "Orientierung: Richtung und Gleichgewicht", "src": "Buch-Aufgabe S. 112/6", "own": False, "tag": "Stunde 4", "h": 4, "zeit": 12, "marke": "SELBSTSTUDIUM",
+  "sim": ["richtung", "bogen"],
   "q": "a) und b) zum Richtungshören, c) bis g) zum Gleichgewichtssinn. Bei a) rechnest du mit v = 340 m/s. Bei g) schreibst du einen Satz.",
   "hint": "Lagesinn = Vorhofsäckchen mit Kalkkristallen. Drehsinn = Bogengänge mit träger Lymphe.",
   "type": "multi",
@@ -340,7 +355,7 @@ T = [
   "tip": ["Gleichgewicht: Lage- und Drehsinn", "theorie.html#gleichgewicht"]},
 
  # --------------------------------------------------------------- Zusatz
- {"id": "z1", "nr": 10, "title": "Echolot und Fledermaus", "src": "Buch S. 60, 66–67", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+ {"id": "z1", "nr": 9, "title": "Echolot und Fledermaus", "src": "Buch S. 60, 66–67", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8, "sim": ["echo"],
   "q": "Ein Echolot sendet Ultraschall zum Seegrund, eine Fledermaus ruft im Ultraschall. a) Das Signal des Echolots kommt nach 0,08 s zurück. Wasser: v = 1480 m/s. Wie tief ist der See? "
        "b) Das Echo eines Insekts kommt bei der Fledermaus nach 6 ms an. Luft: v = 340 m/s. Wie weit ist das Insekt entfernt? c) Warum nutzt die Fledermaus Ultraschall?",
   "hint": "Beides sind Echos: hin und zurück. Bei b) zuerst 6 ms in Sekunden umrechnen.",
@@ -357,7 +372,7 @@ T = [
                       "c) Ultraschall hat sehr kurze Wellenlängen (bei 50 kHz etwa 7 mm). Kleine Insekten werfen solche Wellen gut zurück – tiefe Töne mit Wellenlängen von Metern »umfließen« sie."]]],
   "tipps": [], "tip": ["Ultraschall und Infraschall", "theorie.html#tonhoehe"]},
 
- {"id": "z2", "nr": 11, "title": "KI-Fehlerjagd: Fünf Sätze über Dezibel", "src": "Buch S. 64", "own": True, "tag": "Zusatz", "h": 0, "zeit": 6,
+ {"id": "z2", "nr": 10, "title": "KI-Fehlerjagd: Fünf Sätze über Dezibel", "src": "Buch S. 64", "own": True, "tag": "Zusatz", "h": 0, "zeit": 6,
   "q": "Eine KI hat Dezibel so erklärt. Genau drei Sätze sind falsch. Entscheide bei jedem Satz. f) Verbessere einen der falschen Sätze. Ohne KI – der Text ist schon da.",
   "hint": "Denk an die Dezibel-Leiter und an die Theorie-Karte zum Gehörschutz.",
   "type": "multi",
@@ -378,7 +393,7 @@ T = [
                       "f) z. B. »10 dB mehr bedeuten zehnmal so viel Schallintensität« oder »Zwei Rasenmäher mit je 90 dB ergeben etwa 93 dB.«"]]],
   "tipps": [], "tip": ["Dezibel: die Leiter in Zehnerschritten", "theorie.html#dezibel"]},
 
- {"id": "z3", "nr": 12, "title": "60 Sekunden Gehörschutz-Briefing", "src": "Buch S. 109–110", "own": True, "tag": "Zusatz", "h": 0, "zeit": 20,
+ {"id": "z3", "nr": 11, "title": "60 Sekunden Gehörschutz-Briefing", "src": "Buch S. 109–110", "own": True, "tag": "Zusatz", "h": 0, "zeit": 20,
   "q": "Wahlaufgabe: Erstelle für neue Rekruten ein Gehörschutz-Briefing – als Podcast (höchstens 60 s) ODER als Plakat (A3, Handschrift). "
        "Pflichtinhalte: Haarzellen wachsen nicht nach · ab 85 dB Gehörschutz · Knall ist besonders gefährlich · ANC ist kein Gehörschutz · ein Tipp, wie man Stöpsel richtig einsetzt. "
        "Allein oder zu zweit. KI erlaubt nur fürs Ideensammeln – dann schreibst du dazu, was du gefragt und was du selbst geändert hast. "
@@ -390,13 +405,60 @@ T = [
   "sol": [["Bewertungsraster (10 Punkte)", ["fachlich richtig 4 · alle fünf Pflichtinhalte 2 · verständlich und gegliedert 2 · kreativ 1 · Länge und Abgabe eingehalten 1.",
                                            "Muster: »Euer Gehör hat nur einen Satz Haarzellen – kaputt ist kaputt. Ab 85 dB gilt: Gehörschutz auf. Ein Schuss liegt über 150 dB … Earbuds mit ANC zählen nicht. Stöpsel: rollen, Ohr nach hinten oben ziehen, einsetzen, halten bis er sich ausdehnt.«"]]],
   "tipps": [], "tip": ["Hörschäden und Gehörschutz", "theorie.html#schutz"]},
+
+ # ---- Virtueller Versuch (Stephan 15.11.2026: externe Simulation als virtueller Versuch mit Protokoll). Geprüft im Quellcode der Simulation
+ # (github.com/phetsims/sound-waves, Version 1.1, doc/model.md und js/): Bildschirme Einführung, Messen, Zwei Quellen, Reflexion, Luftdruck;
+ # Frequenz 100–1000 Hz, Wellengeschwindigkeit 343 m/s, Messen: Meterstab 5 m und Stoppuhr in ms, Luftdruck 0–1 atm, Stärke der Wellen proportional zum Druck.
+ # Deutsche Bezeichnungen aus github.com/phetsims/babel (sound-waves-strings_de.json). Messwerte am Meterstab sind NICHT automatisch geprüft (Ablesegenauigkeit unbekannt).
+ {"id": "z4", "nr": 12, "title": "VIRTUELLER VERSUCH K2.4-VV1: Schallwellen am Handy", "src": "PhET-Simulation · Buch S. 61–63", "own": True, "tag": "Zusatz", "h": 0, "zeit": 15,
+  "link": ["Simulation »Schallwellen« öffnen", "https://phet.colorado.edu/de/simulations/sound-waves", "PhET, University of Colorado Boulder · Deutsch · CC BY 4.0 · läuft im Browser, auch am Handy"],
+  "q": "Öffne die Simulation »Schallwellen« (Knopf oben). Unten wählst du einen Bildschirm. Ein Versuch am Handy – du schreibst ein Protokoll wie im Labor. "
+       "Fällt der echte Versuch K2.4-V1 aus, ist dieser virtuelle Versuch Pflicht. Ton in der Simulation (»Hörer-Audio«) nur leise und ohne Kopfhörer.",
+  "hint": "Bildschirm »Luftdruck«: Mit dem Regler pumpst du Luft aus der Box. Bildschirm »Messen«: Meterstab und Stoppuhr sind am Rand – zieh sie ins Bild.",
+  "type": "multi",
+  "fields": [["verm", "a) Vermutung: Was passiert mit den Schallwellen, wenn du die Luft aus der Box pumpst? Begründe kurz."],
+             ["druck", "b) Bildschirm »Luftdruck«: Was zeigt die Simulation bei 0 ATM?",
+              ["Die Wellen verschwinden – ohne Luft kein Schall", "Die Wellen werden schneller", "Die Wellen werden größer und lauter"]],
+             ["freq", "c) Bildschirm »Einführung«: Du schiebst die Frequenz höher. Was passiert mit dem Abstand der Wellenfronten?",
+              ["Er wird kleiner – die Wellenlänge sinkt", "Er wird größer", "Er bleibt gleich"]],
+             ["amp", "d) Du schiebst die Amplitude höher. Was ändert sich?",
+              ["Die Wellen werden kräftiger, ihr Abstand bleibt gleich", "Die Wellen liegen enger beisammen", "Der Ton wird höher"]],
+             ["lam", "e) Bildschirm »Messen«: Stell 500 Hz ein und miss mit dem Meterstab den Abstand von einer Wellenfront zur nächsten (in m)."],
+             ["v", "f) Rechne mit deinem Messwert: v = λ · f = … m/s (mit Einheit)."],
+             ["wand", "g) Bildschirm »Reflexion«: Was macht die Wand mit den Wellen?",
+              ["Sie wirft sie zurück – wie beim Echo", "Sie verschluckt alles", "Sie macht die Wellen schneller"]],
+             ["erk", "h) Erkenntnis: Was hast du über Schall und Luft gelernt? (1–2 Sätze)"],
+             ["vgl", "i) Vergleich: Was kann der virtuelle Versuch besser als der echte im Saal – und was nicht? (je ein Punkt)"]],
+  "chk": {"verm": {"kw": [["Begründung", r"\w{3,}"]], "need": 1, "man": True},
+          "druck": {"sel": "Die Wellen verschwinden – ohne Luft kein Schall"},
+          "freq": {"sel": "Er wird kleiner – die Wellenlänge sinkt"},
+          "amp": {"sel": "Die Wellen werden kräftiger, ihr Abstand bleibt gleich"},
+          "lam": {"kw": [["Messwert", r"\d"]], "need": 1, "man": True},
+          "v": {"kw": [["Ergebnis", r"\d"]], "need": 1, "man": True},
+          "wand": {"sel": "Sie wirft sie zurück – wie beim Echo"},
+          "erk": {"kw": [["Träger / Teilchen", r"luft|teilchen|traeger|träger|vakuum|medium|stoff"]], "need": 1, "man": True},
+          "vgl": {"kw": [["besser", r"\w{3,}"]], "need": 1, "man": True}},
+  "fb": {"druck": {"Die Wellen werden schneller": "Schau genau: Was ist bei 0 ATM noch zu sehen?", "Die Wellen werden größer und lauter": "Weniger Luft – weniger Teilchen, die schwingen können."},
+         "freq": {"Er wird größer": "Mehr Schwingungen pro Sekunde bei gleicher Geschwindigkeit – haben die Wellen dann mehr oder weniger Platz?", "Er bleibt gleich": "Vergleiche 100 Hz und 1000 Hz direkt hintereinander."},
+         "amp": {"Die Wellen liegen enger beisammen": "Das passiert bei höherer Frequenz. Was macht die Amplitude?", "Der Ton wird höher": "Hoch oder tief ist die Frequenz."},
+         "wand": {"Sie verschluckt alles": "Hinter der Wand ist es ruhig – aber was passiert davor?", "Sie macht die Wellen schneller": "Die Geschwindigkeit hängt nur von der Luft ab."}},
+  "sol": [["Lösung", ["a) z. B. »Sie werden schwächer, weil weniger Luft da ist« – Vermutung, keine Bewertung.",
+                      "b) Bei 0 ATM verschwinden die Wellen: ohne Luft kein Schall (wie der Wecker unter der Glocke, Buch S. 61).",
+                      "c) Er wird kleiner. d) Die Wellen werden kräftiger (dunkler), der Abstand bleibt gleich.",
+                      "e) Erwartung: λ = 343 m/s : 500 Hz ≈ 0,69 m – der eigene Messwert weicht ab (Ablesen am Bildschirm). Bitte Plausibilität prüfen: etwa 0,6–0,8 m.",
+                      "f) v = λ · f, z. B. 0,7 m · 500 Hz = 350 m/s – die Simulation rechnet mit 343 m/s.",
+                      "g) Sie wirft die Wellen zurück (Reflexion) – das Echo.",
+                      "h) Schall braucht einen Träger (Luft): weniger Teilchen, schwächerer Schall, im Vakuum keiner. Höhere Frequenz = kürzere Wellenlänge.",
+                      "i) Besser: Vakuum möglich, Wellen sichtbar, beliebig oft, ruhig. Nicht: echte Pegel in dB, echter Saal mit Nachhall, echte Messfehler."]]],
+  "tipps": ["Bei 0 ATM: Sind in der Box noch Teilchen, die sich anstoßen können?", "k1", "Buch S. 61: Wecker unter der Glocke; Buch S. 63: Tonhöhe und Frequenz."],
+  "tip": ["Schall ist eine Druckwelle", "theorie.html#schall"]},
 ]
 
 # ---------------------------------------------------------------- Kontrollen
 assert [t["nr"] for t in T] == list(range(1, 13))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
-assert PFLICHT == [2, 3, 4, 5, 6, 7, 8, 9], PFLICHT
-BESPRECHEN = [3, 5, 8, 9]
+assert PFLICHT == [2, 3, 4, 5, 6, 7, 8], PFLICHT
+BESPRECHEN = [2, 4, 7, 8]
 for _t in T:
     if _t["nr"] in BESPRECHEN: _t["besprechen"] = True
 for _t in T:
@@ -418,8 +480,8 @@ for _t in T:
     for _x in [_t["q"]] + [z for _a, zz in _t["sol"] for z in zz] + [f[1] for f in _t["fields"]]:
         assert "√" not in _x, (_t["id"], "Zeichen fehlt in der PDF-Schrift")
     assert len(_t.get("tipps", [])) in (0, 3), (_t["id"], "Tipp-Stufen: genau drei oder keine")
-# a2 »stimmt« (Statement-Check): richtige Antwort »nein« steht nach JANEIN[::-1] an erster Stelle
-assert T[7]["fields"][0][2][0] == "nein"
+assert abs(343 / 500 - 0.686) < 0.001   # PhET Schallwellen: λ bei 500 Hz
+assert abs(10 * __import__("math").log10(10) - 10) < 1e-9 and round(10 * __import__("math").log10(4)) == 6   # Dezibel-Rechner: 4 bzw. 10 gleiche Quellen
 
 # Rechenkontrolle (vom Aufgabentext aus gerechnet)
 assert V_LUFT * 6 == 2040 and abs(V_LUFT * 1.2 / 2 - 204) < 1e-9
@@ -512,13 +574,13 @@ STOPPFRAGEN = {
 }
 
 STOLPERSTEINE = [("»+10 dB = zehnfacher Schalldruck«",
-                  "Falsch – stand so auf **Vorjahresfolie 39**. Richtig: +10 dB = **Intensität ×10**, Schalldruck ×3,2; +20 dB = Schalldruck ×10. Mit Aufgabe 4 b) und c) ansprechen."),
+                  "Falsch – stand so auf **Vorjahresfolie 39**. Richtig: +10 dB = **Intensität ×10**, Schalldruck ×3,2; +20 dB = Schalldruck ×10. Mit Aufgabe 3 b) und c) ansprechen."),
                  ("»Die Luft fliegt zum Ohr« / »Die Sinuskurve ist die Bahn der Teilchen«",
                   "Die Teilchen schwingen **längs** um ihren Platz, es wandert die Verdichtung. Die Sinuskurve ist ein **Druck-Diagramm**. Animation aus Stunde 1 noch einmal zeigen."),
                  ("»Lautstärke = Dezibel«",
                   "dB ist der gemessene **Pegel**, die Lautstärke ist die **Empfindung** und frequenzabhängig. dB und phon stimmen nur bei 1000 Hz überein (Buch S. 64)."),
                  ("»Echo: s = v · t«",
-                  "Beim Echo zählt der Weg **hin und zurück**: s = v · t / 2. Typischer Fehler in Aufgabe 3 c) (408 statt 204 m)."),
+                  "Beim Echo zählt der Weg **hin und zurück**: s = v · t / 2. Typischer Fehler in Aufgabe 2 h) (408 statt 204 m)."),
                  ("»Die Bogengänge melden die Lage« / »Schwindel kommt vom Blut«",
                   "**Bogengänge** = Drehbeschleunigung (träge Lymphe), **Vorhofsäckchen** = Lage und Beschleunigung geradeaus (Kalkkristalle, Schwerkraft). Wasserglas-Demo K3.2-D2.")]
 

@@ -9,12 +9,12 @@ import inhalt as I, plan as PL
 PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
 P = I.PRAEFIX
-DATEIEN = {"stand": I.STAND, "zip": "26-27-4AB-Akustik-Gehoer-Claude-v2.zip",
-           "liste": [f"{P}-Lehrer-{I.V}.html", f"{P}-Konzept-{I.V}.md", f"{P}-Pruefbericht-Claude-{I.V}.md"]}
+DATEIEN = {"stand": I.STAND,
+           "liste": ["GitHub: theorie.html, aufgaben.html (" + I.V + ")", "Lösungsseite (Artifact, privat) – Stand v1, an v2 noch nicht angepasst", f"{P}-Pruefbericht-Claude-v2.md"]}
 neu = {"klasse": "4AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K2.4 · K3.2", "titel": I.TITEL,
        "block": "C Akustik, Optik & Sinne", "jahresplan": "E9–E10",
        "seiten": ["aufgaben.html", "theorie.html"],
-       "versteckt": True,
+       "versteckt": True, "kapitelmenue": True,
        "fahrplan": {"ansicht": "kompakt", "text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
        "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]

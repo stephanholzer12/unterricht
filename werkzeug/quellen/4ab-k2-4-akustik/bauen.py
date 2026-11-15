@@ -14,6 +14,7 @@ WZ = os.path.join(ROOT, "werkzeug")
 sys.path.insert(0, HERE)
 import inhalt as I
 import theorie_daten as TD
+import sims as SIMS
 STAND = I.STAND
 
 DST = os.path.join(ROOT, I.ORDNER) + "/"
@@ -54,8 +55,8 @@ ZUS = ", ".join(str(t["nr"]) for t in I.T if t["tag"] == "Zusatz")
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
       <li><b>Ein Arbeitsblatt für alles.</b> Aufgaben, Versuche und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
-      <li><b>Stunde 1:</b> Aufgaben 1–3 · <b>Stunde 2:</b> Aufgabe 4 und VERSUCH (Aufgabe 5) · <b>Stunde 3:</b> Aufgaben 6–8 · <b>Stunde 4:</b> Aufgabe 9. Zusatz für Schnelle: """ + ZUS + """. Es gibt <b>keine Hausübung</b>.</li>
-      <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein) oder <b>VERSUCH</b> (Gruppe). Tipps kosten keine Punkte.</li>
+      <li><b>Stunde 1:</b> Aufgaben 1–2 · <b>Stunde 2:</b> Aufgabe 3 und VERSUCH (Aufgabe 4) · <b>Stunde 3:</b> Aufgaben 5–6 und GRUPPENARBEIT (Aufgabe 7) · <b>Stunde 4:</b> Aufgabe 8. Zusatz für Schnelle: """ + ZUS + """. Es gibt <b>keine Hausübung</b>.</li>
+      <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein), <b>VERSUCH</b> oder <b>GRUPPENARBEIT</b> (Gruppe). Bei vielen Aufgaben kannst du unter »Ausprobieren« selbst etwas einstellen. Tipps kosten keine Punkte.</li>
       <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 4 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).</li>
     </ol>""" + s[j:]
 i = s.index("<!--FAHRPLAN-->"); j = s.index("<!--/FAHRPLAN-->") + len("<!--/FAHRPLAN-->")
@@ -113,8 +114,15 @@ s = s[:_i] + """function showCheck(t) {
 rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
     '''  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
   if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle Gruppen machen dasselbe · jeder trägt die Werte selbst ein" }));
+  if (t.rollen) { const rk = el("div", { class: "rollen" }); t.rollen.forEach(r => { const d = el("div", { class: "rolle" }); d.append(el("b", { text: r[0] }), el("span", { text: r[1] })); rk.append(d); }); card.append(rk); }
   if (t.pegel) card.append(pegelBox(t));
-  if (t.tipps && t.tipps.length) card.append(tippStufen(t));''')
+  if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
+  if (t.tipps && t.tipps.length) card.append(tippStufen(t));
+  (t.sim || []).forEach(k => {
+    if (!SIMHTML[k]) return;
+    const d = el("details", { class: "simd" }); d.append(el("summary", { text: "Ausprobieren: " + SIMTITEL[k] + " – " + SIMZEILE[k] }));
+    d.insertAdjacentHTML("beforeend", SIMHTML[k]); card.append(d);
+  });''')
 rep("function renderTask(t) {", """function karteEl(k) {
   const K = KARTEN[k], box = el("div", { class: "tkarte" });
   box.append(el("div", { class: "tkh" }, el("span", { class: "tkn", text: "Theorie-Karte" }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
@@ -278,6 +286,7 @@ for t in I.T:
 i = s.index("const KEY = "); j = s.index("\n];", i) + 3
 s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K2.4", THEMA = "Akustik";\n' % I.KEY
      + "const KARTEN = " + json.dumps(TD.karte_html_daten(), ensure_ascii=False) + ";\n"
+     + "const SIMTITEL = " + json.dumps(SIMS.TITEL, ensure_ascii=False) + ", SIMZEILE = " + json.dumps(SIMS.ZEILE, ensure_ascii=False) + ", SIMHTML = " + json.dumps(SIMS.HTML, ensure_ascii=False).replace("</", "<\\/") + ";\n"
      + "const T = " + json.dumps(TJ, ensure_ascii=False, indent=1) + ";" + s[j:])
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
 s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, ensure_ascii=False) + ";" + s[j:]
@@ -285,6 +294,7 @@ s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, e
 rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }",
     """.fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }
 .fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }
+.rollen { display: grid; gap: 8px; margin: 8px 0; } .rolle { border: 2px solid #3B4A2F; border-radius: 10px; padding: 8px 10px; background: #F2F3EE; display: grid; gap: 2px; font-size: 17px; } .rolle b { color: #3B4A2F; letter-spacing: .04em; }
 .tipps { display: grid; gap: 8px; margin: 10px 0; }
 .tippk { font-size: 15px; color: #5E6652; }
 details.tipp { border: 2px solid #D3DCC2; border-radius: 12px; background: #F7F9F2; }
@@ -326,7 +336,7 @@ rep('s = String(s).replace(/⊙/g, "(Punkt)")', 's = String(s).replace(/≈/g, "
 rep(".pill.theory { background: var(--theory); }", ".pill.theory { background: var(--theory); } .tag.zeit { color: var(--teal); border-color: var(--teal); }")
 s = s.replace("26-27-3BK-K1.3-Epochen-TH-Handy-v1", I.KEY)
 s = s.replace("PBGW 3BK", "NAWI 4AB").replace("3BK · Start", "4AB · Start")
-# Musterlösungen erst, wenn die letzte Pflichtaufgabe (Aufgabe 9) bearbeitet ist
+# Musterlösungen erst, wenn die letzte Pflichtaufgabe (Aufgabe 8, id a8) bearbeitet ist
 rep('''  const b = $("#solbtn"); if (b) b.hidden = !S.pdfDone || S.solSeen;''',
     '''  const b = $("#solbtn"); if (b) b.hidden = !S.pdfDone || S.solSeen || !isDone(T.find(t => t.id === "a8"));''')
 _plain = re.sub(r"[A-Za-z0-9+/=]{200,}", "", s)
@@ -379,40 +389,7 @@ def karte_block(v):
             + bild_tag(v["bild"], v["alt"], "tkimg") + "".join(f"<p>{md(x)}</p>" for x in v["satz"]) + f + "</div>")
 
 
-SIM = """<div class="sim" id="sim-druck">
- <div class="simh"><span class="tkn">Ausprobieren</span><b>Druckwelle selbst einstellen</b></div>
- <canvas width="640" height="300" aria-label="Animation: Luftteilchen einer Schallwelle mit Druckkurve"></canvas>
- <label>Frequenz (Tonhöhe): <b data-o="f">langsam</b><input type="range" min="1" max="5" step="1" value="2" data-i="f"></label>
- <label>Amplitude (Stärke): <b data-o="a">mittel</b><input type="range" min="1" max="3" step="1" value="2" data-i="a"></label>
- <div class="simb"><button type="button" class="btn small" data-b="luft">Luft absaugen (Vakuum)</button><button type="button" class="btn secondary small" data-b="pause">Anhalten</button></div>
- <p class="simt">Schau auf das rote Teilchen: Es bleibt fast an seinem Platz. Die orange Kurve zeigt den Druck – oben dichte, unten dünne Luft.</p>
-</div>
-<script>
-(function () {
-  var box = document.getElementById("sim-druck"), cv = box.querySelector("canvas"), g = cv.getContext("2d");
-  var f = 2, a = 2, luft = true, lauf = !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches), t0 = 0, tt = 0;
-  var FN = ["", "sehr langsam", "langsam", "mittel", "schnell", "sehr schnell"], AN = ["", "klein", "mittel", "groß"];
-  var P = []; for (var c = 0; c < 34; c++) for (var r = 0; r < 6; r++) P.push([30 + c * 18, 26 + r * 22 + (c % 2 ? 6 : 0), c === 17 && r === 2]);
-  function zeichne(t) {
-    g.clearRect(0, 0, 640, 300); g.fillStyle = "#F2F3EE"; g.fillRect(0, 0, 640, 300);
-    var lam = 260 / f * 1.4, om = 2 * Math.PI * f * 0.35, amp = 3 + a * 3;
-    g.fillStyle = "#3B4A2F"; g.fillRect(4, 20, 12, 140); g.fillStyle = "#D9772B"; g.fillRect(16 + amp * Math.sin(om * t), 26, 6, 128);
-    if (luft) P.forEach(function (p) { var s = amp * Math.sin(om * t - 2 * Math.PI * (p[0] - 20) / lam); g.beginPath(); g.fillStyle = p[2] ? "#A33A2B" : "#2E7D8C"; g.arc(p[0] + s, p[1], p[2] ? 7 : 5, 0, 7); g.fill(); });
-    else { g.fillStyle = "#5E6652"; g.font = "bold 22px sans-serif"; g.fillText("Vakuum: keine Teilchen – kein Schall", 120, 95); }
-    g.strokeStyle = "#5E6652"; g.setLineDash([5, 5]); g.beginPath(); g.moveTo(30, 230); g.lineTo(630, 230); g.stroke(); g.setLineDash([]);
-    g.fillStyle = "#D9772B"; g.font = "bold 20px sans-serif"; g.fillText("p", 8, 236);
-    if (luft) { g.strokeStyle = "#D9772B"; g.lineWidth = 4; g.beginPath();
-      for (var x = 30; x <= 630; x += 4) { var y = 230 - (12 + a * 10) * Math.cos(om * t - 2 * Math.PI * (x - 20) / lam); if (x === 30) g.moveTo(x, y); else g.lineTo(x, y); } g.stroke(); g.lineWidth = 1; }
-  }
-  function tick(ms) { if (lauf) { tt += (ms - (t0 || ms)) / 1000; } t0 = ms; zeichne(tt); requestAnimationFrame(tick); }
-  box.querySelectorAll("input").forEach(function (i) { i.addEventListener("input", function () {
-    if (i.dataset.i === "f") { f = +i.value; box.querySelector('[data-o="f"]').textContent = FN[f]; } else { a = +i.value; box.querySelector('[data-o="a"]').textContent = AN[a]; } }); });
-  box.querySelector('[data-b="luft"]').addEventListener("click", function (e) { luft = !luft; e.target.textContent = luft ? "Luft absaugen (Vakuum)" : "Luft wieder hinein"; });
-  box.querySelector('[data-b="pause"]').addEventListener("click", function (e) { lauf = !lauf; e.target.textContent = lauf ? "Anhalten" : "Weiter"; });
-  if (!lauf) box.querySelector('[data-b="pause"]').textContent = "Weiter";
-  requestAnimationFrame(tick);
-})();
-</script>"""
+# Simulationen: sims.py (eine Quelle für Theorie und Arbeitsblatt)
 
 
 def block(b):
@@ -428,7 +405,10 @@ def block(b):
     if k == "buch": return f'<div class="buch"><span class="bicon">Buch</span><p>{md(b[1])}</p></div>'
     if k == "karte": return karte_block(b[1])
     if k == "gemeinsam": return f'<div class="gem"><span class="gicon">BESPRECHEN</span><p>{md(b[1])}</p></div>'
-    if k == "sim": return SIM
+    if k == "sim": return SIMS.HTML[b[1]]
+    if k == "extern":   # externe Simulation (z. B. PhET) als Link – öffnet in neuem Tab, nichts von fremden Servern eingebettet
+        return (f'<div class="sim"><div class="simh"><span class="tkn">Simulation</span><b>{esc(b[1])}</b></div><p class="simt">{md(b[3])}</p>'
+                f'<p class="simt">{esc(b[4])}</p><a class="btn" style="justify-self:start;text-decoration:none" href="{esc(b[2])}" target="_blank" rel="noopener">Simulation öffnen</a></div>')
     if k == "demo":
         d = I.DEMOS[b[1]]
         return (f'<div class="dbox"><div class="vhead"><span class="dnr">DEMO {esc(b[1])}</span><span class="vtag">Stunde {d["stunde"]}</span></div>'
@@ -604,6 +584,10 @@ p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 """
 for f in ["theorie.html", "aufgaben.html"]:
     t = open(DST + f, encoding="utf-8").read()
+    if "window.SIMINIT" not in t:
+        i = t.rfind("</body>")
+        t = t[:i] + "<style>" + SIMS.CSS + ".simlink { display: grid; gap: 4px; margin: 8px 0; } .simlink .btn { justify-self: start; text-decoration: none; }</style>" + SIMS.JS + t[i:]
+        open(DST + f, "w", encoding="utf-8").write(t)
     if 'id="lupe"' not in t:
         i = t.rfind("</body>")
         t = (t[:i] + ZOOM + t[i:]) if i > 0 else t.replace("</html>", ZOOM + "</html>")

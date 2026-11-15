@@ -6,7 +6,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
 import inhalt as I
 
 VAR = [
- {"id": "a2", "vars": [{"n": "t", "min": 2, "max": 15, "step": 1}, {"n": "te", "min": 0.4, "max": 3.0, "step": 0.1}, {"n": "f", "min": 110, "max": 1760, "step": 10}],
+ {"id": "a1", "vars": [{"n": "t", "min": 2, "max": 15, "step": 1}, {"n": "te", "min": 0.4, "max": 3.0, "step": 0.1}, {"n": "f", "min": 110, "max": 1760, "step": 10}],
   "text": "Übung mit anderen Zahlen (v = 340 m/s): Der Donner kommt {t} s nach dem Blitz. Ein Echo kommt nach {te} s zurück. Ein Ton hat {f} Hz.",
   "felder": [{"label": "Entfernung des Gewitters", "expr": "340*t", "einheit": "m"},
              {"label": "Entfernung der Wand", "expr": "340*te/2", "einheit": "m"},
