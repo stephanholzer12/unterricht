@@ -120,10 +120,11 @@ def kartenblock(key):
 EINSTIEG = [
  {"id": "s0a", "title": "Warum du Kräfte brauchst", "pill": "Buch S. 44",
   "blocks": [("img", "img/wirkung.png", KARTEN["k1"]["alt"], "Eine Kraft ändert Tempo oder Richtung einer Bewegung – oder sie verformt einen Körper."),
-             ("ul", ["**Das Wichtigste vorab:** Kräfte ändern Bewegungen oder Formen. Nicht jeder bewegte Körper hat eine resultierende Kraft.",
-                     "**Wozu?** Anfahren, Bremsen und Kurvenfahren musst du bei jedem Fahrzeug verstehen. Beim Marsch entscheidet die Gewichtskraft deiner Ausrüstung, "
-                     "beim Sport die Haftreibung deiner Schuhe, beim Schwimmen der Auftrieb, beim Stapfen im Schnee der Druck unter der Sohle.",
-                     "**Das kannst du nachher:** zu jedem dieser sieben Themen in einem Satz sagen, was gemessen wird und in welcher Einheit."]),
+             ("ul", ["**Das Wichtigste vorab:** Eine Kraft macht etwas schneller, langsamer, lenkt es um oder verformt es. Und: Was gleichmäßig fährt, braucht dafür keine resultierende Kraft.",
+                     "**Wozu?** Beim Marsch spürst du die Gewichtskraft deines Rucksacks. Beim Sprint brauchst du Haftreibung unter den Schuhen, beim Schwimmen trägt dich der Auftrieb, "
+                     "im Tiefschnee entscheidet der Druck unter der Sohle, ob du einsinkst. Und jedes Fahrzeug bremst und lenkt mit Kräften.",
+                     "**Das kannst du nachher:** zu jedem der sieben Themen in einem Satz sagen, was passiert, was man misst und in welcher Einheit.",
+                     "**Selbst ausprobieren:** In den Teilen 1, 3, 4 und 7 stehen kleine Simulationen. Stell etwas ein und schau, was passiert – das geht schneller als jede Erklärung."]),
              ("hint", "Diese Einheit ist ein Projekt: Sieben Gruppen untersuchen je ein Thema und erklären es den anderen. Du brauchst also auch die Themen der anderen Gruppen.")]},
  {"id": "s0b", "title": "Mythos-Check: »Wo etwas fährt, zieht eine Kraft«", "pill": "Buch S. 45",
   "blocks": [("tiles", [("Was viele meinen", ["Wenn sich etwas bewegt, muss ständig eine Kraft wirken. Bleibt die Kraft weg, bleibt der Körper sofort stehen."]),
@@ -136,7 +137,7 @@ EINSTIEG = [
                      "Umgekehrt dreht in Wirklichkeit kein Raumschiff nach dem Abschalten des Antriebs eine enge Kurve und bleibt dann stehen.",
                      "**Offene Forschungsfrage:** Wie viel Reibung zwischen zwei Oberflächen tatsächlich entsteht, lässt sich noch nicht aus der Rauigkeit allein berechnen. "
                      "Zusatzaufgabe 11 zeigt eine aktuelle Arbeit der TU Wien dazu."]),
-             ("merke", "Film nur in Worten besprechen – keine Filmbilder, Figuren oder Logos auf dieser Seite (Urheberrecht).")]},
+]},
 ]
 
 # ================================================================ Teile 1–8
@@ -152,6 +153,8 @@ PARTS = [
                       "Ein **Kraftpfeil** zeigt drei Dinge: den Angriffspunkt, die Richtung und den Betrag. Der Betrag steckt in der **Pfeillänge** – dazu muss der Maßstab dabeistehen.",
                       "Kräfte **verschiedener** Körper werden nicht in einem Kräftebild vermischt. Zeichne zuerst einen Rahmen um den Körper, den du betrachtest."]),
               ("merke", "Bei gleichbleibender Masse gilt F_res = m · a. 1 N = 1 kg · m/s². Nur die resultierende Kraft ändert die Bewegung."),
+              ("sim", "kraefte"),
+              ("extern", "fmb"),
               ("video", 1), ("video", 2),
               ("reveal", I.STOPPFRAGEN[1])]},
   ("jetzt", "Jetzt: Aufgaben 1 und 2", "aufgaben.html#name")]),
@@ -169,6 +172,7 @@ PARTS = [
                          ["Zeit", "t", "s", "4 s"],
                          ["Schnelligkeit", "v", "m/s", "1,25 m/s = 4,5 km/h"],
                          ["Beschleunigung", "a", "m/s²", "2 m/s²: jede Sekunde 2 m/s mehr"]]),
+              ("hint", "Genau solche Bilder in gleichen Zeitabständen zeigt die Simulation **»Kräfte am Wagen«** in Teil 1: Stell links und rechts gleich viel Kraft ein und tippe auf »Wagen rollt schon« – gleiche Abstände, obwohl keine resultierende Kraft wirkt."),
               ("hint", "Lange Beschleunigungsrechnungen und das Addieren von Pfeilen sind in dieser Einheit Zusatzstoff."),
               ("reveal", I.STOPPFRAGEN[1][1:])]}]),
 
@@ -181,6 +185,8 @@ PARTS = [
                       "Eine **Waage** zeigt üblicherweise eine Masse an. Ein **Federkraftmesser** zeigt eine Kraft in Newton.",
                       "Vor dem Messen prüfst du drei Dinge: **Nullpunkt, Messbereich und kleinste Teilung**. Eine Skala mit 0,2-N-Schritten erlaubt keine feineren Messwerte."]),
               ("merke", "g kann als Fallbeschleunigung in m/s² oder als Ortsfaktor in N/kg angegeben werden – beides ist gleichwertig. Wir wechseln die Näherung nicht mitten in einer Aufgabe."),
+              ("sim", "gewicht"),
+              ("extern", "federn"),
               ("reveal", I.STOPPFRAGEN[2])]}]),
 
  ("auftrieb", "Teil 4 · Buch S. 52–53", "Auftrieb: sinken, steigen und schwimmen", [
@@ -191,6 +197,8 @@ PARTS = [
                       "Beim **ruhigen Schwimmen** gilt F_A = F_G. Ist bei einem zunächst ruhenden, ganz eingetauchten Körper die Auftriebskraft größer, wird er nach oben beschleunigt.",
                       "Ein Schiff verdrängt durch seine **Form** genug Wasser, um seine ganze Gewichtskraft auszugleichen. Entscheidend ist nicht die Dichte von Stahl, sondern die **mittlere Dichte des ganzen Schiffes** samt Hohlraum.",
                       "Auch ein **sinkender** Körper erfährt Auftrieb. Seine Gewichtskraft ist nur größer."]),
+              ("sim", "auftrieb"),
+              ("extern", "auftrieb"),
               ("hint", "Achtung beim Buchbild auf S. 53: Dass man im Toten Meer nicht untergehen könne, stimmt so nicht. Die hohe Dichte erleichtert das Schwimmen – eine Sicherheitsgarantie ist das nicht."),
               ("reveal", I.STOPPFRAGEN[3])]}]),
 
@@ -204,6 +212,7 @@ PARTS = [
                       "Reibung hängt von **Material, Oberflächenzustand und Normalkraft** ab. Auf waagrechter Unterlage ohne weitere senkrechte Kraft ist die Normalkraft betragsmäßig gleich der Gewichtskraft.",
                       "Reibung entsteht nicht nur durch sichtbare Rauigkeit, sondern auch durch Wechselwirkungen und Verformungen an den Kontaktstellen."]),
               ("merke", "Reibung wirkt gegen das relative Gleiten an der Kontaktstelle – nicht automatisch gegen die Bewegung über den Boden. Beim Gehen drückt der Boden deinen Fuß nach vorne."),
+              ("extern", "fmb_reibung"),
               ("reveal", I.STOPPFRAGEN[4])]}]),
 
  ("kapillar", "Teil 6 · Buch S. 57", "Kapillarwirkung und Oberflächenspannung", [
@@ -226,6 +235,8 @@ PARTS = [
                       "Druck ist **keine zusätzliche Kraftart**. Er verbindet eine Kraft mit der Fläche, auf die sie wirkt.",
                       "In Flüssigkeiten steigt der Überdruck mit der **Tiefe**: p_h = ρ · g · h. Zum absoluten Druck kommt noch der Luftdruck an der Oberfläche dazu.",
                       "Luft übt Druck in **alle** Richtungen aus. Drückst du eingeschlossene Luft vorsichtig zusammen, steigt ihr Druck und sie drückt stärker zurück."]),
+              ("sim", "druck"),
+              ("extern", "druck"),
               ("hint", "Achtung beim Buchversuch mit der Flasche und mehreren Löchern: Das tiefste Loch liefert nicht automatisch den weitesten Strahl. Die Reichweite hängt auch von der Fallhöhe ab."),
               ("reveal", I.STOPPFRAGEN[5])]}]),
 

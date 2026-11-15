@@ -240,6 +240,11 @@ LESEN = {1: "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheite
 ABGABE = {1: "–", 2: "Plan freigeben lassen", 3: "–", 4: "Handout-PDF in Teams (Schriftführung)", 5: "–", 6: "Arbeitsblatt-PDF in LMS"}
 
 
+# Theorie-Teile je Stunde (Stephan, 14.11.2026) – zeigt der Fahrplan unter den Aufgaben
+THEORIE_TEILE = {1: "Teil 1 Kraft, Teil 2 Bewegung", 2: "Teil eurer Gruppe (Gruppenkarte) und Projekt", 3: "Teil eurer Gruppe", 4: "Teil eurer Gruppe",
+                 5: "alle sieben Teile beim Mitschreiben", 6: "Teile 1–8 und »Kurz & knapp«"}
+
+
 def fahrplan_zeilen():
     """Zeilen für einheiten.json (Feld »fahrplan«) – OHNE Datum und ohne Klasse (beide Klassen gleich), aus PLAN erzeugt, nicht von Hand."""
     z = []
@@ -248,9 +253,9 @@ def fahrplan_zeilen():
         nrs, _ = aufgaben_der(st)
         auf = bereich(nrs) if nrs else "–"
         if n == 6: auf += " · Quiz freiwillig"
-        z.append({"wann": f"Stunde {n}", "marke": MARKE[n], "lesen": LESEN[n], "aufgaben": auf, "abgabe": ABGABE[n]})
-    z.append({"wann": "Für Schnelle", "lesen": "Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen)",
-              "aufgaben": "Zusatz 9–11", "zeit": "ca. 26 min", "abgabe": "freiwillig"})
+        z.append({"wann": f"Stunde {n}", "marke": MARKE[n], "lesen": LESEN[n], "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
+    z.append({"wann": "Für Schnelle", "lesen": "Behauptungen prüfen, Druck rechnen, Forschung prüfen, virtueller Versuch am Handy (PhET)",
+              "aufgaben": "Zusatz 9–12", "zeit": "ca. 41 min", "abgabe": "freiwillig"})
     return z
 
 

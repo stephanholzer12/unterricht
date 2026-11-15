@@ -230,6 +230,7 @@
    "quiz.html"
   ],
   "versteckt": true,
+  "kapitelmenue": true,
   "fahrplan": {
    "ansicht": "kompakt",
    "text": "Sechs Stunden, ein Gruppenprojekt: Stunde 1 mit der ganzen Klasse, Stunden 2 bis 4 selbstständig in der Gruppe, Stunde 5 präsentieren alle, Stunde 6 löst du Aufgabe 8 allein. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER – die Reihenfolge zählt, nicht das Datum.",
@@ -239,6 +240,7 @@
      "marke": "BESPRECHEN",
      "lesen": "Mit der ganzen Klasse: Was eine Kraft bewirkt, rechnen mit Einheiten · Gruppen auslosen",
      "aufgaben": "1, 2",
+     "theorie": "Teil 1 Kraft, Teil 2 Bewegung",
      "abgabe": "–"
     },
     {
@@ -246,6 +248,7 @@
      "marke": "SELBSTSTUDIUM",
      "lesen": "Selbst erarbeiten: Gruppenkarte, Buchseiten und Theorie-Teil deines Themas · Versuch planen, Freigabe",
      "aufgaben": "3, 4",
+     "theorie": "Teil eurer Gruppe (Gruppenkarte) und Projekt",
      "abgabe": "Plan freigeben lassen"
     },
     {
@@ -253,6 +256,7 @@
      "marke": "VERSUCH",
      "lesen": "Euren Versuch machen und üben · Material von zu Hause mitbringen",
      "aufgaben": "5",
+     "theorie": "Teil eurer Gruppe",
      "abgabe": "–"
     },
     {
@@ -260,6 +264,7 @@
      "marke": "GRUPPENARBEIT",
      "lesen": "Steckbrief schreiben, Handout in Teams · Präsentation proben",
      "aufgaben": "6",
+     "theorie": "Teil eurer Gruppe",
      "abgabe": "Handout-PDF in Teams (Schriftführung)"
     },
     {
@@ -267,6 +272,7 @@
      "marke": "PRÄSENTATION",
      "lesen": "Alle sieben Gruppen präsentieren · du schreibst mit",
      "aufgaben": "7",
+     "theorie": "alle sieben Teile beim Mitschreiben",
      "abgabe": "–"
     },
     {
@@ -274,25 +280,25 @@
      "marke": "SELBSTSTUDIUM",
      "lesen": "Teile 3 bis 8 als Nachschlagewerk · Buch S. 50–61 · Fachbegriffe",
      "aufgaben": "8 · Quiz freiwillig",
+     "theorie": "Teile 1–8 und »Kurz & knapp«",
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {
      "wann": "Für Schnelle",
-     "lesen": "Für Schnelle und Neugierige (Druck selbst nachrechnen, Forschungsbeitrag prüfen)",
-     "aufgaben": "Zusatz 9–11",
-     "zeit": "ca. 26 min",
+     "lesen": "Behauptungen prüfen, Druck rechnen, Forschung prüfen, virtueller Versuch am Handy (PhET)",
+     "aufgaben": "Zusatz 9–12",
+     "zeit": "ca. 41 min",
      "abgabe": "freiwillig"
     }
    ]
   },
   "dateien": {
-   "stand": "13.11.2026",
+   "stand": "15.11.2026",
    "liste": [
-    "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v4.pptx"
+    "26-27-1AB-K2.1-Kraefte-TH-Unterricht-v5.pptx"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5",
-  "kapitelmenue": true
+  "lehrerseite": "https://claude.ai/artifact/P5FT79ChxUCqjD4pWqYpw5"
  },
  {
   "klasse": "2AB",

@@ -43,7 +43,7 @@ BAUSTEINE = [
   "hinweis": "Länge und Inhalt der Videos vorher prüfen (von hier nicht prüfbar). Passt auch als Supplierstunde.", "quelle": "Apolin: Newtonsche Grundgesetze; Kräfte-Check"},
 ]
 
-VORHANDEN = "Schon im Arbeitsblatt für Schnelle: Zusatz 9 bis 11 (ca. 26 Minuten) – dafür braucht es keine Vorbereitung."
+VORHANDEN = "Schon im Arbeitsblatt für Schnelle: Zusatz 9 bis 12 (ca. 41 Minuten, darunter ein virtueller Versuch mit PhET) – dafür braucht es keine Vorbereitung."
 
 BRUECKEN = [
  {"such": ["rückstoß", "rueckstoss", "stg", "gewehr", "waffe"], "thema": "Rückstoß",

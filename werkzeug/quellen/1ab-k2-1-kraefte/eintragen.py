@@ -15,7 +15,7 @@ DATEIEN = {"stand": I.STAND, "liste": [f"{P}-TH-Unterricht-{V}.pptx"]}
 neu = {"klasse": "1AB", "fach": "NAWI", "ordner": I.ORDNER, "kapitel": "K2.1", "titel": I.TITEL,
        "block": "E Physik", "jahresplan": "E15–E17",
        "seiten": ["aufgaben.html", "theorie.html", "quiz.html"],
-       "versteckt": True,
+       "versteckt": True, "kapitelmenue": True,
        "fahrplan": {"ansicht": "kompakt", "text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
        "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]

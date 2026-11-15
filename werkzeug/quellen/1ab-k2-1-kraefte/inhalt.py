@@ -7,8 +7,8 @@ Versuchs-ID: das bereits vorhandene Gruppenprojekt V1.20 (Stephans Vorgabe) – 
 Eine Quelle für Handy-Seiten, Unterrichts-PPP und Lösungsmappe. Kein CLIL, kein Kahoot, keine Hausübung.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "13.11.2026"
-V = "v4"
+STAND = "15.11.2026"
+V = "v5"
 ORDNER = "1ab-nawi/k2-1-kraefte"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -70,7 +70,7 @@ T = [
                          "b) gleich groß – ruhiges Schwimmen ist Kräftegleichgewicht (F_A = F_G)."]]],
   "tipps": [], "tip": ["Was eine Kraft bewirkt", "theorie.html#wirkung"]},
 
- {"id": "a1", "nr": 2, "title": "Kraft und Bewegung unterscheiden", "src": "Buch S. 45–49", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 13,
+ {"id": "a1", "sim": ["kraefte"], "nr": 2, "title": "Kraft und Bewegung unterscheiden", "src": "Buch S. 45–49", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 13,
   "q": "Fünf kurze Teilaufgaben. a) und b) zum Auswählen, c) bis e) zum Rechnen. Schreib bei den Rechnungen immer die Einheit dazu. Rechne mit g = 10 N/kg.",
   "hint": "Frag dich bei a) und b) zuerst: Ändert sich Tempo, Richtung oder Form? Für c) gilt v = s / t, für e) gilt F = m · a.",
   "type": "multi",
@@ -266,7 +266,7 @@ T = [
             "Lies im Buch S. 61 den Abschnitt »Kraft und Gegenkraft« und auf S. 54 den Beginn von »Die Reibungskraft«."],
   "tip": ["Kraft und Gegenkraft", "theorie.html#gegenkraft"]},
 
- {"id": "z2", "nr": 10, "title": "Druck vergleichen", "src": "Buch S. 58", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+ {"id": "z2", "sim": ["druck"], "nr": 10, "title": "Druck vergleichen", "src": "Buch S. 58", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
   "q": "Modellrechnung: Eine senkrechte Kraft von 600 N verteilt sich zuerst auf 0,03 m², dann auf 0,30 m². a) Berechne den ersten mittleren Druck. b) Berechne den zweiten. "
        "c) Um welchen Faktor ändert sich der Druck? d) Was heißt das für Schneeschuhe?",
   "hint": "p = F / A. Für c) teile den größeren Druck durch den kleineren.",
@@ -310,10 +310,49 @@ T = [
             "k5",
             "Lies im Buch S. 54–56 den Abschnitt »Die Reibungskraft«, damit du die Begriffe Haftreibung und Gleitreibung sicher verwendest."],
   "tip": ["Reibung hilft und bremst", "theorie.html#reibung"]},
+ {"id": "z4", "nr": 12, "title": "VIRTUELLER VERSUCH K2.1-VV1: F = m · a in der Simulation prüfen", "src": "PhET-Simulation · Buch S. 47–49", "own": True, "tag": "Zusatz", "h": 0, "zeit": 15,
+  "marke": "ZUSATZ",
+  "link": ["Kräfte und Bewegung: Grundlagen öffnen", "https://phet.colorado.edu/de/simulations/forces-and-motion-basics",
+           "PhET Interactive Simulations, University of Colorado Boulder · Deutsch · CC BY 4.0 · läuft im Browser, auch am Handy"],
+  "q": "Ein Versuch am Handy – du schreibst ein Protokoll wie im Labor. Öffne die Simulation (Knopf oben) und tippe auf den Bildschirm »Beschleunigung«. "
+       "Setz die Häkchen bei Kräfte, Kräftesumme, Werte, Massen und Beschleunigung. Schieb die Reibung ganz auf »keine«. Zieh die Kiste (50 kg) auf die Fläche. "
+       "Stell die Kraft am Regler oder mit den Pfeilen darüber ein und lies die Beschleunigung ab, solange die Kiste fährt. Mit dem runden Pfeil unten rechts setzt du alles zurück.",
+  "hint": "Drück vor dem Einstellen auf Pause – sonst springt der Regler beim Loslassen auf 0 N zurück. Dann Start und ablesen.",
+  "type": "multi",
+  "fields": [["verm", "a) Vermutung: Was passiert mit der Beschleunigung, wenn du die Kraft verdoppelst? Begründe kurz."],
+             ["m1", "b1) Kiste 50 kg, Kraft 100 N: Beschleunigung a = (mit Einheit)"],
+             ["m2", "b2) Kiste 50 kg, Kraft 200 N: a = (mit Einheit)"],
+             ["m3", "b3) Kühlschrank 200 kg, Kraft 200 N: a = (mit Einheit)"],
+             ["dopp", "c) Vergleiche b1 und b2: Doppelte Kraft, gleiche Masse – die Beschleunigung …", ["verdoppelt sich", "halbiert sich", "bleibt gleich"]],
+             ["masse", "d) Vergleiche b2 und b3: Viermal so viel Masse, gleiche Kraft – die Beschleunigung …", ["ist ein Viertel so groß", "ist viermal so groß", "bleibt gleich"]],
+             ["haft", "e) Stell die Reibung auf die Mitte und schieb die Kiste mit 50 N. Was passiert, und warum? (1–2 Sätze)"],
+             ["erk", "f) Erkenntnis: Wie hängen Kraft, Masse und Beschleunigung zusammen? (1 Satz)"],
+             ["vgl", "g) Vergleich echt – virtuell: Was kann die Simulation besser als ein echter Versuch – und was nicht? (je ein Punkt)"]],
+  "chk": {"verm": {"kw": [["Begründung", r"\w{3,}"]], "need": 1, "man": True},
+          "m1": {"num": 2, "unit": "m/s²", "tol": 0.1},
+          "m2": {"num": 4, "unit": "m/s²", "tol": 0.15},
+          "m3": {"num": 1, "unit": "m/s²", "tol": 0.06},
+          "dopp": {"sel": "verdoppelt sich"},
+          "masse": {"sel": "ist ein Viertel so groß"},
+          "haft": {"kw": [["bleibt stehen", r"steh|bleibt|beweg.* nicht|r(ue|ü)hrt|nicht los"], ["Haftreibung", r"haft|reib"]], "need": 2, "man": True},
+          "erk": {"kw": [["Zusammenhang", r"m ?[·*x] ?a|mehr kraft|gr(oe|ö)(ss|ß)ere kraft|doppelt|masse|schwerer"]], "need": 1, "man": True},
+          "vgl": {"kw": [["besser / schlechter", r"\w{3,}"]], "need": 1, "man": True}},
+  "fb": {"dopp": {"halbiert sich": "Schau auf deine Werte b1 und b2: Welche Zahl ist größer?", "bleibt gleich": "Vergleiche b1 und b2 – die Zahlen sind verschieden."},
+         "masse": {"ist viermal so groß": "Der Kühlschrank ist schwerer. Wird er bei gleicher Kraft schneller oder langsamer schneller?", "bleibt gleich": "Vergleiche b2 und b3."}},
+  "sol": [["Lösung", ["a) z. B. »Sie verdoppelt sich, weil mehr Kraft mehr Wirkung hat« – Vermutung, keine Bewertung.",
+                      "b) a = F : m (ohne Reibung): 100 N : 50 kg = 2 m/s² · 200 N : 50 kg = 4 m/s² · 200 N : 200 kg = 1 m/s². Die Simulation zeigt dieselben Werte.",
+                      "c) verdoppelt sich. d) ist ein Viertel so groß.",
+                      "e) Die Kiste bleibt stehen: Die Haftreibung ist bis zu einem Höchstwert genauso groß wie die Schiebekraft – die resultierende Kraft ist null.",
+                      "f) F = m · a: Je größer die Kraft, desto größer die Beschleunigung; je größer die Masse, desto kleiner die Beschleunigung bei gleicher Kraft.",
+                      "g) Besser: genaue Werte, keine Reibung möglich, schnell wiederholbar, kein Material. Nicht: echte Kräfte spüren, Messfehler und Reibung der echten Welt, Geräte bedienen lernen."]]],
+  "tipps": ["Rechne zur Kontrolle selbst: a = F : m. Stimmt dein abgelesener Wert ungefähr?",
+            "k1",
+            "Lies im Buch S. 47–49 die Abschnitte »Die Beschleunigung« und »Die Berechnung der Kraft«."],
+  "tip": ["Was eine Kraft bewirkt", "theorie.html#wirkung"]},
 ]
 
 # ---------------------------------------------------------------- Kontrollen
-assert [t["nr"] for t in T] == list(range(1, 12))
+assert [t["nr"] for t in T] == list(range(1, 13))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
 assert PFLICHT == [2, 3, 4, 5, 6, 7, 8], PFLICHT
 BESPRECHEN = [2, 8]

@@ -20,6 +20,7 @@ import inhalt as I
 import theorie_daten as TD
 import versuche_daten as VD
 import gruppen_daten as GD
+import sims as SIMS
 STAND = I.STAND
 
 UNIT = I.ORDNER + "/"
@@ -119,6 +120,7 @@ s = s[:_i] + """function showCheck(t) {
 # ---- Tipp-Stufen und Theorie-Karte unter der Aufgabe ----
 rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
     '''  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
+  if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
   if (t.tipps && t.tipps.length) card.append(tippStufen(t));''')
 rep("function renderTask(t) {", """function karteEl(k) {
   const K = KARTEN[k], box = el("div", { class: "tkarte" });
@@ -213,13 +215,17 @@ for _n, _g in GD.G.items():
     GKD[str(_n)] = {"thema": _g["thema"], "titel": _g["titel"], "buch": _g["buch"], "teil": _g["teil"], "karte": _g["karte"],
                     "teiltitel": TD.TOCLAB.get(_g["teil"], _g["teil"]), "leit": _g["leit"], "ideen": _g["ideen"],
                     "saal": ["%s (%s, Bestand %d)" % m for m in _g["saal"]], "haus": _g["haus"], "formel": _g["formel"], "achtung": _g["achtung"],
-                    "videos": [list(v) for v in GD.VIDEOS.get(_n, [])]}
+                    "videos": [list(v) for v in GD.VIDEOS.get(_n, [])],
+                    "sims": SIMS.GRUPPE_SIM.get(_n, []), "phet": SIMS.GRUPPE_PHET.get(_n, [])}
 GKEXTRA = {"ja": GD.ZUHAUSE_JA, "nein": GD.ZUHAUSE_NEIN, "frei": GD.FREIGABE_FRAGEN}
 i = s.index("const KEY = "); j = s.index("\n];", i) + 3
 s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K2.1", THEMA = "Kraefte";\n' % I.KEY
      + "const KARTEN = " + json.dumps(TD.karte_html_daten(), ensure_ascii=False) + ";\n"
      + "const GK = " + json.dumps(GKD, ensure_ascii=False) + ";\n"
      + "const GKX = " + json.dumps(GKEXTRA, ensure_ascii=False) + ";\n"
+     + "const SIMTITEL = " + json.dumps(SIMS.TITEL, ensure_ascii=False) + ", SIMZEILE = " + json.dumps(SIMS.ZEILE, ensure_ascii=False)
+     + ", SIMHTML = " + json.dumps(SIMS.HTML, ensure_ascii=False).replace("</", "<\\/") + ", PHET = " + json.dumps(SIMS.PHET, ensure_ascii=False)
+     + ", PHETLIZENZ = " + json.dumps(SIMS.LIZENZ, ensure_ascii=False) + ";\n"
      + "const T = " + json.dumps(TJ, ensure_ascii=False, indent=1) + ";" + s[j:])
 i = s.index("const GRP = {"); j = s.index("};", i) + 2
 s = s[:i] + "const GRP = " + json.dumps({str(k): v for k, v in I.GRP.items()}, ensure_ascii=False) + ";" + s[j:]
@@ -281,7 +287,8 @@ rep('lbl.textContent = f ? "Anderes Foto wählen" : "Foto der Heftskizze aufnehm
 rep('ph.append(el("label", { class: "lbl", text: "Deine Skizze (Foto)" }), pick, status, img, del);', 'ph.append(el("label", { class: "lbl", text: t.fotolabel || "Deine Skizze (Foto)" }), pick, status, img, del);')
 # Gruppenkarte (Aufgabe 3) und Versuchsideen (Aufgabe 4) direkt unter dem Auftrag
 rep('''  if (t.tipps && t.tipps.length) card.append(tippStufen(t));''', '''  if (t.tipps && t.tipps.length) card.append(tippStufen(t));
-  if (t.id === "p1" || t.id === "p2") card.append(el("div", { id: "gk_" + t.id }));''')
+  if (t.id === "p1" || t.id === "p2") card.append(el("div", { id: "gk_" + t.id }));
+  (t.sim || []).forEach(k => card.append(simDetails(k)));''')
 rep('''  if (t.aufloesung) card.append(aufloesungEl(t));''', '''  if (t.aufloesung) card.append(aufloesungEl(t));
   if (t.steckbrief) {
     const sb = el("div", { class: "stbox" }), st = el("p", { class: "status", hidden: "", "aria-live": "polite" });
@@ -290,12 +297,25 @@ rep('''  if (t.aufloesung) card.append(aufloesungEl(t));''', '''  if (t.aufloesu
     sb.append(el("p", { class: "hint", text: "Nur die Schriftführung: PDF erstellen und in Teams in den Kanal der Klasse stellen. Dein eigenes Arbeitsblatt-PDF bleibt davon unberührt." }), b, st);
     card.append(sb);
   }''')
-rep("function renderTask(t) {", """function gruppeNr() { const m = String((S.a.p1 || {}).grp || "").match(/Gruppe (\\d)/); return m ? +m[1] : 0; }
+rep("function renderTask(t) {", """function simDetails(k) {
+  const d = el("details", { class: "simd" }); d.append(el("summary", { text: "Ausprobieren: " + SIMTITEL[k] + " – " + SIMZEILE[k] }));
+  d.insertAdjacentHTML("beforeend", SIMHTML[k]);
+  setTimeout(() => { if (window.simStart) window.simStart(); }, 0);
+  return d;
+}
+function phetEl(k) {
+  const P = PHET[k], box = el("div", { class: "simlink" }), p = el("p", { class: "simt" });
+  p.innerHTML = fett(P.text);
+  box.append(el("div", { class: "simh" }, el("span", { class: "tkn", text: "Simulation" }), el("b", { text: P.titel })), p,
+             el("a", { class: "btn", href: P.url, target: "_blank", rel: "noopener", text: "Simulation öffnen" }), el("p", { class: "simt", text: PHETLIZENZ }));
+  return box;
+}
+function gruppeNr() { const m = String((S.a.p1 || {}).grp || "").match(/Gruppe (\\d)/); return m ? +m[1] : 0; }
 function liste(xs, cls) { const l = el(cls === "ol" ? "ol" : "ul", cls && cls !== "ol" ? { class: cls } : {}); xs.forEach(x => { const li = el("li"); li.innerHTML = fett(x); l.append(li); }); return l; }
 function gruppenkarte(g, K) {
   const box = el("div", { class: "gkarte" });
   box.append(el("div", { class: "gkh" }, el("span", { class: "gkn", text: "Gruppe " + g }), el("b", { text: K.titel }), el("span", { class: "tkb", text: K.buch })));
-  box.append(el("p", {}, el("b", { text: "1 · Lesen: " }), "Schulbuch " + K.buch + " und die ", el("a", { href: "theorie.html#" + K.teil, text: "Theorie-Seite, Teil »" + K.teiltitel + "«" }), ". Markiere dir die Fachbegriffe."));
+  box.append(el("p", {}, el("b", { text: "1 · Lesen: " }), K.buch.replace(/^Buch/, "Schulbuch") + " und die ", el("a", { href: "theorie.html#" + K.teil, text: "Theorie-Seite, Teil »" + K.teiltitel + "«" }), ". Markiere dir die Fachbegriffe."));
   if (KARTEN[K.karte]) { const d = el("details", { class: "tipp" }); d.append(el("summary", { text: "Theorie-Karte zu eurem Thema" }), karteEl(K.karte)); box.append(d); }
   box.append(el("p", {}, el("b", { text: "2 · Leitfragen: " }), "Sie stehen unten bei c) bis f). Antworte in eigenen Worten."));
   const v = el("p"); v.append(el("b", { text: "3 · Video und zweite Quelle: " }));
@@ -309,6 +329,11 @@ function gruppenkarte(g, K) {
   } else {
     v.append("Sucht ein kurzes Video (höchstens 5 Minuten) oder eine Seite von einer seriösen Quelle – Universität, ORF, planet schule, LEIFIphysik, Schulbuchverlag. Prüft: Wer hat es gemacht? Wann? Stimmt es mit dem Buch überein?");
     box.append(v);
+  }
+  if (K.sims.length || K.phet.length) {
+    box.append(el("p", {}, el("b", { text: "4 · Ausprobieren: " }), "Stellt selbst etwas ein und schaut, was passiert. Das hilft euch beim Erklären – und vielleicht für eine Idee zu eurem Versuch."));
+    K.sims.forEach(k => box.append(simDetails(k)));
+    K.phet.forEach(k => box.append(phetEl(k)));
   }
   const fo = el("p"); fo.innerHTML = "<b>Formel:</b> " + fett(K.formel); box.append(fo);
   return box;
@@ -495,6 +520,8 @@ def block(b):
         fr = "".join(f"<li>{esc(q)}</li>" for q in v["fragen"])
         return (f'<div class="vid"><a class="btn" href="{v["url"]}" target="_blank" rel="noopener">Video ansehen: {esc(v["titel"])}</a>'
                 f'<p class="vq">{esc(v["kurz"])} · {esc(GD.QUELLE_NEWTON)}. Achte beim Ansehen auf:</p><ul>{fr}</ul></div>')
+    if k == "sim": return SIMS.HTML[b[1]]
+    if k == "extern": return SIMS.extern_html(b[1], md, esc)
     if k == "buch": return f'<div class="buch"><span class="bicon">Buch</span><p>{md(b[1])}</p></div>'
     if k == "karte": return karte_block(b[1])
     if k == "gemeinsam": return f'<div class="gem"><span class="gicon">BESPRECHEN</span><p>{md(b[1])}</p></div>'
@@ -685,6 +712,10 @@ p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 """
 for f in ["theorie.html", "aufgaben.html"]:
     t = open(DST + f, encoding="utf-8").read()
+    if "window.SIMINIT" not in t:
+        i = t.rfind("</body>")
+        t = t[:i] + "<style>" + SIMS.CSS + "</style>" + SIMS.JS + t[i:]
+        open(DST + f, "w", encoding="utf-8").write(t)
     if "id=\"lupe\"" not in t:
         assert t.rstrip().endswith("</html>"), f
         i = t.rfind("</body>")
