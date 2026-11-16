@@ -15,9 +15,9 @@ DOPPEL_MIN = 2 * MIN + PAUSE
 
 STUNDE = {
  1: [("Beginn: Klassenbuch, Anwesenheit, Handys bereit", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu K1.3 (Ion, Proton, Elektron) – mit der ABCD-Karte am Handy antworten", 3, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu K1.3 (Ion, Proton, Elektron) – mit der ABCD-Karte am Handy antworten", 3, False, "wdh", "BESPRECHEN"),
      ("Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", 2, False, "a1", ""),
-     ("DEMO K1.5-D1: Rotkraut-Farbenspiel – erst vermuten (Vermutung mit der ABCD-Karte am Handy zeigen), dann zeigen", 9, True, "demo", "DEMO"),
+     ("DEMO K1.5-D1: Rotkraut-Farbenspiel – erst vermuten (Vermutung mit der ABCD-Karte am Handy zeigen), dann zeigen", 9, False, "demo", "DEMO"),
      ("SELBSTSTUDIUM: Buch S. 54 lesen und markieren", 5, True, "lesen", "SELBSTSTUDIUM"),
      ("KURZ KLÄREN: Säure gibt H⁺ ab, H₃O⁺, Indikatoren", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 2: Säuren erkennen", 10, False, "a2", "SELBSTSTUDIUM"),
@@ -25,7 +25,7 @@ STUNDE = {
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
  2: [("Beginn: Klassenbuch, Anwesenheit", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu Stunde 1 – mit der ABCD-Karte am Handy antworten", 3, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu Stunde 1 – mit der ABCD-Karte am Handy antworten", 3, False, "wdh", "BESPRECHEN"),
      ("KURZ KLÄREN: Laugen, OH⁻, Sicherheit (Auge, erst das Wasser)", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 3: Laugen – nützlich und ätzend", 7, False, "a3", "SELBSTSTUDIUM"),
      ("ALLE GEMEINSAM: Protonen-Pingpong mit Ball und Schildern (HCl, H₂O, NH₃) – die ganze Klasse spielt mit", 8, True, "bewegung", "BESPRECHEN"),
@@ -34,15 +34,15 @@ STUNDE = {
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
  3: [("Beginn: Klassenbuch, Anwesenheit, Schutzbrillen austeilen", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu Stunde 2 – mit der ABCD-Karte am Handy antworten", 2, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu Stunde 2 – mit der ABCD-Karte am Handy antworten", 3, False, "wdh", "BESPRECHEN"),
      ("KURZ KLÄREN: pH-Skala, Faktor 10 (pH-Schieber am Beamer)", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 5: Die pH-Skala lesen", 6, False, "a5", "SELBSTSTUDIUM"),
      ("VERSUCH K1.5-V1 (Aufgabe 6) mit DEMO K1.5-D2 pH-Meter: messen, ablesen, aufräumen, auswerten", 20, False, "a6", "VERSUCH"),
-     ("BESPRECHEN: Klassenwerte am Beamer – Papier gegen pH-Meter", 6, True, "bespr", "BESPRECHEN"),
+     ("BESPRECHEN: Klassenwerte am Beamer – Papier gegen pH-Meter", 5, True, "bespr", "BESPRECHEN"),
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
  4: [("Beginn: Klassenbuch, Anwesenheit", 4, True, "org", ""),
-     ("Weißt du noch? Drei Fragen zu Stunde 3 – mit der ABCD-Karte am Handy antworten", 3, True, "wdh", "BESPRECHEN"),
+     ("Weißt du noch? Drei Fragen zu Stunde 3 – mit der ABCD-Karte am Handy antworten", 3, False, "wdh", "BESPRECHEN"),
      ("DEMO K1.5-D3: Atemluft macht sauer – Essig und Natron (erst vermuten)", 8, True, "demo", "DEMO"),
      ("KURZ KLÄREN: Neutralisation, Puffer, Blut-pH beim Sport", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 7: Neutralisation – im Glas und in deinem Körper", 9, False, "a7", "SELBSTSTUDIUM"),
@@ -87,9 +87,9 @@ assert sorted(_einmal) == list(range(1, 8)), sorted(_einmal)
 
 # ---------------------------------------------------------------- Kürzen, Ausfall, Supplier
 KUERZEN = {
- 1: "Wenn es knapp wird: DEMO K1.5-D1 nur mit drei Gläsern (Essig, Wasser, Natron); das Lesen im Buch wird Teil von Aufgabe 2 (Tipp 3).",
+ 1: "Wenn es knapp wird: DEMO K1.5-D1 nur mit drei Gläsern (Essig, Wasser, Natron), der Marmor am Schluss entfällt; das Lesen im Buch wird Teil von Aufgabe 2 (Tipp 3).",
  2: "Wenn es knapp wird: Protonen-Pingpong nur mit HCl und Wasser (4 min); Aufgabe 3 f) wird Zusatz.",
- 3: "Zeitstopp für den Versuch: Minute 34 – egal wie weit. Wenn es knapp wird: nur Proben 1, 3, 4 und 5 messen; die pH-Meter-Werte zeigt Prof. HOLZER am Beamer.",
+ 3: f"Zeitstopp für den Versuch: nach {sum(p[1] for p in STUNDE[3][:5])} Minuten, gerechnet ab Stundenbeginn – egal wie weit. Wenn es knapp wird: nur Proben 1, 3, 4 und 5 messen; die pH-Meter-Werte zeigt Prof. HOLZER am Beamer.",
  4: "Wenn es knapp wird: Partnercheck auf zwei Karten kürzen; Teil e) und f) von Aufgabe 7 gemeinsam besprechen. Die PDF-Abgabe darf bis zum Ende des Tages nachgeholt werden.",
 }
 AUSFALL = ("Fällt eine der vier Stunden aus, wird nichts zusammengepresst: Die drei übrigen Stunden laufen als Stunde 1, 2 und 3 wie geplant "

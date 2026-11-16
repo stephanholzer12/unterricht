@@ -207,7 +207,7 @@ PARTS = [
               kartenblock("k7"),
               ("ul", ["Ein **Puffer** ist ein Paar aus schwacher Säure und ihrer Base. Kommt Säure dazu, fängt die Base die H⁺ ab; kommt Base dazu, gibt die Säure H⁺ ab. Der pH-Wert bleibt fast gleich.",
                       "Im Blut puffern vor allem **Kohlensäure und Hydrogencarbonat**, dazu Eiweiße wie das Hämoglobin.",
-                      "**Sport:** Bei einem harten Sprint sammeln sich im Muskel viele H⁺-Ionen. In einer Studie mit Radsportlern sank der Blut-pH von 7,35 auf 7,13. "
+                      "**Sport:** Bei einem harten Sprint sammeln sich im Muskel viele H⁺-Ionen. In einer Studie mit 12 Elite-Radfahrern (3 Minuten Vollgas, ohne Natron) sank der Blut-pH von 7,35 auf 7,13. "
                       "Du atmest schneller und tiefer – so verlässt mehr CO₂ den Körper, und der pH steigt wieder.",
                       "**Mythos Muskelkater:** Lange hieß es, Milchsäure (Laktat) sei schuld. Laktat ist aber nach 30 bis 90 Minuten wieder auf dem Ausgangswert – "
                       "Muskelkater kommt erst nach 1 bis 3 Tagen. Ursache sind winzige Verletzungen der Muskelfasern.",

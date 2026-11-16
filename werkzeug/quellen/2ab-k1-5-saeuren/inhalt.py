@@ -7,8 +7,8 @@ Demos: K1.5-D1 Rotkraut-Farbenspiel (Buch S. 54–55, = V2.19 als Demo) · K1.5-
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge).
 PDF-Schrift: ⇌ fehlt in der eingebetteten Schrift – in Aufgaben und Lösungen nur → verwenden."""
 
-STAND = "14.11.2026"
-V = "v1"
+STAND = "16.11.2026"
+V = "v3"
 ORDNER = "2ab-nawi/k1-5-saeuren"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -357,7 +357,7 @@ ANLEITUNG = {
  "gruppen": "6 Gruppen zu viert, jede Gruppe an ihrem Schülertisch. Rollen: Holer (holt die Proben), Tropfer, Ableser, Schreiber.",
  "vorbereitung": "Blatt unter die Tüpfelplatte legen. Mulden 1 bis 6 auf dem Blatt nummerieren. Schutzbrille auf. Der Ableser fotografiert gleich am Anfang die Farbskala (Dose am Lehrertisch) mit dem Handy.",
  "schritte": ["Vermutung in b) eintragen.",
-              "Freiwillig (Haut-pH, c7): Gleich am Anfang gibt ein Gruppenmitglied einen Tropfen Leitungswasser in die Handfläche, steckt die Hand in den Gefrierbeutel und schließt ihn locker mit dem Gummiring. Es arbeitet mit der anderen Hand weiter.",
+              "Freiwillig (Haut-pH, c7): Gleich am Anfang gibt ein Gruppenmitglied einen Tropfen destilliertes Wasser (bekommt ihr von Prof. HOLZER) in die Handfläche, steckt die Hand in den Gefrierbeutel und schließt ihn locker mit dem Gummiring. Es arbeitet mit der anderen Hand weiter.",
               "Der Holer bringt die Tüpfelplatte zur Probenstation: Gruppe 1–3 zu Mobiltisch 1, Gruppe 4–6 zu Mobiltisch 2. Mit der Pipette der jeweiligen Probe kommen etwa 10 Tropfen in die passende Mulde. Pipette zurück in ihr Gefäß.",
               "Reihenfolge: 1 Zitronensaft · 2 Cola · 3 Mineralwasser · 4 Leitungswasser · 5 Natronlösung · 6 Seifenlösung.",
               "Am Tisch taucht der Tropfer die Spitze eines frischen Stücks Indikatorpapier in jede Mulde und legt es neben die Nummer auf das Blatt.",
@@ -436,28 +436,29 @@ T.append({
     "link": ["Artikel bei Quarks öffnen", QUARKS["url"], QUARKS["herkunft"]],
     "q": "Werbung verspricht Basenpulver, basische Socken und Kuren gegen »Übersäuerung«. Lies den Artikel von Quarks (Knopf oben, ca. 7 min) "
          "und prüf ihn mit dem, was du über Blut-pH und Puffer weißt.",
-    "hint": "Such im Text nach »7,4«, »Puffer«, »Lunge« und »Niere«.",
+    "hint": "Such im Text nach »7,4«, »Puffer«, »Lunge« und »Urin«.",
     "type": "multi",
     "fields": [
         ["blut", "a) Welchen Blut-pH nennt der Artikel als normal?", ["etwa 7,4 – leicht basisch", "etwa 5,5 – leicht sauer", "genau 7 – neutral", "etwa 9 – basisch"]],
-        ["halt", "b) Was hält den Blut-pH laut Artikel konstant?", ["Puffer, die Lunge (CO₂) und die Nieren", "Basenpulver", "basische Socken und Decken", "nur die richtige Ernährung"]],
+        ["halt", "b) Was hält den Blut-pH laut Artikel konstant?", ["Puffer, die Lunge (CO₂) und die Ausscheidung über den Urin", "Basenpulver", "basische Socken und Decken", "nur die richtige Ernährung"]],
         ["wer", "c) Wem droht laut Artikel wirklich eine Übersäuerung (Acidose)?", ["Menschen mit Vorerkrankungen, z. B. der Nieren oder Diabetes", "jedem, der Fleisch isst", "allen, die viel Sport machen", "jedem, der Cola trinkt"]],
         ["geld", "d) Quellenkritik: Wer verdient am Wort »Übersäuerung« – und warum ist das wichtig, wenn du Werbung liest? (1–2 Sätze)"],
         ["sprint", "e) Nach dem Sprint ist dein Blut kurz saurer (Aufgabe 7). Ist das die »Übersäuerung« aus der Werbung? Begründe kurz."],
     ],
-    "chk": {"blut": {"sel": "etwa 7,4 – leicht basisch"}, "halt": {"sel": "Puffer, die Lunge (CO₂) und die Nieren"},
+    "chk": {"blut": {"sel": "etwa 7,4 – leicht basisch"}, "halt": {"sel": "Puffer, die Lunge (CO₂) und die Ausscheidung über den Urin"},
             "wer": {"sel": "Menschen mit Vorerkrankungen, z. B. der Nieren oder Diabetes"},
             "geld": {"kw": [["Anbieter / Verkäufer", r"verkau|anbiet|herstell|firma|firmen|unternehm|geld|verdien|gewinn|werb"]], "need": 1, "man": True},
-            "sprint": {"kw": [["kurz / Atmung / Puffer", r"kurz|atm|puffer|lunge|co2|co₂|normal|wieder"]], "need": 1, "man": True}},
+            "sprint": {"kw": [["kurz / Atmung / Puffer", r"kurz|atm|puffer|lunge|co2|co₂|normal|wieder"]], "need": 1, "man": True,
+                       "contra": [r"\bja\b[^.!?]{0,40}(übersäuer|uebersaeuer|dieselbe|die gleiche|das gleiche|dasselbe)", r"(dieselbe|die gleiche|das gleiche|dasselbe) (übersäuerung|sache|krankheit)"]}},
     "fb": {"blut": {"etwa 5,5 – leicht sauer": "5,5 ist der pH der Haut, nicht des Blutes.", "genau 7 – neutral": "Blut ist leicht basisch – schau in Aufgabe 7 oder im Artikel."},
            "halt": {"Basenpulver": "Das verkauft die Werbung. Was sagt der Artikel – welche Organe arbeiten?", "nur die richtige Ernährung": "Der Körper regelt das selbst. Womit?"},
            "wer": {"allen, die viel Sport machen": "Beim Sport sinkt der pH nur kurz – und die Atmung holt ihn zurück."}},
     "sol": [["Lösung", ["a) etwa 7,4 (leicht basisch); von Acidose spricht man laut Artikel erst unter 7,35.",
-                        "b) Puffer im Blut, die Lunge (atmet CO₂ ab) und die Nieren (scheiden Säure aus).",
+                        "b) Puffer im Blut, die Lunge (atmet CO₂ ab) und der Urin (scheidet Säuren aus – so steht es im Artikel; dahinter arbeiten die Nieren).",
                         "c) Menschen mit Vorerkrankungen, z. B. chronischer Nierenerkrankung oder Diabetes – nicht Gesunde durch normales Essen.",
                         "d) Anbieter von Basenpulver, Kuren, Hotels und »basischer« Kleidung. Wer etwas verkauft, hat ein Interesse daran, dass du ein Problem hast – darum unabhängige Quellen prüfen.",
                         "e) Nein: Der pH sinkt beim Sprint nur kurz und bleibt im Rahmen; Atmung und Puffer holen ihn in Minuten zurück. Das ist normale Regelung, keine Krankheit."]]],
-    "tipps": ["Such im Text nach »7,4«, »Lunge« und »Niere«.", "k7", "Buch S. 61–62: Puffer im Blut"],
+    "tipps": ["Such im Text nach »7,4«, »Lunge« und »Urin«.", "k7", "Buch S. 61–62: Puffer im Blut"],
 })
 
 T.append({
@@ -689,7 +690,7 @@ QUELLEN = [
  ("W5", "Übersicht über den Säure-Basen-Haushalt (MSD Manual, Ausgabe für Patienten, geprüft 03/2025)", "MSD Manuals",
   "https://www.msdmanuals.com/de/heim/nierenerkrankungen/säure-basen-haushalt/übersicht-über-den-säure-basen-haushalt", "Blut-pH normal etwa 7,35–7,45; CO₂-Abgabe über die Lunge regelt den pH", "Textauszug per Websuche gelesen"),
  ("W6", "Plasma acidosis and peak power after a supramaximal trial in elite sprint and endurance cyclists: effect of bicarbonate (Med Sci Sports Exerc 2023, 55(5), 932–944)", "Fachzeitschrift; Eintrag in der Datenbank des IAT Leipzig",
-  "https://lida.sport-iat.de/ta/Record/4082134", "Plasma-pH fiel bei Radsportlern von 7,35 auf 7,13 (Laktat 1,2 → 19,6 mmol/l)", "Datenbankeintrag geöffnet (Autoren dort nicht angegeben)"),
+  "https://lida.sport-iat.de/ta/Record/4082134", "Plasma-pH fiel bei 12 Elite-Radfahrern nach 3 min Vollgas (Placebo-Bedingung, ohne Natron) von 7,35 auf 7,13 (Laktat 1,2 → 19,6 mmol/l); Med Sci Sports Exerc 55 (5), 2023, S. 932–944", "Datenbankeintrag geöffnet (Autoren dort nicht angegeben)"),
  ("W7", "»Freispruch für Lactat« (02.10.2026, J. Hauser)", "Pharmazeutische Zeitung, nach einem Beitrag von S. Phillips (Univ. Edinburgh) in The Conversation",
   "https://www.pharmazeutische-zeitung.de/freispruch-fuer-lactat-168904/", "Laktat nach 30–90 min wieder auf Ausgangswert; Muskelkater 1–3 Tage später – Laktat erklärt ihn nicht", "Seite geöffnet"),
  ("W8", "Interview »Einmal zerstörter Zahnschmelz ist verloren« (21.08.2025, F. Jötten mit A. Lussi)", "Spektrum.de; A. Lussi, emeritierter Klinikdirektor Universität Bern",

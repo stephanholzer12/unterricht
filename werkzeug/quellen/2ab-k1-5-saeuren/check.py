@@ -128,8 +128,8 @@ function uhrzeit(t) { const d = new Date(t); return d.toLocaleDateString("de-AT"
 /* Zahlenfrage: pH a und pH b (2 oder 3 Stufen) – richtige Antwort 10^d */
 function faktorFrage(f) {
   const d = 2 + Math.floor(Math.random() * 2), a = 2 + Math.floor(Math.random() * (8 - d)), b = a + d;
-  const ok = Math.pow(10, d).toLocaleString("de-AT") + "-mal";
-  const fa = [d + "-mal", (10 * d) + "-mal", Math.pow(10, d + 1).toLocaleString("de-AT") + "-mal"];
+  const ok = String(Math.pow(10, d)) + "-mal";
+  const fa = [d + "-mal", (10 * d) + "-mal", String(Math.pow(10, d + 1)) + "-mal"];
   return { id: f.id, f: "pH " + a + " und pH " + b + ": Wievielmal so viele H₃O⁺-Ionen hat die Lösung mit pH " + a + "?", o: [ok].concat(fa), h: fnv(SALZ + f.id + "|" + ok), buch: f.buch };
 }
 function ziehen() {

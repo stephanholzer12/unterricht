@@ -184,7 +184,8 @@ def saeure():
     w += blende(t(0, 94, "macht sauer", 19, "b", "middle", RED), [(0, 0), (0.52, 0), (0.60, 1)])
     s.append(bewege(w, [(0, f"360 {Y}"), (0.08, f"360 {Y}"), (0.18, f"300 {Y}"), (0.40, f"300 {Y}"), (0.55, f"330 {Y}")]))
     # das Proton: rot und „H⁺“ im Flug, nach der Landung ein ganz normales H im Oxonium-Ion
-    pr = blende(kreis(0, 0, 15, RED, "H⁺", 15, WHITE), [(0, 1), (0.38, 1), (0.44, 0)]) + blende(kreis(0, 0, 13.75, H_COL, "H", 16), [(0, 0), (0.38, 0), (0.44, 1)])
+    pr = (blende(kreis(0, 0, 13.75, H_COL, "H", 16), [(0, 1), (0.19, 1), (0.21, 0), (0.44, 0), (0.46, 1)])
+          + blende(kreis(0, 0, 15, RED, "H⁺", 15, WHITE), [(0, 0), (0.19, 0), (0.21, 1), (0.38, 1), (0.44, 0)]))
     flug = [(0, f"137 {Y}"), (0.20, f"137 {Y}")] + bogen((137, Y), (218, 140), (300, Y - 31), 0.20, 0.38)[1:] + [(0.40, f"300 {Y - 31}"), (0.55, f"330 {Y - 31}")]
     s.append(bewege(pr, flug))
     s.append(blende(t(M, 412, "HCl + H₂O → Cl⁻ + H₃O⁺", 24, "b", "middle"), [(0, 0), (0.50, 0), (0.60, 1)]))
@@ -211,7 +212,7 @@ def lauge():
         for c in range(3):
             x, y = 50 + c * 40, 150 + r * 40
             if (c, r) in wandern: continue
-            b.append(kreis(x, y, 17, NA_COL, "Na", 14, WHITE) if (r + c) % 2 == 0 else kreis(x, y, 17, O_COL, "OH", 13, WHITE))
+            b.append(kreis(x, y, 17, NA_COL, "Na⁺", 13, WHITE) if (r + c) % 2 == 0 else kreis(x, y, 17, O_COL, "OH⁻", 12, WHITE))
     b.append(t(90, 290, "NaOH (fest)", 21, "b", "middle"))
     b.append(arrow(158, 190, 200, 190, OLIVE, 5))
     b.append(f"<rect x='205' y='122' width='{R - 205}' height='146' rx='14' fill='#E3F0F7' stroke='{TEAL}' stroke-width='3'/>")
@@ -222,9 +223,9 @@ def lauge():
         t1 = t0 + 0.22
         weg = [(0, f"{sx} {sy}"), (t0, f"{sx} {sy}"), (t1, f"{bx} {by}")]
         if k == "na":
-            inner = kreis(0, 0, 17, NA_COL, "Na", 14, WHITE) + blende(t(22, -12, "+", 24, "b", "middle", RED), [(0, 0), (t1, 0), (t1 + 0.07, 1)])
+            inner = kreis(0, 0, 17, NA_COL, "Na⁺", 13, WHITE)
         else:
-            inner = (blende(kreis(0, 0, 17, O_COL, "OH", 13, WHITE), [(0, 1), (t1, 1), (t1 + 0.07, 0)])
+            inner = (blende(kreis(0, 0, 17, O_COL, "OH⁻", 12, WHITE), [(0, 1), (t1, 1), (t1 + 0.07, 0)])
                      + blende(hydroxid(0, 0, 0.8), [(0, 0), (t1, 0), (t1 + 0.07, 1)]))
         s_.append(bewege(inner, weg))
     b.append(szene("".join(s_)))
@@ -382,15 +383,15 @@ def blutpuffer():
     b.append(f"<rect x='{px(7.35):.1f}' y='568' width='{px(7.45) - px(7.35):.1f}' height='40' fill='{GREEN}'/>")
     b.append(t(px(6.95), 595, "Azidose", 17, "b", "middle", RUST))
     b.append(t(px(7.66), 595, "Alkalose", 17, "b", "middle", BLUE))
-    dx = round(px(7.4) - px(7.13), 1)
+    dx = round(px(7.35) - px(7.13), 1)
     b.append(f"<line x1='{px(7.13):.1f}' y1='562' x2='{px(7.13):.1f}' y2='614' stroke='{RED}' stroke-width='4'>"
              + _marke([(0, f"{dx} 0"), (0.12, f"{dx} 0"), (0.35, "0 0"), (0.55, "0 0"), (0.80, f"{dx} 0")]) + "</line>")
     for ph in (6.8, 7.0, 7.2, 7.4, 7.6, 7.8):
         b.append(t(px(ph), 636, str(ph).replace(".", ","), 18, "b", "middle"))
-    b += [t(M, 670, "nach hartem Sprint: 7,13", 20, "b", "middle", RED), t(M, 696, "kurz und normal – die Atmung gleicht aus", 18, "", "middle", RED)]
+    b += [t(M, 670, "nach 3 min Vollgas: 7,13", 20, "b", "middle", RED), t(M, 696, "kurz und normal – die Atmung gleicht aus", 18, "", "middle", RED)]
     b += balken(720, 120, ["Schneller atmen = mehr CO₂ raus", "= weniger Kohlensäure"], 21)
-    b.append(t(M, 822, "Studie: Radsportler, Med Sci Sports Exerc 2023", 15, "", "middle", "#E7EED8"))
-    save("blutpuffer.svg", svg(W, H, "".join(b), "Muskel, Blut und Lunge halten den Blut-pH mit Puffer und Atmung bei 7,4; die rote Marke fällt beim Sprint auf 7,13 und kehrt zurück", anim=True))
+    b.append(t(M, 822, "Studie: 12 Elite-Radfahrer (ohne Natron), Med Sci Sports Exerc 2023", 15, "", "middle", "#E7EED8"))
+    save("blutpuffer.svg", svg(W, H, "".join(b), "Muskel, Blut und Lunge halten den Blut-pH mit Puffer und Atmung bei 7,4; die rote Marke fällt nach 3 Minuten Vollgas von 7,35 auf 7,13 und kehrt zurück", anim=True))
 
 
 # ------------------------------------------------------------------ 9 Überblick
