@@ -98,18 +98,97 @@ def linie(y):
     return f"<line x1='{L}' y1='{y}' x2='{R}' y2='{y}' stroke='{LIGHT}' stroke-width='3'/>"
 
 
-# ------------------------------------------------------------------ 1 Säure in Wasser (HCl gibt H⁺ an H2O)
+# ---- Hilfen für Animationen in Schleife (SMIL: läuft in <img> und inline; in den Folien lässt sich der Lauf per Pause-Knopf anhalten).
+# Grundregel: Das Grundbild (ohne Animation) zeigt den ENDZUSTAND; die Animation baut ihn Schritt für Schritt auf.
+# Alle Spuren eines Bildes haben dieselbe Dauer und beginnen bei 0 s – dadurch laufen sie im Gleichtakt.
+ZYK = 12          # Sekunden je Durchlauf
+ENDE, ZURUECK = 0.96, 0.985   # ab ENDE ist die Szene ausgeblendet, bis ZURUECK springt alles unsichtbar auf den Start
+
+
+def _spur(punkte):
+    p = list(punkte)
+    if p[0][0] != 0:
+        p.insert(0, (0, p[0][1]))
+    if p[-1][0] < ENDE:
+        p.append((ENDE, p[-1][1]))
+    return p + [(ZURUECK, p[0][1]), (1, p[0][1])]
+
+
+def _werte(p):
+    kt = ";".join(f"{a:.3f}" for a, _ in p)
+    vals = ";".join(v if isinstance(v, str) else f"{v:.3g}" for _, v in p)
+    return kt, vals
+
+
+def blende(inner, punkte, dur=ZYK):
+    """Gruppe mit Deckkraft-Verlauf. punkte = [(Zeitanteil 0–1, Deckkraft)]; Grundwert = letzter Punkt."""
+    kt, vals = _werte(_spur(punkte))
+    return (f"<g opacity='{punkte[-1][1]}'>{inner}"
+            f"<animate attributeName='opacity' values='{vals}' keyTimes='{kt}' dur='{dur}s' repeatCount='indefinite'/></g>")
+
+
+def bewege(inner, punkte, dur=ZYK):
+    """Gruppe, die sich bewegt. punkte = [(Zeitanteil, 'x y')]; Grundlage = letzter Punkt (Endzustand)."""
+    kt, vals = _werte(_spur(punkte))
+    return (f"<g transform='translate({punkte[-1][1]})'>{inner}"
+            f"<animateTransform attributeName='transform' type='translate' values='{vals}' keyTimes='{kt}' dur='{dur}s' repeatCount='indefinite'/></g>")
+
+
+def szene(inner, dur=ZYK):
+    """Ganze Szene: sichtbar bis ENDE, dann kurz aus, Rücksprung unsichtbar, wieder ein."""
+    return (f"<g>{inner}<animate attributeName='opacity' values='1;1;0;0;1' keyTimes='0;{ENDE - 0.04:.3f};{ENDE};{ZURUECK};1' dur='{dur}s' repeatCount='indefinite'/></g>")
+
+
+def bogen(p0, p1, p2, t0, t1, n=8):
+    """Punkte entlang einer Kurve von p0 über Steuerpunkt p1 nach p2 (Zeit t0 → t1), für die Flugbahn des Protons."""
+    out = []
+    for i in range(n + 1):
+        s = i / n
+        x = (1 - s) ** 2 * p0[0] + 2 * s * (1 - s) * p1[0] + s * s * p2[0]
+        y = (1 - s) ** 2 * p0[1] + 2 * s * (1 - s) * p1[1] + s * s * p2[1]
+        out.append((round(t0 + (t1 - t0) * s, 3), f"{x:.1f} {y:.1f}"))
+    return out
+
+
+def _marke(punkte, dur=ZYK):
+    """Nur der animateTransform-Teil (für ein Element, das selbst wandert, z. B. eine Linie)."""
+    kt, vals = _werte(_spur(punkte))
+    return f"<animateTransform attributeName='transform' type='translate' values='{vals}' keyTimes='{kt}' dur='{dur}s' repeatCount='indefinite'/>"
+
+
+# ------------------------------------------------------------------ 1 Säure in Wasser (HCl gibt H⁺ an H2O) – ANIMIERT
 def saeure():
     H = 720
+    Y = 250
     b = kopf("Säure in Wasser", ["HCl gibt sein H⁺ an Wasser ab."])
-    # vorher
-    b += [kreis(70, 160, 30, CL_COL, "Cl", 24, WHITE), proton(112, 160, 15), wasser(250, 150, 1.25)]
-    b += [t(85, 222, "HCl", 24, "b", "middle"), t(250, 222, "H₂O", 24, "b", "middle"), t(170, 165, "+", 30, "b", "middle")]
-    b.append(arrow(M, 240, M, 290, OLIVE, 5))
-    # nachher
-    b += [kreis(110, 340, 30, CL_COL, "Cl", 24, WHITE), t(150, 314, "−", 32, "b", "middle", BLUE), oxonium(310, 340, 1.25)]
-    b += [t(110, 402, "Cl⁻", 24, "b", "middle"), t(310, 402, "H₃O⁺", 24, "b", "middle")]
-    b += [t(110, 428, "Säurerest", 19, "m", "middle"), t(310, 428, "macht sauer", 19, "b", "middle", RED)]
+    b.append(f"<rect x='{L}' y='104' width='{R - L}' height='44' rx='12' fill='{WHITE}' stroke='{LIGHT}' stroke-width='3'/>")
+    s = []
+    # drei Schritte als Überschrift, nacheinander
+    for txt, pts in (("1  HCl trifft auf Wasser.", [(0, 1), (0.17, 1), (0.20, 0)]),
+                     ("2  Das H⁺ springt zum Wasser.", [(0, 0), (0.17, 0), (0.21, 1), (0.38, 1), (0.42, 0)]),
+                     ("3  Es entsteht H₃O⁺: sauer!", [(0, 0), (0.42, 0), (0.47, 1)])):
+        s.append(blende(t(M, 133, txt, 21, "b", "middle"), pts))
+    # Säurerest Cl (zuerst rechts neben dem Proton, am Ende links)
+    cl = kreis(0, 0, 30, CL_COL, "Cl", 24, WHITE)
+    cl += blende(t(38, -26, "−", 32, "b", "middle", BLUE), [(0, 0), (0.40, 0), (0.47, 1)])
+    cl += blende(t(21, 66, "HCl", 24, "b", "middle"), [(0, 1), (0.38, 1), (0.45, 0)])
+    cl += blende(t(0, 66, "Cl⁻", 24, "b", "middle"), [(0, 0), (0.40, 0), (0.47, 1)])
+    cl += blende(t(0, 94, "Säurerest", 19, "m", "middle"), [(0, 0), (0.52, 0), (0.60, 1)])
+    s.append(bewege(cl, [(0, f"95 {Y}"), (0.40, f"95 {Y}"), (0.55, f"80 {Y}")]))
+    # Wasser kommt von rechts, nimmt das Proton auf und wird zum Oxonium-Ion
+    w = blende(f"<circle cx='0' cy='-8' r='64' fill='{RED}'/>", [(0, 0), (0.58, 0), (0.68, 0.16), (0.80, 0.08), (0.92, 0.16)])
+    w += kreis(-30, 17.5, 13.75, H_COL, "H", 16) + kreis(30, 17.5, 13.75, H_COL, "H", 16) + kreis(0, 0, 25, O_COL, "O", 22, WHITE)
+    w += blende(t(38, -34, "+", 32, "b", "middle", RED), [(0, 0), (0.40, 0), (0.47, 1)])
+    w += blende(t(0, 66, "H₂O", 24, "b", "middle"), [(0, 1), (0.38, 1), (0.45, 0)])
+    w += blende(t(0, 66, "H₃O⁺", 24, "b", "middle"), [(0, 0), (0.40, 0), (0.47, 1)])
+    w += blende(t(0, 94, "macht sauer", 19, "b", "middle", RED), [(0, 0), (0.52, 0), (0.60, 1)])
+    s.append(bewege(w, [(0, f"360 {Y}"), (0.08, f"360 {Y}"), (0.18, f"300 {Y}"), (0.40, f"300 {Y}"), (0.55, f"330 {Y}")]))
+    # das Proton: rot und „H⁺“ im Flug, nach der Landung ein ganz normales H im Oxonium-Ion
+    pr = blende(kreis(0, 0, 15, RED, "H⁺", 15, WHITE), [(0, 1), (0.38, 1), (0.44, 0)]) + blende(kreis(0, 0, 13.75, H_COL, "H", 16), [(0, 0), (0.38, 0), (0.44, 1)])
+    flug = [(0, f"137 {Y}"), (0.20, f"137 {Y}")] + bogen((137, Y), (218, 140), (300, Y - 31), 0.20, 0.38)[1:] + [(0.40, f"300 {Y - 31}"), (0.55, f"330 {Y - 31}")]
+    s.append(bewege(pr, flug))
+    s.append(blende(t(M, 412, "HCl + H₂O → Cl⁻ + H₃O⁺", 24, "b", "middle"), [(0, 0), (0.50, 0), (0.60, 1)]))
+    b.append(szene("".join(s)))
     b.append(linie(452))
     b.append(t(L, 488, "Säuren im Alltag", 24, "b"))
     items = [("Zitrone", "Zitronensäure", "#F4D03F", "pH ~2,4"), ("Cola", "Phosphorsäure", "#5D4037", "pH ~2,5–3"),
@@ -119,25 +198,36 @@ def saeure():
         b.append(f"<rect x='{x}' y='{y}' width='196' height='96' rx='14' fill='{WHITE}' stroke='{LIGHT}' stroke-width='3'/>")
         b.append(f"<circle cx='{x + 32}' cy='{y + 48}' r='20' fill='{c}' stroke='{INK}' stroke-width='2'/>")
         b += [t(x + 62, y + 32, n, 20 if len(n) < 12 else 18, "b"), t(x + 62, y + 56, s_, 17, "m"), t(x + 62, y + 82, ph, 19, "b", fill=RUST)]
-    save("saeure.svg", svg(W, H, "".join(b), "HCl gibt ein Proton an Wasser ab; Säuren im Alltag"))
+    save("saeure.svg", svg(W, H, "".join(b), "Animation: HCl trifft auf Wasser, das H-plus springt zum Wassermolekül, es entstehen Cl-minus und H3O-plus; darunter Säuren im Alltag", anim=True))
 
 
 # ------------------------------------------------------------------ 2 Lauge (NaOH in Wasser) + Alltag
 def lauge():
     H = 700
     b = kopf("Lauge: OH⁻ macht basisch", ["Natriumhydroxid löst sich:", "Na⁺ und OH⁻ schwimmen getrennt."])
+    # Kristall 3×3 (fest). Vier Teilchen (Ecke rechts) lösen sich ab und wandern ins Wasser – ANIMIERT.
+    wandern = {(2, 0): ("na", 245, 168), (2, 1): ("oh", 345, 160), (2, 2): ("na", 360, 236), (1, 2): ("oh", 262, 240)}
     for r in range(3):
         for c in range(3):
             x, y = 50 + c * 40, 150 + r * 40
-            if (r + c) % 2 == 0: b.append(kreis(x, y, 17, NA_COL, "Na", 14, WHITE))
-            else: b.append(kreis(x, y, 17, O_COL, "OH", 13, WHITE))
+            if (c, r) in wandern: continue
+            b.append(kreis(x, y, 17, NA_COL, "Na", 14, WHITE) if (r + c) % 2 == 0 else kreis(x, y, 17, O_COL, "OH", 13, WHITE))
     b.append(t(90, 290, "NaOH (fest)", 21, "b", "middle"))
     b.append(arrow(158, 190, 200, 190, OLIVE, 5))
     b.append(f"<rect x='205' y='122' width='{R - 205}' height='146' rx='14' fill='#E3F0F7' stroke='{TEAL}' stroke-width='3'/>")
-    pos = [(245, 168, "na"), (345, 160, "oh"), (262, 240, "oh"), (360, 236, "na")]
-    for x, y, k in pos:
-        if k == "na": b += [kreis(x, y, 17, NA_COL, "Na", 14, WHITE), t(x + 22, y - 12, "+", 24, "b", "middle", RED)]
-        else: b.append(hydroxid(x, y, 0.8))
+    s_ = []
+    for i, ((c, r), (k, bx, by)) in enumerate(wandern.items()):
+        sx, sy = 50 + c * 40, 150 + r * 40
+        t0 = 0.10 + 0.13 * i
+        t1 = t0 + 0.22
+        weg = [(0, f"{sx} {sy}"), (t0, f"{sx} {sy}"), (t1, f"{bx} {by}")]
+        if k == "na":
+            inner = kreis(0, 0, 17, NA_COL, "Na", 14, WHITE) + blende(t(22, -12, "+", 24, "b", "middle", RED), [(0, 0), (t1, 0), (t1 + 0.07, 1)])
+        else:
+            inner = (blende(kreis(0, 0, 17, O_COL, "OH", 13, WHITE), [(0, 1), (t1, 1), (t1 + 0.07, 0)])
+                     + blende(hydroxid(0, 0, 0.8), [(0, 0), (t1, 0), (t1 + 0.07, 1)]))
+        s_.append(bewege(inner, weg))
+    b.append(szene("".join(s_)))
     b.append(t(312, 296, "Natronlauge", 21, "b", "middle", TEAL))
     b.append(linie(320))
     b.append(t(L, 358, "Laugen im Alltag und im Dienst", 24, "b"))
@@ -147,7 +237,7 @@ def lauge():
         y = 376 + i * 104
         b.append(f"<rect x='{L}' y='{y}' width='{R - L}' height='94' rx='14' fill='{WHITE}' stroke='{LIGHT}' stroke-width='3'/>")
         b += [t(L + 18, y + 36, n, 23, "b"), t(R - 18, y + 36, ph, 20, "b", "end", BLUE), t(L + 18, y + 72, s_, 19, "m")]
-    save("lauge.svg", svg(W, H, "".join(b), "Natriumhydroxid löst sich in Na-plus und OH-minus; Laugen im Alltag"))
+    save("lauge.svg", svg(W, H, "".join(b), "Animation: Natriumhydroxid löst sich, Na-plus und OH-minus wandern ins Wasser; Laugen im Alltag", anim=True))
 
 
 # ------------------------------------------------------------------ 3 Protonen-Pingpong (animiert)
@@ -292,13 +382,15 @@ def blutpuffer():
     b.append(f"<rect x='{px(7.35):.1f}' y='568' width='{px(7.45) - px(7.35):.1f}' height='40' fill='{GREEN}'/>")
     b.append(t(px(6.95), 595, "Azidose", 17, "b", "middle", RUST))
     b.append(t(px(7.66), 595, "Alkalose", 17, "b", "middle", BLUE))
-    b.append(f"<line x1='{px(7.13):.1f}' y1='562' x2='{px(7.13):.1f}' y2='614' stroke='{RED}' stroke-width='4'/>")
+    dx = round(px(7.4) - px(7.13), 1)
+    b.append(f"<line x1='{px(7.13):.1f}' y1='562' x2='{px(7.13):.1f}' y2='614' stroke='{RED}' stroke-width='4'>"
+             + _marke([(0, f"{dx} 0"), (0.12, f"{dx} 0"), (0.35, "0 0"), (0.55, "0 0"), (0.80, f"{dx} 0")]) + "</line>")
     for ph in (6.8, 7.0, 7.2, 7.4, 7.6, 7.8):
         b.append(t(px(ph), 636, str(ph).replace(".", ","), 18, "b", "middle"))
     b += [t(M, 670, "nach hartem Sprint: 7,13", 20, "b", "middle", RED), t(M, 696, "kurz und normal – die Atmung gleicht aus", 18, "", "middle", RED)]
     b += balken(720, 120, ["Schneller atmen = mehr CO₂ raus", "= weniger Kohlensäure"], 21)
     b.append(t(M, 822, "Studie: Radsportler, Med Sci Sports Exerc 2023", 15, "", "middle", "#E7EED8"))
-    save("blutpuffer.svg", svg(W, H, "".join(b), "Muskel, Blut und Lunge halten den Blut-pH mit Puffer und Atmung bei 7,4"))
+    save("blutpuffer.svg", svg(W, H, "".join(b), "Muskel, Blut und Lunge halten den Blut-pH mit Puffer und Atmung bei 7,4; die rote Marke fällt beim Sprint auf 7,13 und kehrt zurück", anim=True))
 
 
 # ------------------------------------------------------------------ 9 Überblick
@@ -353,12 +445,15 @@ def mundph():
     b.append(t(M + 20, y1 + 58, "Minuten nach dem Essen", 19, "m", "middle"))
     b.append(arrow(px(0) + 14, y0 - 4, px(0) + 2, py(6.8) - 10, INK, 3, 11))
     b.append(t(px(0) + 18, y0 - 6, "Essen", 19, "b"))
+    # Die Kurven zeichnen sich einmal von links nach rechts (eine Minute pro Sekunde) und bleiben dann stehen – Bildlauf per Beschneidung.
+    b.append(f"<clipPath id='mphclip'><rect x='{x0 - 8}' y='{y0 - 20}' width='{x1 - x0 + 24}' height='{y1 - y0 + 40}'>"
+             f"<animate attributeName='width' values='0;{x1 - x0 + 24}' dur='6s' fill='freeze'/></rect></clipPath>")
     for pts, col, dash, lab, ly in ((KURVE_A, RUST, "", "A", 6.45), (KURVE_B, TEAL, " stroke-dasharray='12 6'", "B", 7.15)):
         d = " ".join(f"{'M' if i == 0 else 'L'}{px(m):.1f},{py(ph):.1f}" for i, (m, ph) in enumerate(pts))
-        b.append(f"<path d='{d}' fill='none' stroke='{col}' stroke-width='5' stroke-linejoin='round'{dash}/>")
-        b.append(kreis(px(55), py(ly), 15, col, lab, 20, WHITE))
+        b.append(f"<path d='{d}' fill='none' stroke='{col}' stroke-width='5' stroke-linejoin='round'{dash} clip-path='url(#mphclip)'/>")
+        b.append(f"<g opacity='1'>{kreis(px(55), py(ly), 15, col, lab, 20, WHITE)}<animate attributeName='opacity' values='0;0;1' keyTimes='0;0.9;1' dur='6s' fill='freeze'/></g>")
     b += balken(530, 70, ["vereinfacht nach der Stephan-Kurve", "(Zahnmedizin) – Werte ungefähr"], 19)
-    save("mundph.svg", svg(W, H, "".join(b), "pH-Wert am Zahn nach dem Essen: Kurve A und Kurve B fallen nach etwa 5 Minuten unter 5,5; Kurve B steigt ab Minute 10 schnell wieder, Kurve A erst nach etwa 30 Minuten"))
+    save("mundph.svg", svg(W, H, "".join(b), "pH-Wert am Zahn nach dem Essen: Kurve A und Kurve B fallen nach etwa 5 Minuten unter 5,5; Kurve B steigt ab Minute 10 schnell wieder, Kurve A erst nach etwa 30 Minuten", anim=True))
 
 
 TEILE = {"saeure.svg": saeure, "lauge.svg": lauge, "protolyse.svg": protolyse, "phskala.svg": phskala, "rotkraut.svg": rotkraut,
