@@ -1,6 +1,6 @@
 """Bilder, Versuchsskizzen und neue Icons für NAWI 1AB K2.1 Mechanische Kräfte – alles selbst gezeichnet (keine Buchabbildungen).
 Aufruf im Repository-Ordner:  python3 werkzeug/quellen/1ab-k2-1-kraefte/skizzen.py
-Schreibt 1ab-nawi/k2-1-kraefte/img/*.png, vs-img/d_g1–g7.png, vs-img/i_*.png und neue Icons nach werkzeug/icons/
+Schreibt die ruhigen Bilder 1ab-nawi/k2-1-kraefte/img/gewicht.png, einheiten.png, projekt.png (Vorgänge: animationen.py, SVG), vs-img/d_g1–g7.png, vs-img/i_*.png und neue Icons nach werkzeug/icons/
 (kraftmesser, messbecher, messzylinder, spritze – im Stil der Bindungsarten-Icons: flach, farbig, dünne graue Kontur, transparent, 180 × 108 px).
 Alle Zahlen in den Grafiken stimmen mit inhalt.py und versuche_daten.py überein."""
 import math, os, re, shutil, sys
@@ -179,70 +179,6 @@ def umbrechen(d, txt, font, breite):
     return zeilen
 
 
-# ================================================================ 1 · Was eine Kraft bewirkt
-def wirkung():
-    im, d = canvas(900, 400)
-    for i, (x, titel) in enumerate([(20, "Tempo ändern"), (310, "Richtung ändern"), (600, "Form ändern")]):
-        panel(d, x, 14, 280, 300, titel, [GREEN, TEAL, ORANGE][i])
-    # Panel 1: Wagen wird schneller
-    d.rounded_rectangle(P(70, 170, 180, 215), radius=8 * S, fill=WOOD, outline=MUTED, width=int(2 * S))
-    for cx in (92, 158): d.ellipse(P(cx - 13, 208, cx + 13, 234), fill=METAL, outline=INK, width=int(2 * S))
-    arrow(d, 185, 192, 268, 192, RED, 6, 17); ltext(d, 196, 160, "F", B(20), RED)
-    arrow(d, 60, 250, 150, 250, BLUE, 5, 14); ltext(d, 60, 258, "v wird größer", R(15), BLUE)
-    ltext(d, 38, 285, "Antrieb größer als Reibung", R(15), MUTED)
-    # Panel 2: Kurve
-    d.arc(P(345, 110, 575, 290), start=200, end=340, fill=MUTED, width=int(4 * S))
-    d.ellipse(P(432, 118, 468, 154), fill=WOOD, outline=INK, width=int(2 * S))
-    arrow(d, 450, 136, 450, 212, RED, 6, 17); ltext(d, 458, 170, "F zur Kurvenmitte", R(15), RED)
-    arrow(d, 450, 136, 550, 136, BLUE, 5, 14); ltext(d, 470, 108, "v", B(19), BLUE)
-    ltext(d, 330, 285, "Tempo gleich, Richtung ändert sich", R(15), MUTED)
-    # Panel 3: Ball zusammengedrückt
-    d.ellipse(P(680, 150, 800, 240), fill=(226, 200, 150), outline=INK, width=int(2 * S))
-    d.rounded_rectangle(P(636, 170, 672, 220), radius=10 * S, fill=LIGHT, outline=MUTED, width=int(2 * S))
-    d.rounded_rectangle(P(808, 170, 844, 220), radius=10 * S, fill=LIGHT, outline=MUTED, width=int(2 * S))
-    arrow(d, 668, 195, 700, 195, RED, 6, 15); arrow(d, 812, 195, 780, 195, RED, 6, 15)
-    ltext(d, 700, 120, "F", B(20), RED); ltext(d, 768, 120, "F", B(20), RED)
-    ltext(d, 640, 285, "keine Ortsänderung – trotzdem Kraft", R(15), MUTED)
-    legende(d, 20, 330, [(RED, "Kraftpfeil F in Newton (N) – Länge zeigt den Betrag"), (BLUE, "Geschwindigkeitspfeil v in m/s")])
-    save(im, IMG + "wirkung.png")
-
-
-# ================================================================ 2 · Geschwindigkeit und Beschleunigung
-def bewegung():
-    im, d = canvas(900, 510)
-    reihen = [("gleichförmig: gleiche Abstände", [80, 230, 380, 530, 680], GREEN),
-              ("schneller werdend: Abstände wachsen", [80, 150, 260, 420, 640], ORANGE)]
-    for ri, (titel, xs, col) in enumerate(reihen):
-        y = 40 + ri * 150
-        ltext(d, 30, y - 26, titel, B(18), col)
-        d.line(P(60, y + 56, 860, y + 56), fill=GRID, width=int(2 * S))
-        for i, x in enumerate(xs):
-            d.ellipse(P(x - 16, y + 24, x + 16, y + 56), fill=WOOD, outline=INK, width=int(2 * S))
-            ctext(d, x, y - 2, "t%d" % i, R(14), MUTED)
-        for i in range(len(xs) - 1):
-            d.line(P(xs[i], y + 76, xs[i + 1], y + 76), fill=col, width=int(3 * S))
-            d.line(P(xs[i], y + 70, xs[i], y + 82), fill=col, width=int(3 * S))
-            d.line(P(xs[i + 1], y + 70, xs[i + 1], y + 82), fill=col, width=int(3 * S))
-            ctext(d, (xs[i] + xs[i + 1]) / 2, y + 84, "Δs", R(14), col)
-    # Kurve mit gleichem Tempo
-    y = 350
-    ltext(d, 30, 290, "gleiches Tempo, aber Kurve: die Richtung von v ändert sich", B(18), TEAL)
-    d.arc(P(300, y - 10, 600, y + 230), start=190, end=350, fill=GRID, width=int(4 * S))
-    for ang, lab in ((200, "t0"), (270, "t1"), (340, "t2")):
-        a = math.radians(ang); cx, cy, rx, ry = 450, y + 110, 150, 120
-        px, py = cx + rx * math.cos(a), cy + ry * math.sin(a)
-        d.ellipse(P(px - 13, py - 13, px + 13, py + 13), fill=WOOD, outline=INK, width=int(2 * S))
-        tx, ty = -rx * math.sin(a), ry * math.cos(a)
-        n = math.hypot(tx, ty); tx, ty = tx / n * 70, ty / n * 70
-        arrow(d, px, py, px + tx, py + ty, BLUE, 5, 13)
-        ctext(d, px, py - 34, lab, R(14), MUTED)
-    ltext(d, 630, y + 60, "Zur Geschwindigkeit", R(16), INK)
-    ltext(d, 630, y + 82, "gehört die Richtung.", R(16), INK)
-    ltext(d, 630, y + 112, "v = s / t", B(22), OLIVE)
-    ltext(d, 630, y + 140, "m/s · mal 3,6 = km/h", R(15), MUTED)
-    save(im, IMG + "bewegung.png")
-
-
 # ================================================================ 3 · Masse und Gewichtskraft
 def gewicht():
     im, d = canvas(900, 420)
@@ -264,179 +200,6 @@ def gewicht():
     d.line(P(40, 380, 860, 380), fill=GRID, width=int(2 * S))
     ctext(d, 450, 388, "F_G = m · g   ·   Masse in kg bleibt gleich, Gewichtskraft in N hängt vom Ort ab", B(18), OLIVE)
     save(im, IMG + "gewicht.png")
-
-
-# ================================================================ 4 · Auftrieb
-def auftrieb():
-    im, d = canvas(900, 500)
-    titel = ["steigt (aus der Ruhe)", "schwebt", "schwimmt ruhig"]
-    cols = [GREEN, TEAL, ORANGE]
-    for i in range(3):
-        x = 30 + i * 290
-        panel(d, x, 14, 260, 376, titel[i], cols[i])
-        cx = x + 130
-        d.rectangle(P(x + 24, 52, x + 236, 318), fill=GLASS, outline=MUTED, width=int(2 * S))
-        d.rectangle(P(x + 26, 92, x + 234, 316), fill=WATER)
-        d.line(P(x + 26, 92, x + 234, 92), fill=TEAL, width=int(3 * S))
-        ya = 228
-        if i == 2:
-            d.polygon([(cx - 60) * S, 60 * S, (cx + 60) * S, 60 * S, (cx + 40) * S, 122 * S, (cx - 40) * S, 122 * S],
-                      fill=WOOD, outline=INK, width=int(2 * S))
-            fa = fg = 70
-        else:
-            cy = 176
-            d.ellipse(P(cx - 34, cy - 34, cx + 34, cy + 34), fill=WOOD, outline=INK, width=int(2 * S))
-            fa, fg = (96, 54) if i == 0 else (70, 70)
-            if i == 0:
-                arrow(d, cx + 88, cy + 24, cx + 88, cy - 44, GREEN, 5, 14)
-                ctext(d, cx + 84, cy + 30, "Bewegung", R(13), GREEN)
-        # Kräftepfeile nebeneinander auf derselben Grundlinie – die Längen sind direkt vergleichbar
-        arrow(d, cx - 30, ya, cx - 30, ya - fa, TEAL, 7, 17)
-        arrow(d, cx + 30, ya, cx + 30, ya + fg, RED, 7, 17)
-        rtext(d, cx - 40, ya - fa / 2 - 12, "F_A", B(19), TEAL)
-        ltext(d, cx + 40, ya + fg / 2 - 12, "F_G", B(19), RED)
-        d.line(P(cx - 52, ya, cx + 52, ya), fill=MUTED, width=int(2 * S))
-        ctext(d, cx, 336, "F_A > F_G" if i == 0 else "F_A = F_G", B(21), OLIVE)
-    legende(d, 30, 406, [(TEAL, "Auftriebskraft F_A – so groß wie die Gewichtskraft des verdrängten Wassers"),
-                         (RED, "Gewichtskraft F_G des Körpers")])
-    ltext(d, 30, 464, "Beide Pfeile starten auf derselben grauen Grundlinie – so kannst du ihre Längen direkt vergleichen.", R(16), MUTED)
-    save(im, IMG + "auftrieb.png")
-
-
-# ================================================================ 5 · Reibung
-def reibung():
-    im, d = canvas(900, 420)
-    panel(d, 20, 14, 430, 300, "Becher wird gleichförmig gezogen", GREEN)
-    d.rectangle(P(44, 230, 426, 246), fill=LIGHT, outline=MUTED, width=int(2 * S))
-    for x in range(50, 424, 18): d.line(P(x, 246, x - 8, 258), fill=GRID, width=int(2 * S))
-    d.polygon([152 * S, 156 * S, 244 * S, 156 * S, 234 * S, 230 * S, 162 * S, 230 * S], fill=(226, 232, 238), outline=INK, width=int(2 * S))
-    d.rectangle(P(166, 180, 230, 228), fill=WATER)
-    d.arc(P(240, 166, 276, 202), start=270, end=90, fill=INK, width=int(4 * S))
-    arrow(d, 278, 184, 366, 184, GREEN, 6, 17); ctext(d, 322, 152, "Zugkraft", B(18), GREEN)   # gleich lang wie F_R: gleichförmig
-    arrow(d, 150, 200, 62, 200, RUST, 6, 17); ctext(d, 104, 172, "F_R", B(18), RUST)
-    arrow(d, 198, 232, 198, 296, RED, 6, 16); ltext(d, 206, 258, "F_G", B(18), RED)
-    arrow(d, 198, 154, 198, 92, TEAL, 6, 16); ltext(d, 206, 108, "F_N", B(18), TEAL)
-    ctext(d, 104, 208, "Reibung", R(15), RUST)
-    panel(d, 470, 14, 410, 300, "Abstoßen beim Gehen", ORANGE)
-    d.rectangle(P(500, 250, 860, 266), fill=LIGHT, outline=MUTED, width=int(2 * S))
-    d.polygon([600 * S, 196 * S, 640 * S, 196 * S, 700 * S, 236 * S, 700 * S, 250 * S, 590 * S, 250 * S],
-              fill=(214, 182, 140), outline=INK, width=int(2 * S))
-    d.rectangle(P(590, 240, 702, 252), fill=(70, 70, 76), outline=INK, width=int(2 * S))
-    arrow(d, 640, 272, 540, 272, ORANGE, 6, 17); ltext(d, 520, 282, "Fuß auf Boden (nach hinten)", R(15), ORANGE)
-    arrow(d, 660, 226, 790, 226, TEAL, 6, 17); ltext(d, 700, 196, "Boden auf Fuß (nach vorne)", R(15), TEAL)
-    ctext(d, 675, 118, "Haftreibung treibt an!", B(19), OLIVE)
-    d.line(P(20, 330, 880, 330), fill=GRID, width=int(2 * S))
-    ltext(d, 20, 340, "Reibung wirkt gegen das relative Gleiten an der Kontaktstelle – nicht automatisch gegen die Bewegung über den Boden.", R(16), INK)
-    ltext(d, 20, 366, "F_R = μ · F_N ist ein einfaches Näherungsmodell für Gleitreibung. Bis zum Losrutschen gilt F_H kleiner oder gleich μ_H · F_N.", R(16), MUTED)
-    save(im, IMG + "reibung.png")
-
-
-# ================================================================ 6 · Kapillarwirkung
-def kapillar():
-    im, d = canvas(900, 420)
-    panel(d, 30, 14, 400, 320, "Filterpapier im Wasser", TEAL)
-    d.rectangle(P(120, 196, 340, 318), fill=GLASS, outline=MUTED, width=int(2 * S))
-    d.rectangle(P(122, 244, 338, 316), fill=WATER)
-    d.line(P(120, 244, 340, 244), fill=TEAL, width=int(3 * S))
-    d.rectangle(P(206, 66, 248, 300), fill=(252, 250, 244), outline=MUTED, width=int(2 * S))
-    d.rectangle(P(208, 150, 246, 298), fill=(206, 226, 234))
-    d.line(P(206, 150, 248, 150), fill=TEAL, width=int(3 * S))
-    d.line(P(258, 150, 300, 150), fill=GREEN, width=int(2 * S))
-    arrow(d, 300, 244, 300, 154, GREEN, 5, 14)
-    ltext(d, 312, 116, "steigt über den", R(15), GREEN); ltext(d, 312, 136, "Wasserspiegel", R(15), GREEN)
-    rtext(d, 112, 234, "Wasserspiegel", R(15), MUTED)
-    rtext(d, 198, 118, "feuchte", B(15), TEAL); rtext(d, 198, 138, "Grenze", B(15), TEAL)
-    ltext(d, 254, 284, "3 mm tief", R(14), MUTED)
-    panel(d, 470, 14, 400, 320, "Enges benetzbares Röhrchen", ORANGE)
-    d.rectangle(P(520, 226, 760, 318), fill=GLASS, outline=MUTED, width=int(2 * S))
-    d.rectangle(P(522, 258, 758, 316), fill=WATER)
-    d.line(P(520, 258, 760, 258), fill=TEAL, width=int(3 * S))
-    d.rectangle(P(648, 110, 680, 300), fill=GLASS, outline=MUTED, width=int(2 * S))
-    d.rectangle(P(650, 152, 678, 298), fill=WATER)
-    d.arc(P(650, 140, 678, 160), start=0, end=180, fill=TEAL, width=int(3 * S))   # Wasser: Rand höher, Mitte tiefer (benetzend)
-    d.line(P(580, 152, 646, 152), fill=GREEN, width=int(2 * S))
-    arrow(d, 584, 258, 584, 156, GREEN, 5, 14); rtext(d, 574, 190, "Steighöhe", B(15), GREEN)
-    arrow(d, 614, 118, 646, 130, ORANGE, 4, 11); rtext(d, 608, 106, "Adhäsion an der Wand", R(14), ORANGE)
-    for cx, cy in ((720, 120), (742, 140), (714, 156), (740, 176)):
-        d.ellipse(P(cx - 10, cy - 10, cx + 10, cy + 10), fill=WATER, outline=TEAL, width=int(2 * S))
-    d.line(P(730, 132, 752, 150), fill=TEAL, width=int(2 * S)); d.line(P(724, 148, 748, 166), fill=TEAL, width=int(2 * S))
-    ltext(d, 762, 124, "Kohäsion:", B(16), TEAL); ltext(d, 762, 146, "Wasser hält", R(15), INK); ltext(d, 762, 166, "zusammen", R(15), INK)
-    d.line(P(30, 348, 870, 348), fill=GRID, width=int(2 * S))
-    ltext(d, 30, 358, "Adhäsion = Anziehung zwischen verschiedenen Stoffen · Kohäsion = Zusammenhalt in einem Stoff.", R(16), INK)
-    ltext(d, 30, 384, "Für den Wassertransport in einen hohen Baum braucht es zusätzlich den Transpirationssog.", R(16), MUTED)
-    save(im, IMG + "kapillar.png")
-
-
-# ================================================================ 7 · Druck
-def druck():
-    im, d = canvas(900, 520)
-    panel(d, 20, 14, 860, 250, "Gleiche Kraft, andere Fläche: p = F / A", GREEN)
-    for i, (cx, breite, lab, pfeile) in enumerate([(240, 60, "schmale Sohle: großer Druck", 2), (660, 190, "Schneeschuh: kleiner Druck", 6)]):
-        d.rounded_rectangle(P(cx - 34, 60, cx + 34, 160), radius=12 * S, fill=(104, 118, 82), outline=INK, width=int(2 * S))
-        d.rounded_rectangle(P(cx - breite / 2, 160, cx + breite / 2, 180), radius=6 * S, fill=WOOD, outline=INK, width=int(2 * S))
-        arrow(d, cx, 46, cx, 60, RED, 6, 12); ltext(d, cx + 42, 44, "F = 600 N", B(17), RED)
-        d.rectangle(P(cx - 130, 196, cx + 130, 212), fill=(236, 240, 246), outline=GRID, width=int(2 * S))
-        step = breite / (pfeile + 1)
-        for k in range(1, pfeile + 1):
-            px = cx - breite / 2 + k * step
-            arrow(d, px, 182, px, 196, TEAL, 4, 10)
-        ctext(d, cx, 220, lab, B(17), OLIVE)
-    ctext(d, 240, 242, "A = 0,03 m²  →  p = 20 000 Pa", R(17), MUTED)
-    ctext(d, 660, 242, "A = 0,30 m²  →  p = 2 000 Pa", R(17), MUTED)
-    panel(d, 20, 284, 860, 212, "Luft lässt sich zusammendrücken", ORANGE)
-    for i, (x, offen, lab) in enumerate([(80, True, "Öffnung offen: Luft entweicht, Kolben geht leicht"),
-                                         (490, False, "Öffnung zu: Druck steigt, die Luft drückt den Kolben zurück")]):
-        y = 350
-        d.rounded_rectangle(P(x, y, x + 240, y + 54), radius=8 * S, fill=GLASS, outline=MUTED, width=int(2 * S))
-        kolben = x + (120 if offen else 96)
-        d.rectangle(P(kolben, y + 2, kolben + 14, y + 52), fill=METAL, outline=INK, width=int(2 * S))
-        d.rectangle(P(kolben + 14, y + 20, x + 300, y + 34), fill=METAL, outline=INK, width=int(2 * S))
-        d.rectangle(P(x + 300, y + 4, x + 312, y + 50), fill=METAL, outline=INK, width=int(2 * S))
-        d.rectangle(P(x - 26, y + 20, x, y + 34), fill=GLASS, outline=MUTED, width=int(2 * S))
-        if not offen:
-            d.ellipse(P(x - 48, y + 12, x - 16, y + 44), fill=(226, 196, 162), outline=INK, width=int(2 * S))
-            ctext(d, x - 32, y - 26, "Finger", R(15), INK)
-        for k in range(6):
-            px, py = x + 12 + (k % 3) * 32, y + 14 + (k // 3) * 24
-            d.ellipse(P(px, py, px + 9, py + 9), fill=(196, 214, 226) if offen else TEAL, outline=None)
-        arrow(d, x + 330, y + 27, x + 280, y + 27, GREEN if offen else RUST, 6, 15)
-        if not offen: arrow(d, kolben - 50, y + 27, kolben - 4, y + 27, RED, 5, 13)   # Kraft der Luft auf den Kolben
-        ctext(d, x + 150, y + 86, lab, R(16), MUTED)
-    ctext(d, 450, 470, "Druck ist keine zusätzliche Kraftart – er verbindet eine Kraft mit der Fläche, auf die sie wirkt.", B(17), OLIVE)
-    save(im, IMG + "druck.png")
-
-
-# ================================================================ 8 · Kraft und Gegenkraft
-def gegenkraft():
-    im, d = canvas(900, 430)
-    panel(d, 20, 14, 500, 320, "Wechselwirkung: zwei Körper", TEAL)
-    for i, (x, col, lab) in enumerate([(70, GREEN, "Kraftmesser A"), (300, ORANGE, "Kraftmesser B")]):
-        d.rounded_rectangle(P(x, 110, x + 150, 180), radius=8 * S, fill=WHITE, outline=col, width=int(3 * S))
-        d.rectangle(P(x + 10, 126, x + 130, 150), fill=LIGHT, outline=MUTED, width=int(2 * S))
-        for k in range(1, 6): d.line(P(x + 10 + k * 20, 150, x + 10 + k * 20, 158), fill=MUTED, width=int(2 * S))
-        d.line(P(x + 50, 126, x + 50, 150), fill=RED, width=int(4 * S))
-        ctext(d, x + 75, 186, "2 N", B(21), RED)
-        ctext(d, x + 75, 88, lab, B(16), col)
-    d.arc(P(212, 134, 246, 162), start=90, end=270, fill=INK, width=int(4 * S))
-    d.arc(P(284, 134, 318, 162), start=270, end=90, fill=INK, width=int(4 * S))
-    arrow(d, 60, 240, 150, 240, GREEN, 6, 16); ltext(d, 60, 254, "B zieht an A", R(15), GREEN)
-    arrow(d, 480, 240, 390, 240, ORANGE, 6, 16); rtext(d, 480, 254, "A zieht an B", R(15), ORANGE)
-    ctext(d, 270, 290, "gleich groß · entgegengesetzt · verschiedene Körper", B(17), OLIVE)
-    ctext(d, 270, 312, "2 N und 2 N sind NICHT 4 N", B(17), RUST)
-    panel(d, 550, 14, 330, 320, "Gleichgewicht: ein Körper", ORANGE)
-    d.rectangle(P(600, 220, 840, 236), fill=WOOD, outline=INK, width=int(2 * S))
-    d.line(P(630, 236, 630, 290), fill=MUTED, width=int(4 * S)); d.line(P(810, 236, 810, 290), fill=MUTED, width=int(4 * S))
-    d.rounded_rectangle(P(660, 176, 780, 220), radius=5 * S, fill=(196, 150, 120), outline=INK, width=int(2 * S))
-    d.rectangle(P(656, 172, 784, 182), fill=(232, 226, 210), outline=INK, width=int(2 * S))
-    d.rounded_rectangle(P(650, 164, 790, 226), radius=10 * S, fill=None, outline=RUST, width=int(3 * S))
-    rtext(d, 646, 150, "Rahmen =", R(14), RUST); rtext(d, 646, 168, "das Buch", R(14), RUST)
-    arrow(d, 700, 196, 700, 116, TEAL, 6, 16); ctext(d, 700, 94, "Stützkraft", B(16), TEAL)   # gleich lang wie F_G
-    arrow(d, 744, 196, 744, 276, RED, 6, 16); ltext(d, 754, 224, "F_G", B(17), RED)
-    ctext(d, 715, 300, "beide am selben Körper – Summe null", R(15), OLIVE)
-    d.line(P(20, 350, 880, 350), fill=GRID, width=int(2 * S))
-    ltext(d, 20, 360, "Wechselwirkungspaar: zwei Körper, zwei Kräfte. Kräftegleichgewicht: ein Körper, mehrere Kräfte, Summe null.", R(16), INK)
-    ltext(d, 20, 386, "Die Gegenkraft zur Gewichtskraft auf das Buch ist die Anziehung des Buches auf die Erde – nicht die Stützkraft.", R(16), MUTED)
-    save(im, IMG + "gegenkraft.png")
 
 
 # ================================================================ 9 · Größen und Einheiten
@@ -727,7 +490,7 @@ if __name__ == "__main__":
     print("Icons:")
     for n, fn in NEUE_ICONS.items(): icon(n, fn)
     print("Bilder:")
-    wirkung(); bewegung(); gewicht(); auftrieb(); reibung(); kapillar(); druck(); gegenkraft(); einheiten(); projekt()
+    gewicht(); einheiten(); projekt()   # ruhige Bilder; Vorgänge sind animierte SVG (animationen.py)
     print("Versuchsskizzen:")
     _vs("Gruppe 1 · Weg und Zeit auf 5 m messen", vs_g1, "g1")
     _vs("Gruppe 2 · Masse wiegen, dann Gewichtskraft messen", vs_g2, "g2")

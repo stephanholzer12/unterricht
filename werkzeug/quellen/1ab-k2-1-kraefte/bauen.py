@@ -829,7 +829,9 @@ for f in ["theorie.html", "aufgaben.html"]:
     t = open(DST + f, encoding="utf-8").read()
     if "window.SIMINIT" not in t:
         i = t.rfind("</body>")
-        t = t[:i] + "<style>" + SIMS.CSS + "</style>" + SIMS.JS + t[i:]
+        # animierte SVG (animationen.py): Hochformat 440 – am Computer nicht breiter als 460 px, am Handy volle Breite
+        anim_css = "img[src$='.svg']{max-width:min(100%,460px);height:auto;display:block;margin-left:auto;margin-right:auto}"
+        t = t[:i] + "<style>" + SIMS.CSS + anim_css + "</style>" + SIMS.JS + t[i:]
         open(DST + f, "w", encoding="utf-8").write(t)
     if "id=\"lupe\"" not in t:
         assert t.rstrip().endswith("</html>"), f
