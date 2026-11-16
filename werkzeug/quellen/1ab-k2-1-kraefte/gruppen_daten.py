@@ -1,4 +1,4 @@
-"""Gruppenkarten K2.1 Mechanische Kräfte (v2, 11.11.2026) – EINE Quelle für Arbeitsblatt, Unterrichts-PPP und Lösungsmappe.
+"""Gruppenkarten K2.1 Mechanische Kräfte (v2, 11.11.2026) – EINE Quelle für Arbeitsblatt, Präsentation (Lösungsseite) und Lösungsmappe.
 Stephans Idee vom 11.11.2026: Die Themen sind fest (sieben Gruppen), den Versuch wählt jede Gruppe selbst – mit Material aus dem
 NAWI-Saal oder von zu Hause. Die Gruppen erarbeiten ihr Thema selbst (Leitfragen, Buch, Theorie-Seite, Video), bereiten Versuch und
 Präsentation vor und schreiben einen Steckbrief (Handout) für die Klasse. Prof. HOLZER macht nur Stunde 1 mit der ganzen Klasse.
@@ -36,7 +36,7 @@ G = {
      "saal": _KM + _WAAGE + [("Gewichtssatz 10 mg bis 100 g", "#59", 1), ("Messbecher mit Henkel 250 ml", "#87", 1), ("Messbecher mit Henkel 500 ml", "#88", 1)],
      "haus": "Gummiringe, ein kleiner Beutel oder Becher mit Henkel, Gegenstände bis etwa 500 g.",
      "formel": "F_G = m · g (N; m in kg; g = 10 N/kg)",
-     "achtung": "Kraftmesser langsam belasten, höchstens bis zum Ende der Skala (10 N)."},
+     "achtung": "Kraftmesser langsam belasten und unter 5 N bleiben."},
  3: {"thema": "Auftrieb", "titel": "Auftrieb: sinken, schweben, schwimmen", "buch": "Buch S. 52–53", "teil": "auftrieb", "karte": "k4",
      "leit": ["Was ist die Auftriebskraft und in welche Richtung wirkt sie?",
               "Was sagt das Prinzip von Archimedes? Erkläre es in eigenen Worten.",
@@ -71,7 +71,7 @@ G = {
                "Eine Büroklammer vorsichtig auf Wasser legen, sodass sie liegen bleibt (Oberflächenspannung)."],
      "saal": [("Filterpapier 50 × 55 mm (100 Stück)", "#54", 100), ("Griffin-Becher 50 ml", "#62", 1), ("Petrischale Glas ø 80 mm", "#106", 7),
               ("Tropfpipette PE 3 ml (50 Stück)", "#156", 50), ("Aufbewahrungswanne tief", "#7", 7)],
-     "haus": "Küchenrolle, zwei Gläser oder Plastikbecher, Büroklammern, Lebensmittelfarbe.",
+     "haus": "Küchenrolle, zwei Plastikbecher, Büroklammern, Lebensmittelfarbe.",
      "formel": "keine Pflichtformel",
      "achtung": "Nur Wasser und Lebensmittelfarbe. Glas nur aus dem Saal und vorsichtig verwenden."},
  6: {"thema": "Druck", "titel": "Druck: Kraft auf eine Fläche", "buch": "Buch S. 58–60", "teil": "druck", "karte": "k7",
@@ -81,7 +81,7 @@ G = {
               "Warum spürt man beim Tauchen Druck in den Ohren?"],
      "ideen": ["Spritze ohne Nadel: vorne zuhalten und drücken – einmal mit Luft, einmal mit Wasser gefüllt.",
                "Fläche einer Schuhsohle auf Karopapier auszählen und den Druck beim Stehen auf einem und auf zwei Beinen ausrechnen. Rechnet mit einer gewählten Masse von 70 kg – keine echte Körpermasse eintragen.",
-               "Glas oder Becher randvoll mit Wasser, eine Postkarte darauf, umdrehen (über der Wanne): Die Karte bleibt – warum?"],
+               "Plastikbecher randvoll mit Wasser, eine Postkarte darauf, umdrehen (über der Wanne): Die Karte bleibt – warum?"],
      "saal": [("Kunststoffspritze 50 ml (ohne Nadel)", "#77", 4), ("Luftballone (50 Stück)", "#84", 50), ("Aufbewahrungswanne tief", "#7", 7),
               ("Messbecher mit Henkel 250 ml", "#87", 1)],
      "haus": "Postkarte, Plastikbecher, Karopapier, ein Paar Schuhe.",
@@ -126,9 +126,9 @@ VIDEOS = {
 
 ROLLEN = ["Leitung und Zeit", "Quellen und Video", "Versuch und Material", "Schriftführung (Steckbrief, Teams)", "Präsentation und Probe"]
 
-# Regeln für Material von zu Hause (Sicherheit) – stehen im Arbeitsblatt, auf der PPP-Folie und in der Lösungsmappe
-ZUHAUSE_JA = ["Dinge aus Kunststoff, Papier, Karton, Holz und Stoff", "Wasser, Speisesalz, Lebensmittelfarbe", "Knete, Gummiringe, Strohhalme, Klebeband",
-              "Spielzeugauto, Murmel, Ball, Schuhe"]
+# Regeln für Material von zu Hause (Sicherheit) – stehen im Arbeitsblatt, in der Präsentation und auf der Lösungsseite
+ZUHAUSE_JA = ["Dinge aus Kunststoff, Papier, Karton, Holz und Stoff", "Wasser, Speisesalz, Lebensmittelfarbe", "Knete, Gummiringe, Strohhalme, Klebeband, Alufolie, Büroklammern",
+              "Spielzeugauto, Murmel, Ball, Schuhe, kleine Steine"]
 ZUHAUSE_NEIN = ["Feuer, Kerzen, Feuerzeug", "Chemikalien, Reinigungs- und Spülmittel, Spraydosen", "Glas von zu Hause, Messer, Nägel, Spitzes",
                 "Strom aus der Steckdose, Akkus, Powerbanks", "Druckbehälter, Feuerwerk, Waffen oder Waffenteile", "Lebensmittel zum Essen, Tiere"]
 

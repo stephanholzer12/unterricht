@@ -225,8 +225,8 @@ def bewegung():
             d.line(P(xs[i + 1], y + 70, xs[i + 1], y + 82), fill=col, width=int(3 * S))
             ctext(d, (xs[i] + xs[i + 1]) / 2, y + 84, "Δs", R(14), col)
     # Kurve mit gleichem Tempo
-    y = 320
-    ltext(d, 30, y - 24, "gleiches Tempo, aber Kurve: die Richtung von v ändert sich", B(18), TEAL)
+    y = 350
+    ltext(d, 30, 290, "gleiches Tempo, aber Kurve: die Richtung von v ändert sich", B(18), TEAL)
     d.arc(P(300, y - 10, 600, y + 230), start=190, end=350, fill=GRID, width=int(4 * S))
     for ang, lab in ((200, "t0"), (270, "t1"), (340, "t2")):
         a = math.radians(ang); cx, cy, rx, ry = 450, y + 110, 150, 120
@@ -248,17 +248,18 @@ def gewicht():
     im, d = canvas(900, 420)
     for i, (x, titel, col) in enumerate([(40, "auf der Erde", TEAL), (480, "am Mond", MUTED)]):
         panel(d, x, 14, 380, 360, titel, col)
-    for i, (x0, pfeil, kraft, g) in enumerate([(40, 100, "60 N", "g = 10 N/kg"), (480, 16, "ca. 10 N", "g ca. 1,6 N/kg")]):
+    for i, (x0, pfeil, kraft, g) in enumerate([(40, 96, "60 N", "g = 10 N/kg"), (480, 16, "ca. 10 N", "g ca. 1,6 N/kg")]):
         cx = x0 + 150
         # Rucksack
         d.rounded_rectangle(P(cx - 58, 70, cx + 58, 190), radius=20 * S, fill=(104, 118, 82), outline=INK, width=int(2 * S))
         d.rounded_rectangle(P(cx - 40, 96, cx + 40, 140), radius=10 * S, fill=(126, 142, 98), outline=MUTED, width=int(2 * S))
         d.arc(P(cx - 74, 62, cx - 34, 118), start=90, end=270, fill=INK, width=int(4 * S))
         d.arc(P(cx + 34, 62, cx + 74, 118), start=270, end=90, fill=INK, width=int(4 * S))
-        ctext(d, cx, 200, "m = 6 kg", B(21), OLIVE)
-        ctext(d, cx, 226, "(gleich!)", R(15), MUTED)
-        arrow(d, cx, 250, cx, 250 + pfeil + 8, RED, 7, 18)
-        ltext(d, cx + 16, 250 + max(pfeil, 24) / 2 - 8, "F_G = " + kraft, B(20), RED)
+        ltext(d, cx + 86, 84, "m = 6 kg", B(21), OLIVE)
+        ltext(d, cx + 86, 112, "(gleich!)", R(15), MUTED)
+        # Pfeil am Rucksack angesetzt, Längen im Verhältnis 60 N : 10 N = 6 : 1
+        arrow(d, cx, 190, cx, 190 + pfeil, RED, 7, 18 if pfeil > 40 else 10)
+        ltext(d, cx + 16, 190 + max(pfeil, 24) / 2 - 8, "F_G = " + kraft, B(20), RED)
         rtext(d, x0 + 368, 44, g, B(16), MUTED)
     d.line(P(40, 380, 860, 380), fill=GRID, width=int(2 * S))
     ctext(d, 450, 388, "F_G = m · g   ·   Masse in kg bleibt gleich, Gewichtskraft in N hängt vom Ort ab", B(18), OLIVE)
@@ -286,7 +287,9 @@ def auftrieb():
             cy = 176
             d.ellipse(P(cx - 34, cy - 34, cx + 34, cy + 34), fill=WOOD, outline=INK, width=int(2 * S))
             fa, fg = (96, 54) if i == 0 else (70, 70)
-            if i == 0: arrow(d, cx + 88, cy + 24, cx + 88, cy - 44, GREEN, 5, 14)
+            if i == 0:
+                arrow(d, cx + 88, cy + 24, cx + 88, cy - 44, GREEN, 5, 14)
+                ctext(d, cx + 84, cy + 30, "Bewegung", R(13), GREEN)
         # Kräftepfeile nebeneinander auf derselben Grundlinie – die Längen sind direkt vergleichbar
         arrow(d, cx - 30, ya, cx - 30, ya - fa, TEAL, 7, 17)
         arrow(d, cx + 30, ya, cx + 30, ya + fg, RED, 7, 17)
@@ -303,13 +306,13 @@ def auftrieb():
 # ================================================================ 5 · Reibung
 def reibung():
     im, d = canvas(900, 420)
-    panel(d, 20, 14, 430, 300, "Becher wird gezogen", GREEN)
+    panel(d, 20, 14, 430, 300, "Becher wird gleichförmig gezogen", GREEN)
     d.rectangle(P(44, 230, 426, 246), fill=LIGHT, outline=MUTED, width=int(2 * S))
     for x in range(50, 424, 18): d.line(P(x, 246, x - 8, 258), fill=GRID, width=int(2 * S))
     d.polygon([152 * S, 156 * S, 244 * S, 156 * S, 234 * S, 230 * S, 162 * S, 230 * S], fill=(226, 232, 238), outline=INK, width=int(2 * S))
     d.rectangle(P(166, 180, 230, 228), fill=WATER)
     d.arc(P(240, 166, 276, 202), start=270, end=90, fill=INK, width=int(4 * S))
-    arrow(d, 278, 184, 390, 184, GREEN, 6, 17); ctext(d, 334, 152, "Zugkraft", B(18), GREEN)
+    arrow(d, 278, 184, 366, 184, GREEN, 6, 17); ctext(d, 322, 152, "Zugkraft", B(18), GREEN)   # gleich lang wie F_R: gleichförmig
     arrow(d, 150, 200, 62, 200, RUST, 6, 17); ctext(d, 104, 172, "F_R", B(18), RUST)
     arrow(d, 198, 232, 198, 296, RED, 6, 16); ltext(d, 206, 258, "F_G", B(18), RED)
     arrow(d, 198, 154, 198, 92, TEAL, 6, 16); ltext(d, 206, 108, "F_N", B(18), TEAL)
@@ -350,7 +353,7 @@ def kapillar():
     d.line(P(520, 258, 760, 258), fill=TEAL, width=int(3 * S))
     d.rectangle(P(648, 110, 680, 300), fill=GLASS, outline=MUTED, width=int(2 * S))
     d.rectangle(P(650, 152, 678, 298), fill=WATER)
-    d.arc(P(650, 144, 678, 162), start=180, end=360, fill=TEAL, width=int(3 * S))
+    d.arc(P(650, 140, 678, 160), start=0, end=180, fill=TEAL, width=int(3 * S))   # Wasser: Rand höher, Mitte tiefer (benetzend)
     d.line(P(580, 152, 646, 152), fill=GREEN, width=int(2 * S))
     arrow(d, 584, 258, 584, 156, GREEN, 5, 14); rtext(d, 574, 190, "Steighöhe", B(15), GREEN)
     arrow(d, 614, 118, 646, 130, ORANGE, 4, 11); rtext(d, 608, 106, "Adhäsion an der Wand", R(14), ORANGE)
@@ -382,7 +385,7 @@ def druck():
     ctext(d, 660, 242, "A = 0,30 m²  →  p = 2 000 Pa", R(17), MUTED)
     panel(d, 20, 284, 860, 212, "Luft lässt sich zusammendrücken", ORANGE)
     for i, (x, offen, lab) in enumerate([(80, True, "Öffnung offen: Luft entweicht, Kolben geht leicht"),
-                                         (490, False, "Öffnung zu: Druck steigt, Kolben drückt zurück")]):
+                                         (490, False, "Öffnung zu: Druck steigt, die Luft drückt den Kolben zurück")]):
         y = 350
         d.rounded_rectangle(P(x, y, x + 240, y + 54), radius=8 * S, fill=GLASS, outline=MUTED, width=int(2 * S))
         kolben = x + (120 if offen else 96)
@@ -397,7 +400,7 @@ def druck():
             px, py = x + 12 + (k % 3) * 32, y + 14 + (k // 3) * 24
             d.ellipse(P(px, py, px + 9, py + 9), fill=(196, 214, 226) if offen else TEAL, outline=None)
         arrow(d, x + 330, y + 27, x + 280, y + 27, GREEN if offen else RUST, 6, 15)
-        if not offen: arrow(d, kolben - 10, y + 27, kolben - 56, y + 27, RED, 5, 13)
+        if not offen: arrow(d, kolben - 50, y + 27, kolben - 4, y + 27, RED, 5, 13)   # Kraft der Luft auf den Kolben
         ctext(d, x + 150, y + 86, lab, R(16), MUTED)
     ctext(d, 450, 470, "Druck ist keine zusätzliche Kraftart – er verbindet eine Kraft mit der Fläche, auf die sie wirkt.", B(17), OLIVE)
     save(im, IMG + "druck.png")
@@ -427,7 +430,7 @@ def gegenkraft():
     d.rectangle(P(656, 172, 784, 182), fill=(232, 226, 210), outline=INK, width=int(2 * S))
     d.rounded_rectangle(P(650, 164, 790, 226), radius=10 * S, fill=None, outline=RUST, width=int(3 * S))
     rtext(d, 646, 150, "Rahmen =", R(14), RUST); rtext(d, 646, 168, "das Buch", R(14), RUST)
-    arrow(d, 700, 196, 700, 128, TEAL, 6, 16); ctext(d, 700, 104, "Stützkraft", B(16), TEAL)
+    arrow(d, 700, 196, 700, 116, TEAL, 6, 16); ctext(d, 700, 94, "Stützkraft", B(16), TEAL)   # gleich lang wie F_G
     arrow(d, 744, 196, 744, 276, RED, 6, 16); ltext(d, 754, 224, "F_G", B(17), RED)
     ctext(d, 715, 300, "beide am selben Körper – Summe null", R(15), OLIVE)
     d.line(P(20, 350, 880, 350), fill=GRID, width=int(2 * S))

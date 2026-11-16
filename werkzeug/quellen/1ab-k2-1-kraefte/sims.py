@@ -37,7 +37,7 @@ PHET = {
  "federn": {"titel": "Massen und Federn: Grundlagen", "url": "https://phet.colorado.edu/de/simulations/masses-and-springs-basics",
             "text": "Häng Massen an Federn. Im Bildschirm **Experimente** kannst du auf **Mond** oder **Jupiter** wechseln – die Feder dehnt sich weniger bzw. mehr."},
  "auftrieb": {"titel": "Auftrieb: Grundlagen", "url": "https://phet.colorado.edu/de/simulations/buoyancy-basics",
-              "text": "Leg Blöcke aus verschiedenen Stoffen ins Wasser und lass dir Gewichtskraft und Auftriebskraft als Pfeile anzeigen. Einige Beschriftungen sind noch englisch."},
+              "text": "Leg Blöcke aus verschiedenen Stoffen ins Wasser und lass dir Gewichtskraft und Auftriebskraft als Pfeile anzeigen."},
  "druck": {"titel": "Unter Druck", "url": "https://phet.colorado.edu/de/simulations/under-pressure",
            "text": "Miss den Druck in verschiedenen Tiefen eines Beckens. Was ändert sich, wenn du tiefer gehst – und was, wenn du eine andere Flüssigkeit nimmst?"},
 }

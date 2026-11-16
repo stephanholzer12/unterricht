@@ -4,7 +4,7 @@ Jahresplan: Block »E Physik«, Einheiten E15–E17 (bloecke.json: 3+3+1 = 7 Stu
 Keine Daten auf den Kadetten-Seiten (13.11.2026) – es zählt die Reihenfolge der Stunden; Termine und Referate trägt Prof. HOLZER im Kalender der Lösungsseite ein. Beide Klassen bekommen denselben Fahrplan.
 Sieben Gruppen: 1AK 28 Kadetten = 7 Vierergruppen · 1BK 29 Kadetten = 6 Vierergruppen + 1 Fünfergruppe. Keine namentliche Einteilung auf der öffentlichen Seite.
 Versuchs-ID: das bereits vorhandene Gruppenprojekt V1.20 (Stephans Vorgabe) – es werden KEINE neuen Kapitel-Versuchsnummern vergeben.
-Eine Quelle für Handy-Seiten, Unterrichts-PPP und Lösungsmappe. Kein CLIL, kein Kahoot, keine Hausübung.
+Eine Quelle für Handy-Seiten, Präsentation (Lösungsseite) und Lösungsmappe. Kein CLIL, kein Kahoot, keine Hausübung.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
 STAND = "15.11.2026"
@@ -73,7 +73,7 @@ T = [
   "tipps": [], "tip": ["Was eine Kraft bewirkt", "theorie.html#wirkung"]},
 
  {"id": "a1", "sim": ["kraefte"], "nr": 2, "title": "Kraft und Bewegung unterscheiden", "src": "Buch S. 45–49", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 13,
-  "q": "Fünf kurze Teilaufgaben. a) und b) zum Auswählen, c) bis e) zum Rechnen. Schreib bei den Rechnungen immer die Einheit dazu. Rechne mit g = 10 N/kg.",
+  "q": "Fünf kurze Teilaufgaben. a) und b) zum Auswählen, c) bis e) zum Rechnen. Schreib bei den Rechnungen immer die Einheit dazu.",
   "hint": "Frag dich bei a) und b) zuerst: Ändert sich Tempo, Richtung oder Form? Für c) gilt v = s / t, für e) gilt F = m · a.",
   "type": "multi",
   "fields": [["wirkung", "a) Ein Fahrrad fährt mit unverändertem Tempo durch eine Kurve. Was ändert sich?",
@@ -180,7 +180,7 @@ T = [
   "marke": "SELBSTSTUDIUM",
   "q": "Während die Gruppen präsentieren, schreibst du mit: zu jeder Gruppe die Kernaussage in einem Satz und eine Formel oder ein Beispiel. "
        "Stichwörter genügen. Am Ende hast du drei Minuten zum Ergänzen – dazu hilft dir der Steckbrief der Gruppe in Teams.",
-  "hint": "Handy liegt während der Präsentationen auf dem Tisch. Du darfst auch auf Papier mitschreiben und später abtippen.",
+  "hint": "Während der Präsentationen ist das Handy weg: Du schreibst auf Papier mit und tippst es danach hier ab.",
   "type": "multi",
   "fields": [["m%d" % n, "Gruppe %d · %s" % (n, t)] for n, t in [(1, "Bewegung"), (2, "Gewichtskraft"), (3, "Auftrieb"), (4, "Reibung"),
                                                                   (5, "Kapillarwirkung"), (6, "Druck"), (7, "Kraft und Gegenkraft")]],
@@ -200,14 +200,14 @@ T = [
               ["die Haftreibung zwischen Schuh und Boden", "möglichst gar keine Wechselwirkung mit dem Boden", "eine immer nach hinten gerichtete Kraft des Bodens auf den Fuß"]],
              ["papier", "d) In Filterpapier steigt der feuchte Rand über den Wasserspiegel. Welche Erklärung passt?",
               ["Wasser breitet sich in feinen benetzbaren Zwischenräumen aus", "Das Papier bildet elektrische Energie", "Wasser wird schwerelos"]],
-             ["druck", "e) Eine senkrechte Kraft von 120 N verteilt sich gleichmäßig auf 0,02 m². Berechne den mittleren Druck (mit Einheit)."],
+             ["druck", "e) Eine senkrechte Kraft von 120 N verteilt sich gleichmäßig auf 0,02 m². Berechne den mittleren Druck in Pa (Pascal)."],
              ["gegenkraft", "f) Die Erde zieht einen Ball nach unten. Was ist die Gegenkraft derselben Wechselwirkung?",
-              ["Der Ball zieht die Erde an", "Die Luft bremst den Ball", "Eine Tischplatte drückt irgendeinen Gegenstand hoch"]],
+              ["Der Ball zieht die Erde an", "Die Luft bremst den Ball", "Eine Tischplatte drückt einen anderen Gegenstand hoch"]],
              ["gleichgewicht", "g) Ein Körper bewegt sich gerade und mit gleichbleibender Geschwindigkeit. Welche Aussage kann stimmen?",
               ["Mehrere Kräfte auf ihn gleichen sich aus", "Auf ihn muss zwingend genau eine Kraft wirken", "Seine Geschwindigkeit muss jede Sekunde größer werden"]],
              ["beschleunigung", "h) Ein Fahrzeug hält sein Tempo, ändert aber die Fahrtrichtung. Ist es physikalisch beschleunigt?",
               ["ja, weil sich die Richtung der Geschwindigkeit ändert", "nein, weil nur schneller werden zählt", "nur, wenn seine Masse zunimmt"]],
-             ["wegzeit", "i) Ein Körper legt geradeaus 9 m in 6 s zurück. Berechne die mittlere Schnelligkeit (mit Einheit)."],
+             ["wegzeit", "i) Ein Körper legt geradeaus 9 m in 6 s zurück. Berechne die mittlere Schnelligkeit in m/s."],
              ["newton", "j) Auf 3 kg Masse wirkt eine resultierende Kraft von 12 N. Berechne die Beschleunigung (mit Einheit)."]],
   "chk": {"rucksack": {"num": 60, "unit": "N", "tol": 1},
           "schwimmen": {"sel": "Auftriebskraft und Gewichtskraft sind gleich groß"},
@@ -226,7 +226,7 @@ T = [
          "papier": {"Das Papier bildet elektrische Energie": "Hier wird keine elektrische Energie erzeugt.",
                     "Wasser wird schwerelos": "Die Gewichtskraft wirkt weiterhin."},
          "gegenkraft": {"Die Luft bremst den Ball": "Der Luftwiderstand ist eine andere Wechselwirkung.",
-                        "Eine Tischplatte drückt irgendeinen Gegenstand hoch": "Für das Kraftpaar müssen dieselben zwei Körper betrachtet werden."},
+                        "Eine Tischplatte drückt einen anderen Gegenstand hoch": "Für das Kraftpaar müssen dieselben zwei Körper betrachtet werden."},
          "gleichgewicht": {"Auf ihn muss zwingend genau eine Kraft wirken": "Eine einzelne nicht ausgeglichene Kraft würde seine Geschwindigkeit ändern.",
                            "Seine Geschwindigkeit muss jede Sekunde größer werden": "Die Bewegung wurde als gleichförmig beschrieben."},
          "beschleunigung": {"nein, weil nur schneller werden zählt": "Die physikalische Bedeutung ist weiter als die Alltagssprache.",
@@ -248,7 +248,7 @@ T = [
 
  # --------------------------------------------------------------- Zusatz · Für Schnelle und Neugierige
  {"id": "z1", "sim": ["reibung", "gegenkraft"], "nr": 9, "title": "Drei Behauptungen prüfen", "src": "Buch S. 52–61", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
-  "q": "Entscheide bei jeder Behauptung, ob sie stimmt. d) Begründe die Behauptung, die dir am schwersten gefallen ist, in einem Satz.",
+  "q": "Entscheide bei jeder Behauptung, ob sie stimmt. d) Bei welcher Behauptung war es am schwersten? Begründe deine Entscheidung in einem Satz.",
   "hint": "Achte bei c) darauf, auf welchen Körper die beiden Kräfte wirken.",
   "type": "multi",
   "fields": [["b1", "a) Reibung bremst immer die Bewegung eines Körpers relativ zum Boden.", STIMMT, False],
@@ -273,7 +273,7 @@ T = [
        "c) Um welchen Faktor ändert sich der Druck? d) Was heißt das für Schneeschuhe?",
   "hint": "p = F / A. Für c) teile den größeren Druck durch den kleineren.",
   "type": "multi",
-  "fields": [["p1", "a) Druck bei 0,03 m² (mit Einheit)"], ["p2", "b) Druck bei 0,30 m² (mit Einheit)"],
+  "fields": [["p1", "a) Druck bei 0,03 m² in Pa"], ["p2", "b) Druck bei 0,30 m² in Pa"],
              ["faktor", "c) Der zweite Druck ist …", ["zehnmal kleiner", "zehnmal größer", "gleich groß"]],
              ["schnee", "d) Bedeutung für Schneeschuhe (1 Satz)"]],
   "chk": {"p1": {"num": 20000, "unit": "Pa", "tol": 200}, "p2": {"num": 2000, "unit": "Pa", "tol": 20},
@@ -290,10 +290,12 @@ T = [
   "tip": ["Druck: Kraft auf eine Fläche", "theorie.html#druck"]},
 
  {"id": "z3", "nr": 11, "title": "Forschung prüfen: Schmieren mit einem Pulver?", "src": "Recherche im Internet", "own": False, "tag": "Zusatz", "h": 0, "zeit": 10,
-  "q": "Lies die Pressemitteilung der TU Wien vom 18.02.2025 »Extrem geringe Reibung durch neues pulverförmiges Schmiermittel« "
-       "(tuwien.at → Aktuelles → Presseaussendungen). a) Wer berichtet? b) Worin besteht die Idee des Schmiermittels? "
+  "link": ["Bericht bei chemie.de öffnen", "https://www.chemie.de/news/1185605/extrem-geringe-reibung-durch-neues-pulverfoermiges-schmiermittel.html",
+           "chemie.de (LUMITOS AG) · 19.02.2025 · gibt die Pressemitteilung der TU Wien vom 18.02.2025 wieder"],
+  "q": "Lies den Bericht »Extrem geringe Reibung durch neues pulverförmiges Schmiermittel« (Knopf »Bericht bei chemie.de öffnen«). "
+       "Er gibt eine Pressemitteilung der TU Wien wieder. a) Wer hat geforscht und berichtet? b) Worin besteht die Idee des Schmiermittels? "
        "c) Was ist in dem Beitrag NICHT für beliebige Maschinen nachgewiesen? d) Ist eine Pressemitteilung über die eigene Forschung eine unabhängige Quelle?",
-  "hint": "Achte auf den Aussender und darauf, wer die Forschung gemacht hat. Die verlinkte Originalarbeit ist Li et al., Advanced Science 2025.",
+  "hint": "Achte darauf, wer die Forschung gemacht hat und unter welchen Bedingungen es getestet wurde. Die Originalarbeit ist Li et al., Advanced Science 2025.",
   "type": "multi",
   "fields": [["wer", "a) Wer berichtet? (Einrichtung und Aussender)"],
              ["idee", "b) Idee des Schmiermittels (1 Satz)"],
@@ -301,14 +303,14 @@ T = [
              ["unab", "d) Ist das eine unabhängige Quelle?", JANEIN, False]],
   "chk": {"wer": {"kw": [["TU Wien", r"tu wien|technische universitaet wien|technische universität wien|aigner"]], "man": True},
           "idee": {"kw": [["fester Stoff schmiert", r"pulver|feststoff|fester stoff|schicht|film|gleit|trocken"]], "man": True},
-          "nicht": {"kw": [["kein Ersatz für jede Maschine", r"nicht jede|beliebig|alle maschinen|jeder maschine|universell|ueberall|überall|nicht bewiesen|nicht nachgewiesen|nicht gezeigt"]], "man": True},
+          "nicht": {"kw": [["kein Ersatz für jede Maschine / nur feucht", r"nicht jede|beliebig|alle maschinen|jeder maschine|universell|ueberall|überall|nicht bewiesen|nicht nachgewiesen|nicht gezeigt|feucht|nass|trocken"]], "man": True},
           "unab": {"sel": "nein"}},
   "fb": {"unab": {"ja": "Die TU Wien berichtet über ihre eigene Forschung. Das ist ein Eigenbericht und keine unabhängige Bestätigung."}},
-  "sol": [["Lösung", ["a) Die TU Wien berichtet über eigene Forschung; Aussender ist Florian Aigner, Forschungsteams Gachot und Eder.",
+  "sol": [["Lösung", ["a) Geforscht haben Teams der TU Wien (Prof. Gachot und Prof. Eder); die TU Wien berichtet in einer Pressemitteilung über ihre eigene Forschung, chemie.de gibt sie wieder.",
                       "b) Ein geschichteter fester Stoff kann unter den untersuchten Bedingungen einen gleitenden Film bilden und so die Reibung stark senken.",
-                      "c) Nicht nachgewiesen ist ein Ersatz aller Schmiermittel in jeder Maschine. Gezeigt wurde es nur unter den untersuchten Bedingungen.",
+                      "c) Nicht nachgewiesen ist ein Ersatz aller Schmiermittel in jeder Maschine. Gezeigt wurde es nur unter den untersuchten (feuchten) Bedingungen.",
                       "d) nein – eine Einrichtung, die über ihre eigene Forschung berichtet, ist keine unabhängige Quelle. Die Originalarbeit (Li et al., Advanced Science 2025, DOI 10.1002/advs.202415268) ist der Nachweis, nicht die Bestätigung."]]],
-  "tipps": ["Suche im Beitrag zuerst das Datum und den Namen des Aussenders. Beides steht oben bzw. am Ende.",
+  "tipps": ["Suche im Bericht zuerst das Datum und wer geforscht hat. Lies dann, unter welchen Bedingungen getestet wurde.",
             "k5",
             "Lies im Buch S. 54–56 den Abschnitt »Die Reibungskraft«, damit du die Begriffe Haftreibung und Gleitreibung sicher verwendest."],
   "tip": ["Reibung hilft und bremst", "theorie.html#reibung"]},
@@ -316,7 +318,7 @@ T = [
   "marke": "ZUSATZ",
   "link": ["Kräfte und Bewegung: Grundlagen öffnen", "https://phet.colorado.edu/de/simulations/forces-and-motion-basics",
            "PhET Interactive Simulations, University of Colorado Boulder · Deutsch · CC BY 4.0 · läuft im Browser, auch am Handy"],
-  "q": "Ein Versuch am Handy – du schreibst ein Protokoll wie im Labor. Öffne die Simulation (Knopf oben) und tippe auf den Bildschirm »Beschleunigung«. "
+  "q": "Ein Versuch am Handy – du schreibst ein Protokoll wie im Labor. Öffne die Simulation (Knopf »Simulation öffnen«) und tippe auf den Bildschirm »Beschleunigung«. "
        "Setz die Häkchen bei Kräfte, Kräftesumme, Werte, Massen und Beschleunigung. Schieb die Reibung ganz auf »keine«. Zieh die Kiste (50 kg) auf die Fläche. "
        "Stell die Kraft am Regler oder mit den Pfeilen darüber ein und lies die Beschleunigung ab, solange die Kiste fährt. Mit dem runden Pfeil unten rechts setzt du alles zurück.",
   "hint": "Drück vor dem Einstellen auf Pause – sonst springt der Regler beim Loslassen auf 0 N zurück. Dann Start und ablesen.",
@@ -363,7 +365,7 @@ T.append({
     "id": "z5", "nr": 13, "title": "Lesen und prüfen: Winterreifen – billig oder sicher?", "src": "ingenieur.de · Buch S. 54–56",
     "own": False, "tag": "Zusatz", "h": 0, "zeit": 12, "marke": "ZUSATZ",
     "link": ["Artikel bei ingenieur.de öffnen", REIFEN["url"], REIFEN["herkunft"]],
-    "q": "Spätestens beim Führerschein betrifft dich das: Reifen entscheiden, wie gut ein Auto bremst. Lies den Artikel (Knopf oben, ca. 5 min) "
+    "q": "Spätestens beim Führerschein betrifft dich das: Reifen entscheiden, wie gut ein Auto bremst. Lies den Artikel (Knopf »Artikel bei ingenieur.de öffnen«, ca. 5 min) "
          "und prüf ihn mit dem, was du über Haftreibung weißt.",
     "hint": "Such im Text nach »31«, »80 km/h« und »mangelhaft«.",
     "type": "multi",
@@ -378,7 +380,7 @@ T.append({
     "chk": {"anzahl": {"sel": "31"}, "weg": {"sel": "über 15 Meter"}, "billig": {"sel": "elf"},
             "geld": {"kw": [["Hersteller / Händler / Interesse", r"herstell|händl|haendl|verkau|firma|firmen|marke|geld|verdien|gewinn|werb|interesse"]], "need": 1, "man": True},
             "haft": {"kw": [["Reibung / Haftung / Grip", r"reib|haft|grip|griff|halt"]], "need": 1, "man": True}},
-    "fb": {"anzahl": {"225": "225/40 R18 ist die Reifengröße, nicht die Zahl der Modelle.", "11": "11 ist die Zahl der Reifen mit »mangelhaft«."},
+    "fb": {"anzahl": {"225": "225/40 R18 ist die Reifengröße, nicht die Zahl der Modelle.", "11": "11 ist die Zahl der günstigen Modelle mit »mangelhaft«."},
            "weg": {"etwa 1 Meter": "Der Artikel nennt einen deutlich größeren Unterschied – such nach »80 km/h«.", "kein Unterschied": "Lies die Überschrift noch einmal."},
            "billig": {"keines": "Such im Text nach »mangelhaft«.", "zwei": "Zwei Budgetreifen bekamen »befriedigend« – wie viele »mangelhaft«?"}},
     "sol": [["Lösung", ["a) 31 Winterreifen-Modelle der Größe 225/40 R18 – auf Schnee, Eis, nasser und trockener Fahrbahn.",
@@ -387,9 +389,9 @@ T.append({
                         "d) Hersteller und Händler verdienen am Verkauf; laut Artikel kostet ein günstiger Reifen ab 95 €, ein Premiumreifen 177 €. "
                         "Darum zählt, wer testet und wie: hier ein Autofahrerclub (ADAC) mit 31 Reifen unter gleichen Bedingungen – und nicht die Werbung eines Herstellers. "
                         "Auch eine Zeitschrift lebt von Werbung: am besten mehrere Tests vergleichen.",
-                        "e) Die Haftreibung zwischen Reifen und Straße bremst das Auto. Auf Schnee ist sie klein; ein guter Winterreifen hat mehr Grip "
+                        "e) Die Haftreibung zwischen Reifen und Straße bremst das Auto. Auf Schnee ist die größtmögliche Haftreibung klein; ein guter Winterreifen hat mehr Grip "
                         "(passende Gummimischung und Profil) und damit eine größere Haftreibung – der Bremsweg wird kürzer."]]],
-    "tipps": ["Such im Text nach »31«, »80 km/h« und »mangelhaft«.", "k5", "Buch S. 54–56: Reibung"],
+    "tipps": ["Die Zahlen stehen im ersten Drittel des Artikels; »mangelhaft« kommt im Teil über die Billigreifen vor.", "k5", "Buch S. 54–56: Reibung"],
 })
 
 # ---------------------------------------------------------------- Kontrollen
@@ -566,6 +568,9 @@ QUELLEN = [
  ("W8", "Extrem geringe Reibung durch neues pulverförmiges Schmiermittel (18.02.2025)", "TU Wien, Aussender Florian Aigner",
   "https://www.tuwien.at/tu-wien/aktuelles/presseaussendungen/news/extrem-geringe-reibung-durch-neues-pulverfoermiges-schmiermittel",
   "Zusatzaufgabe 11: aktueller Forschungsbezug und Quellenkritik (Eigenbericht)", "Titel, Datum, Aussender und Kernaussage geprüft"),
+ ("W8b", "Extrem geringe Reibung durch neues pulverförmiges Schmiermittel (19.02.2025)", "chemie.de (LUMITOS AG), gibt die TU-Wien-Pressemitteilung wieder",
+  "https://www.chemie.de/news/1185605/extrem-geringe-reibung-durch-neues-pulverfoermiges-schmiermittel.html",
+  "Link in Zusatzaufgabe 11 (am 16.11.2026 geöffnet: Teams Gachot und Eder, COK-47, feuchte Bedingungen, Li et al. 2025)", "Titel, Datum, Forschende, Bedingungen und Originalarbeit geprüft"),
  ("W9", "Advanced Solid Lubrication with COK-47", "Hanglin Li et al., Advanced Science 2025", "https://doi.org/10.1002/advs.202415268",
   "Originalpublikation zur TU-Wien-Meldung", "Originalseite geöffnet, Autorenschaft geprüft"),
  ("W13", "Mittlere Geschwindigkeit", "FWU / LEIFIphysik", "https://www.leifiphysik.de/mechanik/gleichfoermige-bewegung/grundwissen/mittlere-geschwindigkeit",
@@ -648,7 +653,7 @@ DEMOS = [
   "schritte": ["Beide Kraftmesser waagrecht halten und auf 0 stellen (Nullpunkt in Messlage).",
                "Die Haken ineinander hängen. Ein Kadett hält links, Prof. HOLZER zieht rechts langsam, bis links 2 N steht.",
                "Vorher vermuten lassen (ABCD-Karte): Was zeigt der rechte Kraftmesser?",
-               "Beide Skalen zeigen – dann mit 4 N und 6 N wiederholen."],
+               "Beide Skalen zeigen – dann mit 4 N wiederholen (unter 5 N bleiben)."],
   "erwartung": "Beide zeigen ungefähr gleich viel (Unterschied höchstens etwa 0,2 N durch Ablesen und Nullpunkt).",
   "deutung": "Kraft und Gegenkraft sind gleich groß und wirken auf verschiedene Körper (Kraftmesser links auf rechts und umgekehrt). Die Anzeigen werden nicht addiert.",
   "fehler": "Nullpunkt nicht eingestellt; schräg gezogen; ruckartig gezogen. Über 10 N ziehen beschädigt die Feder.",
@@ -665,7 +670,7 @@ CHECK = [
     ["nur daran, dass sich ein Körper bewegt", "an einer größeren Masse", "nur daran, dass etwas warm wird"], "S. 45"),
    ("kb2", "Ein Auto fährt mit gleichem Tempo durch eine Kurve. Ist es beschleunigt?", "ja, weil sich die Richtung der Geschwindigkeit ändert",
     ["nein, weil es nicht schneller wird", "nur, wenn es bremst", "nein, weil keine Kraft wirkt"], "S. 47–48"),
-   ("kb3", "Was sagt F = m · a?", "Je größer die resultierende Kraft, desto größer die Beschleunigung",
+   ("kb3", "Was sagt F = m · a?", "Bei gleicher Masse: je größer die resultierende Kraft, desto größer die Beschleunigung",
     ["Je größer die Masse, desto größer die Beschleunigung bei gleicher Kraft", "Kraft und Masse sind dasselbe", "Ohne Kraft bleibt jeder Körper sofort stehen"], "S. 49"),
    ("kb4", "In welcher Einheit gibt man eine Kraft an?", "Newton (N)", ["Kilogramm (kg)", "Pascal (Pa)", "Meter pro Sekunde (m/s)"], "S. 45")]},
  {"thema": "Zahlenfrage Gewichtskraft", "n": 1, "fragen": [("gw", "gewicht", "", [], "S. 50–51")]},

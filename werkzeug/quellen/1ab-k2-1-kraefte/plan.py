@@ -53,7 +53,7 @@ STUNDE = {
      ("Aufgabe 6: Steckbrief für die Klasse gemeinsam schreiben", 17, False, "a6", "GRUPPENARBEIT"),
      ("Präsentation vorbereiten und mit Stoppuhr proben (3 min)", 9, True, "probe", "GRUPPENARBEIT"),
      ("PARTNERCHECK: Eine andere Gruppe liest den Steckbrief und hört die Probe", 7, True, "peer", "PARTNERCHECK"),
-     ("SICHERUNG: Was macht einen guten Steckbrief aus?", 2, True, "bespr", "BESPRECHEN"),
+     ("SICHERUNG: Was die andere Gruppe gut erklärt hat und was im Steckbrief noch fehlt", 2, True, "bespr", "BESPRECHEN"),
      ("Handout-PDF in Teams, Zwischenstand als PDF sichern", 2, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
  5: [("Beginn: Klassenbuch, Anwesenheit, Material der Gruppen an die Plätze", 4, True, "org", ""),
@@ -69,7 +69,7 @@ STUNDE = {
      ("DEMO K2.1-D1: Zwei Kraftmesser ziehen aneinander – erst vermuten (ABCD-Karte), dann zeigen", 4, True, "demo", "DEMO"),
      ("KURZ KLÄREN: Begriffstabelle Kraft, Bewegung, Druck an der Tafel", 6, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 8: Alle Themen selbst erklären – einzeln und ohne KI", 16, False, "a8", "SELBSTSTUDIUM"),
-     ("SICHERUNG: Aufgabe 8 – drei häufige Denkfehler und die vier Formeln", 7, True, "bespr", "BESPRECHEN"),
+     ("SICHERUNG: Aufgabe 8 – drei Denkfehler, die Druck-Rechnung und die vier Formeln", 7, True, "bespr", "BESPRECHEN"),
      ("Auflösung »Was glaubst du?« und Selbsteinschätzung", 2, False, "selbst", ""),
      ("PDF-Abgabe: Arbeitsblatt in LMS", 2, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
@@ -119,7 +119,7 @@ assert sorted(_einmal) == list(range(1, 9)), sorted(_einmal)
 KUERZEN = {
  1: "Wenn es knapp wird: Die Gruppen- und Rollenverteilung auf den Anfang von Stunde 2 verschieben. Aufgabe 2 bleibt – sie ist die Rechengrundlage für Stunde 6.",
  2: "Wenn es knapp wird: Leitfrage 4 und die zweite Quelle (g) dürfen in Stunde 3 nachgeholt werden. Die Freigabe des Plans darf nicht entfallen – wer keine hat, nimmt Idee 1 der Gruppenkarte.",
- 3: "Zeitstopp: Nach 38 Minuten wird aufgeräumt, egal wie weit die Gruppen sind. Wenn es knapp wird: Die Probe entfällt, dafür wird in Stunde 4 geprobt. "
+ 3: "Zeitstopp bei Minute 38: Versuch beenden, egal wie weit die Gruppen sind – dann Probe, Sicherung, PDF; aufgeräumt wird ab Minute 43. Wenn es knapp wird: Die Probe entfällt, dafür wird in Stunde 4 geprobt. "
     "Fehlt Material von zu Hause: Saal-Variante der Idee nehmen. Nie Werte erfinden – lieber beschreiben, was man gesehen hat.",
  4: "Diese Stunde fällt bei einem Ausfall ZUERST weg: Den Steckbrief schreiben die Gruppen dann in den ersten 15 Minuten von Stunde 5, die Präsentationen werden auf je 2 Minuten gekürzt. "
     "Wenn es nur knapp wird: Den Partnercheck auf zwei Sätze kürzen.",
@@ -144,7 +144,7 @@ REF_KUERZEN = {
  6: {1: 0, 2: 2, 3: 1, 4: 13, 5: 2, 6: 0},
 }
 REF_FOLGEN = {
- 1: "Aufgabe 2 nur a) bis c) in der Stunde; d) und e) rechnet die Klasse zu Beginn von Stunde 2 gemeinsam (statt »Weißt du noch?«). "
+ 1: "Aufgabe 2 nur a) bis c) in der Stunde, die Sicherung nur a und c; d) und e) rechnet die Klasse zu Beginn von Stunde 2 gemeinsam (statt »Weißt du noch?«) und sichert e) dabei. "
     "Gruppen nur auslosen und zeigen – »So läuft das Projekt« kommt an den Anfang von Stunde 2.",
  2: "Aufgabe 3 ohne Leitfrage 4 und Quelle g (in Stunde 3 nachholen). Den Versuchsplan in Stichworten. "
     "Die Freigabe machst du im Herumgehen während Aufgabe 4; wer keine bekommt, nimmt Idee 1 der Gruppenkarte.",
@@ -169,6 +169,20 @@ REF_DOPPEL = {
  4: {("a", 1): 0, ("a", 4): 5, ("a", 5): 1},
  5: {("a", 1): 0, ("a", 4): 2, ("b", 3): 4},
 }
+
+
+def doppel_kuerzen_text(a):
+    """Was eine Doppelstunde a + a+1 mit Referat zusätzlich kürzt (Kalender der Lösungsseite)."""
+    out = []
+    for (w, i), m in sorted(REF_DOPPEL[a].items()):
+        n = a if w == "a" else a + 1
+        art = STUNDE[n][i][3]; mi = STUNDE[n][i][1]
+        kurz = {"bespr": "Sicherung", "wdh": "»Weißt du noch?«", "peer": "Partnercheck", "demo": "DEMO", "erkl": "Erklären"}.get(art) or _kurzname(STUNDE[n][i][0])
+        out.append(f"Stunde {n}: {kurz} " + ("entfällt" if m == 0 else f"{mi} auf {m} min"))
+    return ("Klassenbuch, »Weißt du noch?« der zweiten Stunde, Zwischenstand-PDF und Reserve der ersten Stunde gibt es nur einmal. Dazu: "
+            + " · ".join(out) + ".")
+
+
 DOPPEL_HINWEIS = {
  (1, 2): "Gut machbar. Gruppen auslosen und gleich in die selbstständige Arbeit gehen.",
  (2, 3): "Achtung: Material von zu Hause kann nicht mitgebracht werden – alle Gruppen nehmen die Saal-Variante (Idee 1).",
@@ -241,8 +255,7 @@ def kuerzen_text(n):
     out = []
     for i, m in sorted(REF_KUERZEN[n].items()):
         name, mi = STUNDE[n][i][0], STUNDE[n][i][1]
-        kurz = _kurzname(name)
-        if STUNDE[n][i][3] == "bespr": kurz = "Sicherung"
+        kurz = {"bespr": "Sicherung", "wdh": "»Weißt du noch?«", "selbst": "Auflösung von Aufgabe 1", "peer": "Partnercheck", "demo": "DEMO", "erkl": "Erklären"}.get(STUNDE[n][i][3]) or _kurzname(name)
         out.append(f"{kurz} entfällt" if m == 0 else f"{kurz} {mi} auf {m} min")
     return " · ".join(out) + ". " + REF_FOLGEN[n]
 
@@ -276,7 +289,7 @@ ABGABE = {1: "–", 2: "Plan freigeben lassen", 3: "–", 4: "Handout-PDF in Tea
 
 # Theorie-Teile je Stunde (Stephan, 14.11.2026) – zeigt der Fahrplan unter den Aufgaben
 THEORIE_TEILE = {1: "Teil 1 Kraft, Teil 2 Bewegung", 2: "Teil eurer Gruppe (Gruppenkarte) und Projekt", 3: "Teil eurer Gruppe", 4: "Teil eurer Gruppe",
-                 5: "alle sieben Teile beim Mitschreiben", 6: "Teile 1–8 und »Kurz & knapp«"}
+                 5: "alle sieben Teile zum Nachlesen nach den Präsentationen", 6: "Teile 1–8 und »Kurz & knapp«"}
 BUCH = {1: "Buch S. 44–49", 2: "Buch S. 45–61 (dein Thema)", 3: "Buch S. 45–61 (dein Thema)", 4: "Buch S. 45–61 (dein Thema)", 5: "Buch S. 45–61", 6: "Buch S. 45–61"}
 DEMO_NAME = {6: "Kraftmesser"}
 
@@ -319,7 +332,7 @@ SICHERUNG = {
      "merken": ["Ein Steckbrief braucht **Kernaussage, Formel mit Einheit, Beispiel und Versuch**.",
                 "Drei Minuten heißt: **ein** Versuch, **eine** Kernaussage, laut und langsam."]},
  5: {"teile": [], "auch": ["Zwei fachliche Klärungen aus den Präsentationen"],
-     "merken": ["Gleich große Kräfte an **einem** Körper: **Kräftegleichgewicht**. Kraft und Gegenkraft wirken auf **zwei** Körper.",
+     "merken": ["Gleich große, **entgegengesetzte** Kräfte an **einem** Körper: **Kräftegleichgewicht**. Kraft und Gegenkraft wirken auf **zwei** Körper.",
                 "**Auftrieb** = Gewichtskraft des verdrängten Wassers · **Druck** = Kraft durch Fläche."]},
  6: {"teile": [(8, ["schwimmen", "druck", "gegenkraft", "gleichgewicht"])], "auch": ["DEMO Kraftmesser"],
      "merken": ["**Kraft und Gegenkraft** sind gleich groß und wirken auf **verschiedene** Körper.",
@@ -365,8 +378,13 @@ def gesichert():
             for nr, ids in S["teile"]:
                 out[str(nr)] = "Am Ende der Stunde sichern wir gemeinsam: " + ", ".join(buchstaben(nr, ids)) + "."
         else:
-            letzte = aufgaben_der(PLAN[I.KLASSEN[0]][n - 1])[0][-1]
-            out[str(letzte)] = "Am Ende der Stunde: " + S["auch"][0] + "."
+            # Hinweis bei der Aufgabe direkt VOR der Sicherung; liegt keine davor (Stunde 5), bei der Aufgabe danach
+            rows = STUNDE[n]; ib = next(i for i, r in enumerate(rows) if r[3] == "bespr")
+            vorher = [int(r[3][1:]) for r in rows[:ib] if re.match(r"a\d+$", r[3])]
+            if vorher: out[str(vorher[-1])] = "Am Ende der Stunde: " + S["auch"][0] + "."
+            else:
+                nach = [int(r[3][1:]) for r in rows[ib:] if re.match(r"a\d+$", r[3])]
+                out[str(nach[0])] = "Vor dieser Aufgabe, nach den Präsentationen: " + S["auch"][0] + "."
     return out
 
 
@@ -383,8 +401,8 @@ BALKEN_TEXT = {"demo": "Jetzt DEMO am Lehrertisch: {d}. Erst vermuten – ABCD-K
                "freigabe": "Jetzt FREIGABE: Prof. HOLZER kommt zu jeder Gruppe. Plan bereithalten, erst danach wird gebaut.",
                "probe": "Jetzt in der Gruppe: Präsentation vorbereiten und mit Stoppuhr proben – höchstens 3 Minuten.",
                "peer": "Jetzt PARTNERCHECK: {t}.",
-               "praes": "Jetzt präsentieren alle sieben Gruppen. Handy weg, du schreibst mit der Hand mit.",
-               "selbst": "Jetzt: bei Aufgabe 1 »Auflösung zeigen« und die Selbsteinschätzung auf der Theorie-Seite.",
+               "praes": "Jetzt präsentieren alle sieben Gruppen. Handy weg, du schreibst auf Papier mit – danach tippst du es in Aufgabe 7 ab.",
+               "selbst": "Jetzt: bei Aufgabe 1 »Auflösung zeigen« – was hast du in Stunde 1 gedacht?",
                "wdh": "Jetzt »Weißt du noch?«: Antwort mit der ABCD-Karte zeigen."}
 
 

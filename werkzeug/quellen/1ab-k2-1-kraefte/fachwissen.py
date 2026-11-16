@@ -6,9 +6,9 @@ Quelle der Inhalte: inhaltliche Ausarbeitung vom 07.11.2026 (Abschnitte 9, 10, 1
 LEHRPLAN = [
     ("K03 (verbindlich)", "die Grundgrößen und die entsprechenden Einheiten des Internationalen Einheitensystems benennen – abgedeckt in Aufgabe 2 c–e, Aufgabe 8 a/e/i/j, Theorie-Karte »Alle Größen und Einheiten« und Quiz 2/4/5/11."),
     ("K02 (zusätzlich sichtbar)", "einfache naturwissenschaftliche Untersuchungen planen, durchführen, dokumentieren und präsentieren – das Gruppenprojekt V1.20 über die Stunden 2 bis 5. Der Jahresplan wird dadurch nicht geändert."),
-    ("N01", "beobachten, beschreiben, berechnen, darstellen und erläutern – Versuchsseite: Beobachtung, Erkenntnis, Interpretation, Schlussfolgerung."),
+    ("N01", "beobachten, beschreiben, berechnen, darstellen und erläutern – Versuchsprotokoll im Arbeitsblatt (Aufgabe 5): Beobachtung, Erkenntnis, Interpretation, Schlussfolgerung."),
     ("N02", "Bedeutung für Wirtschaft, Technik und Umwelt erfassen – Alltagsbeispiel je Gruppe, Zusatzaufgabe 11 zur TU-Wien-Meldung."),
-    ("P8", "Gesundheit und Sicherheit – Sicherheitsregeln der Messstunde, Druck unter Schuhsohle und Schultergurt."),
+    ("P8", "Gesundheit und Sicherheit – Sicherheitsregeln beim Versuch in Stunde 3, Druck unter Schuhsohle und Schultergurt."),
     ("P7", "Quellen und Medien – Quellenprüfung in Stunde 2, Zusatzaufgabe 11."),
     ("GLV 6", "verantwortungsvoller Umgang mit wissenschaftlichen Modellen und Technik – jede Gruppe nennt eine Grenze ihrer Untersuchung. Waffenversuche sind dafür nicht nötig."),
     ("Jahresplan", "Block »E Physik«, E15–E17 sind 7 Stunden laut bloecke.json. Geplant sind hier SECHS Stunden einschließlich Präsentationen; die Lehrer-Seite meldet deshalb eine Abweichung von einer Stunde."),
@@ -45,7 +45,7 @@ KORREKTUREN = [
 FEHLVORSTELLUNGEN = [
     ["»Wo Bewegung ist, wirkt eine Kraft.«", "Für gleichförmige geradlinige Bewegung braucht es keine resultierende Kraft.",
      "Buch flach über den Tisch schieben: Zugkraft und Reibung gleichen sich aus, das Tempo bleibt."],
-    ["»Geschwindigkeit, Beschleunigung und Druck sind Kraftarten.«", "Nur Gewichtskraft, Auftrieb, Reibung und Kapillarkraft sind Kräfte. Druck verbindet Kraft und Fläche.",
+    ["»Geschwindigkeit, Beschleunigung und Druck sind Kraftarten.«", "Gewichtskraft, Auftrieb, Reibung, Kapillarkraft – aber auch Zug-, Stütz- und Federkraft – sind Kräfte (Einheit N). Geschwindigkeit, Beschleunigung und Druck sind keine; Druck verbindet Kraft und Fläche.",
      "Einheitentabelle an der Tafel: N gegen m/s, m/s² und Pa."],
     ["»Beim Schwimmen ist der Auftrieb größer.«", "Beim ruhigen Schwimmen sind Auftriebs- und Gewichtskraft gleich groß.",
      "Zwei gleich lange Pfeile an einem schwimmenden Körper zeichnen lassen."],
@@ -112,7 +112,7 @@ OFFEN = [
     "**Keine Daten auf den Kadetten-Seiten:** Termine, Doppelstunden und Referate trägst du selbst im Reiter »Kalender« der Lösungsseite ein. Fahrplan und Arbeitsblatt kennen nur Stunde 1 bis 6.",
     "**Fällt eine Stunde aus**, entfällt zuerst Stunde 4. Das Meilenstein-PDF aus Stunde 3 taugt als Präsentationsunterlage.",
     "**Supplierstunde möglich: Stunde 6** – Aufgabe 8, Theorie-Karten und Selbsteinschätzung brauchen kein Material und keinen Versuch.",
-    "**Noch nicht geliefert:** TH-Lehrer- und TH-Kadetten-PPP, Word (AB/Lösung/Fachwissen), Kahoot-Tabelle und ZIP. Das war als Teillieferung so bestellt.",
+    "**Nicht gebaut (Teillieferung):** Word (AB/Lösung/Fachwissen), Kahoot-Tabelle und ZIP. Die Unterrichts-PPP ist durch die HTML-Präsentation auf der Lösungsseite ersetzt.",
 ]
 
 AUSBLICK = ("Als Nächstes kommt »Arbeit und Energie« (Trauner S. 66–77). Die Begriffe Kraft, Weg und Gewichtskraft aus dieser Einheit "

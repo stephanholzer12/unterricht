@@ -1,5 +1,5 @@
 """Theorie-Seite K2.1 Mechanische Kräfte: Theorie-Karten, Teile und Folien.
-Dieselben Daten füttern die Theorie-Seite, die Tipp-Stufen im Arbeitsblatt (Tipp 2 = Theorie-Karte) und die Lesestopps der Unterrichts-PPP.
+Dieselben Daten füttern die Theorie-Seite, die Tipp-Stufen im Arbeitsblatt (Tipp 2 = Theorie-Karte) und die Lesestopps der Präsentation (Lösungsseite).
 Block-Arten: tiles, ul, ol, merke, hint, table, video, reveal, img (Datei, Alt-Text, Bildunterschrift), versuch (ID, Titel, Text), karten, buch, gemeinsam.
 Alles in eigenen Worten; alle Grafiken selbst gezeichnet (skizzen.py). Das Schulbuch wird gelesen – die Seite erklärt anders und ergänzt.
 Neue Standards 07.11.2026: »Aufgabe zuerst« – die Theorie-Seite ist das Nachschlagewerk, die Karten stehen bei der Aufgabe."""
@@ -32,7 +32,7 @@ KARTEN = {
                  "Zur Geschwindigkeit gehört auch die **Richtung**.",
                  "**Beschleunigung** heißt: Tempo oder Richtung ändern sich – auch Bremsen und Kurvenfahren gehören dazu."],
         "formeln": [("v", "Schnelligkeit", "m/s"), ("s", "Weg", "m"), ("t", "Zeit", "s"),
-                    ("v = s / t", "von m/s auf km/h: mal 3,6", ""), ("a = (v_ende − v_anfang) / Δt", "mittlere Beschleunigung", "m/s²")],
+                    ("v = s / t", "von m/s auf km/h: mal 3,6", ""), ("a = (v_ende − v_anfang) / Δt", "mittlere Beschleunigung auf gerader Strecke", "m/s²")],
         "link": "theorie.html#bewegung"},
  "k3": {"titel": "Masse und Gewichtskraft", "teil": "gewicht", "buch": "Buch S. 50–51", "bild": "img/gewicht.png",
         "alt": "Derselbe Rucksack auf Erde und Mond: gleiche Masse 6 kg, auf der Erde ein langer Kraftpfeil mit 60 N, am Mond ein kurzer mit etwa 10 N.",
@@ -133,8 +133,8 @@ EINSTIEG = [
              ("hint", "Umgekehrt gibt es Kräfte ohne sichtbare Bewegung: Eine belastete Feder bleibt gedehnt, ein Buch drückt auf den Tisch.")]},
  {"id": "s0c", "title": "Science oder Fiction?", "pill": "Buch S. 61",
   "blocks": [("ul", ["In vielen Weltraumfilmen zünden Raumschiffe ihre Triebwerke, um im leeren Raum »vorwärts zu drücken« – als bräuchten sie Luft, von der sie sich abstoßen.",
-                     "**Richtig ist:** Eine Rakete stößt Masse nach hinten aus und wird dadurch nach vorne beeinflusst. Das funktioniert **ohne** Luft. "
-                     "Umgekehrt dreht in Wirklichkeit kein Raumschiff nach dem Abschalten des Antriebs eine enge Kurve und bleibt dann stehen.",
+                     "**Richtig ist:** Eine Rakete stößt Masse nach hinten aus und wird dadurch nach vorne beschleunigt. Das funktioniert **ohne** Luft. "
+                     "Und noch ein Filmfehler: Schaltet ein Raumschiff den Antrieb ab, bleibt es nicht stehen – ohne Reibung fliegt es mit gleichem Tempo geradeaus weiter.",
                      "**Offene Forschungsfrage:** Wie viel Reibung zwischen zwei Oberflächen tatsächlich entsteht, lässt sich noch nicht aus der Rauigkeit allein berechnen. "
                      "Zusatzaufgabe 11 zeigt eine aktuelle Arbeit der TU Wien dazu."]),
 ]},
@@ -247,7 +247,7 @@ PARTS = [
    "blocks": [("buch", "Lies im **Buch S. 61** den Abschnitt **»Kraft und Gegenkraft«**."),
               kartenblock("k8"),
               ("ul", ["Beim Abstoßen drückt dein **Fuß den Boden nach hinten**, während der **Boden deinen Fuß nach vorne** drückt. Zwei Kräfte, zwei verschiedene Körper.",
-                      "Beim **Rückstoß** stößt ein Körper Masse in eine Richtung aus und wird in die andere Richtung beeinflusst. Raketen brauchen dafür keine Luft.",
+                      "Beim **Rückstoß** stößt ein Körper Masse in eine Richtung aus und wird in die andere Richtung beschleunigt. Raketen brauchen dafür keine Luft.",
                       "Zwei ineinander gehängte Federkraftmesser zeigen bei ruhigem Ziehen in einer Linie annähernd **denselben Betrag**. Aus zwei Anzeigen von 2 N werden nicht 4 N.",
                       "Ein Buch auf dem Tisch ist im **Gleichgewicht**: Gewichtskraft und Stützkraft sind gleich groß und entgegengesetzt – beide am **Buch**. Die Gegenkraft zur Gewichtskraft auf das Buch ist die Anziehung des Buches auf die Erde."]),
               ("merke", "Wechselwirkungspaar: zwei Körper, zwei Kräfte. Kräftegleichgewicht: ein Körper, mehrere Kräfte, Summe null."),
@@ -269,11 +269,11 @@ PARTS = [
                          ["6", "Druck", "S. 58–60", "Teil 7 · Druck"],
                          ["7", "Kraft und Gegenkraft", "S. 45, 61", "Teil 8 · Kraft und Gegenkraft"]]),
               ("ul", ["**Stunde 2:** Leitfragen beantworten (Aufgabe 3), Versuch aussuchen und planen (Aufgabe 4). Den Plan zeigt ihr Prof. HOLZER – ohne Freigabe kein Versuch.",
-                      "**Von zu Hause erlaubt:** Dinge aus Kunststoff, Papier, Holz und Stoff · Wasser, Speisesalz, Lebensmittelfarbe · Knete, Gummiringe, Strohhalme, Klebeband · Spielzeugauto, Ball, Schuhe.",
-                      "**Nicht erlaubt:** Feuer und Kerzen · Chemikalien, Reinigungsmittel, Spraydosen · Glas von zu Hause, Messer, Nägel · Strom aus der Steckdose, Akkus · Druckbehälter, Feuerwerk, Waffen oder Waffenteile.",
+                      "**Von zu Hause erlaubt:** " + " · ".join(GD.ZUHAUSE_JA) + ".",
+                      "**Nicht erlaubt:** " + " · ".join(GD.ZUHAUSE_NEIN) + ".",
                       "**Stunde 3:** Versuch machen und gleich so üben, wie ihr ihn zeigt (Aufgabe 5). Jeder trägt die Ergebnisse in sein eigenes Arbeitsblatt ein.",
                       "**Stunde 4:** Steckbrief schreiben (Aufgabe 6). Die Schriftführung stellt das Handout-PDF in Teams – dort finden es alle anderen.",
-                      "**Stunde 5:** höchstens **drei Minuten** je Gruppe einschließlich Versuch. Jeder spricht. Alle anderen schreiben mit (Aufgabe 7)."]),
+                      "**Stunde 5:** höchstens **drei Minuten** je Gruppe einschließlich Versuch. Jeder spricht. Alle anderen schreiben auf Papier mit und tippen es danach in Aufgabe 7 ab."]),
               ("hint", "Alles gibst du über EIN Arbeitsblatt-PDF ab. Eine eigene Versuchsseite gibt es in dieser Einheit nicht mehr.")]},
   ("jetzt", "Jetzt: Aufgabe 3 – Gruppe wählen", "aufgaben.html#card_p1")]),
 ]
@@ -282,7 +282,7 @@ PARTS = [
 SCHNELLE = [
  {"id": "schnell1", "title": "Mehr zum Rechnen", "pill": "OPTIONAL · Buch S. 58, 63",
   "blocks": [("ul", ["**Zusatzaufgabe 10** rechnet denselben Druck für zwei Flächen. Probier danach deine eigene Auflagefläche: Stell dich auf Millimeterpapier, zeichne eine Sohle nach und schätze die Fläche in m².",
-                     "Für Kombattanten interessant: Ein Rucksack mit 20 kg Masse hat 200 N Gewichtskraft. Verteilt auf zwei Schultergurte mit je 0,006 m² ergibt das etwa 16 700 Pa – deshalb sind breite Gurte angenehmer.",
+                     "Für den Marsch interessant: Ein Rucksack mit 20 kg Masse hat 200 N Gewichtskraft. Verteilt auf zwei Schultergurte mit je 0,006 m² ergibt das etwa 16 700 Pa – deshalb sind breite Gurte angenehmer.",
                      "**Vorsicht bei Beispielen aus dem Netz:** Für eine Druckrechnung muss die ganze tatsächlich belastete Kontaktfläche angegeben sein. Fehlt sie, ist das Ergebnis nicht belastbar."]),
              ("hint", "Diese Zahlen sind Modellwerte zum Üben, keine Messwerte.")]},
  {"id": "schnell2", "title": "Forschung und Technik", "pill": "OPTIONAL",

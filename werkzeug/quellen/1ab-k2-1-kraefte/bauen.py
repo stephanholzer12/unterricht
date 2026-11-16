@@ -173,7 +173,11 @@ function aufloesungEl(t) {
   const box = el("div", { class: "aufl" });
   const b = el("button", { class: "btn secondary small", type: "button", text: "Auflösung zeigen (erst in Stunde 6)" });
   const out = el("div", { class: "fb info", hidden: "" });
+  /* Nach der Auflösung ist die Vermutung gesperrt – sonst ist »Du hast gedacht …« wertlos. Zustand nur in S.chk (Schlüssel bleibt). */
+  const sperren = () => { setTimeout(() => { const c = document.getElementById("card_" + t.id); if (c) c.querySelectorAll("input, select, textarea").forEach(x => { x.disabled = true; }); }, 0); };
+  if (S.chk && S.chk["aufl_" + t.id]) sperren();
   b.addEventListener("click", () => {
+    S.chk = S.chk || {}; S.chk["aufl_" + t.id] = true; try { save(); } catch (e) {} sperren();
     const a = S.a[t.id] || {}; out.hidden = false; out.textContent = "";
     t.aufloesung.forEach(([k, richtig, warum]) => {
       const mein = a[k], ok = mein === richtig;
@@ -427,7 +431,7 @@ function gruppenkarte(g, K) {
   box.append(el("p", {}, el("b", { text: "2 · Leitfragen: " }), "Sie stehen unten bei c) bis f). Antworte in eigenen Worten."));
   const v = el("p"); v.append(el("b", { text: "3 · Video und zweite Quelle: " }));
   if (K.videos.length) {
-    v.append("Seht euch diese Videos an und beantwortet die Fragen für euch. Sucht danach noch eine zweite Quelle (Buch zählt nicht).");
+    v.append("Seht euch EIN Video an ODER sucht eine zweite Quelle (Buch zählt nicht) – das tragt ihr bei g) ein.");
     box.append(v);
     K.videos.forEach(x => { const d = el("div", { class: "vid" });
       d.append(el("a", { class: "btn", href: x[1], target: "_blank", rel: "noopener", text: "Video: " + x[0] }), el("p", { class: "hint", text: x[2] }));
@@ -534,10 +538,10 @@ open(DST + "aufgaben.html", "w", encoding="utf-8").write(s)
 # ================================================================ Quiz
 qs = ",\n".join("  { t: %s, q: %s, a: %s, e: %s, p: %s }" % tuple(json.dumps(x, ensure_ascii=False) for x in (t, nb(q), [nb(z) for z in a], nb(e), p)) for t, q, a, e, p in I.QUIZ)
 qv = open(os.path.join(WZ, "vorlagen", "quiz_vorlage.html"), encoding="utf-8").read()
-qv = qv.replace("<title>Bindungs-Check</title>", "<title>Kräfte-Check – Quiz</title>")
+qv = qv.replace("<title>Bindungs-Check</title>", "<title>Kräfte-Quiz</title>")
 qv = qv.replace("NAWI · 2AB · K1.2 Die Bindungsarten", I.EYEBROW)
-qv = qv.replace("<h1>Bindungs-Check</h1>", "<h1>Kräfte-Check</h1>").replace("<h2>Bindungs-Check am Handy</h2>", "<h2>Kräfte-Check am Handy</h2>")
-qv = qv.replace('alt="QR-Code zum Bindungs-Check"', 'alt="QR-Code zum Kräfte-Check"')
+qv = qv.replace("<h1>Bindungs-Check</h1>", "<h1>Kräfte-Quiz</h1>").replace("<h2>Bindungs-Check am Handy</h2>", "<h2>Kräfte-Quiz am Handy</h2>")
+qv = qv.replace('alt="QR-Code zum Bindungs-Check"', 'alt="QR-Code zum Kräfte-Quiz"')
 qv = qv.replace("Frage 1 von 16", "Frage 1 von %d" % len(I.QUIZ))
 a, b = qv.index("const Q = ["), qv.index("];", qv.index("const Q = [")) + 2
 qv = qv[:a] + "const Q = [\n" + qs + "\n];" + qv[b:]
@@ -733,14 +737,14 @@ page = f"""<!doctype html>
   <article class="slide">
     <p>Du arbeitest im <strong>Arbeitsblatt</strong> – dort stehen alle Aufgaben, das Gruppenprojekt und dein Versuch. Diese Seite brauchst du zum
     Nachlesen: für dein Gruppenthema (Teil 2 bis 8), wenn du mehr wissen willst – und vor dem Test.</p>
-    <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a><a class="btn alt" href="quiz.html">Kräfte-Check (Quiz)</a></div>
+    <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a><a class="btn alt" href="quiz.html">Kräfte-Quiz (Übung)</a></div>
   </article>
 </section>
 {body}
 <section class="next" id="weiter">
   <div class="eyebrow">Weiter geht's</div>
   <h2>Jetzt bist du dran</h2>
-  <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a><a class="btn alt" href="quiz.html">Kräfte-Check (Quiz)</a></div>
+  <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a><a class="btn alt" href="quiz.html">Kräfte-Quiz (Übung)</a></div>
   <p class="hint">Theorie zum Nachlesen im Schulbuch Naturwissenschaften HAK 1 (Trauner) S. 44–65. Alle Grafiken selbst gezeichnet. <a href="../">Klassenübersicht 1AB</a></p>
   <p class="hint">Stand {STAND} · {I.V}</p>
 </section>
