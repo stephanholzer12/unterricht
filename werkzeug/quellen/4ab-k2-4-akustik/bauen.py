@@ -704,3 +704,22 @@ for f in ["theorie.html", "aufgaben.html"]:
 
 for f in ["theorie.html", "aufgaben.html"]:
     print(f, os.path.getsize(DST + f) // 1024, "KB")
+
+
+# Cache-Schutz: GitHub Pages liefert Bilder bis zu 10 Minuten aus dem Browser-Cache. Ändert sich eine Grafik (z. B. neue Animation),
+# sähen Handys sonst noch die alte. Darum bekommt jeder Bildpfad eine Kennung aus dem Inhalt der Datei (img/ohr.svg?v=1a2b3c4d).
+import hashlib, re as _re
+def _bust(m):
+    pfad = DST + m.group(1)
+    try:
+        h = hashlib.md5(open(pfad, "rb").read()).hexdigest()[:8]
+    except OSError:
+        return m.group(0)
+    return m.group(1) + "?v=" + h
+for _f in ["theorie.html", "aufgaben.html", "check.html"]:
+    if os.path.exists(DST + _f):
+        _t = open(DST + _f, encoding="utf-8").read()
+        _t2 = _re.sub(r"(img/[A-Za-z0-9_\-]+\.svg)(?![\w?])", _bust, _t)
+        if _t2 != _t:
+            open(DST + _f, "w", encoding="utf-8").write(_t2)
+print("Bildpfade mit Cache-Kennung versehen")
