@@ -90,7 +90,7 @@ assert sorted(_einmal) == list(range(1, 9)), sorted(_einmal)
 # ---------------------------------------------------------------- Kürzen, Ausfall, Supplier
 KUERZEN = {
  1: "Wenn es knapp wird: DEMO K2.4-D1 nur mit Wasser und Tisch (ohne Resonanzkasten), Aufgabe 2 j) wird Zusatz. Die Echo-Rechnung h) bleibt – sie ist der häufigste Fehler.",
- 2: "Zeitstopp für den Versuch: Minute 40 – egal wie weit. Wenn es knapp wird: Grundgeräusch (c) weglassen, nur »Ton an« messen; Aufgabe 3 f) und g) werden Zusatz. "
+ 2: "Zeitstopp für den Versuch: Minute 40 – egal wie weit. Wenn es knapp wird: Grundgeräusch (c) weglassen, nur »Ton an« messen; Aufgabe 3 g) wird Zusatz (f) bleibt, wir sichern sie). "
     "Geht das Handy-Mikrofon nicht: Gruppe schreibt die Werte einer Nachbargruppe ab (im Protokoll vermerken). Fällt der Versuch ganz aus: virtueller Versuch K2.4-VV1 (Zusatz 12) wird Pflicht.",
  3: "Supplierstunde möglich: Aufgabe 5, der Mini-Versuch und die Gruppenarbeit (Aufgabe 7) brauchen kein Material; die Theorie-Karten und die Hörvorgang-Animation stehen im Arbeitsblatt bzw. auf der Theorie-Seite. "
     "Wenn es knapp wird: Die Diskussion der Rollen an den Anfang von Stunde 4 legen.",
@@ -103,23 +103,42 @@ AUSFALL = ("Fällt eine der vier Stunden aus: Stunden 1 und 2 werden zu einer zu
 SUPPLIER = 3
 
 # ---------------------------------------------------------------- Ablauf je Termin: Referat und Doppelstunde
+
+SICHERUNG_TEILE = {1: [(2, ["was", "vakuum", "gewitter", "echo"])], 2: [(3, ["i10", "zwei", "empf"]), (4, ["saal"])],
+                   3: [(5, ["w1", "knochen"]), (7, ["nach", "schiess", "anc"])], 4: [(8, ["vorne", "lage", "dreh", "pilot"])]}
+
+
+def buchstaben_roh(nr, ids):
+    t = next(x for x in I.T if x["nr"] == nr)
+    return [re.match(r"([a-z])\)", next(f for f in t["fields"] if f[0] == fid)[1]).group(1) for fid in ids]
+
+
 REF_KUERZEN = {   # Phasen-Index -> neue Minuten (Summe der Kürzungen = REFERAT_MIN = 20). Organisation, Reserve und PDF bleiben;
  # Aufgaben dürfen gekürzt werden (der Rest wird für diese Klasse Zusatz, siehe REF_NOTIZ). Nie zwei Stunden in eine pressen, keine Hausübung.
  1: {1: 0, 3: 3, 4: 3, 5: 2, 6: 8, 7: 1},
- 2: {1: 0, 2: 0, 3: 3, 4: 3, 5: 12, 6: 1},
- 3: {1: 0, 2: 3, 3: 6, 4: 4, 5: 1, 6: 5, 7: 0},
+ 2: {1: 0, 2: 0, 3: 2, 4: 4, 5: 12, 6: 1},
+ 3: {1: 0, 2: 3, 3: 5, 4: 4, 5: 1, 6: 4, 7: 2},
  4: {1: 0, 2: 3, 3: 4, 4: 8, 5: 2, 6: 0, 7: 1},
 }
-REF_NOTIZ = {   # was bei Referat-Kürzung von einer Aufgabe bleibt
- (1, 6): "Pflicht nur a), b), d), f), h) – der Rest wird Zusatz",
+REF_BLEIBT = {   # bei Referat-Kürzung bleiben von dieser Aufgabe nur diese Teile Pflicht – alles, was wir sichern, muss dabei sein
+ (1, 6): "abdfh", (2, 4): "abef", (3, 3): "abcdefgk", (3, 6): "cdgh", (4, 4): "abcdef"}
+REF_NOTIZ = {   # was bei Referat-Kürzung von einer Phase bleibt
  (2, 2): "die Tonhöhe zeigt Prof. HOLZER kurz am Tongenerator (bei KURZ KLÄREN)",
- (2, 4): "nur a), b), e) – der Rest wird Zusatz",
  (2, 5): "Zeitstopp Minute 42, Grundgeräusch c) weglassen",
- (3, 3): "nur Beschriften a)–f); der Weg g)–k) wird Zusatz",
  (3, 4): "Selbstversuch kurz, c) wird Zusatz",
- (3, 6): "nur b)–d) und h) in der Gruppe; e)–g) gemeinsam beim Besprechen von Stunde 4",
- (4, 4): "Pflicht nur a)–e); den Pilotenfall f), g) klären wir gemeinsam",
+ (3, 7): "nur die Sicherung, die Diskussion der Rollen entfällt",
 }
+for (_n, _i), _b in REF_BLEIBT.items():
+    _gr = []
+    for _x in _b:
+        if _gr and ord(_x) == ord(_gr[-1][-1]) + 1: _gr[-1].append(_x)
+        else: _gr.append([_x])
+    REF_NOTIZ[(_n, _i)] = "Pflicht nur " + ", ".join(g[0] + ")" if len(g) == 1 else (g[0] + "), " + g[1] + ")" if len(g) == 2 else g[0] + ")–" + g[-1] + ")") for g in _gr) + " – der Rest wird Zusatz"
+    _nr = int(STUNDE[_n][_i][3][1:])
+    for _nr2, _ids in SICHERUNG_TEILE[_n]:
+        if _nr2 == _nr:
+            _fehlt = [x for x in buchstaben_roh(_nr, _ids) if x not in _b]
+            assert not _fehlt, (_n, _nr, "gesicherte Teile wären bei Referat Zusatz", _fehlt)
 for _n, _c in REF_KUERZEN.items():
     assert sum(STUNDE[_n][i][1] - m for i, m in _c.items()) == REFERAT_MIN, (_n, "Kürzungen ergeben nicht die Referatzeit", sum(STUNDE[_n][i][1] - m for i, m in _c.items()))
     assert all(STUNDE[_n][i][3] not in ("org", "reserve", "pdf") for i in _c), _n
@@ -220,16 +239,16 @@ def folge(n):
 
 # Sicherung (Stephan 15.11.2026): EINE Quelle für Präsentation, Arbeitsblatt (»Am Ende der Stunde sichern wir gemeinsam: …«), Balken, Lösungsseite.
 SICHERUNG = {
- 1: {"teile": [(2, ["was", "vakuum", "gewitter", "echo"])], "auch": ["DEMO Stimmgabel"],
+ 1: {"teile": SICHERUNG_TEILE[1], "auch": ["DEMO Stimmgabel"],
      "merken": ["Schall ist eine **Druckwelle**: Die Luftteilchen schwingen nur **hin und her**, die Welle wandert. Ohne Teilchen – im **Vakuum** – gibt es **keinen Schall**.",
                 "**s = v · t**, in Luft rund **340 m/s**. Beim **Echo** läuft der Schall **hin und zurück** – darum durch 2 teilen."]},
- 2: {"teile": [(3, ["i10", "zwei", "empf"]), (4, ["saal"])], "auch": ["VERSUCH: Messwerte der Klasse"],
+ 2: {"teile": SICHERUNG_TEILE[2], "auch": ["VERSUCH: Messwerte der Klasse"],
      "merken": ["Die **Frequenz** bestimmt die **Tonhöhe**, die **Amplitude** die **Lautstärke**.",
                 "**+10 dB = zehnmal so viel Intensität.** Ab **85 dB** schadet Dauerlärm – dann **Gehörschutz**."]},
- 3: {"teile": [(5, ["w1", "knochen"]), (7, ["nach", "schiess", "anc"])], "auch": ["VERSUCH K3.2-V1", "DISKUSSION der Rollen"],
+ 3: {"teile": SICHERUNG_TEILE[3], "auch": ["VERSUCH K3.2-V1", "DISKUSSION der Rollen"],
      "merken": ["Trommelfell → Gehörknöchelchen → Schnecke → **Haarzellen** → Hörnerv → Gehirn.",
                 "Zerstörte **Haarzellen wachsen nicht nach**. Geprüfter Gehörschutz **vor dem ersten Knall** – nicht erst danach."]},
- 4: {"teile": [(8, ["vorne", "lage", "dreh", "pilot"])], "auch": ["DEMO Wasserglas", "PARTNERCHECK"],
+ 4: {"teile": SICHERUNG_TEILE[4], "auch": ["DEMO Wasserglas", "PARTNERCHECK"],
      "merken": ["Richtung hören: Das abgewandte Ohr hört den Schall **später und leiser**.",
                 "**Bogengänge** melden Drehungen, **Vorhofsäckchen** die Lage. Ohne Sicht können sie täuschen – darum vertraut die Pilotin den **Instrumenten**."]},
 }

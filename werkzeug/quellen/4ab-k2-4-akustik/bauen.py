@@ -320,7 +320,7 @@ GESICHERT = {str(nr): ", ".join(P.buchstaben(nr, ids)) for n in P.SICHERUNG for 
 s = s.replace("const GRP = ", "const GESICHERT = " + json.dumps(GESICHERT, ensure_ascii=False) + ";\nconst GRP = ", 1)
 s = s.replace('T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });',
   'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); const kc = renderTask(t); gesichertEl(kc, t.nr); $("#tasks").append(kc); balkenEl("nach", t.nr); });')
-s = s.replace("let lastH = null;", """/* ABCD-Karte (Stephan, 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
+s = s.replace("let lastH = null;", """/* ABCD-Karte (Standard 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
    Nichts wird gespeichert oder bewertet. */
 function abcdAuf() {
   let ov = document.getElementById("abcd");
@@ -335,8 +335,8 @@ function abcdAuf() {
   }
   ov.hidden = false; ov.querySelector(".abcd-gross").hidden = true; ov.querySelector(".abcd-wahl").hidden = false;
 }
-/* Balken zwischen den Aufgaben (Stephan 15.11.2026): Wer nur Aufgaben macht, läuft direkt auf »Jetzt DEMO …« zu. */
-/* Hinweis auf der Aufgabe: Diese Teile werden am Ende der Stunde gemeinsam gesichert (Stephan 15.11.2026). */
+/* Balken zwischen den Aufgaben (Standard 15.11.2026): Wer nur Aufgaben macht, läuft direkt auf »Jetzt DEMO …« zu. */
+/* Hinweis auf der Aufgabe: Diese Teile werden am Ende der Stunde gemeinsam gesichert (Standard 15.11.2026). */
 function gesichertEl(card, nr) {
   const g = GESICHERT[String(nr)]; if (!g) return;
   const p = el("p", { class: "gesichert" }); p.append(el("span", { class: "phm", text: "SICHERUNG" }), el("span", { text: "Am Ende der Stunde sichern wir gemeinsam: " + g + "." }));

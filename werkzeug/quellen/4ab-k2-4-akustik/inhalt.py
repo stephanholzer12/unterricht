@@ -27,8 +27,8 @@ STUNDEN = 4
 V_LUFT = 340           # m/s, Buch S. 61
 V_WASSER = 1480        # m/s
 
-VS = {"K2.4-V1": {"titel": "Schallpegel im langen Saal messen", "jp": "V4.17 (angepasst)", "stunde": 2, "aufgabe": 5},
-      "K3.2-V1": {"titel": "Luft- und Knochenleitung am eigenen Kopf", "jp": "V4.19 (angepasst, ohne Ohrmodell)", "stunde": 3, "aufgabe": 7}}
+VS = {"K2.4-V1": {"titel": "Schallpegel im langen Saal messen", "jp": "V4.17 (angepasst)", "stunde": 2, "aufgabe": 4},
+      "K3.2-V1": {"titel": "Luft- und Knochenleitung am eigenen Kopf", "jp": "V4.19 (angepasst, ohne Ohrmodell)", "stunde": 3, "aufgabe": 6}}
 DEMOS = {"K2.4-D1": {"titel": "Stimmgabel: sehen, hören, spüren", "jp": "Buch S. 61 und 65 (Stimmgabel #144)", "stunde": 1},
          "K2.4-D2": {"titel": "Lineal an der Tischkante und Tongenerator", "jp": "ersetzt V4.18 (Monochord nicht nachgewiesen)", "stunde": 2},
          "K3.2-D1": {"titel": "Woher kommt das Schnippen?", "jp": "Buch S. 110 (Versuch Richtungshören, ohne Schlauch)", "stunde": 4},
@@ -77,7 +77,7 @@ T = [
  {"id": "a1", "nr": 2, "title": "Schall unterwegs – was wandert, wie schnell?", "src": "Buch S. 61 · Buch-Aufgabe S. 67/1", "own": False, "tag": "Stunde 1", "h": 1, "zeit": 16, "marke": "SELBSTSTUDIUM",
   "sim": ["druck"],
   "q": "Lies zuerst im Buch S. 61 die Abschnitte »Schall« und »Schallfeld und Schallausbreitung« (3 min) und markiere, was Schall zum Ausbreiten braucht. "
-       "Dann: a) bis e) kurze Auswahlfragen – denk an die schwingenden Luftteilchen. f) bis j) rechnest du mit v = 340 m/s (Luft bei rund 15 °C). Schreib bei jeder Rechnung die Einheit dazu.",
+       "Dann: a) bis e) kurze Auswahlfragen – denk an die schwingenden Luftteilchen. f), h) und i) rechnest du mit v = 340 m/s (Luft bei rund 15 °C). Schreib bei jeder Rechnung die Einheit dazu.",
   "hint": "Die Teilchen bleiben ungefähr an ihrem Platz – was wandert dann? Fürs Rechnen: s = v · t. Beim Echo läuft der Schall hin UND zurück.",
   "type": "multi",
   "fields": [["was", "a) Was wandert bei Schall in der Luft vom Lautsprecher zu deinem Ohr?",
@@ -159,7 +159,7 @@ T = [
           "empf": {"sel": "Nein – doppelt so laut empfinden die meisten erst bei rund 10 dB mehr"},
           "gelse": {"sel": "die Frequenz – ihre Flügel schlagen öfter pro Sekunde"}},
   "fb": {"i10": {"doppelt so viel": "Doppelte Intensität sind nur etwa +3 dB.", "10 % mehr": "Die Dezibel-Skala zählt in Faktoren, nicht in Prozent."},
-         "p10": {"zehnmal so viel": "Genau dieser Fehler stand auf einer Folie im Vorjahr. Zehnfach ist die Intensität – der Schalldruck nur etwa 3,2-fach.",
+         "p10": {"zehnmal so viel": "Diesen Fehler machen viele. Zehnfach ist die Intensität – der Schalldruck nur etwa 3,2-fach.",
                  "hundertmal so viel": "Hundertfach wird die Intensität erst bei +20 dB."},
          "p20": {"zwanzigmal so viel": "Dezibel addieren sich, die Faktoren multiplizieren sich: 3,2 · 3,2 …",
                  "hundertmal so viel": "Hundertfach ist bei +20 dB die Intensität, nicht der Schalldruck."},
@@ -258,7 +258,7 @@ T = [
 
  {"id": "a7", "nr": 7, "title": "GRUPPENARBEIT: Gehörschutz-Lagebesprechung", "src": "Buch S. 109–110", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 9, "marke": "GRUPPENARBEIT",
   "img": "img/gehoerschutz.svg",
-  "q": "Lagebesprechung vor einer Übung. In eurer Gruppe übernimmt jeder eine Rolle (Rollenkarten). Besprecht a) bis g) gemeinsam (6 min) – jeder trägt die Entscheidung selbst ein. "
+  "q": "Lagebesprechung vor einer Übung. In eurer Gruppe übernimmt jeder eine Rolle (Rollenkarten). Besprecht a) bis g) gemeinsam (ca. 6 min). Die Entscheidung h) trägt jeder selbst ein. "
        "Danach fragt Prof. HOLZER einzelne Rollen, warum ihr so entschieden habt. Ohne KI.",
   "rollen": [["REKRUT", "findet Gehörschutz lästig und will schnell fertig werden."],
              ["SCHIESSAUSBILDER", "ist verantwortlich, dass niemand zu Schaden kommt."],
@@ -286,7 +286,7 @@ T = [
           "zug": {"sel": "Kein Gehörschutz nötig – mit Noise-Cancelling kannst du die Musik leiser stellen"},
           "anc": {"sel": "Nein – ANC ist kein geprüfter Gehörschutz; er nennt keine Messung, nur seine Meinung"},
           "antwort": {"kw": [["geprüfter Gehörschutz", r"gehoerschutz|gehörschutz|stoepsel|stöpsel|kapsel|otoplastik|zertifiz|gepruef|geprüf|en 352"],
-                             ["Begründung", r"haarzell|knall|innenohr|kaputt|schaed|schäd|tinnitus|zu laut|spitze|wachsen nicht|150"]], "need": 2, "man": True}},
+                             ["Begründung", r"haarzell|knall|innenohr|kaputt|schaed|schäd|tinnitus|zu laut|spitze|wachsen nicht|150|schad"]], "need": 2, "man": True}},
   "fb": {"bild": {"links: aufrechte Härchen in Reihen": "So sehen gesunde Haarzellen aus – schön in Reihen.",
                   "Man sieht den Schaden nur am Trommelfell": "Das Trommelfell kann auch reißen – der bleibende Schaden liegt aber tiefer, in der Schnecke."},
          "nach": {"Ja, nach etwa zwei Wochen": "Vögel und Fische können das – Menschen leider nicht.", "Ja, wenn man viel Wasser trinkt": "Trinken hilft dem Körper, aber Haarzellen wachsen davon nicht nach."},
@@ -294,7 +294,7 @@ T = [
                      "Kein Schutz – ein paar Schüsse schaden nicht": "Schon ein einziger Knall über 150 dB kann Haarzellen sofort zerstören.",
                      "Watte in die Ohren": "Watte dämmt kaum. Nur geprüfter Gehörschutz zählt."},
          "werk": {"Gehörschutz nur bereitlegen, tragen ist freiwillig": "Bereitlegen muss der Betrieb schon ab 80 dB. Ab 85 dB muss man ihn auch tragen.",
-                  "Schutz braucht man erst ab 120 dB": "120 dB ist schon die Schmerzgrenze. Schaden entsteht viel früher – bei langer Belastung ab etwa 85 dB."},
+                  "Schutz braucht man erst ab 120 dB": "Bei 120 bis 130 dB liegt schon die Schmerzgrenze. Schaden entsteht viel früher – bei langer Belastung ab etwa 85 dB."},
          "zug": {"Kapselgehörschutz ist Pflicht": "70 dB sind etwa Straßenverkehr – dafür braucht man keinen Gehörschutz.",
                  "Musik laut aufdrehen, dann hört man den Zug nicht": "Dann kommt zur Zugfahrt noch laute Musik dazu – das belastet die Haarzellen zusätzlich."},
          "anc": {"Ja – teure Earbuds dämpfen jeden Knall": "Der Preis sagt nichts. Entscheidend ist, ob ein Gehörschutz geprüft ist (EN 352).",
@@ -333,7 +333,7 @@ T = [
           "dreh": {"sel": "die Bogengänge"},
           "schwindel": {"sel": "Die träge Lymphe fließt noch weiter und meldet eine Drehung, die es nicht mehr gibt"},
           "pilot": {"sel": "Die Bogengänge melden nur Änderungen der Drehung – bei gleichmäßiger Drehung meldet die Lymphe nichts mehr"},
-          "tun": {"kw": [["Instrumente", r"instrument|anzeige|kuenstlicher horizont|künstlicher horizont|cockpit|geraet|gerät|fluglage"], ["nicht dem Gefühl", r"gefuehl|gefühl|nicht vertrauen|nicht dem koerper|nicht dem körper|vertrau"]], "need": 1, "man": True}},
+          "tun": {"kw": [["Instrumente", r"instrument|anzeige|kuenstliche\w* horizont|künstliche\w* horizont|hoehenmesser|höhenmesser|cockpit|geraet|gerät|fluglage"], ["nicht dem Gefühl", r"gefuehl|gefühl|nicht vertrauen|nicht dem koerper|nicht dem körper|vertrau"]], "need": 1, "man": True}},
   "fb": {"dt": [[68, "Nicht mal, sondern geteilt: t = s / v."], [1700, "Du hast v durch s geteilt. Die Zeit ist t = s / v."], [0.000588, "Das sind Sekunden. Rechne noch in Millisekunden um (· 1000)."], [0.00059, "Das sind Sekunden. Rechne noch in Millisekunden um (· 1000)."], [0.0006, "Das sind Sekunden. Rechne noch in Millisekunden um (· 1000)."]],
          "vorne": {"Von hinten kommt kein Schall ins Ohr": "Doch – du hörst auch, was hinter dir passiert. Nur der Unterschied zwischen den Ohren fehlt.",
                    "Die Ohrmuschel ist hinten taub": "Die Ohrmuschel hilft sogar beim Unterscheiden – durch ihre Form."},
@@ -384,7 +384,7 @@ T = [
              ["s5", "e) »Noise-Cancelling-Kopfhörer sind ein zertifizierter Gehörschutz.«", STIMMT, False],
              ["fix", "f) Ein falscher Satz – richtig formuliert"]],
   "chk": {"s1": {"sel": "stimmt"}, "s2": {"sel": "stimmt nicht"}, "s3": {"sel": "stimmt nicht"}, "s4": {"sel": "stimmt"}, "s5": {"sel": "stimmt nicht"},
-          "fix": {"kw": [["Korrektur", r"intensit|3,2|3\.2|drei komma|93|83|plus 3|\+ ?3|kein gehoerschutz|kein gehörschutz|nicht zertifiziert|nicht gepruef|nicht geprüf|nicht zugelassen"]], "man": True}},
+          "fix": {"kw": [["Korrektur", r"intensit|3,2|3\.2|drei komma|93|83|plus 3|\+ ?3|kein gehoerschutz|kein gehörschutz|nicht zertifiziert|nicht gepruef|nicht geprüf|nicht zugelassen|kein zertifiziert|kein gepr|nicht.{0,20}geh(ö|oe)rschutz|dreimal|dreifach|3-fach|3-mal|3 mal"]], "man": True}},
   "fb": {"s1": {"stimmt nicht": "Genau das macht Dezibel aus: Jede 10-dB-Stufe ist ein Faktor 10 in der Intensität."},
          "s2": {"stimmt": "Zehnfach wird die Intensität, der Schalldruck nur etwa 3,2-fach."},
          "s3": {"stimmt": "Dezibel addiert man nicht. Doppelte Intensität ≈ +3 dB."},
@@ -475,7 +475,7 @@ T = [
          "max": {"bis zu 150 dB": "So laut ist ein Schuss am Ohr – ein Handy schafft weniger. Such »Dezibel« im Text.", "bis zu 85 dB": "85 dB ist die Grenze, ab der Geräte warnen sollen – das Maximum ist höher."},
          "zeit": {"etwa 36 Stunden": "Du hast 10 dB wie 10 % behandelt. Dezibel sind eine Leiter in Zehnerschritten.", "etwa 400 Stunden": "Mehr Intensität heißt WENIGER Zeit für dieselbe Schallenergie, nicht mehr."}},
   "sol": [["Lösung", ["a) Höchstens 60 % der maximalen Lautstärke und höchstens 60 Minuten am Stück, dann Pause.",
-                      "b) Bis zu 100 dB – so laut wie eine Kreissäge (Dezibel-Leiter).",
+                      "b) Bis zu 100 dB – so laut wie Kopfhörer voll aufgedreht oder eine Disco (Dezibel-Leiter).",
                       "c) Etwa 4 Stunden: +10 dB = zehnmal so viel Intensität, also nur ein Zehntel der Zeit (40 h : 10). Das ist eine Modellrechnung nach der Regel »gleiche Schallenergie«.",
                       "d) Kopfhörer-Hersteller, Streaming- und Spieleanbieter verdienen an langer Nutzung; Werbung betont Klang, nicht Gefahren. Die WHO verkauft nichts, stützt sich auf Studien und ist unabhängig von Herstellern. Der Artikel nennt außerdem eine Umfrage eines Medienkonzerns (Burda) – für Gewohnheiten brauchbar, nicht für Grenzwerte.",
                       "e) Zerstörte Haarzellen wachsen nicht nach (Aufgabe 7). Pfeifen im Ohr kommt oft erst, wenn schon Schaden entsteht; leiser hören verhindert ihn vorher."]]],
@@ -599,7 +599,7 @@ STOPPFRAGEN = {
     "richtung": [("Welche zwei Unterschiede nutzt das Gehirn zum Orten?", "Den Zeitunterschied und den Pegelunterschied zwischen den Ohren."),
                  ("Wie groß ist der Zeitunterschied höchstens?", "Etwa 0,6 Millisekunden.")],
     "gleichgewicht": [("Was melden die Bogengänge?", "Drehbeschleunigung – Beginn und Ende einer Drehung."),
-                      ("Warum wird man seekrank?", "Augen und Gleichgewichtsorgan melden Widersprüchliches (Deck scheint ruhig, Körper schwankt).")],
+                      ("Warum wird man seekrank?", "Augen und Gleichgewichtsorgan melden Widersprüchliches (in der Kabine scheint alles ruhig, der Körper schwankt).")],
 }
 
 STOLPERSTEINE = [("»+10 dB = zehnfacher Schalldruck«",
@@ -715,6 +715,7 @@ VERMUTUNG_ABCD = {
 for _n, _qs in list(WDN_ABCD.items()) + list(VERMUTUNG_ABCD.items()):
     for _q in _qs: assert len(_q) == 4 and len(set([_q[1]] + _q[2])) == 4, _q
 assert set(VERMUTUNG_ABCD) == set(DEMOS)
+for _v, _d in VS.items(): assert any(t.get("versuch") == _v and t["nr"] == _d["aufgabe"] for t in T) or _d["aufgabe"] in [t["nr"] for t in T if _v in (t.get("title", "") + t.get("src", ""))], (_v, "Aufgabennummer falsch")
 
 # ---------------------------------------------------------------- Mitarbeits-Check (Stephan 15.11.2026): 10 Fragen, nur Pflichtstoff, kein Militärbezug
 CHECK = [

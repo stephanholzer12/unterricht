@@ -22,7 +22,7 @@ KARTEN = {
                  "**s = v · t**. Beim **Echo** läuft der Schall hin **und** zurück: Die Wand ist nur halb so weit weg.",
                  "Aus der Wellenlehre kennst du **v = λ · f** – daraus folgt λ = v / f."],
         "formeln": [("s", "Weg", "m"), ("v", "Schallgeschwindigkeit", "m/s"), ("t", "Zeit", "s"), ("λ", "Wellenlänge", "m"),
-                    ("s = v · t", "Echo: s = v · t / 2", ""), ("λ = v / f", "Faustregel Gewitter: Sekunden : 3 = km", "")],
+                    ("s = v · t", "Weg = Geschwindigkeit · Zeit", ""), ("Echo", "s = v · t / 2", ""), ("λ = v / f", "Wellenlänge aus v und f", "m"), ("Gewitter", "Sekunden : 3 ≈ km", "")],
         "link": "theorie.html#tempo"},
  "k3": {"titel": "Tonhöhe und Lautstärke", "teil": "tonhoehe", "buch": "Buch S. 63–64", "bild": "img/tonhoehe.svg",
         "alt": "Vier Druckkurven: oben eine tiefe und eine hohe Frequenz bei gleicher Amplitude, unten eine kleine und eine große Amplitude bei gleicher Frequenz.",
@@ -120,7 +120,7 @@ PARTS = [
                "PhET, University of Colorado Boulder · Deutsch · CC BY 4.0 · läuft im Browser, auch am Handy · öffnet in einem neuen Tab"),
               ("ul", ["Eine **Schallquelle** – Stimmband, Lautsprechermembran, Stimmgabel – schwingt. Bei jedem Schwung nach vorne drückt sie die Luft davor zusammen (**Verdichtung**), beim Zurückschwingen entsteht eine **Verdünnung**.",
                       "Die Luftteilchen geben den Stoß an ihre Nachbarn weiter. Jedes Teilchen bewegt sich dabei nur Bruchteile eines Millimeters **längs** der Ausbreitungsrichtung hin und her. Das ist eine **Längswelle (Longitudinalwelle)**.",
-                      "**Der Schalldruck** ist die kleine Abweichung vom normalen Luftdruck. Selbst ein lautes Gespräch ändert den Luftdruck um weniger als ein Zehntausendstel Prozent.",
+                      "**Der Schalldruck** ist die kleine Abweichung vom normalen Luftdruck. Selbst ein normales Gespräch ändert den Luftdruck um weniger als ein Zehntausendstel Prozent.",
                       "Schall braucht einen **Träger**: Gas, Flüssigkeit oder festen Stoff. Im Vakuum gibt es keinen Schall – das zeigt der Wecker unter der leergepumpten Glocke (Buch S. 61)."]),
               ("demo", "K2.4-D1", "Prof. HOLZER schlägt die Stimmgabel an. **Erst vermuten:** Was passiert, wenn sie ins Wasser taucht? Wenn ihr Stiel auf den Tisch drückt? "
                                   "Danach dürft ihr den Stiel am Tisch selbst spüren. Der Tisch schwingt mit und wirkt als **Resonanzkörper** – darum wird es lauter (Brücke zur Resonanz aus der Wellenlehre)."),

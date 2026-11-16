@@ -118,7 +118,7 @@ JS = """<script>
     var art = "gewitter", r = box.querySelector("input"), svg = box.querySelector("svg"), t0 = null;
     function zeit() { return +r.value * M[art].k; }
     function zeig() {
-      var m = M[art], t = zeit(), s = m.v * t, d = m.hin ? s / 2 : s, nk = t < 0.1 ? 2 : (t < 1 ? 2 : 1);
+      var m = M[art], t = zeit(), s = m.v * t, d = m.hin ? s / 2 : s, nk = m.k >= 0.1 ? 1 : 2;   /* so viele Stellen, wie der Regler wirklich hat – Anzeige und Rechnung passen zusammen */
       q(box, "t").textContent = f(t, nk) + " s";
       q(box, "rech").innerHTML = "Weg des Schalls: s = v · t = " + tsd(m.v) + " m/s · " + f(t, nk) + " s = <b>" + f(s, s < 10 ? 2 : 0) + " m</b>";
       q(box, "erg").innerHTML = m.hin ? m.ziel + ": hin <b>und</b> zurück – also durch 2: <b>" + f(d, d < 10 ? 2 : d < 100 ? 1 : 0) + " m</b>"
@@ -144,8 +144,8 @@ JS = """<script>
     zeig(); requestAnimationFrame(bild);
   };
 
-  var LEITER = [[0, "Hörschwelle"], [30, "Blätterrauschen"], [50, "Unterhaltung"], [60, "Gespräch, Büro"], [80, "Straßenverkehr"],
-                [90, "Lkw, Fabrikhalle"], [100, "Kopfhörer laut, Disco"], [110, "Presslufthammer"], [120, "Rockkonzert vorne"], [130, "Schmerzgrenze"], [150, "Schuss am Ohr (Spitze)"]];
+  var LEITER = [[0, "Hörschwelle"], [30, "Blätterrauschen"], [50, "Unterhaltung"], [60, "Gespräch, Büro"], [70, "Straßenverkehr"], [80, "starker Verkehr"],
+                [90, "Lkw, Fabrikhalle"], [100, "Kopfhörer laut, Disco"], [110, "Presslufthammer"], [120, "Rockkonzert vorne, Schmerzgrenze beginnt"], [130, "Schmerzgrenze"], [150, "Schuss am Ohr (Spitze)"]];
   function name(L) { var n = ""; LEITER.forEach(function (b) { if (L >= b[0] - 2) n = b[1]; }); return (LEITER.some(function (b) { return b[0] === L; }) ? "" : "etwa: ") + n; }
   SIMINIT.db = function (box) {
     var ra = box.querySelector('[data-i="a"]'), rb = box.querySelector('[data-i="b"]'), svg = box.querySelector("svg");

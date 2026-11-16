@@ -207,7 +207,7 @@ def ohr(nummern=False):
         for (n, x, y), (x1, y1, x2, y2) in zip(marks, lines):
             if (x1, y1) != (x2, y2): b.append(f"<line x1='{x1}' y1='{y1}' x2='{x2}' y2='{y2}' stroke='{INK}' stroke-width='3'/>")
             b.append(f"<circle cx='{x}' cy='{y}' r='19' fill='{OLIVE}'/>" + t(x, y + 9, str(n), 26, "b", "middle", "#fff"))
-        b.append(t(24, 620, "Ein Teil ist gezeichnet, aber nicht nummeriert.", 20, "m"))
+        b.append(t(24, 620, "Ein Begriff aus der Liste bleibt übrig.", 20, "m"))
     else:
         lab = [("Ohrmuschel", 20, 480, 70, 440), ("Gehörgang", 120, 270, 170, 300), ("Trommelfell", 170, 210, 254, 282),
                ("Gehörknöchelchen", 260, 175, 300, 268), ("Bogengänge", 430, 112, 420, 180), ("Hörnerv", 640 - 16, 260, 610, 298),
