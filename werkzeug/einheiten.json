@@ -230,7 +230,7 @@
    "quiz.html",
    "check.html"
   ],
-  "versteckt": true,
+  "versteckt": false,
   "kapitelmenue": true,
   "fahrplan": {
    "ansicht": "kompakt",
