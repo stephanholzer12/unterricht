@@ -164,23 +164,23 @@ def saeure():
     b.append(f"<rect x='{L}' y='104' width='{R - L}' height='44' rx='12' fill='{WHITE}' stroke='{LIGHT}' stroke-width='3'/>")
     s = []
     # drei Schritte als Überschrift, nacheinander
-    for txt, pts in (("1  HCl trifft auf Wasser.", [(0, 1), (0.17, 1), (0.20, 0)]),
-                     ("2  Das H⁺ springt zum Wasser.", [(0, 0), (0.17, 0), (0.21, 1), (0.38, 1), (0.42, 0)]),
-                     ("3  Es entsteht H₃O⁺: sauer!", [(0, 0), (0.42, 0), (0.47, 1)])):
+    for txt, pts in (("1  HCl trifft auf Wasser.", [(0, 1), (0.16, 1), (0.18, 0)]),
+                     ("2  Das H⁺ springt zum Wasser.", [(0, 0), (0.19, 0), (0.22, 1), (0.38, 1), (0.40, 0)]),
+                     ("3  Es entsteht H₃O⁺: sauer!", [(0, 0), (0.43, 0), (0.47, 1)])):
         s.append(blende(t(M, 133, txt, 21, "b", "middle"), pts))
     # Säurerest Cl (zuerst rechts neben dem Proton, am Ende links)
     cl = kreis(0, 0, 30, CL_COL, "Cl", 24, WHITE)
     cl += blende(t(38, -26, "−", 32, "b", "middle", BLUE), [(0, 0), (0.40, 0), (0.47, 1)])
-    cl += blende(t(21, 66, "HCl", 24, "b", "middle"), [(0, 1), (0.38, 1), (0.45, 0)])
-    cl += blende(t(0, 66, "Cl⁻", 24, "b", "middle"), [(0, 0), (0.40, 0), (0.47, 1)])
+    cl += blende(t(21, 66, "HCl", 24, "b", "middle"), [(0, 1), (0.38, 1), (0.41, 0)])
+    cl += blende(t(0, 66, "Cl⁻", 24, "b", "middle"), [(0, 0), (0.42, 0), (0.47, 1)])
     cl += blende(t(0, 94, "Säurerest", 19, "m", "middle"), [(0, 0), (0.52, 0), (0.60, 1)])
     s.append(bewege(cl, [(0, f"95 {Y}"), (0.40, f"95 {Y}"), (0.55, f"80 {Y}")]))
     # Wasser kommt von rechts, nimmt das Proton auf und wird zum Oxonium-Ion
     w = blende(f"<circle cx='0' cy='-8' r='64' fill='{RED}'/>", [(0, 0), (0.58, 0), (0.68, 0.16), (0.80, 0.08), (0.92, 0.16)])
     w += kreis(-30, 17.5, 13.75, H_COL, "H", 16) + kreis(30, 17.5, 13.75, H_COL, "H", 16) + kreis(0, 0, 25, O_COL, "O", 22, WHITE)
     w += blende(t(38, -34, "+", 32, "b", "middle", RED), [(0, 0), (0.40, 0), (0.47, 1)])
-    w += blende(t(0, 66, "H₂O", 24, "b", "middle"), [(0, 1), (0.38, 1), (0.45, 0)])
-    w += blende(t(0, 66, "H₃O⁺", 24, "b", "middle"), [(0, 0), (0.40, 0), (0.47, 1)])
+    w += blende(t(0, 66, "H₂O", 24, "b", "middle"), [(0, 1), (0.38, 1), (0.41, 0)])
+    w += blende(t(0, 66, "H₃O⁺", 24, "b", "middle"), [(0, 0), (0.42, 0), (0.47, 1)])
     w += blende(t(0, 94, "macht sauer", 19, "b", "middle", RED), [(0, 0), (0.52, 0), (0.60, 1)])
     s.append(bewege(w, [(0, f"360 {Y}"), (0.08, f"360 {Y}"), (0.18, f"300 {Y}"), (0.40, f"300 {Y}"), (0.55, f"330 {Y}")]))
     # das Proton: rot und „H⁺“ im Flug, nach der Landung ein ganz normales H im Oxonium-Ion
