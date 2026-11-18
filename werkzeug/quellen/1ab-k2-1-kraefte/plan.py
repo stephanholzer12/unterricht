@@ -89,6 +89,24 @@ ZIEL = {1: "Kraftwirkungen erkennen, Masse und Kraft auseinanderhalten – und w
         5: "Das eigene Thema verständlich zeigen und von allen anderen Gruppen die Kernaussage mitnehmen.",
         6: "Alle sieben Themen selbst erklären und die Einheiten sicher verwenden."}
 
+# Überblick über die ganze Einheit (Stephan, 18.11.2026): erste Folie der Einheit, VOR »Heute«.
+# Nur das Wichtigste je Stunde (Marke + eine kurze Zeile), keine Minuten, keine Aufgabenliste.
+EINHEIT = {
+    "ziel": "Kräfte siehst du nicht – aber ihre **Wirkung**: beim Sprint, beim Schwimmen, beim Bremsen, im Dienst.",
+    "am_ende": "Am Ende kannst du **alle sieben Kräfte-Themen** erklären, Kräfte **messen** und mit **N, kg und Pa** rechnen.",
+    "themen": "7 Gruppen – 7 Themen: Bewegung · Gewichtskraft · Auftrieb · Reibung · Kapillarwirkung · Druck · Kraft und Gegenkraft",
+    "stunden": [  # (Stunde, Marke, kurz)
+        ("1", "BESPRECHEN", "Was Kräfte bewirken · Masse oder Kraft? · Gruppen auslosen"),
+        ("2", "GRUPPENARBEIT", "Euer Thema: Leitfragen klären, Versuch planen"),
+        ("3", "VERSUCH", "Euren Kräfte-Versuch machen und fürs Vorführen üben"),
+        ("4", "GRUPPENARBEIT", "Steckbrief für alle schreiben · Generalprobe"),
+        ("5", "PRÄSENTATION", "Jede Gruppe zeigt ihr Thema – ihr lernt von allen"),
+        ("6", "DEMO", "Kraftmesser gegen Kraftmesser · alle Themen allein erklären"),
+        ("Danach", "CHECK", "Mitarbeits-Check: 10 Fragen zur ganzen Einheit"),
+    ],
+    "abgabe": "Jede Stunde: **Arbeitsblatt-PDF in LMS**.",
+}
+
 PLAN = {k: [{"std": n, "teile": [n], "methode": METHODE[n], "phasen": STUNDE[n]} for n in sorted(STUNDE)] for k in I.KLASSEN}
 MARKE = {1: "BESPRECHEN", 2: "SELBSTSTUDIUM", 3: "VERSUCH", 4: "GRUPPENARBEIT", 5: "PRÄSENTATION", 6: "SELBSTSTUDIUM"}
 MARKEN = {"", "BESPRECHEN", "SELBSTSTUDIUM", "GRUPPENARBEIT", "VERSUCH", "PARTNERCHECK", "PRÄSENTATION", "DEMO"}
