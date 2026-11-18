@@ -285,7 +285,7 @@ for t in I.T:
     x.pop("besprechen", None)
     TJ.append(x)
 i = s.index("const KEY = "); j = s.index("\n];", i) + 3
-s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K2.4", THEMA = "Akustik";\n' % I.KEY
+s = (s[:i] + 'const KEY = "%s";\nconst KAP = "K2.4", THEMA = "Akustik";\nvar PL_ZUSATZ_ENDE = true;\nvar PL_ZUSATZ_OFFEN = true;   /* Zusatzaufgaben stehen am Ende ihrer Stunde und bleiben sichtbar (nie zugeklappt) */\n' % I.KEY
      + "const KARTEN = " + json.dumps(TD.karte_html_daten(), ensure_ascii=False) + ";\n"
      + "const SIMTITEL = " + json.dumps(SIMS.TITEL, ensure_ascii=False) + ", SIMZEILE = " + json.dumps(SIMS.ZEILE, ensure_ascii=False) + ", SIMHTML = " + json.dumps(SIMS.HTML, ensure_ascii=False).replace("</", "<\\/") + ";\n"
      + "const T = " + json.dumps(TJ, ensure_ascii=False, indent=1) + ";" + s[j:])
@@ -319,7 +319,7 @@ s = s.replace("const GRP = ", "const BALKEN = " + json.dumps(P.balken(), ensure_
 GESICHERT = {str(nr): ", ".join(P.buchstaben(nr, ids)) for n in P.SICHERUNG for nr, ids in P.SICHERUNG[n]["teile"]}
 s = s.replace("const GRP = ", "const GESICHERT = " + json.dumps(GESICHERT, ensure_ascii=False) + ";\nconst GRP = ", 1)
 s = s.replace('T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });',
-  'T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); const kc = renderTask(t); gesichertEl(kc, t.nr); $("#tasks").append(kc); balkenEl("nach", t.nr); });')
+  '/* Anzeigereihenfolge: Stunde für Stunde, Zusatzaufgaben am Ende ihrer Stunde (zst); nr und id bleiben */ const ORD = T.map((t, i) => [t, i]).sort((a, b) => ((a[0].hl ? 99 : (a[0].zst || a[0].h)) - (b[0].hl ? 99 : (b[0].zst || b[0].h))) || ((a[0].tag === "Zusatz") - (b[0].tag === "Zusatz")) || (a[1] - b[1])).map(x => x[0]);\n  ORD.forEach(t => { const g = t.hl ? "hl" : (t.zst ? "z" + t.zst : t.h); if (g !== lastH) { $("#tasks").append(grpEl(g)); lastH = g; } balkenEl("vor", t.nr); const kc = renderTask(t); gesichertEl(kc, t.nr); $("#tasks").append(kc); balkenEl("nach", t.nr); });')
 s = s.replace("let lastH = null;", """/* ABCD-Karte (Standard 15.11.2026: digital statt Zettel). Die Frage steht am Beamer; jeder tippt A, B, C oder D und hält das Handy hoch.
    Nichts wird gespeichert oder bewertet. */
 function abcdAuf() {

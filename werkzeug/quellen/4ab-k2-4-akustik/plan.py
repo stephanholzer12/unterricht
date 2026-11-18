@@ -324,10 +324,13 @@ def fahrplan_zeilen():
     z = []
     for n in sorted(STUNDE):
         auf = bereich(aufgaben_der(n)) or "–"
+        _zn = [t["nr"] for t in I.T if t.get("zst") == n]
+        if _zn:
+            auf += " · Zusatz " + bereich(_zn)   # am Ende der Stunde, nur wenn du früher fertig bist
         z.append({"wann": f"Stunde {n}", "titel": I.STUNDENTITEL[n], "marke": MARKE[n], "lesen": LESEN[n], "folge": folge(n), "buch": BUCH[n],
                   "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
     zus = [t for t in I.T if t["nr"] not in I.PFLICHT and t["id"] != "v0"]
-    z.append({"wann": "Für Schnelle", "lesen": ZUSATZ_TEXT, "aufgaben": "Zusatz " + bereich([t["nr"] for t in zus]),
+    z.append({"wann": "Für Schnelle", "lesen": ZUSATZ_TEXT, "aufgaben": "Zusatz " + bereich([t["nr"] for t in zus]) + " (stehen am Ende der jeweiligen Stunde)",
               "zeit": "ca. %d min" % sum(t["zeit"] for t in zus), "abgabe": "freiwillig"})
     z.append({"wann": "Danach", "lesen": CHECK_ZEILE})
     return z

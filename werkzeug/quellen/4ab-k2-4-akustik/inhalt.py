@@ -484,6 +484,11 @@ T = [
 ]
 
 # ---------------------------------------------------------------- Kontrollen
+# Zusatzaufgaben stehen am Ende der Stunde, zu der sie passen (Stephan, 18.11.2026); nr und id bleiben, nur die Anzeigereihenfolge ändert sich
+ZUSATZ_STUNDE = {"z1": 1, "z2": 2, "z3": 3, "z4": 2, "z5": 4}
+for _t in T:
+    if _t["tag"] == "Zusatz":
+        _t["zst"] = ZUSATZ_STUNDE[_t["id"]]
 assert [t["nr"] for t in T] == list(range(1, 14))
 PFLICHT = [t["nr"] for t in T if t["tag"] != "Zusatz" and not t.get("vorhersage")]
 assert PFLICHT == [2, 3, 4, 5, 6, 7, 8], PFLICHT
@@ -526,7 +531,9 @@ GRP = {1: STUNDENNAME[1] + " (Buch S. 60–61, 67)",
        2: STUNDENNAME[2] + " (Buch S. 62–64) · VERSUCH K2.4-V1",
        3: STUNDENNAME[3] + " (Buch S. 109–110) · VERSUCH K3.2-V1",
        4: STUNDENNAME[4] + " (Buch S. 110–112)",
-       0: "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)"}
+       0: "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)",
+       "z1": "Zusatz zu Stunde 1 · nur wenn du früher fertig bist", "z2": "Zusatz zu Stunde 2 · nur wenn du früher fertig bist",
+       "z3": "Zusatz zu Stunde 3 · nur wenn du früher fertig bist", "z4": "Zusatz zu Stunde 4 · nur wenn du früher fertig bist"}
 
 LERNZIELE = ["**Schall als Druckwelle** erklären und die Größen **Frequenz, Amplitude, Wellenlänge, Schallgeschwindigkeit und Schalldruckpegel** richtig zuordnen",
              "mit **s = v · t** und **v = λ · f** Entfernungen, Echos und Laufzeiten berechnen",
