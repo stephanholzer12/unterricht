@@ -665,7 +665,8 @@
       ],
       [
        "",
-       "Aufgabe 1"
+       "Aufgabe 1",
+       "aufgaben.html#card_v0"
       ],
       [
        "DEMO",
@@ -681,7 +682,8 @@
       ],
       [
        "",
-       "Aufgabe 2"
+       "Aufgabe 2",
+       "aufgaben.html#card_a1"
       ],
       [
        "BESPRECHEN",
@@ -691,6 +693,12 @@
      "buch": "Buch S. 53–55",
      "aufgaben": "1, 2",
      "theorie": "Teil 1 Säuren",
+     "theorie_links": [
+      [
+       "Teil 1 Säuren",
+       "theorie.html#saeuren"
+      ]
+     ],
      "abgabe": "–"
     },
     {
@@ -709,7 +717,8 @@
       ],
       [
        "",
-       "Aufgabe 3"
+       "Aufgabe 3",
+       "aufgaben.html#card_a2"
       ],
       [
        "BESPRECHEN",
@@ -717,7 +726,8 @@
       ],
       [
        "",
-       "Aufgabe 4"
+       "Aufgabe 4",
+       "aufgaben.html#card_a3"
       ],
       [
        "BESPRECHEN",
@@ -727,6 +737,16 @@
      "buch": "Buch S. 56–59",
      "aufgaben": "3, 4",
      "theorie": "Teil 2 Laugen, Teil 3 Pingpong",
+     "theorie_links": [
+      [
+       "Teil 2 Laugen",
+       "theorie.html#basen"
+      ],
+      [
+       "Teil 3 Pingpong",
+       "theorie.html#protolyse"
+      ]
+     ],
      "abgabe": "–"
     },
     {
@@ -745,11 +765,13 @@
       ],
       [
        "",
-       "Aufgabe 5"
+       "Aufgabe 5",
+       "aufgaben.html#card_a4"
       ],
       [
        "VERSUCH",
-       "VERSUCH (Aufgabe 6)"
+       "VERSUCH (Aufgabe 6)",
+       "aufgaben.html#card_a5"
       ],
       [
        "BESPRECHEN",
@@ -759,6 +781,16 @@
      "buch": "Buch S. 59–61",
      "aufgaben": "5, 6",
      "theorie": "Teil 4 pH-Wert, Teil 5 Messen",
+     "theorie_links": [
+      [
+       "Teil 4 pH-Wert",
+       "theorie.html#ph"
+      ],
+      [
+       "Teil 5 Messen",
+       "theorie.html#messen"
+      ]
+     ],
      "abgabe": "Messwerte deiner Gruppe eintragen"
     },
     {
@@ -781,7 +813,8 @@
       ],
       [
        "",
-       "Aufgabe 7"
+       "Aufgabe 7",
+       "aufgaben.html#card_a6"
       ],
       [
        "PARTNERCHECK",
@@ -793,12 +826,23 @@
       ],
       [
        "",
-       "Auflösung Aufgabe 1"
+       "Auflösung Aufgabe 1",
+       "aufgaben.html#card_v0"
       ]
      ],
      "buch": "Buch S. 61–62, 65",
      "aufgaben": "7",
      "theorie": "Teil 6 Neutralisation, Teil 7 Blut",
+     "theorie_links": [
+      [
+       "Teil 6 Neutralisation",
+       "theorie.html#neutral"
+      ],
+      [
+       "Teil 7 Blut",
+       "theorie.html#blut"
+      ]
+     ],
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {

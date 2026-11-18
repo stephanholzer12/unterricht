@@ -191,11 +191,36 @@ STUNDEN_JS = """<script>
   if (!box.querySelector('.fp-std[data-n="' + n + '"]')) n = "1";
   btns.forEach(function (b) { b.addEventListener("click", function () { try { localStorage.setItem(KEY, b.dataset.n); } catch (e) {} zeige(b.dataset.n); }); });
   zeige(n);
+  /* Sprungziele (Aufgabe n, Theorie-Teil): Bilder laden nach und verschieben das Ziel – darum mehrmals ausrichten */
+  function ziel(h) { try { return h && h.length > 1 ? document.getElementById(decodeURIComponent(h.slice(1))) : null; } catch (e) { return null; } }
+  function hin(z) { var nav = document.querySelector("nav.toc"); window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - (nav ? nav.getBoundingClientRect().bottom + 8 : 12), behavior: "instant" }); }
+  function ausrichten(z) {   /* bis ca. 5 s nachjustieren; sobald der Kadett selbst scrollt oder tippt, sofort aufhören */
+    var n = 0, aus = false, stopp = function () { aus = true; };
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (e) { window.addEventListener(e, stopp, { once: true, passive: true }); });
+    (function schritt() { if (aus || n++ > 20) return; hin(z); setTimeout(schritt, n < 5 ? 150 : 300); })();
+  }
+  box.addEventListener("click", function (ev) {
+    var a = ev.target.closest("a.fp-link, a.fp-tlink"); if (!a) return;
+    var h = a.getAttribute("href"); if (h.charAt(0) !== "#") return;
+    var z = ziel(h); if (!z) return;
+    ev.preventDefault(); try { history.replaceState(null, "", h); } catch (e) {} ausrichten(z);
+  });
+  if (!window.__fpSprung && location.hash.length > 1) {   /* Ziel steht erst nach dem Laden der Seite fest (der Fahrplan steht davor im Text) */
+    window.__fpSprung = true;
+    var los = function () { var z0 = ziel(location.hash); if (z0 && (location.hash.indexOf("#card_") === 0 || z0.classList.contains("part"))) ausrichten(z0); };
+    if (document.readyState === "complete") los(); else window.addEventListener("load", los);
+  }
 })();
 </script>"""
 
 
-def html_kompakt_stunden(u):
+def _href(ziel, seite):
+    """Sprungziel »datei#anker«: auf der eigenen Seite nur »#anker«, sonst mit Dateiname."""
+    datei, _, anker = ziel.partition("#")
+    return ("#" + anker) if datei == seite else ziel
+
+
+def html_kompakt_stunden(u, seite=None):
     """Kompakter Fahrplan ohne Klassen und Daten: Stundennummer antippen, groß steht nur diese Stunde."""
     fp = u["fahrplan"]
     rows = [r for r in fp["zeilen"] if r["wann"].lower().startswith("stunde")]
@@ -211,15 +236,17 @@ def html_kompakt_stunden(u):
         # optional (seit 15.11.2026, K1.5 2AB): "titel" = Stundentitel, "folge" = Reihenfolge [[Marke, Text], …], "buch" = Buchseiten
         titel = f'<div class="fp-titel">{esc(r["titel"])}</div>' if r.get("titel") else ""
         if r.get("folge"):
-            eins = ('So läuft die Stunde:<span class="fp-folge">' + '<i class="fp-pfeil" aria-hidden="true">→</i>'.join(
-                f'<span class="fp-pill{" m-" + esc(m) if m else ""}">{esc(t)}</span>' for m, t in r["folge"]) + '</span>')
+            eins = ('So läuft die Stunde:' + (' <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small>' if any(len(f) > 2 for f in r["folge"]) else '') + '<span class="fp-folge">' + '<i class="fp-pfeil" aria-hidden="true">→</i>'.join(
+                (f'<a class="fp-pill fp-link{" m-" + esc(m) if m else ""}" href="{esc(_href(z[0], seite))}">{esc(t)}</a>' if z
+                 else f'<span class="fp-pill{" m-" + esc(m) if m else ""}">{esc(t)}</span>') for m, t, *z in r["folge"]) + '</span>')
         else:
             eins = esc(r["lesen"])
         buch = f' · {esc(r["buch"])}' if r.get("buch") else ""
         out.append(f'<div class="fp-std" data-n="{esc(nr(r))}" hidden><div class="fp-kopf">Diese Stunde: {esc(r["wann"])} {mk}</div>{titel}'
                    f'<div class="fp-zeile"><b class="n">1</b><span>{eins}</span></div>'
                    f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}{buch}'
-                   + (f'<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: {esc(r["theorie"])}</span>' if r.get("theorie") else "") + '</span></div>'
+                   + (f'<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: '
+                      + (", ".join(f'<a class="fp-tlink" href="{esc(_href(z, seite))}">{esc(t)}</a>' for t, z in r["theorie_links"]) if r.get("theorie_links") else esc(r["theorie"])) + '</span>' if r.get("theorie") else "") + '</span></div>'
                    f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div></div>')
     out.append(f'<details><summary>Alle Stunden ({len(rows)})</summary><ol class="fp-liste">'
                + "".join(f'<li data-n="{esc(nr(r))}">{esc(r["wann"])}{" · " + esc(r["titel"]) if r.get("titel") else ""}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}{" · Theorie: " + esc(r["theorie"]) if r.get("theorie") else ""}</li>' for r in rows)
@@ -243,17 +270,21 @@ FOLGE_CSS = """<style>
 .fp-pill.m-SELBSTSTUDIUM { background: #E8DDBB; border-color: #E8DDBB; color: #6B4F00; }
 .fp-pill.m-GRUPPENARBEIT, .fp-pill.m-PRÄSENTATION { background: #B5541F; border-color: #B5541F; color: #fff; }
 .fp-pfeil { font-style: normal; color: #5E6652; font-size: 15px; }
+a.fp-pill { text-decoration: none; min-height: 32px; box-sizing: border-box; padding: 4px 12px; }
+a.fp-pill:hover { filter: brightness(1.08); box-shadow: 0 0 0 2px #7FA83A; }
+a.fp-pill:focus-visible, a.fp-tlink:focus-visible { outline: 3px solid #2E7D8C; outline-offset: 2px; }
+a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 3px; padding: 6px 2px; }
 </style>"""
 
 
-def html_fahrplan(u):
+def html_fahrplan(u, seite=None):
     fp = u.get("fahrplan")
     if not fp or not fp.get("zeilen"):
         return None
     if fp.get("ansicht") == "kompakt" and any(r.get("klasse") for r in fp["zeilen"]):
         return A + html_kompakt(u) + E
     if fp.get("ansicht") == "kompakt" and any(r["wann"].lower().startswith("stunde") for r in fp["zeilen"]):
-        return A + html_kompakt_stunden(u) + E
+        return A + html_kompakt_stunden(u, seite) + E
     z = fp["zeilen"]
     spalten = [("wann", "Wann"), ("datum", "Datum"), ("lesen", "Das machen wir"), ("aufgaben", "Aufgaben"), ("zeit", "Zeit"), ("wie", "Wie"), ("abgabe", "Abgabe")]
     spalten = [(k, t) for k, t in spalten if k in ("wann", "lesen") or any(r.get(k) for r in z)]
@@ -288,9 +319,9 @@ ANKER = {"theorie.html": '<section class="part" id="einstieg"', "aufgaben.html":
 
 def einbauen(u, root):
     """Fahrplan in theorie.html und aufgaben.html der Einheit setzen (oder entfernen, wenn keiner eingetragen ist)."""
-    neu = html_fahrplan(u)
     geaendert = []
     for seite, anker in ANKER.items():
+        neu = html_fahrplan(u, seite)
         if seite not in u["seiten"]:
             continue
         pfad = os.path.join(root, u["ordner"], seite)

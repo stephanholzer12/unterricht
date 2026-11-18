@@ -182,6 +182,16 @@ LESEN = {1: "DEMO Rotkraut-Farbenspiel · Buch S. 54 lesen · Säuren",
 ABGABE = {1: "–", 2: "–", 3: "Messwerte deiner Gruppe eintragen", 4: "Arbeitsblatt-PDF in LMS"}
 
 
+# Sprungziele im Fahrplan (Stephan 18.11.2026): Aufgaben-Pillen und Theorie-Teile sind anklickbar (Seite#Anker)
+THEORIE_LINKS = {1: [("Teil 1 Säuren", "saeuren")], 2: [("Teil 2 Laugen", "basen"), ("Teil 3 Pingpong", "protolyse")],
+                 3: [("Teil 4 pH-Wert", "ph"), ("Teil 5 Messen", "messen")], 4: [("Teil 6 Neutralisation", "neutral"), ("Teil 7 Blut", "blut")]}
+
+
+def _ziel(nr):
+    """Sprungziel der Aufgabe mit der Nummer nr (Karten-ID im Arbeitsblatt: card_<id>)."""
+    return "aufgaben.html#card_" + next(t["id"] for t in I.T if t["nr"] == nr)
+
+
 THEORIE_TEILE = {1: "Teil 1 Säuren", 2: "Teil 2 Laugen, Teil 3 Pingpong", 3: "Teil 4 pH-Wert, Teil 5 Messen", 4: "Teil 6 Neutralisation, Teil 7 Blut"}
 
 
@@ -196,7 +206,7 @@ def folge(n):
     for text, _mi, _oh, art, marke in STUNDE[n]:
         if art in ("org", "reserve", "pdf"): continue
         if re.match(r"a\d+$", art):
-            nr = int(art[1:]); out.append(["VERSUCH" if marke == "VERSUCH" else "", ("VERSUCH (Aufgabe %d)" % nr) if marke == "VERSUCH" else "Aufgabe %d" % nr])
+            nr = int(art[1:]); out.append(["VERSUCH" if marke == "VERSUCH" else "", ("VERSUCH (Aufgabe %d)" % nr) if marke == "VERSUCH" else "Aufgabe %d" % nr, _ziel(nr)])
         elif art == "demo": out.append(["DEMO", "DEMO " + DEMO_NAME[n]])
         elif art == "wdh": out.append(["BESPRECHEN", "Weißt du noch?"])
         elif art == "erkl": out.append(["BESPRECHEN", "Prof. HOLZER erklärt"])
@@ -204,7 +214,7 @@ def folge(n):
         elif art == "bewegung": out.append(["BESPRECHEN", "Protonen-Pingpong"])
         elif art == "bespr": out.append(["BESPRECHEN", "Sicherung"])
         elif art == "partner": out.append(["PARTNERCHECK", "Partnercheck"])
-        elif art == "selbst": out.append(["", "Auflösung Aufgabe 1"])
+        elif art == "selbst": out.append(["", "Auflösung Aufgabe 1", _ziel(1)])
         else: raise ValueError(art)
     return out
 
@@ -294,7 +304,7 @@ def fahrplan_zeilen():
     for n in sorted(STUNDE):
         auf = bereich(aufgaben_der(n)) or "–"
         z.append({"wann": f"Stunde {n}", "titel": I.STUNDENTITEL[n], "marke": MARKE[n], "lesen": LESEN[n], "folge": folge(n), "buch": BUCH[n],
-                  "aufgaben": auf, "theorie": THEORIE_TEILE[n], "abgabe": ABGABE[n]})
+                  "aufgaben": auf, "theorie": THEORIE_TEILE[n], "theorie_links": [[t, "theorie.html#" + k] for t, k in THEORIE_LINKS[n]], "abgabe": ABGABE[n]})
     z.append({"wann": "Für Schnelle", "lesen": "KI-Fehlerjagd, Forschung Ozeanversauerung, Sicherheits-Briefing (Podcast oder Plakat), virtueller Versuch am Handy (PhET), Lesen und prüfen: »Übersäuert« – was ist dran?, Säure-Alarm im Mund",
               "aufgaben": "Zusatz 8–13", "zeit": "ca. 70 min", "abgabe": "freiwillig"})
     z.append({"wann": "Danach", "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"})
