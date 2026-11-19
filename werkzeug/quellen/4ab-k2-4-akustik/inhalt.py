@@ -57,6 +57,8 @@ def _weg(i, richtig):
 
 
 # ================================================================ Aufgaben
+MESSPLATZ = "Gruppe 1 = 1 m · Gruppe 2 = 2 m · Gruppe 3 = 3 m · Gruppe 4 = 4 m · Gruppe 5 = 6 m · Gruppe 6 = 8 m · Gruppe 7 = 12 m · Gruppe 8 = 16 m"
+
 T = [
  # --------------------------------------------------------------- Stunde 1
  {"id": "v0", "nr": 1, "title": "Was glaubst du?", "src": "Buch S. 60", "own": True, "tag": "Vorhersage", "h": 1, "zeit": 2,
@@ -188,14 +190,14 @@ T = [
        "1) Öffne unten den Pegelmesser und tippe »Mikrofon starten«.\n"
        "2) Alle Gruppen gehen mit dem Handy zum Lautsprecher und halten es 1 m davor, Mikrofon zum Lautsprecher.\n"
        "3) Auf das Zeichen von Prof. HOLZER tippen alle gleichzeitig »Referenz setzen«. Das Handy zeigt jetzt 0 dB. Dabei sind alle 2 Sekunden still.\n"
-       "4) Geht zu eurem Zettel am Boden: »Gruppe Nr. · Abstand«. Haltet das Handy auf Brusthöhe, Mikrofon zum Lautsprecher.\n"
+       "4) Geht zur Markierung am Boden mit eurem Abstand: " + MESSPLATZ + ". Haltet das Handy auf Brusthöhe, Mikrofon zum Lautsprecher.\n"
        "5) Prof. HOLZER schaltet den Ton AUS: »3-Sekunden-Messung«, Wert in c). Dann schaltet er den Ton AN: noch einmal messen, Wert in d).\n"
        "6) Ruft eure Werte Prof. HOLZER zu. Jeder trägt die Werte seiner Gruppe in sein eigenes Arbeitsblatt ein.",
   "hint": "Warum erst 1 m und 0 dB? Jedes Handy-Mikrofon misst anders: Derselbe Ton zeigt auf zwei Handys zwei verschiedene Zahlen. "
           "Stellen alle Handys am selben Ort auf 0 dB, werden die Werte der Gruppen vergleichbar. Gemessen wird nur: Wie viel leiser ist es als bei 1 m?",
   "type": "multi", "pegel": True,
   "fields": [["grp", "a) Gruppe Nr. · mit (Vornamen genügen)"],
-             ["abstand", "b) Unser Messplatz: Abstand zum Lautsprecher in m (steht auf dem Zettel mit eurer Gruppennummer am Boden)"],
+             ["abstand", "b) Unser Messplatz: Abstand zum Lautsprecher in m (steht auf eurer Markierung am Boden, Liste in Schritt 4)"],
              ["ruhe", "c) Grundgeräusch an unserem Platz, Ton AUS (relativ zur Referenz, in dB)"],
              ["ton", "d) Ton AN an unserem Platz (relativ zur Referenz, in dB)"],
              ["beob", "e) Was habt ihr beobachtet? (1–2 Sätze, nur was ihr gemessen habt)"],

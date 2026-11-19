@@ -29,7 +29,7 @@ STUNDE = {
      ("DEMO K2.4-D2: Lineal an der Tischkante, Tongenerator am Beamer", 6, True, "demo", "DEMO"),
      ("KURZ KLÄREN: Hörbereich, Infra- und Ultraschall, Dezibel-Leiter", 5, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 3: Hoch, tief, laut – die Dezibel-Leiter", 8, False, "a3", "SELBSTSTUDIUM"),
-     ("VERSUCH K2.4-V1 (Aufgabe 4): Referenz gemeinsam 1 m vor dem Lautsprecher, Messung am eigenen Zettel", 14, False, "a4", "VERSUCH"),
+     ("VERSUCH K2.4-V1 (Aufgabe 4): Referenz gemeinsam 1 m vor dem Lautsprecher, Messung an der eigenen Bodenmarkierung", 14, False, "a4", "VERSUCH"),
      ("BESPRECHEN: Messwerte der Klasse am Beamer", 3, True, "bespr", "BESPRECHEN"),
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
