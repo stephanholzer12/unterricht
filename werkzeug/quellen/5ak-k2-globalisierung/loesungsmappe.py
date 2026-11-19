@@ -90,7 +90,7 @@ for t in I.T:
     bild = f"<div class='bild'><img src='{b64(UNIT + t['img'], 'image/png')}' alt=''></div>" if t.get("img") else ""
     if t.get("tab"): bild += tab(t["tab"][0], t["tab"][1:]) + f"<p class='klein'>{e(t.get('tabnote', ''))}</p>"
     auf.append(f"<details class='card' data-h='{t['h']}' data-s='{html.escape((t["title"] + " " + t["q"]).lower(), quote=True)}'><summary><span class='nr'>{t['nr']}</span><span class='ttl'>{e(t['title'])}</span>{''.join(tags)}</summary>"
-               f"<div class='body'><p class='q'>{md(t['q'])}</p>{bild}<p class='klein'>{e(t['src'])}</p><ul class='felder'>{felder}</ul>"
+               f"<div class='body'><p class='q'>{md(t['q']).replace(chr(10), '<br>')}</p>{bild}<p class='klein'>{e(t['src'])}</p><ul class='felder'>{felder}</ul>"
                f"<div class='box sol'><b class='k'>Lösung</b>{sol}</div>"
                + (f"<div class='box bew'><b class='k'>Bewertungshilfe</b>Offene Felder ({', '.join(man)}): Die Seite prüft nur Stichwörter als Schreibhilfe – fachlich entscheidest du. Musterantwort oben.</div>" if man else "")
                + (f"<p class='klein'>Hinweis für Kadetten: {md(t['hint'])}</p>" if t.get("hint") else "") + "</div></details>")

@@ -160,8 +160,8 @@ def lesen_folie(teil, buch, abschnitte, leitfrage, idx):
         B.text(c, [[("»" + TITEL[a] + "«", {"bold": True})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0); y += hh + 0.06
     qr(s, "theorie", 7.75, 1.05 + (bh + 0.12 if buch else 0), 1.2, "Theorieteil")
     y += 0.08
-    hq = B.th("Leitfrage: " + leitfrage, 20, W - 0.1, pad=0.2)
-    c = B.box(s, X0, y, W, hq, fill=RGBColor.from_string("FFF4EA"), line=ORANGE, lw=1.5)
+    hq = B.th("Leitfrage: " + leitfrage, 20, 6.8, pad=0.2)   # 19.11.2026: schmal, damit die QR-Beschriftung frei bleibt
+    c = B.box(s, X0, y, 6.9, hq, fill=RGBColor.from_string("FFF4EA"), line=ORANGE, lw=1.5)
     B.text(c, [[("Leitfrage: ", {"bold": True, "color": ORANGE}), (leitfrage, {})]], size=20, anchor=MSO_ANCHOR.MIDDLE, after=0)
     return s
 
@@ -286,10 +286,10 @@ def t2_a3b():
 
 
 def t2_ampel():
-    s = d.slide("Nur Titel", "Statement-Ampel im Raum – ohne Handy")
+    s = d.slide("Nur Titel", "Statement-Ampel – ohne Handy")
     for i, (kopf, col) in enumerate((("stimmt", GREEN), ("unklar", ORANGE), ("stimmt nicht", RUST))):
         karte(s, X0 + i * 3.05, 1.0, 2.9, 0.8, kopf, [], col, size=20)
-    y = schritte(s, X0, 1.95, W, ["Stephan liest eine Aussage vor. Alle stellen sich in eine Zone.", "Gruppen prüfen mit den vier Fragen: Wer sagt das? Woher weiß er das? Was hat er davon? Was sagen andere?",
+    y = schritte(s, X0, 1.95, W, ["Prof. HOLZER liest eine Aussage vor. Alle stellen sich in eine Zone.", "Gruppen prüfen mit den vier Fragen: Wer sagt das? Woher weiß er das? Was hat er davon? Was sagen andere?",
                                   "Neu aufstellen. Wer wechselt, sagt in einem Satz warum. Keine Note."], size=16, farbe=GREEN)
     return s
 
