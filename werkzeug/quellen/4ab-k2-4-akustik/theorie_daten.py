@@ -179,10 +179,10 @@ PARTS = [
 
  ("messen", "Teil 5 · Buch S. 62–64 · Stunde 2", "Versuch: Schallpegel im langen Saal", [
   {"id": "messen", "title": "So messt ihr – und warum nur vergleichend", "pill": "Buch S. 62",
-   "blocks": [("versuch", "K2.4-V1", "Vorne spielt ein Lautsprecher einen gleichmäßigen Ton. Jede Gruppe misst mit **einem** Handy. "
-                                     "**1** Pegelmesser im Arbeitsblatt starten. **2** Am Lehrertisch, 1 m vor dem Lautsprecher, auf »Referenz setzen« tippen – jetzt zeigt das Handy 0 dB. "
-                                     "**3** Zurück an euren Platz (Abstand steht am Boden) und messen: Ton aus, Ton an. **4** Werte eintragen, an Prof. HOLZER melden.", "aufgaben.html#card_a4"),
-              ("ul", ["**Warum Referenz?** Ein Handy ist kein geeichtes Messgerät, und jedes Handy misst ein bisschen anders. Setzen alle am selben Ort auf 0 dB, fällt dieser Unterschied heraus – wir vergleichen nur noch.",
+   "blocks": [("versuch", "K2.4-V1", "Vorne spielt ein Lautsprecher einen gleichmäßigen Ton. Jede Gruppe hat **ein** Handy und einen festen Messplatz im Saal. "
+                                     "**1** Pegelmesser im Arbeitsblatt starten. **2** Alle Gruppen gehen mit dem Handy zum Lautsprecher und halten es 1 m davor. Auf das Zeichen von Prof. HOLZER tippen alle gleichzeitig »Referenz setzen« – jetzt zeigt das Handy 0 dB. "
+                                     "**3** Geht zu eurem Zettel am Boden (»Gruppe Nr. · Abstand«). **4** Prof. HOLZER schaltet den Ton aus: messen (Wert in c). Dann schaltet er den Ton an: messen (Wert in d). **5** Werte Prof. HOLZER zurufen und eintragen.", "aufgaben.html#card_a4"),
+              ("ul", ["**Warum Referenz?** Ein Handy ist kein geeichtes Messgerät, und jedes Handy misst anders. Setzen alle am selben Ort (1 m vor dem Lautsprecher) auf 0 dB, fällt dieser Unterschied heraus. Gemessen wird dann nur noch: Wie viel leiser ist es als bei 1 m?",
                       "**Was zu erwarten ist:** Im Freien sinkt der Pegel bei **doppeltem Abstand um etwa 6 dB** – die Energie verteilt sich auf eine viermal so große Fläche. Im Saal werfen Wände, Decke und Boden Schall zurück; der Abfall ist dann kleiner.",
                       "**Datenschutz:** Der Pegelmesser wertet das Mikrofon nur im Handy aus. Es wird nichts aufgenommen, gespeichert oder verschickt."]),
               ("merke", "Doppelter Abstand: im Freien etwa −6 dB. Abstand hilft – ersetzt aber nie den Gehörschutz.")]},

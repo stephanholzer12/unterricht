@@ -65,6 +65,8 @@ main { max-width: 680px; margin: 0 auto; padding-inline: 16px; padding-block: 18
 .tag { font-size: 13px; font-weight: 700; color: var(--muted); border: 1.5px solid var(--muted); border-radius: 999px; padding: 1px 9px; }
 h2 { font-family: var(--font-head); color: var(--olive); font-size: 23px; line-height: 1.2; margin: 0; text-wrap: balance; }
 .q { margin: 0; }
+.q-liste { display: flex; flex-direction: column; gap: 10px; }
+.q-schritt { padding-left: 1.55em; text-indent: -1.55em; }
 .q b { color: var(--theory); }
 .hint { font-size: 15px; color: var(--muted); margin: 0; }
 label.lbl { font-weight: 700; color: var(--olive); font-size: 16px; display: block; margin-bottom: 4px; }
@@ -803,8 +805,8 @@ const T = [
   "zeit": 14,
   "marke": "VERSUCH",
   "versuch": "K2.4-V1",
-  "q": "Ihr messt, wie der Schall mit dem Abstand schwächer wird. Vorne spielt ein Lautsprecher einen gleichmäßigen Ton. Jede Gruppe misst mit EINEM Handy und dem Pegelmesser unten. Jeder trägt die Werte seiner Gruppe in sein eigenes Arbeitsblatt ein.",
-  "hint": "Das Handy ist kein geeichtes Messgerät. Darum vergleichen wir nur: Alle setzen am Lehrertisch die Referenz auf 0 dB und messen dann an ihrem Platz.",
+  "q": "Ihr messt, wie viel leiser der Schall mit dem Abstand wird. Vorne spielt ein Lautsprecher einen gleichmäßigen Ton. Jede Gruppe hat EIN Handy und einen festen Messplatz im Saal. So läuft es:\n1) Öffne unten den Pegelmesser und tippe »Mikrofon starten«.\n2) Alle Gruppen gehen mit dem Handy zum Lautsprecher und halten es 1 m davor, Mikrofon zum Lautsprecher.\n3) Auf das Zeichen von Prof. HOLZER tippen alle gleichzeitig »Referenz setzen«. Das Handy zeigt jetzt 0 dB. Dabei sind alle 2 Sekunden still.\n4) Geht zu eurem Zettel am Boden: »Gruppe Nr. · Abstand«. Haltet das Handy auf Brusthöhe, Mikrofon zum Lautsprecher.\n5) Prof. HOLZER schaltet den Ton AUS: »3-Sekunden-Messung«, Wert in c). Dann schaltet er den Ton AN: noch einmal messen, Wert in d).\n6) Ruft eure Werte Prof. HOLZER zu. Jeder trägt die Werte seiner Gruppe in sein eigenes Arbeitsblatt ein.",
+  "hint": "Warum erst 1 m und 0 dB? Jedes Handy-Mikrofon misst anders: Derselbe Ton zeigt auf zwei Handys zwei verschiedene Zahlen. Stellen alle Handys am selben Ort auf 0 dB, werden die Werte der Gruppen vergleichbar. Gemessen wird nur: Wie viel leiser ist es als bei 1 m?",
   "type": "multi",
   "pegel": true,
   "fields": [
@@ -814,7 +816,7 @@ const T = [
    ],
    [
     "abstand",
-    "b) Unser Messplatz: Abstand zum Lautsprecher in m (steht auf dem Klebezettel am Boden)"
+    "b) Unser Messplatz: Abstand zum Lautsprecher in m (steht auf dem Zettel mit eurer Gruppennummer am Boden)"
    ],
    [
     "ruhe",
@@ -873,7 +875,7 @@ const T = [
   "fb": {
    "saal": {
     "Schall wird mit dem Abstand schneller": "Die Schallgeschwindigkeit bleibt gleich. Es kommt Schall auf mehreren Wegen an.",
-    "Die Handys hinten messen immer lauter": "Wir haben alle Handys am Lehrertisch auf 0 dB gesetzt – genau deshalb."
+    "Die Handys hinten messen immer lauter": "Wir haben alle Handys bei 1 m vor dem Lautsprecher auf 0 dB gesetzt – genau deshalb."
    }
   },
   "sol": [
@@ -2174,6 +2176,11 @@ function fieldsFor(t) {
 }
 function qText(s) {
   // »Zusatz:« im Buchtext hervorheben
+  if (s.indexOf("\n") >= 0) {   // mehrzeilig: Einleitung + nummerierte Schritte (1) 2) …) als eigene Zeilen
+    const w = el("div", { class: "q-liste" });
+    s.split("\n").forEach(z => { const m = /^(\d+\))\s*(.*)$/.exec(z); w.append(m ? el("p", { class: "q q-schritt" }, el("b", { text: m[1] + " " }), m[2]) : el("p", { class: "q", text: z })); });
+    return w;
+  }
   const p = el("p", { class: "q" });
   const i = s.indexOf("Zusatz:");
   if (i < 0) { p.append(s); return p; }
@@ -2281,7 +2288,7 @@ function pegelBox(t) {
       const src = PG.ctx.createMediaStreamSource(PG.st); PG.an = PG.ctx.createAnalyser(); PG.an.fftSize = 2048; src.connect(PG.an);
       PG.buf = new Float32Array(PG.an.fftSize); PG.lvl = null;
       bStart.hidden = true; stop.hidden = false; bRef.disabled = false; bMess.disabled = PG.ref === null;
-      info.textContent = PG.ref === null ? "Jetzt zum Lehrertisch: 1 m vor dem Lautsprecher, Ton an, dann »Referenz setzen«." : "Referenz ist gesetzt. Geh an deinen Platz und miss mit »3-Sekunden-Messung«.";
+      info.textContent = PG.ref === null ? "Geh mit dem Handy zum Lautsprecher und halte es 1 m davor, Mikrofon zum Lautsprecher. Auf das Zeichen von Prof. HOLZER: »Referenz setzen«." : "Referenz ist gesetzt. Geh zu eurem Zettel am Boden und warte auf das Zeichen von Prof. HOLZER.";
       zeigen();
     } catch (e) { info.textContent = "Das Mikrofon wurde nicht freigegeben. Erlaube den Zugriff in den Browser-Einstellungen – oder übernimm die Werte einer Nachbargruppe."; }
   });
@@ -2296,7 +2303,7 @@ function pegelBox(t) {
     mittel(2000, roh => {
       if (roh < -75) { info.textContent = "Das ist fast Stille. Läuft der Ton? Halte das Handy 1 m vor den Lautsprecher und setz die Referenz noch einmal."; return; }
       PG.ref = roh; try { localStorage.setItem("pegelref|" + KEY, String(PG.ref)); } catch (e) {}
-      bMess.disabled = false; info.textContent = "Referenz gesetzt: Hier ist jetzt 0 dB. Geh an euren Platz und miss dort.";
+      bMess.disabled = false; info.textContent = "Referenz gesetzt: Hier ist jetzt 0 dB. Geh zu eurem Zettel am Boden. Gemessen wird auf das Zeichen von Prof. HOLZER.";
     });
   });
   bMess.addEventListener("click", () => {
@@ -2618,7 +2625,7 @@ async function savePdf() {
 }
 
 // ---------- Start ----------
-const ABLAUF = {"1": [["BESPRECHEN", "Weißt du noch? Drei Fragen aus der Wellenlehre", null], ["", "Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", "v0"], ["DEMO", "DEMO K2.4-D1: Stimmgabel – erst vermuten, dann sehen, hören, spüren", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Schall ist eine Druckwelle (Animation), Vakuum", null], ["BESPRECHEN", "Prof. HOLZER erklärt: s = v · t, Echo hin und zurück, λ = v / f", null], ["SELBSTSTUDIUM", "Aufgabe 2: Schall unterwegs – lesen im Buch S. 61, dann Fragen und Rechnungen", "a1"], ["BESPRECHEN", "die Echo-Falle und die Faustregel", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "2": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 1", null], ["DEMO", "DEMO K2.4-D2: Lineal an der Tischkante, Tongenerator am Beamer", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Hörbereich, Infra- und Ultraschall, Dezibel-Leiter", null], ["SELBSTSTUDIUM", "Aufgabe 3: Hoch, tief, laut – die Dezibel-Leiter", "a3"], ["VERSUCH", "VERSUCH K2.4-V1 (Aufgabe 4): Referenz am Lehrertisch, Messung am eigenen Platz", "a4"], ["BESPRECHEN", "Messwerte der Klasse am Beamer", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "3": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 2", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Aufbau des Ohrs, Hörvorgang (Animation), Druckverstärkung", null], ["SELBSTSTUDIUM", "Aufgabe 5: Der Weg ins Ohr", "a5"], ["VERSUCH", "VERSUCH K3.2-V1 (Aufgabe 6): Luft- und Knochenleitung am eigenen Kopf", "a6"], ["BESPRECHEN", "Prof. HOLZER erklärt: Haarzellen, Knalltrauma, Tinnitus – Rollenkarten verteilen", null], ["GRUPPENARBEIT", "GRUPPENARBEIT (Aufgabe 7): Gehörschutz-Lagebesprechung mit Rollenkarten", "a7"], ["DISKUSSION", "Prof. HOLZER fragt die Rollen – Rekrut, Ausbilder, Ärztin, Influencer", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "4": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 3", null], ["DEMO", "DEMO K3.2-D1: Woher kommt das Schnippen? (Augen zu)", null], ["DEMO", "DEMO K3.2-D2: drehendes Wasserglas + KURZ KLÄREN Lage- und Drehsinn", null], ["SELBSTSTUDIUM", "Aufgabe 8: Orientierung – Richtung und Gleichgewicht", "a8"], ["BESPRECHEN", "der Pilotenfall", null], ["PARTNERCHECK", "vier Karten über die ganze Einheit", null], ["", "Auflösung »Was glaubst du?« und Selbsteinschätzung", null], ["ABGABE", "PDF-Abgabe: Arbeitsblatt in LMS", null]]};
+const ABLAUF = {"1": [["BESPRECHEN", "Weißt du noch? Drei Fragen aus der Wellenlehre", null], ["", "Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", "v0"], ["DEMO", "DEMO K2.4-D1: Stimmgabel – erst vermuten, dann sehen, hören, spüren", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Schall ist eine Druckwelle (Animation), Vakuum", null], ["BESPRECHEN", "Prof. HOLZER erklärt: s = v · t, Echo hin und zurück, λ = v / f", null], ["SELBSTSTUDIUM", "Aufgabe 2: Schall unterwegs – lesen im Buch S. 61, dann Fragen und Rechnungen", "a1"], ["BESPRECHEN", "die Echo-Falle und die Faustregel", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "2": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 1", null], ["DEMO", "DEMO K2.4-D2: Lineal an der Tischkante, Tongenerator am Beamer", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Hörbereich, Infra- und Ultraschall, Dezibel-Leiter", null], ["SELBSTSTUDIUM", "Aufgabe 3: Hoch, tief, laut – die Dezibel-Leiter", "a3"], ["VERSUCH", "VERSUCH K2.4-V1 (Aufgabe 4): Referenz gemeinsam 1 m vor dem Lautsprecher, Messung am eigenen Zettel", "a4"], ["BESPRECHEN", "Messwerte der Klasse am Beamer", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "3": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 2", null], ["BESPRECHEN", "Prof. HOLZER erklärt: Aufbau des Ohrs, Hörvorgang (Animation), Druckverstärkung", null], ["SELBSTSTUDIUM", "Aufgabe 5: Der Weg ins Ohr", "a5"], ["VERSUCH", "VERSUCH K3.2-V1 (Aufgabe 6): Luft- und Knochenleitung am eigenen Kopf", "a6"], ["BESPRECHEN", "Prof. HOLZER erklärt: Haarzellen, Knalltrauma, Tinnitus – Rollenkarten verteilen", null], ["GRUPPENARBEIT", "GRUPPENARBEIT (Aufgabe 7): Gehörschutz-Lagebesprechung mit Rollenkarten", "a7"], ["DISKUSSION", "Prof. HOLZER fragt die Rollen – Rekrut, Ausbilder, Ärztin, Influencer", null], ["ABGABE", "Zwischenstand als PDF sichern", null]], "4": [["BESPRECHEN", "Weißt du noch? Drei Fragen zu Stunde 3", null], ["DEMO", "DEMO K3.2-D1: Woher kommt das Schnippen? (Augen zu)", null], ["DEMO", "DEMO K3.2-D2: drehendes Wasserglas + KURZ KLÄREN Lage- und Drehsinn", null], ["SELBSTSTUDIUM", "Aufgabe 8: Orientierung – Richtung und Gleichgewicht", "a8"], ["BESPRECHEN", "der Pilotenfall", null], ["PARTNERCHECK", "vier Karten über die ganze Einheit", null], ["", "Auflösung »Was glaubst du?« und Selbsteinschätzung", null], ["ABGABE", "PDF-Abgabe: Arbeitsblatt in LMS", null]]};
 const BALKEN = {"vor": {"2": [["DEMO", "Jetzt DEMO am Lehrertisch: »Stimmgabel«. Erst vermuten – ABCD-Karte bereit, dann schauen."], ["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Schall ist eine Druckwelle. Handy weg, zuhören."], ["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: s = v · t, Echo hin und zurück, λ = v / f. Handy weg, zuhören."]], "3": [["DEMO", "Jetzt DEMO am Lehrertisch: »Lineal und Tongenerator«. Erst vermuten – ABCD-Karte bereit, dann schauen."], ["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Hörbereich, Infra- und Ultraschall, Dezibel-Leiter. Handy weg, zuhören."]], "5": [["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Aufbau des Ohrs, Hörvorgang. Handy weg, zuhören."]], "7": [["BESPRECHEN", "Jetzt erklärt Prof. HOLZER: Haarzellen, Knalltrauma, Tinnitus – Rollenkarten verteilen. Handy weg, zuhören."]], "8": [["DEMO", "Jetzt DEMO am Lehrertisch: »Woher kommt das Schnippen?«. Erst vermuten – ABCD-Karte bereit, dann schauen."], ["DEMO", "Jetzt DEMO am Lehrertisch: »Drehendes Wasserglas«. Erst vermuten – ABCD-Karte bereit, dann schauen."]]}, "nach": {"2": [["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Aufgabe 2 a, d, f, h · DEMO Stimmgabel."]], "4": [["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Aufgabe 3 a, e, f · Aufgabe 4 f · VERSUCH: Messwerte der Klasse."]], "7": [["DISKUSSION", "Jetzt DISKUSSION: Prof. HOLZER fragt jede Rolle. Danach sichern wir: Aufgabe 5 g, k · Aufgabe 7 c, d, g · VERSUCH K3.2-V1 · DISKUSSION der Rollen."]], "8": [["BESPRECHEN", "Jetzt SICHERUNG mit Prof. HOLZER: Aufgabe 8 b, c, d, f · DEMO Wasserglas · PARTNERCHECK."], ["PARTNERCHECK", "Jetzt PARTNERCHECK: vier Karten zu zweit – einer fragt, einer antwortet."], ["", "Jetzt: bei Aufgabe 1 »Auflösung zeigen« und die Selbsteinschätzung auf der Theorie-Seite."]]}};
 const GESICHERT = {"2": "a, d, f, h", "3": "a, e, f", "4": "f", "5": "g, k", "7": "c, d, g", "8": "b, c, d, f"};
 const GRP = {"1": "Stunde 1 · Kein Knall im All: Schall als Druckwelle (Buch S. 60–61, 67)", "2": "Stunde 2 · Der Saal wird zum Messlabor: Tonhöhe, Dezibel, Pegel (Buch S. 62–64) · VERSUCH K2.4-V1", "3": "Stunde 3 · Einmal kaputt, immer kaputt: Ohr und Gehörschutz (Buch S. 109–110) · VERSUCH K3.2-V1", "4": "Stunde 4 · Schwindel im Cockpit: Richtungshören und Gleichgewicht (Buch S. 110–112)", "0": "Zusatz · Für Schnelle und Neugierige · wer früher fertig ist (keine Hausübung)", "z1": "Zusatz zu Stunde 1 · nur wenn du früher fertig bist", "z2": "Zusatz zu Stunde 2 · nur wenn du früher fertig bist", "z3": "Zusatz zu Stunde 3 · nur wenn du früher fertig bist", "z4": "Zusatz zu Stunde 4 · nur wenn du früher fertig bist"};

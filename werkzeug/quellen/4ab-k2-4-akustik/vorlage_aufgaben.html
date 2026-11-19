@@ -65,6 +65,8 @@ main { max-width: 680px; margin: 0 auto; padding-inline: 16px; padding-block: 18
 .tag { font-size: 13px; font-weight: 700; color: var(--muted); border: 1.5px solid var(--muted); border-radius: 999px; padding: 1px 9px; }
 h2 { font-family: var(--font-head); color: var(--olive); font-size: 23px; line-height: 1.2; margin: 0; text-wrap: balance; }
 .q { margin: 0; }
+.q-liste { display: flex; flex-direction: column; gap: 10px; }
+.q-schritt { padding-left: 1.55em; text-indent: -1.55em; }
 .q b { color: var(--theory); }
 .hint { font-size: 15px; color: var(--muted); margin: 0; }
 label.lbl { font-weight: 700; color: var(--olive); font-size: 16px; display: block; margin-bottom: 4px; }
@@ -1663,6 +1665,11 @@ function fieldsFor(t) {
 }
 function qText(s) {
   // »Zusatz:« im Buchtext hervorheben
+  if (s.indexOf("\n") >= 0) {   // mehrzeilig: Einleitung + nummerierte Schritte (1) 2) …) als eigene Zeilen
+    const w = el("div", { class: "q-liste" });
+    s.split("\n").forEach(z => { const m = /^(\d+\))\s*(.*)$/.exec(z); w.append(m ? el("p", { class: "q q-schritt" }, el("b", { text: m[1] + " " }), m[2]) : el("p", { class: "q", text: z })); });
+    return w;
+  }
   const p = el("p", { class: "q" });
   const i = s.indexOf("Zusatz:");
   if (i < 0) { p.append(s); return p; }

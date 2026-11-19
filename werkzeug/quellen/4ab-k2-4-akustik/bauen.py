@@ -224,7 +224,7 @@ function pegelBox(t) {
       const src = PG.ctx.createMediaStreamSource(PG.st); PG.an = PG.ctx.createAnalyser(); PG.an.fftSize = 2048; src.connect(PG.an);
       PG.buf = new Float32Array(PG.an.fftSize); PG.lvl = null;
       bStart.hidden = true; stop.hidden = false; bRef.disabled = false; bMess.disabled = PG.ref === null;
-      info.textContent = PG.ref === null ? "Jetzt zum Lehrertisch: 1 m vor dem Lautsprecher, Ton an, dann »Referenz setzen«." : "Referenz ist gesetzt. Geh an deinen Platz und miss mit »3-Sekunden-Messung«.";
+      info.textContent = PG.ref === null ? "Geh mit dem Handy zum Lautsprecher und halte es 1 m davor, Mikrofon zum Lautsprecher. Auf das Zeichen von Prof. HOLZER: »Referenz setzen«." : "Referenz ist gesetzt. Geh zu eurem Zettel am Boden und warte auf das Zeichen von Prof. HOLZER.";
       zeigen();
     } catch (e) { info.textContent = "Das Mikrofon wurde nicht freigegeben. Erlaube den Zugriff in den Browser-Einstellungen – oder übernimm die Werte einer Nachbargruppe."; }
   });
@@ -239,7 +239,7 @@ function pegelBox(t) {
     mittel(2000, roh => {
       if (roh < -75) { info.textContent = "Das ist fast Stille. Läuft der Ton? Halte das Handy 1 m vor den Lautsprecher und setz die Referenz noch einmal."; return; }
       PG.ref = roh; try { localStorage.setItem("pegelref|" + KEY, String(PG.ref)); } catch (e) {}
-      bMess.disabled = false; info.textContent = "Referenz gesetzt: Hier ist jetzt 0 dB. Geh an euren Platz und miss dort.";
+      bMess.disabled = false; info.textContent = "Referenz gesetzt: Hier ist jetzt 0 dB. Geh zu eurem Zettel am Boden. Gemessen wird auf das Zeichen von Prof. HOLZER.";
     });
   });
   bMess.addEventListener("click", () => {
