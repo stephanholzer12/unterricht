@@ -95,16 +95,17 @@ s = s.replace(_h, _h + '\n  { const _n = ' + json.dumps(_NACH) + '[t.id]; if (_n
 _i = s.index("function showCheck(t) {"); _j = s.index("\nfunction showSolutions()", _i)
 s = s[:_i] + """function showCheck(t) {
   const r = evalTask(t), fb = $("#fb_" + t.id); fb.hidden = false; fb.textContent = "";
+  const kurz = l => { const m = String(l).match(/^([a-h]\\))\\s/); return m ? m[1] + " " : l + ": "; };   /* 19.11.2026: lange Feldfragen nur als »e)« in der Rückmeldung */
   const auto = r.parts.filter(p => !p.man), man = r.parts.filter(p => p.man), autoOk = auto.every(p => p.ok), viele = r.parts.length > 1;
   fb.className = "fb " + (r.man ? (autoOk ? "info" : "no") : (r.ok ? "ok" : "no"));
   fb.append(el("strong", { text: r.man ? (autoOk ? (auto.length ? "Die automatisch prüfbaren Teile stimmen." : "Gespeichert.") : "Noch nicht ganz.") : (r.ok ? "Richtig!" : "Noch nicht ganz.") }));
   if (!autoOk) auto.forEach(p => {
     if (p.kind === "strike") fb.append(el("div", { text: p.n + " von " + p.of + " richtig durchgestrichen." }));
-    else if (p.kind === "kw" && !p.ok) fb.append(el("div", { text: (viele ? p.label + ": " : "") + "enthalten: " + p.hits.map(h => h[0] + (h[1] ? " ✓" : " ✗")).join(", ") }));
-    else if (!p.ok) fb.append(el("div", { text: (viele ? p.label + ": " : "") + (p.kind === "sel" ? (p.filled ? "Auswahl stimmt noch nicht." : "Noch nichts ausgewählt.") : p.msg) }));
+    else if (p.kind === "kw" && !p.ok) fb.append(el("div", { text: (viele ? kurz(p.label) : "") + "enthalten: " + p.hits.map(h => h[0] + (h[1] ? " ✓" : " ✗")).join(", ") }));
+    else if (!p.ok) fb.append(el("div", { text: (viele ? kurz(p.label) : "") + (p.kind === "sel" ? (p.filled ? "Auswahl stimmt noch nicht." : "Noch nichts ausgewählt.") : p.msg) }));
   });
   man.forEach(p => {
-    const pre = viele ? p.label + ": " : "";
+    const pre = viele ? kurz(p.label) : "";
     if (p.kind === "foto") { fb.append(el("div", { text: p.filled ? "Zeichnung: Foto ist da – sie bewertet die Lehrkraft." : "Zeichnung: Das Foto deiner Zeichnung fehlt noch." })); return; }
     if (!p.filled) { fb.append(el("div", { text: pre + "Deine Erklärung fehlt noch." })); return; }
     const da = p.hits.filter(h => h[1]).map(h => h[0]), fehlt = p.hits.filter(h => !h[1]).map(h => h[0]);
@@ -125,6 +126,13 @@ rep('"Alle Pflicht-Aufgaben 1–10 bearbeitet."', '"Alle Pflicht-Aufgaben bearbe
 # Zeit je Aufgabe und rote Kennzeichnung »Versuch im Buch«
 rep('el("span", { class: tagCls, text: t.tag })),', 'el("span", { class: tagCls, text: t.tag }), t.zeit ? el("span", { class: "tag zeit", text: "ca. " + t.zeit + " min" }) : null),')
 rep('const tagCls = t.tag.startsWith("Stunde") ?', 'const tagCls = (t.tag.startsWith("Stunde") || t.tag.startsWith("Teil")) ?')
+# 19.11.2026: Aufgabentext mit Zeilen (\n) und **fett** – lesbar statt eines langen Absatzes; im PDF ohne Sternchen
+rep('function qText(s) {\n  // »Zusatz:« im Buchtext hervorheben\n  const p = el("p", { class: "q" });',
+    'function qText(s) {\n  if (s.indexOf("\\n") >= 0) {\n    const box = el("div", { class: "qbox" });\n'
+    '    s.split("\\n").forEach(z => { const p = el("p", { class: "q" + (/^\\d\\. /.test(z) ? " qstep" : "") }); z.split(/\\*\\*(.+?)\\*\\*/).forEach((x, i) => { if (x) p.append(i % 2 ? el("b", { text: x }) : x); }); box.append(p); });\n'
+    '    return box;\n  }\n  // »Zusatz:« im Buchtext hervorheben\n  const p = el("p", { class: "q" });')
+rep('    txt(t.q, 10, "normal", muted);', '    txt(t.q.replace(/\\*\\*/g, ""), 10, "normal", muted);')
+rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }", ".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }\n.qbox p.q { margin: 0 0 8px; } .qbox p.qstep { padding-left: 1.4em; text-indent: -1.4em; }")
 # K1.4–1.5: Datentabelle direkt bei der Aufgabe (t.tab, erste Zeile = Kopf) und Hinweis darunter (t.tabnote)
 rep('  if (t.img) card.append(el("div", { class: "qimg" }, el("img", { src: t.img, alt: "Abbildung zu Aufgabe " + t.nr })));',
     '  if (t.img) card.append(el("div", { class: "qimg" }, el("img", { src: t.img, alt: "Abbildung zu Aufgabe " + t.nr })));\n'

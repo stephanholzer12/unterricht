@@ -5,8 +5,8 @@ Institutionen der Globalisierung (Buch S. 52–63) folgen als eigene Einheit ab 
 Realistisch nutzbar sind 40 min je Stunde (Regel 06.11.2026); Stunde 2: 20 min Test + 20 min Unterricht.
 Kein Versuch, kein Kahoot, keine Referate, keine Hausübung. Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "11.11.2026"
-V = "v5"
+STAND = "19.11.2026"
+V = "v6"
 ORDNER = "5ak-iwk/k2-1-globalisierung"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -97,28 +97,34 @@ T = [
   "tipp3": "Lies im Buch S. 45 (Informationsrevolution, Transport) und S. 46 (Marktwirtschaft, Liberalisierung, Konzerne, Normen).",
   "karte": "antrieb"},
 
- {"id": "a3", "nr": 3, "title": "Digital Divide: Wer ist offline?", "src": "Buch S. 48 · ITU 2025", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 8,
-  "q": "Lies im Buch S. 48 »Ein Segen für alle?« und werte die Tabelle aus (ITU, Facts and Figures 2025, Anteil der Menschen, die das Internet nutzen). KI: ohne KI. "
-       "a) Wie groß ist der Unterschied zwischen Ländern mit hohem und mit niedrigem Einkommen (Prozentpunkte)? b) Unterschied Stadt – Land (Prozentpunkte)? c) Wie viele Menschen sind laut ITU 2025 noch offline? "
-       "d) Das Buch nennt rund 32 % ohne Internet. Woran kann es liegen, dass Quellen verschieden zählen? e) Nenne einen Lebensbereich, in dem Offline-Sein heute ein Nachteil ist, und warum (1 Satz).",
-  "hint": "Prozentpunkte = Differenz der beiden Prozentwerte. Quellen zählen oft verschieden (Jahr, Messweise).",
+ {"id": "a3", "nr": 3, "title": "Wer hat Internet – und wer nicht?", "src": "Buch S. 48 · ITU 2025", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 8,
+  "q": "Du hast dein Handy fast immer dabei und bist online. Für viele Menschen auf der Welt ist das nicht so. Wie groß die Unterschiede sind, zeigt dir die Tabelle unten.\n"
+       "**So gehst du vor:**\n"
+       "1. Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?«.\n"
+       "2. Schau dir die Tabelle unten an. Sie zeigt, wie viel Prozent der Menschen das Internet nutzen. Die Zahlen stammen von der **ITU**, der Organisation der UNO für Telefon und Internet. Sie zählt jedes Jahr nach.\n"
+       "3. Beantworte unten die Fragen a–e. Bitte ohne ChatGPT oder eine andere KI. Alles, was du brauchst, steht im Buch und in der Tabelle.\n"
+       "**Zwei Begriffe vorab:**\n"
+       "**Länder mit hohem Einkommen** sind Länder, in denen die Menschen im Schnitt viel verdienen, z. B. Österreich, Deutschland oder die USA. **Länder mit niedrigem Einkommen** sind z. B. Afghanistan, Tschad oder Somalia.\n"
+       "**Prozentpunkte** sind der Abstand zwischen zwei Prozentzahlen. Du rechnest die größere Zahl minus die kleinere. Beispiel: 80 % und 50 % ergeben 30 Prozentpunkte.",
+  "hint": "Prozentpunkte: größere Zahl minus kleinere Zahl. Für c) schau unter die Tabelle.",
   "type": "multi",
-  "tab": [["Gruppe", "Internetnutzer 2025"], ["Länder mit hohem Einkommen", "94 %"], ["Länder mit niedrigem Einkommen", "23 %"], ["Stadtbevölkerung", "85 %"], ["Landbevölkerung", "58 %"], ["Männer", "77 %"], ["Frauen", "71 %"]],
-  "tabnote": "Quelle: ITU, Facts and Figures 2025 (17.11.2025). Weltweit rund 6 Mrd. Menschen online, 2,2 Mrd. offline.",
-  "fields": [["diff", "a) Hoch – niedrig (Prozentpunkte)"], ["sl", "b) Stadt – Land (Prozentpunkte)"],
-             ["off", "c) Offline laut ITU 2025", ["rund 2,2 Milliarden", "rund 220 Millionen", "rund 6 Milliarden", "rund 0,5 Milliarden"]],
-             ["quelle", "d) Warum zählen Quellen verschieden?", ["Jahr, Messweise und Definition von »Nutzer« können sich unterscheiden.", "Eine der beiden Quellen ist wertlos.", "Das Internet wurde 2025 wieder kleiner.", "Offline gibt es nur auf dem Land."]],
-             ["bereich", "e) Lebensbereich und Nachteil (1 Satz)"]],
+  "tab": [["Wer?", "So viele sind online (2025)"], ["Länder mit hohem Einkommen", "94 %"], ["Länder mit niedrigem Einkommen", "23 %"], ["Menschen in der Stadt", "85 %"], ["Menschen am Land", "58 %"], ["Männer", "77 %"], ["Frauen", "71 %"]],
+  "tabnote": "Quelle: ITU, Facts and Figures 2025 (17.11.2025). Weltweit sind rund 6 Mrd. Menschen online und rund 2,2 Mrd. offline.",
+  "fields": [["diff", "a) Länder mit hohem gegen Länder mit niedrigem Einkommen: Wie groß ist der Abstand? (in Prozentpunkten, nur die Zahl)"],
+             ["sl", "b) Stadt gegen Land: Wie groß ist der Abstand? (in Prozentpunkten, nur die Zahl)"],
+             ["off", "c) Wie viele Menschen haben laut ITU 2025 kein Internet?", ["rund 2,2 Milliarden", "rund 220 Millionen", "rund 6 Milliarden", "rund 0,5 Milliarden"]],
+             ["quelle", "d) Im Buch steht: rund 32 % ohne Internet. Bei der ITU ist es für 2025 rund ein Viertel. Warum können zwei seriöse Quellen verschiedene Zahlen haben?", ["Jahr, Messweise und Definition von »Nutzer« können sich unterscheiden.", "Eine der beiden Quellen ist wertlos.", "Das Internet wurde 2025 wieder kleiner.", "Offline gibt es nur auf dem Land."]],
+             ["bereich", "e) Stell dir vor, du hast ab morgen kein Internet. Wo hättest du einen echten Nachteil? Nenne einen Bereich und schreib in einem Satz, warum."]],
   "chk": {"diff": {"num": 71, "ende": True}, "sl": {"num": 27, "ende": True}, "off": {"sel": "rund 2,2 Milliarden"},
           "quelle": {"sel": "Jahr, Messweise und Definition von »Nutzer« können sich unterscheiden."},
-          "bereich": {"kw": [["Bereich", r"arbeit|bildung|schule|lernen|gesundheit|telemedizin|bank|behörde|behoerde|homeoffice|einkauf|kommunikation|information|nachrichten|corona|amt|job"]], "man": True}},
+          "bereich": {"kw": [["Bereich", r"arbeit|bildung|schule|lernen|gesundheit|telemedizin|arzt|termin|bank|überweis|behörde|behoerde|homeoffice|einkauf|kommunikation|information|nachrichten|warn|unwetter|krise|corona|amt|job|bewerb"]], "man": True}},
   "sol": [["Musterlösung", ["a) 94 − 23 = 71 Prozentpunkte. b) 85 − 58 = 27 Prozentpunkte. c) Rund 2,2 Milliarden Menschen (ITU 2025).",
                            "d) Quellen können verschiedene Jahre, Messmethoden und Definitionen (Nutzer, Zugang, Haushalte) verwenden. Darum nennt man Quelle und Jahr und vergleicht nicht blind. Das Buch nennt rund 32 % für 2025; die ITU rund 2,2 Mrd. von ca. 8 Mrd. Menschen, also etwa ein Viertel – gleiche Richtung, andere Zahl.",
                            "e) Z. B. Bildung: Distance Learning und Plattformen setzen Internet voraus. Oder Arbeit/Homeoffice, Telemedizin, Behördenwege, Einkauf. In der Corona-Pandemie hat das die Ungleichheit sichtbar gemacht."]]],
   "fsol": {"diff": "71", "sl": "27", "off": "rund 2,2 Milliarden", "quelle": "Jahr, Messweise, Definition", "bereich": "z. B. Bildung: Plattformen brauchen Internet"},
-  "tip": ["Digital Divide", "theorie.html#digital"], "besprechen": True,
+  "tip": ["Wer hat Internet?", "theorie.html#digital"], "besprechen": True,
   "tipp1": "Prozentpunkte rechnest du als Unterschied: größerer Wert minus kleinerer Wert.",
-  "tipp3": "Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?« und den Kasten mit der Definition von »Digital Divide«.",
+  "tipp3": "Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?« noch einmal.",
   "karte": "digital"},
 
  # ======================================================= Zusatz (nur wer fertig ist, Gruppe 0)
@@ -188,15 +194,15 @@ GRP = {1: TEILNAME[1] + " (Buch S. 42–47) · " + wann(1),
 
 LERNZIELE = ["Ich kann **drei Ereignisse** nennen, die man als Beginn der Globalisierung ansetzen kann, und mein Kriterium begründen.",
              "Ich kann die wichtigsten **Antriebskräfte** der Globalisierung und den Begriff **Liberalisierung** erklären.",
-             "Ich kann die **Rolle der Digitalisierung** bewerten und den **Digital Divide** mit Zahlen belegen."]
+             "Ich kann die **Rolle der Digitalisierung** bewerten und mit Zahlen zeigen, **wer Internet hat und wer nicht**."]
 
 LEITFRAGE = "War die Globalisierung Zufall, Überlegenheit oder alternativlos – und wem nützt sie heute?"
 HEUTE_ZIEL = {1: "Wann begann die Globalisierung, und welche sechs Kräfte treiben sie an?",
-              2: "Digitalisierung bewerten, Zahlen zum Digital Divide lesen, Aussagen zur Globalisierung prüfen."}
+              2: "Digitalisierung bewerten, Zahlen lesen: Wer hat Internet, wer nicht? Aussagen zur Globalisierung prüfen."}
 WICHTIGSTE = ["Globalisierung heißt: Wirtschaft, Gesellschaft und Kultur sind weltweit immer dichter verflochten.",
               "Einen einzigen Beginn gibt es nicht – je nach Kriterium nennt man 1492, 1844, 1944 oder die 1980er/1990er.",
               "Antriebskräfte sind Informationstechnik, billigerer Transport, Marktwirtschaft, Liberalisierung, transnationale Konzerne und gemeinsame Normen.",
-              "Die Digitalisierung verbindet die Welt – aber rund ein Viertel der Menschen ist noch offline (Digital Divide).",
+              "Die Digitalisierung verbindet die Welt – aber rund ein Viertel der Menschen ist noch offline (digitale Kluft).",
               "Zahlen und Aussagen immer mit Quelle, Jahr und Interessen prüfen – das gilt auch für Zölle und Schlagzeilen."]
 
 FACHBEGRIFFE = [["Begriff", "Bedeutung"],
@@ -213,7 +219,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
  ["Global Village", "»Weltdorf«: durch Informationstechnik schrumpft die räumliche Distanz"],
  ["Global Governance", "Aufgabe, grenzüberschreitende Probleme gemeinsam zu lösen"],
  ["Big Data", "riesige Mengen strukturierter und unstrukturierter Daten; entscheidend ist ihre Verwendung"],
- ["Digital Divide", "digitale Kluft: ungleicher Zugang zu Internet und Technik zwischen Gruppen"],
+ ["digitale Kluft", "der Abstand zwischen Menschen mit und ohne Internet, z. B. zwischen reichen und armen Ländern oder zwischen Stadt und Land"],
  ["Protektionismus / Zoll", "Schutz der eigenen Wirtschaft / Abgabe auf eine Ware beim Grenzübertritt, zuerst vom Importeur bezahlt"],
  ["Prozentpunkte", "Unterschied zwischen zwei Prozentwerten (94 % − 23 % = 71 Prozentpunkte)"]]
 
@@ -226,7 +232,7 @@ WEISST_DU_NOCH = {
 STOPPFRAGEN = {
     1: [("Gibt es einen einzigen Beginn der Globalisierung?", "Nein – je nach Kriterium nennt man 1492, Mitte des 19. Jahrhunderts, 1944 oder die 1980er/1990er."),
         ("Was bedeutet Liberalisierung?", "Abbau von Handelshemmnissen und Öffnung der Märkte für Güter, Dienstleistungen und Kapital.")],
-    2: [("Was heißt Digital Divide?", "Ungleicher Zugang zu Technologie und Internet zwischen Gruppen (Einkommen, Stadt/Land, Geschlecht, Alter)."),
+    2: [("Was meint man mit »digitaler Kluft«?", "Manche Gruppen haben viel öfter Internet als andere – z. B. reiche gegenüber armen Ländern, Stadt gegenüber Land, Männer gegenüber Frauen, Junge gegenüber Älteren."),
         ("Warum nennt man bei Zahlen immer die Quelle und das Jahr?", "Quellen zählen verschieden und Werte ändern sich; nur so kann man sie prüfen und vergleichen.")],
 }
 
@@ -262,7 +268,7 @@ QUIZ = [
   "Gemeinsame Standards (z. B. Stecker, Spurbreiten) senken Kosten und Hürden.", "Buch S. 46"),
  ("Konzerne", "Was sind Global Player laut Buch?", ["Weltweit tätige Unternehmen, meist durch Fusionen und Übernahmen entstanden.", "Staaten mit Atomwaffen.", "Spitzensportler im Ausland.", "Städte mit großem Hafen."],
   "Global Player agieren und reagieren auf globale Herausforderungen und nutzen Kosten- und Steuervorteile.", "Buch S. 46"),
- ("Digital Divide", "Was bedeutet »Digital Divide«?", ["Ungleicher Zugang zu Technologie und Internet zwischen Gruppen.", "Die Teilung eines Netzwerks in zwei Hälften.", "Ein Gesetz über Datenschutz.", "Das Ende der Digitalisierung."],
+ ("Digitale Kluft", "Was meint man mit »digitaler Kluft«?", ["Manche Gruppen haben viel öfter Internet als andere.", "Die Teilung eines Netzwerks in zwei Hälften.", "Ein Gesetz über Datenschutz.", "Das Ende der Digitalisierung."],
   "Die Kluft besteht z. B. zwischen Einkommensgruppen, Stadt und Land und Geschlechtern.", "Buch S. 48"),
  ("Zahlen", "Wie viele Menschen waren laut ITU 2025 noch offline?", ["Rund 2,2 Milliarden.", "Rund 220 Millionen.", "Rund 6 Milliarden.", "Praktisch niemand."],
   "ITU, Facts and Figures 2025 (17.11.2025): rund 6 Mrd. online, 2,2 Mrd. offline.", "ITU 2025 · Aufgabe 3"),

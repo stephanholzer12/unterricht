@@ -59,13 +59,13 @@ PARTS = [
 
  # ---------------------------------------------------------------- Stunde 2
  ("teil2", I.TEILNAME[2].split(" · ")[0] + " · " + I.wann(2) + " · nach dem Test · " + I.TEILBUCH[2], I.TEILNAME[2].split(" · ", 1)[1], [
-  {"id": "digital", "title": "Digitalisierung und Digital Divide", "pill": "Buch S. 48 · ITU 2025",
+  {"id": "digital", "title": "Digitalisierung: Wer hat Internet – und wer nicht?", "pill": "Buch S. 48 · ITU 2025",
    "blocks": [("ul", ["Eine Prognose aus dem Jahr 2015 (im Buch zitiert) erwartete: Technik und Kapital gewinnen an Bedeutung, Arbeit verliert an Gewicht; Produktion kehrt teils näher an die Märkte zurück; Kundinnen und Kunden werden an der Herstellung beteiligt. **Prüf selbst:** Was davon spürst du heute?",
                       "**Wer ist offline?** Laut der UN-Organisation **ITU** (Facts and Figures 2025, 17.11.2025) nutzen rund **6 Milliarden** Menschen das Internet, **2,2 Milliarden** nicht. In Ländern mit hohem Einkommen sind es **94 %** Nutzer, in Ländern mit niedrigem Einkommen **23 %**. In Städten sind **85 %** online, auf dem Land **58 %**. Bei Männern **77 %**, bei Frauen **71 %**.",
-                      "Diese Ungleichheit heißt **Digital Divide**. Das Buch nennt etwa 32 % ohne Internet – die ITU zählt für 2025 rund ein Viertel. **Quellen zählen verschieden** (Jahr, Messweise, Definition von »Nutzer«). Darum immer Quelle und Jahr nennen.",
+                      "Diesen Abstand zwischen Menschen mit und ohne Internet nennt man **digitale Kluft**. Das Buch nennt etwa 32 % ohne Internet – die ITU zählt für 2025 rund ein Viertel. **Quellen zählen verschieden** (Jahr, Messweise, Definition von »Nutzer«). Darum immer Quelle und Jahr nennen.",
                       "**Corona-Pandemie:** Homeoffice, Distance Learning und Online-Termine wurden stark beschleunigt. Wer keine Geräte oder keinen Zugang hatte, wurde abgehängt. Auch zwischen den Generationen gibt es Unterschiede in der Nutzung."]),
               ("img", "img/digital_divide.png", "Balkendiagramm: Internetnutzung 2025 in Ländern mit hohem Einkommen 94 Prozent, mit niedrigem Einkommen 23 Prozent, Stadt 85, Land 58, Männer 77, Frauen 71 Prozent.",
-               "Digital Divide in Zahlen (ITU, Facts and Figures 2025)."),
+               "Wer hat Internet? Zahlen der ITU (Facts and Figures 2025)."),
               ("merke", "**Prozentpunkte** sind der Unterschied zweier Prozentwerte: 94 % − 23 % = **71 Prozentpunkte**."),
               ("buch", "Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?« und die Prognose von 2015. Die Buch-Aufgaben 1–3 am Seitenende eignen sich fürs Heft (Länder mit wenig Internet recherchieren: Startseite ITU DataHub).")]},
   {"id": "stop2a", "title": "Stopp – kannst du das?", "pill": "Buch S. 48", "blocks": [("reveal", I.STOPPFRAGEN[2])]},
@@ -85,7 +85,7 @@ KARTEN = {
  "antrieb": {"text": ["Sechs Kräfte treiben die Globalisierung an: **Information, Transport, Marktwirtschaft, Liberalisierung, Konzerne, Normen**.",
                       "**Liberalisierung** = Zölle und Hürden **abbauen**, Märkte **öffnen**.",
                       "Normen (z. B. Stecker) und Containerschiffe senken Kosten."], "bild": ("img/antriebskraefte.png", "Sechs Antriebskräfte der Globalisierung"), "teil": "Teil 1", "link": "theorie.html#antrieb", "buch": "Buch S. 45–47"},
- "digital": {"text": ["**Digital Divide** = ungleicher Zugang zu Internet und Technik.",
+ "digital": {"text": ["**Digitale Kluft** = manche Gruppen haben viel öfter Internet als andere.",
                       "ITU 2025: **94 %** online in reichen, **23 %** in ärmsten Ländern; **2,2 Mrd.** Menschen offline.",
                       "**Prozentpunkte** = größerer Wert minus kleinerer Wert."], "bild": ("img/digital_divide.png", "Balkendiagramm zur Internetnutzung 2025"), "teil": "Teil 2", "link": "theorie.html#digital", "buch": "Buch S. 48"},
  "zoelle": {"text": ["Ein **Zoll** ist eine Abgabe auf Importe; zuerst zahlt ihn der **Importeur**.",

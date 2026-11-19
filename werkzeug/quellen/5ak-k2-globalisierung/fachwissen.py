@@ -10,7 +10,7 @@ LEHRPLAN = [
     ("Lehraufgaben: ", "Die Lehraufgaben der E3 stehen im Jahresplan IWK_Jahresplan_5Jg_v14 und sind verbindlich – bitte dort gegen die Aufgaben 1–3 gegenprüfen; ich habe sie nicht neu formuliert."),
 ]
 
-THEMEN = {1: "Beginn und Antriebskräfte (S. 42–47)", 2: "Digital Divide und Statement-Ampel (S. 48–51)"}
+THEMEN = {1: "Beginn und Antriebskräfte (S. 42–47)", 2: "Wer hat Internet? und Statement-Ampel (S. 48–51)"}
 
 
 def _stundenvorschlag(k):
@@ -57,7 +57,7 @@ CHECKLISTE = [
 AUF_EINEN_BLICK = [
     ["Stunde 1 · Beginn", "Kein einzelner Beginn: 1492 Kolumbus · 1844 Telegraf · 1944 IWF/Weltbank (Bretton Woods) · 1980er Technik · Internet; je nach Kriterium. 1944 − 1492 = 452 Jahre.", "Handzeichen + Tafel"],
     ["Stunde 1 · Antriebskräfte", "Sechs Kräfte (Buch S. 45–47): Informationsrevolution, Transport, Marktwirtschaft/Liberalisierung, Postfordismus/Just-in-time, transnationale Konzerne, Normen. Liberalisierung = Handelshemmnisse abbauen, Märkte öffnen.", "Handy + Tafel"],
-    ["Stunde 2 · Digital Divide", "ITU 2025: 94 % (hohes) vs. 23 % (niedriges Einkommen) = 71 Prozentpunkte; Stadt 85 % vs. Land 58 % = 27; rund 2,2 Mrd. offline. Buch: rund 32 % – Quellen zählen verschieden.", "Handy"],
+    ["Stunde 2 · Wer hat Internet?", "ITU 2025: 94 % (hohes) vs. 23 % (niedriges Einkommen) = 71 Prozentpunkte; Stadt 85 % vs. Land 58 % = 27; rund 2,2 Mrd. offline. Buch: rund 32 % – Quellen zählen verschieden.", "Handy"],
     ["Stunde 2 · Ampel", "Quellenkritik mit den vier Fragen an Aussagen aus Buch S. 51; keine Auflösung, keine Note.", "Bewegung im Raum"],
 ]
 
@@ -72,7 +72,7 @@ KAPITEL = [
            "Neoliberalismus (S. 46–47): Befürworter sehen Wachstum und Effizienz, Kritiker Ungleichheit und Machtkonzentration. Die Hayek-Passage im Buch dient nur als Diskussionsgrundlage – eine Auflösung gibt es nicht."],
   "nur": ["Verbindung zu deiner PPP vom Vorjahr: Beispiele zu Konzernen und Transport lassen sich mit Bundesheer-Bezug ergänzen (Ausrüstung, Lieferketten) – ohne Behauptung zu einer konkreten Beschaffung."],
   "stolper": "Liberalisierung mit Globalisierung gleichsetzen; Antriebskräfte als Ursachenkette statt als Zusammenspiel."},
- {"titel": "3 Digitalisierung und Digital Divide (Buch S. 48)",
+ {"titel": "3 Digitalisierung und digitale Kluft (Buch S. 48)",
   "text": ["ITU »Facts and Figures 2025« (17.11.2025): rund 6 Mrd. Menschen nutzen das Internet, 2,2 Mrd. nicht. Hohes Einkommen 94 %, niedriges 23 %; Stadt 85 %, Land 58 %; Männer 77 %, Frauen 71 %. Das Buch nennt für 2025 rund 32 % ohne Internet; die ITU kommt auf etwa ein Viertel. Beide Aussagen zeigen in dieselbe Richtung, zählen aber verschieden (Jahr, Messweise, Definition von »Nutzer«).",
            "Corona wirkte als Beschleuniger (Homeoffice, Distance Learning) und machte die Ungleichheit sichtbar."],
   "nur": ["Beispielländer aus deiner PPP (Stand 2024) habe ich nicht geprüft und nicht übernommen. Wenn du sie zeigen willst, vorher in ITU DataHub nachsehen."],

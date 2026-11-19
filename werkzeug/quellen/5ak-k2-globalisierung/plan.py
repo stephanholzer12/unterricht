@@ -21,8 +21,8 @@ S1 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"),
 S2 = [("Beginn: Klassenbuch, Anwesenheit", 3, True, "org"),
       ("Angekündigter Test inkl. Austeilen und Einsammeln (Dauer angenommen, Stoff und Testnummer: nicht in dieser PPP)", 20, True, "test"),
       ("Weißt du noch? Drei Fragen aus Stunde 1, mündlich", 3, True, "erkl"),
-      ("Lesen: Theorie-Karte »Digital Divide« und Buch S. 48", 2, False, "lesen"),
-      ("Aufgabe 3: Zahlen zum Digital Divide auswerten (Handy)", 8, False, "a3"),
+      ("Lesen: Theorie-Karte »Wer hat Internet?« und Buch S. 48", 2, False, "lesen"),
+      ("Aufgabe 3: Wer hat Internet – und wer nicht? Zahlen auswerten (Handy)", 8, False, "a3"),
       ("Besprechung Aufgabe 3: Zahlen, Quellenkritik (Buch 32 % gegen ITU)", 2, True, "bespr"),
       ("Statement-Ampel im Raum: »Ziele erreicht?« (Buch S. 51), zwei Aussagen", 5, True, "erkl"),
       ("PDF erstellen und in LMS hochladen (darf auch nach dem Läuten)", 2, False, "pdf"),
@@ -85,7 +85,7 @@ def minuten(st, arten):
 
 
 LESEN = {1: "Beginn der Globalisierung und Antriebskräfte (Buch S. 42–47)",
-         2: "Digitalisierung und Digital Divide (Buch S. 48), Statement-Ampel »Ziele erreicht?« (Buch S. 51)"}
+         2: "Digitalisierung: Wer hat Internet – und wer nicht? (Buch S. 48), Statement-Ampel »Ziele erreicht?« (Buch S. 51)"}
 WIE = {1: "ohne Handy: Einstieg an der Tafel, Besprechungen, Sicherung im Heft",
        2: "zuerst Test; ohne Handy: Weißt du noch?, Statement-Ampel im Raum"}
 

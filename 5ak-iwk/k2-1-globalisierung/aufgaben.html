@@ -133,6 +133,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
 .fb { margin-top: 8px; border-radius: 10px; padding: 10px 12px; font-size: 16px; display: grid; gap: 4px; }
 .fb.ok { background: #E6F0D3; border: 2px solid #7FA83A; }
 .fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }
+.qbox p.q { margin: 0 0 8px; } .qbox p.qstep { padding-left: 1.4em; text-indent: -1.4em; }
 .fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }
 .dwrap { overflow-x: auto; margin: 6px 0; } .dtab { border-collapse: collapse; width: 100%; font-size: 14px; } .dtab th, .dtab td { border: 1px solid #D3DCC2; padding: 5px 6px; text-align: left; vertical-align: top; } .dtab tr:first-child th { background: #3B4A2F; color: #fff; } .dtab td { text-align: right; white-space: nowrap; } .dtab tr:nth-child(odd) td { background: #F4F7EE; } .dnote { font-weight: 700; color: #8C3B2E; }
 .fb a { color: var(--teal); font-weight: 700; }
@@ -166,7 +167,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
   <div class="qr-box">
     <div class="eyebrow">IWK · 5AK · K2.1 Globalisierung</div>
     <h2>Globalisierung-Aufgaben am Handy</h2>
-    <img alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhwAAAIcCAIAAAAynOArAAAMpUlEQVR4nO3cMY7r2BVFUZdRU+nQoec/gA4dejDsuDv4eMDfuHUftdYAKIqktMHkfD3P8y8AKPz7p08AgPcQFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZL6rA/3nv39Uh7rO//78f3Kck2tYfdaJbedzonoOT77Xtmd+8py3XZ/J3+BbVdfQmwoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZLLtrxPbdqJOVFtA245T2XY+1SZVtXs2eX0mz/nG61P55P+xE95UAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAzuv11YnKjZnLDZ9sOUvXdqw2obd56v6rPqvbBKtuew7c+Gye8qQCQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJAZt32F7/21v2iE5P7Tjd+9xPV9fnkbTR+zZsKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGRsfw2pdqtuPM62Ha0T27atTkzunp181o3XkN/nTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMuu2v6r9om227XFV13nb+VRbUs55xuS+3OR333adJ3lTASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYDM6PZXtXF0o227Xm89zonqfE5suz6ffJzKJ/+PnfCmAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgCZbPur2mV6q8nr89Ztohv3pt5637ftp1X8j/0+byoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkMm2v7btKW07zom3bhxN3ovKts9667P61q2tbfdi8jp7UwEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzNfzPMmBJreSTty4KfTWvSCbZnd91olte2U3PmNv/c/0pgJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAme/qQNu2tm7c1ZncSjqxbW9q0lu/+1ufnxt3xm485xPeVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEg8/U8T3KgbZtCJ7adz4lt20SVbdfwxLZ9uUl26n5t23c/UZ2PNxUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyHxXB9q2BfTWjazKjbtDb91Tqr7X5HEmd88mv9eJk8/a9jxP/kd5UwEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWATLb9deN+0Y07UdVxJq/PiW1bUidu3HzbZvK+3+jG/0NvKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQ+XqeZ+zDJndsTmzbIjuxbY9r2/7Vti2pbdfnxI2/r8pbz8f2FwBXEhUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJAZnT768Qn7w6dmNy2unEb7cS28zmxbV/uxutz4satrRO2vwC4kqgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMtn2140bUJVP3mXatg924/U58cnPz4ltz8aN+2AVbyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkPn+6RP4p7duE21TXefJ/aLJ43zyBt1br09l23/C5F7ZCW8qAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJAZ3f7atlGzbdvqxOR207YNqG33YvI6n7hxh60657d+rxt5UwEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAzOj21+Suzolt51N56z7Ytq2kbff9k6/PjRtrN261nfCmAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgCZr+d5fvoc/mZyL2jb/tVbt8hO3LhbNbl7dmLbNTwxuQtng+7Xqu/lTQWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMt+TH7Zto6b6rG1bW5+8aTb5bNz4PFe2bZpt+w1Wbvxe3lQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBIDO6/XXCdtPvm9zI2rYPVtl2Pjc+q9s+a3JHq3rmt32vE95UAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASCTbX9VWzeTOzbbdsYm97hOTO5NVZ+1bQfprbZtvm37/9m2HTfJmwoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZLLtr21bQCdu3Inads6Te2WT+07bnudt933yfOzC3cWbCgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBksu2vSZObS9UG1KS37l9tO86JbXt3N9q2n+ae/po3FQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIfD3P89Pn8DfbdrRObNv5mbyG23a0Tmw7523bVts23yqTe3cntu0KVvfLmwoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZL6rA23bZdq2ubRtB2lyd2jb9dm2AXVi22dt2wfbthlYfa9t/xsnvKkAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQCbb/pq0bbtp2z7P5C7TtntxYvJ+ffJ3r0z+Trftld34P+ZNBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAy2fZXtVEzuYN0YtvOz+RnTZ7ztp2xGzeyKtX12XYNtz0/265PxZsKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGS+nudJDrRtV+etxzmxbT9tm8nNpRvvxbZNquoavvV7Varr400FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADLZ9teJyQ2fya2tSdu+1433dPI4J278rG2/wbfuaFUm74U3FQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIfFcH2rZJNbmndGLbFtCJbXtKlRu3tiZte1a3XZ8T23bPJu+pNxUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyGTbX9v2gk5MnvO2/aJt20Q3qna9JvfBJs9n23/Cjb/3G++XNxUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyHw9z5Mc6K37Tie2bRydmLxf2zaXJjfNtj0bN16f6lm9cattku0vANYRFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBmdPtr2w7SiW1bSRU7SL/vxvte2fZb3vb/M7lXto03FQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADKiAkBGVADIfP/0CfzTtv2ryuQW0Mln3bjr9da9shufwxt98nef5E0FgIyoAJARFQAyogJARlQAyIgKABlRASAjKgBkRAWAjKgAkBEVADLrtr/eanLfqbJt/+rG86nu++RnTd6LbXtuk/erOs62/xZvKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQsf01ZHIrqTrOtt2hbftgJ7Zdw8onn/O23bNt/y3eVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEg8/U8T3Kgt24cbfte27atKp/8bNx4nBtNfvdt/wmT5+NNBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyo9tfb7VtT+mTd7QmP+vGZ/6tm1STm13bfsvb9sq8qQCQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJAJtv+AgBvKgBkRAWAjKgAkBEVADKiAkBGVADIiAoAGVEBICMqAGREBYCMqACQERUAMqICQEZUAMiICgAZUQEgIyoAZEQFgIyoAJARFQAyogJARlQAyIgKAJm/AG2YzsA7S4/3AAAAAElFTkSuQmCC">
+    <img alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,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">
     <p>Kamera öffnen, QR-Code scannen, loslegen.</p>
     <button class="btn small" type="button" id="qrclose">Schließen</button>
   </div>
@@ -202,7 +203,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
   .fahrplan td:first-child { font-weight: 700; color: #3B4A2F; font-size: 16px; }
   .fahrplan td[data-l]:not(:first-child)::before { content: attr(data-l) ": "; color: #5E6652; font-weight: 700; }
 }
-</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür sind 2 Stunden eingeplant.</p><p>Dafür sind 2 Stunden eingeplant (Fr 13.11. und Fr 20.11.). Lies den jeweiligen Abschnitt im Buch und die Theorie-Karte, mach die Aufgaben 1–3 im Arbeitsblatt und gib am 20.11. die PDF in LMS ab. Am 20.11. schreibst du zuerst den angekündigten Test. Zusatzaufgaben 4–6 sind freiwillig. Keine Hausübung.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Datum</th><th>Das machen wir</th><th>Aufgaben</th><th>Zeit</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Datum">Fr 13.11.</td><td data-l="Das machen wir">Beginn der Globalisierung und Antriebskräfte (Buch S. 42–47)</td><td data-l="Aufgaben">1, 2</td><td data-l="Zeit">Lesen 7 min · Aufgaben 19 min · Besprechung 8 min · Organisation, Einstieg, Sicherung 9 min · Reserve 7 min</td><td data-l="Wie">ohne Handy: Einstieg an der Tafel, Besprechungen, Sicherung im Heft</td><td data-l="Abgabe">Antworten bleiben am Handy gespeichert</td></tr><tr><td data-l="Wann">Stunde 2</td><td data-l="Datum">Fr 20.11.</td><td data-l="Das machen wir">Digitalisierung und Digital Divide (Buch S. 48), Statement-Ampel »Ziele erreicht?« (Buch S. 51)</td><td data-l="Aufgaben">3 · Selbstcheck-Quiz (6 Fragen)</td><td data-l="Zeit">Test 20 min · Lesen 2 min · Aufgaben 8 min · Besprechung 2 min · Organisation, Wiederholung, Ampel, PDF 13 min · Reserve 5 min</td><td data-l="Wie">zuerst Test; ohne Handy: Weißt du noch?, Statement-Ampel im Raum</td><td data-l="Abgabe">Arbeitsblatt-PDF in LMS (Aufgaben 1–3)</td></tr></tbody></table></div></section><!--/FAHRPLAN-->
+</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür sind 2 Stunden eingeplant.</p><p>Dafür sind 2 Stunden eingeplant (Fr 13.11. und Fr 20.11.). Lies den jeweiligen Abschnitt im Buch und die Theorie-Karte, mach die Aufgaben 1–3 im Arbeitsblatt und gib am 20.11. die PDF in LMS ab. Am 20.11. schreibst du zuerst den angekündigten Test. Zusatzaufgaben 4–6 sind freiwillig. Keine Hausübung.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Datum</th><th>Das machen wir</th><th>Aufgaben</th><th>Zeit</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Datum">Fr 13.11.</td><td data-l="Das machen wir">Beginn der Globalisierung und Antriebskräfte (Buch S. 42–47)</td><td data-l="Aufgaben">1, 2</td><td data-l="Zeit">Lesen 7 min · Aufgaben 19 min · Besprechung 8 min · Organisation, Einstieg, Sicherung 9 min · Reserve 7 min</td><td data-l="Wie">ohne Handy: Einstieg an der Tafel, Besprechungen, Sicherung im Heft</td><td data-l="Abgabe">Antworten bleiben am Handy gespeichert</td></tr><tr><td data-l="Wann">Stunde 2</td><td data-l="Datum">Fr 20.11.</td><td data-l="Das machen wir">Digitalisierung: Wer hat Internet – und wer nicht? (Buch S. 48), Statement-Ampel »Ziele erreicht?« (Buch S. 51)</td><td data-l="Aufgaben">3 · Selbstcheck-Quiz (6 Fragen)</td><td data-l="Zeit">Test 20 min · Lesen 2 min · Aufgaben 8 min · Besprechung 2 min · Organisation, Wiederholung, Ampel, PDF 13 min · Reserve 5 min</td><td data-l="Wie">zuerst Test; ohne Handy: Weißt du noch?, Statement-Ampel im Raum</td><td data-l="Abgabe">Arbeitsblatt-PDF in LMS (Aufgaben 1–3)</td></tr></tbody></table></div></section><!--/FAHRPLAN-->
   <div class="progress"><span id="count">0 von 6 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 
@@ -228,7 +229,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button>
     </div>
     <p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
-    <p class="hint">Stand 11.11.2026 · v5</p>
+    <p class="hint">Stand 19.11.2026 · v6</p>
   </section>
 </main>
 
@@ -512,19 +513,19 @@ const T = [
  {
   "id": "a3",
   "nr": 3,
-  "title": "Digital Divide: Wer ist offline?",
+  "title": "Wer hat Internet – und wer nicht?",
   "src": "Buch S. 48 · ITU 2025",
   "own": true,
   "tag": "Stunde 2",
   "h": 2,
   "zeit": 8,
-  "q": "Lies im Buch S. 48 »Ein Segen für alle?« und werte die Tabelle aus (ITU, Facts and Figures 2025, Anteil der Menschen, die das Internet nutzen). KI: ohne KI. a) Wie groß ist der Unterschied zwischen Ländern mit hohem und mit niedrigem Einkommen (Prozentpunkte)? b) Unterschied Stadt – Land (Prozentpunkte)? c) Wie viele Menschen sind laut ITU 2025 noch offline? d) Das Buch nennt rund 32 % ohne Internet. Woran kann es liegen, dass Quellen verschieden zählen? e) Nenne einen Lebensbereich, in dem Offline-Sein heute ein Nachteil ist, und warum (1 Satz).",
-  "hint": "Prozentpunkte = Differenz der beiden Prozentwerte. Quellen zählen oft verschieden (Jahr, Messweise).",
+  "q": "Du hast dein Handy fast immer dabei und bist online. Für viele Menschen auf der Welt ist das nicht so. Wie groß die Unterschiede sind, zeigt dir die Tabelle unten.\n**So gehst du vor:**\n1. Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?«.\n2. Schau dir die Tabelle unten an. Sie zeigt, wie viel Prozent der Menschen das Internet nutzen. Die Zahlen stammen von der **ITU**, der Organisation der UNO für Telefon und Internet. Sie zählt jedes Jahr nach.\n3. Beantworte unten die Fragen a–e. Bitte ohne ChatGPT oder eine andere KI. Alles, was du brauchst, steht im Buch und in der Tabelle.\n**Zwei Begriffe vorab:**\n**Länder mit hohem Einkommen** sind Länder, in denen die Menschen im Schnitt viel verdienen, z. B. Österreich, Deutschland oder die USA. **Länder mit niedrigem Einkommen** sind z. B. Afghanistan, Tschad oder Somalia.\n**Prozentpunkte** sind der Abstand zwischen zwei Prozentzahlen. Du rechnest die größere Zahl minus die kleinere. Beispiel: 80 % und 50 % ergeben 30 Prozentpunkte.",
+  "hint": "Prozentpunkte: größere Zahl minus kleinere Zahl. Für c) schau unter die Tabelle.",
   "type": "multi",
   "tab": [
    [
-    "Gruppe",
-    "Internetnutzer 2025"
+    "Wer?",
+    "So viele sind online (2025)"
    ],
    [
     "Länder mit hohem Einkommen",
@@ -535,11 +536,11 @@ const T = [
     "23 %"
    ],
    [
-    "Stadtbevölkerung",
+    "Menschen in der Stadt",
     "85 %"
    ],
    [
-    "Landbevölkerung",
+    "Menschen am Land",
     "58 %"
    ],
    [
@@ -551,19 +552,19 @@ const T = [
     "71 %"
    ]
   ],
-  "tabnote": "Quelle: ITU, Facts and Figures 2025 (17.11.2025). Weltweit rund 6 Mrd. Menschen online, 2,2 Mrd. offline.",
+  "tabnote": "Quelle: ITU, Facts and Figures 2025 (17.11.2025). Weltweit sind rund 6 Mrd. Menschen online und rund 2,2 Mrd. offline.",
   "fields": [
    [
     "diff",
-    "a) Hoch – niedrig (Prozentpunkte)"
+    "a) Länder mit hohem gegen Länder mit niedrigem Einkommen: Wie groß ist der Abstand? (in Prozentpunkten, nur die Zahl)"
    ],
    [
     "sl",
-    "b) Stadt – Land (Prozentpunkte)"
+    "b) Stadt gegen Land: Wie groß ist der Abstand? (in Prozentpunkten, nur die Zahl)"
    ],
    [
     "off",
-    "c) Offline laut ITU 2025",
+    "c) Wie viele Menschen haben laut ITU 2025 kein Internet?",
     [
      "rund 2,2 Milliarden",
      "rund 220 Millionen",
@@ -573,7 +574,7 @@ const T = [
    ],
    [
     "quelle",
-    "d) Warum zählen Quellen verschieden?",
+    "d) Im Buch steht: rund 32 % ohne Internet. Bei der ITU ist es für 2025 rund ein Viertel. Warum können zwei seriöse Quellen verschiedene Zahlen haben?",
     [
      "Jahr, Messweise und Definition von »Nutzer« können sich unterscheiden.",
      "Eine der beiden Quellen ist wertlos.",
@@ -583,7 +584,7 @@ const T = [
    ],
    [
     "bereich",
-    "e) Lebensbereich und Nachteil (1 Satz)"
+    "e) Stell dir vor, du hast ab morgen kein Internet. Wo hättest du einen echten Nachteil? Nenne einen Bereich und schreib in einem Satz, warum."
    ]
   ],
   "chk": {
@@ -605,7 +606,7 @@ const T = [
     "kw": [
      [
       "Bereich",
-      "arbeit|bildung|schule|lernen|gesundheit|telemedizin|bank|behörde|behoerde|homeoffice|einkauf|kommunikation|information|nachrichten|corona|amt|job"
+      "arbeit|bildung|schule|lernen|gesundheit|telemedizin|arzt|termin|bank|überweis|behörde|behoerde|homeoffice|einkauf|kommunikation|information|nachrichten|warn|unwetter|krise|corona|amt|job|bewerb"
      ]
     ],
     "man": true
@@ -629,15 +630,15 @@ const T = [
    "bereich": "z. B. Bildung: Plattformen brauchen Internet"
   },
   "tip": [
-   "Digital Divide",
+   "Wer hat Internet?",
    "theorie.html#digital"
   ],
   "besprechen": true,
   "tipp1": "Prozentpunkte rechnest du als Unterschied: größerer Wert minus kleinerer Wert.",
-  "tipp3": "Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?« und den Kasten mit der Definition von »Digital Divide«.",
+  "tipp3": "Lies im Buch S. 48 den Abschnitt »Ein Segen für alle?« noch einmal.",
   "karteD": {
    "text": [
-    "**Digital Divide** = ungleicher Zugang zu Internet und Technik.",
+    "**Digitale Kluft** = manche Gruppen haben viel öfter Internet als andere.",
     "ITU 2025: **94 %** online in reichen, **23 %** in ärmsten Ländern; **2,2 Mrd.** Menschen offline.",
     "**Prozentpunkte** = größerer Wert minus kleinerer Wert."
    ],
@@ -987,6 +988,11 @@ function fieldsFor(t) {
   return box;
 }
 function qText(s) {
+  if (s.indexOf("\n") >= 0) {
+    const box = el("div", { class: "qbox" });
+    s.split("\n").forEach(z => { const p = el("p", { class: "q" + (/^\d\. /.test(z) ? " qstep" : "") }); z.split(/\*\*(.+?)\*\*/).forEach((x, i) => { if (x) p.append(i % 2 ? el("b", { text: x }) : x); }); box.append(p); });
+    return box;
+  }
   // »Zusatz:« im Buchtext hervorheben
   const p = el("p", { class: "q" });
   const i = s.indexOf("Zusatz:");
@@ -1110,16 +1116,17 @@ function evalTask(t) {
 }
 function showCheck(t) {
   const r = evalTask(t), fb = $("#fb_" + t.id); fb.hidden = false; fb.textContent = "";
+  const kurz = l => { const m = String(l).match(/^([a-h]\))\s/); return m ? m[1] + " " : l + ": "; };   /* 19.11.2026: lange Feldfragen nur als »e)« in der Rückmeldung */
   const auto = r.parts.filter(p => !p.man), man = r.parts.filter(p => p.man), autoOk = auto.every(p => p.ok), viele = r.parts.length > 1;
   fb.className = "fb " + (r.man ? (autoOk ? "info" : "no") : (r.ok ? "ok" : "no"));
   fb.append(el("strong", { text: r.man ? (autoOk ? (auto.length ? "Die automatisch prüfbaren Teile stimmen." : "Gespeichert.") : "Noch nicht ganz.") : (r.ok ? "Richtig!" : "Noch nicht ganz.") }));
   if (!autoOk) auto.forEach(p => {
     if (p.kind === "strike") fb.append(el("div", { text: p.n + " von " + p.of + " richtig durchgestrichen." }));
-    else if (p.kind === "kw" && !p.ok) fb.append(el("div", { text: (viele ? p.label + ": " : "") + "enthalten: " + p.hits.map(h => h[0] + (h[1] ? " ✓" : " ✗")).join(", ") }));
-    else if (!p.ok) fb.append(el("div", { text: (viele ? p.label + ": " : "") + (p.kind === "sel" ? (p.filled ? "Auswahl stimmt noch nicht." : "Noch nichts ausgewählt.") : p.msg) }));
+    else if (p.kind === "kw" && !p.ok) fb.append(el("div", { text: (viele ? kurz(p.label) : "") + "enthalten: " + p.hits.map(h => h[0] + (h[1] ? " ✓" : " ✗")).join(", ") }));
+    else if (!p.ok) fb.append(el("div", { text: (viele ? kurz(p.label) : "") + (p.kind === "sel" ? (p.filled ? "Auswahl stimmt noch nicht." : "Noch nichts ausgewählt.") : p.msg) }));
   });
   man.forEach(p => {
-    const pre = viele ? p.label + ": " : "";
+    const pre = viele ? kurz(p.label) : "";
     if (p.kind === "foto") { fb.append(el("div", { text: p.filled ? "Zeichnung: Foto ist da – sie bewertet die Lehrkraft." : "Zeichnung: Das Foto deiner Zeichnung fehlt noch." })); return; }
     if (!p.filled) { fb.append(el("div", { text: pre + "Deine Erklärung fehlt noch." })); return; }
     const da = p.hits.filter(h => h[1]).map(h => h[0]), fehlt = p.hits.filter(h => !h[1]).map(h => h[0]);
@@ -1229,7 +1236,7 @@ async function buildPdf() {
     y += 2;
     d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...(t.own ? [110, 127, 78] : teal)); d.text(clean(t.src + " · " + t.tag), W - M, y + 4, { align: "right" });
     txt("Aufgabe " + t.nr + ": " + t.title, 13, "bold", olive, M, CW - 50);
-    txt(t.q, 10, "normal", muted);
+    txt(t.q.replace(/\*\*/g, ""), 10, "normal", muted);
     y += 1.2;
     for (const l of answerLines(t)) txt(l, 11.5, l.includes("keine Antwort") ? "bold" : "normal", l.includes("keine Antwort") ? rust : ink, M + 4, CW - 4, 1.3);
     const ev = evalTask(t);
@@ -1929,7 +1936,7 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "a", "min": 1492, "max": 1844
   var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, d: 1e-1, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
   var BASE = { A: [0, 0, 0, 1, 1], T: [1, 0, -2, -1, 1], V: [1, 2, -3, -1, 1], Wb: [1, 2, -2, -1, 1], N: [1, 1, -2, 0, 1], W: [1, 2, -3, 0, 1], J: [1, 2, -2, 0, 1],
     "Ω": [1, 2, -3, -2, 1], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
-  var WORT = [[/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
+  var WORT = [[/millisekunden?|millisek|msek/gi, "ms"], [/mikrosekunden?/gi, "µs"], [/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
   function einheitDim(u) {
     u = String(u || "").replace(/\^\(\s*([-−]?\d)\s*\)/g, "$1").replace(/[−–]/g, "-").replace(/\/\(([^()]*)\)/g, function (_, x) { return "/" + x.split(/[·*.\s]+/).filter(Boolean).join("/"); }).replace(/[μ]/g, "µ").replace(/ω/g, "Ω").replace(/²/g, "2").replace(/³/g, "3").replace(/\^/g, "").replace(/\s+/g, "");
     WORT.forEach(function (w) { u = u.replace(w[0], w[1]); });
@@ -1961,7 +1968,7 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "a", "min": 1492, "max": 1844
     var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
     /* Typografisches Minus (− U+2212, – Halbgeviertstrich, ‒) direkt vor einer Ziffer ist ein Vorzeichen – wie »-« (25.10.2026, Stephans Okay).
        Nur am Anfang bzw. nach Leerzeichen, Klammer, = : ; , + – ein Strich als Trenner (»Antwort – 24 A«, Leerzeichen danach) oder Bereich (»10–20«) bleibt unberührt. */
-    var s0 = String(str || "").replace(/(^|[\s(\[{=:;,+])[−–‒](?=\d)/g, "$1-").replace(/[⋅∙•‧]/g, "·").replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+    var s0 = String(str || "").replace(/(^|[\s(\[{=:;,+])[−–‒](?=\d)/g, "$1-").replace(/[⋅∙•‧]/g, "·").replace(/10\s+hoch\s+([+-]?\d{1,2})(?!\d)/gi, "10^$1")   /* »10 hoch 4« = 10^4 (16.11.2026, K2.4) */.replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       .replace(/([A-Za-zµμΩ²³])⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, u, z) { return u + "^-" + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
       /* Minuszeichen U+2212, Exponent in Klammern, Nenner in Klammern: »m−2« → »m^-2«, »m^(-2)« → »m^-2«, »N/(A·m)« → »N/A/m« */
       .replace(/([A-Za-zµμΩ²³])[−–](\d)/g, "$1^-$2").replace(/\^\(\s*[-−–]?\s*(\d)\s*\)/g, function (m, z) { return /-|−|–/.test(m) ? "^-" + z : "^" + z; })
@@ -1979,6 +1986,7 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "a", "min": 1492, "max": 1844
       .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1·$2/")
       .replace(/(\d\s*[A-Za-zµμΩ][A-Za-zµμΩ·²³^\-0-9]{0,12})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1/")
       .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?([+-]?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      .replace(/(^|[^\d.,·*x×^])10\s*\^\s*\(?([+-]?\d{1,2})\)?(?![\d.,])/g, function (_, v, e) { return v + String(Math.pow(10, parseInt(e, 10))); })   /* reine Zehnerpotenz »10^3« bzw. »10³« = 1000 (14.11.2026, K1.5) */
       .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
     var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*)?)/g, out = [], m;
@@ -2001,7 +2009,7 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "a", "min": 1492, "max": 1844
       if (/\bnicht\s+(falsch|unrichtig|inkorrekt)\b/i.test(nach)) neg = false;   // »240 A sind nicht falsch« bestätigt die Zahl
       /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
       var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);
-      var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test(davor) && !/\d/.test(davor);
+      var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test((out.length ? out[out.length - 1].u + " " : "") + davor) && !/\d/.test(davor);   /* »100 oder 1000«: »oder« wurde als Einheit der ersten Zahl gelesen (14.11.2026, K1.5) */
       /* Gleichheitszeichen direkt zwischen zwei Zahlen (»240 A = 24 A«): Gleichung, die nur stimmt, wenn beide Seiten gleich sind. Nicht gewertet, wenn eine Seite in einer Rechnung steht (+ − · × / davor oder danach) */
       var zw = out.length ? s0.slice(out[out.length - 1].ende, m.index) : "";
       var eq = !!out.length && /^\s*=\s*$/.test(zw) && !/[+\-−·×*\/x]\s*$/i.test(s0.slice(0, out.length === 1 ? out[0].start : out[out.length - 1].start)) && !/^\s*[+\-−·×*\/^]/.test(s0.slice(m.index + m[0].length));
@@ -2126,6 +2134,10 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "a", "min": 1492, "max": 1844
   checkField = function (t, key, c) {
     var a = S.a[t.id] || {};
     if (c.num !== undefined) {
+      /* »nicht« (je Feld, Liste von Mustern): Antworten mit diesen Wörtern/Zeichen sind falsch, auch wenn die Zahl stimmt
+         (z. B. Faktor-Feld: »1000 %«, »1/1000«, »1000 weniger«; Prozent-Feld: »26-mal«) – 14.11.2026, K1.5 */
+      if (c.nicht && filled(a[key]) && c.nicht.some(function (rx) { try { return new RegExp(rx, "i").test(String(a[key])); } catch (e) { return false; } }))
+        return { ok: false, kind: "num", msg: "Lies die Frage noch einmal genau – so passt die Antwort nicht.", filled: true };
       var r = numPruefen(a[key], c.num, c.unit, { ende: c.ende, tol: c.tol });
       return { ok: r.ok, kind: "num", msg: r.msg, note: r.note, filled: filled(a[key]) };
     }
@@ -2303,6 +2315,7 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "a", "min": 1492, "max": 1844
     var kidsA = Array.prototype.slice.call(tasks.children);
     var letztePfl = -1; kidsA.forEach(function (c, i) { if (/^card_/.test(c.id || "") && kart.indexOf(c) < 0) letztePfl = i; });
     if (typeof PL_ZUSATZ_ENDE !== "undefined" && PL_ZUSATZ_ENDE) kart = kart.filter(function (c) { return kidsA.indexOf(c) > letztePfl; });   /* nur Seiten mit var PL_ZUSATZ_ENDE = true (K1.3 2AB); sonst wie bisher */
+    if (typeof PL_ZUSATZ_OFFEN !== "undefined" && PL_ZUSATZ_OFFEN) kart = [];   /* nur Seiten mit var PL_ZUSATZ_OFFEN = true (Akustik 4AB): Zusatzkarten stehen am Ende ihrer Stunde und werden nie zugeklappt */
     var zusEnde = zus.filter(function (t) { return kart.indexOf(document.getElementById("card_" + t.id)) >= 0; });
     var a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
     var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });

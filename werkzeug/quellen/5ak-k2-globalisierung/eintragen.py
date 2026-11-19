@@ -19,6 +19,7 @@ if alt:
     u = E[alt[0]]
     for k in ("lehrerseite", "versteckt", "aktuell"):  # von Stephan oder später gesetzte Felder behalten
         if k in u: neu[k] = u[k]
+        elif k == "versteckt": neu.pop(k, None)   # 19.11.2026: von Stephan eingeblendet → eingeblendet lassen
     E[alt[0]] = neu
 else:
     pos = max(i for i, u in enumerate(E) if u["klasse"] == "5AK") + 1  # zuletzt eingetragen = »Gerade dran«, sobald eingeblendet

@@ -271,7 +271,7 @@ def t2_wdn():
 
 
 def t2_a3():
-    s = auftrag_folie("Jetzt: Aufgabe 3 – Digital Divide", [3], {3: "allein am Handy, ohne KI"}, "71 und 27 Prozentpunkte · 2,2 Mrd. offline · Grund für verschiedene Zahlen · ein Lebensbereich")
+    s = auftrag_folie("Jetzt: Aufgabe 3 – Wer hat Internet?", [3], {3: "allein am Handy, ohne KI"}, "71 und 27 Prozentpunkte · 2,2 Mrd. offline · Grund für verschiedene Zahlen · ein Lebensbereich")
     notiz(s, 3.95, "ITU 2025: hohes Einkommen 94 % · niedriges 23 % · Stadt 85 % · Land 58 % · Männer 77 % · Frauen 71 %", size=16)
     return s
 
@@ -341,7 +341,7 @@ SPEC = {
      ("t1_sich", [8, 9], "ABGABE", None, "Merksatz ins Heft; Ausblick Stunde 2; Reserve", t1_sich)],
  2: [("t2_heute", [0, 1], "TEST", None, "Klassenbuch, Test (20 min, Dauer angenommen); Ziel der Stunde", lambda: heute_folie(2)),
      ("t2_wdn", [2], "WIEDERHOLEN", None, "Drei Fragen aus Stunde 1, mündlich", t2_wdn),
-     ("t2_lesen", [3], "LESEN", "Lesen: Digital Divide", "Theorie-Karte und Buch S. 48 selbst lesen",
+     ("t2_lesen", [3], "LESEN", "Lesen: Wer hat Internet?", "Theorie-Karte und Buch S. 48 selbst lesen",
       lambda: lesen_folie(2, "**Buch S. 48** zum Nachschlagen", ["digital"], "Wer ist offline – und warum zählen Quellen verschieden?", [3])),
      ("t2_a3", [4], "AUFGABE", "Aufgabe 3", "ITU-Zahlen auswerten, Quellenkritik", t2_a3),
      ("t2_a3b", [5], "BESPRECHEN", None, "Zahlen, Buch gegen ITU, Corona", t2_a3b),
@@ -428,7 +428,7 @@ def bauen():
         size=13, after=5)
     B.tb(quellen, X0, 0.98, W, 4.1, ["· " + x for x in [
         "Zölle: Berliner Zeitung 09.11.2026 (Anika Schlünz, nach Xinhua/Reuters/dpa): China setzt 24 % Zusatzzoll für zwei Monate aus, 10 % bleiben. Supreme Court 20.02.2026 (WKO, 23.10.2026). Ein Trump-Xi-Treffen am Rand des APEC-Gipfels in Shenzhen wurde angekündigt, Ergebnis ungeprüft – vor dem 20.11. neu prüfen.",
-        "Digital Divide: ITU Facts and Figures 2025 (17.11.2025). Buch nennt rund 32 % – bewusst als Quellenkritik. Beispielländer aus deiner PPP vom Vorjahr (Stand 2024) sind nicht geprüft und stehen nicht auf den Folien.",
+        "Aufgabe 3 (Wer hat Internet?): ITU Facts and Figures 2025 (17.11.2025). Buch nennt rund 32 % – bewusst als Quellenkritik. Beispielländer aus deiner PPP vom Vorjahr (Stand 2024) sind nicht geprüft und stehen nicht auf den Folien.",
         "China-Flotte: EBSCO Research Starter (Zheng He, 1405–1433). Überschrift »zerstörte« als zugespitzt behandeln; Szenarien sind Gedankenspiel.",
         "Jahresplan E3 nennt Ö1 Dimensionen »Zölle: Regulierungsinstrument oder Konfliktpotenzial …« (24 min, 2025) und radioWissen »Globalisierung um das Jahr 1000« – nicht geprüft, nicht eingebaut; du entscheidest.",
         "Keine Buchbilder auf Folien und Seiten (deine PPP enthält Buchseiten, Wikipedia-Bilder, Kartenausschnitte: nicht übernommen). Grafiken selbst gezeichnet.",
