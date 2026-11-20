@@ -308,6 +308,26 @@ cases[SB]=[
  ['a5','schluss','Die Getränke sind sauer, der Zahnschmelz wird bei Dauertrinken angegriffen.','M'],['a5','schluss','egal','M'],
  ['a6','partner','Max, 3 von 4','M'],['z1','meer','Das Meer ist basisch (pH 8,1) und wird nur weniger basisch.','M'],['z1','lauge','Laugen sind oft gefährlicher, sie dringen tiefer ins Auge.','M'],
  ['z3','merksatz','Brille auf, im Notfall spülen.','M']];
+/* 2AK K6–7 Wahlrecht und Parteien (20.11.2026): Auswahl als ganze Option, Zahlen (Prozentpunkte, Mandate), Erklärungen = M */
+const PA='2ak-pbgw/k6-7-parteien/aufgaben.html';
+cases[PA]=[
+ ['a1','j1907','allgemeines, gleiches Wahlrecht für Männer ab 24',1],['a1','j1907','Frauen und Männer wählen gleich',0],['a1','j1918','Frauen und Männer wählen gleich',1],['a1','j1918','Wählen ab 16',0],
+ ['a1','frau','Frauen',1],['a1','frau','Arbeiter ohne Besitz',0],['a1','quelle','eine dritte, unabhängige Quelle prüfen (z. B. Parlament)',1],['a1','quelle','dem Buch glauben – Schulbuch ist Schulbuch',0],
+ ['a2','oevp','aus dem christlichsozialen Lager',1],['a2','oevp','aus dem deutschnationalen Lager',0],['a2','fpoe','aus dem deutschnationalen (»dritten«) Lager',1],['a2','fpoe','aus dem christlichsozialen Lager',0],
+ ['a2','klub','5',1],['a2','klub','10',0],['a2','gruend','die Satzung beim Innenministerium hinterlegen',1],['a2','gruend','1000 Unterschriften sammeln',0],
+ ['a3','anzahl','fünf',1],['a3','anzahl','sechs',0],['a3','liberal','Er will gleiche Rechte für alle – und gleichzeitig, dass sich Leistung lohnt',1],['a3','liberal','Es gibt ihn erst seit 2012',0],
+ ['a3','passt','Die ÖVP, weil sie konservativ geantwortet hat wie im Buch.','M'],['a3','passt','keine Ahnung','M'],
+ ['a4','wie','drei (Satz 1, 3 und 4)',1],['a4','wie','alle vier',0],['a4','heer','gelb – stark vereinfacht, Stand prüfen',1],['a4','heer','grün – stimmt genau so',0],
+ ['a4','umfrage','Eine Umfrage ist eine Momentaufnahme mit Schwankungsbreite – keine Wahl',1],['a4','umfrage','Die Partei hat damit 40 % der Sitze im Nationalrat',0],
+ ['a4','s3','Im Nationalrat sitzen fünf Parteien, die KPÖ ist nicht dabei.','M'],['a4','s3','Im Nationalrat sitzen sechs Parteien.','M'],
+ ['a4','s4','Die FPÖ wurde 1956 gegründet.','M'],['a4','s4','Die FPÖ ist alt.','M'],
+ ['z1','wer','die 16- bis 17-Jährigen',1],['z1','wer','die 18- bis 20-Jährigen',0],
+ ['z1','pp','10',1],['z1','pp','10 Prozentpunkte',1],['z1','pp','56,3 - 46,3 = 10',1],['z1','pp','10,0',1],['z1','pp','46,3',0],['z1','pp','20',0],['z1','pp','102,6',0],
+ ['z4','mehr','92',1],['z4','mehr','92 Mandate',1],['z4','mehr','183 : 2 = 91,5 also 92',1],['z4','mehr','91',0],['z4','mehr','183',0],
+ ['z4','regierung','110',1],['z4','regierung','51 + 41 + 18 = 110',1],['z4','regierung','92',0],['z4','regierung','109',0],
+ ['z4','zwei','122',1],['z4','zwei','122 Mandate',1],['z4','zwei','92',0],['z4','zwei','121',0],
+ ['z4','neos','Ein Abgeordneter wurde 2026 aus Klub und Partei ausgeschlossen – sein Mandat behält er',1],['z4','neos','Es gab eine Nachwahl in einem Wahlkreis',0]];
+
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

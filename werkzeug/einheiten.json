@@ -1748,6 +1748,226 @@
   }
  },
  {
+  "klasse": "2AK",
+  "fach": "PBGW",
+  "ordner": "2ak-pbgw/k6-7-parteien",
+  "kapitel": "K6–7",
+  "titel": "Wer darf mitreden? Wahlrecht, Parteien und Ideologien",
+  "block": "B Parteien & Ideologien",
+  "jahresplan": "E4–E5",
+  "seiten": [
+   "aufgaben.html",
+   "theorie.html",
+   "check.html"
+  ],
+  "versteckt": true,
+  "kapitelmenue": true,
+  "fahrplan": {
+   "ansicht": "kompakt",
+   "text": "Vier Stunden von 1848 bis heute: Stunde 1 Wahlrecht, Stunde 2 die drei Lager, Stunde 3 links, rechts, liberal mit Referat, Stunde 4 Faktencheck. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "titel": "Wer darf mitreden? Vom Kaiser zum Wählen mit 16",
+     "marke": "REFERAT",
+     "lesen": "REFERAT SPÖ und FPÖ · Buch S. 23–25 · Wahlrecht in Etappen",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Neue Einheit"
+      ],
+      [
+       "",
+       "Aufgabe 1",
+       "aufgaben.html#card_v0"
+      ],
+      [
+       "REFERAT",
+       "Referat"
+      ],
+      [
+       "SELBSTSTUDIUM",
+       "Buch lesen"
+      ],
+      [
+       "",
+       "Aufgabe 2",
+       "aufgaben.html#card_a1"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 23–26",
+     "aufgaben": "1, 2",
+     "theorie": "Teil 1 Wahlrecht",
+     "theorie_links": [
+      [
+       "Teil 1 Wahlrecht",
+       "theorie.html#wahlrecht"
+      ]
+     ],
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "titel": "Drei Lager, drei Welten: Wie unsere Parteien entstanden",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "GRUPPENPUZZLE drei Lager · Buch S. 27–31 · Parteien gründen und finanzieren",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "Gruppenpuzzle"
+      ],
+      [
+       "SELBSTSTUDIUM",
+       "Buch lesen"
+      ],
+      [
+       "",
+       "Aufgabe 3",
+       "aufgaben.html#card_a2"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 27–32",
+     "aufgaben": "3",
+     "theorie": "Teil 2 Drei Lager, Teil 3 Was Parteien tun",
+     "theorie_links": [
+      [
+       "Teil 2 Drei Lager",
+       "theorie.html#lager"
+      ],
+      [
+       "Teil 3 Was Parteien tun",
+       "theorie.html#partei"
+      ]
+     ],
+     "abgabe": "Foto deiner Tabelle"
+    },
+    {
+     "wann": "Stunde 3",
+     "titel": "Links, rechts, liberal: Wo stehen die Parteien?",
+     "marke": "REFERAT",
+     "lesen": "Aufstellen links–rechts · REFERAT Befragung · Buch S. 32–35",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Aufstellen links–rechts"
+      ],
+      [
+       "",
+       "Aufgabe 4",
+       "aufgaben.html#card_a3"
+      ],
+      [
+       "REFERAT",
+       "Referat"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 32–35",
+     "aufgaben": "4",
+     "theorie": "Teil 4 Links, rechts, liberal, Teil 5 Parteien heute",
+     "theorie_links": [
+      [
+       "Teil 4 Links, rechts, liberal",
+       "theorie.html#richtung"
+      ],
+      [
+       "Teil 5 Parteien heute",
+       "theorie.html#heute"
+      ]
+     ],
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 4",
+     "titel": "Faktencheck: Was stimmt über unsere Parteien?",
+     "marke": "DISKUSSION",
+     "lesen": "STATEMENT-AMPEL · Faktencheck · Mindmap",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "DISKUSSION",
+       "Statement-Ampel"
+      ],
+      [
+       "",
+       "Aufgabe 5",
+       "aufgaben.html#card_a4"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ],
+      [
+       "",
+       "Aufgabe 6",
+       "aufgaben.html#card_a5"
+      ],
+      [
+       "",
+       "Aufgabe 7",
+       "aufgaben.html#card_ziele"
+      ]
+     ],
+     "buch": "Buch S. 23–35",
+     "aufgaben": "5–7",
+     "theorie": "Teil 6 Faktencheck",
+     "theorie_links": [
+      [
+       "Teil 6 Faktencheck",
+       "theorie.html#pruefen"
+      ]
+     ],
+     "abgabe": "Arbeitsblatt-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Forschung: Wählen 16-Jährige seltener?, Hainfeld 1889 heute, Wahlplakat für eine erfundene Partei, Mehrheits-Rechner",
+     "aufgaben": "Zusatz 8–11",
+     "zeit": "ca. 40 min",
+     "abgabe": "freiwillig"
+    },
+    {
+     "wann": "Danach",
+     "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "20.11.2026",
+   "liste": [
+    "GitHub: theorie.html, aufgaben.html, check.html (v1)",
+    "Lösungsseite (Artifact, privat)",
+    "26-27-2AK-K6-7-Parteien-Pruefbericht-Claude-v1.md"
+   ]
+  }
+ },
+ {
   "klasse": "3BK",
   "fach": "PBGW",
   "ordner": "3bk-pbgw/k1-2-faelschung",
