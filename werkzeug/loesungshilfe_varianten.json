@@ -53,5 +53,9 @@
   "2ak-pbgw/k6-7-parteien": [
     {"id": "z1", "vars": [{"n": "a", "min": 50, "max": 70, "step": 1}, {"n": "d", "min": 3, "max": 15, "step": 1}], "abgeleitet": {"b": "a-d"}, "text": "Übung mit anderen Zahlen: Bei einer Wahl gingen {a} % der 16- bis 17-Jährigen und {b} % der 18- bis 20-Jährigen wählen. Um wie viele Prozentpunkte lagen die Jüngeren vorne?", "felder": [{"label": "Prozentpunkte (nur die Zahl)", "expr": "d", "einheit": ""}]},
     {"id": "z4", "vars": [{"n": "x", "min": 20, "max": 60, "step": 1}, {"n": "y", "min": 10, "max": 50, "step": 1}, {"n": "z", "min": 5, "max": 30, "step": 1}], "text": "Übung mit anderen Zahlen: Drei Parteien haben {x}, {y} und {z} Mandate. Wie viele haben sie zusammen? (Mehrheit ab 92)", "felder": [{"label": "Mandate zusammen", "expr": "x + y + z", "einheit": ""}]}
+  ],
+  "3ab-nawi/k3-1-kreislauf": [
+    {"id": "a4", "vars": [{"n": "sv", "min": 55, "max": 100, "step": 5}, {"n": "hf", "min": 55, "max": 90, "step": 1}, {"n": "sv2", "min": 100, "max": 140, "step": 5}, {"n": "hf2", "min": 120, "max": 190, "step": 5}], "text": "Übung mit anderen Zahlen: In Ruhe Schlagvolumen {sv} ml und Puls {hf} pro Minute. Beim Sport Schlagvolumen {sv2} ml und Puls {hf2} pro Minute.", "felder": [{"label": "Liter pro Minute in Ruhe", "expr": "sv*hf/1000", "einheit": "l"}, {"label": "Liter an einem Tag in Ruhe", "expr": "sv*hf/1000*1440", "einheit": "l"}, {"label": "Liter pro Minute beim Sport", "expr": "sv2*hf2/1000", "einheit": "l"}]},
+    {"id": "z2", "vars": [{"n": "h", "min": 0.4, "max": 1.4, "step": 0.05}], "text": "Übung mit anderen Zahlen: Das Herz liegt {h} m über dem Boden (Blut 1000 kg/m³, g = 9,81 m/s²).", "felder": [{"label": "Druck p = ρ · g · h in Pa", "expr": "1000*9.81*h", "einheit": "Pa"}]}
   ]
 }

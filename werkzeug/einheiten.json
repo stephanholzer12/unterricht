@@ -1708,6 +1708,305 @@
   "lehrerseite": "https://claude.ai/artifact/4hnvRdYQudScYrWMkaZtmM"
  },
  {
+  "klasse": "3AB",
+  "fach": "NAWI",
+  "ordner": "3ab-nawi/k3-1-kreislauf",
+  "kapitel": "K3.1 · K3.6",
+  "titel": "Der Körper unter Belastung – Herz, Blut, Knochen, Muskeln",
+  "block": "C Organsysteme des Menschen",
+  "jahresplan": "E8, E11",
+  "seiten": [
+   "aufgaben.html",
+   "theorie.html",
+   "check.html"
+  ],
+  "versteckt": true,
+  "kapitelmenue": true,
+  "fahrplan": {
+   "ansicht": "kompakt",
+   "text": "Fünf Stunden, ein Körper unter Belastung: Stunde 1 das Herz, Stunde 2 Puls und Gefäße mit Versuch, Stunde 3 Knochen und Gelenke am Skelett, Stunde 4 das Blut, Stunde 5 Muskeln und Ergonomie. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "titel": "Der Motor im Brustkorb: Wie dein Herz pumpt",
+     "marke": "DEMO",
+     "lesen": "DEMO Torso · Herz und Klappen · Kreislauf-Skizze per Hand · Buch S. 77–78",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "",
+       "Aufgabe 1",
+       "aufgaben.html#card_v0"
+      ],
+      [
+       "DEMO",
+       "DEMO Herz im Torso"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 2",
+       "aufgaben.html#card_a1"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 3",
+       "aufgaben.html#card_a2"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 76–78",
+     "aufgaben": "1–3 · Zusatz 12",
+     "theorie": "Teil 1 Herz, Teil 2 Zwei Kreisläufe",
+     "theorie_links": [
+      [
+       "Teil 1 Herz",
+       "theorie.html#herz"
+      ],
+      [
+       "Teil 2 Zwei Kreisläufe",
+       "theorie.html#kreislauf"
+      ]
+     ],
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "titel": "Puls-Check: Was dein Herz beim Training macht",
+     "marke": "VERSUCH",
+     "lesen": "Gefäße, Puls, Blutdruck · DEMO Venenklappen · VERSUCH Puls · Buch S. 79–81",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "DEMO",
+       "DEMO Venenklappen"
+      ],
+      [
+       "VERSUCH",
+       "VERSUCH (Aufgabe 4)",
+       "aufgaben.html#card_a3"
+      ],
+      [
+       "",
+       "Aufgabe 5",
+       "aufgaben.html#card_a4"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 79–81",
+     "aufgaben": "4, 5 · Zusatz 13",
+     "theorie": "Teil 3 Blutgefäße, Teil 4 Puls und Blutdruck",
+     "theorie_links": [
+      [
+       "Teil 3 Blutgefäße",
+       "theorie.html#gefaesse"
+      ],
+      [
+       "Teil 4 Puls und Blutdruck",
+       "theorie.html#puls"
+      ]
+     ],
+     "abgabe": "Messwerte selbst eintragen"
+    },
+    {
+     "wann": "Stunde 3",
+     "titel": "Gerüst mit Bauplan: Knochen und Gelenke",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "DEMO Skelett-Modell · Knochen, Sehne, Band · GRUPPENARBEIT Skelett-Rallye · Buch S. 108–110",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "DEMO",
+       "DEMO Skelett-Modell"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 6",
+       "aufgaben.html#card_a5"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "GRUPPENARBEIT (Aufgabe 7)",
+       "aufgaben.html#card_a6"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 107–110",
+     "aufgaben": "6, 7 · Zusatz 14",
+     "theorie": "Teil 5 Knochen, Teil 6 Gelenke",
+     "theorie_links": [
+      [
+       "Teil 5 Knochen",
+       "theorie.html#knochen"
+      ],
+      [
+       "Teil 6 Gelenke",
+       "theorie.html#gelenke"
+      ]
+     ],
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 4",
+     "titel": "Rotes Wunder: Was im Blut steckt",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "Blut aus dem Knochenmark · Gerinnung, Blutgruppen · GRUPPENARBEIT Blutdoping · Buch S. 81–85",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 8",
+       "aufgaben.html#card_a7"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "GRUPPENARBEIT (Aufgabe 9)",
+       "aufgaben.html#card_a8"
+      ],
+      [
+       "DISKUSSION",
+       "Diskussion der Rollen"
+      ]
+     ],
+     "buch": "Buch S. 81–85",
+     "aufgaben": "8, 9 · Zusatz 15",
+     "theorie": "Teil 7 Blut, Teil 8 Blutgruppen",
+     "theorie_links": [
+      [
+       "Teil 7 Blut",
+       "theorie.html#blut"
+      ],
+      [
+       "Teil 8 Blutgruppen",
+       "theorie.html#blutgruppen"
+      ]
+     ],
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 5",
+     "titel": "Kraft, Hebel, Haltung: Muskeln und Ergonomie",
+     "marke": "DEMO",
+     "lesen": "Muskeln, Spieler und Gegenspieler · DEMO Heben · Ergonomie-Check · Mindmap per Hand · Buch S. 110–113",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "DEMO",
+       "DEMO Richtig heben"
+      ],
+      [
+       "",
+       "Aufgabe 10",
+       "aufgaben.html#card_a9"
+      ],
+      [
+       "",
+       "Aufgabe 11",
+       "aufgaben.html#card_a10"
+      ],
+      [
+       "PARTNERCHECK",
+       "Partnercheck"
+      ],
+      [
+       "",
+       "Auflösung Aufgabe 1",
+       "aufgaben.html#card_v0"
+      ]
+     ],
+     "buch": "Buch S. 110–114",
+     "aufgaben": "10, 11 · Zusatz 16",
+     "theorie": "Teil 9 Muskeln, Teil 10 Ergonomie",
+     "theorie_links": [
+      [
+       "Teil 9 Muskeln",
+       "theorie.html#muskeln"
+      ],
+      [
+       "Teil 10 Ergonomie",
+       "theorie.html#ergonomie"
+      ]
+     ],
+     "abgabe": "Arbeitsblatt-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Defibrillator-Check, Druck bis in die Füße, KI-Faktencheck Bone-Smashing und Peptide, Blutspende in Zahlen, Rücken-Briefing (Podcast oder Plakat)",
+     "aufgaben": "Zusatz 12–16 (stehen am Ende der jeweiligen Stunde)",
+     "zeit": "ca. 47 min",
+     "abgabe": "freiwillig"
+    },
+    {
+     "wann": "Danach",
+     "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "20.11.2026",
+   "liste": [
+    "GitHub: theorie.html, aufgaben.html, check.html (v1)",
+    "Lösungsseite (Artifact, privat) mit Präsentation, Kalender, Gruppen",
+    "26-27-3AB-K3.1-3.6-Koerper-Pruefbericht-Claude-v1.md"
+   ]
+  }
+ },
+ {
   "klasse": "2AK",
   "fach": "PBGW",
   "ordner": "2ak-pbgw/k1-grundrechte",

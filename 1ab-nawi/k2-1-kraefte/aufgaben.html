@@ -3492,6 +3492,7 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "s", "min": 3.0, "max": 12.0,
     var kidsA = Array.prototype.slice.call(tasks.children);
     var letztePfl = -1; kidsA.forEach(function (c, i) { if (/^card_/.test(c.id || "") && kart.indexOf(c) < 0) letztePfl = i; });
     if (typeof PL_ZUSATZ_ENDE !== "undefined" && PL_ZUSATZ_ENDE) kart = kart.filter(function (c) { return kidsA.indexOf(c) > letztePfl; });   /* nur Seiten mit var PL_ZUSATZ_ENDE = true (K1.3 2AB); sonst wie bisher */
+    if (typeof PL_ZUSATZ_OFFEN !== "undefined" && PL_ZUSATZ_OFFEN) kart = [];   /* nur Seiten mit var PL_ZUSATZ_OFFEN = true (Akustik 4AB): Zusatzkarten stehen am Ende ihrer Stunde und werden nie zugeklappt */
     var zusEnde = zus.filter(function (t) { return kart.indexOf(document.getElementById("card_" + t.id)) >= 0; });
     var a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
     var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });
