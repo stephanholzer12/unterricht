@@ -15,7 +15,7 @@ PAUSE = 5
 DOPPEL_MIN = 2 * MIN + PAUSE
 
 STUNDE = {
- 1: [("Beginn: Klassenbuch, Anwesenheit, Handys bereit", 4, True, "org", ""),
+ 1: [("Beginn: Klassenbuch, Anwesenheit, Folie »Neue Einheit«, Handys bereit", 5, True, "org", ""),
      ("Weißt du noch? Drei Fragen aus der Ernährung", 2, True, "wdh", "BESPRECHEN"),
      ("Aufgabe 1: Was glaubst du? Zwei Vorhersagen tippen", 2, False, "a1", ""),
      ("DEMO K3.1-D1: Das Herz im Torso – erst vermuten, dann herausnehmen", 5, True, "demo", "DEMO"),
@@ -25,7 +25,7 @@ STUNDE = {
      ("Aufgabe 3: Kreislauf-Schema per Hand zeichnen und fotografieren", 6, True, "a3", "SELBSTSTUDIUM"),
      ("BESPRECHEN: Sicherung Herz und Kreislauf", 5, True, "bespr", "BESPRECHEN"),
      ("Zwischenstand als PDF sichern", 1, False, "pdf", ""),
-     ("Reserve", 6, True, "reserve", "")],
+     ("Reserve", 5, True, "reserve", "")],
  2: [("Beginn: Klassenbuch, Anwesenheit", 4, True, "org", ""),
      ("Weißt du noch? Drei Fragen zu Stunde 1", 3, True, "wdh", "BESPRECHEN"),
      ("KURZ KLÄREN: Arterie, Vene, Kapillare – Puls und Blutdruck", 5, True, "erkl", "BESPRECHEN"),

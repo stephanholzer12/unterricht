@@ -88,7 +88,7 @@ T = [
   "hint": "Erst durch die rechte Herzhälfte zur Lunge, dann zurück in die linke Hälfte. Bei jedem Schritt geht es durch eine Klappe oder ein Gefäß.",
   "type": "multi",
   "fields": [["systole", "a) Was passiert in der Systole?",
-              ["Die Herzkammern ziehen sich zusammen und pressen das Blut in die Arterien", "Die Herzkammern erschlaffen und füllen sich mit Blut", "Die Herzklappen wachsen nach"]],
+              ["Die Herzkammern ziehen sich zusammen und pressen das Blut in die Arterien", "Die Herzkammern erschlaffen und füllen sich mit Blut", "Die Vorhöfe ziehen sich zusammen, die Kammern ruhen"]],
              ["segel", "b) Wo liegen die Segelklappen?",
               ["zwischen Vorhof und Kammer", "zwischen Kammer und Arterie", "in den Venen der Beine"]],
              ["klappen", "c) Wozu hat das Herz Klappen?",
@@ -105,7 +105,7 @@ T = [
           "links": {"sel": "die linke"},
           "wand": {"sel": "Sie muss das Blut durch den ganzen Körper drücken – das braucht mehr Druck"}},
   "fb": {"systole": {"Die Herzkammern erschlaffen und füllen sich mit Blut": "Das ist die Diastole – die Erholungs- und Füllphase.",
-                     "Die Herzklappen wachsen nach": "Klappen wachsen nicht pro Herzschlag. Gefragt ist, was der Muskel in der Systole tut."},
+                     "Die Vorhöfe ziehen sich zusammen, die Kammern ruhen": "Das ist kurz vor der Systole. In der Systole arbeiten die Kammern."},
          "segel": {"zwischen Kammer und Arterie": "Dort sitzen die Taschenklappen.",
                    "in den Venen der Beine": "Venen haben eigene Klappen. Die Segelklappen gehören zum Herzen."},
          "klappen": {"Sie erzeugen den Herzschlag": "Den Takt geben spezielle Muskelzellen im Herzen vor, nicht die Klappen.",
@@ -148,21 +148,21 @@ T = [
  # --------------------------------------------------------------- Stunde 2
  {"id": "a3", "nr": 4, "title": "VERSUCH K3.1-V1: Puls vor und nach Belastung", "src": "Buch S. 80 (Versuch »Pulszählung«)", "own": False, "tag": "Stunde 2", "h": 2, "zeit": 15, "marke": "VERSUCH",
   "versuch": "K3.1-V1",
-  "q": "Ihr arbeitet zu zweit: Person A misst, Person B wird gemessen – danach tauscht ihr. Ihr braucht nur die Stoppuhr am Handy. Mitmachen ist freiwillig: "
-       "Wer erkältet ist oder nicht mitmachen will, misst und schreibt mit. So geht es:\n"
-       "1) B sitzt 2 Minuten ruhig. A sucht den Puls an der Innenseite des Handgelenks, daumenseitig (mit zwei Fingern, nicht mit dem Daumen).\n"
-       "2) A zählt 30 Sekunden lang die Schläge. Mal 2 = Ruhepuls pro Minute. Wert in b).\n"
-       "3) B macht 20 Kniebeugen in ruhigem Tempo.\n"
-       "4) Sofort danach wieder 30 Sekunden zählen, mal 2. Wert in c).\n"
-       "5) B setzt sich. Nach 3 Minuten noch einmal messen. Wert in d).\n"
-       "6) Rollen tauschen. Jeder trägt SEINE eigenen Werte hier ein. Die Klasse sammelt die Werte ohne Namen an der Tafel.",
-  "hint": "Puls nicht mit dem Daumen fühlen – der hat selbst einen spürbaren Puls. Am Hals nur auf EINER Seite und nur ganz sanft drücken.",
+  "q": "Ihr arbeitet zu zweit, aber jeder misst seinen EIGENEN Puls. Der Partner hält die Zeit mit der Handy-Stoppuhr und sagt »Start« und »Stopp«. "
+       "Mitmachen ist freiwillig: Wer erkältet ist, Beschwerden an Herz, Lunge oder Knie hat oder nicht will, muss keinen Grund nennen. Er ist nur Zeitnehmer und schreibt bei b) bis d) »nicht gemessen«. So geht es:\n"
+       "1) Alle sitzen 2 Minuten ruhig. Such den Puls an der Innenseite des Handgelenks, daumenseitig (mit zwei Fingern, nicht mit dem Daumen).\n"
+       "2) 30 Sekunden zählen, mal 2 = Ruhepuls pro Minute. Wert in b).\n"
+       "3) Alle machen gleichzeitig 20 Kniebeugen in ruhigem Tempo.\n"
+       "4) Sofort hinsetzen, wieder 30 Sekunden zählen, mal 2. Wert in c).\n"
+       "5) 3 Minuten ruhig sitzen, dann noch einmal messen. Wert in d). In der Pause kannst du schon f) und g) lösen.\n"
+       "6) Die Klasse sammelt die Werte ohne Namen.",
+  "hint": "Puls nicht mit dem Daumen fühlen – der hat selbst einen spürbaren Puls. Wir tasten nur am Handgelenk.",
   "type": "multi",
-  "fields": [["grp", "a) Gemessen mit (Vorname genügt)"],
-             ["ruhe", "b) Mein Ruhepuls (Schläge pro Minute)"],
-             ["nach", "c) Mein Puls direkt nach den Kniebeugen (Schläge pro Minute)"],
-             ["erholt", "d) Mein Puls nach 3 Minuten Pause (Schläge pro Minute)"],
-             ["beob", "e) Was hast du beobachtet? (1–2 Sätze, nur deine Messwerte beschreiben)"],
+  "fields": [["grp", "a) Zeitnehmer war (Vorname genügt)"],
+             ["ruhe", "b) Mein Ruhepuls (Schläge pro Minute – oder »nicht gemessen«)"],
+             ["nach", "c) Mein Puls direkt nach den Kniebeugen (Schläge pro Minute – oder »nicht gemessen«)"],
+             ["erholt", "d) Mein Puls nach 3 Minuten Pause (Schläge pro Minute – oder »nicht gemessen«)"],
+             ["beob", "e) Was hast du beobachtet? (1–2 Sätze; wer nicht gemessen hat: die Klassenwerte)"],
              ["warum", "f) Warum schlägt das Herz bei Belastung schneller?",
               ["Die arbeitenden Muskeln brauchen mehr Sauerstoff – also muss mehr Blut pro Minute fließen", "Das Herz wird bei Bewegung kleiner", "Das Blut wird bei Bewegung dünner und fließt schneller von selbst"]],
              ["diagnose", "g) Was darf man aus EINER solchen Messung nicht ableiten?",
@@ -260,7 +260,7 @@ T = [
                       "f) an der Wachstumsfuge (Knorpelzone nahe den Enden). Sie verknöchert erst gegen Ende der Pubertät.",
                       "g) im roten Knochenmark zwischen den Knochenbälkchen (bei Erwachsenen v. a. in platten und kurzen Knochen und an den Enden der Röhrenknochen).",
                       "h) Leichtbau: Die Bälkchen liegen entlang der Biege- und Druckbelastung – wie bei einem Kran oder Flugzeugflügel."]]],
-  "tipps": ["Denk an einen Fahrradlenker: Die Schraube (Band) hält zwei Rohre zusammen, das Seil (Sehne) zieht – der Motor (Muskel) zieht am Seil.",
+  "tipps": ["Denk an einen Kran: Der Motor (Muskel) zieht am Seil (Sehne), das Seil hängt am Ausleger (Knochen). Die Laschen an den Gelenkbolzen (Bänder) halten die Teile zusammen.",
             "k5",
             "Lies im Buch S. 108 die Beschriftungen beim Röhrenknochen (Wachstumsfuge, Beinhaut, Knochenmarkhöhle, Knochenbälkchen)."],
   "tip": ["Knochen", "theorie.html#knochen"]},
@@ -283,7 +283,7 @@ T = [
              _gel("ellbogen", "d", "Ellbogengelenk (Beugen und Strecken)", "Scharniergelenk"),
              _gel("speiche", "e", "Gelenk zwischen Elle und Speiche (Hand drehen)", "Drehgelenk"),
              _gel("huefte", "f", "Hüftgelenk", "Kugelgelenk"),
-             _gel("finger", "g", "Fingergelenk", "Scharniergelenk"),
+             _gel("finger", "g", "Mittel- oder Endgelenk eines Fingers", "Scharniergelenk"),
              _gel("hals", "h", "Gelenk zwischen 1. und 2. Halswirbel (»Nein« schütteln)", "Drehgelenk"),
              ["schmiere", "i) Wozu dient die Gelenkschmiere?",
               ["Sie ernährt den Knorpel und lässt die Gelenkflächen gleiten", "Sie klebt die Knochen zusammen", "Sie bildet neue Knochenzellen"]]],
@@ -327,7 +327,7 @@ T = [
              _best("thrombo", "c", "Blutplättchen (Thrombozyten)", BESTAND[2]),
              _best("plasma", "d", "Das Blutplasma", BESTAND[3]),
              ["hb", "e) Ein 18-jähriger Rekrut hat 11 g/dl Hämoglobin (Norm laut Buch für Männer 13–18 g/dl). Was ist ein möglicher Hinweis?",
-              ["Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport", "eine Infektion mit Bakterien", "eine besonders gute Ausdauer"]],
+              ["Blutarmut, häufig durch Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport", "eine Infektion mit Bakterien", "eine besonders gute Ausdauer"]],
              ["leukozahl", "f) Bei einer anderen Person: 14 000 Leukozyten pro µl (Norm 4000–10 000). Was ist ein möglicher Hinweis?",
               ["Der Körper wehrt gerade Krankheitserreger ab", "Die Person hat zu wenig Eisen", "Das Blut gerinnt nicht mehr"]],
              ["bg1", "g) Kadett Berger: Mit Anti-A-Serum verklumpt sein Blut, mit Anti-B-Serum nicht. Blutgruppe?", ["A", "B", "AB", "0"]],
@@ -336,7 +336,7 @@ T = [
              ["empf0", "j) Eine Patientin hat Blutgruppe 0. Welche roten Blutkonserven verträgt sie?", ["nur 0", "A, B, AB und 0", "0 und A"]],
              ["empfab", "k) Ein Patient hat Blutgruppe AB. Welche roten Blutkonserven verträgt er?", ["A, B, AB und 0", "nur AB", "nur 0"]]],
   "chk": {"ery": {"sel": BESTAND[0]}, "leuko": {"sel": BESTAND[1]}, "thrombo": {"sel": BESTAND[2]}, "plasma": {"sel": BESTAND[3]},
-          "hb": {"sel": "Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport"},
+          "hb": {"sel": "Blutarmut, häufig durch Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport"},
           "leukozahl": {"sel": "Der Körper wehrt gerade Krankheitserreger ab"},
           "bg1": {"sel": "A"}, "bg2": {"sel": "AB"}, "bg3": {"sel": "0"},
           "empf0": {"sel": "nur 0"}, "empfab": {"sel": "A, B, AB und 0"}},
@@ -352,7 +352,7 @@ T = [
          "empfab": {"nur AB": "AB hat keine Antikörper gegen A oder B – darum verklumpt keine Konserve.",
                     "nur 0": "0 geht, aber AB verträgt noch mehr: Im Plasma sind keine Antikörper gegen A oder B."}},
   "sol": [["Lösung", ["a) Erythrozyten: Sauerstoff (und CO₂) transportieren, mit Hämoglobin. b) Leukozyten: Abwehr. c) Thrombozyten: Blutgerinnung, Wundverschluss. d) Plasma: gelöste Stoffe, Hormone, Wärme.",
-                      "e) Hb zu niedrig → möglicher Hinweis auf Eisenmangel (Buch S. 83). Ein Befund ist aber keine Diagnose – das beurteilt eine Ärztin.",
+                      "e) Hb zu niedrig → möglicher Hinweis auf Blutarmut (Anämie), häufig durch Eisenmangel (Buch S. 83). Ein Befund ist aber keine Diagnose – das beurteilt eine Ärztin.",
                       "f) Leukozyten erhöht → der Körper wehrt vermutlich gerade Krankheitserreger ab.",
                       "g) A · h) AB · i) 0.",
                       "j) nur 0 (Antikörper gegen A und B im Plasma). k) A, B, AB und 0 (keine Antikörper gegen A oder B). In der Klinik gibt man trotzdem möglichst die gleiche Blutgruppe."]]],
@@ -401,13 +401,13 @@ T = [
   "type": "multi",
   "fields": [["beuger", "a) Du beugst den Arm. Welcher Muskel verkürzt sich?", ["der Bizeps (Armbeuger)", "der Trizeps (Armstrecker)", "beide gleich stark"]],
              ["gegen", "b) Warum braucht der Bizeps einen Gegenspieler?",
-              ["Ein Muskel kann nur ziehen – zum Strecken muss ein anderer Muskel ziehen", "Damit er nicht reißt", "Weil Muskeln nur zu zweit Strom bekommen"]],
+              ["Ein Muskel kann nur ziehen – zum Strecken muss ein anderer Muskel ziehen", "Damit er nicht reißt", "Weil ein Muskel allein zu schwach wäre"]],
              ["typ1", "c) Welche Muskelfasern trainiert ein Marathonläufer vor allem?", ["langsame Fasern (Typ I): ausdauernd, mit Sauerstoff", "schnelle Fasern (Typ IIx): kurz und sehr kraftvoll", "gar keine – Laufen ist nur Atmung"]],
              ["atp", "d) Woher bekommt der Muskel auf Dauer die Energie (ATP)?",
               ["aus der Zellatmung – dafür bringt das Blut Sauerstoff", "direkt aus dem Knochenmark", "aus der Gelenkschmiere"]],
              ["nah", "e) Du hebst eine schwere Munitionskiste. Wie ist es für den Rücken am schonendsten?",
               ["Kiste nah am Körper, aus den Beinen heben, Rücken gerade, nicht verdrehen", "mit gestreckten Beinen und rundem Rücken schnell hochreißen", "Kiste weit vor dem Körper halten, damit sie nicht an die Knie stößt"]],
-             ["hebelwert", "f) Ein Rucksack wird doppelt so weit vom Körper weg gehalten. Was passiert mit der Kraft, die die Rückenmuskeln aufbringen müssen? (vereinfachtes Hebelmodell)",
+             ["hebelwert", "f) Ein Rucksack wird doppelt so weit von der Wirbelsäule entfernt gehalten. Was passiert mit der Kraft, die die Rückenmuskeln aufbringen müssen? (vereinfachtes Hebelmodell)",
               ["Sie wird ungefähr doppelt so groß", "Sie bleibt gleich", "Sie wird halb so groß"]],
              ["knie", "g) Sitzt du gerade so, dass deine Füße flach am Boden stehen und die Knie ungefähr einen rechten Winkel bilden?", ["ja", "nein", "weiß nicht"], False],
              ["schirm", "h) Wo sollte die oberste Zeile am Bildschirm (Laptop, PC) liegen?",
@@ -425,7 +425,7 @@ T = [
   "fb": {"beuger": {"der Trizeps (Armstrecker)": "Der Trizeps liegt hinten am Oberarm – er streckt den Arm.",
                     "beide gleich stark": "Fühl nach: Vorne wird der Muskel beim Beugen hart und dick."},
          "gegen": {"Damit er nicht reißt": "Gegenspieler sind kein Schutz vor dem Reißen – sie machen die Gegenbewegung möglich.",
-                   "Weil Muskeln nur zu zweit Strom bekommen": "Jeder Muskel bekommt seine eigenen Nervensignale."},
+                   "Weil ein Muskel allein zu schwach wäre": "Auch ein starker Muskel kann nur ziehen. Zurück bringt den Arm erst der Gegenspieler."},
          "typ1": {"schnelle Fasern (Typ IIx): kurz und sehr kraftvoll": "Die braucht der Gewichtheber. Sie ermüden schnell.",
                   "gar keine – Laufen ist nur Atmung": "Laufen ist Muskelarbeit – die Atmung liefert den Sauerstoff dazu."},
          "atp": {"direkt aus dem Knochenmark": "Im Knochenmark entsteht Blut, keine Muskelenergie.",
@@ -439,7 +439,7 @@ T = [
   "sol": [["Lösung", ["a) der Bizeps (Beuger). b) Muskeln können sich nur verkürzen (ziehen); gestreckt wird der Arm vom Trizeps (Strecker) – Spieler und Gegenspieler.",
                       "c) Typ I – langsame, ausdauernde Fasern, die aerob (mit Sauerstoff) arbeiten. d) ATP aus der Zellatmung; den Sauerstoff bringt das Blut aus der Lunge.",
                       "e) Nah am Körper, aus den Beinen, Rücken gerade, nicht verdrehen. f) Ungefähr doppelt so groß (Kraft · Kraftarm = Last · Lastarm, vereinfacht).",
-                      "g) persönliche Angabe (keine Wertung). h) Oberste Zeile höchstens auf Augenhöhe, Abstand etwa 50 cm (AUVA).",
+                      "g) persönliche Angabe (keine Wertung). h) Oberste Zeile höchstens auf Augenhöhe, Abstand 50–70 cm, etwa eine Armlänge (AUVA).",
                       "i) offen, z. B. »Ich stelle den Laptop auf Bücher, damit ich nicht nach unten schaue – sonst verspannt mein Nacken.«"]]],
   "tipps": ["Spür am eigenen Arm nach: Vorne (Bizeps) wird es beim Beugen hart, hinten (Trizeps) beim Strecken.",
             "k9",
@@ -484,9 +484,9 @@ T = [
                       "c) Notruf 144, sofort Herzdruckmassage (fest, schnell, Mitte der Brust), Defi holen lassen. Der automatische Defi analysiert selbst und schockt nur, wenn es nötig ist."]]],
   "tipps": [], "tip": ["Für Schnelle", "theorie.html#schnelle"]},
 
- {"id": "z2", "nr": 13, "title": "Zusatz: Wie stark muss das Herz drücken?", "src": "Hölzel NAWI HAK III S. 96 (Aufgabe Ü 3.29)", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
-  "q": "Das Blut aus den Füßen muss gegen die Schwerkraft zurück zum Herzen. Der Druck einer Flüssigkeitssäule ist p = ρ · g · h "
-       "(ρ = Dichte des Blutes, rund 1000 kg/m³; g = 9,81 m/s²; h = Höhe in m). a) Eine Person ist 1,70 m groß, ihr Herz liegt 1,25 m über dem Boden. Berechne p in Pa. "
+ {"id": "z2", "nr": 13, "title": "Zusatz: Wie stark drückt das Blut in den Füßen?", "src": "Hölzel NAWI HAK III S. 96 (Aufgabe Ü 3.29)", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+  "q": "Im Stehen lastet eine Blutsäule auf den Venen in Beinen und Füßen. Der Druck einer Flüssigkeitssäule ist p = ρ · g · h "
+       "(ρ = Dichte des Blutes, rund 1000 kg/m³; g = 9,81 m/s²; h = Höhe in m). a) Eine Person ist 1,70 m groß, ihr Herz liegt 1,25 m über dem Boden. Berechne den Druck der Blutsäule vom Herzen bis zu den Füßen in Pa. "
        "b) Ein Kind: Herz 0,50 m über dem Boden. c) Rechne a) in mmHg um (1 mmHg ≈ 133 Pa).",
   "hint": "1 Pa = 1 N/m². Setze die Zahlen ein: 1000 · 9,81 · 1,25.",
   "type": "multi",
@@ -497,31 +497,32 @@ T = [
          "p2": [[500, "Du hast g vergessen: p = ρ · g · h."]]},
   "sol": [["Lösung", ["a) p = 1000 kg/m³ · 9,81 m/s² · 1,25 m ≈ 12 263 Pa ≈ 12,3 kPa.",
                       "b) p = 1000 · 9,81 · 0,50 ≈ 4905 Pa ≈ 4,9 kPa.",
-                      "c) 12 263 Pa : 133 Pa ≈ 92 mmHg. Darum helfen Venenklappen und die Muskelpumpe der Beine – und darum schwellen die Beine nach langem Stehen."]]],
+                      "c) 12 263 Pa : 133 Pa ≈ 92 mmHg. Diesen Druck spüren die Venen in den Füßen im Stehen. Darum helfen Venenklappen und die Muskelpumpe der Beine – und darum schwellen die Beine nach langem Stehen."]]],
   "tipps": [], "tip": ["Blutgefäße", "theorie.html#gefaesse"]},
 
  {"id": "z3", "nr": 14, "title": "Zusatz: KI-Faktencheck – Bone-Smashing und Wunder-Peptide", "src": "Buch S. 108 (Wachstumsfuge)", "own": True, "tag": "Zusatz", "h": 0, "zeit": 12,
   "link": ["Artikel öffnen: ZDFheute zu Looksmaxxing (10.07.2025)", "https://www.zdfheute.de/panorama/looksmaxxing-tiktok-trend-selbstoptimierung-100.html",
            "ZDFheute (öffentlich-rechtlicher Rundfunk, Deutschland), Text von Bettina Blaß und Kim Bachmann · öffnet in einem neuen Tab"],
   "q": "Im Netz behaupten manche: Wer sich mit dem Hammer leicht auf Kiefer und Wangenknochen klopft (»Bone-Smashing«), bekommt ein markanteres Gesicht – der Knochen wachse dicker nach. "
-       "1) Frag eine KI: »Kann man mit Bone-Smashing ein markanteres Kinn bekommen?« Kopier die wichtigste Aussage in a). "
-       "2) Prüf die Antwort mit Teil 5 »Knochen« (Wachstumsfuge, Heilung) und dem Artikel oben. 3) Beantworte b) bis d).",
+       "1) Frag eine KI, die eure Schule erlaubt: »Kann man mit Bone-Smashing ein markanteres Kinn bekommen?« Kopier die wichtigste Aussage in a). "
+       "Ohne KI nimmst du diese Beispiel-Antwort: »Leichtes Klopfen regt den Knochen an, dicker nachzuwachsen. Das ist in Studien belegt, solange man vorsichtig ist.« "
+       "2) Prüf die Antwort mit Teil 5 »Knochen« (Wachstum, Heilung) und dem Artikel oben. 3) Beantworte b) bis d).",
   "hint": "KI-Antworten können falsch sein – prüfe, ob sie sich auf Fachleute stützen. Keinen eigenen »Test« am Gesicht machen.",
   "type": "multi",
   "fields": [["ki", "a) Das sagt die KI (wichtigster Satz)"],
-             ["fuge", "b) Warum kann ein Erwachsener durch Klopfen keinen längeren oder größeren Kieferknochen »züchten«?",
-              ["Knochen wachsen an Wachstumsfugen; nach einem Bruch heilt der Knochen nur – oft schief oder mit Schäden", "Weil der Kiefer aus Knorpel besteht", "Doch, das funktioniert nach 3 Wochen"]],
+             ["fuge", "b) Warum bekommt man durch Klopfen kein dickeres, markanteres Kinn?",
+              ["Brüche heilen ungeordnet mit einem Knochenwulst; eine gezielte Formung ist nicht belegt – stärker werden Knochen durch Training", "Weil der Kiefer aus Knorpel besteht", "Doch, das funktioniert nach 3 Wochen"]],
              ["peptid", "c) Das Peptid BPC-157 wird im Netz als »Heilwunder« für Sehnen verkauft. Was stimmt?",
               ["Es ist nicht als Arzneimittel zugelassen, kaum am Menschen untersucht und im Sport verboten", "Es ist ein normales Medikament aus der Apotheke", "Es ist ein Vitamin und völlig harmlos"]],
              ["urteil", "d) Dein Urteil: Wo lag die KI richtig, wo ungenau? Und wer verdient an solchen Trends? (2–3 Sätze)"]],
-  "chk": {"fuge": {"sel": "Knochen wachsen an Wachstumsfugen; nach einem Bruch heilt der Knochen nur – oft schief oder mit Schäden"},
+  "chk": {"fuge": {"sel": "Brüche heilen ungeordnet mit einem Knochenwulst; eine gezielte Formung ist nicht belegt – stärker werden Knochen durch Training"},
           "peptid": {"sel": "Es ist nicht als Arzneimittel zugelassen, kaum am Menschen untersucht und im Sport verboten"},
           "ki": {"kw": [["KI-Aussage", r"\w{4,}"]], "man": True},
           "urteil": {"kw": [["Urteil", r"richtig|falsch|ungenau|stimmt|quelle|belegt|fachleute|arzt|ärzt"], ["Wer verdient", r"influencer|verkauf|geld|verdien|klicks|reichweite|werbung|herstell|shop|abo"]], "need": 2, "man": True}},
   "fb": {"fuge": {"Weil der Kiefer aus Knorpel besteht": "Der Unterkiefer ist ein Knochen.", "Doch, das funktioniert nach 3 Wochen": "Dafür gibt es keinen Beleg – Ärzte warnen vor Brüchen, Nervenschäden und bleibenden Verformungen."},
          "peptid": {"Es ist ein normales Medikament aus der Apotheke": "BPC-157 ist weltweit nicht als Arzneimittel zugelassen.",
                     "Es ist ein Vitamin und völlig harmlos": "Es ist ein künstliches Peptid. Sichere Dosen beim Menschen sind unbekannt."}},
-  "sol": [["Lösung", ["b) Längenwachstum passiert an den Wachstumsfugen, die nach der Pubertät verknöchern. Ein Bruch heilt – oft mit Fehlstellung, Schwellungen, Nervenschäden (ZDFheute, Ärzte zitiert: Christoph Specht, Alexander Schönborn).",
+  "sol": [["Lösung", ["b) Mikrobrüche heilen ungeordnet mit einem Knochenwulst (Kallus); dass man so ein Gesicht gezielt formen kann, ist nicht belegt. Stärker werden Knochen durch Training. Ein Bruch heilt oft mit Fehlstellung, Schwellungen, Nervenschäden (ZDFheute, Ärzte zitiert: Christoph Specht, Alexander Schönborn).",
                       "c) BPC-157: nicht als Arzneimittel zugelassen, Daten vor allem aus Tierversuchen, auf der WADA-Verbotsliste (S0, nicht zugelassene Substanzen).",
                       "d) offen – erwartet: KI-Aussage geprüft, Interesse der Influencer/Verkäufer (Klicks, Produkte, Coaching) genannt."]]],
   "tipps": [], "tip": ["Knochen", "theorie.html#knochen"]},
@@ -614,7 +615,7 @@ LERNZIELE = ["**Bau und Arbeitsweise des Herzens** beschreiben und den Weg des B
 WICHTIGSTE = ["Das **Herz** ist ein Hohlmuskel mit vier Räumen. **Rechts** pumpt es sauerstoffarmes Blut in den **Lungenkreislauf**, **links** sauerstoffreiches Blut in den **Körperkreislauf**. **Klappen** wirken als Ventile.",
               "**Arterien** führen vom Herzen weg, **Venen** zum Herzen hin, in den **Kapillaren** passiert der Stoffaustausch. **Herzminutenvolumen = Schlagvolumen · Puls** – in Ruhe rund 5 Liter pro Minute.",
               "**Blut** besteht aus Zellen (rote und weiße Blutkörperchen, Blutplättchen) und **Plasma**. Es transportiert, wehrt ab und verschließt Wunden. Die **Blutgruppe** hängt von den **Antigenen** auf den roten Blutkörperchen ab.",
-              "Das **Skelett** stützt, schützt und bildet im **roten Knochenmark** Blut. **Gelenke** sind Kugel-, Scharnier- oder Drehgelenke; **Sehnen** verbinden Muskel und Knochen, **Bänder** Knochen mit Knochen.",
+              "Das **Skelett** stützt, schützt und bildet im **roten Knochenmark** Blut. **Gelenke** sind z. B. Kugel-, Scharnier- oder Drehgelenke; **Sehnen** verbinden Muskel und Knochen, **Bänder** Knochen mit Knochen.",
               "**Muskeln** können nur **ziehen** – darum gibt es **Spieler und Gegenspieler**. **Ergonomie** passt die Arbeit an den Menschen an: nah am Körper heben, gerade sitzen, Bildschirm nicht zu hoch, oft bewegen."]
 
 FACHBEGRIFFE = [["Begriff", "Bedeutung"],
@@ -678,7 +679,7 @@ STOPPFRAGEN = {
                   ("Welcher Kreislauf beginnt in der linken Kammer?", "Der Körperkreislauf – über die Aorta.")],
     "gefaesse": [("Was unterscheidet Arterien und Venen?", "Arterien führen vom Herzen weg (dick, elastisch, hoher Druck), Venen zum Herzen hin (dünn, Klappen, niedriger Druck)."),
                  ("Warum ist die Kapillarwand so dünn?", "Damit Sauerstoff, Nährstoffe und Abfallstoffe leicht hindurch können.")],
-    "puls": [("Wo kann man den Puls gut tasten?", "An Speichenarterie (Handgelenk, daumenseitig), Halsschlagader (nur eine Seite, sanft) oder in der Leiste."),
+    "puls": [("Wo kann man den Puls gut tasten?", "An der Innenseite des Handgelenks, daumenseitig (Speichenarterie), mit zwei Fingern."),
              ("Was sagt 120/80 mmHg?", "Systolischer Druck 120, diastolischer Druck 80 mmHg – optimal ist darunter.")],
     "knochen": [("Wo wächst ein Röhrenknochen in die Länge?", "An der Wachstumsfuge nahe den Enden."),
                 ("Warum ist der Knochen innen wie ein Gerüst gebaut?", "Leichtbau: Material nur entlang der Kraftlinien – leicht und stabil.")],
@@ -778,7 +779,7 @@ WDN_ABCD = {
 VERMUTUNG_ABCD = {
     "K3.1-D1": [("Wo liegt das Herz im Brustkorb?", "fast in der Mitte, etwas nach links", ["ganz links unter der Achsel", "rechts neben der Leber", "direkt unter dem Schlüsselbein"], "Hinter dem Brustbein, die Spitze zeigt nach links unten."),
                 ("Wie groß ist ein gesundes Herz ungefähr?", "wie eine geschlossene Faust", ["wie ein Fußball", "wie eine Erbse", "wie ein Handy"], "Rund 300 g, faustgroß (Buch S. 77).")],
-    "K3.1-D2": [("Prof. HOLZER drückt eine Vene am Unterarm ab und streicht sie Richtung Hand aus. Was passiert?", "Die Vene bleibt bis zur nächsten Klappe leer", ["Die Vene platzt", "Das Blut fließt sofort zurück", "Nichts – Venen haben keine Klappen"], "Die Klappe lässt das Blut nicht zurück.")],
+    "K3.1-D2": [("Prof. HOLZER drückt eine Vene am Unterarm handnah ab und streicht sie Richtung Ellbogen aus. Was passiert?", "Die Vene bleibt bis zur nächsten Klappe leer", ["Die Vene platzt", "Das Blut fließt sofort zurück", "Nichts – Venen haben keine Klappen"], "Die Klappe lässt das Blut nicht zurück. Erst wenn der erste Finger loslässt, füllt sich die Vene von der Hand her.")],
     "K3.6-D1": [("Ein Röhrenknochen ist innen …", "hohl bzw. mit Bälkchen und Mark gefüllt", ["massiv wie ein Stein", "mit Luft gefüllt wie ein Ballon", "aus Knorpel"], "Leichtbau wie ein Fahrradrahmen.")],
     "K3.6-D2": [("Dieselbe Last wird weit vom Körper gehalten. Für den Rücken ist das …", "schwerer", ["leichter", "gleich", "egal, nur die Arme arbeiten"], "Längerer Hebel – die Rückenmuskeln müssen stärker ziehen.")],
 }

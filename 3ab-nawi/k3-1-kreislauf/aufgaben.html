@@ -450,7 +450,7 @@ const T = [
     [
      "Die Herzkammern ziehen sich zusammen und pressen das Blut in die Arterien",
      "Die Herzkammern erschlaffen und füllen sich mit Blut",
-     "Die Herzklappen wachsen nach"
+     "Die Vorhöfe ziehen sich zusammen, die Kammern ruhen"
     ]
    ],
    [
@@ -600,7 +600,7 @@ const T = [
   "fb": {
    "systole": {
     "Die Herzkammern erschlaffen und füllen sich mit Blut": "Das ist die Diastole – die Erholungs- und Füllphase.",
-    "Die Herzklappen wachsen nach": "Klappen wachsen nicht pro Herzschlag. Gefragt ist, was der Muskel in der Systole tut."
+    "Die Vorhöfe ziehen sich zusammen, die Kammern ruhen": "Das ist kurz vor der Systole. In der Systole arbeiten die Kammern."
    },
    "segel": {
     "zwischen Kammer und Arterie": "Dort sitzen die Taschenklappen.",
@@ -714,29 +714,29 @@ const T = [
   "zeit": 15,
   "marke": "VERSUCH",
   "versuch": "K3.1-V1",
-  "q": "Ihr arbeitet zu zweit: Person A misst, Person B wird gemessen – danach tauscht ihr. Ihr braucht nur die Stoppuhr am Handy. Mitmachen ist freiwillig: Wer erkältet ist oder nicht mitmachen will, misst und schreibt mit. So geht es:\n1) B sitzt 2 Minuten ruhig. A sucht den Puls an der Innenseite des Handgelenks, daumenseitig (mit zwei Fingern, nicht mit dem Daumen).\n2) A zählt 30 Sekunden lang die Schläge. Mal 2 = Ruhepuls pro Minute. Wert in b).\n3) B macht 20 Kniebeugen in ruhigem Tempo.\n4) Sofort danach wieder 30 Sekunden zählen, mal 2. Wert in c).\n5) B setzt sich. Nach 3 Minuten noch einmal messen. Wert in d).\n6) Rollen tauschen. Jeder trägt SEINE eigenen Werte hier ein. Die Klasse sammelt die Werte ohne Namen an der Tafel.",
-  "hint": "Puls nicht mit dem Daumen fühlen – der hat selbst einen spürbaren Puls. Am Hals nur auf EINER Seite und nur ganz sanft drücken.",
+  "q": "Ihr arbeitet zu zweit, aber jeder misst seinen EIGENEN Puls. Der Partner hält die Zeit mit der Handy-Stoppuhr und sagt »Start« und »Stopp«. Mitmachen ist freiwillig: Wer erkältet ist, Beschwerden an Herz, Lunge oder Knie hat oder nicht will, muss keinen Grund nennen. Er ist nur Zeitnehmer und schreibt bei b) bis d) »nicht gemessen«. So geht es:\n1) Alle sitzen 2 Minuten ruhig. Such den Puls an der Innenseite des Handgelenks, daumenseitig (mit zwei Fingern, nicht mit dem Daumen).\n2) 30 Sekunden zählen, mal 2 = Ruhepuls pro Minute. Wert in b).\n3) Alle machen gleichzeitig 20 Kniebeugen in ruhigem Tempo.\n4) Sofort hinsetzen, wieder 30 Sekunden zählen, mal 2. Wert in c).\n5) 3 Minuten ruhig sitzen, dann noch einmal messen. Wert in d). In der Pause kannst du schon f) und g) lösen.\n6) Die Klasse sammelt die Werte ohne Namen.",
+  "hint": "Puls nicht mit dem Daumen fühlen – der hat selbst einen spürbaren Puls. Wir tasten nur am Handgelenk.",
   "type": "multi",
   "fields": [
    [
     "grp",
-    "a) Gemessen mit (Vorname genügt)"
+    "a) Zeitnehmer war (Vorname genügt)"
    ],
    [
     "ruhe",
-    "b) Mein Ruhepuls (Schläge pro Minute)"
+    "b) Mein Ruhepuls (Schläge pro Minute – oder »nicht gemessen«)"
    ],
    [
     "nach",
-    "c) Mein Puls direkt nach den Kniebeugen (Schläge pro Minute)"
+    "c) Mein Puls direkt nach den Kniebeugen (Schläge pro Minute – oder »nicht gemessen«)"
    ],
    [
     "erholt",
-    "d) Mein Puls nach 3 Minuten Pause (Schläge pro Minute)"
+    "d) Mein Puls nach 3 Minuten Pause (Schläge pro Minute – oder »nicht gemessen«)"
    ],
    [
     "beob",
-    "e) Was hast du beobachtet? (1–2 Sätze, nur deine Messwerte beschreiben)"
+    "e) Was hast du beobachtet? (1–2 Sätze; wer nicht gemessen hat: die Klassenwerte)"
    ],
    [
     "warum",
@@ -1140,7 +1140,7 @@ const T = [
    ]
   ],
   "tipps": [
-   "Denk an einen Fahrradlenker: Die Schraube (Band) hält zwei Rohre zusammen, das Seil (Sehne) zieht – der Motor (Muskel) zieht am Seil.",
+   "Denk an einen Kran: Der Motor (Muskel) zieht am Seil (Sehne), das Seil hängt am Ausleger (Knochen). Die Laschen an den Gelenkbolzen (Bänder) halten die Teile zusammen.",
    "k5",
    "Lies im Buch S. 108 die Beschriftungen beim Röhrenknochen (Wachstumsfuge, Beinhaut, Knochenmarkhöhle, Knochenbälkchen)."
   ],
@@ -1238,7 +1238,7 @@ const T = [
    ],
    [
     "finger",
-    "g) Fingergelenk",
+    "g) Mittel- oder Endgelenk eines Fingers",
     [
      "Scharniergelenk",
      "Kugelgelenk",
@@ -1411,7 +1411,7 @@ const T = [
     "hb",
     "e) Ein 18-jähriger Rekrut hat 11 g/dl Hämoglobin (Norm laut Buch für Männer 13–18 g/dl). Was ist ein möglicher Hinweis?",
     [
-     "Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport",
+     "Blutarmut, häufig durch Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport",
      "eine Infektion mit Bakterien",
      "eine besonders gute Ausdauer"
     ]
@@ -1488,7 +1488,7 @@ const T = [
     "sel": "transportiert gelöste Stoffe und Wärme"
    },
    "hb": {
-    "sel": "Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport"
+    "sel": "Blutarmut, häufig durch Eisenmangel – zu wenig Hämoglobin für den Sauerstofftransport"
    },
    "leukozahl": {
     "sel": "Der Körper wehrt gerade Krankheitserreger ab"
@@ -1547,7 +1547,7 @@ const T = [
     "Lösung",
     [
      "a) Erythrozyten: Sauerstoff (und CO₂) transportieren, mit Hämoglobin. b) Leukozyten: Abwehr. c) Thrombozyten: Blutgerinnung, Wundverschluss. d) Plasma: gelöste Stoffe, Hormone, Wärme.",
-     "e) Hb zu niedrig → möglicher Hinweis auf Eisenmangel (Buch S. 83). Ein Befund ist aber keine Diagnose – das beurteilt eine Ärztin.",
+     "e) Hb zu niedrig → möglicher Hinweis auf Blutarmut (Anämie), häufig durch Eisenmangel (Buch S. 83). Ein Befund ist aber keine Diagnose – das beurteilt eine Ärztin.",
      "f) Leukozyten erhöht → der Körper wehrt vermutlich gerade Krankheitserreger ab.",
      "g) A · h) AB · i) 0.",
      "j) nur 0 (Antikörper gegen A und B im Plasma). k) A, B, AB und 0 (keine Antikörper gegen A oder B). In der Klinik gibt man trotzdem möglichst die gleiche Blutgruppe."
@@ -1715,7 +1715,7 @@ const T = [
     [
      "Ein Muskel kann nur ziehen – zum Strecken muss ein anderer Muskel ziehen",
      "Damit er nicht reißt",
-     "Weil Muskeln nur zu zweit Strom bekommen"
+     "Weil ein Muskel allein zu schwach wäre"
     ]
    ],
    [
@@ -1747,7 +1747,7 @@ const T = [
    ],
    [
     "hebelwert",
-    "f) Ein Rucksack wird doppelt so weit vom Körper weg gehalten. Was passiert mit der Kraft, die die Rückenmuskeln aufbringen müssen? (vereinfachtes Hebelmodell)",
+    "f) Ein Rucksack wird doppelt so weit von der Wirbelsäule entfernt gehalten. Was passiert mit der Kraft, die die Rückenmuskeln aufbringen müssen? (vereinfachtes Hebelmodell)",
     [
      "Sie wird ungefähr doppelt so groß",
      "Sie bleibt gleich",
@@ -1822,7 +1822,7 @@ const T = [
    },
    "gegen": {
     "Damit er nicht reißt": "Gegenspieler sind kein Schutz vor dem Reißen – sie machen die Gegenbewegung möglich.",
-    "Weil Muskeln nur zu zweit Strom bekommen": "Jeder Muskel bekommt seine eigenen Nervensignale."
+    "Weil ein Muskel allein zu schwach wäre": "Auch ein starker Muskel kann nur ziehen. Zurück bringt den Arm erst der Gegenspieler."
    },
    "typ1": {
     "schnelle Fasern (Typ IIx): kurz und sehr kraftvoll": "Die braucht der Gewichtheber. Sie ermüden schnell.",
@@ -1852,7 +1852,7 @@ const T = [
      "a) der Bizeps (Beuger). b) Muskeln können sich nur verkürzen (ziehen); gestreckt wird der Arm vom Trizeps (Strecker) – Spieler und Gegenspieler.",
      "c) Typ I – langsame, ausdauernde Fasern, die aerob (mit Sauerstoff) arbeiten. d) ATP aus der Zellatmung; den Sauerstoff bringt das Blut aus der Lunge.",
      "e) Nah am Körper, aus den Beinen, Rücken gerade, nicht verdrehen. f) Ungefähr doppelt so groß (Kraft · Kraftarm = Last · Lastarm, vereinfacht).",
-     "g) persönliche Angabe (keine Wertung). h) Oberste Zeile höchstens auf Augenhöhe, Abstand etwa 50 cm (AUVA).",
+     "g) persönliche Angabe (keine Wertung). h) Oberste Zeile höchstens auf Augenhöhe, Abstand 50–70 cm, etwa eine Armlänge (AUVA).",
      "i) offen, z. B. »Ich stelle den Laptop auf Bücher, damit ich nicht nach unten schaue – sonst verspannt mein Nacken.«"
     ]
    ]
@@ -2007,13 +2007,13 @@ const T = [
  {
   "id": "z2",
   "nr": 13,
-  "title": "Zusatz: Wie stark muss das Herz drücken?",
+  "title": "Zusatz: Wie stark drückt das Blut in den Füßen?",
   "src": "Hölzel NAWI HAK III S. 96 (Aufgabe Ü 3.29)",
   "own": true,
   "tag": "Zusatz",
   "h": 0,
   "zeit": 8,
-  "q": "Das Blut aus den Füßen muss gegen die Schwerkraft zurück zum Herzen. Der Druck einer Flüssigkeitssäule ist p = ρ · g · h (ρ = Dichte des Blutes, rund 1000 kg/m³; g = 9,81 m/s²; h = Höhe in m). a) Eine Person ist 1,70 m groß, ihr Herz liegt 1,25 m über dem Boden. Berechne p in Pa. b) Ein Kind: Herz 0,50 m über dem Boden. c) Rechne a) in mmHg um (1 mmHg ≈ 133 Pa).",
+  "q": "Im Stehen lastet eine Blutsäule auf den Venen in Beinen und Füßen. Der Druck einer Flüssigkeitssäule ist p = ρ · g · h (ρ = Dichte des Blutes, rund 1000 kg/m³; g = 9,81 m/s²; h = Höhe in m). a) Eine Person ist 1,70 m groß, ihr Herz liegt 1,25 m über dem Boden. Berechne den Druck der Blutsäule vom Herzen bis zu den Füßen in Pa. b) Ein Kind: Herz 0,50 m über dem Boden. c) Rechne a) in mmHg um (1 mmHg ≈ 133 Pa).",
   "hint": "1 Pa = 1 N/m². Setze die Zahlen ein: 1000 · 9,81 · 1,25.",
   "type": "multi",
   "fields": [
@@ -2075,7 +2075,7 @@ const T = [
     [
      "a) p = 1000 kg/m³ · 9,81 m/s² · 1,25 m ≈ 12 263 Pa ≈ 12,3 kPa.",
      "b) p = 1000 · 9,81 · 0,50 ≈ 4905 Pa ≈ 4,9 kPa.",
-     "c) 12 263 Pa : 133 Pa ≈ 92 mmHg. Darum helfen Venenklappen und die Muskelpumpe der Beine – und darum schwellen die Beine nach langem Stehen."
+     "c) 12 263 Pa : 133 Pa ≈ 92 mmHg. Diesen Druck spüren die Venen in den Füßen im Stehen. Darum helfen Venenklappen und die Muskelpumpe der Beine – und darum schwellen die Beine nach langem Stehen."
     ]
    ]
   ],
@@ -2103,7 +2103,7 @@ const T = [
    "https://www.zdfheute.de/panorama/looksmaxxing-tiktok-trend-selbstoptimierung-100.html",
    "ZDFheute (öffentlich-rechtlicher Rundfunk, Deutschland), Text von Bettina Blaß und Kim Bachmann · öffnet in einem neuen Tab"
   ],
-  "q": "Im Netz behaupten manche: Wer sich mit dem Hammer leicht auf Kiefer und Wangenknochen klopft (»Bone-Smashing«), bekommt ein markanteres Gesicht – der Knochen wachse dicker nach. 1) Frag eine KI: »Kann man mit Bone-Smashing ein markanteres Kinn bekommen?« Kopier die wichtigste Aussage in a). 2) Prüf die Antwort mit Teil 5 »Knochen« (Wachstumsfuge, Heilung) und dem Artikel oben. 3) Beantworte b) bis d).",
+  "q": "Im Netz behaupten manche: Wer sich mit dem Hammer leicht auf Kiefer und Wangenknochen klopft (»Bone-Smashing«), bekommt ein markanteres Gesicht – der Knochen wachse dicker nach. 1) Frag eine KI, die eure Schule erlaubt: »Kann man mit Bone-Smashing ein markanteres Kinn bekommen?« Kopier die wichtigste Aussage in a). Ohne KI nimmst du diese Beispiel-Antwort: »Leichtes Klopfen regt den Knochen an, dicker nachzuwachsen. Das ist in Studien belegt, solange man vorsichtig ist.« 2) Prüf die Antwort mit Teil 5 »Knochen« (Wachstum, Heilung) und dem Artikel oben. 3) Beantworte b) bis d).",
   "hint": "KI-Antworten können falsch sein – prüfe, ob sie sich auf Fachleute stützen. Keinen eigenen »Test« am Gesicht machen.",
   "type": "multi",
   "fields": [
@@ -2113,9 +2113,9 @@ const T = [
    ],
    [
     "fuge",
-    "b) Warum kann ein Erwachsener durch Klopfen keinen längeren oder größeren Kieferknochen »züchten«?",
+    "b) Warum bekommt man durch Klopfen kein dickeres, markanteres Kinn?",
     [
-     "Knochen wachsen an Wachstumsfugen; nach einem Bruch heilt der Knochen nur – oft schief oder mit Schäden",
+     "Brüche heilen ungeordnet mit einem Knochenwulst; eine gezielte Formung ist nicht belegt – stärker werden Knochen durch Training",
      "Weil der Kiefer aus Knorpel besteht",
      "Doch, das funktioniert nach 3 Wochen"
     ]
@@ -2136,7 +2136,7 @@ const T = [
   ],
   "chk": {
    "fuge": {
-    "sel": "Knochen wachsen an Wachstumsfugen; nach einem Bruch heilt der Knochen nur – oft schief oder mit Schäden"
+    "sel": "Brüche heilen ungeordnet mit einem Knochenwulst; eine gezielte Formung ist nicht belegt – stärker werden Knochen durch Training"
    },
    "peptid": {
     "sel": "Es ist nicht als Arzneimittel zugelassen, kaum am Menschen untersucht und im Sport verboten"
@@ -2179,7 +2179,7 @@ const T = [
    [
     "Lösung",
     [
-     "b) Längenwachstum passiert an den Wachstumsfugen, die nach der Pubertät verknöchern. Ein Bruch heilt – oft mit Fehlstellung, Schwellungen, Nervenschäden (ZDFheute, Ärzte zitiert: Christoph Specht, Alexander Schönborn).",
+     "b) Mikrobrüche heilen ungeordnet mit einem Knochenwulst (Kallus); dass man so ein Gesicht gezielt formen kann, ist nicht belegt. Stärker werden Knochen durch Training. Ein Bruch heilt oft mit Fehlstellung, Schwellungen, Nervenschäden (ZDFheute, Ärzte zitiert: Christoph Specht, Alexander Schönborn).",
      "c) BPC-157: nicht als Arzneimittel zugelassen, Daten vor allem aus Tierversuchen, auf der WADA-Verbotsliste (S0, nicht zugelassene Substanzen).",
      "d) offen – erwartet: KI-Aussage geprüft, Interesse der Influencer/Verkäufer (Klicks, Produkte, Coaching) genannt."
     ]
