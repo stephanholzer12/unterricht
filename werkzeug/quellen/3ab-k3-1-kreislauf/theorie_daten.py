@@ -242,6 +242,7 @@ PARTS = [
    "blocks": [("buch", "Schau dir im **Buch S. 113** die Tabelle **»So sitzt man richtig!«** an."),
               kartenblock("k10"),
               ("sim", "hebel"),
+              ("extern", "Balanceakt – das Hebelgesetz an der Wippe", "https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_de.html", "Freiwillig: Lege Gewichte auf die Wippe. Wie weit muss das schwere Gewicht von der Mitte weg, damit alles im Gleichgewicht ist?", "PhET Interactive Simulations, University of Colorado Boulder · auf Deutsch · öffnet in einem neuen Tab"),
               ("demo", "K3.6-D2", "Ein Freiwilliger hält einen Rucksack mit Gewichten erst eng am Körper, dann mit ausgestreckten Armen weit vorne. **Erst vermuten:** Wo spürt er es im Rücken stärker? "
                                   "Danach zeigt Prof. HOLZER richtiges und falsches Heben (nur mit leichter Last)."),
               ("table", [["Prüfpunkt", "So ist es gut (AUVA, Buch S. 113)"],

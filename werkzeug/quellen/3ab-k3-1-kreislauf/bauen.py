@@ -56,7 +56,7 @@ rep('<option value="">–</option><option>3BK</option>', '<option value="">–</
 ZUS = ", ".join(str(t["nr"]) for t in I.T if t["tag"] == "Zusatz")
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
-      <li><b>Eine Seite für alles.</b> Aufgaben, Versuche und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
+      <li><b>SELBSTSTUDIUM</b> heißt: allein lesen, im eigenen Buch das Wichtigste mit Leuchtstift markieren, Notizen am Rand oder in der Mappe, dann die Aufgabe lösen.</li><li><b>Eine Seite für alles.</b> Aufgaben, Versuche und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
       <li><b>Stunde 1:</b> Aufgaben 1–3 · <b>Stunde 2:</b> VERSUCH (Aufgabe 4) und Aufgabe 5 · <b>Stunde 3:</b> Aufgabe 6 und GRUPPENARBEIT (Aufgabe 7) · <b>Stunde 4:</b> Aufgabe 8 und GRUPPENARBEIT (Aufgabe 9) · <b>Stunde 5:</b> Aufgaben 10–11. Zusatz für Schnelle: """ + ZUS + """. Es gibt <b>keine Hausübung</b>.</li>
       <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein), <b>VERSUCH</b> oder <b>GRUPPENARBEIT</b> (Gruppe). Bei Aufgabe 3 und 11 schreibst du <b>mit der Hand</b> auf ein Blatt und lädst ein Foto hoch – das Blatt kommt danach in deine Mappe. Bei vielen Aufgaben kannst du unter »Ausprobieren« selbst etwas einstellen. Tipps kosten keine Punkte.</li>
       <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 5 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).</li>
@@ -118,6 +118,10 @@ rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
   if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle machen gleichzeitig mit · jeder trägt seine Werte selbst ein" }));
   if (t.rollen) { const rk = el("div", { class: "rollen" }); t.rollen.forEach(r => { const d = el("div", { class: "rolle" }); d.append(el("b", { text: r[0] }), el("span", { text: r[1] })); rk.append(d); }); card.append(rk); }
   if (t.pegel) card.append(pegelBox(t));
+  if (t.marke === "SELBSTSTUDIUM") { const ss = el("details", { class: "selbst" }); ss.append(el("summary", { text: "SELBSTSTUDIUM – so gehst du vor" }));
+    const ol2 = el("ol"); ["Lesen: die angegebene Buchseite bzw. den Theorie-Teil – in Ruhe, allein.", "Markieren: im eigenen Buch die wichtigsten Stellen mit Leuchtstift – pro Absatz höchstens ein, zwei Stellen.",
+      "Notieren: Fachbegriffe und offene Fragen am Rand des Buches oder in deiner Mappe.", "Lösen: erst dann die Aufgabe. Tipps kosten keine Punkte.", "Fragen merken: Was unklar bleibt, fragst du beim BESPRECHEN."].forEach(x => ol2.append(el("li", { text: x })));
+    ss.append(ol2); card.append(ss); }
   if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
   if (t.tipps && t.tipps.length) card.append(tippStufen(t));
   (t.sim || []).forEach(k => {
@@ -267,7 +271,7 @@ rep('''  const sol = el("div", { class: "sol", id: "sol_" + t.id, hidden: "" }, 
 # ---- PDF: Hilfe-Nutzung sichtbar, Vorhersage nicht bewerten, offene Erklärungen bewertet Prof. HOLZER ----
 rep('''    let st = "selbst bewerten";
     if (ev) {''', '''    let st = "selbst bewerten";
-    if (t.frei) st = "Vorhersage – wird nicht bewertet";
+    if (t.frei) st = t.tag === "Selbsteinschätzung" ? "Selbsteinschätzung – keine Punkte" : "Vorhersage – wird nicht bewertet";
     else if (ev && ev.man) {
       const au = ev.parts.filter(p => !p.man);
       st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + "Erklärung: bewertet Prof. HOLZER";
@@ -384,6 +388,9 @@ rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }",
 .fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }
 .grpbox { background: #fff; border: 2px solid #D3DCC2; border-radius: 14px; padding: 10px 14px; margin: 14px 0 6px; }
 .grpbox .grp { margin-top: 0; color: #3B4A2F; }
+details.selbst { border: 2px solid #6B7F3A; border-radius: 12px; padding: 6px 12px; margin: 8px 0; background: #F4F6EE; }
+details.selbst summary { font-weight: 700; color: #3B4A2F; min-height: 40px; display: flex; align-items: center; cursor: pointer; }
+details.selbst ol { margin: 4px 0 6px; padding-left: 22px; display: grid; gap: 4px; }
 .grpbox:has(.stdbanner) { margin-top: 40px; border-color: #3B4A2F; border-width: 3px; }
 .stdbanner { margin: -10px -14px 10px; padding: 14px 16px; border-radius: 11px 11px 0 0; background: #3B4A2F; color: #fff; display: flex; flex-direction: column; gap: 6px; scroll-margin-top: 60px; }
 .stdbanner .sbn { align-self: flex-start; background: #D9772B; color: #fff; border-radius: 999px; padding: 4px 14px; font-size: 20px; font-weight: 800; letter-spacing: .06em; }
@@ -555,15 +562,16 @@ def _teil(pid, eyebrow, title, items):
 
 
 PARTS = [_teil(*p) for p in TD.PARTS]
-LZ = slide("Das kannst du nach dieser Einheit", ol(I.LERNZIELE), I.BUCH, "ziele")
+LZ = slide("Meine Ziele", hint("A = Beobachten und Erfassen · B = Untersuchen und Bearbeiten · C = Bewerten und Anwenden") + "<ol class=\"mziele\">" + "".join(
+    f'<li><span class="kchip k{z["hd"]}">{z["hd"]}</span> {md(z["text"])}</li>' for z in I.ZIELE) + "</ol>", I.BUCH, "ziele")
 PARTS[0] = (PARTS[0][0], PARTS[0][1], PARTS[0][2], PARTS[0][3] + [LZ])
 PARTS.append(("begriffe", "Zum Nachschlagen", "Fachbegriffe", [slide("Fachbegriffe", table(I.FACHBEGRIFFE))]))
-CHECK = "".join(f'<div class="ziel"><p>{md(z)}</p><div class="chips" role="group" aria-label="Selbstcheck">' + "".join(
-    f'<button type="button" class="chip" data-z="{k}" data-v="{v}" aria-pressed="false">{v}</button>' for v in ("sicher", "fast", "noch nicht")) + "</div></div>"
-    for k, z in enumerate(I.LERNZIELE))
+CHECK = "".join(f'<div class="ziel"><span class="kchip k{z["hd"]}">{z["hd"]}</span><p>{md(z["text"])}</p><div class="chips" role="group" aria-label="Selbsteinschätzung">' + "".join(
+    f'<button type="button" class="chip" data-z="{k}" data-v="{v}" aria-pressed="false">{lab}</button>' for v, lab in (("sicher", "zur Gänze"), ("fast", "überwiegend"), ("noch nicht", "noch nicht"))) + "</div></div>"
+    for k, z in enumerate(I.ZIELE))
 PARTS.append(("kurz", "Zum Schluss", "Kurz & knapp", [slide("Das Wichtigste in 5 Sätzen", ol(I.WICHTIGSTE)),
                                                       slide("Alles auf einen Blick", karte_block(TD.KARTEN["k9"])),
-                                                      slide("Kann ich das?", hint("Tippe ehrlich an – bei »noch nicht« den passenden Teil noch einmal lesen.") + CHECK)]))
+                                                      slide("Ziele erreicht?", hint("Tippe ehrlich an – bei »noch nicht« den passenden Teil noch einmal lesen. Dieselbe Einschätzung steht als Aufgabe 17 bei den Aufgaben und kommt ins PDF.") + CHECK)]))
 PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [render(x) for x in TD.SCHNELLE]))
 
 TEIL_STUNDE = {tid: n for n, v in P.THEORIE_TEILE_IDS.items() for tid, _nr, _name in v}
@@ -586,7 +594,7 @@ details.reveal { border: 2px solid #D9772B; border-radius: 12px; padding: 10px 1
 details.reveal summary { cursor: pointer; font-weight: 700; color: #D9772B; min-height: 44px; display: flex; align-items: center; }
 details.reveal p { margin: 8px 0 0; }
 .stopq { display: grid; gap: 6px; } .stopq + .stopq { margin-top: 10px; }
-.ziel { border: 1px solid #D3DCC2; border-radius: 12px; padding: 10px 12px; display: grid; gap: 6px; } .ziel p { margin: 0; }
+.ziel { border: 1px solid #D3DCC2; border-radius: 12px; padding: 10px 12px; display: grid; gap: 6px; } .ziel p { margin: 0; } .ziel > .kchip { justify-self: start; } ol.mziele { display: grid; gap: 8px; padding-left: 22px; }
 .chips { display: flex; gap: 8px; flex-wrap: wrap; }
 .chip { font: inherit; font-size: 16px; font-weight: 700; color: #3B4A2F; background: #fff; border: 2px solid #D3DCC2; border-radius: 999px; padding: 6px 14px; cursor: pointer; min-height: 44px; }
 .chip[aria-pressed="true"][data-v="sicher"] { background: #E6F0D3; border-color: #7FA83A; }

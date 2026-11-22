@@ -841,3 +841,18 @@ for _t in T:
 _pf = [t for t in T if t["id"] in KOMPETENZ and t["h"]]
 assert sum(t["niveau"] == 1 for t in _pf) >= 2 and any(t["niveau"] == 2 for t in _pf)
 assert {t["hd"] for t in T if "hd" in t} == {"A", "B", "C"}
+
+# ---------------------------------------------------------------- »Ziele erreicht?« (Skill bhak-kompetenzmodell 3) – Selbsteinschätzung, keine Punkte
+_ZT = {1: "Theorie Teil 1–2 · Buch S. 77–80", 2: "Theorie Teil 3–4 · Buch S. 79–81", 3: "Theorie Teil 7–8 · Buch S. 81–85", 4: "Theorie Teil 5, 6, 9, 10 · Buch S. 108–113"}
+T.append({"id": "zz", "nr": 17, "title": "Ziele erreicht? Deine Selbsteinschätzung", "src": "Meine Ziele (Theorie oben)", "own": True, "tag": "Selbsteinschätzung", "h": 5, "zeit": 2,
+  "q": "Schätz ehrlich ein, wie gut du die vier Ziele der Einheit erreicht hast. Es gibt keine Punkte. Bei »noch nicht«: Lies den angegebenen Theorie-Teil und die Buchseite noch einmal.",
+  "hint": "Ehrlich ist besser als schön – das hilft dir beim Lernen für den Test.",
+  "type": "multi", "vorhersage": True,
+  "fields": [["ziel%d" % z["nr"], "Ziel %d (%s): %s – bei »noch nicht«: %s" % (z["nr"], z["hd"], z["text"], _ZT[z["nr"]]), ["zur Gänze", "überwiegend", "noch nicht"], False] for z in ZIELE],
+  "chk": {}, "sol": [["Hinweis", ["Selbsteinschätzung – keine richtige oder falsche Antwort."]]], "tipps": [], "tip": ["Meine Ziele", "theorie.html#ziele"]})
+QUELLEN.append(("W8", "PhET: Balanceakt (Hebelgesetz)", "University of Colorado Boulder, PhET Interactive Simulations", "https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_de.html",
+                "Hebelgesetz an einer Wippe: Masse mal Abstand links = Masse mal Abstand rechts", "geöffnet am 22.11.2026: deutsche HTML5-Fassung lädt, Titel »Balanceakt«; Lizenzangabe auf der Seite nicht gesehen – PhET-Simulationen stehen laut PhET unter CC BY 4.0 (bitte einmal selbst prüfen)"))
+for _t in T:
+    if _t["id"] == "a9":
+        _t["link"] = ["Simulation öffnen: PhET »Balanceakt« (Hebelgesetz)", "https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_de.html", "PhET, University of Colorado Boulder · freiwillig: Lege Gewichte auf die Wippe – wie hängen Masse und Abstand zusammen? · öffnet in einem neuen Tab"]
+

@@ -62,12 +62,12 @@ def lesen(pfad):
             out["teile"].append({"id": sec["id"], "titel": text(h2), "buch": seiten.group(0) if seiten else ""})
 
     # Lernziele: bevorzugt aus »Kann ich das?« (dann passt die Nummer zum Selbstcheck der Theorie-Seite)
-    k = folie(soup, "Kann ich das")
+    k = folie(soup, "Kann ich das") or folie(soup, "Ziele erreicht")
     if k and k.select(".ziel p"):
-        out["ziele"] = [sauber(p) for p in k.select(".ziel p")]
+        out["ziele"] = [sauber(p) for p in k.select(".ziel p")]  # Kompetenz-Chip steht außerhalb von <p>
         out["ziele_sync"] = bool(out["key"]) and bool(k.select("[data-z]"))
     else:
-        z = folie(soup, "Das kannst du nach")
+        z = folie(soup, "Das kannst du nach") or folie(soup, "Meine Ziele")
         if z:
             items = z.select("li") or z.select(".tile p")
             out["ziele"] = [sauber(i) for i in items]

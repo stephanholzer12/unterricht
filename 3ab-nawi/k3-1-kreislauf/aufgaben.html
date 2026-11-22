@@ -138,6 +138,9 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-
 .fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }
 .grpbox { background: #fff; border: 2px solid #D3DCC2; border-radius: 14px; padding: 10px 14px; margin: 14px 0 6px; }
 .grpbox .grp { margin-top: 0; color: #3B4A2F; }
+details.selbst { border: 2px solid #6B7F3A; border-radius: 12px; padding: 6px 12px; margin: 8px 0; background: #F4F6EE; }
+details.selbst summary { font-weight: 700; color: #3B4A2F; min-height: 40px; display: flex; align-items: center; cursor: pointer; }
+details.selbst ol { margin: 4px 0 6px; padding-left: 22px; display: grid; gap: 4px; }
 .grpbox:has(.stdbanner) { margin-top: 40px; border-color: #3B4A2F; border-width: 3px; }
 .stdbanner { margin: -10px -14px 10px; padding: 14px 16px; border-radius: 11px 11px 0 0; background: #3B4A2F; color: #fff; display: flex; flex-direction: column; gap: 6px; scroll-margin-top: 60px; }
 .stdbanner .sbn { align-self: flex-start; background: #D9772B; color: #fff; border-radius: 999px; padding: 4px 14px; font-size: 20px; font-weight: 800; letter-spacing: .06em; }
@@ -243,7 +246,7 @@ main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
       <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>3AK</option><option>3BK</option></select></div>
     </div>
     <ol class="steps hint">
-      <li><b>Eine Seite für alles.</b> Aufgaben, Versuche und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
+      <li><b>SELBSTSTUDIUM</b> heißt: allein lesen, im eigenen Buch das Wichtigste mit Leuchtstift markieren, Notizen am Rand oder in der Mappe, dann die Aufgabe lösen.</li><li><b>Eine Seite für alles.</b> Aufgaben, Versuche und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
       <li><b>Stunde 1:</b> Aufgaben 1–3 · <b>Stunde 2:</b> VERSUCH (Aufgabe 4) und Aufgabe 5 · <b>Stunde 3:</b> Aufgabe 6 und GRUPPENARBEIT (Aufgabe 7) · <b>Stunde 4:</b> Aufgabe 8 und GRUPPENARBEIT (Aufgabe 9) · <b>Stunde 5:</b> Aufgaben 10–11. Zusatz für Schnelle: 12, 13, 14, 15, 16. Es gibt <b>keine Hausübung</b>.</li>
       <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein), <b>VERSUCH</b> oder <b>GRUPPENARBEIT</b> (Gruppe). Bei Aufgabe 3 und 11 schreibst du <b>mit der Hand</b> auf ein Blatt und lädst ein Foto hoch – das Blatt kommt danach in deine Mappe. Bei vielen Aufgaben kannst du unter »Ausprobieren« selbst etwas einstellen. Tipps kosten keine Punkte.</li>
       <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 5 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).</li>
@@ -294,7 +297,7 @@ a.fp-pill { text-decoration: none; min-height: 32px; box-sizing: border-box; pad
 a.fp-pill:hover { filter: brightness(1.08); box-shadow: 0 0 0 2px #7FA83A; }
 a.fp-pill:focus-visible, a.fp-tlink:focus-visible { outline: 3px solid #2E7D8C; outline-offset: 2px; }
 a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 3px; padding: 6px 2px; }
-</style><section class="fahrplan fp-kompakt fp-st"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">5 Stunden · Welche Stunde heute dran ist, sagt dir Prof. HOLZER.</p><div class="fp-wahl" role="group" aria-label="Welche Stunde ist heute?">Heute ist Stunde:<button type="button" data-n="1" aria-pressed="false">1</button><button type="button" data-n="2" aria-pressed="false">2</button><button type="button" data-n="3" aria-pressed="false">3</button><button type="button" data-n="4" aria-pressed="false">4</button><button type="button" data-n="5" aria-pressed="false">5</button></div><div class="fp-std" data-n="1" hidden><div class="fp-kopf">Diese Stunde: Stunde 1 <span class="fp-marke">DEMO</span></div><div class="fp-titel">Der Motor im Brustkorb: Wie dein Herz pumpt</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_v0">Aufgabe 1</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Herz im Torso</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a1">Aufgabe 2</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a2">Aufgabe 3</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 1–3 · Zusatz 12 · Buch S. 76–78<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#herz">Teil 1 Herz</a>, <a class="fp-tlink" href="theorie.html#kreislauf">Teil 2 Zwei Kreisläufe</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="2" hidden><div class="fp-kopf">Diese Stunde: Stunde 2 <span class="fp-marke">VERSUCH</span></div><div class="fp-titel">Puls-Check: Was dein Herz beim Training macht</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Venenklappen</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link m-VERSUCH" href="#card_a3">VERSUCH (Aufgabe 4)</a><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a4">Aufgabe 5</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 4, 5 · Zusatz 13 · Buch S. 79–81<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#gefaesse">Teil 3 Blutgefäße</a>, <a class="fp-tlink" href="theorie.html#puls">Teil 4 Puls und Blutdruck</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Messwerte selbst eintragen</span></div></div><div class="fp-std" data-n="3" hidden><div class="fp-kopf">Diese Stunde: Stunde 3 <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-titel">Gerüst mit Bauplan: Knochen und Gelenke</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Skelett-Modell</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a5">Aufgabe 6</a><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link m-GRUPPENARBEIT" href="#card_a6">GRUPPENARBEIT (Aufgabe 7)</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 6, 7 · Zusatz 14 · Buch S. 107–110<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#knochen">Teil 5 Knochen</a>, <a class="fp-tlink" href="theorie.html#gelenke">Teil 6 Gelenke</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="4" hidden><div class="fp-kopf">Diese Stunde: Stunde 4 <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-titel">Rotes Wunder: Was im Blut steckt</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a7">Aufgabe 8</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link m-GRUPPENARBEIT" href="#card_a8">GRUPPENARBEIT (Aufgabe 9)</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DISKUSSION">Diskussion der Rollen</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 8, 9 · Zusatz 15 · Buch S. 81–85<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#blut">Teil 7 Blut</a>, <a class="fp-tlink" href="theorie.html#blutgruppen">Teil 8 Blutgruppen</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="5" hidden><div class="fp-kopf">Diese Stunde: Stunde 5 <span class="fp-marke">DEMO</span></div><div class="fp-titel">Kraft, Hebel, Haltung: Muskeln und Ergonomie</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Richtig heben</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a9">Aufgabe 10</a><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a10">Aufgabe 11</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-PARTNERCHECK">Partnercheck</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_v0">Auflösung Aufgabe 1</a></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 10, 11 · Zusatz 16 · Buch S. 110–114<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#muskeln">Teil 9 Muskeln</a>, <a class="fp-tlink" href="theorie.html#ergonomie">Teil 10 Ergonomie</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Aufgaben-PDF in LMS</span></div></div><details><summary>Alle Stunden (5)</summary><ol class="fp-liste"><li data-n="1">Stunde 1 · Der Motor im Brustkorb: Wie dein Herz pumpt · DEMO – DEMO Torso · Herz und Klappen · Kreislauf-Skizze per Hand · Buch S. 77–78 · Theorie: Teil 1 Herz, Teil 2 Zwei Kreisläufe</li><li data-n="2">Stunde 2 · Puls-Check: Was dein Herz beim Training macht · VERSUCH – Gefäße, Puls, Blutdruck · DEMO Venenklappen · VERSUCH Puls · Buch S. 79–81 · Theorie: Teil 3 Blutgefäße, Teil 4 Puls und Blutdruck</li><li data-n="3">Stunde 3 · Gerüst mit Bauplan: Knochen und Gelenke · GRUPPENARBEIT – DEMO Skelett-Modell · Knochen, Sehne, Band · GRUPPENARBEIT Skelett-Rallye · Buch S. 108–110 · Theorie: Teil 5 Knochen, Teil 6 Gelenke</li><li data-n="4">Stunde 4 · Rotes Wunder: Was im Blut steckt · GRUPPENARBEIT – Blut aus dem Knochenmark · Gerinnung, Blutgruppen · GRUPPENARBEIT Blutdoping · Buch S. 81–85 · Theorie: Teil 7 Blut, Teil 8 Blutgruppen</li><li data-n="5">Stunde 5 · Kraft, Hebel, Haltung: Muskeln und Ergonomie · DEMO – Muskeln, Spieler und Gegenspieler · DEMO Heben · Ergonomie-Check · Mindmap per Hand · Buch S. 110–113 · Theorie: Teil 9 Muskeln, Teil 10 Ergonomie</li></ol></details><p class="fp-tipp" style="margin-top:8px"><b>Für Schnelle:</b> Defibrillator-Check, Druck bis in die Füße, KI-Faktencheck Bone-Smashing und Peptide, Blutspende in Zahlen, Rücken-Briefing (Podcast oder Plakat) · Aufgaben Zusatz 12–16 (stehen am Ende der jeweiligen Stunde)</p><p class="fp-tipp" style="margin-top:8px"><b>Danach:</b> Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER</p><details><summary>So läuft die ganze Einheit</summary><p>Fünf Stunden, ein Körper unter Belastung: Stunde 1 das Herz, Stunde 2 Puls und Gefäße mit Versuch, Stunde 3 Knochen und Gelenke am Skelett, Stunde 4 das Blut, Stunde 5 Muskeln und Ergonomie. Alles steht auf EINER Seite »Aufgaben«, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.</p></details></section><script>
+</style><section class="fahrplan fp-kompakt fp-st"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">5 Stunden · Welche Stunde heute dran ist, sagt dir Prof. HOLZER.</p><div class="fp-wahl" role="group" aria-label="Welche Stunde ist heute?">Heute ist Stunde:<button type="button" data-n="1" aria-pressed="false">1</button><button type="button" data-n="2" aria-pressed="false">2</button><button type="button" data-n="3" aria-pressed="false">3</button><button type="button" data-n="4" aria-pressed="false">4</button><button type="button" data-n="5" aria-pressed="false">5</button></div><div class="fp-std" data-n="1" hidden><div class="fp-kopf">Diese Stunde: Stunde 1 <span class="fp-marke">DEMO</span></div><div class="fp-titel">Der Motor im Brustkorb: Wie dein Herz pumpt</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_v0">Aufgabe 1</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Herz im Torso</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a1">Aufgabe 2</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a2">Aufgabe 3</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 1–3 · Zusatz 12 · Buch S. 76–78<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#herz">Teil 1 Herz</a>, <a class="fp-tlink" href="theorie.html#kreislauf">Teil 2 Zwei Kreisläufe</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="2" hidden><div class="fp-kopf">Diese Stunde: Stunde 2 <span class="fp-marke">VERSUCH</span></div><div class="fp-titel">Puls-Check: Was dein Herz beim Training macht</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Venenklappen</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link m-VERSUCH" href="#card_a3">VERSUCH (Aufgabe 4)</a><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a4">Aufgabe 5</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 4, 5 · Zusatz 13 · Buch S. 79–81<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#gefaesse">Teil 3 Blutgefäße</a>, <a class="fp-tlink" href="theorie.html#puls">Teil 4 Puls und Blutdruck</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Messwerte selbst eintragen</span></div></div><div class="fp-std" data-n="3" hidden><div class="fp-kopf">Diese Stunde: Stunde 3 <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-titel">Gerüst mit Bauplan: Knochen und Gelenke</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Skelett-Modell</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a5">Aufgabe 6</a><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link m-GRUPPENARBEIT" href="#card_a6">GRUPPENARBEIT (Aufgabe 7)</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 6, 7 · Zusatz 14 · Buch S. 107–110<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#knochen">Teil 5 Knochen</a>, <a class="fp-tlink" href="theorie.html#gelenke">Teil 6 Gelenke</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="4" hidden><div class="fp-kopf">Diese Stunde: Stunde 4 <span class="fp-marke">GRUPPENARBEIT</span></div><div class="fp-titel">Rotes Wunder: Was im Blut steckt</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a7">Aufgabe 8</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Sicherung</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link m-GRUPPENARBEIT" href="#card_a8">GRUPPENARBEIT (Aufgabe 9)</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DISKUSSION">Diskussion der Rollen</span></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 8, 9 · Zusatz 15 · Buch S. 81–85<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#blut">Teil 7 Blut</a>, <a class="fp-tlink" href="theorie.html#blutgruppen">Teil 8 Blutgruppen</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: keine</span></div></div><div class="fp-std" data-n="5" hidden><div class="fp-kopf">Diese Stunde: Stunde 5 <span class="fp-marke">DEMO</span></div><div class="fp-titel">Kraft, Hebel, Haltung: Muskeln und Ergonomie</div><div class="fp-zeile"><b class="n">1</b><span>So läuft die Stunde: <small class="fp-hinweis" style="color:#5E6652">(Aufgabe antippen = hinspringen)</small><span class="fp-folge"><span class="fp-pill m-BESPRECHEN">Weißt du noch?</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-BESPRECHEN">Prof. HOLZER erklärt</span><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-DEMO">DEMO Richtig heben</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a9">Aufgabe 10</a><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_a10">Aufgabe 11</a><i class="fp-pfeil" aria-hidden="true">→</i><span class="fp-pill m-PARTNERCHECK">Partnercheck</span><i class="fp-pfeil" aria-hidden="true">→</i><a class="fp-pill fp-link" href="#card_v0">Auflösung Aufgabe 1</a></span></span></div><div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe 10, 11 · Zusatz 16 · Buch S. 110–114<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: <a class="fp-tlink" href="theorie.html#muskeln">Teil 9 Muskeln</a>, <a class="fp-tlink" href="theorie.html#ergonomie">Teil 10 Ergonomie</a></span></span></div><div class="fp-zeile"><b class="n">3</b><span>Abgabe: Aufgaben-PDF in LMS</span></div></div><details><summary>Alle Stunden (5)</summary><ol class="fp-liste"><li data-n="1">Stunde 1 · Der Motor im Brustkorb: Wie dein Herz pumpt · DEMO – DEMO Torso · Herz und Klappen · Kreislauf-Skizze per Hand · Buch S. 77–78 · Theorie: Teil 1 Herz, Teil 2 Zwei Kreisläufe</li><li data-n="2">Stunde 2 · Puls-Check: Was dein Herz beim Training macht · VERSUCH – Gefäße, Puls, Blutdruck · DEMO Venenklappen · VERSUCH Puls · Buch S. 79–81 · Theorie: Teil 3 Blutgefäße, Teil 4 Puls und Blutdruck</li><li data-n="3">Stunde 3 · Gerüst mit Bauplan: Knochen und Gelenke · GRUPPENARBEIT – DEMO Skelett-Modell · Knochen, Sehne, Band · GRUPPENARBEIT Skelett-Rallye · Buch S. 108–110 · Theorie: Teil 5 Knochen, Teil 6 Gelenke</li><li data-n="4">Stunde 4 · Rotes Wunder: Was im Blut steckt · GRUPPENARBEIT – Blut aus dem Knochenmark · Gerinnung, Blutgruppen · GRUPPENARBEIT Blutdoping · Buch S. 81–85 · Theorie: Teil 7 Blut, Teil 8 Blutgruppen</li><li data-n="5">Stunde 5 · Kraft, Hebel, Haltung: Muskeln und Ergonomie · DEMO – Muskeln, Spieler und Gegenspieler · DEMO Heben · Ergonomie-Check · Mindmap per Hand · Buch S. 110–113 · Theorie: Teil 9 Muskeln, Teil 10 Ergonomie</li></ol></details><p class="fp-tipp" style="margin-top:8px"><b>Für Schnelle:</b> Defibrillator-Check, Druck bis in die Füße, KI-Faktencheck Bone-Smashing und Peptide, Blutspende in Zahlen, Rücken-Briefing (Podcast oder Plakat) · Aufgaben Zusatz 12–17 (stehen am Ende der jeweiligen Stunde)</p><p class="fp-tipp" style="margin-top:8px"><b>Danach:</b> Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER</p><details><summary>So läuft die ganze Einheit</summary><p>Fünf Stunden, ein Körper unter Belastung: Stunde 1 das Herz, Stunde 2 Puls und Gefäße mit Versuch, Stunde 3 Knochen und Gelenke am Skelett, Stunde 4 das Blut, Stunde 5 Muskeln und Ergonomie. Alles steht auf EINER Seite »Aufgaben«, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.</p></details></section><script>
 (function () {
   var box = document.currentScript.previousElementSibling, KEY = "fahrplan-stunde|" + location.pathname.replace(/[^/]*$/, "");
   var btns = box.querySelectorAll(".fp-wahl button"), std = box.querySelectorAll(".fp-std"), li = box.querySelectorAll("ol.fp-liste li");
@@ -328,7 +331,7 @@ a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 
   }
 })();
 </script><!--/FAHRPLAN-->
-  <div class="progress"><span id="count">0 von 16 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
+  <div class="progress"><span id="count">0 von 17 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
   <div id="tasks" style="display:grid;gap:14px"></div>
 
   <section class="card" id="abgabe">
@@ -1872,7 +1875,12 @@ const T = [
   ],
   "hd": "C",
   "niveau": 1,
-  "ziel": 4
+  "ziel": 4,
+  "link": [
+   "Simulation öffnen: PhET »Balanceakt« (Hebelgesetz)",
+   "https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_de.html",
+   "PhET, University of Colorado Boulder · freiwillig: Lege Gewichte auf die Wippe – wie hängen Masse und Abstand zusammen? · öffnet in einem neuen Tab"
+  ]
  },
  {
   "id": "a10",
@@ -2348,6 +2356,76 @@ const T = [
   "hd": "C",
   "niveau": 2,
   "ziel": 4
+ },
+ {
+  "id": "zz",
+  "nr": 17,
+  "title": "Ziele erreicht? Deine Selbsteinschätzung",
+  "src": "Meine Ziele (Theorie oben)",
+  "own": true,
+  "tag": "Selbsteinschätzung",
+  "h": 5,
+  "zeit": 2,
+  "q": "Schätz ehrlich ein, wie gut du die vier Ziele der Einheit erreicht hast. Es gibt keine Punkte. Bei »noch nicht«: Lies den angegebenen Theorie-Teil und die Buchseite noch einmal.",
+  "hint": "Ehrlich ist besser als schön – das hilft dir beim Lernen für den Test.",
+  "type": "multi",
+  "fields": [
+   [
+    "ziel1",
+    "Ziel 1 (A): Ich kann Bau und Arbeit des Herzens beschreiben und den Weg des Blutes durch beide Kreisläufe erklären. – bei »noch nicht«: Theorie Teil 1–2 · Buch S. 77–80",
+    [
+     "zur Gänze",
+     "überwiegend",
+     "noch nicht"
+    ],
+    false
+   ],
+   [
+    "ziel2",
+    "Ziel 2 (B): Ich kann meinen Puls messen, Werte vor und nach Belastung auswerten und das Herzminutenvolumen berechnen. – bei »noch nicht«: Theorie Teil 3–4 · Buch S. 79–81",
+    [
+     "zur Gänze",
+     "überwiegend",
+     "noch nicht"
+    ],
+    false
+   ],
+   [
+    "ziel3",
+    "Ziel 3 (A): Ich kann die Bestandteile des Blutes, die Gerinnung und die Blutgruppen erklären. – bei »noch nicht«: Theorie Teil 7–8 · Buch S. 81–85",
+    [
+     "zur Gänze",
+     "überwiegend",
+     "noch nicht"
+    ],
+    false
+   ],
+   [
+    "ziel4",
+    "Ziel 4 (C): Ich kann Knochen, Gelenke und Muskeln beschreiben und meinen Arbeitsplatz und das Heben ergonomisch verbessern. – bei »noch nicht«: Theorie Teil 5, 6, 9, 10 · Buch S. 108–113",
+    [
+     "zur Gänze",
+     "überwiegend",
+     "noch nicht"
+    ],
+    false
+   ]
+  ],
+  "chk": null,
+  "sol": [
+   [
+    "Hinweis",
+    [
+     "Selbsteinschätzung – keine richtige oder falsche Antwort."
+    ]
+   ]
+  ],
+  "tipps": [],
+  "tip": [
+   "Meine Ziele",
+   "theorie.html#ziele"
+  ],
+  "frei": true
  }
 ];
 
@@ -2565,6 +2643,10 @@ function renderTask(t) {
   if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle machen gleichzeitig mit · jeder trägt seine Werte selbst ein" }));
   if (t.rollen) { const rk = el("div", { class: "rollen" }); t.rollen.forEach(r => { const d = el("div", { class: "rolle" }); d.append(el("b", { text: r[0] }), el("span", { text: r[1] })); rk.append(d); }); card.append(rk); }
   if (t.pegel) card.append(pegelBox(t));
+  if (t.marke === "SELBSTSTUDIUM") { const ss = el("details", { class: "selbst" }); ss.append(el("summary", { text: "SELBSTSTUDIUM – so gehst du vor" }));
+    const ol2 = el("ol"); ["Lesen: die angegebene Buchseite bzw. den Theorie-Teil – in Ruhe, allein.", "Markieren: im eigenen Buch die wichtigsten Stellen mit Leuchtstift – pro Absatz höchstens ein, zwei Stellen.",
+      "Notieren: Fachbegriffe und offene Fragen am Rand des Buches oder in deiner Mappe.", "Lösen: erst dann die Aufgabe. Tipps kosten keine Punkte.", "Fragen merken: Was unklar bleibt, fragst du beim BESPRECHEN."].forEach(x => ol2.append(el("li", { text: x })));
+    ss.append(ol2); card.append(ss); }
   if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
   if (t.tipps && t.tipps.length) card.append(tippStufen(t));
   (t.sim || []).forEach(k => {
@@ -2810,7 +2892,7 @@ async function buildPdf() {
     for (const l of answerLines(t)) txt(l, 11.5, l.includes("keine Antwort") ? "bold" : "normal", l.includes("keine Antwort") ? rust : ink, M + 4, CW - 4, 1.3);
     const ev = evalTask(t);
     let st = "selbst bewerten";
-    if (t.frei) st = "Vorhersage – wird nicht bewertet";
+    if (t.frei) st = t.tag === "Selbsteinschätzung" ? "Selbsteinschätzung – keine Punkte" : "Vorhersage – wird nicht bewertet";
     else if (ev && ev.man) {
       const au = ev.parts.filter(p => !p.man);
       st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + "Erklärung: bewertet Prof. HOLZER";
