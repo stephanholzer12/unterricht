@@ -1,5 +1,6 @@
-"""Trägt die Einheit K2.1–5.4 Meilensteine in werkzeug/einheiten.json ein bzw. aktualisiert sie (Fahrplan aus plan.py, Dateiliste der Lieferung).
-Aufruf im Repository-Ordner:  python3 werkzeug/quellen/3bk-k2-5-meilensteine/eintragen.py"""
+"""Trägt die Einheit K2.1–5.4 Meilensteine (3BK) in werkzeug/einheiten.json ein bzw. aktualisiert sie (Fahrplan aus plan.py, Dateiliste).
+Die Einheit bleibt versteckt, solange sie in einheiten.json als versteckt steht – einmal eingeblendet bleibt sie sichtbar.
+Aufruf im Repository-Ordner:  python3 werkzeug/quellen/3bk-k2-5-meilensteine/eintragen.py [https://claude.ai/... Lehrerseite]"""
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
@@ -7,25 +8,30 @@ import inhalt as I, plan as PL
 
 PFAD = os.path.join(ROOT, "werkzeug/einheiten.json")
 E = json.load(open(PFAD, encoding="utf-8"))
-V = I.V
 P = I.PRAEFIX
-ZIP_V = "v3"  # v1/v2 = ChatGPT-Auftrag und -Paket (29.10.2026); v3 = erste Claude-Umsetzung 30.10.2026
-DATEIEN = {"stand": "31.10.2026", "zip": f"{P}-{ZIP_V}.zip",
-           "liste": [f"{P}-TH-Unterricht-{V}.pptx", f"{P}-TH-Lehrer-{ZIP_V}.pptx", f"{P}-TH-Kadetten-{ZIP_V}.pptx",
-                     f"{P}-TH-AB-{ZIP_V}.docx", f"{P}-TH-Loesung-{ZIP_V}.docx", f"{P}-TH-Fachwissen-{ZIP_V}.docx", f"{P}-Pruefbericht-Claude-{ZIP_V}.md"]}  # nur Unterricht-PPP, Seiten und Lösungsmappe auf v4; Rest noch v3
-neu = {"klasse": "3BK", "fach": "PBGW", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL, "block": "B Meilensteine", "jahresplan": "E3–E5",
-       "seiten": ["theorie.html", "aufgaben.html", "quiz.html"], "versteckt": True, "fahrplan": {"text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()}, "dateien": DATEIEN}
+DATEIEN = {"stand": I.STAND, "zip": f"{P}-v3.zip",
+           "liste": ["GitHub: theorie.html, aufgaben.html, quiz.html, check.html (" + I.V + ")",
+                     "Lösungsseite (Artifact, privat) mit Präsentation, Kalender, Gruppen",
+                     f"{P}-TH-Unterricht-v4.pptx", f"{P}-TH-Lehrer-v3.pptx", f"{P}-TH-Kadetten-v3.pptx",
+                     f"{P}-TH-AB-v3.docx", f"{P}-TH-Loesung-v3.docx", f"{P}-TH-Fachwissen-v3.docx"]}  # PPP und Word noch auf dem Stand v3/v4 (31.10.2026)
+neu = {"klasse": "3BK", "fach": "PBGW", "ordner": I.ORDNER, "kapitel": I.KAP, "titel": I.KURZTITEL,
+       "block": "B Meilensteine", "jahresplan": "E3–E5",
+       "seiten": ["aufgaben.html", "theorie.html", "quiz.html", "check.html"],
+       "versteckt": True, "kapitelmenue": True,
+       "fahrplan": {"ansicht": "kompakt", "text": PL.FAHRPLAN_TEXT, "zeilen": PL.fahrplan_zeilen()},
+       "dateien": DATEIEN}
 alt = [i for i, u in enumerate(E) if u["ordner"] == I.ORDNER]
 if alt:
     u = E[alt[0]]
-    for k in ("lehrerseite", "versteckt", "aktuell"):  # von Stephan oder später gesetzte Felder behalten
+    for k in ("lehrerseite", "versteckt", "aktuell"):
         if k in u: neu[k] = u[k]
+    if "versteckt" not in u: neu.pop("versteckt", None)   # einmal eingeblendet bleibt sichtbar
     E[alt[0]] = neu
 else:
-    pos = max(i for i, u in enumerate(E) if u["klasse"] == "3BK") + 1  # zuletzt eingetragen = »Gerade dran«, sobald eingeblendet
+    pos = max(i for i, u in enumerate(E) if u["klasse"] == "3BK") + 1
     E.insert(pos, neu)
-if len(sys.argv) > 1 and sys.argv[1].startswith("https://claude.ai/"):
-    neu["lehrerseite"] = sys.argv[1]
+for a in sys.argv[1:]:
+    if a.startswith("https://claude.ai/"): neu["lehrerseite"] = a
 json.dump(E, open(PFAD, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-open(PFAD, "a", encoding="utf-8").write("\n") if not open(PFAD, encoding="utf-8").read().endswith("\n") else None
-print("eingetragen:", I.ORDNER, "·", PL.FAHRPLAN_TEXT[:60], "…")
+with open(PFAD, "a", encoding="utf-8") as fh: fh.write("\n")
+print("eingetragen:", I.ORDNER, "· versteckt:", neu.get("versteckt"), "· Lehrerseite:", neu.get("lehrerseite", "noch keine"))

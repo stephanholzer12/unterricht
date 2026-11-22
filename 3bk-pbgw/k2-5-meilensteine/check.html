@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mitarbeits-Check · K2.1–5.4 Meilensteine</title>
+<link rel="stylesheet" href="../../schriften/schriften.css">
+<style>
+:root { --ink: #1F2A1C; --olive: #3B4A2F; --muted: #5E6652; --line: #D3DCC2; --bg: #EEF3E4; --rust: #8C3B2E; --teal: #2E7D8C; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.5 "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif; }
+.top { background: var(--olive); color: #fff; padding: 12px 16px; display: flex; gap: 12px; align-items: center; }
+.top a { color: #fff; font-weight: 700; text-decoration: none; }
+main { max-width: 720px; margin: 0 auto; padding: 14px 12px 60px; }
+h1 { font-family: "Source Serif 4", Georgia, serif; font-size: 28px; line-height: 1.15; margin: 8px 0 4px; color: var(--olive); }
+.eyebrow { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--rust); }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 12px 0; }
+.regeln { margin: 6px 0 0; padding-left: 1.2em; } .regeln li { margin: 4px 0; }
+label.feld { display: grid; gap: 4px; font-weight: 700; margin: 10px 0; }
+input[type=text], select { font: inherit; padding: 10px 12px; border: 2px solid var(--line); border-radius: 10px; min-height: 48px; width: 100%; background: #fff; }
+.btn { font: inherit; font-weight: 700; font-size: 18px; min-height: 52px; width: 100%; border-radius: 12px; border: 0; background: var(--olive); color: #fff; cursor: pointer; margin-top: 8px; }
+.btn[disabled] { opacity: .45; cursor: default; }
+.btn.rot { background: var(--rust); }
+.leiste { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 8px 0; display: flex; gap: 10px; align-items: center; justify-content: space-between; font-weight: 700; }
+.leiste .uhr { font-variant-numeric: tabular-nums; color: var(--rust); }
+.frage { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin: 12px 0; }
+.frage .nr { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--olive); color: #fff; font-weight: 800; margin-right: 8px; }
+.frage .q { font-weight: 700; margin: 4px 0 10px; }
+.opt { display: flex; gap: 10px; align-items: flex-start; border: 2px solid var(--line); border-radius: 12px; padding: 10px 12px; margin: 8px 0; cursor: pointer; min-height: 48px; }
+.opt input { width: 22px; height: 22px; margin-top: 3px; flex: none; accent-color: var(--olive); }
+.opt.an { border-color: var(--olive); background: #F1F5E9; }
+.gesperrt .opt { cursor: default; opacity: .8; }
+.hinweis { font-size: 16px; color: var(--muted); }
+.warn { background: #FFF4D6; border-left: 5px solid #B07A00; padding: 10px 12px; border-radius: 10px; font-weight: 600; }
+.ok { background: #EEF4E4; border-left: 5px solid #3F6B14; padding: 10px 12px; border-radius: 10px; font-weight: 600; }
+#pdfstatus { min-height: 1.4em; font-weight: 600; }
+[hidden] { display: none !important; }
+</style><!-- ks-kopf:start --><link rel="stylesheet" href="../../gemeinsam/kadetten-layout-v2.css"><!-- ks-kopf:end -->
+</head><body class="ks-materialseite">
+<!-- ks-navigation:start --><nav class="ks-topnav" aria-label="Zur eigenen Klasse"><a href="../index.html">← PBGW 3BK · Start</a><span>Mitarbeits-Check</span></nav><nav class="ks-materialnav" aria-label="Material dieser Einheit"><a href="theorie.html">Theorie</a><a href="aufgaben.html">Aufgaben</a><a href="quiz.html">Quiz</a><a href="check.html" aria-current="page">Mitarbeits-Check</a></nav><!-- ks-navigation:end -->
+
+<main>
+<div class="eyebrow">K2.1–5.4 Meilensteine · Mitarbeits-Check</div>
+<h1>Was ist hängen geblieben?</h1>
+<p>10 Fragen zur ganzen Einheit, ca. 8 Minuten. Das ist <b>kein Test</b>, sondern ein kurzer Check – er zählt zur <b>Mitarbeit</b>.</p>
+
+<section id="start" class="card">
+<ul class="regeln"><li>Ohne Buch, ohne Theorie-Seite, ohne Nachbar.</li><li>Keine Tipps, kein »Prüfen« – du siehst dein Ergebnis im PDF.</li>
+<li><b>Nur ein Versuch zählt.</b> Nach »Abgeben« kannst du nichts mehr ändern.</li><li>Starten kannst du erst, wenn Prof. HOLZER den <b>Startcode</b> zeigt.</li><li>Am Ende: PDF erstellen und in LMS hochladen.</li></ul>
+<label class="feld">Vor- und Nachname<input type="text" id="name" autocomplete="name" placeholder="z. B. Max Muster"></label>
+<label class="feld">Klasse<select id="klasse"><option value="">bitte wählen …</option><option>3BK</option></select></label>
+<label class="feld">Startcode (sagt dir Prof. HOLZER)<input type="text" id="code" inputmode="numeric" autocomplete="off" maxlength="6" placeholder="4 Ziffern"></label>
+<p class="hinweis" id="codehinweis"></p>
+<button type="button" class="btn" id="los" disabled>Check starten</button>
+</section>
+
+<section id="check" hidden>
+<div class="leiste"><span id="stand">0 von 10 beantwortet</span><span class="uhr" id="uhr">0:00</span></div>
+<div id="fragen"></div>
+<div class="card"><p class="hinweis" id="offen"></p><button type="button" class="btn rot" id="abgeben">Abgeben</button></div>
+</section>
+
+<section id="fertig" class="card" hidden>
+<p class="ok" id="fertigtext"></p>
+<p>Jetzt das PDF erstellen und in <b>LMS</b> hochladen. Dein Ergebnis steht im PDF.</p>
+<button type="button" class="btn" id="pdfbtn">PDF erstellen</button>
+<p id="pdfstatus" role="status" aria-live="polite"></p>
+</section>
+<p class="hinweis">Deine Antworten bleiben nur auf diesem Gerät. Prof. HOLZER bespricht die Fragen danach mit der Klasse.</p>
+</main>
+<script src="../../gemeinsam/pdf-programm-v1.js"></script>
+<script>if (!window.jspdf) document.write('<script src="../../gemeinsam/pdf-programm-v1.js?nochmal=1"><\/script>');</script>
+<script>
+const KEY = "26-27-3BK-K2.1-5.4-Meilenst-check";
+const POOL = [{"thema": "Vorrat und Spezialisierung", "n": 2, "fragen": [{"id": "v1", "f": "Was wurde durch Vorräte möglich?", "o": ["Niemand musste mehr arbeiten", "Einzelne konnten sich auf andere Arbeiten spezialisieren", "Die Bevölkerung wurde kleiner", "Alle mussten weiter täglich Nahrung suchen"], "h": 2061717875, "buch": "S. 25–28"}, {"id": "v2", "f": "Welches Problem kam mit dem Leben von Vorräten?", "o": ["Es gab keine Krankheiten mehr", "Eine Missernte traf viele Menschen gleichzeitig", "Vorräte brauchten keinen Schutz", "Streit um Verteilung war ausgeschlossen"], "h": 778036796, "buch": "S. 25–28"}, {"id": "v3", "f": "Was heißt »Neolithische Revolution«?", "o": ["Ein Umsturz an einem einzigen Tag", "Die Erfindung der Schrift", "Ein tiefgreifender Wandel, der viele Generationen dauerte", "Ein Krieg um Ackerland"], "h": 607478260, "buch": "S. 25–26"}, {"id": "v4", "f": "Was braucht man, um Kupfer zu verarbeiten?", "o": ["Nur einen Hammer", "Rohstoff, Brennstoff und Können", "Eisen und Schrift", "Nur Holz"], "h": 1567289103, "buch": "S. 29–32"}]}, {"thema": "Frühe Staaten und Schrift", "n": 3, "fragen": [{"id": "s1", "f": "Was ist ein Stadtstaat?", "o": ["Ein Bündnis mehrerer Länder", "Eine Stadt bildet mit ihrem Umland einen eigenen Staat", "Ein Königtum über ein ganzes Flusstal", "Ein Dorf ohne Verwaltung"], "h": 82986428, "buch": "S. 33–39"}, {"id": "s2", "f": "Wofür wurde die frühe Schrift in Mesopotamien gebraucht?", "o": ["Für Briefe an Verwandte", "Für Liedtexte", "Für Romane", "Für Listen: Mengen, Güter und Abgaben"], "h": 1857879417, "buch": "S. 34–35"}, {"id": "s3", "f": "Welche Aufgabe mussten Mesopotamien und Ägypten beide lösen?", "o": ["Abgaben, Arbeit und Vorräte organisieren", "Die Ausgabe von Geldscheinen", "Den Bau von Eisenbahnen", "Die Wahl eines Parlaments"], "h": 980040364, "buch": "S. 33–39"}, {"id": "s4", "f": "Warum erklärt ein großer Fluss allein keinen Staat?", "o": ["Weil Wasser keine Arbeit macht", "Weil es damals keine Flüsse gab", "Weil Flüsse unwichtig waren", "Weil auch Handel, Konflikte, Religion und örtliche Bedingungen mitwirken"], "h": 905970757, "buch": "S. 33–39"}]}, {"thema": "Hammurabi", "n": 2, "fragen": [{"id": "h1", "f": "Was entscheidet bei Hammurabi über die Rechtsfolge?", "o": ["Das Alter des Täters", "Der gesellschaftliche Stand des Opfers", "Der Wochentag der Tat", "Der Wohnort des Täters"], "h": 3053863221, "buch": "S. 39–40"}, {"id": "h2", "f": "Was ist eine Rechtssammlung?", "o": ["Ein Vertrag zwischen zwei Städten", "Gesammelte Regeln und Rechtsfälle", "Ein modernes Gesetzbuch mit Paragrafen für alle", "Eine Liste von Königen"], "h": 225238398, "buch": "S. 39–40"}, {"id": "h3", "f": "Was zeigt § 53 (Dammbruch)?", "o": ["Wer einen Schaden verursacht, haftet dafür", "Dämme waren verboten", "Bauern durften keine Felder besitzen", "Wasser gehörte dem König"], "h": 1181408792, "buch": "S. 39–40"}]}, {"thema": "Athen und Rom", "n": 2, "fragen": [{"id": "a1", "f": "Wer durfte in Athen in der Volksversammlung entscheiden?", "o": ["Nur die Strategen", "Alle Einwohner", "Erwachsene männliche Bürger", "Frauen und Männer mit Bürgerrecht"], "h": 598022737, "buch": "S. 109–111"}, {"id": "a2", "f": "Wie wurden in Athen die Strategen bestimmt?", "o": ["Durch das Los", "Durch Wahl", "Durch den Rat der 500 allein", "Durch Erbfolge"], "h": 1240897991, "buch": "S. 109–111"}, {"id": "a3", "f": "Was kennzeichnet den Prinzipat des Augustus?", "o": ["Es gab keine Ämter mehr", "Die Einrichtungen bleiben, die entscheidende Macht liegt bei einer Person", "Alle Römer hatten gleich viel Macht", "Der Senat wurde abgeschafft"], "h": 2589827755, "buch": "S. 114–115"}, {"id": "a4", "f": "Warum war die römische Republik keine moderne Demokratie?", "o": ["Es gab gar keine Ämter", "Der Kaiser bestimmte alles", "Alle Bewohner durften abstimmen", "Herkunft und Vermögen prägten die Beteiligung stark"], "h": 628615671, "buch": "S. 112–115"}]}, {"thema": "Zeitstrahl", "n": 1, "fragen": [{"id": "z1", "typ": "jahre", "buch": "S. 24–40"}]}];
+const SALZ = "k25-mc|", LOGO = "data:image/png;base64,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", START = 1918987066;
+const FONT_R = window.__PDF_FONT_R || "", FONT_B = window.__PDF_FONT_B || "";
+const $ = s => document.querySelector(s);
+function fnv(t) { let h = 2166136261; for (let i = 0; i < t.length; i++) { h ^= t.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h >>> 0; }
+function mischen(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function lies() { try { return JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return null; } }
+let S = lies() || { name: "", klasse: "", a: {}, fr: null, start: 0, ende: 0, versuche: 0 };
+function sichern() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+function fmtZeit(ms) { const s = Math.max(0, Math.round(ms / 1000)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); }
+function uhrzeit(t) { const d = new Date(t); return d.toLocaleDateString("de-AT") + " " + d.toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }); }
+
+/* Zahlenfrage mit Zufallszahlen: Abstand zweier Jahre v. Chr. – zwei Jahreszahlen, gefragt ist der Abstand in Jahren */
+function echoFrage(f) {
+  const a = [3300, 3000, 2800, 2500][Math.floor(Math.random() * 4)], b = [1750, 1500, 1200, 900][Math.floor(Math.random() * 4)];
+  const j = x => x.toLocaleString("de-AT") + " Jahre";
+  const ok = j(a - b), fa = [j(a + b), j(Math.round((a - b) / 10)), j(Math.abs(a - b - 100))];
+  return { id: f.id, f: "Ein Ereignis liegt um " + a + " v. Chr., ein zweites um " + b + " v. Chr. Wie viele Jahre liegen dazwischen?", o: [ok].concat(fa), h: fnv(SALZ + f.id + "|" + ok), buch: f.buch };
+}
+function ziehen() {
+  const fr = [];
+  POOL.forEach(g => mischen(g.fragen).slice(0, g.n).forEach(f => { const q = f.typ === "jahre" ? echoFrage(f) : { id: f.id, f: f.f, o: f.o.slice(), h: f.h, buch: f.buch }; q.o = mischen(q.o); fr.push(q); }));
+  return mischen(fr);
+}
+function beantwortet() { return S.fr ? S.fr.filter(q => S.a[q.id] != null).length : 0; }
+function zeigeStand() {
+  const n = beantwortet(); $("#stand").textContent = n + " von " + S.fr.length + " beantwortet";
+  const off = S.fr.length - n; $("#offen").textContent = off ? "Noch " + off + (off === 1 ? " Frage" : " Fragen") + " offen. Offene Fragen zählen 0 Punkte." : "Alle Fragen beantwortet. Kontrolliere kurz – dann abgeben.";
+}
+function baueFragen() {
+  const box = $("#fragen"); box.textContent = "";
+  S.fr.forEach((q, i) => {
+    const d = document.createElement("div"); d.className = "frage" + (S.ende ? " gesperrt" : "");
+    const k = document.createElement("p"); k.className = "q"; const nr = document.createElement("span"); nr.className = "nr"; nr.textContent = i + 1; k.append(nr, document.createTextNode(q.f)); d.append(k);
+    q.o.forEach((o, j) => {
+      const l = document.createElement("label"); l.className = "opt" + (S.a[q.id] === j ? " an" : "");
+      const r = document.createElement("input"); r.type = "radio"; r.name = "q" + i; r.checked = S.a[q.id] === j; r.disabled = !!S.ende;
+      r.addEventListener("change", () => { if (S.ende) return; S.a[q.id] = j; sichern(); d.querySelectorAll(".opt").forEach((x, m) => x.classList.toggle("an", m === j)); zeigeStand(); });
+      l.append(r, document.createTextNode(o)); d.append(l);
+    });
+    box.append(d);
+  });
+  zeigeStand();
+}
+function ansicht() {
+  $("#start").hidden = !!S.fr; $("#check").hidden = !S.fr || !!S.ende; $("#fertig").hidden = !S.ende;
+  if (S.fr && !S.ende) baueFragen();
+  if (S.ende) $("#fertigtext").textContent = "Abgegeben am " + uhrzeit(S.ende) + " von " + S.name + " (" + S.klasse + ").";
+}
+$("#name").value = S.name; $("#klasse").value = S.klasse;
+function codeOk() { return fnv(SALZ + "start|" + $("#code").value.trim()) === START; }
+function startOk() { $("#los").disabled = !($("#name").value.trim().length > 2 && $("#klasse").value && $("#code").value.trim().length >= 4); }
+$("#name").addEventListener("input", startOk); $("#klasse").addEventListener("change", startOk); $("#code").addEventListener("input", () => { $("#codehinweis").textContent = ""; startOk(); }); startOk();
+$("#los").addEventListener("click", () => {
+  if (!codeOk()) { $("#codehinweis").textContent = "Der Code stimmt nicht. Den Startcode zeigt Prof. HOLZER, wenn der Check beginnt."; return; }
+  S.name = $("#name").value.trim(); S.klasse = $("#klasse").value; S.fr = ziehen(); S.a = {}; S.start = Date.now(); S.ende = 0;
+  S.versuche = (S.versuche || 0) + 1; sichern(); ansicht(); window.scrollTo(0, 0);
+});
+let zweiter = false;
+$("#abgeben").addEventListener("click", () => {
+  const off = S.fr.length - beantwortet();
+  if (off && !zweiter) { zweiter = true; $("#abgeben").textContent = "Wirklich abgeben? (" + off + " offen)"; return; }
+  S.ende = Date.now(); sichern(); ansicht(); window.scrollTo(0, 0);
+});
+setInterval(() => { if (S.fr && !S.ende) $("#uhr").textContent = fmtZeit(Date.now() - S.start); }, 500);
+
+function auswertung() {
+  let p = 0; const zeilen = S.fr.map((q, i) => { const j = S.a[q.id]; const t = j == null ? null : q.o[j]; const ok = t != null && fnv(SALZ + q.id + "|" + t) === q.h; if (ok) p++; return { nr: i + 1, f: q.f, t, ok, buch: q.buch }; });
+  const pr = 100 * p / S.fr.length; const note = pr >= 88 ? 1 : pr >= 75 ? 2 : pr >= 62 ? 3 : pr >= 50 ? 4 : 5;
+  return { p, n: S.fr.length, pr, note, zeilen };
+}
+function haken(d, x, y, ok) {
+  d.setLineWidth(0.7);
+  if (ok) { d.setDrawColor(46, 125, 50); d.line(x, y - 1.6, x + 1.4, y); d.line(x + 1.4, y, x + 4, y - 3.8); }
+  else { d.setDrawColor(176, 58, 46); d.line(x, y - 3.6, x + 3.4, y); d.line(x + 3.4, y - 3.6, x, y); }
+}
+$("#pdfbtn").addEventListener("click", () => {
+  const st = $("#pdfstatus");
+  if (!window.jspdf) { st.textContent = "Das PDF-Programm wurde nicht geladen. Lade die Seite neu."; return; }
+  const A = auswertung(); const { jsPDF } = window.jspdf; const d = new jsPDF({ unit: "mm", format: "a4" });
+  if (FONT_R) { d.addFileToVFS("C-R.ttf", FONT_R); d.addFont("C-R.ttf", "C", "normal"); d.addFileToVFS("C-B.ttf", FONT_B); d.addFont("C-B.ttf", "C", "bold"); }
+  const F = FONT_R ? "C" : "helvetica", M = 16, W = 210 - 2 * M; let y = 16;
+  try { d.addImage(LOGO, "PNG", M, y - 2, 11, 12.6); } catch (e) {}
+  d.setFont(F, "bold"); d.setFontSize(15); d.text("Mitarbeits-Check · K2.1–5.4 Meilensteine", M + 15, y + 3);
+  d.setFont(F, "normal"); d.setFontSize(10.5); d.text("PBGW 3BK · Name: " + S.name + " · Klasse: " + S.klasse, M + 15, y + 9);
+  d.text("Start " + uhrzeit(S.start) + " · Abgabe " + uhrzeit(S.ende) + " · Dauer " + fmtZeit(S.ende - S.start) + " min", M + 15, y + 14);
+  y += 22;
+  d.setFillColor(238, 244, 228); d.setDrawColor(63, 107, 20); d.setLineWidth(0.4); d.roundedRect(M, y, W, 15, 2, 2, "FD");
+  d.setFont(F, "bold"); d.setFontSize(12.5); d.setTextColor(31, 42, 28);
+  d.text("Für LMS: " + A.p + " von " + A.n + " Punkten · Notenvorschlag " + A.note + " (Mitarbeit)", M + 4, y + 6.5);
+  d.setFont(F, "normal"); d.setFontSize(9.5);
+  d.text(A.pr.toFixed(1).replace(".", ",") + " % · Schlüssel: ab 88 % 1, ab 75 % 2, ab 62 % 3, ab 50 % 4 · automatisch ausgewertet, kein Test", M + 4, y + 11.8);
+  y += 20;
+  if ((S.versuche || 1) > 1) { d.setTextColor(176, 58, 46); d.setFont(F, "bold"); d.setFontSize(10); d.text("Achtung: Der Check wurde auf diesem Gerät " + S.versuche + "-mal gestartet.", M, y); d.setTextColor(31, 42, 28); y += 6; }
+  d.setFont(F, "bold"); d.setFontSize(11); d.text("Deine Antworten", M, y); y += 2;
+  A.zeilen.forEach(z => {
+    d.setFont(F, "bold"); d.setFontSize(10.5);
+    const fl = d.splitTextToSize(z.nr + ". " + z.f, W - 10); const al = d.splitTextToSize("Deine Antwort: " + (z.t == null ? "– (nicht beantwortet)" : z.t), W - 10);
+    const h = fl.length * 4.6 + al.length * 4.4 + 5;
+    if (y + h > 282) { d.addPage(); y = 18; }
+    y += 5; haken(d, M, y, z.ok); d.text(fl, M + 8, y); y += fl.length * 4.6;
+    d.setFont(F, "normal"); d.setTextColor(z.ok ? 46 : 176, z.ok ? 125 : 58, z.ok ? 50 : 46); d.text(al, M + 8, y); d.setTextColor(31, 42, 28); y += al.length * 4.4;
+    d.setFontSize(8.5); d.setTextColor(94, 102, 82); d.text((z.ok ? "richtig" : "falsch") + " · Nachlesen: Buch " + z.buch, M + 8, y); d.setTextColor(31, 42, 28); y += 1;
+  });
+  d.setFontSize(8.5); d.setTextColor(94, 102, 82);
+  d.text("Die richtigen Antworten bespricht Prof. HOLZER mit der Klasse. Geht LMS nicht, schick das PDF per E-Mail.", M, 290);
+  const nn = (S.name.split(/\s+/).pop() || "Kadett").replace(/[^A-Za-zÄÖÜäöüß-]/g, "");
+  const filename = "K2.1-5.4-Check-" + nn + ".pdf";
+  const url = URL.createObjectURL(d.output("blob")); const a = document.createElement("a"); a.href = url; a.download = filename; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
+  st.textContent = "PDF wurde erstellt: " + filename + " – schau in deinen Downloads nach, ob sie da ist, und lade sie dann in LMS hoch.";
+});
+ansicht();
+</script>
+<!-- speicherstatus:start -->
+<script>
+/* Speicherstatus für die Handy-Seiten (Arbeitsblatt, Versuche, Gruppe …).
+   Problem: Die Seiten speichern Antworten im Browser (localStorage). Wenn das Handy das Speichern verweigert
+   (Speicher voll, privater Modus, Browser blockiert es), merkte der Kadett bisher nichts davon – und verlor beim
+   Schließen der Seite alles.
+   Diese Datei legt sich von außen um localStorage.setItem und zeigt
+     - bei Erfolg unten links (5 Sekunden lang, danach weg – es soll keinen Text verdecken):  »Gespeichert um 10:42 auf diesem Gerät«
+     - bei einem Fehler oben, nicht zu übersehen:  Warnung + Knopf »Zur PDF«.
+   Sie ändert NIE einen Speicherschlüssel und NIE einen gespeicherten Wert: Jeder Aufruf wird unverändert an den
+   Browser weitergereicht, ein Fehler wird nach der Anzeige unverändert weitergeworfen (die Seite behandelt ihn wie bisher).
+   Gespeichert wird weiterhin bei jeder Eingabe sofort – es gibt bewusst KEIN verzögertes Speichern, damit beim Schließen
+   der Seite nichts verloren geht. Verzögert (0,8 s) wird nur die Anzeige.
+   Einbau: python3 werkzeug/speicherstatus_einbauen.py (setzt diese Datei inline in alle Seiten mit PDF-Abgabe). */
+(function () {
+  if (window.__speicherstatus) return; window.__speicherstatus = true;
+
+  var PREFIX = "26-27-";            // alle Speicherschlüssel der Seiten beginnen so
+  var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
+  var failed = {};                  // Schlüssel -> true, solange der letzte Schreibversuch scheiterte
+  var okTime = null, timer = null, hideTimer = null;
+
+  var css = "#ss-status[hidden],#ss-warn[hidden]{display:none}" +
+    "#ss-status{position:fixed;left:12px;bottom:12px;z-index:9990;max-width:calc(100% - 24px);padding:6px 12px;border-radius:999px;" +
+    "background:#fff;border:1px solid #D3DCC2;color:#2C3424;font:600 14px/1.3 system-ui,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.12);pointer-events:none}" +
+    "#ss-status .ss-ic{color:#3F6B14;font-weight:700;margin-right:6px}" +
+    "#ss-warn{position:fixed;left:0;right:0;top:0;z-index:9998;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 14px;" +
+    "background:#F6E3DF;border-bottom:3px solid #8C3B2E;color:#4A150C;font:600 16px/1.4 system-ui,sans-serif}" +
+    "#ss-warn span{flex:1 1 220px}" +
+    "#ss-warn button{min-height:44px;padding:8px 16px;border-radius:10px;border:0;background:#8C3B2E;color:#fff;font:700 16px system-ui,sans-serif;cursor:pointer}" +
+    ".status.ok,.feedback.ok strong{color:#3F6B14}" +   /* dunkleres Grün: 5,3:1 und mehr auf allen Hintergründen der Seiten */
+    "body{padding-bottom:48px}" +
+    "@media print{#ss-status,#ss-warn{display:none}}";
+  var st = document.createElement("style"); st.id = "ss-css"; st.textContent = css; document.head.appendChild(st);
+
+  var pill = document.createElement("div"); pill.id = "ss-status"; pill.hidden = true;
+  pill.setAttribute("role", "status"); pill.setAttribute("aria-live", "polite"); pill.setAttribute("aria-atomic", "true");
+  var ic = document.createElement("span"); ic.className = "ss-ic"; ic.setAttribute("aria-hidden", "true"); ic.textContent = "✓";
+  var pillTxt = document.createElement("span");
+  pill.appendChild(ic); pill.appendChild(pillTxt);
+
+  var warn = document.createElement("div"); warn.id = "ss-warn"; warn.hidden = true; warn.setAttribute("role", "alert");
+  var warnTxt = document.createElement("span");
+  var warnBtn = document.createElement("button"); warnBtn.type = "button"; warnBtn.textContent = "Zur PDF";
+  warnBtn.onclick = function () { var b = document.getElementById("pdfbtn"); if (b && b.scrollIntoView) { b.scrollIntoView({ block: "center" }); try { b.focus(); } catch (e) {} } };
+  warn.appendChild(warnTxt); warn.appendChild(warnBtn);
+
+  document.body.appendChild(pill); document.body.appendChild(warn);
+
+  function zwei(n) { return (n < 10 ? "0" : "") + n; }
+
+  function zeige() {
+    var keys = Object.keys(failed), nurFoto = keys.length > 0;
+    for (var i = 0; i < keys.length; i++) if (keys[i].indexOf("-foto-") < 0) nurFoto = false;
+    if (keys.length) {
+      warnTxt.textContent = nurFoto
+        ? "Ein Foto konnte nicht gespeichert werden (Handy-Speicher voll). Es bleibt nur, bis du die Seite schließt – erzeuge bald die PDF."
+        : "Speichern auf diesem Gerät nicht möglich! Deine Antworten gehen verloren, wenn du die Seite schließt. Erzeuge jetzt die PDF und gib sie ab.";
+      warn.hidden = false; pill.hidden = true;
+      return;
+    }
+    warn.hidden = true;
+    if (okTime) {
+      pillTxt.textContent = "Gespeichert um " + zwei(okTime.getHours()) + ":" + zwei(okTime.getMinutes()) + " auf diesem Gerät";
+      pill.hidden = false;
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { if (!Object.keys(failed).length) pill.hidden = true; }, 5000);  // deckt sonst Text ab
+    }
+  }
+  function zeigeSpaeter() { if (timer) clearTimeout(timer); timer = setTimeout(zeige, 800); }
+
+  if (ls && typeof Storage !== "undefined") {
+    var origSet = Storage.prototype.setItem, origRemove = Storage.prototype.removeItem;
+    Storage.prototype.setItem = function (k) {
+      if (this === ls && typeof k === "string" && k.indexOf(PREFIX) === 0) {
+        try { origSet.apply(this, arguments); }
+        catch (e) { failed[k] = true; zeige(); throw e; }      // Fehler sofort zeigen und unverändert weiterwerfen
+        if (failed[k]) delete failed[k];
+        if (failed["__probe"]) delete failed["__probe"];       // Speichern klappt doch – frühere Warnung beim Öffnen zurücknehmen
+        okTime = new Date(); zeigeSpaeter();
+        return;
+      }
+      return origSet.apply(this, arguments);
+    };
+    Storage.prototype.removeItem = function (k) {
+      var r = origRemove.apply(this, arguments);
+      if (this === ls && typeof k === "string" && failed[k]) { delete failed[k]; zeigeSpaeter(); }  // z. B. Foto wieder entfernt
+      return r;
+    };
+  }
+
+  /* Gleich beim Öffnen prüfen, ob der Browser überhaupt speichern darf – dann weiß der Kadett es, bevor er tippt. */
+  try { if (!ls) throw new Error("kein localStorage"); ls.setItem("__ss_probe", "1"); ls.removeItem("__ss_probe"); }
+  catch (e) { failed["__probe"] = true; zeige(); }
+})();
+</script>
+<!-- speicherstatus:end -->
+<!-- pdferinnerung:start -->
+<script>window.__PE_KEY = "26-27-3BK-K2.1-5.4-Meilenst-check";
+/* Erinnerung beim Knopf »PDF erstellen«: Ist die Arbeit schon als PDF abgegeben – und passt die PDF noch zu den Antworten?
+   Zeigt direkt über dem PDF-Knopf einen von drei Hinweisen:
+     - Antworten da, aber noch keine PDF       -> »Du hast noch keine PDF erstellt …« (gelb)
+     - nach der letzten PDF etwas geändert     -> »Du hast seit deiner PDF von 10:42 etwas geändert …« (gelb)
+     - PDF passt zum aktuellen Stand           -> »✓ Deine PDF von 10:42 passt zu deinen Antworten …« (grün)
+   Wie: Nach einer erfolgreichen PDF (Meldung »PDF wurde erstellt« bzw. »Gespeichert:« in #pdfstatus) merkt sich die Seite einen
+   Fingerabdruck von Name, Klasse und Antworten (S.name, S.ich, S.klasse, S.a) und der Fotos. Der Fingerabdruck liegt unter einem
+   EIGENEN Schlüssel »pdfstand|<Seitenschlüssel>«. Der Speicherstand der Seite (const KEY) wird nur gelesen, nie geschrieben.
+   Fehlversuche und einzeln angesehene Lösungen zählen als Änderung (sie stehen im PDF); das globale »Lösungen ansehen« nach der PDF nicht.
+   Einbau: python3 werkzeug/pdf_erinnerung_einbauen.py (setzt den Seitenschlüssel als window.__PE_KEY davor). */
+(function () {
+  if (window.__pdferinnerung) return; window.__pdferinnerung = true;
+  var KEY = window.__PE_KEY; if (!KEY) return;
+  var SNAP = "pdfstand|" + KEY;
+  var btn = document.getElementById("pdfbtn"), st = document.getElementById("pdfstatus");
+  if (!btn || !btn.parentNode) return;
+  var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
+  var memSnap = null;
+
+  var css = "#pe-hinweis{margin:10px 0;padding:10px 12px;border-radius:10px;font-weight:600;font-size:16px;line-height:1.4;border-left:5px solid #B07A00;background:#FFF4D6;color:#4A3400}" +
+    "#pe-hinweis.pe-ok{border-left-color:#3F6B14;background:#EEF4E4;color:#2C3D16}#pe-hinweis[hidden]{display:none}.pe-mail{margin:8px 0 0;font-size:14px;line-height:1.4;color:#5E6652}@media print{#pe-hinweis,.pe-mail{display:none}}";
+  var stl = document.createElement("style"); stl.id = "pe-css"; stl.textContent = css; document.head.appendChild(stl);
+  var box = document.createElement("p"); box.id = "pe-hinweis"; box.hidden = true; box.setAttribute("aria-live", "polite");
+  btn.parentNode.insertBefore(box, btn);
+  /* Ersatzweg: Geht LMS nicht, darf die PDF per E-Mail kommen (Datum und Uhrzeit stehen in der PDF) */
+  var mail = document.createElement("p"); mail.id = "pe-mail"; mail.className = "pe-mail";
+  mail.textContent = "Geht LMS gerade nicht? Dann schick die PDF per E-Mail an die Lehrkraft. Datum und Uhrzeit stehen in der PDF.";
+  btn.parentNode.insertBefore(mail, btn.nextSibling);
+
+  function get(k) { try { return ls ? ls.getItem(k) : null; } catch (e) { return null; } }
+  function hash(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36) + "-" + s.length; }
+
+  /* Fingerabdruck des aktuellen Stands; inhalt = ob überhaupt schon etwas eingetragen ist */
+  function stand() {
+    var raw = get(KEY), o = {};
+    try { o = raw ? JSON.parse(raw) : {}; } catch (e) { o = {}; }
+    var a = o && o.a ? o.a : {}, fotos = [];
+    try {
+      for (var i = 0; ls && i < ls.length; i++) {
+        var k = ls.key(i);
+        if (k && k.indexOf(KEY + "-foto") === 0) { var v = get(k); if (v) fotos.push(k + ":" + hash(v)); }
+      }
+    } catch (e) {}
+    fotos.sort();
+    var aTxt = JSON.stringify(a), inhalt = false;
+    for (var key in a) { var v2 = a[key]; if (v2 !== "" && v2 !== null && v2 !== false && !(v2 && typeof v2 === "object" && !Object.keys(v2).length)) { inhalt = true; break; } }
+    if (fotos.length) inhalt = true;
+    /* Fehlversuche und einzeln angesehene Lösungen stehen im PDF (Status, Punkte) – darum zählen sie mit; das globale »Lösungen ansehen« nach der PDF nicht */
+    var weg = JSON.stringify([o.tries || null, o.solTask || null, o.chk || null]);
+    return { h: hash([o.name || "", o.ich || "", o.klasse || "", aTxt, fotos.join("|")].join("\u0001")), w: hash(weg), inhalt: inhalt };
+  }
+  function snap() {
+    if (memSnap) return memSnap;
+    try { var s = JSON.parse(get(SNAP) || "null"); if (s && s.h) return s; } catch (e) {}
+    return null;
+  }
+  function zeit(t) {
+    var d = new Date(t), h = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; };
+    var uhr = z(d.getHours()) + ":" + z(d.getMinutes());
+    return d.toDateString() === h.toDateString() ? "von " + uhr : "vom " + d.getDate() + "." + (d.getMonth() + 1) + ". um " + uhr;
+  }
+  function zeige() {
+    var jetzt = stand(), s = snap();
+    if (!s) {
+      if (!jetzt.inhalt) { box.hidden = true; return; }
+      box.className = ""; box.textContent = "Du hast noch keine PDF erstellt. Abgegeben ist deine Arbeit erst, wenn die PDF in LMS hochgeladen ist.";
+    } else if (s.h !== jetzt.h || (s.w !== undefined && s.w !== jetzt.w)) {   /* alte Merkstände ohne w: nur Antworten vergleichen */
+      box.className = ""; box.textContent = "Du hast seit deiner PDF " + zeit(s.t) + " etwas geändert. Erstelle die PDF neu und lade die neue Datei in LMS hoch.";
+    } else {
+      box.className = "pe-ok"; box.textContent = "✓ Deine PDF " + zeit(s.t) + " passt zu deinen Antworten. Hast du sie schon in LMS hochgeladen?";
+    }
+    box.hidden = false;
+  }
+  var t1 = null, t2 = null;
+  function spaeter() { clearTimeout(t1); clearTimeout(t2); t1 = setTimeout(zeige, 700); t2 = setTimeout(zeige, 2500); }
+  ["input", "change", "click"].forEach(function (ev) { document.addEventListener(ev, spaeter, true); });
+
+  /* Erfolgreiche PDF erkennen */
+  var zuletzt = "";
+  function pruefeStatus() {
+    if (!st || st.hidden) return;
+    var txt = (st.textContent || "").trim();
+    if (txt === zuletzt) return; zuletzt = txt;
+    if (/^(PDF wurde erstellt|Gespeichert:)/.test(txt)) {
+      setTimeout(function () {
+        var st0 = stand(); memSnap = { h: st0.h, w: st0.w, t: Date.now() };
+        try { if (ls) ls.setItem(SNAP, JSON.stringify(memSnap)); } catch (e) {}
+        zeige();
+      }, 300);
+    }
+  }
+  btn.addEventListener("click", function () { zuletzt = ""; }, true);   // gleiche Meldung bei der nächsten PDF trotzdem erkennen
+  if (st && window.MutationObserver) new MutationObserver(pruefeStatus).observe(st, { childList: true, characterData: true, subtree: true, attributes: true });
+  if (document.readyState === "complete") zeige(); else window.addEventListener("load", zeige);
+})();
+</script>
+<!-- pdferinnerung:end -->
+<!-- ks-ende:start --><nav class="ks-ende" aria-label="Zurück zur Klassenübersicht"><a href="../index.html">← Zurück zu PBGW 3BK</a></nav><script src="../../gemeinsam/kadetten-navigation-v2.js" defer></script><!-- ks-ende:end -->
+</body></html>

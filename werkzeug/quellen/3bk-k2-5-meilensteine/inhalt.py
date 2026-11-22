@@ -8,8 +8,8 @@ Grundlage: ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026): Ab
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "31.10.2026"
-V = "v4"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
+STAND = "22.11.2026"
+V = "v5"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
 ORDNER = "3bk-pbgw/k2-5-meilensteine"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -44,6 +44,11 @@ TEIL_STUNDE = {t: {k: t for k in KLASSEN} for t in (1, 2, 3)}
 TEILNAME = {1: "Teil 1 · Vom Vorrat zum frühen Staat", 2: "Teil 2 · Hammurabis Rechtssammlung", 3: "Teil 3 · Athen und Rom"}
 TEILBUCH = {1: "Buch S. 25–39", 2: "Buch S. 39–40", 3: "Buch S. 105–118"}
 
+# Stundentitel: kreativ, mit Fachteil nach dem Doppelpunkt (Standard 15.11.2026)
+STUNDENTITEL = {1: "Vom Korn zur Macht: Wie aus Dörfern Staaten wurden",
+                2: "Auge um Auge – aber nicht für alle: Hammurabis Recht",
+                3: "Losen statt wählen: Athen, Rom und der Erste unter Gleichen"}
+
 
 def wann(teil=None):
     if teil: return f"3BK: {_D[teil]}"
@@ -76,7 +81,7 @@ T = [
   "fsol": {"befund": "Kupferklinge im Holzschaft, bearbeitet", "vermutung": "Rohstoff, Brennstoff, Können nötig – Austausch möglich", "grenze": "Beruf, Rang oder Reise Ötzis"},
   "tip": ["Metall, Können und Austausch", "theorie.html#metall"], "besprechen": True},
 
- {"id": "a2", "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 8,
+ {"id": "a2", "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
   "q": "Zu zweit. Verwende die Begriffe Landwirtschaft, Vorrat, Spezialisierung und Verteilung. a) Formuliere drei begründete Zusammenhänge, jeweils mit »kann …, weil …«. "
        "b) Nenne ein neues Problem, das durch das Leben mit Vorräten entstand. c) Erkläre in 1–2 Sätzen, warum aus Landwirtschaft nicht zwangsläufig ein Staat entsteht.",
   "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme«",
@@ -97,7 +102,7 @@ T = [
   "kriterien": ["drei begründete Zusammenhänge mit »weil«", "ein neues Problem genannt", "keine Einbahnstraße: weitere Bedingungen genannt"],
   "tip": ["Neue Möglichkeiten, neue Probleme", "theorie.html#probleme"], "besprechen": True},
 
- {"id": "a3", "nr": 3, "title": "Zwei frühe Organisationsformen", "src": "Buch S. 33–39", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 8,
+ {"id": "a3", "nr": 3, "title": "Zwei frühe Organisationsformen", "src": "Buch S. 33–39", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
   "q": "Zu zweit. a) Ordne jede Aussage zu: Gilt sie für den mesopotamischen Stadtstaat, für das ägyptische Flächenkönigtum oder für beide? "
        "b) Nenne eine gemeinsame Organisationsaufgabe beider Gesellschaften. c) Nenne einen Unterschied der politischen Ordnung. "
        "d) Warum genügt ein großer Fluss allein nicht, um die Entstehung eines Staates zu erklären?",
@@ -168,7 +173,7 @@ T = [
   "tip": ["Was die Regeln verraten", "theorie.html#regeln"], "besprechen": True},
 
  # ======================================================= Teil 3 · Stunde 3
- {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch S. 111 (Athen)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 8,
+ {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch S. 111 (Athen)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
   "q": "Zu zweit, am Schaubild der Folie und im Theorieteil. a) In welcher Einrichtung entscheiden Bürger unmittelbar selbst? b) Los oder Wahl? Ordne zu. "
        "c) Nenne drei Gruppen ohne politische Mitbestimmung. d) Vergleiche mit Österreich heute: Wer entscheidet über Gesetze, und welche Kontrolle ist vorgesehen? "
        "e) Ergänze: »Athen war für seine Bürger …. Nach heutigen Maßstäben war die politische Gleichberechtigung …«",
@@ -193,7 +198,7 @@ T = [
   "kriterien": ["unmittelbare Entscheidung erklärt", "Los und Wahl unterschieden", "drei ausgeschlossene Gruppen", "Vergleich nennt Vertretung und Kontrolle"],
   "tip": ["Athen: direkte Beteiligung mit Grenzen", "theorie.html#athen"], "besprechen": True},
 
- {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 6,
   "q": "Zu zweit. Arbeitsfassung der Quelle: »Augustus stellt in seinem Tatenbericht dar, er habe nach dem Ende der Bürgerkriege die staatliche Macht wieder dem Senat und dem römischen Volk übertragen. "
        "Seinen Vorrang beschreibt er über sein Ansehen.« a) Wie bezeichnete sich Augustus selbst? b) Welchen Eindruck will er mit seiner Aussage vermitteln? "
        "c) Vergleiche mit dem Theorieteil: Welche Machtmittel und Befugnisse liefen bei ihm zusammen? d) Erkläre, warum der Tatenbericht eine nützliche Quelle ist, seine Aussage aber überprüft werden muss.",
@@ -215,7 +220,7 @@ T = [
   "kriterien": ["Selbstbezeichnung Princeps", "gewünschter Eindruck", "mindestens zwei Machtmittel", "Quelle ist Selbstdarstellung"],
   "tip": ["Rom: Republik und Machtkonzentration", "theorie.html#rom"], "besprechen": True},
 
- {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5,
   "q": "Zu zweit. In der Tabelle sind die Zeile »Ägypten« und die Spalte »Wo liegt die entscheidende Macht?« schon ausgefüllt. a) Ergänze in Stichworten für Athen, die römische Republik und den Prinzipat: "
        "Beteiligung und Ausschluss, Kontrolle und Grenze. b) Wählt zwei Ordnungen aus und erklärt, wie ihre Machtverteilung die Beteiligung oder die Kontrolle beeinflusst. Belegt jede Aussage mit einem konkreten Merkmal.",
   "hint": "Kein Ranking »primitiv – modern«. »Republik« allein sagt nicht, dass alle gleich mitentscheiden. Info: Theorieteile zu Ägypten, Athen und Rom",
@@ -250,7 +255,7 @@ T = [
   "tabnote": "Gelb auszufüllen: Spalten 3 und 4 für Athen, Republik und Prinzipat.",
   "tip": ["Athen und Rom im Vergleich", "theorie.html#vergleich"], "besprechen": True},
 
- {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 9,
+ {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 7,
   "q": "Teil 1 machst du am 16.11., Teil 2 am 30.11. a) Ordne den Karten den Zeitbereich zu (Karten 1–4 in Stunde 1, Karten 5–9 in Stunde 3). b) Begründe die Zuordnung bei zwei Karten. "
        "c) Ergänze eine Karte, die zeigt, dass nicht alle Entwicklungen überall gleichzeitig verliefen. d) Schlusssatz nach Teil 1: Was haben Landwirtschaft, Metall, Schrift und Städte mit Organisation und Herrschaft zu tun? (1 Satz)",
   "hint": "Jahreszahlen sind Orientierung. Die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",
@@ -349,10 +354,10 @@ PFLICHT = [t["nr"] for t in T if t["h"] and t["tag"] != "Zusatz"]
 assert PFLICHT == list(range(1, 9))
 BESPRECHEN = [t["nr"] for t in T if t.get("besprechen")]
 
-GRP = {1: TEILNAME[1] + " (Buch S. 25–39) · " + wann(1),
-       2: TEILNAME[2] + " (Buch S. 39–40) · " + wann(2) + " nach dem Test",
-       3: TEILNAME[3] + " (Buch S. 105–118) · " + wann(3) + " · Aufgabe 8 auch am 16.11.",
-       0: "Zusatz · Für Schnelle · freiwillig, keine Hausübung"}
+GRP = {1: "Stunde 1 · " + STUNDENTITEL[1] + " (Buch S. 25–39)",
+       2: "Stunde 2 · " + STUNDENTITEL[2] + " (Buch S. 39–40) · nach dem Test",
+       3: "Stunde 3 · " + STUNDENTITEL[3] + " (Buch S. 105–118)",
+       0: "Zusatz · Für Schnelle und Neugierige · freiwillig, keine Hausübung"}
 
 LERNZIELE = ["erklären, wie **Landwirtschaft und Vorräte** das Zusammenleben veränderten, und Vorteile und Probleme nennen",
              "am Beispiel **Ägyptens und Mesopotamiens** zeigen, wie frühe Staaten organisiert waren",
@@ -469,3 +474,110 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
 ]
 for _q in QUIZ:
     assert len(_q[2]) == 4 and len(set(_q[2])) == 4, _q[1]
+
+
+# ====================================================================== Kompetenzmodell (Skill bhak-kompetenzmodell, 20.11.2026)
+# hd: A verstehen und wiedergeben · B anwenden und analysieren · C diskutieren, interpretieren, begründen, bewerten
+# niveau 1 = + (Grundlegendes) · 2 = ++ (Vertiefung). Chip = Kompetenz, nicht mit der Marke (DEMO, GRUPPENARBEIT …) verwechseln.
+ZIELE = [{"nr": 1, "hd": "A", "text": "Ich kann erklären, wie Landwirtschaft, Vorräte und Spezialisierung das Zusammenleben verändert haben – mit Vorteilen und Problemen.",
+          "theorie": "vorrat", "buch": "Buch S. 25–28"},
+         {"nr": 2, "hd": "A", "text": "Ich kann Stadtstaat und Flächenkönigtum vergleichen und sagen, welche Aufgaben beide lösen mussten.",
+          "theorie": "staaten", "buch": "Buch S. 33–39"},
+         {"nr": 3, "hd": "B", "text": "Ich kann aus Hammurabis Rechtssammlung herauslesen, was sie über Ordnung und Ungleichheit zeigt – und wo ihre Grenze liegt.",
+          "theorie": "regeln", "buch": "Buch S. 39–40"},
+         {"nr": 4, "hd": "C", "text": "Ich kann Athen, die römische Republik und das Prinzipat nach Beteiligung und Kontrolle vergleichen und meine Einschätzung begründen.",
+          "theorie": "vergleich", "buch": "Buch S. 109–115"}]
+KOMPETENZ = {"a1": ("B", 1, 1), "a2": ("C", 2, 1), "a3": ("A", 1, 2), "a4": ("B", 2, 3),
+             "a5": ("A", 1, 4), "a6": ("B", 2, 4), "a7": ("C", 2, 4), "a8": ("A", 1, 2),
+             "a9": ("B", 2, 2), "a10": ("C", 2, 3), "a11": ("B", 2, 1), "a12": ("A", 1, 2)}
+for _t in T:
+    if _t["id"] in KOMPETENZ:
+        _t["hd"], _t["niveau"], _t["ziel"] = KOMPETENZ[_t["id"]]
+_pf = [t for t in T if t["id"] in KOMPETENZ and t["h"] and t["tag"] != "Zusatz"]
+assert sum(t["niveau"] == 1 for t in _pf) >= 2 and any(t["niveau"] == 2 for t in _pf), "Pflicht: mindestens zwei + und eine ++"
+assert {t["hd"] for t in T if "hd" in t} == {"A", "B", "C"}, "A, B und C müssen vorkommen"
+
+# ---------------------------------------------------------------- »Ziele erreicht?« (Selbsteinschätzung, keine Punkte)
+_ZT = {1: "Theorie »Vom Sammeln zum Vorrat« · Buch S. 25–28", 2: "Theorie »Frühe Staaten« · Buch S. 33–39",
+       3: "Theorie »Was die Regeln verraten« · Buch S. 39–40", 4: "Theorie »Athen und Rom im Vergleich« · Buch S. 109–115"}
+T.append({"id": "zz", "nr": 13, "title": "Ziele erreicht? Deine Selbsteinschätzung", "src": "Meine Ziele (Theorie oben)", "own": True,
+  "tag": "Selbsteinschätzung", "h": 3, "zeit": 2, "type": "multi", "vorhersage": True,
+  "q": "Schätz ehrlich ein, wie gut du die vier Ziele der Einheit erreicht hast. Es gibt keine Punkte. Bei »noch nicht«: Lies den angegebenen Theorie-Teil und die Buchseite noch einmal.",
+  "hint": "Ehrlich ist besser als schön – das hilft dir beim Lernen für den Test.",
+  "fields": [["ziel%d" % z["nr"], "Ziel %d (%s): %s – bei »noch nicht«: %s" % (z["nr"], z["hd"], z["text"], _ZT[z["nr"]]),
+              ["zur Gänze", "überwiegend", "noch nicht"], False] for z in ZIELE],
+  "chk": {}, "sol": [["Hinweis", ["Selbsteinschätzung – keine richtige oder falsche Antwort."]]],
+  "tip": ["Meine Ziele", "theorie.html#ziele"]})
+
+# ====================================================================== ABCD-Karte (Standard 15.11.2026)
+# (Frage, richtig, [drei Ablenker aus echten Fehlvorstellungen], kurze Erklärung). Anzeige mischt die Antworten.
+WDN_ABCD = {
+ 1: [("Was ist eine Primärquelle?", "Ein Zeugnis aus der Zeit selbst, zum Beispiel ein Vertrag oder ein Fundstück",
+      ["Ein Schulbuchtext über diese Zeit", "Ein Film über diese Zeit", "Eine Zusammenfassung im Internet"],
+      "Primärquelle = aus der Zeit selbst. Alles, was später darüber geschrieben wurde, ist eine Darstellung."),
+     ("Womit beginnt man, wenn man prüft, ob ein Schriftstück echt ist?", "Mit Material, Schrift und Machart",
+      ["Mit dem Gefühl beim Lesen", "Mit der Frage, ob die Geschichte spannend ist", "Mit dem Preis, den jemand dafür zahlt"],
+      "Äußere Quellenkritik: Papier, Tinte, Schrift. Bei den Hitler-Tagebüchern fiel genau das auf."),
+     ("Welches Jahr ist die übliche Marke für das Ende der Antike?", "476 n. Chr.", ["1492", "1789", "800 n. Chr."],
+      "476 = Ende Westroms. Eine Epochenmarke ist eine Orientierung, kein Schalter.")],
+ 3: [("Warum musste man Vorräte verwalten?", "Weil sie geschützt, gelagert und verteilt werden mussten",
+      ["Weil Vorräte von allein verderben", "Weil es schon Geld gab", "Weil die Schrift das vorschrieb"],
+      "Wer die Verteilung kontrolliert, bekommt Einfluss – daraus kann Macht entstehen."),
+     ("Was zeigt Hammurabis Sammlung über die Gesellschaft?", "Gleiche Verletzung, ungleiche Folge – je nach Stand des Opfers",
+      ["Alle waren vor dem Recht gleich", "Es gab keine Strafen", "Nur Könige wurden bestraft"],
+      "Schriftliches Recht ordnet, macht aber nicht gleich."),
+     ("Was bleibt bei dieser Quelle offen?", "Ob im Alltag wirklich jeder Fall so entschieden wurde",
+      ["Wie alt der Stein ist", "Ob Hammurabi gelebt hat", "In welcher Sprache sie geschrieben ist"],
+      "Eine Regel auf Stein ist nicht der Beweis für die gelebte Praxis.")],
+}
+VERMUTUNG_ABCD = {
+ "K2.1-D1": ("Woher stammt das Kupfer von Ötzis Beil?", "Aus der südlichen Toskana",
+             ["Aus den Alpen, nahe dem Fundort", "Aus Anatolien, der heutigen Türkei", "Aus dem Balkan"],
+             "Eine Analyse der Bleiisotope (Südtiroler Archäologiemuseum und Universität Padua, 2024) spricht für die südliche Toskana. "
+             "Das zeigt den Weg des Metalls – nicht, dass Ötzi selbst dort war."),
+}
+
+# ====================================================================== Mitarbeits-Check (Standard 15.11.2026)
+# 10 Fragen, nur Pflichtstoff, kein Militärbezug. Aufbau: (id, Frage, richtig, [drei falsch], Buchseite).
+# "jahre" = Zahlenfrage mit Zufallszahlen (Abstand zweier Jahre v. Chr.).
+MCHECK = [
+ {"thema": "Vorrat und Spezialisierung", "n": 2, "fragen": [
+   ("v1", "Was wurde durch Vorräte möglich?", "Einzelne konnten sich auf andere Arbeiten spezialisieren",
+    ["Alle mussten weiter täglich Nahrung suchen", "Die Bevölkerung wurde kleiner", "Niemand musste mehr arbeiten"], "S. 25–28"),
+   ("v2", "Welches Problem kam mit dem Leben von Vorräten?", "Eine Missernte traf viele Menschen gleichzeitig",
+    ["Es gab keine Krankheiten mehr", "Streit um Verteilung war ausgeschlossen", "Vorräte brauchten keinen Schutz"], "S. 25–28"),
+   ("v3", "Was heißt »Neolithische Revolution«?", "Ein tiefgreifender Wandel, der viele Generationen dauerte",
+    ["Ein Umsturz an einem einzigen Tag", "Ein Krieg um Ackerland", "Die Erfindung der Schrift"], "S. 25–26"),
+   ("v4", "Was braucht man, um Kupfer zu verarbeiten?", "Rohstoff, Brennstoff und Können",
+    ["Nur einen Hammer", "Nur Holz", "Eisen und Schrift"], "S. 29–32")]},
+ {"thema": "Frühe Staaten und Schrift", "n": 3, "fragen": [
+   ("s1", "Was ist ein Stadtstaat?", "Eine Stadt bildet mit ihrem Umland einen eigenen Staat",
+    ["Ein Königtum über ein ganzes Flusstal", "Ein Dorf ohne Verwaltung", "Ein Bündnis mehrerer Länder"], "S. 33–39"),
+   ("s2", "Wofür wurde die frühe Schrift in Mesopotamien gebraucht?", "Für Listen: Mengen, Güter und Abgaben",
+    ["Für Romane", "Für Briefe an Verwandte", "Für Liedtexte"], "S. 34–35"),
+   ("s3", "Welche Aufgabe mussten Mesopotamien und Ägypten beide lösen?", "Abgaben, Arbeit und Vorräte organisieren",
+    ["Die Wahl eines Parlaments", "Die Ausgabe von Geldscheinen", "Den Bau von Eisenbahnen"], "S. 33–39"),
+   ("s4", "Warum erklärt ein großer Fluss allein keinen Staat?", "Weil auch Handel, Konflikte, Religion und örtliche Bedingungen mitwirken",
+    ["Weil Flüsse unwichtig waren", "Weil es damals keine Flüsse gab", "Weil Wasser keine Arbeit macht"], "S. 33–39")]},
+ {"thema": "Hammurabi", "n": 2, "fragen": [
+   ("h1", "Was entscheidet bei Hammurabi über die Rechtsfolge?", "Der gesellschaftliche Stand des Opfers",
+    ["Das Alter des Täters", "Der Wohnort des Täters", "Der Wochentag der Tat"], "S. 39–40"),
+   ("h2", "Was ist eine Rechtssammlung?", "Gesammelte Regeln und Rechtsfälle",
+    ["Ein modernes Gesetzbuch mit Paragrafen für alle", "Eine Liste von Königen", "Ein Vertrag zwischen zwei Städten"], "S. 39–40"),
+   ("h3", "Was zeigt § 53 (Dammbruch)?", "Wer einen Schaden verursacht, haftet dafür",
+    ["Dämme waren verboten", "Wasser gehörte dem König", "Bauern durften keine Felder besitzen"], "S. 39–40")]},
+ {"thema": "Athen und Rom", "n": 2, "fragen": [
+   ("a1", "Wer durfte in Athen in der Volksversammlung entscheiden?", "Erwachsene männliche Bürger",
+    ["Alle Einwohner", "Nur die Strategen", "Frauen und Männer mit Bürgerrecht"], "S. 109–111"),
+   ("a2", "Wie wurden in Athen die Strategen bestimmt?", "Durch Wahl", ["Durch das Los", "Durch Erbfolge", "Durch den Rat der 500 allein"], "S. 109–111"),
+   ("a3", "Was kennzeichnet den Prinzipat des Augustus?", "Die Einrichtungen bleiben, die entscheidende Macht liegt bei einer Person",
+    ["Der Senat wurde abgeschafft", "Alle Römer hatten gleich viel Macht", "Es gab keine Ämter mehr"], "S. 114–115"),
+   ("a4", "Warum war die römische Republik keine moderne Demokratie?", "Herkunft und Vermögen prägten die Beteiligung stark",
+    ["Es gab gar keine Ämter", "Alle Bewohner durften abstimmen", "Der Kaiser bestimmte alles"], "S. 112–115")]},
+ {"thema": "Zeitstrahl", "n": 1, "fragen": [
+   ("z1", "jahre", "", [], "S. 24–40")]},
+]
+assert sum(g["n"] for g in MCHECK) == 10
+assert all(len(f[3]) == 3 or f[1] == "jahre" for g in MCHECK for f in g["fragen"])
+MCHECK_KEY = "26-27-3BK-K2.1-5.4-Meilenst-check"
+MCHECK_CODE = "2451"   # Startcode – im Seitencode nur als Prüfsumme; Prof. HOLZER zeigt ihn am Beamer

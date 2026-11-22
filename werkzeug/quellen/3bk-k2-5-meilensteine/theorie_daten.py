@@ -17,7 +17,7 @@ PARTS = [
  ("einstieg", "Zum Start", "Einstieg", EINSTIEG),
 
  # ---------------------------------------------------------------- Teil 1 · Stunde 1
- ("teil1", "Stunde 1 · " + I.wann(1) + " · Buch S. 25–39", I.TEILNAME[1], [
+ ("teil1", "Stunde 1 · " + I.STUNDENTITEL[1] + " · Buch S. 25–39", I.TEILNAME[1], [
   {"id": "vorrat", "title": "Vom Sammeln zum Vorrat", "pill": "Buch S. 25–28",
    "blocks": [("ul", ["Vor rund 12 000 Jahren begann im Vorderen Orient ein Wandel: Menschen bauten Pflanzen an und hielten Tiere. Auch in anderen Weltregionen entstand Landwirtschaft. Der Übergang dauerte **viele Generationen** und verlief je nach Region verschieden. Der Ausdruck **Neolithische Revolution** beschreibt die große Wirkung, nicht einen einzelnen Tag.",
                       "Aus der Ernte ließ sich ein **Vorrat** anlegen. Er musste geschützt, gelagert und verteilt werden. Wenn nicht mehr alle ständig Nahrung suchen mussten, konnten sich einzelne auf andere Arbeiten **spezialisieren**, zum Beispiel auf Töpfern oder Metall. Spezialisierung heißt: Man übt eine Tätigkeit besonders gut und regelmäßig aus."]),
@@ -55,7 +55,7 @@ PARTS = [
  ]),
 
  # ---------------------------------------------------------------- Teil 2 · Stunde 2 (nach dem Test)
- ("teil2", "Stunde 2 · " + I.wann(2) + " · nach dem Test · Buch S. 39–40", I.TEILNAME[2], [
+ ("teil2", "Stunde 2 · " + I.STUNDENTITEL[2] + " · nach dem Test · Buch S. 39–40", I.TEILNAME[2], [
   {"id": "regeln", "title": "Was die Regeln verraten", "pill": "Buch S. 39–40",
    "blocks": [("ul", ["Hammurabi war im 18. Jahrhundert v. Chr. König von Babylon. Mit seinem Namen verbunden ist eine **Rechtssammlung**, die auf einer **Stele** (aufgerichteter Stein mit Inschrift) überliefert ist. Viele Regeln folgen einem Muster: **Wenn** etwas Bestimmtes geschieht, **dann** tritt eine bestimmte Folge ein.",
                       "Die Regeln zeigen, welche **Konflikte geordnet** werden sollten. Ein schlecht gewarteter Damm konnte fremde Felder überschwemmen (§ 53) – eine Frage von **Verantwortung**."]),
@@ -74,7 +74,7 @@ PARTS = [
  ]),
 
  # ---------------------------------------------------------------- Teil 3 · Stunde 3
- ("teil3", "Stunde 3 · " + I.wann(3) + " · Buch S. 105–118", I.TEILNAME[3], [
+ ("teil3", "Stunde 3 · " + I.STUNDENTITEL[3] + " · Buch S. 105–118", I.TEILNAME[3], [
   {"id": "athen", "title": "Athen: direkte Beteiligung mit Grenzen", "pill": "Buch S. 109–111",
    "blocks": [("img", "img/athen.png", "Schaubild: In der Mitte die Volksversammlung der erwachsenen männlichen Bürger. Darüber der Rat der 500 (durch Los), daneben die Archonten (durch Los) und die Strategen (durch Wahl). Daneben, ausgeschlossen: Frauen, Versklavte, Metöken.", "Eigenes, vereinfachtes Schaubild – nicht das Schaubild aus dem Schulbuch."),
               ("ul", ["Die griechische Welt bestand aus vielen selbstständigen Gemeinschaften. Eine **Polis** war eine solche Gemeinschaft aus Stadt und Umland. Athen entwickelte vor allem im 5. Jh. v. Chr. eine **direkte Demokratie**: Die beteiligten Bürger entschieden in der **Volksversammlung** selbst. Ein **Rat** bereitete die Beratungen vor.",

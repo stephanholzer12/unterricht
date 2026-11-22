@@ -718,9 +718,14 @@ document.addEventListener('keydown', function (e) { if (e.key === 'Escape') zu()
     return "".join(out)
 
 
+FP_SPRUNG = re.compile(r'<a class="[^"]*fp-t?link[^"]*" href="(?:aufgaben|versuche|vertiefung|uebung|projekt)\.html#[A-Za-z0-9_\-]+"')
+
+
 def anker_entfernen(e):
     """Regel: Links auf aufgaben/versuche/vertiefung/uebung/projekt.html springen immer an den ANFANG (Name und Klasse zuerst),
-    nie auf einen Anker wie #card_a4. Wird bei jedem Lauf für alle Seiten jeder Einheit erzwungen."""
+    nie auf einen Anker wie #card_a4. Wird bei jedem Lauf für alle Seiten jeder Einheit erzwungen.
+    Ausnahme seit 18.11.2026 (Standard »Sprungmarken auf Theorie-Seite UND Arbeitsblatt«): Die Links im Fahrplan
+    (Klassen fp-link und fp-tlink) springen bewusst zur Aufgabe bzw. zum Theorie-Teil und bleiben erhalten."""
     n = 0
     d = os.path.join(ROOT, e["ordner"])
     if not os.path.isdir(d):
@@ -730,7 +735,15 @@ def anker_entfernen(e):
             continue
         pfad = os.path.join(d, f)
         t = open(pfad, encoding="utf-8").read()
-        neu = re.sub(r'((?:aufgaben|versuche|vertiefung|uebung|projekt)\.html)#[A-Za-z0-9_\-]+', r'\1', t)
+        schutz = []
+
+        def _merken(m):
+            schutz.append(m.group(0))
+            return "\x00%d\x00" % (len(schutz) - 1)
+
+        neu = FP_SPRUNG.sub(_merken, t)
+        neu = re.sub(r'((?:aufgaben|versuche|vertiefung|uebung|projekt)\.html)#[A-Za-z0-9_\-]+', r'\1', neu)
+        neu = re.sub(r"\x00(\d+)\x00", lambda m: schutz[int(m.group(1))], neu)
         if neu != t:
             open(pfad, "w", encoding="utf-8").write(neu); n += 1
     return n
