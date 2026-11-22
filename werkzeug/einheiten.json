@@ -1720,11 +1720,10 @@
    "theorie.html",
    "check.html"
   ],
-  "versteckt": true,
   "kapitelmenue": true,
   "fahrplan": {
    "ansicht": "kompakt",
-   "text": "Fünf Stunden, ein Körper unter Belastung: Stunde 1 das Herz, Stunde 2 Puls und Gefäße mit Versuch, Stunde 3 Knochen und Gelenke am Skelett, Stunde 4 das Blut, Stunde 5 Muskeln und Ergonomie. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
+   "text": "Fünf Stunden, ein Körper unter Belastung: Stunde 1 das Herz, Stunde 2 Puls und Gefäße mit Versuch, Stunde 3 Knochen und Gelenke am Skelett, Stunde 4 das Blut, Stunde 5 Muskeln und Ergonomie. Alles steht auf EINER Seite »Aufgaben«, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
    "zeilen": [
     {
      "wann": "Stunde 1",
@@ -1982,7 +1981,7 @@
        "theorie.html#ergonomie"
       ]
      ],
-     "abgabe": "Arbeitsblatt-PDF in LMS"
+     "abgabe": "Aufgaben-PDF in LMS"
     },
     {
      "wann": "Für Schnelle",

@@ -22,6 +22,7 @@ if alt:
     u = E[alt[0]]
     for k in ("lehrerseite", "versteckt", "aktuell"):
         if k in u: neu[k] = u[k]
+    if "versteckt" not in u: neu.pop("versteckt", None)   # einmal eingeblendet bleibt sichtbar
     E[alt[0]] = neu
 else:
     pos = max(i for i, u in enumerate(E) if u["klasse"] == "3AB") + 1

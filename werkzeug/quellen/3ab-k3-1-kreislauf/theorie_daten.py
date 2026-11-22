@@ -110,7 +110,7 @@ EINSTIEG = [
                      "**Wozu?** Beim Sport willst du wissen, was dein Puls dir sagt. Beim Marsch oder in der Arbeit willst du heben und sitzen, ohne dass dir mit 30 der Rücken wehtut. "
                      "Und wenn jemand Blut braucht, ist es gut zu wissen, welche Konserve passt.",
                      "**Das kannst du nachher:** den Weg des Blutes erklären, deinen Puls messen und deuten, Blutgruppen lesen, Gelenke am Skelett zeigen und deinen Arbeitsplatz ergonomisch prüfen."]),
-             ("hint", "Jede Stunde ist ein Abschnitt dieses Weges. Du arbeitest im Arbeitsblatt – diese Seite ist zum Nachschlagen. Oben siehst du, welche Teile zu welcher Stunde gehören.")]},
+             ("hint", "Jede Stunde ist ein Abschnitt dieses Weges. Du arbeitest auf der Seite »Aufgaben« – diese Seite ist zum Nachschlagen. Oben siehst du, welche Teile zu welcher Stunde gehören.")]},
  {"id": "s0b", "title": "Science oder Fiction? »Bone-Smashing« für ein markantes Kinn", "pill": "Buch S. 108",
   "blocks": [("tiles", [("Im Netz", ["Auf Social Media zeigen manche, wie sie sich mit einem Hammer auf Kiefer und Wangen klopfen. Die Behauptung: Der Knochen wächst danach kräftiger nach."]),
                         ("In Wirklichkeit", ["In die Länge wachsen Knochen nur an den **Wachstumsfugen**. Dicker und fester werden sie durch regelmäßige **Belastung** wie Training – nicht durch Verletzungen. Ein Bruch **heilt** ungeordnet mit einem Knochenwulst – oft schief, mit Schwellung oder Nervenschaden. "
@@ -135,7 +135,7 @@ PARTS = [
                       "Der **Vorhof** sammelt das Blut und drückt es in die **Kammer**. Die Kammer ist viel kräftiger – sie pumpt das Blut in die Arterien. Die Wand der **linken** Kammer ist am dicksten, weil sie das Blut durch den ganzen Körper drücken muss."]),
               ("film", "Filmtipp aus dem Schulbuch: Aufbau und Funktion des Herzens", "https://www.trauner.at/nawi_v120.aspx", "Video des Verlags (Buch S. 78) · öffnet in einem neuen Tab"),
               ("reveal", I.STOPPFRAGEN["herz"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 2", "aufgaben.html#card_a1")]),
+  ("jetzt", "Jetzt bei den Aufgaben: Aufgabe 2", "aufgaben.html#card_a1")]),
 
  ("kreislauf", "Teil 2 · Buch S. 77, 79–80 · Stunde 1", "Zwei Kreisläufe", [
   {"id": "kreislauf", "title": "Lungenkreislauf und Körperkreislauf", "pill": "Buch S. 79–80",
@@ -148,7 +148,7 @@ PARTS = [
                          ["Lungenarterie", "vom Herzen weg (zur Lunge)", "**sauerstoffarm**"], ["Lungenvenen", "zum Herzen hin (aus der Lunge)", "**sauerstoffreich**"]]),
               ("merke", "Arterie = vom Herzen weg, Vene = zum Herzen hin. Die Farbe in Zeichnungen (rot/blau) zeigt den Sauerstoff, nicht den Gefäßtyp."),
               ("reveal", I.STOPPFRAGEN["kreislauf"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 3 (per Hand)", "aufgaben.html#card_a2")]),
+  ("jetzt", "Jetzt bei den Aufgaben: Aufgabe 3 (per Hand)", "aufgaben.html#card_a2")]),
 
  ("gefaesse", "Teil 3 · Buch S. 79 · Stunde 2", "Blutgefäße", [
   {"id": "gefaesse", "title": "Drei Arten von Leitungen", "pill": "Buch S. 79",
@@ -173,7 +173,7 @@ PARTS = [
                       "Eine einzelne Messung ist **keine Diagnose**. Aufregung, Kaffee oder Treppensteigen ändern Puls und Blutdruck. Beurteilen darf das nur eine Ärztin oder ein Arzt."]),
               ("hint", "Achtung beim Buch S. 81: Im Beispiel stehen 115 ml pro Herzschlag – das ist für Ruhe viel. Links daneben steht 70–120 ml. Wir rechnen in Ruhe mit rund 70 ml."),
               ("reveal", I.STOPPFRAGEN["puls"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: VERSUCH (Aufgabe 4) und Aufgabe 5", "aufgaben.html#card_a3")]),
+  ("jetzt", "Jetzt bei den Aufgaben: VERSUCH (Aufgabe 4) und Aufgabe 5", "aufgaben.html#card_a3")]),
 
  ("knochen", "Teil 5 · Buch S. 107–108 · Stunde 3", "Knochen", [
   {"id": "knochen", "title": "Ein Gerüst, das lebt", "pill": "Buch S. 108",
@@ -185,7 +185,7 @@ PARTS = [
                       "Knochen ist **lebendes Gewebe**: Er wird ständig ab- und aufgebaut. Wer trainiert, bekommt dichtere Knochen; wer lange liegt oder im Weltall schwebt, verliert Knochenmasse.",
                       "**Sehne** (Muskel–Knochen), **Band** (Knochen–Knochen) und **Knorpel** (Gleiten, Dämpfen) gehören mit Muskeln und Knochen zum **Bewegungsapparat** (Hölzel S. 105)."]),
               ("reveal", I.STOPPFRAGEN["knochen"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 6", "aufgaben.html#card_a5")]),
+  ("jetzt", "Jetzt bei den Aufgaben: Aufgabe 6", "aufgaben.html#card_a5")]),
 
  ("gelenke", "Teil 6 · Buch S. 109–110 · Stunde 3", "Gelenke", [
   {"id": "gelenke", "title": "Kugel, Scharnier, Dreh", "pill": "Buch S. 109",
@@ -196,7 +196,7 @@ PARTS = [
                       "**Schleimbeutel** in der Nähe der Gelenke polstern Stellen mit viel Druck (Buch S. 109)."]),
               ("gemeinsam", "GRUPPENARBEIT Skelett-Rallye (Aufgabe 7): Jede Gruppe sucht ihre Körperregion am Modell und am eigenen Körper und zeigt am Ende in 30 Sekunden Knochen und Gelenktyp."),
               ("reveal", I.STOPPFRAGEN["gelenke"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: GRUPPENARBEIT Aufgabe 7", "aufgaben.html#card_a6")]),
+  ("jetzt", "Jetzt bei den Aufgaben: GRUPPENARBEIT Aufgabe 7", "aufgaben.html#card_a6")]),
 
  ("blut", "Teil 7 · Buch S. 81–83 · Stunde 4", "Blut", [
   {"id": "blut", "title": "Transport, Abwehr, Reparatur", "pill": "Buch S. 81–83",
@@ -210,7 +210,7 @@ PARTS = [
                       "**Blutdoping:** Das Hormon **EPO** regt das Knochenmark an, mehr rote Blutkörperchen zu bilden. Der **Hämatokrit** steigt, das Blut trägt mehr Sauerstoff – wird aber **dicker**. Gerinnsel, Herzinfarkt und Schlaganfall werden wahrscheinlicher. EPO-Doping ist verboten."]),
               ("gemeinsam", "GRUPPENARBEIT Blutdoping (Aufgabe 9): Vier Rollen – Radprofi, Teamärztin, Dopingkontrolle, Nachwuchs-Sportlerin. Danach DISKUSSION mit Prof. HOLZER."),
               ("reveal", I.STOPPFRAGEN["blut"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 8", "aufgaben.html#card_a7")]),
+  ("jetzt", "Jetzt bei den Aufgaben: Aufgabe 8", "aufgaben.html#card_a7")]),
 
  ("blutgruppen", "Teil 8 · Buch S. 84–85 · Stunde 4", "Blutgruppen", [
   {"id": "blutgruppen", "title": "Welche Konserve passt?", "pill": "Buch S. 84–85",
@@ -224,7 +224,7 @@ PARTS = [
                       "In Österreich wird laut Rotem Kreuz **alle 90 Sekunden** eine Blutkonserve gebraucht. Spenden darf man ab 18 Jahren."]),
               ("film", "Filmtipp aus dem Schulbuch: Blutgruppen (Rotes Kreuz)", "https://www.trauner.at/nawi_v121.aspx", "Video aus dem Schulbuch (Buch S. 84) · öffnet in einem neuen Tab"),
               ("reveal", I.STOPPFRAGEN["blutgruppen"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 8 g) bis k)", "aufgaben.html#card_a7")]),
+  ("jetzt", "Jetzt bei den Aufgaben: Aufgabe 8 g) bis k)", "aufgaben.html#card_a7")]),
 
  ("muskeln", "Teil 9 · Buch S. 110–111 · Stunde 5", "Muskeln", [
   {"id": "muskeln", "title": "Ziehen, nie drücken", "pill": "Buch S. 110–111",
@@ -252,7 +252,7 @@ PARTS = [
                       "**Hebel:** Die Rückenmuskeln greifen nur wenige Zentimeter hinter der Wirbelsäule an. Eine Last weit vorne wirkt über einen langen Hebel. Darum muss der Rücken ein Vielfaches der Last ziehen – und die Bandscheiben werden zusammengedrückt.",
                       "**Rucksack und Marsch:** schwere Dinge nah an den Rücken, Hüftgurt nutzen, Riemen so einstellen, dass der Rucksack nicht nach hinten zieht."]),
               ("reveal", I.STOPPFRAGEN["ergonomie"])]},
-  ("jetzt", "Jetzt im Arbeitsblatt: Aufgaben 10 und 11", "aufgaben.html#card_a9")]),
+  ("jetzt", "Jetzt bei den Aufgaben: Aufgaben 10 und 11", "aufgaben.html#card_a9")]),
 ]
 
 SCHNELLE = [

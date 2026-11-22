@@ -47,7 +47,7 @@ LEHRER = "lehrer-0f6eec.html"
 LOESUNGEN = "lehrer-loesungen-0f6eec.html"
 
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Theorie-Seite → Arbeitsblatt → Quiz
-NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
+NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Aufgaben", ""), "quiz.html": ("Quiz", ""),
          "versuche.html": ("Versuche", "rust"), "vertiefung.html": ("Vertiefung", ""), "uebung.html": ("Übung", ""), "projekt.html": ("Projekt", ""),
          "gruppe.html": ("Gruppe", ""), "teststoff.html": ("Teststoff", "rust"), "kurz.html": ("Gruppe kompakt", ""), "check.html": ("Mitarbeits-Check", "rust")}
 REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html", "check.html"]
@@ -167,7 +167,7 @@ JS_FORTSCHRITT = """
       var ziel = a.parentNode, alt = ziel.nextElementSibling;
       if (!(alt && alt.classList && alt.classList.contains('fortschritt'))) alt = null;
       if (!f || !f.n) { if (alt) alt.remove(); return; }
-      var pr = Math.round(f.np / f.n * 100), text = 'Arbeitsblatt: ' + f.np + ' von ' + f.n + ' Pflichtaufgaben ausgefüllt';
+      var pr = Math.round(f.np / f.n * 100), text = 'Aufgaben: ' + f.np + ' von ' + f.n + ' Pflichtaufgaben ausgefüllt';
       var d = alt || document.createElement('div');
       d.className = 'fortschritt'; d.setAttribute('role', 'progressbar'); d.setAttribute('aria-label', text);
       d.setAttribute('aria-valuemin', '0'); d.setAttribute('aria-valuemax', f.n); d.setAttribute('aria-valuenow', f.np); d.setAttribute('aria-valuetext', text);

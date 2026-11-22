@@ -17,7 +17,7 @@
   var cur = document.createElement("span"); cur.className = "toccur"; cur.setAttribute("aria-live", "polite");
   bar.append(btn, cur);
   if (ab) { var abk = document.createElement("a"); abk.className = "tocab"; abk.href = ab.getAttribute("href");
-    abk.textContent = /aufgaben\.html/.test(ab.getAttribute("href")) ? "Arbeitsblatt" : ab.textContent; bar.append(abk); }
+    abk.textContent = /aufgaben\.html/.test(ab.getAttribute("href")) ? "Aufgaben" : ab.textContent; bar.append(abk); }
   var panel = document.createElement("div"); panel.className = "tocpanel"; panel.id = "tocpanel"; panel.hidden = true;
   kap.forEach(function (a) { panel.append(a); });
   alt.replaceWith(bar); nav.append(panel); nav.classList.add("mitmenue");

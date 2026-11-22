@@ -164,7 +164,7 @@ def html_kompakt(u, mit_marken=True):
             ab = r.get("abgabe") or "–"
             out.append(f'<div class="fp-std" data-d="{_iso(r.get("datum"))}" hidden><div class="fp-kopf">Diese Stunde: {kopf} {mk}</div>'
                        f'<div class="fp-zeile"><b class="n">1</b><span>{esc(r["lesen"])}</span></div>'
-                       f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}</span></div>'
+                       f'<div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe {esc(r.get("aufgaben") or "–")}</span></div>'
                        f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div></div>')
         out.append(f'<details><summary>Alle Stunden ({len(rows)})</summary><ol class="fp-liste">'
                    + "".join(f'<li>{esc(r["wann"])}{" · " + esc(r["datum"]) if r.get("datum") else ""}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}</li>' for r in rows)
@@ -244,7 +244,7 @@ def html_kompakt_stunden(u, seite=None):
         buch = f' · {esc(r["buch"])}' if r.get("buch") else ""
         out.append(f'<div class="fp-std" data-n="{esc(nr(r))}" hidden><div class="fp-kopf">Diese Stunde: {esc(r["wann"])} {mk}</div>{titel}'
                    f'<div class="fp-zeile"><b class="n">1</b><span>{eins}</span></div>'
-                   f'<div class="fp-zeile"><b class="n">2</b><span>Im Arbeitsblatt: Aufgabe {esc(r.get("aufgaben") or "–")}{buch}'
+                   f'<div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe {esc(r.get("aufgaben") or "–")}{buch}'
                    + (f'<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: '
                       + (", ".join(f'<a class="fp-tlink" href="{esc(_href(z, seite))}">{esc(t)}</a>' for t, z in r["theorie_links"]) if r.get("theorie_links") else esc(r["theorie"])) + '</span>' if r.get("theorie") else "") + '</span></div>'
                    f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div></div>')

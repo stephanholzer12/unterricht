@@ -43,20 +43,20 @@ def rep(old, new, count=1):
 
 # ================================================================ Arbeitsblatt
 s = open(os.path.join(HERE, "vorlage_aufgaben.html"), encoding="utf-8").read()
-TITLE = "Arbeitsblatt Körper unter Belastung"
+TITLE = "Aufgaben Körper unter Belastung"
 rep(' · <a href="quiz.html">Zum Quiz</a>', "")
 s = s.replace("Foto der Heftskizze aufnehmen", "Foto deines Blattes aufnehmen").replace('"Deine Skizze (Foto)"', '"Dein Blatt (Foto)"').replace('"Foto deiner Skizze"', '"Foto deines Blattes"')
 rep("<title>Epochen-Aufgaben</title>", "<title>" + TITLE + "</title>")
 rep("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen</div>", I.EYEBROW + "</div>", 2)
 rep("<h1>Epochen-Aufgaben</h1>", "<h1>" + TITLE + "</h1>")
 rep("<h2>Epochen-Aufgaben am Handy</h2>", "<h2>" + TITLE + "</h2>")
-s = re.sub(r'(alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,)[A-Za-z0-9+/=]+', lambda m: m.group(1) + qr_b64(I.URL + "aufgaben.html"), s, count=1)
+s = re.sub(r'(alt="QR-Code zu den Aufgaben" src="data:image/png;base64,)[A-Za-z0-9+/=]+', lambda m: m.group(1) + qr_b64(I.URL + "aufgaben.html"), s, count=1)
 rep('<option value="">–</option><option>3BK</option>', '<option value="">–</option>' + "".join(f"<option>{k}</option>" for k in I.KLASSEN))
 
 ZUS = ", ".join(str(t["nr"]) for t in I.T if t["tag"] == "Zusatz")
 i = s.index('<ol class="steps hint">'); j = s.index("</ol>", i) + 5
 s = s[:i] + """<ol class="steps hint">
-      <li><b>Ein Arbeitsblatt für alles.</b> Aufgaben, Versuche und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
+      <li><b>Eine Seite für alles.</b> Aufgaben, Versuche und Theorie-Karten stehen hier. Die <a href="theorie.html">Theorie-Seite</a> ist zum Nachschlagen.</li>
       <li><b>Stunde 1:</b> Aufgaben 1–3 · <b>Stunde 2:</b> VERSUCH (Aufgabe 4) und Aufgabe 5 · <b>Stunde 3:</b> Aufgabe 6 und GRUPPENARBEIT (Aufgabe 7) · <b>Stunde 4:</b> Aufgabe 8 und GRUPPENARBEIT (Aufgabe 9) · <b>Stunde 5:</b> Aufgaben 10–11. Zusatz für Schnelle: """ + ZUS + """. Es gibt <b>keine Hausübung</b>.</li>
       <li>Bei jeder Aufgabe steht, wie lange sie dauert und wie du arbeitest: <b>SELBSTSTUDIUM</b> (allein), <b>VERSUCH</b> oder <b>GRUPPENARBEIT</b> (Gruppe). Bei Aufgabe 3 und 11 schreibst du <b>mit der Hand</b> auf ein Blatt und lädst ein Foto hoch – das Blatt kommt danach in deine Mappe. Bei vielen Aufgaben kannst du unter »Ausprobieren« selbst etwas einstellen. Tipps kosten keine Punkte.</li>
       <li><b>Abgabe: EIN PDF</b> ganz unten – in Stunde 5 in LMS hochladen. Am Ende jeder Stunde tippst du auf »PDF erstellen« und hebst es nur auf (Sicherung).</li>
@@ -115,7 +115,7 @@ s = s[:_i] + """function showCheck(t) {
 # ---- Tipp-Stufen, Theorie-Karte, Auflösung, Pegelmesser ----
 rep('  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));',
     '''  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
-  if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle Gruppen machen dasselbe · jeder trägt die Werte selbst ein" }));
+  if (t.versuch) card.append(el("p", { class: "vsid", text: "Versuch " + t.versuch + " · alle machen gleichzeitig mit · jeder trägt seine Werte selbst ein" }));
   if (t.rollen) { const rk = el("div", { class: "rollen" }); t.rollen.forEach(r => { const d = el("div", { class: "rolle" }); d.append(el("b", { text: r[0] }), el("span", { text: r[1] })); rk.append(d); }); card.append(rk); }
   if (t.pegel) card.append(pegelBox(t));
   if (t.link) { const lk = el("div", { class: "simlink" }); lk.append(el("a", { class: "btn", href: t.link[1], target: "_blank", rel: "noopener", text: t.link[0] }), el("p", { class: "simt", text: t.link[2] })); card.append(lk); }
@@ -360,7 +360,10 @@ function balkenEl(wo, nr) {
   });
 }
 function grpEl(g) {
-  const box = el("div", { class: "grpbox" }); box.append(el("div", { class: "grp", text: GRP[g] }));
+  const box = el("div", { class: "grpbox" });
+  if (/^\\d+$/.test(String(g))) { const bn = el("div", { class: "stdbanner", id: "stunde" + g });
+    bn.append(el("span", { class: "sbn", text: "STUNDE " + g }), el("span", { class: "sbt", text: String(GRP[g]).replace(/^Stunde \\d+ · /, "") })); box.append(bn); }
+  else box.append(el("div", { class: "grp", text: GRP[g] }));
   const z = ABLAUF[String(g)]; if (!z) return box;
   const ol = el("ol", { class: "ablauf" });
   z.forEach(([m, txt, ziel]) => {
@@ -381,6 +384,10 @@ rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }",
 .fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }
 .grpbox { background: #fff; border: 2px solid #D3DCC2; border-radius: 14px; padding: 10px 14px; margin: 14px 0 6px; }
 .grpbox .grp { margin-top: 0; color: #3B4A2F; }
+.grpbox:has(.stdbanner) { margin-top: 40px; border-color: #3B4A2F; border-width: 3px; }
+.stdbanner { margin: -10px -14px 10px; padding: 14px 16px; border-radius: 11px 11px 0 0; background: #3B4A2F; color: #fff; display: flex; flex-direction: column; gap: 6px; scroll-margin-top: 60px; }
+.stdbanner .sbn { align-self: flex-start; background: #D9772B; color: #fff; border-radius: 999px; padding: 4px 14px; font-size: 20px; font-weight: 800; letter-spacing: .06em; }
+.stdbanner .sbt { font-size: 19px; font-weight: 700; line-height: 1.3; }
 .ablaufk { margin: 6px 0 4px; font-size: 15px; color: #5E6652; }
 ol.ablauf { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 16px; line-height: 1.35; }
 ol.ablauf li.gem { font-weight: 700; color: #3B4A2F; }
@@ -438,7 +445,7 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .pgi { margin: 0; font-size: 17px; }
 .pgbtns { display: flex; gap: 8px; flex-wrap: wrap; } .pgbtns .btn { min-height: 44px; }
 .pgerg { display: grid; gap: 8px; font-size: 18px; background: #fff; border-radius: 10px; padding: 10px; }""")
-rep('KAP + " Zeit-Einteilung und Epochen – Aufgaben"', '"K3.1 Herz-Kreislauf · K3.6 Stützsystem und Ergonomie – Arbeitsblatt"')
+rep('KAP + " Zeit-Einteilung und Epochen – Aufgaben"', '"K3.1 Herz-Kreislauf · K3.6 Stützsystem und Ergonomie – Aufgaben"')
 rep('clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14")', 'clean("' + I.EYEBROW + " · Schulbuch S. 76–85, 107–114" + '")')
 rep('d.text("Epochen-Aufgaben", M + 15, y + 11.5)', 'd.text("' + TITLE + '", M + 15, y + 11.5)')
 rep('"Noch offen (Stunde 1 und 2): Aufgabe "', '"Noch offen (Pflicht): Aufgabe "')
@@ -533,7 +540,7 @@ def block(b):
     if k == "versuch":
         v = I.VS[b[1]]
         return (f'<div class="vbox"><div class="vhead"><span class="vnr">VERSUCH {esc(b[1])}</span><span class="vtag">KERN · Stunde {v["stunde"]}</span></div>'
-                f'<p><strong>{esc(v["titel"])}</strong></p><p>{md(b[2])}</p><a class="btn small" href="{b[3]}">Zum Versuch im Arbeitsblatt (Aufgabe {v["aufgabe"]})</a></div>')
+                f'<p><strong>{esc(v["titel"])}</strong></p><p>{md(b[2])}</p><a class="btn small" href="{b[3]}">Zum Versuch bei den Aufgaben (Aufgabe {v["aufgabe"]})</a></div>')
     raise ValueError(k)
 
 
@@ -560,12 +567,13 @@ PARTS.append(("kurz", "Zum Schluss", "Kurz & knapp", [slide("Das Wichtigste in 5
 PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [render(x) for x in TD.SCHNELLE]))
 
 TEIL_STUNDE = {tid: n for n, v in P.THEORIE_TEILE_IDS.items() for tid, _nr, _name in v}
-toc = "".join(f'<a href="#{p[0]}">{("S" + str(TEIL_STUNDE[p[0]]) + " · ") if p[0] in TEIL_STUNDE else ""}{TD.TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="aufgaben.html">Arbeitsblatt</a>'
+toc = "".join(f'<a href="#{p[0]}">{("S" + str(TEIL_STUNDE[p[0]]) + " · ") if p[0] in TEIL_STUNDE else ""}{TD.TOCLAB[p[0]]}</a>' for p in PARTS) + '<a href="aufgaben.html">Aufgaben</a>'
 def _trenner(pid):
     n = TEIL_STUNDE.get(pid)
     if not n or P.THEORIE_TEILE_IDS[n][0][0] != pid: return ""
     nrs = [nr for _id, nr, _name in P.THEORIE_TEILE_IDS[n]]
-    return f'<div class="stdtrenner" id="stunde{n}"><span>Stunde {n}</span> {esc(I.STUNDENTITEL[n])} · Teil {nrs[0]}' + (f" bis {nrs[-1]}" if len(nrs) > 1 else "") + "</div>"
+    return (f'<div class="stdtrenner" id="stunde{n}"><span class="sbn">STUNDE {n}</span><span class="sbt">{esc(I.STUNDENTITEL[n])}</span>'
+            f'<span class="sbk">Theorie Teil {nrs[0]}' + (f" bis {nrs[-1]}" if len(nrs) > 1 else "") + f' · {esc(P.BUCH[n])}</span></div>')
 UEBERSICHT = ('<div class="stduebersicht"><b>Welche Theorie gehört zu welcher Stunde?</b><ul>' + "".join(
     f'<li><a href="#stunde{n}">Stunde {n}</a>: ' + ", ".join(f'<a href="#{tid}">Teil {nr} {esc(name)}</a>' for tid, nr, name in v) + "</li>" for n, v in P.THEORIE_TEILE_IDS.items()) + "</ul></div>")
 body = "".join(f'{_trenner(p[0])}<section class="part" id="{p[0]}"><div class="band"><div class="eyebrow">{esc(p[1])}</div><h2>{esc(p[2])}</h2></div>{"".join(p[3])}</section>' for p in PARTS)
@@ -617,8 +625,10 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .sim label { display: grid; gap: 4px; font-size: 17px; } .sim input[type=range] { width: 100%; min-height: 44px; }
 .simb { display: flex; gap: 8px; flex-wrap: wrap; } .simb .btn { min-height: 44px; }
 .simt { margin: 0; font-size: 16px; color: #5E6652; }
-.stdtrenner { margin: 26px 0 0; padding: 12px 16px; border-radius: 12px; background: #3B4A2F; color: #fff; font-size: 18px; font-weight: 700; scroll-margin-top: 56px; }
-.stdtrenner span { background: #D9772B; border-radius: 999px; padding: 2px 10px; margin-right: 6px; font-size: 15px; letter-spacing: .04em; }
+.stdtrenner { margin: 44px 0 6px; padding: 16px 18px; border-radius: 14px; background: #3B4A2F; color: #fff; display: flex; flex-direction: column; gap: 6px; scroll-margin-top: 60px; box-shadow: 0 0 0 4px rgba(217,119,43,.35); }
+.stdtrenner .sbn { align-self: flex-start; background: #D9772B; border-radius: 999px; padding: 4px 14px; font-size: 20px; font-weight: 800; letter-spacing: .06em; }
+.stdtrenner .sbt { font-size: 20px; font-weight: 700; line-height: 1.3; }
+.stdtrenner .sbk { font-size: 15px; opacity: .85; }
 .stduebersicht { margin-top: 12px; border: 2px solid #D3DCC2; border-radius: 12px; padding: 10px 14px; background: #F7F9F2; }
 .stduebersicht ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 4px; } .stduebersicht a { color: #2E7D8C; font-weight: 700; }
 </style>""")
@@ -646,9 +656,9 @@ page = f"""<!doctype html>
 <section class="part" id="nachschlagen">
   <div class="band"><div class="eyebrow">So arbeitest du</div><h2>Diese Seite ist dein Nachschlagewerk</h2></div>
   <article class="slide">
-    <p>Du arbeitest im <strong>Arbeitsblatt</strong> – dort stehen alle Aufgaben, die Versuche und zu jeder Aufgabe eine Theorie-Karte. Diese Seite brauchst du,
+    <p>Du arbeitest auf der Seite <strong>Aufgaben</strong> – dort stehen alle Aufgaben, die Versuche und zu jeder Aufgabe eine Theorie-Karte. Diese Seite brauchst du,
     wenn du mehr wissen willst, und vor dem Test.</p>
-    <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a></div>
+    <div class="btns"><a class="btn" href="aufgaben.html">Aufgaben öffnen</a></div>
     {UEBERSICHT}
   </article>
 </section>
@@ -656,7 +666,7 @@ page = f"""<!doctype html>
 <section class="next" id="weiter">
   <div class="eyebrow">Weiter geht's</div>
   <h2>Jetzt bist du dran</h2>
-  <div class="btns"><a class="btn" href="aufgaben.html">Arbeitsblatt öffnen</a></div>
+  <div class="btns"><a class="btn" href="aufgaben.html">Aufgaben öffnen</a></div>
   <p class="hint">Theorie zum Nachlesen im Schulbuch Naturwissenschaften HAK 3 (Trauner) S. 76–85 und 107–114. Alle Grafiken selbst gezeichnet. <a href="../">Klassenübersicht 3AB</a></p>
   <p class="hint">Stand {STAND} · {I.V}</p>
 </section>

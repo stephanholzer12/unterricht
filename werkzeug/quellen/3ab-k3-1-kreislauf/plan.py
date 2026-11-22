@@ -62,7 +62,7 @@ STUNDE = {
      ("Aufgabe 11: Mindmap »Körper unter Belastung« per Hand", 7, True, "a11", "SELBSTSTUDIUM"),
      ("PARTNERCHECK: vier Karten über die ganze Einheit", 4, True, "partner", "PARTNERCHECK"),
      ("Auflösung »Was glaubst du?« und Selbsteinschätzung", 2, False, "selbst", ""),
-     ("PDF-Abgabe: Arbeitsblatt in LMS", 2, False, "pdf", ""),
+     ("PDF-Abgabe: Aufgaben-PDF in LMS", 2, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
 }
 
@@ -106,7 +106,7 @@ KUERZEN = {
  2: "Zeitstopp für den Versuch: spätestens Minute 30 der Stunde. Wenn es knapp wird: nur Ruhepuls und Puls direkt nach den Kniebeugen, die 3-Minuten-Messung entfällt (d) leer lassen, im Protokoll vermerken). "
     "Aufgabe 5 f) wird Zusatz. Geht der Versuch gar nicht (zu wenige dürfen mitmachen): Prof. HOLZER misst an zwei Freiwilligen, die Klasse notiert.",
  3: "Wenn es knapp wird: Die Kurzpräsentation am Skelett nur für drei Gruppen; Aufgabe 6 h) wird Zusatz. Die Gelenktypen (Aufgabe 7 c–h) bleiben Pflicht.",
- 4: "Supplierstunde möglich: Aufgabe 8 und die Rollenkarten-Gruppenarbeit (Aufgabe 9) brauchen kein Material; Theorie-Karten und die Gerinnungs-Animation stehen im Arbeitsblatt bzw. auf der Theorie-Seite. "
+ 4: "Supplierstunde möglich: Aufgabe 8 und die Rollenkarten-Gruppenarbeit (Aufgabe 9) brauchen kein Material; Theorie-Karten und die Gerinnungs-Animation stehen bei den Aufgaben bzw. auf der Theorie-Seite. "
     "Wenn es knapp wird: Aufgabe 8 e) und f) (Befund) werden Zusatz, die Diskussion entfällt – die Rollen schreiben nur d).",
  5: "Wenn es knapp wird: DEMO K3.6-D2 kürzer (nur Rucksack nah/weit, ohne Heben), der Partnercheck entfällt. Die PDF-Abgabe darf bis zum Ende des Tages nachgeholt werden.",
 }
@@ -230,7 +230,7 @@ THEORIE_TEILE_IDS = {1: [("herz", 1, "Herz"), ("kreislauf", 2, "Zwei Kreisläufe
                      3: [("knochen", 5, "Knochen"), ("gelenke", 6, "Gelenke")], 4: [("blut", 7, "Blut"), ("blutgruppen", 8, "Blutgruppen")],
                      5: [("muskeln", 9, "Muskeln"), ("ergonomie", 10, "Ergonomie")]}
 THEORIE_TEILE = {n: ", ".join(f"Teil {nr} {name}" for _id, nr, name in v) for n, v in THEORIE_TEILE_IDS.items()}
-ABGABE = {1: "–", 2: "Messwerte selbst eintragen", 3: "–", 4: "–", 5: "Arbeitsblatt-PDF in LMS"}
+ABGABE = {1: "–", 2: "Messwerte selbst eintragen", 3: "–", 4: "–", 5: "Aufgaben-PDF in LMS"}
 
 
 BUCH = {1: "Buch S. 76–78", 2: "Buch S. 79–81", 3: "Buch S. 107–110", 4: "Buch S. 81–85", 5: "Buch S. 110–114"}
@@ -364,7 +364,7 @@ def fahrplan_zeilen():
 
 
 FAHRPLAN_TEXT = ("Fünf Stunden, ein Körper unter Belastung: Stunde 1 das Herz, Stunde 2 Puls und Gefäße mit Versuch, Stunde 3 Knochen und Gelenke am Skelett, "
-                 "Stunde 4 das Blut, Stunde 5 Muskeln und Ergonomie. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. "
+                 "Stunde 4 das Blut, Stunde 5 Muskeln und Ergonomie. Alles steht auf EINER Seite »Aufgaben«, du gibst EIN PDF ab. Keine Hausübung. "
                  "Welche Stunde heute dran ist, sagt dir Prof. HOLZER.")
 
 # Überblick über die ganze Einheit (Standard 18.11.2026): eine Folie vor der Startfolie von Stunde 1
