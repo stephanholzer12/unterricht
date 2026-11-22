@@ -214,7 +214,7 @@ a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 
   });
   if (!window.__fpSprung && location.hash.length > 1) {   /* Ziel steht erst nach dem Laden der Seite fest (der Fahrplan steht davor im Text) */
     window.__fpSprung = true;
-    var los = function () { var z0 = ziel(location.hash); if (z0 && (location.hash.indexOf("#card_") === 0 || z0.classList.contains("part"))) ausrichten(z0); };
+    var los = function () { var z0 = ziel(location.hash); if (z0) ausrichten(z0); };   /* 22.11.2026: galt vorher nur für #card_ und .part – Theorie-Teile heißen .slide und landeten bis zu 1450 px zu tief */
     if (document.readyState === "complete") los(); else window.addEventListener("load", los);
   }
 })();

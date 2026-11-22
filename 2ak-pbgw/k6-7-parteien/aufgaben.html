@@ -331,7 +331,7 @@ a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 
   });
   if (!window.__fpSprung && location.hash.length > 1) {   /* Ziel steht erst nach dem Laden der Seite fest (der Fahrplan steht davor im Text) */
     window.__fpSprung = true;
-    var los = function () { var z0 = ziel(location.hash); if (z0 && (location.hash.indexOf("#card_") === 0 || z0.classList.contains("part"))) ausrichten(z0); };
+    var los = function () { var z0 = ziel(location.hash); if (z0) ausrichten(z0); };   /* 22.11.2026: galt vorher nur für #card_ und .part – Theorie-Teile heißen .slide und landeten bis zu 1450 px zu tief */
     if (document.readyState === "complete") los(); else window.addEventListener("load", los);
   }
 })();
@@ -2396,7 +2396,7 @@ window.LH_VARIANTEN = [{"id": "z1", "vars": [{"n": "a", "min": 50, "max": 70, "s
   window.LH_pdf = function (t, base) {
     if (!t.chk) return base;
     var n = (S.tries && S.tries[t.id]) || 0;
-    if (LH_viewed(t)) return "Lösung angesehen (nach " + S.solTask[t.id] + " Fehlversuch" + (S.solTask[t.id] === 1 ? "" : "en") + ") – Antwort bitte selbst bewerten";
+    if (LH_viewed(t)) return "Lösung angesehen (nach " + S.solTask[t.id] + " Fehlversuch" + (S.solTask[t.id] === 1 ? "" : "en") + ") – Prof. HOLZER bewertet die Antwort";   /* 22.11.2026: »selbst bewerten« klang nach Selbsteinschätzung der Kadetten, gemeint ist die Lehrkraft */
     var ev = evalTask(t);
     if (ev && ev.manOnly) return base;   /* nur offene Erklärung (Seite kennzeichnet sie mit man): bewertet die Lehrkraft */
     if (ev && ev.ok && ev.man) return base + (n === 0 ? " · beim 1. Versuch" : " · nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : ""));

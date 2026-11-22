@@ -1,6 +1,6 @@
 """PBGW 3BK · Meilensteine, Hochkulturen, frühe Staaten, Athen und Rom – 3 Stunden (v3).
 Trauner PBGW 3: Kap. »Meilensteine der Entwicklungsgeschichte: Ur- und Frühgeschichte – Hochkulturen« (S. 23–44) = Buchkapitel K2.1–2.3 (3.1–3.5),
-»Das Werden des modernen Staates – antike Vorbilder« (S. 105–118) = K5.1–5.4; Ergänzungsbuch »Vormoderne Kulturen« S. 58–73 (Titel, Verlag, Ausgabe unbestätigt).
+# Seitenangaben immer nur nach dem Trauner-Schulbuch (Projekt-Einstellung Stephan).
 Jahresplan v14: E3, E4, E5 (je 2 Std. = 6 Std. brutto), K01, K02, K04, K05, K06, K08, N01, N02, P3, P4, SDG 2. Stephan: 3 Termine (Mo 16.11., 23.11., 30.11.2026),
 am 23.11. 20 min Test (Stoff kommt von Stephan) + 4 min Organisation. Annahme 50 min je Stunde.
 Grundlage: ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026): Ablauf, Texte T1–T6, Aufgaben A1–A8, Quizpool – von Claude nach dem Regelwerk
@@ -47,7 +47,7 @@ TEILBUCH = {1: "Buch S. 25–39", 2: "Buch S. 39–40", 3: "Buch S. 105–118"}
 # Stundentitel: kreativ, mit Fachteil nach dem Doppelpunkt (Standard 15.11.2026)
 STUNDENTITEL = {1: "Vom Korn zur Macht: Wie aus Dörfern Staaten wurden",
                 2: "Auge um Auge – aber nicht für alle: Hammurabis Recht",
-                3: "Losen statt wählen: Athen, Rom und der Erste unter Gleichen"}
+                3: "Losen und wählen: Athen, Rom und der Erste unter Gleichen"}
 
 
 def wann(teil=None):
@@ -256,7 +256,7 @@ T = [
   "tip": ["Athen und Rom im Vergleich", "theorie.html#vergleich"], "besprechen": True},
 
  {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 7,
-  "q": "Teil 1 machst du am 16.11., Teil 2 am 30.11. a) Ordne den Karten den Zeitbereich zu (Karten 1–4 in Stunde 1, Karten 5–9 in Stunde 3). b) Begründe die Zuordnung bei zwei Karten. "
+  "q": "Teil 1 machst du in Stunde 1, Teil 2 in Stunde 3. a) Ordne den Karten den Zeitbereich zu (Karten 1–4 in Stunde 1, Karten 5–9 in Stunde 3). b) Begründe die Zuordnung bei zwei Karten. "
        "c) Ergänze eine Karte, die zeigt, dass nicht alle Entwicklungen überall gleichzeitig verliefen. d) Schlusssatz nach Teil 1: Was haben Landwirtschaft, Metall, Schrift und Städte mit Organisation und Herrschaft zu tun? (1 Satz)",
   "hint": "Jahreszahlen sind Orientierung. Die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",
   "type": "multi",
@@ -314,7 +314,7 @@ T = [
   "tip": ["Recht ist nicht gleich Gleichheit", "theorie.html#regeln"]},
 
  {"id": "a11", "nr": 11, "title": "Woher kam das Kupfer?", "src": "Buch S. 30 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
-  "q": "Das Südtiroler Archäologiemuseum und die Universität Padua haben über 50 Metallgegenstände untersucht (Pressemeldung vom 1. März 2024). Lies die Meldung (Link auf der Seite »Medien« im Theorieteil, Suchtipp »Archäometallurgie Ötzi Kupfer Pressemeldung«). "
+  "q": "Das Südtiroler Archäologiemuseum und die Universität Padua haben über 50 Metallgegenstände untersucht (Pressemeldung vom 1. März 2024). Lies die Meldung (Link im Theorie-Teil »Metall, Können und Austausch« unter »Zum Lesen«, Suchtipp »Archäometallurgie Ötzi Kupfer Pressemeldung«). "
        "a) Wie kann man die Herkunft von Kupfer bestimmen? b) Woher stammt das Kupfer von Ötzis Beil laut der Meldung? c) Warum ist das noch kein Beweis, dass Ötzi selbst dorthin gereist ist?",
   "hint": "Recherche: Pressemeldung des Museums, Stand 2024. Info: Theorieteil »Metall, Können und Austausch«",
   "type": "multi",
@@ -500,7 +500,7 @@ assert {t["hd"] for t in T if "hd" in t} == {"A", "B", "C"}, "A, B und C müssen
 # ---------------------------------------------------------------- »Ziele erreicht?« (Selbsteinschätzung, keine Punkte)
 _ZT = {1: "Theorie »Vom Sammeln zum Vorrat« · Buch S. 25–28", 2: "Theorie »Frühe Staaten« · Buch S. 33–39",
        3: "Theorie »Was die Regeln verraten« · Buch S. 39–40", 4: "Theorie »Athen und Rom im Vergleich« · Buch S. 109–115"}
-T.append({"id": "zz", "nr": 13, "title": "Ziele erreicht? Deine Selbsteinschätzung", "src": "Meine Ziele (Theorie oben)", "own": True,
+_ZZ = ({"id": "zz", "nr": 13, "title": "Ziele erreicht? Deine Selbsteinschätzung", "src": "Meine Ziele (Theorie oben)", "own": True,
   "tag": "Selbsteinschätzung", "h": 3, "zeit": 2, "type": "multi", "vorhersage": True,
   "q": "Schätz ehrlich ein, wie gut du die vier Ziele der Einheit erreicht hast. Es gibt keine Punkte. Bei »noch nicht«: Lies den angegebenen Theorie-Teil und die Buchseite noch einmal.",
   "hint": "Ehrlich ist besser als schön – das hilft dir beim Lernen für den Test.",
@@ -508,6 +508,7 @@ T.append({"id": "zz", "nr": 13, "title": "Ziele erreicht? Deine Selbsteinschätz
               ["zur Gänze", "überwiegend", "noch nicht"], False] for z in ZIELE],
   "chk": {}, "sol": [["Hinweis", ["Selbsteinschätzung – keine richtige oder falsche Antwort."]]],
   "tip": ["Meine Ziele", "theorie.html#ziele"]})
+T.insert(min(i for i, t in enumerate(T) if t["tag"] == "Zusatz"), _ZZ)   # vor den Zusatzaufgaben, damit der Stundenkasten nur einmal kommt
 
 # ====================================================================== ABCD-Karte (Standard 15.11.2026)
 # (Frage, richtig, [drei Ablenker aus echten Fehlvorstellungen], kurze Erklärung). Anzeige mischt die Antworten.
@@ -568,14 +569,17 @@ MCHECK = [
     ["Dämme waren verboten", "Wasser gehörte dem König", "Bauern durften keine Felder besitzen"], "S. 39–40")]},
  {"thema": "Athen und Rom", "n": 2, "fragen": [
    ("a1", "Wer durfte in Athen in der Volksversammlung entscheiden?", "Erwachsene männliche Bürger",
-    ["Alle Einwohner", "Nur die Strategen", "Frauen und Männer mit Bürgerrecht"], "S. 109–111"),
+    ["Alle Einwohner der Stadt", "Nur die Strategen", "Alle, die in Athen geboren wurden"], "S. 109–111"),
    ("a2", "Wie wurden in Athen die Strategen bestimmt?", "Durch Wahl", ["Durch das Los", "Durch Erbfolge", "Durch den Rat der 500 allein"], "S. 109–111"),
    ("a3", "Was kennzeichnet den Prinzipat des Augustus?", "Die Einrichtungen bleiben, die entscheidende Macht liegt bei einer Person",
     ["Der Senat wurde abgeschafft", "Alle Römer hatten gleich viel Macht", "Es gab keine Ämter mehr"], "S. 114–115"),
    ("a4", "Warum war die römische Republik keine moderne Demokratie?", "Herkunft und Vermögen prägten die Beteiligung stark",
     ["Es gab gar keine Ämter", "Alle Bewohner durften abstimmen", "Der Kaiser bestimmte alles"], "S. 112–115")]},
  {"thema": "Zeitstrahl", "n": 1, "fragen": [
-   ("z1", "jahre", "", [], "S. 24–40")]},
+   ("z1", "Was war zuerst da?", "Die Landwirtschaft im Vorderen Orient – lange vor der Schrift",
+    ["Die Schrift – erst danach die Landwirtschaft", "Beides begann gleichzeitig", "Die Städte – erst danach die Landwirtschaft"], "S. 24–40"),
+   ("z2", "Was zeigt der gemeinsame Zeitstrahl?", "Die Entwicklungen liefen nicht überall gleichzeitig ab",
+    ["Überall begann alles zur selben Zeit", "Jede Entwicklung dauerte genau 100 Jahre", "Die Reihenfolge ist bis heute unbekannt"], "S. 24–40")]},
 ]
 assert sum(g["n"] for g in MCHECK) == 10
 assert all(len(f[3]) == 3 or f[1] == "jahre" for g in MCHECK for f in g["fragen"])

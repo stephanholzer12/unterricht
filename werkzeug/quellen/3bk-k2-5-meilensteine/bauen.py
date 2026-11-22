@@ -272,10 +272,12 @@ open(DST + "aufgaben.html", "w", encoding="utf-8").write(s)
 # ================================================================ Quiz
 qs = ",\n".join("  { t: %s, q: %s, a: %s, e: %s, p: %s }" % tuple(json.dumps(x, ensure_ascii=False) for x in (t, nb(q), [nb(z) for z in a], nb(e), p)) for t, q, a, e, p in I.QUIZ)
 qv = open(os.path.join(WZ, "vorlagen", "quiz_vorlage.html"), encoding="utf-8").read()
-qv = qv.replace("<title>Bindungs-Check</title>", "<title>Meilenstein-Check – Quiz</title>")
+qv = qv.replace("<title>Bindungs-Check</title>", "<title>Quiz zum Üben – Meilensteine</title>")
 qv = qv.replace("NAWI · 2AB · K1.2 Die Bindungsarten", I.EYEBROW)
-qv = qv.replace("<h1>Bindungs-Check</h1>", "<h1>Meilenstein-Check</h1>").replace("<h2>Bindungs-Check am Handy</h2>", "<h2>Meilenstein-Check am Handy</h2>")
-qv = qv.replace('alt="QR-Code zum Bindungs-Check"', 'alt="QR-Code zum Meilenstein-Check"')
+qv = qv.replace("<h1>Bindungs-Check</h1>", "<h1>Quiz zum Üben</h1>").replace("<h2>Bindungs-Check am Handy</h2>", "<h2>Quiz zum Üben am Handy</h2>")
+qv = qv.replace("</h1>", "</h1>\n<a href=\"aufgaben.html\" class=\"abbtn\">Arbeitsblatt öffnen – dort arbeitest du</a>", 1)
+qv = qv.replace("</style>", ".abbtn{display:block;text-align:center;background:#7FA83A;color:#fff;font-weight:700;font-size:19px;text-decoration:none;border-radius:12px;padding:14px 16px;margin:10px 0;min-height:44px}</style>")
+qv = qv.replace('alt="QR-Code zum Bindungs-Check"', 'alt="QR-Code zum Quiz"')
 qv = qv.replace('Frage 1 von 16', 'Frage 1 von %d' % len(I.QUIZ))
 a, b = qv.index("const Q = ["), qv.index("];", qv.index("const Q = [")) + 2
 qv = qv[:a] + "const Q = [\n" + qs + "\n];" + qv[b:]
@@ -337,7 +339,11 @@ def video(key):
 
 
 def figure(src, alt, cap):
-    return f'<figure class="fig"><img src="{src}" alt="{esc(alt)}" loading="lazy"><figcaption>{md(cap)}</figcaption></figure>'
+    # Breite und Höhe mitgeben: Sonst wächst die Seite beim Nachladen und der Sprung aus dem Arbeitsblatt landet zu tief (Standard 18.11.2026).
+    import struct
+    _p = os.path.join(ROOT, I.ORDNER, src)
+    _w, _h = struct.unpack(">II", open(_p, "rb").read(24)[16:24]) if os.path.exists(_p) else (900, 600)
+    return f'<figure class="fig"><img src="{src}" alt="{esc(alt)}" width="{_w}" height="{_h}" loading="lazy"><figcaption>{md(cap)}</figcaption></figure>'
 
 
 def karten(items):

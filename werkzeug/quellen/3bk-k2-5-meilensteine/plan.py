@@ -245,7 +245,10 @@ ANTWORT = {   # Felder ohne Auswahl: kurze Musterantwort für die Sicherungs-Fol
  (4, "gleich"): "Schriftlich heißt nicht gleich: Die Strafe hing vom Stand des Opfers ab.",
  (5, "aus"): "Frauen · zugewanderte Metöken · versklavte Menschen.",
  (6, "macht"): "Befehl über die wichtigsten Heere, Amtsbefugnisse auf Dauer, Geld und Ansehen.",
- (7, "wahl"): "Je breiter die Macht verteilt ist, desto mehr Menschen können mitentscheiden und kontrollieren.",
+ (7, "wahl"): "Athen: Volksversammlung und Los – viele Bürger entscheiden mit, aber eben nur Bürger. "
+             "Prinzipat: Heer und die wichtigsten Befugnisse bei einer Person – Senat und Ämter kontrollieren ihn kaum. "
+             "(Nicht: »verteilte Macht = alle entscheiden mit« – in der römischen Republik war die Macht auf viele Ämter verteilt, "
+             "mitentschieden hat trotzdem vor allem die Oberschicht.)",
 }
 
 
@@ -304,13 +307,17 @@ def balken():
     """Balken im Arbeitsblatt zwischen den Aufgaben: {"vor": {Aufgabennr: [[Marke, Text], …]}, "nach": {…}}.
     Phasen vor der ersten Aufgabe einer Stunde stehen schon im Kasten »So läuft die Stunde« – außer DEMO, Test und KURZ KLÄREN."""
     vor, nach = {}, {}
+    # Die Karte einer Aufgabe steht im Block ihrer Stunde laut inhalt.py. Aufgabe 8 läuft über Stunde 1 und 3,
+    # ihre Karte sitzt aber in Stunde 3 – der Schluss-Balken der Stunde 1 muss deshalb an die letzte Karte DIESER Stunde (22.11.2026).
+    karte_h = {t["nr"]: t["h"] for t in I.T}
     for n, rows in STUNDE.items():
         warte, erste, letzte = [], True, None
         for text, _mi, _oh, art, marke in rows:
             if re.match(r"a\d+$", art):
                 nr = int(art[1:])
                 if warte: vor.setdefault(nr, []).extend(warte)
-                warte, erste, letzte = [], False, nr
+                warte, erste = [], False
+                if karte_h.get(nr) == n: letzte = nr
                 continue
             if art in ("org", "reserve", "pdf") or (erste and art == "wdh"): continue
             t = re.sub(r"^(KURZ KLÄREN|BESPRECHEN|SELBSTSTUDIUM|ALLE GEMEINSAM|PARTNERCHECK): ", "", text).split(" (")[0]

@@ -1096,7 +1096,7 @@ window.LH_VARIANTEN = [];
   window.LH_pdf = function (t, base) {
     if (!t.chk) return base;
     var n = (S.tries && S.tries[t.id]) || 0;
-    if (LH_viewed(t)) return "Lösung angesehen (nach " + S.solTask[t.id] + " Fehlversuch" + (S.solTask[t.id] === 1 ? "" : "en") + ") – Antwort bitte selbst bewerten";
+    if (LH_viewed(t)) return "Lösung angesehen (nach " + S.solTask[t.id] + " Fehlversuch" + (S.solTask[t.id] === 1 ? "" : "en") + ") – Prof. HOLZER bewertet die Antwort";   /* 22.11.2026: »selbst bewerten« klang nach Selbsteinschätzung der Kadetten, gemeint ist die Lehrkraft */
     var ev = evalTask(t);
     if (ev && ev.manOnly) return base;   /* nur offene Erklärung (Seite kennzeichnet sie mit man): bewertet die Lehrkraft */
     if (ev && ev.ok && ev.man) return base + (n === 0 ? " · beim 1. Versuch" : " · nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : ""));
