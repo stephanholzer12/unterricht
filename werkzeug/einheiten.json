@@ -631,8 +631,7 @@
     "26-27-2AB-K1.3-Reaktionen-QR-Theorie-v1.png",
     "26-27-2AB-K1.3-Reaktionen-QR-Versuche-v1.png"
    ]
-  },
-  "aktuell": true
+  }
  },
  {
   "klasse": "2AB",
@@ -648,6 +647,7 @@
    "check.html"
   ],
   "versteckt": false,
+  "aktuell": true,
   "kapitelmenue": true,
   "fahrplan": {
    "ansicht": "kompakt",
