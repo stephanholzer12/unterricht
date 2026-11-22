@@ -212,9 +212,22 @@ function grpEl(g) {
     ol.append(li);
   });
   box.append(el("p", { class: "ablaufk", text: "So läuft die Stunde. Fett = mit der ganzen Klasse (BESPRECHEN, DEMO, GRUPPENARBEIT, DISKUSSION):" }), ol);
+  if (z.some(([m]) => m === "SELBSTSTUDIUM")) box.append(selbstHilfe());
   const kb = el("button", { type: "button", class: "abcdbtn", text: "ABCD-Karte öffnen – für »Weißt du noch?« und Vermutungen" });
   kb.addEventListener("click", abcdAuf); box.append(kb);
   return box;
+}
+/* Was heißt SELBSTSTUDIUM? (Standard 22.11.2026) – steht überall dort, wo die Marke vorkommt. */
+function selbstHilfe() {
+  const d = el("details", { class: "selbsth" });
+  d.append(el("summary", { text: "Was heißt Selbststudium?" }));
+  const ul = el("ul");
+  ["Lies den angegebenen Abschnitt im Buch (die Seite steht dabei) oder in der Theorie ganz durch.",
+   "Markiere die wichtigsten Stellen: Fachbegriffe, Definitionen, Zahlen.",
+   "Schreib dir Stichworte, eine kleine Skizze oder offene Fragen in die Mappe.",
+   "Erst dann die Aufgaben dazu lösen. Offene Fragen in der Stunde an Prof. HOLZER."].forEach(t => ul.append(el("li", { text: t })));
+  d.append(ul);
+  return d;
 }
 let lastH = null;""")
 rep("</style>", """.grpbox { background: #fff; border: 2px solid #D3DCC2; border-radius: 14px; padding: 10px 14px; margin: 14px 0 6px; }
@@ -234,6 +247,9 @@ ol.ablauf a { color: #2E7D8C; font-weight: 700; }
 .gesichert { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: center; margin: 6px 0 10px; padding: 6px 10px; border-radius: 10px; background: #EEF1E6; font-size: 15.5px; font-weight: 600; color: #3B4A2F; }
 .gesichert .phm { font-size: 12px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 7px; }
 .phabcd { margin-left: auto; min-height: 44px; font: inherit; font-size: 15px; font-weight: 700; border-radius: 999px; border: 2px solid #2E7D8C; background: #fff; color: #2E7D8C; padding: 4px 14px; cursor: pointer; }
+.selbsth { margin: 8px 0 2px; border: 2px solid #B8962E; border-radius: 10px; padding: 6px 12px; background: #F7F1DE; font-size: 15.5px; }
+.selbsth summary { cursor: pointer; font-weight: 700; color: #8A6400; min-height: 44px; display: flex; align-items: center; }
+.selbsth ul { margin: 4px 0 6px; padding-left: 20px; display: grid; gap: 4px; }
 .abcdbtn { margin-top: 10px; width: 100%; min-height: 48px; font: inherit; font-weight: 700; font-size: 16px; border-radius: 12px; border: 2px solid #3B4A2F; background: #fff; color: #3B4A2F; cursor: pointer; }
 #abcd { position: fixed; inset: 0; z-index: 200; background: #11150F; display: flex; flex-direction: column; padding: 12px; gap: 10px; }
 #abcd[hidden] { display: none; }

@@ -2324,7 +2324,6 @@
    "aufgaben.html",
    "quiz.html"
   ],
-  "aktuell": true,
   "fahrplan": {
    "text": "Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.",
    "zeilen": [
@@ -2366,7 +2365,6 @@
    "quiz.html",
    "check.html"
   ],
-  "versteckt": true,
   "kapitelmenue": true,
   "fahrplan": {
    "ansicht": "kompakt",
@@ -2591,6 +2589,7 @@
     "26-27-3BK-K2.1-5.4-Meilenst-TH-Fachwissen-v3.docx"
    ]
   },
-  "lehrerseite": "https://claude.ai/artifact/RknDezX91aGrafrUFaqtJd"
+  "lehrerseite": "https://claude.ai/artifact/RknDezX91aGrafrUFaqtJd",
+  "aktuell": true
  }
 ]
