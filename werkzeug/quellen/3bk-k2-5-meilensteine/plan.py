@@ -46,7 +46,7 @@ STUNDE = {
      ("Aufgabe 6: Augustus – Aussage und Machtverteilung", 6, False, "a6", "GRUPPENARBEIT"),
      ("Aufgabe 7: Vier Formen der Herrschaft vergleichen", 5, False, "a7", "GRUPPENARBEIT"),
      ("Aufgabe 8, Teil 2: Karten 5–9, Begründung und eigene Karte", 4, True, "a8", "GRUPPENARBEIT"),
-     ("Ziele erreicht? Selbsteinschätzung im Arbeitsblatt", 2, False, "a13", ""),
+     ("Ziele erreicht? Selbsteinschätzung im Arbeitsblatt", 2, False, "a9", ""),
      ("BESPRECHEN: Aufstellen auf einer Skala (0–10) und Sicherung", 3, True, "bespr", "BESPRECHEN"),
      ("PDF-Abgabe: Arbeitsblatt in LMS", 2, False, "pdf", ""),
      ("Reserve", 6, True, "reserve", "")],
@@ -79,7 +79,7 @@ for n, ph in STUNDE.items():
             _teile.setdefault(int(art[1:]), []).append((n, mi))
 for nr, lst in _teile.items():                      # jede Aufgabe: Summe ihrer Phasen = Zeit der Aufgabe
     assert sum(m for _n, m in lst) == _Z[nr], (nr, lst, _Z[nr])
-assert sorted(_teile) == I.PFLICHT + [13], (sorted(_teile), I.PFLICHT)   # 13 = »Ziele erreicht?« (Selbsteinschätzung)
+assert sorted(_teile) == I.PFLICHT + [9], (sorted(_teile), I.PFLICHT)   # 9 = »Ziele erreicht?« (Selbsteinschätzung)
 assert [n for n, _m in _teile[8]] == [1, 3], "Aufgabe 8 läuft über Stunde 1 und 3"
 for nr, lst in _teile.items():                      # einteilige Aufgaben stehen in ihrer Stunde laut inhalt.py
     if len(lst) == 1:
@@ -213,7 +213,7 @@ def folge(n):
         if m:
             nr = int(m.group(1))
             tid = next(t["id"] for t in I.T if t["nr"] == nr)
-            name = ("Ziele erreicht?" if nr == 13 else "Aufgabe %d" % nr + (" (Teil %d)" % (1 if n == 1 else 2) if nr == 8 else ""))
+            name = ("Ziele erreicht?" if nr == 9 else "Aufgabe %d" % nr + (" (Teil %d)" % (1 if n == 1 else 2) if nr == 8 else ""))
             out.append(["" if marke in ("", "GRUPPENARBEIT") else marke, name, "aufgaben.html#card_" + tid])
         elif art == "demo": out.append(["DEMO", "DEMO " + DEMO_NAME[n]])
         elif art == "wdh": out.append(["BESPRECHEN", "Weißt du noch?"])
@@ -338,6 +338,12 @@ EINHEIT = {
 }
 
 
+# Zusatzaufgaben: stehen in JEDER Stunde zur Verfügung (Stephan, 23.11.2026) – im Fahrplan sichtbar, bei Zeitnot fallen sie weg
+ZUSATZ_NRS = [t["nr"] for t in I.T if t.get("tag") == "Zusatz"]
+ZUSATZ_LINKS = [["Aufgabe %d · %s" % (t["nr"], t["title"].split(":")[0].split(" – ")[0]), "aufgaben.html#card_" + t["id"]]
+                for t in I.T if t.get("tag") == "Zusatz"]
+
+
 def fahrplan_zeilen():
     z = []
     for n in sorted(STUNDE):
@@ -346,9 +352,10 @@ def fahrplan_zeilen():
         z.append({"wann": f"Stunde {n}", "titel": I.STUNDENTITEL[n], "marke": MARKE[n], "lesen": LESEN[n], "folge": folge(n), "buch": BUCH[n],
                   "aufgaben": auf, "theorie": THEORIE_TEILE[n],
                   "theorie_links": [[name, "theorie.html#" + tid] for tid, name in THEORIE_TEILE_IDS[n]],
+                  "zusatz": "Zusatz %s" % bereich(ZUSATZ_NRS), "zusatz_links": ZUSATZ_LINKS,
                   "abgabe": ABGABE[n]})
-    z.append({"wann": "Für Schnelle", "lesen": "Eigene Lieferliste, KI-Fehlerjagd, Woher kam das Kupfer?, Partnercheck",
-              "aufgaben": "Zusatz 9–12", "zeit": "ca. 31 min", "abgabe": "freiwillig"})
+    z.append({"wann": "Für Schnelle", "lesen": "Eigene Lieferliste, KI-Fehlerjagd, Woher kam das Kupfer?, Partnercheck, Artikel lesen und prüfen",
+              "aufgaben": "Zusatz %s" % bereich(ZUSATZ_NRS), "zeit": "ca. 41 min", "abgabe": "freiwillig"})
     z.append({"wann": "Danach", "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"})
     return z
 

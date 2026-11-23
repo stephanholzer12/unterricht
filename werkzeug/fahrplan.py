@@ -193,7 +193,18 @@ STUNDEN_JS = """<script>
   zeige(n);
   /* Sprungziele (Aufgabe n, Theorie-Teil): Bilder laden nach und verschieben das Ziel – darum mehrmals ausrichten */
   function ziel(h) { try { return h && h.length > 1 ? document.getElementById(decodeURIComponent(h.slice(1))) : null; } catch (e) { return null; } }
-  function hin(z) { var nav = document.querySelector("nav.toc"); window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - (nav ? nav.getBoundingClientRect().bottom + 8 : 12), behavior: "instant" }); }
+  /* 23.11.2026: Abstand von der festen Leiste selbst messen – auf der Theorie-Seite heißt sie nav.toc, im Arbeitsblatt nav.ks-topnav */
+  function oben() {
+    var y = 12;
+    document.querySelectorAll("nav, header, .toc, .ks-topnav").forEach(function (k) {
+      var cs = getComputedStyle(k); if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      var r = k.getBoundingClientRect(); if (!r.height || r.height > 140 || r.top > 8) return;
+      y = Math.max(y, r.bottom + 8);
+    });
+    return y;
+  }
+  function aufklappen(z) { for (var e = z; e; e = e.parentElement) { if (e.tagName === "DETAILS" && !e.open) e.open = true; } }
+  function hin(z) { aufklappen(z); window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - oben(), behavior: "instant" }); }
   function ausrichten(z) {   /* bis ca. 5 s nachjustieren; sobald der Kadett selbst scrollt oder tippt, sofort aufhören */
     var n = 0, aus = false, stopp = function () { aus = true; };
     ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (e) { window.addEventListener(e, stopp, { once: true, passive: true }); });
@@ -247,7 +258,13 @@ def html_kompakt_stunden(u, seite=None):
                    f'<div class="fp-zeile"><b class="n">2</b><span>Bei den Aufgaben: Aufgabe {esc(r.get("aufgaben") or "–")}{buch}'
                    + (f'<br><span class="fp-th" style="color:#2E7D8C;font-weight:700">Dazu in der Theorie: '
                       + (", ".join(f'<a class="fp-tlink" href="{esc(_href(z, seite))}">{esc(t)}</a>' for t, z in r["theorie_links"]) if r.get("theorie_links") else esc(r["theorie"])) + '</span>' if r.get("theorie") else "") + '</span></div>'
-                   f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div></div>')
+                   f'<div class="fp-zeile"><b class="n">3</b><span>Abgabe: {esc("keine" if ab == "–" else ab)}</span></div>'
+                   # optional (seit 23.11.2026, Stephan): »zusatz« = Was es für Schnelle gibt, »zusatz_links« = [[Text, Ziel], …]
+                   + (f'<div class="fp-zeile fp-zz"><b class="n">+</b><span>Schon fertig? Dann weiter mit: '
+                      + (", ".join(f'<a class="fp-tlink" href="{esc(_href(z, seite))}">{esc(t)}</a>' for t, z in r["zusatz_links"])
+                         if r.get("zusatz_links") else esc(r.get("zusatz") or ""))
+                      + ' <small style="color:#5E6652">· Zusatz, fällt weg, wenn die Zeit knapp wird</small></span></div>'
+                      if (r.get("zusatz") or r.get("zusatz_links")) else "") + '</div>')
     out.append(f'<details><summary>Alle Stunden ({len(rows)})</summary><ol class="fp-liste">'
                + "".join(f'<li data-n="{esc(nr(r))}">{esc(r["wann"])}{" · " + esc(r["titel"]) if r.get("titel") else ""}{" · " + esc(r["marke"]) if r.get("marke") else ""} – {esc(r["lesen"])}{" · Theorie: " + esc(r["theorie"]) if r.get("theorie") else ""}</li>' for r in rows)
                + "</ol></details>")

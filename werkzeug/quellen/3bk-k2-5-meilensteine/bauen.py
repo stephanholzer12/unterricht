@@ -362,6 +362,7 @@ def block(b):
     if k == "reveal": return "".join(reveal(q, a) for q, a in b[1])
     if k == "img": return figure(b[1], b[2], b[3])
     if k == "karten": return karten(b[1])
+    if k == "link": return f'<p class="qlink"><a href="{esc(b[1][1])}" target="_blank" rel="noopener">{esc(b[1][0])}</a></p>'
     if k == "buch": return f'<div class="buch"><span class="bicon">Buch</span><p>{md(b[1])}</p></div>'
     raise ValueError(k)
 
@@ -437,6 +438,10 @@ details.reveal p { margin: 8px 0 0; }
 .vtag { font-size: 13px; font-weight: 700; color: #fff; background: #3B4A2F; border-radius: 999px; padding: 2px 10px; }
 .vbox .btn { justify-self: start; background: #A33A2B; color: #fff; text-decoration: none; font-weight: 700; border-radius: 10px; padding: 8px 14px; }
 .karten { display: grid; gap: 8px; }
+.qlink { margin: 10px 0 0; }
+.qlink a { display: inline-block; min-height: 44px; box-sizing: border-box; padding: 10px 14px; border: 2px solid #2E7D8C; border-radius: 10px;
+  background: #fff; color: #1F5F6B; font-weight: 700; text-decoration: none; line-height: 1.3; }
+.qlink a:hover { background: #E7F1F3; }
 .buch { display: flex; gap: 12px; align-items: center; background: #EEF3E4; border: 2px solid #3B4A2F; border-radius: 12px; padding: 10px 14px; }
 .buch p { margin: 0; } .bicon { font-weight: 700; color: #fff; background: #3B4A2F; border-radius: 8px; padding: 4px 10px; }
 .karte { border: 1px solid #D3DCC2; border-radius: 12px; padding: 10px 12px; background: #fff; }

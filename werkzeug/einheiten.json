@@ -2447,6 +2447,29 @@
        "theorie.html#zeitstrahl"
       ]
      ],
+     "zusatz": "Zusatz 10–14",
+     "zusatz_links": [
+      [
+       "Aufgabe 10 · Eine eigene Lieferliste",
+       "aufgaben.html#card_a9"
+      ],
+      [
+       "Aufgabe 11 · Eine KI-Antwort prüfen",
+       "aufgaben.html#card_a10"
+      ],
+      [
+       "Aufgabe 12 · Woher kam das Kupfer?",
+       "aufgaben.html#card_a11"
+      ],
+      [
+       "Aufgabe 13 · Partnercheck",
+       "aufgaben.html#card_a12"
+      ],
+      [
+       "Aufgabe 14 · Lesen und prüfen",
+       "aufgaben.html#card_les"
+      ]
+     ],
      "abgabe": "–"
     },
     {
@@ -2484,6 +2507,29 @@
       [
        "Recht ist nicht gleich Gleichheit",
        "theorie.html#gleichheit"
+      ]
+     ],
+     "zusatz": "Zusatz 10–14",
+     "zusatz_links": [
+      [
+       "Aufgabe 10 · Eine eigene Lieferliste",
+       "aufgaben.html#card_a9"
+      ],
+      [
+       "Aufgabe 11 · Eine KI-Antwort prüfen",
+       "aufgaben.html#card_a10"
+      ],
+      [
+       "Aufgabe 12 · Woher kam das Kupfer?",
+       "aufgaben.html#card_a11"
+      ],
+      [
+       "Aufgabe 13 · Partnercheck",
+       "aufgaben.html#card_a12"
+      ],
+      [
+       "Aufgabe 14 · Lesen und prüfen",
+       "aufgaben.html#card_les"
       ]
      ],
      "abgabe": "–"
@@ -2561,13 +2607,36 @@
        "theorie.html#anschluss"
       ]
      ],
+     "zusatz": "Zusatz 10–14",
+     "zusatz_links": [
+      [
+       "Aufgabe 10 · Eine eigene Lieferliste",
+       "aufgaben.html#card_a9"
+      ],
+      [
+       "Aufgabe 11 · Eine KI-Antwort prüfen",
+       "aufgaben.html#card_a10"
+      ],
+      [
+       "Aufgabe 12 · Woher kam das Kupfer?",
+       "aufgaben.html#card_a11"
+      ],
+      [
+       "Aufgabe 13 · Partnercheck",
+       "aufgaben.html#card_a12"
+      ],
+      [
+       "Aufgabe 14 · Lesen und prüfen",
+       "aufgaben.html#card_les"
+      ]
+     ],
      "abgabe": "Arbeitsblatt-PDF in LMS"
     },
     {
      "wann": "Für Schnelle",
-     "lesen": "Eigene Lieferliste, KI-Fehlerjagd, Woher kam das Kupfer?, Partnercheck",
-     "aufgaben": "Zusatz 9–12",
-     "zeit": "ca. 31 min",
+     "lesen": "Eigene Lieferliste, KI-Fehlerjagd, Woher kam das Kupfer?, Partnercheck, Artikel lesen und prüfen",
+     "aufgaben": "Zusatz 10–14",
+     "zeit": "ca. 41 min",
      "abgabe": "freiwillig"
     },
     {

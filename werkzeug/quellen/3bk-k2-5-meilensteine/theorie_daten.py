@@ -112,8 +112,19 @@ SCHNELLE = [
                      "**Wozu**? Soll es informieren, loben, rechtfertigen oder Herrschaft begründen?",
                      "**Was** kann man daraus nur vermuten, und was lässt sich **belegen**?",
                      "Beispiele hier: Hammurabis Sammlung (königliche Selbstdarstellung), Augustus' Tatenbericht (Selbstdarstellung), das Perikles-Gemälde von 1852 (späte Darstellung)."]),
-             ("hint", "Auch eine Lagemeldung beim Bundesheer ist eine Quelle mit Blickwinkel – sie wird mit anderen Meldungen verglichen, bevor man entscheidet.")]},
- ("jetzt", "Zu den Zusatzaufgaben 9–12", "aufgaben.html#card_a9"),
+             ("hint", "Auch eine Lagemeldung beim Bundesheer ist eine Quelle mit Blickwinkel – sie wird mit anderen Meldungen verglichen, bevor man entscheidet.")]}, {"id": "mehr", "title": "Noch mehr wissen: Hat sich der Ackerbau überhaupt gelohnt?", "pill": "Zusatztheorie · Aufgabe 14",
+  "blocks": [("ul", ["In Teil 1 steht: Mit dem Ackerbau kam der Vorrat, und mit dem Vorrat kam alles andere. Das klingt nach einem klaren Fortschritt. "
+                     "Die Forschung sieht das längst nicht so eindeutig.",
+                     "Der Wirtschaftswissenschaftler **Samuel Bowles** hat 2011 durchgerechnet, wie viele Kalorien eine Stunde Feldarbeit damals "
+                     "einbrachte – und das mit der Arbeit von Jägern und Sammlern verglichen. Sein Ergebnis: Die ersten Bauern haben wahrscheinlich "
+                     "**mehr** gearbeitet, nicht weniger. Werkzeug, Verarbeitung, Lagerung, Schutz der Ernte: alles kostete Zeit. Dazu kommen "
+                     "Knochenfunde, die auf Mangelernährung, kleinere Körpergröße und starke Abnutzung hinweisen.",
+                     "Warum die Menschen trotzdem umgestiegen sind, ist damit offen. Bowles vermutet soziale Gründe: Wer dicht zusammenlebt und "
+                     "größere Gruppen bildet, kann sich besser organisieren – und ist im Streit mit anderen Gruppen stärker. Belegt ist das nicht."]),
+             ("link", ["Spektrum: »Neolithische Revolution: Ackern, ohne satt zu werden« (09.03.2011)", I.LESE_LINK]),
+             ("hint", "Lies den Artikel selbst und mach dann Aufgabe 14. Achte auf zwei Dinge: Der Artikel nennt keinen Autornamen, nur das Kürzel "
+                      "»jd«. Und die Zahlen kommen aus einer Modellrechnung von 2011, nicht aus einer Messung.")]},
+ ("jetzt", "Zu den Zusatzaufgaben 10–14", "aufgaben.html#card_a9"),
 ]
 
 TOCLAB = {"einstieg": "Einstieg", "teil1": "Teil 1 · Vorrat bis Staat", "teil2": "Teil 2 · Hammurabi", "teil3": "Teil 3 · Athen und Rom",

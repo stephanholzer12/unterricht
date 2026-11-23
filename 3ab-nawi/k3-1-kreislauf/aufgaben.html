@@ -312,7 +312,18 @@ a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 
   zeige(n);
   /* Sprungziele (Aufgabe n, Theorie-Teil): Bilder laden nach und verschieben das Ziel – darum mehrmals ausrichten */
   function ziel(h) { try { return h && h.length > 1 ? document.getElementById(decodeURIComponent(h.slice(1))) : null; } catch (e) { return null; } }
-  function hin(z) { var nav = document.querySelector("nav.toc"); window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - (nav ? nav.getBoundingClientRect().bottom + 8 : 12), behavior: "instant" }); }
+  /* 23.11.2026: Abstand von der festen Leiste selbst messen – auf der Theorie-Seite heißt sie nav.toc, im Arbeitsblatt nav.ks-topnav */
+  function oben() {
+    var y = 12;
+    document.querySelectorAll("nav, header, .toc, .ks-topnav").forEach(function (k) {
+      var cs = getComputedStyle(k); if (cs.position !== "fixed" && cs.position !== "sticky") return;
+      var r = k.getBoundingClientRect(); if (!r.height || r.height > 140 || r.top > 8) return;
+      y = Math.max(y, r.bottom + 8);
+    });
+    return y;
+  }
+  function aufklappen(z) { for (var e = z; e; e = e.parentElement) { if (e.tagName === "DETAILS" && !e.open) e.open = true; } }
+  function hin(z) { aufklappen(z); window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - oben(), behavior: "instant" }); }
   function ausrichten(z) {   /* bis ca. 5 s nachjustieren; sobald der Kadett selbst scrollt oder tippt, sofort aufhören */
     var n = 0, aus = false, stopp = function () { aus = true; };
     ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (e) { window.addEventListener(e, stopp, { once: true, passive: true }); });

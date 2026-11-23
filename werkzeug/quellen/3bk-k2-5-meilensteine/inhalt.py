@@ -65,8 +65,7 @@ LOS = ["Los", "Wahl"]
 T = [
  # ======================================================= Teil 1 · Stunde 1
  {"id": "a1", "nr": 1, "title": "Ötzi: Was zeigt uns ein Gegenstand?", "src": "Buch S. 30", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 4,
-  "q": "Ötzi kennt ihr schon aus der Quellenarbeit. Betrachtet sein Kupferbeil (Bild auf der Folie und im Theorieteil). a) Nenne einen Befund: Was lässt sich am Beil feststellen? "
-       "b) Nenne eine begründete Vermutung zum Zusammenleben damals. c) Nenne eine Aussage, die du mit dem Beil allein nicht belegen kannst.",
+  "q": "Ötzis Kupferbeil seht ihr am Beamer. Was steht fest, was ist nur vermutet – und was sagt das Beil nicht?",
   "hint": "Mündlich im Einstieg, am Mini-Whiteboard. Du kannst deine Stichworte danach hier eintragen. Info: Theorieteil »Metall, Können und Austausch«",
   "type": "multi",
   "fields": [["befund", "a) Befund: Das lässt sich am Beil feststellen"], ["vermutung", "b) Begründete Vermutung zum Zusammenleben"], ["grenze", "c) Das belegt das Beil allein nicht"]],
@@ -82,8 +81,7 @@ T = [
   "tip": ["Metall, Können und Austausch", "theorie.html#metall"], "besprechen": True},
 
  {"id": "a2", "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
-  "q": "Zu zweit. Verwende die Begriffe Landwirtschaft, Vorrat, Spezialisierung und Verteilung. a) Formuliere drei begründete Zusammenhänge, jeweils mit »kann …, weil …«. "
-       "b) Nenne ein neues Problem, das durch das Leben mit Vorräten entstand. c) Erkläre in 1–2 Sätzen, warum aus Landwirtschaft nicht zwangsläufig ein Staat entsteht.",
+  "q": "Landwirtschaft, Vorrat, Spezialisierung, Verteilung: Was hängt womit zusammen? Arbeitet zu zweit und schreibt in »kann …, weil …«.",
   "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme«",
   "type": "multi",
   "fields": [["z1", "a) Zusammenhang 1 (kann …, weil …)"], ["z2", "a) Zusammenhang 2 (kann …, weil …)"], ["z3", "a) Zusammenhang 3 (kann …, weil …)"],
@@ -103,9 +101,7 @@ T = [
   "tip": ["Neue Möglichkeiten, neue Probleme", "theorie.html#probleme"], "besprechen": True},
 
  {"id": "a3", "nr": 3, "title": "Zwei frühe Organisationsformen", "src": "Buch S. 33–39", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
-  "q": "Zu zweit. a) Ordne jede Aussage zu: Gilt sie für den mesopotamischen Stadtstaat, für das ägyptische Flächenkönigtum oder für beide? "
-       "b) Nenne eine gemeinsame Organisationsaufgabe beider Gesellschaften. c) Nenne einen Unterschied der politischen Ordnung. "
-       "d) Warum genügt ein großer Fluss allein nicht, um die Entstehung eines Staates zu erklären?",
+  "q": "Zwei Wege, ein Gemeinwesen zu organisieren: die Stadt Uruk und das Königtum am Nil. Ordnet zu zweit zu und vergleicht.",
   "hint": "Auf Karte und Zeichnung findest du Nil, Euphrat und Tigris. Info: Theorieteil »Frühe Staaten: Stadtstaat und Flächenkönigtum«",
   "type": "multi",
   "fields": [["s1", "a) Eine Stadt mit ihrem Umland bildet einen eigenen Staat.", SEL3, False],
@@ -137,11 +133,8 @@ T = [
 
  # ======================================================= Teil 2 · Stunde 2
  {"id": "a4", "nr": 4, "title": "Hammurabi: Ordnung, Verantwortung und Ungleichheit", "src": "Buch-Aufgabe S. 40", "own": False, "tag": "Stunde 2", "h": 2, "zeit": 9,
-  "q": "Arbeitsfassung der Rechtssammlung (siehe Folie und Theorieteil, § 53, 196, 198, 199, 233). Zu zweit. a) Welches gemeinsame Problem regelt § 53? "
-       "b) Ordne die Rechtsfolgen zu: Was droht dem Täter bei § 196, § 198 und § 199? c) Was entscheidet bei diesen drei Regeln über die Rechtsfolge? "
-       "d) Belege mit einer Bestimmung, dass Eigentum oder wirtschaftliche Interessen geschützt werden sollen. e) Erkläre einen Unterschied zwischen schriftlich festgehaltenem Recht und Rechtsgleichheit. "
-       "f) Ergänze: »Die Sammlung zeigt …; ob …, können wir aus ihr allein nicht feststellen.«",
-  "hint": "Neu formuliert nach der Buch-Aufgabe S. 40 (Nr. 1, 7, 10), auf fünf Paragrafen gekürzt. Info: Theorieteil »Was die Regeln verraten« und »Recht ist nicht gleich Gleichheit«",
+  "q": "Auf dem Blatt stehen fünf Paragrafen in einer Arbeitsfassung. Lest sie zu zweit und arbeitet heraus, was dieses Recht ordnet – und für wen es nicht gleich gilt.",
+  "hint": "Neu formuliert nach der Buch-Aufgabe S. 40 (Nr. 1, 7, 10), auf fünf Paragrafen gekürzt (§ 53, 196, 198, 199, 233). Info: Theorieteil »Was die Regeln verraten« und »Recht ist nicht gleich Gleichheit«",
   "type": "multi",
   "fields": [["damm", "a) § 53 regelt das Problem …"],
              ["f196", "b) § 196: Opfer ist ein Bürgersohn", FOLGE, False], ["f198", "§ 198: Opfer ist ein Untergebener", FOLGE, False], ["f199", "§ 199: Opfer ist der Knecht (versklavte Mensch) eines Bürgers", FOLGE, False],
@@ -174,9 +167,7 @@ T = [
 
  # ======================================================= Teil 3 · Stunde 3
  {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch S. 111 (Athen)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
-  "q": "Zu zweit, am Schaubild der Folie und im Theorieteil. a) In welcher Einrichtung entscheiden Bürger unmittelbar selbst? b) Los oder Wahl? Ordne zu. "
-       "c) Nenne drei Gruppen ohne politische Mitbestimmung. d) Vergleiche mit Österreich heute: Wer entscheidet über Gesetze, und welche Kontrolle ist vorgesehen? "
-       "e) Ergänze: »Athen war für seine Bürger …. Nach heutigen Maßstäben war die politische Gleichberechtigung …«",
+  "q": "Wer hat in Athen wirklich mitentschieden? Arbeitet zu zweit mit dem Schaubild und dem Theorie-Teil.",
   "hint": "Eigene Aufgabe zum Thema (Buch S. 109–111). Bilder von Athen sind meist spätere Darstellungen, keine Augenzeugenbilder. Info: Theorieteil »Athen: direkte Beteiligung mit Grenzen«",
   "type": "multi",
   "fields": [["einr", "a) Hier entscheiden Bürger unmittelbar", ["Volksversammlung", "Areopag", "Heer", "Rat der 500"]],
@@ -199,9 +190,7 @@ T = [
   "tip": ["Athen: direkte Beteiligung mit Grenzen", "theorie.html#athen"], "besprechen": True},
 
  {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 6,
-  "q": "Zu zweit. Arbeitsfassung der Quelle: »Augustus stellt in seinem Tatenbericht dar, er habe nach dem Ende der Bürgerkriege die staatliche Macht wieder dem Senat und dem römischen Volk übertragen. "
-       "Seinen Vorrang beschreibt er über sein Ansehen.« a) Wie bezeichnete sich Augustus selbst? b) Welchen Eindruck will er mit seiner Aussage vermitteln? "
-       "c) Vergleiche mit dem Theorieteil: Welche Machtmittel und Befugnisse liefen bei ihm zusammen? d) Erkläre, warum der Tatenbericht eine nützliche Quelle ist, seine Aussage aber überprüft werden muss.",
+  "q": "Augustus schreibt in seinem Tatenbericht: Er habe die Macht an Senat und Volk zurückgegeben, sein Vorrang beruhe nur auf seinem Ansehen. Prüft zu zweit, ob das zur wirklichen Machtverteilung passt.",
   "hint": "Arbeitsfassung des Tatenberichts (Res gestae), sprachlich vereinfacht. Info: Theorieteil »Rom: Republik und Machtkonzentration«",
   "type": "multi",
   "fields": [["name", "a) Augustus nannte sich selbst", ["Princeps – Erster unter Gleichen", "König", "Diktator auf Lebenszeit", "Gott"]],
@@ -221,8 +210,7 @@ T = [
   "tip": ["Rom: Republik und Machtkonzentration", "theorie.html#rom"], "besprechen": True},
 
  {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5,
-  "q": "Zu zweit. In der Tabelle sind die Zeile »Ägypten« und die Spalte »Wo liegt die entscheidende Macht?« schon ausgefüllt. a) Ergänze in Stichworten für Athen, die römische Republik und den Prinzipat: "
-       "Beteiligung und Ausschluss, Kontrolle und Grenze. b) Wählt zwei Ordnungen aus und erklärt, wie ihre Machtverteilung die Beteiligung oder die Kontrolle beeinflusst. Belegt jede Aussage mit einem konkreten Merkmal.",
+  "q": "Vier Ordnungen, eine Tabelle: Ägypten und die Spalte »Wo liegt die Macht?« sind schon ausgefüllt. Ergänzt den Rest und begründet zwei Ordnungen.",
   "hint": "Kein Ranking »primitiv – modern«. »Republik« allein sagt nicht, dass alle gleich mitentscheiden. Info: Theorieteile zu Ägypten, Athen und Rom",
   "type": "multi",
   "fields": [["ath_b", "a) Athen: Beteiligung und Ausschluss"], ["ath_k", "Athen: Kontrolle und Grenze"],
@@ -256,8 +244,7 @@ T = [
   "tip": ["Athen und Rom im Vergleich", "theorie.html#vergleich"], "besprechen": True},
 
  {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 7,
-  "q": "Teil 1 machst du in Stunde 1, Teil 2 in Stunde 3. a) Ordne den Karten den Zeitbereich zu (Karten 1–4 in Stunde 1, Karten 5–9 in Stunde 3). b) Begründe die Zuordnung bei zwei Karten. "
-       "c) Ergänze eine Karte, die zeigt, dass nicht alle Entwicklungen überall gleichzeitig verliefen. d) Schlusssatz nach Teil 1: Was haben Landwirtschaft, Metall, Schrift und Städte mit Organisation und Herrschaft zu tun? (1 Satz)",
+  "q": "Neun Karten, sechs Zeitbereiche. Legt den Zeitstrahl, begründet zwei Karten und ergänzt eine eigene. Teil 1 in Stunde 1, Teil 2 in Stunde 3.",
   "hint": "Jahreszahlen sind Orientierung. Die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",
   "type": "multi",
   "fields": [["k1", "a) 1 · Beginn landwirtschaftlicher Lebensweisen im Vorderen Orient", ZB, False], ["k2", "2 · Ötzis Kupferbeil", ZB, False], ["k3", "3 · Frühe Schrift in Mesopotamien", ZB, False],
@@ -280,9 +267,8 @@ T = [
   "tip": ["Der gemeinsame Zeitstrahl", "theorie.html#zeitstrahl"], "besprechen": True},
 
  # ======================================================= Zusatz · Für Schnelle (freiwillig, keine Hausübung)
- {"id": "a9", "nr": 9, "title": "Eine eigene Lieferliste", "src": "Buch S. 34–35 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 10,
-  "q": "Mit der Hand auf Papier. Erfinde Zeichen für vier Waren (zum Beispiel Getreide, Schafe, Krüge Öl, Ziegel) und für Zahlen. Schreib damit eine Lieferliste für ein Lager (vier Zeilen). "
-       "Dein Partner versucht, sie zu lesen. Fotografiere die Liste. a) Was musste dein Partner raten? b) Warum braucht eine Verwaltung auch Zeichen für Zahlen? c) Wo sieht heute eine Magazin-Liste beim Bundesheer anders aus?",
+ {"id": "a9", "nr": 10, "title": "Eine eigene Lieferliste", "src": "Buch S. 34–35 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 10,
+  "q": "Mit der Hand auf Papier: Erfinde Zeichen für vier Waren und schreib eine kurze Lieferliste damit. Blatt fotografieren.",
   "hint": "Kreativ, aber genau: Eine Liste ist erst brauchbar, wenn andere sie ohne Rückfrage lesen können. Info: Theorieteil »Schrift: Listen und Verwaltung«",
   "type": "sketch",
   "fields": [["raten", "a) Das musste mein Partner raten"], ["zahlen", "b) Darum braucht man Zahlzeichen"], ["heute", "c) Heute sieht eine Magazin-Liste anders aus, weil …"]],
@@ -295,10 +281,8 @@ T = [
   "fsol": {"raten": "Bedeutung der Zeichen, Mengen", "zahlen": "Mengen für Kontrolle und Abgaben", "heute": "einheitliche Bezeichnungen, Nummern, Datenbank"},
   "tip": ["Schrift: Listen und Verwaltung", "theorie.html#schrift"]},
 
- {"id": "a10", "nr": 10, "title": "Eine KI-Antwort prüfen", "src": "Buch S. 40, 64 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
-  "q": "Eine KI hat auf die Frage »Erkläre Hammurabi und Athen« geantwortet: »Hammurabi erfand das Recht und schrieb als Erster Gesetze auf. Vor dem Gesetz waren alle Babylonier gleich. "
-       "In Athen durften alle Einwohner über die Gesetze abstimmen, weil Athen die erste Demokratie der Welt war.« a) Finde drei Fehler und korrigiere sie mit dem Theorieteil oder dem Buch. "
-       "b) Schreib einen Auftrag (Prompt) an die KI, mit dem sie Unsicherheit und Quellen nennt. c) Welche Aussage würdest du selbst nachprüfen – und wo?",
+ {"id": "a10", "nr": 11, "title": "Eine KI-Antwort prüfen", "src": "Buch S. 40, 64 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+  "q": "Eine KI hat auf »Erkläre Hammurabi und Athen« geantwortet: »Hammurabi erfand das Recht und schrieb als Erster Gesetze auf. Vor dem Gesetz waren alle Babylonier gleich. In Athen durften alle Einwohner über die Gesetze abstimmen, weil Athen die erste Demokratie der Welt war.« Prüft diese Antwort.",
   "hint": "Die KI hat dir keine fertige Lösung zu liefern – du prüfst sie. Info: Theorieteile zu Hammurabi und Athen",
   "type": "multi",
   "fields": [["fehler", "a) Drei Fehler und ihre Korrektur"], ["prompt", "b) Dein Prompt"], ["pruefen", "c) Das prüfe ich nach, und zwar hier"]],
@@ -313,10 +297,9 @@ T = [
   "fsol": {"fehler": "nicht der Erste · nicht alle gleich · nur männliche Bürger", "prompt": "… mit Quellen und Angabe, was unsicher ist", "pruefen": "z. B. Buch S. 40 und eine Museumsseite"},
   "tip": ["Recht ist nicht gleich Gleichheit", "theorie.html#regeln"]},
 
- {"id": "a11", "nr": 11, "title": "Woher kam das Kupfer?", "src": "Buch S. 30 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
-  "q": "Das Südtiroler Archäologiemuseum und die Universität Padua haben über 50 Metallgegenstände untersucht (Pressemeldung vom 1. März 2024). Lies die Meldung (Link im Theorie-Teil »Metall, Können und Austausch« unter »Zum Lesen«, Suchtipp »Archäometallurgie Ötzi Kupfer Pressemeldung«). "
-       "a) Wie kann man die Herkunft von Kupfer bestimmen? b) Woher stammt das Kupfer von Ötzis Beil laut der Meldung? c) Warum ist das noch kein Beweis, dass Ötzi selbst dorthin gereist ist?",
-  "hint": "Recherche: Pressemeldung des Museums, Stand 2024. Info: Theorieteil »Metall, Können und Austausch«",
+ {"id": "a11", "nr": 12, "title": "Woher kam das Kupfer?", "src": "Buch S. 30 · Zusatz", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
+  "q": "Ötzis Beil ist aus Kupfer. Aber woher kam das Kupfer? Lies die Pressemeldung und beantworte die drei Fragen.",
+  "hint": "Recherche: Pressemeldung des Südtiroler Archäologiemuseums und der Universität Padua vom 1. März 2024 – über 50 Metallgegenstände untersucht. Link im Theorie-Teil »Metall, Können und Austausch« unter »Zum Lesen«, Suchtipp »Archäometallurgie Ötzi Kupfer Pressemeldung«. Info: Theorieteil »Metall, Können und Austausch«",
   "type": "multi",
   "fields": [["methode", "a) So bestimmt man die Herkunft"], ["herkunft", "b) Das Kupfer stammt aus"], ["reise", "c) Warum kein Beweis für eine Reise?"]],
   "chk": {"methode": {"kw": [["Isotope oder Verunreinigungen", r"isotop|blei|verunreinig|analyse|chemisch"]], "man": True},
@@ -328,7 +311,7 @@ T = [
   "fsol": {"methode": "Bleiisotope und Verunreinigungen im Kupfer", "herkunft": "südliche Toskana", "reise": "Metall wurde gehandelt – Befund zeigt den Weg des Materials"},
   "tip": ["Metall, Können und Austausch", "theorie.html#metall"]},
 
- {"id": "a12", "nr": 12, "title": "Partnercheck", "src": "Buch S. 25–40", "own": True, "tag": "Zusatz", "h": 0, "zeit": 5,
+ {"id": "a12", "nr": 13, "title": "Partnercheck", "src": "Buch S. 25–40", "own": True, "tag": "Zusatz", "h": 0, "zeit": 5,
   "q": "Zu zweit, ohne Handy: A nimmt vier Karten aus dem Abschnitt »Partnercheck« im Theorieteil und liest die Fragen vor. B antwortet, A vergleicht mit der Antwort auf der Karte und hakt ab. "
        "Dann tauscht ihr. Trag ein, mit wem du geübt hast und wie viele deiner vier Antworten gepasst haben.",
   "hint": "Ehrlich zählen – es geht um deine Wiederholung, nicht um Punkte.",
@@ -340,7 +323,7 @@ T = [
   "sol": [["Hinweis", ["Kein Lösungsschlüssel – die Antworten stehen auf den Karten im Theorieteil."]]],
   "tip": ["Partnercheck", "theorie.html#partnercheck"]},
 ]
-assert [t["nr"] for t in T] == list(range(1, 13))
+assert sorted(t["nr"] for t in T) == [1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13]   # 9 = »Ziele erreicht?«, wird unten eingefügt
 for _t in T:
     for _k, _c in _t["chk"].items():
         assert _k in [f[0] for f in _t["fields"]], (_t["id"], _k)
@@ -500,7 +483,7 @@ assert {t["hd"] for t in T if "hd" in t} == {"A", "B", "C"}, "A, B und C müssen
 # ---------------------------------------------------------------- »Ziele erreicht?« (Selbsteinschätzung, keine Punkte)
 _ZT = {1: "Theorie »Vom Sammeln zum Vorrat« · Buch S. 25–28", 2: "Theorie »Frühe Staaten« · Buch S. 33–39",
        3: "Theorie »Was die Regeln verraten« · Buch S. 39–40", 4: "Theorie »Athen und Rom im Vergleich« · Buch S. 109–115"}
-_ZZ = ({"id": "zz", "nr": 13, "title": "Ziele erreicht? Deine Selbsteinschätzung", "src": "Meine Ziele (Theorie oben)", "own": True,
+_ZZ = ({"id": "zz", "nr": 9, "title": "Ziele erreicht? Deine Selbsteinschätzung", "src": "Meine Ziele (Theorie oben)", "own": True,
   "tag": "Selbsteinschätzung", "h": 3, "zeit": 2, "type": "multi", "vorhersage": True,
   "q": "Schätz ehrlich ein, wie gut du die vier Ziele der Einheit erreicht hast. Es gibt keine Punkte. Bei »noch nicht«: Lies den angegebenen Theorie-Teil und die Buchseite noch einmal.",
   "hint": "Ehrlich ist besser als schön – das hilft dir beim Lernen für den Test.",
@@ -509,6 +492,54 @@ _ZZ = ({"id": "zz", "nr": 13, "title": "Ziele erreicht? Deine Selbsteinschätzun
   "chk": {}, "sol": [["Hinweis", ["Selbsteinschätzung – keine richtige oder falsche Antwort."]]],
   "tip": ["Meine Ziele", "theorie.html#ziele"]})
 T.insert(min(i for i, t in enumerate(T) if t["tag"] == "Zusatz"), _ZZ)   # vor den Zusatzaufgaben, damit der Stundenkasten nur einmal kommt
+assert [t["nr"] for t in T] == list(range(1, 14)), "Aufgaben müssen in Reihenfolge stehen (Stephan 23.11.2026)"
+
+# ====================================================================== Zusatztheorie für Schnelle (Standard 23.11.2026)
+# Geprüfter Artikel: Spektrum, »Neolithische Revolution: Ackern, ohne satt zu werden«, 09.03.2011, Kürzel »jd«,
+# zur Studie von Samuel Bowles (Santa Fe Institute), PNAS 2011, doi 10.1073/pnas.1010733108. Von Claude selbst geöffnet und geprüft (22.11.2026).
+LESE_LINK = "https://www.spektrum.de/news/ackern-ohne-satt-zu-werden/1065918"
+T.append({"id": "les", "nr": 14, "title": "Lesen und prüfen: Ackern, ohne satt zu werden", "src": "Spektrum, 09.03.2011 · Zusatz", "own": True,
+  "tag": "Zusatz", "h": 0, "zeit": 10, "type": "multi", "hd": "C", "niveau": 2, "ziel": 1,
+  "q": "Du bist mit allem fertig? Dann lies den kurzen Artikel (Link in der Theorie, Abschnitt »Noch mehr wissen«) und filtere das Wichtigste heraus.",
+  "hint": "Quelle: Spektrum, »Neolithische Revolution: Ackern, ohne satt zu werden«, 09.03.2011, Kürzel »jd«, zur Studie von Samuel Bowles (PNAS 2011). "
+          "Info: Theorieteil »Neue Möglichkeiten, neue Probleme«",
+  "fields": [["drei", "a) Die drei wichtigsten Aussagen – in eigenen Worten, als Stichpunkte"],
+             ["was", "b) Was hat Samuel Bowles berechnet?",
+              ["Wie viele Kalorien eine Stunde Feldarbeit einbrachte – verglichen mit der Arbeit von Jägern und Sammlern",
+               "Wie viele Menschen in der Jungsteinzeit lebten", "Wie lange Getreide gelagert werden kann", "Wie hoch die Ernteerträge heute sind"]],
+             ["ergebnis", "c) Was kam dabei heraus?",
+              ["Die frühen Bauern steckten vermutlich mehr Arbeit in ihren Lebensunterhalt, nicht weniger",
+               "Ackerbau war von Anfang an weniger Arbeit", "Die Erträge waren sofort doppelt so hoch", "Jäger und Sammler arbeiteten mehr"]],
+             ["warum", "d) Warum setzte sich der Ackerbau trotzdem durch?",
+              ["Das bleibt offen – Bowles vermutet soziale Gründe: größere Gruppen konnten sich besser organisieren und waren militärisch stärker",
+               "Weil Ackerbau sofort mehr Nahrung brachte", "Weil alle Jagdtiere ausgestorben waren", "Weil ein Gesetz es vorschrieb"]],
+             ["kritik", "e) Quellenkritik: Der Artikel nennt als Autor nur »jd« und stützt sich auf eine Modellrechnung von 2011. Was heißt das? Zwei Punkte."],
+             ["bruecke", "f) Brücke zur Stunde: Was heißt das für »Neue Möglichkeiten, neue Probleme«? (ein Satz)"]],
+  "chk": {"was": {"sel": "Wie viele Kalorien eine Stunde Feldarbeit einbrachte – verglichen mit der Arbeit von Jägern und Sammlern"},
+          "ergebnis": {"sel": "Die frühen Bauern steckten vermutlich mehr Arbeit in ihren Lebensunterhalt, nicht weniger"},
+          "warum": {"sel": "Das bleibt offen – Bowles vermutet soziale Gründe: größere Gruppen konnten sich besser organisieren und waren militärisch stärker"},
+          "drei": {"man": True, "kw": [["mehr Arbeit statt weniger", "arbeit|mühe|muehe|stunden|aufwand"],
+                                       ["Mangel, kleinere Körpergröße, Abnutzung", "mangel|körpergröße|koerpergroesse|klein|abnutzung|knochen|krank"],
+                                       ["Modellrechnung mit Unsicherheiten", "modell|berechn|bowles|unsicher|schätz|schaetz"]]},
+          "kritik": {"man": True, "kw": [["kein Autorname und eine Modellrechnung von 2011", "autor|kürzel|kuerzel|jd|modell|unsicher|2011|alt|pnas|studie|nachprüf|nachpruef"]]},
+          "bruecke": {"man": True, "kw": [["Die Vorteile waren nicht sofort da", "nicht sofort|mehr arbeit|problem|nachteil|abhängig|abhaengig|mangel|kein automatismus"]]}},
+  "fsol": {"drei": "mehr Arbeit als vorher · Hinweise auf Mangelernährung · Modellrechnung, keine Messung",
+           "kritik": "Autor nur als Kürzel »jd«; Modellrechnung von 2011 mit großen Unsicherheiten – zweite Quelle wäre nötig",
+           "bruecke": "Die Landwirtschaft brachte nicht sofort ein besseres Leben, sondern zuerst mehr Arbeit und neue Probleme."},
+  "sol": [["Musterlösung", [
+    "a) z. B.: Die frühen Bauern arbeiteten mehr als Jäger und Sammler. · Knochenfunde zeigen Mangelernährung, kleinere Körpergröße und Abnutzung. · "
+    "Die Zahlen stammen aus einer Modellrechnung, nicht aus Messungen an den Menschen selbst.",
+    "b) Kalorien pro Arbeitsstunde Feldarbeit im Vergleich zur Arbeit von Jägern und Sammlern.",
+    "c) Die frühen Bauern investierten vermutlich deutlich mehr Arbeit, auf keinen Fall weniger (unzureichende Technik, Verarbeitung und Lagerung, "
+    "Schutz vor Ernteverlusten, Abhängigkeit von einer oder zwei Feldfrüchten).",
+    "d) Bowles nennt es rätselhaft und vermutet soziale Gründe: In größeren, dichter zusammenlebenden Gruppen ließen sich Kinderbetreuung und "
+    "Auseinandersetzungen besser organisieren; militärische Überlegenheit könnte die Ausbreitung erklären.",
+    "e) Kein Autorname (nur »jd«) – die Verantwortung liegt bei der Redaktion. Die Berechnung ist ein Modell von 2011 mit großen Unsicherheiten; "
+    "der Artikel sagt das selbst. Für eine Prüfung bräuchte man die Studie (PNAS) oder eine zweite Quelle.",
+    "f) Die Landwirtschaft war kein sofortiger Gewinn: Erst kamen mehr Arbeit und neue Probleme – genau das steht im Theorie-Teil."]]],
+  "tip": ["Neue Möglichkeiten, neue Probleme", "theorie.html#probleme"]})
+assert [t["nr"] for t in T] == list(range(1, 15)), "Aufgaben müssen in Reihenfolge stehen"
+
 
 # ====================================================================== ABCD-Karte (Standard 15.11.2026)
 # (Frage, richtig, [drei Ablenker aus echten Fehlvorstellungen], kurze Erklärung). Anzeige mischt die Antworten.
