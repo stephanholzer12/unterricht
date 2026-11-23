@@ -166,7 +166,7 @@ T = [
           ["Erwartung je Gruppe", ["Gruppe 1: Meistbegünstigung, Gegenseitigkeit, Liberalisierung; Konsens; DSB. Fall: Zölle und Gegenzölle, Streit vor der WTO.",
                                    "Gruppe 2: Doha 2001–2016 ohne Ergebnis; Berufungsinstanz seit Ende 2019 lahm (USA blockieren Richter); MC14 März 2026: Zollverbot auf digitale Übertragungen erstmals seit 1998 ausgelaufen, keine Reform.",
                                    "Gruppe 3: IBRD, IDA, IFC, MIGA, ICSID; Ukraine: fast 588 Mrd. US-Dollar Wiederaufbau, fast 3 × BIP 2025 (Weltbank 23.2.2026).",
-                                   "Gruppe 4: Armut nicht besiegt; Inga-Staudamm, Umsiedlungen, »safeguards« nicht verpflichtend; USA verlangen 2026 Fokus auf Armut und Wachstum statt Klimaziel.",
+                                   "Gruppe 4: Armut nicht besiegt; Inga-Staudamm, Umsiedlungen, Schutzregeln für Umwelt und Betroffene laut Buch (Text von 2015) nicht verpflichtend – seit 2018 gilt ein verbindlicher Umwelt- und Sozialrahmen; USA verlangen 2026 Fokus auf Armut und Wachstum statt Klimaziel.",
                                    "Gruppe 5: Kredite bei Zahlungsbilanzproblemen; Stimmanteil nach Quote (USA rund 16 %, Österreich unter 1 %); Ukraine 8,1 Mrd. US-Dollar, 1,5 Mrd. sofort (26.2.2026).",
                                    "Gruppe 6: Strukturanpassung, Sparpolitik, Privatisierung, Öffnung; Kritik: soziale Folgen (Griechenland); Ukraine-Auflagen: Steuern, Korruption, Wechselkurs."]]],
   "fsol": {"aufgabe": "WTO: Regeln für den Handel · Weltbank: Kredite für Entwicklung · IWF: Hilfe bei Zahlungskrisen",
@@ -175,7 +175,7 @@ T = [
   "tip": ["Euer Steckbrief: das Raster", "theorie.html#raster"], "besprechen": True},
 
  # ======================================================= Stunde 3
- {"id": "a3", "nr": 3, "title": "Vergleichen und urteilen", "src": "Buch S. 57, 60–62", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 31,
+ {"id": "a3", "nr": 3, "title": "Vergleichen und urteilen", "src": "Buch S. 57, 60–62", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 32,
   "q": "Während der Vorträge füllst du die Vergleichstabelle aus (Stichworte genügen). Danach schreibst du dein Urteil zum Statement in 3 Sätzen: "
        "Stimmst du zu? Warum? Was spricht dagegen?",
   "hint": "Statement: »Ohne die USA sind WTO, Weltbank und IWF am Ende.« Info: Theorie »Im Vergleich« und »Kritik – und was dahintersteckt«",
@@ -194,7 +194,7 @@ T = [
                           "Weltbank: Kredite für Entwicklung und Wiederaufbau · Stimmen nach Kapitalanteil, USA stark · Kritik: Armut nicht besiegt, Großprojekte schaden Menschen und Natur. "
                           "IWF: Kredite bei Zahlungskrisen, Überwachung der Geldpolitik · Stimmen nach Quote · Kritik: harte Sparauflagen, reiche Länder bestimmen.",
                           "c) Beispiel: »Ich stimme nur teilweise zu. Die USA haben im IWF und in der Weltbank das größte Stimmgewicht und zahlen am meisten ein – ohne sie fehlt viel Geld. "
-                          "Aber die USA sind 2026 in IWF und Weltbank geblieben, und auch die WTO arbeitet mit 166 Mitgliedern weiter, etwa mit einem eigenen Ersatz-Streitverfahren.« "
+                          "Aber die USA sind 2026 in IWF und Weltbank geblieben, und auch die WTO arbeitet mit 166 Mitgliedern weiter, und 61 Mitglieder (ohne die USA) nutzen ein Ersatz-Streitverfahren.« "
                           "(Gegenteilige Urteile zählen genauso, wenn sie begründet sind und ein Gegenargument nennen.)"]]],
   "fsol": {"wto": "Handel · Konsens · blockiert", "wb": "Entwicklung · Kapitalanteil · Armut/Großprojekte", "iwf": "Zahlungskrise · Quote · Sparauflagen",
            "urteil": "Meinung + Grund (weil …) + Gegenargument (aber …)"},
@@ -261,17 +261,17 @@ WICHTIGSTE = ["Die **WTO** (Genf, 166 Mitglieder) macht die Regeln für den Welt
 
 FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["WTO", "Welthandelsorganisation in Genf: Regeln für den Handel mit Waren, Dienstleistungen und geistigem Eigentum"],
-                ["Weltbank", "Gruppe von fünf Institutionen in Washington, die Kredite für Entwicklung und Wiederaufbau vergibt"],
+                ["Weltbank", "IBRD und IDA in Washington: Kredite für Entwicklung und Wiederaufbau; zusammen mit drei weiteren Institutionen bilden sie die Weltbankgruppe"],
                 ["IWF (Internationaler Währungsfonds)", "hilft Staaten bei Zahlungskrisen mit Krediten und überwacht die Geldpolitik"],
                 ["Bretton Woods", "Ort der Konferenz 1944 in den USA, auf der Weltbank und IWF gegründet wurden"],
                 ["Zoll", "Abgabe auf Waren, die über eine Grenze gebracht werden"],
                 ["Meistbegünstigung", "ein Handelsvorteil für ein WTO-Mitglied gilt sofort für alle Mitglieder"],
                 ["Liberalisierung", "Abbau von Zöllen und anderen Handelshemmnissen"],
-                ["Konsens", "ein Beschluss gilt, wenn kein Mitglied deutlich dagegen ist – ein Land kann also blockieren"],
+                ["Konsens", "ein Beschluss gilt, wenn kein Mitglied förmlich widerspricht – ein Land kann also blockieren"],
                 ["Streitschlichtung (DSB)", "Verfahren der WTO, wenn sich zwei Mitglieder über Handelsregeln streiten"],
                 ["Quote", "Kapitalanteil eines Landes im IWF; danach richten sich Stimmen und Kreditrahmen"],
                 ["Zahlungsbilanz", "Gegenüberstellung aller Zahlungen eines Landes mit dem Ausland"],
-                ["IDA", "Teil der Weltbank, der den ärmsten Ländern zinslose, langfristige Kredite gibt"],
+                ["IDA", "Teil der Weltbank, der den ärmsten Ländern zinslose oder fast zinslose Langzeitkredite und Zuschüsse gibt"],
                 ["Auflage (Konditionalität)", "Bedingung, die ein Land für einen Kredit erfüllen muss"],
                 ["Strukturanpassungsprogramm", "Paket aus Sparen, Privatisieren und Marktöffnung, das IWF und Weltbank vor allem in den 1980er- und 1990er-Jahren verlangten"],
                 ["Austerität", "strenge Sparpolitik des Staates"],
@@ -303,7 +303,7 @@ PARTNERKARTEN = [("Wo sitzt die WTO, wo IWF und Weltbank?", "WTO in Genf, IWF un
 
 STOLPERSTEINE = [("WTO, Weltbank und IWF verwechseln", "Faustregel: WTO = Handel (Genf), Weltbank = Projekte und Entwicklung, IWF = Geld- und Zahlungskrisen. Weltbank und IWF sitzen beide in Washington."),
                  ("»Jedes Land eine Stimme« überall", "Das gilt nur in der WTO. In IWF und Weltbank richtet sich das Stimmrecht nach dem Kapitalanteil."),
-                 ("Zölle = Sanktionen", "Zölle sind Handelspolitik und fallen unter WTO-Regeln. Sanktionen sind außenpolitische Strafmaßnahmen – dafür ist keine der drei Institutionen zuständig."),
+                 ("Zölle = Sanktionen", "Zölle sind Handelspolitik und fallen unter WTO-Regeln. Sanktionen beschließen die Staaten selbst, nicht WTO, Weltbank oder IWF. Die WTO erlaubt aber Ausnahmen für die nationale Sicherheit (Art. XXI GATT) – so entzogen 2022 mehrere westliche Staaten Russland Handelsvorteile."),
                  ("Die Webseite der Organisation ist neutral", "Sie ist gut für Zahlen und Fakten, aber keine unabhängige Bewertung. Für Kritik braucht man eine zweite Quelle."),
                  ("Veraltete Zahlen aus dem Buch", "Mitgliederzahlen, Präsidenten und Fälle ändern sich. Immer mit Datum und aktueller Quelle angeben – das Buch hat den Stand 2025.")]
 
@@ -316,7 +316,7 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
   "Bretton Woods (New Hampshire) war die Konferenz zur Neuordnung der Weltwirtschaft nach dem Krieg.", "Buch S. 57–58"),
  ("WTO", "Was heißt Meistbegünstigung?", ["Ein Handelsvorteil für ein Mitglied gilt sofort für alle Mitglieder", "Das reichste Land bekommt die meisten Vorteile",
   "Entwicklungsländer zahlen keine Zölle", "Die WTO bevorzugt ihre Gründungsmitglieder"], "Vorteile werden unverzüglich und ohne Bedingung allen gewährt.", "Buch S. 54"),
- ("WTO", "Wie entscheidet die WTO?", ["Im Konsens – kein Mitglied darf deutlich dagegen sein", "Mit Stimmen nach Kapitalanteil", "Die USA entscheiden allein", "Die Generaldirektorin entscheidet"],
+ ("WTO", "Wie entscheidet die WTO?", ["Im Konsens – ein Beschluss gilt, wenn kein Mitglied widerspricht", "Mit Stimmen nach Kapitalanteil", "Die USA entscheiden allein", "Die Generaldirektorin entscheidet"],
   "Deshalb kann ein einzelnes Land Einigungen blockieren.", "Buch S. 55"),
  ("WTO", "Welches Abkommen regelt den Patentschutz?", ["TRIPS", "GATS", "GATT", "NAMA"], "TRIPS = Abkommen über geistiges Eigentum wie Patente und Marken.", "Buch S. 54, 56"),
  ("WTO aktuell", "Was passierte bei der WTO-Konferenz in Kamerun im März 2026?", ["Das Zollverbot für digitale Übertragungen wurde erstmals seit 1998 nicht verlängert",
@@ -325,7 +325,7 @@ QUIZ = [  # (Thema, Frage, [richtig, falsch, falsch, falsch], Erklärung, Buchse
  ("Weltbank", "Was macht die IDA, ein Teil der Weltbank?", ["Sie gibt den ärmsten Ländern zinslose Langzeitkredite", "Sie schlichtet Handelsstreit", "Sie überwacht Wechselkurse", "Sie druckt Geld"],
   "Die IDA ist das wichtigste Finanzierungsinstrument für sehr arme Länder.", "Buch S. 58"),
  ("Weltbank", "Wie verteilt sich das Stimmrecht in der Weltbank?", ["Nach Wirtschaftskraft und Kapitalanteil – reiche Länder haben mehr Stimmen", "Jedes Land hat eine Stimme",
-  "Nur die Gründungsmitglieder stimmen ab", "Nach der Einwohnerzahl"], "Gewichtetes Stimmrecht: USA, Japan, Deutschland, Großbritannien und Frankreich sind am stärksten.", "Buch S. 58"),
+  "Nur die Gründungsmitglieder stimmen ab", "Nach der Einwohnerzahl"], "Gewichtetes Stimmrecht: Am stärksten sind die USA (rund 16 %), Japan, China und Deutschland (Weltbank, Stand 2026).", "Buch S. 58"),
  ("Weltbank aktuell", "Wie viel kostet laut Weltbank-Schätzung vom Februar 2026 der Wiederaufbau der Ukraine?", ["Fast 588 Mrd. US-Dollar", "Rund 5,9 Mrd. US-Dollar", "Rund 58 Mrd. US-Dollar", "Über 5 Billionen US-Dollar"],
   "Das ist fast das Dreifache der ukrainischen Wirtschaftsleistung 2025 (Stand der Schäden: Ende 2025).", "Buch S. 57–59"),
  ("IWF", "Wonach richtet sich das Stimmgewicht eines Landes im IWF?", ["Nach seiner Quote, also dem Kapitalanteil", "Nach der Fläche des Landes", "Nach der Einwohnerzahl", "Jedes Land hat gleich viel"],
@@ -386,7 +386,7 @@ T.append({"id": "les", "nr": 7, "title": "Lesen und prüfen: Was brachte die WTO
              ["indien", "d) Warum wurde das Investitionsabkommen (IFDA) nicht in die WTO aufgenommen?",
               ["Weil laut EU-Kommission Indien als einziges Land dagegen war – und die WTO im Konsens entscheidet",
                "Weil die USA es verboten haben", "Weil es niemand unterschrieben hat", "Weil die Generaldirektorin dagegen war"]],
-             ["kritik", "e) Quellenkritik: Wer steht hinter GTAI, und für wen ist der Text geschrieben? Was fällt dir beim Datum der Konferenz auf? (zwei Punkte)"],
+             ["kritik", "e) Quellenkritik: Wer steht hinter GTAI, und für wen ist der Text geschrieben? Vergleiche das Datum der Konferenz im Bericht mit der Theorie (»Die WTO 2026«). (zwei Punkte)"],
              ["bruecke", "f) Brücke zur Stunde: Was zeigt der Bericht über das Konsensprinzip? (ein Satz)"]],
   "chk": {"moratorium": {"sel": "Die Mitglieder dürfen Zölle darauf erheben – ob sie es tun, entscheidet jedes Land selbst"},
           "abkommen": {"sel": "Ein eigenes Abkommen über elektronischen Handel, das erst nach 45 Ratifizierungen gilt"},
