@@ -245,7 +245,7 @@ T = [
          "seit": {"seit 2015": "2015 war Paris. Mercosur wurde im Jänner 2026 unterschrieben.", "noch gar nicht": "Der Handelsteil wird seit Mai vorläufig angewandt."},
          "at": {"dafür": "Österreich hat bis zuletzt dagegen gestimmt – wurde aber überstimmt.", "Österreich war nicht dabei": "Im Rat der EU stimmen alle Mitgliedstaaten ab."},
          "rind": [[0.0124, "Das ist der Anteil als Kommazahl. Für Prozent noch mal 100."], [80.8, "Umgekehrt: 99 000 durch 8 000 000."]]},
-  "sol": [["Lösung", ["a) Keine Einigung: Am 22.11.2026 scheiterte das gemeinsame Abschlusspapier (»Antalya-Pakt«).",
+  "sol": [["Lösung", ["a) Keine Einigung: Am 22.11.2026 scheiterte das gemeinsame Abschlusspapier – ein Beschluss braucht die Zustimmung von fast 200 Staaten.",
                       "b) Der Entwurf nannte Kohle, Öl und Gas nicht ausdrücklich; er verwies nur allgemein auf den Beschluss von Dubai 2023.",
                       "c) Erwärmung deutlich unter 2 °C, möglichst 1,5 °C (Buch S. 74).",
                       "d) Sie nehmen einen Teil der Wärmestrahlung des Bodens auf und strahlen ihn wieder ab – auch zurück zur Erde (Buch S. 71).",
@@ -515,7 +515,7 @@ assert abs(365 / 130 - 2.81) < 0.01 and abs(365 / 125 - 2.92) < 0.01
 # ---------------------------------------------------------------- Geprüfte Quellen (Stand 22.11.2026)
 QUELLEN = [
  ("W1", "Einigung bei COP31 gescheitert (22.11.2026)", "news.ORF.at", "https://orf.at/stories/3448942/",
-  "Kein Abschlusspapier; EU legte Widerspruch ein, weil fossile Brennstoffe nicht erwähnt wurden; Panama dagegen; Rekordverlängerung über 45 h", "Seite geöffnet, gelesen"),
+  "Kein Abschlusspapier; EU legte Widerspruch ein, weil fossile Brennstoffe nicht erwähnt wurden; auch Frankreich und Deutschland gegen den Text; Rekordverlängerung über 49 h (Stand des Artikels 22.11., 19:52; am 23.11. erneut geöffnet)", "Seite geöffnet, gelesen"),
  ("W2", "Großbaustelle von Google in Kronstorf (17.07.2026)", "news.ORF.at", "https://orf.at/stories/3436462/",
   "150 MW, bis 1,31 TWh/Jahr ≈ 375 000 Haushalte; Stufe 2 bis 500 MW; OÖ 14 TWh (2024); bis 5,8 Mio. l Kühlwasser/Tag, max. 30 °C; ca. 50 ha, keine UVP; Forderungen nach UVP-Pflicht", "Seite geöffnet, gelesen"),
  ("W3", "Google: KI-Anfrage braucht Strom wie neun Sekunden TV (22.08.2025)", "news.ORF.at", "https://orf.at/stories/3403199",
@@ -540,6 +540,10 @@ QUELLEN = [
   "erste Tigermücke 2012; 2022 in allen Bundesländern; etablierte Populationen in Teilen von Wien, Graz, Linz", "Auszug per Websuche gelesen"),
  ("W13", "How big oil helped push the idea of a carbon footprint (19.12.2023)", "WBUR On Point, mit Geoffrey Supran (Univ. Miami)", "https://www.wbur.org/onpoint/2023/12/19/how-big-oil-helped-push-the-idea-of-a-carbon-footprint",
   "BP-Kampagne 2004–2006, Online-Rechner ca. 2005; kein internes Beweisdokument; persönliches Handeln sinnvoll, aber systemische Lösungen nötig", "Seite geöffnet, gelesen"),
+ ("W15", "Measuring the environmental impact of AI inference (21.08.2025)", "Google Cloud Blog (Eigenangabe des Konzerns)", "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference",
+  "0,24 Wh pro mittlerer Gemini-Textanfrage inkl. CPU/RAM, Leerlauf-Maschinen, Kühlung und Rechenzentrums-Overhead; Training nicht enthalten; nur aktive Chips gerechnet wären 0,10 Wh", "Auszug per Websuche gelesen (23.11.2026)"),
+ ("W16", "EU-Parlament ruft Gerichtshof zur Prüfung des Mercosur-Abkommens an (21.01.2026)", "epd, bei evangelisch.de", "https://www.evangelisch.de/inhalte/252087/21-01-2026/eu-parlament-ruft-gerichtshof-zur-pruefung-des-mercosur-abkommens",
+  "EU-Parlament beschloss knapp (334 : 324, 11 Enthaltungen), ein EuGH-Gutachten einzuholen; Ratifizierung verzögert sich", "Auszug per Websuche gelesen (23.11.2026)"),
  ("W14", "Treibhauseffekt (Simulation)", "PhET, University of Colorado Boulder", "https://phet.colorado.edu/de/simulations/greenhouse-effect",
   "Deutsch, HTML5, Lizenz CC BY-NC 4.0; Treibhausgaskonzentration und Wolken einstellbar", "Seite geöffnet; Bedienung am Handy nicht live getestet"),
 ]

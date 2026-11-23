@@ -358,7 +358,9 @@ cases[GK]=[
  ['a5','meinung','Mehr Exporte, aber der Regenwald leidet. Ich bin dagegen.','M'],
  ['a6','zahl','4 Erden, weil das so viel ist','M'],
  ['z1','ziel','Der Blick ging weg vom Konzern hin zu den Einzelnen',1],['z1','ziel','BP wollte weniger Öl verkaufen',0],
- ['z3','mehr','steigt',1],['z3','mehr','sinkt',0]];
+ ['z3','mehr','steigt',1],['z3','mehr','sinkt',0],
+ ['a1','erden','ca. 4',1],['a1','erden','4 Erden',1],['a1','welt','1,73 Erden',1],['a3','tag','120Wh',1],['a3','jahr','43,8kWh',1],['a3','jahr','43.800 Wh',1],['a3','jahr','0,0438 MWh',1],
+ ['a3','hh','ca. 3500 kWh',1],['a3','hh','3,5 MWh',1],['a3','ooe','9,36%',1],['a3','ooe','rund 9 %',0],['a5','rind','1,24%',1],['a5','rind','etwa 1 %',0]];
 
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
