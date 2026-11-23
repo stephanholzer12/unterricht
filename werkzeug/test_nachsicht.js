@@ -328,6 +328,38 @@ cases[PA]=[
  ['z4','zwei','122',1],['z4','zwei','122 Mandate',1],['z4','zwei','92',0],['z4','zwei','121',0],
  ['z4','neos','Ein Abgeordneter wurde 2026 aus Klub und Partei ausgeschlossen – sein Mandat behält er',1],['z4','neos','Es gab eine Nachwahl in einem Wahlkreis',0]];
 
+/* TÖW 5AB K1.9 Globalisierung, KI und Klima (22.11.2026): Rechenfelder mit Einheit, Auswahl als ganze Option, offene Antworten = M */
+const GK='5ab-toew/k1-9-global-klima/aufgaben.html';
+cases[GK]=[
+ ['a1','erden','4',1],['a1','erden','4,0',1],['a1','erden','3,97',1],['a1','erden','fast 4 Erden',1],['a1','erden','365 : 92 = 3,97',1],['a1','erden','0,25',0],['a1','erden','3,5',0],
+ ['a1','welt','1,7',1],['a1','welt','1,73',1],['a1','welt','1.7',1],['a1','welt','0,58',0],['a1','welt','2',0],
+ ['a1','ruck','750',1],['a1','ruck','750-mal',1],['a1','ruck','75 : 0,1 = 750',1],['a1','ruck','7,5',0],['a1','ruck','75',0],
+ ['a1','was','die Fläche, die für unseren Konsum und für das Aufnehmen unseres CO₂ nötig ist',1],['a1','was','nur die Menge an CO₂ in Kilogramm',0],
+ ['a1','rdef','alle Rohstoffe, Energie und Wasser über den ganzen Lebensweg eines Produkts',1],['a1','rdef','nur das Verpackungsmaterial',0],
+ ['a1','muecke','mit dem weltweiten Waren- und Reiseverkehr',1],['a1','muecke','Zoos lassen sie absichtlich frei',0],['a1','neo','Neozoon',1],['a1','neo','Neophyt',0],
+ ['a1','gha','5,2 gha','M'],['a1','gha','weiß nicht mehr','M'],
+ ['a2','unterschied','Der Fußabdruck ist eine Fläche, der Rucksack ein Gewicht','M'],
+ ['a3','tag','120 Wh',1],['a3','tag','120',1],['a3','tag','0,12 kWh',1],['a3','tag','25 · 20 · 0,24 = 120 Wh',1],['a3','tag','4,8 Wh',0],['a3','tag','170 Wh',0],['a3','tag','120 kWh',0],
+ ['a3','jahr','43,8 kWh',1],['a3','jahr','43,8',1],['a3','jahr','43800 Wh',1],['a3','jahr','44 kWh',1],['a3','jahr','0,12 kWh',0],['a3','jahr','438 kWh',0],
+ ['a3','hh','3493 kWh',1],['a3','hh','3500 kWh',1],['a3','hh','3.493',1],['a3','hh','3 493,3 kWh',1],['a3','hh','0,000286',0],['a3','hh','349 kWh',0],
+ ['a3','ooe','9,4 %',1],['a3','ooe','9,36 %',1],['a3','ooe','9,4',1],['a3','ooe','1,31 : 14 · 100 = 9,4 %',1],['a3','ooe','0,0936',0],['a3','ooe','10,7 %',0],
+ ['a3','wer','Google selbst – eine unabhängige Prüfung wird nicht erwähnt',1],['a3','wer','die EU-Kommission',0],
+ ['a3','fehlt','das Training der KI-Modelle vorher',1],['a3','fehlt','die Kühlung im Rechenzentrum',0],
+ ['a3','mehr','Weil immer mehr Leute immer öfter fragen','M'],
+ ['a4','uvp','Das Projekt lag unter den Schwellenwerten – Rechenzentren sind keine eigene UVP-Kategorie',1],['a4','uvp','Die Gemeinde hat die Prüfung verboten',0],
+ ['a4','waerme','Er wird zu Wärme, die abgeführt werden muss',1],['a4','waerme','Er fließt zurück ins Netz',0],
+ ['a4','abwaerme','Abwärme nutzen, z. B. für Fernwärme, und Wasserwerte laufend messen',1],['a4','abwaerme','mehr Kühlwasser in den Fluss leiten',0],
+ ['a4','urteil','Ja, wegen dem warmen Wasser in der Enns braucht es eine Prüfung.','M'],
+ ['a5','cop','Die Staaten einigten sich nicht auf ein gemeinsames Abschlusspapier',1],['a5','cop','Die Konferenz wurde abgesagt',0],
+ ['a5','eu','Im Entwurf wurden Kohle, Öl und Gas nicht einmal ausdrücklich genannt',1],['a5','paris','die Erwärmung auf deutlich unter 2 °C, möglichst 1,5 °C zu begrenzen',1],
+ ['a5','treib','Sie halten einen Teil der Wärmestrahlung der Erde zurück – die Erde kühlt schlechter ab',1],['a5','treib','Sie machen ein Loch in die Ozonschicht',0],
+ ['a5','seit','seit 1. Mai 2026',1],['a5','seit','seit 2015',0],['a5','at','dagegen',1],['a5','at','dafür',0],
+ ['a5','rind','1,24 %',1],['a5','rind','1,2 %',1],['a5','rind','1,24',1],['a5','rind','99000 : 8000000 · 100 = 1,24 %',1],['a5','rind','0,0124',0],['a5','rind','80,8 %',0],['a5','rind','12,4 %',0],
+ ['a5','meinung','Mehr Exporte, aber der Regenwald leidet. Ich bin dagegen.','M'],
+ ['a6','zahl','4 Erden, weil das so viel ist','M'],
+ ['z1','ziel','Der Blick ging weg vom Konzern hin zu den Einzelnen',1],['z1','ziel','BP wollte weniger Öl verkaufen',0],
+ ['z3','mehr','steigt',1],['z3','mehr','sinkt',0]];
+
 (async()=>{const b=await chromium.launch(process.env.CHROMIUM?{executablePath:process.env.CHROMIUM}:{});let bad=0,tot=0;
 for(const [f,list] of Object.entries(cases)){const p=await b.newPage({viewport:{width:390,height:844}});const errs=[];p.on('pageerror',e=>errs.push(e.message));
  await p.goto(R+f);

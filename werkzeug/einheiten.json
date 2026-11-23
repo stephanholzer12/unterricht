@@ -1038,6 +1038,241 @@
   "lehrerseite": "https://claude.ai/artifact/R862RGb3AViahWdNcfy6tC"
  },
  {
+  "klasse": "5AB",
+  "fach": "TÖW",
+  "ordner": "5ab-toew/k1-9-global-klima",
+  "kapitel": "K1.9",
+  "titel": "Ein Planet reicht nicht – Abdruck, KI und Klimapolitik",
+  "block": "A Ökologisches Wirtschaften",
+  "jahresplan": "E6",
+  "seiten": [
+   "aufgaben.html",
+   "theorie.html",
+   "check.html"
+  ],
+  "kapitelmenue": true,
+  "fahrplan": {
+   "ansicht": "kompakt",
+   "text": "Drei Stunden, ein roter Faden: vom eigenen Abdruck über die Rechenzentren der KI bis zu den Klimagipfeln und Handelsabkommen. Alles steht in EINEM Arbeitsblatt, du gibst am Ende von Stunde 3 EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "titel": "Ein Planet reicht nicht: Wie groß ist dein Abdruck?",
+     "marke": "VIDEO",
+     "lesen": "VIDEO Fußabdruck · Fußabdruck, Rucksack, CO₂ · Arten reisen mit · Buch S. 40–42",
+     "folge": [
+      [
+       "",
+       "Aufgabe 1",
+       "aufgaben.html#card_v0"
+      ],
+      [
+       "VIDEO",
+       "Video Fußabdruck"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 2",
+       "aufgaben.html#card_a1"
+      ],
+      [
+       "",
+       "Aufgabe 3",
+       "aufgaben.html#card_a2"
+      ],
+      [
+       "BESPRECHEN",
+       "Klassenschnitt und Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 39–42",
+     "aufgaben": "1–3",
+     "theorie": "Teil 1 Fußabdruck, Teil 2 Rucksack, Teil 3 Arten reisen mit",
+     "theorie_links": [
+      [
+       "Teil 1 Fußabdruck",
+       "theorie.html#abdruck"
+      ],
+      [
+       "Teil 2 Rucksack",
+       "theorie.html#rucksack"
+      ],
+      [
+       "Teil 3 Arten reisen mit",
+       "theorie.html#oekosysteme"
+      ]
+     ],
+     "abgabe": "–",
+     "zusatz": "Zusatz 8 Lesen und prüfen",
+     "zusatz_links": [
+      [
+       "Zusatz 8 Lesen und prüfen",
+       "aufgaben.html#card_z1"
+      ]
+     ]
+    },
+    {
+     "wann": "Stunde 2",
+     "titel": "Deine KI-Frage hat ein Gewicht: Rechenzentren in Österreich",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "Rechenzentren und KI · GRUPPENARBEIT Gemeinderat Kronstorf · Buch S. 97",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 4",
+       "aufgaben.html#card_a3"
+      ],
+      [
+       "BESPRECHEN",
+       "Rollen verteilen"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "GRUPPENARBEIT (Aufgabe 5)",
+       "aufgaben.html#card_a4"
+      ],
+      [
+       "DISKUSSION",
+       "Diskussion der Rollen"
+      ],
+      [
+       "PARTNERCHECK",
+       "Partnercheck"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 40, 97",
+     "aufgaben": "4, 5",
+     "theorie": "Teil 4 KI, Teil 5 Kronstorf",
+     "theorie_links": [
+      [
+       "Teil 4 KI",
+       "theorie.html#ki"
+      ],
+      [
+       "Teil 5 Kronstorf",
+       "theorie.html#kronstorf"
+      ]
+     ],
+     "abgabe": "–",
+     "zusatz": "Zusatz 9 KI-Check",
+     "zusatz_links": [
+      [
+       "Zusatz 9 KI-Check",
+       "aufgaben.html#card_z2"
+      ]
+     ]
+    },
+    {
+     "wann": "Stunde 3",
+     "titel": "Gipfel geplatzt: Wer bremst beim Klima, wer verdient am Handel?",
+     "marke": "DISKUSSION",
+     "lesen": "Treibhauseffekt · Klimakonferenzen bis COP31 · Mercosur · Mini-Klimagipfel · Buch S. 40–41, 71–75",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "",
+       "Aufgabe 6",
+       "aufgaben.html#card_a5"
+      ],
+      [
+       "DISKUSSION",
+       "Skala im Raum"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "Mini-Klimagipfel"
+      ],
+      [
+       "",
+       "Aufgabe 7",
+       "aufgaben.html#card_a6"
+      ],
+      [
+       "",
+       "Auflösung Aufgabe 1",
+       "aufgaben.html#card_v0"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 40–41, 71–75",
+     "aufgaben": "6, 7",
+     "theorie": "Teil 6 Treibhauseffekt, Teil 7 Konferenzen, Teil 8 Mercosur",
+     "theorie_links": [
+      [
+       "Teil 6 Treibhauseffekt",
+       "theorie.html#treibhaus"
+      ],
+      [
+       "Teil 7 Konferenzen",
+       "theorie.html#konferenzen"
+      ],
+      [
+       "Teil 8 Mercosur",
+       "theorie.html#handel"
+      ]
+     ],
+     "abgabe": "Arbeitsblatt-PDF in LMS",
+     "zusatz": "Zusatz 10 Simulation, Zusatz 11 Kreativ",
+     "zusatz_links": [
+      [
+       "Zusatz 10 Simulation",
+       "aufgaben.html#card_z3"
+      ],
+      [
+       "Zusatz 11 Kreativ",
+       "aufgaben.html#card_z4"
+      ]
+     ]
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Wer hat den CO₂-Fußabdruck erfunden? · KI-Check · Treibhaus-Simulation · Plakat für den Klimagipfel",
+     "aufgaben": "Zusatz 8–11 (am Ende des Arbeitsblatts)",
+     "zeit": "ca. 39 min",
+     "abgabe": "freiwillig"
+    },
+    {
+     "wann": "Danach",
+     "lesen": "Mitarbeits-Check im Jänner: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "22.11.2026",
+   "liste": [
+    "GitHub: theorie.html, aufgaben.html, check.html (v1)",
+    "Lösungsseite (Artifact, privat) mit Präsentation, Kalender, Gruppen",
+    "26-27-5AB-K1.9-Global-Klima-Pruefbericht-Claude-v1.md"
+   ]
+  }
+ },
+ {
   "klasse": "4AB",
   "fach": "NAWI",
   "ordner": "4ab-nawi/test1-training",

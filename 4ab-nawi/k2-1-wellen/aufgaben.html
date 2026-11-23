@@ -2137,10 +2137,10 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "A", "min": 2, "max": 6, "ste
   if (typeof checkField !== "function" || typeof S === "undefined") return;
 
   /* ---------- Einheiten ---------- */
-  var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, d: 1e-1, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
+  var PRE = { T: 1e12, G: 1e9, M: 1e6, k: 1e3, h: 1e2, d: 1e-1, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
   var BASE = { A: [0, 0, 0, 1, 1], T: [1, 0, -2, -1, 1], V: [1, 2, -3, -1, 1], Wb: [1, 2, -2, -1, 1], N: [1, 1, -2, 0, 1], W: [1, 2, -3, 0, 1], J: [1, 2, -2, 0, 1],
-    "Ω": [1, 2, -3, -2, 1], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
-  var WORT = [[/millisekunden?|millisek|msek/gi, "ms"], [/mikrosekunden?/gi, "µs"], [/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
+    "Ω": [1, 2, -3, -2, 1], Wh: [1, 2, -2, 0, 3600], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
+  var WORT = [[/kilowattstunden?/gi, "kWh"], [/wattstunden?/gi, "Wh"], [/millisekunden?|millisek|msek/gi, "ms"], [/mikrosekunden?/gi, "µs"], [/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
   function einheitDim(u) {
     u = String(u || "").replace(/\^\(\s*([-−]?\d)\s*\)/g, "$1").replace(/[−–]/g, "-").replace(/\/\(([^()]*)\)/g, function (_, x) { return "/" + x.split(/[·*.\s]+/).filter(Boolean).join("/"); }).replace(/[μ]/g, "µ").replace(/ω/g, "Ω").replace(/²/g, "2").replace(/³/g, "3").replace(/\^/g, "").replace(/\s+/g, "");
     WORT.forEach(function (w) { u = u.replace(w[0], w[1]); });

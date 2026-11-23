@@ -57,5 +57,10 @@
   "3ab-nawi/k3-1-kreislauf": [
     {"id": "a4", "vars": [{"n": "sv", "min": 55, "max": 100, "step": 5}, {"n": "hf", "min": 55, "max": 90, "step": 1}, {"n": "sv2", "min": 100, "max": 140, "step": 5}, {"n": "hf2", "min": 120, "max": 190, "step": 5}], "text": "Übung mit anderen Zahlen: In Ruhe Schlagvolumen {sv} ml und Puls {hf} pro Minute. Beim Sport Schlagvolumen {sv2} ml und Puls {hf2} pro Minute.", "felder": [{"label": "Liter pro Minute in Ruhe", "expr": "sv*hf/1000", "einheit": "l"}, {"label": "Liter an einem Tag in Ruhe", "expr": "sv*hf/1000*1440", "einheit": "l"}, {"label": "Liter pro Minute beim Sport", "expr": "sv2*hf2/1000", "einheit": "l"}]},
     {"id": "z2", "vars": [{"n": "h", "min": 0.4, "max": 1.4, "step": 0.05}], "text": "Übung mit anderen Zahlen: Das Herz liegt {h} m über dem Boden (Blut 1000 kg/m³, g = 9,81 m/s²).", "felder": [{"label": "Druck p = ρ · g · h in Pa", "expr": "1000*9.81*h", "einheit": "Pa"}]}
+  ],
+  "5ab-toew/k1-9-global-klima": [
+    {"id": "a1", "vars": [{"n": "tag", "min": 60, "max": 300, "step": 1}], "text": "Übung mit anderen Zahlen: Ein Land erreicht seinen Overshoot Day am {tag}. Tag des Jahres. Wie viele Erden bräuchte die Menschheit, wenn alle so lebten?", "felder": [{"label": "Anzahl Erden", "expr": "365/tag", "einheit": ""}]},
+    {"id": "a3", "vars": [{"n": "p", "min": 15, "max": 30, "step": 1}, {"n": "n", "min": 5, "max": 60, "step": 5}], "text": "Übung mit anderen Zahlen: {p} Kadetten stellen je {n} KI-Fragen pro Tag (0,24 Wh pro Frage).", "felder": [{"label": "Strom pro Tag", "expr": "p*n*0.24", "einheit": "Wh"}, {"label": "Strom pro Jahr (365 Tage)", "expr": "p*n*0.24*365/1000", "einheit": "kWh"}]},
+    {"id": "a5", "vars": [{"n": "t", "min": 20000, "max": 200000, "step": 1000}], "text": "Übung mit anderen Zahlen: Ein Abkommen erlaubt {t} t Rindfleisch zu niedrigem Zoll. Die EU isst rund 8 000 000 t pro Jahr. Wie viel Prozent sind das?", "felder": [{"label": "Anteil", "expr": "t/8000000*100", "einheit": "%"}]}
   ]
 }
