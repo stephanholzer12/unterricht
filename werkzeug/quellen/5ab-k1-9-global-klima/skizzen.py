@@ -136,14 +136,14 @@ def fussabdruck():
     W, H = 640, 470
     x0, x1 = 40, 600
     X = lambda tag: x0 + (x1 - x0) * tag / 365
-    b = [t(24, 44, "Das Naturbudget eines Jahres", 28, "b"),
+    b = [t(24, 44, "Das Naturbudget der Erde für ein Jahr", 28, "b"),
          t(24, 74, "Was die Erde in einem Jahr nachwachsen lässt – und wann es verbraucht ist", 19, "m")]
     for k, m in enumerate(["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]):
         xm = X(k * 365 / 12 + 15)
         b.append(t(xm, 120, m, 18, "m", "middle"))
     s = []
-    for row, (name, tag, txt, y) in enumerate([("Welt", I.OS_WELT_TAG, "30. Juli → 365 : 211 ≈ 1,7 Erden", 150),
-                                                ("Österreich", I.OS_AT_TAG, "2. April → 365 : 92 ≈ 4 Erden", 290)]):
+    for row, (name, tag, txt, y) in enumerate([("Erde (alle Menschen)", I.OS_WELT_TAG, "30. Juli → 365 : 211 ≈ 1,7 Erden", 150),
+                                                ("Wenn alle lebten wie in Österreich", I.OS_AT_TAG, "2. April → 365 : 92 ≈ 4 Erden", 290)]):
         t0 = 0.12 + row * 0.38
         b.append(t(x0, y - 10, name, 22, "b"))
         b.append(f"<rect x='{x0}' y='{y}' width='{x1 - x0}' height='44' rx='8' fill='#fff' stroke='{MUTED}'/>")
@@ -160,7 +160,7 @@ def fussabdruck():
     s.append(blende(er + t(290, 418, "≈ 4 Erden, wenn alle", 18, "m") + t(290, 442, "so lebten wie wir in Österreich", 18, "m"), [(0, 0), (0.7, 0), (0.75, 1)]))
     s.append(schritt("Jahresbeginn: Das Budget ist voll.", 0.02, 0.12, 330, 44, 18))
     b.append(szene("".join(s)))
-    return svg(W, H, "".join(b), "Animation: Zwei Balken für ein Jahr. Das Naturbudget der Welt ist am 30. Juli verbraucht, das von Österreich schon am 2. April; danach leben wir auf Pump. Vier Erdkugeln zeigen: So viele bräuchten wir, wenn alle so lebten wie in Österreich.", anim=True)
+    return svg(W, H, "".join(b), "Animation: Zwei Balken für ein Jahr. Das Naturbudget der Erde ist am 30. Juli verbraucht; würden alle so leben wie in Österreich, schon am 2. April; danach leben wir auf Pump. Vier Erdkugeln zeigen: So viele bräuchten wir, wenn alle so lebten wie in Österreich.", anim=True)
 
 
 # ------------------------------------------------------------------ 2 Ökologischer Rucksack eines Handys (animiert)
@@ -272,7 +272,7 @@ def zeitleiste():
     W, H = 640, 500
     b = [t(24, 44, "Klimakonferenzen: ein langer Weg", 28, "b"), t(24, 74, "Buch S. 73–74 · ergänzt bis 2026", 19, "m")]
     b.append(f"<line x1='70' y1='100' x2='70' y2='470' stroke='{OLIVE}' stroke-width='5'/>")
-    ev = [("1992", "Rio: Klimarahmenkonvention, ab dann jährliche Konferenzen", GREEN),
+    ev = [("1992", "Rio: Klimarahmenkonvention – erste COP 1995 in Berlin", GREEN),
           ("1997", "Kyoto-Protokoll: erste Reduktionsziele für Industriestaaten", GREEN),
           ("2015", "Paris: Erwärmung deutlich unter 2 °C, möglichst 1,5 °C", GREEN),
           ("2023", "Dubai: Abkehr von fossilen Energien beschlossen", GREEN),
@@ -281,7 +281,7 @@ def zeitleiste():
         y = 125 + k * 72
         b.append(f"<circle cx='70' cy='{y}' r='14' fill='{c}'/>" + t(100, y - 4, j, 24, "b") + t(100, y + 24, txt, 18))
     b.append(f"<path d='M62 {125 + 4 * 72 - 8} l16 16 M78 {125 + 4 * 72 - 8} l-16 16' stroke='#fff' stroke-width='4'/>")
-    return svg(W, H, "".join(b), "Zeitleiste: 1992 Rio, 1997 Kyoto, 2015 Paris (1,5 bis 2 Grad), 2023 Dubai (Abkehr von fossilen Energien), 2026 Antalya COP31 ohne Abschlusspapier.")
+    return svg(W, H, "".join(b), "Zeitleiste: 1992 Rio Klimarahmenkonvention (erste COP 1995 Berlin), 1997 Kyoto, 2015 Paris (deutlich unter 2 Grad, möglichst 1,5), 2023 Dubai (Abkehr von fossilen Energien), 2026 Antalya COP31 ohne Abschlusspapier.")
 
 
 # ------------------------------------------------------------------ 7 Handel EU – Mercosur (animiert)
@@ -298,7 +298,7 @@ def handel():
     s.append(schritt("→ Maschinen, Autos, Chemie: weniger Zoll", 0.05, None, 24, 270, 20, fill=BLUE))
     s.append(schritt("← Rindfleisch 99 000 t zu 7,5 % Zoll, Geflügel, Zucker", 0.4, None, 24, 300, 20, fill=RUST))
     s.append(blende(f"<rect x='24' y='330' width='290' height='140' rx='12' fill='#fff' stroke='{GREEN}' stroke-width='2'/>"
-                    + t(40, 362, "Chancen", 22, "b") + t(40, 392, "Exporte, Jobs, Rohstoffe", 18) + t(40, 420, "weniger Abhängigkeit von", 18) + t(40, 446, "einzelnen Großmächten", 18), [(0, 0), (0.7, 0), (0.74, 1)]))
+                    + t(40, 362, "Chancen", 22, "b") + t(40, 392, "Exporte, Jobs, Paris-Bindung", 18) + t(40, 420, "weniger Abhängigkeit von", 18) + t(40, 446, "einzelnen Großmächten", 18), [(0, 0), (0.7, 0), (0.74, 1)]))
     s.append(blende(f"<rect x='326' y='330' width='290' height='140' rx='12' fill='#fff' stroke='{RED}' stroke-width='2'/>"
                     + t(342, 362, "Risiken", 22, "b") + t(342, 392, "Regenwald, Soja, Rinder", 18) + t(342, 420, "lange Transportwege", 18) + t(342, 446, "Druck auf heimische Bauern", 18), [(0, 0), (0.74, 0), (0.78, 1)]))
     b.append(szene("".join(s)))

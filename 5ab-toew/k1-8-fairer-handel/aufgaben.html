@@ -1674,13 +1674,19 @@ window.LH_VARIANTEN = [{"id": "a2", "vars": [{"n": "t", "min": 20, "max": 60, "s
       .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?([+-]?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
       .replace(/(^|[^\d.,·*x×^])10\s*\^\s*\(?([+-]?\d{1,2})\)?(?![\d.,])/g, function (_, v, e) { return v + String(Math.pow(10, parseInt(e, 10))); })   /* reine Zehnerpotenz »10^3« bzw. »10³« = 1000 (14.11.2026, K1.5) */
       .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      /* Bezugswörter nach Energie-Einheiten abschneiden: »43,8 kWh pro Jahr«, »120 Wh/Tag«, »3493 kWh pro Haushalt und Jahr« (Prüf-Agent K1.9, 23.11.2026) */
+      .replace(/(\d\s*)(kwh|twh|gwh|wh)\b/gi, function (_, a, u) { var k = u.toLowerCase(); return a + (k === "wh" ? "Wh" : k[0] === "k" ? "kWh" : k[0].toUpperCase() + "Wh"); })
+      .replace(/([kMGT]?Wh)\s*(?:\/|pro|je|im|per)\s*(?:Tag|Jahr|a|Monat|Person|Haushalt)(?:\s+(?:und|\/)\s*(?:Tag|Jahr|Monat))?(?![A-Za-zäöü])/g, "$1")
+      /* »9,4 Prozent« = »9,4 %« */
+      .replace(/(\d)\s*Prozent(?![A-Za-zäöü])/gi, "$1 %")
       .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
     var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*)?)/g, out = [], m;
     while ((m = re.exec(s0))) {
       var n = m[1];
       /* 2.069 = Tausenderpunkt; 0.240 und 1.500 sind aber Dezimalzahlen (führende Null) bzw. mehrdeutig → beide Lesarten prüfen */
       var tausend = /^[1-9]\d{0,2}(\.\d{3})+$/.test(n), v2 = null;
-      if (tausend) { v2 = parseFloat(n); n = n.replace(/\./g, ""); } else n = n.replace(",", ".");
+      if (/^\d{1,3}(\.\d{3})+,\d+$/.test(n)) n = n.replace(/\./g, "").replace(",", ".");   /* »3.493,33« = Tausenderpunkt + Dezimalkomma */
+      else if (tausend) { v2 = parseFloat(n); n = n.replace(/\./g, ""); } else n = n.replace(",", ".");
       var dec = (n.split(".")[1] || "").length, sig = n.replace(".", "").replace(/^0+/, "").replace(dec ? /$^/ : /0+$/, "").length;
       /* Zahl wird ausdrücklich verworfen? (»240 A ist falsch«, »nicht 240 A«, »statt 240 A«) */
       var vor = s0.slice(Math.max(0, m.index - 14), m.index).split(/[,;.!?]/).pop(), rest = s0.slice(m.index + m[0].length), nx = rest.search(/\d/);
@@ -1730,8 +1736,8 @@ window.LH_VARIANTEN = [{"id": "a2", "vars": [{"n": "t", "min": 20, "max": 60, "s
     }
     for (var i = 0; i < L.length; i++) {
       var x = L[i]; if (x.neg) continue;
-      var u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
-      if (einheit && hatEinheit) { f = faktor(u, einheit); }
+      var u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u || (x.u === "%" && /^\s*%\s*$/.test(einheit || ""));   /* »9,4 %« im %-Feld hat eine Einheit (kein Hinweis »Einheit fehlt«) */
+      if (einheit && u) { f = faktor(u, einheit); }
       else if (einheit === "" && hatEinheit && einheitDim(u)) { f = null; }   /* Prozentfeld (Einheit leer): fremde Einheit wie »kg« ist falsch, »%« wurde oben entfernt */
       var lesarten = x.v2 != null && !isNaN(x.v2) ? [x.v, x.v2] : [x.v];   // 1.500 kann 1500 oder 1,5 heißen
       for (var q = 0; q < lesarten.length; q++) {

@@ -56,7 +56,7 @@ T = [
              ["p2", "b) Google baut in Kronstorf (Oberösterreich) ein Rechenzentrum, auch für KI. Die erste Ausbaustufe braucht im Jahr so viel Strom wie …",
               ["rund 375 000 Haushalte", "rund 3 700 Haushalte", "rund 37 000 Haushalte"], False]],
   "chk": {},
-  "aufloesung": [["p1", "etwa 4 Erden", "Österreich hatte 2026 sein Jahresbudget an Natur schon am 2. April verbraucht. 365 : 92 ergibt fast 4 – so viele Erden bräuchte die Menschheit, wenn alle so lebten wie wir."],
+  "aufloesung": [["p1", "etwa 4 Erden", "Am 2. April 2026 wäre das Naturbudget der ganzen Erde verbraucht gewesen, wenn alle Menschen so lebten wie wir in Österreich. 365 : 92 ergibt fast 4 – so viele Erden bräuchten wir dann."],
                  ["p2", "rund 375 000 Haushalte", "Die erste Stufe (150 MW) kann laut ORF bis zu 1,31 Terawattstunden im Jahr brauchen – so viel wie etwa 375 000 Haushalte."]],
   "sol": [["Auflösung", ["a) etwa 4 Erden (365 : 92 ≈ 4,0).", "b) rund 375 000 Haushalte (ORF, 17.07.2026)."]]],
   "tipps": [], "tip": ["Der ökologische Fußabdruck", "theorie.html#abdruck"]},
@@ -65,12 +65,12 @@ T = [
   "sim": ["overshoot"],
   "link": ["Fußabdruck-Rechner für Österreich öffnen", "https://www.mein-fussabdruck.at/", "Rechner im Auftrag des Klimaschutzministeriums (BMLUK) · Schnellrechner ca. 5 min · keine Anmeldung"],
   "q": "Mach den Fußabdruck-Rechner (Knopf oben, ca. 5 min). Die 5AK nimmt ihr Ergebnis vom letzten Mal. Dann beantworte a) bis i).",
-  "hint": "Dein Ergebnis zeigst du niemandem. Bei c), d) und f) auf eine Kommastelle runden. Overshoot Day: An diesem Tag ist das Naturbudget eines Jahres aufgebraucht. Erden = 365 : Tag des Jahres. Info im Schulbuch S. 40–41.",
+  "hint": "Dein Ergebnis zeigst du niemandem. Bei c), d) und f) auf eine Kommastelle runden. Overshoot Day: An diesem Tag ist das Naturbudget der Erde für das Jahr aufgebraucht. Der Tag für Österreich heißt: so früh wäre es, wenn alle so lebten wie wir. Erden = 365 : Tag des Jahres. Info im Schulbuch S. 40–41.",
 
   "type": "multi",
   "fields": [["gha", "a) Mein ökologischer Fußabdruck laut Rechner (Zahl mit Einheit, z. B. 5,2 gha)"],
              ["vgl", "b) Mein Wert liegt im Vergleich zum Österreich-Schnitt (im Rechner schraffiert) …", ["darüber", "etwa gleich", "darunter"], False],
-             ["erden", "c) Österreich hatte sein Naturbudget 2026 schon am 2. April aufgebraucht – das ist der 92. Tag des Jahres. Wie viele Erden bräuchte die Menschheit, wenn alle so lebten wie wir? Rechne 365 : 92."],
+             ["erden", "c) Würden alle Menschen so leben wie wir in Österreich, wäre das Naturbudget der Erde 2026 schon am 2. April aufgebraucht – am 92. Tag des Jahres. Wie viele Erden bräuchte die Menschheit, wenn alle so lebten wie wir? Rechne 365 : 92."],
              ["welt", "d) Für die ganze Menschheit war es 2026 der 30. Juli, der 211. Tag. Wie viele Erden braucht die Menschheit derzeit?"],
              ["was", "e) Was misst der ökologische Fußabdruck?",
               ["die Fläche, die für unseren Konsum und für das Aufnehmen unseres CO₂ nötig ist", "das Gewicht aller Rohstoffe in einem einzelnen Produkt", "nur die Menge an CO₂ in Kilogramm"]],
@@ -172,7 +172,7 @@ T = [
 
  {"id": "a4", "nr": 5, "title": "GRUPPENARBEIT: Gemeinderat Kronstorf", "src": "ORF 17.07.2026 · Buch S. 40", "own": True, "tag": "Stunde 2", "h": 2, "zeit": 10, "marke": "GRUPPENARBEIT",
   "img": "img/rechenzentrum.svg",
-  "q": "Sondersitzung im Gemeinderat: Braucht ein großes Rechenzentrum eine Umweltverträglichkeitsprüfung (UVP)? Jeder in der Gruppe übernimmt eine Rolle. Besprecht b) bis d) (ca. 6 min), e) und f) trägt jeder selbst ein.",
+  "q": "Sondersitzung im Gemeinderat mit Gästen: Soll die Gemeinde vom Nationalrat eine Umweltverträglichkeitsprüfung (UVP) für große Rechenzentren fordern? Jeder in der Gruppe übernimmt eine Rolle. Besprecht b) bis d) (ca. 6 min), e) und f) trägt jeder selbst ein.",
   "hint": "Danach fragt Prof. HOLZER einzelne Rollen. Ohne KI. Die Zeichnung zeigt den Weg der Energie: Strom rein, rechnen, Wärme, Kühlwasser in den Fluss. Info: Theorie-Teil 5.",
 
   "type": "multi",
@@ -191,7 +191,7 @@ T = [
           "urteil": {"kw": [["Entscheidung", r"\bja\b|\bnein\b|sollte|soll|braucht|pflicht|nicht noetig|nicht nötig"],
                             ["Grund", r"strom|wasser|enns|fisch|flaech|fläch|hektar|job|arbeit|investi|wirtschaft|umwelt|transparen|kontroll|daten|sicher|waerme|wärme|natur"]], "need": 2, "man": True}},
   "fb": {"uvp": {"Google ist von österreichischen Umweltgesetzen ausgenommen": "Google muss sich an alle Gesetze halten. Das Problem: Für Rechenzentren gibt es keine eigene UVP-Schwelle.",
-                 "Die Gemeinde hat die Prüfung verboten": "Eine Gemeinde kann eine UVP weder verbieten noch verlangen – das regelt das UVP-Gesetz des Bundes."},
+                 "Die Gemeinde hat die Prüfung verboten": "Eine Gemeinde kann eine UVP nicht verbieten. Ob eine UVP nötig ist, regelt das UVP-Gesetz des Bundes."},
          "waerme": {"Er wird in den Daten gespeichert": "Daten speichern keine Energie. Fass einmal ein Ladegerät an, das lange gearbeitet hat.",
                     "Er fließt zurück ins Netz": "Verbrauchter Strom kommt nicht zurück. Er wird in den Chips zu Wärme."},
          "abwaerme": {"mehr Kühlwasser in den Fluss leiten": "Mehr warmes Wasser belastet die Enns noch stärker.",
@@ -209,8 +209,8 @@ T = [
 
  # --------------------------------------------------------------- Stunde 3
  {"id": "a5", "nr": 6, "title": "Klima und Handel: COP31 und Mercosur", "src": "Buch S. 40–41, 71, 73–75", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 8, "marke": "SELBSTSTUDIUM",
-  "q": "Zwei Nachrichten aus diesem Herbst: Die Klimakonferenz COP31 ist am 22. November gescheitert, und der Handelsteil des Mercosur-Abkommens gilt seit Mai. Beantworte a) bis h).",
-  "hint": "h) ist deine Meinung. Mercosur = Argentinien, Brasilien, Paraguay, Uruguay. COP = die jährliche Weltklimakonferenz der UNO. Info: Theorie-Teile 6–8, Buch S. 40–41 und 73–75.",
+  "q": "Zwei Nachrichten aus diesem Jahr: Die Klimakonferenz COP31 ist am 22. November gescheitert, und der Handelsteil des Mercosur-Abkommens gilt seit Mai. Beantworte a) bis h).",
+  "hint": "h) ist deine Meinung. Das Abkommen gilt für Argentinien, Brasilien, Paraguay und Uruguay. COP = die jährliche Weltklimakonferenz der UNO. Info: Theorie-Teile 6–8, Buch S. 40–41 und 73–75.",
 
   "type": "multi",
   "fields": [["cop", "a) Was ist bei der COP31 in Antalya passiert?",
@@ -223,7 +223,7 @@ T = [
               ["Sie halten einen Teil der Wärmestrahlung der Erde zurück – die Erde kühlt schlechter ab", "Sie lassen kein Sonnenlicht mehr zur Erde durch", "Sie machen ein Loch in die Ozonschicht"]],
              ["seit", "e) Seit wann gilt der Handelsteil des EU-Mercosur-Abkommens vorläufig?", ["seit 1. Mai 2026", "seit 2015", "noch gar nicht"]],
              ["at", "f) Wie stimmte Österreich im Rat der EU ab?", ["dagegen", "dafür", "Österreich war nicht dabei"]],
-             ["rind", "g) Die Mercosur-Staaten dürfen 99 000 t Rindfleisch zu 7,5 % Zoll in die EU liefern. Die EU isst rund 8 000 000 t pro Jahr. Wie viel Prozent sind die 99 000 t?"],
+             ["rind", "g) Nach einer Übergangszeit dürfen die Mercosur-Staaten bis zu 99 000 t Rindfleisch im Jahr zu 7,5 % Zoll in die EU liefern. Die EU isst rund 8 000 000 t pro Jahr. Wie viel Prozent sind die 99 000 t?"],
              ["meinung", "h) Ist Mercosur gut oder schlecht fürs Klima? Ein Argument dafür, eines dagegen, dann dein Urteil (2–3 Sätze)."]],
   "chk": {"cop": {"sel": "Die Staaten einigten sich nicht auf ein gemeinsames Abschlusspapier"},
           "eu": {"sel": "Im Entwurf wurden Kohle, Öl und Gas nicht einmal ausdrücklich genannt"},
@@ -232,12 +232,12 @@ T = [
           "seit": {"sel": "seit 1. Mai 2026"},
           "at": {"sel": "dagegen"},
           "rind": {"num": 1.24, "unit": "%", "tol": 0.05},
-          "meinung": {"kw": [["Pro", r"export|zoll|billig|preis|handel|wirtschaft|job|maschin|auto|industri|markt"],
+          "meinung": {"kw": [["Pro", r"export|zoll|billig|preis|handel|wirtschaft|job|maschin|auto|industri|markt|paris|klimaabkommen|umwelttechnik|technolog|zusammenarbeit|kooperation|klimaschutz"],
                              ["Contra", r"regenwald|wald|abholz|rodung|soja|transport|schiff|co2|co₂|klima|bauer|landwirt|rind|fleisch"]], "need": 2, "man": True}},
   "fb": {"cop": {"Alle Staaten beschlossen den Ausstieg aus Kohle, Öl und Gas bis 2040": "Genau darüber gab es Streit – beschlossen wurde nichts davon.",
                  "Die Konferenz wurde abgesagt": "Sie fand statt, zwei Wochen lang, und dauerte sogar länger als geplant."},
          "eu": {"Die EU wollte weniger für Klimaschutz zahlen": "Es ging um den Text zu den fossilen Energien. Welche drei Wörter fehlten?",
-                "Die EU war gegen die Türkei als Gastgeber": "Der Gastgeber war seit Langem fix. Der Streit ging um den Inhalt."},
+                "Die EU war gegen die Türkei als Gastgeber": "Der Gastgeber stand schon ein Jahr vorher (COP30) fest. Der Streit ging um den Inhalt."},
          "paris": {"bis 2020 alle Kohlekraftwerke zu schließen": "Ein festes Datum für Kohle steht nicht im Pariser Abkommen. Es nennt ein Temperaturziel.",
                    "jedes Jahr 10 % weniger Auto zu fahren": "Das Abkommen schreibt keine Maßnahmen für Einzelne vor, sondern ein Ziel für die Erwärmung."},
          "treib": {"Sie lassen kein Sonnenlicht mehr zur Erde durch": "Sonnenlicht kommt durch. Was passiert mit der Wärme, die der Boden abstrahlt?",
@@ -252,13 +252,13 @@ T = [
                       "e) seit 1. Mai 2026 (unterzeichnet am 17. Jänner 2026).",
                       "f) dagegen – mit Frankreich, Polen, Ungarn und Irland; die Mehrheit war dafür.",
                       "g) 99 000 : 8 000 000 · 100 ≈ 1,24 % – etwas mehr als 1 %.",
-                      "h) z. B. dafür: weniger Zölle, mehr Exporte von Maschinen und Autos, mehr Handel und Zusammenarbeit beim Klima. Dagegen: mehr Rindfleisch und Soja aus Südamerika können Druck auf den Regenwald machen, lange Transportwege, Druck auf heimische Bauern. Urteil begründet – beide Seiten sind möglich."]]],
+                      "h) z. B. dafür: Das Abkommen verpflichtet beide Seiten auf das Pariser Klimaabkommen, EU-Umwelttechnik wird billiger exportiert; dazu weniger Zölle und mehr Exporte. Dagegen: mehr Rindfleisch und Soja aus Südamerika können Druck auf den Regenwald machen, lange Transportwege, Druck auf heimische Bauern. Urteil begründet – beide Seiten sind möglich."]]],
   "tipps": ["Alles aus a) bis f) steht in den Theorie-Teilen 6 bis 8. Bei g): Teil durch Ganzes, mal 100.",
             "k8",
             "Lies im Buch S. 73–74 »Klimakonferenzen und Klimapolitik« und S. 40–41 »Internationale Abkommen«."],
   "tip": ["Handel und Klima", "theorie.html#handel"]},
 
- {"id": "a6", "nr": 7, "title": "Mit der Hand: Mindmap »Ein Planet reicht nicht«", "src": "Buch S. 39–44, 71–75", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 4, "marke": "SELBSTSTUDIUM",
+ {"id": "a6", "nr": 7, "title": "Mit der Hand: Mindmap »Ein Planet reicht nicht«", "src": "Buch S. 39–44, 71–75", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5, "marke": "SELBSTSTUDIUM",
   "q": "Mindmap auf ein leeres Blatt: In die Mitte »Ein Planet reicht nicht«, dazu vier Äste: Abdruck · KI und Rechenzentren · Klimakonferenzen · Handel. An jeden Ast zwei Stichwörter und eine Zahl. Lade ein Foto hoch.",
   "hint": "Die Zahlen findest du in den Aufgaben 2, 4 und 6. Datum oben aufs Blatt, kein Name, keine Gesichter. Das Blatt kommt in deine Mappe.",
 
@@ -308,7 +308,7 @@ T = [
   "tipps": [], "tip": ["Wo wohnt die KI?", "theorie.html#ki"], "zst": 2},
 
  {"id": "z3", "nr": 10, "title": "Simulation: Treibhauseffekt selbst einstellen", "src": "PhET · Buch S. 71", "own": True, "tag": "Zusatz", "h": 0, "zeit": 8,
-  "link": ["Simulation »Treibhauseffekt« öffnen", "https://phet.colorado.edu/de/simulations/greenhouse-effect", "PhET, University of Colorado Boulder · Deutsch · CC BY-NC 4.0 · läuft im Browser"],
+  "link": ["Simulation »Treibhauseffekt« öffnen", "https://phet.colorado.edu/de/simulations/greenhouse-effect", "PhET, University of Colorado Boulder · Deutsch · PhET Interactive Simulations · läuft im Browser"],
   "q": "Öffne die Simulation (Knopf oben). Stell die Menge der Treibhausgase ein und beobachte die Temperatur. Füge dann Wolken hinzu.",
   "hint": "Warte nach jeder Änderung ein paar Sekunden – die Temperatur pendelt sich erst ein.",
 
@@ -390,7 +390,7 @@ LERNZIELE = ["**ökologischen Fußabdruck, ökologischen Rucksack und CO₂-Fuß
 WICHTIGSTE = ["Der **ökologische Fußabdruck** misst Fläche (globale Hektar), der **Rucksack** das Material eines Produkts (kg), der **CO₂-Fußabdruck** die Treibhausgase (CO₂-Äquivalent).",
               "Würden alle wie wir in Österreich leben, bräuchte die Menschheit fast **vier Erden** – Österreichs **Overshoot Day** 2026 war am 2. April.",
               "**KI** läuft in **Rechenzentren**: Strom wird zu Wärme, die mit Wasser oder Luft abgeführt wird. Kronstorf Stufe 1 braucht so viel Strom wie rund **375 000 Haushalte**.",
-              "Klimaschutz braucht alle Staaten: Paris 2015 setzte das Ziel **1,5 bis 2 °C** – bei der **COP31** 2026 scheiterte das Abschlusspapier am Streit um Kohle, Öl und Gas.",
+              "Klimaschutz braucht alle Staaten: Paris 2015 setzte das Ziel **deutlich unter 2 °C, möglichst 1,5 °C** (gegenüber der Zeit vor der Industrialisierung) – bei der **COP31** 2026 scheiterte das Abschlusspapier am Streit um Kohle, Öl und Gas.",
               "Handelsabkommen wie **Mercosur** senken Zölle und bringen Exporte – bergen aber Risiken für **Regenwald, Klima und heimische Bauern**. Gute Urteile wägen beides ab."]
 
 FACHBEGRIFFE = [["Begriff", "Bedeutung"],
@@ -398,7 +398,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["ökologischer Fußabdruck", "Fläche, die nötig ist, um alles herzustellen, was ein Mensch oder ein Land verbraucht, und um sein CO₂ aufzunehmen"],
                 ["globaler Hektar (gha)", "Flächeneinheit mit weltweit durchschnittlicher Fruchtbarkeit; macht Länder vergleichbar"],
                 ["Biokapazität", "Fläche, die die Erde (oder ein Land) jedes Jahr nachwachsen lässt"],
-                ["Overshoot Day (Erdüberlastungstag)", "Tag, an dem das Naturbudget eines Jahres verbraucht ist; danach leben wir »auf Pump«"],
+                ["Overshoot Day (Erdüberlastungstag)", "Tag, an dem die Menschheit verbraucht hat, was die Erde im ganzen Jahr nachwachsen lässt; danach leben wir »auf Pump«. Der Tag eines Landes zeigt, wann es so weit wäre, wenn alle so lebten wie dort."],
                 ["ökologischer Rucksack", "alle Rohstoffe, Energie und Wasser, die ein Produkt über seinen ganzen Lebensweg braucht (in kg)"],
                 ["CO₂-Fußabdruck", "Menge an Treibhausgasen, die ein Mensch, Produkt oder eine Firma verursacht, umgerechnet in CO₂ (CO₂-Äquivalent)"],
                 ["Neophyt / Neozoon", "eingewanderte Pflanze bzw. eingewandertes Tier, z. B. Drüsiges Springkraut bzw. Tigermücke"],
@@ -411,7 +411,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Pariser Abkommen", "Vertrag von 2015: Erwärmung deutlich unter 2 °C, möglichst 1,5 °C"],
                 ["Freihandelsabkommen", "Vertrag zwischen Staaten, der Zölle und andere Handelshürden senkt"],
                 ["Zoll / Zollkontingent", "Abgabe auf eingeführte Waren; ein Kontingent erlaubt eine Menge zu niedrigerem Zoll"],
-                ["Mercosur", "Wirtschaftsbündnis von Argentinien, Brasilien, Paraguay und Uruguay"]]
+                ["Mercosur", "Wirtschaftsbündnis in Südamerika; das EU-Abkommen gilt für Argentinien, Brasilien, Paraguay und Uruguay (Bolivien ist seit 2024 Mitglied, aber nicht Teil des Abkommens)"]]
 
 # ---------------------------------------------------------------- Wiederholen
 WEISST_DU_NOCH = {
@@ -441,8 +441,8 @@ STOPPFRAGEN = {
                   ("Welche Gase verstärken ihn vor allem?", "Kohlenstoffdioxid aus Kohle, Öl und Gas, dazu Methan und Lachgas.")],
     "konferenzen": [("Was ist das Ziel von Paris?", "Deutlich unter 2 °C, möglichst 1,5 °C."),
                     ("Warum scheiterte die COP31?", "Der Entwurf nannte Kohle, Öl und Gas nicht – die EU und andere legten Widerspruch ein.")],
-    "handel": [("Wie viel Rindfleisch dürfen die Mercosur-Staaten zu niedrigem Zoll liefern?", "99 000 t pro Jahr zu 7,5 % – gut 1 % des EU-Verbrauchs."),
-               ("Nenne ein Argument für und eines gegen Mercosur.", "Für: weniger Zölle, mehr Exporte. Gegen: Regenwald, Transport, Druck auf Bauern.")],
+    "handel": [("Wie viel Rindfleisch dürfen die Mercosur-Staaten zu niedrigem Zoll liefern?", "Nach einer Übergangszeit bis zu 99 000 t pro Jahr zu 7,5 % – gut 1 % des EU-Verbrauchs (WKO)."),
+               ("Nenne ein Argument für und eines gegen Mercosur.", "Für: Bindung an das Pariser Abkommen, weniger Zölle, mehr Exporte. Gegen: Regenwald, Transport, Druck auf Bauern.")],
 }
 
 STOLPERSTEINE = [("»Fußabdruck und Rucksack sind dasselbe«",
@@ -494,7 +494,7 @@ CHECK = [
         ("c2", "Was ist das Ziel des Pariser Abkommens?", "deutlich unter 2 °C, möglichst 1,5 °C", ["genau 3 °C", "keine Erwärmung mehr ab 2016", "4 °C bis 2100"], "S. 74"),
         ("c3", "Woran scheiterte das Abschlusspapier der COP31?", "am Streit um Kohle, Öl und Gas", ["am Streit um den Gastgeber", "an einem Stromausfall", "an der Sprache des Vertrags"], "S. 73–74")]},
     {"thema": "Handel", "n": 1, "fragen": [
-        ("h1", "Welche Staaten bilden den Mercosur?", "Argentinien, Brasilien, Paraguay, Uruguay", ["Mexiko, Kanada, USA", "Chile, Peru, Kolumbien, Ecuador", "Spanien, Portugal, Italien, Griechenland"], "S. 40–41"),
+        ("h1", "Für welche Staaten gilt das EU-Mercosur-Abkommen?", "Argentinien, Brasilien, Paraguay, Uruguay", ["Mexiko, Kanada, USA", "Chile, Peru, Kolumbien, Ecuador", "Spanien, Portugal, Italien, Griechenland"], "S. 40–41"),
         ("h2", "Was macht ein Freihandelsabkommen?", "Es senkt Zölle und Handelshürden", ["Es verbietet Importe", "Es legt Preise im Supermarkt fest", "Es schafft eine gemeinsame Währung"], "S. 40")]},
 ]
 assert sum(g["n"] for g in CHECK) == 10 and all(g["n"] <= len(g["fragen"]) for g in CHECK)
@@ -545,7 +545,7 @@ QUELLEN = [
  ("W16", "EU-Parlament ruft Gerichtshof zur Prüfung des Mercosur-Abkommens an (21.01.2026)", "epd, bei evangelisch.de", "https://www.evangelisch.de/inhalte/252087/21-01-2026/eu-parlament-ruft-gerichtshof-zur-pruefung-des-mercosur-abkommens",
   "EU-Parlament beschloss knapp (334 : 324, 11 Enthaltungen), ein EuGH-Gutachten einzuholen; Ratifizierung verzögert sich", "Auszug per Websuche gelesen (23.11.2026)"),
  ("W14", "Treibhauseffekt (Simulation)", "PhET, University of Colorado Boulder", "https://phet.colorado.edu/de/simulations/greenhouse-effect",
-  "Deutsch, HTML5, Lizenz CC BY-NC 4.0; Treibhausgaskonzentration und Wolken einstellbar", "Seite geöffnet; Bedienung am Handy nicht live getestet"),
+  "Deutsch, HTML5; Lizenz: ältere Versionen (vor 29.03.2026) CC BY 4.0, für neuere nennt PhET keine Lizenz – Namensnennung »PhET Interactive Simulations, University of Colorado Boulder«; Treibhausgaskonzentration und Wolken einstellbar", "Seite geöffnet; Bedienung am Handy nicht live getestet"),
 ]
 QUELLE = {q[0]: q for q in QUELLEN}
 

@@ -38,11 +38,11 @@ STUNDE = {
      ("Puffer (Organisation)", 1, True, "org", "")],
  3: [("Beginn: Klassenbuch, Anwesenheit", 4, True, "org", ""),
      ("Weißt du noch? Drei Fragen zu Stunde 2", 2, True, "wdh", "BESPRECHEN"),
-     ("KURZ KLÄREN: Treibhauseffekt (Animation) und Klimakonferenzen bis zur COP31", 7, True, "erkl", "BESPRECHEN"),
+     ("KURZ KLÄREN: Treibhauseffekt (Animation) und Klimakonferenzen bis zur COP31", 6, True, "erkl", "BESPRECHEN"),
      ("Aufgabe 6: Klima und Handel – COP31 und Mercosur", 8, False, "a6", "SELBSTSTUDIUM"),
      ("DISKUSSION: Aufstellen auf der Skala »Mercosur – gut oder schlecht fürs Klima?«", 4, True, "skala", "DISKUSSION"),
      ("GRUPPENARBEIT: Mini-Klimagipfel – Staaten verhandeln einen gemeinsamen Satz", 9, True, "gipfel", "GRUPPENARBEIT"),
-     ("Aufgabe 7: Mit der Hand – Mindmap der Einheit", 4, True, "a7", "SELBSTSTUDIUM"),
+     ("Aufgabe 7: Mit der Hand – Mindmap der Einheit", 5, True, "a7", "SELBSTSTUDIUM"),
      ("Auflösung »Was glaubst du?«", 1, False, "selbst", ""),
      ("BESPRECHEN: Sicherung", 3, True, "bespr", "BESPRECHEN"),
      ("PDF-Abgabe: Arbeitsblatt in LMS", 2, False, "pdf", ""),
@@ -91,14 +91,14 @@ assert sorted(_einmal) == list(range(1, 8)), sorted(_einmal)
 # ---------------------------------------------------------------- Kürzen, Ausfall, Supplier
 KUERZEN = {
  1: "Wenn es knapp wird: Das Video fällt weg (die Animationen reichen). 5AK hat den Rechner schon gemacht – dort bleibt mehr Zeit. Aufgabe 3 (Tabelle) darf am Beginn von Stunde 2 fertig werden.",
- 2: "Wenn es knapp wird: Der Partnercheck fällt weg, die Diskussion fragt nur drei Rollen (Google, Bürgerinitiative, Umwelt-NGO). Aufgabe 4 g) wird Zusatz.",
+ 2: "Wenn es knapp wird: Der Partnercheck fällt weg, die Diskussion fragt nur vier Rollen – je zwei pro Seite (Google, Wirtschaftslandesrat, Bürgerinitiative, Umwelt-NGO). Aufgabe 4 g) wird Zusatz.",
  3: "Wenn es knapp wird: Der Mini-Klimagipfel wird kürzer (nur eine Verhandlungsrunde), die Skala bleibt. Zusatzaufgaben entfallen ersatzlos.",
 }
 AUSFALL = ("Fällt eine der drei Stunden aus: Stunde 2 und 3 werden NICHT zusammengepresst. Stattdessen: Stunde 3 verliert den Mini-Klimagipfel und das Video aus Stunde 1 entfällt; "
            "Treibhauseffekt und Klimakonferenzen kommen in die Jänner-Stunden zum Klima. Keine Hausübung.")
 SUPPLIER = 1
 KUERZUNGSLISTE = ["Zusatzaufgaben 8–11 (fallen ersatzlos weg)", "Video in Stunde 1", "Partnercheck in Stunde 2",
-                  "Mini-Klimagipfel kürzen (eine Runde)", "Diskussion Kronstorf nur mit drei Rollen"]
+                  "Mini-Klimagipfel kürzen (eine Runde)", "Diskussion Kronstorf nur mit vier Rollen (2 : 2)"]
 
 # ---------------------------------------------------------------- Ablauf je Termin: Referat (5AK Stunde 2: Luftverschmutzung)
 SICHERUNG_TEILE = {1: [(2, ["erden", "was", "rdef", "neo"])], 2: [(4, ["jahr", "wer", "fehlt"]), (5, ["uvp", "waerme"])], 3: [(6, ["cop", "eu", "treib", "rind"])]}
