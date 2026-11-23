@@ -44,6 +44,7 @@ TITLE = "Institutionen – Arbeitsblatt"   # Standard 11.11.2026: die Seite hei�
 rep("<title>Epochen-Aufgaben</title>", "<title>" + TITLE + "</title>")
 rep("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen</div>", I.EYEBROW + "</div>", 2)
 rep("<h1>Epochen-Aufgaben</h1>", "<h1>" + TITLE + "</h1>")
+rep('<select id="klasse"><option value="">–</option><option>3BK</option></select>', '<select id="klasse"><option value="">–</option><option>5AK</option></select>')
 rep("<h2>Epochen-Aufgaben am Handy</h2>", "<h2>" + TITLE + " am Handy</h2>")
 s = re.sub(r'(alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,)[A-Za-z0-9+/=]+', lambda m: m.group(1) + qr_b64(I.URL + "aufgaben.html"), s, count=1)
 def _ber(nrs):
@@ -265,7 +266,8 @@ s = s.replace("26-27-3BK-K1.3-Epochen-TH-Handy-v1", I.KEY)  # Bausteine (pdferin
 for blk in re.findall(r"<!-- ([a-z_]+):start -->", s):  # Bausteine kommen mit nach_dem_bauen.py frisch hinein
     pass
 _plain = re.sub(r"[A-Za-z0-9+/=]{200,}", "", s)
-for bad in ["Epochen-", "Zeit-Einteilung", "Erkenntnis", "1AK", "Ökodesign", "Ökobilanz", "5AB", "Flasche"]:
+_plain = re.sub(r"<nav[^>]*>.*?</nav>", "", _plain, flags=re.S)  # Navigation setzt nach_dem_bauen.py neu
+for bad in ["Epochen-", "Zeit-Einteilung", "Erkenntnis", "1AK", "Ökodesign", "Ökobilanz", "5AB", "Flasche", "3BK", "PBGW"]:
     assert bad not in _plain, re.findall(r".{60}" + bad + r".{20}", _plain)[:5]
 open(DST + "aufgaben.html", "w", encoding="utf-8").write(s)
 
