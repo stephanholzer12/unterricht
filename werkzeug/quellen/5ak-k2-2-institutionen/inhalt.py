@@ -44,6 +44,8 @@ QUELLEN = [
   "Weltbank, Pressemitteilung", "23.02.2026", "https://www.worldbank.org/en/news/press-release/2026/02/23/updated-ukraine-recovery-and-reconstruction-needs-assessment-released"),
  ("IWF genehmigt der Ukraine 8,1 Mrd. US-Dollar (48 Monate, 1,5 Mrd. sofort); Auflagen: Steuereinnahmen, Korruptionsbekämpfung, flexibler Wechselkurs",
   "IWF, Pressemitteilung 26/66", "26.02.2026", "https://www.imf.org/en/news/articles/2026/02/26/pr-26066-ukraine-imf-executive-board-approves-usd-8point1-billion-under-an-eff-arrangement"),
+ ("IWF genehmigt der Ukraine 8,1 Mrd. US-Dollar (6,8 Mrd. Euro), 1,5 Mrd. sofort; ersetzt ein Programm von 2023 (deutschsprachig)", "Berliner Zeitung", "27.02.2026",
+  "https://www.berliner-zeitung.de/article/acht-milliarden-dollar-iwf-genehmigt-neues-kreditprogramm-fuer-die-ukraine-10021481"),
  ("USA treten aus 66 internationalen Organisationen aus (Memorandum vom 7.1.2026)", "ZDFheute", "08.01.2026",
   "https://www.zdfheute.de/politik/ausland/usa-internationale-organisationen-rueckzug-un-diplomatie-100.html"),
  ("USA bleiben in IWF und Weltbank, fordern aber Reformen: IWF zurück zum Kernauftrag, Weltbank soll das 45-%-Klimaziel streichen",

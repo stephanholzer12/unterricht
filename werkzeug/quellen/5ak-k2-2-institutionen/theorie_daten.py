@@ -57,7 +57,7 @@ PARTS = [
    "blocks": [("hint", "Jede Gruppe füllt dasselbe Raster aus. So lassen sich die Vorträge am Ende vergleichen."),
               ("table", [["Punkt", "Was gehört hinein?"]] + [[a, b] for a, b in I.RASTER]),
               ("table", [["Gruppe", "Thema", "Leitfragen", "Einstieg"]] + [[f"{n} · {inst}", thema + " (" + buch + ")", fragen, start] for n, inst, thema, buch, fragen, start in I.GRUPPEN]),
-              ("ul", ["Jede Gruppe braucht **mindestens zwei Quellen mit Datum**, eine davon nicht das Buch. Gute Startpunkte sind die Seiten der Organisationen selbst, ORF, APA, ZDF oder die Fachagentur GTAI.",
+              ("ul", ["Jede Gruppe braucht **mindestens zwei Quellen mit Datum**, eine davon nicht das Buch. Gute Startpunkte auf Deutsch: ORF.at, ZDFheute, tagesschau.de, die Fachagentur GTAI. Die Seiten der Organisationen und ihre Pressemitteilungen sind meist englisch – nehmt sie nur zum Nachschlagen von Zahlen.",
                       "Teilt euch auf: Zwei suchen Fakten (Punkte 1 bis 4), zwei den aktuellen Fall und die Kritik (Punkte 5 bis 7). Am Ende tragt ihr alles zusammen."]),
               ("hint", "Geprüfte Quellen zum Start (von Prof. HOLZER vorbereitet, Stand 23.11.2026):"),
               ("links", [(f"{x[1]}, {x[2]}: {x[0]}", x[3]) for x in I.QUELLEN])]},
