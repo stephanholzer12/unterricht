@@ -1793,6 +1793,250 @@
   }
  },
  {
+  "klasse": "5AK",
+  "fach": "IWK",
+  "ordner": "5ak-iwk/k2-2-institutionen",
+  "kapitel": "K2.2",
+  "titel": "Institutionen der Globalisierung: WTO, Weltbank, IWF",
+  "block": "C Akteure",
+  "jahresplan": "E5 (Akteure der Weltwirtschaft, 2 Stunden)",
+  "seiten": [
+   "aufgaben.html",
+   "theorie.html",
+   "quiz.html"
+  ],
+  "versteckt": true,
+  "kapitelmenue": true,
+  "fahrplan": {
+   "ansicht": "kompakt",
+   "text": "Drei Stunden, sechs Gruppen, drei Institutionen: In Stunde 1 klären wir, wer wofür zuständig ist, und ihr startet in der Gruppe. In Stunde 2 baut ihr drei Folien und probt. In Stunde 3 präsentiert ihr – je 4 Minuten. Alles steht in EINEM Arbeitsblatt, du gibst EIN PDF ab. Keine Hausübung. Welche Stunde heute dran ist, sagt dir Prof. HOLZER.",
+   "zeilen": [
+    {
+     "wann": "Stunde 1",
+     "titel": "Wer ist hier zuständig? WTO, Weltbank und IWF im Überblick",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "Vier-Ecken · Buch S. 52–53 · Aufgabe 1 · Gruppen und Steckbrief",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "DISKUSSION",
+       "Vier Ecken"
+      ],
+      [
+       "SELBSTSTUDIUM",
+       "Buch lesen"
+      ],
+      [
+       "",
+       "Aufgabe 1",
+       "aufgaben.html#card_a1"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "Eure Gruppen"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "Aufgabe 2 (Teil 1)",
+       "aufgaben.html#card_a2"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 52–53",
+     "aufgaben": "1, 2 (Teil 1)",
+     "theorie": "Drei Institutionen, drei Aufgaben, Wer hat das Sagen?, Die WTO 2026, Weltbank und IWF 2026, Euer Steckbrief",
+     "theorie_links": [
+      [
+       "Drei Institutionen, drei Aufgaben",
+       "theorie.html#ueberblick"
+      ],
+      [
+       "Wer hat das Sagen?",
+       "theorie.html#stimme"
+      ],
+      [
+       "Die WTO 2026",
+       "theorie.html#aktuell"
+      ],
+      [
+       "Weltbank und IWF 2026",
+       "theorie.html#geld"
+      ],
+      [
+       "Euer Steckbrief",
+       "theorie.html#raster"
+      ]
+     ],
+     "zusatz": "Zusatz 5–7",
+     "zusatz_links": [
+      [
+       "Aufgabe 5 · Zwei Karikaturen deuten",
+       "aufgaben.html#card_a5"
+      ],
+      [
+       "Aufgabe 6 · Eine KI-Antwort prüfen",
+       "aufgaben.html#card_a6"
+      ],
+      [
+       "Aufgabe 7 · Lesen und prüfen",
+       "aufgaben.html#card_les"
+      ]
+     ],
+     "abgabe": "–"
+    },
+    {
+     "wann": "Stunde 2",
+     "titel": "Drei Folien, vier Minuten: Aus Fakten wird ein Vortrag",
+     "marke": "GRUPPENARBEIT",
+     "lesen": "Vortragstipps · Folien bauen · Probelauf mit einer anderen Gruppe",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Weißt du noch?"
+      ],
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "GRUPPENARBEIT",
+       "Aufgabe 2 (Teil 2)",
+       "aufgaben.html#card_a2"
+      ],
+      [
+       "PARTNERCHECK",
+       "Aufgabe 2 (Teil 2, Probelauf)",
+       "aufgaben.html#card_a2"
+      ],
+      [
+       "BESPRECHEN",
+       "Sicherung"
+      ]
+     ],
+     "buch": "Buch S. 52–63 (euer Thema)",
+     "aufgaben": "2 (Teil 2)",
+     "theorie": "So geht ein 4-Minuten-Vortrag, Quellen prüfen",
+     "theorie_links": [
+      [
+       "So geht ein 4-Minuten-Vortrag",
+       "theorie.html#vortrag"
+      ],
+      [
+       "Quellen prüfen",
+       "theorie.html#quellen"
+      ]
+     ],
+     "zusatz": "Zusatz 5–7",
+     "zusatz_links": [
+      [
+       "Aufgabe 5 · Zwei Karikaturen deuten",
+       "aufgaben.html#card_a5"
+      ],
+      [
+       "Aufgabe 6 · Eine KI-Antwort prüfen",
+       "aufgaben.html#card_a6"
+      ],
+      [
+       "Aufgabe 7 · Lesen und prüfen",
+       "aufgaben.html#card_les"
+      ]
+     ],
+     "abgabe": "Folien in LMS (eine Person pro Gruppe)"
+    },
+    {
+     "wann": "Stunde 3",
+     "titel": "Gipfeltreffen im Klassenzimmer: Präsentationen und Urteil",
+     "marke": "PRÄSENTATION",
+     "lesen": "Sechs Vorträge · Vergleichstabelle · Statement-Ampel · Urteil",
+     "folge": [
+      [
+       "BESPRECHEN",
+       "Prof. HOLZER erklärt"
+      ],
+      [
+       "PRÄSENTATION",
+       "Aufgabe 3 a) während der Vorträge",
+       "aufgaben.html#card_a3"
+      ],
+      [
+       "DISKUSSION",
+       "Statement-Ampel"
+      ],
+      [
+       "",
+       "Aufgabe 3 c) Urteil",
+       "aufgaben.html#card_a3"
+      ],
+      [
+       "",
+       "Ziele erreicht?",
+       "aufgaben.html#card_zz"
+      ]
+     ],
+     "buch": "Buch S. 57, 60–63",
+     "aufgaben": "3",
+     "theorie": "WTO, Weltbank und IWF im Vergleich, Kritik – und was dahintersteckt",
+     "theorie_links": [
+      [
+       "WTO, Weltbank und IWF im Vergleich",
+       "theorie.html#vergleich"
+      ],
+      [
+       "Kritik – und was dahintersteckt",
+       "theorie.html#kritik"
+      ]
+     ],
+     "zusatz": "Zusatz 5–7",
+     "zusatz_links": [
+      [
+       "Aufgabe 5 · Zwei Karikaturen deuten",
+       "aufgaben.html#card_a5"
+      ],
+      [
+       "Aufgabe 6 · Eine KI-Antwort prüfen",
+       "aufgaben.html#card_a6"
+      ],
+      [
+       "Aufgabe 7 · Lesen und prüfen",
+       "aufgaben.html#card_les"
+      ]
+     ],
+     "abgabe": "Arbeitsblatt-PDF in LMS"
+    },
+    {
+     "wann": "Für Schnelle",
+     "lesen": "Karikaturen deuten, KI-Antwort prüfen, Bericht über die WTO-Konferenz 2026 lesen und prüfen",
+     "aufgaben": "Zusatz 5–7",
+     "zeit": "ca. 26 min",
+     "abgabe": "freiwillig"
+    },
+    {
+     "wann": "Danach",
+     "lesen": "Mitarbeits-Check: 10 Fragen zur ganzen Einheit, ca. 8 min, zählt zur Mitarbeit – Start mit dem Code von Prof. HOLZER"
+    }
+   ]
+  },
+  "dateien": {
+   "stand": "23.11.2026",
+   "zip": "",
+   "liste": [
+    "GitHub: theorie.html, aufgaben.html, quiz.html (v1)",
+    "Lösungsseite (Artifact, privat) mit Präsentation, Kalender, Gruppen, Bewertungsraster",
+    "26-27-5AK-K2.2-Institut-Gruppenfolien-Vorlage-v1.pptx"
+   ]
+  }
+ },
+ {
   "klasse": "3AB",
   "fach": "NAWI",
   "ordner": "3ab-nawi/k2-3a-ernaehrung",

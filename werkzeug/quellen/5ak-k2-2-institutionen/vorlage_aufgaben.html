@@ -1,0 +1,2854 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Epochen-Aufgaben</title>
+
+<link rel="stylesheet" href="../../schriften/schriften.css">
+<style>
+/* Layout: eine Spalte, Handy zuerst – Kopf wie die Inhaltsfolien des BHAK-Folienmasters (Tarnmuster-Ecke, Wappen, Smiley).
+   Bewusst nur helles Design wie Folienmaster und Quiz. Gelb = hier wird geschrieben. */
+:root {
+  --bg: #EEF3E4;          /* lt2 des Folienmasters */
+  --card: #FFFFFF;
+  --ink: #1F2A1C;
+  --olive: #3B4A2F;
+  --green: #7FA83A;
+  --green-soft: #E6F0D3;
+  --teal: #2E7D8C;        /* Buch-Aufgabe */
+  --theory: #6E7F4E;      /* eigene Aufgabe / Theorie */
+  --rust: #8C3B2E;
+  --rust-soft: #F6E3DF;
+  --write: #FFF7D6;       /* Antwortfelder */
+  --write-line: #C9A227;
+  --muted: #5E6652;
+  --line: #D3DCC2;
+  --font-head: Cambria, "Source Serif 4", Georgia, serif;
+  --font-body: Calibri, "Source Sans 3", "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+html, body { background: var(--bg); color: var(--ink); }
+body { margin: 0; font-family: var(--font-body); font-size: 18px; line-height: 1.45; }
+.top { background: var(--card); position: relative; border-bottom: 1px solid var(--line); }
+.top .camo { position: absolute; left: 0; top: 0; width: 190px; height: auto; pointer-events: none; }
+.top .logo { position: absolute; left: 8px; top: 6px; width: 52px; height: auto; }
+.top-inner { max-width: 680px; margin: 0 auto; padding: 18px 16px 16px 16px; min-height: 104px; display: flex; align-items: center; gap: 12px; }
+.top-text { margin-left: 150px; flex: 1; min-width: 0; }
+.eyebrow { font-weight: 700; font-size: 14px; color: var(--teal); letter-spacing: .04em; }
+h1 { font-family: var(--font-head); color: var(--olive); font-size: 34px; line-height: 1.05; margin: 2px 0 0; }
+.top .smiley { width: 64px; height: 64px; flex: 0 0 64px; }
+@media (max-width: 520px) {
+  .top .camo { width: 112px; }
+  .top .logo { width: 32px; left: 6px; top: 4px; }
+  .top-inner { padding-top: 54px; min-height: 0; }
+  .top-text { margin-left: 0; }
+  h1 { font-size: 30px; }
+  .top .smiley { width: 52px; height: 52px; flex-basis: 52px; }
+}
+main { max-width: 680px; margin: 0 auto; padding-inline: 16px; padding-block: 18px 48px; display: grid; gap: 14px; }
+.progress { display: flex; align-items: center; gap: 12px; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 600; font-size: 16px; }
+.bar { flex: 1; height: 10px; background: var(--card); border-radius: 5px; overflow: hidden; border: 1px solid var(--line); }
+.bar span { display: block; height: 100%; background: var(--green); width: 0; transition: width .3s ease; }
+.card { background: var(--card); border-radius: 14px; padding: 18px 16px; display: grid; gap: 12px; box-shadow: 0 2px 6px rgba(31, 42, 28, .12); min-width: 0; }
+.card.done { box-shadow: 0 2px 6px rgba(31, 42, 28, .12), inset 4px 0 0 var(--green); }
+.head { display: flex; justify-content: space-between; align-items: center; gap: 8px 10px; flex-wrap: wrap; }
+.nr { font-weight: 700; color: var(--olive); font-size: 15px; display: flex; align-items: center; gap: 8px; }
+.check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); display: inline-grid; place-items: center; font-size: 13px; color: transparent; }
+.card.done .check { background: var(--green); border-color: var(--green); color: #fff; }
+.pill { color: #fff; font-weight: 700; font-size: 14px; border-radius: 999px; padding: 3px 12px; white-space: nowrap; background: var(--teal); }
+.pill.theory { background: var(--theory); }
+.tag { font-size: 13px; font-weight: 700; color: var(--muted); border: 1.5px solid var(--muted); border-radius: 999px; padding: 1px 9px; }
+h2 { font-family: var(--font-head); color: var(--olive); font-size: 23px; line-height: 1.2; margin: 0; text-wrap: balance; }
+.q { margin: 0; }
+.q b { color: var(--theory); }
+.hint { font-size: 15px; color: var(--muted); margin: 0; }
+label.lbl { font-weight: 700; color: var(--olive); font-size: 16px; display: block; margin-bottom: 4px; }
+input[type=text], textarea, select {
+  font: inherit; font-size: 18px; color: var(--ink); width: 100%; background: var(--write);
+  border: 2px dashed var(--write-line); border-radius: 10px; padding: 10px 12px;
+}
+textarea { resize: vertical; min-height: 120px; line-height: 1.4; }
+select { appearance: none; -webkit-appearance: none; padding-right: 36px; min-height: 50px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--olive) 50%), linear-gradient(135deg, var(--olive) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-style: solid; }
+.filled { border-style: solid !important; border-color: var(--line) !important; background-color: var(--card) !important; }
+.rows { display: grid; gap: 10px; }
+.row { border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: grid; gap: 8px; }
+.row .stoff { font-weight: 700; font-size: 19px; color: var(--olive); }
+.row .stoff span { font-weight: 400; color: var(--muted); font-size: 16px; }
+.two { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 460px) { .two { grid-template-columns: 1fr; } }
+.sent { border: 1px solid var(--line); border-radius: 12px; padding: 12px; line-height: 2.1; }
+.opt { font: inherit; font-size: 18px; font-weight: 600; color: var(--olive); background: var(--write); border: 2px solid var(--write-line); border-radius: 8px; padding: 2px 10px; cursor: pointer; line-height: 1.3; }
+.opt.struck { text-decoration: line-through; text-decoration-thickness: 3px; text-decoration-color: var(--rust); color: var(--muted); background: var(--rust-soft); border-color: var(--rust); }
+.opt.kept { background: var(--green-soft); border-color: var(--green); }
+.abb { display: inline-block; font-weight: 700; background: var(--bg); border-radius: 8px; padding: 4px 10px; color: var(--olive); }
+.grp { font-weight: 700; font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.puz { display: grid; gap: 6px; }
+.boxes { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 32px)); gap: 3px; }
+.boxes span { height: 34px; border: 2px solid var(--olive); border-radius: 4px; display: grid; place-items: center; font-weight: 700; font-size: 18px; color: var(--ink); background: var(--card); }
+.boxes span.given { background: var(--rust-soft); color: var(--rust); }
+.boxes span.bad { border-color: var(--rust); }
+.photo { display: grid; gap: 8px; justify-items: start; }
+.photo img { max-width: 100%; border-radius: 10px; border: 1px solid var(--line); }
+.btn { font: inherit; font-weight: 700; font-size: 19px; background: var(--olive); color: #fff; border: 0; border-radius: 12px; padding: 14px 18px; cursor: pointer; width: 100%; }
+.btn.secondary { background: var(--card); color: var(--olive); border: 2px solid var(--olive); }
+.btn.small { width: auto; font-size: 16px; padding: 8px 14px; }
+.btn.danger { background: var(--rust); }
+.btn:disabled { opacity: .55; cursor: default; }
+.filebtn { position: relative; overflow: hidden; display: inline-block; }
+.filebtn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 0; }
+.status { margin: 0; font-weight: 600; }
+.status.ok { color: var(--green); }
+.status.err { color: var(--rust); }
+.status.info { color: var(--muted); }
+.who { display: grid; gap: 10px; grid-template-columns: 1fr 120px; }
+@media (max-width: 400px) { .who { grid-template-columns: 1fr; } }
+.steps { margin: 0; padding-left: 22px; display: grid; gap: 4px; }
+.confirm { background: var(--rust-soft); border-radius: 10px; padding: 12px; display: grid; gap: 10px; }
+.confirm .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+#copyArea { font-size: 14px; min-height: 160px; background: var(--card); border: 1px solid var(--line); border-style: solid; }
+.qrbtn { font: inherit; font-weight: 700; font-size: 15px; background: var(--teal); color: #fff; border: 0; border-radius: 999px; padding: 8px 14px; cursor: pointer; white-space: nowrap; }
+.qr-overlay { position: fixed; inset: 0; background: var(--bg); z-index: 10; display: grid; place-items: center; padding: 24px 16px; }
+.qr-box { background: var(--card); border-radius: 18px; box-shadow: 0 4px 14px rgba(31, 42, 28, .18); padding: 3vh 4vw; display: grid; justify-items: center; gap: 1.6vh; text-align: center; max-width: 100%; }
+.qr-box img { width: min(50vh, 80vw); height: auto; image-rendering: pixelated; }
+.qr-box h2 { font-size: clamp(28px, 4vw, 48px); }
+.qr-box p { margin: 0; font-size: clamp(18px, 2vw, 26px); color: var(--muted); }
+@media (max-width: 760px) { .qrbtn { display: none; } }
+@media (prefers-reduced-motion: reduce) { .bar span { transition: none; } }
+
+.tag.kern { color: var(--olive); border-color: var(--olive); }
+.tag.hue { color: var(--teal); border-color: var(--teal); }
+.qimg { display: grid; justify-items: center; }
+.qimg img { max-height: 260px; width: auto; border-radius: 10px; border: 1px solid var(--line); background: #fff; }
+.fields { display: grid; gap: 12px; }
+.grp { font-weight: 700; font-size: 15px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
+.checkrow { margin-top: 10px; }
+.fb { margin-top: 8px; border-radius: 10px; padding: 10px 12px; font-size: 16px; display: grid; gap: 4px; }
+.fb.ok { background: #E6F0D3; border: 2px solid #7FA83A; }
+.fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }
+.fb a { color: var(--teal); font-weight: 700; }
+.sol { margin-top: 10px; border: 2px dashed var(--teal); border-radius: 10px; padding: 10px 12px; background: #EEF6F7; font-size: 16px; }
+.sol p { margin: 4px 0; } .solh { font-weight: 700; color: var(--teal); margin-top: 6px; }
+.fahrplan { background: var(--card); border: 2px solid var(--green); border-radius: 16px; padding: 14px 16px; }
+.fahrplan h2 { margin: 2px 0 6px; } .fahrplan p { margin: 0 0 8px; }
+.fahrplan table { width: 100%; border-collapse: collapse; font-size: 15px; } .fahrplan th, .fahrplan td { border-bottom: 1px solid var(--line); padding: 5px 6px; text-align: left; vertical-align: top; }
+.fahrplan .tablewrap { overflow-x: auto; max-width: 100%; }
+main > * { min-width: 0; } .fahrplan { min-width: 0; max-width: 100%; }
+</style>
+
+<!-- ks-kopf:start --><link rel="stylesheet" href="../../gemeinsam/kadetten-layout-v2.css"><!-- ks-kopf:end -->
+</head>
+<body class="ks-materialseite">
+<!-- ks-navigation:start --><nav class="ks-topnav" aria-label="Zur eigenen Klasse"><a href="../index.html">← PBGW 3BK · Start</a><span>Arbeitsblatt</span></nav><nav class="ks-materialnav" aria-label="Material dieser Einheit"><a href="theorie.html">Theorie</a><a href="aufgaben.html" aria-current="page">Arbeitsblatt</a><a href="quiz.html">Quiz</a><a class="ks-zur-abgabe" href="#abgabe">Zur PDF-Abgabe</a></nav><!-- ks-navigation:end -->
+
+<header class="top">
+  <img class="camo" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAADKCAMAAABKSmNDAAAAwFBMVEWanpBaY0yqqqago5aEiXjj4d6pqp58gm8A/wCrq2bU1M5paSc0NDNCSTiFiXlxd2XT0rDCwrptrW3//38UchRweFWEiHmn3aZ8gXB//3///wDCw7tAPyl/f/++wbcAAP9yeWVVVaq/f3+scqzDvrnLy8UoMxw/STV/Pz99hHG9wbj/AAD/AP//f3/Cv7gAAABSW0VnbVk7QB5BSjY2NSBaY0z+/v48Qyc4PBxLUzp+fn5rcVxyeGSqqqpVWUtmZmbPhkSiAAAAQHRSTlPnlQ6f6idi8wEFWAQEZKTPHWAFAgMKZQ2oAgGS/wJiAW8DBAQ3g1lkBFOQAQECSAD+/v7+/v4H/v7+Av36Aw4FR4WOFAAAHtdJREFUeNrtXWl7o7iyVgSYweljZ+ltus/M2e9+r6AzEkYI5///qwteWbRUFUk6fhL1x34cEKW39NbOclltyh/otany3cL/8ke5eZDdT2VdkNb+wX8Q1uaPh3avm7IqH/Cr3L10Hgv84tky7b6XzEkPZolWWkSUz1Uz1j6WIt+H/WduTwfhx/vf5gXplfffWT5sCBJ+OLw85TPnhwdHqsGLOD58LtLB4kK3/xJG+FrxkuU0CB8A3H1oIoDbRRBwXRwf/Adawq1gdy/bQpjwoQ8vXcUtnnDSbdTi8NYUCFcr8Y/2j2RiYfBfay0YRUjlEcDdhrGnY1OefktQ0vXpt9UGr6BP+ocM4HZFYouS77ZJ2AkP6KNVmkTw7s9oFaM/l4l2As5zpJB6MupOR4k7HNXpU+V0ALcP/vMGC+DycJA3PyoqgNtlOpWJEbCIzj/O0QcrEv+xv8jFIsV+Lqb2AkYKqTwyrP3aIG/v3m7REK4HD0YzrPNLIHlW70Tn8kpdYxS0Tkzvx1glvU6ywx+6FgyppOPvKmEEMtxT0PjTMTwcSJ5Vy+GDcQyr7G8BJ9+q/+BW8XEEhRZfh2+NO1iLk7poeVaKpNBKKHa80EqqjFoWviECGMuzegoabSr1AbyDMFFB70wltdVw+S7N4GvhIMx61wEXEQrC8aL9CcMLaQhg3OkoN8Pf4iBcD78zDsIPo03QGNb+peE8S92pePS5ME/OeXYWsGp5FoZhMdUqGoYX0o8qH7/yhsKw0BAeAxhjKh1NpPOrVGQAty8N5lmNWNSjl0ZAuPoq+td9piKEhNOke0mGFVK5mWwXbir16TeeZ9X59MEkBb3fBhnA7WIqg+poM9kxmOCVRaL7B6m7UuEAXuyYAsOSYYuMwDzLAmCEkp4AGKGkzyZSTxGRGNaBZy1EA/NxRNMf52AfVqSGbE4JDoZwrHb+GIbUsyMTCXU6bOBHQLi2PZgIYJSpZHmsTAXEn6V0kk6/F1RJl+sWssM/+EVBeVZ8oN9nBOcgnrWxbRcKYfvhAEK4lvYHA02kjWUrZADveBbgFs7Eyv7WMAAvJs9QIomhPo5sJGAYz7LLCHY6rACG8iyLgt5DeEMDMNwlbX3pKk5EEMJa3FrfGgjhWH2Z6gSgqZRy8b9ihGCAki7tAIaeDvtvYRCu7YcDBuEHx2ZoDOsA4WBU6eRmIEG4NEvLEVJZAnFJm0gdwM+QZNghI8DpsDIsMIRdAIaYShMTCcWzHC9dhV3SLcNyvTUEwvYT1IBc0q1+aaYCDt6kTgBDeJbntwCeVTt/HDSV7AoayLNcAO6iSmqr/Ao6Mc4dhx9c/Lf1DlANwFQyZ0/MUIfQZRQ8HR4AA5R0LX0PxptIJ0YRdDU4H1ylt8rrkt5aTSSgku6c0I3j3PDQLVzHSaNsAg4JycWwAKejdDEsIIR9D4bk6RAhXPqee7A0XU7oZhm7v1eIZ5WxUz80QZ6V9uj3iAWUVACHeNbECY2CsAfAYQg/eI8dVUF3L70Qjz6KFXs/V0BBL50Rq2YbMpX6EQqGEJIfwH5TyQvgEM+qC/+DfTxr82cf/QuZSv6XXifuW1iLReCtS5/tfSUyT4Aq8vIsttSJQ8A+Mlz6ARw6HXngxzUVwP7snY0PwCFvhx/ALYSZ22HJk3Xgrf1OaI8rtOVZPlOpNZF6sS4GjxuUeUhIzsvOy7CC2TshAPtMJQ/DOiw6gFtT6eajdubphN7aDeEykPeVeU2lOOnbbwwqpDKkoH2mUkhB+yFcAx6MNpHOesnJs4InOpdfHYJoPCYSgGetk7uAi8xtKsWRuBFuATvJcEhBe08H5HBQFbSXZ20eyrBzDuWEHr00t0uYqxXkrcN5Oi4XytIl4XqlBr9lQCGBAOw6HQAA+yAMeTARwN7sHchzmWossrgWHPDWLgiX65CPrL2FXYUO6cjBNkWwLG0S3oC26+BZG8hvXaYSAMBuCD/82ABiICSGdXhwZGFDKnM5oSEQLs2y4UE3t8NUqqMR/WZQIYEAnOcWxJQgALtMpbqAPdjGs9xOaIipBHtpw6cJeNM8HRTP+qq2kEwCK89i4yAXA8UNShiA7adjU+bAH9dUANtd0iETyQthGID3SnoCr28G+rlKq4kUDjVre/ZOHakmKODcUlAGlZHlCgeYSB4lDQWwTUmHTSSfqQQ9WGYpvkDydBwaz2IigarbGvEvC4SntY8MEvoDMqzcWgYDVdB2CNeIBxMY1slUwptIPZf0EDTt/ZhCv9eUZ5WpEqDiNptLOl1M4h8MQoahCtp6OjCHYwLhWmIeTAXwVEmXFfzB9SjugwHwhGeFTaRzDu2EZ9VsGqFgkJsUI6MuYFHSAGzjWZgHEwG809HjyxDz3GH2jhYcoXYmEL4SH4D5uPeTmvB4OT0cLAzDcoPa7vB0lD8wvx1DuMYcjjGEH8DinXg7wAzrmL1z18/TiVGfa8Sw/gmuL1cf9dAlbWwmG3Nx0hJvIllOB4JhWSBcF7gH900lmInkyt5BvXRlejXhXEUG9dZ9CJdVpOClqc2oJtxams6CQkICeMjCNyXytwOeVSN/2zOVUAp67M/CAbh98OpUYaK1SpF46N0OXaIdvHCx86cMAWw5HCwYN0DLqGcqoQE8cEkjATxQ0giGZYEw+qVPzEiLCPvjvHewPgtMAxAulnHfx9E0cAGfhYRjWIPTUW7Qn2oAYcKDiQAeQhj/XHbQrPqO1+gdn5R0uVYc1f+jESvTq0WyHQ4WihtsCNs98SzK4TjxrFrmORnCaACfTaWywj+42Fd6CSUY4XP1Shm4QAn4+mwqMfvtzQJCKikyOpYbEwB85lk1AcBHU8mfpxNySVNe2uz8ixzshLZBuLoSd9gOXCdvB1v+wlEC3vOskgLgM4Qpvz1CuKZ85yOEH37g14bGsA4vvQMQV2vS5zo2xNLYFlwtp2OWPB2QgPemUkmS0e4KJzCsHoRpAN6bSlgTacizSC9dpctt1oj/pL11B+HWRBIf0R3WGrU3lWJXhIL5hURTsvvTsSmJv93xrDqnPtibCR3gWSURwDtTaSuSuKL9uHtwbGXB4cX2JpLj9vZygg1NQR9OBxXAO1OJCOC9kn6giHcfVSrpL71IVET9cd45oeFdAwbJHZ2pxJQrCZ/5v1WVkxcZ/DsI1zMe3AGYtDoIkx9bMcUNecd5ayJ9oKzHTwkzZuEssmB+NNA/s3yYcTgKU0jyevjjx4a6HnJJf+vvjP7bvF4K6kpYJJyt2VjlWzM+s5wjo2J9RV8pqWnvYc146Tyu6Wdamj8R17//6d+uOHd6sJn3PBfEls67az+uyb82TJHPs6CZKofvPGPHBYtn6KzP+UNFXb6+Xcx3JxG6hfaSR/C9M09OaFNHyadr0vqoSc6G0104Q76KF2T5RmpNVTqtmOovThcn8xf0UruyF2mkFCMDuC7YUiREBHPF6PKl77glOoIK4SpVYiGJN0vH+5kzysgCxaJUldXpWJ5SAbz7A/dEATdimRLNUTljx7EQ10tDe/AuVM/IAD77whECPjihiQc6XYqsQfbOPGPBExwBWYZUCM8ZJRHfNrwVEs0NxpKPN5yTIHxwzKTKwbNYqCKfdKB3J7LZksYMdAp614aAayLTUkIZMoCpO+6UpAaUnFkzQnj7ubYiIg0LObz0Z0dBMQu2HKVsN046BRsqVPYB2JWgAI2x1FQAU3e87CJBPFj1bX3uLhNaa2VKKoDzKnbkgrBgtTdlsEK0TzOkjBk4AHjQCggN4a2KyQAm7fiY76YU3htdpfuNflERQUnL8ynZIgTcz9PByze+/qDChcoehnWMgBEFLO5FVpMBTDEOj75gLm7RPKvVrvpws6xLCsM6EDVuZdIs3I4DfaDTEz/yFSqHALyrhNySTaWVJMuXsONjwqrSeIKXJsleMndoU6kfGpFfxSewgIdRJCzrYCpTx4EUS0YF8D4LRVFNJSzdkXLOjpOsOXexwkG4OJsLnQVfEgHcz/wDCLhy5cHB+AYPFyr7GdaxJa7iRAhrrMUyY5REEfNzaYOvf6EjX6/p9cZDQXgUux4XSbkFPA4Dow60WfUOUpfnT1TQ+6bWZIe0vlmTAYzdcaRuSKVnu6PEe03dM/EZBeHJKIkGiGBHHhzQRNo2g5SSmApgW7krAsIoi2XGKInOrcr7D/6MqU0aRvpQptIk+cQspxJmoH4rCCVthj0EUGMGxgDefTsqz9IYi0XKGTse+txUk8QSYSL14dDZHQglPXlpC2lhsKkMGIY1mCPR7h3ukq6N7c8RBfxFwV3SUtJ3XMfJMJTTIMJZ9WgqQ2fBlxSGdXCJ3U66ezBYzyPwgTaLsfHagMcMFMZqclF51jXcVJKzdjwmrwhf+HoMuZaFQyFsyx6LAXewPdEOyjqYrW0y8BY2xjo8RDy7qSTlnB1P0qH0NTQ5q54e39aCB/Is604m+GLQhlg10ESadgC6h0aVjL1xm7qhxg2hWY4zRkkUKZ/62yB9DI93pu1YlhSGdYxLjVQCg/bTAR1oY3NNfPsoQC5pUztYedZQiXQSkwEM3bEtJKK3MIJX3Fh+3J4OEISli5XrgIr2JCtDfByKOmagNsH29Pi4IQjCcs6OrcePi/8CKGm5svELpZM1FcCdqXQzNJUYuJ8OgHUYewMR0JgBF4Db/+ANlUl/hCTRyBk7bi+QxH47XAWPVmXsFoIGmUquPy+/jloZwvvphFWWy3fMRdglXRvPn23It3A4uCNlTldarpKgVkgGwLC0y4Iv0SbS+dgMA8MM3hAreKDNrUuZArJ3DFoxwLJ3IjKAATuOnUbch3ChcKw+2u0DrpcBnuUtsBlON2aIhlgBCA+c0NgxA8Z4XQkZVUkHs3eknLFj5gyG6GAhWu0Ohm7VKpC9EwhPuQQcqvb2bze+cXudgsOrvf9rPou/E+WbhVzSM0ZJFGbpVi0hG02u3BfPNmAqBSogzePHb1YBh6cy1ICsFX+hMpZhzc3e0df+7B0pZ+3Y62XzekqNb0s8kL0jQwGMzIFgQF2nJ+jt2+6xUBnNsI4BuYQM4e81GcD+HcdePzlXPp4lAymFvkKHYAmzSc75WQzVsdBzoNMgE2JkAO9C6lQmrYXHYpkzSiKNvO+krtXK44S++aT8wU4PhENv3RrY2VTAoHYcTtZRs0AHINW4TaU67MpkCT17x+0ZlpK+4/aVQrMLubPcsAil9T+qmDSN7fDnv59nF+J6BjsPdHobivpk7uwdgKs6jmZAOCID2LdjLv5G9YVX57Q1pxPOxbNAPSbOIRqG7BnsGqzAgqbqX5zZOwYSi4jJgWHeJKyiAti5YxMpwGCF1BHmX4qbsAVPVNCHasVmcgfDouP27aY34RZtWjlc0qBYU4iyetadcphKM0ZJgIi9q6+hXIFOa1GSRw1U5tjimKGnMtT2r38ddjl8tJtKBhiXWwq6tyMlA9i94/DbqE/CNt+u+/rhfiuZsvMsYBLDcboxQ7ccdXiLf4NYLLeGxLCObiPqLcy1NYlG0ndcxyDSp6zZOzVIGWlr9g5UTFW83GsJhp7KYDnQ0zwdp8oyVAB3jt8tJ0PYkiUtZ+0Ypk6sA5TWgdHh5zrniZJGdHmKRR/BmIZY08EKMZTP6qlLuobXEMdU8bbCWNZEBW3nWdBcwK7hbzWNIj0CfTRXFX1WyMElzfBjVSasI140QGhZokqIGnGoorD7wiUVwJYdsyXUs7YVk8y/GJrAcK+TEYRRbfjWu1uEEfo6jw60gae2toYDI5hIZ9dCQy0oVWOXtJyx4zpS11DdsR2ZSp2JlIEVzzh7BzdKoitZZqDxzd4DnSbwvMdJ9g6qyUNNz97pOCkZwOMdtybS3+C+8FECHqJYQ33ia/qskJasXzc7AaN7Bg9Yh8FkLiuuWE1hWEdzm6ykhVjT5TvccYopXP6mhjzLYDyumVgMIIweJZHtBIyfyjCqRfqGuQz7YwZqbJcWpqjlaEovetk7cs4oCVyqdjNwsxS4gkndrwnHi4kLzUhN3XsHOkZ2w9GiB2GDrrS+FRlRwHd9U2nOKAl8sUVkcxLD8PDxnL1DaITbsiNGm8pwZh0MWf+n+NlUMvg2Sww5tmJgVp4gLCV9xzW2XKppztk79RJ5QLfqbCoRxLRQjDiVoT7HVJAOxJ63g9BGq4UPtdAhE58LKoB7O46X4ldqhUU/UAtO3j+YSpRO5XItGHEqw+FAA2Iqk1c+ZUkbSr8itqQGHTQ/WixS0ndMK1k2p1QLbP8+fjKVCC/dEmlGncpAT5Y6Zu/UpD54JiLHDU814TNGSZCaDnC1d0lLQuuv9s5OS/qskIhRm7rvWIchhuF3tUqG2DPwRlF51qGuc84oiZTSNuTQe6diCcGbfq/2phKtSaJh5Kburcqa1D5DI/A3MRXAO29HRoWw6uaSyRmjJFqSt9UkglcD8nRc64pgIp2INLlJeXugW8ZD+taPXU04Ub5zCh32Efg5oyTif9F2fNe5pGNYFGmK/5uiJL81y8mrq/ZWxO+cpDVZwF2rYmpnls4zTJ/K0BVv0DCofk2ModJDHa6/eRYBV2xJbWN1N6Md/Kweh1xFM+a55GmiyE1/Iurh6GrCU7qAS/L6URT0wxHHZUWenGH4jOydu+stbX36lK24mjFMgryU4FvqYg8b2hCaH7NG0MiI3MG+MxhWavsTvrP4bK7oJ2vOokdYBMs3tCFhXYSCzEfzVChGFXAlq/S2oWbvtBD8hbJacpWYqr6d87FnYPgX6mKSNudv7+CkCrheKMGpEN5nRbw8inYOxziUsf7aFjtNgkbK94Hs89tHObp2QUQFndvaBT33yvZtZOsF2Qr/WQI+jevGaeiK7vTrugxoaLsge15wxZKXlXDXknGfcZMIdWEIlvhhu+cIBWmK885g+ABsF2RP7JdR+wdecHUxsGNRSHZhAs4pECanRuxiKrukcZ6sqQDu/sg/X5TuaHUo564Muc7xpwkYzbP6IUZCkPIQU9GjhCNcA0559ZKXYT/tdnVpJKtdSAH3Q8hoCMv13w8Q0CIu0SZS/yLnL6egk7qfJtFcmICREB7mgKDT104xFd4ssTxrWAO7fSmvw3ZQ+uIet/1qEZyXGyKA8RCOz16orl0QhWGNT8qzK+hBRmaXUc4vTMA4U2mUI4CS8GBClxbIYV/DJxnxYhZLOmKJP8djOQPBGFNpksQlUSZS343coIZ9TYKi0ctchtm4gLy187YXJmCEqTRNk8dAeHj4lUDNRZYTh8lLXIY3zbhpnXNQ4CsWMJhn2bJsEYWYo+sL0cHekrUi45cwla4tjRhitb0wAYNd0rYsWziEJwQ0UyvCGLfTefn+/Jeh1pY2TPVCNBcmYCDPsqfJg5shTEzIe7hLWlop+bPzrE+2RmpyrS/En9VL2QGZSo40eaCEV9YoHI1hHT3Dz4ykRvxee9xxFyRgIIRndJyqYntKU1FSAbxrWPOsH1p/cTQzvRSXdA/BAFPJXecCmo1gDcQ0oA72zrzRiJaLCl13rnbEcnUZt3A/q7IK62hn/jUEwsb6BqBhX6Ursb9rF8SfU0G7xqdVtkGBr1zAQVPJV4gYFnC9sEdSuaVdEKI9VPycNEt72nqz59UdzyDgkKnkLUQMQ9iZ2J+Jq5w+o6BYPN8t/Ju+cQ/1qBeKX5iAQzzLW6gWEnDtVGnNNglB2PfH18njL8/0dT6IFfrKedUIll5TKVBJHOgz/9UNtGsRVfQZBUUkPj7Px/nVP/BB0qcb/ywBB1zSAZIsA3k67gEWTeLPkpYh//YzeSz98x5as09cmoA9plK4FYAE5Ok4JKx82Tuh0jq5ep5bmKvQjEn2+r0dk+IzJ4TDzZY8EO5qn/1GxbqkAnjfLugZGHR4PG29ePUSHgvYaSpBerV4qa63OQXferJ3IDGM5uk/9BYwYPpKXZqA87wkKmgvhOOQy7jfLgjfQbc9P08evuMZYES8efXZOxMBu0wlUC8P6S5l4EF96DKVIF5Qw5+B7gAml1bpy2X+PRWC7Uoa2GzJMbUYQEZaRpPTZxTk7KmjSo1aQMqfX332jqXC3wbhDbAfrV1JmwRyzPftgmgzCp7cM3zjHNUy5lk80xcmYIupBO+GV9hNpEcIabWZStDuMvKJIXwNGx6+0x3ZhQk4n9aEw7vh2SAcK1Dvvw9duyB3KUPYYnlCCTc6MT/lwS8i4OktjOiWZklvWcDOuO7aBdFnFMRPGfrnYgU9WTJNXrPD0t5lZ+SSxrSznEL4KyI2l9NnFNTR0wV3eK8zLSRTVF+YgMemEqrd4SR5+YsGqjBLTTgi47oySj/Rh+5yEFDNlV6xkrYjeMCzsP1o5TgtDgwsLT4Psndw/d3kk0WVvljnWXmjShcm4IGphO34P1TSBnG8dTYqdMDVtRX8y1PpSoN5bmX461XSDgH3eBa+YXgxdCIirAgtfpclEcC74M6TsJ1GRdgHv15/FnO9M4lhTSGcKlR2adNrn4WfUVAsnsIznIkkRZ5p83qjSi4Bn3kWoaG0JBuJesvPphL6ufla6f+ZL2AVo/tSpK+2JNyJ4GP2DqXj/xnC2JEdYnvK3qF00C0+d8O+5q07HMN6St3xsgLeQ7j8QWkofZQwnn00TXJ0SVNmFMTJx5lQ6ipaCTuuX2tNOHMLqTOViCM7zs2s0PbDVn3O6TMKZDTXJG1oDYclU5cm4H32DrGV/A7CLZ62+M99LdZUAO+CO/PCd791LUcJz63MYptdmIA7U4k6smMHv5qU7pDprlaJPqNgXvaORptIJ54lLg7BOVVB7yEs14prhV9asYowxu1Jsne4mg50Bj/4VcYNfQJueRZ5ZEcL4fZTE9dNXtJ7jacJn8OzyFNKqlh90xeGYPkg6aubFEpd0Yzn1jOypHVrItE3HL3G7B1W+VZ9RV9f2Zw148GMnr2zFX+d8eC/vkZLifnmMjzEyxkG5bqirgeTzHguY5fWlf1ZBeyZqlJ22Tafto+Udf1JLA15iFykPj3SHrsVUR3/3z11QqnYPl4/UterNISZv9qbnnB0HBT4shaH1jwtivgduAAB702ktXgkj4LihiZfQ09jU7v54uaiGv7+JAEffBwz2gU1gugzoN+h+jBR7aIa/v4cAZ98HCahOlmbbUJyGtRcXJOvhd3g2sJcUsPfnyPgU57OjHZBv4qMMPyuoGdHbsV3cxwyfGHTb15awD0ndE03K7VKJcETRU28aUTCjvMrV+8C9gq474SmT3Pl4tbgAUw+TzfdWOLjnPDlu5L2Crjq12aQdaYWDAlhSS+pvhc87g8Z1u88yyngYRSJ3i5I6xtkegTd8NaZYsM54e+mklvA1Tixm4iGR7HAQZjNsMpuewCuC5Zs35W0XcDjMHAVJ9+ocZLTxDBgyG1JnhurBwBuRRyJX9/laxXwtJSBkQNhXC0QKTAzikC4WJjhJPj4Rt2/C5iB+unQ2wW1DHyFcFIq6nO0SNKhfN9NJZeALXk6ck2+hZv93F0gwyLzda7YCMBFkX5/l7BVwJWt+JZsViIqfRjZsOHbPsM6m0pCvQsY1K6hSpMt8ULT4FKfejkjJWLvhB5BeKH0u4DHN7C9lEHSE44UMKo0J3ClFqawrDh58xBm0I52NbkGVn0Yjf5zlp1Q8aabkYl0NpUuoOHvSyP46VuNNa0F86wmUiYiK4DbW3j51v1ZDNwQ67mzd9Z0hyhP4sKx2OWMkXwRAftKGdLkE1HdKcFrgIk0L0/HvtIFpAnbmxGwtxZpBgnSItRaO6dHf7hYpi75FnVL/9W7gM8A9vDdakYofpukgeI8somkEuUGcAvhN569wxBTGWZ5iv1VtwXdrXhMtHOtOHnTPIshmn7PaRfE1ZXPGPaN7PCvm3Oejn2ZSG3fBQxsiEW/KLW388UMN4pWLhOpZyol7wKG9dMx9F4j2lPIWNGrtu+120Q6u6TfsLeDoToWVvR2QapxZ0kXdJ+xFiEAv/HsHYZrOSrpEM7cUaWYmuneyvc2KN+ijjlX7wKGtWugtwv6i1DGladDzZ5SQrEivAwT9+8ChrU9kbOyd6w8S34mN7do/2QKEPBbNpUYsid0ZX6/zuhws5tIgkzNVQyRb2cqvXUBw/vppGRbeCuW9ZN2AWxUmGEd/Fn8rWbvMHTP4Bl9irQt9D8jT6dZsgK42FsN/TN0z+AqJg+h0Hrqkp41wBss384lrd+0gBHZ6TPcTvcTCMsV2URy5ek4eJZ6wwJGdrQzfEZ/8/WIsyVk56dScAC/3ZpwhjCRniJ7Z2QqFRHZRGpEhABwK+HbN6mkGWEqQ1WTv9Uoe6eiG6gqS+ICJWD2Jk0lRmrqHpPd98ORUzPGwnEkgHfZO/xNCpjQM3jGaPNMrIqnOSg4AO941hs0lRipqXtFH/alzmMfuzydL3RVj5Vvayqpm7eIYMpUhhnkqOftoN+KoTwdl7cje3MSZrSm3xU9x6Yzb6qDuXU3oxYJL9/OVLp+cwLe0Jrny5X4QDeVipkOk9ZEqgkCLlKu9ZsTML2DPf1breZNV/hVJBQAv8keh4w8lYEeJMiarqBU0uej/ANtIr3d7J3/B5NwKnvHc6xlAAAAAElFTkSuQmCC">
+  <img class="logo" alt="BHAK Wappen" src="data:image/png;base64,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">
+  <div class="top-inner">
+    <div class="top-text">
+      <div class="eyebrow">PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen</div>
+      <h1>Epochen-Aufgaben</h1>
+    </div>
+    <button class="qrbtn" type="button" id="qrbtn" >QR-Code für die Klasse</button>
+    <img class="smiley" alt="" src="data:image/png;base64,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">
+  </div>
+</header>
+<div class="qr-overlay" id="qr" hidden>
+  <div class="qr-box">
+    <div class="eyebrow">PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen</div>
+    <h2>Epochen-Aufgaben am Handy</h2>
+    <img alt="QR-Code zum Arbeitsblatt" src="data:image/png;base64,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">
+    <p>Kamera öffnen, QR-Code scannen, loslegen.</p>
+    <button class="btn small" type="button" id="qrclose">Schließen</button>
+  </div>
+</div>
+
+<main>
+  <section class="card">
+    <div class="who">
+      <div><label class="lbl" for="name">Dein Name</label><input type="text" id="name" autocomplete="name" placeholder="Vorname Nachname"></div>
+      <div><label class="lbl" for="klasse">Klasse</label><select id="klasse"><option value="">–</option><option>3BK</option></select></div>
+    </div>
+    <ol class="steps hint">
+      <li>Lies zuerst den passenden Teil der <a href="theorie.html">Theorie-Seite</a>, dann die Aufgaben in die <b>gelben Felder</b> – alles wird am Handy gespeichert.</li>
+      <li><b>Stunde 1</b>: 1–5 · <b>Stunde 2</b>: 6–10 · <b>Für Schnelle</b>: 11–15.</li>
+      <li>Mit <b>»Prüfen«</b> siehst du sofort, ob deine Antwort passt – die Lösung wird dabei nicht verraten.</li>
+      <li>Nach Stunde 2 ganz unten <b>PDF erstellen</b> und in LMS hochladen.</li>
+    </ol>
+  </section>
+  <!--FAHRPLAN--><style>
+.fahrplan { background: #fff; border: 2px solid #7FA83A; border-radius: 16px; padding: 14px 16px; margin: 14px 0; min-width: 0; max-width: 100%; }
+.fahrplan .eyebrow { font-size: 14px; font-weight: 700; color: #2E7D8C; }
+.fahrplan h2 { font-family: Cambria, "Source Serif 4", Georgia, serif; color: #3B4A2F; margin: 2px 0 6px; font-size: 24px; }
+.fahrplan p { margin: 0 0 8px; } .fahrplan .std { font-weight: 700; color: #3B4A2F; }
+.fahrplan .tablewrap { overflow-x: auto; max-width: 100%; }
+.fahrplan table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.fahrplan th, .fahrplan td { border-bottom: 1px solid #D3DCC2; padding: 6px 6px; text-align: left; vertical-align: top; }
+.fahrplan th { background: #DFE5D0; color: #3B4A2F; }
+@media (max-width: 600px) {
+  .fahrplan thead { display: none; }
+  .fahrplan tr { display: block; border-bottom: 2px solid #D3DCC2; padding: 6px 0; }
+  .fahrplan td { display: block; border: 0; padding: 1px 0; }
+  .fahrplan td:first-child { font-weight: 700; color: #3B4A2F; font-size: 16px; }
+  .fahrplan td[data-l]:not(:first-child)::before { content: attr(data-l) ": "; color: #5E6652; font-weight: 700; }
+}
+</style><section class="fahrplan"><div class="eyebrow">So gehst du vor</div><h2>Dein Fahrplan</h2><p class="std">Dafür sind 2 Stunden eingeplant.</p><p>Lies die Theorie-Seite Teil für Teil, mach die passenden Aufgaben im Arbeitsblatt, teste dich mit dem Quiz und gib nach Stunde 2 das PDF ab.</p><div class="tablewrap"><table><thead><tr><th>Wann</th><th>Das machen wir</th><th>Aufgaben</th><th>Wie</th><th>Abgabe</th></tr></thead><tbody><tr><td data-l="Wann">Stunde 1</td><td data-l="Das machen wir">Einstieg + Teil 1 · Wie zählen wir Zeit?</td><td data-l="Aufgaben">1–5</td><td data-l="Wie">ohne Handy: Zeitmaschinen-Rätsel und Rechen-Challenge (Mini-Whiteboard), dann am Handy</td><td data-l="Abgabe">–</td></tr><tr><td data-l="Wann">Stunde 2</td><td data-l="Das machen wir">Teil 2 · Die Epochen</td><td data-l="Aufgaben">6–10 · Quiz</td><td data-l="Wie">ohne Handy: lebender Zeitstrahl, dann am Handy</td><td data-l="Abgabe">PDF in LMS</td></tr><tr><td data-l="Wann">Für Schnelle</td><td data-l="Das machen wir">Für Schnelle und Neugierige</td><td data-l="Aufgaben">11–15</td><td data-l="Wie">am Handy</td><td data-l="Abgabe">freiwillig</td></tr></tbody></table></div></section><!--/FAHRPLAN-->
+  <div class="progress"><span id="count">0 von 15 bearbeitet</span><div class="bar"><span id="barfill"></span></div></div>
+  <div id="tasks" style="display:grid;gap:14px"></div>
+
+  <section class="card" id="abgabe">
+    <div class="head"><span class="nr">Abgabe</span></div>
+    <h2>Fertig? Dann PDF erstellen</h2>
+    <p class="hint" id="missing"></p>
+    <button class="btn" type="button" id="pdfbtn">PDF erstellen</button>
+    <p class="status" id="pdfstatus" hidden aria-live="polite"></p>
+    <button class="btn alt small" type="button" id="solbtn" hidden>Lösungen ansehen</button>
+    <p class="hint" id="solnote" hidden>Die Musterlösungen stehen jetzt bei jeder Aufgabe. Machst du danach noch eine PDF, steht darauf »nach Lösungseinsicht erstellt«.</p>
+    <p class="hint">Danach in LMS die Aufgabe öffnen → <b>Datei hochladen</b> → die PDF aus <i>Downloads</i> (Android) bzw. <i>Dateien</i> (iPhone) wählen.</p>
+    <details>
+      <summary class="hint" style="cursor:pointer">Klappt das PDF nicht? Antworten als Text kopieren</summary>
+      <div style="display:grid;gap:8px;margin-top:8px">
+        <button class="btn secondary small" type="button" id="copybtn">Antworten kopieren</button>
+        <p class="status" id="copystatus" hidden></p>
+        <textarea id="copyArea" readonly aria-label="Alle Antworten als Text"></textarea>
+        <p class="hint">Den Text in LMS in das Antwortfeld einfügen oder einen Screenshot hochladen.</p>
+      </div>
+    </details>
+    <div id="resetwrap">
+      <button class="btn secondary small" type="button" id="resetbtn">Alles löschen und neu beginnen</button>
+    </div>
+    <p class="hint"><a href="theorie.html">Zur Theorie</a> · <a href="quiz.html">Zum Quiz</a> · <a href="../">Klassenübersicht</a></p>
+    <p class="hint">Stand 18.10.2026 · v1</p>
+  </section>
+</main>
+
+<script src="../../gemeinsam/pdf-programm-v1.js"></script>
+<script>if (!window.jspdf) document.write('<script src="../../gemeinsam/pdf-programm-v1.js?nochmal=1"><\/script>');</script>
+<script>
+
+const FONT_R = window.__PDF_FONT_R || "", FONT_B = window.__PDF_FONT_B || "", LOGO = "data:image/png;base64,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";
+const RANGES = [[32, 126], [160, 172], [174, 383], [884, 885], [890, 894], [900, 906], [908, 908], [910, 929], [931, 974], [976, 1023], [8192, 8207], [8210, 8226], [8230, 8230], [8239, 8240], [8243, 8244], [8249, 8250], [8252, 8254], [8260, 8260], [8286, 8287], [8304, 8305], [8308, 8340], [8364, 8364], [8592, 8601], [8616, 8616], [8722, 8722], [8800, 8801], [8804, 8805]];
+const KEY = "26-27-3BK-K1.3-Epochen-TH-Handy-v1";
+const KAP = "K1.3", THEMA = "Epochen";
+const T = [
+ {
+  "id": "a1",
+  "nr": 1,
+  "title": "Welches Jahr haben wir heute?",
+  "src": "Buch-Aufgabe S. 13",
+  "own": false,
+  "tag": "Stunde 1",
+  "h": 1,
+  "hl": false,
+  "q": "Welches Jahr zeigen der jüdische und der islamische (muslimische) Kalender gerade an? Rechne zuerst mit den Faustformeln von der Theorie-Seite und kontrolliere dann im Internet. Erkläre in 1–2 Sätzen, warum die Faustformeln nur ungefähr stimmen.",
+  "hint": "Info: Theorie-Seite Teil 1 »Andere Kalender« · Kontrolle: Recherche im Internet, Suchtipp »jüdischer Kalender heute« bzw. »islamischer Kalender heute«",
+  "type": "multi",
+  "fields": [
+   [
+    "jued",
+    "Jüdisches Jahr (Oktober 2026)"
+   ],
+   [
+    "islam",
+    "Islamisches Jahr (Oktober 2026)"
+   ],
+   [
+    "warum",
+    "Warum stimmen die Faustformeln nur ungefähr? (1–2 Sätze)"
+   ]
+  ],
+  "chk": {
+   "jued": {
+    "kw": [
+     [
+      "richtiges Jahr",
+      "\\b5787\\b"
+     ]
+    ]
+   },
+   "islam": {
+    "kw": [
+     [
+      "richtiges Jahr",
+      "\\b1448\\b"
+     ]
+    ]
+   },
+   "warum": {
+    "kw": [
+     [
+      "anderer Jahresbeginn oder kürzeres Jahr",
+      "herbst|september|juni|neujahr|beginn|wechsel|mond|kürzer|354|11 tag|anders"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "Jüdisch: 5787 (Neujahr Rosch ha-Schana war am 12. September 2026; davor 5786).",
+     "Islamisch: 1448 (Neujahr war am 16./17. Juni 2026; davor 1447).",
+     "Die Jahre beginnen nicht am 1. Jänner (jüdisch im Herbst, islamisch wandert der Jahresbeginn), und das islamische Mondjahr ist ca. 11 Tage kürzer – deshalb holt es jedes Jahr ein Stück auf."
+    ]
+   ]
+  ],
+  "tip": [
+   "Mondjahr und Sonnenjahr (Faustformeln)",
+   "theorie.html#mond"
+  ]
+ },
+ {
+  "id": "a2",
+  "nr": 2,
+  "title": "Schaltjahr oder nicht?",
+  "src": "Buch-Aufgabe S. 13",
+  "own": false,
+  "tag": "Stunde 1",
+  "h": 1,
+  "hl": false,
+  "q": "Prüfe mit der Schaltjahr-Regel des gregorianischen Kalenders: Schaltjahr oder nicht? Zusatz: Wie ist es mit dem Jahr 2100?",
+  "type": "multi",
+  "fields": [
+   [
+    "j1804",
+    "1804",
+    [
+     "Schaltjahr",
+     "kein Schaltjahr"
+    ],
+    false
+   ],
+   [
+    "j2000",
+    "2000",
+    [
+     "Schaltjahr",
+     "kein Schaltjahr"
+    ],
+    false
+   ],
+   [
+    "j1700",
+    "1700",
+    [
+     "Schaltjahr",
+     "kein Schaltjahr"
+    ],
+    false
+   ],
+   [
+    "j1902",
+    "1902",
+    [
+     "Schaltjahr",
+     "kein Schaltjahr"
+    ],
+    false
+   ],
+   [
+    "j1600",
+    "1600",
+    [
+     "Schaltjahr",
+     "kein Schaltjahr"
+    ],
+    false
+   ],
+   [
+    "j1730",
+    "1730",
+    [
+     "Schaltjahr",
+     "kein Schaltjahr"
+    ],
+    false
+   ],
+   [
+    "j2100",
+    "Zusatz: 2100",
+    [
+     "Schaltjahr",
+     "kein Schaltjahr"
+    ],
+    false
+   ]
+  ],
+  "chk": {
+   "j1804": {
+    "sel": "Schaltjahr"
+   },
+   "j2000": {
+    "sel": "Schaltjahr"
+   },
+   "j1700": {
+    "sel": "kein Schaltjahr"
+   },
+   "j1902": {
+    "sel": "kein Schaltjahr"
+   },
+   "j1600": {
+    "sel": "Schaltjahr"
+   },
+   "j1730": {
+    "sel": "kein Schaltjahr"
+   },
+   "j2100": {
+    "sel": "kein Schaltjahr"
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "1804 ja (durch 4) · 2000 ja (durch 400) · 1700 nein (durch 100, nicht durch 400) · 1902 nein (nicht durch 4) · 1600 ja (durch 400) · 1730 nein (nicht durch 4) · Zusatz: 2100 nein (durch 100, nicht durch 400)"
+    ]
+   ]
+  ],
+  "tip": [
+   "Die Schaltjahr-Regel: 4 – 100 – 400",
+   "theorie.html#schalt"
+  ]
+ },
+ {
+  "id": "a3",
+  "nr": 3,
+  "title": "Rechnen über die Zeitenwende",
+  "src": "Buch S. 13",
+  "own": true,
+  "tag": "Stunde 1",
+  "h": 1,
+  "hl": false,
+  "q": "Achtung: Ein Jahr 0 gibt es nicht! a) Caesar wurde 44 v. Chr. ermordet. Wie viele Jahre ist das 2026 her? b) Ötzi starb um 3300 v. Chr. Vor wie vielen Jahren war das (Stand 2026)? Schreib jeweils die Rechnung dazu. c) Wiener Neustadt wurde 1194 gegründet. In welchem Jahrhundert? d) An welchem Tag begann das 21. Jahrhundert?",
+  "type": "multi",
+  "fields": [
+   [
+    "caesar",
+    "a) Jahre seit Caesars Tod (mit Rechnung)"
+   ],
+   [
+    "oetzi",
+    "b) Jahre seit Ötzis Tod (mit Rechnung)"
+   ],
+   [
+    "jh",
+    "c) Gründung Wiener Neustadt 1194 – im …",
+    [
+     "12. Jahrhundert",
+     "11. Jahrhundert",
+     "13. Jahrhundert",
+     "19. Jahrhundert"
+    ]
+   ],
+   [
+    "beginn",
+    "d) Das 21. Jahrhundert begann am …",
+    [
+     "1. Jänner 2001",
+     "1. Jänner 2000",
+     "31. Dezember 1999",
+     "1. Jänner 2100"
+    ]
+   ]
+  ],
+  "chk": {
+   "caesar": {
+    "kw": [
+     [
+      "richtiges Ergebnis",
+      "\\b2069\\b|\\b2\\.?069\\b"
+     ]
+    ]
+   },
+   "oetzi": {
+    "kw": [
+     [
+      "richtiges Ergebnis",
+      "\\b5\\.?325\\b"
+     ]
+    ]
+   },
+   "jh": {
+    "sel": "12. Jahrhundert"
+   },
+   "beginn": {
+    "sel": "1. Jänner 2001"
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "a) 2026 + 44 − 1 = 2069 Jahre (minus 1, weil es kein Jahr 0 gibt)",
+     "b) 2026 + 3300 − 1 = 5325 Jahre (»um 3300« – also ungefähr 5300 Jahre)",
+     "c) 12. Jahrhundert (Hunderterstelle 11 + 1)",
+     "d) am 1. Jänner 2001 – das 1. Jahrhundert umfasst die Jahre 1 bis 100, also endet das 20. mit dem Jahr 2000."
+    ]
+   ]
+  ],
+  "tip": [
+   "Christi Geburt – und kein Jahr 0 · Jahrhunderte richtig zählen",
+   "theorie.html#jahr0"
+  ]
+ },
+ {
+  "id": "a4",
+  "nr": 4,
+  "title": "Wer zählt ab wann?",
+  "src": "Buch S. 13",
+  "own": true,
+  "tag": "Stunde 1",
+  "h": 1,
+  "hl": false,
+  "q": "Jede Zeitrechnung braucht einen Bezugspunkt – ein »Jahr 1«. Ordne jeder Zeitrechnung ihren Bezugspunkt zu.",
+  "type": "multi",
+  "fields": [
+   [
+    "jued",
+    "jüdischer Kalender",
+    [
+     "Erschaffung der Welt (3761 v. Chr.)",
+     "Hidschra – Auswanderung Mohammeds nach Medina (622)",
+     "Thronbesteigung Kaiser Diokletians (284)",
+     "Gründung der Stadt Rom (753 v. Chr.)",
+     "erste Olympische Spiele (776 v. Chr.)",
+     "Thronbesteigung des jeweiligen Kaisers (heute: 2019)"
+    ]
+   ],
+   [
+    "islam",
+    "islamischer Kalender",
+    [
+     "Hidschra – Auswanderung Mohammeds nach Medina (622)",
+     "Erschaffung der Welt (3761 v. Chr.)",
+     "Thronbesteigung Kaiser Diokletians (284)",
+     "Gründung der Stadt Rom (753 v. Chr.)",
+     "erste Olympische Spiele (776 v. Chr.)",
+     "Thronbesteigung des jeweiligen Kaisers (heute: 2019)"
+    ]
+   ],
+   [
+    "kopt",
+    "koptischer Kalender (Christen in Ägypten)",
+    [
+     "Thronbesteigung Kaiser Diokletians (284)",
+     "Erschaffung der Welt (3761 v. Chr.)",
+     "Hidschra – Auswanderung Mohammeds nach Medina (622)",
+     "Gründung der Stadt Rom (753 v. Chr.)",
+     "erste Olympische Spiele (776 v. Chr.)",
+     "Thronbesteigung des jeweiligen Kaisers (heute: 2019)"
+    ]
+   ],
+   [
+    "rom",
+    "die alten Römer",
+    [
+     "Gründung der Stadt Rom (753 v. Chr.)",
+     "Erschaffung der Welt (3761 v. Chr.)",
+     "Hidschra – Auswanderung Mohammeds nach Medina (622)",
+     "Thronbesteigung Kaiser Diokletians (284)",
+     "erste Olympische Spiele (776 v. Chr.)",
+     "Thronbesteigung des jeweiligen Kaisers (heute: 2019)"
+    ]
+   ],
+   [
+    "griech",
+    "die alten Griechen",
+    [
+     "erste Olympische Spiele (776 v. Chr.)",
+     "Erschaffung der Welt (3761 v. Chr.)",
+     "Hidschra – Auswanderung Mohammeds nach Medina (622)",
+     "Thronbesteigung Kaiser Diokletians (284)",
+     "Gründung der Stadt Rom (753 v. Chr.)",
+     "Thronbesteigung des jeweiligen Kaisers (heute: 2019)"
+    ]
+   ],
+   [
+    "japan",
+    "Japan (heute neben unserem Kalender)",
+    [
+     "Thronbesteigung des jeweiligen Kaisers (heute: 2019)",
+     "Erschaffung der Welt (3761 v. Chr.)",
+     "Hidschra – Auswanderung Mohammeds nach Medina (622)",
+     "Thronbesteigung Kaiser Diokletians (284)",
+     "Gründung der Stadt Rom (753 v. Chr.)",
+     "erste Olympische Spiele (776 v. Chr.)"
+    ]
+   ]
+  ],
+  "chk": {
+   "jued": {
+    "sel": "Erschaffung der Welt (3761 v. Chr.)"
+   },
+   "islam": {
+    "sel": "Hidschra – Auswanderung Mohammeds nach Medina (622)"
+   },
+   "kopt": {
+    "sel": "Thronbesteigung Kaiser Diokletians (284)"
+   },
+   "rom": {
+    "sel": "Gründung der Stadt Rom (753 v. Chr.)"
+   },
+   "griech": {
+    "sel": "erste Olympische Spiele (776 v. Chr.)"
+   },
+   "japan": {
+    "sel": "Thronbesteigung des jeweiligen Kaisers (heute: 2019)"
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "jüdisch → Erschaffung der Welt (nach jüdischer Überlieferung 3761 v. Chr.)",
+     "islamisch → Hidschra 622 · koptisch → Diokletian 284",
+     "Römer → Gründung Roms 753 v. Chr. (»ab urbe condita«) · Griechen → erste Olympische Spiele 776 v. Chr. (Olympiaden)",
+     "Japan → Kaiser-Ära: seit 2019 Ära Reiwa, 2026 = Reiwa 8"
+    ]
+   ]
+  ],
+  "tip": [
+   "Zeitrechnungen nach Ereignissen",
+   "theorie.html#ereignisse"
+  ]
+ },
+ {
+  "id": "a5",
+  "nr": 5,
+  "title": "Papst Gregor und die verschwundenen Tage",
+  "src": "Buch S. 13",
+  "own": true,
+  "tag": "Stunde 1",
+  "h": 1,
+  "hl": false,
+  "q": "a) Welcher Tag folgte in Rom auf Donnerstag, den 4. Oktober 1582? b) Erkläre in 2 Sätzen, warum die Kalenderreform nötig war. c) Die »Oktoberrevolution« in Russland fand nach unserem Kalender am 7. November 1917 statt. Erkläre, wie das sein kann.",
+  "type": "multi",
+  "fields": [
+   [
+    "tag",
+    "a) Auf den 4. Oktober 1582 folgte …",
+    [
+     "Freitag, der 15. Oktober 1582",
+     "Freitag, der 5. Oktober 1582",
+     "Freitag, der 14. Oktober 1582",
+     "Montag, der 1. November 1582"
+    ]
+   ],
+   [
+    "warum",
+    "b) Darum war die Reform nötig (2 Sätze)"
+   ],
+   [
+    "okt",
+    "c) Oktoberrevolution im November – so geht das"
+   ]
+  ],
+  "chk": {
+   "tag": {
+    "sel": "Freitag, der 15. Oktober 1582"
+   },
+   "warum": {
+    "kw": [
+     [
+      "julianisches Jahr zu lang",
+      "lang|minut|365|ungenau|abweich|verschob|falsch"
+     ],
+     [
+      "10 Tage / Frühling / Ostern verrutscht",
+      "10|zehn|tag|frühling|ostern|sonne|jahreszeit"
+     ]
+    ]
+   },
+   "okt": {
+    "kw": [
+     [
+      "Russland: julianischer Kalender",
+      "julian|alt|caesar"
+     ],
+     [
+      "13 Tage Unterschied",
+      "13|dreizehn|tage|später|unterschied|hinter"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "a)",
+    [
+     "Freitag, der 15. Oktober 1582 – die Tage 5. bis 14. Oktober gab es dort nie."
+    ]
+   ],
+   [
+    "b)",
+    [
+     "Das julianische Jahr (365¼ Tage) war um ca. 11 Minuten länger als das Sonnenjahr. Bis 1582 hatte sich das auf 10 Tage summiert – Frühlingsbeginn und Ostertermin rutschten immer weiter weg. Gregor XIII. strich 10 Tage und führte die neue Schaltregel ein."
+    ]
+   ],
+   [
+    "c)",
+    [
+     "Russland rechnete 1917 noch nach dem julianischen Kalender – dort war es der 25. Oktober. Der julianische Kalender lag damals 13 Tage hinter dem gregorianischen. Russland stellte erst 1918 um."
+    ]
+   ]
+  ],
+  "tip": [
+   "Julianisch → gregorianisch",
+   "theorie.html#gregor"
+  ]
+ },
+ {
+  "id": "a6",
+  "nr": 6,
+  "title": "Die Epochen auf dem Zeitstrahl",
+  "src": "Buch S. 14",
+  "own": true,
+  "tag": "Stunde 2",
+  "h": 2,
+  "hl": false,
+  "q": "a) Ordne jeder Epoche ihren ungefähren Zeitraum zu (Europa, Vorderasien, Nordafrika). b) Mit welchem Ereignis lässt man das Mittelalter oft beginnen – und mit welchen Ereignissen die Neuzeit?",
+  "type": "multi",
+  "fields": [
+   [
+    "ur",
+    "Ur- und Frühgeschichte",
+    [
+     "bis ca. 3000 v. Chr.",
+     "ca. 3000 v. Chr. – 476 n. Chr.",
+     "476 – ca. 1500",
+     "ca. 1500 – 1914/18",
+     "ab 1914/18"
+    ],
+    false
+   ],
+   [
+    "alt",
+    "Altertum (Antike)",
+    [
+     "bis ca. 3000 v. Chr.",
+     "ca. 3000 v. Chr. – 476 n. Chr.",
+     "476 – ca. 1500",
+     "ca. 1500 – 1914/18",
+     "ab 1914/18"
+    ],
+    false
+   ],
+   [
+    "ma",
+    "Mittelalter",
+    [
+     "bis ca. 3000 v. Chr.",
+     "ca. 3000 v. Chr. – 476 n. Chr.",
+     "476 – ca. 1500",
+     "ca. 1500 – 1914/18",
+     "ab 1914/18"
+    ],
+    false
+   ],
+   [
+    "nz",
+    "Neuzeit",
+    [
+     "bis ca. 3000 v. Chr.",
+     "ca. 3000 v. Chr. – 476 n. Chr.",
+     "476 – ca. 1500",
+     "ca. 1500 – 1914/18",
+     "ab 1914/18"
+    ],
+    false
+   ],
+   [
+    "zg",
+    "Zeitgeschichte",
+    [
+     "bis ca. 3000 v. Chr.",
+     "ca. 3000 v. Chr. – 476 n. Chr.",
+     "476 – ca. 1500",
+     "ca. 1500 – 1914/18",
+     "ab 1914/18"
+    ],
+    false
+   ],
+   [
+    "mabeg",
+    "b) Beginn des Mittelalters",
+    [
+     "Ende des Weströmischen Reichs 476",
+     "Geburt Christi",
+     "Kaiserkrönung Karls des Großen 800",
+     "Pest 1348"
+    ]
+   ],
+   [
+    "nzbeg",
+    "b) Beginn der Neuzeit (um 1500)",
+    [
+     "Buchdruck, Entdeckung Amerikas 1492, Reformation 1517",
+     "Ende des Weströmischen Reichs 476",
+     "Französische Revolution 1789",
+     "Erster Weltkrieg 1914"
+    ]
+   ]
+  ],
+  "chk": {
+   "ur": {
+    "sel": "bis ca. 3000 v. Chr."
+   },
+   "alt": {
+    "sel": "ca. 3000 v. Chr. – 476 n. Chr."
+   },
+   "ma": {
+    "sel": "476 – ca. 1500"
+   },
+   "nz": {
+    "sel": "ca. 1500 – 1914/18"
+   },
+   "zg": {
+    "sel": "ab 1914/18"
+   },
+   "mabeg": {
+    "sel": "Ende des Weströmischen Reichs 476"
+   },
+   "nzbeg": {
+    "sel": "Buchdruck, Entdeckung Amerikas 1492, Reformation 1517"
+   }
+  },
+  "sol": [
+   [
+    "a)",
+    [
+     "Ur- und Frühgeschichte bis ca. 3000 v. Chr. (erste Schrift) · Altertum ca. 3000 v. Chr. – 476 · Mittelalter 476 – ca. 1500 · Neuzeit ca. 1500 – 1914/18 · Zeitgeschichte ab 1914/18"
+    ]
+   ],
+   [
+    "b)",
+    [
+     "Mittelalter: Ende des Weströmischen Reichs 476 · Neuzeit: Buchdruck (um 1450), Entdeckung Amerikas 1492, Reformation 1517"
+    ]
+   ]
+  ],
+  "tip": [
+   "Die Epochen im Überblick",
+   "theorie.html#ueberblick"
+  ]
+ },
+ {
+  "id": "a7",
+  "nr": 7,
+  "title": "Welche Epoche ist das?",
+  "src": "Buch S. 14",
+  "own": true,
+  "tag": "Stunde 2",
+  "h": 2,
+  "hl": false,
+  "q": "Ordne jedes Ereignis der richtigen Epoche zu.",
+  "type": "multi",
+  "fields": [
+   [
+    "oetzi",
+    "Ötzi stirbt am Tisenjoch (um 3300 v. Chr.)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "olymp",
+    "Erste Olympische Spiele in Olympia (776 v. Chr.)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "caesar",
+    "Caesar wird in Rom ermordet (44 v. Chr.)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "wn",
+    "Gründung von Wiener Neustadt (1194)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "pest",
+    "Die Pest tötet rund ein Drittel der Europäer (1348)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "wien",
+    "Die Osmanen belagern Wien (1683)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "milak",
+    "Militärakademie Wiener Neustadt gegründet (1751/52)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "sv",
+    "Staatsvertrag – das Bundesheer entsteht (1955)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "iphone",
+    "Apple stellt das erste iPhone vor (2007)",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ]
+  ],
+  "chk": {
+   "oetzi": {
+    "sel": "Ur- und Frühgeschichte"
+   },
+   "olymp": {
+    "sel": "Altertum (Antike)"
+   },
+   "caesar": {
+    "sel": "Altertum (Antike)"
+   },
+   "wn": {
+    "sel": "Mittelalter"
+   },
+   "pest": {
+    "sel": "Mittelalter"
+   },
+   "wien": {
+    "sel": "Neuzeit"
+   },
+   "milak": {
+    "sel": "Neuzeit"
+   },
+   "sv": {
+    "sel": "Zeitgeschichte"
+   },
+   "iphone": {
+    "sel": "Zeitgeschichte"
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "Ötzi → Ur- und Frühgeschichte (Kupferzeit) · Olympische Spiele und Caesar → Altertum",
+     "Wiener Neustadt (Hochmittelalter) und Pest (Spätmittelalter) → Mittelalter",
+     "Belagerung Wiens und Militärakademie → Neuzeit · Staatsvertrag und Smartphone → Zeitgeschichte"
+    ]
+   ]
+  ],
+  "tip": [
+   "Die Epochen im Überblick",
+   "theorie.html#ueberblick"
+  ]
+ },
+ {
+  "id": "a8",
+  "nr": 8,
+  "title": "Waffen und Werkzeuge erzählen Geschichte",
+  "src": "Buch S. 14",
+  "own": true,
+  "tag": "Stunde 2",
+  "h": 2,
+  "hl": false,
+  "q": "a) Ordne zu: In welcher Epoche waren diese Waffen typisch? b) Die Urgeschichte wird nach Werkstoffen eingeteilt (Stein-, Kupfer-, Bronze-, Eisenzeit). Erkläre in 1–2 Sätzen, warum man sie nicht – wie später – nach Herrschern oder Ereignissen benennt.",
+  "type": "multi",
+  "fields": [
+   [
+    "faust",
+    "Faustkeil und Speer mit Steinspitze",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "legion",
+    "Kurzschwert (Gladius) und Schild der römischen Legion",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "ritter",
+    "Ritterrüstung, Lanze und Armbrust",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "muskete",
+    "Muskete und Kanone eines stehenden Heeres",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "drohne",
+    "Kampfdrohne und Cyberangriff",
+    [
+     "Ur- und Frühgeschichte",
+     "Altertum (Antike)",
+     "Mittelalter",
+     "Neuzeit",
+     "Zeitgeschichte"
+    ],
+    false
+   ],
+   [
+    "warum",
+    "b) Darum nach Werkstoffen benannt (1–2 Sätze)"
+   ]
+  ],
+  "chk": {
+   "faust": {
+    "sel": "Ur- und Frühgeschichte"
+   },
+   "legion": {
+    "sel": "Altertum (Antike)"
+   },
+   "ritter": {
+    "sel": "Mittelalter"
+   },
+   "muskete": {
+    "sel": "Neuzeit"
+   },
+   "drohne": {
+    "sel": "Zeitgeschichte"
+   },
+   "warum": {
+    "kw": [
+     [
+      "keine Schrift",
+      "schrift|geschrieben|text|lesen|aufgeschrieben"
+     ],
+     [
+      "Funde / Sachkultur",
+      "fund|werkzeug|sach|gegenst|ausgrab|archäolog|material|übrig"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "a)",
+    [
+     "Faustkeil → Ur- und Frühgeschichte · Gladius → Altertum · Ritter → Mittelalter · Muskete → Neuzeit · Drohne → Zeitgeschichte"
+    ]
+   ],
+   [
+    "b)",
+    [
+     "Aus dieser Zeit gibt es keine Schrift, also keine Namen von Herrschern und keine aufgeschriebenen Ereignisse. Erhalten sind nur Gegenstände (Sachkultur) – deshalb ordnet man nach dem Material, aus dem Werkzeuge und Waffen gemacht wurden."
+    ]
+   ]
+  ],
+  "tip": [
+   "Waffen erzählen Geschichte · Urgeschichte: nach Werkstoffen benannt",
+   "theorie.html#waffen"
+  ]
+ },
+ {
+  "id": "a9",
+  "nr": 9,
+  "title": "Lange und kurze Jahrhunderte",
+  "src": "Buch S. 14",
+  "own": true,
+  "tag": "Stunde 2",
+  "h": 2,
+  "hl": false,
+  "q": "Manche Historiker lassen Jahrhunderte »lang« oder »kurz« dauern. a) Ordne zu. b) Begründe in 1–2 Sätzen, warum das »kurze 20. Jahrhundert« genau 1914 beginnt und 1989 endet.",
+  "type": "multi",
+  "fields": [
+   [
+    "kurz20",
+    "das »kurze« 20. Jahrhundert",
+    [
+     "1914 – 1989",
+     "1789 – 1914",
+     "1700 – 1815",
+     "1450 – 1620"
+    ]
+   ],
+   [
+    "lang19",
+    "das »lange« 19. Jahrhundert",
+    [
+     "1789 – 1914",
+     "1914 – 1989",
+     "1700 – 1815",
+     "1450 – 1620"
+    ]
+   ],
+   [
+    "lang16",
+    "das »lange« 16. Jahrhundert",
+    [
+     "1450 – 1620",
+     "1914 – 1989",
+     "1789 – 1914",
+     "1700 – 1815"
+    ]
+   ],
+   [
+    "begr",
+    "b) Warum 1914 bis 1989? (1–2 Sätze)"
+   ]
+  ],
+  "chk": {
+   "kurz20": {
+    "sel": "1914 – 1989"
+   },
+   "lang19": {
+    "sel": "1789 – 1914"
+   },
+   "lang16": {
+    "sel": "1450 – 1620"
+   },
+   "begr": {
+    "kw": [
+     [
+      "1914: Erster Weltkrieg",
+      "weltkrieg|krieg|1914"
+     ],
+     [
+      "1989: Mauerfall / Ende Ost-West-Konflikt",
+      "mauer|kalt|ost|kommun|sowjet|wende|1989|eiser"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "a)",
+    [
+     "kurzes 20. Jh. 1914–1989 · langes 19. Jh. 1789–1914 · langes 16. Jh. 1450–1620 (langes 18. Jh. 1700–1815)"
+    ]
+   ],
+   [
+    "b)",
+    [
+     "1914 beginnt mit dem Ersten Weltkrieg eine neue Zeit (Weltkriege, Diktaturen); 1989 endet mit dem Fall der Berliner Mauer der Ost-West-Konflikt. Für die Einteilung zählen die prägenden Ereignisse, nicht die runden Jahreszahlen."
+    ]
+   ]
+  ],
+  "tip": [
+   "Lange und kurze Jahrhunderte",
+   "theorie.html#jahrhunderte"
+  ]
+ },
+ {
+  "id": "a10",
+  "nr": 10,
+  "title": "Wessen Geschichte?",
+  "src": "Buch S. 14",
+  "own": true,
+  "tag": "Stunde 2",
+  "h": 2,
+  "hl": false,
+  "q": "a) Erkläre den Begriff Eurozentrismus in 1–2 Sätzen mit einem Beispiel. b) Um 600 v. Chr. gehört Athen schon zur Antike, Hallstatt im Salzkammergut aber noch zur Urgeschichte. Warum? c) Eine Zeittafel aus Deutschland hat eine Spalte »Deutsche Geschichte«. Nenne zwei Ereignisse der österreichischen Zeitgeschichte, die in einer österreichischen Zeittafel stehen müssten.",
+  "type": "multi",
+  "fields": [
+   [
+    "euro",
+    "a) Eurozentrismus (1–2 Sätze, mit Beispiel)"
+   ],
+   [
+    "hall",
+    "b) Darum Athen Antike, Hallstatt Urgeschichte"
+   ],
+   [
+    "oe1",
+    "c) Ereignis 1 (mit Jahr)"
+   ],
+   [
+    "oe2",
+    "c) Ereignis 2 (mit Jahr)"
+   ]
+  ],
+  "chk": {
+   "euro": {
+    "kw": [
+     [
+      "europäische Sicht / Maßstab",
+      "europ"
+     ],
+     [
+      "andere Kulturen / Beispiel",
+      "china|amerika|afrika|asien|indien|inka|maya|andere|welt|kultur|mittelalter"
+     ]
+    ]
+   },
+   "hall": {
+    "kw": [
+     [
+      "Schrift",
+      "schrift|geschrieben|schreib|text"
+     ]
+    ]
+   },
+   "oe1": {
+    "kw": [
+     [
+      "Ereignis mit Jahr",
+      "1918|1938|1945|1955|1995|1919|1934|1956"
+     ]
+    ]
+   },
+   "oe2": {
+    "kw": [
+     [
+      "Ereignis mit Jahr",
+      "1918|1938|1945|1955|1995|1919|1934|1956"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "a)",
+    [
+     "Eurozentrismus heißt: Man beurteilt die Welt mit europäischen Maßstäben. Beispiel: Das »Mittelalter« meint die Zeit zwischen dem Ende der römischen Kultur und ihrer Wiederentdeckung – für China, Afrika oder Amerika passt das nicht."
+    ]
+   ],
+   [
+    "b)",
+    [
+     "In Athen gab es Schrift – wir haben Texte, Inschriften, Namen. Die Menschen in Hallstatt hinterließen keine eigenen schriftlichen Quellen, nur Funde (Gräber, Salzbergbau)."
+    ]
+   ],
+   [
+    "c) zum Beispiel",
+    [
+     "1918 Ende der Monarchie, Republik · 1938 »Anschluss« an das Deutsche Reich · 1945 Zweite Republik · 1955 Staatsvertrag, Neutralität, Bundesheer · 1995 EU-Beitritt"
+    ]
+   ]
+  ],
+  "tip": [
+   "Wessen Geschichte? Eurozentrismus · Zeitgeschichte in Österreich",
+   "theorie.html#euro"
+  ]
+ },
+ {
+  "id": "a11",
+  "nr": 11,
+  "title": "Die militärische Datum-Zeit-Gruppe",
+  "src": "Buch S. 13",
+  "own": true,
+  "tag": "Zusatz",
+  "h": 0,
+  "hl": false,
+  "q": "Im Einsatz steht über jeder Meldung eine Datum-Zeit-Gruppe. Entschlüssle »070630AJAN27«: a) Tag b) Uhrzeit c) Zeitzone d) Monat und Jahr. e) Schreibe die Datum-Zeit-Gruppe für: Abmarsch am 18. Oktober 2026 (Sommerzeit) um 21:45 Uhr.",
+  "type": "multi",
+  "fields": [
+   [
+    "tag",
+    "a) Tag"
+   ],
+   [
+    "zeit",
+    "b) Uhrzeit"
+   ],
+   [
+    "zone",
+    "c) Zeitzone A bedeutet …",
+    [
+     "Winterzeit in Österreich (MEZ = Weltzeit + 1 h)",
+     "Sommerzeit in Österreich (MESZ = Weltzeit + 2 h)",
+     "Weltzeit (UTC)",
+     "Ortszeit in Amerika"
+    ]
+   ],
+   [
+    "mj",
+    "d) Monat und Jahr",
+    [
+     "Jänner 2027",
+     "Juni 2027",
+     "Juli 2026",
+     "Jänner 2007"
+    ]
+   ],
+   [
+    "dzg",
+    "e) Deine Datum-Zeit-Gruppe"
+   ]
+  ],
+  "chk": {
+   "tag": {
+    "num": 7,
+    "unit": ""
+   },
+   "zeit": {
+    "kw": [
+     [
+      "Uhrzeit",
+      "0?6[:.]?30"
+     ]
+    ]
+   },
+   "zone": {
+    "sel": "Winterzeit in Österreich (MEZ = Weltzeit + 1 h)"
+   },
+   "mj": {
+    "sel": "Jänner 2027"
+   },
+   "dzg": {
+    "kw": [
+     [
+      "Tag + Uhrzeit",
+      "182145"
+     ],
+     [
+      "Zone B",
+      "182145\\s*b"
+     ],
+     [
+      "Monat + Jahr",
+      "okt\\s*26"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "a) 7. · b) 06:30 Uhr · c) A = MEZ (Winterzeit, Weltzeit + 1 Stunde) · d) Jänner 2027",
+     "e) 182145BOKT26"
+    ]
+   ]
+  ],
+  "tip": [
+   "Zeit im Einsatz",
+   "theorie.html#dzg"
+  ]
+ },
+ {
+  "id": "a12",
+  "nr": 12,
+  "title": "Knobelaufgabe: Geburtstag am 29. Februar",
+  "src": "Buch S. 13",
+  "own": true,
+  "tag": "Zusatz",
+  "h": 0,
+  "hl": false,
+  "q": "Ein Kind wird am 29. Februar 2028 geboren. Wie oft kann es bis einschließlich 2100 an seinem »echten« Geburtstag feiern (den Tag der Geburt nicht mitgezählt)? Schreib deinen Rechenweg dazu.",
+  "type": "multi",
+  "fields": [
+   [
+    "anz",
+    "Anzahl echter Geburtstage (mit Rechenweg)"
+   ]
+  ],
+  "chk": {
+   "anz": {
+    "kw": [
+     [
+      "richtige Anzahl",
+      "\\b17\\b"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "Schaltjahre nach 2028: 2032, 2036, … 2096 → (2096 − 2032) : 4 + 1 = 17. 2100 ist kein Schaltjahr (durch 100, nicht durch 400). Also 17-mal."
+    ]
+   ]
+  ],
+  "tip": [
+   "Die Schaltjahr-Regel: 4 – 100 – 400",
+   "theorie.html#schalt"
+  ]
+ },
+ {
+  "id": "a13",
+  "nr": 13,
+  "title": "Sport: Marathon und die Olympiaden",
+  "src": "Buch S. 13",
+  "own": true,
+  "tag": "Zusatz",
+  "h": 0,
+  "hl": false,
+  "q": "Die Griechen zählten in Olympiaden: Die 1. Olympiade umfasst die Jahre 776 bis 773 v. Chr., jede Olympiade dauert 4 Jahre. Die Schlacht bei Marathon (Ursprung des Marathonlaufs) war 490 v. Chr. In welcher Olympiade? Schreib deinen Rechenweg dazu.",
+  "type": "multi",
+  "fields": [
+   [
+    "olymp",
+    "Nummer der Olympiade (mit Rechenweg)"
+   ]
+  ],
+  "chk": {
+   "olymp": {
+    "kw": [
+     [
+      "richtige Olympiade",
+      "\\b72\\b"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "776 − 490 = 286 Jahre nach Beginn · 286 : 4 = 71,5 → 71 volle Olympiaden sind vorbei → die 72. Olympiade (492–489 v. Chr.). Die Griechen schrieben: »im 3. Jahr der 72. Olympiade«."
+    ]
+   ]
+  ],
+  "tip": [
+   "Zeitrechnungen nach Ereignissen",
+   "theorie.html#ereignisse"
+  ]
+ },
+ {
+  "id": "a14",
+  "nr": 14,
+  "title": "Wirtschaft: Ein Kalender spart Geld",
+  "src": "Buch S. 13",
+  "own": true,
+  "tag": "Zusatz",
+  "h": 0,
+  "hl": false,
+  "q": "Saudi-Arabien zahlt seit Oktober 2016 die Gehälter im Staatsdienst nach dem gregorianischen statt nach dem islamischen Kalender – 12 Monatsgehälter pro Jahr wie bisher. a) Wie viele Tage ist ein islamisches Mondjahr ungefähr kürzer als unser Sonnenjahr? b) Um wie viel Prozent arbeiten die Beamten nun für dasselbe Jahresgehalt mehr? (365 statt 354 Tage, auf eine Kommastelle) c) Erkläre in 1–2 Sätzen, warum der Staat damit spart.",
+  "type": "multi",
+  "fields": [
+   [
+    "tage",
+    "a) Tage kürzer"
+   ],
+   [
+    "proz",
+    "b) Prozent mehr (mit Rechnung)"
+   ],
+   [
+    "warum",
+    "c) Darum spart der Staat"
+   ]
+  ],
+  "chk": {
+   "tage": {
+    "num": 11,
+    "unit": ""
+   },
+   "proz": {
+    "num": 3.1,
+    "unit": ""
+   },
+   "warum": {
+    "kw": [
+     [
+      "gleiches Gehalt",
+      "gehalt|lohn|zahl|geld|monat"
+     ],
+     [
+      "mehr Tage / längeres Jahr",
+      "länger|mehr|11|tage|arbeit"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "a) ca. 11 Tage (354 statt 365)",
+     "b) (365 − 354) : 354 · 100 ≈ 3,1 %",
+     "c) Die 12 Monatsgehälter verteilen sich jetzt auf ein längeres Jahr. Der Staat zahlt pro Jahr nicht mehr, bekommt aber 11 Arbeitstage mehr – das spart rund 3 % der Lohnkosten."
+    ]
+   ]
+  ],
+  "tip": [
+   "Mondjahr und Sonnenjahr",
+   "theorie.html#mond"
+  ]
+ },
+ {
+  "id": "a15",
+  "nr": 15,
+  "title": "Ökologie: Leben wir im Anthropozän?",
+  "src": "Recherche im Internet",
+  "own": true,
+  "tag": "Zusatz",
+  "h": 0,
+  "hl": false,
+  "q": "Forscher schlugen vor, eine neue Erd-Epoche auszurufen: das Anthropozän, das »Zeitalter des Menschen«. a) Welche Spuren des Menschen würden Geologen in Millionen Jahren finden? Nenne zwei. b) Wie hat die Fachwelt 2024 entschieden? Suchtipp: »Anthropozän abgelehnt 2024« auf derstandard.at oder orf.at. c) Deine Meinung in 1–2 Sätzen: Brauchen wir den Begriff?",
+  "type": "multi",
+  "fields": [
+   [
+    "spuren",
+    "a) Zwei Spuren"
+   ],
+   [
+    "2024",
+    "b) Entscheidung 2024"
+   ],
+   [
+    "meinung",
+    "c) Meine Meinung"
+   ]
+  ],
+  "chk": {
+   "spuren": {
+    "kw": [
+     [
+      "Spur des Menschen",
+      "plastik|beton|radioakt|atom|plutonium|co2|kohlen|hühner|knochen|müll|asphalt|abgas|ruß|mikroplastik"
+     ]
+    ]
+   },
+   "2024": {
+    "kw": [
+     [
+      "abgelehnt",
+      "abgelehnt|nein|dagegen|nicht anerkannt|ablehn"
+     ]
+    ]
+   }
+  },
+  "sol": [
+   [
+    "Lösung",
+    [
+     "a) Plastik und Mikroplastik, Beton, radioaktive Spuren der Atombombentests ab 1950, Ruß aus Kohle, Knochen von Masthühnern …",
+     "b) Im März 2024 lehnte die zuständige Fachkommission der Geologen das Anthropozän als offizielle Erd-Epoche ab (12 dagegen, 4 dafür). Offiziell leben wir weiter im Holozän.",
+     "c) Kein Richtig oder Falsch – die Begründung zählt. Als Begriff für den großen Einfluss des Menschen wird »Anthropozän« weiter verwendet."
+    ]
+   ]
+  ],
+  "tip": [
+   "Für Schnelle: Ein neues Erdzeitalter?",
+   "theorie.html#schnelle"
+  ]
+ }
+];
+
+// ---------- Zustand (nur in diesem Browser gespeichert) ----------
+let S = { name: "", klasse: "", a: {}, pdfDone: false, solSeen: false, snap: {} };
+let storageOk = true;
+try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
+T.filter(t => t.type === "sketch").forEach(t => { try { const f = localStorage.getItem(KEY + "-foto-" + t.id); if (f) { S.a[t.id] = S.a[t.id] || {}; S.a[t.id].foto = f; } } catch (e) {} });
+function save() {
+  try {
+    const copy = JSON.parse(JSON.stringify(S));
+    Object.values(copy.a).forEach(v => { if (v && v.foto) delete v.foto; });
+    localStorage.setItem(KEY, JSON.stringify(copy)); storageOk = true;
+  } catch (e) { storageOk = false; }
+}
+function saveFoto(id) {
+  try { const f = S.a[id] && S.a[id].foto; if (f) localStorage.setItem(KEY + "-foto-" + id, f); else localStorage.removeItem(KEY + "-foto-" + id); }
+  catch (e) { storageOk = false; }
+}
+const A = (id) => (S.a[id] = S.a[id] || {});
+const $ = (s) => document.querySelector(s);
+function el(tag, props = {}, ...kids) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else if (k.startsWith("on")) n.addEventListener(k.slice(2), v); else n.setAttribute(k, v);
+  }
+  for (const k of kids) if (k != null) n.append(k);
+  return n;
+}
+const mark = (inp) => inp.classList.toggle("filled", !!String(inp.value).trim());
+function textField(id, key, label, multi, rows) {
+  const fid = id + "_" + key;
+  const inp = multi ? el("textarea", { id: fid, rows: rows || 4, placeholder: "Hier tippen …" }) : el("input", { type: "text", id: fid, placeholder: "Hier tippen …" });
+  inp.value = A(id)[key] || "";
+  inp.addEventListener("input", () => { A(id)[key] = inp.value; mark(inp); update(); save(); });
+  mark(inp);
+  return el("div", {}, label ? el("label", { class: "lbl", for: fid, text: label }) : null, inp);
+}
+function selectField(id, key, opts, label) {
+  const fid = id + "_" + key;
+  const s = el("select", { id: fid, "aria-label": label || key }, el("option", { value: "", text: "auswählen …" }), ...opts.map(o => el("option", { value: o, text: o })));
+  s.value = A(id)[key] || "";
+  s.addEventListener("change", () => { A(id)[key] = s.value; mark(s); update(); save(); });
+  mark(s);
+  return el("div", {}, label ? el("label", { class: "lbl", for: fid, text: label }) : null, s);
+}
+const MIX = {};
+function mixed(opts) {
+  const k = JSON.stringify(opts);
+  if (!MIX[k]) { const a = opts.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } MIX[k] = a; }
+  return MIX[k];
+}
+function fieldsFor(t) {
+  const box = el("div", { class: "fields" });
+  (t.fields || []).forEach(f => box.append(f[2] ? selectField(t.id, f[0], f[3] === false ? f[2] : mixed(f[2]), f[1]) : textField(t.id, f[0], f[1], !(t.chk && t.chk[f[0]] && t.chk[f[0]].num !== undefined), 3)));
+  return box;
+}
+function qText(s) {
+  // »Zusatz:« im Buchtext hervorheben
+  const p = el("p", { class: "q" });
+  const i = s.indexOf("Zusatz:");
+  if (i < 0) { p.append(s); return p; }
+  p.append(s.slice(0, i), el("b", { text: "Zusatz:" }), s.slice(i + 7));
+  return p;
+}
+
+function renderTask(t) {
+  const card = el("section", { class: "card", id: "card_" + t.id });
+  const tagCls = t.tag.startsWith("Stunde") ? "tag kern" : t.tag === "Hausübung" ? "tag hue" : "tag";
+  card.append(el("div", { class: "head" },
+    el("span", { class: "nr" }, el("span", { class: "check", "aria-hidden": "true", text: "✓" }), "Aufgabe " + t.nr, el("span", { class: tagCls, text: t.tag })),
+    el("span", { class: "pill" + (t.own ? " theory" : ""), text: t.src })));
+  card.append(el("h2", { text: t.title }));
+  card.append(qText(t.q));
+  if (t.hint) card.append(el("p", { class: "hint", text: t.hint }));
+  if (t.img) card.append(el("div", { class: "qimg" }, el("img", { src: t.img, alt: "Abbildung zu Aufgabe " + t.nr })));
+
+  if (t.type === "text") card.append(textField(t.id, "t", "Deine Antwort", true, 5));
+  if (t.type === "multi") card.append(fieldsFor(t));
+  if (t.type === "sketch") {
+    const ph = el("div", { class: "photo" });
+    const img = el("img", { alt: "Foto deiner Skizze" });
+    const status = el("p", { class: "status info", hidden: "" });
+    const file = el("input", { type: "file", accept: "image/*", id: t.id + "_foto", "aria-label": "Foto der Skizze auswählen" });
+    const lbl = el("span", { text: "Foto der Heftskizze aufnehmen" });
+    const pick = el("span", { class: "btn secondary small filebtn" }, lbl, file);
+    const del = el("button", { class: "btn secondary small", type: "button", text: "Foto entfernen" });
+    function show() { const f = A(t.id).foto; img.hidden = !f; del.hidden = !f; if (f) img.src = f; lbl.textContent = f ? "Anderes Foto wählen" : "Foto der Heftskizze aufnehmen"; }
+    file.addEventListener("change", async () => {
+      const f = file.files && file.files[0]; if (!f) return;
+      status.hidden = false; status.className = "status info"; status.textContent = "Foto wird verkleinert …";
+      try { A(t.id).foto = await shrink(f); status.hidden = true; show(); update(); saveFoto(t.id); if (!storageOk) { status.hidden = false; status.className = "status err"; status.textContent = "Das Foto ist zu groß zum Speichern am Handy – es kommt trotzdem in die PDF, wenn du jetzt abgibst."; } }
+      catch (e) { status.className = "status err"; status.textContent = "Das Foto ließ sich nicht öffnen. Bitte ein JPG- oder PNG-Foto wählen."; }
+      file.value = "";
+    });
+    del.addEventListener("click", () => { delete A(t.id).foto; show(); update(); saveFoto(t.id); });
+    ph.append(el("label", { class: "lbl", text: "Deine Skizze (Foto)" }), pick, status, img, del);
+    card.append(ph, fieldsFor(t));
+    setTimeout(show);
+  }
+  if (t.type === "strike") {
+    const box = el("div", { class: "rows" });
+    t.sents.forEach((parts, si) => {
+      const p = el("div", { class: "sent" }); let gi = 0;
+      parts.forEach(part => {
+        if (typeof part === "string") { p.append(part); return; }
+        const g = gi++, key = si + "_" + g;
+        const btns = part.map((w, wi) => {
+          const b = el("button", { class: "opt", type: "button", text: w, "aria-pressed": "false" });
+          b.addEventListener("click", () => { const cur = A(t.id)[key]; A(t.id)[key] = cur === wi ? undefined : wi; paint(); update(); save(); });
+          return b;
+        });
+        function paint() { const s = A(t.id)[key]; btns.forEach((b, wi) => { b.classList.toggle("struck", s === wi); b.classList.toggle("kept", s != null && s !== wi); b.setAttribute("aria-pressed", String(s === wi)); }); }
+        paint(); p.append(btns[0], " / ", btns[1]);
+      });
+      box.append(p);
+    });
+    card.append(box, textField(t.id, "begr", "Kurz begründen (freiwillig)", true, 3));
+  }
+  if (t.chk) {
+    const fb = el("div", { class: "fb", id: "fb_" + t.id, hidden: "" });
+    const b = el("button", { class: "btn secondary small", type: "button", text: "Prüfen" });
+    b.addEventListener("click", () => showCheck(t));
+    card.append(el("div", { class: "checkrow" }, b), fb);
+  }
+  const sol = el("div", { class: "sol", id: "sol_" + t.id, hidden: "" }, el("strong", { text: "Musterlösung" }));
+  t.sol.forEach(([h, ps]) => { if (t.sol.length > 1 || h !== "Lösung") sol.append(el("div", { class: "solh", text: h })); ps.forEach(x => sol.append(el("p", { text: x }))); });
+  card.append(sol);
+  return card;
+}
+
+// ---------- Sofort-Feedback (verrät die Lösung nicht) ----------
+function normU(u) { return String(u || "").toLowerCase().replace(/\s+/g, "").replace("m2", "m²").replace("tesla", "t").replace("ampere", "a"); }
+function parseNum(str) {
+  let s0 = String(str || "").replace(/\u202f/g, " ").replace(/(\d)\s+(?=\d{3}\b)/g, "$1");
+  const m = [...s0.matchAll(/(-?\d+(?:[.,]\d+)*)\s*([a-zA-Zµ²\/]*)/g)];
+  if (!m.length) return null;
+  const last = m[m.length - 1]; let n = last[1];
+  n = /^\d{1,3}(\.\d{3})+$/.test(n) ? n.replace(/\./g, "") : n.replace(",", ".");
+  return { v: parseFloat(n), u: last[2] };
+}
+function checkField(t, key, c) {
+  const a = S.a[t.id] || {};
+  if (c.sel !== undefined) return { ok: a[key] === c.sel, kind: "sel", filled: filled(a[key]) };
+  if (c.num !== undefined) {
+    const r = parseNum(a[key]);
+    if (!r || isNaN(r.v)) return { ok: false, kind: "num", msg: "Keine Zahl gefunden.", filled: filled(a[key]) };
+    const good = Math.abs(r.v - c.num) <= Math.abs(c.num) * 0.02;
+    const unitOk = !c.unit || normU(r.u) === normU(c.unit) || (normU(c.unit) === "t" && normU(r.u) === "t");
+    if (!good) return { ok: false, kind: "num", msg: "Das Ergebnis stimmt noch nicht.", filled: true };
+    if (!unitOk) return { ok: false, kind: "num", msg: r.u ? "Zahl stimmt – Einheit prüfen." : "Zahl stimmt – Einheit fehlt.", filled: true };
+    return { ok: true, kind: "num", filled: true };
+  }
+  if (c.kw) {
+    const txt = String(a[key] || "").toLowerCase();
+    const hits = c.kw.map(([lab, rx]) => [lab, new RegExp(rx, "i").test(txt)]);
+    return { ok: hits.every(h => h[1]), kind: "kw", hits, filled: filled(a[key]) };
+  }
+  return { ok: true, kind: "none", filled: true };
+}
+function evalTask(t) {
+  if (!t.chk) return null;
+  const a = S.a[t.id] || {};
+  if (t.chk.strike) {
+    const keys = Object.keys(t.chk.strike); const n = keys.filter(k => a[k] === t.chk.strike[k]).length;
+    return { ok: n === keys.length, parts: [{ kind: "strike", n, of: keys.length }] };
+  }
+  const parts = Object.entries(t.chk).map(([k, c]) => Object.assign({ key: k, label: (t.fields || []).concat([["t", "Antwort"]]).find(f => f[0] === k)[1] }, checkField(t, k, c)));
+  return { ok: parts.every(p => p.ok), parts };
+}
+function showCheck(t) {
+  const r = evalTask(t), fb = $("#fb_" + t.id); fb.hidden = false; fb.textContent = "";
+  fb.className = "fb " + (r.ok ? "ok" : "no");
+  fb.append(el("strong", { text: r.ok ? "Richtig!" : "Noch nicht ganz." }));
+  if (!r.ok) {
+    r.parts.forEach(p => {
+      if (p.kind === "strike") fb.append(el("div", { text: p.n + " von " + p.of + " richtig durchgestrichen." }));
+      else if (p.kind === "kw") fb.append(el("div", { text: (r.parts.length > 1 ? p.label + ": " : "") + "enthalten: " + p.hits.map(h => h[0] + (h[1] ? " ✓" : " ✗")).join(", ") }));
+      else if (!p.ok) fb.append(el("div", { text: (r.parts.length > 1 ? p.label + ": " : "") + (p.kind === "sel" ? (p.filled ? "Auswahl stimmt noch nicht." : "Noch nichts ausgewählt.") : p.msg) }));
+    });
+    if (t.tip) fb.append(el("div", {}, "Tipp: Lies nochmal ", el("a", { href: t.tip[1], text: t.tip[0] }), "."));
+  }
+}
+function showSolutions() {
+  T.forEach(t => { const x = $("#sol_" + t.id); if (x) x.hidden = !S.solSeen; });
+  const b = $("#solbtn"); if (b) b.hidden = !S.pdfDone || S.solSeen;
+  const n = $("#solnote"); if (n) n.hidden = !S.solSeen;
+}
+function snapOf(id) { const c = JSON.parse(JSON.stringify(S.a[id] || {})); delete c.foto; return JSON.stringify(c); }
+
+// Foto verkleinern (max. 1400 px, JPEG), damit Speicher und PDF klein bleiben
+function shrink(file) {
+  return new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onerror = rej;
+    fr.onload = () => { const im = new Image(); im.onerror = rej; im.onload = () => {
+      const m = 1400, k = Math.min(1, m / Math.max(im.width, im.height));
+      const c = document.createElement("canvas"); c.width = Math.round(im.width * k); c.height = Math.round(im.height * k);
+      const g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0, 0, c.width, c.height); g.drawImage(im, 0, 0, c.width, c.height);
+      res(c.toDataURL("image/jpeg", 0.78)); }; im.src = fr.result; };
+    fr.readAsDataURL(file);
+  });
+}
+
+// ---------- Fortschritt ----------
+const filled = (v) => v != null && String(v).trim() !== "";
+function isDone(t) {
+  const a = S.a[t.id] || {};
+  if (t.type === "text") return filled(a.t);
+  if (t.type === "multi") return t.fields.every(f => filled(a[f[0]]));
+  if (t.type === "sketch") return !!a.foto && t.fields.every(f => filled(a[f[0]]));
+  if (t.type === "strike") return t.sents.every((p, si) => p.filter(x => typeof x !== "string").every((_, g) => a[si + "_" + g] != null));
+}
+function update() {
+  let n = 0; const open = [];
+  T.forEach(t => { const d = isDone(t); if (d) n++; else if (t.tag !== "Zusatz") open.push(t.nr); $("#card_" + t.id).classList.toggle("done", d); });
+  $("#count").textContent = n + " von " + T.length + " bearbeitet";
+  $("#barfill").style.width = (n / T.length * 100) + "%";
+  const who = [];
+  if (!S.name.trim()) who.push("Name"); if (!S.klasse) who.push("Klasse");
+  $("#missing").textContent = (who.length ? "Noch eintragen: " + who.join(" und ") + ". " : "") + (open.length ? "Noch offen (Stunde 1 und 2): Aufgabe " + open.join(", ") + " – du kannst trotzdem abgeben." : "Alle Pflicht-Aufgaben 1–10 bearbeitet.");
+  $("#copyArea").value = asText();
+}
+
+// ---------- Text-Fassung (für Kopieren und PDF) ----------
+function answerLines(t) {
+  const a = S.a[t.id] || {}, L = [], none = "— keine Antwort —";
+  const f = (k) => filled(a[k]) ? String(a[k]).trim() : none;
+  if (t.type === "text") L.push(f("t"));
+  if (t.type === "sketch") L.push("Skizze: " + (a.foto ? "Foto siehe unten" : "kein Foto"));
+  if (t.type === "multi" || t.type === "sketch") t.fields.forEach(fl => L.push(fl[1] + ": " + f(fl[0])));
+  if (t.type === "strike") {
+    t.sents.forEach((parts, si) => { let g = 0; L.push(parts.map(p => { if (typeof p === "string") return p; const s = a[si + "_" + (g++)]; return s == null ? "[" + p.join(" / ") + "]" : p[1 - s]; }).join("")); });
+    if (filled(a.begr)) L.push("Begründung: " + a.begr.trim());
+  }
+  return L;
+}
+function asText() {
+  const out = [KAP + " Zeit-Einteilung und Epochen – Aufgaben", "Name: " + (S.name || "") + " · Klasse: " + (S.klasse || "") + " · " + new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), ""];
+  T.forEach(t => { const a = S.a[t.id] || {}; if (t.tag === "Zusatz" && !Object.keys(a).length) return; out.push("Aufgabe " + t.nr + ": " + t.title + " (" + t.tag + ")"); answerLines(t).forEach(l => out.push("  " + l)); out.push(""); });
+  return out.join("\n");
+}
+
+// ---------- PDF ----------
+function clean(s) {
+  s = String(s).replace(/⊙/g, "(Punkt)").replace(/⊗/g, "(Kreuz)").replace(/[‘’]/g, "'");
+  let o = "";
+  for (const ch of s) { const c = ch.codePointAt(0); if (c === 10 || RANGES.some(([a, b]) => c >= a && c <= b)) o += ch; }
+  return o;
+}
+function slug(s) {
+  return (s || "ohne-Namen").trim().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/Ä/g, "Ae").replace(/Ö/g, "Oe").replace(/Ü/g, "Ue").replace(/ß/g, "ss")
+    .replace(/[^A-Za-z0-9]+/g, "-").replace(/^-|-$/g, "") || "ohne-Namen";
+}
+const nachname = (n) => { const p = (n || "").trim().split(/\s+/); return p[p.length - 1] || ""; };
+function imgSize(src) { return new Promise((res) => { const i = new Image(); i.onload = () => res([i.width, i.height]); i.onerror = () => res([1, 1]); i.src = src; }); }
+
+async function buildPdf() {
+  const { jsPDF } = window.jspdf;
+  const d = new jsPDF({ unit: "mm", format: "a4" });
+  d.addFileToVFS("C-R.ttf", FONT_R); d.addFont("C-R.ttf", "C", "normal");
+  d.addFileToVFS("C-B.ttf", FONT_B); d.addFont("C-B.ttf", "C", "bold");
+  const W = 210, M = 18, CW = W - 2 * M, BOT = 282; let y = 14;
+  const olive = [59, 74, 47], teal = [46, 125, 140], muted = [94, 102, 82], ink = [31, 42, 28], rust = [140, 59, 46];
+  const txt = (s, size, style, color, x = M, w = CW, lh = 1.32) => {
+    d.setFont("C", style); d.setFontSize(size); d.setTextColor(...color);
+    const lines = d.splitTextToSize(clean(s), w), h = size * 0.3528 * lh;
+    lines.forEach(l => { if (y + h > BOT) { d.addPage(); y = 18; } d.text(l, x, y + h * 0.78); y += h; });
+  };
+  d.addImage(LOGO, "PNG", M, y, 11, 12.6);
+  d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...teal); d.text(clean("PBGW · 3BK · K1.3–1.4 Zeit-Einteilung und Epochen · Schulbuch S. 13–14"), M + 15, y + 4);
+  d.setFontSize(18); d.setTextColor(...olive); d.text("Epochen-Aufgaben", M + 15, y + 11.5);
+  y += 17;
+  d.setFont("C", "normal"); d.setFontSize(11); d.setTextColor(...ink);
+  d.text(clean("Name: " + (S.name || "—")), M, y); d.text(clean("Klasse: " + (S.klasse || "—")), M + 105, y); d.text("Datum: " + new Date().toLocaleDateString("de-AT") + ", " + new Date().toLocaleTimeString("de-AT", { hour: "2-digit", minute: "2-digit" }), W - M, y, { align: "right" });
+  y += 3; d.setDrawColor(...olive); d.setLineWidth(0.6); d.line(M, y, W - M, y); y += 5;
+  if (S.solSeen) { txt("Nach Lösungseinsicht erstellt – geänderte Aufgaben sind markiert.", 11, "bold", rust); y += 2; }
+  for (const t of T) {
+    const a = S.a[t.id] || {};
+    if (t.tag === "Zusatz" && !Object.keys(a).length) continue;   // leere Zusatzaufgaben weglassen
+    if (y > BOT - 25) { d.addPage(); y = 18; }
+    y += 2;
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(...(t.own ? [110, 127, 78] : teal)); d.text(clean(t.src + " · " + t.tag), W - M, y + 4, { align: "right" });
+    txt("Aufgabe " + t.nr + ": " + t.title, 13, "bold", olive, M, CW - 50);
+    txt(t.q, 10, "normal", muted);
+    y += 1.2;
+    for (const l of answerLines(t)) txt(l, 11.5, l.includes("keine Antwort") ? "bold" : "normal", l.includes("keine Antwort") ? rust : ink, M + 4, CW - 4, 1.3);
+    const ev = evalTask(t);
+    let st = "selbst bewerten";
+    if (ev) {
+      const kwOnly = ev.parts.every(p => p.kind === "kw");
+      if (ev.ok) st = kwOnly ? "Stichwörter vollständig – selbst bewerten" : "automatisch geprüft: richtig";
+      else if (kwOnly) { const h = ev.parts.flatMap(p => p.hits); st = "Stichwörter " + h.filter(x => x[1]).length + " von " + h.length + " – selbst bewerten"; }
+      else st = "automatisch geprüft: noch nicht richtig";
+    }
+    txt("Bewertung: " + (typeof LH_pdf === "function" ? LH_pdf(t, st) : st), 9.5, "bold", (typeof LH_viewed === "function" && LH_viewed(t)) ? rust : (ev && ev.ok ? [70, 110, 40] : muted), M + 4, CW - 4);
+    if (S.solSeen && S.snap && S.snap[t.id] !== undefined && S.snap[t.id] !== snapOf(t.id)) txt("nach Lösungseinsicht geändert", 9.5, "bold", rust, M + 4, CW - 4);
+    if (t.type === "sketch" && a.foto) {
+      const src = a.foto; const [iw, ih] = await imgSize(src);
+      let w = 110, h = w * ih / iw; if (h > 120) { h = 120; w = h * iw / ih; }
+      if (y + h + 3 > BOT) { d.addPage(); y = 18; }
+      y += 2; d.addImage(src, "JPEG", M + 4, y, w, h); y += h + 2;
+    }
+    y += 3; d.setDrawColor(211, 220, 194); d.setLineWidth(0.3); d.line(M, y, W - M, y); y += 2;
+  }
+  const n = d.getNumberOfPages();
+  for (let p = 1; p <= n; p++) { d.setPage(p); d.setFont("C", "normal"); d.setFontSize(8); d.setTextColor(...muted); d.text(clean(KAP + " " + THEMA + " · " + (S.name || "") + " · Seite " + p + " von " + n), W - M, 292, { align: "right" }); }
+  return d.output("blob");
+}
+
+async function savePdf() {
+  const st = $("#pdfstatus"), btn = $("#pdfbtn");
+  const say = (cls, m) => { st.hidden = false; st.className = "status " + cls; st.textContent = m; };
+  if (!S.name.trim()) { say("err", "Bitte zuerst oben deinen Namen eintragen."); $("#name").focus(); return; }
+  if (!window.jspdf) { say("err", "Das PDF-Programm wurde nicht geladen. Lade die Seite neu – oder kopiere die Antworten als Text (unten)."); return; }
+  btn.disabled = true; say("info", "PDF wird erstellt …");
+  const filename = KAP + "-" + THEMA + "-" + slug(nachname(S.name)) + ".pdf";
+  try {
+    const blob = await buildPdf();
+    const url = URL.createObjectURL(blob);
+    const a = el("a", { href: url, download: filename }); document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 30000);
+    say("ok", "PDF wurde erstellt: " + filename + " – schau in deinen Downloads nach, ob sie da ist, und lade sie dann in LMS hoch.");
+    if (!S.pdfDone) { S.pdfDone = true; save(); }
+    showSolutions();
+  } catch (e) { say("err", "Beim Erstellen der PDF ist ein Fehler passiert. Kopiere die Antworten als Text (unten)."); }
+  finally { btn.disabled = false; }
+}
+
+// ---------- Start ----------
+const GRP = {"1": "Stunde 1 · Wie zählen wir Zeit? (Buch S. 13)", "2": "Stunde 2 · Die Epochen (Buch S. 14)", "0": "Für Schnelle und Neugierige · optional"};
+let lastH = null;
+T.forEach(t => { const g = t.hl ? "hl" : t.h; if (g !== lastH) { $("#tasks").append(el("div", { class: "grp", text: GRP[g] })); lastH = g; } $("#tasks").append(renderTask(t)); });
+$("#solbtn").addEventListener("click", () => { S.solSeen = true; S.snap = {}; T.forEach(t => S.snap[t.id] = snapOf(t.id)); save(); showSolutions(); });
+showSolutions();
+const nameI = $("#name"), klI = $("#klasse");
+nameI.value = S.name; klI.value = S.klasse; mark(nameI); mark(klI);
+nameI.addEventListener("input", () => { S.name = nameI.value; mark(nameI); update(); save(); });
+klI.addEventListener("change", () => { S.klasse = klI.value; mark(klI); update(); save(); });
+$("#pdfbtn").addEventListener("click", savePdf);
+$("#copybtn").addEventListener("click", () => {
+  const ta = $("#copyArea"), st = $("#copystatus"); ta.value = asText(); st.hidden = false;
+  const fallback = () => { ta.focus(); ta.select(); st.className = "status info"; st.textContent = "Text ist markiert – jetzt mit »Kopieren« übernehmen."; };
+  try { navigator.clipboard.writeText(ta.value).then(() => { st.className = "status ok"; st.textContent = "Kopiert."; }, fallback); } catch (e) { fallback(); }
+});
+function askReset() {
+  const w = $("#resetwrap"); w.textContent = "";
+  const back = () => { w.textContent = ""; w.append(el("button", { class: "btn secondary small", type: "button", id: "resetbtn", text: "Alles löschen und neu beginnen", onclick: askReset })); };
+  w.append(el("div", { class: "confirm" }, el("strong", { text: "Wirklich alle Antworten und Fotos löschen?" }),
+    el("div", { class: "btns" },
+      el("button", { class: "btn danger small", type: "button", text: "Ja, alles löschen", onclick: () => { try { localStorage.removeItem(KEY); T.forEach(t => localStorage.removeItem(KEY + "-foto-" + t.id)); } catch (e) {} location.reload(); } }),
+      el("button", { class: "btn secondary small", type: "button", text: "Abbrechen", onclick: back }))));
+}
+$("#resetbtn").addEventListener("click", askReset);
+const qr = $("#qr");
+$("#qrbtn").addEventListener("click", () => { qr.hidden = false; });
+$("#qrclose").addEventListener("click", () => { qr.hidden = true; });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !qr.hidden) qr.hidden = true; });
+update();
+
+</script>
+
+<!-- pdf_hilfe:start -->
+<script>
+/* PDF-Hilfe für die Handy-Seiten (Arbeitsblatt, Versuche, Gruppe …).
+   Problem: Manche Handys laden die PDF nicht herunter – v. a. in App-Browsern (Instagram, Teams, Snapchat,
+   WebView) und auf manchen iPhones. Diese Datei hängt sich an jeden Download-Link einer PDF (blob:) und zeigt
+   danach ein kleines Feld mit zwei Ersatzwegen: »Teilen / Speichern« (Teilen-Menü des Handys) und »PDF öffnen«.
+   Zusätzlich ein Hinweis, wenn die Seite in einem App-Browser geöffnet wurde.
+   Einbau: python3 werkzeug/pdf_hilfe_einbauen.py (setzt diese Datei inline in alle Seiten mit PDF-Abgabe). */
+(function () {
+  if (window.__pdfHilfe) return; window.__pdfHilfe = true;
+  var ua = navigator.userAgent || "";
+  var inApp = /Instagram|FBAN|FBAV|FB_IAB|Snapchat|musical_ly|BytedanceWebview|TikTok|Line\/|MicroMessenger|Teams\/|; wv\)/i.test(ua) ||
+              (/(iPhone|iPad|iPod)/.test(ua) && /AppleWebKit/.test(ua) && !/Safari/.test(ua));
+  var css = ".ph-box{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:560px;margin:0 auto;background:#fff;" +
+    "border:2px solid #4E5B31;border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,.18);padding:14px 14px 12px;font:16px/1.4 system-ui,sans-serif;color:#2C3424}" +
+    ".ph-box b{display:block;font-size:17px;margin-bottom:4px;color:#4E5B31}.ph-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}" +
+    ".ph-btn{flex:1 1 140px;min-height:44px;border-radius:10px;border:0;background:#4E5B31;color:#fff;font:600 16px system-ui,sans-serif;cursor:pointer}" +
+    ".ph-btn.alt{background:#E6F0D3;color:#2C3424}.ph-x{position:absolute;right:8px;top:4px;border:0;background:none;font-size:24px;color:#6B6B6B;cursor:pointer}" +
+    ".ph-warn{position:relative;z-index:9998;background:#FFF4CC;border-bottom:2px solid #C9A227;padding:10px 14px;font:15px/1.4 system-ui,sans-serif;color:#2C3424}";
+  function addCss() { if (document.getElementById("ph-css")) return; var s = document.createElement("style"); s.id = "ph-css"; s.textContent = css; document.head.appendChild(s); }
+  function mk(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; }
+
+  function panel(blob, name) {
+    addCss();
+    var old = document.getElementById("ph-box"); if (old) old.remove();
+    var box = mk("div", "ph-box"); box.id = "ph-box"; box.setAttribute("role", "dialog"); box.setAttribute("aria-label", "PDF speichern");
+    var x = mk("button", "ph-x", "×"); x.type = "button"; x.setAttribute("aria-label", "Schließen"); x.onclick = function () { box.remove(); };
+    box.appendChild(x);
+    box.appendChild(mk("b", "", "PDF fertig: " + name));
+    box.appendChild(mk("div", "", inApp
+      ? "Du bist in einem App-Browser – hier klappt der Download oft nicht. Nimm einen der Knöpfe:"
+      : "Keine PDF bei den Downloads? Dann nimm einen der Knöpfe:"));
+    var row = mk("div", "ph-row");
+    var file = null; try { file = new File([blob], name, { type: "application/pdf" }); } catch (e) {}
+    if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+      var sh = mk("button", "ph-btn", "Teilen / Speichern"); sh.type = "button";
+      sh.onclick = function () { navigator.share({ files: [file], title: name }).catch(function () {}); };
+      row.appendChild(sh);
+    }
+    var op = mk("button", row.firstChild ? "ph-btn alt" : "ph-btn", "PDF öffnen"); op.type = "button";
+    op.onclick = function () {
+      var u = URL.createObjectURL(blob);
+      var w = window.open(u, "_blank");
+      if (!w) location.href = u;
+      setTimeout(function () { URL.revokeObjectURL(u); }, 120000);
+    };
+    row.appendChild(op);
+    box.appendChild(row);
+    box.appendChild(mk("div", "", "Danach die PDF in LMS hochladen. Beim Öffnen: im Teilen-Menü »In Dateien sichern« bzw. »Herunterladen«."));
+    box.lastChild.style.cssText = "font-size:14px;color:#6B6B6B;margin-top:8px";
+    document.body.appendChild(box);
+  }
+
+  var orig = HTMLAnchorElement.prototype.click;
+  HTMLAnchorElement.prototype.click = function () {
+    var a = this, name = a.getAttribute("download") || "", href = a.href || "";
+    var res = orig.apply(a, arguments);
+    if (/\.pdf$/i.test(name) && href.indexOf("blob:") === 0) {
+      fetch(href).then(function (r) { return r.blob(); }).then(function (b) { panel(b, name); }).catch(function () {});
+    }
+    return res;
+  };
+
+  if (inApp) {
+    var warn = function () {
+      addCss();
+      var w = mk("div", "ph-warn");
+      w.innerHTML = "<strong>Tipp:</strong> Öffne diese Seite im normalen Browser (oben ⋮ oder ··· → <em>Im Browser öffnen</em>). Sonst klappen Speichern und PDF oft nicht.";
+      document.body.insertBefore(w, document.body.firstChild);
+    };
+    if (document.body) warn(); else document.addEventListener("DOMContentLoaded", warn);
+  }
+})();
+</script>
+<!-- pdf_hilfe:end -->
+<!-- loesungshilfe:start -->
+<script>
+window.LH_VARIANTEN = [];
+/* Lösungshilfe für die Handy-Arbeitsblätter (aufgaben.html mit »Prüfen«).
+   Ziel: Kadetten bleiben beim Üben nicht frustriert stecken – und die Lösung bleibt trotzdem sichtbar im PDF.
+   1) Fehlversuch 1: nur »Noch nicht ganz« + Hinweis, was fehlt.  Fehlversuch 2: zusätzlich der Tipp mit Link zur Theorie-Seite.
+      Ab Fehlversuch 3: Knopf »Lösung zeigen« bei GENAU dieser Aufgabe.
+   2) Wer die Lösung zeigen lässt, bekommt im PDF den Status »Lösung angesehen« – auch wenn danach die richtige Antwort drinsteht.
+   3) Rechenaufgaben: Nach Lösung oder richtiger Antwort gibt es eine Übungsvariante mit neuen Zahlen (LH_VARIANTEN).
+   Einbau: python3 werkzeug/loesungshilfe_einbauen.py (setzt diese Datei inline ein und passt die PDF-Zeile »Bewertung« an). */
+(function () {
+  if (window.__loesungshilfe) return; window.__loesungshilfe = true;
+  var FEHLER_FUER_TIPP = 2, FEHLER_FUER_LOESUNG = 3;
+
+  S.tries = S.tries || {};      // Fehlversuche je Aufgabe (nur Klicks auf »Prüfen«)
+  S.solTask = S.solTask || {};  // Aufgaben, bei denen die Lösung gezeigt wurde: id -> Zahl der Fehlversuche zu dem Zeitpunkt
+
+  var css = ".lh-btn{margin-top:6px;min-height:44px;border-radius:10px;border:2px solid #2E7D8C;background:#fff;color:#1F5F6B;font-weight:700;font-size:16px;font-family:inherit;padding:8px 12px;cursor:pointer}" +
+    ".lh-note{margin-top:8px;border-radius:10px;padding:8px 12px;background:#FBF2D6;border:2px solid #C9A227;font-size:15px}" +
+    ".lh-var{margin-top:10px;border:2px dashed #7FA83A;border-radius:10px;padding:10px 12px;background:#F6FAEC}" +
+    ".lh-var h4{margin:0 0 6px;font-size:16px;color:#3B4A2F}.lh-var label{display:block;font-weight:600;margin-top:8px}" +
+    ".lh-var input{width:100%;box-sizing:border-box;min-height:44px;padding:8px;border:2px solid #C9A227;border-radius:8px;background:#FFF7D6;font:inherit}" +
+    ".lh-var .fb{margin-top:8px}";
+  var st = document.createElement("style"); st.textContent = css; document.head.appendChild(st);
+
+  function taskOf(id) { return T.filter(function (t) { return t.id === id; })[0]; }
+  function mk(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; }
+
+  // ---------- Status einer Aufgabe (für PDF) ----------
+  window.LH_viewed = function (t) { return S.solTask && S.solTask[t.id] !== undefined; };
+  window.LH_pdf = function (t, base) {
+    if (!t.chk) return base;
+    var n = (S.tries && S.tries[t.id]) || 0;
+    if (LH_viewed(t)) return "Lösung angesehen (nach " + S.solTask[t.id] + " Fehlversuch" + (S.solTask[t.id] === 1 ? "" : "en") + ") – Antwort bitte selbst bewerten";
+    var ev = evalTask(t);
+    if (ev && ev.manOnly) return base;   /* nur offene Erklärung (Seite kennzeichnet sie mit man): bewertet die Lehrkraft */
+    if (ev && ev.ok && ev.man) return base + (n === 0 ? " · beim 1. Versuch" : " · nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : ""));
+    if (ev && ev.ok) return n === 0 ? base + " · selbst gelöst (1. Versuch)" : base + " · gelöst nach " + n + " Fehlversuch" + (n === 1 ? "" : "en") + (n >= FEHLER_FUER_TIPP ? " (mit Tipp)" : "");
+    return base + (n ? " · " + n + " Fehlversuch" + (n === 1 ? "" : "e") : "");
+  };
+
+  // ---------- »Prüfen« erweitern ----------
+  var origCheck = showCheck;
+  showCheck = function (t) {
+    var r = evalTask(t);
+    if (r && !r.ok && !r.manOnly && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;   /* leere offene Erklärung ist kein Fehlversuch */
+    origCheck(t);
+    var fb = $("#fb_" + t.id), n = S.tries[t.id] || 0;
+    if (r && !r.ok && !r.manOnly) {
+      // Tipp mit Link erst ab dem 2. Fehlversuch
+      if (n < FEHLER_FUER_TIPP) { var links = fb.querySelectorAll("a"); links.forEach(function (a) { if (a.parentNode) a.parentNode.remove(); }); fb.append(mk("div", "", "Lies deine Antwort noch einmal genau – manchmal fehlt nur ein Wort, eine Einheit oder ein Rechenschritt.")); }
+      if (n >= FEHLER_FUER_LOESUNG && !LH_viewed(t)) {
+        var b = mk("button", "lh-btn", "Ich komme nicht weiter – Lösung zeigen");
+        b.type = "button";
+        b.addEventListener("click", function () { zeigeLoesung(t, fb); });
+        fb.append(b, mk("div", "", "Die Aufgabe steht dann im PDF als »Lösung angesehen«."));
+      }
+    }
+    if (r && r.ok) angebotVariante(t);
+    save();
+  };
+
+  function zeigeLoesung(t, fb) {
+    S.solTask[t.id] = S.tries[t.id] || 0;
+    var sol = $("#sol_" + t.id); if (sol) sol.hidden = false;
+    var card = $("#card_" + t.id);
+    if (card && !card.querySelector(".lh-note")) card.append(mk("div", "lh-note", "Lösung angesehen – das steht so im PDF. Mach unten die Übungsvariante, dann weißt du, ob du es jetzt kannst."));
+    fb.querySelectorAll(".lh-btn").forEach(function (b) { b.remove(); });
+    angebotVariante(t);
+    save();
+  }
+
+  // Einzelne gezeigte Lösungen dürfen vom globalen »Lösungen ansehen« nicht wieder versteckt werden
+  var origSol = showSolutions;
+  showSolutions = function () {
+    origSol();
+    T.forEach(function (t) { if (LH_viewed(t)) { var x = $("#sol_" + t.id); if (x) x.hidden = false; } });
+  };
+
+  // ---------- Übungsvariante mit neuen Zahlen ----------
+  // LH_VARIANTEN (je Seite): [{ id:"a3", vars:[{n:"N",min:200,max:1000,step:50}], abgeleitet:{lcm:"l*100"},
+  //   text:"… {N} Windungen …", felder:[{label:"Durchflutung Θ", expr:"N*I", einheit:"A"}] }]
+  function zufall(v) { var k = Math.round((v.max - v.min) / v.step); var x = v.min + v.step * Math.floor(Math.random() * (k + 1)); return Math.round(x * 1e6) / 1e6; }
+  function fmt(x) { return String(Math.round(x * 1e6) / 1e6).replace(".", ","); }
+  function auswerten(expr, vals) { var names = Object.keys(vals); return new Function(names.join(","), "return (" + expr + ");").apply(null, names.map(function (k) { return vals[k]; })); }
+
+  function angebotVariante(t) {
+    var cfg = (window.LH_VARIANTEN || []).filter(function (c) { return c.id === t.id; })[0];
+    var card = $("#card_" + t.id);
+    if (!cfg || !card || card.querySelector(".lh-var")) return;
+    var box = mk("div", "lh-var");
+    var b = mk("button", "lh-btn", "Noch eine Übung mit anderen Zahlen"); b.type = "button";
+    box.append(b); card.append(box);
+    function neu() {
+      box.textContent = "";
+      var vals = {}; cfg.vars.forEach(function (v) { vals[v.n] = zufall(v); });
+      var shown = Object.assign({}, vals);
+      Object.keys(cfg.abgeleitet || {}).forEach(function (k) { shown[k] = auswerten(cfg.abgeleitet[k], vals); });
+      var text = cfg.text.replace(/\{(\w+)\}/g, function (_, k) { return fmt(shown[k]); });
+      box.append(mk("h4", "", "Übungsvariante – zählt nicht für die Abgabe"), mk("div", "", text));
+      var inputs = cfg.felder.map(function (f) {
+        var l = mk("label", "", f.label), i = document.createElement("input"); i.type = "text"; i.placeholder = "Hier tippen …"; i.inputMode = "decimal";
+        l.append(i); box.append(l); return i;
+      });
+      var out = mk("div", "fb", ""); out.hidden = true;
+      var pr = mk("button", "lh-btn", "Prüfen"); pr.type = "button";
+      var nx = mk("button", "lh-btn", "Neue Zahlen"); nx.type = "button"; nx.style.marginLeft = "8px";
+      pr.addEventListener("click", function () {
+        var alleOk = true, msgs = [];
+        cfg.felder.forEach(function (f, k) {
+          var soll = auswerten(f.expr, vals), p = parseNum(inputs[k].value);
+          var gut = p && !isNaN(p.v) && Math.abs(p.v - soll) <= Math.abs(soll) * 0.02;
+          var unitOk = !f.einheit || (p && normU(p.u) === normU(f.einheit));
+          if (window.numPruefen) {   // großzügige Prüfung (werkzeug/pruefung_nachsicht.js): Einheiten umrechnen, Rundung, Zahl ohne Einheit
+            var np = window.numPruefen(inputs[k].value, soll, f.einheit);
+            gut = np.ok || /Einheit/.test(np.msg || ""); unitOk = np.ok;
+          }
+          if (!gut) { alleOk = false; msgs.push(f.label + ": stimmt noch nicht."); }
+          else if (!unitOk) { alleOk = false; msgs.push(f.label + ": Zahl stimmt – Einheit prüfen."); }
+        });
+        out.hidden = false; out.className = "fb " + (alleOk ? "ok" : "no"); out.textContent = "";
+        out.append(mk("strong", "", alleOk ? "Richtig – das kannst du!" : "Noch nicht ganz."));
+        msgs.forEach(function (m) { out.append(mk("div", "", m)); });
+        if (!alleOk && t.tip) { var d = mk("div", ""); d.append("Tipp: Lies nochmal "); var a = mk("a", "", t.tip[0]); a.href = t.tip[1]; d.append(a, "."); out.append(d); }
+      });
+      nx.addEventListener("click", neu);
+      box.append(pr, nx, out);
+    }
+    b.addEventListener("click", neu);
+  }
+
+  // ---------- Beim Laden wiederherstellen ----------
+  function wiederherstellen() {
+    T.forEach(function (t) {
+      if (LH_viewed(t)) {
+        var sol = $("#sol_" + t.id); if (sol) sol.hidden = false;
+        var card = $("#card_" + t.id);
+        if (card && !card.querySelector(".lh-note")) card.append(mk("div", "lh-note", "Lösung angesehen – das steht so im PDF."));
+        angebotVariante(t);
+      }
+    });
+  }
+  wiederherstellen();
+})();
+</script>
+<!-- loesungshilfe:end -->
+<!-- speicherstatus:start -->
+<script>
+/* Speicherstatus für die Handy-Seiten (Arbeitsblatt, Versuche, Gruppe …).
+   Problem: Die Seiten speichern Antworten im Browser (localStorage). Wenn das Handy das Speichern verweigert
+   (Speicher voll, privater Modus, Browser blockiert es), merkte der Kadett bisher nichts davon – und verlor beim
+   Schließen der Seite alles.
+   Diese Datei legt sich von außen um localStorage.setItem und zeigt
+     - bei Erfolg unten links (5 Sekunden lang, danach weg – es soll keinen Text verdecken):  »Gespeichert um 10:42 auf diesem Gerät«
+     - bei einem Fehler oben, nicht zu übersehen:  Warnung + Knopf »Zur PDF«.
+   Sie ändert NIE einen Speicherschlüssel und NIE einen gespeicherten Wert: Jeder Aufruf wird unverändert an den
+   Browser weitergereicht, ein Fehler wird nach der Anzeige unverändert weitergeworfen (die Seite behandelt ihn wie bisher).
+   Gespeichert wird weiterhin bei jeder Eingabe sofort – es gibt bewusst KEIN verzögertes Speichern, damit beim Schließen
+   der Seite nichts verloren geht. Verzögert (0,8 s) wird nur die Anzeige.
+   Einbau: python3 werkzeug/speicherstatus_einbauen.py (setzt diese Datei inline in alle Seiten mit PDF-Abgabe). */
+(function () {
+  if (window.__speicherstatus) return; window.__speicherstatus = true;
+
+  var PREFIX = "26-27-";            // alle Speicherschlüssel der Seiten beginnen so
+  var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
+  var failed = {};                  // Schlüssel -> true, solange der letzte Schreibversuch scheiterte
+  var okTime = null, timer = null, hideTimer = null;
+
+  var css = "#ss-status[hidden],#ss-warn[hidden]{display:none}" +
+    "#ss-status{position:fixed;left:12px;bottom:12px;z-index:9990;max-width:calc(100% - 24px);padding:6px 12px;border-radius:999px;" +
+    "background:#fff;border:1px solid #D3DCC2;color:#2C3424;font:600 14px/1.3 system-ui,sans-serif;box-shadow:0 2px 8px rgba(0,0,0,.12);pointer-events:none}" +
+    "#ss-status .ss-ic{color:#3F6B14;font-weight:700;margin-right:6px}" +
+    "#ss-warn{position:fixed;left:0;right:0;top:0;z-index:9998;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:12px 14px;" +
+    "background:#F6E3DF;border-bottom:3px solid #8C3B2E;color:#4A150C;font:600 16px/1.4 system-ui,sans-serif}" +
+    "#ss-warn span{flex:1 1 220px}" +
+    "#ss-warn button{min-height:44px;padding:8px 16px;border-radius:10px;border:0;background:#8C3B2E;color:#fff;font:700 16px system-ui,sans-serif;cursor:pointer}" +
+    ".status.ok,.feedback.ok strong{color:#3F6B14}" +   /* dunkleres Grün: 5,3:1 und mehr auf allen Hintergründen der Seiten */
+    "body{padding-bottom:48px}" +
+    "@media print{#ss-status,#ss-warn{display:none}}";
+  var st = document.createElement("style"); st.id = "ss-css"; st.textContent = css; document.head.appendChild(st);
+
+  var pill = document.createElement("div"); pill.id = "ss-status"; pill.hidden = true;
+  pill.setAttribute("role", "status"); pill.setAttribute("aria-live", "polite"); pill.setAttribute("aria-atomic", "true");
+  var ic = document.createElement("span"); ic.className = "ss-ic"; ic.setAttribute("aria-hidden", "true"); ic.textContent = "✓";
+  var pillTxt = document.createElement("span");
+  pill.appendChild(ic); pill.appendChild(pillTxt);
+
+  var warn = document.createElement("div"); warn.id = "ss-warn"; warn.hidden = true; warn.setAttribute("role", "alert");
+  var warnTxt = document.createElement("span");
+  var warnBtn = document.createElement("button"); warnBtn.type = "button"; warnBtn.textContent = "Zur PDF";
+  warnBtn.onclick = function () { var b = document.getElementById("pdfbtn"); if (b && b.scrollIntoView) { b.scrollIntoView({ block: "center" }); try { b.focus(); } catch (e) {} } };
+  warn.appendChild(warnTxt); warn.appendChild(warnBtn);
+
+  document.body.appendChild(pill); document.body.appendChild(warn);
+
+  function zwei(n) { return (n < 10 ? "0" : "") + n; }
+
+  function zeige() {
+    var keys = Object.keys(failed), nurFoto = keys.length > 0;
+    for (var i = 0; i < keys.length; i++) if (keys[i].indexOf("-foto-") < 0) nurFoto = false;
+    if (keys.length) {
+      warnTxt.textContent = nurFoto
+        ? "Ein Foto konnte nicht gespeichert werden (Handy-Speicher voll). Es bleibt nur, bis du die Seite schließt – erzeuge bald die PDF."
+        : "Speichern auf diesem Gerät nicht möglich! Deine Antworten gehen verloren, wenn du die Seite schließt. Erzeuge jetzt die PDF und gib sie ab.";
+      warn.hidden = false; pill.hidden = true;
+      return;
+    }
+    warn.hidden = true;
+    if (okTime) {
+      pillTxt.textContent = "Gespeichert um " + zwei(okTime.getHours()) + ":" + zwei(okTime.getMinutes()) + " auf diesem Gerät";
+      pill.hidden = false;
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { if (!Object.keys(failed).length) pill.hidden = true; }, 5000);  // deckt sonst Text ab
+    }
+  }
+  function zeigeSpaeter() { if (timer) clearTimeout(timer); timer = setTimeout(zeige, 800); }
+
+  if (ls && typeof Storage !== "undefined") {
+    var origSet = Storage.prototype.setItem, origRemove = Storage.prototype.removeItem;
+    Storage.prototype.setItem = function (k) {
+      if (this === ls && typeof k === "string" && k.indexOf(PREFIX) === 0) {
+        try { origSet.apply(this, arguments); }
+        catch (e) { failed[k] = true; zeige(); throw e; }      // Fehler sofort zeigen und unverändert weiterwerfen
+        if (failed[k]) delete failed[k];
+        if (failed["__probe"]) delete failed["__probe"];       // Speichern klappt doch – frühere Warnung beim Öffnen zurücknehmen
+        okTime = new Date(); zeigeSpaeter();
+        return;
+      }
+      return origSet.apply(this, arguments);
+    };
+    Storage.prototype.removeItem = function (k) {
+      var r = origRemove.apply(this, arguments);
+      if (this === ls && typeof k === "string" && failed[k]) { delete failed[k]; zeigeSpaeter(); }  // z. B. Foto wieder entfernt
+      return r;
+    };
+  }
+
+  /* Gleich beim Öffnen prüfen, ob der Browser überhaupt speichern darf – dann weiß der Kadett es, bevor er tippt. */
+  try { if (!ls) throw new Error("kein localStorage"); ls.setItem("__ss_probe", "1"); ls.removeItem("__ss_probe"); }
+  catch (e) { failed["__probe"] = true; zeige(); }
+})();
+</script>
+<!-- speicherstatus:end -->
+<!-- pdferinnerung:start -->
+<script>window.__PE_KEY = "26-27-3BK-K1.3-Epochen-TH-Handy-v1";
+/* Erinnerung beim Knopf »PDF erstellen«: Ist die Arbeit schon als PDF abgegeben – und passt die PDF noch zu den Antworten?
+   Zeigt direkt über dem PDF-Knopf einen von drei Hinweisen:
+     - Antworten da, aber noch keine PDF       -> »Du hast noch keine PDF erstellt …« (gelb)
+     - nach der letzten PDF etwas geändert     -> »Du hast seit deiner PDF von 10:42 etwas geändert …« (gelb)
+     - PDF passt zum aktuellen Stand           -> »✓ Deine PDF von 10:42 passt zu deinen Antworten …« (grün)
+   Wie: Nach einer erfolgreichen PDF (Meldung »PDF wurde erstellt« bzw. »Gespeichert:« in #pdfstatus) merkt sich die Seite einen
+   Fingerabdruck von Name, Klasse und Antworten (S.name, S.ich, S.klasse, S.a) und der Fotos. Der Fingerabdruck liegt unter einem
+   EIGENEN Schlüssel »pdfstand|<Seitenschlüssel>«. Der Speicherstand der Seite (const KEY) wird nur gelesen, nie geschrieben.
+   Fehlversuche und einzeln angesehene Lösungen zählen als Änderung (sie stehen im PDF); das globale »Lösungen ansehen« nach der PDF nicht.
+   Einbau: python3 werkzeug/pdf_erinnerung_einbauen.py (setzt den Seitenschlüssel als window.__PE_KEY davor). */
+(function () {
+  if (window.__pdferinnerung) return; window.__pdferinnerung = true;
+  var KEY = window.__PE_KEY; if (!KEY) return;
+  var SNAP = "pdfstand|" + KEY;
+  var btn = document.getElementById("pdfbtn"), st = document.getElementById("pdfstatus");
+  if (!btn || !btn.parentNode) return;
+  var ls = null; try { ls = window.localStorage; } catch (e) { ls = null; }
+  var memSnap = null;
+
+  var css = "#pe-hinweis{margin:10px 0;padding:10px 12px;border-radius:10px;font-weight:600;font-size:16px;line-height:1.4;border-left:5px solid #B07A00;background:#FFF4D6;color:#4A3400}" +
+    "#pe-hinweis.pe-ok{border-left-color:#3F6B14;background:#EEF4E4;color:#2C3D16}#pe-hinweis[hidden]{display:none}.pe-mail{margin:8px 0 0;font-size:14px;line-height:1.4;color:#5E6652}@media print{#pe-hinweis,.pe-mail{display:none}}";
+  var stl = document.createElement("style"); stl.id = "pe-css"; stl.textContent = css; document.head.appendChild(stl);
+  var box = document.createElement("p"); box.id = "pe-hinweis"; box.hidden = true; box.setAttribute("aria-live", "polite");
+  btn.parentNode.insertBefore(box, btn);
+  /* Ersatzweg: Geht LMS nicht, darf die PDF per E-Mail kommen (Datum und Uhrzeit stehen in der PDF) */
+  var mail = document.createElement("p"); mail.id = "pe-mail"; mail.className = "pe-mail";
+  mail.textContent = "Geht LMS gerade nicht? Dann schick die PDF per E-Mail an die Lehrkraft. Datum und Uhrzeit stehen in der PDF.";
+  btn.parentNode.insertBefore(mail, btn.nextSibling);
+
+  function get(k) { try { return ls ? ls.getItem(k) : null; } catch (e) { return null; } }
+  function hash(s) { var h = 5381; for (var i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return (h >>> 0).toString(36) + "-" + s.length; }
+
+  /* Fingerabdruck des aktuellen Stands; inhalt = ob überhaupt schon etwas eingetragen ist */
+  function stand() {
+    var raw = get(KEY), o = {};
+    try { o = raw ? JSON.parse(raw) : {}; } catch (e) { o = {}; }
+    var a = o && o.a ? o.a : {}, fotos = [];
+    try {
+      for (var i = 0; ls && i < ls.length; i++) {
+        var k = ls.key(i);
+        if (k && k.indexOf(KEY + "-foto") === 0) { var v = get(k); if (v) fotos.push(k + ":" + hash(v)); }
+      }
+    } catch (e) {}
+    fotos.sort();
+    var aTxt = JSON.stringify(a), inhalt = false;
+    for (var key in a) { var v2 = a[key]; if (v2 !== "" && v2 !== null && v2 !== false && !(v2 && typeof v2 === "object" && !Object.keys(v2).length)) { inhalt = true; break; } }
+    if (fotos.length) inhalt = true;
+    /* Fehlversuche und einzeln angesehene Lösungen stehen im PDF (Status, Punkte) – darum zählen sie mit; das globale »Lösungen ansehen« nach der PDF nicht */
+    var weg = JSON.stringify([o.tries || null, o.solTask || null, o.chk || null]);
+    return { h: hash([o.name || "", o.ich || "", o.klasse || "", aTxt, fotos.join("|")].join("\u0001")), w: hash(weg), inhalt: inhalt };
+  }
+  function snap() {
+    if (memSnap) return memSnap;
+    try { var s = JSON.parse(get(SNAP) || "null"); if (s && s.h) return s; } catch (e) {}
+    return null;
+  }
+  function zeit(t) {
+    var d = new Date(t), h = new Date(), z = function (n) { return (n < 10 ? "0" : "") + n; };
+    var uhr = z(d.getHours()) + ":" + z(d.getMinutes());
+    return d.toDateString() === h.toDateString() ? "von " + uhr : "vom " + d.getDate() + "." + (d.getMonth() + 1) + ". um " + uhr;
+  }
+  function zeige() {
+    var jetzt = stand(), s = snap();
+    if (!s) {
+      if (!jetzt.inhalt) { box.hidden = true; return; }
+      box.className = ""; box.textContent = "Du hast noch keine PDF erstellt. Abgegeben ist deine Arbeit erst, wenn die PDF in LMS hochgeladen ist.";
+    } else if (s.h !== jetzt.h || (s.w !== undefined && s.w !== jetzt.w)) {   /* alte Merkstände ohne w: nur Antworten vergleichen */
+      box.className = ""; box.textContent = "Du hast seit deiner PDF " + zeit(s.t) + " etwas geändert. Erstelle die PDF neu und lade die neue Datei in LMS hoch.";
+    } else {
+      box.className = "pe-ok"; box.textContent = "✓ Deine PDF " + zeit(s.t) + " passt zu deinen Antworten. Hast du sie schon in LMS hochgeladen?";
+    }
+    box.hidden = false;
+  }
+  var t1 = null, t2 = null;
+  function spaeter() { clearTimeout(t1); clearTimeout(t2); t1 = setTimeout(zeige, 700); t2 = setTimeout(zeige, 2500); }
+  ["input", "change", "click"].forEach(function (ev) { document.addEventListener(ev, spaeter, true); });
+
+  /* Erfolgreiche PDF erkennen */
+  var zuletzt = "";
+  function pruefeStatus() {
+    if (!st || st.hidden) return;
+    var txt = (st.textContent || "").trim();
+    if (txt === zuletzt) return; zuletzt = txt;
+    if (/^(PDF wurde erstellt|Gespeichert:)/.test(txt)) {
+      setTimeout(function () {
+        var st0 = stand(); memSnap = { h: st0.h, w: st0.w, t: Date.now() };
+        try { if (ls) ls.setItem(SNAP, JSON.stringify(memSnap)); } catch (e) {}
+        zeige();
+      }, 300);
+    }
+  }
+  btn.addEventListener("click", function () { zuletzt = ""; }, true);   // gleiche Meldung bei der nächsten PDF trotzdem erkennen
+  if (st && window.MutationObserver) new MutationObserver(pruefeStatus).observe(st, { childList: true, characterData: true, subtree: true, attributes: true });
+  if (document.readyState === "complete") zeige(); else window.addEventListener("load", zeige);
+})();
+</script>
+<!-- pdferinnerung:end -->
+<!-- nachsicht:start -->
+<script>window.__CHK_KORREKTUR = {"a5":{"warum":{"need":1}},"a8":{"warum":{"need":1}},"a10":{"euro":{"need":1},"oe1":{"need":2,"kw":[["Jahr","1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"],["Ein Ereignis dazu (Inhalt liest die Lehrkraft)","\\b(?!ereignis|jahr)[a-zäöüß]{5,}"]]},"oe2":{"need":2,"kw":[["Jahr","1914|1918|1919|1920|1933|1934|1938|1945|1948|1955|1956|1968|1986|1989|1995|2004"],["Ein Ereignis dazu (Inhalt liest die Lehrkraft)","\\b(?!ereignis|jahr)[a-zäöüß]{5,}"]]}},"a11":{"zeit":{"kw":[["Uhrzeit","0?6[:.]?\\s?30|6\\s*(uhr|h)\\s*30"]]},"dzg":{"kw":[["Tag + Uhrzeit","18\\s*2145"],["Zone B","2145\\s*b"],["Monat + Jahr","okt(ober)?\\s*(20)?26"]]}},"a14":{"warum":{"need":1}}};
+/* Großzügigere Prüfung der Arbeitsblätter (»Prüfen«-Knopf): Richtige Antworten sollen nicht wegen Schreibweise, Format oder Einheit als falsch gelten.
+   Wird NACH der Seiten-Prüfung eingesetzt und ersetzt nur checkField/parseNum/normU/showCheck (die Seite selbst bleibt unverändert).
+   Ändert keinen Speicherschlüssel und keine gespeicherte Antwort.
+
+   ZAHLEN (Rechenaufgaben):
+     - Irgendeine Zahl in der Antwort darf die richtige sein (nicht nur die letzte): »0,4 A bei 600 Windungen = 240 A« wird erkannt.
+     - Tausendertrennung (2.069 / 2 069 / 2'069), Komma oder Punkt, »m2«, »m^2«, »m²«, »qm«, µ und μ werden verstanden.
+     - Gleichwertige Einheiten gelten: 2 kA/m = 2000 A/m, 1500 mT = 1,5 T, 4 cm² = 0,0004 m², Vs/m² = T, Tesla = T.
+     - Fehlt die Einheit, gilt die Zahl trotzdem als richtig – mit Hinweis »Einheit nicht vergessen«. Eine FALSCHE Einheit bleibt falsch.
+     - Gerundete Antworten gelten: 3 statt 3,1 und 83 statt 82,8 (Rundung auf die angeschriebene Stelle), sonst 2 % Spielraum wie bisher.
+   TEXTE (Stichwörter):
+     - Verneinung (nur wenn im chk-Feld »neg: true« steht): »keine Lorentzkraft«, »nicht abgelenkt« zählt nicht als Treffer. Nur für Aufgaben,
+       deren richtige Antwort bejahend ist – bei Aufgaben wie »Kein Alkohol« bleibt die Verneinung aus.
+     - ä/ae, ö/oe, ü/ue, ß/ss, Bindestriche (»ovo-lakto«), Tausenderpunkte werden gleichgesetzt.
+     - Ein Tippfehler in einem Stichwort (ab 6 Buchstaben) wird verziehen.
+     - Pro Aufgabe kann festgelegt werden, wie viele Stichwortgruppen vorkommen müssen (need) und wie viele verschiedene Wörter einer Gruppe (3. Eintrag),
+       z. B. »Nenne zwei Gründe«. Korrekturen je Einheit: werkzeug/pruefregeln_korrekturen.json.
+   Einbau: python3 werkzeug/pruefung_nachsicht_einbauen.py */
+(function () {
+  if (window.__nachsicht) return; window.__nachsicht = true;
+  if (typeof checkField !== "function" || typeof S === "undefined") return;
+
+  /* ---------- Einheiten ---------- */
+  var PRE = { G: 1e9, M: 1e6, k: 1e3, h: 1e2, c: 1e-2, m: 1e-3, "µ": 1e-6, n: 1e-9 };
+  var BASE = { A: [0, 0, 0, 1, 1], T: [1, 0, -2, -1, 1], V: [1, 2, -3, -1, 1], Wb: [1, 2, -2, -1, 1], N: [1, 1, -2, 0, 1], W: [1, 2, -3, 0, 1], J: [1, 2, -2, 0, 1],
+    "Ω": [1, 2, -3, -2, 1], Hz: [0, 0, -1, 0, 1], m: [0, 1, 0, 0, 1], s: [0, 0, 1, 0, 1], g: [1, 0, 0, 0, 1e-3], l: [0, 3, 0, 0, 1e-3], L: [0, 3, 0, 0, 1e-3] };
+  var WORT = [[/Vs/g, "V·s"], [/tesla/gi, "T"], [/ampere/gi, "A"], [/weber/gi, "Wb"], [/volt/gi, "V"], [/newton/gi, "N"], [/ohm/gi, "Ω"], [/quadratmeter|qm/gi, "m2"], [/meter/gi, "m"], [/sekunden?/gi, "s"]];
+  function einheitDim(u) {
+    u = String(u || "").replace(/\^\(\s*([-−]?\d)\s*\)/g, "$1").replace(/[−–]/g, "-").replace(/\/\(([^()]*)\)/g, function (_, x) { return "/" + x.split(/[·*.\s]+/).filter(Boolean).join("/"); }).replace(/[μ]/g, "µ").replace(/ω/g, "Ω").replace(/²/g, "2").replace(/³/g, "3").replace(/\^/g, "").replace(/\s+/g, "");
+    WORT.forEach(function (w) { u = u.replace(w[0], w[1]); });
+    if (!u) return null;
+    var teile = u.split("/"), dim = [0, 0, 0, 0], f = 1;
+    for (var i = 0; i < teile.length; i++) {
+      var sign = i === 0 ? 1 : -1, terme = teile[i].split(/[·*.]/).filter(Boolean);
+      if (!terme.length) return null;
+      for (var j = 0; j < terme.length; j++) {
+        var mt = /^([A-Za-zµΩ]+?)(-?\d)?$/.exec(terme[j]); if (!mt) return null;
+        var name = mt[1], ex = mt[2] ? parseInt(mt[2], 10) : 1, pre = 1, b = BASE[name];
+        if (!b) { var p = name.charAt(0), rest = name.slice(1); if (PRE[p] && BASE[rest]) { pre = PRE[p]; b = BASE[rest]; } else return null; }
+        for (var k = 0; k < 4; k++) dim[k] += sign * ex * b[k];
+        f *= Math.pow(pre * b[4], sign * ex);
+      }
+    }
+    return { dim: dim, f: f };
+  }
+  /* Faktor, mit dem eine Zahl in Einheit u in die Einheit soll umgerechnet wird; null = andere Größe (falsche Einheit) */
+  function faktor(u, soll) {
+    var a = einheitDim(u), b = einheitDim(soll);
+    if (!a || !b) return String(u).replace(/\s/g, "").toLowerCase() === String(soll).replace(/\s/g, "").toLowerCase() ? 1 : null;
+    for (var i = 0; i < 4; i++) if (a.dim[i] !== b.dim[i]) return null;
+    return a.f / b.f;
+  }
+  function parseZahlen(str) {
+    var HOCH = { "⁰": 0, "¹": 1, "²": 2, "³": 3, "⁴": 4, "⁵": 5, "⁶": 6, "⁷": 7, "⁸": 8, "⁹": 9 };
+    var s0 = String(str || "").replace(/[⋅∙•‧]/g, "·").replace(/10([⁻⁺]?)([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, mi, z) { return "10^" + (mi === "⁻" ? "-" : "") + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+      .replace(/([A-Za-zµμΩ²³])⁻([⁰¹²³⁴⁵⁶⁷⁸⁹]+)/g, function (_, u, z) { return u + "^-" + z.split("").map(function (c) { return HOCH[c]; }).join(""); })
+      /* Minuszeichen U+2212, Exponent in Klammern, Nenner in Klammern: »m−2« → »m^-2«, »m^(-2)« → »m^-2«, »N/(A·m)« → »N/A/m« */
+      .replace(/([A-Za-zµμΩ²³])[−–](\d)/g, "$1^-$2").replace(/\^\(\s*[-−–]?\s*(\d)\s*\)/g, function (m, z) { return /-|−|–/.test(m) ? "^-" + z : "^" + z; })
+      .replace(/([A-Za-zµμΩ²³])\s*\/\s*\(/g, "$1/(")
+      .replace(/\/\(([A-Za-zµμΩ²³0-9^\-·*. ]+)\)/g, function (_, x) { return "/" + x.trim().split(/[·*.\s]+/).filter(Boolean).join("/"); })
+      /* Einheit in Klammern direkt nach der Zahl: »1500 (mT)« → »1500 mT« (nur wenn der Klammerinhalt eine bekannte Einheit ist; »240 A (oder 0,24 kA)« bleibt unberührt) */
+      .replace(/(\d)\s*\(\s*([A-Za-zµμΩ][A-Za-zµμΩ·²³^\-0-9\/ ]{0,16}?)\s*\)/g, function (m, d, u) { return einheitDim(u.replace(/\s+/g, "")) ? d + " " + u.replace(/\s+/g, "") : m; })
+      /* Malpunkt und Schrägstrich mit Leerzeichen innerhalb einer Einheit: »A · m^-1« → »A·m^-1«, »kg / A / s²« → »kg/A/s²« */
+      .replace(/([A-Za-zµμΩ²³]|\^-?\d)\s*[·*]\s*(?=[A-Za-zµμΩ])/g, "$1·")
+      .replace(/([A-Za-zµμΩ²³]|\^-?\d)\s+\/\s+(?=[A-Za-zµμΩ])/g, "$1/")
+      /* Einheitenkette mit Leerzeichen: »V s m^-2« → »V·s·m^-2« (nur wenn alle Teile bekannte Einheiten sind) */
+      .replace(/(\d\s*)((?:[A-Za-zµμΩ]{1,2}(?:\^-?\d)?)(?:\s+[A-Za-zµμΩ]{1,2}(?:\^-?\d)?){1,3})(?![A-Za-zäöüµμΩ])/g, function (m, a, ch) { var j = ch.split(/\s+/).join("·"); return einheitDim(j) ? a + j : m; })
+      /* Einheiten mit Leerzeichen: »A m^-1« → »A·m^-1«, »V s / m²« → »V·s/m²«, »A / m« → »A/m« */
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2}\s*\^\s*-?\d)/g, "$1·$2")
+      .replace(/(\d\s*[A-Za-zµμΩ]{1,2})\s+([A-Za-zµμΩ]{1,2})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1·$2/")
+      .replace(/(\d\s*[A-Za-zµμΩ][A-Za-zµμΩ·²³^\-0-9]{0,12})\s*\/\s*(?=[A-Za-zµμΩ])/g, "$1/")
+      .replace(/(\d+(?:[.,]\d+)?)\s*[*·x×]\s*10\s*\^?\s*\(?([+-]?\d+)\)?/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      .replace(/(\d+(?:[.,]\d+)?)\s*e\s*([+-]?\d+)(?![A-Za-zäöü])/gi, function (_, a, e) { return String(parseFloat(a.replace(",", ".")) * Math.pow(10, parseInt(e, 10))); })
+      .replace(/\s+pro\s+/gi, "/").replace(/[  ]/g, " ").replace(/(\d)[ ']+(?=\d{3}(?!\d))/g, "$1");
+    var re = /(-?\d+(?:[.,]\d+)*)\s*((?:[A-Za-zµμΩω°%²³]+(?:\^?-?\d)?(?:[·*]?[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*(?:\/[A-Za-zµμΩω]+[²³]?(?:\^?-?\d)?)*)?)/g, out = [], m;
+    while ((m = re.exec(s0))) {
+      var n = m[1];
+      /* 2.069 = Tausenderpunkt; 0.240 und 1.500 sind aber Dezimalzahlen (führende Null) bzw. mehrdeutig → beide Lesarten prüfen */
+      var tausend = /^[1-9]\d{0,2}(\.\d{3})+$/.test(n), v2 = null;
+      if (tausend) { v2 = parseFloat(n); n = n.replace(/\./g, ""); } else n = n.replace(",", ".");
+      var dec = (n.split(".")[1] || "").length, sig = n.replace(".", "").replace(/^0+/, "").replace(dec ? /$^/ : /0+$/, "").length;
+      /* Zahl wird ausdrücklich verworfen? (»240 A ist falsch«, »nicht 240 A«, »statt 240 A«) */
+      var vor = s0.slice(Math.max(0, m.index - 14), m.index).split(/[,;.!?]/).pop(), rest = s0.slice(m.index + m[0].length), nx = rest.search(/\d/);
+      var nach = (nx < 0 ? rest : rest.slice(0, nx)).slice(0, 28).split(/[,;.!?]/)[0];
+      /* Verwerfung vor der Zahl: Bezug nur auf den Textteil seit der vorigen Zahl (»24 A sind falsch 240 A sind richtig«: 240 ist NICHT verworfen) */
+      var segV = (out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index)).split(/[,;.!?]/).pop();
+      var neg = /\b(nicht|kein\w*|statt|anstatt)\s*$/i.test(vor) || /(?<!nicht\s)\bfalsch(e|er|es|en|em)\s+(\w+\s+){0,3}(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(segV) || /^\s*falsch:?\s*(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(segV) ||
+        (/\bfalsch:?\s*$/i.test(segV) && !(out.length && /^\s*(ist|sind|war|wäre|wurde)\s+falsch/i.test(segV))) /* »Das ist falsch 240 A« */ ||
+        /^\s*[×x*·]\s*10\b/i.test(rest) /* Potenzausdruck nicht vollständig erkannt: Mantisse allein nie werten (»240 × 10^x A«) */ ||
+        (!(nx >= 0 && /^\s*falsch:?\s*(wäre|ist|lautet|sind|war|wurde)?\s*$/i.test(nach)) /* »240 A falsch sind 24 A«: »falsch« gehört zur NÄCHSTEN Zahl */ &&
+          /^\s*(\S+\s+)?(ist|sind|war)?\s*(\S+\s+)?(falsch|nicht richtig|nicht korrekt|stimmt nicht)\b/i.test(nach));
+      if (/\bnicht\s+(falsch|unrichtig|inkorrekt)\b/i.test(nach)) neg = false;   // »240 A sind nicht falsch« bestätigt die Zahl
+      /* steht »oder« zwischen zwei Zahlen? (»240 A oder 24 A«) → keine eindeutige Antwort */
+      var davor = out.length ? s0.slice(out[out.length - 1].ende, m.index) : s0.slice(0, m.index);
+      var alt = /\b(oder|entweder|vielleicht|eventuell|evtl\.?)\b/i.test(davor) && !/\d/.test(davor);
+      /* Gleichheitszeichen direkt zwischen zwei Zahlen (»240 A = 24 A«): Gleichung, die nur stimmt, wenn beide Seiten gleich sind. Nicht gewertet, wenn eine Seite in einer Rechnung steht (+ − · × / davor oder danach) */
+      var zw = out.length ? s0.slice(out[out.length - 1].ende, m.index) : "";
+      var eq = !!out.length && /^\s*=\s*$/.test(zw) && !/[+\-−·×*\/x]\s*$/i.test(s0.slice(0, out.length === 1 ? out[0].start : out[out.length - 1].start)) && !/^\s*[+\-−·×*\/^]/.test(s0.slice(m.index + m[0].length));
+      out.push({ v: parseFloat(n), v2: v2, u: m[2] || "", dec: dec, sig: sig, neg: neg, alt: alt, eq: eq, start: m.index, ende: m.index + m[0].length });
+    }
+    return out;
+  }
+  var parseNum0 = parseNum;
+  parseNum = function (str) { var l = parseZahlen(str); return l.length ? l[l.length - 1] : null; };
+  var normU0 = normU;
+  normU = function (u) { var d = String(u || "").replace(/[μ]/g, "µ"); return normU0(d.replace(/\^2/g, "²")); };
+
+  /* Prüft eine Zahlen-Antwort. Gibt {ok, msg, note} zurück. */
+  function numPruefen(text, soll, einheit) {
+    var L = parseZahlen(text);
+    if (!L.length || L.every(function (x) { return isNaN(x.v); })) return { ok: false, msg: "Keine Zahl gefunden." };
+    var zahlOk = false, einheitFalsch = false, einheitFehlt = false;
+    /* »240 A oder 24 A«: verschiedene Ergebnisse zur Auswahl = keine eindeutige Antwort */
+    var gl = function (x) { var u = (x.u || "").replace(/^%$/, ""), f = einheit && u ? faktor(u, einheit) : 1; if (f === null) return null; var o = [x.v * f]; if (x.v2 != null && !isNaN(x.v2)) o.push(x.v2 * f); return o; };   // mehrere Lesarten (1.500 = 1500 oder 1,5)
+    for (var k = 1; k < L.length; k++) if (L[k].alt && !L[k].neg && !L[k - 1].neg) {
+      var w1 = gl(L[k - 1]), w2 = gl(L[k]), gleich = !!(w1 && w2) && w1.some(function (a) { return w2.some(function (b) { return Math.abs(a - b) <= Math.max(Math.abs(a), Math.abs(b)) * 0.005; }); });
+      if (!gleich) return { ok: false, msg: "Bitte genau ein Ergebnis angeben (nicht »oder«)." };
+    }
+    /* Widerspruch in einer Gleichung: »240 A = 24 A«, »1,5 T = 15 mT« (beide Seiten haben vergleichbare Einheiten, aber verschiedene Werte, Abweichung über 5 %) */
+    for (var e = 1; e < L.length; e++) if (L[e].eq && !L[e].neg && !L[e - 1].neg && L[e].u && L[e - 1].u) {
+      var fq = faktor(L[e - 1].u, L[e].u);
+      if (fq !== null) { var lw = L[e - 1].v * fq, rw = L[e].v; if (Math.abs(lw - rw) > Math.max(Math.abs(lw), Math.abs(rw)) * 0.05 + 1e-12) return { ok: false, msg: "Die beiden Seiten der Gleichung sind nicht gleich." }; }
+    }
+    for (var i = 0; i < L.length; i++) {
+      var x = L[i]; if (x.neg) continue;
+      var u = (x.u || "").replace(/^%$/, ""), f = 1, hatEinheit = !!u;
+      if (einheit && hatEinheit) { f = faktor(u, einheit); }
+      var lesarten = x.v2 != null && !isNaN(x.v2) ? [x.v, x.v2] : [x.v];   // 1.500 kann 1500 oder 1,5 heißen
+      for (var q = 0; q < lesarten.length; q++) {
+        var wert = f === null ? lesarten[q] : lesarten[q] * f;
+        var rel = soll === 0 ? Math.abs(wert) <= 1e-9 : Math.abs(wert - soll) <= Math.abs(soll) * 0.02;
+        /* Rundungsspielraum: eine Stelle der GESCHRIEBENEN Zahl, mit umgerechnet (1000 mT sind 1 T, nicht 1,5 T).
+           Zusätzlich höchstens 5 % Abweichung: »3« für 3,1 ist gerundet, »1 T« oder »2 T« für 1,5 T nicht. */
+        var halb = (0.5 * Math.pow(10, -x.dec) + 1e-9) * (f === null ? 1 : f);
+        var rund = Math.abs(soll) >= 1 && wert !== 0 && Math.abs(wert - soll) <= halb && Math.abs(wert - soll) <= Math.abs(soll) * 0.05;
+        if (rel || rund) {
+          if (f === null) { einheitFalsch = true; zahlOk = true; }
+          else if (einheit && !hatEinheit) { zahlOk = true; einheitFehlt = true; }
+          else { return { ok: true }; }
+        }
+      }
+    }
+    if (zahlOk && einheitFalsch && !einheitFehlt) return { ok: false, msg: "Zahl stimmt – Einheit prüfen." };
+    if (zahlOk && einheitFehlt) return { ok: true, note: "Die Zahl stimmt. Denk daran, immer die Einheit (" + einheit + ") dazuzuschreiben." };
+    if (zahlOk) return { ok: false, msg: "Zahl stimmt – Einheit prüfen." };
+    return { ok: false, msg: "Das Ergebnis stimmt noch nicht." };
+  }
+  window.numPruefen = numPruefen;
+
+  /* ---------- Text ---------- */
+  function lev(a, b) {
+    var m = a.length, n = b.length, i, j, d = [];
+    for (i = 0; i <= m; i++) d[i] = [i]; for (j = 1; j <= n; j++) d[0][j] = j;
+    for (i = 1; i <= m; i++) for (j = 1; j <= n; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return d[m][n];
+  }
+  function varianten(txt) {
+    var t = String(txt || "").toLowerCase().replace(/(\d)[.\s'](?=\d{3}(?!\d))/g, "$1");
+    var V = [t];
+    V.push(t.replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss"));
+    V.push(t.replace(/ae/g, "ä").replace(/oe/g, "ö").replace(/ue/g, "ü").replace(/ss/g, "ß"));
+    V.push(t.replace(/ä/g, "a").replace(/ö/g, "o").replace(/ü/g, "u").replace(/ß/g, "ss"));
+    var o = V.slice(); V.forEach(function (v) { var h = v.replace(/-/g, ""); if (h !== v) o.push(h); });
+    return o;
+  }
+  function einfach(a) { return /^[a-zäöüß ]{6,}$/.test(a); }
+  function splitAlt(rx) {   // nur Striche außerhalb von Klammern trennen
+    var out = [], d = 0, cur = "";
+    for (var i = 0; i < rx.length; i++) { var ch = rx[i];
+      if (ch === "\\") { cur += ch + (rx[i + 1] || ""); i++; continue; }
+      if (ch === "(" || ch === "[") d++; if (ch === ")" || ch === "]") d--;
+      if (ch === "|" && d === 0) { out.push(cur); cur = ""; } else cur += ch; }
+    out.push(cur); return out;
+  }
+  /* Treffer zählt nur, wenn das Stichwort nicht verneint ist (»keine Lorentzkraft«, »nicht abgelenkt«, »bleibt nicht stehen«) */
+  function positiv(ra, v, neg) {   // 1 = Treffer, -1 = nur verneinte Treffer, 0 = kein Treffer
+    var m, verneint = false; ra.lastIndex = 0;
+    while ((m = ra.exec(v))) {
+      if (m[0] === "") { ra.lastIndex++; continue; }
+      var vor = v.slice(Math.max(0, m.index - 34), m.index).split(/[,;.!?:]/).pop();
+      var nein = /\b(nicht|kein\w*|nie|niemals)\s+(\S+\s+){0,2}\S*$/.test(vor) && !/\bnicht\s+nur\s+\S*$/.test(vor);
+      /* nachgestellte Verneinung am Satzende: »stoppt nicht.«, »stoppt nie.« (nur bei Feldern mit neg: true; »Lorentzkraft nicht durch Reibung« bleibt gültig) */
+      if (!nein && neg && /^\w*\s+(nicht|nie|niemals)\s*([.,;!?]|$)/.test(v.slice(m.index + m[0].length, m.index + m[0].length + 18))) nein = true;
+      if (!nein || !neg) return 1; verneint = true;
+    }
+    return verneint ? -1 : 0;
+  }
+  function contraTreffer(ra, v) {   // Treffer zählt nicht, wenn davor »nicht/kein/statt/anstatt« steht
+    var m; ra.lastIndex = 0;
+    while ((m = ra.exec(v))) {
+      if (m[0] === "") { ra.lastIndex++; continue; }
+      var vor = v.slice(Math.max(0, m.index - 26), m.index).split(/[,;.!?:]/).pop();
+      if (!/\b(nicht|kein\w*|nie|niemals|statt|anstatt|ohne)\s+(\S+\s+)?(\S+\s+)?$/.test(vor)) return true;
+    }
+    return false;
+  }
+  function treffer(rx, V, W, neg) {
+    var re; try { re = new RegExp(rx, "i"); } catch (e) { return 0; }
+    var alts = splitAlt(rx), n = 0;
+    alts.forEach(function (a) {
+      var gefunden = false;
+      var vern = false;
+      try { var ra = new RegExp(a, "gi"); V.forEach(function (v) { var r = positiv(ra, v, neg); if (r === 1) gefunden = true; else if (r === -1) vern = true; }); } catch (e) {}
+      if (!gefunden && !vern && einfach(a)) gefunden = W.some(function (w) { return w.length >= a.length - 1 && lev(w.slice(0, a.length), a) <= 1; });
+      if (gefunden) n++;
+    });
+    return n;   // Anzahl verschiedener passender Alternativen
+  }
+
+  var checkField0 = checkField;
+  checkField = function (t, key, c) {
+    var a = S.a[t.id] || {};
+    if (c.num !== undefined) {
+      var r = numPruefen(a[key], c.num, c.unit);
+      return { ok: r.ok, kind: "num", msg: r.msg, note: r.note, filled: filled(a[key]) };
+    }
+    if (c.kw) {
+      var V = varianten(a[key]), W = []; V.forEach(function (v) { v.split(/[^a-zäöüß0-9]+/).forEach(function (w) { if (w) W.push(w); }); });
+      var hits = c.kw.map(function (g) { var n = treffer(g[1], V, W, c.neg); return [g[0], n >= (g[2] || 1)]; });
+      /* »contra«: Muster für ausdrücklich FALSCHE Aussagen (nicht verneint, z. B. »läuft immer weiter«) – dann zählt kein Stichwort */
+      if (c.contra && c.contra.some(function (rx) { try { return V.some(function (v) { return contraTreffer(new RegExp(rx, "gi"), v); }); } catch (e) { return false; } })) hits = hits.map(function (h) { return [h[0], false]; });
+      var need = c.need || hits.length, n = hits.filter(function (h) { return h[1]; }).length;
+      return { ok: n >= need, kind: "kw", hits: hits, filled: filled(a[key]) };
+    }
+    return checkField0(t, key, c);
+  };
+
+  /* Hinweis bei richtiger Zahl ohne Einheit */
+  var showCheck0 = showCheck;
+  showCheck = function (t) {
+    showCheck0(t);
+    try {
+      var r = evalTask(t), fb = document.getElementById("fb_" + t.id);
+      if (r && r.ok && fb) r.parts.forEach(function (p) { if (p.note) { var d = document.createElement("div"); d.textContent = "Hinweis: " + p.note; fb.appendChild(d); } });
+    } catch (e) {}
+  };
+
+  /* ---------- Korrekturen einzelner Regeln (je Einheit) ---------- */
+  var K = window.__CHK_KORREKTUR || {};
+  Object.keys(K).forEach(function (id) {
+    var t = T.filter(function (x) { return x.id === id; })[0]; if (!t || !t.chk) return;
+    Object.keys(K[id]).forEach(function (key) { t.chk[key] = Object.assign({}, t.chk[key] || {}, K[id][key]); });
+  });
+})();
+</script>
+<!-- nachsicht:end -->
+<!-- notenvorschlag:start -->
+<script>/* Punkte und Notenvorschlag nur im PDF (für die Lehrkraft, zum Eintragen in LMS) – auf dem Bildschirm der Schüler erscheint nichts.
+   Wie: Beim Erstellen der PDF wird der Kasten »Punkte für LMS« ganz oben auf Seite 1 (Rand, über dem Kopf) ergänzt.
+   Wertung (automatisch, nur was die Seite selbst prüfen kann):
+     - jede Auswahl-/Zahlen-Antwort = 1 Punkt; Stichwort-Antworten anteilig (gefundene Stichwortgruppen / verlangte); »durchstreichen«-Aufgaben anteilig
+     - Aufgaben mit angesehener Lösung = 0 Punkte (Lehrkraft bewertet selbst); Zusatzaufgaben zählen nur, wenn bearbeitet
+     - Aufgaben ohne automatische Prüfung (Freitext, Skizze, Foto) stehen als »selbst bewerten« im Kasten und zählen nicht mit
+     - offene Erklärungen, die die Seite mit man kennzeichnet (evalTask: p.man), zählen weder in Zähler noch Nenner; sie stehen als »bewertet die Lehrkraft« im Kasten
+   Notenschlüssel (Vorschlag): ab 88 % = 1, ab 75 % = 2, ab 62 % = 3, ab 50 % = 4, darunter 5 (genau, ohne vorheriges Runden). Ändern: SCHLUESSEL unten.
+   Seiten mit eigenem Ergebnis-Kasten (Nobel, Vertiefung) nehmen »x von y Antworten richtig« aus pdfStats().
+   Einbau: python3 werkzeug/notenvorschlag_einbauen.py */
+(function () {
+  if (window.__notenvorschlag) return; window.__notenvorschlag = true;
+  var SCHLUESSEL = [[88, 1], [75, 2], [62, 3], [50, 4]];
+  function note(p) { for (var i = 0; i < SCHLUESSEL.length; i++) if (p >= SCHLUESSEL[i][0]) return SCHLUESSEL[i][1]; return 5; }
+  function zahl(x) { x = Math.round(x * 10) / 10; return String(x).replace(".", ","); }
+  function liste(a) { return a.length ? a.join(", ") : ""; }
+
+  function standStandard() {
+    var pkt = 0, max = 0, selbst = [], gesehen = [], lehrkraft = [];
+    T.forEach(function (t) {
+      var a = S.a[t.id] || {}, beantwortet = Object.keys(a).some(function (k) { return k !== "foto" && a[k] !== "" && a[k] != null; }) || !!a.foto;
+      if ((t.tag === "Zusatz" || t.hl) && !beantwortet) return;
+      var ev = null; try { ev = t.chk ? evalTask(t) : null; } catch (e) {}
+      if (!ev) { selbst.push(t.nr); return; }
+      var viewed = (typeof LH_viewed === "function" && LH_viewed(t)) || !!S.solSeen, teile = 0, erreicht = 0;
+      var manuell = false;
+      ev.parts.forEach(function (p) {
+        if (p.man) { manuell = true; return; }   /* offene Erklärung: keine automatischen Punkte, keine Abzüge */
+        if (p.kind === "strike") { teile += 1; erreicht += p.of ? p.n / p.of : 0; return; }
+        teile += 1;
+        if (p.kind === "kw") {
+          var c = t.chk[p.key] || {}, need = c.need || p.hits.length, h = p.hits.filter(function (x) { return x[1]; }).length;
+          erreicht += Math.min(1, h / need);
+        } else if (p.ok) erreicht += 1;
+      });
+      if (manuell) lehrkraft.push(t.nr);
+      if (!teile) { if (!manuell) selbst.push(t.nr); return; }
+      max += teile;
+      if (viewed) { gesehen.push(t.nr); return; }
+      pkt += erreicht;
+    });
+    return { pkt: pkt, max: max, selbst: selbst, gesehen: gesehen, lehrkraft: lehrkraft };
+  }
+  function standSeite() {
+    var st = pdfStats(), pkt = 0, gesehen = st.shown || [], glob = (typeof S !== "undefined") && !!S.solSeen;
+    if (st.rows) {
+      /* Aufgaben mit angesehener Lösung zählen 0 Punkte (einzeln oder über »Lösungen ansehen« für alle) – wie bei den Standard-Seiten */
+      gesehen = [];
+      st.rows.forEach(function (r) {
+        if (!(r.s && r.s.total > 0)) return;
+        if (glob || r.s.shown) gesehen.push(r.t.nr); else pkt += r.s.right;
+      });
+    } else pkt = glob ? 0 : st.right;
+    return { pkt: pkt, max: st.tot, selbst: (st.unchecked || []).concat(st.open || []), gesehen: gesehen, wort: "nicht geprüft oder nicht bearbeitet" };
+  }
+  function stand() {
+    if (typeof T !== "undefined" && typeof evalTask === "function") return standStandard();
+    if (typeof pdfStats === "function") return standSeite();
+    return null;
+  }
+
+  function kasten(d) {
+    var s = stand(); if (!s || !s.max) return;
+    var W = 210, M = 15, roh = s.pkt / s.max * 100, pct = Math.round(roh), n = note(roh + 1e-9);  /* Note aus dem genauen Wert, nicht aus dem gerundeten */
+    d.setPage(1);
+    d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 9.5, 1.5, 1.5, "FD");
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
+    var pz = Math.round(roh * 10) / 10;   /* eine Dezimalstelle, damit »50 % · Note 5« bei 49,5 % nicht wie ein Fehler wirkt */
+    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + zahl(pz) + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
+    d.setFont("C", "normal"); d.setFontSize(7.2);
+    var rest = [];
+    if (typeof S !== "undefined" && S.solSeen && s.gesehen.length) rest.push("PDF nach Lösungseinsicht erstellt: 0 Punkte – bitte die erste PDF bewerten");
+    else if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
+    if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
+    var lk = s.lehrkraft || [];
+    if (lk.length) rest.unshift("Punkte nur aus den automatisch geprüften Teilen; Gesamtnote erst nach fachlicher Durchsicht · Erklärungen bewertet die Lehrkraft (nicht in den Punkten): Aufgabe " + liste(lk));
+    var z2 = rest.length ? rest.join(" · ") : "automatische Vorbewertung – freie Texte bitte fachlich lesen";
+    var zl = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4);
+    if (zl.length === 1) { d.text(zl[0], M + 2, 9.6); return; }
+    /* länger als eine Zeile: Kasten auf zwei Zeilen erweitern (kleinere Schrift), nichts unbemerkt abschneiden */
+    d.setFontSize(6.4); zl = d.splitTextToSize(clean(z2 + " · Schlüssel 88/75/62/50 %"), W - 2 * M - 4);
+    if (zl.length > 2) { zl = d.splitTextToSize(clean(z2), W - 2 * M - 4); zl = [zl[0], d.splitTextToSize(clean(zl.slice(1).join(" ")), W - 2 * M - 40)[0] + (zl.length > 2 ? " … (Rest: siehe »Bewertung« bei den Aufgaben)" : "")]; }
+    d.setFillColor(255, 244, 214); d.setDrawColor(176, 136, 20); d.setLineWidth(0.3); d.roundedRect(M, 2, W - 2 * M, 11.3, 1.5, 1.5, "FD");
+    d.setFont("C", "bold"); d.setFontSize(9); d.setTextColor(74, 52, 0);
+    d.text(clean("Für LMS: " + zahl(s.pkt) + " von " + zahl(s.max) + " Punkten (" + zahl(pz) + " %) · Notenvorschlag " + n + " – vorläufig"), M + 2, 6);
+    d.setFont("C", "normal"); d.setFontSize(6.4);
+    d.text(zl[0], M + 2, 9.2); d.text(zl[1], M + 2, 11.7);
+  }
+
+  function umhuellen(name) {
+    var orig = window[name]; if (typeof orig !== "function") return;
+    window[name] = function () {
+      var J = window.jspdf && window.jspdf.jsPDF, args = arguments, self = this;
+      if (!J) return orig.apply(self, args);
+      var neu = function () {
+        var d = new (Function.prototype.bind.apply(J, [null].concat([].slice.call(arguments))))();
+        var o = d.output; d.output = function () { try { kasten(d); } catch (e) {} d.output = o; return o.apply(d, arguments); };
+        return d;
+      };
+      neu.prototype = J.prototype;
+      window.jspdf.jsPDF = neu;
+      var zurueck = function () { window.jspdf.jsPDF = J; };
+      var r; try { r = orig.apply(self, args); } catch (e) { zurueck(); throw e; }
+      if (r && typeof r.then === "function") return r.then(function (v) { zurueck(); return v; }, function (e) { zurueck(); throw e; });
+      zurueck(); return r;
+    };
+  }
+  umhuellen("buildPdf");
+})();
+</script>
+<!-- notenvorschlag:end -->
+<!-- pilot-layout:start -->
+<script>/* PILOT Arbeitsblatt-Layout (alle Arbeitsblätter mit dem Standard-Aufbau, siehe werkzeug/pilot_layout_einbauen.py).
+   Ändert keinen Speicherschlüssel und keine Antwort; verschiebt nur Elemente und ändert Anzeigetexte.
+     1. Gesamter Fahrplan ist zugeklappt (»Fahrplan öffnen«), damit die Aufgaben schneller erreichbar sind.
+     2. Fortschritt getrennt: »Pflicht: x von y ausgefüllt · Zusatz: a von b« (nur Aufgaben ohne Tag »Zusatz« zählen für den Balken).
+     3. Knopf »Weiter bei Aufgabe N«: merkt sich die zuletzt bearbeitete Aufgabe (eigener Schlüssel »weiter|<Ordner>«, nicht der Antwort-Speicher) und springt zur nächsten offenen Pflichtaufgabe ab dort (sonst zur ersten offenen). Springt nur, ändert nichts.
+   5. Schreibt den Fortschritt (Pflicht x von y) unter »fortschritt|<Ordner>« für den Balken auf der Klassenseite.
+     4. Zusatzaufgaben (Tag »Zusatz«, »optional«, »Für Schnelle«) stehen in einem zugeklappten Bereich; er öffnet sich von selbst, wenn dort schon etwas eingetragen ist oder ein Link dorthin zeigt.
+   Einbau: python3 werkzeug/pilot_layout_einbauen.py */
+(function () {
+  if (window.__pilotLayout) return; window.__pilotLayout = true;
+  if (typeof T === "undefined" || typeof update !== "function" || typeof isDone !== "function") return;
+  var istZus = function (t) { return /^(zusatz|optional|für schnelle)$/i.test(String(t.tag || "").trim()); };
+  var pflicht = T.filter(function (t) { return !istZus(t); }), zus = T.filter(istZus);
+  var ruhig = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* 1 Fahrplan zuklappen */
+  var fp = document.querySelector("section.fahrplan");
+  if (fp && !fp.closest("details")) {
+    var std = fp.querySelector(".std"), det = document.createElement("details"), sm = document.createElement("summary");
+    det.className = "pl-fahrplan"; var mh = std && /(\d+)\s*Stunden?/.exec(std.textContent); sm.textContent = "Fahrplan öffnen" + (mh ? " · " + mh[0] : "");
+    fp.parentNode.insertBefore(det, fp); det.appendChild(sm); det.appendChild(fp);
+  }
+
+  /* 4 Zusatzaufgaben zuklappen */
+  var zusDet = null, tasks = document.getElementById("tasks");
+  if (tasks && zus.length) {
+    var kart = zus.map(function (t) { return document.getElementById("card_" + t.id); }).filter(Boolean);
+    /* Seiten mit PL_ZUSATZ_ENDE: zugeklappt wird nur der Block am Ende, Zusatzkarten mitten in einer Stunde (»wer früher fertig ist«) bleiben an ihrem Platz */
+    var kidsA = Array.prototype.slice.call(tasks.children);
+    var letztePfl = -1; kidsA.forEach(function (c, i) { if (/^card_/.test(c.id || "") && kart.indexOf(c) < 0) letztePfl = i; });
+    if (typeof PL_ZUSATZ_ENDE !== "undefined" && PL_ZUSATZ_ENDE) kart = kart.filter(function (c) { return kidsA.indexOf(c) > letztePfl; });   /* nur Seiten mit var PL_ZUSATZ_ENDE = true (K1.3 2AB); sonst wie bisher */
+    var zusEnde = zus.filter(function (t) { return kart.indexOf(document.getElementById("card_" + t.id)) >= 0; });
+    var a0 = kart.length ? kidsA.indexOf(kart[0]) : -1;
+    var sauber = a0 >= 0 && kidsA.slice(a0).every(function (c) { return kart.indexOf(c) >= 0 || !/^card_/.test(c.id || ""); });
+    if (kart.length && sauber) {
+      zusDet = document.createElement("details"); zusDet.className = "pl-zusatz";
+      var s2 = document.createElement("summary"); s2.textContent = (zusEnde.length === 1 ? "Zusatzaufgabe " + zusEnde[0].nr : "Zusatzaufgaben " + zusEnde[0].nr + "–" + zusEnde[zusEnde.length - 1].nr) + " · nur wenn Zeit bleibt";
+      var inh = document.createElement("div"); inh.className = "pl-zusatz-inhalt";
+      var kids = Array.prototype.slice.call(tasks.children), ab = kids.indexOf(kart[0]), rest = kids.slice(ab);
+      tasks.insertBefore(zusDet, kart[0]); zusDet.appendChild(s2); zusDet.appendChild(inh);
+      /* alles ab der ersten Zusatzkarte verschieben – auch die Zwischenüberschriften (»Halbleiter · optional«) */
+      rest.forEach(function (c) { inh.appendChild(c); });
+      if (zusEnde.some(function (t) { var a = S.a[t.id] || {}; return Object.keys(a).some(function (k) { return a[k] != null && String(a[k]).trim() !== ""; }); })) zusDet.open = true;   /* leere Einträge zählen nicht */
+    }
+  }
+  function oeffneZiel() {
+    var id = (location.hash || "").slice(1); if (!id || !zusDet) return;
+    var z = document.getElementById(id); if (z && zusDet.contains(z)) { zusDet.open = true; z.scrollIntoView(); }
+  }
+  window.addEventListener("hashchange", oeffneZiel); oeffneZiel();
+
+  /* 3 Knopf »Zur ersten offenen Pflichtaufgabe« */
+  var steps = document.querySelector("ol.steps"), knopf = document.createElement("button");
+  knopf.type = "button"; knopf.className = "btn secondary small pl-weiter";
+  if (steps) steps.parentNode.insertBefore(knopf, steps.nextSibling);
+  var dir = location.pathname.replace(/[^\/]*$/, "");
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  function erste() {
+    var z = lsGet("weiter|" + dir), ab = -1;
+    for (var j = 0; j < pflicht.length; j++) if (pflicht[j].id === z) ab = j;
+    if (ab >= 0 && !isDone(pflicht[ab])) return pflicht[ab];
+    for (var k = 1; k <= pflicht.length; k++) { var t = pflicht[(ab + k + pflicht.length) % pflicht.length]; if (t && !isDone(t)) return t; }
+    return null;
+  }
+  /* Beschriftung und Sprungziel kommen aus derselben Funktion (erste) und werden nach jeder Änderung neu gesetzt */
+  function knopfText() {
+    var t = erste();
+    knopf.textContent = t ? "Weiter bei Aufgabe " + t.nr : "Alle Pflichtaufgaben ausgefüllt – weiter zur Abgabe";
+    knopf.title = "Springt zu der Aufgabe, an der du zuletzt gearbeitet hast (sonst zur ersten offenen Pflichtaufgabe)";
+  }
+  if (tasks) ["input", "change", "click", "focusin"].forEach(function (ev) {
+    tasks.addEventListener(ev, function (e) {
+      var c = e.target && e.target.closest ? e.target.closest("[id^=card_]") : null;
+      if (c) { var id = c.id.slice(5); if (pflicht.some(function (t) { return t.id === id; })) { lsSet("weiter|" + dir, id); knopfText(); } }
+    }, true);
+  });
+  knopf.addEventListener("click", function () {
+    var t = erste(), z = t ? document.getElementById("card_" + t.id) : document.getElementById("abgabe");
+    if (z) z.scrollIntoView({ behavior: ruhig ? "auto" : "smooth", block: "start" });
+  });
+
+  /* 2 Fortschritt getrennt anzeigen */
+  var u0 = update;
+  update = function () {
+    u0();
+    try {
+      var np = pflicht.filter(isDone).length, nz = zus.filter(isDone).length, c = document.getElementById("count"), bar = document.getElementById("barfill");
+      if (c) c.textContent = zus.length ? "Pflicht: " + np + " von " + pflicht.length + " ausgefüllt · Zusatz: " + nz + " von " + zus.length : np + " von " + pflicht.length + " ausgefüllt";
+      if (bar && pflicht.length) bar.style.width = (np / pflicht.length * 100) + "%";
+      lsSet("fortschritt|" + dir, JSON.stringify({ np: np, n: pflicht.length }));
+      knopfText();
+    } catch (e) {}
+  };
+  update();
+
+  var st = document.createElement("style");
+  st.textContent = "details.pl-fahrplan,details.pl-zusatz{background:#fff;border:2px solid #7FA83A;border-radius:16px;margin:14px 0;min-width:0;max-width:100%}" +
+    "details.pl-fahrplan>summary,details.pl-zusatz>summary{cursor:pointer;font-weight:700;color:#3B4A2F;padding:14px 16px;min-height:44px;list-style-position:inside}" +
+    "details.pl-fahrplan>.fahrplan{border:0;margin:0;padding-top:0}details.pl-zusatz{border-color:#D3DCC2}" +
+    ".pl-zusatz-inhalt{display:grid;gap:14px;padding:0 10px 12px}.pl-weiter{margin-top:10px;min-height:44px}";
+  document.head.appendChild(st);
+})();
+</script>
+<!-- pilot-layout:end -->
+<!-- ks-ende:start --><nav class="ks-ende" aria-label="Zurück zur Klassenübersicht"><a href="../index.html">← Zurück zu PBGW 3BK</a></nav><script src="../../gemeinsam/kadetten-navigation-v2.js" defer></script><!-- ks-ende:end -->
+</body>
+</html>
