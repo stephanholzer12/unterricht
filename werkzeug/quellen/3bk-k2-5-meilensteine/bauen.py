@@ -383,7 +383,7 @@ CHECK = "".join(f'<div class="ziel"><span class="kchip k{z["hd"]}">{z["hd"]}</sp
     + "</div></div>" for k, z in enumerate(I.ZIELE))
 PARTS.append(("kurz", "Zum Schluss", "Kurz & knapp", [slide("Das Wichtigste in 5 Sätzen", ol(I.WICHTIGSTE)),
                                                        slide("Ziele erreicht?", hint("Tippe ehrlich an – bei »noch nicht« den passenden Teil noch einmal lesen. "
-                                                                                     "Dieselbe Einschätzung steht als Aufgabe 13 im Arbeitsblatt und kommt ins PDF.") + CHECK)]))
+                                                                                     "Dieselbe Einschätzung steht als Aufgabe 9 im Arbeitsblatt und kommt ins PDF.") + CHECK)]))
 PARTS.append(("schnelle", "Optional", "Für Schnelle und Neugierige", [render(x) for x in TD.SCHNELLE]))
 
 # Theorie nach Stunden ordnen (Standard 20.11.2026): Trennbalken vor dem Teil einer Stunde, Übersicht ganz oben

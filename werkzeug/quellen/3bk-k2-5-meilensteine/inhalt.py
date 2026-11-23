@@ -8,8 +8,8 @@ Grundlage: ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026): Ab
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "22.11.2026"
-V = "v5"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
+STAND = "23.11.2026"
+V = "v6"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
 ORDNER = "3bk-pbgw/k2-5-meilensteine"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
