@@ -176,7 +176,7 @@ T = [
   "hint": "Danach fragt Prof. HOLZER einzelne Rollen. Ohne KI. Die Zeichnung zeigt den Weg der Energie: Strom rein, rechnen, Wärme, Kühlwasser in den Fluss. Info: Theorie-Teil 5.",
 
   "type": "multi",
-  "fields": [["rolle", "a) Meine Rolle", ["Google-Sprecherin", "Bürgerinitiative", "Fischereiverband", "Wirtschaftslandesrat", "Umwelt-NGO", "Offizier Cyberabwehr"], False],
+  "fields": [["rolle", "a) Meine Rolle", ["Google-Sprecher", "Bürgerinitiative", "Fischereiverband", "Wirtschaftslandesrat", "Umwelt-NGO", "Offizier Cyberabwehr"], False],
              ["uvp", "b) Warum war in Kronstorf keine UVP nötig?",
               ["Das Projekt lag unter den Schwellenwerten – Rechenzentren sind keine eigene UVP-Kategorie", "Google ist von österreichischen Umweltgesetzen ausgenommen", "Die Gemeinde hat die Prüfung verboten"]],
              ["waerme", "c) Wohin geht fast der ganze Strom, den ein Rechenzentrum verbraucht, am Ende?",
