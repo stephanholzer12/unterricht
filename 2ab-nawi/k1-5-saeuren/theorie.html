@@ -132,9 +132,11 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .pp-flug{height:52px;position:relative;overflow:hidden}
 .pp-linie{position:absolute;left:25%;right:25%;top:26px;border-top:2px dashed #9BAA88}
 .pp-proton{position:absolute;top:5px;left:25%;transform:translateX(-50%);width:40px;height:40px;border-radius:50%;border:2px solid #8C3B2E;background:#B84232;color:white;font-size:17px;font-weight:700;display:grid;place-items:center}
-.pp-fliegt .pp-proton{animation:pp-flug-animation .95s ease-in-out both}
+.pp-fliegt .pp-proton{animation:pp-flug-animation 5s ease-in-out both}
+.pp-fliegt.pp-pausiert .pp-proton{animation-play-state:paused}
+.pp-angekommen .pp-proton{left:75%}
 .pp-fertig .pp-proton{display:none}
-@keyframes pp-flug-animation{0%,10%{left:25%}90%,100%{left:75%}}
+@keyframes pp-flug-animation{0%,12%{left:25%}88%,100%{left:75%}}
 .pp-teilchenreihe{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .pp-teilchen{min-width:0;border:2px solid #3B4A2F;border-radius:12px;background:#fff;padding:12px 7px;text-align:center}
 .pp-teilchen strong{font-size:clamp(23px,5vw,34px);display:block;line-height:1.2}
@@ -144,7 +146,9 @@ table.tkf td.e { color: #2E7D8C; font-weight: 700; text-align: right; white-spac
 .pp-fertig .pp-teilchen{background:#FFF9E9}
 .pp-steuerung{display:flex;align-items:center;flex-wrap:wrap;gap:8px 14px}
 .pp-abspielen{background:#3B4A2F;color:#fff;border:0;border-radius:10px;min-height:44px;padding:10px 16px;font:inherit;font-size:17px;font-weight:700;cursor:pointer}
-.pp-abspielen:disabled{opacity:.7;cursor:wait}.pp-abspielen:focus-visible{outline:3px solid #2E7D8C;outline-offset:2px}
+.pp-abspielen:disabled{opacity:.7;cursor:wait}.pp-abspielen:focus-visible,.pp-pause:focus-visible{outline:3px solid #2E7D8C;outline-offset:2px}
+.pp-pause{font:inherit;font-size:17px;font-weight:700;min-height:44px;padding:9px 14px;border-radius:10px;border:2px solid #3B4A2F;background:#fff;color:#3B4A2F;cursor:pointer}
+.pp-phase{display:inline-block;justify-self:start;border:1px solid #B3C49C;color:#3B4A2F;background:#fff;border-radius:999px;padding:4px 10px;font-size:15px;font-weight:700}
 .pp-status{font-size:16px;color:#5E6652;flex:1 1 200px}
 .pp-anmerkung{font-size:16px;color:#5E6652}
 .pp-merk{background:#E6F0D3;border-left:5px solid #7FA83A;border-radius:10px;padding:14px 16px;display:grid;gap:7px}
@@ -280,25 +284,25 @@ a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 
 <li><strong>Zusatz · Rückwärts spielen</strong><span>Nur Runde 2 umkehren: NH₄⁺ gibt H⁺ an OH⁻ zurück; es entstehen NH₃ und H₂O. Die Rückreaktion mit Cl⁻ ist in Wasser stark ungünstig.</span></li>
 </ol></div><div class="stopq"><p><strong>Wer ist bei NH₃ + H₂O → NH₄⁺ + OH⁻ die Säure?</strong></p><details class="reveal"><summary>Erst überlegen – dann Lösung anzeigen</summary><p>H₂O – es gibt ein Proton an NH₃ ab (NH₃ ist die Base). Dabei entstehen OH⁻ und NH₄⁺.</p></details></div><div class="stopq"><p><strong>Warum ist Ammoniaklösung basisch?</strong></p><details class="reveal"><summary>Erst überlegen – dann Lösung anzeigen</summary><p>Weil dabei OH⁻-Ionen entstehen.</p></details></div></article><article class="slide pp-sicherung" id="pp-sicherung">
 <div class="slidehead"><h3>Protonen-Pingpong zum Mitmachen</h3><span class="pill">Sicherung · Stunde 2</span></div>
-<p>Tippe auf <strong>„Proton übertragen“</strong>. Beobachte den roten H⁺-Ball und wie die Schilder danach ihre Bedeutung ändern.</p>
+<p>Steuere jede Runde <strong>Schritt für Schritt</strong>: Das Proton H⁺ bewegt sich langsam in etwa <strong>5 Sekunden</strong> zum Reaktionspartner. Du kannst die Bewegung pausieren. <strong>Erst wenn du auf „Produkte anzeigen“ klickst</strong>, drehen sich die Schilder um. Nichts geht automatisch zur nächsten Runde.</p>
 <div class="pp-runde" data-pp-runde="1">
 <div class="pp-rundenkopf"><strong>Runde 1 · Chlorwasserstoff und Wasser</strong><span>Wasser ist die Base</span></div>
-<div class="pp-gleichung">HCl + H₂O → Cl⁻ + H₃O⁺</div>
+<div class="pp-gleichung">HCl + H₂O → Cl⁻ + H₃O⁺</div><span class="pp-phase">Schritt 1 von 3 · Ausgangsstoffe</span>
 <div class="pp-flug" aria-hidden="true"><div class="pp-linie"></div><span class="pp-proton">H⁺</span></div>
 <div class="pp-teilchenreihe">
 <div class="pp-teilchen"><div class="pp-vor"><strong>HCl</strong><span class="pp-rolle pp-saeure">Säure · gibt ab</span></div><div class="pp-nach"><strong>Cl⁻</strong><span class="pp-rolle pp-base">korrespondierende Base</span></div></div>
 <div class="pp-teilchen"><div class="pp-vor"><strong>H₂O</strong><span class="pp-rolle pp-base">Base · nimmt auf</span></div><div class="pp-nach"><strong>H₃O⁺</strong><span class="pp-rolle pp-saeure">korrespondierende Säure</span></div></div>
 </div>
-<div class="pp-steuerung"><button type="button" class="pp-abspielen">Proton übertragen</button><span class="pp-status" aria-live="polite">HCl gibt H⁺ ab, Wasser nimmt es auf.</span></div></div>
+<div class="pp-steuerung"><button type="button" class="pp-abspielen">1 · Proton langsam übertragen</button><button type="button" class="pp-pause" hidden>Pause</button><span class="pp-status" aria-live="polite">HCl gibt H⁺ ab, Wasser nimmt es auf.</span></div></div>
 <div class="pp-runde" data-pp-runde="2">
 <div class="pp-rundenkopf"><strong>Runde 2 · Wasser und Ammoniak</strong><span>Wasser ist jetzt die Säure</span></div>
-<div class="pp-gleichung">H₂O + NH₃ ⇌ OH⁻ + NH₄⁺</div>
+<div class="pp-gleichung">H₂O + NH₃ ⇌ OH⁻ + NH₄⁺</div><span class="pp-phase">Schritt 1 von 3 · Ausgangsstoffe</span>
 <div class="pp-flug" aria-hidden="true"><div class="pp-linie"></div><span class="pp-proton">H⁺</span></div>
 <div class="pp-teilchenreihe">
 <div class="pp-teilchen"><div class="pp-vor"><strong>H₂O</strong><span class="pp-rolle pp-saeure">Säure · gibt ab</span></div><div class="pp-nach"><strong>OH⁻</strong><span class="pp-rolle pp-base">korrespondierende Base</span></div></div>
 <div class="pp-teilchen"><div class="pp-vor"><strong>NH₃</strong><span class="pp-rolle pp-base">Base · nimmt auf</span></div><div class="pp-nach"><strong>NH₄⁺</strong><span class="pp-rolle pp-saeure">korrespondierende Säure</span></div></div>
 </div>
-<div class="pp-steuerung"><button type="button" class="pp-abspielen">Proton übertragen</button><span class="pp-status" aria-live="polite">Wasser gibt H⁺ ab, Ammoniak nimmt es auf.</span></div><p class="pp-anmerkung">Hier besteht ein <strong>Gleichgewicht (⇌)</strong>: Nur ein kleiner Teil des Ammoniaks reagiert. Die Rückreaktion NH₄⁺ + OH⁻ → NH₃ + H₂O ist möglich.</p></div>
+<div class="pp-steuerung"><button type="button" class="pp-abspielen">1 · Proton langsam übertragen</button><button type="button" class="pp-pause" hidden>Pause</button><span class="pp-status" aria-live="polite">Wasser gibt H⁺ ab, Ammoniak nimmt es auf.</span></div><p class="pp-anmerkung">Hier besteht ein <strong>Gleichgewicht (⇌)</strong>: Nur ein kleiner Teil des Ammoniaks reagiert. Die Rückreaktion NH₄⁺ + OH⁻ → NH₃ + H₂O ist möglich.</p></div>
 <div class="pp-merk"><strong>Merke: Wasser ist ein Ampholyt.</strong><p>Mit HCl nimmt es ein Proton auf und wirkt als <strong>Base</strong>. Mit NH₃ gibt es eines ab und wirkt als <strong>Säure</strong>.</p><p>Wer eine Säure oder Base ist, entscheidet sich bei der <strong>Protonenübertragung</strong> – nicht allein durch die Ladung.</p></div>
 </article><a class="jetzt" href="aufgaben.html">Jetzt im Arbeitsblatt: Aufgabe 4 →</a></section><section class="part" id="ph"><div class="band"><div class="eyebrow">Teil 4 · Buch S. 59–61 · Stunde 3</div><h2>Der pH-Wert – sauer, neutral, basisch in Zahlen</h2></div><article class="slide"><div class="slidehead"><h3>Eine Skala von 0 bis 14</h3><span class="pill">Buch S. 59–61</span></div><div class="buch"><span class="bicon">Buch</span><p>Lies im <strong>Buch S. 59</strong> den Kasten <strong>»Änderung des pH-Werts«</strong> und schau dir auf <strong>S. 61</strong> die Beispiel-Skala am Rand an.</p></div><div class="tkarte-s"><div class="tkh"><span class="tkn">Theorie-Karte</span><b>Die pH-Skala</b><span class="tkb">Buch S. 59–61</span></div><picture class="bildzoom"><img class="tkimg" width="440" height="930" src="img/phskala.svg?v=2d723efe" alt="Waagrechte Farbskala von pH 0 (rot) über 7 (grün) bis 14 (violett). Darüber Beispiele: Magensaft 1–2, Zitronensaft 2,4, Cola 2,5 bis 3, Kaffee 5, Haut um 5, Milch 6,6, reines Wasser 7, Blut 7,4, Meer 8,1, Natronlösung 8,3, Seifenlösung 9–10, nasser Beton 12–13. Darunter: jede Stufe mal 10." loading="lazy"></picture><p class="zoomhint">Bild antippen – dann wird es groß.</p><p>Der <strong>pH-Wert</strong> reicht bei den meisten Lösungen von <strong>0 bis 14</strong>: unter 7 <strong>sauer</strong>, genau 7 <strong>neutral</strong>, über 7 <strong>basisch</strong>.</p><p><strong>Jede Stufe ist ein Faktor 10:</strong> pH 4 hat zehnmal so viele H₃O⁺-Ionen wie pH 5 – und tausendmal so viele wie pH 7.</p><p>Dein Körper hat viele pH-Welten: Magen pH 1–2, Haut um 5, Blut 7,4.</p><table class="tkf"><tr><td class="z">pH &lt; 7</td><td>sauer – mehr H₃O⁺ als OH⁻</td><td class="e"></td></tr><tr><td class="z">pH = 7</td><td>neutral – gleich viele</td><td class="e"></td></tr><tr><td class="z">pH &gt; 7</td><td>basisch – mehr OH⁻ als H₃O⁺</td><td class="e"></td></tr><tr><td class="z">1 Stufe</td><td>Faktor 10</td><td class="e"></td></tr><tr><td class="z">3 Stufen</td><td>Faktor 1000</td><td class="e"></td></tr></table></div><div class="sim" data-sim="ph">
  <div class="simh"><span class="tkn">Ausprobieren</span><b>pH-Schieber</b></div>
@@ -587,22 +591,70 @@ p.zoomhint { margin: 2px 0 0; font-size: 14px; color: #5E6652; }
 </script>
 <!-- kapitelmenue:end -->
 <script>
+/* Drei manuelle Lernschritte pro Runde: Ball langsam bewegen, Produkte auf Klick, Zurücksetzen. */
 (function(){
   var reduziert=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.querySelectorAll(".pp-runde[data-pp-runde]").forEach(function(runde){
-    var b=runde.querySelector(".pp-abspielen"),status=runde.querySelector(".pp-status");
-    b.addEventListener("click",function(){
-      runde.classList.remove("pp-fertig","pp-fliegt");
-      void runde.offsetWidth;
-      runde.classList.add("pp-fliegt");b.disabled=true;
-      status.textContent="Das Proton wird übertragen …";
-      setTimeout(function(){
-        runde.classList.remove("pp-fliegt");runde.classList.add("pp-fertig");
-        b.disabled=false;b.textContent="Noch einmal abspielen";
-        status.textContent=runde.dataset.ppRunde==="1"
-          ?"Cl⁻ ist die korrespondierende Base, H₃O⁺ die korrespondierende Säure."
-          :"OH⁻ ist die korrespondierende Base, NH₄⁺ die korrespondierende Säure.";
-      },reduziert?50:980);
+    var weiter=runde.querySelector(".pp-abspielen");
+    var pause=runde.querySelector(".pp-pause");
+    var status=runde.querySelector(".pp-status");
+    var phase=runde.querySelector(".pp-phase");
+    var proton=runde.querySelector(".pp-proton");
+    if(!weiter||!pause||!status||!phase||!proton)return;
+    var schritt=0;
+    var erste=runde.dataset.ppRunde==="1";
+    var ausgang=erste?"HCl gibt H⁺ ab, Wasser nimmt es auf.":"Wasser gibt H⁺ ab, Ammoniak nimmt es auf.";
+    function ankunft(){
+      if(schritt!==1)return;
+      schritt=2;
+      runde.classList.remove("pp-fliegt","pp-pausiert");
+      runde.classList.add("pp-angekommen");
+      pause.hidden=true;
+      pause.textContent="Pause";
+      weiter.disabled=false;
+      weiter.textContent="2 · Produkte anzeigen";
+      phase.textContent="Schritt 2 von 3 · Proton angekommen";
+      status.textContent="H⁺ ist angekommen. Was entsteht nun? Besprich es zuerst, dann klicke weiter.";
+    }
+    proton.addEventListener("animationend",function(e){
+      if(e.animationName==="pp-flug-animation")ankunft();
+    });
+    pause.addEventListener("click",function(){
+      if(schritt!==1)return;
+      var pausiert=runde.classList.toggle("pp-pausiert");
+      pause.textContent=pausiert?"Fortsetzen":"Pause";
+      status.textContent=pausiert?"Bewegung angehalten. Besprecht: Wer gibt H⁺ ab, wer nimmt es auf?":"Proton unterwegs – beobachte die Übertragung.";
+    });
+    weiter.addEventListener("click",function(){
+      if(schritt===0){
+        schritt=1;
+        runde.classList.remove("pp-angekommen","pp-fertig","pp-pausiert");
+        void runde.offsetWidth;
+        weiter.disabled=true;
+        pause.hidden=reduziert;
+        phase.textContent="Schritt 1 von 3 · Protonenübertragung";
+        status.textContent="Das Proton H⁺ wandert langsam zur Base. Mit Pause kannst du es anhalten.";
+        if(reduziert)ankunft();
+        else runde.classList.add("pp-fliegt");
+      }else if(schritt===2){
+        schritt=3;
+        runde.classList.remove("pp-angekommen");
+        runde.classList.add("pp-fertig");
+        weiter.textContent="3 · Von vorne beginnen";
+        phase.textContent="Schritt 3 von 3 · Produkte";
+        status.textContent=erste
+          ?"Cl⁻: korrespondierende Base. H₃O⁺: korrespondierende Säure."
+          :"OH⁻: korrespondierende Base. NH₄⁺: korrespondierende Säure.";
+      }else if(schritt===3){
+        schritt=0;
+        runde.classList.remove("pp-fertig","pp-angekommen","pp-fliegt","pp-pausiert");
+        weiter.textContent="1 · Proton langsam übertragen";
+        weiter.disabled=false;
+        pause.hidden=true;
+        pause.textContent="Pause";
+        phase.textContent="Schritt 1 von 3 · Ausgangsstoffe";
+        status.textContent=ausgang;
+      }
     });
   });
 })();
