@@ -346,7 +346,7 @@ cases[GK]=[
  ['a3','wer','Google selbst – eine unabhängige Prüfung wird nicht erwähnt',1],['a3','wer','die EU-Kommission',0],
  ['a3','fehlt','das Training der KI-Modelle vorher',1],['a3','fehlt','die Kühlung im Rechenzentrum',0],
  ['a3','mehr','Weil immer mehr Leute immer öfter fragen','M'],
- ['a4','uvp','Das Projekt lag unter den Schwellenwerten – Rechenzentren sind keine eigene UVP-Kategorie',1],['a4','uvp','Die Gemeinde hat die Prüfung verboten',0],
+ ['a4','uvp','Rechenzentren sind im Gesetz keine eigene UVP-Kategorie',1],['a4','uvp','Die Gemeinde hat die Prüfung verboten',0],
  ['a4','waerme','Er wird zu Wärme, die abgeführt werden muss',1],['a4','waerme','Er fließt zurück ins Netz',0],
  ['a4','abwaerme','Abwärme nutzen, z. B. für Fernwärme, und Wasserwerte laufend messen',1],['a4','abwaerme','mehr Kühlwasser in den Fluss leiten',0],
  ['a4','urteil','Ja, wegen dem warmen Wasser in der Enns braucht es eine Prüfung.','M'],
