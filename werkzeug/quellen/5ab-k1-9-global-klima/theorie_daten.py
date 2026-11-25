@@ -119,7 +119,7 @@ PARTS = [
               ("ul", ["Für **10 g Kupfer** in einem Handy muss man rund **3,5 kg** Gestein abbauen und verarbeiten. Ein Goldring wiegt 5 g – sein Rucksack rund **2 Tonnen**.",
                       "Darum lohnt sich **länger nutzen, reparieren, weitergeben**: Der Rucksack ist bei der Herstellung schon gepackt. Jedes Jahr mehr Nutzung verteilt ihn auf mehr Zeit.",
                       "Der **CO₂-Fußabdruck** zählt neben CO₂ auch Methan (z. B. von Rindern) und Lachgas – umgerechnet in die Wirkung von CO₂ (**CO₂-Äquivalent**)."]),
-              ("tiles", [("Wer hat's erfunden?", ["Bekannt wurde der Begriff »CO₂-Fußabdruck« durch eine **Werbekampagne des Ölkonzerns BP** ab 2004, wenig später kam ein Online-Rechner für Privatleute (WBUR, 2023)."]),
+              ("tiles", [("Wer machte ihn bekannt?", ["Der persönliche CO₂-Fußabdruck wurde durch eine **Werbekampagne des Ölkonzerns BP** bekannt; 2004 stellte BP einen CO₂-Rechner für Privatleute vor (ARD alpha, 27.09.2023)."]),
                          ("Was heißt das?", ["Kritiker sagen: Der Blick wandert vom Konzern zu dir. Trotzdem lohnt eigenes Handeln. Am meisten bewegen aber Politik, Energieversorger und Firmen."])]),
               ("reveal", I.STOPPFRAGEN["rucksack"])]},
   ("jetzt", "Jetzt im Arbeitsblatt: Aufgabe 3 (mit der Hand)", "aufgaben.html#card_a2")]),
