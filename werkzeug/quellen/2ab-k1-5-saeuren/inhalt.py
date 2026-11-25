@@ -352,7 +352,7 @@ T = [
 # ---------------------------------------------------------------- Anleitung für den Versuch (Karte im Arbeitsblatt, Aufbau nach KLARE_ANWEISUNGEN.md)
 ANLEITUNG = {
  "ziel": "Herausfinden, wie sauer oder basisch sechs Proben aus Küche und Bad sind.",
- "material": ["1 Tüpfelplatte (Gruppe 6: 6 kleine Petrischalen)", "6 Stück Indikatorpapier, je ca. 2 cm (liegen bei der Probenstation)",
+ "material": ["1 Tüpfelplatte", "6 Stück Indikatorpapier, je ca. 2 cm (liegen bei der Probenstation)",
               "1 weißes Blatt Papier, 1 Stift", "Schutzbrille für jeden", "freiwillig: 1 Gefrierbeutel und 1 Gummiring (Haut-pH)"],
  "gruppen": "6 Gruppen zu viert, jede Gruppe an ihrem Schülertisch. Rollen: Holer (holt die Proben), Tropfer, Ableser, Schreiber.",
  "vorbereitung": "Blatt unter die Tüpfelplatte legen. Mulden 1 bis 6 auf dem Blatt nummerieren. Schutzbrille auf. Der Ableser fotografiert gleich am Anfang die Farbskala (Dose am Lehrertisch) mit dem Handy.",
@@ -364,19 +364,19 @@ ANLEITUNG = {
               "Gleich danach (innerhalb von 1 Minute): Der Ableser vergleicht die Farben mit dem Foto der Farbskala. Bei Zweifel kurz an der Dose am Lehrertisch nachsehen.",
               "Nach etwa 10 Minuten (freiwillig): Hand aus dem Beutel, ein Stück Indikatorpapier kurz auf die feuchte Handfläche drücken, Farbe ablesen – das ist c7.",
               "Der Schreiber sagt die Werte an, jeder trägt sie in c1 bis c6 ein (c7 freiwillig). Die pH-Meter-Werte (DEMO K1.5-D2) zeigt Prof. HOLZER erst danach beim Besprechen.",
-              "Aufräumen: Papier in den Restmüll, Tüpfelplatte (bzw. Petrischalen) an der Wasserleitung ausspülen und zurückgeben."],
+              "Aufräumen: Papier in den Restmüll, Tüpfelplatte an der Wasserleitung ausspülen und zurückgeben."],
  "messwerte": "pH-Wert als ganze Zahl oder Bereich (z. B. »2–3«), ohne Einheit – der pH-Wert hat keine.",
  "sicherheit": ["Schutzbrille auf – Zitronensaft und Seifenlösung brennen im Auge.", "Nichts kosten, nichts trinken: Laborgefäße sind keine Trinkgläser.",
                 "Kommt etwas ins Auge: sofort an der Wasserleitung spülen und Prof. HOLZER rufen.",
                 "Haut-pH nur auf gesunder Haut ohne Wunde; danach Hände waschen."],
  "abgabe": "Jeder trägt die Werte in sein Arbeitsblatt ein (Abschnitt Aufgabe 6) und gibt am Ende EIN PDF in LMS ab.",
  "auswertung": "Heute: d) bis g) in der Gruppe besprechen und eintragen. Am Ende der Stunde vergleicht die Klasse alle Werte am Beamer.",
- "mat": [["Tüpfelplatte (Gruppe 6: 6 kleine Petrischalen)", "tuepfelplatte"], ["6 Stück Indikatorpapier, je ca. 2 cm", "indikatorpapier"],
+ "mat": [["Tüpfelplatte", "tuepfelplatte"], ["6 Stück Indikatorpapier, je ca. 2 cm", "indikatorpapier"],
             ["weißes Blatt Papier", "papier"], ["Stift", "bleistift"], ["Handy für das Foto der Farbskala", "handy"], ["Schutzbrille für jeden", "brille"],
             ["freiwillig: Gefrierbeutel und Gummiring (Haut-pH)", "beutel"]],
     "station": [["1 Zitronensaft", "zitronensaeure"], ["2 Cola", "flasche"], ["3 Mineralwasser prickelnd", "flasche"], ["4 Leitungswasser", "hahn"],
                 ["5 Natronlösung (1 TL Natron in 250 ml Wasser)", "natron"], ["6 Seifenlösung (Kernseife)", "seife"], ["bei jeder Probe eine Tropfpipette", "pipette"]],
-    "entsorgung": "Alle Proben sind Lebensmittel oder Haushaltsstoffe: Reste in den Ausguss, mit Wasser nachspülen. Indikatorpapier und Gefrierbeutel in den Restmüll. Tüpfelplatte bzw. Petrischalen an der Wasserleitung ausspülen und zurückgeben.",
+    "entsorgung": "Alle Proben sind Lebensmittel oder Haushaltsstoffe: Reste in den Ausguss, mit Wasser nachspülen. Indikatorpapier und Gefrierbeutel in den Restmüll. Tüpfelplatte an der Wasserleitung ausspülen und zurückgeben.",
     "platz": "Jede Gruppe am eigenen Schülertisch · Probenstationen: Mobiltisch 1 (Gruppe 1–3) und Mobiltisch 2 (Gruppe 4–6) · Farbskala und pH-Meter am Lehrertisch · Ausspülen an der Wasserleitung",
 }
 
