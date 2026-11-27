@@ -141,16 +141,16 @@ def karte():
     line = lambda pts, w: d.line([c * S for p in [pt(*q) for q in pts] for c in p], fill=RIVER, width=int(w * S), joint="curve")
     line([(22.4, 31.7), (24.1, 32.9), (25.7, 32.6), (27.2, 31.2), (29.0, 31.2), (30.0, 31.2), (31.0, 31.1)], 9)
     line([(31.0, 31.1), (31.5, 30.4)], 6); line([(31.0, 31.1), (31.4, 31.8)], 6); line([(31.0, 31.1), (31.5, 31.1)], 6)
-    line([(39.0, 38.8), (37.3, 38.0), (36.0, 38.4), (35.3, 40.1), (34.4, 41.0), (33.4, 43.3), (32.5, 44.4), (31.3, 45.3), (31.0, 46.3), (30.5, 47.8)], 9)
+    line([(39.0, 38.8), (37.3, 38.0), (36.0, 38.4), (35.3, 40.1), (34.4, 41.0), (33.4, 43.3), (32.5, 44.4), (31.1, 45.4), (30.7, 46.5), (30.5, 47.8)], 9)   # Unterlauf nach Süden gezogen, damit Euphrat und Tigris klar getrennt bleiben
     line([(38.0, 40.5), (37.0, 42.0), (36.3, 43.1), (35.5, 43.5), (34.0, 43.8), (33.3, 44.4), (32.5, 45.8), (31.5, 47.2), (31.0, 47.5)], 9)
-    for name, lat, lon, dx, dy, col in (("Memphis", 29.85, 31.25, 14, -12, OLIVE), ("Theben", 25.7, 32.6, 14, -12, OLIVE), ("Babylon", 32.5, 44.4, -112, -30, ORANGE),
-                                        ("Uruk", 31.3, 45.6, -78, 12, ORANGE), ("Ur", 30.96, 46.1, 14, 10, ORANGE)):
+    for name, lat, lon, dx, dy, col in (("Memphis", 29.85, 31.25, 14, -12, OLIVE), ("Theben", 25.7, 32.6, 14, -12, OLIVE), ("Babylon", 32.5, 44.4, -118, -34, ORANGE),
+                                        ("Uruk", 31.1, 45.4, -66, 16, ORANGE), ("Ur", 30.7, 46.5, 12, 16, ORANGE)):
         x, y = pt(lat, lon); d.ellipse(P(x - 8, y - 8, x + 8, y + 8), fill=col, outline=WHITE, width=2 * S)
         ltext(d, x + dx, y + dy, name, f(FB, 22), INK)
     for txt, lat, lon, col in (("Nil", 27.6, 31.6, RIVER), ("Euphrat", 34.6, 37.2, RIVER), ("Tigris", 36.0, 43.9, RIVER)):
         x, y = pt(lat, lon); ltext(d, x + 10, y, txt, f(FB, 24), col)
     ltext(d, X(28.2), Y(28.3), "ÄGYPTEN", f(FB, 25), (150, 120, 60)); ltext(d, X(39.6), Y(29.2), "MESOPOTAMIEN", f(FB, 30), (150, 120, 60))
-    ltext(d, X(28.6), Y(34.6), "Mittelmeer", f(FR, 24), RIVER); ltext(d, X(48.9), Y(25.2), "Persischer", f(FR, 22), RIVER); ltext(d, X(49.4), Y(24.3), "Golf", f(FR, 22), RIVER)
+    ltext(d, X(28.6), Y(34.6), "Mittelmeer", f(FR, 24), RIVER); ltext(d, X(34.0), Y(25.6), "Rotes Meer", f(FR, 21), RIVER); ltext(d, X(48.9), Y(25.2), "Persischer", f(FR, 22), RIVER); ltext(d, X(49.4), Y(24.3), "Golf", f(FR, 22), RIVER)
     d.rounded_rectangle(P(20, 596, 420, 632), radius=10 * S, fill=WHITE, outline=MUTED, width=2 * S)
     ltext(d, 32, 602, "Schema, nicht maßstabsgerecht", f(FB, 22), RED)
     save(im, IMG + "karte.png")
@@ -242,8 +242,78 @@ def zeitstrahl(mit_loesung=False, dateiname="zeitstrahl.png"):
     save(im, IMG + dateiname)   # Achtung: »name« ist im Rumpf als Schleifenvariable vergeben
 
 
+# ====================================================================== Animierte Grafiken (SVG, Standard 16.11.2026)
+# Zwei Grafiken zeigen einen Vorgang und müssen sich darum aufbauen: die Kette vom Vorrat zur Verwaltung
+# und der Übergang von der Republik zum Prinzipat. Endzustand = das ganze Bild, Schleife mit Pause.
+SFONT = "'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif"
+HEX = lambda c: "#%02x%02x%02x" % c
+ZYK, ENDE, ZURUECK = 13, 0.95, 0.98
+
+
+def _svg(w, h, body, titel):
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" role="img" aria-label="{titel}">'
+            f"<title>{titel}</title><style>text{{font-family:{SFONT};fill:{HEX(INK)}}}.b{{font-weight:700}}</style>"
+            f"<rect width='{w}' height='{h}' rx='16' fill='{HEX(BG)}'/>{body}</svg>")
+
+
+def _blende(inner, start):
+    """Erscheint ab »start« (Anteil der Schleife) und bleibt bis zum Ende stehen."""
+    a = max(0.001, start); b = min(ENDE - 0.02, start + 0.05)
+    return (f"<g opacity='1'><animate attributeName='opacity' values='0;0;1;1;0;0' "
+            f"keyTimes='0;{a:.3f};{b:.3f};{ENDE:.3f};{ZURUECK:.3f};1' dur='{ZYK}s' repeatCount='indefinite'/>{inner}</g>")
+
+
+def _kasten(x, y, w, h, titel, unter="", fuell=None, rand=None):
+    f, r = HEX(fuell or PALE), HEX(rand or OLIVE)
+    gr = 22 if len(titel) <= 13 else (20 if len(titel) <= 18 else 18)
+    o = f"<rect x='{x}' y='{y}' width='{w}' height='{h}' rx='12' fill='{f}' stroke='{r}' stroke-width='3'/>"
+    o += f"<text class='b' x='{x + w / 2}' y='{y + (h / 2 + 7 if not unter else h / 2 - 4)}' font-size='{gr}' text-anchor='middle'>{titel}</text>"
+    if unter:
+        us = 18 if len(unter) <= 34 else 15
+        o += f"<text x='{x + w / 2}' y='{y + h / 2 + 22}' font-size='{us}' text-anchor='middle' style='fill:{HEX(MUTED)}'>{unter}</text>"
+    return o
+
+
+def _pfeil(x1, y1, x2, y2, col=None, w=5):
+    c = HEX(col or (140, 59, 46))
+    import math as _m
+    a = _m.atan2(y2 - y1, x2 - x1); k = 14
+    p1 = (x2 - k * _m.cos(a - 0.45), y2 - k * _m.sin(a - 0.45))
+    p2 = (x2 - k * _m.cos(a + 0.45), y2 - k * _m.sin(a + 0.45))
+    return (f"<line x1='{x1}' y1='{y1}' x2='{x2 - 0.6 * k * _m.cos(a):.1f}' y2='{y2 - 0.6 * k * _m.sin(a):.1f}' stroke='{c}' stroke-width='{w}' stroke-linecap='round'/>"
+            f"<polygon points='{x2},{y2} {p1[0]:.1f},{p1[1]:.1f} {p2[0]:.1f},{p2[1]:.1f}' fill='{c}'/>")
+
+
+def kette_svg():
+    b = ""
+    b += _blende(_kasten(20, 60, 190, 80, "Ernte und Abgaben"), 0.02)
+    b += _blende(_pfeil(214, 100, 252, 100), 0.16)
+    b += _blende(_kasten(256, 60, 160, 80, "Lager"), 0.22)
+    b += _blende(_pfeil(420, 100, 458, 100), 0.34)
+    b += _blende(_kasten(462, 60, 190, 80, "Liste", "Zeichen und Zahlen", (251, 242, 214), (201, 162, 39)), 0.40)
+    b += _blende(_pfeil(656, 100, 694, 100), 0.52)
+    b += _blende(_kasten(698, 60, 182, 80, "Verteilung"), 0.58)
+    b += _blende(f"<text class='b' x='450' y='195' font-size='24' text-anchor='middle' style='fill:{HEX((140, 59, 46))}'>"
+                 f"Wer die Liste führt, hat Einfluss.</text>", 0.72)
+    b += _blende(f"<text x='450' y='228' font-size='19' text-anchor='middle' fill='{HEX(MUTED)}'>"
+                 f"Vorrat → Verwaltung → Macht</text>", 0.80)
+    open(IMG + "kette.svg", "w", encoding="utf-8").write(_svg(900, 250, b, "Von der Ernte über Lager und Liste zur Verteilung"))
+
+
+def rom_svg():
+    b = _blende(_kasten(60, 30, 780, 96, "Römische Republik", "Ämter · Senat · Volksversammlungen"), 0.02)
+    b += _blende(_pfeil(450, 132, 450, 176), 0.22)
+    b += _blende(f"<text x='472' y='162' font-size='17' style='fill:{HEX(MUTED)}'>Bürgerkriege: Heere folgen einzelnen Feldherren</text>", 0.28)
+    b += _blende(_kasten(60, 182, 780, 104, "Prinzipat des Augustus", "dieselben Einrichtungen – aber Heer und wichtigste Befugnisse bei einer Person",
+                         (243, 226, 221), (140, 59, 46)), 0.44)
+    b += _blende(f"<text class='b' x='450' y='322' font-size='23' text-anchor='middle' style='fill:{HEX((140, 59, 46))}'>"
+                 f"Die Form bleibt. Die Macht wechselt.</text>", 0.66)
+    open(IMG + "rom.svg", "w", encoding="utf-8").write(_svg(900, 345, b, "Von der Republik zum Prinzipat"))
+
+
 if __name__ == "__main__":
     beil(); kette(); karte(); athen(); rom()
+    kette_svg(); rom_svg()                                    # animiert: zeigen einen Vorgang (Standard 16.11.2026)
     zeitstrahl()                                              # öffentlich: leeres Raster
     zeitstrahl(True, "zeitstrahl_loesung.png")                # nur Lehrerzentrale und Sicherungsfolie
     print("Bilder:", sorted(os.listdir(IMG)))

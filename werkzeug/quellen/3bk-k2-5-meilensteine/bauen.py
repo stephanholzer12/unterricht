@@ -356,7 +356,13 @@ def figure(src, alt, cap):
     # Breite und Höhe mitgeben: Sonst wächst die Seite beim Nachladen und der Sprung aus dem Arbeitsblatt landet zu tief (Standard 18.11.2026).
     import struct
     _p = os.path.join(ROOT, I.ORDNER, src)
-    _w, _h = struct.unpack(">II", open(_p, "rb").read(24)[16:24]) if os.path.exists(_p) else (900, 600)
+    if not os.path.exists(_p):
+        _w, _h = 900, 600
+    elif src.endswith(".svg"):
+        _m = re.search(r'viewBox="0 0 (\d+) (\d+)"', open(_p, encoding="utf-8").read(400))
+        _w, _h = (int(_m.group(1)), int(_m.group(2))) if _m else (900, 600)
+    else:
+        _w, _h = struct.unpack(">II", open(_p, "rb").read(24)[16:24])
     return f'<figure class="fig"><img src="{src}" alt="{esc(alt)}" width="{_w}" height="{_h}" loading="lazy"><figcaption>{md(cap)}</figcaption></figure>'
 
 

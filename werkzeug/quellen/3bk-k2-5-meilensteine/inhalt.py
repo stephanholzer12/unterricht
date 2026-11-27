@@ -8,8 +8,8 @@ Grundlage: ChatGPT-Auftrag »26-27-3BK-Meilenst-ChatGPT-v2.md« (29.10.2026): Ab
 Eine Quelle für Handy-Seiten, Word, PPPs und Lösungsmappe.
 Auswahlfelder: richtige Antwort an 1. Stelle (Anzeige gemischt), außer das 4. Element eines Feldes ist False (feste Reihenfolge)."""
 
-STAND = "23.11.2026"
-V = "v6"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
+STAND = "27.11.2026"
+V = "v7"                       # v1/v2 = ChatGPT-Auftrag und -Paket; v3 = erste Umsetzung durch Claude
 ORDNER = "3bk-pbgw/k2-5-meilensteine"
 BASE = "https://stephanholzer12.github.io/unterricht/"
 URL = BASE + ORDNER + "/"
@@ -81,7 +81,7 @@ T = [
   "fsol": {"befund": "Kupferklinge im Holzschaft, bearbeitet", "vermutung": "Rohstoff, Brennstoff, Können nötig – Austausch möglich", "grenze": "Beruf, Rang oder Reise Ötzis"},
   "tip": ["Metall, Können und Austausch", "theorie.html#metall"], "besprechen": True},
 
- {"id": "a2", "tipp1": 'Jeder Satz braucht zwei Teile: Was wird möglich – und warum geht das jetzt?', "karteD": {'text': ['Mehr Ernte heißt noch nicht mehr Macht.', 'Erst der **Vorrat** macht planbar: Wer lagert, muss aufschreiben, verteilen und schützen.', 'Und wer das übernimmt, bekommt Einfluss.'], 'bild': ['img/kette.png', 'Von der Ernte über das Lager und die Liste zur Verteilung']}, "tipp3": 'Lies im Buch S. 25–28 den Abschnitt über Vorräte und Spezialisierung.', "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
+ {"id": "a2", "tipp1": 'Jeder Satz braucht zwei Teile: Was wird möglich – und warum geht das jetzt?', "karteD": {'text': ['Mehr Ernte heißt noch nicht mehr Macht.', 'Erst der **Vorrat** macht planbar: Wer lagert, muss aufschreiben, verteilen und schützen.', 'Und wer das übernimmt, bekommt Einfluss.'], 'bild': ['img/kette.svg', 'Von der Ernte über das Lager und die Liste zur Verteilung']}, "tipp3": 'Lies im Buch S. 25–28 den Abschnitt über Vorräte und Spezialisierung.', "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
   "q": "Landwirtschaft, Vorrat, Spezialisierung, Verteilung: Was hängt womit zusammen? Arbeitet zu zweit und schreibt in »kann …, weil …«.",
   "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme«",
   "type": "multi",
@@ -194,7 +194,7 @@ T = [
   "kriterien": ["unmittelbare Entscheidung erklärt", "Los und Wahl unterschieden", "drei ausgeschlossene Gruppen", "Vergleich nennt Vertretung und Kontrolle"],
   "tip": ["Athen: direkte Beteiligung mit Grenzen", "theorie.html#athen"], "besprechen": True},
 
- {"id": "a6", "tipp1": 'Frag nicht, welche Ämter es gibt, sondern wer das Heer und das letzte Wort hat.', "karteD": {'text': ['In der Republik teilen sich Ämter, Senat und Volksversammlungen die Macht.', 'Augustus lässt all das bestehen – er hat aber das **Heer** und die wichtigsten Befugnisse in der Hand.', 'Nach außen sieht es aus wie vorher. Das ist der Trick am **Prinzipat**.'], 'bild': ['img/rom.png', 'Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht']}, "tipp3": 'Lies im Buch S. 114 den Abschnitt über Caesar und Augustus.', "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 6,
+ {"id": "a6", "tipp1": 'Frag nicht, welche Ämter es gibt, sondern wer das Heer und das letzte Wort hat.', "karteD": {'text': ['In der Republik teilen sich Ämter, Senat und Volksversammlungen die Macht.', 'Augustus lässt all das bestehen – er hat aber das **Heer** und die wichtigsten Befugnisse in der Hand.', 'Nach außen sieht es aus wie vorher. Das ist der Trick am **Prinzipat**.'], 'bild': ['img/rom.svg', 'Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht']}, "tipp3": 'Lies im Buch S. 114 den Abschnitt über Caesar und Augustus.', "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 6,
   "q": "Augustus schreibt in seinem Tatenbericht: Er habe die Macht an Senat und Volk zurückgegeben, sein Vorrang beruhe nur auf seinem Ansehen. Prüft zu zweit, ob das zur wirklichen Machtverteilung passt.",
   "hint": "Arbeitsfassung des Tatenberichts (Res gestae), sprachlich vereinfacht. Info: Theorieteil »Rom: Republik und Machtkonzentration«",
   "type": "multi",
@@ -214,7 +214,7 @@ T = [
   "kriterien": ["Selbstbezeichnung Princeps", "gewünschter Eindruck", "mindestens zwei Machtmittel", "Quelle ist Selbstdarstellung"],
   "tip": ["Rom: Republik und Machtkonzentration", "theorie.html#rom"], "besprechen": True},
 
- {"id": "a7", "tipp1": 'Nimm für jede Ordnung dieselben zwei Fragen: Wer darf mitentscheiden? Wer kontrolliert die Macht?', "karteD": {'text': ['Vergleiche immer dasselbe: Beteiligung, Kontrolle und die Grenzen.', 'Die Form der Einrichtungen sagt wenig – entscheidend ist, wer wirklich bestimmt.', 'Darum ist der Prinzipat trotz Senat keine Republik.'], 'bild': ['img/rom.png', 'Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht']}, "tipp3": 'Lies im Buch S. 36–38 und S. 111–115.', "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5,
+ {"id": "a7", "tipp1": 'Nimm für jede Ordnung dieselben zwei Fragen: Wer darf mitentscheiden? Wer kontrolliert die Macht?', "karteD": {'text': ['Vergleiche immer dasselbe: Beteiligung, Kontrolle und die Grenzen.', 'Die Form der Einrichtungen sagt wenig – entscheidend ist, wer wirklich bestimmt.', 'Darum ist der Prinzipat trotz Senat keine Republik.'], 'bild': ['img/rom.svg', 'Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht']}, "tipp3": 'Lies im Buch S. 36–38 und S. 111–115.', "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5,
   "q": "Vier Ordnungen, eine Tabelle: Ägypten und die Spalte »Wo liegt die Macht?« sind schon ausgefüllt. Ergänzt den Rest und begründet zwei Ordnungen.",
   "hint": "Kein Ranking »primitiv – modern«. »Republik« allein sagt nicht, dass alle gleich mitentscheiden. Info: Theorieteile zu Ägypten, Athen und Rom",
   "type": "multi",
