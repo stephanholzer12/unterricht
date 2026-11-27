@@ -64,7 +64,7 @@ LOS = ["Los", "Wahl"]
 
 T = [
  # ======================================================= Teil 1 · Stunde 1
- {"id": "a1", "nr": 1, "title": "Ötzi: Was zeigt uns ein Gegenstand?", "src": "Buch S. 30", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 4,
+ {"id": "a1", "tipp1": 'Trenn sauber: Was ist am Beil zu sehen – und was schließt du daraus? Das Zweite ist schon Deutung.', "karteD": {'text': ['Das Beil hat eine **Kupferklinge** in einem Holzschaft.', 'Kupfer muss man finden, erhitzen und bearbeiten können – das macht niemand nebenbei.', 'Wo so ein Beil auftaucht, gab es Können, Rohstoffe und meist auch Austausch.'], 'bild': ['img/beil.png', 'Ötzis Kupferbeil: Klinge, Schaft und Bindung']}, "tipp3": 'Lies im Buch S. 30 den Abschnitt zu Ötzi und seinem Kupferbeil.', "nr": 1, "title": "Ötzi: Was zeigt uns ein Gegenstand?", "src": "Buch S. 30", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 4,
   "q": "Ötzis Kupferbeil seht ihr am Beamer. Was steht fest, was ist nur vermutet – und was sagt das Beil nicht?",
   "hint": "Mündlich im Einstieg, am Mini-Whiteboard. Du kannst deine Stichworte danach hier eintragen. Info: Theorieteil »Metall, Können und Austausch«",
   "type": "multi",
@@ -81,7 +81,7 @@ T = [
   "fsol": {"befund": "Kupferklinge im Holzschaft, bearbeitet", "vermutung": "Rohstoff, Brennstoff, Können nötig – Austausch möglich", "grenze": "Beruf, Rang oder Reise Ötzis"},
   "tip": ["Metall, Können und Austausch", "theorie.html#metall"], "besprechen": True},
 
- {"id": "a2", "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
+ {"id": "a2", "tipp1": 'Jeder Satz braucht zwei Teile: Was wird möglich – und warum geht das jetzt?', "karteD": {'text': ['Mehr Ernte heißt noch nicht mehr Macht.', 'Erst der **Vorrat** macht planbar: Wer lagert, muss aufschreiben, verteilen und schützen.', 'Und wer das übernimmt, bekommt Einfluss.'], 'bild': ['img/kette.png', 'Von der Ernte über das Lager und die Liste zur Verteilung']}, "tipp3": 'Lies im Buch S. 25–28 den Abschnitt über Vorräte und Spezialisierung.', "nr": 2, "title": "Landwirtschaft: Was hängt womit zusammen?", "src": "Buch S. 25–28", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
   "q": "Landwirtschaft, Vorrat, Spezialisierung, Verteilung: Was hängt womit zusammen? Arbeitet zu zweit und schreibt in »kann …, weil …«.",
   "hint": "Info: Theorieteil »Vom Sammeln zum Vorrat« und »Neue Möglichkeiten, neue Probleme«",
   "type": "multi",
@@ -104,7 +104,7 @@ T = [
   "kriterien": ["drei begründete Zusammenhänge mit »weil«", "ein neues Problem genannt", "keine Einbahnstraße: weitere Bedingungen genannt"],
   "tip": ["Neue Möglichkeiten, neue Probleme", "theorie.html#probleme"], "besprechen": True},
 
- {"id": "a3", "nr": 3, "title": "Zwei frühe Organisationsformen", "src": "Buch S. 33–39", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
+ {"id": "a3", "img": "img/karte.png", "tipp1": 'Geh die Aussagen einzeln durch und frag dich: Gilt das nur für Uruk, nur für Ägypten – oder für beide?', "karteD": {'text': ['Mesopotamien liegt zwischen **Euphrat und Tigris**, Ägypten am **Nil**.', 'In Mesopotamien werden einzelne Städte mit ihrem Umland zu eigenen Staaten (Stadtstaat).', 'In Ägypten entsteht ein Königtum über das ganze Flusstal (Flächenkönigtum).'], 'bild': ['img/karte.png', 'Schemakarte: Nil, Euphrat und Tigris mit den frühen Städten']}, "tipp3": 'Lies im Buch S. 33–39 die Abschnitte zu Mesopotamien und Ägypten.', "nr": 3, "title": "Zwei frühe Organisationsformen", "src": "Buch S. 33–39", "own": True, "tag": "Stunde 1", "h": 1, "zeit": 7,
   "q": "Zwei Wege, ein Gemeinwesen zu organisieren: die Stadt Uruk und das Königtum am Nil. Ordnet zu zweit zu und vergleicht.",
   "hint": "Auf Karte und Zeichnung findest du Nil, Euphrat und Tigris. Info: Theorieteil »Frühe Staaten: Stadtstaat und Flächenkönigtum«",
   "type": "multi",
@@ -137,7 +137,7 @@ T = [
   "tip": ["Frühe Staaten: Stadtstaat und Flächenkönigtum", "theorie.html#staaten"], "besprechen": True},
 
  # ======================================================= Teil 2 · Stunde 2
- {"id": "a4", "nr": 4, "title": "Hammurabi: Ordnung, Verantwortung und Ungleichheit", "src": "Buch-Aufgabe S. 40", "own": False, "tag": "Stunde 2", "h": 2, "zeit": 9,
+ {"id": "a4", "tipp1": 'Achte darauf, wer das Opfer ist. Dieselbe Tat, drei verschiedene Folgen – daran hängt die ganze Aufgabe.', "karteD": {'text': ['Die Sammlung ordnet das Zusammenleben: Wer Schaden anrichtet, haftet dafür.', 'Die Rechtsfolge hängt aber vom **Stand des Opfers** ab: Bürgersohn, muškēnum oder Knecht.', 'Aufgeschriebenes Recht heißt also noch lange nicht gleiches Recht für alle.']}, "tipp3": 'Lies im Buch S. 39–40 die Paragrafen und den Text dazu.', "nr": 4, "title": "Hammurabi: Ordnung, Verantwortung und Ungleichheit", "src": "Buch-Aufgabe S. 40", "own": False, "tag": "Stunde 2", "h": 2, "zeit": 9,
   "q": "Auf dem Blatt stehen fünf Paragrafen in einer Arbeitsfassung. Lest sie zu zweit und arbeitet heraus, was dieses Recht ordnet – und für wen es nicht gleich gilt.",
   "hint": "Neu formuliert nach der Buch-Aufgabe S. 40 (Nr. 1, 7, 10), auf fünf Paragrafen gekürzt (§ 53, 196, 198, 199, 233). Info: Theorieteil »Was die Regeln verraten« und »Recht ist nicht gleich Gleichheit«",
   "type": "multi",
@@ -171,7 +171,7 @@ T = [
   "tip": ["Was die Regeln verraten", "theorie.html#regeln"], "besprechen": True},
 
  # ======================================================= Teil 3 · Stunde 3
- {"id": "a5", "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch S. 111 (Athen)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
+ {"id": "a5", "img": "img/athen.png", "tipp1": 'Zähl auf, wer in Athen nicht mitentscheiden durfte – das ist die halbe Antwort.', "karteD": {'text': ['In Athen entscheidet die **Volksversammlung**, viele Ämter werden **verlost**.', 'Mitentscheiden durften nur erwachsene männliche Bürger.', 'Frauen, Metöken und versklavte Menschen waren ausgeschlossen.'], 'bild': ['img/athen.png', 'Athen: Volksversammlung, Rat und Ämter – und wer ausgeschlossen war']}, "tipp3": 'Lies im Buch S. 111 den Abschnitt über die athenische Demokratie.', "nr": 5, "title": "Athen: Wer gehört zum entscheidenden Volk?", "src": "Buch S. 111 (Athen)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 7,
   "q": "Wer hat in Athen wirklich mitentschieden? Arbeitet zu zweit mit dem Schaubild und dem Theorie-Teil.",
   "hint": "Eigene Aufgabe zum Thema (Buch S. 109–111). Bilder von Athen sind meist spätere Darstellungen, keine Augenzeugenbilder. Info: Theorieteil »Athen: direkte Beteiligung mit Grenzen«",
   "type": "multi",
@@ -194,7 +194,7 @@ T = [
   "kriterien": ["unmittelbare Entscheidung erklärt", "Los und Wahl unterschieden", "drei ausgeschlossene Gruppen", "Vergleich nennt Vertretung und Kontrolle"],
   "tip": ["Athen: direkte Beteiligung mit Grenzen", "theorie.html#athen"], "besprechen": True},
 
- {"id": "a6", "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 6,
+ {"id": "a6", "tipp1": 'Frag nicht, welche Ämter es gibt, sondern wer das Heer und das letzte Wort hat.', "karteD": {'text': ['In der Republik teilen sich Ämter, Senat und Volksversammlungen die Macht.', 'Augustus lässt all das bestehen – er hat aber das **Heer** und die wichtigsten Befugnisse in der Hand.', 'Nach außen sieht es aus wie vorher. Das ist der Trick am **Prinzipat**.'], 'bild': ['img/rom.png', 'Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht']}, "tipp3": 'Lies im Buch S. 114 den Abschnitt über Caesar und Augustus.', "nr": 6, "title": "Augustus: Aussage und Machtverteilung", "src": "Buch S. 114 (Caesar und Augustus)", "own": False, "tag": "Stunde 3", "h": 3, "zeit": 6,
   "q": "Augustus schreibt in seinem Tatenbericht: Er habe die Macht an Senat und Volk zurückgegeben, sein Vorrang beruhe nur auf seinem Ansehen. Prüft zu zweit, ob das zur wirklichen Machtverteilung passt.",
   "hint": "Arbeitsfassung des Tatenberichts (Res gestae), sprachlich vereinfacht. Info: Theorieteil »Rom: Republik und Machtkonzentration«",
   "type": "multi",
@@ -214,7 +214,7 @@ T = [
   "kriterien": ["Selbstbezeichnung Princeps", "gewünschter Eindruck", "mindestens zwei Machtmittel", "Quelle ist Selbstdarstellung"],
   "tip": ["Rom: Republik und Machtkonzentration", "theorie.html#rom"], "besprechen": True},
 
- {"id": "a7", "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5,
+ {"id": "a7", "tipp1": 'Nimm für jede Ordnung dieselben zwei Fragen: Wer darf mitentscheiden? Wer kontrolliert die Macht?', "karteD": {'text': ['Vergleiche immer dasselbe: Beteiligung, Kontrolle und die Grenzen.', 'Die Form der Einrichtungen sagt wenig – entscheidend ist, wer wirklich bestimmt.', 'Darum ist der Prinzipat trotz Senat keine Republik.'], 'bild': ['img/rom.png', 'Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht']}, "tipp3": 'Lies im Buch S. 36–38 und S. 111–115.', "nr": 7, "title": "Vier Formen der Herrschaft vergleichen", "src": "Buch S. 36–38, 111–115", "own": True, "tag": "Stunde 3", "h": 3, "zeit": 5,
   "q": "Vier Ordnungen, eine Tabelle: Ägypten und die Spalte »Wo liegt die Macht?« sind schon ausgefüllt. Ergänzt den Rest und begründet zwei Ordnungen.",
   "hint": "Kein Ranking »primitiv – modern«. »Republik« allein sagt nicht, dass alle gleich mitentscheiden. Info: Theorieteile zu Ägypten, Athen und Rom",
   "type": "multi",
@@ -248,7 +248,7 @@ T = [
   "tabnote": "Gelb auszufüllen: Spalten 3 und 4 für Athen, Republik und Prinzipat.",
   "tip": ["Athen und Rom im Vergleich", "theorie.html#vergleich"], "besprechen": True},
 
- {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 7,
+ {"id": "a8", "img": "img/zeitstrahl.png", "tipp1": 'Sortier zuerst grob: Was ist älter als die Schrift, was jünger? Die Feinarbeit kommt danach.', "karteD": {'text': ['Senkrecht stehen die Räume, waagrecht die Zeitbereiche.', 'Zwei Dinge können fast gleichzeitig passieren und trotzdem weit auseinander liegen.', 'Darum die drei Zeilen – eine Jahreszahl allein sagt wenig.'], 'bild': ['img/zeitstrahl.png', 'Raster: drei Räume, sechs Zeitbereiche']}, "tipp3": 'Die Zeittafel steht im Buch S. 24, die Ereignisse in den Kapiteln dazu.', "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 7,
   "q": "Neun Karten, sechs Zeitbereiche. Legt den Zeitstrahl, begründet zwei Karten und ergänzt eine eigene.",
   "hint": "Teil 1 (Stunde 1): Karten 1 bis 4 und der Schlusssatz d). Teil 2 (Stunde 3): Karten 5 bis 9, b) und c). Jahreszahlen sind Orientierung, die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",
   "type": "multi",

@@ -3033,6 +3033,13 @@ window.LH_VARIANTEN = [{"id": "a1", "vars": [{"n": "t", "min": 2, "max": 15, "st
     if (r && !r.ok && !r.manOnly && !nurLeer && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;   /* leere offene Erklärung ist kein Fehlversuch */
     origCheck(t);
     var fb = $("#fb_" + t.id), n = S.tries[t.id] || 0;
+    if (nurLeer) {   /* nur noch nicht ausgefüllt: das ist kein Fehler, sondern der nächste Schritt */
+      var k = fb.querySelector("strong");
+      if (k) k.textContent = "Was du ausgefüllt hast, stimmt.";
+      fb.className = "fb info";
+      fb.append(mk("div", "", "Der Rest ist noch offen – wenn die Aufgabe über zwei Stunden geht, kommt er später dran."));
+      save(); return;
+    }
     if (r && !r.ok && !r.manOnly) {
       // Tipp mit Link erst ab dem 2. Fehlversuch
       if (n < FEHLER_FUER_TIPP) { var links = fb.querySelectorAll("a"); links.forEach(function (a) { if (a.parentNode) a.parentNode.remove(); }); fb.append(mk("div", "", "Lies deine Antwort noch einmal genau – manchmal fehlt nur ein Wort, eine Einheit oder ein Rechenschritt.")); }

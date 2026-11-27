@@ -198,12 +198,15 @@ def rom():
 
 
 # ------------------------------------------------------------ Zeittafel (Aufgabe 8)
-def zeitstrahl():
+def zeitstrahl(mit_loesung=False, dateiname="zeitstrahl.png"):
+    """Raster der Zeitbereiche. Ohne Lösung für die öffentliche Theorie-Seite (Aufgabe 8 soll nicht abschreibbar sein,
+    Prüfbericht 27.11.2026), mit Lösung nur für die Lehrerzentrale und die Sicherungsfolie."""
     W, H = 900, 640
     im, d = canvas(W, H, BG)
     bins = ["10 000–\n8000 v. Chr.", "4000–\n3000 v. Chr.", "2000–\n1500 v. Chr.", "600–\n400 v. Chr.", "100 v. Chr.–\n100 n. Chr.", "400–\n500 n. Chr."]
     x0, cw, y0, hh, rh = 150, 125, 20, 80, 150
-    d.rounded_rectangle(P(x0 + cw, y0, x0 + 2 * cw, y0 + hh + 3 * rh), radius=0, fill=(255, 241, 214))
+    if mit_loesung:   # hervorgehobene Spalte wäre im leeren Raster ein Hinweis auf die Lösung
+        d.rounded_rectangle(P(x0 + cw, y0, x0 + 2 * cw, y0 + hh + 3 * rh), radius=0, fill=(255, 241, 214))
     for k, b in enumerate(bins):
         x = x0 + k * cw
         d.rectangle(P(x + 3, y0, x + cw - 3, y0 + hh - 6), fill=OLIVE)
@@ -217,7 +220,7 @@ def zeitstrahl():
     ev = [(0, 0, "1", "Landwirtschaft"), (1, 1, "2", "Ötzis Beil"), (0, 1, "3", "Schrift"), (0, 1, "4", "Uruk wird|Stadt"), (0, 2, "5", "Hammurabi"),
           (2, 3, "6", "Athen"), (2, 3, "7", "Republik"), (2, 4, "8", "Augustus"), (2, 5, "9", "Ende Westroms")]
     slot = {}
-    for r, c, n, t in ev:
+    for r, c, n, t in (ev if mit_loesung else []):
         k = slot.get((r, c), 0); slot[(r, c)] = k + 1
         n_in = sum(1 for e in ev if e[0] == r and e[1] == c)
         x = x0 + c * cw + cw / 2; y = y0 + hh + r * rh
@@ -232,10 +235,15 @@ def zeitstrahl():
             d.ellipse(P(xx - 15, cy - 15, xx + 15, cy + 15), fill=ORANGE); ctext(d, xx, cy - 12, n, f(FB, 21), WHITE)
             for j, ln in enumerate(t.split("|")): ltext(d, xx + 20, cy - 14 + j * 22, ln, fit(d, ln, FB, 19, cw - 48), INK)
     d.rounded_rectangle(P(10, 598, 890, 634), radius=10 * S, fill=WHITE, outline=MUTED, width=2 * S)
-    ltext(d, 22, 603, "Die Zeitbereiche sind verschieden lang – nur gleich breit gezeichnet.", fit(d, "Die Zeitbereiche sind verschieden lang – nur gleich breit gezeichnet.", FB, 21, 860), RED)
-    save(im, IMG + "zeitstrahl.png")
+    hin = ("Die Zeitbereiche sind verschieden lang – nur gleich breit gezeichnet."
+           if mit_loesung else
+           "Zeitbereiche verschieden lang, nur gleich breit gezeichnet. Die neun Karten ordnest du im Arbeitsblatt zu.")
+    ltext(d, 22, 603, hin, fit(d, hin, FB, 21, 860), RED)
+    save(im, IMG + dateiname)   # Achtung: »name« ist im Rumpf als Schleifenvariable vergeben
 
 
 if __name__ == "__main__":
-    beil(); kette(); karte(); athen(); rom(); zeitstrahl()
+    beil(); kette(); karte(); athen(); rom()
+    zeitstrahl()                                              # öffentlich: leeres Raster
+    zeitstrahl(True, "zeitstrahl_loesung.png")                # nur Lehrerzentrale und Sicherungsfolie
     print("Bilder:", sorted(os.listdir(IMG)))
