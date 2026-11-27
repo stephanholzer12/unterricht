@@ -3,7 +3,7 @@
    Wertung (automatisch, nur was die Seite selbst prüfen kann):
      - jede Auswahl-/Zahlen-Antwort = 1 Punkt; Stichwort-Antworten anteilig (gefundene Stichwortgruppen / verlangte); »durchstreichen«-Aufgaben anteilig
      - Aufgaben mit angesehener Lösung = 0 Punkte (Lehrkraft bewertet selbst); Zusatzaufgaben zählen nur, wenn bearbeitet
-     - Aufgaben ohne automatische Prüfung (Freitext, Skizze, Foto) stehen als »selbst bewerten« im Kasten und zählen nicht mit
+     - Aufgaben ohne automatische Prüfung (Freitext, Skizze, Foto) stehen als »Prof. HOLZER bewertet« im Kasten und zählen nicht mit
      - offene Erklärungen, die die Seite mit man kennzeichnet (evalTask: p.man), zählen weder in Zähler noch Nenner; sie stehen als »bewertet die Lehrkraft« im Kasten
    Notenschlüssel (Vorschlag): ab 88 % = 1, ab 75 % = 2, ab 62 % = 3, ab 50 % = 4, darunter 5 (genau, ohne vorheriges Runden). Ändern: SCHLUESSEL unten.
    Seiten mit eigenem Ergebnis-Kasten (Nobel, Vertiefung) nehmen »x von y Antworten richtig« aus pdfStats().
@@ -71,7 +71,7 @@
     var rest = [];
     if (typeof S !== "undefined" && S.solSeen && s.gesehen.length) rest.push("PDF nach Lösungseinsicht erstellt: 0 Punkte – bitte die erste PDF bewerten");
     else if (s.gesehen.length) rest.push("Lösung angesehen (0 Punkte): Aufgabe " + liste(s.gesehen));
-    if (s.selbst.length) rest.push((s.wort || "selbst bewerten") + ": Aufgabe " + liste(s.selbst));
+    if (s.selbst.length) rest.push((s.wort || "Prof. HOLZER bewertet")   /* 27.11.2026: nicht »selbst bewerten« – das macht die Lehrkraft */ + ": Aufgabe " + liste(s.selbst));
     var lk = s.lehrkraft || [];
     if (lk.length) rest.unshift("Punkte nur aus den automatisch geprüften Teilen; Gesamtnote erst nach fachlicher Durchsicht · Erklärungen bewertet die Lehrkraft (nicht in den Punkten): Aufgabe " + liste(lk));
     var z2 = rest.length ? rest.join(" · ") : "automatische Vorbewertung – freie Texte bitte fachlich lesen";

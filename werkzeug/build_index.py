@@ -47,7 +47,7 @@ LEHRER = "lehrer-0f6eec.html"
 LOESUNGEN = "lehrer-loesungen-0f6eec.html"
 
 # Seite → (Beschriftung, Stil). Reihenfolge der Knöpfe wie der Lernpfad: Theorie-Seite → Arbeitsblatt → Quiz
-NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Aufgaben", ""), "quiz.html": ("Quiz", ""),
+NAMEN = {"theorie.html": ("Theorie", "teal"), "aufgaben.html": ("Arbeitsblatt", ""), "quiz.html": ("Quiz", ""),
          "versuche.html": ("Versuche", "rust"), "vertiefung.html": ("Vertiefung", ""), "uebung.html": ("Übung", ""), "projekt.html": ("Projekt", ""),
          "gruppe.html": ("Gruppe", ""), "teststoff.html": ("Teststoff", "rust"), "kurz.html": ("Gruppe kompakt", ""), "check.html": ("Mitarbeits-Check", "rust")}
 REIHE = ["theorie.html", "aufgaben.html", "versuche.html", "vertiefung.html", "uebung.html", "projekt.html", "gruppe.html", "kurz.html", "quiz.html", "check.html"]
@@ -76,7 +76,7 @@ h1 { font-family: var(--font-head); color: var(--olive); font-size: 34px; line-h
   .top .smiley { width: 52px; height: 52px; flex-basis: 52px; } }
 nav.toc { position: sticky; top: 0; z-index: 5; background: var(--olive); }
 nav.toc div { max-width: 720px; margin: 0 auto; display: flex; gap: 6px; overflow-x: auto; padding: 8px 16px; scrollbar-width: none; }
-nav.toc a { flex: 0 0 auto; color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; padding: 5px 12px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.45); }
+nav.toc a { flex: 0 0 auto; display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; color: #fff; text-decoration: none; font-weight: 700; font-size: 15px; padding: 5px 14px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.45); } /* 44 px Antippfläche am Handy (Prüfbericht 27.11.2026) */
 nav.toc a[aria-current="page"] { background: #fff; color: var(--olive); }
 nav.toc a:hover, nav.toc a:focus-visible { background: #fff; color: var(--olive); outline: none; }
 main { max-width: 720px; margin: 0 auto; padding: 18px 16px 48px; display: grid; gap: 14px; }

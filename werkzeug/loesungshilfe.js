@@ -40,7 +40,9 @@
   var origCheck = showCheck;
   showCheck = function (t) {
     var r = evalTask(t);
-    if (r && !r.ok && !r.manOnly && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;   /* leere offene Erklärung ist kein Fehlversuch */
+    /* 27.11.2026: Wer nur noch nicht ausgefüllt hat, macht keinen Fehler – wichtig bei Aufgaben, die über zwei Stunden laufen. */
+    var nurLeer = r && r.parts && r.parts.filter(function (p) { return !p.ok; }).every(function (p) { return p.filled === false; });
+    if (r && !r.ok && !r.manOnly && !nurLeer && !LH_viewed(t)) S.tries[t.id] = (S.tries[t.id] || 0) + 1;   /* leere offene Erklärung ist kein Fehlversuch */
     origCheck(t);
     var fb = $("#fb_" + t.id), n = S.tries[t.id] || 0;
     if (r && !r.ok && !r.manOnly) {

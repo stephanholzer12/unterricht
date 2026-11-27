@@ -17,7 +17,7 @@
   var cur = document.createElement("span"); cur.className = "toccur"; cur.setAttribute("aria-live", "polite");
   bar.append(btn, cur);
   if (ab) { var abk = document.createElement("a"); abk.className = "tocab"; abk.href = ab.getAttribute("href");
-    abk.textContent = /aufgaben\.html/.test(ab.getAttribute("href")) ? "Aufgaben" : ab.textContent; bar.append(abk); }
+    abk.textContent = /aufgaben\.html/.test(ab.getAttribute("href")) ? "Arbeitsblatt" : ab.textContent;   /* heißt für die Kadetten überall »Arbeitsblatt« */ bar.append(abk); }
   var panel = document.createElement("div"); panel.className = "tocpanel"; panel.id = "tocpanel"; panel.hidden = true;
   kap.forEach(function (a) { panel.append(a); });
   alt.replaceWith(bar); nav.append(panel); nav.classList.add("mitmenue");
@@ -48,7 +48,7 @@
     "nav.toc.mitmenue div.tocbar{display:flex;align-items:center;gap:8px;overflow:visible;padding:8px 12px;max-width:720px;margin:0 auto}" +
     "nav.toc .tocbtn{font:inherit;font-size:16px;font-weight:700;color:#3B4A2F;background:#fff;border:0;border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer;white-space:nowrap}" +
     "nav.toc .toccur{flex:1;min-width:0;color:#fff;font-weight:700;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}" +
-    "nav.toc a.tocab{flex:0 0 auto;background:#7FA83A;border-color:#7FA83A;color:#fff}" +
+    "nav.toc a.tocab{flex:0 0 auto;min-height:44px;display:inline-flex;align-items:center;background:#7FA83A;border-color:#7FA83A;color:#fff}" +
     "nav.toc.mitmenue div.tocpanel{display:flex;flex-wrap:wrap;gap:6px;overflow:visible;padding:2px 12px 12px;max-width:720px;margin:0 auto}" +
     "nav.toc.mitmenue div.tocpanel[hidden]{display:none}" +
     "nav.toc div.tocpanel a{font-size:16px;padding:8px 14px}" +

@@ -104,7 +104,7 @@ PARTS = [
 
 SCHNELLE = [
  {"id": "partnercheck", "title": "Partnercheck – Karten zum Wiederholen", "pill": "Buch S. 25–40",
-  "blocks": [("hint", "Zu zweit: Einer liest die Frage, der andere antwortet, dann Antwort aufdecken und abhaken (Aufgabe 12)."), ("karten", I.PARTNERKARTEN)]},
+  "blocks": [("hint", "Zu zweit: Einer liest die Frage, der andere antwortet, dann Antwort aufdecken und abhaken (Aufgabe %d)." % I.NR["a12"]), ("karten", I.PARTNERKARTEN)]},
  {"id": "stolpern", "title": "Fünf Stolpersteine", "pill": "Zum Nachdenken",
   "blocks": [("karten", I.STOLPERSTEINE)]},
  {"id": "quelle", "title": "Eine Quelle kritisch lesen", "pill": "Quellenkritik",

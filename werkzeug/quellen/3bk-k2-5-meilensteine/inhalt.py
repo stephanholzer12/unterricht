@@ -69,10 +69,11 @@ T = [
   "hint": "Mündlich im Einstieg, am Mini-Whiteboard. Du kannst deine Stichworte danach hier eintragen. Info: Theorieteil »Metall, Können und Austausch«",
   "type": "multi",
   "fields": [["befund", "a) Befund: Das lässt sich am Beil feststellen"], ["vermutung", "b) Begründete Vermutung zum Zusammenleben"], ["grenze", "c) Das belegt das Beil allein nicht"]],
-  "opt": ["befund", "vermutung", "grenze"],
+  "opt": ["vermutung", "grenze"],   # »befund« ist Pflicht – sonst gilt die Aufgabe ohne jede Eingabe als erledigt (Prüfbericht 27.11.2026)
   "chk": {"befund": {"kw": [["Material oder Form", r"kupfer|metall|klinge|beil|axt|material|schaft|holz|geschäftet"]], "man": True},
           "vermutung": {"kw": [["Rohstoff, Können oder Austausch", r"austausch|handel|rohstoff|können|koennen|fachwissen|spezial|herstell|werkstatt|bearbeit|brennstoff|wissen"]], "man": True},
-          "grenze": {"kw": [["Beruf, Rang oder Reise", r"beruf|rang|anführer|anfuehrer|häuptling|haeuptling|reise|herkunft|jäger|jaeger|status|chef|beweis|nicht belegt|wissen wir nicht"]], "man": True}},
+          "grenze": {"kw": [["Beruf, Rang oder Reise", r"beruf|rang|anführer|anfuehrer|häuptling|haeuptling|reise|herkunft|jäger|jaeger|status|chef"],
+                            ["eine Einschränkung (nicht, kein, unsicher)", r"nicht|kein|unsicher|offen|vermut|deutung|wissen wir nicht"]], "man": True}},
   "sol": [["Musterlösung", ["a) Es ist eine Klinge aus Kupfer, die in einen Holzschaft gesetzt wurde; das Material wurde gewonnen und bearbeitet.",
                           "b) Wer Kupfer verarbeitet, braucht Rohstoffe, Brennstoff und Können. Wenn der Rohstoff vor Ort fehlt, muss er durch Austausch beschafft werden – das spricht für Spezialisten und Verbindungen über Entfernungen. "
                           "Die Materialanalyse (Bleiisotope) lässt das Kupfer aus der südlichen Toskana stammen.",
@@ -86,8 +87,11 @@ T = [
   "type": "multi",
   "fields": [["z1", "a) Zusammenhang 1 (kann …, weil …)"], ["z2", "a) Zusammenhang 2 (kann …, weil …)"], ["z3", "a) Zusammenhang 3 (kann …, weil …)"],
              ["problem", "b) Ein neues Problem"], ["staat", "c) Warum nicht zwangsläufig ein Staat? (1–2 Sätze)"]],
-  "chk": {"z1": {"kw": [["kann …, weil …", r"kann.*weil|weil"]], "man": True}, "z2": {"kw": [["kann …, weil …", r"kann.*weil|weil"]], "man": True},
-          "z3": {"kw": [["kann …, weil …", r"kann.*weil|weil"]], "man": True},
+  "chk": {"z1": {"kw": [["kann …, weil …", r"kann.*weil|weil"],
+                        ["ein Inhalt aus der Theorie", r"vorrat|lager|spezialis|verteil|abgabe|verwalt|schrift|siedl|bevölker|bevoelker|einfluss|macht|handwerk|tausch"]], "man": True}, "z2": {"kw": [["kann …, weil …", r"kann.*weil|weil"],
+                        ["ein Inhalt aus der Theorie", r"vorrat|lager|spezialis|verteil|abgabe|verwalt|schrift|siedl|bevölker|bevoelker|einfluss|macht|handwerk|tausch"]], "man": True},
+          "z3": {"kw": [["kann …, weil …", r"kann.*weil|weil"],
+                        ["ein Inhalt aus der Theorie", r"vorrat|lager|spezialis|verteil|abgabe|verwalt|schrift|siedl|bevölker|bevoelker|einfluss|macht|handwerk|tausch"]], "man": True},
           "problem": {"kw": [["Missernte, Krankheit oder Streit", r"missernte|krankheit|streit|ungleich|konflikt|schädling|schaedling|hunger|abhängig|abhaengig|diebstahl|schutz|lager|verteil"]], "man": True},
           "staat": {"kw": [["weitere Bedingungen", r"handel|konflikt|religi|bedingung|boden|klima|örtlich|oertlich|macht|nicht automatisch|nicht zwangsl|verschieden|andere|zusätzlich|zusaetzlich"]], "man": True}},
   "sol": [["Musterlösung", ["a) Landwirtschaft kann Vorräte ermöglichen, weil ein Teil der Ernte gelagert werden kann. Vorräte können Spezialisierung unterstützen, weil nicht mehr jeder ständig Nahrung beschaffen muss. "
@@ -128,7 +132,8 @@ T = [
   "tab": [["Kriterium", "Stadtstaat Mesopotamien", "Flächenkönigtum Ägypten"], ["Raum und Flüsse", "Stadt mit Umland, Euphrat und Tigris", "viele Siedlungen am Nil"],
           ["Politische Organisation", "mehrere zunächst eigenständige Städte", "Königtum über einen größeren Raum"], ["Versorgung und Aufzeichnung", "Abgaben, Vorräte, Schrift", "Abgaben, Vorräte, Schrift"],
           ["Begründung von Herrschaft", "Religion, Kontrolle von Einrichtungen", "Religion, Verwaltung, Durchsetzung"]],
-  "tabnote": "Die vier Kriterien (Raum · Organisation · Versorgung · Begründung) stecken in den Aussagen a).",
+  "tabtitel": "Vergleichstabelle ansehen – erst, wenn du a) zugeordnet hast",
+  "tabnote": "Die Tabelle ordnet dasselbe nach vier Kriterien (Raum · Organisation · Versorgung · Begründung). Mach sie erst auf, wenn a) steht – sonst schreibst du nur ab.",
   "tip": ["Frühe Staaten: Stadtstaat und Flächenkönigtum", "theorie.html#staaten"], "besprechen": True},
 
  # ======================================================= Teil 2 · Stunde 2
@@ -137,11 +142,11 @@ T = [
   "hint": "Neu formuliert nach der Buch-Aufgabe S. 40 (Nr. 1, 7, 10), auf fünf Paragrafen gekürzt (§ 53, 196, 198, 199, 233). Info: Theorieteil »Was die Regeln verraten« und »Recht ist nicht gleich Gleichheit«",
   "type": "multi",
   "fields": [["damm", "a) § 53 regelt das Problem …"],
-             ["f196", "b) § 196: Opfer ist ein Bürgersohn", FOLGE, False], ["f198", "§ 198: Opfer ist ein Untergebener", FOLGE, False], ["f199", "§ 199: Opfer ist der Knecht (versklavte Mensch) eines Bürgers", FOLGE, False],
+             ["f196", "b) § 196: Opfer ist ein Bürgersohn", FOLGE, False], ["f198", "§ 198: Opfer gehört einer mittleren Schicht an (muškēnum – kein Vollbürger)", FOLGE, False], ["f199", "§ 199: Opfer ist der Knecht (versklavte Mensch) eines Bürgers", FOLGE, False],
              ["entsch", "c) Das entscheidet über die Rechtsfolge", ["Der gesellschaftliche Stand des Opfers", "Die Schwere der Verletzung", "Das Geschlecht des Täters", "Der Ort der Tat"]],
              ["eigentum", "d) Beleg für den Schutz von Eigentum oder wirtschaftlichen Interessen"],
              ["gleich", "e) Schriftliches Recht ↔ Rechtsgleichheit (1–2 Sätze)"],
-             ["zeigt", "f) Die Sammlung zeigt …"], ["offen", "…; ob …, können wir aus ihr allein nicht feststellen."]],
+             ["zeigt", "f) Die Sammlung zeigt …"], ["offen", "g) Das lässt sich aus der Sammlung allein nicht feststellen:"]],
   "chk": {"damm": {"kw": [["Damm, Überschwemmung oder Getreide", r"damm|deich|feld|überschwemm|ueberschwemm|getreide|nachbar|verantwort|ersatz|instand|schaden"]], "man": True},
           "f196": {"sel": FOLGE[0]}, "f198": {"sel": FOLGE[1]}, "f199": {"sel": FOLGE[2]}, "entsch": {"sel": "Der gesellschaftliche Stand des Opfers"},
           "eigentum": {"kw": [["§ und Begründung", r"damm|getreide|§|wand|baumeister|kaufpreis|silber|ersatz|haft|eigentum|mine|feld"]], "man": True},
@@ -244,16 +249,16 @@ T = [
   "tip": ["Athen und Rom im Vergleich", "theorie.html#vergleich"], "besprechen": True},
 
  {"id": "a8", "nr": 8, "title": "Gemeinsamer Zeitstrahl", "src": "Buch S. 24–40 und S. 105–118", "own": True, "tag": "Stunde 1 und 3", "h": 3, "zeit": 7,
-  "q": "Neun Karten, sechs Zeitbereiche. Legt den Zeitstrahl, begründet zwei Karten und ergänzt eine eigene. Teil 1 in Stunde 1, Teil 2 in Stunde 3.",
-  "hint": "Jahreszahlen sind Orientierung. Die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",
+  "q": "Neun Karten, sechs Zeitbereiche. Legt den Zeitstrahl, begründet zwei Karten und ergänzt eine eigene.",
+  "hint": "Teil 1 (Stunde 1): Karten 1 bis 4 und der Schlusssatz d). Teil 2 (Stunde 3): Karten 5 bis 9, b) und c). Jahreszahlen sind Orientierung, die Begründung zählt mehr als das Datum. Info: Zeittafel im Theorieteil (Zeitstrahl) und Buch S. 24",
   "type": "multi",
-  "fields": [["k1", "a) 1 · Beginn landwirtschaftlicher Lebensweisen im Vorderen Orient", ZB, False], ["k2", "2 · Ötzis Kupferbeil", ZB, False], ["k3", "3 · Frühe Schrift in Mesopotamien", ZB, False],
-             ["k4", "4 · Uruk wächst zu einer Stadt", ZB, False], ["k5", "5 · Hammurabis Rechtssammlung", ZB, False], ["k6", "6 · Klassische athenische Demokratie", ZB, False],
+  "fields": [["k1", "a) Teil 1 (Stunde 1) – 1 · Beginn landwirtschaftlicher Lebensweisen im Vorderen Orient", ZB, False], ["k2", "2 · Ötzis Kupferbeil", ZB, False], ["k3", "3 · Frühe Schrift in Mesopotamien", ZB, False],
+             ["k4", "4 · Uruk wächst zu einer Stadt", ZB, False], ["k5", "Teil 2 (Stunde 3) – 5 · Hammurabis Rechtssammlung", ZB, False], ["k6", "6 · Klassische athenische Demokratie", ZB, False],
              ["k7", "7 · Beginn der römischen Republik (nach der Überlieferung)", ZB, False], ["k8", "8 · Beginn des Prinzipats des Augustus", ZB, False], ["k9", "9 · Ende Westroms als Epochenmarke", ZB, False],
              ["warum", "b) Begründung bei zwei Karten (Nummer und Grund)"], ["eigen", "c) Eigene Karte: gleichzeitig, aber nicht überall"],
-             ["schluss", "d) Schlusssatz nach Teil 1 (1 Satz)"]],
+             ["schluss", "d) Schlusssatz zu Teil 1 – schon in Stunde 1 (1 Satz)"]],
   "chk": {"k1": {"sel": ZB[0]}, "k2": {"sel": ZB[1]}, "k3": {"sel": ZB[1]}, "k4": {"sel": ZB[1]}, "k5": {"sel": ZB[2]}, "k6": {"sel": ZB[3]}, "k7": {"sel": ZB[3]}, "k8": {"sel": ZB[4]}, "k9": {"sel": ZB[5]},
-          "warum": {"kw": [["Karte und Grund", r"weil|da |denn|deshalb|\d"]], "man": True},
+          "warum": {"kw": [["die Kartennummer", r"\d"], ["eine Begründung (weil, denn, deshalb)", r"weil|da |denn|deshalb|darum"]], "man": True},
           "eigen": {"kw": [["Region und Zeit", r"region|gleichzeitig|noch|schon|während|waehrend|amerika|china|ägypten|aegypten|mitteleuropa|alpen|\d"]], "man": True},
           "schluss": {"kw": [["Organisation und Herrschaft", r"organis|herrschaft|verwalt|macht|vorrat|abgabe|staat|ordnung"]], "man": True}},
   "sol": [["Musterlösung", ["a) 1 → 10.000–8000 v. Chr. (langer, regional verschiedener Prozess) · 2 → 4000–3000 (um 3300 v. Chr., Kupferzeit im Alpenraum) · 3 → 4000–3000 (spätes 4. Jahrtausend, grobe Orientierung um 3300/3200) · "
@@ -372,6 +377,7 @@ FACHBEGRIFFE = [["Begriff", "Bedeutung"],
                 ["Legitimation", "Begründung, warum eine Herrschaft gelten soll (z. B. durch Religion oder Recht)"],
                 ["Abgaben", "Teil von Ernte oder Arbeit, der an die Herrschaft geht"],
                 ["Rechtssammlung", "gesammelte Regeln und Rechtsfälle – nicht dasselbe wie ein modernes Gesetzbuch"],
+                ["Stände bei Hammurabi", "Bürgersohn (awīlum, Vollbürger) · muškēnum (mittlere Schicht, kein Vollbürger) · Knecht (versklavter Mensch) – der Stand des Opfers entscheidet über die Rechtsfolge"],
                 ["Stele", "aufgerichteter Stein mit Inschrift"],
                 ["Befund / Deutung", "Befund: was man am Objekt oder Text feststellen kann · Deutung: was man daraus (begründet) schließt"],
                 ["Polis", "griechische Gemeinschaft aus Stadt und Umland, politisch selbstständig"],
@@ -610,9 +616,14 @@ MCHECK = [
    ("z1", "Was war zuerst da?", "Die Landwirtschaft im Vorderen Orient – lange vor der Schrift",
     ["Die Schrift – erst danach die Landwirtschaft", "Beides begann gleichzeitig", "Die Städte – erst danach die Landwirtschaft"], "S. 24–40"),
    ("z2", "Was zeigt der gemeinsame Zeitstrahl?", "Die Entwicklungen liefen nicht überall gleichzeitig ab",
-    ["Überall begann alles zur selben Zeit", "Jede Entwicklung dauerte genau 100 Jahre", "Die Reihenfolge ist bis heute unbekannt"], "S. 24–40")]},
+    ["Überall begann alles zur selben Zeit", "Jede Entwicklung dauerte genau 100 Jahre", "Die Reihenfolge ist bis heute unbekannt"], "S. 24–40"),
+   # Zahlenfrage: check.py würfelt die Jahreszahlen bei jedem Start neu (Marke: Fragetext == "jahre")
+   ("z3", "jahre", "", [], "S. 24–40")]},
 ]
 assert sum(g["n"] for g in MCHECK) == 10
 assert all(len(f[3]) == 3 or f[1] == "jahre" for g in MCHECK for f in g["fragen"])
+assert sum(1 for g in MCHECK for f in g["fragen"] if f[1] == "jahre") == 1, "genau eine Zahlenfrage im Pool"
+NR = {t["id"]: t["nr"] for t in T}   # Nummer je Aufgaben-ID – Texte ziehen die Nummer hier heraus, nie von Hand
+
 MCHECK_KEY = "26-27-3BK-K2.1-5.4-Meilenst-check"
 MCHECK_CODE = "2451"   # Startcode – im Seitencode nur als Prüfsumme; Prof. HOLZER zeigt ihn am Beamer

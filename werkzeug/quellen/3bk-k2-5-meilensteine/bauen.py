@@ -103,7 +103,8 @@ s = s[:_i] + """function showCheck(t) {
   if (man.some(p => p.kind !== "foto")) fb.append(el("div", { text: "Ob deine Erklärung fachlich stimmt, bewertet die Lehrkraft. Lies sie noch einmal durch." }));
   if (t.tip && (!r.ok || man.some(p => p.filled && p.hits.some(h => !h[1])))) fb.append(el("div", {}, "Tipp: Lies nochmal ", el("a", { href: t.tip[1], text: t.tip[0] }), "."));
 }""" + s[_j:]
-rep('    let st = "selbst bewerten";\n    if (ev) {', '    let st = "selbst bewerten";\n    if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + (ev.parts.some(p => p.man && p.kind === "foto") ? (ev.parts.some(p => p.kind === "foto" && p.filled) ? "Zeichnung" : "Zeichnung (Foto fehlt)") + (ev.parts.some(p => p.man && p.kind !== "foto") ? " und Erklärung" : "") : "Erklärung") + ": bewertet die Lehrkraft"; }\n    else if (ev) {')
+rep('    if (leer) st = "nicht bearbeitet";\n    else if (ev) {',
+    '    if (leer) st = "nicht bearbeitet";\n    else if (ev && ev.man) { const au = ev.parts.filter(p => !p.man); st = (au.length ? "automatisch geprüft: " + (au.every(p => p.ok) ? "richtig" : "noch nicht richtig") + " · " : "") + (ev.parts.some(p => p.man && p.kind === "foto") ? (ev.parts.some(p => p.kind === "foto" && p.filled) ? "Zeichnung" : "Zeichnung (Foto fehlt)") + (ev.parts.some(p => p.man && p.kind !== "foto") ? " und Erklärung" : "") : "Erklärung") + ": bewertet die Lehrkraft"; }\n    else if (ev) {')
 rep("(ev && ev.ok ? [70, 110, 40] : muted)", "(ev && ev.ok && !ev.man ? [70, 110, 40] : muted)")
 s = s[:i] + 'const KEY = "%s";\nconst KAP = "%s", THEMA = "Meilensteine";\nconst T = ' % (I.KEY, I.KAP) + json.dumps(I.T, ensure_ascii=False, indent=1) + ";" + s[j:]
 rep(".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }", ".fb.no { background: #F6E3DF; border: 2px solid #8C3B2E; }\n.fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }")
@@ -119,9 +120,9 @@ rep('const tagCls = t.tag.startsWith("Stunde") ?', 'const tagCls = (t.tag.starts
 rep('  if (t.img) card.append(el("div", { class: "qimg" }, el("img", { src: t.img, alt: "Abbildung zu Aufgabe " + t.nr })));',
     '  if (t.img) card.append(el("div", { class: "qimg" }, el("img", { src: t.img, alt: "Abbildung zu Aufgabe " + t.nr })));\n'
     '  if (t.tab) { const tb = el("table", { class: "dtab" }); t.tab.forEach((r, i) => tb.append(el("tr", {}, ...r.map((c, j) => el(i === 0 || j === 0 ? "th" : "td", { text: c }))))); '
-    'card.append(el("div", { class: "dwrap" }, tb)); if (t.tabnote) card.append(el("p", { class: "hint dnote", text: t.tabnote })); }')
+    'const dd = el("details", { class: "dwrap" }); dd.append(el("summary", { text: t.tabtitel || "Vergleichstabelle ansehen" }), tb); card.append(dd); if (t.tabnote) card.append(el("p", { class: "hint dnote", text: t.tabnote })); }')
 rep(".fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }", ".fb.info { background: #E8F1F3; border: 2px solid #2E7D8C; }\n"
-    ".dwrap { overflow-x: auto; margin: 6px 0; } .dtab { border-collapse: collapse; width: 100%; font-size: 14px; } .dtab th, .dtab td { border: 1px solid #D3DCC2; padding: 5px 6px; text-align: left; vertical-align: top; } "
+    ".dwrap { overflow-x: auto; margin: 6px 0; } .dwrap > summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-weight: 700; color: #2E7D8C; } .dtab { border-collapse: collapse; width: 100%; font-size: 14px; } .dtab th, .dtab td { border: 1px solid #D3DCC2; padding: 5px 6px; text-align: left; vertical-align: top; } "
     ".dtab tr:first-child th { background: #3B4A2F; color: #fff; } .dtab td { text-align: right; white-space: nowrap; } .dtab tr:nth-child(odd) td { background: #F4F7EE; } .dnote { font-weight: 700; color: #8C3B2E; }")
 s = s.replace('el("label", { class: "lbl", text: "Deine Skizze (Foto)" })', 'el("label", { class: "lbl", text: "Foto (Mini-Whiteboard oder Papier)" })')
 s = s.replace('"Foto der Heftskizze aufnehmen"', '"Foto aufnehmen"')
@@ -235,7 +236,8 @@ rep("</style>", """.grpbox { background: #fff; border: 2px solid #D3DCC2; border
 .ablaufk { margin: 6px 0 4px; font-size: 15px; color: #5E6652; }
 ol.ablauf { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 16px; line-height: 1.35; }
 ol.ablauf li.gem { font-weight: 700; color: #3B4A2F; }
-ol.ablauf a { color: #2E7D8C; font-weight: 700; }
+p.hint a, section.next a, ol.steps a { display: inline-block; padding: 12px 2px; }   /* Navigationslinks am Handy treffbar (27.11.2026) */
+ol.ablauf a { display: inline-flex; align-items: center; min-height: 44px; color: #2E7D8C; font-weight: 700; }   /* 44 px Antippfläche am Handy (Prüfbericht 27.11.2026) */
 .abm { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .05em; border-radius: 999px; padding: 1px 8px; margin-right: 6px; color: #fff; background: #5E6652; vertical-align: 1px; }
 .abm.m-DEMO { background: #2E7D8C; } .abm.m-BESPRECHEN, .abm.m-DISKUSSION { background: #3B4A2F; }
 .abm.m-GRUPPENARBEIT, .abm.m-PARTNERCHECK { background: #6B4F8A; }
@@ -411,14 +413,15 @@ tcss = tcss.replace("</style>", """.merke { background: var(--olive); color: #ff
 .merke strong { color: #C9D8A8; }
 ol.goals, ul.pts { margin: 0; padding-left: 24px; display: grid; gap: 6px; }
 details.reveal { border: 2px solid #D9772B; border-radius: 12px; padding: 10px 14px; }
-details.reveal summary { cursor: pointer; font-weight: 700; color: #D9772B; }
+details.reveal summary { cursor: pointer; font-weight: 700; color: #D9772B; min-height: 44px; display: flex; align-items: center; }
 details.reveal p { margin: 8px 0 0; }
 .stopq { display: grid; gap: 6px; }
 .stopq + .stopq { margin-top: 10px; }
 .ziel { border: 1px solid #D3DCC2; border-radius: 12px; padding: 10px 12px; display: grid; gap: 6px; }
 .ziel p { margin: 0; }
 .chips { display: flex; gap: 8px; flex-wrap: wrap; }
-.chip { font: inherit; font-size: 16px; font-weight: 700; color: #3B4A2F; background: #fff; border: 2px solid #D3DCC2; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+section.next p.hint a, .next .hint a { display: inline-block; padding: 12px 2px; }   /* Navigationslinks am Handy treffbar (27.11.2026) */
+.chip { font: inherit; font-size: 16px; font-weight: 700; color: #3B4A2F; background: #fff; border: 2px solid #D3DCC2; border-radius: 999px; min-height: 44px; padding: 8px 14px; cursor: pointer; }
 .chip[aria-pressed="true"][data-v="sicher"] { background: #E6F0D3; border-color: #7FA83A; }
 .chip[aria-pressed="true"][data-v="fast"] { background: #FFF1D6; border-color: #D9772B; }
 .chip[aria-pressed="true"][data-v="noch nicht"] { background: #F6E3DF; border-color: #8C3B2E; }
@@ -445,7 +448,7 @@ details.reveal p { margin: 8px 0 0; }
 .buch { display: flex; gap: 12px; align-items: center; background: #EEF3E4; border: 2px solid #3B4A2F; border-radius: 12px; padding: 10px 14px; }
 .buch p { margin: 0; } .bicon { font-weight: 700; color: #fff; background: #3B4A2F; border-radius: 8px; padding: 4px 10px; }
 .karte { border: 1px solid #D3DCC2; border-radius: 12px; padding: 10px 12px; background: #fff; }
-.karte summary { cursor: pointer; font-weight: 700; color: #3B4A2F; }
+.karte summary { cursor: pointer; font-weight: 700; color: #3B4A2F; min-height: 44px; display: flex; align-items: center; }   /* 44 px Antippfläche am Handy (Prüfbericht 27.11.2026) */
 .karte p { margin: 8px 0 0; color: #2E7D8C; font-weight: 700; }
 .knr { display: inline-block; min-width: 26px; text-align: center; background: #2E7D8C; color: #fff; border-radius: 999px; font-size: 14px; margin-right: 4px; }
 .kchip { display: inline-block; font: 700 .78em/1.5 "Source Sans 3", sans-serif; padding: 0 .45em; border-radius: 6px; margin-right: .25em; vertical-align: .12em; border: 1.5px solid currentColor; white-space: nowrap; }
@@ -456,7 +459,7 @@ ol.mziele { display: grid; gap: 8px; padding-left: 22px; } .ziel > .kchip { just
 .stdtrenner .sbt { font-size: 20px; font-weight: 700; line-height: 1.3; }
 .stdtrenner .sbk { font-size: 15px; opacity: .85; }
 .stduebersicht { margin: 12px 0; border: 2px solid #D3DCC2; border-radius: 12px; padding: 10px 14px; background: #F7F9F2; }
-.stduebersicht ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 4px; } .stduebersicht a { color: #2E7D8C; font-weight: 700; }
+.stduebersicht ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 2px; } .stduebersicht a { display: inline-flex; align-items: center; min-height: 44px; color: #2E7D8C; font-weight: 700; }   /* 44 px Antippfläche am Handy (Prüfbericht 27.11.2026) */
 .abbtn { display: block; text-align: center; background: #7FA83A; color: #fff; font-weight: 700; font-size: 19px; text-decoration: none; border-radius: 12px; padding: 14px 16px; margin: 10px 0 4px; min-height: 44px; }
 </style>""")
 page = f"""<!doctype html>

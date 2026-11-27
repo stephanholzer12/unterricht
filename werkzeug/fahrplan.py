@@ -287,10 +287,10 @@ FOLGE_CSS = """<style>
 .fp-pill.m-SELBSTSTUDIUM { background: #E8DDBB; border-color: #E8DDBB; color: #6B4F00; }
 .fp-pill.m-GRUPPENARBEIT, .fp-pill.m-PRÄSENTATION { background: #B5541F; border-color: #B5541F; color: #fff; }
 .fp-pfeil { font-style: normal; color: #5E6652; font-size: 15px; }
-a.fp-pill { text-decoration: none; min-height: 32px; box-sizing: border-box; padding: 4px 12px; }
+a.fp-pill { text-decoration: none; min-height: 44px; box-sizing: border-box; padding: 9px 14px; }   /* 44 px: am Handy sicher zu treffen (Prüfbericht 27.11.2026) */
 a.fp-pill:hover { filter: brightness(1.08); box-shadow: 0 0 0 2px #7FA83A; }
 a.fp-pill:focus-visible, a.fp-tlink:focus-visible { outline: 3px solid #2E7D8C; outline-offset: 2px; }
-a.fp-tlink { color: #2E7D8C; text-decoration: underline; text-underline-offset: 3px; padding: 6px 2px; }
+a.fp-tlink { display: inline-block; min-height: 44px; box-sizing: border-box; color: #2E7D8C; text-decoration: underline; text-underline-offset: 3px; padding: 11px 4px; }
 </style>"""
 
 

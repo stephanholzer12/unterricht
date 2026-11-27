@@ -47,7 +47,7 @@ def lesen(pfad):
 
     head = soup.find("header")
     if head:
-        m = re.search(r"Buch S\. ?[\d–\-, ]+\d", text(head))
+        m = re.search(r"Buch S\. ?[\d–\-, ]+\d(?: und S\. ?[\d–\-, ]+\d)*", text(head))   # auch zwei Strecken (27.11.2026)
         if m:
             out["buch"] = m.group(0).replace("S.", "S.").strip()
 

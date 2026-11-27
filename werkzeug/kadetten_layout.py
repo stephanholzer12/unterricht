@@ -10,7 +10,7 @@ import re
 esc = html.escape
 CSS_DATEI = "kadetten-layout-v2.css"
 JS_DATEI = "kadetten-navigation-v2.js"
-NAMEN = {"theorie.html": "Theorie", "aufgaben.html": "Aufgaben", "versuche.html": "Versuche",
+NAMEN = {"theorie.html": "Theorie", "aufgaben.html": "Arbeitsblatt", "versuche.html": "Versuche",
          "quiz.html": "Quiz", "vertiefung.html": "Vertiefung", "uebung.html": "Übung",
          "projekt.html": "Projekt", "gruppe.html": "Gruppenarbeit", "kurz.html": "Gruppe kompakt",
          "teststoff.html": "Teststoff", "check.html": "Mitarbeits-Check"}
