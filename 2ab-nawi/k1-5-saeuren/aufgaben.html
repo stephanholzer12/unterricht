@@ -177,6 +177,14 @@ ol.ablauf a { color: #2E7D8C; font-weight: 700; }
 .abm.m-DEMO { background: #2E7D8C; } .abm.m-VERSUCH { background: #8C3B2E; } .abm.m-BESPRECHEN, .abm.m-PARTNERCHECK { background: #3B4A2F; }
 .abm.m-SELBSTSTUDIUM { background: #E8DDBB; color: #6B4F00; } .abm.m-ABGABE { background: #7FA83A; }
 .phbalken { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; margin: 14px 0; padding: 10px 14px; border-radius: 12px; border-left: 8px solid #3B4A2F; background: #EEF1E6; font-size: 17px; line-height: 1.4; font-weight: 600; color: #1F2A1C; }
+.pcbox { margin: -6px 0 18px; padding: 12px 14px; border-radius: 12px; background: #fff; border: 2px solid #D3DCC2; }
+.pcbox .pchint { margin: 0 0 10px; font-size: 16px; line-height: 1.45; }
+.pckarte { margin: 8px 0; padding: 10px 12px; border-radius: 10px; background: #F4F6EE; border-left: 6px solid #3B4A2F; }
+.pckarte .pcq { margin: 0 0 8px; font-size: 18px; font-weight: 700; line-height: 1.4; }
+.pckarte .pcn { display: inline-block; min-width: 26px; height: 26px; line-height: 26px; text-align: center; border-radius: 13px; background: #3B4A2F; color: #fff; font-size: 15px; margin-right: 8px; }
+.pckarte .pcw { font-size: 14px; font-weight: 700; color: #5E6652; margin-left: 6px; }
+.pckarte button { min-height: 44px; padding: 8px 14px; font: inherit; font-size: 16px; font-weight: 700; border: 2px solid #3B4A2F; border-radius: 10px; background: #fff; color: #3B4A2F; cursor: pointer; }
+.pckarte .pca { margin: 8px 0 0; padding: 8px 10px; border-radius: 8px; background: #E3EDD2; font-size: 17px; line-height: 1.45; }
 .phbalken .phm { font-size: 12.5px; font-weight: 800; letter-spacing: .06em; color: #fff; background: #3B4A2F; border-radius: 6px; padding: 2px 8px; }
 .phbalken.m-DEMO { border-color: #2E7D8C; background: #E6F1F3; } .phbalken.m-DEMO .phm { background: #2E7D8C; }
 .phbalken.m-VERSUCH { border-color: #8C3B2E; background: #F6E9E6; } .phbalken.m-VERSUCH .phm { background: #8C3B2E; }
@@ -2633,12 +2641,27 @@ function gesichertEl(card, nr) {
   const p = el("p", { class: "gesichert" }); p.append(el("span", { class: "phm", text: "SICHERUNG" }), el("span", { text: "Am Ende der Stunde sichern wir gemeinsam: " + g + "." }));
   const h = card.querySelector(".head"); if (h && h.nextSibling) card.insertBefore(p, h.nextSibling); else card.append(p);
 }
+const PCKARTEN = [["Was ist eine Säure, was eine Base – nach Brønsted?", "Säure gibt ein Proton (H⁺) ab, Base nimmt es auf."], ["pH 3 und pH 6 – wievielmal mehr H₃O⁺ hat pH 3?", "1000-mal (drei Stufen, je Faktor 10)."], ["Was passiert, wenn Salzsäure auf Natronlauge trifft?", "H₃O⁺ + OH⁻ → 2 H₂O; übrig bleibt Kochsalzlösung, das Glas wird warm."], ["Lauge im Auge – was tust du?", "Sofort lange mit viel Wasser spülen, Hilfe holen, nicht neutralisieren. Laugen sind am Auge oft gefährlicher als Säuren."]];
+function partnerKarten() {
+  const box = el("div", { class: "pcbox" });
+  box.append(el("p", { class: "pchint", text: "Zu zweit mit Handy: Wer die Karte hat, liest die Frage vor. Der andere antwortet, dann tippt der Fragende auf »Antwort zeigen« und vergleicht. Wechselt ab: Karte 1 und 3 fragt A, Karte 2 und 4 fragt B. Ergebnis trägst du in Aufgabe 7 g) ein." }));
+  PCKARTEN.forEach(([q, a], i) => {
+    const k = el("div", { class: "pckarte" });
+    k.append(el("p", { class: "pcq" }, el("span", { class: "pcn", text: String(i + 1) }), q, el("span", { class: "pcw", text: i % 2 ? "fragt B" : "fragt A" })));
+    const ans = el("p", { class: "pca", text: a }); ans.hidden = true;
+    const b = el("button", { type: "button", text: "Antwort zeigen" });
+    b.addEventListener("click", () => { ans.hidden = !ans.hidden; b.textContent = ans.hidden ? "Antwort zeigen" : "Antwort verbergen"; b.setAttribute("aria-expanded", String(!ans.hidden)); });
+    k.append(b, ans); box.append(k);
+  });
+  return box;
+}
 function balkenEl(wo, nr) {
   (BALKEN[wo][String(nr)] || []).forEach(([m, txt]) => {
     const b = el("div", { class: "phbalken" + (m ? " m-" + m : ""), role: "note" });
     b.append(el("span", { class: "phm", text: m || "JETZT" }), el("span", { text: txt }));
     if (/ABCD-Karte/.test(txt)) { const k = el("button", { type: "button", class: "phabcd", text: "ABCD-Karte" }); k.addEventListener("click", abcdAuf); b.append(k); }
     $("#tasks").append(b);
+    if (m === "PARTNERCHECK" && wo === "nach") $("#tasks").append(partnerKarten());
   });
 }
 function grpEl(g) {
