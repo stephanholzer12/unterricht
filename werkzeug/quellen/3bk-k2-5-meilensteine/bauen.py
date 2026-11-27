@@ -160,7 +160,7 @@ def ablauf_daten():
             ziel = None
             m = re.match(r"a(\d+)$", art)
             if m: ziel = nr_zu_id.get(int(m.group(1)))
-            if marke == "" and art == "pdf": marke = "ABGABE"
+            # »ABGABE« wäre eine erfundene Marke (feste Liste in bhak-kern 3.5) – die Zeile steht ohne Marke da
             z.append([marke, t, ziel])
         out[str(n)] = z
     return out

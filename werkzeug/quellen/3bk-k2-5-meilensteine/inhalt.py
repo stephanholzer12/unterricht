@@ -314,7 +314,7 @@ T = [
                           "b) Aus der südlichen Toskana (nicht aus lokaler Produktion in den Alpen).",
                           "c) Die Analyse zeigt den Weg des Metalls, nicht den Weg einer Person. Metall und Waren wurden weitergegeben und gehandelt; wer sie transportierte, sagt der Befund nicht."]]],
   "fsol": {"methode": "Bleiisotope und Verunreinigungen im Kupfer", "herkunft": "südliche Toskana", "reise": "Metall wurde gehandelt – Befund zeigt den Weg des Materials"},
-  "tip": ["Metall, Können und Austausch", "theorie.html#metall"]},
+  "tip": ["Quellen prüfen: Befund und Deutung", "theorie.html#quelle"]},
 
  {"id": "a12", "nr": 13, "title": "Partnercheck", "src": "Buch S. 25–40", "own": True, "tag": "Zusatz", "h": 0, "zeit": 5,
   "q": "Zu zweit, ohne Handy: A nimmt vier Karten aus dem Abschnitt »Partnercheck« im Theorieteil und liest die Fragen vor. B antwortet, A vergleicht mit der Antwort auf der Karte und hakt ab. "
