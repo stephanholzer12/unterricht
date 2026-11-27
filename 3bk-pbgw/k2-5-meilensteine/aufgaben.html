@@ -289,7 +289,17 @@ a.fp-tlink { display: inline-block; min-height: 44px; box-sizing: border-box; co
     return y;
   }
   function aufklappen(z) { for (var e = z; e; e = e.parentElement) { if (e.tagName === "DETAILS" && !e.open) e.open = true; } }
-  function hin(z) { aufklappen(z); window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - oben(), behavior: "instant" }); }
+  function hin(z) {
+    aufklappen(z);
+    window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - oben(), behavior: "instant" });
+    /* Nach einem Stundenwechsel ändert sich die Höhe über dem Ziel noch – darum zwei Bilder später nachziehen. */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        var d = z.getBoundingClientRect().top - oben();
+        if (Math.abs(d) > 2) window.scrollBy({ top: d, behavior: "instant" });
+      });
+    });
+  }
   function ausrichten(z) {   /* bis ca. 5 s nachjustieren; sobald der Kadett selbst scrollt oder tippt, sofort aufhören */
     var n = 0, aus = false, stopp = function () { aus = true; };
     ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (e) { window.addEventListener(e, stopp, { once: true, passive: true }); });
@@ -357,7 +367,7 @@ const T = [
     "Wo so ein Beil auftaucht, gab es Können, Rohstoffe und meist auch Austausch."
    ],
    "bild": [
-    "img/beil.png",
+    "img/beil.png?v=eedf2cb4",
     "Ötzis Kupferbeil: Klinge, Schaft und Bindung"
    ]
   },
@@ -457,7 +467,7 @@ const T = [
     "Und wer das übernimmt, bekommt Einfluss."
    ],
    "bild": [
-    "img/kette.png",
+    "img/kette.png?v=dc0ce5a4",
     "Von der Ernte über das Lager und die Liste zur Verteilung"
    ]
   },
@@ -586,7 +596,7 @@ const T = [
  },
  {
   "id": "a3",
-  "img": "img/karte.png",
+  "img": "img/karte.png?v=ba523bb2",
   "tipp1": "Geh die Aussagen einzeln durch und frag dich: Gilt das nur für Uruk, nur für Ägypten – oder für beide?",
   "karteD": {
    "text": [
@@ -595,7 +605,7 @@ const T = [
     "In Ägypten entsteht ein Königtum über das ganze Flusstal (Flächenkönigtum)."
    ],
    "bild": [
-    "img/karte.png",
+    "img/karte.png?v=ba523bb2",
     "Schemakarte: Nil, Euphrat und Tigris mit den frühen Städten"
    ]
   },
@@ -1022,7 +1032,7 @@ const T = [
  },
  {
   "id": "a5",
-  "img": "img/athen.png",
+  "img": "img/athen.png?v=3af96012",
   "tipp1": "Zähl auf, wer in Athen nicht mitentscheiden durfte – das ist die halbe Antwort.",
   "karteD": {
    "text": [
@@ -1031,7 +1041,7 @@ const T = [
     "Frauen, Metöken und versklavte Menschen waren ausgeschlossen."
    ],
    "bild": [
-    "img/athen.png",
+    "img/athen.png?v=3af96012",
     "Athen: Volksversammlung, Rat und Ämter – und wer ausgeschlossen war"
    ]
   },
@@ -1188,7 +1198,7 @@ const T = [
     "Nach außen sieht es aus wie vorher. Das ist der Trick am **Prinzipat**."
    ],
    "bild": [
-    "img/rom.png",
+    "img/rom.png?v=13b7e98b",
     "Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht"
    ]
   },
@@ -1301,7 +1311,7 @@ const T = [
     "Darum ist der Prinzipat trotz Senat keine Republik."
    ],
    "bild": [
-    "img/rom.png",
+    "img/rom.png?v=13b7e98b",
     "Von der Republik zum Prinzipat: dieselben Einrichtungen, andere Macht"
    ]
   },
@@ -1482,7 +1492,7 @@ const T = [
  },
  {
   "id": "a8",
-  "img": "img/zeitstrahl.png",
+  "img": "img/zeitstrahl.png?v=ed589cf1",
   "tipp1": "Sortier zuerst grob: Was ist älter als die Schrift, was jünger? Die Feinarbeit kommt danach.",
   "karteD": {
    "text": [
@@ -1491,7 +1501,7 @@ const T = [
     "Darum die drei Zeilen – eine Jahreszahl allein sagt wenig."
    ],
    "bild": [
-    "img/zeitstrahl.png",
+    "img/zeitstrahl.png?v=ed589cf1",
     "Raster: drei Räume, sechs Zeitbereiche"
    ]
   },
@@ -1745,7 +1755,7 @@ const T = [
   "fields": [
    [
     "ziel1",
-    "Ziel 1 (A): Ich kann erklären, wie Landwirtschaft, Vorräte und Spezialisierung das Zusammenleben verändert haben – mit Vorteilen und Problemen. – bei »noch nicht«: Theorie »Vom Sammeln zum Vorrat« · Buch S. 25–28",
+    "Ziel 1 (B): Ich kann erklären, wie Landwirtschaft, Vorräte und Spezialisierung das Zusammenleben verändert haben – mit Vorteilen und Problemen. – bei »noch nicht«: Theorie »Vom Sammeln zum Vorrat« · Buch S. 25–28",
     [
      "zur Gänze",
      "überwiegend",

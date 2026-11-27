@@ -269,7 +269,19 @@ for blk in re.findall(r"<!-- ([a-z_]+):start -->", s):  # Bausteine kommen mit n
 _plain = re.sub(r"[A-Za-z0-9+/=]{200,}", "", s)
 for bad in ["Epochen-", "Zeit-Einteilung", "Erkenntnis", "1AK", "Ökodesign", "Ökobilanz", "5AB", "Flasche"]:
     assert bad not in _plain, re.findall(r".{60}" + bad + r".{20}", _plain)[:5]
-open(DST + "aufgaben.html", "w", encoding="utf-8").write(s)
+def mit_kennung(text):
+    """Bildpfade bekommen eine Inhalts-Kennung (bild.png?v=<md5-8>), damit geänderte Bilder am Handy ankommen
+    (bhak-kadettenseite 8; Prüfbericht 27.11.2026)."""
+    import hashlib
+    def ers(m):
+        datei = m.group(1)
+        pfad = os.path.join(ROOT, I.ORDNER, "img", datei)
+        if not os.path.exists(pfad): return m.group(0)
+        h = hashlib.md5(open(pfad, "rb").read()).hexdigest()[:8]
+        return 'img/%s?v=%s' % (datei, h)
+    return re.sub(r'img/([A-Za-z0-9_\-]+\.(?:png|svg|jpg|webp))(?!\?)', ers, text)
+
+open(DST + "aufgaben.html", "w", encoding="utf-8").write(mit_kennung(s))
 
 # ================================================================ Quiz
 qs = ",\n".join("  { t: %s, q: %s, a: %s, e: %s, p: %s }" % tuple(json.dumps(x, ensure_ascii=False) for x in (t, nb(q), [nb(z) for z in a], nb(e), p)) for t, q, a, e, p in I.QUIZ)
@@ -508,7 +520,7 @@ page = f"""<!doctype html>
 </body>
 </html>
 """
-open(DST + "theorie.html", "w", encoding="utf-8").write(page)
+open(DST + "theorie.html", "w", encoding="utf-8").write(mit_kennung(page))
 
 for f in ["theorie.html", "aufgaben.html", "quiz.html"]:
     print(f, os.path.getsize(DST + f) // 1024, "KB")

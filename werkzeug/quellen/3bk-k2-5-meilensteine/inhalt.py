@@ -468,7 +468,7 @@ for _q in QUIZ:
 # ====================================================================== Kompetenzmodell (Skill bhak-kompetenzmodell, 20.11.2026)
 # hd: A verstehen und wiedergeben · B anwenden und analysieren · C diskutieren, interpretieren, begründen, bewerten
 # niveau 1 = + (Grundlegendes) · 2 = ++ (Vertiefung). Chip = Kompetenz, nicht mit der Marke (DEMO, GRUPPENARBEIT …) verwechseln.
-ZIELE = [{"nr": 1, "hd": "A", "text": "Ich kann erklären, wie Landwirtschaft, Vorräte und Spezialisierung das Zusammenleben verändert haben – mit Vorteilen und Problemen.",
+ZIELE = [{"nr": 1, "hd": "B", "text": "Ich kann erklären, wie Landwirtschaft, Vorräte und Spezialisierung das Zusammenleben verändert haben – mit Vorteilen und Problemen.",
           "theorie": "vorrat", "buch": "Buch S. 25–28"},
          {"nr": 2, "hd": "A", "text": "Ich kann Stadtstaat und Flächenkönigtum vergleichen und sagen, welche Aufgaben beide lösen mussten.",
           "theorie": "staaten", "buch": "Buch S. 33–39"},

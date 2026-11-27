@@ -218,7 +218,17 @@ a.fp-tlink { display: inline-block; min-height: 44px; box-sizing: border-box; co
     return y;
   }
   function aufklappen(z) { for (var e = z; e; e = e.parentElement) { if (e.tagName === "DETAILS" && !e.open) e.open = true; } }
-  function hin(z) { aufklappen(z); window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - oben(), behavior: "instant" }); }
+  function hin(z) {
+    aufklappen(z);
+    window.scrollTo({ top: z.getBoundingClientRect().top + window.scrollY - oben(), behavior: "instant" });
+    /* Nach einem Stundenwechsel ändert sich die Höhe über dem Ziel noch – darum zwei Bilder später nachziehen. */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        var d = z.getBoundingClientRect().top - oben();
+        if (Math.abs(d) > 2) window.scrollBy({ top: d, behavior: "instant" });
+      });
+    });
+  }
   function ausrichten(z) {   /* bis ca. 5 s nachjustieren; sobald der Kadett selbst scrollt oder tippt, sofort aufhören */
     var n = 0, aus = false, stopp = function () { aus = true; };
     ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (e) { window.addEventListener(e, stopp, { once: true, passive: true }); });
